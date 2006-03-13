@@ -1,0 +1,7 @@
+localhost
+xrotation <A-X>
+yrotation <A-Y>
+zrotation <A-Z>
+xtranslation <T-X>
+ytranslation <T-Y>
+ztranslation <T-Z>

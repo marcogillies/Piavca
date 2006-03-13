@@ -1,0 +1,10 @@
+<?xml version='1.0'?>
+<?eclipse-cdt version="2.0"?>
+<cdtproject id='org.kde.autotools.ui.std'>
+    <extension point='org.eclipse.cdt.core.CIndexer' id='org.eclipse.cdt.core.domsourceindexer'/>
+    <data>
+      <item id='org.eclipse.cdt.core.pathentry'>
+        <pathentry kind='src' path='src/'/>
+</item>
+</data>
+</cdtproject>

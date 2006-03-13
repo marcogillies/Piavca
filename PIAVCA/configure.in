@@ -1,0 +1,22 @@
+AC_INIT(configure.in)
+
+AM_CONFIG_HEADER(config.h)
+AM_INIT_AUTOMAKE(piavca, 1.0)
+
+AC_LANG_CPLUSPLUS
+AC_PROG_CXX
+AM_PROG_LIBTOOL
+AC_PROG_YACC
+AC_PROG_LEX
+
+AC_PYTHON_DEVEL
+AM_PATH_PYTHON(2.3)
+AC_PROG_SWIG(1.3.21)
+SWIG_ENABLE_CXX
+#SWIG_MULTI_MODULE_SUPPORT
+SWIG_PYTHON
+
+AC_STDC_HEADERS
+AC_HAVE_HEADERS(cal3d/cal3d.h)
+
+AC_OUTPUT(Makefile src/Makefile src/PiavcaAPI/Makefile src/PiavcaNVCLib/Makefile src/StdMotionImp/Makefile src/PiavcaPythonInterface/Makefile src/PiavcaCal3dImp/Makefile src/PiavcaCal3dApp/Makefile src/PiavcaOpenSGImp/Makefile src/PiavcaOpenSGApp/Makefile)

@@ -1,0 +1,8 @@
+ABOUT TO LOAD PYTHON
+initialised python
+python bailed during module import
+Python Exception:
+exceptions.ImportError
+No module named PyTest
+<NULL>
+in finalise function

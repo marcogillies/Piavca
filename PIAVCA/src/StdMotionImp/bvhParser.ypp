@@ -1,0 +1,541 @@
+/* ***** BEGIN LICENSE BLOCK *****
+ * Version: MPL 1.1
+ *
+ * The contents of this file are subject to the Mozilla Public License Version
+ * 1.1 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.mozilla.org/MPL/
+ *
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+ * for the specific language governing rights and limitations under the
+ * License.
+ *
+ * The Original Code is bvhParser.ypp.
+ *
+ * The Initial Developer of the Original Code is Marco (Mark) Gillies.
+ * Portions created by the Initial Developer are Copyright (C) BT plc. 2004
+ * All Rights Reserved.
+ *
+ * ***** END LICENSE BLOCK ***** */
+
+%{
+// A parser
+
+
+#include "bvhMotionParser.h"
+
+#include <assert.h>
+
+#include <stdio.h>
+#include <malloc.h>
+#include <string>
+#include <vector>
+//using std::vector;
+extern int yylex();
+int yyerror(char *s);
+
+
+#define YYMAXDEPTH 40000
+
+#include "PiavcaAPI/PiavcaDefs.h"
+#include "PiavcaAPI/MotionImp.h"
+#include "PiavcaAPI/Motion.h"
+#include "StdMotionImp.h"
+#include "PiavcaAPI/Quat.h"
+#include "PiavcaAPI/Vec.h"
+#include "PiavcaAPI/MathsUtils.h"
+#include "PiavcaAPI/PiavcaCore.h"
+using Piavca::Quat;
+using Piavca::Vec;
+
+// define a big stack to avoid overflow on long bits of motion
+//#define YYMAXDEPTH 500000
+
+Piavca::MotionImp *g_pMotion;
+Piavca::Core *g_pCore;
+std::string g_FileName;
+FILE *g_file;
+int g_noFrames;
+bool g_bTest;
+float g_StartTime;
+bool g_SkipFrame;
+
+Piavca::Motion *g_pBasePosture;
+
+int linenum;
+extern char *bvhtext;
+
+bool g_bArmUp, g_bArmDown;
+int g_ArmUpAxis;
+ int g_LeftArmTrack, g_RightArmTrack;
+bool g_ReverseOrder;
+
+struct trackStruct{
+  Piavca::tstring name;
+  int trackId;
+  int channel[9];
+  bool negateChannel[9];
+  Quat currentRot;
+  Vec currentEuler;
+  //Quat coordSystem; 
+  Quat multiplier;
+};
+
+
+std::vector <trackStruct> tracks;
+int currentTrack, currentChannel;
+float currentTime, frameTime;
+int rootOriTrackId, rootPosTrackId;
+//int g_CurrentTrackIteratorId;
+Quat currentRootOri;
+Vec currentRootPos;
+int rootChannel[9];
+
+/*
+Vec getAxis(int i)
+{
+	switch (i)
+	{
+	case 0:	return Vec(-1.0, 0.0, 0.0);
+	case 1:	return Vec(0.0, 1.0, 0.0);
+	case 2:	return Vec(0.0, 0.0, 1.0);
+	default: assert(0);
+	}
+}
+*/
+
+Vec g_Axes[3];
+
+
+
+%}
+
+
+%union {
+  int intVal;
+  float floatVal;
+  char * name;
+  std::vector<int> *intList;
+}
+
+%token HIERARCHY ROOT OFFSET CHANNELS JOINT END_SITE MOTION FRAMES FRAME_TIME 
+%token <floatVal>NUMBER 
+%token <intVal>NUMBER_INT 
+%token <name>NAME 
+%token <intVal>DOF_NAME 
+%token L_BRACK R_BRACK
+
+%type <intVal>joint_name	
+%type <intList>joint_spec
+%type <intList>joint_list
+%type <intList>joint_body
+
+%%
+
+bvh_file		:	heirarchy_sec motion_sec	{
+  //std::cout << "successfully read bvh file\n";
+  }
+  ;
+
+heirarchy_sec	:	HIERARCHY root_node			{
+  rootPosTrackId = g_pCore->getJointId(_PSTR("Root Position"));
+  rootOriTrackId = g_pCore->getJointId(_PSTR("Root Orientation"));
+  //for (unsigned int i = 0; i < tracks.size(); i++)
+  //{
+  //  tracks[i].trackId = g_pCore->getJointId(tracks[i].name);
+  //  if(tracks[i].trackId < 0)
+  //     std::cout << "failed to find joint " << tracks[i].name << std::endl;
+  //}
+  currentTime = 0.0; 
+  currentChannel = 0;		
+  currentTrack = -1;
+  currentRootOri = Quat();
+  currentRootPos = Vec();
+  }
+  ;
+
+root_node		:	ROOT NAME joint_body		{delete $3;}
+				;
+
+joint_body		:	L_BRACK offset_spec channel_spec joint_list R_BRACK	{$$ = $4;}
+				;
+
+offset_spec		:	OFFSET NUMBER NUMBER NUMBER	
+   {
+     if(currentTrack >= 0)
+       {
+			//(*g_CurrentTrackIterator)->setOffset(Vec($2,$3,$4));
+			//std::cout << Piavca::TStringToString(tracks[currentTrack].name) << " offset " << $2 << " " << $3 << " " << $4 << endl;
+       }
+   }
+   ;
+
+channel_spec	:	CHANNELS NUMBER_INT channel_list	
+   {currentChannel = 0;}
+   ;
+
+channel_list	:	channel channel_list		{}
+				|	channel						{}
+				;
+
+channel			:	DOF_NAME					{
+				  if(currentTrack >= 0)
+				    {
+				      if($1 >= 0)
+						{
+							tracks[currentTrack].channel[currentChannel] = $1;
+							tracks[currentTrack].negateChannel[currentChannel] = false;
+						}
+						else
+						{
+							if($1 == -6)
+								tracks[currentTrack].channel[currentChannel] = 0;
+							else
+								tracks[currentTrack].channel[currentChannel] = -$1;
+							tracks[currentTrack].negateChannel[currentChannel] = true;
+						}	
+
+				    }
+				  else
+				    {
+				      rootChannel[currentChannel] = $1;
+				    }
+				  currentChannel++;
+				  
+                                }
+				;
+			
+joint_list		:	joint_list joint_spec	{$$ = $1; for(unsigned int i = 0; i < $2->size(); i++) $$->push_back((*$2)[i]); delete $2;} 
+			|   joint_list end_site	{$$ = $1;}       	
+			|	joint_spec	{$$ = $1;}
+			|	end_site	{$$ = new vector<int>();}
+				;
+				
+end_site                :       end_site end_site {}
+                                | END_SITE L_BRACK offset_spec R_BRACK	{}
+                                | {}
+                                ;
+
+joint_spec		:	joint_name joint_body		
+                                     {
+				       if(g_pBasePosture != NULL && !g_pBasePosture->isNull(tracks[$1].trackId))
+					 tracks[$1].multiplier = g_pBasePosture->getQuatValueAtTime(tracks[$1].trackId, 0.0).inverse();
+				       $2->push_back($1);
+				       //std::cout << std::endl;
+				       $$ = $2;
+                                     }
+				;
+				
+joint_name		:	JOINT NAME 		{	
+  tracks.push_back(trackStruct());
+  currentTrack = static_cast<int>(tracks.size())-1;
+  tracks[currentTrack].channel[0] = -1;
+  tracks[currentTrack].channel[1] = -1;
+  tracks[currentTrack].channel[2] = -1;
+  tracks[currentTrack].channel[3] = -1;
+  tracks[currentTrack].channel[4] = -1;
+  tracks[currentTrack].channel[5] = -1;
+  tracks[currentTrack].channel[6] = -1;
+  tracks[currentTrack].channel[7] = -1;
+  tracks[currentTrack].channel[8] = -1;
+  tracks[currentTrack].currentRot = Quat(1.0, 0.0, 0.0, 0.0);
+  tracks[currentTrack].multiplier = Quat(1.0, 0.0, 0.0, 0.0);
+  //tracks[currentTrack].coordSystem = Quat(1.0, 0.0, 0.0, 0.0);
+  currentChannel = 0;
+  tracks[currentTrack].name = StringToTString($2);
+  tracks[currentTrack].trackId = g_pCore->getJointId(tracks[currentTrack].name);
+  if(tracks[currentTrack].trackId >= 0)
+      g_pMotion->addQuatTrack(tracks[currentTrack].trackId, Piavca::Quat());
+  else
+	{
+		g_pCore->addJointNameSet(Piavca::StringVector(1, tracks[currentTrack].name));
+		tracks[currentTrack].trackId = g_pCore->getJointId(tracks[currentTrack].name);
+		g_pMotion->addQuatTrack(tracks[currentTrack].trackId, Piavca::Quat());
+	}
+
+  $$ = currentTrack;
+  //fprintf(g_file, "\nadded joint %s\n", $2);
+ }
+ ;
+
+motion_sec		:	MOTION no_frames frame_time keyframe_list	{}
+				;
+
+no_frames		:	FRAMES	NUMBER_INT			{	g_noFrames = $2;}
+				;
+				
+frame_time		:	FRAME_TIME NUMBER			{	frameTime = $2; }
+				;
+				
+keyframe_list	:	keyframe_list keyframe {}
+				|	keyframe					{}
+				;
+		
+keyframe		:	NUMBER						
+          {
+			if(currentTrack < 0)
+			{	
+				if(currentChannel > 8 || rootChannel[currentChannel] < 0)
+				{
+					currentChannel = 0;
+					if(g_pBasePosture != NULL && !g_pBasePosture->isNull(rootOriTrackId))
+					    currentRootOri = g_pBasePosture->getQuatValueAtTime(rootOriTrackId, 0.0).inverse()*currentRootOri;
+					if(g_pBasePosture != NULL && !g_pBasePosture->isNull(rootPosTrackId))
+					    currentRootPos -= g_pBasePosture->getVecValueAtTime(rootPosTrackId, 0.0);
+					if(!g_SkipFrame)
+					{
+						g_pMotion->setVecKeyframe(rootPosTrackId, currentTime - g_StartTime, currentRootPos);
+						g_pMotion->setQuatKeyframe(rootOriTrackId, currentTime - g_StartTime, currentRootOri);
+					};
+					currentRootOri = Quat();
+					currentRootPos = Vec();
+					currentTrack = 0;
+				}
+			}
+			else
+			{
+				if(currentChannel > 8 || tracks[currentTrack].channel[currentChannel] < 0)
+				{
+					currentChannel = 0;
+					//std::cout << "reading track " << tracks[currentTrack].name << " " << tracks[currentTrack].trackId  << std::endl;
+					//std::cout.flush();
+					if(tracks[currentTrack].trackId >= 0)
+					    {
+					      //if(g_pBasePosture != NULL && !g_pBasePosture->isNull(tracks[currentTrack].trackId))
+					      //    tracks[currentTrack].currentRot = g_pBasePosture->getQuatValueAtTime(tracks[currentTrack].trackId, 0.0).inverse()*tracks[currentTrack].currentRot;
+						  Quat rot;
+						  if(g_pBasePosture)
+							rot = g_pBasePosture->getQuatValueAtTime(tracks[currentTrack].trackId, 0.0).inverse() * tracks[currentTrack].currentRot;
+					      else
+							rot = tracks[currentTrack].currentRot;
+					      //Quat rot = tracks[currentTrack].coordSystem.inverse()*tracks[currentTrack].multiplier*tracks[currentTrack].currentRot*tracks[currentTrack].coordSystem;
+					      if(!g_SkipFrame)
+						      g_pMotion->setQuatKeyframe(tracks[currentTrack].trackId, currentTime - g_StartTime, rot);
+					    }
+					tracks[currentTrack].currentRot = Quat();
+					if(++currentTrack >= static_cast<int>(tracks.size()))
+					{
+						currentTime += frameTime;
+						currentTrack = -1;
+						//fprintf(g_file, "\nframecountdown %i\n", g_noFrames);
+						g_noFrames--;
+						if(g_SkipFrame)
+						{
+							g_SkipFrame = false;
+							g_StartTime = currentTime;
+						}
+					}
+					//if(currentTrack == 5) currentTrack++;
+				}
+			}
+		 if(currentTrack < 0)
+	      {
+			if(rootChannel[currentChannel] > 2 && rootChannel[currentChannel] < 6)
+			{
+				// the way the zaxis points is opposite to the normal bvh convention so flip it
+				//currentRootPos[rootChannel[currentChannel] - 3] = rootChannel[currentChannel] == 3 ? -$1 : $1; 
+			    currentRootPos += g_Axes[rootChannel[currentChannel] - 3]*$1;
+			}
+			else
+			{
+				currentRootOri = Quat(-Piavca::degToRad($1), g_Axes[rootChannel[currentChannel]])*currentRootOri;
+			}
+	      }
+	    else
+	      {
+		  // ignore position
+		  if(tracks[currentTrack].channel[currentChannel] <= 2)
+		      {
+			  fprintf(g_file, " %s ", TStringToString(tracks[currentTrack].name).c_str());
+			  float angle = $1;
+			  float correction = 0.0;
+			  if(g_bArmUp) correction = -90.0;
+			  if(g_bArmDown) correction = 90.0;
+			  //if(tracks[currentTrack].trackId == g_LeftArmTrack)
+			  //    std::cout << "(" << tracks[currentTrack].channel[currentChannel] << "," << angle << ") ";
+			  if(tracks[currentTrack].channel[currentChannel] == g_ArmUpAxis)
+			      {
+				  if(tracks[currentTrack].trackId == g_LeftArmTrack)
+				      angle += correction;
+				  if(tracks[currentTrack].trackId == g_RightArmTrack)
+				      angle -= correction;
+			      }
+			  //tracks[currentTrack].currentRot = 
+			  //    Quat(-Piavca::degToRad(angle), g_Axes[tracks[currentTrack].channel[currentChannel]])*tracks[currentTrack].currentRot;
+			  float a = -Piavca::degToRad(angle);
+			  if(tracks[currentTrack].negateChannel[currentChannel])
+				a = -a;
+			  //if(tracks[currentTrack].trackId == g_LeftArmTrack 
+				//&& currentChannel == 2) a = - a;
+			 if(g_ReverseOrder)
+				tracks[currentTrack].currentRot = 
+			        Quat(a, g_Axes[tracks[currentTrack].channel[currentChannel]])*tracks[currentTrack].currentRot;
+			 else
+			    tracks[currentTrack].currentRot = 
+			        tracks[currentTrack].currentRot*Quat(a, g_Axes[tracks[currentTrack].channel[currentChannel]]);
+			  if(g_bTest)
+			      tracks[currentTrack].currentEuler[tracks[currentTrack].channel[currentChannel]] = $1;
+		      }
+	      }
+		 currentChannel++;
+		 fprintf(g_file, " %f ", $1);
+	    
+	  }
+;
+				
+		
+%%
+
+
+extern FILE *bvhin;
+
+namespace Piavca
+{
+
+void readBvhMotion(Piavca::Core *core, MotionImp *mot, std::string fileName, int flags, Motion *basePosture, bool test)
+{
+	linenum = 0;
+
+    g_bTest = test;
+    g_pBasePosture = basePosture;
+
+    g_LeftArmTrack = Piavca::Core::getCore()->getJointId(_PSTR("upper_left_arm"));
+    g_RightArmTrack = Piavca::Core::getCore()->getJointId(_PSTR("upper_right_arm"));
+    
+    g_StartTime = 0;
+    g_ArmUpAxis = 2;
+    Vec xAxis = Vec::XAxis();
+    if(flags & TRANS_NEG_X) xAxis = -xAxis;
+    Vec yAxis = Vec::YAxis();
+    if(flags & TRANS_NEG_Y) yAxis = -yAxis;
+    Vec zAxis = Vec::ZAxis();
+    if(flags & TRANS_NEG_Z) zAxis = -zAxis;
+    if(flags & TRANS_SWAP_XZ)
+	{
+	    g_Axes[0] = zAxis;
+	    g_Axes[1] = yAxis;
+	    g_Axes[2] = xAxis;
+	    //g_ArmUpAxis = 0;
+	}
+    else {if(flags & TRANS_SWAP_XY)
+	{
+	    g_Axes[0] = yAxis;
+	    g_Axes[1] = xAxis;
+	    g_Axes[2] = zAxis;
+	    //g_ArmUpAxis = 2;
+	}
+    else {if(flags & TRANS_SWAP_YZ)
+	{
+	    g_Axes[0] = xAxis;
+	    g_Axes[1] = zAxis;
+	    g_Axes[2] = yAxis;
+	    //g_ArmUpAxis = 1;
+	}
+    else {if(flags & TRANS_CYCLE_ZXY)
+	{
+	    g_Axes[0] = zAxis;
+	    g_Axes[1] = xAxis;
+	    g_Axes[2] = yAxis;
+	    //g_ArmUpAxis = 1;
+	}
+    else {if(flags & TRANS_CYCLE_YZX)
+	{
+	    g_Axes[0] = yAxis;
+	    g_Axes[1] = zAxis;
+	    g_Axes[2] = xAxis;
+	    //g_ArmUpAxis = 0;
+	}
+    else {
+	    g_Axes[0] = xAxis;
+	    g_Axes[1] = yAxis;
+	    g_Axes[2] = zAxis;
+	    //g_ArmUpAxis = 2;
+    }}}}}
+
+    if(flags & TRANS_ARM_UP)
+		g_bArmUp = true;
+    if(flags & TRANS_ARM_DOWN)
+		g_bArmDown = true;
+		
+    if(flags & TRANS_REVERSE_ORDER)
+		g_ReverseOrder = true;
+	else
+		g_ReverseOrder = false;
+    if(flags & TRANS_SKIP_FIRST_FRAME)
+		g_SkipFrame = true;
+	else
+		g_SkipFrame = false;
+
+    //if((g_bArmUp && g_bArmDown))
+    //throw Piavca::PiavcaException("error: motion correction specifies both raising and lowering arms");
+    
+    g_pCore = core;
+
+    g_FileName = fileName;
+    bvhin = fopen(fileName.c_str(),"r");
+    g_file = fopen("bvhreaderOut.txt", "w");
+    if (bvhin == NULL) {
+	//throw FileNotFoundException(StringToTString(fileName));
+	Piavca::Error(Piavca::tstring(_T("Could not open file ")) + StringToTString(fileName));
+	return;
+    }
+    if (g_file == NULL) {
+	//throw FileNotFoundException(_T("bvhreaderOut.txt"));
+	Piavca::Error(Piavca::tstring(_T("Could not open file ")) + StringToTString(fileName));
+	return;
+    }
+    mot->deleteAllTracks();
+    g_pMotion = mot;
+    
+    currentTrack = -1;
+    currentChannel = 0;
+    currentTime = 0.0;
+    
+    
+    rootChannel[0] = -1;
+    rootChannel[1] = -1;
+    rootChannel[2] = -1;
+    rootChannel[3] = -1;
+    rootChannel[4] = -1;
+    rootChannel[5] = -1;
+    rootChannel[6] = -1;
+    rootChannel[7] = -1;
+    rootChannel[8] = -1;
+    g_pMotion->addVecTrack(g_pCore->getJointId(_PSTR("Root Position")), Piavca::Vec());
+    g_pMotion->addQuatTrack(g_pCore->getJointId(_PSTR("Root Orientation")), Piavca::Quat());
+
+    tracks.clear();
+    
+    do 
+    {
+	    yyparse();
+	}
+	while(!(feof(bvhin)));
+    //std::cout << "finished parsing\n";
+    // hmm... bit of a hack, because the parser never gets to the bit that finalises the last keyframe
+    // of the last track do it explicitely
+    if(tracks[currentTrack].trackId >= 0)
+	{
+	    if(g_pBasePosture != NULL && !g_pBasePosture->isNull(tracks[currentTrack].trackId))
+		tracks[currentTrack].currentRot = g_pBasePosture->getQuatValueAtTime(tracks[currentTrack].trackId, 0.0).inverse()*tracks[currentTrack].currentRot;
+	    g_pMotion->setQuatKeyframe(tracks[currentTrack].trackId, currentTime, tracks[currentTrack].currentRot);
+	}
+    //std::cout << "really finished\n";
+    //if(g_bTest)
+     // g_pMotion->setVecKeyframe(tracks[currentTrack].testTrack, currentTime, tracks[currentTrack].currentEuler);
+    fflush(g_file);
+    assert(g_noFrames == 1);
+    fclose(g_file);
+    fclose(bvhin);
+}
+
+};
+
+int yyerror(char *s)
+{
+  fclose(g_file);
+  std::cerr << "bvh parse error at line " << linenum << " token " << bvhtext << ": " << s << std::endl; 
+  Piavca::Error(Piavca::tstring(_T("Error in file: ")) + StringToTString(g_FileName)+ _T(" ") + StringToTString(s));
+  return 0;
+}

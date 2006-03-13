@@ -1,0 +1,101 @@
+/* ***** BEGIN LICENSE BLOCK *****
+ * Version: MPL 1.1
+ *
+ * The contents of this file are subject to the Mozilla Public License Version
+ * 1.1 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.mozilla.org/MPL/
+ *
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+ * for the specific language governing rights and limitations under the
+ * License.
+ *
+ * The Original Code is bvhLexer.l.
+ *
+ * The Initial Developer of the Original Code is Marco (Mark) Gillies.
+ * Portions created by the Initial Developer are Copyright (C) BT plc. 2004
+ * All Rights Reserved.
+ *
+ * ***** END LICENSE BLOCK ***** */
+
+
+%option never-interactive
+%{
+/*
+ *  a lexer test
+ */
+ 
+#include <string>
+#include <vector>
+#ifdef WIN32
+#include "bvhParser.tab.hpp"
+#else
+#include "bvhParser.h"
+#endif
+
+extern int linenum;
+//extern FILE *g_file;
+%}
+
+%s INTEGER
+
+%%
+
+
+"HIERARCHY"		{/*fprintf(g_file, " %s ", yytext);*/ return(HIERARCHY);}
+
+"ROOT"			{/*fprintf(g_file, " %s ", yytext);*/ return(ROOT);}
+
+"OFFSET"		{/*fprintf(g_file, " %s ", yytext);*/ return(OFFSET);}
+
+"CHANNELS"		{BEGIN INTEGER; /*fprintf(g_file, " %s ", yytext);*/ return(CHANNELS);}
+
+"JOINT"			{/*fprintf(g_file, " %s ", yytext);*/ return(JOINT);}
+
+"End Site"		{/*fprintf(g_file, " %s ", yytext);*/ return(END_SITE);}
+
+"MOTION"		{/*fprintf(g_file, " %s ", yytext);*/ return(MOTION);}
+
+"Frames:"		{BEGIN INTEGER; /*fprintf(g_file, " %s ", yytext);*/ return(FRAMES);}
+
+"Frame Time:"	{/*fprintf(g_file, " %s ", yytext);*/ return(FRAME_TIME);}
+
+\{				{/*fprintf(g_file, " %s ", yytext);*/ return (L_BRACK);}
+
+\}				{/*fprintf(g_file, " %s ", yytext);*/ return (R_BRACK);}
+
+X[rR]otation	{bvhlval.intVal = 0; /*fprintf(g_file, " %s ", yytext);*/ return(DOF_NAME);}
+
+Y[rR]otation	{bvhlval.intVal = 1; /*fprintf(g_file, " %s ", yytext);*/ return(DOF_NAME);}
+
+Z[rR]otation	{bvhlval.intVal = 2; /*fprintf(g_file, " %s ", yytext);*/ return(DOF_NAME);}
+
+X[pP]osition	{bvhlval.intVal = 3; /*fprintf(g_file, " %s ", yytext);*/ return(DOF_NAME);}
+
+Y[pP]osition	{bvhlval.intVal = 4; /*fprintf(g_file, " %s ", yytext);*/ return(DOF_NAME);}
+
+Z[pP]osition	{bvhlval.intVal = 5; /*fprintf(g_file, " %s ", yytext);*/ return(DOF_NAME);}
+
+X[sS]cale	{bvhlval.intVal = 6; /*fprintf(g_file, " %s ", yytext);*/ return(DOF_NAME);}
+
+Y[sS]cale	{bvhlval.intVal = 7; /*fprintf(g_file, " %s ", yytext);*/ return(DOF_NAME);}
+
+Z[sS]cale	{bvhlval.intVal = 8; /*fprintf(g_file, " %s ", yytext);*/ return(DOF_NAME);}
+
+<INTEGER>[0-9]+	{BEGIN 0; bvhlval.intVal = atoi(yytext); /*fprintf(g_file, " %s ", yytext);*/ return NUMBER_INT;}
+
+-?((([0-9]+)|([0-9]*\.[0-9]+))([eE][-+]?[0-9]+)?) {bvhlval.floatVal = static_cast<float>(atof(yytext)); /*fprintf(g_file, " %s ", yytext);*/ return (NUMBER);}
+
+[^\t\n ]+	{bvhlval.name = yytext; /*fprintf(g_file, " <name> %s ", yytext);*/ return (NAME);}
+
+\n			{linenum++;};
+
+[\t ]+    /* ignore whitespace*/;
+
+%%
+
+int yywrap()
+{
+   return 1;
+}

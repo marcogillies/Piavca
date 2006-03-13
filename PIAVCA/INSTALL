@@ -1,0 +1,82 @@
+
+PIAVCA - The Platform Independent API for Virtual Characters and Avatars
+
+This file gives installation instructions for Piavca. For full documentation
+see the Doc directory or visit www.XXX?
+
+UNIX
+
+Piavca has a standard automake installation procedure:
+
+cd PIAVCA
+./configure
+make
+make install
+
+you might need to run the last command as root. run ./configure --help to get the available options
+
+if you need to regenerate the configure file you can run 
+
+sh ./autogen.sh
+
+Piavca has a number of dependencies:
+
+Yacc and Lex (Bison and Flex): are standard on almost all unices, some (e.g. Ubuntu) don't 
+install them as standard but you can just install the bison and flex packages
+
+Automake, Autoconf, aclocal, autoheader, libtools: only needed if you want to regenerated the
+configure file. Again these are UNIX standards and should exist as standard packages if they
+aren't installed already
+
+Python: if you want to use the python bindings you need to have python installed, if its installed 
+somewhere standard it should just work, otherwise you need to ???
+
+Cal3D: this is a lower level character animation library. The eventual plan is to remove 
+dependencies on it but its needed for now. You can get it from: 
+
+http://cal3d.sourceforge.net/
+
+If you install it in the standard place (/usr/install/local) configure will find it, otherwise 
+you need to ????
+
+WINDOWS
+
+A set of Visual Studio .Net project files are in the VStudio directory (at time of writing, 2006,
+a free (beer) version of VS can be downloaded from the microsoft site). Building Piavca is a little bit 
+more difficult than under UNIX as I don't know of a portable way to handle include paths etc using VStudio.
+Here is how to deal with the dependencies:
+
+Yacc and Lex: the project file assumes that you have the commands bison and flex in your path
+
+Python: you don't need to use the python bindings (if you don't don't compile PiavcaPythonInterface 
+and make the changes to PiavcaCal3dApp listed below). If you do want to use if you need to install python
+and change the following:
+
+PiavcaPythonInterface->Properties->C/C++->Additional Include Directories add the path to Python.h
+PiavcaPythonInterface->Properties->Librarian->Additional Library Directories add the path to Python.lib
+
+you might need the debug binaries of python to build Piavca in debug. I've put a zip file of the Python 2.4 ones you 
+need on the Piavca Sourceforge site, just put them into the lib and dll directories of your python distribution.
+
+Cal3D: this is a lower level character animation library. The eventual plan is to remove 
+dependencies on it but its needed for now. You can get it from: 
+
+http://cal3d.sourceforge.net/
+
+You will need to make the following changes to get the paths to work:
+
+PiavcaCal3dImp->Properties->C/C++->Additional Include Directories add the path to cal3d\cal3d.h (i.e. the parent of the cal3d include directory)
+PiavcaCal3dApp->Properties->C/C++->Additional Include Directories add the path to cal3d\cal3d.h
+PiavcaCal3dImpp->Properties->Librarian->Additional Library Directories add the path to cal3d.lib
+
+Example App:
+
+PiavcaCal3dApp is an example application. It has to run in the path containing ???.cfg. 
+In the unix version you can pass this directory (which should be PIAVCAPATH/???, where PIAVCAPATH
+is the root of your piavca distribution) as an argument. In VStudio you can do 
+
+PiavcaCal3dApp->Properties->Debugging->Working Directory = the path
+
+If you haven't got python you can grep the file PiavcaCal3dApp.cpp and remove the 3 lines that 
+contain references to python. There is a comment just below one of them of some lines that 
+you can uncomment, to get it to do anything without python.
