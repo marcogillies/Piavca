@@ -283,7 +283,7 @@ void reshape(int w, int h)
 // just redraw our scene if this GLUT callback is invoked
 void display(void)
 {
-	static prevTime = Piavca::Core::getCore()->getTime();
+	static float prevTime = Piavca::Core::getCore()->getTime();
 	static int framecount = 0;
 	static float updateTime = 0;
 	static float prerenderTime = 0;

@@ -40,7 +40,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\;C:\Program Files\OpenSG\include;..\..\..\cal3d-0.10.0\src\;c:\Python24\include\;c:\Python24\PC\"
+				AdditionalIncludeDirectories="..\;C:\Program Files\OpenSG\include;..\..\..\..\..\cal3d-0.10.0\src\;c:\Python24\include\;c:\Python24\PC\"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;WINVER=0x0400;_WIN32_WINDOWS=0x0410;_WIN32_WINNT=0x0400;_OSG_HAVE_CONFIGURED_H_;OSG_BUILD_DLL;_DEBUG;OSG_DEBUG;OSG_WITH_GLUT;OSG_WITH_GIF;OSG_WITH_TIF;OSG_WITH_JPG"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -66,7 +66,7 @@
 				OutputFile="$(OutDir)/PiavcaOpenSGApp.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="c:\Python24\PCBuild;&quot;c:\Program Files\OpenSG\lib&quot;,&quot;c:\Program Files\OpenSG\lib\glut_3.7\lib&quot;,&quot;c:\Program Files\OpenSG/lib/jpg6b/lib&quot;;&quot;c:\Program Files\OpenSG/lib/tiff-3.5.4/lib&quot;;;..\..\..\cal3d-0.10.0\bin\debug"
+				AdditionalLibraryDirectories="c:\Python24\PCBuild;&quot;c:\Program Files\OpenSG\lib&quot;,&quot;c:\Program Files\OpenSG\lib\glut_3.7\lib&quot;,&quot;c:\Program Files\OpenSG/lib/jpg6b/lib&quot;;&quot;c:\Program Files\OpenSG/lib/tiff-3.5.4/lib&quot;;;..\..\..\..\..\cal3d-0.10.0\bin\debug"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/PiavcaOpenSGApp.pdb"
 				SubSystem="1"
@@ -177,9 +177,11 @@
 	<References>
 		<ProjectReference
 			ReferencedProjectIdentifier="{E53AF870-A613-4C4A-A72C-AB798F7D7232}"
+			RelativePathToProject=".\src\PiavcaOpenSGImp\PiavcaOpenSGImp_vc2005.vcproj"
 		/>
 		<ProjectReference
 			ReferencedProjectIdentifier="{9BE2E296-9B8C-4972-B627-06F7A635204C}"
+			RelativePathToProject=".\src\PiavcaPythonInterface\PiavcaPythonInterface_vc2005.vcproj"
 		/>
 	</References>
 	<Files>
