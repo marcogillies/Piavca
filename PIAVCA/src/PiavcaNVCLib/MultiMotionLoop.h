@@ -90,6 +90,15 @@ public:
 	}
 	virtual Motion *clone(){return new MultiMotionLoop(*this);};
 
+	void printInfo()
+	{
+		Motion::printInfo();
+		debug_prefix++;
+		for(int i = 0; i < mots.size(); i++)
+			mots[i]->printInfo();
+		debug_prefix--;
+	};
+
 	//adds a new motion
 	void addMotion(Motion *mot)
 	{

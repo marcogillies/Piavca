@@ -60,6 +60,14 @@ namespace Piavca
 			if(filterMot) filterMot->Dispose();
 		}
 
+		void printInfo()
+		{
+			Motion::printInfo();
+			debug_prefix++;
+			if(filterMot)filterMot->printInfo();
+			debug_prefix--;
+		};
+
 		//! finds the first submotion with a given name
 		virtual Motion *findSub(tstring nm)
 		{

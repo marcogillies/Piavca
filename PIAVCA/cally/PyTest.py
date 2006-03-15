@@ -21,8 +21,8 @@ sys.argv = ['Piavca']
 
 
 cally = Piavca.Avatar("cally")
-#cally.setRootPosition(Piavca.Vec(-40.0, 0, 0))
-#cally.setRootOrientation(Piavca.Quat(Piavca.degToRad(45), Piavca.Vec(0, 0, 1)))
+cally.setRootPosition(Piavca.Vec(-40.0, 0, 0))
+cally.setRootOrientation(Piavca.Quat(Piavca.degToRad(45), Piavca.Vec(0, 0, 1)))
 #sally = Piavca.Avatar("sally")
 #sally.setRootPosition(Piavca.Vec(40.0, 0, 0))
 #sally.setRootOrientation(Piavca.Quat(Piavca.degToRad(-45), Piavca.Vec(0, 0, 1)))
@@ -59,8 +59,8 @@ import MotionFile
 MotionFile.readMotionFile("motions.conf")
 
 #cally.play_motion(Piavca.LoopMotion(Piavca.Core.getCore().getMotion("nod")))
-cally.play_motion(Piavca.Core.getCore().getMotion("gethit"))
-#sally.play_motion(Piavca.Core.getCore().getMotion("gestures"))
+#cally.play_motion(Piavca.Core.getCore().getMotion("gethit"))
+cally.play_motion(Piavca.Core.getCore().getMotion("gestures"))
 
 #sally.play_motion(random_gesture)
 #avatar.play_motion(saver)

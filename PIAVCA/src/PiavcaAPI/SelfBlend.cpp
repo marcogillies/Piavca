@@ -47,11 +47,11 @@ SelfBlend::SelfBlend(Motion *mot, float interval)
 	{
 		switch(mot2->getTrackType(track))
 		{
-		case FLOAT_TYPE:  tmot->addFloatTrack(track, 0.0);
+		case FLOAT_TYPE:  tmot->addFloatTrack(track, mot2->getFloatValueAtTime(track, mot2->getStartTime()));
 						  break;
-		case VEC_TYPE:    tmot->addVecTrack(track, Vec());
+		case VEC_TYPE:    tmot->addVecTrack(track, mot2->getVecValueAtTime(track, mot2->getStartTime()));
 						  break;
-		case QUAT_TYPE:   tmot->addQuatTrack(track, Quat());
+		case QUAT_TYPE:   tmot->addQuatTrack(track, mot2->getQuatValueAtTime(track, mot2->getStartTime()));
 						  break;
 		//case FLOAT_TYPE:  tmot->addFloatTrack(track, mot2->getFloatValueAtTime(track, 0.0));
 		//				  break;
@@ -85,11 +85,20 @@ void SelfBlend::setMotion(Motion *mot)
 	{
 		switch(mot2->getTrackType(track))
 		{
-		case FLOAT_TYPE:  if(tmot->isNull(track)) tmot->addFloatTrack(track, 0.0);
+		case FLOAT_TYPE:  if(tmot->isNull(track)) 
+							  tmot->addFloatTrack(track, mot2->getFloatValueAtTime(track, mot2->getStartTime()));
+						  else
+							  tmot->setFloatKeyframe(track, 0.0, mot2->getFloatValueAtTime(track, mot2->getStartTime()));
 						  break;
-		case VEC_TYPE:    if(tmot->isNull(track)) tmot->addVecTrack(track, Vec());
+		case VEC_TYPE:    if(tmot->isNull(track)) 
+							  tmot->addVecTrack(track, mot2->getVecValueAtTime(track, mot2->getStartTime()));
+						  else
+							  tmot->setVecKeyframe(track, 0.0, mot2->getVecValueAtTime(track, mot2->getStartTime()));
 						  break;
-		case QUAT_TYPE:   if(tmot->isNull(track)) tmot->addQuatTrack(track, Quat());
+		case QUAT_TYPE:   if(tmot->isNull(track)) 
+							  tmot->addQuatTrack(track, mot2->getQuatValueAtTime(track, mot2->getStartTime()));
+						  else
+							  tmot->setQuatKeyframe(track, 0.0, mot2->getQuatValueAtTime(track, mot2->getStartTime()));
 						  break;
 		default:		  Piavca::Error(_T("Unknown track type"));
 		}

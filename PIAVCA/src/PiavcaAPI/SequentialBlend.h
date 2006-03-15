@@ -81,6 +81,7 @@ namespace Piavca
 		virtual void setMaintainY(bool b){maintainY = b;};
 		virtual void setStartTime(float time)
 		{
+			blendStart += time - startTime;
 			Motion::setStartTime(time);
 			if(mot1) mot1->setStartTime(time);
 			if(mot2) mot2->setStartTime(blendStart+blendInterval);

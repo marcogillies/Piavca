@@ -98,6 +98,10 @@ protected:
 	tstring name;
 	float pausedTime;
 	float offsetTime;
+
+	// used for debug printouts
+	static int debug_prefix;
+
 	//! a pointer to the Piavca::Core object that manages all the avatars and motions
 	//Piavca::Core *core;
 	//! the granularity at which keyframes can be set 
@@ -116,6 +120,9 @@ public:
 
 	//! creates a copy of the motion
 	virtual Motion *clone()=0;
+
+	//! prints out info about the motion heirarchy
+	virtual void printInfo();
 
 	//! called when the motion is loaded into an avatar
 	virtual void load(Avatar *av)
@@ -254,7 +261,7 @@ public:
 	};
 	//! get the value of a track at a given time (only works for Quats) 
 	Quat getQuatValueAtTime(int trackId, float time)
-	{
+	{		
 		if(pausedTime >=0)
 			return getQuatValueAtTimeInternal(trackId, pausedTime);
 		else

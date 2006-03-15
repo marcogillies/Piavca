@@ -38,7 +38,14 @@
 
 using namespace Piavca;
 
+int Motion::debug_prefix = 0;
 
+void Motion::printInfo()
+{
+	for(int i = 0; i < debug_prefix; i++)
+		std::cout << " > ";
+	std::cout << typeid(*this).name() << " " << getName() << std::endl;
+};
 
 // a motion factory used for creating avatars
 //Piavca::Core *Motion::core = NULL;

@@ -42,7 +42,7 @@ void SequentialBlend::calculateRootOffsets()
 	if(mot1 && !mot1->isNull(root_position_id))
 		m1End  = mot1->getVecValueAtTime(root_position_id, blendStart);
 	if(mot2 && !mot2->isNull(root_position_id))
-		m2Start = mot2->getVecValueAtTime(root_position_id, 0.0);
+		m2Start = mot2->getVecValueAtTime(root_position_id, mot2->getStartTime());
 	
 	if(mot1 && !mot1->isNull(root_orientation_id)) 
 	{
@@ -50,7 +50,7 @@ void SequentialBlend::calculateRootOffsets()
 	}
 	if(mot1 && !mot2->isNull(root_orientation_id))
 	{
-		Quat otherOri = mot2->getQuatValueAtTime(root_orientation_id, 0.0);
+		Quat otherOri = mot2->getQuatValueAtTime(root_orientation_id, mot2->getStartTime());
 		oriOffset = oriOffset/otherOri;
 	}
 };
@@ -132,7 +132,7 @@ Vec SequentialBlend::getVecValueAtTimeInternal(int trackId, float time)
 		if(time - blendStart < blendInterval)
 		{
 			float t = time - blendStart;
-			return mot1->getVecValueAtTime(trackId, blendStart)*(1-t/blendInterval) +getTransformedVec(trackId, 0.0)*(t/blendInterval);
+			return mot1->getVecValueAtTime(trackId, blendStart)*(1-t/blendInterval) +getTransformedVec(trackId, mot2->getStartTime())*(t/blendInterval);
 				
 			//Vec rootVal = mot1->getVecValueAtTime(trackId, blendStart);
 			// we normally only maintian the x-z coordinates of
@@ -159,7 +159,7 @@ Vec SequentialBlend::getVecValueAtTimeInternal(int trackId, float time)
 		if(time - blendStart < blendInterval)
 		{
 			float t = time - blendStart;
-			return mot1->getVecValueAtTime(trackId, blendStart)*(1-t/blendInterval) + mot2->getVecValueAtTime(trackId, 0.0)*(t/blendInterval);
+			return mot1->getVecValueAtTime(trackId, blendStart)*(1-t/blendInterval) + mot2->getVecValueAtTime(trackId, mot2->getStartTime())*(t/blendInterval);
 		}
 		else
 		{
@@ -232,7 +232,7 @@ Quat SequentialBlend::getQuatValueAtTimeInternal(int trackId, float time)
 		{
 			float t = time - blendStart;
 			//if(trackId == 8) std::cout << "in blend\n";
-			Quat q = slerp(mot1->getQuatValueAtTime(trackId, blendStart), mot2->getQuatValueAtTime(trackId, 0.0), t/blendInterval);
+			Quat q = slerp(mot1->getQuatValueAtTime(trackId, blendStart), mot2->getQuatValueAtTime(trackId, mot2->getStartTime()), t/blendInterval);
 			q.normalise();
 			return q;
 		}// otherwise its the value from the second motion

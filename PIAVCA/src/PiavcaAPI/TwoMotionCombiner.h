@@ -73,6 +73,15 @@ namespace Piavca
 			if(mot2) mot2->Dispose();
 		}
 	
+		void printInfo()
+		{
+			Motion::printInfo();
+			debug_prefix++;
+			if(mot1)mot1->printInfo();
+			if(mot2)mot2->printInfo();
+			debug_prefix--;
+		};
+
 		//virtual Motion *clone(){return new TwoMotionCombiner(*this);};
 
 		//! finds the first submotion with a given name
