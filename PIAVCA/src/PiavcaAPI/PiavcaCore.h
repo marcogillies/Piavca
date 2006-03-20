@@ -88,6 +88,12 @@ namespace Piavca
 		std::map<tstring, int> expressionMap;
 		//! the maximum expression Id
 		int maxExpressionId;
+
+		//! this flag turns off real time running of Piavca
+		bool autoTimeOff;
+		//! the current time (if it isn't linked to the real time clock)
+		float currentTime;
+
 		//! creates an avatar implementation 
 		/*!
 		* (see Avatar.h for discussion of the interface implementation architecture)
@@ -343,7 +349,21 @@ namespace Piavca
 		void setDir(tstring _dir){dir = _dir;};
 
 		//! get the current time in seconds
-	    virtual float getTime()=0;
+	    float getTime()
+		{
+			if(autoTimeOff)
+				return currentTime;
+			else
+				return getTimeInternal();
+		}
+		//! get the current time in seconds
+	    virtual float getTimeInternal()=0;
+		//! turns off the automatic updating of the current time from the system clock
+		void setAutoTimeOff(){autoTimeOff = true;};
+		//! turns on the automatic updating of the current time from the system clock
+		void setAutoTimeOn(){autoTimeOff = true;};
+		//! sets the current time (if its not linked to the system clock
+		void setCurrentTime(float t){currentTime = t;};
 
 		void addError(tstring details){errorstrm << details << std::endl;};
 		tostringstream &error(){return errorstrm;};

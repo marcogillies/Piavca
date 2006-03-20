@@ -71,8 +71,8 @@ class TextureHandler;
 		virtual ~PiavcaCal3DCore() {};
 
 		void setStartTime (float s){start_time = s;};
-		double getTimeInternal(bool print = false);
-	    virtual float getTime() {return getTimeInternal();};
+		double getTimeInternal(bool print);
+	    virtual float getTimeInternal() {return getTimeInternal(false);};
 
 		// called before rendering
 		virtual void prerender();

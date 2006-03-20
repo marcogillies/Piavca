@@ -161,7 +161,7 @@ int main(int argc, char **argv)
     mgr->setRoot(scene);
     mgr->setHeadlight(false);
     
-    Piavca::InitPiavcaPython(Piavca::Core::getCore(), _T("PyTest"));
+    Piavca::InitPiavcaPython(Piavca::Core::getCore(), _T("init_piavca"));
     
     mgr->showAll();
     

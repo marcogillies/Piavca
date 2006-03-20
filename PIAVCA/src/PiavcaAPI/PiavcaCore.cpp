@@ -53,7 +53,8 @@ PIAVCA_DECL void Piavca::Warning(tstring details)
 
 Core::Core()
 	:maxJointId(0), maxExpressionId(0), 
-	exceptionFlag(true), log_file("piavca_log.txt")
+	exceptionFlag(true), log_file("piavca_log.txt"),
+	autoTimeOff(false)
 {
 	addJointNameSet(StringVector(1, _T("Root Position")));
 	addJointNameSet(StringVector(1, _T("Root Orientation")));

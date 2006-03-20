@@ -24,7 +24,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories="..\;c:\Python24\include\;c:\Python24\PC\"
+				AdditionalIncludeDirectories="..\;d:\Python24\include\;d:\Python24\PC\"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;UCLAVATARPYTHONINTERFACE_EXPORTS;NO_DEMEANOUR;CONSOLE_PRESENT"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
@@ -38,7 +38,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLibrarianTool"
-				AdditionalLibraryDirectories="c:\Python24\PCBuild"/>
+				AdditionalLibraryDirectories="d:\Python24\PCBuild"/>
 			<Tool
 				Name="VCMIDLTool"/>
 			<Tool
