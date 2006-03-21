@@ -49,6 +49,16 @@ extern Quat PyQuat_AsQuat(PyObject *obj);
 extern Vec PyVec_AsVec(PyObject *obj);
 
 
+PyMotion::PyMotion(PyObject *pObj):pyObj(pObj) 
+{
+	Py_INCREF(pyObj);
+};
+
+PyMotion::~PyMotion()
+{
+	Py_DECREF(pyObj);
+};
+
 bool PyMotion::isNull(int trackId) const
 {
 	PyObject *pyMethod, *pyArgs, *pyValue;

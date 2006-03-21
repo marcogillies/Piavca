@@ -40,6 +40,7 @@
 #include <Python.h>
 #include "PiavcaAPI/Motion.h"
 
+
 namespace Piavca
 {
 	class PyMotion : public Motion
@@ -48,12 +49,9 @@ namespace Piavca
 		PyObject *pyObj;
 	public:
 
-		PyMotion(PyObject *pObj):pyObj(pObj) {Py_INCREF(pyObj);};
+		PyMotion(PyObject *pObj);
 
-		virtual ~PyMotion()
-		{
-			Py_DECREF(pyObj);
-		};
+		virtual ~PyMotion();
 
 		//! gets the time of the end of the motion
 		virtual float getMotionLength() const;

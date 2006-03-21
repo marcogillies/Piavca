@@ -37,7 +37,7 @@
 #ifndef PIAVCA_PYTHON_APP
 #define PIAVCA_PYTHON_APP
 
-#include <Python.h>
+//#include <Python.h>
 
 #include "PiavcaAPI/PiavcaCore.h"
 

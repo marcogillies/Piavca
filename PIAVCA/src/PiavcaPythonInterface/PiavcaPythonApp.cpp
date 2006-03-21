@@ -72,6 +72,12 @@ extern "C"
 };
 //#undef _DEBUG
 
+#ifdef _DEBUG
+sadfadfhasfhy
+#endif
+
+#include <Python.h>
+
 #include "PiavcaAPI/PiavcaCore.h"
 #include "PiavcaAPI/Avatar.h"
 #include "PiavcaAPI/TimeCallback.h"
