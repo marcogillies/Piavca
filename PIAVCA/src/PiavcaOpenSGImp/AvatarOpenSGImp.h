@@ -26,6 +26,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include <OpenSG/OSGTransform.h>
 
 #include "PiavcaCal3dImp/AvatarCal3dImp.h"
+#include "PiavcaAPI/PiavcaError.h"
 
 namespace Piavca
 {

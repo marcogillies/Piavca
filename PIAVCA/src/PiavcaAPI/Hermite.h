@@ -26,7 +26,7 @@
 #define HERMITE_H
 
 #include "Quat.h"
-#include "PiavcaCore.h"
+//#include "PiavcaCore.h"
 
 namespace Piavca
 {

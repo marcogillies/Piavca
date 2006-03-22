@@ -22,8 +22,8 @@
 #ifndef SELF_BLEND_H
 #define SELF_BLEND_H
 
-#include "Motion.h"
-#include "PiavcaCore.h"
+//#include "Motion.h"
+//#include "PiavcaCore.h"
 #include "SequentialBlend.h"
 
 namespace Piavca
@@ -46,7 +46,7 @@ namespace Piavca
 		virtual Motion *clone(){return new SelfBlend(*this);};
 	    
 		//! saves the current state of the motion and start blending the motion back into that from the start
-	    void reblend(){reblend(Core::getCore()->getTime());};
+	    void reblend();
 		//! saves the state of the motion at time and start blending the motion back into that from the start
 	    virtual void reblend(float time);
 		//! sets the motion to be blended in

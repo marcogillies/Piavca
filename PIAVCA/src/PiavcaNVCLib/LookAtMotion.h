@@ -42,6 +42,8 @@
 #include "PiavcaAPI/MotionFilter.h"
 #include "PiavcaAPI/Object.h"
 #include "PiavcaAPI/Avatar.h"
+#include "PiavcaAPI/PiavcaError.h"
+
 
 #include <limits>
 #include <vector>
@@ -85,8 +87,8 @@ namespace Piavca
 		LookAtMotion(Avatar *target, int joint, float _endTime = -1, float _interval = 0.5)
 			:Motion(), AvatarTarget(target), targetJointId(joint), ObjectTarget(NULL),
 			endTime(_endTime), local(false), 
-			eyesLimit(Piavca::Pi/12.0), headbodyLimit(Piavca::Pi/3.0),
-			eyesMorphAngle(Piavca::Pi/8.0),
+			eyesLimit(Piavca::Pi/12.0f), headbodyLimit(Piavca::Pi/3.0f),
+			eyesMorphAngle(Piavca::Pi/8.0f),
 			headActive(false), bodyActive(false), turnBodyVertical(false), turnBodyFull(false),
 			reyeId(-1), leyeId(-1), headId(-1), bodyId(-1), interval(_interval),
 			lookLeftId(-1), lookRightId(-1), lookUpId(-1), lookDownId(-1)
@@ -97,8 +99,8 @@ namespace Piavca
 		LookAtMotion(Object *target, float _endTime = -1, float _interval = 0.5)
 			:Motion(), AvatarTarget(NULL), targetJointId(-1), ObjectTarget(target),
 			endTime(_endTime), local(false), 
-			eyesLimit(Piavca::Pi/12.0), headbodyLimit(Piavca::Pi/2.0),
-			eyesMorphAngle(Piavca::Pi/8.0),
+			eyesLimit(Piavca::Pi/12.0f), headbodyLimit(Piavca::Pi/2.0f),
+			eyesMorphAngle(Piavca::Pi/8.0f),
 			headActive(false), bodyActive(false), turnBodyVertical(false), turnBodyFull(false),
 			reyeId(-1), leyeId(-1), headId(-1), bodyId(-1), interval(_interval),
 			lookLeftId(-1), lookRightId(-1), lookUpId(-1), lookDownId(-1)
@@ -114,8 +116,8 @@ namespace Piavca
 		LookAtMotion(const Vec &target, float _endTime = -1, bool _local = false, float _interval = 0.5)
 			:Motion(), LocationTarget(target), AvatarTarget(NULL), targetJointId(-1), ObjectTarget(NULL),
 			endTime(_endTime), local(_local), 
-			eyesLimit(Piavca::Pi/12.0), headbodyLimit(Piavca::Pi/2.0),
-			eyesMorphAngle(Piavca::Pi/8.0),
+			eyesLimit(Piavca::Pi/12.0f), headbodyLimit(Piavca::Pi/2.0f),
+			eyesMorphAngle(Piavca::Pi/8.0f),
 			headActive(false), bodyActive(false), turnBodyVertical(false), turnBodyFull(false),
 			reyeId(-1), leyeId(-1), headId(-1), bodyId(-1), interval(_interval),
 			lookLeftId(-1), lookRightId(-1), lookUpId(-1), lookDownId(-1)
@@ -220,11 +222,7 @@ namespace Piavca
 		//! get the value of a track at a given time (only works for floats)
 		virtual float getFloatValueAtTimeInternal(int trackId, float time);
 		//! get the value of a track at a given time (only works for Vecs)
-		virtual Vec getVecValueAtTimeInternal(int trackId, float time)
-		{
-			Piavca::Error(_T("Trying to get a Vec value from a Quat track"));
-			return Vec();
-		};
+		virtual Vec getVecValueAtTimeInternal(int trackId, float time);
 		//! get the value of a track at a given time (only works for Quats) 
 		virtual Quat getQuatValueAtTimeInternal(int trackId, float time);
 	};

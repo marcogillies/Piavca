@@ -64,9 +64,9 @@
 
 //#include "PiavcaTCLInterface.h"
 
-#include <sstream>;
+#include <sstream>
 using std::istringstream;
-#include <map>;
+#include <map>
 
 #include "PiavcaAPI/PiavcaDefs.h"
 
@@ -82,26 +82,26 @@ class MotionParser
 public:
 	MotionParser(){};
 	
-	virtual Piavca::Motion *parseMotion(istringstream &is, std::string currentWord, double scaleFactor)=0; 
+	virtual Piavca::Motion *parseMotion(istringstream &is, std::string currentWord, float scaleFactor)=0; 
 	virtual Piavca::Motion *editMotion(istringstream &is)=0;
 	virtual void editAvatarMotion(Avatar *av, bool facial, istringstream &is)=0;
 
-	static Motion *parseMotion(const char *s, double scaleFactor = 1.0)
+	static Motion *parseMotion(const char *s, float scaleFactor = 1.0f)
 	{
 		return parseMotion(std::string(s), scaleFactor);
 	}
 	
-	static Motion *parseMotion(std::string s, double scaleFactor = 1.0)
+	static Motion *parseMotion(std::string s, float scaleFactor = 1.0f)
 	{
 		MotionParser *mp = NULL;
 		return parseMotion(istringstream(s), scaleFactor, &mp);
 	}
 
-	static Motion *parseMotion(istringstream &is, double scaleFactor, MotionParser **mp)
+	static Motion *parseMotion(istringstream &is, float scaleFactor, MotionParser **mp)
 	{
 		return parseMotion(is, "", scaleFactor, mp);
 	}
-	PIAVCA_DECL static Motion *parseMotion(istringstream &is, std::string currentWord, double scaleFactor, MotionParser **mp);
+	PIAVCA_DECL static Motion *parseMotion(istringstream &is, std::string currentWord, float scaleFactor, MotionParser **mp);
 	PIAVCA_DECL static void addMotionCommand(tstring name, MotionParser *command);
 	PIAVCA_DECL static MotionParser *getMotionCommand(tstring name);
 	PIAVCA_DECL static void setUpMotionCommands();

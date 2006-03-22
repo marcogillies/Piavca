@@ -61,17 +61,17 @@ public:
 	//! sets which motion is currently being played
 	void setCurrentChoice(int i)
 	{
-		if(i < 0 || i >= mots.size())
+		if(i < 0 || i >= static_cast<int>(mots.size()))
 			Piavca::Error(_T("Illegal motion choice"));
 		currentChoice = i;
 	};
 	//! sets which motion is currently being played (by name)
 	void setCurrentChoice(tstring name)
 	{
-		for(int i=0; i < mots.size(); i++)
+		for(MotionVec::size_type i=0; i < mots.size(); i++)
 			if(mots[i]->findSub(name)) 
 			{
-				currentChoice = i;
+				currentChoice = static_cast<int>(i);
 				return;
 			}
 		Piavca::Error(tstring(_T("Unknown choice ")) + name);

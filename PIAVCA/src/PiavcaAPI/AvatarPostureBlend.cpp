@@ -28,7 +28,8 @@
 
 #include "AvatarPostureBlend.h"
 #include "Avatar.h"
-#include "PiavcaException.h"
+#include "PiavcaError.h"
+#include "PiavcaCore.h"
 #include "TrackMotion.h"
 
 using namespace Piavca;
@@ -113,4 +114,9 @@ void AvatarPostureBlend::reblend(float time)
 	calculateRootOffsets();
 	setBlendStart(time);
 	if(mot2) mot2->setStartTime(startTime+blendStart+blendInterval);
+};
+
+void AvatarPostureBlend::reblend()
+{
+	reblend(Core::getCore()->getTime());
 };

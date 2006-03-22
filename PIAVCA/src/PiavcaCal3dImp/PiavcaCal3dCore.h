@@ -72,7 +72,7 @@ class TextureHandler;
 
 		void setStartTime (float s){start_time = s;};
 		double getTimeInternal(bool print);
-	    virtual float getTimeInternal() {return getTimeInternal(false);};
+	    virtual float getSystemTime() {return getTimeInternal(false);};
 
 		// called before rendering
 		virtual void prerender();

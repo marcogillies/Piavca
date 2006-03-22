@@ -58,7 +58,7 @@ public:
 		if(mots.size() != weights.size())
 			Piavca::Error(_T("Trying to create a random loop motion with different numbers of motions and weights"));
 		float sum = 0.0;
-		int i;
+		vector<float>::size_type i;
 		for(i = 0; i < weights.size(); i++)
 		{
 			sum += weights[i];
@@ -84,12 +84,12 @@ public:
 	 */
 	virtual void reblend(float time)
 	{
-		int i;
+		vector<float>::size_type i;
 		do
 		{
 			i = rand()%weights.size();
 		}while(((float)(rand()%100))/100 > weights[i]);
-		setCurrentChoice(i);
+		setCurrentChoice(static_cast<int>(i));
 		ChoiceLoopMotion::reblend(time);
 	};
 };

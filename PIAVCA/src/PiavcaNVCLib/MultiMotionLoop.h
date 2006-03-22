@@ -60,8 +60,8 @@ public:
 	MultiMotionLoop(const MotionVec &mv, float endTime = -1.0, float interval = 0.01)
 		:RandomTimingsLoop(NULL, endTime, interval), mots(mv)
 	{
-		float sum = 0.0;
-		int i;
+		float sum = 0.0f;
+		MotionVec::size_type i;
 		for(i = 0; i < mots.size(); i++)
 		{
 			mots[i]->Reference();
@@ -77,7 +77,7 @@ public:
 	MultiMotionLoop(const MultiMotionLoop &rl)
 		:RandomTimingsLoop(rl), mots(rl.mots)
 	{
-		for(int i = 0; i < mots.size(); i++)
+		for(MotionVec::size_type i = 0; i < mots.size(); i++)
 		{
 			mots[i] = mots[i]->clone();
 			mots[i]->Reference();
@@ -85,7 +85,7 @@ public:
 	}
 	~MultiMotionLoop()
 	{
-		for(int i = 0; i < mots.size(); i++)
+		for(MotionVec::size_type i = 0; i < mots.size(); i++)
 			mots[i]->Dispose();
 	}
 	virtual Motion *clone(){return new MultiMotionLoop(*this);};
@@ -94,7 +94,7 @@ public:
 	{
 		Motion::printInfo();
 		debug_prefix++;
-		for(int i = 0; i < mots.size(); i++)
+		for(MotionVec::size_type i = 0; i < mots.size(); i++)
 			mots[i]->printInfo();
 		debug_prefix--;
 	};
@@ -116,7 +116,7 @@ public:
 		Motion *m = Motion::findSub(nm);
 		if(m) 
 			return m;
-		for (int i = 0; i < mots.size(); i++)
+		for (MotionVec::size_type i = 0; i < mots.size(); i++)
 		{
 			m = mots[i]->findSub(nm);
 			if(m) return m;
@@ -130,7 +130,7 @@ public:
 		Motion *m = Motion::findSubByType(ty);
 		if(m) 
 			return m;
-		for (int i = 0; i < mots.size(); i++)
+		for (MotionVec::size_type i = 0; i < mots.size(); i++)
 		{
 			m = mots[i]->findSubByType(ty);
 			if(m) return m;
@@ -141,19 +141,19 @@ public:
 	virtual void load(Avatar *av)
 	{
 		Motion::load(av);
-		for(int i = 0; i < mots.size(); i++)
+		for(MotionVec::size_type i = 0; i < mots.size(); i++)
 			mots[i]->load(av);
 	}
 	virtual void unload()
 	{
 		Motion::unload();
-		for(int i = 0; i < mots.size(); i++)
+		for(MotionVec::size_type i = 0; i < mots.size(); i++)
 			mots[i]->unload();
 	}
 	virtual bool loaded(Avatar *av)
 	{
 		bool retval = Motion::loaded();
-		for(int i = 0; i < mots.size(); i++)
+		for(MotionVec::size_type i = 0; i < mots.size(); i++)
 			retval |= mots[i]->loaded();
 		return retval;
 	}

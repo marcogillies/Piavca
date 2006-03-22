@@ -38,14 +38,20 @@ class PIAVCA_DECL Vec
 	float vals[3];
 public:
 
-	Vec()									{vals[0] = 0.0; vals[1] = 0.0; vals[2] = 0.0;};
-	Vec(float x, float y, float z)			{vals[0] = x; vals[1] = y; vals[2] = z;};
-	Vec(const float v[3])					{vals[0] = v[0]; vals[1] = v[1]; vals[2] = v[2];};
+	Vec();
+	Vec(float x, float y, float z);
+	Vec(const float v[3]);
 
-	Vec(const Vec &v)						{vals[0] = v[0]; vals[1] = v[1]; vals[2] = v[2];};
-	const Vec &operator=(const Vec &v)		{vals[0] = v[0]; vals[1] = v[1]; vals[2] = v[2]; return (*this);};
+	Vec(const Vec &v);
+	const Vec &operator=(const Vec &v)		
+	{
+		vals[0] = v[0]; 
+		vals[1] = v[1]; 
+		vals[2] = v[2]; 
+		return (*this);
+	};
 
-	~Vec(){};
+	~Vec();
 
 	//! \name use inline methods to access components (better encapsulation)
 	//!@{
@@ -70,7 +76,7 @@ public:
 	const float &operator[](int i) const	{return vals[i];};
 
 	//! length of the vector
-	float mag()	const 						{return sqrt(X()*X() + Y()*Y() + Z()*Z());};
+	float mag()	const;
 
 	//! \name Algebraic operators
 	//!@{
@@ -116,7 +122,7 @@ public:
 	//!@}
 
 	//! scalar (dot) product
-	float dot(const Vec &v) const			{return  X()*v.X() + Y()*v.Y() + Z()*v.Z();};
+	float dot(const Vec &v) const;
 	//! vector (cross) product
 	Vec cross(const Vec &v) const ;
 	//! in place cross product

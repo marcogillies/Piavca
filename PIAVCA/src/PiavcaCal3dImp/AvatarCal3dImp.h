@@ -139,17 +139,7 @@ public:
 	virtual ~AvatarCal3DImp(){};
 
 	//! given a UCLAvatar object get its implementation 
-	static AvatarCal3DImp *getAvatarImp(Avatar *avatar) 
-	{
-		AvatarCal3DImp *Cal3Dimp = dynamic_cast<AvatarCal3DImp *>(getAvatarImpInternal(avatar)); 
-		if(Cal3Dimp)
-			return Cal3Dimp;
-		else
-		{
-			Piavca::Error(_T("Trying to use a non Cal3D avatar in Cal3D"));
-			return NULL;
-		}
-	};
+	static AvatarCal3DImp *getAvatarImp(Avatar *avatar) ;
 
 	//! \name Facial Animation Methods (based on morph target like system)
 	//!@{
@@ -159,14 +149,17 @@ public:
 	virtual bool  setFacialExpressionWeight(int id, float weight, float timeInterval = 0.5);
 	virtual float getFacialExpressionWeight(int id);
 	virtual void  clearFacialExpressionWeights()
-	  {
+	{
 	    for(int i=0; i< expressions.size(); i++)
 	      setFacialExpressionWeight(i, 0.0);
-	  };
+	};
 	virtual void updateFacialExpressions();
 	//virtual void  updateFacialExpressions(float time);
 	//! whether the expression is present in the avatar
-	bool isExpressionNull(int expressionId)const{return (expressionId < 0 || expressionId >= expressions.size() || expressions[expressionId].morphtargetId < 0);};
+	bool isExpressionNull(int expressionId)const
+	{
+		return (expressionId < 0 || expressionId >= expressions.size() || expressions[expressionId].morphtargetId < 0);
+	};
 	//!@}
 
 	//! \name Root position and orientation
@@ -175,7 +168,7 @@ public:
 	 *	get or set the root position and orientation of the avatar
 	 */
 	virtual void	setRootPosition			(const Vec &Position);
-	virtual Vec	getRootPosition			();
+	virtual Vec	getRootPosition			    ();
 	virtual void	setRootOrientation		(const Quat &Orientation);
 	virtual Quat	getRootOrientation		();
 	//@}
@@ -188,68 +181,20 @@ public:
 	bool createJoint(tstring JointName);
 
 	//! whether a joint is actually present in the avatar
-	bool isNull(int jointId)const{return (jointId < 0 || jointId >= joints.size() || joints[jointId].cal3dId < 0);};
-
-	int getParent(int jointId)const
+	bool isNull(int jointId)const
 	{
-		if(jointId < 0)
-		{
-		    Piavca::Error("Null jointId passed in to getParent");
-			return -1;
-		}
-		if(joints[jointId].name == "")
-		{
-		    Piavca::Error("getParent called on joint missing in avatar");
-			return -1;
-		}
-		return joints[jointId].parent;
+		return (jointId < 0 || jointId >= joints.size() || joints[jointId].cal3dId < 0);
 	};
+
+	int getParent(int jointId)const;
 
 	//! get the name of the joint corresponding to an iterator
-	const tstring getJointName(int jointId)
-	{
-		if(jointId < 0)
-		{
-		    Piavca::Error("Null jointId passed in to getJointName");
-			return _T("");
-		}
-		if(joints[jointId].name == _T(""))
-		{
-		    Piavca::Error("getJointName called on joint missing in avatar");
-		}
-		return joints[jointId].name;
-	};
+	const tstring getJointName(int jointId);
 
 	//! check whether the joint iterator has been changed by user input
-	bool hasChanged(int jointId)
-	{
-		if(jointId < 0)
-		{
-		    Piavca::Error("Null jointId passed in to hasChanged");
-			return false;
-		}
-		if(joints[jointId].name == "")
-		{
-		    Piavca::Error("hasChanged called on joint missing in avatar");
-			return false;
-		}
-		return joints[jointId].changed;
-	};
+	bool hasChanged(int jointId);
 	//! clears the changed flag for the joint
-	void clearChange(int jointId)
-	{
-		if(jointId < 0)
-		{
-		    Piavca::Error("Null jointId passed in to clearChange");
-			return;
-		}
-		if(joints[jointId].name == "")
-		{
-		    Piavca::Error("clearChange called on joint missing in avatar");
-			return;
-		}
-		joints[jointId].changed = false;
-	};
+	void clearChange(int jointId);
 
 	//! set the value of the orientation of a joint
 	/*!

@@ -27,7 +27,7 @@
 //#endif
 
 #include "SequentialBlend.h"
-#include "PiavcaCore.h"
+#include "PiavcaError.h"
 
 using namespace Piavca;
 

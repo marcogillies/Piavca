@@ -22,7 +22,7 @@
 #ifndef SEQUENTIAL_BLEND_H
 #define SEQUENTIAL_BLEND_H
 
-#include "Motion.h"
+//#include "Motion.h"
 #include "TwoMotionCombiner.h"
 
 namespace Piavca

@@ -35,6 +35,8 @@
 
 
 #include "MaskedMotion.h"
+#include "PiavcaAPI/PiavcaCore.h"
+#include "PiavcaAPI/PiavcaError.h"
 
 using namespace Piavca;
 
@@ -45,6 +47,19 @@ MotionMask::MotionMask(bool _facial):facial(_facial)
 	else
 		m.assign(Core::getCore()->getMaxJointId(), false);
 }
+
+MotionMask::MotionMask(const MotionMask &mm)
+	:facial(mm.facial), m(mm.m)
+{
+};
+
+const MotionMask &MotionMask::operator=(const MotionMask &mm)
+{
+	facial = mm.facial;
+	m = mm.m;
+	return *this;
+};
+
 void MotionMask::setMask(int track, bool val)
 {
 	int maxTrack;
@@ -71,26 +86,41 @@ bool MotionMask::getMask(int track) const
 		return false;
 };
 
+MaskedMotion::MaskedMotion()
+	: TwoMotionCombiner()
+{
+
+};
+
+MaskedMotion::MaskedMotion(Motion *_mot1, const MotionMask &_mask1, Motion *_mot2, const MotionMask &_mask2, bool _useSecondary) 
+	:TwoMotionCombiner(_mot1,_mot2), mask1(_mask1), 
+		mask2(_mask2), useSecondary(_useSecondary)
+	    {};
+MaskedMotion::MaskedMotion(const MaskedMotion &mm)
+	:TwoMotionCombiner(mm), 
+	mask1(mm.mask1), mask2(mm.mask2), useSecondary(mm.useSecondary)
+	{};
+
 float MaskedMotion::getFloatValueAtTimeInternal (int trackId, float time)
 {
 	// if motion1 has its mask as true then play it 
 	// otherwise if motion2 is has a true mask play it
-	if(mask1.getMask(trackId) && !mot1->isNull(trackId))
+	if(mot1 && mask1.getMask(trackId) && !mot1->isNull(trackId))
 		return mot1->getFloatValueAtTime(trackId, time);
-	if(mask2.getMask(trackId) && !mot2->isNull(trackId))
+	if(mot2 && mask2.getMask(trackId) && !mot2->isNull(trackId))
 		return mot1->getFloatValueAtTime(trackId, time);
 
 	// if neither has its mask set then play whichever has a valid track
 	if(useSecondary)
 	{
-		if(!mot1->isNull(trackId))
+		if(mot1 && !mot1->isNull(trackId))
 			return mot1->getFloatValueAtTime(trackId, time);
-		if(!mot2->isNull(trackId))
+		if(mot2 && !mot2->isNull(trackId))
 			return mot1->getFloatValueAtTime(trackId, time);
 	}
 	else
 	{
-		if(!mot1->isNull(trackId) || !mot2->isNull(trackId))
+		if((mot1 && !mot1->isNull(trackId)) || (mot2 && !mot2->isNull(trackId)))
 			return 0.0;
 	}
 
@@ -103,22 +133,22 @@ Vec MaskedMotion::getVecValueAtTimeInternal (int trackId, float time)
 {
 	// if motion1 has its mask as true then play it 
 	// otherwise if motion2 is has a true mask play it
-	if(mask1.getMask(trackId) && !mot1->isNull(trackId))
+	if(mot1 && mask1.getMask(trackId) && !mot1->isNull(trackId))
 		return mot1->getVecValueAtTime(trackId, time);
-	if(mask2.getMask(trackId) && !mot2->isNull(trackId))
+	if(mot2 && mask2.getMask(trackId) && !mot2->isNull(trackId))
 		return mot1->getVecValueAtTime(trackId, time);
 
 	// if neither has its mask set then play whichever has a valid track
 	if(useSecondary)
 	{
-		if(!mot1->isNull(trackId))
+		if(mot1 && !mot1->isNull(trackId))
 			return mot1->getVecValueAtTime(trackId, time);
-		if(!mot2->isNull(trackId))
+		if(mot2 && !mot2->isNull(trackId))
 			return mot1->getVecValueAtTime(trackId, time);
 	}
 	else
 	{
-		if(!mot1->isNull(trackId) || !mot2->isNull(trackId))
+		if((mot1 && !mot1->isNull(trackId)) || (mot2 && !mot2->isNull(trackId)))
 			return Vec();
 	}
 
@@ -131,22 +161,22 @@ Quat MaskedMotion::getQuatValueAtTimeInternal (int trackId, float time)
 {
 	// if motion1 has its mask as true then play it 
 	// otherwise if motion2 is has a true mask play it
-	if(mask1.getMask(trackId) && !mot1->isNull(trackId))
+	if(mot1 && mask1.getMask(trackId) && !mot1->isNull(trackId))
 		return mot1->getQuatValueAtTime(trackId, time);
-	if(mask2.getMask(trackId) && !mot2->isNull(trackId))
+	if(mot2 && mask2.getMask(trackId) && !mot2->isNull(trackId))
 		return mot1->getQuatValueAtTime(trackId, time);
 
 	// if neither has its mask set then play whichever has a valid track
 	if(useSecondary)
 	{
-		if(!mot1->isNull(trackId))
+		if(mot1 && !mot1->isNull(trackId))
 			return mot1->getQuatValueAtTime(trackId, time);
-		if(!mot2->isNull(trackId))
+		if(mot2 && !mot2->isNull(trackId))
 			return mot1->getQuatValueAtTime(trackId, time);
 	}
 	else
 	{
-		if(!mot1->isNull(trackId) || !mot2->isNull(trackId))
+		if((mot1 && !mot1->isNull(trackId)) || (mot2 && !mot2->isNull(trackId)))
 			return Quat();
 	}
 

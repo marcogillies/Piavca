@@ -21,10 +21,22 @@
 
 #include "ObjectImp.h"
 
+#include "PiavcaError.h"
 #include "PiavcaCore.h"
 #include "Object.h"
 
 using namespace Piavca;
+
+Object::Object(const Object &av) 
+{
+	Piavca::Error(_T("trying to copy an Object, not allowed"));
+};
+
+const Object &Object::operator=(const Object &av) 
+{
+	Piavca::Error(_T("trying to assign an Object, not allowed")); 
+	return (*this);
+};
 
 // create an ObjectImp from the factory
 void Object::initObject(	

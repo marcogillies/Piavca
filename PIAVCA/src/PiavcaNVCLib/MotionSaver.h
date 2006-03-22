@@ -68,6 +68,9 @@ namespace Piavca
 	    //! calculates the values of the filter motion on and saves them to a TrackMotion
 	    PIAVCA_EXPORT virtual Quat  getQuatValueAtTimeInternal (int trackId, float time);
 
+		//! runs through the motion storing frame at the given framerate
+		PIAVCA_EXPORT void collectFrames(float framerate);
+
 		PIAVCA_EXPORT void save(tstring filename);
 	};
 }

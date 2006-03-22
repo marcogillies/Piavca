@@ -68,14 +68,14 @@ public:
 
 	virtual void shift()
 	{
-		int numChosen = rand()%mots.size()+1;
+		MotionVec::size_type numChosen = rand()%mots.size()+1;
 		Motion *totalMot = NULL;
-		for (int i = 0; i < numChosen; i++)
+		for (MotionVec::size_type i = 0; i < numChosen; i++)
 		{
 			Motion *chosenmot = mots[rand()%mots.size()];
 			if(totalMot)
 			{
-				float weight = ((float)(rand()%1000))/1000.0;
+				float weight = ((float)(rand()%1000))/1000.0f;
 				totalMot = new BlendBetween(totalMot, chosenmot, weight);
 			}
 			else

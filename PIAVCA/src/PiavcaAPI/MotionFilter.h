@@ -37,6 +37,11 @@ namespace Piavca
 	protected:
 	   Motion *filterMot; 
 	public:
+		//! default constructor
+		MotionFilter():Motion(), filterMot(NULL)
+		{
+
+		}
 		//! pass in the motion to be filtered.
 		MotionFilter(Motion *mot) 
 			:Motion(), filterMot(mot)

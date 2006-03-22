@@ -32,6 +32,8 @@
 #include "SelfBlend.h"
 #include "PiavcaException.h"
 #include "TrackMotion.h"
+#include "PiavcaError.h"
+#include "PiavcaCore.h"
 
 using namespace Piavca;
 
@@ -106,6 +108,11 @@ void SelfBlend::setMotion(Motion *mot)
 	calculateRootOffsets();
 };
 
+void SelfBlend::reblend()
+{
+	reblend(Core::getCore()->getTime());
+};
+
 void SelfBlend::reblend(float time)
 {
 	if(!mot2) return;
@@ -131,3 +138,4 @@ void SelfBlend::reblend(float time)
 	setBlendStart(time);
 	//if(mot2) mot2->setStartTime(startTime+blendStart+blendInterval);
 };
+

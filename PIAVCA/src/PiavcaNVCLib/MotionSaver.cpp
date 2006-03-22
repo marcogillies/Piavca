@@ -1,6 +1,8 @@
 
 #include <fstream>
 #include "MotionSaver.h"
+#include "PiavcaAPI/PiavcaCore.h"
+#include "PiavcaAPI/PiavcaError.h"
 
 using namespace Piavca;
 
@@ -42,6 +44,20 @@ PIAVCA_EXPORT Quat  MotionSaver::getQuatValueAtTimeInternal (int trackId, float 
 	tmot->setQuatKeyframe(trackId, time, val);
 	return val;
 };
+
+PIAVCA_EXPORT void MotionSaver::collectFrames(float framerate)
+{
+	for(float time = 0; time < getMotionLength(); time += framerate)
+	{
+		for(int i = begin(); i < end(); i++)
+		{
+			trackType type = getTrackType(i);
+			if(type == FLOAT_TYPE) getFloatValueAtTime(i, time);
+			if(type == VEC_TYPE) getVecValueAtTime(i, time);
+			if(type == QUAT_TYPE) getQuatValueAtTime(i, time);
+		}
+	}
+}
 
 PIAVCA_EXPORT void MotionSaver::save(tstring filename)
 {

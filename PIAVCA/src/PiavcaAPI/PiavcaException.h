@@ -25,7 +25,7 @@
 
 #include <iostream>
 #include "PiavcaDefs.h"
-#include "PiavcaCore.h"
+//#include "PiavcaCore.h"
 
 namespace Piavca{
 

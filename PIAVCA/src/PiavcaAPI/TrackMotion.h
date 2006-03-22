@@ -27,7 +27,7 @@
 #include "Vec.h"
 #include "Quat.h"
 
-#include "PiavcaException.h"
+//#include "PiavcaException.h"
 //#include "PlatformDefs.h"
 //#include "TrackIterator.h"
 
@@ -71,12 +71,7 @@ namespace Piavca
 			initMotion(fileName, false, flags, basePosture);
 			//imp->inter = this;
 		};
-		//! a version that takes a char *
-		//TrackMotion(const char *fileName, int flags = TRANS_NONE, Motion *basePosture = NULL) : imp(0)
-		//{
-		//	initMotion(StringToTString(std::string(fileName)), flags, basePosture);
-			//imp->inter = this;
-		//};
+
 		//! default constructor, creates an empty motion
 		TrackMotion(bool _facial = false): imp(0)
 		{
@@ -99,13 +94,6 @@ namespace Piavca
 			if(imp && --imp->refCount <= 0) delete imp; 
 			imp = mot.imp;
 			if(imp)imp->refCount++;
-			// if its a pure filter you want to use the same imp
-			// otherwise you copy it
-			//imp = mot.imp->clone(); 
-			//if(imp) 
-			//	imp->frontEnd = this;
-			//else
-			//	Piavca::Error(_T("trying to copy a track motion with a null implementation"));
 			return (*this);
 		};
 
@@ -115,7 +103,7 @@ namespace Piavca
 		 *	not consist of keyframe data, the new motion is sampled at regular intervals
 		 *	and the values saved as keyframes;
 		 */
-		TrackMotion(const Motion &mot):imp(0)
+		TrackMotion(Motion &mot):imp(0)
 		{
 			initMotion(_PSTR(""));
 			(*this) = mot;
@@ -128,45 +116,60 @@ namespace Piavca
 		 */
 		const TrackMotion &operator=(Motion &mot);
 
-		~TrackMotion(){if(imp && --imp->refCount <= 0)delete imp;};
+		~TrackMotion()
+		{
+			if(imp && --imp->refCount <= 0) delete imp;
+		};
 
-		virtual Motion *clone(){return new TrackMotion(*this);};
+		virtual Motion *clone()
+		{
+			return new TrackMotion(*this);
+		};
 
-		// ! loads in a new implementation object
-		//void loadImp(MotionImp *_imp){if(impWritable()) delete imp; imp = _imp;};// imp->inter = this;};
-
-		//! loads a piece of motion from a file
-		//void loadMotion(tstring filename)
-		//{	
-		//	initMotion(filename);
-		//};
-		//void loadMotion(const char *filename)
-		//{	
-		//	initMotion(StringToTString(filename));
-		//};
 
 		//! gets the time of the last keyframe of the motion
-		float getMotionLength() const {return imp->getMotionLength();}
+		float getMotionLength() const 
+		{
+			return imp->getMotionLength();
+		}
 
 		//! whether it is a face or body motion
-		virtual bool isFacial(){return imp->facial;};
+		virtual bool isFacial()
+		{
+			return imp->facial;
+		};
 
 		//! given a track ID tests whether it actually points to anything or if its null
-		bool isNull(int trackId)const {return imp->isNull(trackId);};
+		bool isNull(int trackId)const 
+		{
+			return imp->isNull(trackId);
+		};
 		// ! get the name of the track corresponding to an iterator
 		//tstring getTrackName(int trackId)const{return imp->getTrackName(trackId);};
 		//! get the type of the track corresponding to a track ID
-		trackType getTrackType(int trackId)const{return imp->getTrackType(trackId);};
+		trackType getTrackType(int trackId)const
+		{
+			return imp->getTrackType(trackId);
+		};
 		//@}
 
 		//! \name create new tracks of a specific type
 		//@{
 		//! add a float track
-		void addFloatTrack(int trackId, float initialValue){imp->addFloatTrack(trackId, initialValue);};
+		void addFloatTrack(int trackId, float initialValue)
+		{
+			imp->addFloatTrack(trackId, initialValue);
+		};
 		//! add a Vec track
-		void addVecTrack(int trackId, const Vec &initialValue){imp->addVecTrack(trackId, initialValue);};
+		void addVecTrack(int trackId, const Vec &initialValue)
+		{
+			imp->addVecTrack(trackId, initialValue);
+		};
 		//! add a Quat track
-		void addQuatTrack(int trackId, const Quat &initialValue){imp->addQuatTrack(trackId, initialValue);};
+		void addQuatTrack(int trackId, const Quat &initialValue)
+		{
+			imp->addQuatTrack(trackId, initialValue);
+		};
 		//@}
 
 		/*! \name operations on tracks
@@ -184,24 +187,48 @@ namespace Piavca
 		*/
 		//@{
 		//! set keyframe value (or create a new one) (only works for floats)
-		void setFloatKeyframe(int trackId, float time, float value) {imp->setFloatKeyframe(trackId, time, value);};
+		void setFloatKeyframe(int trackId, float time, float value) 
+		{
+			imp->setFloatKeyframe(trackId, time, value);
+		};
 		//! set keyframe value (or create a new one) with a user specified velocity (only works for floats)
-		void setFloatKeyframe(int trackId, float time, float value, float velocity){imp->setFloatKeyframe(trackId, time, value, velocity);}; 
+		void setFloatKeyframe(int trackId, float time, float value, float velocity)
+		{
+			imp->setFloatKeyframe(trackId, time, value, velocity);
+		}; 
 		
 		//! set keyframe value (or create a new one) (only works for Vecs)
-		void setVecKeyframe(int trackId, float time, Vec value){imp->setVecKeyframe(trackId, time, value);};
+		void setVecKeyframe(int trackId, float time, Vec value)
+		{
+			imp->setVecKeyframe(trackId, time, value);
+		};
 		//! set keyframe value (or create a new one) with a user specified velocity (only works for Vecs)
-		void setVecKeyframe(int trackId, float time, Vec value, Vec velocity){imp->setVecKeyframe(trackId, time, value, velocity);}; 
+		void setVecKeyframe(int trackId, float time, Vec value, Vec velocity)
+		{
+			imp->setVecKeyframe(trackId, time, value, velocity);
+		}; 
 		
 		//! set keyframe value (or create a new one) (only works for Quats)
-		void setQuatKeyframe(int trackId, float time, Quat value){imp->setQuatKeyframe(trackId, time, value);};
+		void setQuatKeyframe(int trackId, float time, Quat value)
+		{
+			imp->setQuatKeyframe(trackId, time, value);
+		};
 		//! set keyframe value (or create a new one) with a user specified velocity (only works for Quats)
-		void setQuatKeyframe(int trackId, float time, Quat value, Quat velocity){imp->setQuatKeyframe(trackId, time, value, velocity);}; 
+		void setQuatKeyframe(int trackId, float time, Quat value, Quat velocity)
+		{
+			imp->setQuatKeyframe(trackId, time, value, velocity);
+		}; 
 		
 		//! returns the number of keyframes that a particular track has
-		int getNumKeyframes(int trackId){return imp->getNumKeyframes(trackId);};
+		int getNumKeyframes(int trackId)
+		{
+			return imp->getNumKeyframes(trackId);
+		};
 		//! returns the time of a particular keyframe 
-		float getKeyframeTime(int trackId, int keyframe){return imp->getKeyframeTime(trackId, keyframe);};
+		float getKeyframeTime(int trackId, int keyframe)
+		{
+			return imp->getKeyframeTime(trackId, keyframe);
+		};
 
 		//! get the keyframe value at time (only works for floats)
 		float getFloatValueAtTimeInternal(int trackId, float time)
@@ -227,35 +254,26 @@ namespace Piavca
 		//@}
 		
 		//! delete all tracks
-		void deleteAllTracks(){imp->deleteAllTracks();};
+		void deleteAllTracks()
+		{
+			imp->deleteAllTracks();
+		};
 		//! clears a particular track (deletes all keyframes without deleting the track itself)
-		void clearTrack(int trackId, bool createFirstFrame = true){imp->clearTrack(trackId, createFirstFrame);};
+		void clearTrack(int trackId, bool createFirstFrame = true)
+		{
+			imp->clearTrack(trackId, createFirstFrame);
+		};
 		//! clear all tracks (deletes all keyframes without deleting the tracks themselves)
-		void clearAllTracks(bool createFirstFrame = true){imp->clearAllTracks(createFirstFrame);}; 
+		void clearAllTracks(bool createFirstFrame = true)
+		{
+			imp->clearAllTracks(createFirstFrame);
+		}; 
 
-		friend class Piavca::Core;
+		friend class Core;
 	};
 
 //! creates a Track Motion that is a copy of the given motion at a given time
-inline TrackMotion *copyMotionPosture(Motion *mot, float time)
-{
-	TrackMotion *tmot = new TrackMotion(mot->isFacial());
-
-	for (int track = mot->begin(); track < mot->end(); mot->next(track))
-	{
-		switch(mot->getTrackType(track))
-		{
-		case FLOAT_TYPE:  tmot->addFloatTrack(track, mot->getFloatValueAtTime(track, time));
-						  break;
-		case VEC_TYPE:    tmot->addVecTrack(track, mot->getVecValueAtTime(track, time));
-						  break;
-		case QUAT_TYPE:   tmot->addQuatTrack(track, mot->getQuatValueAtTime(track, time));
-						  break;
-		default:		  Piavca::Error(_T("Unknown track type"));
-		}
-	}
-	return tmot;
-}
+TrackMotion *copyMotionPosture(Motion *mot, float time);
 
 };
 

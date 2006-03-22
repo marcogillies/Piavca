@@ -407,7 +407,7 @@ public:
 		if(track[i].time == t)
 		{
 			//track.erase(i); 
-			for (int j = i; j < track.size(); j++) 
+			for (unsigned int j = i; j < track.size(); j++) 
 				track[j] = track[j+1];
 			track.pop_back();
 			lastkeyframe = 0;

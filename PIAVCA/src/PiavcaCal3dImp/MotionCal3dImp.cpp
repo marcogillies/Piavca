@@ -20,6 +20,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "MotionCal3dImp.h"
 #include "Cal3dMathsConversion.h"
 #include "PiavcaAPI/PiavcaCore.h"
+#include "PiavcaAPI/PiavcaError.h"
 
 
 using namespace Piavca;

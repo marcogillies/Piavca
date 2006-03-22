@@ -23,6 +23,7 @@
 #ifndef QUAT_H
 #define QUAT_H
 
+#include "PiavcaDefs.h"
 #include "Vec.h"
 
 namespace Piavca
@@ -47,14 +48,21 @@ class PIAVCA_DECL Quat
 	float vals[4];
 public:
 	//! default constructor creates a zero rotation quaternion.
-	Quat()								{S() = 1.0; I() = 0.0; J() = 0.0; K() = 0.0;};
-	Quat(float s, float i, float j, float k){S() = s; I() = i; J() = j; K() = k;};
-	Quat(const float q[4])					{vals[0] = q[0]; vals[1] = q[1]; vals[2] = q[2]; vals[3] = q[3];};
+	Quat();
+	Quat(float s, float i, float j, float k);
+	Quat(const float q[4]);
 	//! a constuctor from angle axis representation of a rotation
-	Quat(float Angle, const Vec &Axis)	{setAngleAxis(Angle, Axis);};
+	Quat(float Angle, const Vec &Axis);
 
-	Quat(const Quat &q)					{S() = q.S(); I() = q.I(); J() = q.J(); K() = q.K();};
-	const Quat &operator=(const Quat &q){S() = q.S(); I() = q.I(); J() = q.J(); K() = q.K(); return (*this);};
+	Quat(const Quat &q);
+	const Quat &operator=(const Quat &q)
+	{
+		S() = q.S(); 
+		I() = q.I(); 
+		J() = q.J(); 
+		K() = q.K(); 
+		return (*this);
+	};
 
 	~Quat(){};
 
@@ -78,13 +86,16 @@ public:
 
 
 	//! set the value of the Quat from the angle axis rotation representation
-	void setAngleAxis(float Angle, const Vec &Axis)	{setAngleAxis(Angle, Axis.X(), Axis.Y(), Axis.Z());};
+	void setAngleAxis(float Angle, const Vec &Axis)	
+	{
+		setAngleAxis(Angle, Axis.X(), Axis.Y(), Axis.Z());
+	};
 	//! set the value of the Quat from the angle axis rotation representation
 	void setAngleAxis(float Angle, float x, float y, float z);
 	//! get rotation as an angle and an axis
 	void getAngleAxis(float &Angle, Vec &Axis) const;
 	//! get the rotation angle (more efficient that getting angle and axis)
-	float getAngle()const{return static_cast<float>(acosf(S())*2.0);};
+	float getAngle()const;
 	//! get the axis of rotation (a convenience function)
 	Vec getAxis()const{Vec axis; float angle; getAngleAxis(angle, axis); return axis;};
 
@@ -113,25 +124,42 @@ public:
 	/*!
 	 *	Used to concatenate two rotations, the first two be applied goes on the rhs.
 	 */
-	const Quat &operator*=(const Quat &q)		{(*this) = (*this)*q; return (*this);};
+	const Quat &operator*=(const Quat &q)		
+	{
+		(*this) = (*this)*q; 
+		return (*this);
+	};
 	//! division
 	/*!
 	 *	equivalent to multiplication by the inverse, can be used to remove a component 
 	 *	of a rotation
 	 */ 
-	const Quat operator/(const Quat &q) const 	{return (*this)*q.inverse();};
+	const Quat operator/(const Quat &q) const 	
+	{
+		return (*this)*q.inverse();
+	};
 	//! division
 	/*!
 	 *	equivalent to multiplication by the inverse, can be used to remove a component 
 	 *	of a rotation
 	 */ 
-	const Quat &operator/=(const Quat &q)		{(*this) = (*this)/q; return (*this);};
+	const Quat &operator/=(const Quat &q)		
+	{
+		(*this) = (*this)/q; 
+		return (*this);
+	};
 	//!@}
 
 	//! \name comparison operators
 	//@{
-	bool operator==(const Quat &q)	const		{return S() == q.S() && I() == q.I() && J() == q.J() && K() == q.K();};
-	bool operator!=(const Quat &q)	const 		{return !((*this) == q);};
+	bool operator==(const Quat &q)	const		
+	{
+		return S() == q.S() && I() == q.I() && J() == q.J() && K() == q.K();
+	};
+	bool operator!=(const Quat &q)	const 		
+	{
+		return !((*this) == q);
+	};
 	//@}
 
 	//! scales a quaternion by a float value
@@ -141,17 +169,32 @@ public:
 	void Scale(float f);
 
 	//! returns the inverse of the Quat while leaving it unchanged. (The inverse gives the oppostite rotation)
-	Quat inverse() const						{return Quat(S(), -I(), -J(), -K());};
+	Quat inverse() const						
+	{
+		return Quat(S(), -I(), -J(), -K());
+	};
 	//! inverts the quaternion in place. (The inverse gives the oppostite rotation)
-	void invert()								{I() = -I(); J() = - J(); K() = -K();};
+	void invert()								
+	{
+		I() = -I(); 
+		J() = - J(); 
+		K() = -K();
+	};
 
 	//! normalizes the quaternion in place
 	void normalise();
 
 	//! trasform (rotate) a vector by the quaternion
-	Vec transform(const Vec &v)	const			{Quat res = (*this)*Quat(0.0, v.X(), v.Y(), v.Z())*inverse(); return Vec(res.I(), res.J(), res.K());};
+	Vec transform(const Vec &v)	const			
+	{
+		Quat res = (*this)*Quat(0.0, v.X(), v.Y(), v.Z())*inverse(); 
+		return Vec(res.I(), res.J(), res.K());
+	};
 	//! trasform (rotate) a vector by the quaternion in place
-	void transformInPlace(Vec &v) const 		{v = transform(v);};
+	void transformInPlace(Vec &v) const 		
+	{
+		v = transform(v);
+	};
 
 	//! interpolates two quaternions
 	friend PIAVCA_DECL Quat slerp(const Quat &q1, const Quat &q2, float t);

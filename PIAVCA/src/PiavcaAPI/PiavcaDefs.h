@@ -25,18 +25,28 @@
 
 #ifdef WIN32
 
-#ifndef PIAVCA_DECL
-#ifdef PIAVCA_CLIENT
 
-#define PIAVCA_DECL __declspec( dllimport )
+#ifndef		PIAVCA_DECL
+
+
+#ifdef			PIAVCA_DLL
+#ifdef				PIAVCA_CLIENT
+
+#define					PIAVCA_DECL __declspec( dllimport )
 
 #else
 
-#define PIAVCA_DECL __declspec( dllexport )
+#define					PIAVCA_DECL __declspec( dllexport )
 
 #endif
+
+#else
+
+#define				PIAVCA_DECL
+
 #endif
 
+#endif
 
 #else
 
@@ -254,6 +264,14 @@ namespace Piavca
 		BASE_COORD, //!< the base orientation of the joint in the rest postures
 		INCLUDINGBASE_COORD, //!< the the local coordinate system but including the base orientation
 		WORLD_COORD //!< get the coordinate in world coordinates
+	};
+
+	
+	//! the joints/tracks corresponding to the root position and orientation always have the IDs 0 and 1
+	enum joint_ids 
+	{
+		root_position_id = 0, 
+		root_orientation_id = 1
 	};
 
 	//! a typedef for a vector of piavca strings

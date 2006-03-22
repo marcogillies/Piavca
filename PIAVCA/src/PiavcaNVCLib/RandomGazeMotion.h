@@ -106,18 +106,18 @@ protected:
 	//! sets up values to those given by Lee, badler, badler paper
 	void init()
 	{
-		gazeCoeff = -6.9;
-		gazeDivisor = 15.7;
-		meanGazeLength = 5.0; //made up number
-		directionTable.push_back(std::make_pair(Vec( 0.0,  0.0, 0.0),100.0));
-		directionTable.push_back(std::make_pair(Vec( 1.0,  0.0, 0.0), 15.5));
-		directionTable.push_back(std::make_pair(Vec( 1.0,  1.0, 0.0),  6.5));
-		directionTable.push_back(std::make_pair(Vec( 0.0,  1.0, 0.0), 17.7));
-		directionTable.push_back(std::make_pair(Vec(-1.0,  1.0, 0.0),  7.4));
-		directionTable.push_back(std::make_pair(Vec(-1.0,  0.0, 0.0), 16.8));
-		directionTable.push_back(std::make_pair(Vec(-1.0, -1.0, 0.0),  7.9));
-		directionTable.push_back(std::make_pair(Vec( 0.0, -1.0, 0.0), 20.4));
-		directionTable.push_back(std::make_pair(Vec( 1.0, -1.0, 0.0),  7.8));
+		gazeCoeff = -6.9f;
+		gazeDivisor = 15.7f;
+		meanGazeLength = 5.0f; //made up number
+		directionTable.push_back(std::make_pair(Vec( 0.0,  0.0, 0.0),100.0f));
+		directionTable.push_back(std::make_pair(Vec( 1.0,  0.0, 0.0), 15.5f));
+		directionTable.push_back(std::make_pair(Vec( 1.0,  1.0, 0.0),  6.5f));
+		directionTable.push_back(std::make_pair(Vec( 0.0,  1.0, 0.0), 17.7f));
+		directionTable.push_back(std::make_pair(Vec(-1.0,  1.0, 0.0),  7.4f));
+		directionTable.push_back(std::make_pair(Vec(-1.0,  0.0, 0.0), 16.8f));
+		directionTable.push_back(std::make_pair(Vec(-1.0, -1.0, 0.0),  7.9f));
+		directionTable.push_back(std::make_pair(Vec( 0.0, -1.0, 0.0), 20.4f));
+		directionTable.push_back(std::make_pair(Vec( 1.0, -1.0, 0.0),  7.8f));
 		normaliseDirectionTable();
 	}
 public:
@@ -127,7 +127,7 @@ public:
 	{
 		init();
 		Vec loc = randomLocation();
-		float length = meanGazeLength*(static_cast<float>(rand()%1000)/1000.0 + 0.5);
+		float length = meanGazeLength*(static_cast<float>(rand()%1000)/1000.0f + 0.5f);
 		mot = new LookAtMotion(loc, length+Core::getCore()->getTime(), true);
 		setMotion(mot);
 	};
@@ -150,7 +150,7 @@ public:
 	void normaliseDirectionTable()
 	{
 		float total = 0;
-		int i;
+		std::vector <std::pair<Vec, float> >::size_type i;
 		for(i = 0; i < directionTable.size(); i++)
 		{
 			directionTable[i].first.normalize();
@@ -173,8 +173,8 @@ public:
 
 	void setTargetFlags(tstring name, flagStruct flags)
 	{
-		int i;
-		for(int i = 0; i < avatarTargets.size(); i++)
+		AvatarTargetVec::size_type i;
+		for(i = 0; i < avatarTargets.size(); i++)
 		{	
 			if(avatarTargets[i].avatar && avatarTargets[i].avatar->getName() == name)
 			{
@@ -182,7 +182,7 @@ public:
 				avatarTargets[i].flags = flags;
 			}
 		}
-		for(int i = 0; i < objectTargets.size(); i++)
+		for(i = 0; i < objectTargets.size(); i++)
 		{	
 			if(objectTargets[i].object && objectTargets[i].object->getName() == name)
 			{
@@ -204,12 +204,12 @@ public:
 
 	Vec randomLocation()
 	{
-		float mag = gazeCoeff*log(static_cast<float>(rand()%150)/(10.0*gazeDivisor));
+		float mag = gazeCoeff*log(static_cast<float>(rand()%150)/(10.0f*gazeDivisor));
 		mag = degToRad(mag);
 		//std::cout << "gaze angle " << mag << std::endl;
 		if(directionTable.size() <= 0)
 			return Vec(0.0, 0.0, 1.0);
-		int i;
+		std::vector <std::pair<Vec, float> >::size_type i;
 		do {
 			i = rand()%directionTable.size();
 		}while (((float)(rand()%100))/100 > directionTable[i].second);
@@ -231,12 +231,12 @@ public:
 		{
 			mot->reblend(Core::getCore()->getTime());
 			mot->setTarget(randomLocation());
-			float endTime = meanGazeLength*(static_cast<float>(rand()%1000)/1000.0 + 0.5);
+			float endTime = meanGazeLength*(static_cast<float>(rand()%1000)/1000.0f + 0.5f);
 			mot->setEndTime(endTime+Core::getCore()->getTime());
 			return true;
 		}
-		int i;
-		for(int i = 0; i < avatarTargets.size(); i++)
+		AvatarTargetVec::size_type i;
+		for(i = 0; i < avatarTargets.size(); i++)
 		{	
 			if(avatarTargets[i].avatar && avatarTargets[i].avatar->getName() == name)
 			{
@@ -250,12 +250,12 @@ public:
 				mot->setTurnBodyVertical(avatarTargets[i].flags.turnBodyVertical);
 				mot->setTurnBodyFull(avatarTargets[i].flags.turnBodyFull);
 				mot->setLeanTowards(avatarTargets[i].flags.leanTowards);
-				float endTime = meanGazeLength*(static_cast<float>(rand()%1000)/1000.0 + 0.5);
+				float endTime = meanGazeLength*(static_cast<float>(rand()%1000)/1000.0f + 0.5f);
 				mot->setEndTime(endTime+Core::getCore()->getTime());
 				return true;
 			}
 		}
-		for(int i = 0; i < objectTargets.size(); i++)
+		for(i = 0; i < objectTargets.size(); i++)
 		{	
 			if(objectTargets[i].object && objectTargets[i].object->getName() == name)
 			{
@@ -269,7 +269,7 @@ public:
 				mot->setTurnBodyVertical(objectTargets[i].flags.turnBodyVertical);
 				mot->setTurnBodyFull(objectTargets[i].flags.turnBodyFull);
 				mot->setLeanTowards(objectTargets[i].flags.leanTowards);
-				float endTime = meanGazeLength*(static_cast<float>(rand()%1000)/1000.0 + 0.5);
+				float endTime = meanGazeLength*(static_cast<float>(rand()%1000)/1000.0f + 0.5f);
 				mot->setEndTime(endTime+Core::getCore()->getTime());
 				return true;
 			}
@@ -296,7 +296,7 @@ public:
 		}
 		else
 		{
-			int i = 0;
+			AvatarTargetVec::size_type i = 0;
 			while (true)
 			{
 				i++; 
@@ -309,8 +309,8 @@ public:
 					mot->setTarget(v, true);
 					break;
 				}
-				int ind = rand()%(avatarTargets.size() + objectTargets.size());
-				if(ind <  avatarTargets.size())
+				int ind = static_cast<int>(rand()%(avatarTargets.size() + objectTargets.size()));
+				if(ind < static_cast<int>(avatarTargets.size()))
 				{
 					// check that the target can be turned to comfortably
 					if(!mot->canLookAt(avatarTargets[ind].avatar->getRootPosition()))
@@ -340,7 +340,7 @@ public:
 				}
 			}
 		}
-		float endTime = meanGazeLength*(static_cast<float>(rand()%1000)/1000.0 + 0.5);
+		float endTime = meanGazeLength*(static_cast<float>(rand()%1000)/1000.0f + 0.5f);
 		mot->setEndTime(endTime+Core::getCore()->getTime());
 	};
 };

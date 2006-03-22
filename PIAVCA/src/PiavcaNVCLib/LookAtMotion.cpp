@@ -45,7 +45,7 @@ using namespace Piavca;
 
 void LookAtMotion::init()
 {
-	if(endTime < 0) endTime = std::numeric_limits<float>::max() -10.0;
+	if(endTime < 0) endTime = std::numeric_limits<float>::max() -10.0f;
 
 	reyeId = Core::getCore()->getJointId("right_eye");
 	oldReyeVal = Quat();
@@ -194,7 +194,7 @@ float LookAtMotion::getFloatValueAtTimeInternal(int trackId, float time)
 		localPos[1] = 0.0; // we aren't intereseted in up down distance
 		localPos.normalize();
 
-		Vec left = Piavca::Quat(Piavca::Pi/2.0, Vec::YAxis()).transform(forward);
+		Vec left = Piavca::Quat(Piavca::Pi/2.0f, Vec::YAxis()).transform(forward);
 		float dot = forward.dot(localPos);
 		float angle = acos(dot);
 		float angleSign = left.dot(localPos);
@@ -243,11 +243,11 @@ float LookAtMotion::getFloatValueAtTimeInternal(int trackId, float time)
 		localPos[0] = 0.0; // we aren't intereseted in up down distance
 		localPos.normalize();
 
-		Vec up = Piavca::Quat(Piavca::Pi/2.0, Vec::XAxis()).transform(forward);
+		Vec up = Piavca::Quat(Piavca::Pi/2.0f, Vec::XAxis()).transform(forward);
 		float dot = forward.dot(localPos);
 		float angle = acos(dot);
 		float angleSign = up.dot(localPos);
-		if(trackId == lookUpId && angleSign > 0.0)
+		if(trackId == lookUpId && angleSign > 0.0f)
 		{
 			if(angle > eyesLimit)
 			{
@@ -287,6 +287,12 @@ float LookAtMotion::getFloatValueAtTimeInternal(int trackId, float time)
 	return 0.0;
 };
 
+
+Vec LookAtMotion::getVecValueAtTimeInternal(int trackId, float time)
+{
+	Piavca::Error(_T("Trying to get a Vec value from a Quat track"));
+	return Vec();
+};
 
 Quat LookAtMotion::getQuatValueAtTimeInternal(int trackId, float time)
 {
@@ -403,11 +409,11 @@ Quat LookAtMotion::getQuatValueAtTimeInternal(int trackId, float time)
 				ori->getAngleAxis(angle, axis);
 				if(trackId == bodyId && !turnBodyFull)
 				{
-					angle = angle/2.0;
+					angle = angle/2.0f;
 				}
 				if(trackId == bodyId && turnBodyFull)
 				{
-					angle = angle*1.5;
+					angle = angle*1.5f;
 				}
 				if(fabs(angle) > limit)
 				{

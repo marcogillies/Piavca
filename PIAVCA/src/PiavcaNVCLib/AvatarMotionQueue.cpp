@@ -35,6 +35,7 @@
 
 
 //#include <ctime>
+#include "PiavcaAPI/PiavcaError.h"
 #include "AvatarMotionQueue.h"
 #include "TurnMotion.h"
 #include "PiavcaAPI/TrackMotion.h"
@@ -49,12 +50,12 @@ using namespace Piavca;
 Motion* AvatarMotionQueue::blendMotion(Motion *m, Avatar *av, float scaleFactor)
 {
     return new AvatarPostureBlend(new ScaleMotionRoot(m, scaleFactor), //av, 
-		/*interval=*/0.2, /*tracksFromAvatar=*/true);
+		/*interval=*/0.2f, /*tracksFromAvatar=*/true);
 }
 
 AvatarMotionQueue::AvatarMotionQueue(float scale
                                      //, float start
-                                     , double time
+                                     , float time
 									 , bool _facial
                                      , int factor)
     : AvatarTimeCallback("AvatarMotionQueue")
@@ -91,12 +92,12 @@ void AvatarMotionQueue::init(Avatar *avatar)
     motion = dequeueMotion();
     
     // & use it to initialise the avatar "mega-motion" 
-    selfBlend = new SelfBlend(motion, 0.6);
+    selfBlend = new SelfBlend(motion, 0.6f);
 	currentMotion = motion;
 	//selfBlend->setBlendInterval(0.0);
 	adder = new MotionAdder(NULL, selfBlend);
 	avatarBlend = new AvatarPostureBlend(new ScaleMotionRoot(adder, scaleFactor), //avatar, 
-		/*interval=*/0.2, /*tracksFromAvatar=*/true);
+		/*interval=*/0.2f, /*tracksFromAvatar=*/true);
 	//avatarBlend->setBlendInterval(0.0);	
 	avatarBlend->Reference();
 		
@@ -223,7 +224,7 @@ float AvatarMotionQueue::queueTopTime()
     return t;
 };
 
-float AvatarMotionQueue::queueTopIsBackground()
+bool AvatarMotionQueue::queueTopIsBackground()
 {
     bool bg = false;
     if (! motionQueue.empty() )
@@ -252,14 +253,14 @@ void AvatarMotionQueue::enqueueRandomMotions(int num)
 
     // Set evil seed (initial seed)
 	// Use the system time as it will be different each time the program is run
-	srand( Core::getCore()->getTime() );
+	srand( static_cast<unsigned int>(Core::getCore()->getTime()*1000.0f) );
 
     for (int i = 0; i < num; i++) 
 	{
 		int count = 0;
         do
 		{
-			x = (int) num * rand() / (RAND_MAX + 1.0);
+			x = static_cast<int>(num * rand() / (RAND_MAX + 1.0));
 			m = core->getMotion(motionNames[x]);
 			count++;
 			if(count >= num*3)
@@ -483,7 +484,7 @@ AvatarMotionQueue *AvatarMotionQueue::getQueue(Avatar *avatar, bool facial)
     if (!amq) // IF no motion queue curently exists for this avatar then create one
     {
 		float startTime = Core::getCore()->getTime();
-        amq = new AvatarMotionQueue(1.0, 0.2, facial);
+        amq = new AvatarMotionQueue(1.0f, 0.2f, facial);
 
         avatar->registerCallback(amq);
 		Motion *motion = amq->getMotion();

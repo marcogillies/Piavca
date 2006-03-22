@@ -27,12 +27,52 @@
 
 #include "AvatarImp.h"
 #include "TrackMotion.h"
+#include "TimeCallback.h"
 
+#include "PiavcaError.h"
 #include "PiavcaCore.h"
 #include "Avatar.h"
 
 using namespace Piavca;
 	
+Avatar::Avatar(tstring avatarId, 
+		   bool bailOnMissedJoints,
+		   const Vec &Position,
+		   const Quat &Orientation,
+		   const Vec &forwardDir)
+		: name(avatarId), active(true), changed(false), rootChanged (false), 
+		beingEdited(false), forwardDirection(forwardDir), //amq(NULL), 
+		mot(NULL), scaleMot(NULL), facialMot(NULL)
+		//motionOwned(true), facialMotionOwned(true), scaleMotionOwned(true)
+{
+	std::string::size_type dotpos = 0;
+	dotpos = name.find_first_of(".", dotpos);
+	if(dotpos != name.npos)
+		name = name.substr(0, dotpos);
+	initAvatar(avatarId, bailOnMissedJoints, Position, Orientation);
+};
+
+Avatar::Avatar(const char *avatarId): 
+		name(StringToTString(avatarId)), active(true), changed(false), rootChanged (false), 
+		beingEdited(false), forwardDirection(0, 0, 1), //amq(NULL), 
+		mot(NULL), scaleMot(NULL), facialMot(NULL)
+		//motionOwned(true), facialMotionOwned(true), scaleMotionOwned(true)
+{
+	initAvatar(StringToTString(avatarId), false, Vec(), Quat());
+};
+
+Avatar::~Avatar() 
+{
+	delete imp; 
+	if(mot)mot->Dispose();
+	if(facialMot)facialMot->Dispose();
+	if(scaleMot)scaleMot->Dispose();
+	//if(motionOwned) delete mot;
+	//if(facialMotionOwned) delete facialMot;
+	//if(scaleMotionOwned) delete scaleMot;
+	for(unsigned int i = 0; i < callbacks.size(); i++)
+		delete callbacks[i];
+};
 
 
 //! set the current time
@@ -73,6 +113,194 @@ using namespace Piavca;
 
 void Avatar::activate(){active = true;};
 void Avatar::deactivate(){active = false;};
+
+void Avatar::setJointOrientation(std::vector< std::pair<int, Quat > > jointOrientation, jointCoord worldCoord)
+{
+	for (std::vector< std::pair<int, Quat > >::size_type i = 0; i < jointOrientation.size(); i++)
+	{
+		setJointOrientation(jointOrientation[i].first, jointOrientation[i].second, worldCoord);
+	}
+};
+
+void Avatar::loadMotion				(Motion *motion)
+{
+	if(motion->isFacial())
+	{
+		Piavca::Error(_T("Trying to load facial motion as body motion"));
+		return;
+	}
+	// have to Reference of the new motion before
+	// disposing the old one in case they are the same
+	if(motion)
+	{
+		if(motion->loaded())motion = motion->clone();
+		motion->Reference();
+	}
+	if(mot) 
+	{
+		mot->unload();
+		mot->Dispose();
+	}
+	mot = motion;
+	if(mot)
+	{
+		mot->load(this);
+	};
+	//mot->setStartTime(startTime);
+	validateMotions();
+};
+void Avatar::unloadMotion()
+{
+	stopMotion();
+	if(mot) 
+	{
+		mot->unload();
+		mot->Dispose();
+	}
+	mot = NULL;
+	motionEnabled = false;
+}
+
+void Avatar::setMotionStartTime(float startTime) 
+{
+	if(mot)
+		mot->setStartTime(startTime);
+};
+
+float Avatar::getMotionStartTime()
+{
+	if(mot && motionEnabled)
+		return mot->getStartTime();
+	else
+	    return 0;
+};
+
+float Avatar::getMotionEndTime()
+{
+	if(mot && motionEnabled)
+		return mot->getEndTime();
+	else
+	    return 0;
+};
+
+void Avatar::loadFacialMotion(Motion *motion)
+{
+	if(!motion->isFacial())
+	{
+		Piavca::Error(_T("Trying to load body motion as facial motion"));
+		return;
+	}
+	
+	// have to Reference of the new motion before
+	// disposing the old one in case they are the same
+	if(motion)
+	{
+		if(motion->loaded())motion = motion->clone();
+		motion->Reference();
+	}
+	if(facialMot)
+	{
+		facialMot->unload();
+		facialMot->Dispose();
+	}
+	facialMot = motion;
+	if(facialMot)
+	{
+		facialMot->load(this);
+	}
+	validateMotions();
+};
+void Avatar::unloadFacialMotion()
+{
+	stopFacialMotion();
+	if(facialMot)
+	{	
+		facialMot->unload();
+		facialMot->Dispose();
+	}
+	facialMot = NULL;
+	facialMotionEnabled = false;
+}
+
+void Avatar::setFacialMotionStartTime(float startTime) 
+{
+	if(facialMot)
+	    facialMot->setStartTime(startTime);
+};
+float Avatar::getFacialMotionStartTime()
+{
+	if(facialMot && facialMotionEnabled)
+	    return facialMot->getStartTime();
+	else
+	    return 0;
+};
+float Avatar::getFacialMotionEndTime()
+{
+	if(facialMot && facialMotionEnabled)
+	    return facialMot->getEndTime();
+	else
+	    return 0;
+};
+
+void Avatar::loadScaleMotion (Motion *motion)
+{
+	if(motion->isFacial())
+	{
+		Piavca::Error(_T("Trying to load facial motion as body scale motion"));
+		return;
+	}
+	// have to Reference of the new motion before
+	// disposing the old one in case they are the same
+	if(motion)
+	{
+		if(motion->loaded())motion = motion->clone();
+		motion->Reference();
+	}
+	if(scaleMot) 
+	{
+		scaleMot->Dispose();
+		scaleMot->unload();
+	}
+	scaleMot = motion;
+	if(scaleMot)
+	{
+		scaleMot->load(this);
+	}
+	validateMotions();
+};
+void Avatar::unloadScaleMotion()
+{
+	stopScaleMotion();
+	if(scaleMot) 
+	{
+		scaleMot->unload();
+		scaleMot->Dispose();
+	}
+	mot = NULL;
+	scaleMotionEnabled = false;
+}
+
+void Avatar::setScaleMotionStartTime(float startTime) 
+{
+	if(scaleMot)
+	    scaleMot->setStartTime(startTime);
+};
+	
+float Avatar::getScaleMotionStartTime()
+{
+	if(scaleMot && scaleMotionEnabled)
+	    return scaleMot->getStartTime();
+	else
+	    return 0;
+};
+
+float Avatar::getScaleMotionEndTime()
+{
+	if(scaleMot && scaleMotionEnabled)
+	    return scaleMot->getEndTime();
+	else
+	    return 0;
+};
 
 void Avatar::validateMotions()
 {
@@ -132,14 +360,12 @@ void Avatar::validateMotions()
 
 void Avatar::showMotionAtTime	(float time)
 {
-	//std::cout << " Avatar.cpp showMotionAtTime BEGINNNNNNNNNNNNNNNNNNNNN" << std::endl;
 	if(!mot)return;
-	//std::cout << " Avatar.cpp showMotionAtTime motion is there" << mot << std::endl;
+	
 	time = Core::getCore()->getTime();
-	//std::cout << " Avatar.cpp showMotionAtTime time is there " << time << std::endl;
+	
 	if(time < 0) return;
 	// set the root position and orientation
-	//std::cout << " Avatar.cpp showMotionAtTime about to do if-else " << std::endl;
 	if(!mot->isNull(root_position_id))
 	{
 	    //std::cout << " Avatar.cpp showMotionAtTime in if-else " << std::endl;
@@ -231,13 +457,67 @@ void Avatar::showFacialMotionAtTime	(float time)
 	}
 };
 
+void Avatar::playMotion()
+{
+	playMotion(Core::getCore()->getTime());
+};
+void Avatar::playMotion(float time)
+{
+	motionEnabled = true;
+	//motionStartTime = time;
+	mot->setStartTime(time);
+};
+void Avatar::playMotion(Motion *m, float time)
+{
+	loadMotion(m);
+	playMotion(time);
+};
+void Avatar::playMotion(Motion *m)
+{
+	loadMotion(m);
+	playMotion();
+};
 
-// The core object of the piavca application
-//PIAVCA_EXPORT Piavca::Core *Avatar::core = NULL;
+void Avatar::playScaleMotion()
+{
+	playScaleMotion(Core::getCore()->getTime());
+};
+void Avatar::playScaleMotion(float time)
+{
+	scaleMotionEnabled = true;
+	//scaleMotionStartTime = time;
+	scaleMot->setStartTime(time);
+};
+void Avatar::playScaleMotion(Motion *m, float time)
+{
+	loadScaleMotion(m);
+	playScaleMotion(time);
+};
+void Avatar::playScaleMotion(Motion *m)
+{
+	loadScaleMotion(m);
+	playScaleMotion();
+};
 
-void Avatar::playMotion(){playMotion(Core::getCore()->getTime());};
-void Avatar::playScaleMotion(){playScaleMotion(Core::getCore()->getTime());};
-void Avatar::playFacialMotion(){playFacialMotion(Core::getCore()->getTime());};
+void Avatar::playFacialMotion()
+{
+	playFacialMotion(Core::getCore()->getTime());
+};
+void Avatar::playFacialMotion(float time)
+{
+	facialMotionEnabled = true;
+	facialMot->setStartTime(time);
+};
+void Avatar::playFacialMotion(Motion *m, float time)
+{
+	loadFacialMotion(m);
+	playFacialMotion(time);
+};
+void Avatar::playFacialMotion(Motion *m)
+{
+	loadFacialMotion(m);
+	playFacialMotion();
+};
 
 // create a UCLAvatarImp from the factory
 void Avatar::initAvatar(	
@@ -254,12 +534,63 @@ void Avatar::initAvatar(
 	  }
 };
 
-int Avatar::end () const {return Core::getCore()->getMaxJointId()+1;}
-int Avatar::endExpression () const {return Core::getCore()->getMaxExpressionId()+1;}
+int Avatar::end () const 
+{
+	return Core::getCore()->getMaxJointId()+1;
+}
+int Avatar::next(int &jointId) 
+{
+	int maxJoint = Core::getCore()->getMaxJointId();
+	while(isNull(++jointId) && jointId <= maxJoint); 
+	return jointId;
+};
 
-// Given a UCLAvatar object this returns its implementation 
-/*
-*	This is used by a similar method in the platform specific implementation
-*	that is used to get the implementation in platform specific code
-*/
-AvatarImp *AvatarImp::getAvatarImpInternal(Avatar *avatar){return avatar->imp;};
+int Avatar::endExpression () const 
+{
+	return Core::getCore()->getMaxExpressionId()+1;
+};
+int Avatar::nextExpression(int &expressionId) 
+{
+	int maxExpression = Core::getCore()->getMaxExpressionId();
+	while(isExpressionNull(++expressionId) && expressionId <= maxExpression); 
+	return expressionId;
+};
+
+void Avatar::registerCallback(AvatarTimeCallback *cb)
+{
+	callbacks.push_back(cb);
+	cb->init(this);
+};
+
+void Avatar::removeCallback(tstring cbName)
+{
+	for(std::vector< AvatarTimeCallback * >::iterator i = callbacks.begin(); i != callbacks.end(); i++)
+	{
+		if((*i)->getName() == cbName)
+		{
+			callbacks.erase(i);
+			return;
+		}
+	}
+};
+	
+AvatarTimeCallback *Avatar::getCallback(tstring cbName)
+{
+	for(std::vector< AvatarTimeCallback * >::size_type i = 0; i < callbacks.size(); i++)
+	{
+		if(callbacks[i]->getName() == cbName)
+			return callbacks[i];
+	}
+	return NULL;
+};
+
+int Avatar::getNumCallbacks()
+{
+	return static_cast<int>(callbacks.size());
+};
+
+AvatarTimeCallback *Avatar::getCallback(int i)
+{
+	return callbacks[i];
+};
+	

@@ -115,6 +115,12 @@
 			<File
 				RelativePath=".\MotionSaver.cpp">
 			</File>
+			<File
+				RelativePath=".\SubMotion.cpp">
+			</File>
+			<File
+				RelativePath=".\TimeRangeMotion.cpp">
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -187,7 +193,13 @@
 				RelativePath=".\ScaleMotionSpeed.h">
 			</File>
 			<File
+				RelativePath=".\SubMotion.h">
+			</File>
+			<File
 				RelativePath=".\TimeOffset.h">
+			</File>
+			<File
+				RelativePath=".\TimeRangeMotion.h">
 			</File>
 			<File
 				RelativePath=".\TurnMotion.h">

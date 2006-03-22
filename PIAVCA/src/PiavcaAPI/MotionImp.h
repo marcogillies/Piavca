@@ -27,7 +27,7 @@
 #include "Vec.h"
 #include "Quat.h"
 
-#include "Motion.h"
+//#include "Motion.h"
 
 namespace Piavca
 {

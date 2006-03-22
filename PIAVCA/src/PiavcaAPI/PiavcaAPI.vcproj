@@ -194,7 +194,13 @@
 				RelativePath="Avatar.cpp">
 			</File>
 			<File
+				RelativePath=".\AvatarImp.cpp">
+			</File>
+			<File
 				RelativePath=".\AvatarPostureBlend.cpp">
+			</File>
+			<File
+				RelativePath=".\BlendBetween.cpp">
 			</File>
 			<File
 				RelativePath="Hermite.cpp">
@@ -203,10 +209,16 @@
 				RelativePath="Motion.cpp">
 			</File>
 			<File
+				RelativePath=".\MotionAdder.cpp">
+			</File>
+			<File
 				RelativePath=".\Object.cpp">
 			</File>
 			<File
 				RelativePath=".\PIAVCACore.cpp">
+			</File>
+			<File
+				RelativePath=".\PiavcaError.cpp">
 			</File>
 			<File
 				RelativePath="Quat.cpp">
@@ -216,6 +228,12 @@
 			</File>
 			<File
 				RelativePath=".\SequentialBlend.cpp">
+			</File>
+			<File
+				RelativePath=".\TrackMotion.cpp">
+			</File>
+			<File
+				RelativePath=".\TwoMotionCombiner.cpp">
 			</File>
 			<File
 				RelativePath="Vec.cpp">
@@ -268,6 +286,9 @@
 			</File>
 			<File
 				RelativePath=".\PiavcaDefs.h">
+			</File>
+			<File
+				RelativePath=".\PiavcaError.h">
 			</File>
 			<File
 				RelativePath="PiavcaException.h">

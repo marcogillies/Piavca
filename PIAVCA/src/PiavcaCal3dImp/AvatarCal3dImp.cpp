@@ -53,6 +53,19 @@ using namespace Piavca;
 using std::cout;
 using std::endl;
 
+
+AvatarCal3DImp *AvatarCal3DImp::getAvatarImp(Avatar *avatar) 
+{
+	AvatarCal3DImp *Cal3Dimp = dynamic_cast<AvatarCal3DImp *>(getAvatarImpInternal(avatar)); 
+	if(Cal3Dimp)
+		return Cal3Dimp;
+	else
+	{
+		Piavca::Error(_T("Trying to use a non Cal3D avatar in Cal3D"));
+		return NULL;
+	}
+};
+
 AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler, bool bailOnMissedJoints, const Vec &Position, const Quat &Orientation)
   : cal_model(NULL), previous_time(0), renderBuffer(0), 
     updateBuffer(0), textureHandler(_textureHandler) 
@@ -531,6 +544,35 @@ float AvatarCal3DImp::getFacialExpressionWeight(int id)
    return subMesh->getMorphTargetWeight(expressions[id].morphtargetId);
 };
 
+int AvatarCal3DImp::getParent(int jointId)const
+{
+	if(jointId < 0)
+	{
+		Piavca::Error("Null jointId passed in to getParent");
+		return -1;
+	}
+	if(joints[jointId].name == "")
+	{
+		Piavca::Error("getParent called on joint missing in avatar");
+		return -1;
+	}
+	return joints[jointId].parent;
+};
+
+const tstring AvatarCal3DImp::getJointName(int jointId)
+{
+	if(jointId < 0)
+	{
+		Piavca::Error("Null jointId passed in to getJointName");
+		return _T("");
+	}
+	if(joints[jointId].name == _T(""))
+	{
+		Piavca::Error("getJointName called on joint missing in avatar");
+	}
+	return joints[jointId].name;
+};
+
 bool AvatarCal3DImp::createJoint(tstring JointName)
 {
 	while(Piavca::Core::getCore()->getMaxJointId() >= joints.size())
@@ -553,6 +595,35 @@ bool AvatarCal3DImp::createJoint(tstring JointName)
 	return false;
 }
 
+bool AvatarCal3DImp::hasChanged(int jointId)
+{
+	if(jointId < 0)
+	{
+		Piavca::Error("Null jointId passed in to hasChanged");
+		return false;
+	}
+	if(joints[jointId].name == "")
+	{
+		Piavca::Error("hasChanged called on joint missing in avatar");
+		return false;
+	}
+	return joints[jointId].changed;
+};
+
+void AvatarCal3DImp::clearChange(int jointId)
+{
+	if(jointId < 0)
+	{
+		Piavca::Error("Null jointId passed in to clearChange");
+		return;
+	}
+	if(joints[jointId].name == "")
+	{
+		Piavca::Error("clearChange called on joint missing in avatar");
+		return;
+	}
+	joints[jointId].changed = false;
+};
 
 void	AvatarCal3DImp::setRootPosition (const Vec &Position)
 {

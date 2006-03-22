@@ -22,31 +22,34 @@
 #ifndef AVATAR_IMP_H
 #define AVATAR_IMP_H
 
-//#include "Joint.h"
 #include "PiavcaDefs.h"
-//#include "PlatformDefs.h"
 
 #include <vector>
 using std::vector;
 
 
-#include "Quat.h"
-#include "Vec.h"
-#include "PiavcaException.h"
+//#include "Quat.h"
+//#include "Vec.h"
+//#include "PiavcaException.h"
 
-#include "Motion.h"
-#include "TimeCallback.h"
+//#include "Motion.h"
+//#include "TimeCallback.h"
 
 namespace Piavca
 {
 	class PIAVCA_DECL Avatar;
+	class PIAVCA_DECL Core;
+	class PIAVCA_DECL Motion;
+	class PIAVCA_DECL AvatarTimeCallback;
+	class PIAVCA_DECL Vec;
+	class PIAVCA_DECL Quat;
 
 //! an exception that gets thrown when a type specific method is called on the wrong type of joint
-class InvalidJointEndException : public CException
-{
-public:
-	InvalidJointEndException(const tstring &jointName):CException(jointName + _PSTR(" does not have a known single end point\n")){}
-};
+//class InvalidJointEndException : public CException
+//{
+//public:
+//	InvalidJointEndException(const tstring &jointName):CException(jointName + _PSTR(" does not have a known single end point\n")){}
+//};
 
 //! the implemenataion class for the Avatars
 /*!
@@ -162,7 +165,7 @@ public:
 	virtual void   scaleJoint (int jointId, Vec scale)=0;
 
 	friend class Avatar;
-	friend class Piavca::Core;
+	friend class Core;
 };
 
 };

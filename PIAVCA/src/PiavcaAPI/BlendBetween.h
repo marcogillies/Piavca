@@ -23,7 +23,7 @@
 #define BLEND_BETWEEN_H
 
 #include "TwoMotionCombiner.h"
-#include "PiavcaCore.h"
+//#include "PiavcaCore.h"
 
 
 namespace Piavca
@@ -40,79 +40,35 @@ namespace Piavca
 	    
 	public:
 	    //! Pass in the two motion and the interpolation parameter blend (has to be between 0 and 1)
-	    BlendBetween(Motion *m1, Motion *m2, float _blend) :TwoMotionCombiner(m1,m2), blend(_blend){};
-		BlendBetween(const BlendBetween &b):TwoMotionCombiner(b), blend(b.blend){};
+	    BlendBetween(Motion *m1, Motion *m2, float _blend) ;
+		BlendBetween(const BlendBetween &b);
 
-		virtual Motion *clone(){return new BlendBetween(*this);}
+		virtual Motion *clone()
+		{
+			return new BlendBetween(*this);
+		}
 
 	    //! calculates the values of a keyframe.
 		/*!	The result is the linear interpolation of the values of the two motions
 		 *  or if the track does not exist in the one motion, the value of the other
 		 */
-	    virtual float getFloatValueAtTimeInternal (int trackId, float time)
-		{
-		    // if this track doesn't exist in mot2 use mot1 otherwise interpolated between them
-		    if(mot2->isNull(trackId))
-			{
-				if(mot1->isNull(trackId))
-				{
-					Piavca::Error(_T("trying to blend between two invalid tracks"));
-					return 0.0;
-				}
-				return mot1->getFloatValueAtTime(trackId, time);
-			}
-		    if(mot1->isNull(trackId))
-				return mot2->getFloatValueAtTime(trackId, time);
-		    return mot1->getFloatValueAtTime(trackId, time)*blend
-				 +  mot2->getFloatValueAtTime(trackId, time)*(1.0-blend);
-		};
+	    virtual float getFloatValueAtTimeInternal (int trackId, float time);
 	    
 	    //! calculates the values of a keyframe.
 		/*!	The result is the linear interpolation of the values of the two motions
 		 *  or if the track does not exist in the one motion, the value of the other
 		 */
-	    virtual Vec   getVecValueAtTimeInternal   (int trackId, float time)
-		{
-		    // if this track doesn't exist in mot2 use mot1 otherwise interpolated between them
-		    if(mot2->isNull(trackId))
-			{
-				if(mot1->isNull(trackId))
-				{
-					Piavca::Error(_T("trying to blend between two invalid tracks"));
-					return Vec();
-				}
-				return mot1->getVecValueAtTime(trackId, time);
-			}
-			if(mot1->isNull(trackId))
-				return mot2->getVecValueAtTime(trackId, time);
-			return mot1->getVecValueAtTime(trackId, time)*blend
-				  +  mot2->getVecValueAtTime(trackId, time)*(1.0-blend);
-		};
+	    virtual Vec   getVecValueAtTimeInternal   (int trackId, float time);
 	    
 	    //! calculates the values of a keyframe.
 		/*!	The result is the linear interpolation (slerp) of the values of the two motions
 		 *  or if the track does not exist in the one motion, the value of the other
 		 */
-	    virtual Quat  getQuatValueAtTimeInternal  (int trackId, float time)
-		{
-		   // if this track doesn't exist in mot2 use mot1 otherwise interpolated between them
-		    if(mot2->isNull(trackId))
-			{
-				if(mot1->isNull(trackId))
-				{
-					Piavca::Error(_T("trying to blend between two invalid tracks"));
-					return Quat();
-				}
-				return mot1->getQuatValueAtTime(trackId, time);
-			}
-			if(mot1->isNull(trackId))
-				return mot2->getQuatValueAtTime(trackId, time);
-		    return slerp(mot1->getQuatValueAtTime(trackId, time),
-				     mot2->getQuatValueAtTime(trackId, time), blend);
-		};
-		//! set the blend (interpolation) parameter
-	    void setBlendFactor(float _blend){blend = _blend;};
-	};
+	    virtual Quat  getQuatValueAtTimeInternal  (int trackId, float time);
+
+		void setBlendFactor(float _blend){blend = _blend;};
+};
+
 };
 
 #endif //BLEND_BETWEEN_H

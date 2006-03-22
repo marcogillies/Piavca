@@ -76,7 +76,7 @@ bool PyMotion::isNull(int trackId) const
 		}
 		else
 		{
-			retVal = PyInt_AsLong(pyValue);
+			retVal = static_cast<bool>(PyInt_AsLong(pyValue));
 		}
 		Py_DECREF(pyArgs);
 		Py_DECREF(pyValue);
@@ -103,7 +103,7 @@ float PyMotion::getMotionLength() const
 		}
 		else
 		{
-			retVal = PyFloat_AsDouble(pyValue);
+			retVal = static_cast<float>(PyFloat_AsDouble(pyValue));
 		}
 		Py_DECREF(pyValue);
 		Py_DECREF(pyMethod);
@@ -158,7 +158,7 @@ float PyMotion::getFloatValueAtTime(int trackId, float time) const
 		}
 		else
 		{
-			retVal = PyFloat_AsDouble(pyValue);
+			retVal = static_cast<float>(PyFloat_AsDouble(pyValue));
 		}
 		Py_DECREF(pyArgs);
 		Py_DECREF(pyValue);
@@ -172,7 +172,7 @@ float PyMotion::getFloatValueAtTime(int trackId, float time) const
 Vec PyMotion::getVecValueAtTime(int trackId, float time) const
 {
 	PyObject *pyMethod, *pyArgs, *pyValue;
-	Vec retVal, *res; //retVal initialised to zero vector
+	Vec retVal; //retVal initialised to zero vector
 
 	pyMethod = PyObject_GetAttrString(pyObj, "getVecValueAtTime");
 	if(pyMethod && PyCallable_Check(pyMethod))
@@ -197,7 +197,7 @@ Vec PyMotion::getVecValueAtTime(int trackId, float time) const
 Quat PyMotion::getQuatValueAtTime(int trackId, float time) const
 {
 	PyObject *pyMethod, *pyArgs, *pyValue;
-	Quat retVal, *res; //retVal initialised to zero quaternion
+	Quat retVal; //retVal initialised to zero quaternion
 
 	pyMethod = PyObject_GetAttrString(pyObj, "getQuatValueAtTime");
 	if(pyMethod && PyCallable_Check(pyMethod))

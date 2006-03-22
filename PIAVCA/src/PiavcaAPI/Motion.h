@@ -28,8 +28,8 @@
 #include "PiavcaAPI/Vec.h"
 #include "PiavcaAPI/Quat.h"
 
-#include "PiavcaException.h"
-#include "PiavcaCore.h"
+//#include "PiavcaException.h"
+//#include "PiavcaCore.h"
 //#include "TrackIterator.h"
 
 //#include "MotionImp.h"
@@ -41,18 +41,18 @@ using std::type_info;
 
 namespace Piavca
 {
-	
+	class Avatar;
 
 	//! an enum defining the types that can be included in motion tracks
 	enum trackType {NULL_TYPE, FLOAT_TYPE, VEC_TYPE, QUAT_TYPE};
 
 
 	//! An exception class that is thrown when a type specific method of Motion is called with an iterator of the wrong type.
-	class WrongTrackTypeException : public CException
-	{	
-	public:
-		WrongTrackTypeException(tstring details):CException(details){};
-	};
+	//class WrongTrackTypeException : public CException
+	//{	
+	//public:
+	//	WrongTrackTypeException(tstring details):CException(details){};
+	//};
 
 	//! This enum specifies a number of tweaks that can be performed when reading in a bvh file
 	enum motion_corrections
@@ -208,12 +208,7 @@ public:
 	//! the last track + 1
 	int end() const;
 	//! given a track ID get the next valid ID
-	int next(int &trackId)const 
-	{
-		int maxTrack = Core::getCore()->getMaxJointId();
-		while(isNull(++trackId)&&trackId<=maxTrack);
-		return trackId;
-	};
+	int next(int &trackId)const ;
 	//! given a track ID tests whether it actually points to anything or if its null
 	virtual bool isNull(int trackId) const =0;
 	// ! get the name of the track corresponding to an ID
@@ -223,25 +218,9 @@ public:
 	//@}
 
 	//! pause the motion so that it can be restarted from the current point
-	void pause()
-	{
-		// negative pausedTime == not paused
-		// if you are already paused this command should have no effect
-		if(pausedTime < 0)
-			pausedTime = Core::getCore()->getTime();
-	}
+	void pause();
 	
-	void unpause()
-	{
-		// negative pausedTime == not paused
-		if(pausedTime >= 0)
-		{
-			// reset the start time so that the motion restarts at the 
-			// place it started
-			offsetTime = -(Core::getCore()->getTime()-pausedTime);
-			pausedTime = -1;
-		}
-	}
+	void unpause();
 
 	//! get the value of a track at a given time (only works for floats)
 	float getFloatValueAtTime(int trackId, float time)
@@ -276,7 +255,7 @@ public:
 	virtual Quat getQuatValueAtTimeInternal(int trackId, float time)=0;
 	//@}
 
-	friend class Piavca::Core;
+	friend class Core;
 };
 
 

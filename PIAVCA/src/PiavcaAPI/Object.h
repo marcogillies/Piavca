@@ -25,7 +25,7 @@
 
 #include "PiavcaDefs.h"
 #include "ObjectImp.h"
-#include "PiavcaCore.h"
+//#include "PiavcaCore.h"
 
 #include <vector>
 using std::vector;
@@ -56,9 +56,9 @@ private:
 	//! \name you can't copy them
 	//{@
 	//! copy constructor
-	Object(const Object &av) {Piavca::Error(_T("trying to copy an Object, not allowed"));};
+	Object(const Object &av);
 	//! assignment
-	const Object &operator=(const Object &av) {Piavca::Error(_T("trying to assign an Object, not allowed")); return (*this);};
+	const Object &operator=(const Object &av);
 	//@}
 	
 	//! destructor can only be called by the core, use Core::removeAvatar to delete an avatar

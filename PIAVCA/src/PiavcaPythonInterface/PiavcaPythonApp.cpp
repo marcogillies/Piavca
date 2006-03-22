@@ -173,7 +173,7 @@ PIAVCA_EXPORT void PyTimeCallback::timeStep(Piavca::Core *core, float time)
 
 PIAVCA_EXPORT void PyAvatarTimeCallback::init(Avatar *avatar)
 {
-	PyObject *pyInitMethod, *pyArgs;
+	//PyObject *pyInitMethod, *pyArgs;
 
 	//pyInitMethod = PyObject_GetAttrString(pyCallbackObj, "callbackInit");
 	//pyArgs = Py_BuildValue("(l)", (long) avatar);
@@ -184,8 +184,8 @@ PIAVCA_EXPORT void PyAvatarTimeCallback::init(Avatar *avatar)
 		EndPiavcaPython(Piavca::Core::getCore());
 		exit(0);
 	}
-	Py_DECREF(pyArgs);
-	Py_DECREF(pyInitMethod);
+	//Py_DECREF(pyArgs);
+	//Py_DECREF(pyInitMethod);
 
 	//head = avatar->getJointIterator(_T"Head");
 };
@@ -357,16 +357,9 @@ void Piavca::InitPiavcaPython(Piavca::Core *core, tstring fileName)
 
 void Piavca::EndPiavcaPython(Piavca::Core *core)
 {
-	PyObject *pyMod, *pyFinalizeMethod, *pyArgs;
+	PyObject *pyFinalizeMethod, *pyArgs;
 
 	std::cout << "in finalise function\n";
-
-	//pyMod = PyImport_ImportModule("MotionAvTest");
-	//if(PyErr_Occurred())
-	//{
-	//	PyErr_Print();
-	//	exit(0);
-	//}
 
 #ifdef NO_CONSOLE_PRESENT
 	std::ofstream file("PiavcaCout.txt");

@@ -28,7 +28,7 @@
 
 #include "PiavcaDefs.h"
 #include "Quat.h"
-#include "PiavcaException.h"
+#include "PiavcaError.h"
 #include <math.h>
 #include <limits>
 
@@ -36,7 +36,46 @@
 
 //using namespace UCLAvatars;
 
-namespace Piavca{
+using namespace Piavca;
+
+Quat::Quat()								
+{
+	S() = 1.0; 
+	I() = 0.0; 
+	J() = 0.0; 
+	K() = 0.0;
+};
+	
+Quat::Quat(float s, float i, float j, float k)
+{
+	S() = s; 
+	I() = i; 
+	J() = j; 
+	K() = k;
+};
+
+Quat::Quat(const float q[4])					
+{
+	vals[0] = q[0]; 
+	vals[1] = q[1]; 
+	vals[2] = q[2]; 
+	vals[3] = q[3];
+};
+
+
+Quat::Quat(float Angle, const Vec &Axis)	
+{
+	setAngleAxis(Angle, Axis);
+};
+
+Quat::Quat(const Quat &q)					
+{
+	S() = q.S(); 
+	I() = q.I(); 
+	J() = q.J(); 
+	K() = q.K();
+};
+	
 
 void Quat::setAngleAxis(float Angle, float x, float y, float z)
 {
@@ -69,6 +108,11 @@ void Quat::getAngleAxis(float &Angle, Vec &Axis) const
 	};
 }
 
+float Quat::getAngle()const
+{
+	return static_cast<float>(acosf(S())*2.0);
+};
+	
 
 Quat &Quat::pointAt(const Vec &original, const Vec &desired)
 {
@@ -278,7 +322,9 @@ void Quat::getEulerAngles(float &X, float &Y, float &Z)
 	Z = Zangle();
 };
 
-PIAVCA_DECL Quat slerp(const Quat &q1, const Quat &q2, float t)
+
+
+PIAVCA_DECL Quat Piavca::slerp(const Quat &q1, const Quat &q2, float t)
 {
 	float ct = q1.S()*q2.S() + q1.I()*q2.I() + q1.J()*q2.J() + q1.K()*q2.K();
 
@@ -314,7 +360,6 @@ PIAVCA_DECL Quat slerp(const Quat &q1, const Quat &q2, float t)
 
 	return retVal;
 }
-};
 
 
 PIAVCA_DECL std::ostream &operator<<(std::ostream &os, const Piavca::Quat &q)

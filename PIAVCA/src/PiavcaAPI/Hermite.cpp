@@ -30,6 +30,7 @@
 #include "Vec.h"
 #include "Quat.h"
 #include "PiavcaDefs.h"
+#include "PiavcaError.h"
 
 #include <assert.h>
 

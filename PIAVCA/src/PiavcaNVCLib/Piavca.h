@@ -79,4 +79,6 @@
 #include "PiavcaAPI/Vec.h"
 #include "MotionSaver.h"
 #include "MotionParser.h"
+#include "SubMotion.h"
+#include "TimeRangeMotion.h"
 

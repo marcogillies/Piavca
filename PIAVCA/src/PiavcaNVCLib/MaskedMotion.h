@@ -49,6 +49,8 @@ class MotionMask
 	std::vector<bool> m;
 public:
 	MotionMask(bool _facial = false);
+	MotionMask(const MotionMask &mm);
+	const MotionMask &operator=(const MotionMask &mm);
 	//! sets whether a given track should be played
 	void setMask(int track, bool val = true);
 	//! gets the mask value for a track
@@ -64,6 +66,7 @@ class MaskedMotion : public TwoMotionCombiner
 	MotionMask mask1, mask2;
 	bool useSecondary;
 public:
+	MaskedMotion();
 	//! initialise with 1 motions, each with its own mask
 	/*!
 	 *  If the useSecondary flag is set then if neither motion has a mask
@@ -71,19 +74,20 @@ public:
 	 *  otherwise motion2. If it is not set then joints that are in neither mask
 	 *  are unaffected.
 	 */
-	MaskedMotion(Motion *_mot1, const MotionMask &_mask1, Motion *_mot2, const MotionMask &_mask2, bool _useSecondary=true) 
-		:TwoMotionCombiner(_mot1,_mot2), mask1(_mask1), 
-		 mask2(_mask2), useSecondary(_useSecondary)
-	     {};
-	MaskedMotion(const MaskedMotion &mm)
-		:TwoMotionCombiner(mm), 
-		mask1(mm.mask1), mask2(mm.mask2), useSecondary(mm.useSecondary)
-		{};
+	MaskedMotion(Motion *_mot1, const MotionMask &_mask1, Motion *_mot2, const MotionMask &_mask2, bool _useSecondary=true) ;
+	MaskedMotion(const MaskedMotion &mm);
 	
 	virtual Motion *clone(){return new MaskedMotion(*this);};
 
+	void setUseSecondary(bool val){useSecondary = val;};
+
 	void setMask1(const MotionMask &mask){mask1 = mask;};
 	void setMask2(const MotionMask &mask){mask2 = mask;};
+
+	void addToMask1(int trackId){mask1.setMask(trackId, true);};
+	void removeFromMask1(int trackId){mask1.setMask(trackId, false);};
+	void addToMask2(int trackId){mask2.setMask(trackId, true);};
+	void removeFromMask2(int trackId){mask2.setMask(trackId, false);};
 
 	virtual float getFloatValueAtTimeInternal (int trackId, float time);
 	virtual Vec getVecValueAtTimeInternal (int trackId, float time);	

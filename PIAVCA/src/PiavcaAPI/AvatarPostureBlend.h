@@ -22,8 +22,8 @@
 #ifndef AVATAR_POSTURE_BLEND_H
 #define AVATAR_POSTURE_BLEND_H
 
-#include "Motion.h"
-#include "PiavcaCore.h"
+//#include "Motion.h"
+//#include "PiavcaCore.h"
 #include "SequentialBlend.h"
 
 namespace Piavca
@@ -55,7 +55,7 @@ namespace Piavca
 		virtual void load(Avatar *av);
 
 		//! restart the blend (i.e. start blending from the current avatar posture) at the current time
-	    void reblend(){reblend(Core::getCore()->getTime());};
+	    void reblend();
 	    //! restart the blend (i.e. start blending from the current avatar posture) at the current time
 	    void reblend(float time);
 	};

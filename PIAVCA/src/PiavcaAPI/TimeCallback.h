@@ -47,13 +47,13 @@ namespace Piavca
 		/*!
 		 *	It's called when the callback is registered
 		 */
-		virtual void init(Piavca::Core *core) = 0;
+		virtual void init(Core *core) = 0;
 
 		//! implement this to make the callback do things
 		/*!
 		 *	It's called every frame with by the API
 		 */
-		virtual void timeStep(Piavca::Core *core, float time) = 0;
+		virtual void timeStep(Core *core, float time) = 0;
 	};
 	
 	//! A callback that is called by the API every frame on an avatar

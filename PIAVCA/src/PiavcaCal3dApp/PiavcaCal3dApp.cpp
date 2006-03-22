@@ -70,13 +70,13 @@ void timeStep()
 	static int i =0;
 	static float lastTime = Piavca::Core::getCore()->getTime();
 	//std::cout << "frame " << i << std::endl;
-	std::cout.flush();
+	//std::cout.flush();
 	i++;
 	float time = Piavca::Core::getCore()->getTime();
 	if(time - lastTime > 1.0)
 	{
-		std::cout << time << " " << lastTime << std::endl;
-		std::cout << "frame rate " << i << std::endl;
+		//std::cout << time << " " << lastTime << std::endl;
+		//std::cout << "frame rate " << i << std::endl;
 		i = 0;
 		lastTime = time;
 	}

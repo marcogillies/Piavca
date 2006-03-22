@@ -27,6 +27,7 @@
 //#endif
 
 #include "PiavcaCore.h"
+#include "PiavcaError.h"
 #include <algorithm>
 
 using namespace Piavca;
@@ -34,22 +35,11 @@ using namespace Piavca;
 #include "Avatar.h"
 #include "Object.h"
 #include "TrackMotion.h"
+#include "TimeCallback.h"
 
 Piavca::Core *Piavca::Core::core = NULL;
 
-PIAVCA_DECL void Piavca::Error(tstring details)
-{
-	std::cout << "Piavca Error: " << TStringToString(details) << std::endl;
-	Piavca::Core::getCore()->addError(_T("Piavca Error:") + details);
-	if(Piavca::Core::getCore()->exceptionsOn())
-		throw Piavca::CException(details);
-}
 
-PIAVCA_DECL void Piavca::Warning(tstring details)
-{
-	std::cout << "Piavca Error: " << TStringToString(details) << std::endl;
-	Piavca::Core::getCore()->addWarning(_T("Piavca Error:") + details);
-}
 
 Core::Core()
 	:maxJointId(0), maxExpressionId(0), 
@@ -60,6 +50,11 @@ Core::Core()
 	addJointNameSet(StringVector(1, _T("Root Orientation")));
 	core = this;
 };	
+
+Core::~Core()
+{	
+	reset(); 
+};
 
 
 void Core::reset()
@@ -79,6 +74,16 @@ void Core::reset()
 	motions.clear();
 };
 
+void Core::registerCallback(TimeCallback *cb) 
+{
+	if(!cb)
+	{
+		Piavca::Error(_T("Trying to register a null pointer as a callback"));
+		return;
+	}
+	callbacks.push_back(cb);
+	cb->init(this);
+};
 
 void Core::timeStep(float time)
 {
@@ -91,7 +96,7 @@ void Core::timeStep(float time)
 	}
 	if(time < 0.0)
 	{
-		std::cout << time << std::endl;
+		//std::cout << time << std::endl;
 		std::cout.flush();
 		time = 0.0;
 		//Piavca::Error("Weird and crazy error, somehow got a zero time");
@@ -188,6 +193,12 @@ tstring Core::getJointName(int jointId)
 };
 
 
+std::vector<std::pair<tstring, int> > Core::getJointNameAssociations()
+{
+	std::vector<std::pair<tstring, int> > v(jointMap.begin(), jointMap.end());
+	return v;
+}
+
 int Core::getExpressionId(tstring name)
 {
 	std::map<tstring, int> ::iterator it = expressionMap.find(name);
@@ -239,7 +250,11 @@ tstring Core::getExpressionName(int expressionId)
 	return (*it).first;
 };
 
-
+std::vector<std::pair<tstring, int> > Core::getExpressionNameAssociations()
+{
+	std::vector<std::pair<tstring, int> > v(expressionMap.begin(), expressionMap.end());
+	return v;
+}
 
 void Core::loadMotion(tstring motionName, Motion *mot, bool temp, Motion *basePosture)
 {
@@ -334,14 +349,14 @@ Motion *Core::getMotion(tstring motionName)
 PIAVCA_EXPORT std::vector<std::string> Core::getMotionNames(int number)
 {
     std::vector<std::string> motionNames;
-    int maxNumber = motions.size();
+	int maxNumber = static_cast<int>(motions.size());
     
     // If the number of motion names to extract is ZERO or greater than the total number then extract all the names
     if (number == 0 || number > maxNumber)
         number = maxNumber;
 	motionNames.reserve(number);
 
-	for (unsigned int i = 0; i < number; i++)
+	for (int i = 0; i < number; i++)
 	{
 		motionNames.push_back(motions[i].first);
 	}
@@ -360,12 +375,6 @@ PIAVCA_EXPORT std::list<tstring> Core::getAllmotions()
 	}
 	return tmpNames;
 };
-//void Core::disposeMotion(const Motion *mot)
-//{
-//	for(unsigned int i = 0; i < motions.size(); i++)
-//		if(motions[i].second == mot) return;
-//	delete mot;
-//}
 
 Avatar *Core::getAvatar(tstring avatarName)
 {
@@ -382,14 +391,27 @@ Avatar *Core::getAvatar(tstring avatarName)
 };
 
 
+Avatar *Core::getAvatar(int i)
+{
+	if(i >= 0 && i < numAvatars())
+		return avatars[i];
+	else
+	{
+		Piavca::Error(_T("trying to get an avatar from an invalid index"));
+		return NULL;
+	}
+};
+
 std::vector<tstring> Core::getAvatarNames()
 {
 	std::vector<tstring> names;
 	names.reserve(avatars.size());
-	for(int i=0; i < avatars.size(); i++)
+	for(std::vector<Avatar *>::size_type i=0; i < avatars.size(); i++)
 		names.push_back(avatars[i]->getName());
 	return names;
 }
+
+
 
 //! changes the name of an avatar
 void Core::renameAvatar(tstring oldName, tstring newName)
@@ -452,6 +474,16 @@ Object *Core::getObject(tstring objectName)
 	return NULL;
 };
 
+Object *Core::getObject(int i)
+{
+	if(i >= 0 && i < numObjects())
+		return objects[i];
+	else
+	{
+		Piavca::Error("trying to get an object from an invalid index");
+		return NULL;
+	}
+};
 
 //! changes the name of an avatar
 void Core::renameObject(tstring oldName, tstring newName)
@@ -504,3 +536,24 @@ void Core::initMotion(TrackMotion *mot, tstring filename, bool facial, int flags
 	//if(mot->imp) mot->imp->frontEnd = mot;
 	//mot->setCore(this);
 };
+
+void Core::addError(tstring details)
+{
+	errorstrm << details << std::endl;
+};
+void Core::clearErrors()
+{
+	errorstrm.str(_T(""));
+};
+		
+
+void Core::addWarning(tstring details)
+{
+	warningstrm << details << std::endl;
+};
+		
+void Core::clearWarnings()
+{
+	warningstrm.str(_T(""));
+};
+		

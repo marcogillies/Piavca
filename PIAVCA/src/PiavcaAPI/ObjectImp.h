@@ -23,7 +23,7 @@
 #define OBJECT_IMP_H
 
 #include "PiavcaDefs.h"
-#include "PiavcaCore.h"
+//#include "PiavcaCore.h"
 
 #include "Quat.h"
 #include "Vec.h"
@@ -75,7 +75,7 @@ public:
 	virtual void   scale (Vec scale)=0;
 
 	friend class Object;
-	friend class Piavca::Core;
+	friend class Core;
 };
 
 };

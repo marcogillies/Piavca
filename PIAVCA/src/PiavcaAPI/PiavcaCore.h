@@ -23,7 +23,7 @@
 #define PIAVCA_CORE_H
 
 #include "PiavcaDefs.h"
-#include "TimeCallback.h"
+//#include "TimeCallback.h"
 
 #include <vector>
 #include <map>
@@ -53,14 +53,8 @@ namespace Piavca
 	class PIAVCA_DECL AvatarImp;
 	class PIAVCA_DECL Object;
 	class PIAVCA_DECL ObjectImp;
+	class PIAVCA_DECL TimeCallback;
 
-	//! the joints/tracks corresponding to the root position and orientation always have the IDs 0 and 1
-	enum joint_ids {root_position_id = 0, root_orientation_id = 1};
-
-	// call in case of error, calls an exception if exceptions are enabled
-	PIAVCA_DECL void Error(tstring details);
-	// call in case of problem that is not a fatal error but that should be reported
-	PIAVCA_DECL void Warning(tstring details);
 
 	//! The core object is the central controller of the Piavca system.
 	/*!	It maintains a list of avatars, and some motions. It has a list of global
@@ -133,33 +127,28 @@ namespace Piavca
 		tstring dir;
 
 		Core();
-		virtual ~Core()
-		{	
-			reset(); 
-		};
+		virtual ~Core();
 
 		virtual void reset();
 
 		//! a static function to get the core instances (there is only one)
 		//virtual static Core *getCore()=0;//{};
 
-		static Core *getCore() {return core;};
+		static Core *getCore() 
+		{
+			return core;
+		};
 		
 		//! registers a callback to be called every frame
-		void registerCallback(TimeCallback *cb) 
-		{
-			if(!cb)
-			{
-				Piavca::Error(_T("Trying to register a null pointer as a callback"));
-				return;
-			}
-			callbacks.push_back(cb);
-			cb->init(this);
-		};
+		void registerCallback(TimeCallback *cb);
+
 		/*! Performs all per frame actions (uses the current time)
 		 *	Can be run in parallel with the renderer.
 		 */
-		void timeStep(){timeStep(getTime());};
+		void timeStep()
+		{
+			timeStep(getTime());
+		};
 		/*! Performs all per frame actions
 		 *	Can be run in parallel with the renderer.
 		 */
@@ -182,15 +171,11 @@ namespace Piavca
 		//! Adds in a set of joints all of which should have the same id
 		/*! i.e. all the names correspond to the same joint e.g. (left_foot, LFoot, LeftFoot, PiedGauche)
 		 */
-		void addJointNameSet(Piavca::StringVector names);
+		void addJointNameSet(StringVector names);
 		//! returns a name corresponding to a track id (out of many possible)
 		tstring getJointName(int jointId);
 		//! get all the joint name associations
-		std::vector<std::pair<tstring, int> > getJointNameAssociations()
-		{
-			std::vector<std::pair<tstring, int> > v(jointMap.begin(), jointMap.end());
-			return v;
-		}
+		std::vector<std::pair<tstring, int> > getJointNameAssociations();
 		//!@}
 
 		/*! methods dealing with expression ids
@@ -200,19 +185,18 @@ namespace Piavca
 		//! get an id corresponding to an expression name
 		int getExpressionId(tstring name);
 		//! gets the maximum joint id
-		int getMaxExpressionId(){return maxExpressionId;};
+		int getMaxExpressionId()
+		{
+			return maxExpressionId;
+		};
 		//! Adds in a set of joints all of which should have the same id
 		/*! i.e. all the names correspond to the same joint e.g. (left_foot, LFoot, LeftFoot, PiedGauche)
 		 */
-		void addExpressionNameSet(Piavca::StringVector names);
+		void addExpressionNameSet(StringVector names);
 		//! returns a name corresponding to a track id (out of many possible)
 		tstring getExpressionName(int expressionId);
 		//! get all the expression name associations
-		std::vector<std::pair<tstring, int> > getExpressionNameAssociations()
-		{
-			std::vector<std::pair<tstring, int> > v(expressionMap.begin(), expressionMap.end());
-			return v;
-		}
+		std::vector<std::pair<tstring, int> > getExpressionNameAssociations();
 		//!@}
 
 		//! loads in a motion from file and adds it to the list of motions
@@ -238,41 +222,31 @@ namespace Piavca
         PIAVCA_EXPORT std::vector<std::string> getMotionNames(int number = 0);
 
         //! get number of motions
-        int getNumberOfMotions() { return motions.size(); };
+		int getNumberOfMotions() 
+		{ 
+			return static_cast<int>(motions.size()); 
+		};
 
 		//! get all motion names
 		PIAVCA_EXPORT std::list<tstring> getAllmotions();
 
         //! get a motion by its (arbitrary) index
-        Motion *getMotion(int i) { return motions[i].second; };
-
-
-		/*! \brief Delete the motion if it is not a motion belonging to the core 
-		 *  (NB difference to removeMotion)
-		 *  this is the correct process to go through when deleting a motion
-		 */
-		//void disposeMotion(const Motion *mot);
+        Motion *getMotion(int i) 
+		{ 
+			return motions[i].second; 
+		};
 
 		//! get a named avatar
 		Avatar *getAvatar(tstring avatarName);
-		//Avatar *getAvatar(char *avatarName){return getAvatar(StringToTString(avatarName));};
-		//Avatar *getAvatar(const char *avatarName){return getAvatar(StringToTString(avatarName));};
-
 		std::vector<tstring> getAvatarNames();
 
 		//! get the number of avatars 
-		int numAvatars () {return static_cast<int>(avatars.size());};
-		//! get the ith avatar in the list (used for interating over all avatars)
-		Avatar *getAvatar(int i)
+		int numAvatars () 
 		{
-			if(i >= 0 && i < numAvatars())
-				return avatars[i];
-			else
-			{
-				Piavca::Error(_T("trying to get an avatar from an invalid index"));
-				return NULL;
-			}
+			return static_cast<int>(avatars.size());
 		};
+		//! get the ith avatar in the list (used for interating over all avatars)
+		Avatar *getAvatar(int i);
 
 		//! changes the name of an avatar
 		void renameAvatar(tstring oldName, tstring newName);
@@ -299,18 +273,12 @@ namespace Piavca
 		Object *getObject(tstring objectName);
 
 		//! get the number of avatars 
-		int numObjects () {return static_cast<int>(objects.size());};
-		//! get the ith avatar in the list (used for interating over all avatars)
-		Object *getObject(int i)
+		int numObjects () 
 		{
-			if(i >= 0 && i < numObjects())
-				return objects[i];
-			else
-			{
-				Piavca::Error("trying to get an object from an invalid index");
-				return NULL;
-			}
+			return static_cast<int>(objects.size());
 		};
+		//! get the ith avatar in the list (used for interating over all avatars)
+		Object *getObject(int i);
 
 		//! changes the name of an avatar
 		void renameObject(tstring oldName, tstring newName);
@@ -354,34 +322,73 @@ namespace Piavca
 			if(autoTimeOff)
 				return currentTime;
 			else
-				return getTimeInternal();
+				return getSystemTime();
 		}
 		//! get the current time in seconds
-	    virtual float getTimeInternal()=0;
+	    virtual float getSystemTime()=0;
 		//! turns off the automatic updating of the current time from the system clock
-		void setAutoTimeOff(){autoTimeOff = true;};
+		void setAutoTimeOff()
+		{
+			autoTimeOff = true;
+		};
 		//! turns on the automatic updating of the current time from the system clock
-		void setAutoTimeOn(){autoTimeOff = true;};
+		void setAutoTimeOn()
+		{
+			autoTimeOff = true;
+		};
 		//! sets the current time (if its not linked to the system clock
-		void setCurrentTime(float t){currentTime = t;};
+		void setCurrentTime(float t)
+		{
+			currentTime = t;
+		};
 
-		void addError(tstring details){errorstrm << details << std::endl;};
-		tostringstream &error(){return errorstrm;};
-		void clearErrors(){errorstrm.str(_T(""));};
-		tstring getErrors(){return errorstrm.str();};
-		bool errorsPresent(){return errorstrm.str() != _T("");};
+		void addError(tstring details);
+		tostringstream &error()
+		{
+			return errorstrm;
+		};
+		void clearErrors();
+		tstring getErrors()
+		{
+			return errorstrm.str();
+		};
+		bool errorsPresent()
+		{
+			return errorstrm.str() != _T("");
+		};
 
-		void addWarning(tstring details){warningstrm << details << std::endl;};
-		tostringstream &Warning(){return warningstrm;};
-		void clearWarnings(){warningstrm.str(_T(""));};
-		tstring getWarnings(){return warningstrm.str();};
-		bool warningsPresent(){return warningstrm.str() != _T("");};
+		void addWarning(tstring details);
+		tostringstream &Warning()
+		{
+			return warningstrm;
+		};
+		void clearWarnings();
+		tstring getWarnings()
+		{
+			return warningstrm.str();
+		};
+		bool warningsPresent()
+		{
+			return warningstrm.str() != _T("");
+		};
 
-		bool exceptionsOn(){return exceptionFlag;};
-		void setExceptionsOn(){exceptionFlag = true;};
-		void setExceptionsOff(){exceptionFlag = false;};
+		bool exceptionsOn()
+		{
+			return exceptionFlag;
+		};
+		void setExceptionsOn()
+		{
+			exceptionFlag = true;
+		};
+		void setExceptionsOff()
+		{
+			exceptionFlag = false;
+		};
 
-		std::ostream &log(){return log_file;};
+		std::ostream &log()
+		{
+			return log_file;
+		};
 
 		friend class Motion;
 	};

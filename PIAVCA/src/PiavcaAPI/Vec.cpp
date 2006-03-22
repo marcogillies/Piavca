@@ -30,6 +30,45 @@
 
 using namespace Piavca;
 
+Vec::Vec()									
+{
+	vals[0] = 0.0; 
+	vals[1] = 0.0; 
+	vals[2] = 0.0;
+};
+Vec::Vec(float x, float y, float z)			
+{
+	vals[0] = x; 
+	vals[1] = y; 
+	vals[2] = z;
+};
+Vec::Vec(const float v[3])					
+{
+	vals[0] = v[0]; 
+	vals[1] = v[1]; 
+	vals[2] = v[2];
+};
+
+Vec::Vec(const Vec &v)						
+{
+	*this = v;
+};
+
+	
+Vec::~Vec()
+{
+};
+
+float Vec::mag()	const 						
+{
+	return sqrt(X()*X() + Y()*Y() + Z()*Z());
+};
+
+float Vec::dot(const Vec &v) const			
+{
+	return  X()*v.X() + Y()*v.Y() + Z()*v.Z();
+};
+
  Vec Vec::cross(const Vec &v) const 
 {
 	Vec retVal;

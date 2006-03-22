@@ -50,7 +50,7 @@ class MotionParserTyped : public MotionParser
 public:
 	MotionParserTyped(){};
 	
-	virtual Piavca::Motion *parseMotion(istringstream &is, std::string currentWord, double scaleFactor); 
+	virtual Piavca::Motion *parseMotion(istringstream &is, std::string currentWord, float scaleFactor); 
 	virtual Piavca::Motion *editMotion(istringstream &is)
 	{
 		string motName;
@@ -104,7 +104,7 @@ using namespace Piavca;
 
 
 template<> 
-Piavca::Motion *MotionParserTyped<ZeroMotion>::parseMotion(istringstream &is, std::string currentWord, double scaleFactor)
+Piavca::Motion *MotionParserTyped<ZeroMotion>::parseMotion(istringstream &is, std::string currentWord, float scaleFactor)
 {
 		bool facial = false;
 		//if(currentWord == "")
@@ -127,10 +127,10 @@ void MotionParserTyped<ZeroMotion>::editMotionInternal(ZeroMotion *mot, istrings
 
 
 template<> 
-Piavca::Motion *MotionParserTyped<LoopMotion>::parseMotion(istringstream &is, std::string currentWord, double scaleFactor)
+Piavca::Motion *MotionParserTyped<LoopMotion>::parseMotion(istringstream &is, std::string currentWord, float scaleFactor)
 {
-		double endTime = -1.0;
-		double interval = 0.01;
+		float endTime = -1.0f;
+		float interval = 0.01f;
 		if(currentWord == "")
 			if(!(is >> currentWord)) currentWord = "";
 				
@@ -167,8 +167,8 @@ Piavca::Motion *MotionParserTyped<LoopMotion>::parseMotion(istringstream &is, st
 template<>
 void MotionParserTyped<LoopMotion>::editMotionInternal(LoopMotion *mot, istringstream &is)
 {
-		double endTime = -1.0;
-		double interval = 0.01;
+		float endTime = -1.0f;
+		float interval = 0.01f;
 		string currentWord;
 		while(is >> currentWord)
 		{
@@ -195,7 +195,7 @@ void MotionParserTyped<LoopMotion>::editMotionInternal(LoopMotion *mot, istrings
 		}
 };
 
-template<>  Piavca::Motion *MotionParserTyped<ScaleMotionRoot>::parseMotion(istringstream &is, std::string currentWord, double scaleFactor)
+template<>  Piavca::Motion *MotionParserTyped<ScaleMotionRoot>::parseMotion(istringstream &is, std::string currentWord, float scaleFactor)
 {
 		if(!(is >> scaleFactor))
 		{
@@ -210,7 +210,7 @@ template<>  Piavca::Motion *MotionParserTyped<ScaleMotionRoot>::parseMotion(istr
 
 template<> void MotionParserTyped<ScaleMotionRoot>::editMotionInternal(ScaleMotionRoot *mot, istringstream &is)
 {
-		double scaleFactor;
+		float scaleFactor;
 		if(!(is >> scaleFactor))
 		{
 			Piavca::Error(_T("scale factor is not a number"));
@@ -219,9 +219,9 @@ template<> void MotionParserTyped<ScaleMotionRoot>::editMotionInternal(ScaleMoti
 			mot->setScaleFactor(scaleFactor);
 };
 
-template<> Piavca::Motion *MotionParserTyped<ScaleMotion>::parseMotion(istringstream &is, std::string currentWord, double scaleFactor)
+template<> Piavca::Motion *MotionParserTyped<ScaleMotion>::parseMotion(istringstream &is, std::string currentWord, float scaleFactor)
 {
-		double sf;
+		float sf;
 		if(!(is >> sf))
 		{
 			Piavca::Error("scale factor is not a number");
@@ -236,7 +236,7 @@ template<> Piavca::Motion *MotionParserTyped<ScaleMotion>::parseMotion(istringst
 
 template<> void MotionParserTyped<ScaleMotion>::editMotionInternal(ScaleMotion *mot, istringstream &is)
 {
-		double sf;
+		float sf;
 		if(!(is >> sf))
 		{
 			Piavca::Error(_T("scale factor is not a number"));
@@ -245,9 +245,9 @@ template<> void MotionParserTyped<ScaleMotion>::editMotionInternal(ScaleMotion *
 			mot->setScaleFactor(sf);
 };
 
-template<> Piavca::Motion *MotionParserTyped<ScaleMotionSpeed>::parseMotion(istringstream &is, std::string currentWord, double scaleFactor)
+template<> Piavca::Motion *MotionParserTyped<ScaleMotionSpeed>::parseMotion(istringstream &is, std::string currentWord, float scaleFactor)
 {
-		double sf;
+		float sf;
 		if(!(is >> sf))
 		{
 			Piavca::Error(_T("scale factor is not a number"));
@@ -262,7 +262,7 @@ template<> Piavca::Motion *MotionParserTyped<ScaleMotionSpeed>::parseMotion(istr
 
 template<> void MotionParserTyped<ScaleMotionSpeed>::editMotionInternal(ScaleMotionSpeed *mot, istringstream &is)
 {
-		double sf;
+		float sf;
 		if(!(is >> sf))
 		{
 			Piavca::Error(_T("scale factor is not a number"));
@@ -271,12 +271,12 @@ template<> void MotionParserTyped<ScaleMotionSpeed>::editMotionInternal(ScaleMot
 			mot->setScaleFactor(sf);
 };
 
-template<> Piavca::Motion *MotionParserTyped<ChangeMotionProp>::parseMotion(istringstream &is, std::string currentWord, double scaleFactor)
+template<> Piavca::Motion *MotionParserTyped<ChangeMotionProp>::parseMotion(istringstream &is, std::string currentWord, float scaleFactor)
 {
-		double sf = 1.0;
-		double swin = 0.2;
-		double ewin = 0.2;
-		double scale = 1;
+		float sf = 1.0f;
+		float swin = 0.2f;
+		float ewin = 0.2f;
+		float scale = 1.0f;
 		
 		if(currentWord == "")
 			if(!(is >> currentWord)) currentWord = "";
@@ -328,10 +328,10 @@ template<> Piavca::Motion *MotionParserTyped<ChangeMotionProp>::parseMotion(istr
 
 template<> void MotionParserTyped<ChangeMotionProp>::editMotionInternal(ChangeMotionProp *mot, istringstream &is)
 {
-		double sf = 1.0;
-		double swin = 0.2;
-		double ewin = 0.2;
-		double scale = 1;
+		float sf = 1.0f;
+		float swin = 0.2f;
+		float ewin = 0.2f;
+		float scale = 1.0f;
 
 		string currentWord = "";
 		while (is >> currentWord)
@@ -386,9 +386,9 @@ template<> void MotionParserTyped<ChangeMotionProp>::editMotionInternal(ChangeMo
 
 
 
-template<> Piavca::Motion *MotionParserTyped<ChangeMotionLength>::parseMotion(istringstream &is, std::string currentWord, double scaleFactor)
+template<> Piavca::Motion *MotionParserTyped<ChangeMotionLength>::parseMotion(istringstream &is, std::string currentWord, float scaleFactor)
 {
-		double len;
+		float len;
 		if(!(is >> len))
 		{
 			Piavca::Error(_T("length is not a number"));
@@ -404,7 +404,7 @@ template<> Piavca::Motion *MotionParserTyped<ChangeMotionLength>::parseMotion(is
 
 template<> void MotionParserTyped<ChangeMotionLength>::editMotionInternal(ChangeMotionLength *mot, istringstream &is)
 {
-		double len;
+		float len;
 		if(!(is >> len))
 		{
 			Piavca::Error(_T("length is not a number"));
@@ -414,9 +414,9 @@ template<> void MotionParserTyped<ChangeMotionLength>::editMotionInternal(Change
 };
 
 
-template<> Piavca::Motion *MotionParserTyped<TurnMotion>::parseMotion(istringstream &is, std::string currentWord, double scaleFactor)
+template<> Piavca::Motion *MotionParserTyped<TurnMotion>::parseMotion(istringstream &is, std::string currentWord, float scaleFactor)
 {
-		double angle;
+		float angle;
 		if(!(is >> angle))
 		{
 			Piavca::Error(_T("angle is not a number"));
@@ -432,7 +432,7 @@ template<> Piavca::Motion *MotionParserTyped<TurnMotion>::parseMotion(istringstr
 
 template<> void MotionParserTyped<TurnMotion>::editMotionInternal(TurnMotion *mot, istringstream &is)
 {
-		double angle;
+		float angle;
 		if(!(is >> angle))
 		{
 			Piavca::Error(_T("angle is not a number"));
@@ -442,9 +442,9 @@ template<> void MotionParserTyped<TurnMotion>::editMotionInternal(TurnMotion *mo
 };
 
 
-template<> Piavca::Motion *MotionParserTyped<BlendBetween>::parseMotion(istringstream &is, std::string currentWord, double scaleFactor)
+template<> Piavca::Motion *MotionParserTyped<BlendBetween>::parseMotion(istringstream &is, std::string currentWord, float scaleFactor)
 {
-		double blendFactor;
+		float blendFactor;
 		if(!(is >> blendFactor))
 		{
 			Piavca::Error(_T("blend factor is not a number"));
@@ -470,7 +470,7 @@ template<> void MotionParserTyped<BlendBetween>::editMotionInternal(BlendBetween
 	{
 		if(currentWord == "factor")
 		{
-			double blendFactor;
+			float blendFactor;
 			if(!(is >> blendFactor))
 			{
 				Piavca::Error(_T("blend factor was not a number"));
@@ -482,7 +482,7 @@ template<> void MotionParserTyped<BlendBetween>::editMotionInternal(BlendBetween
 		}
 		if(currentWord == "mot1")
 		{
-			double scaleFactor;
+			float scaleFactor = 1.0f;
 			MotionParser *mp = NULL;
 			Piavca::Motion *m1 = MotionParser::parseMotion(is, "", scaleFactor, &mp);
 			if(Piavca::Core::getCore()->errorsPresent()) return;
@@ -491,7 +491,7 @@ template<> void MotionParserTyped<BlendBetween>::editMotionInternal(BlendBetween
 		}
 		if(currentWord == "mot2")
 		{
-			double scaleFactor;
+			float scaleFactor = 1.0f;
 			MotionParser *mp = NULL;
 			Piavca::Motion *m2 = MotionParser::parseMotion(is, "", scaleFactor, &mp);
 			if(Piavca::Core::getCore()->errorsPresent()) return;
@@ -504,7 +504,7 @@ template<> void MotionParserTyped<BlendBetween>::editMotionInternal(BlendBetween
 };
 
 
-template<> Piavca::Motion *MotionParserTyped<MotionAdder>::parseMotion(istringstream &is, std::string currentWord, double scaleFactor)
+template<> Piavca::Motion *MotionParserTyped<MotionAdder>::parseMotion(istringstream &is, std::string currentWord, float scaleFactor)
 {
 	MotionParser *mp = NULL;
 	Piavca::Motion *m1 = MotionParser::parseMotion(is, currentWord, scaleFactor, &mp);
@@ -521,7 +521,7 @@ template<> void MotionParserTyped<MotionAdder>::editMotionInternal(MotionAdder *
 	{
 		if(currentWord == "scale_second")
 		{
-			double scaleFactor;
+			float scaleFactor;
 			if(!(is >> scaleFactor))
 			{
 				Piavca::Error(_T("scale factor was not a number"));
@@ -533,7 +533,7 @@ template<> void MotionParserTyped<MotionAdder>::editMotionInternal(MotionAdder *
 		}
 		if(currentWord == "mot1")
 		{
-			double scaleFactor;
+			float scaleFactor = 1.0;
 			MotionParser *mp = NULL;
 			Piavca::Motion *m1 = MotionParser::parseMotion(is, "", scaleFactor, &mp);
 			if(Piavca::Core::getCore()->errorsPresent()) return;
@@ -542,7 +542,7 @@ template<> void MotionParserTyped<MotionAdder>::editMotionInternal(MotionAdder *
 		}
 		if(currentWord == "mot2")
 		{
-			double scaleFactor;
+			float scaleFactor = 1.0;
 			MotionParser *mp = NULL;
 			Piavca::Motion *m2 = MotionParser::parseMotion(is, "", scaleFactor, &mp);
 			if(Piavca::Core::getCore()->errorsPresent()) return;
@@ -555,7 +555,7 @@ template<> void MotionParserTyped<MotionAdder>::editMotionInternal(MotionAdder *
 };
 
 
-template<> Piavca::Motion *MotionParserTyped<MaskedMotion>::parseMotion(istringstream &is, std::string currentWord, double scaleFactor)
+template<> Piavca::Motion *MotionParserTyped<MaskedMotion>::parseMotion(istringstream &is, std::string currentWord, float scaleFactor)
 {
 	    MotionMask mask1, mask2;
 		bool useSecondary = false;
@@ -648,7 +648,7 @@ template<> void MotionParserTyped<MaskedMotion>::editMotionInternal(MaskedMotion
 		}
 		if(currentWord == "mot1")
 		{
-			double scaleFactor;
+			float scaleFactor = 1.0;
 			MotionParser *mp = NULL;
 			Piavca::Motion *m1 = MotionParser::parseMotion(is, "", scaleFactor, &mp);
 			if(Piavca::Core::getCore()->errorsPresent()) return;
@@ -657,7 +657,7 @@ template<> void MotionParserTyped<MaskedMotion>::editMotionInternal(MaskedMotion
 		}
 		if(currentWord == "mot2")
 		{
-			double scaleFactor;
+			float scaleFactor = 1.0;
 			MotionParser *mp = NULL;
 			Piavca::Motion *m2 = MotionParser::parseMotion(is, "", scaleFactor, &mp);
 			if(Piavca::Core::getCore()->errorsPresent()) return;
@@ -669,9 +669,9 @@ template<> void MotionParserTyped<MaskedMotion>::editMotionInternal(MaskedMotion
 	}
 };
 
-template<> Piavca::Motion *MotionParserTyped<LookAtMotion>::parseMotion(istringstream &is, std::string currentWord, double scaleFactor)
+template<> Piavca::Motion *MotionParserTyped<LookAtMotion>::parseMotion(istringstream &is, std::string currentWord, float scaleFactor)
 {
-	    double endTime = -1.0;
+	    float endTime = -1.0;
 
 		if(currentWord == "")
 			if(!(is >> currentWord))
@@ -740,7 +740,7 @@ template<> void MotionParserTyped<LookAtMotion>::editMotionInternal(LookAtMotion
 	{
 		if(currentWord == "endTime")
 		{
-			double endTime;
+			float endTime;
 			if(!(is >> endTime))
 			{
 				Piavca::Error(_T("end time was not a number"));
@@ -789,10 +789,10 @@ template<> void MotionParserTyped<LookAtMotion>::editMotionInternal(LookAtMotion
 	}
 };
 
-template<> Piavca::Motion *MotionParserTyped<RandomGazeMotion>::parseMotion(istringstream &is, std::string currentWord, double scaleFactor)
+template<> Piavca::Motion *MotionParserTyped<RandomGazeMotion>::parseMotion(istringstream &is, std::string currentWord, float scaleFactor)
 {
-	    double endTime = -1.0;
-		double interval = 0.01;
+	    float endTime = -1.0f;
+		float interval = 0.01f;
 		if(currentWord == "")
 			if(!(is >> currentWord)) currentWord = "";
 				
@@ -861,8 +861,8 @@ template<> Piavca::Motion *MotionParserTyped<RandomGazeMotion>::parseMotion(istr
 
 template<> void MotionParserTyped<RandomGazeMotion>::editMotionInternal(RandomGazeMotion *mot, istringstream &is)
 {
-	    double endTime = -1.0;
-		double interval = 0.01;
+	    float endTime = -1.0f;
+		float interval = 0.01f;
 		string currentWord;
 				
 		while (is >> currentWord)
@@ -926,10 +926,10 @@ template<> void MotionParserTyped<RandomGazeMotion>::editMotionInternal(RandomGa
 		};
 };
 
-template<> Piavca::Motion *MotionParserTyped<DiadicGazeMotion>::parseMotion(istringstream &is, std::string currentWord, double scaleFactor)
+template<> Piavca::Motion *MotionParserTyped<DiadicGazeMotion>::parseMotion(istringstream &is, std::string currentWord, float scaleFactor)
 {
-	double endTime = -1.0;
-	double interval = 0.01;
+	float endTime = -1.0f;
+	float interval = 0.01f;
 	Avatar *av = NULL;	
 	if(currentWord == "")
 			if(!(is >> currentWord)) currentWord = "";
@@ -977,7 +977,7 @@ template<> void MotionParserTyped<DiadicGazeMotion>::editMotionInternal(DiadicGa
 	{
 		if(currentWord == "endTime")
 		{
-			double endTime;
+			float endTime;
 			if(!(is >> endTime))
 			{
 				Piavca::Error(_T("no value given for end time\n"));
@@ -988,7 +988,7 @@ template<> void MotionParserTyped<DiadicGazeMotion>::editMotionInternal(DiadicGa
 		}
 		else if(currentWord == "interval")
 		{
-			double interval;
+			float interval;
 			if(!(is >> interval))
 			{
 				Piavca::Error(_T("no value given for end time\n"));
@@ -1026,7 +1026,7 @@ template<> void MotionParserTyped<DiadicGazeMotion>::editMotionInternal(DiadicGa
 		}
 		else if(currentWord == "talking_look_at")
 		{
-			double val = 0.1;
+			float val = 0.1f;
 			if(!(is >> val))
 			{
 				Piavca::Error(_T("no value given for talking_look_at\n"));
@@ -1037,7 +1037,7 @@ template<> void MotionParserTyped<DiadicGazeMotion>::editMotionInternal(DiadicGa
 		}
 		else if(currentWord == "talking_look_away")
 		{
-			double val = 0.1;
+			float val = 0.1f;
 			if(!(is >> val))
 			{
 				Piavca::Error(_T("no value given for talking_look_away\n"));
@@ -1048,7 +1048,7 @@ template<> void MotionParserTyped<DiadicGazeMotion>::editMotionInternal(DiadicGa
 		}
 		else if(currentWord == "listening_look_at")
 		{
-			double val = 0.1;
+			float val = 0.1f;
 			if(!(is >> val))
 			{
 				Piavca::Error(_T("no value given for listening_look_at\n"));
@@ -1059,7 +1059,7 @@ template<> void MotionParserTyped<DiadicGazeMotion>::editMotionInternal(DiadicGa
 		}
 		else if(currentWord == "listening_look_away")
 		{
-			double val = 0.1;
+			float val = 0.1f;
 			if(!(is >> val))
 			{
 				Piavca::Error(_T("no value given for listening_look_away\n"));
@@ -1070,7 +1070,7 @@ template<> void MotionParserTyped<DiadicGazeMotion>::editMotionInternal(DiadicGa
 		}
 		else if(currentWord == "neither_look_at")
 		{
-			double val = 0.1;
+			float val = 0.1f;
 			if(!(is >> val))
 			{
 				Piavca::Error(_T("no value given for neither_look_at\n"));
@@ -1081,7 +1081,7 @@ template<> void MotionParserTyped<DiadicGazeMotion>::editMotionInternal(DiadicGa
 		}
 		else if(currentWord == "neither_look_away")
 		{
-			double val = 0.1;
+			float val = 0.1f;
 			if(!(is >> val))
 			{
 				Piavca::Error(_T("no value given for neither_look_away\n"));
@@ -1092,7 +1092,7 @@ template<> void MotionParserTyped<DiadicGazeMotion>::editMotionInternal(DiadicGa
 		}
 		else if(currentWord == "gaze_follow")
 		{
-			double val = 0.1;
+			float val = 0.1f;
 			if(!(is >> val))
 			{
 				Piavca::Error(_T("no value given for gaze_follow\n"));
@@ -1103,7 +1103,7 @@ template<> void MotionParserTyped<DiadicGazeMotion>::editMotionInternal(DiadicGa
 		}
 		else if(currentWord == "eyes_limit")
 		{
-			double val = 0.1;
+			float val = 0.1f;
 			if(!(is >> val))
 			{
 				Piavca::Error(_T("no value given for eyes_limit\n"));
@@ -1114,7 +1114,7 @@ template<> void MotionParserTyped<DiadicGazeMotion>::editMotionInternal(DiadicGa
 		}
 		else if(currentWord == "eyes_morph_angle")
 		{
-			double val = 0.1;
+			float val = 0.1f;
 			if(!(is >> val))
 			{
 				Piavca::Error(_T("no value given for eyes_morph_angle\n"));
@@ -1125,7 +1125,7 @@ template<> void MotionParserTyped<DiadicGazeMotion>::editMotionInternal(DiadicGa
 		}
 		else if(currentWord == "head_body_limit")
 		{
-			double val = 0.1;
+			float val = 0.1f;
 			if(!(is >> val))
 			{
 				Piavca::Error(_T("no value given for head_body_limit\n"));
@@ -1160,14 +1160,14 @@ template<> void MotionParserTyped<DiadicGazeMotion>::editMotionInternal(DiadicGa
 	}    
 };
 
-template<> Piavca::Motion *MotionParserTyped<RandomLoopMotion>::parseMotion(istringstream &is, std::string currentWord, double scaleFactor)
+template<> Piavca::Motion *MotionParserTyped<RandomLoopMotion>::parseMotion(istringstream &is, std::string currentWord, float scaleFactor)
 {
 	    MotionVec mv;
 		vector<float> fv;
-		double endTime = -1.0;
-		double interval = 0.01;
+		float endTime = -1.0f;
+		float interval = 0.01f;
 		bool randomTimings = false;
-		double min = 0.0, max = 1.0;
+		float min = 0.0, max = 1.0;
 		if(currentWord == "")
 			if(!(is >> currentWord)) currentWord = "";
 				
@@ -1213,7 +1213,7 @@ template<> Piavca::Motion *MotionParserTyped<RandomLoopMotion>::parseMotion(istr
 			}
 			else
 			{
-				double prob = 1;
+				float prob = 1;
 				if(currentWord == string("prob"))
 				{
 					if(!(is >> min))
@@ -1250,9 +1250,9 @@ template<> Piavca::Motion *MotionParserTyped<RandomLoopMotion>::parseMotion(istr
 
 template<> void MotionParserTyped<RandomLoopMotion >::editMotionInternal(RandomLoopMotion *mot, istringstream &is)
 {
-	    double endTime = -1.0;
-		double interval = 0.01;
-		double min = 1.0, max = 1.0;
+	    float endTime = -1.0f;
+		float interval = 0.01f;
+		float min = 1.0f, max = 1.0f;
 		string currentWord;
 				
 		while (is >> currentWord)
@@ -1302,13 +1302,13 @@ template<> void MotionParserTyped<RandomLoopMotion >::editMotionInternal(RandomL
 		}
 };
 
-template<> Piavca::Motion *MotionParserTyped<ChoiceLoopMotion>::parseMotion(istringstream &is, std::string currentWord, double scaleFactor)
+template<> Piavca::Motion *MotionParserTyped<ChoiceLoopMotion>::parseMotion(istringstream &is, std::string currentWord, float scaleFactor)
 {
 	    MotionVec mv;
-		double endTime = -1.0;
-		double interval = 0.01;
+		float endTime = -1.0f;
+		float interval = 0.01f;
 		bool randomTimings = false;
-		double min = 0.0, max = 1.0;
+		float min = 0.0, max = 1.0;
 		if(currentWord == "")
 			if(!(is >> currentWord)) currentWord = "";
 				
@@ -1372,9 +1372,9 @@ template<> Piavca::Motion *MotionParserTyped<ChoiceLoopMotion>::parseMotion(istr
 
 template<> void MotionParserTyped<ChoiceLoopMotion>::editMotionInternal(ChoiceLoopMotion *mot, istringstream &is)
 {
-	    double endTime = -1.0;
-		double interval = 0.01;
-		double min = 1.0, max = 1.0;
+	    float endTime = -1.0f;
+		float interval = 0.01f;
+		float min = 1.0f, max = 1.0f;
 		string currentWord;
 				
 		while (is >> currentWord)
@@ -1434,14 +1434,14 @@ template<> void MotionParserTyped<ChoiceLoopMotion>::editMotionInternal(ChoiceLo
 		}
 };
 
-template<> Piavca::Motion *MotionParserTyped<RandomBlendLoop>::parseMotion(istringstream &is, std::string currentWord, double scaleFactor)
+template<> Piavca::Motion *MotionParserTyped<RandomBlendLoop>::parseMotion(istringstream &is, std::string currentWord, float scaleFactor)
 {
 	    MotionVec mv;
-		double endTime = -1.0;
-		double interval = 0.01;
+		float endTime = -1.0f;
+		float interval = 0.01f;
 		bool randomTimings = false;
 		bool autoshift = true;
-		double min = 0.0, max = 1.0;
+		float min = 0.0, max = 1.0;
 		if(currentWord == "")
 			if(!(is >> currentWord)) currentWord = "";
 				
@@ -1518,9 +1518,9 @@ template<> Piavca::Motion *MotionParserTyped<RandomBlendLoop>::parseMotion(istri
 
 template<> void MotionParserTyped<RandomBlendLoop>::editMotionInternal(RandomBlendLoop *mot, istringstream &is)
 {
-	    double endTime = -1.0;
-		double interval = 0.01;
-		double min = 1.0, max = 1.0;
+	    float endTime = -1.0f;
+		float interval = 0.01f;
+		float min = 1.0f, max = 1.0f;
 		string currentWord;
 				
 		while (is >> currentWord)
@@ -1586,14 +1586,14 @@ template<> void MotionParserTyped<RandomBlendLoop>::editMotionInternal(RandomBle
 		}
 };
 
-template<> Piavca::Motion *MotionParserTyped<RandomAddLoop>::parseMotion(istringstream &is, std::string currentWord, double scaleFactor)
+template<> Piavca::Motion *MotionParserTyped<RandomAddLoop>::parseMotion(istringstream &is, std::string currentWord, float scaleFactor)
 {
 	    MotionVec mv;
-		double endTime = -1.0;
-		double interval = 0.01;
+		float endTime = -1.0f;
+		float interval = 0.01f;
 		bool randomTimings = false;
 		bool autoshift = true;
-		double min = 0.0, max = 1.0;
+		float min = 0.0f, max = 1.0f;
 		if(currentWord == "")
 			if(!(is >> currentWord)) currentWord = "";
 				
@@ -1670,9 +1670,9 @@ template<> Piavca::Motion *MotionParserTyped<RandomAddLoop>::parseMotion(istring
 
 template<> void MotionParserTyped<RandomAddLoop>::editMotionInternal(RandomAddLoop *mot, istringstream &is)
 {
-	    double endTime = -1.0;
-		double interval = 0.01;
-		double min = 1.0, max = 1.0;
+	    float endTime = -1.0f;
+		float interval = 0.01f;
+		float min = 1.0f, max = 1.0f;
 				
 		string currentWord;
 		while (is >> currentWord)
@@ -1738,14 +1738,14 @@ template<> void MotionParserTyped<RandomAddLoop>::editMotionInternal(RandomAddLo
 		}
 };
 
-template<> Piavca::Motion *MotionParserTyped<ProxemicsLoop>::parseMotion(istringstream &is, std::string currentWord, double scaleFactor)
+template<> Piavca::Motion *MotionParserTyped<ProxemicsLoop>::parseMotion(istringstream &is, std::string currentWord, float scaleFactor)
 {
-	    double endTime = -1.0;
-		double interval = 0.01;
+	    float endTime = -1.0f;
+		float interval = 0.01f;
 		bool randomTimings = false;
-		double min = 0.0, max = 1.0;
+		float min = 0.0f, max = 1.0f;
 		Motion *forward = NULL, *back = NULL, *left = NULL, *right = NULL, *rest = NULL;
-		double distance = 1.0, threshold = 0.2, anglethreshold = 22.5;
+		float distance = 1.0f, threshold = 0.2f, anglethreshold = 22.5f;
 		vector <Avatar *> avatars;
 		if(currentWord == "")
 			if(!(is >> currentWord)) currentWord = "";
@@ -1883,7 +1883,7 @@ template<> Piavca::Motion *MotionParserTyped<ProxemicsLoop>::parseMotion(istring
 		Motion *m = new ProxemicsLoop(forward, back,rest, left, right, distance, endTime, interval);
 		dynamic_cast<ProxemicsLoop *>(m)->setThreshold(threshold);
 		dynamic_cast<ProxemicsLoop *>(m)->setAngleThreshold(Piavca::degToRad(anglethreshold));
-		for (int i = 0; i < avatars.size(); i++)
+		for (vector <Avatar *>::size_type i = 0; i < avatars.size(); i++)
 			dynamic_cast<ProxemicsLoop *>(m)->addAvatar(avatars[i]);
 		if(randomTimings)
 				dynamic_cast<ProxemicsLoop *>(m)->setTimingParams(min, max);
@@ -1893,9 +1893,9 @@ template<> Piavca::Motion *MotionParserTyped<ProxemicsLoop>::parseMotion(istring
 
 template<> void MotionParserTyped<ProxemicsLoop>::editMotionInternal(ProxemicsLoop *mot, istringstream &is)
 {
-	    double endTime = -1.0;
-		double interval = 0.01;
-		double min = 1.0, max = 1.0;
+	    float endTime = -1.0f;
+		float interval = 0.01f;
+		float min = 1.0f, max = 1.0f;
 		string currentWord;		
 
 		while (is >> currentWord)
@@ -1938,7 +1938,7 @@ template<> void MotionParserTyped<ProxemicsLoop>::editMotionInternal(ProxemicsLo
 			} 
 			else if(currentWord == "-distance")
 			{
-				double distance;
+				float distance;
 				if(!(is >> distance))
 				{
 					Piavca::Error(_T("no value given for end time\n"));
@@ -2067,14 +2067,8 @@ void MotionParser::setUpMotionCommands()
 	addMotionCommand(_T("proxemics"), new MotionParserTyped<ProxemicsLoop>());
 }
 
-PIAVCA_DECL Piavca::Motion *MotionParser::parseMotion(istringstream &is, std::string currentWord, double scaleFactor, MotionParser **mp)
+PIAVCA_DECL Piavca::Motion *MotionParser::parseMotion(istringstream &is, std::string currentWord, float scaleFactor, MotionParser **mp)
 {
-	//if(currentArg >= argc)
-	//{
-	//	badUsage = true;
-	//	errMsg += "too few arguments\n";
-	//	return NULL;
-	//}
 	if(currentWord == "")
 		is >> currentWord;
 	Piavca::Motion *mot = Piavca::Core::getCore()->getMotion(currentWord);
@@ -2131,7 +2125,7 @@ PIAVCA_DECL Piavca::Motion *MotionParser::parseMotion(istringstream &is, std::st
 				return NULL;
 			}
 
-			double time; 
+			float time; 
 			if(!(is >> time))
 			{
 				Piavca::Error(_T("was expecting a number for keyframe time"));
@@ -2148,7 +2142,7 @@ PIAVCA_DECL Piavca::Motion *MotionParser::parseMotion(istringstream &is, std::st
 			{
 				if(tmot->isNull(jointId))
 					tmot->addFloatTrack(jointId, 0.0);
-				double value;
+				float value;
 				if(!(is >> value))
 				{
 					Piavca::Error(_T("was expecting a number for keyframe value"));

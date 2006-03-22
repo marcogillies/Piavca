@@ -86,7 +86,7 @@ class PIAVCA_DECL AvatarMotionQueue : public AvatarTimeCallback
    * a flag to say whether the queue handles facial or body motions. and a
    * multiplier for the delay.
    */
-  AvatarMotionQueue(float scale, double delay = 0, bool facial = false, int factor = 10);
+  AvatarMotionQueue(float scale, float delay = 0, bool facial = false, int factor = 10);
 
   virtual ~AvatarMotionQueue()
   {
@@ -153,17 +153,17 @@ class PIAVCA_DECL AvatarMotionQueue : public AvatarTimeCallback
   void enqueueRandomMotions(int num = 0);
 
   //! tests whether the first motion on the queue is a background motion
-  float queueTopIsBackground();
+  bool queueTopIsBackground();
   //! gets the minimum start time of the first motion on the queue
   float queueTopTime();
   //! pops a motion off the queue
   Piavca::Motion *dequeueMotion();
 
   //! returns the number of motions on the queue
-  int getQueueSize() {return motionQueue.size();};
+  int getQueueSize() {return static_cast<int>(motionQueue.size());};
 
   //! change the delay
-  void updateDelay(double delay) {delayTime = delay;};
+  void updateDelay(float delay) {delayTime = delay;};
 
   //! empties the queue
   void clearQueue();

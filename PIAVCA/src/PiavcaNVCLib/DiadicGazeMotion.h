@@ -66,21 +66,21 @@ public:
 	DiadicGazeMotion(Avatar *other, float endTime = -1.0, float interval = 0.01)
 		:RandomGazeMotion(endTime, interval), 
 		otherAvatar(other), isTalking(neither), lookingAt(false), 
-		talkingLookAt(1.8), talkingLookAway(2.1),
-		listeningLookAt(2.5), listeningLookAway(1.6),
-		neitherLookAt(1.2), neitherLookAway(2.5),
+		talkingLookAt(1.8f), talkingLookAway(2.1f),
+		listeningLookAt(2.5f), listeningLookAway(1.6f),
+		neitherLookAt(1.2f), neitherLookAway(2.5f),
 		gazeFollow(0), otherDiadicGaze(NULL), currentGazeFollowTarget(_T(""))
 	{
 		joint = Core::getCore()->getJointId(_T("Head"));
 		clearDirectionTable();
-		addDirection(Vec( 1.0,  0.0, 0.0), 15.5);
-		addDirection(Vec( 1.0,  1.0, 0.0),  6.5);
-		addDirection(Vec( 0.0,  1.0, 0.0), 17.7);
-		addDirection(Vec(-1.0,  1.0, 0.0),  7.4);
-		addDirection(Vec(-1.0,  0.0, 0.0), 16.8);
-		addDirection(Vec(-1.0, -1.0, 0.0),  7.9);
-		addDirection(Vec( 0.0, -1.0, 0.0), 20.4);
-		addDirection(Vec( 1.0, -1.0, 0.0),  7.8);
+		addDirection(Vec( 1.0,  0.0, 0.0), 15.5f);
+		addDirection(Vec( 1.0,  1.0, 0.0),  6.5f);
+		addDirection(Vec( 0.0,  1.0, 0.0), 17.7f);
+		addDirection(Vec(-1.0,  1.0, 0.0),  7.4f);
+		addDirection(Vec(-1.0,  0.0, 0.0), 16.8f);
+		addDirection(Vec(-1.0, -1.0, 0.0),  7.9f);
+		addDirection(Vec( 0.0, -1.0, 0.0), 20.4f);
+		addDirection(Vec( 1.0, -1.0, 0.0),  7.8f);
 		normaliseDirectionTable();
 		setTalking(neither);
 		if(otherAvatar)
@@ -128,7 +128,7 @@ public:
 	void addGazeFollowTarget(tstring name){gazeFollowTargets.push_back(name);};
 	void notifyChange(tstring target)
 	{
-		for(int i = 0; i < gazeFollowTargets.size(); i++)
+		for(vector<tstring>::size_type i = 0; i < gazeFollowTargets.size(); i++)
 			if(gazeFollowTargets[i] == target)
 			{
 				if((rand()%100 <= 100*gazeFollow)) lookAt(target);
@@ -158,7 +158,7 @@ public:
 			case listening: meanGaze = listeningLookAt;break;
 			case neither: meanGaze = neitherLookAt;break;
 			}
-			float endTime = meanGaze*(static_cast<float>(rand()%1000)/1000.0 + 0.5);
+			float endTime = meanGaze*(static_cast<float>(rand()%1000)/1000.0f + 0.5f);
 			mot->setEndTime(endTime+time);	
 			if(otherDiadicGaze) otherDiadicGaze->notifyChange(mot->getTargetName());
 			return true;
@@ -202,7 +202,7 @@ public:
 			case listening: meanGaze = listeningLookAt;break;
 			case neither: meanGaze = neitherLookAt;break;
 			}
-			float endTime = meanGaze*(static_cast<float>(rand()%1000)/1000.0 + 0.5);
+			float endTime = meanGaze*(static_cast<float>(rand()%1000)/1000.0f + 0.5f);
 			mot->setEndTime(endTime+time);
 		}
 		if(otherDiadicGaze) otherDiadicGaze->notifyChange(mot->getTargetName());

@@ -292,7 +292,7 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %feature("ref")   Piavca::ScaleMotionSpeed "$this->Reference();"
 %feature("unref") Piavca::ScaleMotionSpeed "$this->Dispose();"
 
-
+%include "PiavcaAPI/TimeCallback.h"
 %include "PiavcaCore.i"
 %include "PiavcaAPI/PiavcaDefs.h"
 %include "PiavcaAPI/Motion.h"
@@ -330,4 +330,6 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %include "PiavcaNVCLib/ZeroMotion.h"
 %include "PiavcaNVCLib/MotionSaver.h"
 %include "PiavcaNVCLib/MotionParser.h"
+%include "PiavcaNVCLib/SubMotion.h"
+%include "PiavcaNVCLib/TimeRangeMotion.h"
 //%include "PiavcaNVCLib/DiadicGazeMotion.h"

@@ -40,7 +40,8 @@ using std::map;
 //#include "StandardTrackIteratorImp.h"
 #include "../PiavcaAPI/TrackMotion.h"
 
-#include "../PiavcaAPI/PiavcaException.h"
+#include "../PiavcaAPI/PiavcaError.h"
+#include "../PiavcaAPI/PiavcaCore.h"
 
 
 

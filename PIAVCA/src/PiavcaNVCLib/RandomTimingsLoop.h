@@ -88,7 +88,7 @@ public:
 	{
 		LoopMotion::reblend(time);
 		float tscale = ((float)(rand()%1000));
-		tscale *= (maxScale - minScale)/1000.0;
+		tscale *= (maxScale - minScale)/1000.0f;
 		tscale += minScale;
 		scaleSpeed->setScaleFactor(tscale);
 	}

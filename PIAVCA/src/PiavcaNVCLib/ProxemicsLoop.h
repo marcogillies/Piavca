@@ -66,9 +66,9 @@ public:
 	 */
 	ProxemicsLoop(Motion *stepForward, Motion *stepBackward,
 		Motion *rest, Motion *turnLeft, Motion *turnRight,
-		float distance = 1.0, float endTime = -1.0, float interval = 0.01)
+		float distance = 1.0f, float endTime = -1.0f, float interval = 0.01f)
 		:MultiMotionLoop(vector<Motion *>(), endTime, interval), 
-		desiredDistance(distance), threshold(0.2), anglethreshold(Piavca::Pi/8.0), distanceOff(false)
+		desiredDistance(distance), threshold(0.2f), anglethreshold(Piavca::Pi/8.0f), distanceOff(false)
 	{
 		if(!stepForward)
 			stepForward = Piavca::Core::getCore()->getMotion("stepForward");
@@ -172,7 +172,7 @@ public:
 			forward[1] = 0.0; // we aren't intereseted in up down distance
 			forward.normalize();
 
-			Vec left = Piavca::Quat(Piavca::Pi/2.0, Vec::YAxis()).transform(forward);
+			Vec left = Piavca::Quat(Piavca::Pi/2.0f, Vec::YAxis()).transform(forward);
 			float dot = forward.dot(direction);
 			float angle = acos(dot);
 			float angleSign = left.dot(direction);
@@ -182,8 +182,8 @@ public:
 				Core::getCore()->log() << " proxemics_turn_towards\n";
 				Piavca::Motion *m = angleSign > 0.0 ? mots[Turn_left] : mots[Turn_right];
 				std::cout << "angle" << angle << std::endl;
-				float blendfactor = angle/(Piavca::Pi/2.0);
-				if(blendfactor > 1.0) blendfactor = 1.0;
+				float blendfactor = angle/(Piavca::Pi/2.0f);
+				if(blendfactor > 1.0f) blendfactor = 1.0f;
 				Piavca::BlendBetween *bb = new Piavca::BlendBetween(mots[Rest], m, blendfactor);
 				MultiMotionLoop::reblend(time);
 				setMotion(bb);
