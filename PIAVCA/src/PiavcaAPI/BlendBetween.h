@@ -34,13 +34,13 @@ namespace Piavca
 	 *	the two motions concurrently rather blending from one to another as 
 	 *	sequential blend does.
 	 */
-    class BlendBetween : public TwoMotionCombiner
+    class PIAVCA_DECL BlendBetween : public TwoMotionCombiner
 	{
 	    float blend; 
 	    
 	public:
 	    //! Pass in the two motion and the interpolation parameter blend (has to be between 0 and 1)
-	    BlendBetween(Motion *m1, Motion *m2, float _blend) ;
+	    BlendBetween(Motion *m1, Motion *m2, float _blend);
 		BlendBetween(const BlendBetween &b);
 
 		virtual Motion *clone()

@@ -31,18 +31,25 @@ namespace Piavca
 	{
 		bool lock;
 		float endTime;
+	protected:
+		bool reblend_flag;
 	public:
 		//! pass in the motion to loop and an optional blend interval, 
 		/*!  (How long it takes to blend from the end back to the beginning)
 		 */
 		LoopMotion(Motion *mot, float _endTime = -1, float interval = 0.01)
-			:SelfBlend(mot, interval), lock(false), endTime(_endTime) {} ;
+			:SelfBlend(mot, interval), lock(false), reblend_flag(false), endTime(_endTime) {} ;
 		LoopMotion(const LoopMotion &l)
-			:SelfBlend(l), lock(false), endTime(l.endTime){};
+			:SelfBlend(l), lock(false), reblend_flag(false), endTime(l.endTime){};
 
 		virtual Motion *clone(){return new LoopMotion(*this);};
 
-		virtual float getMotionLength()const{return endTime;};
+		virtual float getMotionLength()const
+		{
+			//if(endTime < 0)
+			//	std::cout << "returning negative time\n";
+			return endTime;
+		};
 
 		void setEndTime(float t){endTime = t;};
 
@@ -55,13 +62,15 @@ namespace Piavca
 			// as reblend calls this function again we have to check whether its being
 			// called recursively and not do the reblend
 			if(!lock 
-				&& (endTime < 0 || time < endTime)
-				&& (time > mot2->getEndTime()))
+				&& (reblend_flag
+				|| ((endTime < 0 || time < endTime)
+				&& (mot2->getMotionLength() > 0 && time > mot2->getEndTime()))))
 			{
 			    LoopMotion *nonConstThis = const_cast<LoopMotion *>(this);
 				nonConstThis->lock = true;
 				nonConstThis->reblend(time);
 				nonConstThis->lock = false;
+				reblend_flag = false;
 			}
 			//std::cout << "loop motion " << time << " " << blendStart << std::endl;
 			return SelfBlend::getFloatValueAtTimeInternal(trackId, time);
@@ -76,13 +85,15 @@ namespace Piavca
 			// as reblend calls this function again we have to check whether its being
 			// called recursively and not do the reblend
 			if(!lock 
-				&& (endTime < 0 || time < endTime)
-				&& (time > mot2->getEndTime()))
+				&& (reblend_flag
+				|| ((endTime < 0 || time < endTime)
+				&& (mot2->getMotionLength() > 0 && time > mot2->getEndTime()))))
 			{
 				LoopMotion *nonConstThis = const_cast<LoopMotion *>(this);
 				nonConstThis->lock = true;
 				nonConstThis->reblend(time);
 				nonConstThis->lock = false;
+				reblend_flag = false;
 			}
 			Vec v = SelfBlend::getVecValueAtTimeInternal(trackId, time);
 			//std::cout << "loop motion: " << v << std::endl;
@@ -98,13 +109,15 @@ namespace Piavca
 			// as reblend calls this function again we have to check whether its being
 			// called recursively and not do the reblend
 			if(!lock 
-				&& (endTime < 0 || time < endTime)
-				&& (time > mot2->getEndTime()))
+				&& (reblend_flag
+				|| ((endTime < 0 || time < endTime)
+				&& (mot2->getMotionLength() > 0 && time > mot2->getEndTime()))))
 			{
 				LoopMotion *nonConstThis = const_cast<LoopMotion *>(this);
 				nonConstThis->lock = true;
 				nonConstThis->reblend(time);
 				nonConstThis->lock = false;
+				reblend_flag = false;
 			}
 			return SelfBlend::getQuatValueAtTimeInternal(trackId, time);
 		};

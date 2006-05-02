@@ -80,6 +80,10 @@ void SelfBlend::setMotion(Motion *mot)
 
 	if(!mot2) return;
 	
+	mot2->reset();
+	//SelfBlend *sb = dynamic_cast<SelfBlend *>(mot2);
+	//if(sb) sb->reblend(Piavca::Core::getCore()->getTime());
+
 	if(!tmot)
 		Piavca::Error(_T("Motion blending from a non writable motion"));
 
@@ -89,23 +93,29 @@ void SelfBlend::setMotion(Motion *mot)
 		{
 		case FLOAT_TYPE:  if(tmot->isNull(track)) 
 							  tmot->addFloatTrack(track, mot2->getFloatValueAtTime(track, mot2->getStartTime()));
-						  else
-							  tmot->setFloatKeyframe(track, 0.0, mot2->getFloatValueAtTime(track, mot2->getStartTime()));
+						  //else
+						//	  tmot->setFloatKeyframe(track, 0.0, mot2->getFloatValueAtTime(track, mot2->getStartTime()));
 						  break;
 		case VEC_TYPE:    if(tmot->isNull(track)) 
 							  tmot->addVecTrack(track, mot2->getVecValueAtTime(track, mot2->getStartTime()));
-						  else
-							  tmot->setVecKeyframe(track, 0.0, mot2->getVecValueAtTime(track, mot2->getStartTime()));
+						  //else
+						//	  tmot->setVecKeyframe(track, 0.0, mot2->getVecValueAtTime(track, mot2->getStartTime()));
 						  break;
 		case QUAT_TYPE:   if(tmot->isNull(track)) 
 							  tmot->addQuatTrack(track, mot2->getQuatValueAtTime(track, mot2->getStartTime()));
-						  else
-							  tmot->setQuatKeyframe(track, 0.0, mot2->getQuatValueAtTime(track, mot2->getStartTime()));
+						  //else
+							//  tmot->setQuatKeyframe(track, 0.0, mot2->getQuatValueAtTime(track, mot2->getStartTime()));
 						  break;
 		default:		  Piavca::Error(_T("Unknown track type"));
 		}
 	}
+	std::cout << "self blend set motion\n";
 	calculateRootOffsets();
+};
+
+void SelfBlend::reset()
+{
+	reblend();	
 };
 
 void SelfBlend::reblend()
@@ -134,8 +144,12 @@ void SelfBlend::reblend(float time)
 		default:		  Piavca::Error(_T("Unknown track type"));
 		}
 	}
-	calculateRootOffsets();
 	setBlendStart(time);
+	calculateRootOffsets();
+	
+	mot2->reset();
+	//SelfBlend *sb = dynamic_cast<SelfBlend *>(mot2);
+	//if(sb) sb->reblend(Piavca::Core::getCore()->getTime());
 	//if(mot2) mot2->setStartTime(startTime+blendStart+blendInterval);
 };
 

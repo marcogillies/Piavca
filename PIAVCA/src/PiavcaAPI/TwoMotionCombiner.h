@@ -58,12 +58,18 @@ namespace Piavca
 		virtual bool loaded();
 
 		virtual void setStartTime(float time);
+
+		//! does any resetting needed 
+		void reset();
 	    
 		//! gets the length of the combined motion (by default the length of the longer of the two)
 		float getMotionLength() const;
 
 		//! whether it is a face or body motion
 		virtual bool isFacial();
+
+		//! whether you can access a motions value at frames other than the current one
+		virtual bool isRandomAccess();
 
 		
 		//! given a track ID tests whether it actually points to anything or if its null

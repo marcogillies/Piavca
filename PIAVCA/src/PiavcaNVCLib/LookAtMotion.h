@@ -143,6 +143,9 @@ namespace Piavca
 		
 		virtual bool isFacial(){return false;};
 
+		//! whether you can access a motions value at frames other than the current one
+		virtual bool isRandomAccess(){return false;};
+
 		virtual void load(Avatar *av);
 
 		void reblend(float time);
@@ -242,6 +245,7 @@ namespace Piavca
 		virtual void load(Avatar *av){Motion::load(av);};
 	    
 		virtual bool isFacial(){return true;};
+
 		virtual bool isNull(int trackId) const
 		{
 			Motion *nonConstMot = const_cast<Motion *>(filterMot);

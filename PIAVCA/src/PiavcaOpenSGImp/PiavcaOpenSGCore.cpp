@@ -24,9 +24,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 using namespace Piavca;
 
 PiavcaOpenSGCore::PiavcaOpenSGCore() {
-	//! set up the root node
+	// set up the root node of OpenSG
 	rootNode = OSG::Node::create();
 	
+	// set up transform for it
 	OSG::TransformPtr transCore = OSG::Transform::create();
 	OSG::Matrix m;
 	m.setIdentity();
@@ -47,10 +48,13 @@ TextureHandler *PiavcaOpenSGCore::createTextureHandler()
 
 AvatarCal3DImp *PiavcaOpenSGCore::createAvatarImp(tstring avatarId, TextureHandler *th, bool bailOnMissedJoints, const Vec &Position, const Quat &Orientation)
 {
+	// create an avatar
 	AvatarOpenSGImp *avatarImp = new AvatarOpenSGImp(avatarId, th, bailOnMissedJoints, Position, Orientation);
+	// get the OpenSG node assciated with the avatar
 	OSG::NodePtr avatarNode = avatarImp->getNode();
 	std::cout << "adding avatar node\n";
 	
+	// at the OpenSG node to the graph
 	beginEditCP(rootNode);
 	    rootNode->addChild(avatarNode);
 	endEditCP(rootNode);

@@ -92,9 +92,20 @@ void timeStep()
 
 void displayFunc()
 {
-	timeStep();	
+  static float prevTime = Piavca::Core::getCore()->getTime();
+  static int framecount = 0;
+  static float updateTime = 0;
+  static float prerenderTime = 0;
+  static float renderTime = 0;
+
+  float time1 = Piavca::Core::getCore()->getTime();
+  timeStep();	
+  float time2 = Piavca::Core::getCore()->getTime();
+  updateTime += time2 - time1;
 	 
   g_Params.core->prerender();
+  float time3 = Piavca::Core::getCore()->getTime();
+  prerenderTime += time3 - time2;
 
   // clear the vertex and face counters
   //m_vertexCount = 0;
@@ -140,6 +151,24 @@ void displayFunc()
 
   // swap the front- and back-buffer
   glutSwapBuffers();
+  
+	float time4 = Piavca::Core::getCore()->getTime();
+	renderTime += time4 - time3;
+	
+	framecount ++;
+	float time = Piavca::Core::getCore()->getTime();
+	if((time - prevTime) > 10.0)
+	{
+		std::cout << "framerate " << framecount/(time - prevTime) 
+			<< " update time " << updateTime/framecount  
+			<< " prerender time " << prerenderTime/framecount  
+			<< " render time " << renderTime/framecount << std::endl;
+		framecount = 0;
+		updateTime = 0.0;
+		prerenderTime = 0.0;
+		renderTime = 0.0;
+		prevTime = time;
+	}
   
 }
 
@@ -476,7 +505,7 @@ int main(int argc, char *argv[])
 
   std::cout << "finished loading joints\n";
 
-  Piavca::InitPiavcaPython(Piavca::Core::getCore(), _T("PyTest"));
+  Piavca::InitPiavcaPython(Piavca::Core::getCore(), _T("init_piavca"));
 
 	//glutSetCursor(GLUT_CURSOR_LEFT_ARROW);
 

@@ -118,6 +118,12 @@ namespace Piavca
 			Motion::setStartTime(time);
 			if(filterMot)filterMot->setStartTime(time);
 		}
+
+		//! does any resetting needed 
+		void reset()
+		{
+			if(filterMot)filterMot->reset();
+		};
 	    
 		void setMotion(Motion *mot)
 		{
@@ -146,6 +152,15 @@ namespace Piavca
 		{
 			if(filterMot)
 				return filterMot->isFacial();
+			else
+				return false;
+		};
+
+		//! whether you can access a motions value at frames other than the current one
+		virtual bool isRandomAccess()
+		{
+			if(filterMot)
+				return filterMot->isRandomAccess();
 			else
 				return false;
 		};

@@ -274,12 +274,6 @@ void reshape(int w, int h)
     glutPostRedisplay();
 }
 
-//void updateMesh(Real32 time){
-//    for (int x = 0; x < N; x++)
-//        for (int z = 0; z < N; z++)
-//            wMesh[x][z] = 10*cos(time/1000.f + (x+z)/10.f);
-//}
-
 // just redraw our scene if this GLUT callback is invoked
 void display(void)
 {
@@ -306,7 +300,7 @@ void display(void)
 	if((time - prevTime) > 10.0)
 	{
 		std::cout << "framerate " << framecount/(time - prevTime) 
-			<< " update time " << updateTime/framecount  
+			<< " update time " << updateTime/framecount
 			<< " prerender time " << prerenderTime/framecount  
 			<< " render time " << renderTime/framecount << std::endl;
 		framecount = 0;

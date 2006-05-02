@@ -58,6 +58,7 @@ public:
 	~ChoiceLoopMotion(){};
 	virtual Motion *clone(){return new ChoiceLoopMotion(*this);};
 
+
 	//! sets which motion is currently being played
 	void setCurrentChoice(int i)
 	{
@@ -72,6 +73,8 @@ public:
 			if(mots[i]->findSub(name)) 
 			{
 				currentChoice = static_cast<int>(i);
+				reblend_flag = true;
+				//reblend(Piavca::Core::getCore()->getTime());
 				return;
 			}
 		Piavca::Error(tstring(_T("Unknown choice ")) + name);

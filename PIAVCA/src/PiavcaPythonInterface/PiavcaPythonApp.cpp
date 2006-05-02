@@ -72,10 +72,6 @@ extern "C"
 };
 //#undef _DEBUG
 
-#ifdef _DEBUG
-sadfadfhasfhy
-#endif
-
 #include <Python.h>
 
 #include "PiavcaAPI/PiavcaCore.h"
@@ -392,8 +388,8 @@ void Piavca::EndPiavcaPython(Piavca::Core *core)
 	}	
 	
 	std::cout << "Press any key to exit\n";
-	std::string temp;
-	std::cin >> temp;
+	//std::string temp;
+	std::cin.get();
 
 #ifdef NO_CONSOLE_PRESENT
 	file << strstrm->str();

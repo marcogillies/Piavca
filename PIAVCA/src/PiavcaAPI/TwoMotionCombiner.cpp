@@ -102,6 +102,12 @@ void TwoMotionCombiner::setStartTime(float time)
 	if(mot2)mot2->setStartTime(time);
 }
 
+void TwoMotionCombiner::reset()
+{
+	if(mot1)mot1->reset();
+	if(mot2)mot2->reset();
+};
+
 //! gets the length of the combined motion (by default the length of the longer of the two)
 float TwoMotionCombiner::getMotionLength() const
 {
@@ -122,6 +128,14 @@ bool TwoMotionCombiner::isFacial()
 	if(mot2) return mot2->isFacial();
 	return false;
 };
+
+bool TwoMotionCombiner::isRandomAccess()
+{
+	bool ra1 = true, ra2 = true;
+	if(mot1) ra1 = mot1->isRandomAccess();
+	if(mot2) ra2 = mot2->isRandomAccess();
+	return ra1 && ra2;
+}
 
 
 //! given a track ID tests whether it actually points to anything or if its null

@@ -169,6 +169,7 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 			// load core mesh
 			std::cout << "Loading mesh '" << strData << "'..." << std::endl;
 			lastMeshId = cal_core_model->loadCoreMesh(strPath + strData);
+			std::cout << "Finished Loading mesh '" << strData << "'..." << std::endl;
 			if(lastMeshId == -1)
 			{
 				CalError::printLastError();
@@ -212,6 +213,7 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 		}
 		else if(strKey == "animation")
 		{
+			std::cout << "Loading animation '" << strData << "'..." << std::endl;
 			// extract the animation name
  			std::string::size_type pos = 0;
 			pos = strData.find_first_of(".", pos);
@@ -652,6 +654,7 @@ void	AvatarCal3DImp::setRootPosition (const Vec &Position)
 }
 Vec		AvatarCal3DImp::getRootPosition ()
 {
+   cal_model->getSkeleton()->calculateState();
    if(!cal_model)
    {
        Piavca::Error("setJointOrientation called on empty avatar");
@@ -673,6 +676,7 @@ Vec		AvatarCal3DImp::getRootPosition ()
 }
 void	AvatarCal3DImp::setRootOrientation	(const Quat &Orientation)
 {
+   cal_model->getSkeleton()->calculateState();
    if(!cal_model)
    {
        Piavca::Error("setJointOrientation called on empty avatar");
@@ -959,8 +963,8 @@ void	AvatarCal3DImp::platformSpecific_timeStep (float time)
 
 void	AvatarCal3DImp::render ()
 {
-	std::cout << "avatar.prerender\n";
-	// get the renderer of the model
+  //std::cout << "avatar.prerender\n";
+  // get the renderer of the model
   CalRenderer *pCalRenderer = cal_model->getRenderer();
 
   // begin the rendering loop

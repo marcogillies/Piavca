@@ -30,6 +30,7 @@ MotionCal3DImp::MotionCal3DImp(tstring motionFilename, CalCoreSkeleton *skel)
 {
 	// load the animation from file
 	cal3DAnim = CalLoader::loadCoreAnimation(motionFilename);
+
 	if(!cal3DAnim)
 		Piavca::Error(_T("Error loading animation file ") + motionFilename);
 
@@ -119,7 +120,7 @@ Quat MotionCal3DImp::getQuatValueAtTimeInternal(int trackId, float time)
 	}
 	else
 	{	
-		//std::cout << "MotionCal3DImp " << time << " " << getMotionLength() << std::endl;
+		std::cout << "MotionCal3DImp " << time << " " << getMotionLength() << std::endl;
 		if(time > getMotionLength()) time = getMotionLength();
 		CalCoreTrack *track = cal3DAnim->getCoreTrack(tracksMap[trackId]);
 		CalVector translation;

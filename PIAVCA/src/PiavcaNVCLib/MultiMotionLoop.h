@@ -100,7 +100,7 @@ public:
 	};
 
 	//adds a new motion
-	void addMotion(Motion *mot)
+	virtual void addMotion(Motion *mot)
 	{
 		if(mot)
 		{

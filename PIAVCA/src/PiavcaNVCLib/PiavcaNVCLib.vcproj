@@ -202,6 +202,9 @@
 				RelativePath=".\TimeRangeMotion.h">
 			</File>
 			<File
+				RelativePath=".\TimeWarp.h">
+			</File>
+			<File
 				RelativePath=".\TurnMotion.h">
 			</File>
 			<File

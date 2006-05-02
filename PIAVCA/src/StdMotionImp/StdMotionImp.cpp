@@ -75,6 +75,8 @@ StandardMotionImp::StandardMotionImp(const tstring motionFileName, int flags, Mo
 	else
 	{
 		std::ifstream is(TStringToString(motionFileName).c_str());
+		if(!is)
+			Piavca::Error(_T("Could not open file ") + motionFileName);
 		std::string motiontype;
 		is >> motiontype;
 		std::transform(motiontype.begin(), motiontype.end(), motiontype.begin(), tolower);
@@ -146,9 +148,9 @@ StandardMotionImp::StandardMotionImp(const tstring motionFileName, int flags, Mo
 					if(isNull(trackId)) 
 					{
 						addQuatTrack(trackId, qval);
-						std::cout << "setting first frame " << qval << std::endl;
+						//std::cout << "setting first frame " << qval << std::endl;
 					}	
-					std::cout << "setting frame " << time << qval << std::endl;
+					//std::cout << "setting frame " << time << qval << std::endl;
 					setQuatKeyframe(trackId, time, qval);
 				}
 				break;

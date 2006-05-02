@@ -60,6 +60,9 @@ namespace Piavca
 		
 		virtual bool isFacial(){return facial;};
 
+		//! whether you can access a motions value at frames other than the current one
+		virtual bool isRandomAccess(){return true;};
+
 		//! returns the length of the motion
 		virtual float getMotionLength() const {return 0;};
 

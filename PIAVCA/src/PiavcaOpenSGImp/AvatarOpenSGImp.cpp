@@ -22,6 +22,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include <OpenSG/OSGGeometry.h>
 #include <OpenSG/OSGSimpleTexturedMaterial.h>
 #include <OpenSG/OSGGeoFunctions.h>
+#include "PiavcaAPI/PiavcaCore.h"
 
 using namespace Piavca;
 
@@ -46,7 +47,9 @@ AvatarOpenSGImp::AvatarOpenSGImp(tstring avatarId, TextureHandler *_textureHandl
 	    //transNode->addChild(torus);
 	endEditCP(rootNode);
 	
-	//Find the amounts of memory we will need for each submesh
+	//Set up OpenSG nodes for each submesh
+
+	//The cal3d renderer will give us the mesh data we need
 	CalRenderer* renderer = new CalRenderer(cal_model->getRenderer());
 
 	int meshCount = renderer->getMeshCount();
@@ -54,23 +57,18 @@ AvatarOpenSGImp::AvatarOpenSGImp(tstring avatarId, TextureHandler *_textureHandl
 	int numBuffers = 1;
 	if(doubleBuffer) numBuffers = 2;
 
-	//Initialize mVertices, mNormals, mFaces, mTextureCoordCounts sizes for
-	//the mesh count with dummy vectors
+	//Set up a vector of OpenSG geometries to store the submeshes
 	std::vector< OSG::GeometryPtr > tempVecGeo; tempVecGeo.clear();
-	//std::vector< std::vector< OSG::GeometryPtr > > tempVecVecGeo; tempVecGeo.clear();
-
-	//mGeometries.resize(numBuffers, tempVecVecF);
-
 	mGeometries.resize(meshCount, tempVecGeo);
 
 	//std::cout << "mesh count " << meshCount <<std::endl;
 	for (int i=0; i < meshCount; i++)
 	{
+		// get each submesh
 		int submeshCount = renderer->getSubmeshCount( i );
-
-		//std::cout << "submesh count " << submeshCount <<std::endl;
 		for (int j=0; j < submeshCount; j++)
 		{
+			// create a geometry object to represent the submesh
 			mGeometries[i].push_back(OSG::Geometry::create());
 			std::cout << "submesh " << i << " " << j << " " << std::endl;
 			renderer->selectMeshSubmesh( i, j );
@@ -85,23 +83,25 @@ AvatarOpenSGImp::AvatarOpenSGImp(tstring avatarId, TextureHandler *_textureHandl
 			// The number of vertices (equal numbers of vertices, normals, and texture coords)
 			int vertexCount = renderer->getVertexCount();
 			int faceCount = renderer->getFaceCount();
-		    //std::cout << "vertex count " << vertexCount << std::endl;
-   			OSG::GeoPLengthsPtr length = OSG::GeoPLengthsUI32::create();
+		    OSG::GeoPLengthsPtr length = OSG::GeoPLengthsUI32::create();
    			beginEditCP(length, OSG::GeoPLengthsUI32::GeoPropDataFieldMask);
-   				 // the length of a single quad is four ;-)
+   				 // the length of a single triangle is four ;-)
     			length->addValue(3.0*faceCount);
     		endEditCP(length, OSG::GeoPLengthsUI32::GeoPropDataFieldMask);
 
 			int v;
 			// GeoPositions3f stores the positions of all vertices used in 
     		// this specific geometry core
-  			OSG::GeoPositions3fPtr pos = OSG::GeoPositions3f::create();
+  			// add a vertex for each vertex in the submesh
+			OSG::GeoPositions3fPtr pos = OSG::GeoPositions3f::create();
   			beginEditCP(pos, OSG::GeoPositions3f::GeoPropDataFieldMask);
     			for (v = 0; v < vertexCount; v++)
 		        	pos->addValue(OSG::Pnt3f(mVertices[0][i][j][3*v], 
 		        				mVertices[0][i][j][3*v+1], 
 								mVertices[0][i][j][3*v+2]));
     		endEditCP(pos, OSG::GeoPositions3f::GeoPropDataFieldMask);
+			delete mVertices[0][i][j];
+			mVertices[0][i][j] = (float *) pos->getData();
 		    
 		    // normals
 		    OSG::GeoNormals3fPtr norms = OSG::GeoNormals3f::create();
@@ -111,6 +111,8 @@ AvatarOpenSGImp::AvatarOpenSGImp(tstring avatarId, TextureHandler *_textureHandl
 		        				mNormals[0][i][j][3*v+1], 
 								mNormals[0][i][j][3*v+1]));
 		    endEditCP(norms, OSG::GeoNormals3f::GeoPropDataFieldMask);
+			delete mNormals[0][i][j];
+			mNormals[0][i][j] = (float *) norms->getData();
 			
 
 			// the index buffer
@@ -124,33 +126,27 @@ AvatarOpenSGImp::AvatarOpenSGImp(tstring avatarId, TextureHandler *_textureHandl
 		        }   
 		    endEditCP(indices, OSG::GeoIndicesUI32::GeoPropDataFieldMask);
 
-			
+			//create the material
 			OSG::SimpleTexturedMaterialPtr mat = OSG::SimpleTexturedMaterial::create();
 			unsigned char meshColor[4];
 			
+			// create the ambient, diffuse and specular colours from 
+			// the renderer
 			beginEditCP(mat);
     			renderer->getAmbientColor(&meshColor[0]);
-    			//std::cout << "Ambient " << (int)meshColor[0] << " " 
-    			//						<< (int)meshColor[1] << " " 
-    			//						<< (int)meshColor[2] << std::endl; 
-          		mat->setAmbient(OSG::Color3f(meshColor[0]/256.0f,
+    			mat->setAmbient(OSG::Color3f(meshColor[0]/256.0f,
           					meshColor[1]/256.0f,meshColor[2]/256.0f));
     			renderer->getDiffuseColor(&meshColor[0]);
-    			//std::cout << "Diffuse " << (int)meshColor[0] << " " 
-    			//						<< (int)meshColor[1] << " " 
-    			//						<< (int)meshColor[2] << std::endl; 
-          		mat->setDiffuse(OSG::Color3f(meshColor[0]/256.0f,
+    			mat->setDiffuse(OSG::Color3f(meshColor[0]/256.0f,
     						meshColor[1]/256.0f,meshColor[2]/256.0f));
     			renderer->getSpecularColor(&meshColor[0]);
-    			//std::cout << "Specular " << (int)meshColor[0] << " " 
-    			//						<< (int)meshColor[1] << " " 
-    			//						<< (int)meshColor[2] << std::endl; 
-          		mat->setSpecular(OSG::Color3f(meshColor[0]/256.0f,
+    			mat->setSpecular(OSG::Color3f(meshColor[0]/256.0f,
     						meshColor[1]/256.0f,meshColor[2]/256.0f));
     			float shininess = /*50.0f; */renderer->getShininess();
           		mat->setShininess(shininess);
 			endEditCP(mat);
 			
+
 			OSG::GeoTexCoords2fPtr texcoords = OSG::GeoTexCoords2f::create();
 			// texture coordinates
 		    if(renderer->getMapCount() > 0)
@@ -169,19 +165,7 @@ AvatarOpenSGImp::AvatarOpenSGImp(tstring avatarId, TextureHandler *_textureHandl
 		    	endEditCP(norms, OSG::GeoTexCoords2f::GeoPropDataFieldMask);
 			};
 
-			// need to sort out textures
-			// set the texture coordinate buffer and state if necessary
-			//if(renderer->getMapCount() > 0)
-			//{
-			//	mTextureCoords[buffer][i][j] = new float[vertexCount * 2];
-			//}
-			//else
-			//{
-				//If there are no texture coords, allocate space for a dummy value
-			//	mTextureCoords[buffer][i][j] = new float[1];
-			//}
-
-			//GeometryPtr mGeometries[i][j] = Geometry::create();
+			// set up the geometry object from the data we have just created
 		    beginEditCP(mGeometries[i][j]);
 			    mGeometries[i][j]->setTypes(type);
 			    mGeometries[i][j]->setLengths(length);
@@ -191,6 +175,7 @@ AvatarOpenSGImp::AvatarOpenSGImp(tstring avatarId, TextureHandler *_textureHandl
 			    mGeometries[i][j]->setMaterial(mat);
 			    if(renderer->getMapCount() > 0)
 			    	mGeometries[i][j]->setTexCoords(texcoords);
+				mGeometries[i][j]->setDlistCache(false);
     		endEditCP(mGeometries[i][j]);
 			
 		    OSG::NodePtr geoNode = OSG::Node::create();
@@ -198,13 +183,6 @@ AvatarOpenSGImp::AvatarOpenSGImp(tstring avatarId, TextureHandler *_textureHandl
 		        geoNode->setCore(mGeometries[i][j]);
 		    endEditCP(geoNode);
 		    
-//		    OSG::NodePtr geoNode = OSG::calcVertexNormalsGeo(mGeometries[i][j], 1.0);
-//		    //SimpleMaterialPtr mat = SimpleMaterial::create();
-		    
-//		    OSG::GeometryPtr geo = OSG::GeometryPtr::dcast(geoNode->getCore());
-//		    beginEditCP(geo);
-//		        geo->setMaterial(mat);
-//		    endEditCP(geo);
 		    
 		    //OSG::NodePtr box = OSG::makeBox(150,38,150, 2, 2, 2);
 			beginEditCP(rootNode);
@@ -257,70 +235,66 @@ Quat	AvatarOpenSGImp::getRootOrientation		()
 };
 
 void AvatarOpenSGImp::prerender()
-{
-//	OSG::Pnt3f c, max, min;
-//	OSG::DynamicVolume &vol = getNode()->getVolume(false);
-//	vol.getCenter(c);
-//	vol.getBounds(min, max);
-//	std::cout << "centre " << c << " ";
-//	std::cout << " min " << min << " ";
-//	std::cout << " max " << max << std::endl;
-	
+{	
+	static float prevTime = Piavca::Core::getCore()->getTime();
+	static int framecount = 0;
+	static float cal3dTime = 0;
+	static float meshTime = 0;
+
+	float time1 = Piavca::Core::getCore()->getTime();
 	AvatarCal3DImp::prerender();
-	//Find the amounts of memory we will need for each submesh
-	CalRenderer* renderer = new CalRenderer(cal_model->getRenderer());
+	float time2 = Piavca::Core::getCore()->getTime();
+	cal3dTime += time2 - time1;
+	//CalRenderer* renderer = new CalRenderer(cal_model->getRenderer());
 
-	int meshCount = renderer->getMeshCount();
-	//std::cout << "mesh count " << meshCount <<std::endl;
-	for (int i=0; i < meshCount; i++)
+	//// go through all the meshes, copying the data into the
+	//// opensg objects
+	//int meshCount = renderer->getMeshCount();
+	//for (int i=0; i < meshCount; i++)
+	//{
+	//	int submeshCount = renderer->getSubmeshCount( i );
+	//	for (int j=0; j < submeshCount; j++)
+	//	{
+	//		renderer->selectMeshSubmesh( i, j );
+
+	//		// The number of vertices (equal numbers of vertices, normals, and texture coords)
+	//		int vertexCount = renderer->getVertexCount();
+	//		//std::cout << "vertex count " << vertexCount << std::endl;
+	//		int v;
+	//		// the position data field
+	//	    OSG::GeoPositions3fPtr pos = OSG::GeoPositions3fPtr::dcast(mGeometries[i][j]->getPositions());
+	//		// copy all the vertex positions
+ // 			beginEditCP(pos, OSG::GeoPositions3f::GeoPropDataFieldMask);
+ //   			for (v = 0; v < vertexCount; v++)
+	//				pos->setValue(OSG::Pnt3f(mVertices[0][i][j][3*v], 
+	//	        				mVertices[0][i][j][3*v+1], 
+	//							mVertices[0][i][j][3*v+2]), v);
+ //   		endEditCP(pos, OSG::GeoPositions3f::GeoPropDataFieldMask);
+	//	    
+	//	    // update normals
+	//	    OSG::GeoNormals3fPtr norms = OSG::GeoNormals3fPtr::dcast(mGeometries[i][j]->getNormals());
+	//	    beginEditCP(norms, OSG::GeoNormals3f::GeoPropDataFieldMask);
+	//	        for (v = 0; v < vertexCount; v++)
+	//				norms->setValue(OSG::Vec3f(mNormals[0][i][j][3*v], 
+	//	        				mNormals[0][i][j][3*v+1], 
+	//							mNormals[0][i][j][3*v+1]), v);
+	//	    endEditCP(norms, OSG::GeoNormals3f::GeoPropDataFieldMask);	
+	//	}
+	//}
+ //  delete renderer;
+   float time3 = Piavca::Core::getCore()->getTime();
+	meshTime += time3 - time2;
+   
+	/*framecount ++;
+	float time = Piavca::Core::getCore()->getTime();
+	if((time - prevTime) > 10.0)
 	{
-		int submeshCount = renderer->getSubmeshCount( i );
-		//std::cout << "submesh count " << submeshCount <<std::endl;
-		for (int j=0; j < submeshCount; j++)
-		{
-			//std::cout << "submesh " << i << " " << j << " " << std::endl;
-			renderer->selectMeshSubmesh( i, j );
-
-
-			//if(j > 10) break;
-						
-			// The number of vertices (equal numbers of vertices, normals, and texture coords)
-			int vertexCount = renderer->getVertexCount();
-			//std::cout << "vertex count " << vertexCount << std::endl;
-			int v;
-			// the position data field
-		    OSG::GeoPositions3fPtr pos = OSG::GeoPositions3fPtr::dcast(mGeometries[i][j]->getPositions());
-			// GeoPositions3f stores the positions of all vertices used in 
-    		// this specific geometry core
-  			beginEditCP(pos, OSG::GeoPositions3f::GeoPropDataFieldMask);
-    			for (v = 0; v < vertexCount; v++)
-		        	pos->setValue(OSG::Pnt3f(mVertices[0][i][j][3*v], 
-		        				mVertices[0][i][j][3*v+1], 
-								mVertices[0][i][j][3*v+2]), v);
-    		endEditCP(pos, OSG::GeoPositions3f::GeoPropDataFieldMask);
-		    
-		    // update normals
-		    OSG::GeoNormals3fPtr norms = OSG::GeoNormals3fPtr::dcast(mGeometries[i][j]->getNormals());
-		    beginEditCP(norms, OSG::GeoNormals3f::GeoPropDataFieldMask);
-		        for (v = 0; v < vertexCount; v++)
-		        	norms->setValue(OSG::Vec3f(mNormals[0][i][j][3*v], 
-		        				mNormals[0][i][j][3*v+1], 
-								mNormals[0][i][j][3*v+1]), v);
-		    endEditCP(norms, OSG::GeoNormals3f::GeoPropDataFieldMask);
-
-			// the index buffer
-//			int faceCount = renderer->getFaceCount();
-//		    OSG::GeoIndicesUI32Ptr indices = OSG::GeoIndicesUI32Ptr::dcast(mGeometries[i][j]->getIndices());
-//		    beginEditCP(indices, OSG::GeoIndicesUI32::GeoPropDataFieldMask);
-//		        for (int ind = 0; ind < faceCount; ind++)
-//		        {
-//			        indices->setValue(mFaces[0][i][j][3*ind], 3*ind);
-//			        indices->setValue(mFaces[0][i][j][3*ind+1], 3*ind+1);   
-//			        indices->setValue(mFaces[0][i][j][3*ind+2], 3*ind+2);   
-//		        }   
-//		    endEditCP(indices, OSG::GeoIndicesUI32::GeoPropDataFieldMask);
-			
-		}
-	}
-   delete renderer;
+		std::cout << "framerate " << framecount/(time - prevTime) 
+			<< " cal3d time " << cal3dTime/framecount  
+			<< " mesh time " << meshTime/framecount << std::endl;
+		framecount = 0;
+		cal3dTime = 0.0;
+		meshTime = 0.0;
+		prevTime = time;
+	}*/
 };

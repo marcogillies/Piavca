@@ -50,19 +50,40 @@ namespace Piavca
 class RandomBlendLoop : public MultiMotionLoop
 {
 	bool autoshift;
+	std::vector<float> weights;
 public:
 	//! pass in a vector of motions to be used.
 	RandomBlendLoop(const MotionVec &mv, float endTime = -1.0, float interval = 0.01)
 		:MultiMotionLoop(mv, endTime, interval), autoshift(true)
-	{};
+	{
+		weights.assign(mv.size(), 1.0f);
+	};
 	//! create an empty loop
 	RandomBlendLoop(float endTime = -1.0, float interval = 0.01)
 		:MultiMotionLoop(endTime, interval), autoshift(true)
 	{};
 	RandomBlendLoop(const RandomBlendLoop &rbl)
-		:MultiMotionLoop(rbl), autoshift(rbl.autoshift) {};
+		:MultiMotionLoop(rbl), autoshift(rbl.autoshift), weights(rbl.weights) {};
 	~RandomBlendLoop(){};
 	virtual Motion *clone(){return new RandomBlendLoop(*this);};
+
+	virtual void addMotion(Motion *mot)
+	{
+		MultiMotionLoop::addMotion(mot);
+		if(mot)
+		{
+			weights.push_back(1.0f);
+		}
+	};
+
+	virtual void addMotion(Motion *mot, float weight)
+	{
+		MultiMotionLoop::addMotion(mot);
+		if(mot)
+		{
+			weights.push_back(weight);
+		}
+	};
 
 	void setAutoShift(bool b){autoshift = b;};
 
@@ -72,10 +93,15 @@ public:
 		Motion *totalMot = NULL;
 		for (MotionVec::size_type i = 0; i < numChosen; i++)
 		{
-			Motion *chosenmot = mots[rand()%mots.size()];
+			vector<float>::size_type chosen;
+			do
+			{
+				chosen = rand()%weights.size();
+			}while(((float)(rand()%100))/100 > weights[chosen]);
+			Motion *chosenmot = mots[chosen];
 			if(totalMot)
 			{
-				float weight = ((float)(rand()%1000))/1000.0f;
+				float weight = weights[chosen]*((float)(rand()%1000))/1000.0f;
 				totalMot = new BlendBetween(totalMot, chosenmot, weight);
 			}
 			else

@@ -41,9 +41,16 @@ void SequentialBlend::calculateRootOffsets()
 	oriOffset = Quat();
 	if(mot1 && !mot1->isNull(root_position_id))
 		m1End  = mot1->getVecValueAtTime(root_position_id, blendStart);
+	float m2startTime=0;
 	if(mot2 && !mot2->isNull(root_position_id))
+	{
+		m2startTime = mot2->getStartTime();
 		m2Start = mot2->getVecValueAtTime(root_position_id, mot2->getStartTime());
+	}
 	
+	std::cout << "sequential blend root offsets " << m1End << " " << m2Start 
+		<< " " << blendStart << " " << m2startTime << std::endl;
+
 	if(mot1 && !mot1->isNull(root_orientation_id)) 
 	{
 		oriOffset = mot1->getQuatValueAtTime(root_orientation_id, blendStart);
@@ -100,13 +107,15 @@ Vec SequentialBlend::getTransformedVec(int trackId, float t)const
 		oriOffset = oriOffset/otherOri;
 	}*/
 	Vec subtractedVec = oriOffset.transform(mot2->getVecValueAtTime(trackId, t) - m2Start);
+	//std::cout << t << " " << mot2->getStartTime() << " ";
+	//std::cout << "sequential blend " << m1End[1] << " " << m2Start[1] << " " << subtractedVec[1] << " " << (subtractedVec + m1End)[1] << std::endl;
 	// we normally only maintian the x-z coordinates of
 	// the previous position, and blend back the y (to 
 	// stop the character flying away)
-	if(maintainY)
+	if(true/*maintainY*/)
 		return subtractedVec + m1End;
 	else
-		return Vec(subtractedVec[0] + m1End[0], subtractedVec[1], subtractedVec[2] + m1End[2]);
+		return Vec(subtractedVec[0] + m1End[0], mot2->getVecValueAtTime(trackId, t)[1], subtractedVec[2] + m1End[2]);
 }
 
 Vec SequentialBlend::getVecValueAtTimeInternal(int trackId, float time)
@@ -128,11 +137,16 @@ Vec SequentialBlend::getVecValueAtTimeInternal(int trackId, float time)
 	{
 		// if its before the start of the blend return the value from the first motion
 		if(time < blendStart)
+		{
+			std::cout << "sequential blend, before blend start\n";		
 			return mot1->getVecValueAtTime(trackId, time);
+		
+		}
 		if(time - blendStart < blendInterval)
 		{
+			std::cout << "sequential blend, during blend\n";
 			float t = time - blendStart;
-			return mot1->getVecValueAtTime(trackId, blendStart)*(1-t/blendInterval) +getTransformedVec(trackId, mot2->getStartTime())*(t/blendInterval);
+			return /*mot1->getVecValueAtTime(trackId, blendStart)*/m1End*(1-t/blendInterval) +getTransformedVec(trackId, mot2->getStartTime())*(t/blendInterval);
 				
 			//Vec rootVal = mot1->getVecValueAtTime(trackId, blendStart);
 			// we normally only maintian the x-z coordinates of
@@ -208,7 +222,9 @@ Quat SequentialBlend::getQuatValueAtTimeInternal(int trackId, float time)
 	// if its before the start of the blend return the value from the first motion
     if(time < blendStart)
 	{
-		//if(trackId == 8) std::cout << "before blend\n";
+		//if(trackId == 8) 
+		//	std::cout << "before blend "
+		//	<< time << " " << blendStart << " " << Core::getCore()->getTime() << std::endl;
 	    return mot1->getQuatValueAtTime(trackId, time);
 	}
 	if(trackId == root_orientation_id)

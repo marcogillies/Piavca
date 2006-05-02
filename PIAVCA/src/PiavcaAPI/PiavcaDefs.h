@@ -29,7 +29,7 @@
 #ifndef		PIAVCA_DECL
 
 
-#ifdef			PIAVCA_DLL
+//#ifdef			PIAVCA_DLL
 #ifdef				PIAVCA_CLIENT
 
 #define					PIAVCA_DECL __declspec( dllimport )
@@ -40,11 +40,11 @@
 
 #endif
 
-#else
+//#else
 
-#define				PIAVCA_DECL
+//#define				PIAVCA_DECL
 
-#endif
+//#endif
 
 #endif
 

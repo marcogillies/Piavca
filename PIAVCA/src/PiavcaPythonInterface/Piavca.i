@@ -223,6 +223,12 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 		Py_INCREF(Py_None);
 		return Py_None;
 	}	
+	PyObject *__repr__()
+	{
+		std::ostringstream os;
+		os << (*self);
+		return Py_BuildValue("s", os.str().c_str());
+	}	
 }
 
 

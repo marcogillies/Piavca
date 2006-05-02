@@ -114,7 +114,7 @@ protected:
 public:
 	//! default constructor
 	Motion():avatar(NULL), startTime(0), pausedTime(-1), offsetTime(0), refCount(0), ownedByCore(false), name(_T("")) {};
-	Motion(const Motion &mot):avatar(NULL), startTime(0), pausedTime(-1), offsetTime(0), refCount(0), ownedByCore(false), name(mot.name) {};
+	Motion(const Motion &mot):avatar(NULL), startTime(mot.startTime), pausedTime(-1), offsetTime(0), refCount(0), ownedByCore(false), name(mot.name) {};
 	
 	virtual ~Motion(){};
 
@@ -148,6 +148,9 @@ public:
 	float getStartTime(){return startTime;};
 	//! returns the end time of the motion
 	float getEndTime()  {return startTime + getMotionLength();};
+
+	//! does any resetting needed 
+	virtual void reset(){};
 
 	//! registers an owner for a motion, the motion will not be deleted until disposed is called.
 	/*!
@@ -202,6 +205,9 @@ public:
 
 	//! whether it is a face or body motion
 	virtual bool isFacial(){return false;};
+
+	//! whether you can access a motions value at frames other than the current one
+	virtual bool isRandomAccess(){return false;};
 
 	//! the ID of the first track that is present in the motion (the ordering is arbitrary)
 	int begin() const {int i=0; while(i <= end() && isNull(i))i++; return i;};

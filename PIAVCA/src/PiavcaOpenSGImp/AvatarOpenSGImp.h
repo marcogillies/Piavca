@@ -43,6 +43,28 @@ class AvatarOpenSGImp : public AvatarCal3DImp
 
 	AvatarOpenSGImp(tstring avatarId, TextureHandler *_textureHandler, bool bailOnMissedJoints, const Vec &Position, const Quat &Orientation);
 	
+	
+	/*! This is a function that does platform specific per-frame stuff
+	 *  Called by timeStep
+	 */
+	virtual void	platformSpecific_timeStep (float time)
+	{
+		int i,j;
+		for(i =0; i < mGeometries.size(); i++)
+			for(j =0; j < mGeometries[i].size(); j++)
+			{
+				beginEditCP(OSG::GeoPositions3fPtr::dcast(mGeometries[i][j]->getPositions()), OSG::GeoPositions3f::GeoPropDataFieldMask);
+				beginEditCP(OSG::GeoNormals3fPtr::dcast(mGeometries[i][j]->getNormals()), OSG::GeoNormals3f::GeoPropDataFieldMask);
+			}
+		AvatarCal3DImp::platformSpecific_timeStep(time);
+    	for(i =0; i < mGeometries.size(); i++)
+			for(j =0; j < mGeometries[i].size(); j++)
+			{
+				endEditCP(OSG::GeoPositions3fPtr::dcast(mGeometries[i][j]->getPositions()), OSG::GeoPositions3f::GeoPropDataFieldMask);
+				endEditCP(OSG::GeoNormals3fPtr::dcast(mGeometries[i][j]->getNormals()), OSG::GeoNormals3f::GeoPropDataFieldMask);	
+			}
+	}
+
 public:
 	//! destructor
 	virtual ~AvatarOpenSGImp(){};

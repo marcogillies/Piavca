@@ -139,6 +139,9 @@ namespace Piavca
 			return imp->facial;
 		};
 
+		//! whether you can access a motions value at frames other than the current one
+		virtual bool isRandomAccess(){return true;};
+
 		//! given a track ID tests whether it actually points to anything or if its null
 		bool isNull(int trackId)const 
 		{

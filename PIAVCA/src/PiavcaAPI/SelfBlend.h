@@ -45,6 +45,8 @@ namespace Piavca
 	
 		virtual Motion *clone(){return new SelfBlend(*this);};
 	    
+		virtual void reset();
+
 		//! saves the current state of the motion and start blending the motion back into that from the start
 	    void reblend();
 		//! saves the state of the motion at time and start blending the motion back into that from the start

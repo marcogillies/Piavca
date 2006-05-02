@@ -46,7 +46,7 @@ namespace Piavca
 class RandomLoopMotion : public ChoiceLoopMotion
 {
 protected:
-	vector<float>weights;
+	vector<float> weights;
 public:
 	//! pass in a vector of motions to be used, and a vector with a weight for each motion.
 	/*!
@@ -77,6 +77,46 @@ public:
 		:ChoiceLoopMotion(rl), weights(rl.weights){};
 	~RandomLoopMotion(){};
 	virtual Motion *clone(){return new RandomLoopMotion(*this);};
+
+	static RandomLoopMotion *convertTo(Motion *m)
+	{
+		return dynamic_cast<RandomLoopMotion *>(m);
+	};
+
+	virtual void addMotion(Motion *mot)
+	{
+		MultiMotionLoop::addMotion(mot);
+		if(mot)
+		{
+			weights.push_back(1.0f);
+		}
+	};
+
+	virtual void addMotion(Motion *mot, float weight)
+	{
+		MultiMotionLoop::addMotion(mot);
+		if(mot)
+		{
+			weights.push_back(weight);
+		}
+	};
+
+	void setProbability(int index, float prob)
+	{
+		if(index >= 0 && index < weights.size())
+			weights[index] = prob;
+		
+		float sum = 0.0;
+		vector<float>::size_type i;
+		for(i = 0; i < weights.size(); i++)
+		{
+			sum += weights[i];
+		}
+		for(i = 0; i < weights.size(); i++)
+		{
+			weights[i] = weights[i]/sum;
+		}
+	}
 
 	//! called each time around the loop
 	/*!

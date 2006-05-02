@@ -88,6 +88,8 @@ std::ostream &operator<<(std::ostream &os, const Vec &v)
 
 PIAVCA_DECL std::istream &operator>>(std::istream &is, Piavca::Vec &v)
 {
+	while(is.peek() == ' ')
+		is.ignore();
 	if(is.peek() == '[')
 		is.ignore();
 	for (int i =0; i < 3; i++)
@@ -99,6 +101,8 @@ PIAVCA_DECL std::istream &operator>>(std::istream &is, Piavca::Vec &v)
 			is.ignore();
 	}
 	if(is.peek() == ']')
+		is.ignore();
+	while(is.peek() == ' ')
 		is.ignore();
 	return is;
 }

@@ -128,4 +128,18 @@
   
 	}
 
+	// a new user friendly version of playMotion
+	void add_background_motion(Motion *m)
+	{
+		Piavca::AvatarMotionQueue::getQueue(self)->addBackgroundMotion(_T(""), m);
+  
+	}
+	void add_background_motion(const char *motionName)
+	{
+		Piavca::AvatarMotionQueue::getQueue(self)->addBackgroundMotion
+				(StringToTString(motionName), 
+				Piavca::Core::getCore()->getMotion(StringToTString(motionName)));
+  
+	}
+
 }

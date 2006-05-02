@@ -56,7 +56,7 @@ struct queueElement
 	tstring name;
 	float atTime;
 	bool background;
-	queueElement():mot(NULL), name(""), atTime(0.0), background(false){};
+	queueElement():mot(NULL), name(_T("")), atTime(0.0), background(false){};
 	queueElement( tstring n, Motion *m, float t, bool back = false)
 		:mot(m), name(n), atTime(t), background(back){};
 	queueElement(const queueElement &qe)
@@ -78,7 +78,7 @@ class PIAVCA_DECL AvatarMotionQueue : public AvatarTimeCallback
 
   //Explicit default constructor
   AvatarMotionQueue()
-      :AvatarTimeCallback("AvatarMotionQueue") {};
+      :AvatarTimeCallback(_T("AvatarMotionQueue")) {};
 
   /*!
    * Pass in a scale factor for the position component of the motions (e.g.
