@@ -62,6 +62,7 @@ struct displayParams
 	int width, height;
 	int lastMouseX, lastMouseY;
 	float leftright, updown, distance;
+	float leftright_delta, updown_delta;
 	float tiltAngle, twistAngle;	
 } g_Params;
 
@@ -194,16 +195,16 @@ void keyboardFunc(unsigned char key, int x, int y)
       exit(0);
       break;
 	case 'd':
-	  g_Params.leftright += 10.0f;
+	  g_Params.leftright += g_Params.leftright_delta;
 	  break;
 	case 'a':
-	  g_Params.leftright -= 10.0f;
+	  g_Params.leftright -= g_Params.leftright_delta;
 	  break;
 	case 's':
-	  g_Params.updown += 50.0f;
+	  g_Params.updown += g_Params.updown_delta;
 	  break;
 	case 'w':
-	  g_Params.updown -= 50.0f;
+	  g_Params.updown -= g_Params.updown_delta;
 	  break;
 	case 'r':
 		g_Params.tiltAngle = -70.0f;
@@ -315,8 +316,12 @@ int main(int argc, char *argv[])
   g_Params.lastMouseX = 0; 
   g_Params.lastMouseY = 0;
   g_Params.leftright = 0; 
-  g_Params.updown = -100; 
-  g_Params.distance = 300;
+  g_Params.leftright_delta = 10; 
+  g_Params.updown = 85;  
+  g_Params.updown_delta = 10; 
+  //g_Params.updown = -100; 
+  g_Params.distance = 50;
+  //g_Params.distance = 300;
   g_Params.tiltAngle = -90; 
   g_Params.twistAngle = 0;	
 
@@ -505,7 +510,7 @@ int main(int argc, char *argv[])
 
   std::cout << "finished loading joints\n";
 
-  Piavca::InitPiavcaPython(Piavca::Core::getCore(), _T("init_piavca"));
+  Piavca::InitPiavcaPython(Piavca::Core::getCore(), _T("PyTest"));
 
 	//glutSetCursor(GLUT_CURSOR_LEFT_ARROW);
 

@@ -11,6 +11,9 @@ print sys.path
 
 import Piavca
 
+sys.path.append("../../ExponentialMap/")
+import ExpMapTest
+
 # hack to make TK work, it expects the name of the app to be
 # in sys.argv[0] but argv is not set up if python is run from
 # within a windows app as it is here
