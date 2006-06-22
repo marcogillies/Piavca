@@ -1,0 +1,277 @@
+
+// Global scene parameters
+
+SET SCENE_FOV = 60;
+SET SCENE_NEAR = 0.5;
+SET SCENE_FAR = 1000;
+
+// Needed includes 
+
+#include <Script3d.h>
+#include <GLConst.h>
+#include <Impulse.h>
+#include <VirtualKey.h>
+
+
+//****************************tracking**********************
+
+// Camera globals
+var CamDir = [0,0,1];		//camera direction
+
+//--------------------------------------My Code-----------------------------------//
+var CamPos = [0, -80, 30]; //camera position
+//--------------------------------------My Code End-------------------------------//
+
+// Light globals
+var Luce;
+var PosL = [0.0,10.0,10.0];	//default light position
+
+//-----------------------------------Plug In Test-------------------------------//
+var externalmodule;
+//-----------------------------------Plug In Test End---------------------------//
+
+// Function declarations
+function KeyManager();
+function CameraMoveMouse();
+function DrawGrid();
+
+function OnDownload()
+{
+	FileDownload("XVR2Piavca.dll");
+	FileDownload("cal3d.dll");
+	FileDownload("python24.dll");
+	//FileDownload("cally.zip");
+	FileDownload("Buffy.zip");
+
+	// TO DO		
+}
+
+
+
+function OnInit(params)
+{
+
+	// Camera
+	SetCameraPosition(CamPos);
+	SetCameraDirection(CamDir);
+	CameraRotate(90, 1, 0, 0);
+	CameraRotate(180, 0, 1, 0);
+
+
+	// Light
+	Luce = NewLight();
+	Luce.SetDiffuse(1,1,1);
+	Luce.Enable();	
+
+	// Light initial position
+	Luce.SetPosition(PosL);
+
+	
+	ConsoleFont("Lucida Console",14);
+	ConsoleColor(1,0,0);
+	ConsoleText(0.01,0.01, "Cally Demo");
+
+//------------------------------Plug In Test----------------------------------------//
+	externalmodule = CVmExternDLL("XVR2Piavca.dll");
+
+	externalmodule.__AddFunction(C_INT, "onInitial", C_PCHAR, C_PCHAR);
+	externalmodule.__AddFunction(C_INT, "runMethod", C_PCHAR);
+	externalmodule.__AddFunction(C_VOID, "displayFunc", C_VOID);
+	externalmodule.__AddFunction(C_VOID, "exitFunc", C_VOID);
+	
+	externalmodule.__AddFunction(C_PCHAR, "GetLastMessage", C_VOID);
+
+	//externalmodule.onInitial(".\\cally", "PyTest");
+	externalmodule.onInitial(".\\Buffy", "PyTest");
+	//externalmodule.onInitial(".\\Buffy", "PCA");
+	
+//------------------------------Plug In Test End------------------------------------//
+	
+}
+
+function OnFrame()
+{
+	// Camera manager
+	CameraMoveMouse();
+	//KeyManager();
+
+	
+	SceneBegin(/*VR_STEREO_LEFT*/);
+
+//------------------OnFrame------------------My Code----------------------------
+		
+		//Draw Obj
+		ConsoleFont("Lucida Console",14);
+		ConsoleColor(1,0,0);
+		ConsoleText(0.01,0.01, externalmodule.GetLastMessage());//"Cally Demo");
+		//ConsoleText(0.01,0.01, "Cally Demo");
+	
+//-----------------------------------My Code End-------------------------
+		// Draws grid
+		DrawGrid();
+
+	GLPushMatrix();
+		
+//------------------OnFrame------------------Plug In Test----------------------//
+ 	externalmodule.displayFunc();
+//------------------OnFrame------------------Plug In Test End------------------//
+
+
+	GLPopMatrix();
+
+	SceneEnd();
+}
+
+//---------------KeyManager-----------------My Code----------------------------------------
+
+function KeyManager()
+{
+   
+}
+//----------------------------------------My Code End-------------------------------
+
+/*function DownloadReady( RequestID )
+{
+	// TO DO
+}*/
+
+
+
+function OnTimer()
+{
+	// TO DO
+}
+
+
+
+function OnExit()
+{
+	// TO DO
+//------------------OnExit------------------Plug In Test----------------------//
+	externalmodule.exitFunc();
+//------------------OnExit------------------Plug In Test End------------------//
+}
+
+// Camera manager (using mouse)
+function CameraMoveMouse()
+{
+	static var InMouseR = false, InMouseL = false;				
+	static var PrecX = 0, PrecY = 0;			
+	// Change these values to modify the mouse sensitivity
+	var TR_SENSITIVITY  = 0.001;
+	var ROT_SENSITIVITY = 0.01;
+	// Mouse manager
+	if(Mouse.ButtonL && !Mouse.ButtonR)
+	{
+		//====  Left Button: Camera rotation  ====//
+		if (InMouseL)
+		{			
+			CameraRotateABS(( Mouse.X-PrecX)*ROT_SENSITIVITY,0,1,0);
+			CameraRotateABS((Mouse.Y-PrecY)*ROT_SENSITIVITY,1,0,0);		
+		}
+		else
+		{
+			PrecX = Mouse.X;
+			PrecY = Mouse.Y;
+		}
+		InMouseL = true;
+		InMouseR = false;
+	}
+	else
+	if(Mouse.ButtonR)
+	{
+		//====  Right Button: Camera translation  ====//
+		if (InMouseR)
+		{
+			var CameraMatrix = GetCameraMatrix();
+			var CameraPos = GetCameraPosition();
+			if (!Mouse.ButtonL)
+			//====  Translation on X and Z axis ====//
+				CameraPos += GetCameraZAxis() * (Mouse.y-PrecY)*TR_SENSITIVITY + GetCameraXAxis() * (Mouse.X- PrecX)*TR_SENSITIVITY;
+			else
+			//====  Right + Left Button: Translation on Y axis ====//
+				CameraPos -= GetCameraYAxis() * (Mouse.y-PrecY)*TR_SENSITIVITY;
+			SetCameraPosition(CameraPos);		
+		}
+		else
+		{
+			PrecX = Mouse.X;
+			PrecY = Mouse.Y;
+		}
+		InMouseR = true;
+		InMouseL = false;
+	}	
+	else
+	{
+		InMouseR = false;
+		InMouseL = false;
+	}
+	
+}
+
+// Camera manager (using mouse)
+function CameraMoveMouse2()
+{
+	static var InMouseR = false, InMouseL = false;				
+	static var PrecX = 0, PrecY = 0;			
+	if (Mouse.ButtonL)
+	{
+		if (InMouseL)
+		{	
+			CameraRotate( (Mouse.X - PrecX)/100.0, 0,1,0 );
+			CamPos = GetCameraPosition();
+			CamDir = GetCameraDirection(); 
+			CamPos = CamPos - CamDir*((Mouse.Y - PrecY)/100.0);
+			SetCameraPosition(CamPos);
+		}
+		else
+		{
+			PrecX = Mouse.X;
+			PrecY = Mouse.Y;
+		}
+		InMouseL = true;		
+	}
+	else
+		InMouseL = false;
+
+	if (Mouse.ButtonR)
+	{
+		if (InMouseR)
+		{
+			CamPos = GetCameraPosition();
+			CamPos[1] = CamPos[1]+( PrecY - Mouse.Y)/100.0;
+			SetCameraPosition( CamPos );
+		}
+		else
+		{
+			PrecX = Mouse.X;
+			PrecY = Mouse.Y;
+		}
+		InMouseR = true;
+	}
+	else
+		InMouseR = false;
+
+}
+
+// Draws a grid
+function DrawGrid()
+{
+	var i;
+	glLineWidth(1);
+	
+	glDisable(GL_LIGHTING);
+	glColor(0.5,0.5,0.5);
+	
+	glBegin(GL_LINES);
+	for( i= -100; i<=100; i+=10 )
+	{
+		glVertex( i, 100, 0 );
+		glVertex( i, -100, 0 );
+		
+		glVertex( 100, i, 0 );
+		glVertex(-100, i, 0 );
+	}
+	glEnd();
+}
+

@@ -1,0 +1,27 @@
+<HTML>
+<HEAD>
+<TITLE>
+Woman
+</TITLE>
+</HEAD>
+<BODY bgcolor = "#ffffff">
+<OBJECT ID="Woman"
+WIDTH=90%
+HEIGHT=90%
+CLASSID="CLSID:5D589287-1496-4223-AE64-65FA078B5EAB"
+TYPE="application/x-oleobject"
+CODEBASE="http://client.vrmedia.it/XVRPlayer.cab#Version=1,0,0,900">
+<PARAM NAME="ScriptName" VALUE="Woman.s3d.bin">
+<PARAM NAME="EngineVersion" VALUE="0141">
+<PARAM NAME="EngineParam" VALUE="Depth=24;STEREO">
+<PARAM NAME="BackgroundColor" VALUE="#ffffff">
+</OBJECT>
+<SCRIPT LANGUAGE="VBScript">
+Sub Document_onKeyPress()
+    if(window.event.keyCode=27) then
+	window.close()
+    End If
+End Sub
+</SCRIPT>
+</BODY>
+</HTML>
