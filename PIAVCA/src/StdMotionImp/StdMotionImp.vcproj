@@ -243,6 +243,14 @@
 					Outputs=" $(ProjectDir)bvhLexer.cpp"/>
 			</FileConfiguration>
 			<FileConfiguration
+				Name="Release|Win32">
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="running flex"
+					CommandLine="flex.exe -Pbvh -obvhLexer.cpp &quot;$(InputPath)&quot;"
+					Outputs=" $(ProjectDir)bvhLexer.cpp"/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="C Only Debug|Win32">
 				<Tool
 					Name="VCCustomBuildTool"
@@ -270,6 +278,14 @@
 					Description="running bison"
 					CommandLine="bison -p bvh -d &quot;$(InputPath)&quot;
 "
+					Outputs="&quot;$(ProjectDir)bvhParser.tab.cpp&quot;;&quot;$(ProjectDir)bvhParser.tab.hpp&quot;"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Release|Win32">
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="running bison"
+					CommandLine="bison -p bvh -d &quot;$(InputPath)&quot;"
 					Outputs="&quot;$(ProjectDir)bvhParser.tab.cpp&quot;;&quot;$(ProjectDir)bvhParser.tab.hpp&quot;"/>
 			</FileConfiguration>
 			<FileConfiguration

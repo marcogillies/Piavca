@@ -143,6 +143,13 @@ Vec PyVec_AsVec(PyObject *obj)
     //$1 = static_cast<AvatarTimeCallback *>($input);
 }
 
+
+%typemap(in) PyMotion *
+{
+	if ((SWIG_ConvertPtr($input,(void **) &$1, SWIGTYPE_p_Piavca__PyMotion,SWIG_POINTER_EXCEPTION | 0 )) == -1) SWIG_fail;
+    //$1 = static_cast<AvatarTimeCallback *>($input);
+}
+
 %typemap(in) Piavca::MotionList
 {
 	PyObject *keys = PyDict_Keys($input);
@@ -307,7 +314,7 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %include "PiavcaNVCLib/AvatarMotionQueue.h"
 %include "PiavcaAPI/Object.h"
 %include "PiavcaPythonInterface/PyTimeCallback.h"
-%include "PiavcaPythonInterface/PyMotion.h"
+%include "PyMotion.h"
 
 %include "PiavcaAPI/MathsUtils.h"
 %include "PiavcaAPI/MotionFilter.h"

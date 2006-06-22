@@ -78,9 +78,9 @@ bool PyMotion::isNull(int trackId) const
 		{
 			retVal = static_cast<bool>(PyInt_AsLong(pyValue));
 		}
-		Py_DECREF(pyArgs);
-		Py_DECREF(pyValue);
-		Py_DECREF(pyMethod);
+		if(pyArgs) Py_DECREF(pyArgs);
+		if(pyValue) Py_DECREF(pyValue);
+		if(pyMethod) Py_DECREF(pyMethod);
 	}
 	else
 		retVal = true;
@@ -141,7 +141,7 @@ trackType PyMotion::getTrackType(int trackId) const
 	return (trackType) retVal;
 };
 
-float PyMotion::getFloatValueAtTime(int trackId, float time) const
+float PyMotion::getFloatValueAtTimeInternal(int trackId, float time) 
 {
 	PyObject *pyMethod, *pyArgs, *pyValue;
 	float retVal;
@@ -169,7 +169,7 @@ float PyMotion::getFloatValueAtTime(int trackId, float time) const
 	return retVal;
 };
 
-Vec PyMotion::getVecValueAtTime(int trackId, float time) const
+Vec PyMotion::getVecValueAtTimeInternal(int trackId, float time) 
 {
 	PyObject *pyMethod, *pyArgs, *pyValue;
 	Vec retVal; //retVal initialised to zero vector
@@ -194,7 +194,7 @@ Vec PyMotion::getVecValueAtTime(int trackId, float time) const
 };
 
 
-Quat PyMotion::getQuatValueAtTime(int trackId, float time) const
+Quat PyMotion::getQuatValueAtTimeInternal(int trackId, float time) 
 {
 	PyObject *pyMethod, *pyArgs, *pyValue;
 	Quat retVal; //retVal initialised to zero quaternion
@@ -212,9 +212,9 @@ Quat PyMotion::getQuatValueAtTime(int trackId, float time) const
 		{
 			retVal = PyQuat_AsQuat(pyValue);
 		}
-		Py_DECREF(pyArgs);
-		Py_DECREF(pyValue);
-		Py_DECREF(pyMethod);
+		if(pyArgs) Py_DECREF(pyArgs);
+		if(pyValue) Py_DECREF(pyValue);
+		if(pyMethod) Py_DECREF(pyMethod);
 	}
 	return retVal;
 };

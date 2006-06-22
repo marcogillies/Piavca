@@ -31,6 +31,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PiavcaOpenSGApp", "src\Piav
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XVR2Piavca", "src\XVR2Piavca\XVR2Piavca.vcproj", "{009DF2D1-CCA3-466D-8D2E-DFECF5D50D76}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfiguration) = preSolution
 		C Only Debug = C Only Debug
@@ -103,6 +107,14 @@ Global
 		{999A9F71-19A9-4ED9-A74F-4417BAC6C3A7}.Dive Debug.Build.0 = Debug|Win32
 		{999A9F71-19A9-4ED9-A74F-4417BAC6C3A7}.Release.ActiveCfg = Release|Win32
 		{999A9F71-19A9-4ED9-A74F-4417BAC6C3A7}.Release.Build.0 = Release|Win32
+		{009DF2D1-CCA3-466D-8D2E-DFECF5D50D76}.C Only Debug.ActiveCfg = Debug|Win32
+		{009DF2D1-CCA3-466D-8D2E-DFECF5D50D76}.C Only Debug.Build.0 = Debug|Win32
+		{009DF2D1-CCA3-466D-8D2E-DFECF5D50D76}.Debug.ActiveCfg = Debug|Win32
+		{009DF2D1-CCA3-466D-8D2E-DFECF5D50D76}.Debug.Build.0 = Debug|Win32
+		{009DF2D1-CCA3-466D-8D2E-DFECF5D50D76}.Dive Debug.ActiveCfg = Debug|Win32
+		{009DF2D1-CCA3-466D-8D2E-DFECF5D50D76}.Dive Debug.Build.0 = Debug|Win32
+		{009DF2D1-CCA3-466D-8D2E-DFECF5D50D76}.Release.ActiveCfg = Release|Win32
+		{009DF2D1-CCA3-466D-8D2E-DFECF5D50D76}.Release.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection

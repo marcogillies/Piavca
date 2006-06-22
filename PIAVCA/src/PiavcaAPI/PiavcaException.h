@@ -30,37 +30,37 @@
 namespace Piavca{
 
 	//! A base exception class for handling errors in the architecture
-	class PIAVCA_DECL CException
+	class PIAVCA_DECL Exception
 	{
 	protected:
 		//! a string that gives the details of what went wrong
 		tstring details;
 	public:
-		CException(tstring _details):details(_details)
+		Exception(tstring _details):details(_details)
 		    {
 				std::cout << "Piavca Exception: " << details << std::endl;
 		    };
-		CException(const CException &e):details(e.details){};
-		const CException &operator=(const CException &e){details=e.details; return (*this);};
+		Exception(const Exception &e):details(e.details){};
+		const Exception &operator=(const Exception &e){details=e.details; return (*this);};
 
 		const tstring &getDetails(){return details;};
 	};
 
 	
 	//! An exception class for file not found errors
-	class FileNotFoundException : public CException{
+	class FileNotFoundException : public Exception{
 		
 	public:
 		FileNotFoundException(tstring fileName)
-			:CException(_PSTR("file ") + fileName + _PSTR(" could not be opened")){};
+			:Exception(_PSTR("file ") + fileName + _PSTR(" could not be opened")){};
 	};
 
 	//! An exception class for file read errors
-	class FileErrorException : public CException{
+	class FileErrorException : public Exception{
 		
 	public:
 		FileErrorException(tstring fileName, tstring error)
-			:CException(_PSTR("error found in file ") + fileName + _PSTR(": ") + error){};
+			:Exception(_PSTR("error found in file ") + fileName + _PSTR(": ") + error){};
 	};
 
 

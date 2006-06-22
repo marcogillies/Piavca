@@ -66,7 +66,7 @@
 
 
 #if ! defined (YYSTYPE) && ! defined (YYSTYPE_IS_DECLARED)
-#line 115 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
+#line 115 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
 typedef union YYSTYPE {
   int intVal;
   float floatVal;
@@ -74,7 +74,7 @@ typedef union YYSTYPE {
   std::vector<int> *intList;
 } YYSTYPE;
 /* Line 1248 of yacc.c.  */
-#line 77 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.tab.hpp"
+#line 77 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.tab.hpp"
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
 # define YYSTYPE_IS_TRIVIAL 1

@@ -109,7 +109,7 @@ void SelfBlend::setMotion(Motion *mot)
 		default:		  Piavca::Error(_T("Unknown track type"));
 		}
 	}
-	std::cout << "self blend set motion\n";
+	//std::cout << "self blend set motion\n";
 	calculateRootOffsets();
 };
 

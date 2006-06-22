@@ -34,7 +34,7 @@
  * ***** END LICENSE BLOCK ***** */
 
 
-%rename(playMotionDirect) Piavca::Avatar::playMotion; 
+%rename(playMotionDirect) Piavca::Avatar::playMotion(Motion *); 
 
 %apply int *INPUT { int &jointId };
 %apply int *INPUT { int &expressionId };
@@ -44,7 +44,7 @@
 %typemap(in) AvatarTimeCallback*
 {
 	if ((SWIG_ConvertPtr($input,(void **) &$1, SWIGTYPE_p_Piavca__PyAvatarTimeCallback,SWIG_POINTER_EXCEPTION | 0 )) == -1) SWIG_fail;
-    }
+}
 
 // add wrapper funcitont to the avatar object to allow joint/expression names
 // as inputs instead of joint/expression ids

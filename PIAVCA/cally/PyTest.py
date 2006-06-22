@@ -11,8 +11,8 @@ print sys.path
 
 import Piavca
 
-sys.path.append("../../ExponentialMap/")
-import ExpMapTest
+#sys.path.append("../../ExponentialMap/")
+#import ExpMapTest
 
 # hack to make TK work, it expects the name of the app to be
 # in sys.argv[0] but argv is not set up if python is run from
@@ -63,6 +63,8 @@ MotionFile.readMotionFile("motions.conf")
 
 #cally.play_motion(Piavca.LoopMotion(Piavca.Core.getCore().getMotion("nod")))
 #cally.play_motion(Piavca.Core.getCore().getMotion("gethit"))
+
+#def PlayMotion ():
 cally.play_motion(Piavca.Core.getCore().getMotion("gestures"))
 
 #sally.play_motion(random_gesture)
@@ -79,8 +81,6 @@ print "finished adding motion"
 #idlelib.PyShell.main()
 
 #from Tkinter import *
-
-
 
 #avatar.registerCallback(Piavca.PyAvatarTimeCallback(testCallback, "test"))
 

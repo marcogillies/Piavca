@@ -55,6 +55,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 // a structure holding various parameters of the display
 
+
 struct displayParams
 {
 	Piavca::PiavcaCal3DCore *core;
@@ -506,11 +507,12 @@ int main(int argc, char *argv[])
 	  //| Piavca::TRANS_SWAP_XZ
 	  //| Piavca::TRANS_ARM_DOWN);
   //Piavca::AvatarMotionQueue::getQueue(av)->enqueueMotion("walk", new Piavca::OnTheSpot(new Piavca::LoopMotion(walk)));
+  //Piavca::AvatarMotionQueue::getQueue(av)->enqueueMotion("walk", Piavca::Core::getCore()->getMotion("walk");
   //av->setFacialExpressionWeight(Piavca::Core::getCore()->getExpressionId(_T("smile")), 1.0);
 
   std::cout << "finished loading joints\n";
 
-  Piavca::InitPiavcaPython(Piavca::Core::getCore(), _T("PyTest"));
+  Piavca::InitPiavcaPython(Piavca::Core::getCore(), _T("init_piavca"));
 
 	//glutSetCursor(GLUT_CURSOR_LEFT_ARROW);
 

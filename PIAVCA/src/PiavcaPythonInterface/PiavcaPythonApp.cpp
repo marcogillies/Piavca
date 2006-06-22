@@ -77,6 +77,7 @@ extern "C"
 #include "PiavcaAPI/PiavcaCore.h"
 #include "PiavcaAPI/Avatar.h"
 #include "PiavcaAPI/TimeCallback.h"
+#include "PiavcaAPI/PiavcaError.h"
 #include "PiavcaPythonApp.h"
 #include "PyTimeCallback.h"
 //#include "PlatformDefs.h"
@@ -113,8 +114,20 @@ PIAVCA_EXPORT void PyTimeCallback::init(Piavca::Core *core)
 	if(PyErr_Occurred())
 	{
 		PyErr_Print();
+		PyObject *ErrorType, *ErrorValue, *ErrorTraceback, *ErrorString;
+		PyErr_Fetch(&ErrorType, &ErrorValue, &ErrorTraceback);
+		ErrorString = PyObject_Str(ErrorType);
+		std::cout << "Python Exception:\n";
+		std::cout << PyString_AsString(ErrorString) << std::endl;
+		ErrorString = PyObject_Str(ErrorValue);
+		Piavca::tstring error_string = StringToTString(PyString_AsString(ErrorString));
+		std::cout << PyString_AsString(ErrorString) << std::endl;
+		ErrorString = PyObject_Str(ErrorTraceback);
+		std::cout << PyString_AsString(ErrorString) << std::endl;
+
 		EndPiavcaPython(core);
-		exit(0);
+		Piavca::Error(_T("Error running script: ") + error_string);
+		return;
 	}
 	//Py_DECREF(pyArgs);
 	//Py_DECREF(pyInitMethod);
@@ -134,8 +147,20 @@ PIAVCA_EXPORT void PyTimeCallback::timeStep(Piavca::Core *core, float time)
 	{
 		std::cout << "callback error\n";
 		PyErr_Print();
+		PyObject *ErrorType, *ErrorValue, *ErrorTraceback, *ErrorString;
+		PyErr_Fetch(&ErrorType, &ErrorValue, &ErrorTraceback);
+		ErrorString = PyObject_Str(ErrorType);
+		std::cout << "Python Exception:\n";
+		std::cout << PyString_AsString(ErrorString) << std::endl;
+		ErrorString = PyObject_Str(ErrorValue);
+		Piavca::tstring error_string = StringToTString(PyString_AsString(ErrorString));
+		std::cout << PyString_AsString(ErrorString) << std::endl;
+		ErrorString = PyObject_Str(ErrorTraceback);
+		std::cout << PyString_AsString(ErrorString) << std::endl;
+
 		EndPiavcaPython(core);
-		exit(0);
+		Piavca::Error(_T("Error running script: ") + error_string);
+		return;
 	}
 
 	//std::string res = strstrm->str();
@@ -143,7 +168,7 @@ PIAVCA_EXPORT void PyTimeCallback::timeStep(Piavca::Core *core, float time)
 
 	//res = strstrm->str();
 #ifdef NO_CONSOLE_PRESENT
-	pyMethod = PyObject_GetAttrString(g_pPyMod, "PrintOutput");
+	/*pyMethod = PyObject_GetAttrString(g_pPyMod, "PrintOutput");
 	if(pyMethod)
 	{
 		pyArgs = Py_BuildValue("(s)", strstrm->str().c_str());
@@ -159,7 +184,7 @@ PIAVCA_EXPORT void PyTimeCallback::timeStep(Piavca::Core *core, float time)
 			strstrm->str("");
 			wstrstrm->str(L"");
 		}
-	}
+	}*/
 #endif
 
 	//Py_DECREF(pyArgs);
@@ -177,8 +202,20 @@ PIAVCA_EXPORT void PyAvatarTimeCallback::init(Avatar *avatar)
 	if(PyErr_Occurred())
 	{
 		PyErr_Print();
+		PyObject *ErrorType, *ErrorValue, *ErrorTraceback, *ErrorString;
+		PyErr_Fetch(&ErrorType, &ErrorValue, &ErrorTraceback);
+		ErrorString = PyObject_Str(ErrorType);
+		std::cout << "Python Exception:\n";
+		std::cout << PyString_AsString(ErrorString) << std::endl;
+		ErrorString = PyObject_Str(ErrorValue);
+		Piavca::tstring error_string = StringToTString(PyString_AsString(ErrorString));
+		std::cout << PyString_AsString(ErrorString) << std::endl;
+		ErrorString = PyObject_Str(ErrorTraceback);
+		std::cout << PyString_AsString(ErrorString) << std::endl;
+
 		EndPiavcaPython(Piavca::Core::getCore());
-		exit(0);
+		Piavca::Error(_T("Error running script: ") + error_string);
+		return;
 	}
 	//Py_DECREF(pyArgs);
 	//Py_DECREF(pyInitMethod);
@@ -196,8 +233,20 @@ PIAVCA_EXPORT void PyAvatarTimeCallback::timeStep(Avatar *avatar, float time)
 	if(PyErr_Occurred())
 	{
 		PyErr_Print();
+		PyObject *ErrorType, *ErrorValue, *ErrorTraceback, *ErrorString;
+		PyErr_Fetch(&ErrorType, &ErrorValue, &ErrorTraceback);
+		ErrorString = PyObject_Str(ErrorType);
+		std::cout << "Python Exception:\n";
+		std::cout << PyString_AsString(ErrorString) << std::endl;
+		ErrorString = PyObject_Str(ErrorValue);
+		Piavca::tstring error_string = StringToTString(PyString_AsString(ErrorString));
+		std::cout << PyString_AsString(ErrorString) << std::endl;
+		ErrorString = PyObject_Str(ErrorTraceback);
+		std::cout << PyString_AsString(ErrorString) << std::endl;
+
 		EndPiavcaPython(Piavca::Core::getCore());
-		exit(0);
+		Piavca::Error(_T("Error running script: ") + error_string);
+		return;
 	}
 	
 #ifdef NO_CONSOLE_PRESENT
@@ -214,8 +263,20 @@ PIAVCA_EXPORT void PyAvatarTimeCallback::timeStep(Avatar *avatar, float time)
 		if(PyErr_Occurred())
 		{
 			PyErr_Print();
+			PyObject *ErrorType, *ErrorValue, *ErrorTraceback, *ErrorString;
+			PyErr_Fetch(&ErrorType, &ErrorValue, &ErrorTraceback);
+			ErrorString = PyObject_Str(ErrorType);
+			std::cout << "Python Exception:\n";
+			std::cout << PyString_AsString(ErrorString) << std::endl;
+			ErrorString = PyObject_Str(ErrorValue);
+			Piavca::tstring error_string = StringToTString(PyString_AsString(ErrorString));
+			std::cout << PyString_AsString(ErrorString) << std::endl;
+			ErrorString = PyObject_Str(ErrorTraceback);
+			std::cout << PyString_AsString(ErrorString) << std::endl;
+
 			EndPiavcaPython(Piavca::Core::getCore());
-			exit(0);
+			Piavca::Error(_T("Error running script: ") + error_string);
+			return;
 		}
 		else
 		{	
@@ -287,12 +348,15 @@ void Piavca::InitPiavcaPython(Piavca::Core *core, tstring fileName)
 		std::cout << "Python Exception:\n";
 		std::cout << PyString_AsString(ErrorString) << std::endl;
 		ErrorString = PyObject_Str(ErrorValue);
+		Piavca::tstring error_string = StringToTString(PyString_AsString(ErrorString));
 		std::cout << PyString_AsString(ErrorString) << std::endl;
 		ErrorString = PyObject_Str(ErrorTraceback);
 		std::cout << PyString_AsString(ErrorString) << std::endl;
 
 		EndPiavcaPython(core);
-		exit(0);
+		Piavca::Error(_T("Error running script: ") + error_string);
+		return;
+		//exit(0);
 	}
 
 	std::cout << "loaded module\n";
@@ -305,8 +369,20 @@ void Piavca::InitPiavcaPython(Piavca::Core *core, tstring fileName)
 		if(PyErr_Occurred())
 		{
 			PyErr_Print();
+			PyObject *ErrorType, *ErrorValue, *ErrorTraceback, *ErrorString;
+			PyErr_Fetch(&ErrorType, &ErrorValue, &ErrorTraceback);
+			ErrorString = PyObject_Str(ErrorType);
+			std::cout << "Python Exception:\n";
+			std::cout << PyString_AsString(ErrorString) << std::endl;
+			ErrorString = PyObject_Str(ErrorValue);
+			Piavca::tstring error_string = StringToTString(PyString_AsString(ErrorString));
+			std::cout << PyString_AsString(ErrorString) << std::endl;
+			ErrorString = PyObject_Str(ErrorTraceback);
+			std::cout << PyString_AsString(ErrorString) << std::endl;
+
 			EndPiavcaPython(core);
-			exit(0);
+			Piavca::Error(_T("Error running script: ") + error_string);
+			return;
 		}
 	}
 	else
@@ -329,9 +405,20 @@ void Piavca::InitPiavcaPython(Piavca::Core *core, tstring fileName)
 		if(PyErr_Occurred())
 		{
 			PyErr_Print();
+			PyObject *ErrorType, *ErrorValue, *ErrorTraceback, *ErrorString;
+			PyErr_Fetch(&ErrorType, &ErrorValue, &ErrorTraceback);
+			ErrorString = PyObject_Str(ErrorType);
+			std::cout << "Python Exception:\n";
+			std::cout << PyString_AsString(ErrorString) << std::endl;
+			ErrorString = PyObject_Str(ErrorValue);
+			Piavca::tstring error_string = StringToTString(PyString_AsString(ErrorString));
+			std::cout << PyString_AsString(ErrorString) << std::endl;
+			ErrorString = PyObject_Str(ErrorTraceback);
+			std::cout << PyString_AsString(ErrorString) << std::endl;
+
 			EndPiavcaPython(core);
-			WaitForInput();
-			exit(0);
+			Piavca::Error(_T("Error running script: ") + error_string);
+			return;
 		}
 		else
 		{
@@ -349,6 +436,41 @@ void Piavca::InitPiavcaPython(Piavca::Core *core, tstring fileName)
 	//avatar->loadMotion(StringToPiavcaString("../Ballet01.bvh"));
 	//avatar->loadMotion(StringToPiavcaString("../COWBOY1.bvh"));
 	//avatar->enableMotion(true);
+}
+
+
+void Piavca::RunPythonMethod(Piavca::Core *core, char *methodName)
+{
+	PyObject *pyMethod = PyObject_GetAttrString(g_pPyMod, methodName);
+	if(pyMethod)
+	{
+		PyObject *pyArgs = Py_BuildValue("()");
+		PyEval_CallObject(pyMethod, pyArgs);
+		if(PyErr_Occurred())
+		{
+			PyErr_Print();
+			PyObject *ErrorType, *ErrorValue, *ErrorTraceback, *ErrorString;
+			PyErr_Fetch(&ErrorType, &ErrorValue, &ErrorTraceback);
+			ErrorString = PyObject_Str(ErrorType);
+			std::cout << "Python Exception:\n";
+			std::cout << PyString_AsString(ErrorString) << std::endl;
+			ErrorString = PyObject_Str(ErrorValue);
+			Piavca::tstring error_string = StringToTString(PyString_AsString(ErrorString));
+			std::cout << PyString_AsString(ErrorString) << std::endl;
+			ErrorString = PyObject_Str(ErrorTraceback);
+			std::cout << PyString_AsString(ErrorString) << std::endl;
+
+			EndPiavcaPython(core);
+			tstring tmethodName = StringToTString(methodName);
+			Piavca::Error(_T("Error running method: ") + tmethodName + _T(" ") + error_string);
+			return;
+		}
+	}
+	else
+	{
+		PyErr_Clear();
+		std::cout << "failed to find PiavcaStartUp method\n";
+	}
 }
 
 void Piavca::EndPiavcaPython(Piavca::Core *core)
@@ -377,8 +499,22 @@ void Piavca::EndPiavcaPython(Piavca::Core *core)
 			if(PyErr_Occurred())
 			{
 				PyErr_Print();
-			}
-			Py_DECREF(g_pPyMod);
+				PyObject *ErrorType, *ErrorValue, *ErrorTraceback, *ErrorString;
+				PyErr_Fetch(&ErrorType, &ErrorValue, &ErrorTraceback);
+				ErrorString = PyObject_Str(ErrorType);
+				std::cout << "Python Exception:\n";
+				std::cout << PyString_AsString(ErrorString) << std::endl;
+				ErrorString = PyObject_Str(ErrorValue);
+				Piavca::tstring error_string = StringToTString(PyString_AsString(ErrorString));
+				std::cout << PyString_AsString(ErrorString) << std::endl;
+				ErrorString = PyObject_Str(ErrorTraceback);
+				std::cout << PyString_AsString(ErrorString) << std::endl;
+
+				EndPiavcaPython(core);
+				Piavca::Error(_T("Error running script: ") + error_string);
+				return;
+				}
+				Py_DECREF(g_pPyMod);
 		}
 		else
 		{
@@ -387,9 +523,11 @@ void Piavca::EndPiavcaPython(Piavca::Core *core)
 		}
 	}	
 	
+#ifndef NO_CONSOLE_PRESENT
 	std::cout << "Press any key to exit\n";
 	//std::string temp;
 	std::cin.get();
+#endif
 
 #ifdef NO_CONSOLE_PRESENT
 	file << strstrm->str();

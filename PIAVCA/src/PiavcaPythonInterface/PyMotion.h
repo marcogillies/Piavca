@@ -49,9 +49,18 @@ namespace Piavca
 		PyObject *pyObj;
 	public:
 
+		PyMotion():pyObj(NULL){};
 		PyMotion(PyObject *pObj);
+		PyMotion(const PyMotion &pm):pyObj(pm.pyObj){};
+
+		Motion *clone(){return new PyMotion(*this);};
 
 		virtual ~PyMotion();
+
+		void setPyObj(PyObject *pObj){pyObj = pObj;};
+
+		//! returns a point to the motion object as swig won't recognise the python overload?
+		Motion *getMotionPtr(){return this;};
 
 		//! gets the time of the end of the motion
 		virtual float getMotionLength() const;
@@ -63,11 +72,11 @@ namespace Piavca
 
 	
 		//! get the value of a track at a given time (only works for floats)
-		virtual float getFloatValueAtTime(int trackId, float time) const;
+		virtual float getFloatValueAtTimeInternal(int trackId, float time) ;
 		//! get the value of a track at a given time (only works for Vecs)
-		virtual Vec getVecValueAtTime(int trackId, float time) const;
+		virtual Vec getVecValueAtTimeInternal(int trackId, float time) ;
 		//! get the value of a track at a given time (only works for Quats) 
-		virtual Quat getQuatValueAtTime(int trackId, float time) const;
+		virtual Quat getQuatValueAtTimeInternal(int trackId, float time) ;
 	};
 };
 

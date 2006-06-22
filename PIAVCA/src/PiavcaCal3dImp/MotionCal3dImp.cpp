@@ -120,7 +120,7 @@ Quat MotionCal3DImp::getQuatValueAtTimeInternal(int trackId, float time)
 	}
 	else
 	{	
-		std::cout << "MotionCal3DImp " << time << " " << getMotionLength() << std::endl;
+		//xstd::cout << "MotionCal3DImp " << time << " " << getMotionLength() << std::endl;
 		if(time > getMotionLength()) time = getMotionLength();
 		CalCoreTrack *track = cal3DAnim->getCoreTrack(tracksMap[trackId]);
 		CalVector translation;

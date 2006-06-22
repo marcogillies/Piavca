@@ -48,8 +48,8 @@ void SequentialBlend::calculateRootOffsets()
 		m2Start = mot2->getVecValueAtTime(root_position_id, mot2->getStartTime());
 	}
 	
-	std::cout << "sequential blend root offsets " << m1End << " " << m2Start 
-		<< " " << blendStart << " " << m2startTime << std::endl;
+	//std::cout << "sequential blend root offsets " << m1End << " " << m2Start 
+	//	<< " " << blendStart << " " << m2startTime << std::endl;
 
 	if(mot1 && !mot1->isNull(root_orientation_id)) 
 	{
@@ -138,13 +138,13 @@ Vec SequentialBlend::getVecValueAtTimeInternal(int trackId, float time)
 		// if its before the start of the blend return the value from the first motion
 		if(time < blendStart)
 		{
-			std::cout << "sequential blend, before blend start\n";		
+			//std::cout << "sequential blend, before blend start\n";		
 			return mot1->getVecValueAtTime(trackId, time);
 		
 		}
 		if(time - blendStart < blendInterval)
 		{
-			std::cout << "sequential blend, during blend\n";
+			//std::cout << "sequential blend, during blend\n";
 			float t = time - blendStart;
 			return /*mot1->getVecValueAtTime(trackId, blendStart)*/m1End*(1-t/blendInterval) +getTransformedVec(trackId, mot2->getStartTime())*(t/blendInterval);
 				
