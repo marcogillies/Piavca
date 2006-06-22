@@ -32,7 +32,7 @@ using namespace Piavca;
 GLuint TextureHandler::loadTexture(const std::string& strFilename)
 {
   GLuint textureId=0;
-  std::string::size_type dot_pos = strFilename.find('.');
+  std::string::size_type dot_pos = strFilename.rfind('.');
   std::string suff = strFilename.substr(dot_pos+1);
   std::transform(suff.begin(), suff.end(), suff.begin(), tolower);
   if(suff == "raw")
