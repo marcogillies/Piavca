@@ -103,7 +103,7 @@ public:
 
 	void setProbability(int index, float prob)
 	{
-		if(index >= 0 && index < weights.size())
+		if(index >= 0 && index < (int)weights.size())
 			weights[index] = prob;
 		
 		float sum = 0.0;

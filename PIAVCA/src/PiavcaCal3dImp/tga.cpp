@@ -86,7 +86,7 @@ int CTga::ReadFile(const char *str)
 	TgaHeader.SizeY+=fgetc(file)<<8;
 	TgaHeader.Bpp=fgetc(file);
 	TgaHeader.imagedescriptor=fgetc(file);
-	
+
 	// Return if the format is unsupported		
 	
     if(TgaHeader.datatypecode!=TGA_TYPE_COLOR
@@ -107,11 +107,14 @@ int CTga::ReadFile(const char *str)
         m_dest = (unsigned char*)malloc(TgaHeader.SizeX*TgaHeader.SizeY*4);
 
 
+
+
     if(TgaHeader.datatypecode==TGA_TYPE_COLOR || TgaHeader.datatypecode==TGA_TYPE_GRAY)
     {
         for(int y=0;y<TgaHeader.SizeY;y++)
             for(int x=0;x<TgaHeader.SizeX;x++)
             {
+				
                 if(TgaHeader.Bpp==8)
                 {
                     r=fgetc(file);
@@ -187,52 +190,207 @@ int CTga::ReadFile(const char *str)
     }
 
 
-    m_SizeX=TgaHeader.SizeX;
-    m_SizeY=TgaHeader.SizeY;
     m_Bpp=TgaHeader.Bpp;
     if(m_Bpp==24)m_Bpp=32;
     fclose(file);
 
+	// resample so that the sizes of the edges are powers of 2
+
+	int image_x = TgaHeader.SizeX;
+	int image_y = TgaHeader.SizeY;
+	int i;
+	for (i = 1; i < TgaHeader.SizeX; i*=2)
+		/*do nothing*/;
+	TgaHeader.SizeX = i;
+	float x_scale = ((float) (image_x-1))/((float) (TgaHeader.SizeX-1));
+	for (i = 1; i < image_x; i*=2)
+		/*do nothing*/;
+	TgaHeader.SizeY = i;
+	float y_scale = ((float) (image_y-1))/((float) (TgaHeader.SizeY-1));
+   
+    m_SizeX=TgaHeader.SizeX;
+    m_SizeY=TgaHeader.SizeY;
+
+    tmp=m_dest;
+
+    if(TgaHeader.Bpp==8)
+        m_dest = (unsigned char*)malloc(TgaHeader.SizeX*TgaHeader.SizeY);
+    if(TgaHeader.Bpp==32 || TgaHeader.Bpp==24)
+        m_dest = (unsigned char*)malloc(TgaHeader.SizeX*TgaHeader.SizeY*4);
 
 
-    if((TgaHeader.imagedescriptor & 0x0020)==0)  //we flip the file
+	int prev_x = 0, prev_y = 0;
+	int next_x = 1, next_y = 1;
+	unsigned char r_interp[2][2],g_interp[2][2],b_interp[2][2],a_interp[2][2];
+    for(int y=0;y<TgaHeader.SizeY;y++)
     {
-
-        tmp=m_dest;
-
-        if(TgaHeader.Bpp==8)
-            m_dest = (unsigned char*)malloc(TgaHeader.SizeX*TgaHeader.SizeY);
-        if(TgaHeader.Bpp==32 || TgaHeader.Bpp==24)
-            m_dest = (unsigned char*)malloc(TgaHeader.SizeX*TgaHeader.SizeY*4);
-
-
-        for(int y=0;y<TgaHeader.SizeY;y++)
+		next_x=1;
+		prev_x=0;
+		float mapped_y = y*y_scale;
+		if(mapped_y > next_y)
+		{
+			next_y++;
+			prev_y++;
+		}
+		float y_remainder = mapped_y - prev_y;
+        for(int x=0;x<TgaHeader.SizeX;x++)
         {
-            for(int x=0;x<TgaHeader.SizeX;x++)
+			float mapped_x = x*x_scale;
+			if(mapped_x > next_x)
+			{
+				next_x++;
+				prev_x++;
+			}
+			float x_remainder = mapped_x - prev_x;
+			if(m_Bpp==8)
             {
-                if(m_Bpp==8)
-                {
-                    r=tmp[x+(TgaHeader.SizeY-y-1)*TgaHeader.SizeX];
-                    m_dest[x+y*TgaHeader.SizeX]=r;
-                }
-                if(m_Bpp==32)
-                {
-                    r=tmp[(x+(TgaHeader.SizeY-y-1)*TgaHeader.SizeX)*4];
-                    g=tmp[(x+(TgaHeader.SizeY-y-1)*TgaHeader.SizeX)*4+1];
-                    b=tmp[(x+(TgaHeader.SizeY-y-1)*TgaHeader.SizeX)*4+2];
-                    a=tmp[(x+(TgaHeader.SizeY-y-1)*TgaHeader.SizeX)*4+3];
-                    m_dest[(x+y*TgaHeader.SizeX)*4]=r;
-                    m_dest[(x+y*TgaHeader.SizeX)*4+1]=g;
-                    m_dest[(x+y*TgaHeader.SizeX)*4+2]=b;
-                    m_dest[(x+y*TgaHeader.SizeX)*4+3]=a;
-
-
-                }
+                if((TgaHeader.imagedescriptor & 0x0020)==0)  //we flip the file
+				{
+					r_interp[0][0]=tmp[prev_x+(image_y-prev_y-1)*image_x];
+					r_interp[0][1]=tmp[next_x+(image_y-prev_y-1)*image_x];
+					r_interp[1][0]=tmp[prev_x+(image_y-next_y-1)*image_x];
+					r_interp[1][1]=tmp[next_x+(image_y-next_y-1)*image_x];
+				}
+				else
+				{
+					r_interp[0][0]=tmp[prev_x+prev_y*image_x];
+					r_interp[0][1]=tmp[next_x+prev_y*image_x];
+					r_interp[1][0]=tmp[prev_x+next_y*image_x];
+					r_interp[1][1]=tmp[next_x+next_y*image_x];
+				}
+				r_interp[0][0] = (unsigned char) ((r_interp[0][1] - r_interp[0][0])*x_remainder + r_interp[0][0]);
+				r_interp[1][0] = (unsigned char) ((r_interp[1][1] - r_interp[1][0])*x_remainder + r_interp[1][0]);
+				r = (unsigned char)  ((r_interp[1][0] - r_interp[0][0])*y_remainder + r_interp[0][0]);
+                m_dest[x+y*TgaHeader.SizeX]=r;
             }
+            if(m_Bpp==32)
+            {
+                if((TgaHeader.imagedescriptor & 0x0020)==0)  //we flip the file
+				{
+					r_interp[0][0]=tmp[(prev_x+(image_y-prev_y-1)*image_x)*4];
+					r_interp[0][1]=tmp[(next_x+(image_y-prev_y-1)*image_x)*4];
+					r_interp[1][0]=tmp[(prev_x+(image_y-next_y-1)*image_x)*4];
+					r_interp[1][1]=tmp[(next_x+(image_y-next_y-1)*image_x)*4];
+					
+					g_interp[0][0]=tmp[(prev_x+(image_y-prev_y-1)*image_x)*4+1];
+					g_interp[0][1]=tmp[(next_x+(image_y-prev_y-1)*image_x)*4+1];
+					g_interp[1][0]=tmp[(prev_x+(image_y-next_y-1)*image_x)*4+1];
+					g_interp[1][1]=tmp[(next_x+(image_y-next_y-1)*image_x)*4+1];
+					
+					b_interp[0][0]=tmp[(prev_x+(image_y-prev_y-1)*image_x)*4+2];
+					b_interp[0][1]=tmp[(next_x+(image_y-prev_y-1)*image_x)*4+2];
+					b_interp[1][0]=tmp[(prev_x+(image_y-next_y-1)*image_x)*4+2];
+					b_interp[1][1]=tmp[(next_x+(image_y-next_y-1)*image_x)*4+2];
+					
+					a_interp[0][0]=tmp[(prev_x+(image_y-prev_y-1)*image_x)*4+3];
+					a_interp[0][1]=tmp[(next_x+(image_y-prev_y-1)*image_x)*4+3];
+					a_interp[1][0]=tmp[(prev_x+(image_y-next_y-1)*image_x)*4+3];
+					a_interp[1][1]=tmp[(next_x+(image_y-next_y-1)*image_x)*4+3];
+					
+					//r=tmp[(x+(TgaHeader.SizeY-y-1)*TgaHeader.SizeX)*4];
+					//g=tmp[(x+(TgaHeader.SizeY-y-1)*TgaHeader.SizeX)*4+1];
+					//b=tmp[(x+(TgaHeader.SizeY-y-1)*TgaHeader.SizeX)*4+2];
+					//a=tmp[(x+(TgaHeader.SizeY-y-1)*TgaHeader.SizeX)*4+3];
+				}
+				else
+				{
+					r_interp[0][0]=tmp[(prev_x+prev_y*image_x)*4];
+					r_interp[0][1]=tmp[(next_x+prev_y*image_x)*4];
+					r_interp[1][0]=tmp[(prev_x+next_y*image_x)*4];
+					r_interp[1][1]=tmp[(next_x+next_y*image_x)*4];
+					
+					g_interp[0][0]=tmp[(prev_x+prev_y*image_x)*4+1];
+					g_interp[0][1]=tmp[(next_x+prev_y*image_x)*4+1];
+					g_interp[1][0]=tmp[(prev_x+next_y*image_x)*4+1];
+					g_interp[1][1]=tmp[(next_x+next_y*image_x)*4+1];
+					
+					b_interp[0][0]=tmp[(prev_x+prev_y*image_x)*4+2];
+					b_interp[0][1]=tmp[(next_x+prev_y*image_x)*4+2];
+					b_interp[1][0]=tmp[(prev_x+next_y*image_x)*4+2];
+					b_interp[1][1]=tmp[(next_x+next_y*image_x)*4+2];
+					
+					a_interp[0][0]=tmp[(prev_x+prev_y*image_x)*4+3];
+					a_interp[0][1]=tmp[(next_x+prev_y*image_x)*4+3];
+					a_interp[1][0]=tmp[(prev_x+next_y*image_x)*4+3];
+					a_interp[1][1]=tmp[(next_x+next_y*image_x)*4+3];
+				}
+                r_interp[0][0] = (unsigned char) ((r_interp[0][1] - r_interp[0][0])*x_remainder + r_interp[0][0]);
+				r_interp[1][0] = (unsigned char) ((r_interp[1][1] - r_interp[1][0])*x_remainder + r_interp[1][0]);
+				r = (unsigned char) ((r_interp[1][0] - r_interp[0][0])*y_remainder + r_interp[0][0]);
+                //r = r_interp[1][1];
+				m_dest[(x+y*TgaHeader.SizeX)*4]=r;
+                
+				g_interp[0][0] = (unsigned char) ((g_interp[0][1] - g_interp[0][0])*x_remainder + g_interp[0][0]);
+				g_interp[1][0] = (unsigned char) ((g_interp[1][1] - g_interp[1][0])*x_remainder + g_interp[1][0]);
+				g = (unsigned char) ((g_interp[1][0] - g_interp[0][0])*y_remainder + g_interp[0][0]);
+                //g = g_interp[1][1];
+				m_dest[(x+y*TgaHeader.SizeX)*4+1]=g;
+                
+				b_interp[0][0] = (unsigned char) ((b_interp[0][1] - b_interp[0][0])*x_remainder + b_interp[0][0]);
+				b_interp[1][0] = (unsigned char) ((b_interp[1][1] - b_interp[1][0])*x_remainder + b_interp[1][0]);
+				b = (unsigned char) ((b_interp[1][0] - b_interp[0][0])*y_remainder + b_interp[0][0]);
+                //b = b_interp[1][1];
+				m_dest[(x+y*TgaHeader.SizeX)*4+2]=b;
 
+				a_interp[0][0] = (unsigned char) ((a_interp[0][1] - a_interp[0][0])*x_remainder + a_interp[0][0]);
+				a_interp[1][0] = (unsigned char) ((a_interp[1][1] - a_interp[1][0])*x_remainder + a_interp[1][0]);
+				a = (unsigned char) ((a_interp[1][0] - a_interp[0][0])*y_remainder + a_interp[0][0]);
+                //a = a_interp[1][1];
+				m_dest[(x+y*TgaHeader.SizeX)*4+3]=a;
+            }
         }
-        free(tmp);
+
     }
+	/*for(int y=0;y<TgaHeader.SizeY;y++)
+	{
+		m_dest[(0+y*TgaHeader.SizeX)*4]  =255;
+		m_dest[(0+y*TgaHeader.SizeX)*4+1]=255;
+		m_dest[(0+y*TgaHeader.SizeX)*4+2]=255;
+		m_dest[(0+y*TgaHeader.SizeX)*4+3]=255;
+	}*/
+    free(tmp);
+
+
+	
+    //if((TgaHeader.imagedescriptor & 0x0020)==0)  //we flip the file
+    //{
+
+    //    tmp=m_dest;
+
+    //    if(TgaHeader.Bpp==8)
+    //        m_dest = (unsigned char*)malloc(TgaHeader.SizeX*TgaHeader.SizeY);
+    //    if(TgaHeader.Bpp==32 || TgaHeader.Bpp==24)
+    //        m_dest = (unsigned char*)malloc(TgaHeader.SizeX*TgaHeader.SizeY*4);
+
+
+    //    for(int y=0;y<TgaHeader.SizeY;y++)
+    //    {
+    //        for(int x=0;x<TgaHeader.SizeX;x++)
+    //        {
+    //            if(m_Bpp==8)
+    //            {
+    //                r=tmp[x+(TgaHeader.SizeY-y-1)*TgaHeader.SizeX];
+    //                m_dest[x+y*TgaHeader.SizeX]=r;
+    //            }
+    //            if(m_Bpp==32)
+    //            {
+    //                r=tmp[(x+(TgaHeader.SizeY-y-1)*TgaHeader.SizeX)*4];
+    //                g=tmp[(x+(TgaHeader.SizeY-y-1)*TgaHeader.SizeX)*4+1];
+    //                b=tmp[(x+(TgaHeader.SizeY-y-1)*TgaHeader.SizeX)*4+2];
+    //                a=tmp[(x+(TgaHeader.SizeY-y-1)*TgaHeader.SizeX)*4+3];
+    //                m_dest[(x+y*TgaHeader.SizeX)*4]=r;
+    //                m_dest[(x+y*TgaHeader.SizeX)*4+1]=g;
+    //                m_dest[(x+y*TgaHeader.SizeX)*4+2]=b;
+    //                m_dest[(x+y*TgaHeader.SizeX)*4+3]=a;
+
+
+    //            }
+    //        }
+
+    //    }
+    //    free(tmp);
+    //}
+
 
 
     return -1;

@@ -42,7 +42,7 @@ MotionCal3DImp::MotionCal3DImp(tstring motionFilename, CalCoreSkeleton *skel)
 	tracksMap.assign(Piavca::Core::getCore()->getMaxJointId()+1, -1);
 	//std::vector<CalCoreBone *> &calbonevec = skel->getVectorCoreBone();
 	std::vector< std::pair< tstring, int > > jointAssociations = Piavca::Core::getCore()->getJointNameAssociations();
-	for(int i = 0; i < jointAssociations.size(); i++)
+	for(int i = 0; i < (int) jointAssociations.size(); i++)
 	{
 		int boneId = skel->getCoreBoneId(TStringToString(jointAssociations[i].first));
 		if(boneId >= 0)

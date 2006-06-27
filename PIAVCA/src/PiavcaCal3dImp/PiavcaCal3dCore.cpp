@@ -88,7 +88,7 @@ ObjectImp *PiavcaCal3DCore::createObjectImp(tstring objectId, const Vec &Positio
 double PiavcaCal3DCore::getTimeInternal(bool print)
 {
 #ifdef _WIN32
-	float tick = GetTickCount();
+	float tick = (float) GetTickCount();
 	return tick/1000.0 - start_time;
 #endif
 
@@ -110,7 +110,7 @@ double PiavcaCal3DCore::getTimeInternal(bool print)
 
 void PiavcaCal3DCore::prerender()
 {
-	for (int i = 0; i < avatars.size(); i++)
+	for (int i = 0; i < (int) avatars.size(); i++)
 	{
 		AvatarCal3DImp::getAvatarImp(avatars[i])->prerender();
 	}
@@ -119,7 +119,7 @@ void PiavcaCal3DCore::prerender()
 void PiavcaCal3DCore::render()
 {
 	//std::cout << "Piavca core render\n";
-	for (int i = 0; i < avatars.size(); i++)
+	for (int i = 0; i < (int) avatars.size(); i++)
 	{
 		AvatarCal3DImp::getAvatarImp(avatars[i])->render();
 	}

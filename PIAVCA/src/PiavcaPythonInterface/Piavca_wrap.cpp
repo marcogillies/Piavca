@@ -1717,7 +1717,7 @@ SWIG_Check_float(PyObject* obj)
 }
 
 
-  /*@C:\\Program Files\\swigwin-1.3.27\\Lib\\python\\pymacros.swg,72,SWIG_define@*/
+  /*@d:\\Program Files\\swig\\Lib\\python\\pymacros.swg,72,SWIG_define@*/
 #define SWIG_From_float PyFloat_FromDouble
 /*@@*/
 
@@ -1775,7 +1775,7 @@ static PyObject *Piavca_Quat___repr__(Piavca::Quat *self){
 		return Py_BuildValue("s", os.str().c_str());
 	}
 
-  /*@C:\\Program Files\\swigwin-1.3.27\\Lib\\python\\pymacros.swg,72,SWIG_define@*/
+  /*@d:\\Program Files\\swig\\Lib\\python\\pymacros.swg,72,SWIG_define@*/
 #define SWIG_From_int PyInt_FromLong
 /*@@*/
 

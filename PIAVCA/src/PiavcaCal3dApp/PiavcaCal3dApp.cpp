@@ -512,7 +512,7 @@ int main(int argc, char *argv[])
 
   std::cout << "finished loading joints\n";
 
-  Piavca::InitPiavcaPython(Piavca::Core::getCore(), _T("init_piavca"));
+  Piavca::InitPiavcaPython(Piavca::Core::getCore(), _T("PyTest"));
 
 	//glutSetCursor(GLUT_CURSOR_LEFT_ARROW);
 

@@ -33,7 +33,8 @@
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="TRUE"
-				DebugInformationFormat="3"/>
+				DebugInformationFormat="3"
+				DisableSpecificWarnings="4251 /wd4312 /wd4244 /wd4311 /wd4800"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool

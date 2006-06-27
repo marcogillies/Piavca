@@ -59,7 +59,7 @@ namespace Piavca
  *	object. The object will be of the concrete type corresponding to the platform
  *	being used. 
  */
-class AvatarImp{
+class PIAVCA_DECL  AvatarImp{
 protected:
 	AvatarImp() {};
 

@@ -270,10 +270,11 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 	// set the material set of the whole model
 	cal_model->setMaterialSet(0);
 
+	int i,j;
 	// load the joint map
 	CalSkeleton *skel = cal_model->getSkeleton();
 	std::vector< std::pair< tstring, int > > jointAssociations = Piavca::Core::getCore()->getJointNameAssociations();
-	for(int i = 0; i < jointAssociations.size(); i++)
+	for(i = 0; i < (int) jointAssociations.size(); i++)
 	{
 		int cal3Did = skel->getCoreSkeleton()->getCoreBoneId(TStringToString(jointAssociations[i].first));
 		if(cal3Did > 0)
@@ -284,12 +285,12 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 		}
 	}
 	// find the parents of each joint
-	for(int i = 0; i < joints.size(); i++)
+	for(i = 0; i < (int) joints.size(); i++)
 	{	  
 		if(joints[i].cal3dId < 0) continue;
 		CalCoreBone *corebone = skel->getBone(joints[i].cal3dId)->getCoreBone();
 		int parentId = corebone->getParentId();
-		for(int j = 0; j < joints.size(); j++)
+		for(j = 0; j < (int) joints.size(); j++)
 			if(joints[j].cal3dId == parentId)
 			{
 				joints[i].parent = j;
@@ -322,7 +323,7 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 	mTextureCoordCounts.resize(numBuffers, tempVecVec0);
 	mFaceCounts.resize(numBuffers, tempVecVec0);
 
-	int buffer, i, j;
+	int buffer;
 	for (buffer = 0; buffer < numBuffers; buffer++)
 	{
 		mVertices[buffer].resize(meshCount, tempVecF);
@@ -465,7 +466,7 @@ int   AvatarCal3DImp::getFacialExpressionId(tstring expressionName)
 
 bool  AvatarCal3DImp::setFacialExpressionWeight(int id, float weight, float timeInterval)
 {
-	if(id < 0 || id >= expressions.size())
+	if(id < 0 || id >= (int)expressions.size())
 	{
 		std::cout << "Unknown facial expression id " << id << std::endl;
 		return false;
@@ -508,7 +509,7 @@ void AvatarCal3DImp::updateFacialExpressions()
 
 float AvatarCal3DImp::getFacialExpressionWeight(int id)
 {
-	if(id < 0 || id >= expressions.size())
+	if(id < 0 || id >= (int)expressions.size())
 	{
 		std::cout << "Unknown facial expression id " << id << std::endl;
 		return false;
@@ -577,7 +578,7 @@ const tstring AvatarCal3DImp::getJointName(int jointId)
 
 bool AvatarCal3DImp::createJoint(tstring JointName)
 {
-	while(Piavca::Core::getCore()->getMaxJointId() >= joints.size())
+	while(Piavca::Core::getCore()->getMaxJointId() >= (int)joints.size())
 		joints.push_back(JointHolder());
     
     int jointId = Piavca::Core::getCore()->getJointId(JointName);

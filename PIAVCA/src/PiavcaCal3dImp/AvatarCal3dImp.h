@@ -150,7 +150,7 @@ public:
 	virtual float getFacialExpressionWeight(int id);
 	virtual void  clearFacialExpressionWeights()
 	{
-	    for(int i=0; i< expressions.size(); i++)
+	    for(int i=0; i< (int)expressions.size(); i++)
 	      setFacialExpressionWeight(i, 0.0);
 	};
 	virtual void updateFacialExpressions();
@@ -158,7 +158,7 @@ public:
 	//! whether the expression is present in the avatar
 	bool isExpressionNull(int expressionId)const
 	{
-		return (expressionId < 0 || expressionId >= expressions.size() || expressions[expressionId].morphtargetId < 0);
+		return (expressionId < 0 || expressionId >= (int)expressions.size() || expressions[expressionId].morphtargetId < 0);
 	};
 	//!@}
 
@@ -183,7 +183,7 @@ public:
 	//! whether a joint is actually present in the avatar
 	bool isNull(int jointId)const
 	{
-		return (jointId < 0 || jointId >= joints.size() || joints[jointId].cal3dId < 0);
+		return (jointId < 0 || jointId >= (int)joints.size() || joints[jointId].cal3dId < 0);
 	};
 
 	int getParent(int jointId)const;

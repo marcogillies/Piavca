@@ -32,7 +32,8 @@
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="TRUE"
-				DebugInformationFormat="4"/>
+				DebugInformationFormat="4"
+				DisableSpecificWarnings="4251"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
@@ -247,7 +248,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="running flex"
-					CommandLine="flex.exe -Pbvh -obvhLexer.cpp &quot;$(InputPath)&quot;"
+					CommandLine="flex.exe -Pbvh -obvhLexer.cpp &quot;$(InputPath)&quot;
+"
 					Outputs=" $(ProjectDir)bvhLexer.cpp"/>
 			</FileConfiguration>
 			<FileConfiguration
@@ -285,7 +287,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="running bison"
-					CommandLine="bison -p bvh -d &quot;$(InputPath)&quot;"
+					CommandLine="bison -p bvh -d &quot;$(InputPath)&quot;
+"
 					Outputs="&quot;$(ProjectDir)bvhParser.tab.cpp&quot;;&quot;$(ProjectDir)bvhParser.tab.hpp&quot;"/>
 			</FileConfiguration>
 			<FileConfiguration

@@ -73,14 +73,14 @@ void MotionMask::setMask(int track, bool val)
 		Piavca::Error(_T("Unknown track id when setting motion mask"));
 		return;
 	}
-	if(track >= m.size())
-		for(int i = m.size(); i < maxTrack; i++)
+	if(track >= (int)m.size())
+		for(int i = (int)m.size(); i < maxTrack; i++)
 			m.push_back(false);
 	m[track]=val;
 };
 bool MotionMask::getMask(int track) const
 {
-	if(track > 0 && track < m.size())
+	if(track > 0 && track < (int)m.size())
 		return m[track];
 	else
 		return false;

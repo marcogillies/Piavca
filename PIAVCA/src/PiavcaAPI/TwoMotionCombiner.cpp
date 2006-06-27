@@ -155,6 +155,8 @@ trackType TwoMotionCombiner::getTrackType(int trackId)const
 	else
 		if(mot2 && !mot2->isNull(trackId))
 			return mot2->getTrackType(trackId);
+		else 
+			return NULL_TYPE;
 };
 
 void TwoMotionCombiner::setMotion1(Motion *mot)
