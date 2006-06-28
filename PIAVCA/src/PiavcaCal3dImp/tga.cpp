@@ -61,11 +61,11 @@ int CTga::ReadFile(const char *str)
 
 
 	FILE *file;
-#ifdef WIN32
-	fopen_s(&file, str, "rb"); 
-#else
+//#ifdef WIN32
+//	fopen_s(&file, str, "rb"); 
+//#else
 	file=fopen(str,"rb");
-#endif
+//#endif
 	
     if(file==NULL)
         return 0;
