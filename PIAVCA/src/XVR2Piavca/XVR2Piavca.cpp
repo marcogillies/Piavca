@@ -136,11 +136,11 @@ extern "C" __declspec(dllexport) char *onInitial(char* _path, char *script)
 		*/
 	  
 	// write a message to the output that can be read from XVR
-#ifdef WIN32
-	strcpy_s(Str, 256, "reading joint names");
-#else
+//#ifdef WIN32
+//	strcpy_s(Str, 256, "reading joint names");
+//#else
 	strcpy(Str, "reading joint names");
-#endif
+//#endif
 
 	// read in the names of joints
 	std::string jointsFilename = path + "JointNames.txt";
@@ -303,11 +303,11 @@ extern "C" __declspec(dllexport) char *onInitial(char* _path, char *script)
 
 	//////////////////////////////////////////////////Str Variable///////////////////////////////////
 
-#ifdef WIN32
-	strcpy_s(Str, 256, "finished loading joints");
-#else
+//#ifdef WIN32
+//	strcpy_s(Str, 256, "finished loading joints");
+//#else
 	strcpy(Str, "finished loading joints");
-#endif	
+//#endif	
 
 	//////////////////////////////////////////////////Python ///////////////////////////////////////
 	// load in a script
@@ -320,18 +320,18 @@ extern "C" __declspec(dllexport) char *onInitial(char* _path, char *script)
   catch (Piavca::Exception &e)
   {
 	string s = TStringToString(e.getDetails());
-	s._Copy_s(Str, 256, 256);
-	//s.copy(Str, 256);
+	//s._Copy_s(Str, 256, 256);
+	s.copy(Str, 256);
 
 	return Str;
   }
 
 
-#ifdef WIN32
-	strcpy_s(Str, 256, "");
-#else
+//#ifdef WIN32
+//	strcpy_s(Str, 256, "");
+//#else
 	strcpy(Str, "");
-#endif
+//#endif
 
   return Str;
 }
@@ -346,18 +346,18 @@ extern "C" __declspec(dllexport) char* runMethod(char* method)
 	catch (Piavca::Exception &e)
 	{
 		string s = TStringToString(e.getDetails());
-		s._Copy_s(Str, 256, 256);
-		//s.copy(Str, 256);
+		//s._Copy_s(Str, 256, 256);
+		s.copy(Str, 256);
 
 		return Str;
 	}
 
 	
-#ifdef WIN32
-	strcpy_s(Str, 256, "");
-#else
+//#ifdef WIN32
+//	strcpy_s(Str, 256, "");
+//#else
 	strcpy(Str, "");
-#endif
+//#endif
 
 	return Str;
 }
