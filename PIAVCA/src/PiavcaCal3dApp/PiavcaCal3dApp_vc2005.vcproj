@@ -2,9 +2,8 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="8.00"
-	Name="PiavcaOpenSGApp"
-	ProjectGUID="{999A9F71-19A9-4ED9-A74F-4417BAC6C3A7}"
-	Keyword="Win32Proj"
+	Name="PiavcaCal3dApp"
+	ProjectGUID="{D0D359C9-A81F-430D-AFBB-5CFA65688A24}"
 	>
 	<Platforms>
 		<Platform
@@ -16,10 +15,12 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="Debug"
-			IntermediateDirectory="Debug"
+			OutputDirectory=".\Debug"
+			IntermediateDirectory=".\Debug"
 			ConfigurationType="1"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="2"
 			>
 			<Tool
@@ -36,39 +37,46 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
+				TypeLibraryName=".\Debug/cal3d_miniviewer.tlb"
+				HeaderFileName=""
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\;..\..\..\cal3d-0.10.0\src\"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;WINVER=0x0400;_WIN32_WINDOWS=0x0410;_WIN32_WINNT=0x0400;_OSG_HAVE_CONFIGURED_H_;OSG_BUILD_DLL;_DEBUG;OSG_DEBUG;OSG_WITH_GLUT;OSG_WITH_GIF;OSG_WITH_TIF;OSG_WITH_JPG"
-				MinimalRebuild="true"
+				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
 				RuntimeTypeInfo="true"
-				UsePrecompiledHeader="0"
+				PrecompiledHeaderFile=".\Debug/cal3d_miniviewer.pch"
+				AssemblerListingLocation=".\Debug/"
+				ObjectFile=".\Debug/"
+				ProgramDataBaseFileName=".\Debug/"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="true"
+				SuppressStartupBanner="true"
 				DebugInformationFormat="4"
+				CompileAs="0"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="_DEBUG"
+				Culture="2055"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="winmm.lib wsock32.lib OSGBaseD.lib OSGSystemD.lib OSGWindowGLUTD.lib glut32.lib glu32.lib opengl32.lib tif32.lib libjpeg.lib cal3d_d.lib"
-				OutputFile="$(OutDir)/PiavcaOpenSGApp.exe"
+				AdditionalDependencies="glut32.lib glu32.lib opengl32.lib odbc32.lib odbccp32.lib cal3d_d.lib"
+				OutputFile="PiavcaCal3dApp.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="&quot;d:\Program Files\OpenSG\lib&quot;,&quot;c:\Program Files\OpenSG\lib\glut_3.7\lib&quot;,&quot;c:\Program Files\OpenSG/lib/jpg6b/lib&quot;;&quot;c:\Program Files\OpenSG/lib/tiff-3.5.4/lib&quot;;;..\..\..\cal3d-0.10.0\bin\debug"
+				AdditionalLibraryDirectories="..\..\..\cal3d-0.10.0\bin\debug"
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(OutDir)/PiavcaOpenSGApp.pdb"
+				ProgramDatabaseFile=".\Debug/cal3d_miniviewer.pdb"
 				SubSystem="1"
 				TargetMachine="1"
 			/>
@@ -99,10 +107,12 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="Release"
-			IntermediateDirectory="Release"
+			OutputDirectory=".\Release"
+			IntermediateDirectory=".\Release"
 			ConfigurationType="1"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="2"
 			>
 			<Tool
@@ -119,16 +129,27 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
+				TypeLibraryName=".\Release/cal3d_miniviewer.tlb"
+				HeaderFileName=""
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
+				Optimization="0"
+				InlineFunctionExpansion="0"
+				AdditionalIncludeDirectories="..\;..\..\..\cal3d-0.10.0\src\"
+				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
+				StringPooling="true"
 				RuntimeLibrary="2"
+				EnableFunctionLevelLinking="true"
 				RuntimeTypeInfo="true"
-				UsePrecompiledHeader="2"
+				PrecompiledHeaderFile=".\Release/cal3d_miniviewer.pch"
+				AssemblerListingLocation=".\Release/"
+				ObjectFile=".\Release/"
+				ProgramDataBaseFileName=".\Release/"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="true"
-				DebugInformationFormat="3"
+				SuppressStartupBanner="true"
+				DebugInformationFormat="4"
+				CompileAs="0"
 				DisableSpecificWarnings="4251"
 			/>
 			<Tool
@@ -136,18 +157,22 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="NDEBUG"
+				Culture="2055"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				OutputFile="$(OutDir)/PiavcaOpenSGApp.exe"
-				LinkIncremental="1"
+				AdditionalDependencies="glut32.lib glu32.lib opengl32.lib odbc32.lib odbccp32.lib cal3d.lib"
+				OutputFile="PiavcaCal3dApp.exe"
+				LinkIncremental="2"
+				SuppressStartupBanner="true"
+				AdditionalLibraryDirectories="..\..\..\cal3d-0.10.0\bin\Release"
 				GenerateDebugInformation="true"
-				SubSystem="2"
-				OptimizeReferences="2"
-				EnableCOMDATFolding="2"
+				ProgramDatabaseFile=".\Release/cal3d_miniviewer.pdb"
+				SubSystem="1"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -178,8 +203,8 @@
 	</Configurations>
 	<References>
 		<ProjectReference
-			ReferencedProjectIdentifier="{E53AF870-A613-4C4A-A72C-AB798F7D7232}"
-			RelativePathToProject=".\src\PiavcaOpenSGImp\PiavcaOpenSGImp_vc2005.vcproj"
+			ReferencedProjectIdentifier="{97813F74-80B5-4861-8CEE-99328B65173C}"
+			RelativePathToProject=".\src\PiavcaCal3dImp\PiavcaCal3DImp_vc2005.vcproj"
 		/>
 		<ProjectReference
 			ReferencedProjectIdentifier="{9BE2E296-9B8C-4972-B627-06F7A635204C}"
@@ -189,46 +214,23 @@
 	<Files>
 		<Filter
 			Name="Source Files"
-			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
-			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
+			Filter="cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 			>
 			<File
-				RelativePath=".\PiavcaOpenSGApp.cpp"
+				RelativePath=".\PiavcaCal3dApp.cpp"
 				>
 			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
-			Filter="h;hpp;hxx;hm;inl;inc;xsd"
-			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
+			Filter="h;hpp;hxx;hm;inl"
 			>
-			<File
-				RelativePath=".\Resource.h"
-				>
-			</File>
 		</Filter>
 		<Filter
-			Name="Resource Files"
-			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx"
-			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
+			Name="Resources"
+			Filter="ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"
 			>
-			<File
-				RelativePath=".\PiavcaOpenSGApp.ico"
-				>
-			</File>
-			<File
-				RelativePath=".\PiavcaOpenSGApp.rc"
-				>
-			</File>
-			<File
-				RelativePath=".\small.ico"
-				>
-			</File>
 		</Filter>
-		<File
-			RelativePath=".\ReadMe.txt"
-			>
-		</File>
 	</Files>
 	<Globals>
 	</Globals>

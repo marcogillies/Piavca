@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 //----------------------------------------------------------------------------//
 
 
-#include "PiavcaNVCLib/Piavca.h"
+//#include "PiavcaNVCLib/Piavca.h"
 
 #ifdef _WIN32
 #include <windows.h>
@@ -45,6 +45,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "PiavcaAPI/Avatar.h"
 #include "PiavcaAPI/TrackMotion.h"
 #include "PiavcaAPI/LoopMotion.h"
+#include "PiavcaAPI/PiavcaError.h"
 #include "PiavcaNVCLib/OnTheSpot.h"
 #include "PiavcaNVCLib/AvatarMotionQueue.h"
 

@@ -94,8 +94,13 @@ inline std::wstring StringToWString(const std::string &str)
 	wchar_t *str2 = new wchar_t[str.size()+1];
 	
 	//bool result1 = 
+#ifdef WIN32
+	get_facet ( loc1 )._Widen_s
+	  ( str.c_str(), str.c_str() + str.size(), &str2[0], str.size()+1 );
+#else
 	get_facet ( loc1 ).widen
 	  ( str.c_str(), str.c_str() + str.size(), &str2[0] );
+#endif
 	str2[str.size()] = '\0';
 	std::wstring wstr(str2);
 	delete str2;
@@ -111,8 +116,14 @@ inline std::string WStringToString(const std::wstring &str)
    char *str2 = new char[str.size()+1];
 
    //bool result1 = 
+   
+#ifdef WIN32
+	get_facet ( loc1 )._Narrow_s
+	  ( str.c_str(), str.c_str() + str.size(), '*', &str2[0], str.size()+1 );
+#else
    get_facet ( loc1 ).narrow
 	   ( str.c_str(), str.c_str() + str.size(), '*', &str2[0] );
+#endif
    str2[str.size()] = '\0';
    std::string wstr(str2);
    delete str2;

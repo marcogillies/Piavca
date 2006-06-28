@@ -107,11 +107,13 @@
 				Name="VCCLCompilerTool"
 				AdditionalIncludeDirectories="..\"
 				PreprocessorDefinitions="WIN32;NDEBUG;_LIB"
-				RuntimeLibrary="0"
+				RuntimeLibrary="2"
+				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="3"
+				DisableSpecificWarnings="4251"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -169,6 +171,14 @@
 			</File>
 			<File
 				RelativePath=".\MotionSaver.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\SubMotion.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\TimeRangeMotion.cpp"
 				>
 			</File>
 		</Filter>
@@ -266,7 +276,19 @@
 				>
 			</File>
 			<File
+				RelativePath=".\SubMotion.h"
+				>
+			</File>
+			<File
 				RelativePath=".\TimeOffset.h"
+				>
+			</File>
+			<File
+				RelativePath=".\TimeRangeMotion.h"
+				>
+			</File>
+			<File
+				RelativePath=".\TimeWarp.h"
 				>
 			</File>
 			<File

@@ -73,7 +73,7 @@ extern "C" __declspec(dllexport) void exitFunc();
 // returns the last error message/warning
 extern "C" __declspec(dllexport) char* GetLastMessage();
 
-char* Str = new char[150];
+char* Str = new char[256];
 char* dirFile = new char[256];
 
 Piavca::PiavcaCal3DCore *g_pCore;
@@ -136,7 +136,11 @@ extern "C" __declspec(dllexport) char *onInitial(char* _path, char *script)
 		*/
 	  
 	// write a message to the output that can be read from XVR
+#ifdef WIN32
+	strcpy_s(Str, 256, "reading joint names");
+#else
 	strcpy(Str, "reading joint names");
+#endif
 
 	// read in the names of joints
 	std::string jointsFilename = path + "JointNames.txt";
@@ -298,7 +302,12 @@ extern "C" __declspec(dllexport) char *onInitial(char* _path, char *script)
 	std::cout << "finished loading joints\n";
 
 	//////////////////////////////////////////////////Str Variable///////////////////////////////////
+
+#ifdef WIN32
+	strcpy_s(Str, 256, "finished loading joints");
+#else
 	strcpy(Str, "finished loading joints");
+#endif	
 
 	//////////////////////////////////////////////////Python ///////////////////////////////////////
 	// load in a script
@@ -311,12 +320,19 @@ extern "C" __declspec(dllexport) char *onInitial(char* _path, char *script)
   catch (Piavca::Exception &e)
   {
 	string s = TStringToString(e.getDetails());
-	s.copy(Str, 150);
+	s._Copy_s(Str, 256, 256);
+	//s.copy(Str, 256);
 
 	return Str;
   }
 
-  strcpy(Str, "");
+
+#ifdef WIN32
+	strcpy_s(Str, 256, "");
+#else
+	strcpy(Str, "");
+#endif
+
   return Str;
 }
 
@@ -330,12 +346,19 @@ extern "C" __declspec(dllexport) char* runMethod(char* method)
 	catch (Piavca::Exception &e)
 	{
 		string s = TStringToString(e.getDetails());
-		s.copy(Str, 150);
+		s._Copy_s(Str, 256, 256);
+		//s.copy(Str, 256);
 
 		return Str;
 	}
 
+	
+#ifdef WIN32
+	strcpy_s(Str, 256, "");
+#else
 	strcpy(Str, "");
+#endif
+
 	return Str;
 }
 

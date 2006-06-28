@@ -41,8 +41,8 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories="..\;c:\Python24\include\;c:\Python24\PC\"
-				PreprocessorDefinitions="WIN32;_WINDOWS;_USRDLL;UCLAVATARPYTHONINTERFACE_EXPORTS;NO_DEMEANOUR;CONSOLE_PRESENT"
+				AdditionalIncludeDirectories="..\"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;UCLAVATARPYTHONINTERFACE_EXPORTS;NO_DEMEANOUR;NO_CONSOLE_PRESENT"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -63,7 +63,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
-				AdditionalLibraryDirectories="c:\Python24\PCBuild"
+				AdditionalLibraryDirectories=""
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -87,7 +87,7 @@
 			IntermediateDirectory="Release"
 			ConfigurationType="4"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
-			CharacterSet="1"
+			CharacterSet="2"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -110,7 +110,7 @@
 				InlineFunctionExpansion="1"
 				OmitFramePointers="true"
 				AdditionalIncludeDirectories="..\"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;UCLAVATARPYTHONINTERFACE_EXPORTS"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;UCLAVATARPYTHONINTERFACE_EXPORTS;CONSOLE_PRESENT"
 				StringPooling="true"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
@@ -119,6 +119,7 @@
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="3"
+				DisableSpecificWarnings="4251 /wd4311 /wd4996 /wd4244 /wd4312 /wd4715 /wd4800"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -337,6 +338,17 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Running Swig"
+					CommandLine="swig -c++ -python -shadow -I&quot;$(ProjectDir)/..&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					Outputs=" $(ProjectDir)$(InputName)_wrap.cpp"
+				/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Release|Win32"
+				ExcludedFromBuild="true"
+				>
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="running swig"
 					CommandLine="swig -c++ -python -shadow -I&quot;$(ProjectDir)/..&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; &quot;$(InputPath)&quot;&#x0D;&#x0A;"
 					Outputs=" $(ProjectDir)$(InputName)_wrap.cpp"
 				/>

@@ -40,8 +40,8 @@ function OnDownload()
 	FileDownload("XVR2Piavca.dll");
 	FileDownload("cal3d.dll");
 	FileDownload("python24.dll");
-	//FileDownload("cally.zip");
-	FileDownload("Buffy.zip");
+	FileDownload("cally.zip");
+	//FileDownload("Buffy.zip");
 
 	// TO DO		
 }
@@ -81,8 +81,8 @@ function OnInit(params)
 	
 	externalmodule.__AddFunction(C_PCHAR, "GetLastMessage", C_VOID);
 
-	//externalmodule.onInitial(".\\cally", "PyTest");
-	externalmodule.onInitial(".\\Buffy", "PyTest");
+	externalmodule.onInitial(".\\cally", "PyTest");
+	//externalmodule.onInitial(".\\Buffy", "PyTest");
 	//externalmodule.onInitial(".\\Buffy", "PCA");
 	
 //------------------------------Plug In Test End------------------------------------//

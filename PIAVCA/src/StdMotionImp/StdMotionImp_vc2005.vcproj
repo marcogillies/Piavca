@@ -118,6 +118,7 @@
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="3"
+				DisableSpecificWarnings="4251 /wd4267 /wd4244 /wd4065 /wd4102 /wd4996"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -349,6 +350,17 @@
 				/>
 			</FileConfiguration>
 			<FileConfiguration
+				Name="Release|Win32"
+				ExcludedFromBuild="true"
+				>
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="running flex"
+					CommandLine="flex.exe -Pbvh -obvhLexer.cpp &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					Outputs=" $(ProjectDir)bvhLexer.cpp"
+				/>
+			</FileConfiguration>
+			<FileConfiguration
 				Name="C Only Debug|Win32"
 				>
 				<Tool
@@ -374,6 +386,17 @@
 			>
 			<FileConfiguration
 				Name="Debug|Win32"
+				>
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="running bison"
+					CommandLine="bison -p bvh -d &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					Outputs="&quot;$(ProjectDir)bvhParser.tab.cpp&quot;;&quot;$(ProjectDir)bvhParser.tab.hpp&quot;"
+				/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Release|Win32"
+				ExcludedFromBuild="true"
 				>
 				<Tool
 					Name="VCCustomBuildTool"

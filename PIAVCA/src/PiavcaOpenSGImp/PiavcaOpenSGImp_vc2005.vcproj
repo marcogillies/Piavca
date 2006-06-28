@@ -40,7 +40,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\;C:\Program Files\OpenSG\include;..\..\..\cal3d-0.10.0\src\"
+				AdditionalIncludeDirectories="..\;..\..\..\cal3d-0.10.0\src\"
 				PreprocessorDefinitions="WIN32;_DEBUG;_LIB;_WINDOWS;WINVER=0x0400;_WIN32_WINDOWS=0x0410;_WIN32_WINNT=0x0400;_OSG_HAVE_CONFIGURED_H_;OSG_BUILD_DLL;_DEBUG;OSG_DEBUG;OSG_WITH_GLUT;OSG_WITH_GIF;OSG_WITH_TIF;OSG_WITH_JPG"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -107,11 +107,13 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				PreprocessorDefinitions="WIN32;NDEBUG;_LIB"
-				RuntimeLibrary="0"
+				RuntimeLibrary="2"
+				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="3"
+				DisableSpecificWarnings="4251"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -146,7 +148,7 @@
 	<References>
 		<ProjectReference
 			ReferencedProjectIdentifier="{97813F74-80B5-4861-8CEE-99328B65173C}"
-			RelativePathToProject=".\src\PiavcaCal3DImp\PiavcaCal3DImp_vc2005.vcproj"
+			RelativePathToProject=".\src\PiavcaCal3dImp\PiavcaCal3DImp_vc2005.vcproj"
 		/>
 	</References>
 	<Files>
