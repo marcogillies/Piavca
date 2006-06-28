@@ -177,7 +177,7 @@ public:
 		   const Quat &Orientation = Quat(1.0, 0.0, 0.0, 0.0),
 		   const Vec &forwardDir = Vec(0.0, 0.0, 1.0));
 
-	Avatar(const char *avatarId);
+	//Avatar(const char *avatarId);
 
 	//! get hold of the piavca core
 	//Piavca::Core *getCore() const {return core;};

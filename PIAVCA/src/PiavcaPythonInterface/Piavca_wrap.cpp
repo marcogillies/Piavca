@@ -1483,17 +1483,17 @@ SWIG_Python_SetModule(swig_module_info *swig_module) {
 #define SWIGTYPE_p_char swig_types[49]
 #define SWIGTYPE_p_float swig_types[50]
 #define SWIGTYPE_p_int swig_types[51]
-#define SWIGTYPE_p_istringstream swig_types[52]
-#define SWIGTYPE_p_p_Piavca__MotionParser swig_types[53]
-#define SWIGTYPE_p_std__fstream swig_types[54]
-#define SWIGTYPE_p_std__ifstream swig_types[55]
-#define SWIGTYPE_p_std__istringstream swig_types[56]
-#define SWIGTYPE_p_std__listTtstring_t swig_types[57]
-#define SWIGTYPE_p_std__ofstream swig_types[58]
-#define SWIGTYPE_p_std__ostream swig_types[59]
-#define SWIGTYPE_p_std__ostringstream swig_types[60]
-#define SWIGTYPE_p_std__string swig_types[61]
-#define SWIGTYPE_p_std__stringstream swig_types[62]
+#define SWIGTYPE_p_p_Piavca__MotionParser swig_types[52]
+#define SWIGTYPE_p_std__fstream swig_types[53]
+#define SWIGTYPE_p_std__ifstream swig_types[54]
+#define SWIGTYPE_p_std__istringstream swig_types[55]
+#define SWIGTYPE_p_std__listTtstring_t swig_types[56]
+#define SWIGTYPE_p_std__ofstream swig_types[57]
+#define SWIGTYPE_p_std__ostream swig_types[58]
+#define SWIGTYPE_p_std__ostringstream swig_types[59]
+#define SWIGTYPE_p_std__string swig_types[60]
+#define SWIGTYPE_p_std__stringstream swig_types[61]
+#define SWIGTYPE_p_std__type_info swig_types[62]
 #define SWIGTYPE_p_std__vectorTPiavca__AvatarTargetStruct_t swig_types[63]
 #define SWIGTYPE_p_std__vectorTPiavca__Motion_p_t swig_types[64]
 #define SWIGTYPE_p_std__vectorTPiavca__ObjectTargetStruct_t swig_types[65]
@@ -1503,15 +1503,13 @@ SWIG_Python_SetModule(swig_module_info *swig_module) {
 #define SWIGTYPE_p_std__vectorTtstring_t swig_types[69]
 #define SWIGTYPE_p_std__wstring swig_types[70]
 #define SWIGTYPE_p_tostringstream swig_types[71]
-#define SWIGTYPE_p_tstring swig_types[72]
-#define SWIGTYPE_p_type_info swig_types[73]
-#define SWIGTYPE_p_vectorTfloat_t swig_types[74]
-#define SWIGTYPE_ptrdiff_t swig_types[75]
-#define SWIGTYPE_size_t swig_types[76]
-#define SWIGTYPE_std__ptrdiff_t swig_types[77]
-#define SWIGTYPE_std__size_t swig_types[78]
-static swig_type_info *swig_types[80];
-static swig_module_info swig_module = {swig_types, 79, 0, 0, 0, 0};
+#define SWIGTYPE_p_vectorTfloat_t swig_types[72]
+#define SWIGTYPE_ptrdiff_t swig_types[73]
+#define SWIGTYPE_size_t swig_types[74]
+#define SWIGTYPE_std__ptrdiff_t swig_types[75]
+#define SWIGTYPE_std__size_t swig_types[76]
+static swig_type_info *swig_types[78];
+static swig_module_info swig_module = {swig_types, 77, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -1717,7 +1715,7 @@ SWIG_Check_float(PyObject* obj)
 }
 
 
-  /*@d:\\Program Files\\swig\\Lib\\python\\pymacros.swg,72,SWIG_define@*/
+  /*@C:\\Program Files\\swigwin-1.3.27\\Lib\\python\\pymacros.swg,72,SWIG_define@*/
 #define SWIG_From_float PyFloat_FromDouble
 /*@@*/
 
@@ -1775,7 +1773,51 @@ static PyObject *Piavca_Quat___repr__(Piavca::Quat *self){
 		return Py_BuildValue("s", os.str().c_str());
 	}
 
-  /*@d:\\Program Files\\swig\\Lib\\python\\pymacros.swg,72,SWIG_define@*/
+/* returns SWIG_OLDOBJ if the input is a raw char*, SWIG_PYSTR if is a PyString */
+SWIGINTERN int
+SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize)
+{
+  static swig_type_info* pchar_info = 0;
+  char* vptr = 0;
+  if (!pchar_info) pchar_info = SWIG_TypeQuery("char *");
+  if (SWIG_ConvertPtr(obj, (void**)&vptr, pchar_info, 0) != -1) {
+    if (cptr) *cptr = vptr;
+    if (psize) *psize = vptr ? (strlen(vptr) + 1) : 0;
+    return SWIG_OLDOBJ;
+  } else {
+    PyErr_Clear();
+    if (PyString_Check(obj)) {
+      if (cptr) {
+	*cptr = PyString_AS_STRING(obj);
+	if (psize) {
+	  *psize = PyString_GET_SIZE(obj) + 1;
+	}
+      }
+      return SWIG_PYSTR;
+    }
+  }
+  if (cptr) {
+    SWIG_type_error("char *", obj);
+  }
+  return 0;
+}
+
+
+SWIGINTERNINLINE int
+SWIG_AsCharPtr(PyObject *obj, char **val)
+{
+  if (SWIG_AsCharPtrAndSize(obj, val, (size_t*)(0))) {
+    return 1;
+  }
+  if (val) {
+    PyErr_Clear();
+    SWIG_type_error("char *", obj);
+  }
+  return 0;
+}
+
+
+  /*@C:\\Program Files\\swigwin-1.3.27\\Lib\\python\\pymacros.swg,72,SWIG_define@*/
 #define SWIG_From_int PyInt_FromLong
 /*@@*/
 
@@ -1902,68 +1944,6 @@ SWIG_Check_bool(PyObject* obj)
   return SWIG_AsVal_bool(obj, (bool*)0);
 }
 
-
-/* returns SWIG_OLDOBJ if the input is a raw char*, SWIG_PYSTR if is a PyString */
-SWIGINTERN int
-SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize)
-{
-  static swig_type_info* pchar_info = 0;
-  char* vptr = 0;
-  if (!pchar_info) pchar_info = SWIG_TypeQuery("char *");
-  if (SWIG_ConvertPtr(obj, (void**)&vptr, pchar_info, 0) != -1) {
-    if (cptr) *cptr = vptr;
-    if (psize) *psize = vptr ? (strlen(vptr) + 1) : 0;
-    return SWIG_OLDOBJ;
-  } else {
-    PyErr_Clear();
-    if (PyString_Check(obj)) {
-      if (cptr) {
-	*cptr = PyString_AS_STRING(obj);
-	if (psize) {
-	  *psize = PyString_GET_SIZE(obj) + 1;
-	}
-      }
-      return SWIG_PYSTR;
-    }
-  }
-  if (cptr) {
-    SWIG_type_error("char *", obj);
-  }
-  return 0;
-}
-
-
-SWIGINTERNINLINE int
-SWIG_AsCharPtr(PyObject *obj, char **val)
-{
-  if (SWIG_AsCharPtrAndSize(obj, val, (size_t*)(0))) {
-    return 1;
-  }
-  if (val) {
-    PyErr_Clear();
-    SWIG_type_error("char *", obj);
-  }
-  return 0;
-}
-
-static Piavca::Motion *Piavca_Core_loadMotion__SWIG_7(Piavca::Core *self,char const *motionName,char const *motionFileName,int flags=0,bool temp=false,Piavca::Motion *basePosture=NULL){
-		self->loadMotion(StringToTString(motionName),
-						 StringToTString(motionFileName),
-						 flags,
-						 temp, 
-						 basePosture);
-		return self->getMotion(StringToTString(motionName));
-	}
-static Piavca::Motion *Piavca_Core_loadMotion__SWIG_11(Piavca::Core *self,char const *motionName,Piavca::Motion *mot,bool temp=false,Piavca::Motion *basePosture=NULL){
-		self->loadMotion(StringToTString(motionName),
-						 mot,
-						 temp, 
-						 basePosture);
-		return self->getMotion(StringToTString(motionName));
-	}
-static Piavca::Motion *Piavca_Core_getMotion__SWIG_2(Piavca::Core *self,char const *motionName){
-		return self->getMotion(StringToTString(motionName));
-	}
 static bool Piavca_Avatar_setFacialExpressionWeight__SWIG_2(Piavca::Avatar *self,char const *name,float weight){
 		int exprId = Piavca::Core::getCore()->getExpressionId((name));
 		if(exprId < 0)
@@ -5770,7 +5750,7 @@ static PyObject *_wrap_Core_getJointName(PyObject *, PyObject *args) {
 static PyObject *_wrap_Core_getJointNameAssociations(PyObject *, PyObject *args) {
     PyObject *resultobj = NULL;
     Piavca::Core *arg1 = (Piavca::Core *) 0 ;
-    std::vector<std::pair<tstring,int > > result;
+    SwigValueWrapper<std::vector<std::pair<tstring,int > > > result;
     PyObject * obj0 = 0 ;
     
     if(!PyArg_ParseTuple(args,(char *)"O:Core_getJointNameAssociations",&obj0)) goto fail;
@@ -5892,7 +5872,7 @@ static PyObject *_wrap_Core_getExpressionName(PyObject *, PyObject *args) {
 static PyObject *_wrap_Core_getExpressionNameAssociations(PyObject *, PyObject *args) {
     PyObject *resultobj = NULL;
     Piavca::Core *arg1 = (Piavca::Core *) 0 ;
-    std::vector<std::pair<tstring,int > > result;
+    SwigValueWrapper<std::vector<std::pair<tstring,int > > > result;
     PyObject * obj0 = 0 ;
     
     if(!PyArg_ParseTuple(args,(char *)"O:Core_getExpressionNameAssociations",&obj0)) goto fail;
@@ -6147,6 +6127,235 @@ static PyObject *_wrap_Core_loadMotion__SWIG_6(PyObject *, PyObject *args) {
 }
 
 
+static PyObject *_wrap_Core_loadMotion(PyObject *self, PyObject *args) {
+    int argc;
+    PyObject *argv[7];
+    int ii;
+    
+    argc = PyObject_Length(args);
+    for (ii = 0; (ii < argc) && (ii < 6); ii++) {
+        argv[ii] = PyTuple_GetItem(args,ii);
+    }
+    if (argc == 3) {
+        int _v;
+        {
+            void *ptr;
+            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_Piavca__Core, 0) == -1) {
+                _v = 0;
+                PyErr_Clear();
+            } else {
+                _v = 1;
+            }
+        }
+        if (_v) {
+            _v = SWIG_AsCharPtr(argv[1], (char **)(0));
+            if (_v) {
+                {
+                    void *ptr;
+                    if (SWIG_ConvertPtr(argv[2], &ptr, SWIGTYPE_p_Piavca__Motion, 0) == -1) {
+                        _v = 0;
+                        PyErr_Clear();
+                    } else {
+                        _v = 1;
+                    }
+                }
+                if (_v) {
+                    return _wrap_Core_loadMotion__SWIG_6(self,args);
+                }
+            }
+        }
+    }
+    if (argc == 3) {
+        int _v;
+        {
+            void *ptr;
+            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_Piavca__Core, 0) == -1) {
+                _v = 0;
+                PyErr_Clear();
+            } else {
+                _v = 1;
+            }
+        }
+        if (_v) {
+            _v = SWIG_AsCharPtr(argv[1], (char **)(0));
+            if (_v) {
+                _v = SWIG_AsCharPtr(argv[2], (char **)(0));
+                if (_v) {
+                    return _wrap_Core_loadMotion__SWIG_3(self,args);
+                }
+            }
+        }
+    }
+    if (argc == 4) {
+        int _v;
+        {
+            void *ptr;
+            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_Piavca__Core, 0) == -1) {
+                _v = 0;
+                PyErr_Clear();
+            } else {
+                _v = 1;
+            }
+        }
+        if (_v) {
+            _v = SWIG_AsCharPtr(argv[1], (char **)(0));
+            if (_v) {
+                {
+                    void *ptr;
+                    if (SWIG_ConvertPtr(argv[2], &ptr, SWIGTYPE_p_Piavca__Motion, 0) == -1) {
+                        _v = 0;
+                        PyErr_Clear();
+                    } else {
+                        _v = 1;
+                    }
+                }
+                if (_v) {
+                    _v = SWIG_Check_bool(argv[3]);
+                    if (_v) {
+                        return _wrap_Core_loadMotion__SWIG_5(self,args);
+                    }
+                }
+            }
+        }
+    }
+    if (argc == 4) {
+        int _v;
+        {
+            void *ptr;
+            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_Piavca__Core, 0) == -1) {
+                _v = 0;
+                PyErr_Clear();
+            } else {
+                _v = 1;
+            }
+        }
+        if (_v) {
+            _v = SWIG_AsCharPtr(argv[1], (char **)(0));
+            if (_v) {
+                _v = SWIG_AsCharPtr(argv[2], (char **)(0));
+                if (_v) {
+                    _v = SWIG_Check_int(argv[3]);
+                    if (_v) {
+                        return _wrap_Core_loadMotion__SWIG_2(self,args);
+                    }
+                }
+            }
+        }
+    }
+    if (argc == 5) {
+        int _v;
+        {
+            void *ptr;
+            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_Piavca__Core, 0) == -1) {
+                _v = 0;
+                PyErr_Clear();
+            } else {
+                _v = 1;
+            }
+        }
+        if (_v) {
+            _v = SWIG_AsCharPtr(argv[1], (char **)(0));
+            if (_v) {
+                {
+                    void *ptr;
+                    if (SWIG_ConvertPtr(argv[2], &ptr, SWIGTYPE_p_Piavca__Motion, 0) == -1) {
+                        _v = 0;
+                        PyErr_Clear();
+                    } else {
+                        _v = 1;
+                    }
+                }
+                if (_v) {
+                    _v = SWIG_Check_bool(argv[3]);
+                    if (_v) {
+                        {
+                            void *ptr;
+                            if (SWIG_ConvertPtr(argv[4], &ptr, SWIGTYPE_p_Piavca__Motion, 0) == -1) {
+                                _v = 0;
+                                PyErr_Clear();
+                            } else {
+                                _v = 1;
+                            }
+                        }
+                        if (_v) {
+                            return _wrap_Core_loadMotion__SWIG_4(self,args);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    if (argc == 5) {
+        int _v;
+        {
+            void *ptr;
+            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_Piavca__Core, 0) == -1) {
+                _v = 0;
+                PyErr_Clear();
+            } else {
+                _v = 1;
+            }
+        }
+        if (_v) {
+            _v = SWIG_AsCharPtr(argv[1], (char **)(0));
+            if (_v) {
+                _v = SWIG_AsCharPtr(argv[2], (char **)(0));
+                if (_v) {
+                    _v = SWIG_Check_int(argv[3]);
+                    if (_v) {
+                        _v = SWIG_Check_bool(argv[4]);
+                        if (_v) {
+                            return _wrap_Core_loadMotion__SWIG_1(self,args);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    if (argc == 6) {
+        int _v;
+        {
+            void *ptr;
+            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_Piavca__Core, 0) == -1) {
+                _v = 0;
+                PyErr_Clear();
+            } else {
+                _v = 1;
+            }
+        }
+        if (_v) {
+            _v = SWIG_AsCharPtr(argv[1], (char **)(0));
+            if (_v) {
+                _v = SWIG_AsCharPtr(argv[2], (char **)(0));
+                if (_v) {
+                    _v = SWIG_Check_int(argv[3]);
+                    if (_v) {
+                        _v = SWIG_Check_bool(argv[4]);
+                        if (_v) {
+                            {
+                                void *ptr;
+                                if (SWIG_ConvertPtr(argv[5], &ptr, SWIGTYPE_p_Piavca__Motion, 0) == -1) {
+                                    _v = 0;
+                                    PyErr_Clear();
+                                } else {
+                                    _v = 1;
+                                }
+                            }
+                            if (_v) {
+                                return _wrap_Core_loadMotion__SWIG_0(self,args);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    PyErr_SetString(PyExc_NotImplementedError,"No matching function for overloaded 'Core_loadMotion'");
+    return NULL;
+}
+
+
 static PyObject *_wrap_Core_renameMotion(PyObject *, PyObject *args) {
     PyObject *resultobj = NULL;
     Piavca::Core *arg1 = (Piavca::Core *) 0 ;
@@ -6223,7 +6432,7 @@ static PyObject *_wrap_Core_getMotionNames__SWIG_0(PyObject *, PyObject *args) {
     PyObject *resultobj = NULL;
     Piavca::Core *arg1 = (Piavca::Core *) 0 ;
     int arg2 ;
-    std::vector<std::string > result;
+    SwigValueWrapper<std::vector<std::string > > result;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     
@@ -6250,7 +6459,7 @@ static PyObject *_wrap_Core_getMotionNames__SWIG_0(PyObject *, PyObject *args) {
 static PyObject *_wrap_Core_getMotionNames__SWIG_1(PyObject *, PyObject *args) {
     PyObject *resultobj = NULL;
     Piavca::Core *arg1 = (Piavca::Core *) 0 ;
-    std::vector<std::string > result;
+    SwigValueWrapper<std::vector<std::string > > result;
     PyObject * obj0 = 0 ;
     
     if(!PyArg_ParseTuple(args,(char *)"O:Core_getMotionNames",&obj0)) goto fail;
@@ -6383,6 +6592,57 @@ static PyObject *_wrap_Core_getMotion__SWIG_1(PyObject *, PyObject *args) {
 }
 
 
+static PyObject *_wrap_Core_getMotion(PyObject *self, PyObject *args) {
+    int argc;
+    PyObject *argv[3];
+    int ii;
+    
+    argc = PyObject_Length(args);
+    for (ii = 0; (ii < argc) && (ii < 2); ii++) {
+        argv[ii] = PyTuple_GetItem(args,ii);
+    }
+    if (argc == 2) {
+        int _v;
+        {
+            void *ptr;
+            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_Piavca__Core, 0) == -1) {
+                _v = 0;
+                PyErr_Clear();
+            } else {
+                _v = 1;
+            }
+        }
+        if (_v) {
+            _v = SWIG_Check_int(argv[1]);
+            if (_v) {
+                return _wrap_Core_getMotion__SWIG_1(self,args);
+            }
+        }
+    }
+    if (argc == 2) {
+        int _v;
+        {
+            void *ptr;
+            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_Piavca__Core, 0) == -1) {
+                _v = 0;
+                PyErr_Clear();
+            } else {
+                _v = 1;
+            }
+        }
+        if (_v) {
+            _v = SWIG_AsCharPtr(argv[1], (char **)(0));
+            if (_v) {
+                return _wrap_Core_getMotion__SWIG_0(self,args);
+            }
+        }
+    }
+    
+    PyErr_SetString(PyExc_NotImplementedError,"No matching function for overloaded 'Core_getMotion'");
+    return NULL;
+}
+
+
 static PyObject *_wrap_Core_getAvatar__SWIG_0(PyObject *, PyObject *args) {
     PyObject *resultobj = NULL;
     Piavca::Core *arg1 = (Piavca::Core *) 0 ;
@@ -6409,7 +6669,7 @@ static PyObject *_wrap_Core_getAvatar__SWIG_0(PyObject *, PyObject *args) {
 static PyObject *_wrap_Core_getAvatarNames(PyObject *, PyObject *args) {
     PyObject *resultobj = NULL;
     Piavca::Core *arg1 = (Piavca::Core *) 0 ;
-    std::vector<tstring > result;
+    SwigValueWrapper<std::vector<tstring > > result;
     PyObject * obj0 = 0 ;
     
     if(!PyArg_ParseTuple(args,(char *)"O:Core_getAvatarNames",&obj0)) goto fail;
@@ -6493,17 +6753,9 @@ static PyObject *_wrap_Core_getAvatar(PyObject *self, PyObject *args) {
             }
         }
         if (_v) {
-            {
-                void *ptr = 0;
-                if (SWIG_ConvertPtr(argv[1], &ptr, SWIGTYPE_p_tstring, 0) == -1) {
-                    _v = 0;
-                    PyErr_Clear();
-                } else {
-                    _v = (ptr != 0);
-                }
-            }
+            _v = SWIG_Check_int(argv[1]);
             if (_v) {
-                return _wrap_Core_getAvatar__SWIG_0(self,args);
+                return _wrap_Core_getAvatar__SWIG_1(self,args);
             }
         }
     }
@@ -6519,9 +6771,9 @@ static PyObject *_wrap_Core_getAvatar(PyObject *self, PyObject *args) {
             }
         }
         if (_v) {
-            _v = SWIG_Check_int(argv[1]);
+            _v = SWIG_AsCharPtr(argv[1], (char **)(0));
             if (_v) {
-                return _wrap_Core_getAvatar__SWIG_1(self,args);
+                return _wrap_Core_getAvatar__SWIG_0(self,args);
             }
         }
     }
@@ -6762,15 +7014,7 @@ static PyObject *_wrap_Core_initAvatar(PyObject *self, PyObject *args) {
                 }
             }
             if (_v) {
-                {
-                    void *ptr = 0;
-                    if (SWIG_ConvertPtr(argv[2], &ptr, SWIGTYPE_p_tstring, 0) == -1) {
-                        _v = 0;
-                        PyErr_Clear();
-                    } else {
-                        _v = (ptr != 0);
-                    }
-                }
+                _v = SWIG_AsCharPtr(argv[2], (char **)(0));
                 if (_v) {
                     return _wrap_Core_initAvatar__SWIG_3(self,args);
                 }
@@ -6799,15 +7043,7 @@ static PyObject *_wrap_Core_initAvatar(PyObject *self, PyObject *args) {
                 }
             }
             if (_v) {
-                {
-                    void *ptr = 0;
-                    if (SWIG_ConvertPtr(argv[2], &ptr, SWIGTYPE_p_tstring, 0) == -1) {
-                        _v = 0;
-                        PyErr_Clear();
-                    } else {
-                        _v = (ptr != 0);
-                    }
-                }
+                _v = SWIG_AsCharPtr(argv[2], (char **)(0));
                 if (_v) {
                     _v = SWIG_Check_bool(argv[3]);
                     if (_v) {
@@ -6839,15 +7075,7 @@ static PyObject *_wrap_Core_initAvatar(PyObject *self, PyObject *args) {
                 }
             }
             if (_v) {
-                {
-                    void *ptr = 0;
-                    if (SWIG_ConvertPtr(argv[2], &ptr, SWIGTYPE_p_tstring, 0) == -1) {
-                        _v = 0;
-                        PyErr_Clear();
-                    } else {
-                        _v = (ptr != 0);
-                    }
-                }
+                _v = SWIG_AsCharPtr(argv[2], (char **)(0));
                 if (_v) {
                     _v = SWIG_Check_bool(argv[3]);
                     if (_v) {
@@ -6890,15 +7118,7 @@ static PyObject *_wrap_Core_initAvatar(PyObject *self, PyObject *args) {
                 }
             }
             if (_v) {
-                {
-                    void *ptr = 0;
-                    if (SWIG_ConvertPtr(argv[2], &ptr, SWIGTYPE_p_tstring, 0) == -1) {
-                        _v = 0;
-                        PyErr_Clear();
-                    } else {
-                        _v = (ptr != 0);
-                    }
-                }
+                _v = SWIG_AsCharPtr(argv[2], (char **)(0));
                 if (_v) {
                     _v = SWIG_Check_bool(argv[3]);
                     if (_v) {
@@ -7024,17 +7244,9 @@ static PyObject *_wrap_Core_getObject(PyObject *self, PyObject *args) {
             }
         }
         if (_v) {
-            {
-                void *ptr = 0;
-                if (SWIG_ConvertPtr(argv[1], &ptr, SWIGTYPE_p_tstring, 0) == -1) {
-                    _v = 0;
-                    PyErr_Clear();
-                } else {
-                    _v = (ptr != 0);
-                }
-            }
+            _v = SWIG_Check_int(argv[1]);
             if (_v) {
-                return _wrap_Core_getObject__SWIG_0(self,args);
+                return _wrap_Core_getObject__SWIG_1(self,args);
             }
         }
     }
@@ -7050,9 +7262,9 @@ static PyObject *_wrap_Core_getObject(PyObject *self, PyObject *args) {
             }
         }
         if (_v) {
-            _v = SWIG_Check_int(argv[1]);
+            _v = SWIG_AsCharPtr(argv[1], (char **)(0));
             if (_v) {
-                return _wrap_Core_getObject__SWIG_1(self,args);
+                return _wrap_Core_getObject__SWIG_0(self,args);
             }
         }
     }
@@ -7249,15 +7461,7 @@ static PyObject *_wrap_Core_initObject(PyObject *self, PyObject *args) {
                 }
             }
             if (_v) {
-                {
-                    void *ptr = 0;
-                    if (SWIG_ConvertPtr(argv[2], &ptr, SWIGTYPE_p_tstring, 0) == -1) {
-                        _v = 0;
-                        PyErr_Clear();
-                    } else {
-                        _v = (ptr != 0);
-                    }
-                }
+                _v = SWIG_AsCharPtr(argv[2], (char **)(0));
                 if (_v) {
                     return _wrap_Core_initObject__SWIG_2(self,args);
                 }
@@ -7286,15 +7490,7 @@ static PyObject *_wrap_Core_initObject(PyObject *self, PyObject *args) {
                 }
             }
             if (_v) {
-                {
-                    void *ptr = 0;
-                    if (SWIG_ConvertPtr(argv[2], &ptr, SWIGTYPE_p_tstring, 0) == -1) {
-                        _v = 0;
-                        PyErr_Clear();
-                    } else {
-                        _v = (ptr != 0);
-                    }
-                }
+                _v = SWIG_AsCharPtr(argv[2], (char **)(0));
                 if (_v) {
                     {
                         void *ptr = 0;
@@ -7334,15 +7530,7 @@ static PyObject *_wrap_Core_initObject(PyObject *self, PyObject *args) {
                 }
             }
             if (_v) {
-                {
-                    void *ptr = 0;
-                    if (SWIG_ConvertPtr(argv[2], &ptr, SWIGTYPE_p_tstring, 0) == -1) {
-                        _v = 0;
-                        PyErr_Clear();
-                    } else {
-                        _v = (ptr != 0);
-                    }
-                }
+                _v = SWIG_AsCharPtr(argv[2], (char **)(0));
                 if (_v) {
                     {
                         void *ptr = 0;
@@ -7593,15 +7781,7 @@ static PyObject *_wrap_Core_initMotion(PyObject *self, PyObject *args) {
                 }
             }
             if (_v) {
-                {
-                    void *ptr = 0;
-                    if (SWIG_ConvertPtr(argv[2], &ptr, SWIGTYPE_p_tstring, 0) == -1) {
-                        _v = 0;
-                        PyErr_Clear();
-                    } else {
-                        _v = (ptr != 0);
-                    }
-                }
+                _v = SWIG_AsCharPtr(argv[2], (char **)(0));
                 if (_v) {
                     return _wrap_Core_initMotion__SWIG_3(self,args);
                 }
@@ -7630,15 +7810,7 @@ static PyObject *_wrap_Core_initMotion(PyObject *self, PyObject *args) {
                 }
             }
             if (_v) {
-                {
-                    void *ptr = 0;
-                    if (SWIG_ConvertPtr(argv[2], &ptr, SWIGTYPE_p_tstring, 0) == -1) {
-                        _v = 0;
-                        PyErr_Clear();
-                    } else {
-                        _v = (ptr != 0);
-                    }
-                }
+                _v = SWIG_AsCharPtr(argv[2], (char **)(0));
                 if (_v) {
                     _v = SWIG_Check_bool(argv[3]);
                     if (_v) {
@@ -7670,15 +7842,7 @@ static PyObject *_wrap_Core_initMotion(PyObject *self, PyObject *args) {
                 }
             }
             if (_v) {
-                {
-                    void *ptr = 0;
-                    if (SWIG_ConvertPtr(argv[2], &ptr, SWIGTYPE_p_tstring, 0) == -1) {
-                        _v = 0;
-                        PyErr_Clear();
-                    } else {
-                        _v = (ptr != 0);
-                    }
-                }
+                _v = SWIG_AsCharPtr(argv[2], (char **)(0));
                 if (_v) {
                     _v = SWIG_Check_bool(argv[3]);
                     if (_v) {
@@ -7713,15 +7877,7 @@ static PyObject *_wrap_Core_initMotion(PyObject *self, PyObject *args) {
                 }
             }
             if (_v) {
-                {
-                    void *ptr = 0;
-                    if (SWIG_ConvertPtr(argv[2], &ptr, SWIGTYPE_p_tstring, 0) == -1) {
-                        _v = 0;
-                        PyErr_Clear();
-                    } else {
-                        _v = (ptr != 0);
-                    }
-                }
+                _v = SWIG_AsCharPtr(argv[2], (char **)(0));
                 if (_v) {
                     _v = SWIG_Check_bool(argv[3]);
                     if (_v) {
@@ -8145,880 +8301,6 @@ static PyObject *_wrap_Core_log(PyObject *, PyObject *args) {
 }
 
 
-static PyObject *_wrap_Core_loadMotion__SWIG_7(PyObject *, PyObject *args) {
-    PyObject *resultobj = NULL;
-    Piavca::Core *arg1 = (Piavca::Core *) 0 ;
-    char *arg2 = (char *) 0 ;
-    char *arg3 = (char *) 0 ;
-    int arg4 ;
-    bool arg5 ;
-    Piavca::Motion *arg6 = (Piavca::Motion *) 0 ;
-    Piavca::Motion *result;
-    PyObject * obj0 = 0 ;
-    PyObject * obj1 = 0 ;
-    PyObject * obj2 = 0 ;
-    PyObject * obj3 = 0 ;
-    PyObject * obj4 = 0 ;
-    PyObject * obj5 = 0 ;
-    
-    if(!PyArg_ParseTuple(args,(char *)"OOOOOO:Core_loadMotion",&obj0,&obj1,&obj2,&obj3,&obj4,&obj5)) goto fail;
-    SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
-    if (SWIG_arg_fail(1)) SWIG_fail;
-    if (!SWIG_AsCharPtr(obj1, (char**)&arg2)) {
-        SWIG_arg_fail(2);SWIG_fail;
-    }
-    if (!SWIG_AsCharPtr(obj2, (char**)&arg3)) {
-        SWIG_arg_fail(3);SWIG_fail;
-    }
-    {
-        arg4 = static_cast<int >(SWIG_As_int(obj3)); 
-        if (SWIG_arg_fail(4)) SWIG_fail;
-    }
-    {
-        arg5 = static_cast<bool >(SWIG_As_bool(obj4)); 
-        if (SWIG_arg_fail(5)) SWIG_fail;
-    }
-    SWIG_Python_ConvertPtr(obj5, (void **)&arg6, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
-    if (SWIG_arg_fail(6)) SWIG_fail;
-    result = (Piavca::Motion *)Piavca_Core_loadMotion__SWIG_7(arg1,(char const *)arg2,(char const *)arg3,arg4,arg5,arg6);
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
-    return resultobj;
-    fail:
-    return NULL;
-}
-
-
-static PyObject *_wrap_Core_loadMotion__SWIG_8(PyObject *, PyObject *args) {
-    PyObject *resultobj = NULL;
-    Piavca::Core *arg1 = (Piavca::Core *) 0 ;
-    char *arg2 = (char *) 0 ;
-    char *arg3 = (char *) 0 ;
-    int arg4 ;
-    bool arg5 ;
-    Piavca::Motion *result;
-    PyObject * obj0 = 0 ;
-    PyObject * obj1 = 0 ;
-    PyObject * obj2 = 0 ;
-    PyObject * obj3 = 0 ;
-    PyObject * obj4 = 0 ;
-    
-    if(!PyArg_ParseTuple(args,(char *)"OOOOO:Core_loadMotion",&obj0,&obj1,&obj2,&obj3,&obj4)) goto fail;
-    SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
-    if (SWIG_arg_fail(1)) SWIG_fail;
-    if (!SWIG_AsCharPtr(obj1, (char**)&arg2)) {
-        SWIG_arg_fail(2);SWIG_fail;
-    }
-    if (!SWIG_AsCharPtr(obj2, (char**)&arg3)) {
-        SWIG_arg_fail(3);SWIG_fail;
-    }
-    {
-        arg4 = static_cast<int >(SWIG_As_int(obj3)); 
-        if (SWIG_arg_fail(4)) SWIG_fail;
-    }
-    {
-        arg5 = static_cast<bool >(SWIG_As_bool(obj4)); 
-        if (SWIG_arg_fail(5)) SWIG_fail;
-    }
-    result = (Piavca::Motion *)Piavca_Core_loadMotion__SWIG_7(arg1,(char const *)arg2,(char const *)arg3,arg4,arg5);
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
-    return resultobj;
-    fail:
-    return NULL;
-}
-
-
-static PyObject *_wrap_Core_loadMotion__SWIG_9(PyObject *, PyObject *args) {
-    PyObject *resultobj = NULL;
-    Piavca::Core *arg1 = (Piavca::Core *) 0 ;
-    char *arg2 = (char *) 0 ;
-    char *arg3 = (char *) 0 ;
-    int arg4 ;
-    Piavca::Motion *result;
-    PyObject * obj0 = 0 ;
-    PyObject * obj1 = 0 ;
-    PyObject * obj2 = 0 ;
-    PyObject * obj3 = 0 ;
-    
-    if(!PyArg_ParseTuple(args,(char *)"OOOO:Core_loadMotion",&obj0,&obj1,&obj2,&obj3)) goto fail;
-    SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
-    if (SWIG_arg_fail(1)) SWIG_fail;
-    if (!SWIG_AsCharPtr(obj1, (char**)&arg2)) {
-        SWIG_arg_fail(2);SWIG_fail;
-    }
-    if (!SWIG_AsCharPtr(obj2, (char**)&arg3)) {
-        SWIG_arg_fail(3);SWIG_fail;
-    }
-    {
-        arg4 = static_cast<int >(SWIG_As_int(obj3)); 
-        if (SWIG_arg_fail(4)) SWIG_fail;
-    }
-    result = (Piavca::Motion *)Piavca_Core_loadMotion__SWIG_7(arg1,(char const *)arg2,(char const *)arg3,arg4);
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
-    return resultobj;
-    fail:
-    return NULL;
-}
-
-
-static PyObject *_wrap_Core_loadMotion__SWIG_10(PyObject *, PyObject *args) {
-    PyObject *resultobj = NULL;
-    Piavca::Core *arg1 = (Piavca::Core *) 0 ;
-    char *arg2 = (char *) 0 ;
-    char *arg3 = (char *) 0 ;
-    Piavca::Motion *result;
-    PyObject * obj0 = 0 ;
-    PyObject * obj1 = 0 ;
-    PyObject * obj2 = 0 ;
-    
-    if(!PyArg_ParseTuple(args,(char *)"OOO:Core_loadMotion",&obj0,&obj1,&obj2)) goto fail;
-    SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
-    if (SWIG_arg_fail(1)) SWIG_fail;
-    if (!SWIG_AsCharPtr(obj1, (char**)&arg2)) {
-        SWIG_arg_fail(2);SWIG_fail;
-    }
-    if (!SWIG_AsCharPtr(obj2, (char**)&arg3)) {
-        SWIG_arg_fail(3);SWIG_fail;
-    }
-    result = (Piavca::Motion *)Piavca_Core_loadMotion__SWIG_7(arg1,(char const *)arg2,(char const *)arg3);
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
-    return resultobj;
-    fail:
-    return NULL;
-}
-
-
-static PyObject *_wrap_Core_loadMotion__SWIG_11(PyObject *, PyObject *args) {
-    PyObject *resultobj = NULL;
-    Piavca::Core *arg1 = (Piavca::Core *) 0 ;
-    char *arg2 = (char *) 0 ;
-    Piavca::Motion *arg3 = (Piavca::Motion *) 0 ;
-    bool arg4 ;
-    Piavca::Motion *arg5 = (Piavca::Motion *) 0 ;
-    Piavca::Motion *result;
-    PyObject * obj0 = 0 ;
-    PyObject * obj1 = 0 ;
-    PyObject * obj2 = 0 ;
-    PyObject * obj3 = 0 ;
-    PyObject * obj4 = 0 ;
-    
-    if(!PyArg_ParseTuple(args,(char *)"OOOOO:Core_loadMotion",&obj0,&obj1,&obj2,&obj3,&obj4)) goto fail;
-    SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
-    if (SWIG_arg_fail(1)) SWIG_fail;
-    if (!SWIG_AsCharPtr(obj1, (char**)&arg2)) {
-        SWIG_arg_fail(2);SWIG_fail;
-    }
-    SWIG_Python_ConvertPtr(obj2, (void **)&arg3, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
-    if (SWIG_arg_fail(3)) SWIG_fail;
-    {
-        arg4 = static_cast<bool >(SWIG_As_bool(obj3)); 
-        if (SWIG_arg_fail(4)) SWIG_fail;
-    }
-    SWIG_Python_ConvertPtr(obj4, (void **)&arg5, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
-    if (SWIG_arg_fail(5)) SWIG_fail;
-    result = (Piavca::Motion *)Piavca_Core_loadMotion__SWIG_11(arg1,(char const *)arg2,arg3,arg4,arg5);
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
-    return resultobj;
-    fail:
-    return NULL;
-}
-
-
-static PyObject *_wrap_Core_loadMotion__SWIG_12(PyObject *, PyObject *args) {
-    PyObject *resultobj = NULL;
-    Piavca::Core *arg1 = (Piavca::Core *) 0 ;
-    char *arg2 = (char *) 0 ;
-    Piavca::Motion *arg3 = (Piavca::Motion *) 0 ;
-    bool arg4 ;
-    Piavca::Motion *result;
-    PyObject * obj0 = 0 ;
-    PyObject * obj1 = 0 ;
-    PyObject * obj2 = 0 ;
-    PyObject * obj3 = 0 ;
-    
-    if(!PyArg_ParseTuple(args,(char *)"OOOO:Core_loadMotion",&obj0,&obj1,&obj2,&obj3)) goto fail;
-    SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
-    if (SWIG_arg_fail(1)) SWIG_fail;
-    if (!SWIG_AsCharPtr(obj1, (char**)&arg2)) {
-        SWIG_arg_fail(2);SWIG_fail;
-    }
-    SWIG_Python_ConvertPtr(obj2, (void **)&arg3, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
-    if (SWIG_arg_fail(3)) SWIG_fail;
-    {
-        arg4 = static_cast<bool >(SWIG_As_bool(obj3)); 
-        if (SWIG_arg_fail(4)) SWIG_fail;
-    }
-    result = (Piavca::Motion *)Piavca_Core_loadMotion__SWIG_11(arg1,(char const *)arg2,arg3,arg4);
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
-    return resultobj;
-    fail:
-    return NULL;
-}
-
-
-static PyObject *_wrap_Core_loadMotion__SWIG_13(PyObject *, PyObject *args) {
-    PyObject *resultobj = NULL;
-    Piavca::Core *arg1 = (Piavca::Core *) 0 ;
-    char *arg2 = (char *) 0 ;
-    Piavca::Motion *arg3 = (Piavca::Motion *) 0 ;
-    Piavca::Motion *result;
-    PyObject * obj0 = 0 ;
-    PyObject * obj1 = 0 ;
-    PyObject * obj2 = 0 ;
-    
-    if(!PyArg_ParseTuple(args,(char *)"OOO:Core_loadMotion",&obj0,&obj1,&obj2)) goto fail;
-    SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
-    if (SWIG_arg_fail(1)) SWIG_fail;
-    if (!SWIG_AsCharPtr(obj1, (char**)&arg2)) {
-        SWIG_arg_fail(2);SWIG_fail;
-    }
-    SWIG_Python_ConvertPtr(obj2, (void **)&arg3, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
-    if (SWIG_arg_fail(3)) SWIG_fail;
-    result = (Piavca::Motion *)Piavca_Core_loadMotion__SWIG_11(arg1,(char const *)arg2,arg3);
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
-    return resultobj;
-    fail:
-    return NULL;
-}
-
-
-static PyObject *_wrap_Core_loadMotion(PyObject *self, PyObject *args) {
-    int argc;
-    PyObject *argv[7];
-    int ii;
-    
-    argc = PyObject_Length(args);
-    for (ii = 0; (ii < argc) && (ii < 6); ii++) {
-        argv[ii] = PyTuple_GetItem(args,ii);
-    }
-    if (argc == 3) {
-        int _v;
-        {
-            void *ptr;
-            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_Piavca__Core, 0) == -1) {
-                _v = 0;
-                PyErr_Clear();
-            } else {
-                _v = 1;
-            }
-        }
-        if (_v) {
-            {
-                void *ptr = 0;
-                if (SWIG_ConvertPtr(argv[1], &ptr, SWIGTYPE_p_tstring, 0) == -1) {
-                    _v = 0;
-                    PyErr_Clear();
-                } else {
-                    _v = (ptr != 0);
-                }
-            }
-            if (_v) {
-                {
-                    void *ptr = 0;
-                    if (SWIG_ConvertPtr(argv[2], &ptr, SWIGTYPE_p_tstring, 0) == -1) {
-                        _v = 0;
-                        PyErr_Clear();
-                    } else {
-                        _v = (ptr != 0);
-                    }
-                }
-                if (_v) {
-                    return _wrap_Core_loadMotion__SWIG_3(self,args);
-                }
-            }
-        }
-    }
-    if (argc == 3) {
-        int _v;
-        {
-            void *ptr;
-            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_Piavca__Core, 0) == -1) {
-                _v = 0;
-                PyErr_Clear();
-            } else {
-                _v = 1;
-            }
-        }
-        if (_v) {
-            {
-                void *ptr = 0;
-                if (SWIG_ConvertPtr(argv[1], &ptr, SWIGTYPE_p_tstring, 0) == -1) {
-                    _v = 0;
-                    PyErr_Clear();
-                } else {
-                    _v = (ptr != 0);
-                }
-            }
-            if (_v) {
-                {
-                    void *ptr;
-                    if (SWIG_ConvertPtr(argv[2], &ptr, SWIGTYPE_p_Piavca__Motion, 0) == -1) {
-                        _v = 0;
-                        PyErr_Clear();
-                    } else {
-                        _v = 1;
-                    }
-                }
-                if (_v) {
-                    return _wrap_Core_loadMotion__SWIG_6(self,args);
-                }
-            }
-        }
-    }
-    if (argc == 3) {
-        int _v;
-        {
-            void *ptr;
-            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_Piavca__Core, 0) == -1) {
-                _v = 0;
-                PyErr_Clear();
-            } else {
-                _v = 1;
-            }
-        }
-        if (_v) {
-            _v = SWIG_AsCharPtr(argv[1], (char **)(0));
-            if (_v) {
-                {
-                    void *ptr;
-                    if (SWIG_ConvertPtr(argv[2], &ptr, SWIGTYPE_p_Piavca__Motion, 0) == -1) {
-                        _v = 0;
-                        PyErr_Clear();
-                    } else {
-                        _v = 1;
-                    }
-                }
-                if (_v) {
-                    return _wrap_Core_loadMotion__SWIG_13(self,args);
-                }
-            }
-        }
-    }
-    if (argc == 3) {
-        int _v;
-        {
-            void *ptr;
-            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_Piavca__Core, 0) == -1) {
-                _v = 0;
-                PyErr_Clear();
-            } else {
-                _v = 1;
-            }
-        }
-        if (_v) {
-            _v = SWIG_AsCharPtr(argv[1], (char **)(0));
-            if (_v) {
-                _v = SWIG_AsCharPtr(argv[2], (char **)(0));
-                if (_v) {
-                    return _wrap_Core_loadMotion__SWIG_10(self,args);
-                }
-            }
-        }
-    }
-    if (argc == 4) {
-        int _v;
-        {
-            void *ptr;
-            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_Piavca__Core, 0) == -1) {
-                _v = 0;
-                PyErr_Clear();
-            } else {
-                _v = 1;
-            }
-        }
-        if (_v) {
-            {
-                void *ptr = 0;
-                if (SWIG_ConvertPtr(argv[1], &ptr, SWIGTYPE_p_tstring, 0) == -1) {
-                    _v = 0;
-                    PyErr_Clear();
-                } else {
-                    _v = (ptr != 0);
-                }
-            }
-            if (_v) {
-                {
-                    void *ptr;
-                    if (SWIG_ConvertPtr(argv[2], &ptr, SWIGTYPE_p_Piavca__Motion, 0) == -1) {
-                        _v = 0;
-                        PyErr_Clear();
-                    } else {
-                        _v = 1;
-                    }
-                }
-                if (_v) {
-                    _v = SWIG_Check_bool(argv[3]);
-                    if (_v) {
-                        return _wrap_Core_loadMotion__SWIG_5(self,args);
-                    }
-                }
-            }
-        }
-    }
-    if (argc == 4) {
-        int _v;
-        {
-            void *ptr;
-            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_Piavca__Core, 0) == -1) {
-                _v = 0;
-                PyErr_Clear();
-            } else {
-                _v = 1;
-            }
-        }
-        if (_v) {
-            {
-                void *ptr = 0;
-                if (SWIG_ConvertPtr(argv[1], &ptr, SWIGTYPE_p_tstring, 0) == -1) {
-                    _v = 0;
-                    PyErr_Clear();
-                } else {
-                    _v = (ptr != 0);
-                }
-            }
-            if (_v) {
-                {
-                    void *ptr = 0;
-                    if (SWIG_ConvertPtr(argv[2], &ptr, SWIGTYPE_p_tstring, 0) == -1) {
-                        _v = 0;
-                        PyErr_Clear();
-                    } else {
-                        _v = (ptr != 0);
-                    }
-                }
-                if (_v) {
-                    _v = SWIG_Check_int(argv[3]);
-                    if (_v) {
-                        return _wrap_Core_loadMotion__SWIG_2(self,args);
-                    }
-                }
-            }
-        }
-    }
-    if (argc == 4) {
-        int _v;
-        {
-            void *ptr;
-            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_Piavca__Core, 0) == -1) {
-                _v = 0;
-                PyErr_Clear();
-            } else {
-                _v = 1;
-            }
-        }
-        if (_v) {
-            _v = SWIG_AsCharPtr(argv[1], (char **)(0));
-            if (_v) {
-                {
-                    void *ptr;
-                    if (SWIG_ConvertPtr(argv[2], &ptr, SWIGTYPE_p_Piavca__Motion, 0) == -1) {
-                        _v = 0;
-                        PyErr_Clear();
-                    } else {
-                        _v = 1;
-                    }
-                }
-                if (_v) {
-                    _v = SWIG_Check_bool(argv[3]);
-                    if (_v) {
-                        return _wrap_Core_loadMotion__SWIG_12(self,args);
-                    }
-                }
-            }
-        }
-    }
-    if (argc == 4) {
-        int _v;
-        {
-            void *ptr;
-            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_Piavca__Core, 0) == -1) {
-                _v = 0;
-                PyErr_Clear();
-            } else {
-                _v = 1;
-            }
-        }
-        if (_v) {
-            _v = SWIG_AsCharPtr(argv[1], (char **)(0));
-            if (_v) {
-                _v = SWIG_AsCharPtr(argv[2], (char **)(0));
-                if (_v) {
-                    _v = SWIG_Check_int(argv[3]);
-                    if (_v) {
-                        return _wrap_Core_loadMotion__SWIG_9(self,args);
-                    }
-                }
-            }
-        }
-    }
-    if (argc == 5) {
-        int _v;
-        {
-            void *ptr;
-            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_Piavca__Core, 0) == -1) {
-                _v = 0;
-                PyErr_Clear();
-            } else {
-                _v = 1;
-            }
-        }
-        if (_v) {
-            {
-                void *ptr = 0;
-                if (SWIG_ConvertPtr(argv[1], &ptr, SWIGTYPE_p_tstring, 0) == -1) {
-                    _v = 0;
-                    PyErr_Clear();
-                } else {
-                    _v = (ptr != 0);
-                }
-            }
-            if (_v) {
-                {
-                    void *ptr;
-                    if (SWIG_ConvertPtr(argv[2], &ptr, SWIGTYPE_p_Piavca__Motion, 0) == -1) {
-                        _v = 0;
-                        PyErr_Clear();
-                    } else {
-                        _v = 1;
-                    }
-                }
-                if (_v) {
-                    _v = SWIG_Check_bool(argv[3]);
-                    if (_v) {
-                        {
-                            void *ptr;
-                            if (SWIG_ConvertPtr(argv[4], &ptr, SWIGTYPE_p_Piavca__Motion, 0) == -1) {
-                                _v = 0;
-                                PyErr_Clear();
-                            } else {
-                                _v = 1;
-                            }
-                        }
-                        if (_v) {
-                            return _wrap_Core_loadMotion__SWIG_4(self,args);
-                        }
-                    }
-                }
-            }
-        }
-    }
-    if (argc == 5) {
-        int _v;
-        {
-            void *ptr;
-            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_Piavca__Core, 0) == -1) {
-                _v = 0;
-                PyErr_Clear();
-            } else {
-                _v = 1;
-            }
-        }
-        if (_v) {
-            {
-                void *ptr = 0;
-                if (SWIG_ConvertPtr(argv[1], &ptr, SWIGTYPE_p_tstring, 0) == -1) {
-                    _v = 0;
-                    PyErr_Clear();
-                } else {
-                    _v = (ptr != 0);
-                }
-            }
-            if (_v) {
-                {
-                    void *ptr = 0;
-                    if (SWIG_ConvertPtr(argv[2], &ptr, SWIGTYPE_p_tstring, 0) == -1) {
-                        _v = 0;
-                        PyErr_Clear();
-                    } else {
-                        _v = (ptr != 0);
-                    }
-                }
-                if (_v) {
-                    _v = SWIG_Check_int(argv[3]);
-                    if (_v) {
-                        _v = SWIG_Check_bool(argv[4]);
-                        if (_v) {
-                            return _wrap_Core_loadMotion__SWIG_1(self,args);
-                        }
-                    }
-                }
-            }
-        }
-    }
-    if (argc == 5) {
-        int _v;
-        {
-            void *ptr;
-            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_Piavca__Core, 0) == -1) {
-                _v = 0;
-                PyErr_Clear();
-            } else {
-                _v = 1;
-            }
-        }
-        if (_v) {
-            _v = SWIG_AsCharPtr(argv[1], (char **)(0));
-            if (_v) {
-                {
-                    void *ptr;
-                    if (SWIG_ConvertPtr(argv[2], &ptr, SWIGTYPE_p_Piavca__Motion, 0) == -1) {
-                        _v = 0;
-                        PyErr_Clear();
-                    } else {
-                        _v = 1;
-                    }
-                }
-                if (_v) {
-                    _v = SWIG_Check_bool(argv[3]);
-                    if (_v) {
-                        {
-                            void *ptr;
-                            if (SWIG_ConvertPtr(argv[4], &ptr, SWIGTYPE_p_Piavca__Motion, 0) == -1) {
-                                _v = 0;
-                                PyErr_Clear();
-                            } else {
-                                _v = 1;
-                            }
-                        }
-                        if (_v) {
-                            return _wrap_Core_loadMotion__SWIG_11(self,args);
-                        }
-                    }
-                }
-            }
-        }
-    }
-    if (argc == 5) {
-        int _v;
-        {
-            void *ptr;
-            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_Piavca__Core, 0) == -1) {
-                _v = 0;
-                PyErr_Clear();
-            } else {
-                _v = 1;
-            }
-        }
-        if (_v) {
-            _v = SWIG_AsCharPtr(argv[1], (char **)(0));
-            if (_v) {
-                _v = SWIG_AsCharPtr(argv[2], (char **)(0));
-                if (_v) {
-                    _v = SWIG_Check_int(argv[3]);
-                    if (_v) {
-                        _v = SWIG_Check_bool(argv[4]);
-                        if (_v) {
-                            return _wrap_Core_loadMotion__SWIG_8(self,args);
-                        }
-                    }
-                }
-            }
-        }
-    }
-    if (argc == 6) {
-        int _v;
-        {
-            void *ptr;
-            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_Piavca__Core, 0) == -1) {
-                _v = 0;
-                PyErr_Clear();
-            } else {
-                _v = 1;
-            }
-        }
-        if (_v) {
-            {
-                void *ptr = 0;
-                if (SWIG_ConvertPtr(argv[1], &ptr, SWIGTYPE_p_tstring, 0) == -1) {
-                    _v = 0;
-                    PyErr_Clear();
-                } else {
-                    _v = (ptr != 0);
-                }
-            }
-            if (_v) {
-                {
-                    void *ptr = 0;
-                    if (SWIG_ConvertPtr(argv[2], &ptr, SWIGTYPE_p_tstring, 0) == -1) {
-                        _v = 0;
-                        PyErr_Clear();
-                    } else {
-                        _v = (ptr != 0);
-                    }
-                }
-                if (_v) {
-                    _v = SWIG_Check_int(argv[3]);
-                    if (_v) {
-                        _v = SWIG_Check_bool(argv[4]);
-                        if (_v) {
-                            {
-                                void *ptr;
-                                if (SWIG_ConvertPtr(argv[5], &ptr, SWIGTYPE_p_Piavca__Motion, 0) == -1) {
-                                    _v = 0;
-                                    PyErr_Clear();
-                                } else {
-                                    _v = 1;
-                                }
-                            }
-                            if (_v) {
-                                return _wrap_Core_loadMotion__SWIG_0(self,args);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    if (argc == 6) {
-        int _v;
-        {
-            void *ptr;
-            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_Piavca__Core, 0) == -1) {
-                _v = 0;
-                PyErr_Clear();
-            } else {
-                _v = 1;
-            }
-        }
-        if (_v) {
-            _v = SWIG_AsCharPtr(argv[1], (char **)(0));
-            if (_v) {
-                _v = SWIG_AsCharPtr(argv[2], (char **)(0));
-                if (_v) {
-                    _v = SWIG_Check_int(argv[3]);
-                    if (_v) {
-                        _v = SWIG_Check_bool(argv[4]);
-                        if (_v) {
-                            {
-                                void *ptr;
-                                if (SWIG_ConvertPtr(argv[5], &ptr, SWIGTYPE_p_Piavca__Motion, 0) == -1) {
-                                    _v = 0;
-                                    PyErr_Clear();
-                                } else {
-                                    _v = 1;
-                                }
-                            }
-                            if (_v) {
-                                return _wrap_Core_loadMotion__SWIG_7(self,args);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
-    PyErr_SetString(PyExc_NotImplementedError,"No matching function for overloaded 'Core_loadMotion'");
-    return NULL;
-}
-
-
-static PyObject *_wrap_Core_getMotion__SWIG_2(PyObject *, PyObject *args) {
-    PyObject *resultobj = NULL;
-    Piavca::Core *arg1 = (Piavca::Core *) 0 ;
-    char *arg2 = (char *) 0 ;
-    Piavca::Motion *result;
-    PyObject * obj0 = 0 ;
-    PyObject * obj1 = 0 ;
-    
-    if(!PyArg_ParseTuple(args,(char *)"OO:Core_getMotion",&obj0,&obj1)) goto fail;
-    SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
-    if (SWIG_arg_fail(1)) SWIG_fail;
-    if (!SWIG_AsCharPtr(obj1, (char**)&arg2)) {
-        SWIG_arg_fail(2);SWIG_fail;
-    }
-    result = (Piavca::Motion *)Piavca_Core_getMotion__SWIG_2(arg1,(char const *)arg2);
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
-    return resultobj;
-    fail:
-    return NULL;
-}
-
-
-static PyObject *_wrap_Core_getMotion(PyObject *self, PyObject *args) {
-    int argc;
-    PyObject *argv[3];
-    int ii;
-    
-    argc = PyObject_Length(args);
-    for (ii = 0; (ii < argc) && (ii < 2); ii++) {
-        argv[ii] = PyTuple_GetItem(args,ii);
-    }
-    if (argc == 2) {
-        int _v;
-        {
-            void *ptr;
-            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_Piavca__Core, 0) == -1) {
-                _v = 0;
-                PyErr_Clear();
-            } else {
-                _v = 1;
-            }
-        }
-        if (_v) {
-            {
-                void *ptr = 0;
-                if (SWIG_ConvertPtr(argv[1], &ptr, SWIGTYPE_p_tstring, 0) == -1) {
-                    _v = 0;
-                    PyErr_Clear();
-                } else {
-                    _v = (ptr != 0);
-                }
-            }
-            if (_v) {
-                return _wrap_Core_getMotion__SWIG_0(self,args);
-            }
-        }
-    }
-    if (argc == 2) {
-        int _v;
-        {
-            void *ptr;
-            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_Piavca__Core, 0) == -1) {
-                _v = 0;
-                PyErr_Clear();
-            } else {
-                _v = 1;
-            }
-        }
-        if (_v) {
-            _v = SWIG_Check_int(argv[1]);
-            if (_v) {
-                return _wrap_Core_getMotion__SWIG_1(self,args);
-            }
-        }
-    }
-    if (argc == 2) {
-        int _v;
-        {
-            void *ptr;
-            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_Piavca__Core, 0) == -1) {
-                _v = 0;
-                PyErr_Clear();
-            } else {
-                _v = 1;
-            }
-        }
-        if (_v) {
-            _v = SWIG_AsCharPtr(argv[1], (char **)(0));
-            if (_v) {
-                return _wrap_Core_getMotion__SWIG_2(self,args);
-            }
-        }
-    }
-    
-    PyErr_SetString(PyExc_NotImplementedError,"No matching function for overloaded 'Core_getMotion'");
-    return NULL;
-}
-
-
 static PyObject * Core_swigregister(PyObject *, PyObject *args) {
     PyObject *obj;
     if (!PyArg_ParseTuple(args,(char*)"O", &obj)) return NULL;
@@ -9398,14 +8680,14 @@ static PyObject *_wrap_Motion_findSubByType(PyObject *, PyObject *args) {
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
     {
-        SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_type_info, SWIG_POINTER_EXCEPTION | 0);
+        SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_std__type_info, SWIG_POINTER_EXCEPTION | 0);
         if (SWIG_arg_fail(2)) SWIG_fail;
         if (arg2 == NULL) {
             SWIG_null_ref("type_info");
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::Motion *)(arg1)->findSubByType((type_info const &)*arg2);
+    result = (Piavca::Motion *)(arg1)->findSubByType((std::type_info const &)*arg2);
     
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
     return resultobj;
@@ -10053,21 +9335,6 @@ static PyObject *_wrap_new_TrackMotion(PyObject *self, PyObject *args) {
     if (argc == 1) {
         int _v;
         {
-            void *ptr = 0;
-            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_std__string, 0) == -1) {
-                _v = 0;
-                PyErr_Clear();
-            } else {
-                _v = (ptr != 0);
-            }
-        }
-        if (_v) {
-            return _wrap_new_TrackMotion__SWIG_2(self,args);
-        }
-    }
-    if (argc == 1) {
-        int _v;
-        {
             void *ptr;
             if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_Piavca__MotionImp, 0) == -1) {
                 _v = 0;
@@ -10112,6 +9379,13 @@ static PyObject *_wrap_new_TrackMotion(PyObject *self, PyObject *args) {
     }
     if (argc == 1) {
         int _v;
+        _v = SWIG_AsCharPtr(argv[0], (char **)(0));
+        if (_v) {
+            return _wrap_new_TrackMotion__SWIG_2(self,args);
+        }
+    }
+    if (argc == 1) {
+        int _v;
         _v = SWIG_Check_bool(argv[0]);
         if (_v) {
             return _wrap_new_TrackMotion__SWIG_3(self,args);
@@ -10119,15 +9393,7 @@ static PyObject *_wrap_new_TrackMotion(PyObject *self, PyObject *args) {
     }
     if (argc == 2) {
         int _v;
-        {
-            void *ptr = 0;
-            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_std__string, 0) == -1) {
-                _v = 0;
-                PyErr_Clear();
-            } else {
-                _v = (ptr != 0);
-            }
-        }
+        _v = SWIG_AsCharPtr(argv[0], (char **)(0));
         if (_v) {
             _v = SWIG_Check_int(argv[1]);
             if (_v) {
@@ -10137,15 +9403,7 @@ static PyObject *_wrap_new_TrackMotion(PyObject *self, PyObject *args) {
     }
     if (argc == 3) {
         int _v;
-        {
-            void *ptr = 0;
-            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_std__string, 0) == -1) {
-                _v = 0;
-                PyErr_Clear();
-            } else {
-                _v = (ptr != 0);
-            }
-        }
+        _v = SWIG_AsCharPtr(argv[0], (char **)(0));
         if (_v) {
             _v = SWIG_Check_int(argv[1]);
             if (_v) {
@@ -11499,25 +10757,6 @@ static PyObject *_wrap_new_Avatar__SWIG_4(PyObject *, PyObject *args) {
 }
 
 
-static PyObject *_wrap_new_Avatar__SWIG_5(PyObject *, PyObject *args) {
-    PyObject *resultobj = NULL;
-    char *arg1 = (char *) 0 ;
-    Piavca::Avatar *result;
-    PyObject * obj0 = 0 ;
-    
-    if(!PyArg_ParseTuple(args,(char *)"O:new_Avatar",&obj0)) goto fail;
-    if (!SWIG_AsCharPtr(obj0, (char**)&arg1)) {
-        SWIG_arg_fail(1);SWIG_fail;
-    }
-    result = (Piavca::Avatar *)new Piavca::Avatar((char const *)arg1);
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Avatar, 1);
-    return resultobj;
-    fail:
-    return NULL;
-}
-
-
 static PyObject *_wrap_new_Avatar(PyObject *self, PyObject *args) {
     int argc;
     PyObject *argv[6];
@@ -11529,37 +10768,14 @@ static PyObject *_wrap_new_Avatar(PyObject *self, PyObject *args) {
     }
     if (argc == 1) {
         int _v;
-        {
-            void *ptr = 0;
-            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_std__string, 0) == -1) {
-                _v = 0;
-                PyErr_Clear();
-            } else {
-                _v = (ptr != 0);
-            }
-        }
+        _v = SWIG_AsCharPtr(argv[0], (char **)(0));
         if (_v) {
             return _wrap_new_Avatar__SWIG_4(self,args);
         }
     }
-    if (argc == 1) {
-        int _v;
-        _v = SWIG_AsCharPtr(argv[0], (char **)(0));
-        if (_v) {
-            return _wrap_new_Avatar__SWIG_5(self,args);
-        }
-    }
     if (argc == 2) {
         int _v;
-        {
-            void *ptr = 0;
-            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_std__string, 0) == -1) {
-                _v = 0;
-                PyErr_Clear();
-            } else {
-                _v = (ptr != 0);
-            }
-        }
+        _v = SWIG_AsCharPtr(argv[0], (char **)(0));
         if (_v) {
             _v = SWIG_Check_bool(argv[1]);
             if (_v) {
@@ -11569,15 +10785,7 @@ static PyObject *_wrap_new_Avatar(PyObject *self, PyObject *args) {
     }
     if (argc == 3) {
         int _v;
-        {
-            void *ptr = 0;
-            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_std__string, 0) == -1) {
-                _v = 0;
-                PyErr_Clear();
-            } else {
-                _v = (ptr != 0);
-            }
-        }
+        _v = SWIG_AsCharPtr(argv[0], (char **)(0));
         if (_v) {
             _v = SWIG_Check_bool(argv[1]);
             if (_v) {
@@ -11598,15 +10806,7 @@ static PyObject *_wrap_new_Avatar(PyObject *self, PyObject *args) {
     }
     if (argc == 4) {
         int _v;
-        {
-            void *ptr = 0;
-            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_std__string, 0) == -1) {
-                _v = 0;
-                PyErr_Clear();
-            } else {
-                _v = (ptr != 0);
-            }
-        }
+        _v = SWIG_AsCharPtr(argv[0], (char **)(0));
         if (_v) {
             _v = SWIG_Check_bool(argv[1]);
             if (_v) {
@@ -11638,15 +10838,7 @@ static PyObject *_wrap_new_Avatar(PyObject *self, PyObject *args) {
     }
     if (argc == 5) {
         int _v;
-        {
-            void *ptr = 0;
-            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_std__string, 0) == -1) {
-                _v = 0;
-                PyErr_Clear();
-            } else {
-                _v = (ptr != 0);
-            }
-        }
+        _v = SWIG_AsCharPtr(argv[0], (char **)(0));
         if (_v) {
             _v = SWIG_Check_bool(argv[1]);
             if (_v) {
@@ -14161,17 +13353,9 @@ static PyObject *_wrap_Avatar_getCallback(PyObject *self, PyObject *args) {
             }
         }
         if (_v) {
-            {
-                void *ptr = 0;
-                if (SWIG_ConvertPtr(argv[1], &ptr, SWIGTYPE_p_std__string, 0) == -1) {
-                    _v = 0;
-                    PyErr_Clear();
-                } else {
-                    _v = (ptr != 0);
-                }
-            }
+            _v = SWIG_Check_int(argv[1]);
             if (_v) {
-                return _wrap_Avatar_getCallback__SWIG_0(self,args);
+                return _wrap_Avatar_getCallback__SWIG_1(self,args);
             }
         }
     }
@@ -14187,9 +13371,9 @@ static PyObject *_wrap_Avatar_getCallback(PyObject *self, PyObject *args) {
             }
         }
         if (_v) {
-            _v = SWIG_Check_int(argv[1]);
+            _v = SWIG_AsCharPtr(argv[1], (char **)(0));
             if (_v) {
-                return _wrap_Avatar_getCallback__SWIG_1(self,args);
+                return _wrap_Avatar_getCallback__SWIG_0(self,args);
             }
         }
     }
@@ -15461,15 +14645,7 @@ static PyObject *_wrap_new_queueElement(PyObject *self, PyObject *args) {
     }
     if (argc == 3) {
         int _v;
-        {
-            void *ptr = 0;
-            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_std__string, 0) == -1) {
-                _v = 0;
-                PyErr_Clear();
-            } else {
-                _v = (ptr != 0);
-            }
-        }
+        _v = SWIG_AsCharPtr(argv[0], (char **)(0));
         if (_v) {
             {
                 void *ptr;
@@ -15490,15 +14666,7 @@ static PyObject *_wrap_new_queueElement(PyObject *self, PyObject *args) {
     }
     if (argc == 4) {
         int _v;
-        {
-            void *ptr = 0;
-            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_std__string, 0) == -1) {
-                _v = 0;
-                PyErr_Clear();
-            } else {
-                _v = (ptr != 0);
-            }
-        }
+        _v = SWIG_AsCharPtr(argv[0], (char **)(0));
         if (_v) {
             {
                 void *ptr;
@@ -15968,15 +15136,7 @@ static PyObject *_wrap_AvatarMotionQueue_enqueueMotion(PyObject *self, PyObject 
             }
         }
         if (_v) {
-            {
-                void *ptr = 0;
-                if (SWIG_ConvertPtr(argv[1], &ptr, SWIGTYPE_p_std__string, 0) == -1) {
-                    _v = 0;
-                    PyErr_Clear();
-                } else {
-                    _v = (ptr != 0);
-                }
-            }
+            _v = SWIG_AsCharPtr(argv[1], (char **)(0));
             if (_v) {
                 {
                     void *ptr;
@@ -16005,15 +15165,7 @@ static PyObject *_wrap_AvatarMotionQueue_enqueueMotion(PyObject *self, PyObject 
             }
         }
         if (_v) {
-            {
-                void *ptr = 0;
-                if (SWIG_ConvertPtr(argv[1], &ptr, SWIGTYPE_p_std__string, 0) == -1) {
-                    _v = 0;
-                    PyErr_Clear();
-                } else {
-                    _v = (ptr != 0);
-                }
-            }
+            _v = SWIG_AsCharPtr(argv[1], (char **)(0));
             if (_v) {
                 {
                     void *ptr;
@@ -16378,14 +15530,14 @@ static PyObject *_wrap_AvatarMotionQueue_removeBackgroundMotionByType(PyObject *
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__AvatarMotionQueue, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
     {
-        SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_type_info, SWIG_POINTER_EXCEPTION | 0);
+        SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_std__type_info, SWIG_POINTER_EXCEPTION | 0);
         if (SWIG_arg_fail(2)) SWIG_fail;
         if (arg2 == NULL) {
             SWIG_null_ref("type_info");
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->removeBackgroundMotionByType((type_info const &)*arg2);
+    (arg1)->removeBackgroundMotionByType((std::type_info const &)*arg2);
     
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
@@ -16584,15 +15736,7 @@ static PyObject *_wrap_AvatarMotionQueue_addBackgroundMotion(PyObject *self, PyO
             }
         }
         if (_v) {
-            {
-                void *ptr = 0;
-                if (SWIG_ConvertPtr(argv[1], &ptr, SWIGTYPE_p_std__string, 0) == -1) {
-                    _v = 0;
-                    PyErr_Clear();
-                } else {
-                    _v = (ptr != 0);
-                }
-            }
+            _v = SWIG_AsCharPtr(argv[1], (char **)(0));
             if (_v) {
                 {
                     void *ptr;
@@ -16621,15 +15765,7 @@ static PyObject *_wrap_AvatarMotionQueue_addBackgroundMotion(PyObject *self, PyO
             }
         }
         if (_v) {
-            {
-                void *ptr = 0;
-                if (SWIG_ConvertPtr(argv[1], &ptr, SWIGTYPE_p_std__string, 0) == -1) {
-                    _v = 0;
-                    PyErr_Clear();
-                } else {
-                    _v = (ptr != 0);
-                }
-            }
+            _v = SWIG_AsCharPtr(argv[1], (char **)(0));
             if (_v) {
                 {
                     void *ptr;
@@ -16760,30 +15896,14 @@ static PyObject *_wrap_new_Object(PyObject *self, PyObject *args) {
     }
     if (argc == 1) {
         int _v;
-        {
-            void *ptr = 0;
-            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_std__string, 0) == -1) {
-                _v = 0;
-                PyErr_Clear();
-            } else {
-                _v = (ptr != 0);
-            }
-        }
+        _v = SWIG_AsCharPtr(argv[0], (char **)(0));
         if (_v) {
             return _wrap_new_Object__SWIG_2(self,args);
         }
     }
     if (argc == 2) {
         int _v;
-        {
-            void *ptr = 0;
-            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_std__string, 0) == -1) {
-                _v = 0;
-                PyErr_Clear();
-            } else {
-                _v = (ptr != 0);
-            }
-        }
+        _v = SWIG_AsCharPtr(argv[0], (char **)(0));
         if (_v) {
             {
                 void *ptr = 0;
@@ -16801,15 +15921,7 @@ static PyObject *_wrap_new_Object(PyObject *self, PyObject *args) {
     }
     if (argc == 3) {
         int _v;
-        {
-            void *ptr = 0;
-            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_std__string, 0) == -1) {
-                _v = 0;
-                PyErr_Clear();
-            } else {
-                _v = (ptr != 0);
-            }
-        }
+        _v = SWIG_AsCharPtr(argv[0], (char **)(0));
         if (_v) {
             {
                 void *ptr = 0;
@@ -17732,14 +16844,14 @@ static PyObject *_wrap_MotionFilter_findSubByType(PyObject *, PyObject *args) {
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MotionFilter, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
     {
-        SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_type_info, SWIG_POINTER_EXCEPTION | 0);
+        SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_std__type_info, SWIG_POINTER_EXCEPTION | 0);
         if (SWIG_arg_fail(2)) SWIG_fail;
         if (arg2 == NULL) {
             SWIG_null_ref("type_info");
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::Motion *)(arg1)->findSubByType((type_info const &)*arg2);
+    result = (Piavca::Motion *)(arg1)->findSubByType((std::type_info const &)*arg2);
     
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
     return resultobj;
@@ -18053,14 +17165,14 @@ static PyObject *_wrap_TwoMotionCombiner_findSubByType(PyObject *, PyObject *arg
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TwoMotionCombiner, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
     {
-        SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_type_info, SWIG_POINTER_EXCEPTION | 0);
+        SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_std__type_info, SWIG_POINTER_EXCEPTION | 0);
         if (SWIG_arg_fail(2)) SWIG_fail;
         if (arg2 == NULL) {
             SWIG_null_ref("type_info");
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::Motion *)(arg1)->findSubByType((type_info const &)*arg2);
+    result = (Piavca::Motion *)(arg1)->findSubByType((std::type_info const &)*arg2);
     
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
     return resultobj;
@@ -23626,14 +22738,14 @@ static PyObject *_wrap_MultiMotionLoop_findSubByType(PyObject *, PyObject *args)
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MultiMotionLoop, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
     {
-        SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_type_info, SWIG_POINTER_EXCEPTION | 0);
+        SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_std__type_info, SWIG_POINTER_EXCEPTION | 0);
         if (SWIG_arg_fail(2)) SWIG_fail;
         if (arg2 == NULL) {
             SWIG_null_ref("type_info");
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::Motion *)(arg1)->findSubByType((type_info const &)*arg2);
+    result = (Piavca::Motion *)(arg1)->findSubByType((std::type_info const &)*arg2);
     
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
     return resultobj;
@@ -24014,17 +23126,9 @@ static PyObject *_wrap_ChoiceLoopMotion_setCurrentChoice(PyObject *self, PyObjec
             }
         }
         if (_v) {
-            {
-                void *ptr = 0;
-                if (SWIG_ConvertPtr(argv[1], &ptr, SWIGTYPE_p_std__string, 0) == -1) {
-                    _v = 0;
-                    PyErr_Clear();
-                } else {
-                    _v = (ptr != 0);
-                }
-            }
+            _v = SWIG_Check_int(argv[1]);
             if (_v) {
-                return _wrap_ChoiceLoopMotion_setCurrentChoice__SWIG_1(self,args);
+                return _wrap_ChoiceLoopMotion_setCurrentChoice__SWIG_0(self,args);
             }
         }
     }
@@ -24040,9 +23144,9 @@ static PyObject *_wrap_ChoiceLoopMotion_setCurrentChoice(PyObject *self, PyObjec
             }
         }
         if (_v) {
-            _v = SWIG_Check_int(argv[1]);
+            _v = SWIG_AsCharPtr(argv[1], (char **)(0));
             if (_v) {
-                return _wrap_ChoiceLoopMotion_setCurrentChoice__SWIG_0(self,args);
+                return _wrap_ChoiceLoopMotion_setCurrentChoice__SWIG_1(self,args);
             }
         }
     }
@@ -29680,15 +28784,7 @@ static PyObject *_wrap_RandomGazeMotion_lookAt(PyObject *self, PyObject *args) {
             }
         }
         if (_v) {
-            {
-                void *ptr = 0;
-                if (SWIG_ConvertPtr(argv[1], &ptr, SWIGTYPE_p_std__string, 0) == -1) {
-                    _v = 0;
-                    PyErr_Clear();
-                } else {
-                    _v = (ptr != 0);
-                }
-            }
+            _v = SWIG_AsCharPtr(argv[1], (char **)(0));
             if (_v) {
                 return _wrap_RandomGazeMotion_lookAt__SWIG_1(self,args);
             }
@@ -29706,15 +28802,7 @@ static PyObject *_wrap_RandomGazeMotion_lookAt(PyObject *self, PyObject *args) {
             }
         }
         if (_v) {
-            {
-                void *ptr = 0;
-                if (SWIG_ConvertPtr(argv[1], &ptr, SWIGTYPE_p_std__string, 0) == -1) {
-                    _v = 0;
-                    PyErr_Clear();
-                } else {
-                    _v = (ptr != 0);
-                }
-            }
+            _v = SWIG_AsCharPtr(argv[1], (char **)(0));
             if (_v) {
                 _v = SWIG_Check_bool(argv[2]);
                 if (_v) {
@@ -30404,7 +29492,7 @@ static PyObject *_wrap_MotionParser_parseMotion__SWIG_0(PyObject *, PyObject *ar
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MotionParser, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
     {
-        SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_istringstream, SWIG_POINTER_EXCEPTION | 0);
+        SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_std__istringstream, SWIG_POINTER_EXCEPTION | 0);
         if (SWIG_arg_fail(2)) SWIG_fail;
         if (arg2 == NULL) {
             SWIG_null_ref("istringstream");
@@ -30439,7 +29527,7 @@ static PyObject *_wrap_MotionParser_editMotion(PyObject *, PyObject *args) {
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MotionParser, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
     {
-        SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_istringstream, SWIG_POINTER_EXCEPTION | 0);
+        SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_std__istringstream, SWIG_POINTER_EXCEPTION | 0);
         if (SWIG_arg_fail(2)) SWIG_fail;
         if (arg2 == NULL) {
             SWIG_null_ref("istringstream");
@@ -30476,7 +29564,7 @@ static PyObject *_wrap_MotionParser_editAvatarMotion(PyObject *, PyObject *args)
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
     {
-        SWIG_Python_ConvertPtr(obj3, (void **)&arg4, SWIGTYPE_p_istringstream, SWIG_POINTER_EXCEPTION | 0);
+        SWIG_Python_ConvertPtr(obj3, (void **)&arg4, SWIGTYPE_p_std__istringstream, SWIG_POINTER_EXCEPTION | 0);
         if (SWIG_arg_fail(4)) SWIG_fail;
         if (arg4 == NULL) {
             SWIG_null_ref("istringstream");
@@ -30493,50 +29581,6 @@ static PyObject *_wrap_MotionParser_editAvatarMotion(PyObject *, PyObject *args)
 
 
 static PyObject *_wrap_MotionParser_parseMotion__SWIG_1(PyObject *, PyObject *args) {
-    PyObject *resultobj = NULL;
-    char *arg1 = (char *) 0 ;
-    float arg2 ;
-    Piavca::Motion *result;
-    PyObject * obj0 = 0 ;
-    PyObject * obj1 = 0 ;
-    
-    if(!PyArg_ParseTuple(args,(char *)"OO:MotionParser_parseMotion",&obj0,&obj1)) goto fail;
-    if (!SWIG_AsCharPtr(obj0, (char**)&arg1)) {
-        SWIG_arg_fail(1);SWIG_fail;
-    }
-    {
-        arg2 = static_cast<float >(SWIG_As_float(obj1)); 
-        if (SWIG_arg_fail(2)) SWIG_fail;
-    }
-    result = (Piavca::Motion *)Piavca::MotionParser::parseMotion((char const *)arg1,arg2);
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
-    return resultobj;
-    fail:
-    return NULL;
-}
-
-
-static PyObject *_wrap_MotionParser_parseMotion__SWIG_2(PyObject *, PyObject *args) {
-    PyObject *resultobj = NULL;
-    char *arg1 = (char *) 0 ;
-    Piavca::Motion *result;
-    PyObject * obj0 = 0 ;
-    
-    if(!PyArg_ParseTuple(args,(char *)"O:MotionParser_parseMotion",&obj0)) goto fail;
-    if (!SWIG_AsCharPtr(obj0, (char**)&arg1)) {
-        SWIG_arg_fail(1);SWIG_fail;
-    }
-    result = (Piavca::Motion *)Piavca::MotionParser::parseMotion((char const *)arg1);
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
-    return resultobj;
-    fail:
-    return NULL;
-}
-
-
-static PyObject *_wrap_MotionParser_parseMotion__SWIG_3(PyObject *, PyObject *args) {
     PyObject *resultobj = NULL;
     std::string arg1 ;
     float arg2 ;
@@ -30561,7 +29605,7 @@ static PyObject *_wrap_MotionParser_parseMotion__SWIG_3(PyObject *, PyObject *ar
 }
 
 
-static PyObject *_wrap_MotionParser_parseMotion__SWIG_4(PyObject *, PyObject *args) {
+static PyObject *_wrap_MotionParser_parseMotion__SWIG_2(PyObject *, PyObject *args) {
     PyObject *resultobj = NULL;
     std::string arg1 ;
     Piavca::Motion *result;
@@ -30580,7 +29624,7 @@ static PyObject *_wrap_MotionParser_parseMotion__SWIG_4(PyObject *, PyObject *ar
 }
 
 
-static PyObject *_wrap_MotionParser_parseMotion__SWIG_5(PyObject *, PyObject *args) {
+static PyObject *_wrap_MotionParser_parseMotion__SWIG_3(PyObject *, PyObject *args) {
     PyObject *resultobj = NULL;
     istringstream *arg1 = 0 ;
     float arg2 ;
@@ -30592,7 +29636,7 @@ static PyObject *_wrap_MotionParser_parseMotion__SWIG_5(PyObject *, PyObject *ar
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:MotionParser_parseMotion",&obj0,&obj1,&obj2)) goto fail;
     {
-        SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_istringstream, SWIG_POINTER_EXCEPTION | 0);
+        SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_std__istringstream, SWIG_POINTER_EXCEPTION | 0);
         if (SWIG_arg_fail(1)) SWIG_fail;
         if (arg1 == NULL) {
             SWIG_null_ref("istringstream");
@@ -30614,7 +29658,7 @@ static PyObject *_wrap_MotionParser_parseMotion__SWIG_5(PyObject *, PyObject *ar
 }
 
 
-static PyObject *_wrap_MotionParser_parseMotion__SWIG_6(PyObject *, PyObject *args) {
+static PyObject *_wrap_MotionParser_parseMotion__SWIG_4(PyObject *, PyObject *args) {
     PyObject *resultobj = NULL;
     istringstream *arg1 = 0 ;
     std::string arg2 ;
@@ -30628,7 +29672,7 @@ static PyObject *_wrap_MotionParser_parseMotion__SWIG_6(PyObject *, PyObject *ar
     
     if(!PyArg_ParseTuple(args,(char *)"OOOO:MotionParser_parseMotion",&obj0,&obj1,&obj2,&obj3)) goto fail;
     {
-        SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_istringstream, SWIG_POINTER_EXCEPTION | 0);
+        SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_std__istringstream, SWIG_POINTER_EXCEPTION | 0);
         if (SWIG_arg_fail(1)) SWIG_fail;
         if (arg1 == NULL) {
             SWIG_null_ref("istringstream");
@@ -30664,42 +29708,9 @@ static PyObject *_wrap_MotionParser_parseMotion(PyObject *self, PyObject *args) 
     }
     if (argc == 1) {
         int _v;
-        {
-            void *ptr = 0;
-            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_std__string, 0) == -1) {
-                _v = 0;
-                PyErr_Clear();
-            } else {
-                _v = (ptr != 0);
-            }
-        }
-        if (_v) {
-            return _wrap_MotionParser_parseMotion__SWIG_4(self,args);
-        }
-    }
-    if (argc == 1) {
-        int _v;
         _v = SWIG_AsCharPtr(argv[0], (char **)(0));
         if (_v) {
             return _wrap_MotionParser_parseMotion__SWIG_2(self,args);
-        }
-    }
-    if (argc == 2) {
-        int _v;
-        {
-            void *ptr = 0;
-            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_std__string, 0) == -1) {
-                _v = 0;
-                PyErr_Clear();
-            } else {
-                _v = (ptr != 0);
-            }
-        }
-        if (_v) {
-            _v = SWIG_Check_float(argv[1]);
-            if (_v) {
-                return _wrap_MotionParser_parseMotion__SWIG_3(self,args);
-            }
         }
     }
     if (argc == 2) {
@@ -30716,7 +29727,7 @@ static PyObject *_wrap_MotionParser_parseMotion(PyObject *self, PyObject *args) 
         int _v;
         {
             void *ptr = 0;
-            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_istringstream, 0) == -1) {
+            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_std__istringstream, 0) == -1) {
                 _v = 0;
                 PyErr_Clear();
             } else {
@@ -30736,7 +29747,7 @@ static PyObject *_wrap_MotionParser_parseMotion(PyObject *self, PyObject *args) 
                     }
                 }
                 if (_v) {
-                    return _wrap_MotionParser_parseMotion__SWIG_5(self,args);
+                    return _wrap_MotionParser_parseMotion__SWIG_3(self,args);
                 }
             }
         }
@@ -30755,7 +29766,7 @@ static PyObject *_wrap_MotionParser_parseMotion(PyObject *self, PyObject *args) 
         if (_v) {
             {
                 void *ptr = 0;
-                if (SWIG_ConvertPtr(argv[1], &ptr, SWIGTYPE_p_istringstream, 0) == -1) {
+                if (SWIG_ConvertPtr(argv[1], &ptr, SWIGTYPE_p_std__istringstream, 0) == -1) {
                     _v = 0;
                     PyErr_Clear();
                 } else {
@@ -30763,15 +29774,7 @@ static PyObject *_wrap_MotionParser_parseMotion(PyObject *self, PyObject *args) 
                 }
             }
             if (_v) {
-                {
-                    void *ptr = 0;
-                    if (SWIG_ConvertPtr(argv[2], &ptr, SWIGTYPE_p_std__string, 0) == -1) {
-                        _v = 0;
-                        PyErr_Clear();
-                    } else {
-                        _v = (ptr != 0);
-                    }
-                }
+                _v = SWIG_AsCharPtr(argv[2], (char **)(0));
                 if (_v) {
                     _v = SWIG_Check_float(argv[3]);
                     if (_v) {
@@ -30785,7 +29788,7 @@ static PyObject *_wrap_MotionParser_parseMotion(PyObject *self, PyObject *args) 
         int _v;
         {
             void *ptr = 0;
-            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_istringstream, 0) == -1) {
+            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_std__istringstream, 0) == -1) {
                 _v = 0;
                 PyErr_Clear();
             } else {
@@ -30793,15 +29796,7 @@ static PyObject *_wrap_MotionParser_parseMotion(PyObject *self, PyObject *args) 
             }
         }
         if (_v) {
-            {
-                void *ptr = 0;
-                if (SWIG_ConvertPtr(argv[1], &ptr, SWIGTYPE_p_std__string, 0) == -1) {
-                    _v = 0;
-                    PyErr_Clear();
-                } else {
-                    _v = (ptr != 0);
-                }
-            }
+            _v = SWIG_AsCharPtr(argv[1], (char **)(0));
             if (_v) {
                 _v = SWIG_Check_float(argv[2]);
                 if (_v) {
@@ -30815,7 +29810,7 @@ static PyObject *_wrap_MotionParser_parseMotion(PyObject *self, PyObject *args) 
                         }
                     }
                     if (_v) {
-                        return _wrap_MotionParser_parseMotion__SWIG_6(self,args);
+                        return _wrap_MotionParser_parseMotion__SWIG_4(self,args);
                     }
                 }
             }
@@ -31646,11 +30641,13 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Core_addExpressionNameSet", _wrap_Core_addExpressionNameSet, METH_VARARGS, NULL},
 	 { (char *)"Core_getExpressionName", _wrap_Core_getExpressionName, METH_VARARGS, NULL},
 	 { (char *)"Core_getExpressionNameAssociations", _wrap_Core_getExpressionNameAssociations, METH_VARARGS, NULL},
+	 { (char *)"Core_loadMotion", _wrap_Core_loadMotion, METH_VARARGS, NULL},
 	 { (char *)"Core_renameMotion", _wrap_Core_renameMotion, METH_VARARGS, NULL},
 	 { (char *)"Core_unloadMotion", _wrap_Core_unloadMotion, METH_VARARGS, NULL},
 	 { (char *)"Core_getMotionNames", _wrap_Core_getMotionNames, METH_VARARGS, NULL},
 	 { (char *)"Core_getNumberOfMotions", _wrap_Core_getNumberOfMotions, METH_VARARGS, NULL},
 	 { (char *)"Core_getAllmotions", _wrap_Core_getAllmotions, METH_VARARGS, NULL},
+	 { (char *)"Core_getMotion", _wrap_Core_getMotion, METH_VARARGS, NULL},
 	 { (char *)"Core_getAvatarNames", _wrap_Core_getAvatarNames, METH_VARARGS, NULL},
 	 { (char *)"Core_numAvatars", _wrap_Core_numAvatars, METH_VARARGS, NULL},
 	 { (char *)"Core_getAvatar", _wrap_Core_getAvatar, METH_VARARGS, NULL},
@@ -31683,8 +30680,6 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Core_setExceptionsOn", _wrap_Core_setExceptionsOn, METH_VARARGS, NULL},
 	 { (char *)"Core_setExceptionsOff", _wrap_Core_setExceptionsOff, METH_VARARGS, NULL},
 	 { (char *)"Core_log", _wrap_Core_log, METH_VARARGS, NULL},
-	 { (char *)"Core_loadMotion", _wrap_Core_loadMotion, METH_VARARGS, NULL},
-	 { (char *)"Core_getMotion", _wrap_Core_getMotion, METH_VARARGS, NULL},
 	 { (char *)"Core_swigregister", Core_swigregister, METH_VARARGS, NULL},
 	 { (char *)"StringToWString", _wrap_StringToWString, METH_VARARGS, NULL},
 	 { (char *)"WStringToString", _wrap_WStringToString, METH_VARARGS, NULL},
@@ -32586,17 +31581,17 @@ static swig_type_info _swigt__p_StringVector = {"_p_StringVector", "StringVector
 static swig_type_info _swigt__p_char = {"_p_char", "char *|_TCHAR *", 0, 0, 0};
 static swig_type_info _swigt__p_float = {"_p_float", "float *", 0, 0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, 0};
-static swig_type_info _swigt__p_istringstream = {"_p_istringstream", "istringstream *", 0, 0, 0};
 static swig_type_info _swigt__p_p_Piavca__MotionParser = {"_p_p_Piavca__MotionParser", "Piavca::MotionParser **", 0, 0, 0};
 static swig_type_info _swigt__p_std__fstream = {"_p_std__fstream", "std::fstream *|Piavca::tfstream *", 0, 0, 0};
 static swig_type_info _swigt__p_std__ifstream = {"_p_std__ifstream", "std::ifstream *|Piavca::tifstream *", 0, 0, 0};
-static swig_type_info _swigt__p_std__istringstream = {"_p_std__istringstream", "std::istringstream *|Piavca::tistringstream *", 0, 0, 0};
+static swig_type_info _swigt__p_std__istringstream = {"_p_std__istringstream", "std::istringstream *|istringstream *", 0, 0, 0};
 static swig_type_info _swigt__p_std__listTtstring_t = {"_p_std__listTtstring_t", "std::list<tstring > *", 0, 0, 0};
 static swig_type_info _swigt__p_std__ofstream = {"_p_std__ofstream", "std::ofstream *|Piavca::tofstream *", 0, 0, 0};
 static swig_type_info _swigt__p_std__ostream = {"_p_std__ostream", "std::ostream *", 0, 0, 0};
 static swig_type_info _swigt__p_std__ostringstream = {"_p_std__ostringstream", "std::ostringstream *|Piavca::tostringstream *", 0, 0, 0};
 static swig_type_info _swigt__p_std__string = {"_p_std__string", "std::string *|Piavca::tstring *", 0, 0, 0};
 static swig_type_info _swigt__p_std__stringstream = {"_p_std__stringstream", "std::stringstream *|Piavca::tstringstream *", 0, 0, 0};
+static swig_type_info _swigt__p_std__type_info = {"_p_std__type_info", "std::type_info *|type_info *", 0, 0, 0};
 static swig_type_info _swigt__p_std__vectorTPiavca__AvatarTargetStruct_t = {"_p_std__vectorTPiavca__AvatarTargetStruct_t", "std::vector<Piavca::AvatarTargetStruct > *|Piavca::AvatarTargetVec *", 0, 0, 0};
 static swig_type_info _swigt__p_std__vectorTPiavca__Motion_p_t = {"_p_std__vectorTPiavca__Motion_p_t", "std::vector<Piavca::Motion * > *|Piavca::MotionVec *", 0, 0, 0};
 static swig_type_info _swigt__p_std__vectorTPiavca__ObjectTargetStruct_t = {"_p_std__vectorTPiavca__ObjectTargetStruct_t", "std::vector<Piavca::ObjectTargetStruct > *|Piavca::ObjectTargetVec *", 0, 0, 0};
@@ -32606,8 +31601,6 @@ static swig_type_info _swigt__p_std__vectorTstd__string_t = {"_p_std__vectorTstd
 static swig_type_info _swigt__p_std__vectorTtstring_t = {"_p_std__vectorTtstring_t", "std::vector<tstring > *", 0, 0, 0};
 static swig_type_info _swigt__p_std__wstring = {"_p_std__wstring", "std::wstring *", 0, 0, 0};
 static swig_type_info _swigt__p_tostringstream = {"_p_tostringstream", "tostringstream *", 0, 0, 0};
-static swig_type_info _swigt__p_tstring = {"_p_tstring", "tstring *", 0, 0, 0};
-static swig_type_info _swigt__p_type_info = {"_p_type_info", "type_info *", 0, 0, 0};
 static swig_type_info _swigt__p_vectorTfloat_t = {"_p_vectorTfloat_t", "vector<float > *", 0, 0, 0};
 static swig_type_info _swigt__ptrdiff_t = {"_ptrdiff_t", "ptrdiff_t", 0, 0, 0};
 static swig_type_info _swigt__size_t = {"_size_t", "size_t", 0, 0, 0};
@@ -32667,7 +31660,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_char,
   &_swigt__p_float,
   &_swigt__p_int,
-  &_swigt__p_istringstream,
   &_swigt__p_p_Piavca__MotionParser,
   &_swigt__p_std__fstream,
   &_swigt__p_std__ifstream,
@@ -32678,6 +31670,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_std__ostringstream,
   &_swigt__p_std__string,
   &_swigt__p_std__stringstream,
+  &_swigt__p_std__type_info,
   &_swigt__p_std__vectorTPiavca__AvatarTargetStruct_t,
   &_swigt__p_std__vectorTPiavca__Motion_p_t,
   &_swigt__p_std__vectorTPiavca__ObjectTargetStruct_t,
@@ -32687,8 +31680,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_std__vectorTtstring_t,
   &_swigt__p_std__wstring,
   &_swigt__p_tostringstream,
-  &_swigt__p_tstring,
-  &_swigt__p_type_info,
   &_swigt__p_vectorTfloat_t,
   &_swigt__ptrdiff_t,
   &_swigt__size_t,
@@ -32748,7 +31739,6 @@ static swig_cast_info _swigc__p_StringVector[] = {  {&_swigt__p_StringVector, 0,
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_float[] = {  {&_swigt__p_float, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_istringstream[] = {  {&_swigt__p_istringstream, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_Piavca__MotionParser[] = {  {&_swigt__p_p_Piavca__MotionParser, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__fstream[] = {  {&_swigt__p_std__fstream, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__ifstream[] = {  {&_swigt__p_std__ifstream, 0, 0, 0},{0, 0, 0, 0}};
@@ -32759,6 +31749,7 @@ static swig_cast_info _swigc__p_std__ostream[] = {  {&_swigt__p_std__ostream, 0,
 static swig_cast_info _swigc__p_std__ostringstream[] = {  {&_swigt__p_std__ostringstream, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__string[] = {  {&_swigt__p_std__string, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__stringstream[] = {  {&_swigt__p_std__stringstream, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__type_info[] = {  {&_swigt__p_std__type_info, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorTPiavca__AvatarTargetStruct_t[] = {  {&_swigt__p_std__vectorTPiavca__AvatarTargetStruct_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorTPiavca__Motion_p_t[] = {  {&_swigt__p_std__vectorTPiavca__Motion_p_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorTPiavca__ObjectTargetStruct_t[] = {  {&_swigt__p_std__vectorTPiavca__ObjectTargetStruct_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -32768,8 +31759,6 @@ static swig_cast_info _swigc__p_std__vectorTstd__string_t[] = {  {&_swigt__p_std
 static swig_cast_info _swigc__p_std__vectorTtstring_t[] = {  {&_swigt__p_std__vectorTtstring_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__wstring[] = {  {&_swigt__p_std__wstring, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_tostringstream[] = {  {&_swigt__p_tostringstream, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_tstring[] = {  {&_swigt__p_tstring, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_type_info[] = {  {&_swigt__p_type_info, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_vectorTfloat_t[] = {  {&_swigt__p_vectorTfloat_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__ptrdiff_t[] = {  {&_swigt__ptrdiff_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__size_t[] = {  {&_swigt__size_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -32829,7 +31818,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_char,
   _swigc__p_float,
   _swigc__p_int,
-  _swigc__p_istringstream,
   _swigc__p_p_Piavca__MotionParser,
   _swigc__p_std__fstream,
   _swigc__p_std__ifstream,
@@ -32840,6 +31828,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_std__ostringstream,
   _swigc__p_std__string,
   _swigc__p_std__stringstream,
+  _swigc__p_std__type_info,
   _swigc__p_std__vectorTPiavca__AvatarTargetStruct_t,
   _swigc__p_std__vectorTPiavca__Motion_p_t,
   _swigc__p_std__vectorTPiavca__ObjectTargetStruct_t,
@@ -32849,8 +31838,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_std__vectorTtstring_t,
   _swigc__p_std__wstring,
   _swigc__p_tostringstream,
-  _swigc__p_tstring,
-  _swigc__p_type_info,
   _swigc__p_vectorTfloat_t,
   _swigc__ptrdiff_t,
   _swigc__size_t,

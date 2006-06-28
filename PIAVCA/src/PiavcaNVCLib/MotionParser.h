@@ -86,10 +86,10 @@ public:
 	virtual Piavca::Motion *editMotion(istringstream &is)=0;
 	virtual void editAvatarMotion(Avatar *av, bool facial, istringstream &is)=0;
 
-	static Motion *parseMotion(const char *s, float scaleFactor = 1.0f)
-	{
-		return parseMotion(std::string(s), scaleFactor);
-	}
+	//static Motion *parseMotion(const char *s, float scaleFactor = 1.0f)
+	//{
+	//	return parseMotion(std::string(s), scaleFactor);
+	//}
 	
 	static Motion *parseMotion(std::string s, float scaleFactor = 1.0f)
 	{

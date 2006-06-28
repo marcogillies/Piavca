@@ -96,6 +96,12 @@ Vec PyVec_AsVec(PyObject *obj)
 //%define tstring const char * %enddef
 //#define tstring const char *
 
+namespace std {
+template <class T> class vector;
+class istringstream;
+class type_info;
+}
+
 %typemap(in) tstring
 {
 	$1 = StringToTString(PyString_AsString($input));
@@ -125,6 +131,15 @@ Vec PyVec_AsVec(PyObject *obj)
 {
 	$result = PyString_FromString((*$1).c_str());
 }
+
+%typemap(typecheck) tstring = char *;
+%typemap(typecheck) tstring& = char *;
+%typemap(typecheck) Piavca::tstring = char *;
+%typemap(typecheck) Piavca::tstring& = char *;
+%typemap(typecheck) string = char *;
+%typemap(typecheck) string& = char *;
+%typemap(typecheck) std::string = char *;
+%typemap(typecheck) std::string& = char *;
 
 %typemap(out) float&
 {
@@ -207,6 +222,11 @@ Piavca::Avatar *GetAvatarPointer(long l);
 Piavca::Core *GetPiavcaCorePointer(long l);
 
 %ignore Piavca::Vec::operator[];
+%ignore Piavca::Vec::operator=;
+%ignore Piavca::Quat::operator[];
+%ignore Piavca::Quat::operator=;
+%ignore operator<<;
+%ignore operator>>;
 
 %include "PiavcaAPI/Vec.h"
 
@@ -293,6 +313,12 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 	}
 }
 */
+
+
+%ignore Piavca::TrackMotion::operator=;
+%ignore Piavca::MaskedMotion::operator=;
+%ignore Piavca::MotionMask::operator=;
+%ignore Piavca::flagStruct::operator=;
 
 %ignore Piavca::Avatar::Avatar(const Avatar &av);
 

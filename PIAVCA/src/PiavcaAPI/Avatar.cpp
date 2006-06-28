@@ -52,14 +52,14 @@ Avatar::Avatar(tstring avatarId,
 	initAvatar(avatarId, bailOnMissedJoints, Position, Orientation);
 };
 
-Avatar::Avatar(const char *avatarId): 
-		name(StringToTString(avatarId)), active(true), changed(false), rootChanged (false), 
-		beingEdited(false), forwardDirection(0, 0, 1), //amq(NULL), 
-		mot(NULL), scaleMot(NULL), facialMot(NULL)
+//Avatar::Avatar(const char *avatarId): 
+//		name(StringToTString(avatarId)), active(true), changed(false), rootChanged (false), 
+//		beingEdited(false), forwardDirection(0, 0, 1), //amq(NULL), 
+//		mot(NULL), scaleMot(NULL), facialMot(NULL)
 		//motionOwned(true), facialMotionOwned(true), scaleMotionOwned(true)
-{
-	initAvatar(StringToTString(avatarId), false, Vec(), Quat());
-};
+//{
+//	initAvatar(StringToTString(avatarId), false, Vec(), Quat());
+//};
 
 Avatar::~Avatar() 
 {

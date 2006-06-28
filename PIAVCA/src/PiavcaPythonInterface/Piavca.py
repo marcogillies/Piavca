@@ -230,11 +230,13 @@ class Core(_object):
     def addExpressionNameSet(*args): return _Piavca.Core_addExpressionNameSet(*args)
     def getExpressionName(*args): return _Piavca.Core_getExpressionName(*args)
     def getExpressionNameAssociations(*args): return _Piavca.Core_getExpressionNameAssociations(*args)
+    def loadMotion(*args): return _Piavca.Core_loadMotion(*args)
     def renameMotion(*args): return _Piavca.Core_renameMotion(*args)
     def unloadMotion(*args): return _Piavca.Core_unloadMotion(*args)
     def getMotionNames(*args): return _Piavca.Core_getMotionNames(*args)
     def getNumberOfMotions(*args): return _Piavca.Core_getNumberOfMotions(*args)
     def getAllmotions(*args): return _Piavca.Core_getAllmotions(*args)
+    def getMotion(*args): return _Piavca.Core_getMotion(*args)
     def getAvatarNames(*args): return _Piavca.Core_getAvatarNames(*args)
     def numAvatars(*args): return _Piavca.Core_numAvatars(*args)
     def getAvatar(*args): return _Piavca.Core_getAvatar(*args)
@@ -267,8 +269,6 @@ class Core(_object):
     def setExceptionsOn(*args): return _Piavca.Core_setExceptionsOn(*args)
     def setExceptionsOff(*args): return _Piavca.Core_setExceptionsOff(*args)
     def log(*args): return _Piavca.Core_log(*args)
-    def loadMotion(*args): return _Piavca.Core_loadMotion(*args)
-    def getMotion(*args): return _Piavca.Core_getMotion(*args)
 
 class CorePtr(Core):
     def __init__(self, this):

@@ -43,28 +43,28 @@
 // as arguments doesn't work
 %extend Piavca::Core {
 
-	Motion *loadMotion(const char *motionName, const char *motionFileName, int flags = 0, bool temp=false, Motion *basePosture = NULL)
-	{
-		self->loadMotion(StringToTString(motionName),
-						 StringToTString(motionFileName),
-						 flags,
-						 temp, 
-						 basePosture);
-		return self->getMotion(StringToTString(motionName));
-	};
+	//Motion *loadMotion(const char *motionName, const char *motionFileName, int flags = 0, bool temp=false, Motion *basePosture = NULL)
+	//{
+	//	self->loadMotion(StringToTString(motionName),
+	//					 StringToTString(motionFileName),
+	//					 flags,
+	//					 temp, 
+	//					 basePosture);
+	//	return self->getMotion(StringToTString(motionName));
+	//};
 
-	Motion *loadMotion(const char *motionName, Motion *mot, bool temp = false, Motion *basePosture = NULL)
-	{
-		self->loadMotion(StringToTString(motionName),
-						 mot,
-						 temp, 
-						 basePosture);
-		return self->getMotion(StringToTString(motionName));
-	};
+	//Motion *loadMotion(const char *motionName, Motion *mot, bool temp = false, Motion *basePosture = NULL)
+	//{
+	//	self->loadMotion(StringToTString(motionName),
+	//					 mot,
+	//					 temp, 
+	//					 basePosture);
+	//	return self->getMotion(StringToTString(motionName));
+	//};
 
-	Motion *getMotion(const char *motionName)
-	{
-		return self->getMotion(StringToTString(motionName));
-	};
+	//Motion *getMotion(const char *motionName)
+	//{
+	//	return self->getMotion(StringToTString(motionName));
+	//};
 	
 }
