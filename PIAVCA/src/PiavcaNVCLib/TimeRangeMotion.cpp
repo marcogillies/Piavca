@@ -45,7 +45,7 @@ PIAVCA_EXPORT float  TimeRangeMotion::getFloatValueAtTimeInternal (int trackId, 
 	{
 		Piavca::Error(_T("Scale motion speed: trying to get a value from a null motion"));
 	}
-	if( (start < 0 || time > start) && (end < 0 || time < end))
+	if( (start < 0 || time >= start) && (end < 0 || time <= end))
 		return filterMot->getFloatValueAtTime(trackId, time);
 	else 
 		return 0;
@@ -58,7 +58,7 @@ PIAVCA_EXPORT Vec  TimeRangeMotion::getVecValueAtTimeInternal (int trackId, floa
 	{
 		Piavca::Error(_T("Scale motion speed: trying to get a value from a null motion"));
 	}
-	if( (start < 0 || time > start) && (end < 0 || time < end))
+	if( (start < 0 || time >= start) && (end < 0 || time <= end))
 		return  filterMot->getVecValueAtTime(trackId, time);
 	else
 		return Vec();
@@ -71,8 +71,16 @@ PIAVCA_EXPORT Quat  TimeRangeMotion::getQuatValueAtTimeInternal (int trackId, fl
 	{
 		Piavca::Error(_T("Scale motion speed: trying to get a value from a null motion"));
 	}
-	if( (start < 0 || time > start) && (end < 0 || time < end))
-		return filterMot->getQuatValueAtTime(trackId, time);
+	Quat q;
+	if( (start < 0 || time >= start) && (end < 0 || time <= end))
+	{
+		q = filterMot->getQuatValueAtTime(trackId, time);
+		//std::cout << "time range motion " << q << " " << time << " " << start << " " << end << std::endl;
+	}
 	else
-		return Quat();
+	{
+		q = Quat();
+		std::cout << "time range motion out of range" << " " << time << " " << start << " " << end << std::endl;
+	}
+	return q;
 };
