@@ -64,7 +64,7 @@ struct displayParams
 	int width, height;
 	int lastMouseX, lastMouseY;
 	float leftright, updown, distance;
-	float leftright_delta, updown_delta;
+	float leftright_delta, updown_delta, zoom_delta;
 	float tiltAngle, twistAngle;	
 } g_Params;
 
@@ -208,6 +208,12 @@ void keyboardFunc(unsigned char key, int x, int y)
 	case 'w':
 	  g_Params.updown -= g_Params.updown_delta;
 	  break;
+	case 'z':
+	  g_Params.distance -= g_Params.zoom_delta;
+	  break;
+	case 'Z':
+	  g_Params.distance += g_Params.zoom_delta;
+	  break;
 	case 'r':
 		g_Params.tiltAngle = -70.0f;
 		g_Params.twistAngle = -45.0f;
@@ -234,7 +240,7 @@ void motionFunc(int x, int y)
   if(g_Params.zooming)
   {
     // calculate new distance
-    g_Params.distance -= (float)(y - g_Params.lastMouseY) / 0.1f;
+    g_Params.distance -= (float)(y - g_Params.lastMouseY) / 0.02f;
     if(g_Params.distance < 0.0f) g_Params.distance = 0.0f;
   }
 
@@ -321,6 +327,7 @@ int main(int argc, char *argv[])
   g_Params.leftright_delta = 10; 
   g_Params.updown = 85;  
   g_Params.updown_delta = 10; 
+  g_Params.zoom_delta = 3; 
   //g_Params.updown = -100; 
   g_Params.distance = 50;
   //g_Params.distance = 300;

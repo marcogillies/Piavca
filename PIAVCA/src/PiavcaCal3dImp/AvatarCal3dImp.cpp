@@ -977,6 +977,9 @@ void	AvatarCal3DImp::render ()
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
 
+	glEnable (GL_BLEND); 
+	glBlendFunc (GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+
     // we will use vertex arrays, so enable them
     glEnableClientState(GL_VERTEX_ARRAY);
     glEnableClientState(GL_NORMAL_ARRAY);
@@ -1006,6 +1009,9 @@ void	AvatarCal3DImp::render ()
 
           // set the material diffuse color
           pCalRenderer->getDiffuseColor(&meshColor[0]);
+		  // if the object is transparent, don't bother rendering it
+		  if( meshColor[3] == 0) 
+				continue;
           materialColor[0] = meshColor[0] / 255.0f;  materialColor[1] = meshColor[1] / 255.0f; materialColor[2] = meshColor[2] / 255.0f; materialColor[3] = meshColor[3] / 255.0f;
           glMaterialfv(GL_FRONT, GL_DIFFUSE, materialColor);
 

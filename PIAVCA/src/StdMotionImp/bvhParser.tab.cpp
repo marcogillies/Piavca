@@ -1790,7 +1790,7 @@ void readBvhMotion(Piavca::Core *core, MotionImp *mot, std::string fileName, int
     //if(g_bTest)
      // g_pMotion->setVecKeyframe(tracks[currentTrack].testTrack, currentTime, tracks[currentTrack].currentEuler);
     fflush(g_file);
-    assert(g_noFrames == 1);
+    //assert(g_noFrames == 1);
     fclose(g_file);
     fclose(bvhin);
 }
