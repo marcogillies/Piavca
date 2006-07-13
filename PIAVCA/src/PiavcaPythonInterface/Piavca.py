@@ -136,6 +136,8 @@ class Quat(_object):
     def normalise(*args): return _Piavca.Quat_normalise(*args)
     def transform(*args): return _Piavca.Quat_transform(*args)
     def transformInPlace(*args): return _Piavca.Quat_transformInPlace(*args)
+    __swig_getmethods__["spherical_distance"] = lambda x: _Piavca.Quat_spherical_distance
+    if _newclass:spherical_distance = staticmethod(_Piavca.Quat_spherical_distance)
     def __getitem__(*args): return _Piavca.Quat___getitem__(*args)
     def __setitem__(*args): return _Piavca.Quat___setitem__(*args)
     def __repr__(*args): return _Piavca.Quat___repr__(*args)
@@ -146,6 +148,8 @@ class QuatPtr(Quat):
         if not hasattr(self,"thisown"): _swig_setattr(self, Quat, 'thisown', 0)
         self.__class__ = Quat
 _Piavca.Quat_swigregister(QuatPtr)
+
+Quat_spherical_distance = _Piavca.Quat_spherical_distance
 
 slerp = _Piavca.slerp
 

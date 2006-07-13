@@ -1715,7 +1715,7 @@ SWIG_Check_float(PyObject* obj)
 }
 
 
-  /*@C:\\Program Files\\swigwin-1.3.27\\Lib\\python\\pymacros.swg,72,SWIG_define@*/
+  /*@d:\\Program Files\\swig\\Lib\\python\\pymacros.swg,72,SWIG_define@*/
 #define SWIG_From_float PyFloat_FromDouble
 /*@@*/
 
@@ -1817,7 +1817,7 @@ SWIG_AsCharPtr(PyObject *obj, char **val)
 }
 
 
-  /*@C:\\Program Files\\swigwin-1.3.27\\Lib\\python\\pymacros.swg,72,SWIG_define@*/
+  /*@d:\\Program Files\\swig\\Lib\\python\\pymacros.swg,72,SWIG_define@*/
 #define SWIG_From_int PyInt_FromLong
 /*@@*/
 
@@ -5113,6 +5113,42 @@ static PyObject *_wrap_Quat_transformInPlace(PyObject *, PyObject *args) {
     ((Piavca::Quat const *)arg1)->transformInPlace(*arg2);
     
     Py_INCREF(Py_None); resultobj = Py_None;
+    return resultobj;
+    fail:
+    return NULL;
+}
+
+
+static PyObject *_wrap_Quat_spherical_distance(PyObject *, PyObject *args) {
+    PyObject *resultobj = NULL;
+    Piavca::Quat *arg1 = 0 ;
+    Piavca::Quat *arg2 = 0 ;
+    float result;
+    PyObject * obj0 = 0 ;
+    PyObject * obj1 = 0 ;
+    
+    if(!PyArg_ParseTuple(args,(char *)"OO:Quat_spherical_distance",&obj0,&obj1)) goto fail;
+    {
+        SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Quat, SWIG_POINTER_EXCEPTION | 0);
+        if (SWIG_arg_fail(1)) SWIG_fail;
+        if (arg1 == NULL) {
+            SWIG_null_ref("Piavca::Quat");
+        }
+        if (SWIG_arg_fail(1)) SWIG_fail;
+    }
+    {
+        SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Quat, SWIG_POINTER_EXCEPTION | 0);
+        if (SWIG_arg_fail(2)) SWIG_fail;
+        if (arg2 == NULL) {
+            SWIG_null_ref("Piavca::Quat");
+        }
+        if (SWIG_arg_fail(2)) SWIG_fail;
+    }
+    result = (float)Piavca::Quat::spherical_distance((Piavca::Quat const &)*arg1,(Piavca::Quat const &)*arg2);
+    
+    {
+        resultobj = SWIG_From_float(static_cast<float >(result)); 
+    }
     return resultobj;
     fail:
     return NULL;
@@ -30607,6 +30643,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Quat_normalise", _wrap_Quat_normalise, METH_VARARGS, NULL},
 	 { (char *)"Quat_transform", _wrap_Quat_transform, METH_VARARGS, NULL},
 	 { (char *)"Quat_transformInPlace", _wrap_Quat_transformInPlace, METH_VARARGS, NULL},
+	 { (char *)"Quat_spherical_distance", _wrap_Quat_spherical_distance, METH_VARARGS, NULL},
 	 { (char *)"slerp", _wrap_slerp, METH_VARARGS, NULL},
 	 { (char *)"Quat___getitem__", _wrap_Quat___getitem__, METH_VARARGS, NULL},
 	 { (char *)"Quat___setitem__", _wrap_Quat___setitem__, METH_VARARGS, NULL},

@@ -322,6 +322,27 @@ void Quat::getEulerAngles(float &X, float &Y, float &Z)
 	Z = Zangle();
 };
 
+float Quat::spherical_distance(const Quat &q1, const Quat &q2)
+{
+	float ct = q1.S()*q2.S() + q1.I()*q2.I() + q1.J()*q2.J() + q1.K()*q2.K();
+
+	Quat to, retVal;
+	if (ct < 0.0)
+	{
+		ct = -ct;
+		to =  Quat(-q2.S(), -q2.I(), -q2.J(), -q2.K());
+	}
+	else 
+	{
+		to = q2;
+	}
+	// just in case ct is greater than 1 by floating point errors
+	// if its more than 1.1 there's probably something really wrong
+	//assert(ct < 1.1);
+	// otherwise assume its floating point errors and fudge
+	if(ct > 1.0) ct = 1.0;
+	return (float)acosf(ct);
+};
 
 
 PIAVCA_DECL Quat Piavca::slerp(const Quat &q1, const Quat &q2, float t)

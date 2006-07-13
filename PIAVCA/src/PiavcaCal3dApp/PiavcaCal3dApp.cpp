@@ -297,6 +297,7 @@ void reshapeFunc(int w, int h)
 int main(int argc, char *argv[])
 {
 	std::string path = "";
+	std::string script = "";
 #ifndef WIN32
   for(int i = 0; i < argc-1; i++)
   {
@@ -307,7 +308,15 @@ int main(int argc, char *argv[])
   		argc = argc - 2;
   		for ( /*nothing*/; i < argc; i++)
   			argv[i] = argv[i+2];
-  		break;
+  		//break;
+  	}
+	if(std::string(argv[i]) == "-script")
+  	{
+  		script = std::string(argv[i+1]);
+  		argc = argc - 2;
+  		for ( /*nothing*/; i < argc; i++)
+  			argv[i] = argv[i+2];
+  		//break;
   	}
   }	
 #endif
@@ -520,7 +529,9 @@ int main(int argc, char *argv[])
 
   std::cout << "finished loading joints\n";
 
-  Piavca::InitPiavcaPython(Piavca::Core::getCore(), _T("PyTest"));
+  if(script == "")
+	  script = "PyTest";
+  Piavca::InitPiavcaPython(Piavca::Core::getCore(), StringToTString(script));
 
 	//glutSetCursor(GLUT_CURSOR_LEFT_ARROW);
 

@@ -196,6 +196,11 @@ public:
 		v = transform(v);
 	};
 
+	/*! calculates a distance measure between two quaternions.
+     *  It uses spherical distance, the same measure used by slerp
+	 */
+	static float spherical_distance(const Quat &q1, const Quat &q2);
+
 	//! interpolates two quaternions
 	friend PIAVCA_DECL Quat slerp(const Quat &q1, const Quat &q2, float t);
 };
