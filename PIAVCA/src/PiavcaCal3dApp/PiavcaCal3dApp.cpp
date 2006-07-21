@@ -30,6 +30,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 #ifdef _WIN32
 #include <windows.h>
+#include <direct.h>
 #endif
 
 #include <iostream>
@@ -145,7 +146,7 @@ void displayFunc()
   glTranslatef(g_Params.leftright, g_Params.updown, 0.0f);
   glTranslatef(0.0f, 0.0f, -g_Params.distance);
   glRotatef(g_Params.tiltAngle, 1.0f, 0.0f, 0.0f);
-  glRotatef(g_Params.twistAngle, 0.0f, 0.0f, 1.0f);
+  glRotatef(g_Params.twistAngle, 0.0f, 1.0f, 0.0f);
   glTranslatef(0.0f, 0.0f, -90.0f);
 
 
@@ -298,13 +299,13 @@ int main(int argc, char *argv[])
 {
 	std::string path = "";
 	std::string script = "";
-#ifndef WIN32
+//#ifndef WIN32
   for(int i = 0; i < argc-1; i++)
   {
   	if(std::string(argv[i]) == "-path")
   	{
   		path = std::string(argv[i+1]) + "/";
-  		chdir(path.c_str());
+  		_chdir(path.c_str());
   		argc = argc - 2;
   		for ( /*nothing*/; i < argc; i++)
   			argv[i] = argv[i+2];
@@ -319,7 +320,7 @@ int main(int argc, char *argv[])
   		//break;
   	}
   }	
-#endif
+//#endif
   
 	
   // initialize the GLUT system
@@ -530,7 +531,7 @@ int main(int argc, char *argv[])
   std::cout << "finished loading joints\n";
 
   if(script == "")
-	  script = "PyTest";
+	  script = "init_piavca";
   Piavca::InitPiavcaPython(Piavca::Core::getCore(), StringToTString(script));
 
 	//glutSetCursor(GLUT_CURSOR_LEFT_ARROW);
