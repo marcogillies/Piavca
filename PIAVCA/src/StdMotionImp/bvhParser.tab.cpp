@@ -99,7 +99,7 @@
 
 
 /* Copy the first part of user declarations.  */
-#line 22 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
+#line 22 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
 
 // A parser
 
@@ -206,7 +206,7 @@ Vec g_Axes[3];
 #endif
 
 #if ! defined (YYSTYPE) && ! defined (YYSTYPE_IS_DECLARED)
-#line 115 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
+#line 115 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
 typedef union YYSTYPE {
   int intVal;
   float floatVal;
@@ -214,7 +214,7 @@ typedef union YYSTYPE {
   std::vector<int> *intList;
 } YYSTYPE;
 /* Line 191 of yacc.c.  */
-#line 217 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.tab.cpp"
+#line 217 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.tab.cpp"
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
 # define YYSTYPE_IS_TRIVIAL 1
@@ -226,7 +226,7 @@ typedef union YYSTYPE {
 
 
 /* Line 214 of yacc.c.  */
-#line 229 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.tab.cpp"
+#line 229 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.tab.cpp"
 
 #if ! defined (yyoverflow) || YYERROR_VERBOSE
 
@@ -325,16 +325,16 @@ union yyalloc
 /* YYFINAL -- State number of the termination state. */
 #define YYFINAL  6
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   40
+#define YYLAST   41
 
 /* YYNTOKENS -- Number of terminals. */
 #define YYNTOKENS  18
 /* YYNNTS -- Number of nonterminals. */
 #define YYNNTS  18
 /* YYNRULES -- Number of rules. */
-#define YYNRULES  25
+#define YYNRULES  26
 /* YYNRULES -- Number of states. */
-#define YYNSTATES  49
+#define YYNSTATES  50
 
 /* YYTRANSLATE(YYLEX) -- Bison symbol number corresponding to YYLEX.  */
 #define YYUNDEFTOK  2
@@ -381,30 +381,31 @@ static const unsigned char yytranslate[] =
    YYRHS.  */
 static const unsigned char yyprhs[] =
 {
-       0,     0,     3,     6,     9,    13,    19,    24,    28,    31,
-      33,    35,    38,    41,    43,    45,    48,    53,    54,    57,
-      60,    65,    68,    71,    74,    76
+       0,     0,     3,     6,     9,    13,    19,    24,    29,    33,
+      36,    38,    40,    43,    46,    48,    50,    53,    58,    59,
+      62,    65,    70,    73,    76,    79,    81
 };
 
 /* YYRHS -- A `-1'-separated list of the rules' RHS. */
 static const yysigned_char yyrhs[] =
 {
       19,     0,    -1,    20,    31,    -1,     3,    21,    -1,     4,
-      14,    22,    -1,    16,    23,    24,    27,    17,    -1,     5,
-      12,    12,    12,    -1,     6,    13,    25,    -1,    26,    25,
-      -1,    26,    -1,    15,    -1,    27,    29,    -1,    27,    28,
-      -1,    29,    -1,    28,    -1,    28,    28,    -1,     8,    16,
-      23,    17,    -1,    -1,    30,    22,    -1,     7,    14,    -1,
-       9,    32,    33,    34,    -1,    10,    13,    -1,    11,    12,
-      -1,    34,    35,    -1,    35,    -1,    12,    -1
+      14,    22,    -1,    16,    23,    24,    27,    17,    -1,    16,
+      23,    24,    17,    -1,     5,    12,    12,    12,    -1,     6,
+      13,    25,    -1,    26,    25,    -1,    26,    -1,    15,    -1,
+      27,    29,    -1,    27,    28,    -1,    29,    -1,    28,    -1,
+      28,    28,    -1,     8,    16,    23,    17,    -1,    -1,    30,
+      22,    -1,     7,    14,    -1,     9,    32,    33,    34,    -1,
+      10,    13,    -1,    11,    12,    -1,    34,    35,    -1,    35,
+      -1,    12,    -1
 };
 
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const unsigned short yyrline[] =
 {
-       0,   136,   136,   141,   158,   161,   164,   174,   178,   179,
-     182,   209,   210,   211,   212,   215,   216,   217,   220,   230,
-     262,   265,   268,   271,   272,   275
+       0,   136,   136,   141,   158,   161,   162,   165,   175,   179,
+     180,   183,   210,   211,   212,   213,   216,   217,   218,   221,
+     234,   266,   269,   272,   275,   276,   279
 };
 #endif
 
@@ -436,17 +437,17 @@ static const unsigned short yytoknum[] =
 /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const unsigned char yyr1[] =
 {
-       0,    18,    19,    20,    21,    22,    23,    24,    25,    25,
-      26,    27,    27,    27,    27,    28,    28,    28,    29,    30,
-      31,    32,    33,    34,    34,    35
+       0,    18,    19,    20,    21,    22,    22,    23,    24,    25,
+      25,    26,    27,    27,    27,    27,    28,    28,    28,    29,
+      30,    31,    32,    33,    34,    34,    35
 };
 
 /* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
 static const unsigned char yyr2[] =
 {
-       0,     2,     2,     2,     3,     5,     4,     3,     2,     1,
-       1,     2,     2,     1,     1,     2,     4,     0,     2,     2,
-       4,     2,     2,     2,     1,     1
+       0,     2,     2,     2,     3,     5,     4,     4,     3,     2,
+       1,     1,     2,     2,     1,     1,     2,     4,     0,     2,
+       2,     4,     2,     2,     2,     1,     1
 };
 
 /* YYDEFACT[STATE-NAME] -- Default rule to reduce with in state
@@ -455,36 +456,36 @@ static const unsigned char yyr2[] =
 static const unsigned char yydefact[] =
 {
        0,     0,     0,     0,     0,     3,     1,     0,     2,     0,
-       0,     0,     0,     4,    21,     0,     0,     0,     0,    22,
-      25,    20,    24,     0,     0,    17,    23,     0,     0,     0,
-       0,     0,    14,    13,     0,     6,    10,     7,     9,    19,
-       0,     5,    12,    11,    15,    18,     8,     0,    16
+       0,     0,     0,     4,    22,     0,     0,     0,     0,    23,
+      26,    21,    25,     0,     0,     0,    24,     0,     0,     0,
+       0,     6,     0,    15,    14,     0,     7,    11,     8,    10,
+      20,     0,     5,    13,    12,    16,    19,     9,     0,    17
 };
 
 /* YYDEFGOTO[NTERM-NUM]. */
 static const yysigned_char yydefgoto[] =
 {
-      -1,     2,     3,     5,    13,    18,    25,    37,    38,    31,
-      44,    33,    34,     8,    11,    16,    21,    22
+      -1,     2,     3,     5,    13,    18,    25,    38,    39,    32,
+      45,    34,    35,     8,    11,    16,    21,    22
 };
 
 /* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
    STATE-NUM.  */
-#define YYPACT_NINF -24
+#define YYPACT_NINF -22
 static const yysigned_char yypact[] =
 {
-       2,     3,     6,     0,    -3,   -24,   -24,     4,   -24,    -1,
-       5,     1,     8,   -24,   -24,     7,     9,    10,    11,   -24,
-     -24,     9,   -24,    12,    13,    -4,   -24,    15,    14,    16,
-      17,    -7,    20,   -24,    -1,   -24,   -24,   -24,    14,   -24,
-       8,   -24,    20,   -24,    20,   -24,   -24,    18,   -24
+       2,     3,     6,    -1,     0,   -22,   -22,     5,   -22,    -3,
+      -4,     7,    11,   -22,   -22,     8,     9,    10,    13,   -22,
+     -22,     9,   -22,    12,     4,    -7,   -22,    14,    15,    17,
+      16,   -22,    -5,    19,   -22,    -3,   -22,   -22,   -22,    15,
+     -22,    11,   -22,    19,   -22,    19,   -22,   -22,    18,   -22
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yysigned_char yypgoto[] =
 {
-     -24,   -24,   -24,   -24,   -18,   -20,   -24,   -15,   -24,   -24,
-     -23,    -6,   -24,   -24,   -24,   -24,   -24,    19
+     -22,   -22,   -22,   -22,   -12,   -16,   -22,   -11,   -22,   -22,
+     -21,     1,   -22,   -22,   -22,   -22,   -22,    20
 };
 
 /* YYTABLE[YYPACT[STATE-NUM]].  What to do in state STATE-NUM.  If
@@ -494,20 +495,20 @@ static const yysigned_char yypgoto[] =
 #define YYTABLE_NINF -1
 static const unsigned char yytable[] =
 {
-      29,    30,    32,    29,    30,     1,     6,     4,    42,     7,
-      41,     9,    15,    17,    10,    12,    45,    24,    14,    19,
-      47,    20,    23,    46,    27,    43,    28,    35,    30,    36,
-      39,     0,     0,    40,     0,    48,     0,     0,     0,     0,
-      26
+      29,    30,    29,    30,    33,     1,     6,     4,     7,    14,
+      31,    43,    42,    12,     9,    10,    17,    28,    15,    24,
+      19,    20,    23,    46,    27,    48,    36,    30,    47,     0,
+      37,    40,    41,    44,     0,    49,     0,     0,     0,     0,
+       0,    26
 };
 
 static const yysigned_char yycheck[] =
 {
-       7,     8,    25,     7,     8,     3,     0,     4,    31,     9,
-      17,    14,    11,     5,    10,    16,    34,     6,    13,    12,
-      40,    12,    12,    38,    12,    31,    13,    12,     8,    15,
-      14,    -1,    -1,    16,    -1,    17,    -1,    -1,    -1,    -1,
-      21
+       7,     8,     7,     8,    25,     3,     0,     4,     9,    13,
+      17,    32,    17,    16,    14,    10,     5,    13,    11,     6,
+      12,    12,    12,    35,    12,    41,    12,     8,    39,    -1,
+      15,    14,    16,    32,    -1,    17,    -1,    -1,    -1,    -1,
+      -1,    21
 };
 
 /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
@@ -517,8 +518,8 @@ static const unsigned char yystos[] =
        0,     3,    19,    20,     4,    21,     0,     9,    31,    14,
       10,    32,    16,    22,    13,    11,    33,     5,    23,    12,
       12,    34,    35,    12,     6,    24,    35,    12,    13,     7,
-       8,    27,    28,    29,    30,    12,    15,    25,    26,    14,
-      16,    17,    28,    29,    28,    22,    25,    23,    17
+       8,    17,    27,    28,    29,    30,    12,    15,    25,    26,
+      14,    16,    17,    28,    29,    28,    22,    25,    23,    17
 };
 
 #if ! defined (YYSIZE_T) && defined (__SIZE_TYPE__)
@@ -1128,14 +1129,14 @@ yyreduce:
   switch (yyn)
     {
         case 2:
-#line 136 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
+#line 136 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {
   //std::cout << "successfully read bvh file\n";
   ;}
     break;
 
   case 3:
-#line 141 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
+#line 141 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {
   rootPosTrackId = g_pCore->getJointId(_PSTR("Root Position"));
   rootOriTrackId = g_pCore->getJointId(_PSTR("Root Orientation"));
@@ -1154,17 +1155,22 @@ yyreduce:
     break;
 
   case 4:
-#line 158 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
+#line 158 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {delete yyvsp[0].intList;;}
     break;
 
   case 5:
-#line 161 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
+#line 161 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {yyval.intList = yyvsp[-1].intList;;}
     break;
 
   case 6:
-#line 165 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
+#line 162 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
+    {yyval.intList = new vector<int>();;}
+    break;
+
+  case 7:
+#line 166 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {
      if(currentTrack >= 0)
        {
@@ -1174,23 +1180,23 @@ yyreduce:
    ;}
     break;
 
-  case 7:
-#line 175 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
+  case 8:
+#line 176 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {currentChannel = 0;;}
     break;
 
-  case 8:
-#line 178 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
-    {;}
-    break;
-
   case 9:
-#line 179 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
+#line 179 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {;}
     break;
 
   case 10:
-#line 182 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
+#line 180 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
+    {;}
+    break;
+
+  case 11:
+#line 183 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {
 				  if(currentTrack >= 0)
 				    {
@@ -1218,54 +1224,57 @@ yyreduce:
                                 ;}
     break;
 
-  case 11:
-#line 209 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
+  case 12:
+#line 210 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {yyval.intList = yyvsp[-1].intList; for(unsigned int i = 0; i < yyvsp[0].intList->size(); i++) yyval.intList->push_back((*yyvsp[0].intList)[i]); delete yyvsp[0].intList;;}
     break;
 
-  case 12:
-#line 210 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
+  case 13:
+#line 211 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {yyval.intList = yyvsp[-1].intList;;}
     break;
 
-  case 13:
-#line 211 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
+  case 14:
+#line 212 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {yyval.intList = yyvsp[0].intList;;}
     break;
 
-  case 14:
-#line 212 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
+  case 15:
+#line 213 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {yyval.intList = new vector<int>();;}
     break;
 
-  case 15:
-#line 215 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
-    {;}
-    break;
-
   case 16:
-#line 216 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
+#line 216 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {;}
     break;
 
   case 17:
-#line 217 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
+#line 217 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {;}
     break;
 
   case 18:
-#line 221 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
+#line 218 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
+    {;}
+    break;
+
+  case 19:
+#line 222 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {
 				       if(g_pBasePosture != NULL && !g_pBasePosture->isNull(tracks[yyvsp[-1].intVal].trackId))
 					 tracks[yyvsp[-1].intVal].multiplier = g_pBasePosture->getQuatValueAtTime(tracks[yyvsp[-1].intVal].trackId, 0.0).inverse();
 				       yyvsp[0].intList->push_back(yyvsp[-1].intVal);
-				       //std::cout << std::endl;
+				       std::cout << yyvsp[0].intList->size();
+				       //for (int i = 0; i < $2->size(); i)
+						//	std:: cout << (*$2)[i] << std::endl;
+				       std::cout << std::endl;
 				       yyval.intList = yyvsp[0].intList;
                                      ;}
     break;
 
-  case 19:
-#line 230 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
+  case 20:
+#line 234 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {	
   tracks.push_back(trackStruct());
   currentTrack = static_cast<int>(tracks.size())-1;
@@ -1286,45 +1295,45 @@ yyreduce:
   tracks[currentTrack].trackId = g_pCore->getJointId(tracks[currentTrack].name);
   if(tracks[currentTrack].trackId >= 0)
       g_pMotion->addQuatTrack(tracks[currentTrack].trackId, Piavca::Quat());
-  else
-	{
-		g_pCore->addJointNameSet(Piavca::StringVector(1, tracks[currentTrack].name));
-		tracks[currentTrack].trackId = g_pCore->getJointId(tracks[currentTrack].name);
-		g_pMotion->addQuatTrack(tracks[currentTrack].trackId, Piavca::Quat());
-	}
+  //else
+	//{
+	//	g_pCore->addJointNameSet(Piavca::StringVector(1, tracks[currentTrack].name));
+	//	tracks[currentTrack].trackId = g_pCore->getJointId(tracks[currentTrack].name);
+	//	g_pMotion->addQuatTrack(tracks[currentTrack].trackId, Piavca::Quat());
+	//}
 
   yyval.intVal = currentTrack;
   //fprintf(g_file, "\nadded joint %s\n", $2);
  ;}
     break;
 
-  case 20:
-#line 262 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
-    {;}
-    break;
-
   case 21:
-#line 265 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
-    {	g_noFrames = yyvsp[0].intVal;;}
+#line 266 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
+    {;}
     break;
 
   case 22:
-#line 268 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
-    {	frameTime = yyvsp[0].floatVal; ;}
+#line 269 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
+    {	g_noFrames = yyvsp[0].intVal;;}
     break;
 
   case 23:
-#line 271 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
-    {;}
+#line 272 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
+    {	frameTime = yyvsp[0].floatVal; ;}
     break;
 
   case 24:
-#line 272 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
+#line 275 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {;}
     break;
 
   case 25:
-#line 276 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
+#line 276 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
+    {;}
+    break;
+
+  case 26:
+#line 280 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {
 			if(currentTrack < 0)
 			{	
@@ -1440,7 +1449,7 @@ yyreduce:
     }
 
 /* Line 991 of yacc.c.  */
-#line 1443 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.tab.cpp"
+#line 1452 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.tab.cpp"
 
   yyvsp -= yylen;
   yyssp -= yylen;
@@ -1649,7 +1658,7 @@ yyreturn:
 }
 
 
-#line 388 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
+#line 392 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
 
 
 
