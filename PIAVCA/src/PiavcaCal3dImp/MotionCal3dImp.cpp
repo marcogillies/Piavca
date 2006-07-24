@@ -126,7 +126,8 @@ Quat MotionCal3DImp::getQuatValueAtTimeInternal(int trackId, float time)
 		CalVector translation;
 		CalQuaternion rotation;
 		track->getState(time, translation, rotation);
-		if(trackId == root_orientation_id) return CalQuatToQuat(rotation);
+		if(trackId == root_orientation_id) 
+			return CalQuatToQuat(rotation);
 		CalCoreBone *bone = cal3DSkel->getCoreBone(tracksMap[trackId]);
 		Quat baseRot = CalQuatToQuat(bone->getRotation());
 		return CalQuatToQuat(rotation)*baseRot.inverse();

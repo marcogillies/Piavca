@@ -244,7 +244,8 @@
 					Outputs=" $(ProjectDir)bvhLexer.cpp"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="Release|Win32">
+				Name="Release|Win32"
+				ExcludedFromBuild="TRUE">
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="running flex"
@@ -283,7 +284,8 @@
 					Outputs="&quot;$(ProjectDir)bvhParser.tab.cpp&quot;;&quot;$(ProjectDir)bvhParser.tab.hpp&quot;"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="Release|Win32">
+				Name="Release|Win32"
+				ExcludedFromBuild="TRUE">
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="running bison"
