@@ -1265,10 +1265,10 @@ yyreduce:
 				       if(g_pBasePosture != NULL && !g_pBasePosture->isNull(tracks[yyvsp[-1].intVal].trackId))
 					 tracks[yyvsp[-1].intVal].multiplier = g_pBasePosture->getQuatValueAtTime(tracks[yyvsp[-1].intVal].trackId, 0.0).inverse();
 				       yyvsp[0].intList->push_back(yyvsp[-1].intVal);
-				       std::cout << yyvsp[0].intList->size();
+				       //std::cout << $2->size();
 				       //for (int i = 0; i < $2->size(); i)
 						//	std:: cout << (*$2)[i] << std::endl;
-				       std::cout << std::endl;
+				       //std::cout << std::endl;
 				       yyval.intList = yyvsp[0].intList;
                                      ;}
     break;

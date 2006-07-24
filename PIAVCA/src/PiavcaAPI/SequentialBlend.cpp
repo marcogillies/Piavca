@@ -138,7 +138,7 @@ Vec SequentialBlend::getVecValueAtTimeInternal(int trackId, float time)
 		// if its before the start of the blend return the value from the first motion
 		if(time < blendStart)
 		{
-			//std::cout << "sequential blend, before blend start\n";		
+			//std::cout << "sequential blend, before blend start\n";
 			return mot1->getVecValueAtTime(trackId, time);
 		
 		}
@@ -162,13 +162,17 @@ Vec SequentialBlend::getVecValueAtTimeInternal(int trackId, float time)
 			//}
 		}
 		else
+		{
 			return getTransformedVec(trackId, time);
+		}
 	}
 	else
 	{
 		// if its before the start of the blend return the value from the first motion
 		if(time < blendStart)
+		{
 			return mot1->getVecValueAtTime(trackId, time);
+		}
 		// if its during the blend interpolate
 		if(time - blendStart < blendInterval)
 		{
@@ -178,7 +182,7 @@ Vec SequentialBlend::getVecValueAtTimeInternal(int trackId, float time)
 		else
 		{
 			// otherwise its the value from the second motion
-			return  mot2->getVecValueAtTime(trackId, time);
+			return mot2->getVecValueAtTime(trackId, time);
 		}
 	}
 };
@@ -187,20 +191,12 @@ Quat SequentialBlend::getTransformedQuat(int trackId, float t) const
 {
 	if(trackId == root_orientation_id)
 	{
-	    /*Quat startOffset;
-		if(!mot1->isNull(root_orientation_id))
-			startOffset = mot1->getQuatValueAtTime(trackId, blendStart);
-		//std::cout << "*" << startOffset << std::endl;
-		if(!mot2->isNull(root_orientation_id))
-		{
-			startOffset = startOffset/mot2->getQuatValueAtTime(root_orientation_id, 0.0);
-			//std::cout << startOffset << std::endl;
-		}*/
-		//std::cout << mot2->getQuatValueAtTime(trackId, t) << std::endl;
 	    return oriOffset * mot2->getQuatValueAtTime(trackId, t);
 	}
 	else
+	{
 		return mot2->getQuatValueAtTime(trackId, t);
+	}
 }
 
 Quat SequentialBlend::getQuatValueAtTimeInternal(int trackId, float time)
@@ -214,47 +210,36 @@ Quat SequentialBlend::getQuatValueAtTimeInternal(int trackId, float time)
 		}
 		return mot2->getQuatValueAtTime(trackId, time);
 	}
-	if(!mot2 || mot2->isNull(trackId)) return mot1->getQuatValueAtTime(trackId, time);
-    //float t = time - startTime;
-    //if(trackId == 8) std::cout << "time " << time << "blend start " << blendStart << " blend interval " << blendInterval << std::endl;
-    //std::cout << "*" << mot1->getQuatValueAtTime(trackId, t) << std::endl;
-    //std::cout << mot2->getQuatValueAtTime(trackId, t) << std::endl;
-	// if its before the start of the blend return the value from the first motion
+	if(!mot2 || mot2->isNull(trackId)) 
+	{
+		return mot1->getQuatValueAtTime(trackId, time);
+	}
+    // if its before the start of the blend return the value from the first motion
     if(time < blendStart)
 	{
-		//if(trackId == 8) 
-		//	std::cout << "before blend "
-		//	<< time << " " << blendStart << " " << Core::getCore()->getTime() << std::endl;
-	    return mot1->getQuatValueAtTime(trackId, time);
+		return  mot1->getQuatValueAtTime(trackId, time);
 	}
 	if(trackId == root_orientation_id)
 	{
-	    //std::cout << "hello mum\n";
-	    //t -= blendStart;   
 	    if(time - blendStart < blendInterval)
+		{
 			return mot1->getQuatValueAtTime(trackId, blendStart);
+		}
 		else
 		{
-		    Quat retval = getTransformedQuat(trackId, time);//-blendInterval);
-			//std::cout << retval << std::endl; 
-			return retval;
+		    return getTransformedQuat(trackId, time);//-blendInterval);
 		}
 	}
 	else
 	{
 		// if its during the blend interpolate
-		//t -= blendStart;
 		if(time - blendStart < blendInterval)
 		{
 			float t = time - blendStart;
-			//if(trackId == 8) std::cout << "in blend\n";
 			Quat q = slerp(mot1->getQuatValueAtTime(trackId, blendStart), mot2->getQuatValueAtTime(trackId, mot2->getStartTime()), t/blendInterval);
 			q.normalise();
 			return q;
 		}// otherwise its the value from the second motion
-		//t -= blendInterval;
-		//if(trackId == 8) std::cout << "after blend\n";
-		//std::cout << mot2->getQuatValueAtTime(trackId, t) << std::endl;
 		return mot2->getQuatValueAtTime(trackId, time);
 	}
 };

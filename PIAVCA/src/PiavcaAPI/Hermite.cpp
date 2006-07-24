@@ -60,31 +60,15 @@ Vec HermiteEvaluate(float t, float length, Vec p0, Vec d0, Vec p1, Vec d1)
 
 Quat HermiteEvaluate(float t, float length, Quat p0, Quat d0, Quat p1, Quat d1)
 {
-	//return Quat();
-  //static std::ofstream file("splineLog.txt");
-
-  //file << t << " ";
-
   Quat old_d0 = d0;
   Quat old_d1 = d1;
 
   t /= length;
-  //d0.Scale(length/3.0);
-  //d1.Scale(length/3.0);
   d0.Scale(1.0f/3.0f);
   d1.Scale(1.0f/3.0f);
   Quat q1 = d0 * p0; 
   Quat q2 = d1.inverse() * p1;
   q1.normalise(); q2.normalise();  
-
-  //file << "p0 " << p0 << " ";
-  //file << "d0 " << d0 << " ";
-  //file << "old d0 " << old_d0 << " ";
-  //file << "p1 " << p1 << " ";
-  //file << "d1 " << d1 << " ";
-  //file << "old d1 " << old_d1 << " ";
-  //file << "q1 " << q1 << " ";
-  //file << "q2 " << q2 << " ";
 
   Quat P00(slerp(p0,q1,t));
   Quat P01(slerp(q1,q2,t));
@@ -93,21 +77,13 @@ Quat HermiteEvaluate(float t, float length, Quat p0, Quat d0, Quat p1, Quat d1)
   Quat P10(slerp(P00,P01,t));
   Quat P11(slerp(P01,P02,t));
 
-  //return slerp(P10,P11,t);
-
   Quat q = slerp(P10, P11, t);
-  //file << "return "<< q << std::endl;
-
-	//TEMP
-  //q = slerp(p0, p1, t);
   
   if(q != q)
   {
 		Piavca::Error(_T("Got a NaN when interpolating quaternions"));	
   };
   q.normalise();
-
-
   return q;
 };
 

@@ -83,7 +83,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="$(OutDir)/Standard Motion Implementation.lib"/>
+				OutputFile="$(OutDir)/StdMotionImp.lib"/>
 			<Tool
 				Name="VCMIDLTool"/>
 			<Tool

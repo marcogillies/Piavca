@@ -116,11 +116,23 @@ namespace Piavca
 		//! a string stream to hold warnings thrown by piavca
 		tostringstream warningstrm;
 
+		//! a flag that controls whether exceptions are thrown or not
+		bool exceptionFlag;
+
 		//! an output file for logging data
 		std::ofstream log_file;
 
-		//! a flag that controls whether exceptions are thrown or not
-		bool exceptionFlag;
+		//! a structure for holding profiling data
+		struct ProfilePoint 
+		{
+			tstring m_name;
+			float m_start_time;
+			float m_accumulated_time;
+
+			ProfilePoint(tstring name, float time):m_name(name), m_start_time(time), m_accumulated_time(0.0f){}
+			ProfilePoint(const ProfilePoint &pp):m_name(pp.m_name), m_start_time(pp.m_start_time), m_accumulated_time(m_accumulated_time){}
+		};
+		std::vector <ProfilePoint> m_profilePoints;
 	public:
 
 		//! the search directory for Piavca files
@@ -389,6 +401,32 @@ namespace Piavca
 		{
 			return log_file;
 		};
+
+		/*! creates a new profile point for logging profile data.
+		 *	Returns and id which can be used to access the profile point.
+		 *  You would normally create the point id as a static variable 
+		 *  within the function you are profiling.
+		 */
+		int addProfilePoint(tstring name)
+		{
+			m_profilePoints.push_back(ProfilePoint(name, getTime()));
+			return ((int)m_profilePoints.size()-1);
+		};
+
+		//! marks the start of a profile point
+		void profilePointStart(int i)
+		{
+			m_profilePoints[i].m_start_time = getTime();
+		};
+
+		//! marks the end of the profile point
+		void profilePointEnd(int i)
+		{
+			m_profilePoints[i].m_accumulated_time += getTime() - m_profilePoints[i].m_start_time;
+		};
+
+		//! prints out the profiling data that has been collected.
+		void printProfileData();
 
 		friend class Motion;
 	};

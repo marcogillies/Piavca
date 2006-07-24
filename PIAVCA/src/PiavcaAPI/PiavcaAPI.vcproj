@@ -59,7 +59,7 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="Debug"
+			OutputDirectory="Release"
 			IntermediateDirectory="Release"
 			ConfigurationType="4"
 			CharacterSet="2">

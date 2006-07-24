@@ -405,11 +405,11 @@ Vec StandardMotionImp::getVecValueAtTimeInternal(int trackId, float time)
 		Piavca::Error(_PSTR("getVecValueAtTime called on track missing in motion"));
 		return Vec();
 	}
-	return tracks[trackId]->getVecValAtTime(time);
+	return  tracks[trackId]->getVecValAtTime(time);
 };
 Quat StandardMotionImp::getQuatValueAtTimeInternal(int trackId, float time) 
 {
-    if(trackId < 0)
+	if(trackId < 0)
 	{
 		Piavca::Error(_PSTR("Null trackId passed in to getQuatValueAtTime"));
 		return Quat();
@@ -420,7 +420,7 @@ Quat StandardMotionImp::getQuatValueAtTimeInternal(int trackId, float time)
 		return Quat();
 	}
 	//std::cout << tracks[trackId]->getQuatValAtTime(time) << std::endl;
-	return  tracks[trackId]->getQuatValAtTime(time);
+	return tracks[trackId]->getQuatValAtTime(time);
 };
 
 

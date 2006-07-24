@@ -89,6 +89,7 @@ void Core::timeStep(float time)
 {
 	//std::cout << "time stepping " << time << std::endl;
 	static bool firstime = true;
+	static float prev_time = time;
 	if(firstime)
 	{
 		firstime = false;
@@ -107,6 +108,12 @@ void Core::timeStep(float time)
 		callbacks[i]->timeStep(this, time);
 	for (i = 0; i < avatars.size(); i++)
 		if(avatars[i]->active) avatars[i]->timeStep(time);
+
+	if((time - prev_time) > 10.0f)
+	{
+		prev_time = time;
+		printProfileData();
+	}
 };
 
 
@@ -556,4 +563,13 @@ void Core::clearWarnings()
 {
 	warningstrm.str(_T(""));
 };
+
+void Core::printProfileData()
+{
+	for (int i = 0; i < (int) m_profilePoints.size(); i++)
+	{
+		std::cout <<  TStringToString(m_profilePoints[i].m_name) << ": " << m_profilePoints[i].m_accumulated_time << std::endl;
+		m_profilePoints[i].m_accumulated_time = 0.0f;
+	}
+}
 		

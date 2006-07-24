@@ -223,10 +223,10 @@ joint_spec		:	joint_name joint_body
 				       if(g_pBasePosture != NULL && !g_pBasePosture->isNull(tracks[$1].trackId))
 					 tracks[$1].multiplier = g_pBasePosture->getQuatValueAtTime(tracks[$1].trackId, 0.0).inverse();
 				       $2->push_back($1);
-				       std::cout << $2->size();
+				       //std::cout << $2->size();
 				       //for (int i = 0; i < $2->size(); i)
 						//	std:: cout << (*$2)[i] << std::endl;
-				       std::cout << std::endl;
+				       //std::cout << std::endl;
 				       $$ = $2;
                                      }
 				;

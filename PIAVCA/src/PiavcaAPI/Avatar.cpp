@@ -82,7 +82,6 @@ Avatar::~Avatar()
 	*/
  void	Avatar::timeStep	(float time) 
 {
-	//std::cout << " Avatar.cpp timestep BEGINNNNNNNNNNNNNNNNNNN" << std::endl;
 	if(!active) return;
 
 	unsigned int i;

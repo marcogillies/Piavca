@@ -379,7 +379,6 @@ public:
 		return HermiteEvaluate(static_cast<float>(t - track[before].time*(keyframeGranularity)), 
 			static_cast<float>((track[after].time - track[before].time)*(keyframeGranularity)), 
 			track[before].value, track[before].velocity, track[after].value, track[after].velocity);
-		
 	}
  
 
@@ -454,12 +453,12 @@ public:
 			{
 				if(intTime == track[lastkeyframe+1].time)
 				{
-				//std::cout << "equal to next keyframe\n";
-				return ++lastkeyframe;
+					//std::cout << "equal to next keyframe\n";
+					return ++lastkeyframe;
 				}
 				else
 				{
-				//std::cout << ">= current keyframe\n";
+					//std::cout << ">= current keyframe\n";
 					return lastkeyframe;
 				}
 			}
@@ -504,7 +503,7 @@ public:
 		if(lastkeyframe+1 < static_cast<int>(track.size())  
 			&& intTime == track[lastkeyframe+1].time)
 			{
-			//std::cout << "== after found keyframe\n";
+				//std::cout << "== after found keyframe\n";
 				return ++lastkeyframe;
 			}
 			else
