@@ -119,12 +119,16 @@ void AvatarMotionQueue::timeStep(Avatar *avatar, float time)
 
 	bool background = queueTopIsBackground();
 	float startTime = avatarBlend->getStartTime();
-	//if(isFacial())
-	//	std::cout << time << " " << startTime 
-	//						<< " " << selfBlend->getMotionLength()
-	//						<< " " << queueTopTime() << std::endl;
+	if(isFacial())
+		std::cout << time << " " << startTime 
+							<< " " << selfBlend->getEndTime()
+							<< " " << selfBlend->getMotionLength()
+							<< " " << background
+							<< " " << interruptMot
+							<< " " << queueTopTime() << std::endl;
 	if(interruptMot || background || (time > startTime && time > (selfBlend->getEndTime())))
     {
+		std::cout << "changing motion\n";
 		float at_time = queueTopTime();
 		if(at_time > 0.0 && at_time < time)
 		{
@@ -132,7 +136,7 @@ void AvatarMotionQueue::timeStep(Avatar *avatar, float time)
 			Motion *motion = dequeueMotion();
 			if (motion)
 			{ 
-				//std::cout << "found motion " << time << " " << startTime << " " << delay << std::endl;
+				std::cout << "found motion " << time << " " << startTime << " " << delay << std::endl;
 				//std::cout << selfBlend->getMotionLength() << std::endl;
 				if(background)
 				{

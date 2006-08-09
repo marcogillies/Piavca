@@ -102,9 +102,9 @@ namespace Piavca
 		float getMotionLength() const
 		{
 			if(mot2)
-				return blendStart + blendInterval + mot2->getMotionLength();
+				return (blendStart - startTime) + blendInterval + mot2->getMotionLength();
 			else
-				return blendStart + blendInterval;	
+				return (blendStart - startTime) + blendInterval;	
 		};
 
 	    //! calculates the values of a keyframe
