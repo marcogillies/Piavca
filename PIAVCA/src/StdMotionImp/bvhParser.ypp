@@ -343,7 +343,13 @@ keyframe		:	NUMBER
 			}
 			else
 			{
-				currentRootOri = Quat(-Piavca::degToRad($1), g_Axes[rootChannel[currentChannel]])*currentRootOri;
+			    //float angle = -Piavca::degToRad($1);
+			    float angle = Piavca::degToRad($1);
+			    if(g_ReverseOrder)
+					currentRootOri = Quat(angle, g_Axes[rootChannel[currentChannel]])*currentRootOri;
+				else
+					currentRootOri = currentRootOri*Quat(angle, g_Axes[rootChannel[currentChannel]]);
+				
 			}
 	      }
 	    else

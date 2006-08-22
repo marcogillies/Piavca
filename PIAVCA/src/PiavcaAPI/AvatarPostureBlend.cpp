@@ -39,7 +39,7 @@ AvatarPostureBlend::AvatarPostureBlend(Motion *mot, float interval, bool _tracks
 	:SequentialBlend(new TrackMotion(mot->isFacial()), mot, interval, 0.0), 
 	tracksFromAvatar(_tracksFromAvatar)//, avatar(av) 
 {
-	setMaintainY(true);
+	//setMaintainY(true);
 	
 };
 
