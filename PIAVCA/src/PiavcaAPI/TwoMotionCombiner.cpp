@@ -165,7 +165,7 @@ void TwoMotionCombiner::setMotion1(Motion *mot)
 	if(mot1) mot1->Dispose(); 
 	//delete mot1;
 	mot1 = mot;
-	if(avatar && mot1)mot1->load(avatar);
+	if(m_avatar && mot1)mot1->load(m_avatar);
 	if(mot1 && mot2 && (mot1->isFacial() != mot2->isFacial()))
 		Piavca::Error(_T("Trying to combine a facial and a body motion"));
 	// this isn't as stupid as it looks, it makes sure the
@@ -178,7 +178,7 @@ void TwoMotionCombiner::setMotion2(Motion *mot)
 	if(mot2) mot2->Dispose(); 
 	//delete mot2;
 	mot2= mot;
-	if(avatar && mot2)mot2->load(avatar);
+	if(m_avatar && mot2)mot2->load(m_avatar);
 	if(mot1 && mot2 && (mot1->isFacial() != mot2->isFacial()))
 		Piavca::Error(_T("Trying to combine a facial and a body motion"));
 	// this isn't as stupid as it looks, it makes sure the

@@ -37,7 +37,7 @@ namespace Piavca
 		//! pass in the motion to loop and an optional blend interval, 
 		/*!  (How long it takes to blend from the end back to the beginning)
 		 */
-		LoopMotion(Motion *mot, float _endTime = -1, float interval = 0.01)
+		LoopMotion(Motion *mot = NULL, float _endTime = -1, float interval = 0.01)
 			:SelfBlend(mot, interval), lock(false), reblend_flag(false), endTime(_endTime) {} ;
 		LoopMotion(const LoopMotion &l)
 			:SelfBlend(l), lock(false), reblend_flag(false), endTime(l.endTime){};

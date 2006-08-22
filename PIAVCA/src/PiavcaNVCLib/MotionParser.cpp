@@ -131,6 +131,7 @@ Piavca::Motion *MotionParserTyped<LoopMotion>::parseMotion(istringstream &is, st
 {
 		float endTime = -1.0f;
 		float interval = 0.01f;
+		bool accumulateRoot = true;
 		if(currentWord == "")
 			if(!(is >> currentWord)) currentWord = "";
 				
@@ -154,6 +155,11 @@ Piavca::Motion *MotionParserTyped<LoopMotion>::parseMotion(istringstream &is, st
 				}
 				if(!(is >> currentWord)) break;
 			}
+			else if(currentWord == "forget_root_transform")
+			{
+				accumulateRoot = false;
+				if(!(is >> currentWord)) break;
+			}
 			else
 				break;
 
@@ -161,7 +167,8 @@ Piavca::Motion *MotionParserTyped<LoopMotion>::parseMotion(istringstream &is, st
 		MotionParser *mp = NULL;
 		Motion *mot = MotionParser::parseMotion(is, currentWord, scaleFactor, &mp);
 		if(Piavca::Core::getCore()->errorsPresent()) return NULL;
-		return new LoopMotion(mot, endTime, interval);
+		LoopMotion *loop = new LoopMotion(mot, endTime, interval);
+		loop->setAccumulateRoot(accumulateRoot);;
 };
 
 template<>
@@ -189,6 +196,11 @@ void MotionParserTyped<LoopMotion>::editMotionInternal(LoopMotion *mot, istrings
 					return;
 				}
 				mot->setBlendInterval(interval);
+			}
+			else if(currentWord == "forget_root_transform")
+			{
+				mot->setAccumulateRoot(false);
+				if(!(is >> currentWord)) break;
 			}
 			Piavca::Error(_T("unknown option ") + StringToTString(currentWord));
 			return;
@@ -793,6 +805,7 @@ template<> Piavca::Motion *MotionParserTyped<RandomGazeMotion>::parseMotion(istr
 {
 	    float endTime = -1.0f;
 		float interval = 0.01f;
+		
 		if(currentWord == "")
 			if(!(is >> currentWord)) currentWord = "";
 				
@@ -1166,6 +1179,7 @@ template<> Piavca::Motion *MotionParserTyped<RandomLoopMotion>::parseMotion(istr
 		vector<float> fv;
 		float endTime = -1.0f;
 		float interval = 0.01f;
+		bool accumulateRoot = true;
 		bool randomTimings = false;
 		float min = 0.0, max = 1.0;
 		if(currentWord == "")
@@ -1189,6 +1203,11 @@ template<> Piavca::Motion *MotionParserTyped<RandomLoopMotion>::parseMotion(istr
 					Piavca::Error(_T("no value given for end time\n"));
 					return NULL;
 				}
+				if(!(is >> currentWord)) break;
+			}
+			else if(currentWord == "forget_root_transform")
+			{
+				accumulateRoot = false;
 				if(!(is >> currentWord)) break;
 			}
 			else if(currentWord == "random_timings")
@@ -1243,6 +1262,7 @@ template<> Piavca::Motion *MotionParserTyped<RandomLoopMotion>::parseMotion(istr
 		}
 		
 		Motion *m = new RandomLoopMotion(mv, fv, endTime, interval);
+		dynamic_cast<RandomLoopMotion *>(m)->setAccumulateRoot(accumulateRoot);
 		if(randomTimings)
 			dynamic_cast<RandomLoopMotion *>(m)->setTimingParams(min, max);
 		return m;
@@ -1277,6 +1297,11 @@ template<> void MotionParserTyped<RandomLoopMotion >::editMotionInternal(RandomL
 				mot->setBlendInterval(interval);
 				if(!(is >> currentWord)) break;
 			}
+			else if(currentWord == "forget_root_transform")
+			{
+				mot->setAccumulateRoot(false);
+				if(!(is >> currentWord)) break;
+			}
 			else if(currentWord == "random_timings")
 			{
 				bool randomTimings = true;
@@ -1307,6 +1332,7 @@ template<> Piavca::Motion *MotionParserTyped<ChoiceLoopMotion>::parseMotion(istr
 	    MotionVec mv;
 		float endTime = -1.0f;
 		float interval = 0.01f;
+		bool accumulateRoot = true;
 		bool randomTimings = false;
 		float min = 0.0, max = 1.0;
 		if(currentWord == "")
@@ -1330,6 +1356,11 @@ template<> Piavca::Motion *MotionParserTyped<ChoiceLoopMotion>::parseMotion(istr
 					Piavca::Error(_T("no value given for end time\n"));
 					return NULL;
 				}
+				if(!(is >> currentWord)) break;
+			}
+			else if(currentWord == "forget_root_transform")
+			{
+				accumulateRoot = false;
 				if(!(is >> currentWord)) break;
 			}
 			else if(currentWord == "random_timings")
@@ -1365,6 +1396,7 @@ template<> Piavca::Motion *MotionParserTyped<ChoiceLoopMotion>::parseMotion(istr
 			}
 		}
 		Motion *m = new ChoiceLoopMotion(mv, endTime, interval);
+		dynamic_cast<ChoiceLoopMotion *>(m)->setAccumulateRoot(accumulateRoot);
 		if(randomTimings)
 			dynamic_cast<ChoiceLoopMotion *>(m)->setTimingParams(min, max);
 		return m;
@@ -1397,6 +1429,11 @@ template<> void MotionParserTyped<ChoiceLoopMotion>::editMotionInternal(ChoiceLo
 					return;
 				}
 				mot->setBlendInterval(interval);
+				if(!(is >> currentWord)) break;
+			}
+			else if(currentWord == "forget_root_transform")
+			{
+				mot->setAccumulateRoot(false);
 				if(!(is >> currentWord)) break;
 			}
 			else if(currentWord == "random_timings")
@@ -1439,6 +1476,7 @@ template<> Piavca::Motion *MotionParserTyped<RandomBlendLoop>::parseMotion(istri
 	    MotionVec mv;
 		float endTime = -1.0f;
 		float interval = 0.01f;
+		bool accumulateRoot = true;
 		bool randomTimings = false;
 		bool autoshift = true;
 		float min = 0.0, max = 1.0;
@@ -1463,6 +1501,11 @@ template<> Piavca::Motion *MotionParserTyped<RandomBlendLoop>::parseMotion(istri
 					Piavca::Error(_T("no value given for end time\n"));
 					return NULL;
 				}
+				if(!(is >> currentWord)) break;
+			}
+			else if(currentWord == "forget_root_transform")
+			{
+				accumulateRoot = false;
 				if(!(is >> currentWord)) break;
 			}
 			else if(currentWord == "random_timings")
@@ -1510,6 +1553,7 @@ template<> Piavca::Motion *MotionParserTyped<RandomBlendLoop>::parseMotion(istri
 		}
 			
 		Motion *m = new RandomBlendLoop(mv, endTime, interval);
+		dynamic_cast<RandomBlendLoop *>(m)->setAccumulateRoot(accumulateRoot);
 		if(randomTimings)
 			dynamic_cast<RandomBlendLoop *>(m)->setTimingParams(min, max);
 		dynamic_cast<RandomBlendLoop *>(m)->setAutoShift(autoshift);
@@ -1543,6 +1587,11 @@ template<> void MotionParserTyped<RandomBlendLoop>::editMotionInternal(RandomBle
 					return;
 				}
 				mot->setBlendInterval(interval);
+				if(!(is >> currentWord)) break;
+			}
+			else if(currentWord == "forget_root_transform")
+			{
+				mot->setAccumulateRoot(false);
 				if(!(is >> currentWord)) break;
 			}
 			else if(currentWord == "random_timings")
@@ -1591,6 +1640,7 @@ template<> Piavca::Motion *MotionParserTyped<RandomAddLoop>::parseMotion(istring
 	    MotionVec mv;
 		float endTime = -1.0f;
 		float interval = 0.01f;
+		bool accumulateRoot = true;
 		bool randomTimings = false;
 		bool autoshift = true;
 		float min = 0.0f, max = 1.0f;
@@ -1615,6 +1665,11 @@ template<> Piavca::Motion *MotionParserTyped<RandomAddLoop>::parseMotion(istring
 					Piavca::Error(_T("no value given for end time\n"));
 					return NULL;
 				}
+				if(!(is >> currentWord)) break;
+			}
+			else if(currentWord == "forget_root_transform")
+			{
+				accumulateRoot = false;
 				if(!(is >> currentWord)) break;
 			}
 			else if(currentWord == "random_timings")
@@ -1662,6 +1717,7 @@ template<> Piavca::Motion *MotionParserTyped<RandomAddLoop>::parseMotion(istring
 		}
 		
 		Motion *m = new RandomAddLoop(mv, endTime, interval);
+		dynamic_cast<RandomAddLoop *>(m)->setAccumulateRoot(accumulateRoot);
 		if(randomTimings)
 			dynamic_cast<RandomAddLoop *>(m)->setTimingParams(min, max);
 		dynamic_cast<RandomAddLoop *>(m)->setAutoShift(autoshift);
@@ -1695,6 +1751,11 @@ template<> void MotionParserTyped<RandomAddLoop>::editMotionInternal(RandomAddLo
 					return;
 				}
 				mot->setBlendInterval(interval);
+				if(!(is >> currentWord)) break;
+			}
+			else if(currentWord == "forget_root_transform")
+			{
+				mot->setAccumulateRoot(false);
 				if(!(is >> currentWord)) break;
 			}
 			else if(currentWord == "random_timings")

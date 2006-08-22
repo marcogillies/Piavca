@@ -50,7 +50,7 @@ namespace Piavca
 		/*!
 		 *	Pass in the motion to be filtered and a scale factor
 		 */
-	    TimeWarp(Motion *m, Motion *warp) :MotionFilter(m), warpFunc(warp)
+	    TimeWarp(Motion *m=NULL, Motion *warp=NULL) :MotionFilter(m), warpFunc(warp)
 		{
 		};
 		TimeWarp(const TimeWarp &tw)

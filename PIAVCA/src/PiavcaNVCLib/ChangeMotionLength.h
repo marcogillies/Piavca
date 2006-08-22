@@ -46,7 +46,7 @@ namespace Piavca
 	{
 		float length;
 	public:
-		ChangeMotionLength(Motion *mot, float len)
+		ChangeMotionLength(Motion *mot=NULL, float len=1.0f)
 			: ScaleMotionSpeed(mot), length(len)
 		{
 			if(filterMot)

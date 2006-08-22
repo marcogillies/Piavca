@@ -42,6 +42,7 @@ namespace Piavca
 	protected:
 	    float blendInterval;
 		float blendStart;
+		bool m_accumulateRoot;
 	    
 		Vec m1End, m2Start;
 		Quat oriOffset;
@@ -64,8 +65,10 @@ namespace Piavca
 		 *	of the transition. To get the second motion to start at the end of the first pass in
 		 *	the length of the second motion as the blend start time.
 		 */
-	    SequentialBlend(Motion *mot1, Motion *mot2, float interval = 0.2, float start = 0.0) 
-			:TwoMotionCombiner(mot1, mot2), blendInterval(interval), blendStart(start), maintainY(false)
+	    SequentialBlend(Motion *mot1=NULL, Motion *mot2=NULL, float interval = 0.2, float start = 0.0) 
+			:TwoMotionCombiner(mot1, mot2), 
+			blendInterval(interval), blendStart(start), 
+			maintainY(false), m_accumulateRoot(true)
 		{
 			calculateRootOffsets();
 			//maintainY = true;
@@ -74,12 +77,13 @@ namespace Piavca
 			:TwoMotionCombiner(sb), 
 			blendInterval(sb.blendInterval), blendStart(sb.blendStart),
 			m1End(sb.m1End), m2Start(sb.m2Start), oriOffset(sb.oriOffset),
-			maintainY(sb.maintainY)
+			maintainY(sb.maintainY), m_accumulateRoot(sb.m_accumulateRoot)
 			{};
 	
 		virtual Motion *clone(){return new SequentialBlend(*this);};
 
 		virtual void setMaintainY(bool b){maintainY = b;};
+		virtual void setAccumulateRoot(bool b){m_accumulateRoot = b;};
 		virtual void setStartTime(float time)
 		{
 			

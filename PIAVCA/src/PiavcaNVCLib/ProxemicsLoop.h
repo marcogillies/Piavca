@@ -64,8 +64,8 @@ public:
 	 *  You also pass in a desired distance to the other avatar,
 	 *  a time at which to stop and a blend interval.
 	 */
-	ProxemicsLoop(Motion *stepForward, Motion *stepBackward,
-		Motion *rest, Motion *turnLeft, Motion *turnRight,
+	ProxemicsLoop(Motion *stepForward=NULL, Motion *stepBackward=NULL,
+		Motion *rest=NULL, Motion *turnLeft=NULL, Motion *turnRight=NULL,
 		float distance = 1.0f, float endTime = -1.0f, float interval = 0.01f)
 		:MultiMotionLoop(vector<Motion *>(), endTime, interval), 
 		desiredDistance(distance), threshold(0.2f), anglethreshold(Piavca::Pi/8.0f), distanceOff(false)
@@ -157,7 +157,7 @@ public:
 		averagePos /= number;
 
 		// subtract your own position and work out distance
-		Vec displacement = averagePos - avatar->getRootPosition();
+		Vec displacement = averagePos - m_avatar->getRootPosition();
 		displacement[1] = 0.0; // we aren't interested in up an down distance
 		float distance = fabs(displacement.mag());
 		Vec direction = displacement.normalized();
@@ -167,8 +167,8 @@ public:
 		if(mots[Turn_left])
 		{
 			// get the direction you are pointing to
-			Vec forward = avatar->getForwardDirection();
-			avatar->getRootOrientation().transformInPlace(forward);
+			Vec forward = m_avatar->getForwardDirection();
+			m_avatar->getRootOrientation().transformInPlace(forward);
 			forward[1] = 0.0; // we aren't intereseted in up down distance
 			forward.normalize();
 

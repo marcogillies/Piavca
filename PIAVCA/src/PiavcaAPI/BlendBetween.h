@@ -40,7 +40,7 @@ namespace Piavca
 	    
 	public:
 	    //! Pass in the two motion and the interpolation parameter blend (has to be between 0 and 1)
-	    BlendBetween(Motion *m1, Motion *m2, float _blend);
+	    BlendBetween(Motion *m1=NULL, Motion *m2=NULL, float _blend=0.0f);
 		BlendBetween(const BlendBetween &b);
 
 		virtual Motion *clone()

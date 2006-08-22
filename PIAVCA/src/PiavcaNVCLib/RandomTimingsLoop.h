@@ -57,7 +57,7 @@ public:
 	 * add the interval between the start of the motion and when it restarts.
 	 * and most importantly the minimum and maximum timings
 	 */
-	RandomTimingsLoop(Motion *mot, float endTime = -1.0, float interval = 0.01,
+	RandomTimingsLoop(Motion *mot=NULL, float endTime = -1.0, float interval = 0.01,
 		float min = 1.0, float max = 1.0)
 		:LoopMotion(mot, endTime, interval), 
 		minScale(min), maxScale(max)//,

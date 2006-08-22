@@ -46,13 +46,15 @@ namespace Piavca
 		 *  add a flag which specifies whether the tracks that the motion has should
 		 *  be those in the blended in motion or those in the avatar
 		 */
-	    AvatarPostureBlend(Motion *mot, float interval = 0.2, bool tracksFromAvatar=false);
+	    AvatarPostureBlend(Motion *mot=NULL, float interval = 0.2, bool tracksFromAvatar=false);
 		AvatarPostureBlend(const AvatarPostureBlend &apb)
 			:SequentialBlend(apb), tracksFromAvatar(apb.tracksFromAvatar){};
 
 		virtual Motion *clone(){return new AvatarPostureBlend(*this);};
 
 		virtual void load(Avatar *av);
+
+		void setMotion(Motion *mot);
 
 		//! restart the blend (i.e. start blending from the current avatar posture) at the current time
 	    void reblend();

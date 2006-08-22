@@ -55,7 +55,7 @@ namespace Piavca
 		/*!
 		 *	Pass in the motion to be filtered and a scale factor
 		 */
-	    ScaleMotionRoot(Motion *m, float scale=1.0) :MotionFilter(m), scaleFactor(scale)
+	    ScaleMotionRoot(Motion *m=NULL, float scale=1.0) :MotionFilter(m), scaleFactor(scale)
 		{
 		};
 		ScaleMotionRoot(const ScaleMotionRoot &sm)

@@ -51,7 +51,7 @@ namespace Piavca
 		/*!
 		 *	Pass in the motion to be filtered and a scale factor
 		 */
-	    ScaleMotion(Motion *m, float scale=1.0) :MotionFilter(m), scaleFactor(scale)
+	    ScaleMotion(Motion *m=NULL, float scale=1.0) :MotionFilter(m), scaleFactor(scale)
 		{
 		};
 		ScaleMotion(const ScaleMotion &sm)

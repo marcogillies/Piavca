@@ -54,7 +54,7 @@ namespace Piavca
 		/*!
 		 *	Pass in the motion to be filtered and a scale factor
 		 */
-	    ChangeMotionProp(Motion *m, float scale=1.0, float mscale=1, float sw=0.2, float ew=0.2) 
+	    ChangeMotionProp(Motion *m=NULL, float scale=1.0, float mscale=1, float sw=0.2, float ew=0.2) 
 			:MotionFilter(m), scaleFactor(scale), midscale(mscale), sWindow(sw), eWindow(ew) { };
 		ChangeMotionProp(const ChangeMotionProp &sm)
 			:MotionFilter(sm), scaleFactor(sm.scaleFactor), midscale(sm.midscale), sWindow(sm.sWindow), eWindow(sm.eWindow) { };

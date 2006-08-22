@@ -110,14 +110,14 @@ void LookAtMotion::load(Avatar *av)
 
 bool LookAtMotion::canLookAt(Vec location)
 {
-		if(!avatar) return true;
-		Vec zvec = avatar->getForwardDirection();
+		if(!m_avatar) return true;
+		Vec zvec = m_avatar->getForwardDirection();
 
 		// transfrom into local space of avatar
 		Vec localPos = location;
 		
-		localPos -= avatar->getRootPosition();
-		avatar->getRootOrientation().inverse().transformInPlace(localPos);
+		localPos -= m_avatar->getRootPosition();
+		m_avatar->getRootOrientation().inverse().transformInPlace(localPos);
 		
 		Quat finalOri;
 		finalOri.pointAt(zvec, localPos);
@@ -137,7 +137,7 @@ float LookAtMotion::getFloatValueAtTimeInternal(int trackId, float time)
 	if(!(trackId == lookLeftId || trackId == lookRightId
 		|| trackId == lookUpId || trackId == lookDownId))
 		return 0;
-	if(!avatar) return 0;
+	if(!m_avatar) return 0;
 
 	Vec subjectVec;
 	if(AvatarTarget)
@@ -154,28 +154,28 @@ float LookAtMotion::getFloatValueAtTimeInternal(int trackId, float time)
 		subjectVec = LocationTarget;
 	}
 
-	Vec zvec = avatar->getForwardDirection();
+	Vec zvec = m_avatar->getForwardDirection();
 
 	// transfrom into local space of avatar
 	Vec localPos = subjectVec;
 	
 	if(AvatarTarget || ObjectTarget || !local)
 	{
-		localPos -= avatar->getRootPosition();
-		avatar->getRootOrientation().inverse().transformInPlace(localPos);
+		localPos -= m_avatar->getRootPosition();
+		m_avatar->getRootOrientation().inverse().transformInPlace(localPos);
 		// express relative to the joint we are turning
-		Vec jointPos = avatar->getJointBasePosition(headId);
-		Quat jointOri = avatar->getJointOrientation(headId);
-		int parentId = avatar->getParent(headId);
+		Vec jointPos = m_avatar->getJointBasePosition(headId);
+		Quat jointOri = m_avatar->getJointOrientation(headId);
+		int parentId = m_avatar->getParent(headId);
 		Vec parentPos;
 		if(parentId >= 0)
-			parentPos = avatar->getJointBasePosition(parentId);
+			parentPos = m_avatar->getJointBasePosition(parentId);
 		Quat parentOri;
 		if(parentId >= 0)
-			parentOri = avatar->getJointOrientation(parentId, LOCAL_COORD);
+			parentOri = m_avatar->getJointOrientation(parentId, LOCAL_COORD);
 		Quat parentOriUntransed;
 		if(parentId >= 0)
-			parentOriUntransed = avatar->getJointOrientation(parentId);
+			parentOriUntransed = m_avatar->getJointOrientation(parentId);
 		
 		jointPos -= parentPos;
 		parentOri.inverse().transformInPlace(jointPos);
@@ -302,7 +302,7 @@ Quat LookAtMotion::getQuatValueAtTimeInternal(int trackId, float time)
 	if(!(trackId == headId || trackId == bodyId 
 		|| trackId == reyeId || trackId == leyeId)) return Quat();
 	
-	if(!avatar) return Quat();
+	if(!m_avatar) return Quat();
 
 	//std::cout << "body active " << bodyActive << std::endl;
 
@@ -333,43 +333,43 @@ Quat LookAtMotion::getQuatValueAtTimeInternal(int trackId, float time)
 	
 		if(trackId == headId 
 			&& ((subjectVec - oldTargetPos_head).mag() < 0.05
-				&& (avatar->getRootPosition() - oldRootPos_head).mag() < 0.05))
+				&& (m_avatar->getRootPosition() - oldRootPos_head).mag() < 0.05))
 		{
 				finalOri = oldHeadOri;
 		}
 		else if (trackId == bodyId
 			&& ((subjectVec - oldTargetPos_body).mag() < 0.05
-				&& (avatar->getRootPosition() - oldRootPos_body).mag() < 0.05))
+				&& (m_avatar->getRootPosition() - oldRootPos_body).mag() < 0.05))
 		{
 				finalOri = oldBodyOri;
 		}
 		else
 		{
 
-			Vec zvec = avatar->getForwardDirection();
+			Vec zvec = m_avatar->getForwardDirection();
 
 			// transfrom into local space of avatar
 			Vec localPos = subjectVec;
 			
 			if(AvatarTarget || ObjectTarget || !local)
 			{
-				localPos -= avatar->getRootPosition();
-				avatar->getRootOrientation().inverse().transformInPlace(localPos);
+				localPos -= m_avatar->getRootPosition();
+				m_avatar->getRootOrientation().inverse().transformInPlace(localPos);
 				// express relative to the joint we are turning
 				int pointtojoint = trackId;
 				if(trackId == bodyId && headId >= 0)
 					pointtojoint = headId;
-				Vec jointPos = avatar->getJointBasePosition(pointtojoint);
-				int parentId = avatar->getParent(pointtojoint);
+				Vec jointPos = m_avatar->getJointBasePosition(pointtojoint);
+				int parentId = m_avatar->getParent(pointtojoint);
 				Vec parentPos;
 				if(parentId >= 0)
-					parentPos = avatar->getJointBasePosition(parentId);
+					parentPos = m_avatar->getJointBasePosition(parentId);
 				Quat parentOri;
 				if(parentId >= 0)
-					parentOri = avatar->getJointOrientation(parentId, LOCAL_COORD);
+					parentOri = m_avatar->getJointOrientation(parentId, LOCAL_COORD);
 				Quat parentOriUntransed;
 				if(parentId >= 0)
-					parentOriUntransed = avatar->getJointOrientation(parentId);
+					parentOriUntransed = m_avatar->getJointOrientation(parentId);
 				
 				jointPos -= parentPos;
 				parentOri.inverse().transformInPlace(jointPos);
@@ -452,14 +452,14 @@ Quat LookAtMotion::getQuatValueAtTimeInternal(int trackId, float time)
 				LookAtMotion *nonConstThis = const_cast<LookAtMotion *>(this);
 				nonConstThis->oldHeadOri = finalOri;
 				nonConstThis->oldTargetPos_head = subjectVec;
-				nonConstThis->oldRootPos_head = avatar->getRootPosition();
+				nonConstThis->oldRootPos_head = m_avatar->getRootPosition();
 			}
 			if(trackId == bodyId)
 			{
 				LookAtMotion *nonConstThis = const_cast<LookAtMotion *>(this);
 				nonConstThis->oldBodyOri = finalOri;
 				nonConstThis->oldTargetPos_body = subjectVec;
-				nonConstThis->oldRootPos_body = avatar->getRootPosition();
+				nonConstThis->oldRootPos_body = m_avatar->getRootPosition();
 			}
 		}
 		

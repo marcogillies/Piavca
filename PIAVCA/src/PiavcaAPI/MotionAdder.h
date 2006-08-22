@@ -38,7 +38,7 @@ namespace Piavca
 	{
 		float scaleSecond;
 	public:
-		MotionAdder(Motion *m1, Motion *m2, float _scaleSecond = 1.0) :TwoMotionCombiner(m1,m2), scaleSecond(_scaleSecond){};
+		MotionAdder(Motion *m1=NULL, Motion *m2=NULL, float _scaleSecond = 1.0) :TwoMotionCombiner(m1,m2), scaleSecond(_scaleSecond){};
 		MotionAdder(const MotionAdder &ma)
 			:TwoMotionCombiner(ma), scaleSecond(ma.scaleSecond){};
 

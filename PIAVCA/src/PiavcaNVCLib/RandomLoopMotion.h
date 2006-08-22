@@ -48,6 +48,7 @@ class RandomLoopMotion : public ChoiceLoopMotion
 protected:
 	vector<float> weights;
 public:
+	RandomLoopMotion(){};
 	//! pass in a vector of motions to be used, and a vector with a weight for each motion.
 	/*!
 	 *	The weights determine the probability of playing each motio
@@ -83,16 +84,7 @@ public:
 		return dynamic_cast<RandomLoopMotion *>(m);
 	};
 
-	virtual void addMotion(Motion *mot)
-	{
-		MultiMotionLoop::addMotion(mot);
-		if(mot)
-		{
-			weights.push_back(1.0f);
-		}
-	};
-
-	virtual void addMotion(Motion *mot, float weight)
+	virtual void addMotion(Motion *mot, float weight = 1.0f)
 	{
 		MultiMotionLoop::addMotion(mot);
 		if(mot)

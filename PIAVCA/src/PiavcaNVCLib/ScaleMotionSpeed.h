@@ -51,7 +51,7 @@ namespace Piavca
 		/*!
 		 *	Pass in the motion to be filtered and a scale factor
 		 */
-	    ScaleMotionSpeed(Motion *m, float scale=1.0) :MotionFilter(m), scaleFactor(scale)
+	    ScaleMotionSpeed(Motion *m=NULL, float scale=1.0) :MotionFilter(m), scaleFactor(scale)
 		{
 		};
 		ScaleMotionSpeed(const ScaleMotionSpeed &sm)

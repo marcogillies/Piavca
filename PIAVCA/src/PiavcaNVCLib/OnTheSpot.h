@@ -48,7 +48,7 @@ namespace Piavca
 		/*!
 		 *	Pass in the motion to be filtered and a scale factor
 		 */
-	    OnTheSpot(Motion *m) :MotionFilter(m)
+	    OnTheSpot(Motion *m=NULL) :MotionFilter(m)
 		{
 		};
 		OnTheSpot(const OnTheSpot &sm) :MotionFilter(sm){};

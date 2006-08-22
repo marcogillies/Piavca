@@ -50,6 +50,8 @@ void AvatarPostureBlend::load(Avatar *av)
 	if(!tmot)
 		Piavca::Error(_T("Motion blending from a non writable motion"));
 	tmot->clearAllTracks();
+	if(!mot2)
+		return;
 	if(tracksFromAvatar)
 	{
 		if(mot2->isFacial())
@@ -84,31 +86,76 @@ void AvatarPostureBlend::load(Avatar *av)
 	reblend(0.0);
 }
 
+void AvatarPostureBlend::setMotion(Motion *mot)
+{
+	setMotion2(mot);	
+	TrackMotion *tmot = dynamic_cast<TrackMotion *>(mot1);
+	if(!tmot)
+		Piavca::Error(_T("Motion blending from a non writable motion"));
+	tmot->clearAllTracks();
+	if(!mot2)
+		return;
+	if(tracksFromAvatar)
+	{
+		if(!m_avatar)
+			return;
+		if(mot2->isFacial())
+		{	
+			for(int track = m_avatar->beginExpression(); track < m_avatar->endExpression(); m_avatar->nextExpression(track))
+				tmot->addFloatTrack(track, 0.0f);
+		}
+		else
+		{
+			tmot->addVecTrack(root_position_id, Vec());
+			tmot->addQuatTrack(root_orientation_id, Quat());
+			for(int track = m_avatar->begin(); track < m_avatar->end(); m_avatar->next(track))
+				tmot->addQuatTrack(track, Quat());
+		}
+	}
+	else
+	{
+		for (int track = mot2->begin(); track < mot2->end(); mot2->next(track))
+		{
+			switch(mot2->getTrackType(track))
+			{
+			case FLOAT_TYPE:  tmot->addFloatTrack(track, 0.0);
+							break;
+			case VEC_TYPE:    tmot->addVecTrack(track, Vec());
+							break;
+			case QUAT_TYPE:   tmot->addQuatTrack(track, Quat());
+							break;
+			default:		  Piavca::Error(_T("Unknown track type"));
+			}
+		}
+	}
+	reblend(0.0);
+};
+
 void AvatarPostureBlend::reblend(float time)
 {
-	if(!avatar) return;
+	if(!m_avatar) return;
 	TrackMotion *tmot = dynamic_cast<TrackMotion *>(mot1);
 	if(!tmot)
 		Piavca::Error(_T("Motion blending from a non writable motion"));
 
 	if(tmot->isFacial())
 	{
-		for(int expr = avatar->beginExpression(); expr < avatar->endExpression(); avatar->nextExpression(expr))
+		for(int expr = m_avatar->beginExpression(); expr < m_avatar->endExpression(); m_avatar->nextExpression(expr))
 		{
 	 		if(!tmot->isNull(expr))
-				tmot->setFloatKeyframe(expr, 0, avatar->getFacialExpressionWeight(expr));
+				tmot->setFloatKeyframe(expr, 0, m_avatar->getFacialExpressionWeight(expr));
 		}
 	}
 	else
 	{
 		if(!tmot->isNull(root_position_id))
-				tmot->setVecKeyframe(root_position_id, 0, avatar->getRootPosition());
+				tmot->setVecKeyframe(root_position_id, 0, m_avatar->getRootPosition());
 		if(!tmot->isNull(root_orientation_id))
-				tmot->setQuatKeyframe(root_orientation_id, 0, avatar->getRootOrientation());
-		for(int joint = avatar->begin(); joint < avatar->end(); avatar->next(joint))
+				tmot->setQuatKeyframe(root_orientation_id, 0, m_avatar->getRootOrientation());
+		for(int joint = m_avatar->begin(); joint < m_avatar->end(); m_avatar->next(joint))
 		{
 	 		if(!tmot->isNull(joint))
-				tmot->setQuatKeyframe(joint, 0, avatar->getJointOrientation(joint));
+				tmot->setQuatKeyframe(joint, 0, m_avatar->getJointOrientation(joint));
 		}
 	}
 	calculateRootOffsets();

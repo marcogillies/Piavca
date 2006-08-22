@@ -48,6 +48,7 @@ class ChoiceLoopMotion : public MultiMotionLoop
 {
 	int currentChoice;
 public:
+	ChoiceLoopMotion(){};
 	//! pass in a vector of motions to be used.
 	ChoiceLoopMotion(const MotionVec &mpv, float endTime = -1.0, float interval = 0.01)
 		:MultiMotionLoop(mpv, endTime, interval), currentChoice(0)

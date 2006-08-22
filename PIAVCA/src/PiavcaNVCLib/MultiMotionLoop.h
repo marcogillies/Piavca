@@ -60,7 +60,6 @@ public:
 	MultiMotionLoop(const MotionVec &mv, float endTime = -1.0, float interval = 0.01)
 		:RandomTimingsLoop(NULL, endTime, interval), mots(mv)
 	{
-		float sum = 0.0f;
 		MotionVec::size_type i;
 		for(i = 0; i < mots.size(); i++)
 		{

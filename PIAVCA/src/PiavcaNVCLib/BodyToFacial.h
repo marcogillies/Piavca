@@ -47,9 +47,9 @@ namespace Piavca
 	    bool facial
 	public:
 		/*!
-		 *	Pass in the motion to be filtered and a scale factor
+		 *	Pass in the motion to be filtered and a flag to say whether it is facial
 		 */
-	    BodyToFacial(Motion *m, bool _facial) :MotionFilter(m), facial(_facial)
+	    BodyToFacial(Motion *m=NULL, bool _facial=true) :MotionFilter(m), facial(_facial)
 		{
 		};
 		BodyToFacial(const BodyToFacial &sm)

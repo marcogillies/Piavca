@@ -51,7 +51,7 @@ namespace Piavca
 	    Quat rotation;
 	    
 	public:
-	    TurnMotion(Motion *m, Quat rot) :MotionFilter(m), rotation(rot)
+	    TurnMotion(Motion *m=NULL, Quat rot=Quat()) :MotionFilter(m), rotation(rot)
 		{
 		};
 		TurnMotion(const TurnMotion &tm):MotionFilter(tm), rotation(tm.rotation){};

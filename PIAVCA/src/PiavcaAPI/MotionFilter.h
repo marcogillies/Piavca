@@ -132,7 +132,7 @@ namespace Piavca
 			if(filterMot)
 				filterMot->Dispose();
 			filterMot = mot;
-			if(avatar && filterMot)filterMot->load(avatar);
+			if(m_avatar && filterMot)filterMot->load(m_avatar);
 			// this isn't as stupid as it looks, it makes sure the
 			// timings of the filter motion are updated properly
 			setStartTime(startTime);

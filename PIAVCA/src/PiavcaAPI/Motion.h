@@ -93,7 +93,7 @@ class PIAVCA_DECL Motion
 	int refCount;
 	bool ownedByCore;
 protected:
-	Avatar *avatar;
+	Avatar *m_avatar;
 	float startTime;
 	tstring name;
 	float pausedTime;
@@ -113,8 +113,8 @@ protected:
 	//float keyframeGranularity;
 public:
 	//! default constructor
-	Motion():avatar(NULL), startTime(0), pausedTime(-1), offsetTime(0), refCount(0), ownedByCore(false), name(_T("")) {};
-	Motion(const Motion &mot):avatar(NULL), startTime(mot.startTime), pausedTime(-1), offsetTime(0), refCount(0), ownedByCore(false), name(mot.name) {};
+	Motion():m_avatar(NULL), startTime(0), pausedTime(-1), offsetTime(0), refCount(0), ownedByCore(false), name(_T("")) {};
+	Motion(const Motion &mot):m_avatar(NULL), startTime(mot.startTime), pausedTime(-1), offsetTime(0), refCount(0), ownedByCore(false), name(mot.name) {};
 	
 	virtual ~Motion(){};
 
@@ -127,17 +127,17 @@ public:
 	//! called when the motion is loaded into an avatar
 	virtual void load(Avatar *av)
 	{
-		avatar = av;
+		m_avatar = av;
 	};
 	//! called when the motion is unloaded from an avatar
 	virtual void unload()
 	{
-		avatar = NULL;
+		m_avatar = NULL;
 	}
 	//! checks if the motion has been loaded into an avatar
 	virtual bool loaded()
 	{
-		return !(avatar == NULL);
+		return !(m_avatar == NULL);
 	}
 	//! sets the start time of the motion. Called when its loaded into an avatar.
 	virtual void  setStartTime(float t)

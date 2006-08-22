@@ -1715,7 +1715,7 @@ SWIG_Check_float(PyObject* obj)
 }
 
 
-  /*@d:\\Program Files\\swig\\Lib\\python\\pymacros.swg,72,SWIG_define@*/
+  /*@C:\\Program Files\\swigwin-1.3.27\\Lib\\python\\pymacros.swg,72,SWIG_define@*/
 #define SWIG_From_float PyFloat_FromDouble
 /*@@*/
 
@@ -1817,7 +1817,7 @@ SWIG_AsCharPtr(PyObject *obj, char **val)
 }
 
 
-  /*@d:\\Program Files\\swig\\Lib\\python\\pymacros.swg,72,SWIG_define@*/
+  /*@C:\\Program Files\\swigwin-1.3.27\\Lib\\python\\pymacros.swg,72,SWIG_define@*/
 #define SWIG_From_int PyInt_FromLong
 /*@@*/
 
@@ -8331,6 +8331,94 @@ static PyObject *_wrap_Core_log(PyObject *, PyObject *args) {
     }
     
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_std__ostream, 0);
+    return resultobj;
+    fail:
+    return NULL;
+}
+
+
+static PyObject *_wrap_Core_addProfilePoint(PyObject *, PyObject *args) {
+    PyObject *resultobj = NULL;
+    Piavca::Core *arg1 = (Piavca::Core *) 0 ;
+    tstring arg2 ;
+    int result;
+    PyObject * obj0 = 0 ;
+    PyObject * obj1 = 0 ;
+    
+    if(!PyArg_ParseTuple(args,(char *)"OO:Core_addProfilePoint",&obj0,&obj1)) goto fail;
+    SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
+    if (SWIG_arg_fail(1)) SWIG_fail;
+    {
+        arg2 = StringToTString(PyString_AsString(obj1));
+    }
+    result = (int)(arg1)->addProfilePoint(arg2);
+    
+    {
+        resultobj = SWIG_From_int(static_cast<int >(result)); 
+    }
+    return resultobj;
+    fail:
+    return NULL;
+}
+
+
+static PyObject *_wrap_Core_profilePointStart(PyObject *, PyObject *args) {
+    PyObject *resultobj = NULL;
+    Piavca::Core *arg1 = (Piavca::Core *) 0 ;
+    int arg2 ;
+    PyObject * obj0 = 0 ;
+    PyObject * obj1 = 0 ;
+    
+    if(!PyArg_ParseTuple(args,(char *)"OO:Core_profilePointStart",&obj0,&obj1)) goto fail;
+    SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
+    if (SWIG_arg_fail(1)) SWIG_fail;
+    {
+        arg2 = static_cast<int >(SWIG_As_int(obj1)); 
+        if (SWIG_arg_fail(2)) SWIG_fail;
+    }
+    (arg1)->profilePointStart(arg2);
+    
+    Py_INCREF(Py_None); resultobj = Py_None;
+    return resultobj;
+    fail:
+    return NULL;
+}
+
+
+static PyObject *_wrap_Core_profilePointEnd(PyObject *, PyObject *args) {
+    PyObject *resultobj = NULL;
+    Piavca::Core *arg1 = (Piavca::Core *) 0 ;
+    int arg2 ;
+    PyObject * obj0 = 0 ;
+    PyObject * obj1 = 0 ;
+    
+    if(!PyArg_ParseTuple(args,(char *)"OO:Core_profilePointEnd",&obj0,&obj1)) goto fail;
+    SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
+    if (SWIG_arg_fail(1)) SWIG_fail;
+    {
+        arg2 = static_cast<int >(SWIG_As_int(obj1)); 
+        if (SWIG_arg_fail(2)) SWIG_fail;
+    }
+    (arg1)->profilePointEnd(arg2);
+    
+    Py_INCREF(Py_None); resultobj = Py_None;
+    return resultobj;
+    fail:
+    return NULL;
+}
+
+
+static PyObject *_wrap_Core_printProfileData(PyObject *, PyObject *args) {
+    PyObject *resultobj = NULL;
+    Piavca::Core *arg1 = (Piavca::Core *) 0 ;
+    PyObject * obj0 = 0 ;
+    
+    if(!PyArg_ParseTuple(args,(char *)"O:Core_printProfileData",&obj0)) goto fail;
+    SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
+    if (SWIG_arg_fail(1)) SWIG_fail;
+    (arg1)->printProfileData();
+    
+    Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
     return NULL;
@@ -30717,6 +30805,10 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Core_setExceptionsOn", _wrap_Core_setExceptionsOn, METH_VARARGS, NULL},
 	 { (char *)"Core_setExceptionsOff", _wrap_Core_setExceptionsOff, METH_VARARGS, NULL},
 	 { (char *)"Core_log", _wrap_Core_log, METH_VARARGS, NULL},
+	 { (char *)"Core_addProfilePoint", _wrap_Core_addProfilePoint, METH_VARARGS, NULL},
+	 { (char *)"Core_profilePointStart", _wrap_Core_profilePointStart, METH_VARARGS, NULL},
+	 { (char *)"Core_profilePointEnd", _wrap_Core_profilePointEnd, METH_VARARGS, NULL},
+	 { (char *)"Core_printProfileData", _wrap_Core_printProfileData, METH_VARARGS, NULL},
 	 { (char *)"Core_swigregister", Core_swigregister, METH_VARARGS, NULL},
 	 { (char *)"StringToWString", _wrap_StringToWString, METH_VARARGS, NULL},
 	 { (char *)"WStringToString", _wrap_WStringToString, METH_VARARGS, NULL},

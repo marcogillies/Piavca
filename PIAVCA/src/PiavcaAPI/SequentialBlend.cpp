@@ -133,7 +133,7 @@ Vec SequentialBlend::getVecValueAtTimeInternal(int trackId, float time)
     //float t = time - startTime;
 	
 	// if its the root we do something special, otherwise just return the above
-	if(trackId == root_position_id)
+	if(trackId == root_position_id && m_accumulateRoot)
 	{
 		// if its before the start of the blend return the value from the first motion
 		if(time < blendStart)
@@ -219,7 +219,7 @@ Quat SequentialBlend::getQuatValueAtTimeInternal(int trackId, float time)
 	{
 		return  mot1->getQuatValueAtTime(trackId, time);
 	}
-	if(trackId == root_orientation_id)
+	if(trackId == root_orientation_id && m_accumulateRoot)
 	{
 	    if(time - blendStart < blendInterval)
 		{
@@ -227,7 +227,7 @@ Quat SequentialBlend::getQuatValueAtTimeInternal(int trackId, float time)
 		}
 		else
 		{
-		    return getTransformedQuat(trackId, time);//-blendInterval);
+			return getTransformedQuat(trackId, time);//-blendInterval);
 		}
 	}
 	else

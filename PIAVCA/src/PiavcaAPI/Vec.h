@@ -150,4 +150,11 @@ public:
 PIAVCA_DECL std::ostream &operator<<(std::ostream &os, const Piavca::Vec &v);
 PIAVCA_DECL std::istream &operator>>(std::istream &is, Piavca::Vec &v);
 
+#include <float.h>
+
+inline bool _isnan(Piavca::Vec &v)
+{
+	return _isnan(v[0]) || _isnan(v[1]) || _isnan(v[2]);
+}
+
 #endif //PIAVCA_VEC_H

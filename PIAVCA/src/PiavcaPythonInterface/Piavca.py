@@ -273,6 +273,10 @@ class Core(_object):
     def setExceptionsOn(*args): return _Piavca.Core_setExceptionsOn(*args)
     def setExceptionsOff(*args): return _Piavca.Core_setExceptionsOff(*args)
     def log(*args): return _Piavca.Core_log(*args)
+    def addProfilePoint(*args): return _Piavca.Core_addProfilePoint(*args)
+    def profilePointStart(*args): return _Piavca.Core_profilePointStart(*args)
+    def profilePointEnd(*args): return _Piavca.Core_profilePointEnd(*args)
+    def printProfileData(*args): return _Piavca.Core_printProfileData(*args)
 
 class CorePtr(Core):
     def __init__(self, this):

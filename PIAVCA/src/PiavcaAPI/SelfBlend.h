@@ -40,7 +40,7 @@ namespace Piavca
 	{
 	public:
 		/*! pass in the motion to be blended and an optional blend interval */
-	    SelfBlend(Motion *mot, float interval = 0.2);
+	    SelfBlend(Motion *mot=NULL, float interval = 0.2);
 		SelfBlend(const SelfBlend &sb):SequentialBlend(sb){};
 	
 		virtual Motion *clone(){return new SelfBlend(*this);};

@@ -46,7 +46,7 @@ namespace Piavca
 	{
 		float offset;
 	public:
-		TimeOffset(Motion *mot, float offs):MotionFilter(mot), offset(offs){};
+		TimeOffset(Motion *mot=NULL, float offs=0.0f):MotionFilter(mot), offset(offs){};
 		TimeOffset(const TimeOffset &to):MotionFilter(to), offset(to.offset){};
 	
 		virtual Motion *clone(){return new TimeOffset(*this);};

@@ -53,6 +53,7 @@ class RandomAddLoop : public MultiMotionLoop
 {
 	bool autoshift;
 public:
+	RandomAddLoop(){};
 	//! pass in a vector of motions to be used.
 	RandomAddLoop(const MotionVec &mv, float endTime = -1.0, float interval = 0.01)
 		:MultiMotionLoop(mv, endTime, interval), autoshift(true)

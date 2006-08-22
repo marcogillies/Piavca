@@ -26,6 +26,7 @@
 #define HERMITE_H
 
 #include "Quat.h"
+#include <float.h>
 //#include "PiavcaCore.h"
 
 namespace Piavca
@@ -52,8 +53,11 @@ T keyframeTangent(T current, T prev, float prevTime, T next, float nextTime)
 	float nextTimeDiv = nextTime/timeMultiple;
 	float prevTimeDiv = prevTime/timeMultiple;
 	T retVal = static_cast<T>((nextDiff*nextTimeDiv + prevDiff*prevTimeDiv)/2.0);
-	if(retVal != retVal)
+	//if(retVal != retVal)
+	if(_isnan(retVal))
 	{
+		std::cout << "keyframe tangent " << current << " " << prev << " " << prevTime << " " << next << " " << nextTime << std::endl;
+		std::cout << timeMultiple << " " << nextTimeDiv << " " << prevTimeDiv << " " << retVal << std::endl;
 		Piavca::Error(_T("Got a NaN when calculating keyframe tangents"));	
 	};
 	return retVal;
