@@ -69,7 +69,8 @@ namespace Piavca
 		TRANS_ARM_UP = 256, /*!< correct for rest posture, from crucifix to arms by side */ 
 		TRANS_ARM_DOWN = 512, /*!< correct for rest posture, from arms by side to crucifix */ 
 		TRANS_REVERSE_ORDER = 1024, /*!< reverse the order in which the XYZ rotations are performed */
-		TRANS_SKIP_FIRST_FRAME = 2048 /*!< does not read in the first frame of the animation */
+		TRANS_SKIP_FIRST_FRAME = 2048, /*!< does not read in the first frame of the animation */
+		TRANS_NO_ROOT_POS_CORRECTION = 4096 /*!< don't apply the corrections to the root position */
 	};
 
 

@@ -371,4 +371,5 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %include "PiavcaNVCLib/MotionParser.h"
 %include "PiavcaNVCLib/SubMotion.h"
 %include "PiavcaNVCLib/TimeRangeMotion.h"
+%include "PiavcaNVCLib/TimeWarp.h"
 //%include "PiavcaNVCLib/DiadicGazeMotion.h"

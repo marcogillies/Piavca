@@ -141,6 +141,7 @@ int g_noFrames;
 bool g_bTest;
 float g_StartTime;
 bool g_SkipFrame;
+bool g_bNoRootPosCorrection;
 
 Piavca::Motion *g_pBasePosture;
 
@@ -206,6 +207,7 @@ Vec g_Axes[3];
 #endif
 
 #if ! defined (YYSTYPE) && ! defined (YYSTYPE_IS_DECLARED)
+#line 116 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
 #line 115 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
 typedef union YYSTYPE {
   int intVal;
@@ -214,6 +216,7 @@ typedef union YYSTYPE {
   std::vector<int> *intList;
 } YYSTYPE;
 /* Line 191 of yacc.c.  */
+#line 218 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.tab.cpp"
 #line 217 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.tab.cpp"
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
@@ -226,6 +229,7 @@ typedef union YYSTYPE {
 
 
 /* Line 214 of yacc.c.  */
+#line 230 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.tab.cpp"
 #line 229 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.tab.cpp"
 
 #if ! defined (yyoverflow) || YYERROR_VERBOSE
@@ -403,9 +407,9 @@ static const yysigned_char yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const unsigned short yyrline[] =
 {
-       0,   136,   136,   141,   158,   161,   162,   165,   175,   179,
-     180,   183,   210,   211,   212,   213,   216,   217,   218,   221,
-     234,   266,   269,   272,   275,   276,   279
+       0,   137,   137,   142,   159,   162,   163,   166,   176,   180,
+     181,   184,   211,   212,   213,   214,   217,   218,   219,   222,
+     235,   267,   270,   273,   276,   277,   280
 };
 #endif
 
@@ -1129,6 +1133,7 @@ yyreduce:
   switch (yyn)
     {
         case 2:
+#line 137 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
 #line 136 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {
   //std::cout << "successfully read bvh file\n";
@@ -1136,6 +1141,7 @@ yyreduce:
     break;
 
   case 3:
+#line 142 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
 #line 141 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {
   rootPosTrackId = g_pCore->getJointId(_PSTR("Root Position"));
@@ -1155,21 +1161,25 @@ yyreduce:
     break;
 
   case 4:
+#line 159 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
 #line 158 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {delete yyvsp[0].intList;;}
     break;
 
   case 5:
+#line 162 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
 #line 161 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {yyval.intList = yyvsp[-1].intList;;}
     break;
 
   case 6:
+#line 163 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
 #line 162 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {yyval.intList = new vector<int>();;}
     break;
 
   case 7:
+#line 167 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
 #line 166 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {
      if(currentTrack >= 0)
@@ -1181,21 +1191,25 @@ yyreduce:
     break;
 
   case 8:
+#line 177 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
 #line 176 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {currentChannel = 0;;}
     break;
 
   case 9:
+#line 180 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
 #line 179 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {;}
     break;
 
   case 10:
+#line 181 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
 #line 180 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {;}
     break;
 
   case 11:
+#line 184 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
 #line 183 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {
 				  if(currentTrack >= 0)
@@ -1225,41 +1239,49 @@ yyreduce:
     break;
 
   case 12:
+#line 211 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
 #line 210 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {yyval.intList = yyvsp[-1].intList; for(unsigned int i = 0; i < yyvsp[0].intList->size(); i++) yyval.intList->push_back((*yyvsp[0].intList)[i]); delete yyvsp[0].intList;;}
     break;
 
   case 13:
+#line 212 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
 #line 211 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {yyval.intList = yyvsp[-1].intList;;}
     break;
 
   case 14:
+#line 213 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
 #line 212 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {yyval.intList = yyvsp[0].intList;;}
     break;
 
   case 15:
+#line 214 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
 #line 213 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {yyval.intList = new vector<int>();;}
     break;
 
   case 16:
+#line 217 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
 #line 216 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {;}
     break;
 
   case 17:
+#line 218 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
 #line 217 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {;}
     break;
 
   case 18:
+#line 219 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
 #line 218 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {;}
     break;
 
   case 19:
+#line 223 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
 #line 222 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {
 				       if(g_pBasePosture != NULL && !g_pBasePosture->isNull(tracks[yyvsp[-1].intVal].trackId))
@@ -1274,6 +1296,7 @@ yyreduce:
     break;
 
   case 20:
+#line 235 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
 #line 234 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {	
   tracks.push_back(trackStruct());
@@ -1308,31 +1331,37 @@ yyreduce:
     break;
 
   case 21:
+#line 267 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
 #line 266 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {;}
     break;
 
   case 22:
+#line 270 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
 #line 269 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {	g_noFrames = yyvsp[0].intVal;;}
     break;
 
   case 23:
+#line 273 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
 #line 272 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {	frameTime = yyvsp[0].floatVal; ;}
     break;
 
   case 24:
+#line 276 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
 #line 275 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {;}
     break;
 
   case 25:
+#line 277 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
 #line 276 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {;}
     break;
 
   case 26:
+#line 281 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
 #line 280 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
     {
 			if(currentTrack < 0)
@@ -1396,7 +1425,27 @@ yyreduce:
 			{
 				// the way the zaxis points is opposite to the normal bvh convention so flip it
 				//currentRootPos[rootChannel[currentChannel] - 3] = rootChannel[currentChannel] == 3 ? -$1 : $1; 
-			    currentRootPos += g_Axes[rootChannel[currentChannel] - 3]*yyvsp[0].floatVal;
+			    if (g_bNoRootPosCorrection)
+			    {
+					switch (rootChannel[currentChannel])
+					{
+					case 0: 
+						currentRootPos += Vec::XAxis()*yyvsp[0].floatVal;
+						break;
+					case 1: 
+						currentRootPos += Vec::YAxis()*yyvsp[0].floatVal;
+						break;
+					case 2: 
+						currentRootPos += Vec::ZAxis()*yyvsp[0].floatVal;
+						break;
+					default:
+						break;
+					}
+			    }
+			    else
+			    {
+					currentRootPos += g_Axes[rootChannel[currentChannel] - 3]*yyvsp[0].floatVal;
+				}
 			}
 			else
 			{
@@ -1455,6 +1504,7 @@ yyreduce:
     }
 
 /* Line 991 of yacc.c.  */
+#line 1473 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.tab.cpp"
 #line 1458 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.tab.cpp"
 
   yyvsp -= yylen;
@@ -1664,6 +1714,7 @@ yyreturn:
 }
 
 
+#line 413 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
 #line 398 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
 
 
@@ -1746,6 +1797,11 @@ void readBvhMotion(Piavca::Core *core, MotionImp *mot, std::string fileName, int
 		g_SkipFrame = true;
 	else
 		g_SkipFrame = false;
+
+	if(flags & TRANS_NO_ROOT_POS_CORRECTION)
+		g_bNoRootPosCorrection = true;
+	else
+		g_bNoRootPosCorrection = false;
 
     //if((g_bArmUp && g_bArmDown))
     //throw Piavca::PiavcaException("error: motion correction specifies both raising and lowering arms");

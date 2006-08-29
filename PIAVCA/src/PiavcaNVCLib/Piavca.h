@@ -81,4 +81,6 @@
 #include "MotionParser.h"
 #include "SubMotion.h"
 #include "TimeRangeMotion.h"
+#include "TimeWarp.h"
+
 

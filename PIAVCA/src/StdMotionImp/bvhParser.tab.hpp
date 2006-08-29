@@ -66,6 +66,7 @@
 
 
 #if ! defined (YYSTYPE) && ! defined (YYSTYPE_IS_DECLARED)
+#line 116 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
 #line 115 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhParser.ypp"
 typedef union YYSTYPE {
   int intVal;

@@ -60,6 +60,7 @@ int g_noFrames;
 bool g_bTest;
 float g_StartTime;
 bool g_SkipFrame;
+bool g_bNoRootPosCorrection;
 
 Piavca::Motion *g_pBasePosture;
 
@@ -339,7 +340,27 @@ keyframe		:	NUMBER
 			{
 				// the way the zaxis points is opposite to the normal bvh convention so flip it
 				//currentRootPos[rootChannel[currentChannel] - 3] = rootChannel[currentChannel] == 3 ? -$1 : $1; 
-			    currentRootPos += g_Axes[rootChannel[currentChannel] - 3]*$1;
+			    if (g_bNoRootPosCorrection)
+			    {
+					switch (rootChannel[currentChannel])
+					{
+					case 0: 
+						currentRootPos += Vec::XAxis()*$1;
+						break;
+					case 1: 
+						currentRootPos += Vec::YAxis()*$1;
+						break;
+					case 2: 
+						currentRootPos += Vec::ZAxis()*$1;
+						break;
+					default:
+						break;
+					}
+			    }
+			    else
+			    {
+					currentRootPos += g_Axes[rootChannel[currentChannel] - 3]*$1;
+				}
 			}
 			else
 			{
@@ -476,6 +497,11 @@ void readBvhMotion(Piavca::Core *core, MotionImp *mot, std::string fileName, int
 		g_SkipFrame = true;
 	else
 		g_SkipFrame = false;
+
+	if(flags & TRANS_NO_ROOT_POS_CORRECTION)
+		g_bNoRootPosCorrection = true;
+	else
+		g_bNoRootPosCorrection = false;
 
     //if((g_bArmUp && g_bArmDown))
     //throw Piavca::PiavcaException("error: motion correction specifies both raising and lowering arms");

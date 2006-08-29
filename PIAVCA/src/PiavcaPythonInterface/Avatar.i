@@ -141,5 +141,12 @@
 				Piavca::Core::getCore()->getMotion(StringToTString(motionName)));
   
 	}
+	
+	// a new user friendly version of playMotion
+	void interrupt_motion()
+	{
+		Piavca::AvatarMotionQueue::getQueue(self)->interrupt();
+  
+	}
 
 }

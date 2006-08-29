@@ -61,8 +61,10 @@ namespace Piavca
 		//! gets the length of the motion in seconds
 		virtual float getMotionLength() const
 		{
-			if(filterMot)
-				return filterMot->getMotionLength()/scaleFactor;	
+			if(warpFunc)
+				return warpFunc->getMotionLength();
+			else if(filterMot)
+				return filterMot->getMotionLength();	
 			else
 				return 0;
 		};
@@ -75,7 +77,7 @@ namespace Piavca
 				Piavca::Error(_T("Scale motion speed: trying to get a value from a null motion"));
 			}
 			float t = time;
-			if(warp && !warp->isNull(trackId)
+			if(warpFunc && !warpFunc->isNull(trackId))
 				t = warpFunc->getFloatValueAtTime(trackId, time);
 		    return filterMot->getFloatValueAtTime(trackId, t);
 		};
@@ -88,7 +90,7 @@ namespace Piavca
 				Piavca::Error(_T("Scale motion speed: trying to get a value from a null motion"));
 			}
 			float t = time;
-			if(warp && !warp->isNull(trackId)
+			if(warpFunc && !warpFunc->isNull(trackId))
 				t = warpFunc->getFloatValueAtTime(trackId, time);
 		    return  filterMot->getVecValueAtTime(trackId, t);
 		};
@@ -101,7 +103,7 @@ namespace Piavca
 				Piavca::Error(_T("Scale motion speed: trying to get a value from a null motion"));
 			}
 			float t = time;
-			if(warp && !warp->isNull(trackId)
+			if(warpFunc && !warpFunc->isNull(trackId))
 				t = warpFunc->getFloatValueAtTime(trackId, time);
 		    return filterMot->getQuatValueAtTime(trackId, t);
 		};

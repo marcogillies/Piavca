@@ -342,7 +342,7 @@ void Piavca::InitPiavcaPython(Piavca::Core *core, tstring fileName)
 	if(PyErr_Occurred())
 	{
 		std::cout << "python bailed during module import\n";
-		//PyErr_Print();
+		PyErr_Print();
 		PyObject *ErrorType, *ErrorValue, *ErrorTraceback, *ErrorString;
 		PyErr_Fetch(&ErrorType, &ErrorValue, &ErrorTraceback);
 		ErrorString = PyObject_Str(ErrorType);

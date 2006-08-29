@@ -168,7 +168,8 @@ Piavca::Motion *MotionParserTyped<LoopMotion>::parseMotion(istringstream &is, st
 		Motion *mot = MotionParser::parseMotion(is, currentWord, scaleFactor, &mp);
 		if(Piavca::Core::getCore()->errorsPresent()) return NULL;
 		LoopMotion *loop = new LoopMotion(mot, endTime, interval);
-		loop->setAccumulateRoot(accumulateRoot);;
+		loop->setAccumulateRoot(accumulateRoot);
+		return loop;
 };
 
 template<>

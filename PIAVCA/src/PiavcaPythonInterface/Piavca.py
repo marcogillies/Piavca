@@ -98,6 +98,8 @@ Vec_YAxis = _Piavca.Vec_YAxis
 
 Vec_ZAxis = _Piavca.Vec_ZAxis
 
+
+_isnan = _Piavca._isnan
 class Quat(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, Quat, name, value)
@@ -315,6 +317,7 @@ TRANS_ARM_UP = _Piavca.TRANS_ARM_UP
 TRANS_ARM_DOWN = _Piavca.TRANS_ARM_DOWN
 TRANS_REVERSE_ORDER = _Piavca.TRANS_REVERSE_ORDER
 TRANS_SKIP_FIRST_FRAME = _Piavca.TRANS_SKIP_FIRST_FRAME
+TRANS_NO_ROOT_POS_CORRECTION = _Piavca.TRANS_NO_ROOT_POS_CORRECTION
 class Motion(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, Motion, name, value)
@@ -498,6 +501,7 @@ class Avatar(_object):
     def getJointBasePosition(*args): return _Piavca.Avatar_getJointBasePosition(*args)
     def play_motion(*args): return _Piavca.Avatar_play_motion(*args)
     def add_background_motion(*args): return _Piavca.Avatar_add_background_motion(*args)
+    def interrupt_motion(*args): return _Piavca.Avatar_interrupt_motion(*args)
 
 class AvatarPtr(Avatar):
     def __init__(self, this):
@@ -957,6 +961,7 @@ class SequentialBlend(TwoMotionCombiner):
         _swig_setattr(self, SequentialBlend, 'thisown', 1)
     def clone(*args): return _Piavca.SequentialBlend_clone(*args)
     def setMaintainY(*args): return _Piavca.SequentialBlend_setMaintainY(*args)
+    def setAccumulateRoot(*args): return _Piavca.SequentialBlend_setAccumulateRoot(*args)
     def setStartTime(*args): return _Piavca.SequentialBlend_setStartTime(*args)
     def getMotionLength(*args): return _Piavca.SequentialBlend_getMotionLength(*args)
     def getFloatValueAtTimeInternal(*args): return _Piavca.SequentialBlend_getFloatValueAtTimeInternal(*args)
@@ -1082,6 +1087,7 @@ class AvatarPostureBlend(SequentialBlend):
         _swig_setattr(self, AvatarPostureBlend, 'thisown', 1)
     def clone(*args): return _Piavca.AvatarPostureBlend_clone(*args)
     def load(*args): return _Piavca.AvatarPostureBlend_load(*args)
+    def setMotion(*args): return _Piavca.AvatarPostureBlend_setMotion(*args)
     def reblend(*args): return _Piavca.AvatarPostureBlend_reblend(*args)
     def __del__(self, destroy=_Piavca.delete_AvatarPostureBlend):
         try:
@@ -1791,6 +1797,37 @@ class TimeRangeMotionPtr(TimeRangeMotion):
         if not hasattr(self,"thisown"): _swig_setattr(self, TimeRangeMotion, 'thisown', 0)
         self.__class__ = TimeRangeMotion
 _Piavca.TimeRangeMotion_swigregister(TimeRangeMotionPtr)
+
+class TimeWarp(MotionFilter):
+    __swig_setmethods__ = {}
+    for _s in [MotionFilter]: __swig_setmethods__.update(_s.__swig_setmethods__)
+    __setattr__ = lambda self, name, value: _swig_setattr(self, TimeWarp, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MotionFilter]: __swig_getmethods__.update(_s.__swig_getmethods__)
+    __getattr__ = lambda self, name: _swig_getattr(self, TimeWarp, name)
+    def __repr__(self):
+        return "<%s.%s; proxy of C++ Piavca::TimeWarp instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
+    def __init__(self, *args):
+        _swig_setattr(self, TimeWarp, 'this', _Piavca.new_TimeWarp(*args))
+        _swig_setattr(self, TimeWarp, 'thisown', 1)
+    def clone(*args): return _Piavca.TimeWarp_clone(*args)
+    def getMotionLength(*args): return _Piavca.TimeWarp_getMotionLength(*args)
+    def getFloatValueAtTimeInternal(*args): return _Piavca.TimeWarp_getFloatValueAtTimeInternal(*args)
+    def getVecValueAtTimeInternal(*args): return _Piavca.TimeWarp_getVecValueAtTimeInternal(*args)
+    def getQuatValueAtTimeInternal(*args): return _Piavca.TimeWarp_getQuatValueAtTimeInternal(*args)
+    def setWarp(*args): return _Piavca.TimeWarp_setWarp(*args)
+    def __del__(self, destroy=_Piavca.delete_TimeWarp):
+        try:
+            if self.thisown: destroy(self)
+        except: pass
+
+
+class TimeWarpPtr(TimeWarp):
+    def __init__(self, this):
+        _swig_setattr(self, TimeWarp, 'this', this)
+        if not hasattr(self,"thisown"): _swig_setattr(self, TimeWarp, 'thisown', 0)
+        self.__class__ = TimeWarp
+_Piavca.TimeWarp_swigregister(TimeWarpPtr)
 
 
 
