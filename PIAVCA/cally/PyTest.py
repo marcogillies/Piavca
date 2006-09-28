@@ -24,8 +24,8 @@ sys.argv = ['Piavca']
 
 
 cally = Piavca.Avatar("cally")
-cally.setRootPosition(Piavca.Vec(-40.0, 0, 0))
-cally.setRootOrientation(Piavca.Quat(Piavca.degToRad(45), Piavca.Vec(0, 0, 1)))
+cally.setRootPosition(Piavca.Vec(0.0, 250.0, -200))
+cally.setRootOrientation(Piavca.Quat(Piavca.degToRad(-90), Piavca.Vec(0, 0, 1)))
 #sally = Piavca.Avatar("sally")
 #sally.setRootPosition(Piavca.Vec(40.0, 0, 0))
 #sally.setRootOrientation(Piavca.Quat(Piavca.degToRad(-45), Piavca.Vec(0, 0, 1)))

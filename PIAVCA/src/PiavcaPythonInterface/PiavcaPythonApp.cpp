@@ -348,10 +348,12 @@ void Piavca::InitPiavcaPython(Piavca::Core *core, tstring fileName)
 		ErrorString = PyObject_Str(ErrorType);
 		std::cout << "Python Exception:\n";
 		std::cout << PyString_AsString(ErrorString) << std::endl;
+		Piavca::tstring error_value = StringToTString(PyString_AsString(ErrorString));
 		ErrorString = PyObject_Str(ErrorValue);
 		Piavca::tstring error_string = StringToTString(PyString_AsString(ErrorString));
 		std::cout << PyString_AsString(ErrorString) << std::endl;
 		ErrorString = PyObject_Str(ErrorTraceback);
+		Piavca::tstring error_traceback = StringToTString(PyString_AsString(ErrorString));
 		std::cout << PyString_AsString(ErrorString) << std::endl;
 
 		EndPiavcaPython(core);
