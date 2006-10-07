@@ -4,6 +4,7 @@
 	Version="8.00"
 	Name="PiavcaCal3dApp"
 	ProjectGUID="{D0D359C9-A81F-430D-AFBB-5CFA65688A24}"
+	RootNamespace="PiavcaCal3dApp"
 	>
 	<Platforms>
 		<Platform
@@ -171,7 +172,7 @@
 				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="..\..\..\cal3d-0.10.0\bin\Release"
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile=".\Release/cal3d_miniviewer.pdb"
+				ProgramDatabaseFile=".\Release/PiavcaCal3dApp.pdb"
 				SubSystem="1"
 				TargetMachine="1"
 			/>
