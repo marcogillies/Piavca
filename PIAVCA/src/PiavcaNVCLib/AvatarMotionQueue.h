@@ -210,6 +210,7 @@ class PIAVCA_DECL AvatarMotionQueue : public AvatarTimeCallback
 		{};
 
   float scaleFactor, /*startTime,*/ delayTime;
+  float motionStartTime;
   std::list< queueElement > motionQueue;
   std::list < MotionAdder * > removeList;
   int numToQ, delayFactor;

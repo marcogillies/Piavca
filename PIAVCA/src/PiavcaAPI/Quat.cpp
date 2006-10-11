@@ -166,7 +166,7 @@ Quat &Quat::pointAt(const Vec &original, const Vec &desired)
 		}
 		else
 		{
-			normVec = Vec(0.0f, -normOrig.X(), normOrig.Y());
+			normVec = Vec(0.0f, -normOrig.Z(), normOrig.Y());
 		}
 		
 		// cos(180/2) = 0 and sin(180/2) = 1 so the formulae reduce to:

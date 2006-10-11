@@ -1716,7 +1716,7 @@ SWIG_Check_float(PyObject* obj)
 }
 
 
-  /*@C:\\Program Files\\swigwin-1.3.27\\Lib\\python\\pymacros.swg,72,SWIG_define@*/
+  /*@d:\\Program Files\\swig\\Lib\\python\\pymacros.swg,72,SWIG_define@*/
 #define SWIG_From_float PyFloat_FromDouble
 /*@@*/
 
@@ -1818,7 +1818,7 @@ SWIG_AsCharPtr(PyObject *obj, char **val)
 }
 
 
-  /*@C:\\Program Files\\swigwin-1.3.27\\Lib\\python\\pymacros.swg,72,SWIG_define@*/
+  /*@d:\\Program Files\\swig\\Lib\\python\\pymacros.swg,72,SWIG_define@*/
 #define SWIG_From_int PyInt_FromLong
 /*@@*/
 

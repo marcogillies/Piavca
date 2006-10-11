@@ -101,6 +101,7 @@ void AvatarMotionQueue::init(Avatar *avatar)
 	//avatarBlend->setBlendInterval(0.0);	
 	avatarBlend->Reference();
 		
+	motionStartTime = Piavca::Core::getCore()->getTime();
 	if(facial)
 	{
 		avatar->loadFacialMotion(avatarBlend);
@@ -141,9 +142,9 @@ void AvatarMotionQueue::timeStep(Avatar *avatar, float time)
 				if(background)
 				{
 					if(adder)
-						adder->setMotion1(new MotionAdder(adder->getMotion1(), new TimeOffset(motion, (time))));
+						adder->setMotion1(new MotionAdder(adder->getMotion1(), new TimeOffset(motion, (time-motionStartTime))));
 					else
-						adder = new MotionAdder(new TimeOffset(motion, (time)), selfBlend);
+						adder = new MotionAdder(new TimeOffset(motion, (time-motionStartTime)), selfBlend);
 					// we've handed ownership over to the adder so we give up ownership
 					//delete motion;
 					motion->Dispose();
