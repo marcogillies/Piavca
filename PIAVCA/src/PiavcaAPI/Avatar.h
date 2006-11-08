@@ -151,7 +151,7 @@ private:
 	//@}
 	
 	//! destructor can only be called by the core, use Core::removeAvatar to delete an avatar
-	virtual ~Avatar() ;
+	~Avatar() ;
 
 	//! this validates the various motions that are loaded to check they have the correct track types
 	void validateMotions();
@@ -187,9 +187,9 @@ public:
 	bool isValid(){return imp != NULL;};
 
 	//! turn on updates on the avatar
-	virtual void activate();
+	void activate();
 	//! turn off updates on the avatar
-	virtual void deactivate();
+	void deactivate();
 
 
 	//! get the name of the avatar

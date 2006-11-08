@@ -50,4 +50,4 @@ void EndPiavcaPython(Piavca::Core *core);
 
 };
 
-#endif PIAVCA_PYTHON_APP
+#endif //PIAVCA_PYTHON_APP

@@ -39,10 +39,9 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
-subdir = src/StdMotionImp
-DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in \
-	$(stdmotinclude_HEADERS) bvhLexer.cpp bvhParser.cpp \
-	bvhParser.h
+subdir = src/PiavcaNVCLib
+DIST_COMMON = $(nvcinclude_HEADERS) $(srcdir)/Makefile.am \
+	$(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/ac_pkg_swig.m4 \
 	$(top_srcdir)/m4/ac_python_devel.m4 $(top_srcdir)/configure.in
@@ -52,10 +51,11 @@ mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 LTLIBRARIES = $(noinst_LTLIBRARIES)
-libStdMotionImp_la_LIBADD =
-am_libStdMotionImp_la_OBJECTS = StdMotionImp.lo StdMotionCore.lo \
-	bvhParser.lo bvhLexer.lo
-libStdMotionImp_la_OBJECTS = $(am_libStdMotionImp_la_OBJECTS)
+libPiavcaNVCLib_la_LIBADD =
+am_libPiavcaNVCLib_la_OBJECTS = AvatarMotionQueue.lo LookAtMotion.lo \
+	MaskedMotion.lo MotionParser.lo MotionSaver.lo SubMotion.lo \
+	TimeRangeMotion.lo
+libPiavcaNVCLib_la_OBJECTS = $(am_libPiavcaNVCLib_la_OBJECTS)
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -67,30 +67,17 @@ LTCXXCOMPILE = $(LIBTOOL) --tag=CXX --mode=compile $(CXX) $(DEFS) \
 CXXLD = $(CXX)
 CXXLINK = $(LIBTOOL) --tag=CXX --mode=link $(CXXLD) $(AM_CXXFLAGS) \
 	$(CXXFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
-LEXCOMPILE = $(LEX) $(LFLAGS) $(AM_LFLAGS)
-LTLEXCOMPILE = $(LIBTOOL) --mode=compile $(LEX) $(LFLAGS) $(AM_LFLAGS)
-YACCCOMPILE = $(YACC) $(YFLAGS) $(AM_YFLAGS)
-LTYACCCOMPILE = $(LIBTOOL) --mode=compile $(YACC) $(YFLAGS) \
-	$(AM_YFLAGS)
-COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
-	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
-LTCOMPILE = $(LIBTOOL) --tag=CC --mode=compile $(CC) $(DEFS) \
-	$(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) \
-	$(AM_CFLAGS) $(CFLAGS)
-CCLD = $(CC)
-LINK = $(LIBTOOL) --tag=CC --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
-	$(AM_LDFLAGS) $(LDFLAGS) -o $@
-SOURCES = $(libStdMotionImp_la_SOURCES)
-DIST_SOURCES = $(libStdMotionImp_la_SOURCES)
+SOURCES = $(libPiavcaNVCLib_la_SOURCES)
+DIST_SOURCES = $(libPiavcaNVCLib_la_SOURCES)
 am__vpath_adj_setup = srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`;
 am__vpath_adj = case $$p in \
     $(srcdir)/*) f=`echo "$$p" | sed "s|^$$srcdirstrip/||"`;; \
     *) f=$$p;; \
   esac;
 am__strip_dir = `echo $$p | sed -e 's|^.*/||'`;
-am__installdirs = "$(DESTDIR)$(stdmotincludedir)"
-stdmotincludeHEADERS_INSTALL = $(INSTALL_HEADER)
-HEADERS = $(stdmotinclude_HEADERS)
+am__installdirs = "$(DESTDIR)$(nvcincludedir)"
+nvcincludeHEADERS_INSTALL = $(INSTALL_HEADER)
+HEADERS = $(nvcinclude_HEADERS)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
@@ -208,16 +195,16 @@ target_alias = @target_alias@
 
 # set the include path found by configure
 INCLUDES = -I$(top_srcdir)/src $(all_includes)
-AM_YFLAGS = -p bvh -d
-AM_LFLAGS = -Pbvh -olex.yy.c
-stdmotincludedir = $(includedir)/Piavca/StdMotionImp
-stdmotinclude_HEADERS = StdMotionImp.h StdMotionCore.h
-noinst_LTLIBRARIES = libStdMotionImp.la
-libStdMotionImp_la_SOURCES = StdMotionImp.cpp StdMotionCore.cpp bvhParser.ypp bvhLexer.lpp 
+nvcincludedir = $(includedir)/Piavca/PiavcaNVCLib
+nvcinclude_HEADERS = AvatarMotionQueue.h BodyToFacial.h ChangeMotionLength.h ChangeMotionProp.h ChoiceLoopMotion.h DiadicGazeMotion.h LookAtMotion.h MaskedMotion.h MotionParser.h MotionSaver.h MultiMotionLoop.h OnTheSpot.h Piavca.h ProxemicsLoop.h RandomAddLoop.h RandomBlendLoop.h RandomGazeMotion.h RandomLoopMotion.h RandomTimingsLoop.h ScaleMotionRoot.h ScaleMotionSpeed.h ScaleMotion.h TimeOffset.h TurnMotion.h ZeroMotion.h
+noinst_LTLIBRARIES = libPiavcaNVCLib.la
+libPiavcaNVCLib_la_SOURCES = AvatarMotionQueue.cpp LookAtMotion.cpp \
+	MaskedMotion.cpp MotionParser.cpp MotionSaver.cpp SubMotion.cpp TimeRangeMotion.cpp
+
 all: all-am
 
 .SUFFIXES:
-.SUFFIXES: .cpp .lo .lpp .o .obj .ypp
+.SUFFIXES: .cpp .lo .o .obj
 $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
@@ -227,9 +214,9 @@ $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu  src/StdMotionImp/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu  src/PiavcaNVCLib/Makefile'; \
 	cd $(top_srcdir) && \
-	  $(AUTOMAKE) --gnu  src/StdMotionImp/Makefile
+	  $(AUTOMAKE) --gnu  src/PiavcaNVCLib/Makefile
 .PRECIOUS: Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
@@ -256,13 +243,8 @@ clean-noinstLTLIBRARIES:
 	  echo "rm -f \"$${dir}/so_locations\""; \
 	  rm -f "$${dir}/so_locations"; \
 	done
-bvhParser.h: bvhParser.cpp
-	@if test ! -f $@; then \
-	  rm -f bvhParser.cpp; \
-	  $(MAKE) bvhParser.cpp; \
-	else :; fi
-libStdMotionImp.la: $(libStdMotionImp_la_OBJECTS) $(libStdMotionImp_la_DEPENDENCIES) 
-	$(CXXLINK)  $(libStdMotionImp_la_LDFLAGS) $(libStdMotionImp_la_OBJECTS) $(libStdMotionImp_la_LIBADD) $(LIBS)
+libPiavcaNVCLib.la: $(libPiavcaNVCLib_la_OBJECTS) $(libPiavcaNVCLib_la_DEPENDENCIES) 
+	$(CXXLINK)  $(libPiavcaNVCLib_la_LDFLAGS) $(libPiavcaNVCLib_la_OBJECTS) $(libPiavcaNVCLib_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -270,10 +252,13 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/StdMotionCore.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/StdMotionImp.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/bvhLexer.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/bvhParser.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/AvatarMotionQueue.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/LookAtMotion.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MaskedMotion.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MotionParser.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MotionSaver.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SubMotion.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TimeRangeMotion.Plo@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	if $(CXXCOMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ $<; \
@@ -296,32 +281,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(LTCXXCOMPILE) -c -o $@ $<
 
-.lpp.cpp:
-	$(LEXCOMPILE) $<
-	sed '/^#/ s|$(LEX_OUTPUT_ROOT)\.c|$@|' $(LEX_OUTPUT_ROOT).c >$@
-	rm -f $(LEX_OUTPUT_ROOT).c
-
-.ypp.cpp:
-	$(YACCCOMPILE) $<
-	if test -f y.tab.h; then \
-	  to=`echo "$*_H" | sed \
-                -e 'y/abcdefghijklmnopqrstuvwxyz/ABCDEFGHIJKLMNOPQRSTUVWXYZ/' \
-                -e 's/[^ABCDEFGHIJKLMNOPQRSTUVWXYZ]/_/g'`; \
-	  sed -e "/^#/!b" -e "s/Y_TAB_H/$$to/g" -e "s|y\.tab\.h|$*.h|" \
-            y.tab.h >$*.ht; \
-	  rm -f y.tab.h; \
-	  if cmp -s $*.ht $*.h; then \
-	    rm -f $*.ht ;\
-	  else \
-	    mv $*.ht $*.h; \
-	  fi; \
-	fi
-	if test -f y.output; then \
-	  mv y.output $*.output; \
-	fi
-	sed '/^#/ s|y\.tab\.c|$@|' y.tab.c >$@t && mv $@t $@
-	rm -f y.tab.c
-
 mostlyclean-libtool:
 	-rm -f *.lo
 
@@ -331,22 +290,22 @@ clean-libtool:
 distclean-libtool:
 	-rm -f libtool
 uninstall-info-am:
-install-stdmotincludeHEADERS: $(stdmotinclude_HEADERS)
+install-nvcincludeHEADERS: $(nvcinclude_HEADERS)
 	@$(NORMAL_INSTALL)
-	test -z "$(stdmotincludedir)" || $(mkdir_p) "$(DESTDIR)$(stdmotincludedir)"
-	@list='$(stdmotinclude_HEADERS)'; for p in $$list; do \
+	test -z "$(nvcincludedir)" || $(mkdir_p) "$(DESTDIR)$(nvcincludedir)"
+	@list='$(nvcinclude_HEADERS)'; for p in $$list; do \
 	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
 	  f=$(am__strip_dir) \
-	  echo " $(stdmotincludeHEADERS_INSTALL) '$$d$$p' '$(DESTDIR)$(stdmotincludedir)/$$f'"; \
-	  $(stdmotincludeHEADERS_INSTALL) "$$d$$p" "$(DESTDIR)$(stdmotincludedir)/$$f"; \
+	  echo " $(nvcincludeHEADERS_INSTALL) '$$d$$p' '$(DESTDIR)$(nvcincludedir)/$$f'"; \
+	  $(nvcincludeHEADERS_INSTALL) "$$d$$p" "$(DESTDIR)$(nvcincludedir)/$$f"; \
 	done
 
-uninstall-stdmotincludeHEADERS:
+uninstall-nvcincludeHEADERS:
 	@$(NORMAL_UNINSTALL)
-	@list='$(stdmotinclude_HEADERS)'; for p in $$list; do \
+	@list='$(nvcinclude_HEADERS)'; for p in $$list; do \
 	  f=$(am__strip_dir) \
-	  echo " rm -f '$(DESTDIR)$(stdmotincludedir)/$$f'"; \
-	  rm -f "$(DESTDIR)$(stdmotincludedir)/$$f"; \
+	  echo " rm -f '$(DESTDIR)$(nvcincludedir)/$$f'"; \
+	  rm -f "$(DESTDIR)$(nvcincludedir)/$$f"; \
 	done
 
 ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
@@ -428,7 +387,7 @@ check-am: all-am
 check: check-am
 all-am: Makefile $(LTLIBRARIES) $(HEADERS)
 installdirs:
-	for dir in "$(DESTDIR)$(stdmotincludedir)"; do \
+	for dir in "$(DESTDIR)$(nvcincludedir)"; do \
 	  test -z "$$dir" || $(mkdir_p) "$$dir"; \
 	done
 install: install-am
@@ -455,9 +414,6 @@ distclean-generic:
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
 	@echo "it deletes files that may require special tools to rebuild."
-	-rm -f bvhLexer.cpp
-	-rm -f bvhParser.cpp
-	-rm -f bvhParser.h
 clean: clean-am
 
 clean-am: clean-generic clean-libtool clean-noinstLTLIBRARIES \
@@ -479,7 +435,7 @@ info: info-am
 
 info-am:
 
-install-data-am: install-stdmotincludeHEADERS
+install-data-am: install-nvcincludeHEADERS
 
 install-exec-am:
 
@@ -507,7 +463,7 @@ ps: ps-am
 
 ps-am:
 
-uninstall-am: uninstall-info-am uninstall-stdmotincludeHEADERS
+uninstall-am: uninstall-info-am uninstall-nvcincludeHEADERS
 
 .PHONY: CTAGS GTAGS all all-am check check-am clean clean-generic \
 	clean-libtool clean-noinstLTLIBRARIES ctags distclean \
@@ -515,12 +471,12 @@ uninstall-am: uninstall-info-am uninstall-stdmotincludeHEADERS
 	distclean-tags distdir dvi dvi-am html html-am info info-am \
 	install install-am install-data install-data-am install-exec \
 	install-exec-am install-info install-info-am install-man \
-	install-stdmotincludeHEADERS install-strip installcheck \
+	install-nvcincludeHEADERS install-strip installcheck \
 	installcheck-am installdirs maintainer-clean \
 	maintainer-clean-generic mostlyclean mostlyclean-compile \
 	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
 	tags uninstall uninstall-am uninstall-info-am \
-	uninstall-stdmotincludeHEADERS
+	uninstall-nvcincludeHEADERS
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

@@ -94,7 +94,8 @@ public:
 	static Motion *parseMotion(std::string s, float scaleFactor = 1.0f)
 	{
 		MotionParser *mp = NULL;
-		return parseMotion(istringstream(s), scaleFactor, &mp);
+		istringstream iss(s);
+		return parseMotion(iss, scaleFactor, &mp);
 	}
 
 	static Motion *parseMotion(istringstream &is, float scaleFactor, MotionParser **mp)

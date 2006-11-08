@@ -305,7 +305,11 @@ int main(int argc, char *argv[])
   	if(std::string(argv[i]) == "-path")
   	{
   		path = std::string(argv[i+1]) + "/";
+#ifdef WIN32
   		_chdir(path.c_str());
+#else
+		chdir(path.c_str());
+#endif
   		argc = argc - 2;
   		for ( /*nothing*/; i < argc; i++)
   			argv[i] = argv[i+2];

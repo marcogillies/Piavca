@@ -1,7 +1,7 @@
 #piavca_SOURCES = piavca.cpp
 
 # set the include path found by configure
-INCLUDES= -I../../../src/ $(all_includes)
+INCLUDES= -I$(top_srcdir)/src $(all_includes)
 
 AM_YFLAGS = -p bvh -d
 

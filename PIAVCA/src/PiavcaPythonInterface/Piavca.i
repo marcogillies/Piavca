@@ -33,8 +33,7 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-
-%module Piavca
+%module(directors="1") Piavca
 %{
 
 #define NO_PIAVCA_DLL
@@ -239,12 +238,15 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 		i = (int) PyInt_AsLong(args);
 		return Py_BuildValue("d", (*self)[i]);
 	}
-	PyObject *__setitem__(PyObject *args)
+	PyObject *__setitem__(PyObject *arg1, PyObject *arg2)
 	{
 		int i;
 		float f;
-		if(!PyArg_ParseTuple(args, "if", &i, &f))
-			return NULL;
+		//if(!PyArg_ParseTuple(args, "if", &i, &f))
+		//	return NULL;
+		i = (int) PyInt_AsLong(arg1);
+		f = (float) PyFloat_AsDouble(arg2);
+
 		(*self)[i] = f;
 	
 		Py_INCREF(Py_None);
@@ -270,12 +272,14 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 		i = (int) PyInt_AsLong(args);
 		return Py_BuildValue("d", (*self)[i]);
 	}
-	PyObject *__setitem__(PyObject *args)
+	PyObject *__setitem__(PyObject *arg1, PyObject *arg2)
 	{
 		int i;
 		float f;
-		if(!PyArg_ParseTuple(args, "if", &i, &f))
-			return NULL;
+		//if(!PyArg_ParseTuple(arg1, "i", &i))
+		//	return NULL;
+		i = (int) PyInt_AsLong(arg1);
+		f = (float) PyFloat_AsDouble(arg2);
 		(*self)[i] = f;
 	
 		Py_INCREF(Py_None);
@@ -293,27 +297,6 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %rename(__eq__) operator==;
 %rename(__ne__) operator!=;
 
-/*
-%extend Piavca::TrackIterator {
-	PyObject *__eq__(PyObject *args)
-	{
-		PyObject *obj1 = 0;
-		TrackIterator *jip1;
-		TrackIterator *jip2;
-		
-		if(!PyArg_ParseTuple(args,(char *)"O",&obj1)) goto fail;
-		if ((SWIG_ConvertPtr(obj1,(void **) &jip1, SWIGTYPE__TrackIterator,SWIG_POINTER_EXCEPTION) == -1)) SWIG_fail;
-		
-		int result = ((*self) == (*jip2)); 
-		    
-		PyObject *resultobj = PyInt_FromLong(result);
-		return resultobj;
-		fail:
-		return NULL;
-	}
-}
-*/
-
 
 %ignore Piavca::TrackMotion::operator=;
 %ignore Piavca::MaskedMotion::operator=;
@@ -330,6 +313,12 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 
 %feature("ref")   Piavca::ScaleMotionSpeed "$this->Reference();"
 %feature("unref") Piavca::ScaleMotionSpeed "$this->Dispose();"
+
+%feature("director") Motion;   
+%feature("director") TwoMotionCombiner;    
+%feature("director") SelfBlend;    
+%feature("director") TimeCallback;    
+%feature("director") AvatarTimeCallback;    
 
 %include "PiavcaAPI/TimeCallback.h"
 %include "PiavcaCore.i"

@@ -1,7 +1,7 @@
 #piavca_SOURCES = piavca.cpp
 
 # set the include path found by configure
-INCLUDES= -I../../../src/ $(all_includes)
+INCLUDES= -I$(top_srcdir)/src $(all_includes)
 
 apiincludedir = $(includedir)/Piavca/PiavcaAPI
 
@@ -9,4 +9,7 @@ apiinclude_HEADERS = Avatar.h AvatarImp.h AvatarPostureBlend.h BlendBetween.h He
 
 noinst_LTLIBRARIES = libPiavcaAPI.la
 
-libPiavcaAPI_la_SOURCES = Avatar.cpp AvatarPostureBlend.cpp PiavcaCore.cpp Hermite.cpp Motion.cpp Object.cpp Quat.cpp Vec.cpp SequentialBlend.cpp SelfBlend.cpp
+libPiavcaAPI_la_SOURCES = Avatar.cpp AvatarPostureBlend.cpp PiavcaCore.cpp \
+	Hermite.cpp Motion.cpp Object.cpp Quat.cpp Vec.cpp SequentialBlend.cpp \
+	SelfBlend.cpp AvatarImp.cpp BlendBetween.cpp MotionAdder.cpp PiavcaError.cpp \
+	TwoMotionCombiner.cpp TrackMotion.cpp

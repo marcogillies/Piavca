@@ -26,12 +26,22 @@
 #define HERMITE_H
 
 #include "Quat.h"
+#include "PiavcaError.h"
 #include <float.h>
 //#include "PiavcaCore.h"
+
+#ifdef WIN32
+	#define isnan _isnan
+#endif
 
 namespace Piavca
 {
 class PIAVCA_DECL Vec;
+
+inline bool checkNaN(float f) 
+{
+	return isnan(f);
+}
 
 //! Calculates tangents for a hermite curve at the control points.
 /*!
@@ -54,7 +64,7 @@ T keyframeTangent(T current, T prev, float prevTime, T next, float nextTime)
 	float prevTimeDiv = prevTime/timeMultiple;
 	T retVal = static_cast<T>((nextDiff*nextTimeDiv + prevDiff*prevTimeDiv)/2.0);
 	//if(retVal != retVal)
-	if(_isnan(retVal))
+	if(checkNaN(retVal))
 	{
 		std::cout << "keyframe tangent " << current << " " << prev << " " << prevTime << " " << next << " " << nextTime << std::endl;
 		std::cout << timeMultiple << " " << nextTimeDiv << " " << prevTimeDiv << " " << retVal << std::endl;

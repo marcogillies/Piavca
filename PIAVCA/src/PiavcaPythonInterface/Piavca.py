@@ -36,6 +36,13 @@ except AttributeError:
 del types
 
 
+try:
+    import weakref
+    weakref_proxy = weakref.proxy
+except:
+    weakref_proxy = lambda x: x
+
+
 
 GetAvatarPointer = _Piavca.GetAvatarPointer
 
@@ -99,7 +106,7 @@ Vec_YAxis = _Piavca.Vec_YAxis
 Vec_ZAxis = _Piavca.Vec_ZAxis
 
 
-_isnan = _Piavca._isnan
+checkNaN = _Piavca.checkNaN
 class Quat(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, Quat, name, value)
@@ -160,9 +167,15 @@ class TimeCallback(_object):
     __setattr__ = lambda self, name, value: _swig_setattr(self, TimeCallback, name, value)
     __swig_getmethods__ = {}
     __getattr__ = lambda self, name: _swig_getattr(self, TimeCallback, name)
-    def __init__(self): raise RuntimeError, "No constructor defined"
     def __repr__(self):
         return "<%s.%s; proxy of C++ Piavca::TimeCallback instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
+    def __init__(self, *args):
+        if self.__class__ == TimeCallback:
+            args = (None,) + args
+        else:
+            args = (self,) + args
+        _swig_setattr(self, TimeCallback, 'this', _Piavca.new_TimeCallback(*args))
+        _swig_setattr(self, TimeCallback, 'thisown', 1)
     def __del__(self, destroy=_Piavca.delete_TimeCallback):
         try:
             if self.thisown: destroy(self)
@@ -171,6 +184,10 @@ class TimeCallback(_object):
     def getName(*args): return _Piavca.TimeCallback_getName(*args)
     def init(*args): return _Piavca.TimeCallback_init(*args)
     def timeStep(*args): return _Piavca.TimeCallback_timeStep(*args)
+    def __disown__(self):
+        self.thisown = 0
+        _Piavca.disown_TimeCallback(self)
+        return weakref_proxy(self)
 
 class TimeCallbackPtr(TimeCallback):
     def __init__(self, this):
@@ -184,9 +201,15 @@ class AvatarTimeCallback(_object):
     __setattr__ = lambda self, name, value: _swig_setattr(self, AvatarTimeCallback, name, value)
     __swig_getmethods__ = {}
     __getattr__ = lambda self, name: _swig_getattr(self, AvatarTimeCallback, name)
-    def __init__(self): raise RuntimeError, "No constructor defined"
     def __repr__(self):
         return "<%s.%s; proxy of C++ Piavca::AvatarTimeCallback instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
+    def __init__(self, *args):
+        if self.__class__ == AvatarTimeCallback:
+            args = (None,) + args
+        else:
+            args = (self,) + args
+        _swig_setattr(self, AvatarTimeCallback, 'this', _Piavca.new_AvatarTimeCallback(*args))
+        _swig_setattr(self, AvatarTimeCallback, 'thisown', 1)
     def __del__(self, destroy=_Piavca.delete_AvatarTimeCallback):
         try:
             if self.thisown: destroy(self)
@@ -195,6 +218,10 @@ class AvatarTimeCallback(_object):
     def getName(*args): return _Piavca.AvatarTimeCallback_getName(*args)
     def init(*args): return _Piavca.AvatarTimeCallback_init(*args)
     def timeStep(*args): return _Piavca.AvatarTimeCallback_timeStep(*args)
+    def __disown__(self):
+        self.thisown = 0
+        _Piavca.disown_AvatarTimeCallback(self)
+        return weakref_proxy(self)
 
 class AvatarTimeCallbackPtr(AvatarTimeCallback):
     def __init__(self, this):
@@ -323,9 +350,15 @@ class Motion(_object):
     __setattr__ = lambda self, name, value: _swig_setattr(self, Motion, name, value)
     __swig_getmethods__ = {}
     __getattr__ = lambda self, name: _swig_getattr(self, Motion, name)
-    def __init__(self): raise RuntimeError, "No constructor defined"
     def __repr__(self):
         return "<%s.%s; proxy of C++ Piavca::Motion instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
+    def __init__(self, *args):
+        if self.__class__ == Motion:
+            args = (None,) + args
+        else:
+            args = (self,) + args
+        _swig_setattr(self, Motion, 'this', _Piavca.new_Motion(*args))
+        _swig_setattr(self, Motion, 'thisown', 1)
     def __del__(self, destroy=_Piavca.delete_Motion):
         try:
             if self.thisown: destroy(self)
@@ -364,6 +397,10 @@ class Motion(_object):
     def getFloatValueAtTimeInternal(*args): return _Piavca.Motion_getFloatValueAtTimeInternal(*args)
     def getVecValueAtTimeInternal(*args): return _Piavca.Motion_getVecValueAtTimeInternal(*args)
     def getQuatValueAtTimeInternal(*args): return _Piavca.Motion_getQuatValueAtTimeInternal(*args)
+    def __disown__(self):
+        self.thisown = 0
+        _Piavca.disown_Motion(self)
+        return weakref_proxy(self)
 
 class MotionPtr(Motion):
     def __init__(self, this):
@@ -762,9 +799,15 @@ class TwoMotionCombiner(Motion):
     __swig_getmethods__ = {}
     for _s in [Motion]: __swig_getmethods__.update(_s.__swig_getmethods__)
     __getattr__ = lambda self, name: _swig_getattr(self, TwoMotionCombiner, name)
-    def __init__(self): raise RuntimeError, "No constructor defined"
     def __repr__(self):
         return "<%s.%s; proxy of C++ Piavca::TwoMotionCombiner instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
+    def __init__(self, *args):
+        if self.__class__ == TwoMotionCombiner:
+            args = (None,) + args
+        else:
+            args = (self,) + args
+        _swig_setattr(self, TwoMotionCombiner, 'this', _Piavca.new_TwoMotionCombiner(*args))
+        _swig_setattr(self, TwoMotionCombiner, 'thisown', 1)
     def __del__(self, destroy=_Piavca.delete_TwoMotionCombiner):
         try:
             if self.thisown: destroy(self)
@@ -787,6 +830,10 @@ class TwoMotionCombiner(Motion):
     def setMotion2(*args): return _Piavca.TwoMotionCombiner_setMotion2(*args)
     def getMotion1(*args): return _Piavca.TwoMotionCombiner_getMotion1(*args)
     def getMotion2(*args): return _Piavca.TwoMotionCombiner_getMotion2(*args)
+    def __disown__(self):
+        self.thisown = 0
+        _Piavca.disown_TwoMotionCombiner(self)
+        return weakref_proxy(self)
 
 class TwoMotionCombinerPtr(TwoMotionCombiner):
     def __init__(self, this):
@@ -994,6 +1041,10 @@ class SelfBlend(SequentialBlend):
     def __repr__(self):
         return "<%s.%s; proxy of C++ Piavca::SelfBlend instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
     def __init__(self, *args):
+        if self.__class__ == SelfBlend:
+            args = (None,) + args
+        else:
+            args = (self,) + args
         _swig_setattr(self, SelfBlend, 'this', _Piavca.new_SelfBlend(*args))
         _swig_setattr(self, SelfBlend, 'thisown', 1)
     def clone(*args): return _Piavca.SelfBlend_clone(*args)
@@ -1005,6 +1056,10 @@ class SelfBlend(SequentialBlend):
             if self.thisown: destroy(self)
         except: pass
 
+    def __disown__(self):
+        self.thisown = 0
+        _Piavca.disown_SelfBlend(self)
+        return weakref_proxy(self)
 
 class SelfBlendPtr(SelfBlend):
     def __init__(self, this):

@@ -1,7 +1,7 @@
 #piavca_SOURCES = piavca.cpp
 
 # set the include path found by configure
-INCLUDES= -I../../../src/ $(all_includes)
+INCLUDES= -I$(top_srcdir)/src $(all_includes)
 
 nvcincludedir = $(includedir)/Piavca/PiavcaNVCLib
 
@@ -9,4 +9,5 @@ nvcinclude_HEADERS = AvatarMotionQueue.h BodyToFacial.h ChangeMotionLength.h Cha
 
 noinst_LTLIBRARIES = libPiavcaNVCLib.la
 
-libPiavcaNVCLib_la_SOURCES = AvatarMotionQueue.cpp LookAtMotion.cpp MaskedMotion.cpp MotionParser.cpp MotionSaver.cpp
+libPiavcaNVCLib_la_SOURCES = AvatarMotionQueue.cpp LookAtMotion.cpp \
+	MaskedMotion.cpp MotionParser.cpp MotionSaver.cpp SubMotion.cpp TimeRangeMotion.cpp

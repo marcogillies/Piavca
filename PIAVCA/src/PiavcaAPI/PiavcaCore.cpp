@@ -572,4 +572,5 @@ void Core::printProfileData()
 		m_profilePoints[i].m_accumulated_time = 0.0f;
 	}
 }
-		
+
+	

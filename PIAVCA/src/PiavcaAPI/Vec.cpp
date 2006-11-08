@@ -106,3 +106,4 @@ PIAVCA_DECL std::istream &operator>>(std::istream &is, Piavca::Vec &v)
 		is.ignore();
 	return is;
 }
+

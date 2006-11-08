@@ -36,6 +36,8 @@ using std::vector;
 
 namespace Piavca {
 
+class Core;
+
 //! A class for representing inanimate objects in PIAVCA.
 /*!
  *	This works much like an avatar, except its only got a root and

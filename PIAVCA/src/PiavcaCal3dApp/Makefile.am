@@ -2,7 +2,7 @@ bin_PROGRAMS = PiavcaCal3dApp
 PiavcaCal3dApp_SOURCES = PiavcaCal3dApp.cpp
 
 # set the include path found by configure
-INCLUDES= -I../../../src/ $(all_includes)
+INCLUDES= -I$(top_srcdir)/src $(all_includes)
 
 PiavcaCal3dApp_CPPFLAGS = $(SWIG_PYTHON_CPPFLAGS)
 

@@ -25,6 +25,11 @@
 #include "PiavcaDefs.h"
 
 #include <math.h>
+#include <float.h>
+
+#ifdef WIN32
+	#define isnan _isnan
+#endif
 
 namespace Piavca{
 
@@ -142,6 +147,13 @@ public:
 	//!@}
 };
 
+
+
+inline bool checkNaN(Vec &v)
+{
+	return isnan(v[0]) || isnan(v[1]) || isnan(v[2]);
+}
+
 };
 
 
@@ -150,11 +162,5 @@ public:
 PIAVCA_DECL std::ostream &operator<<(std::ostream &os, const Piavca::Vec &v);
 PIAVCA_DECL std::istream &operator>>(std::istream &is, Piavca::Vec &v);
 
-#include <float.h>
-
-inline bool _isnan(Piavca::Vec &v)
-{
-	return _isnan(v[0]) || _isnan(v[1]) || _isnan(v[2]);
-}
 
 #endif //PIAVCA_VEC_H
