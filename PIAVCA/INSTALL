@@ -1,167 +1,87 @@
-Basic Installation
-==================
 
-   These are generic installation instructions.
+PIAVCA - The Platform Independent API for Virtual Characters and Avatars
 
-   The `configure' shell script attempts to guess correct values for
-various system-dependent variables used during compilation.  It uses
-those values to create a `Makefile' in each directory of the package.
-It may also create one or more `.h' files containing system-dependent
-definitions.  Finally, it creates a shell script `config.status' that
-you can run in the future to recreate the current configuration, a file
-`config.cache' that saves the results of its tests to speed up
-reconfiguring, and a file `config.log' containing compiler output
-(useful mainly for debugging `configure').
+This file gives installation instructions for Piavca. For full documentation
+see the Doc directory or visit www.XXX?
 
-   If you need to do unusual things to compile the package, please try
-to figure out how `configure' could check whether to do them, and mail
-diffs or instructions to the address given in the `README' so they can
-be considered for the next release.  If at some point `config.cache'
-contains results you don't want to keep, you may remove or edit it.
+UNIX
 
-   The file `configure.in' is used to create `configure' by a program
-called `autoconf'.  You only need `configure.in' if you want to change
-it or regenerate `configure' using a newer version of `autoconf'.
+Piavca has a standard automake installation procedure:
 
-The simplest way to compile this package is:
+cd PIAVCA
+mkdir build
+cd build
+../configure
+make
+make install
 
-  1. `cd' to the directory containing the package's source code and type
-     `./configure' to configure the package for your system.  If you're
-     using `csh' on an old version of System V, you might need to type
-     `sh ./configure' instead to prevent `csh' from trying to execute
-     `configure' itself.
+you might need to run the last command as root. run ./configure --help to get the available options
 
-     Running `configure' takes a while.  While running, it prints some
-     messages telling which features it is checking for.
+if you need to regenerate the configure file you can run 
 
-  2. Type `make' to compile the package.
+make -f Makefile.cvs
 
-  3. Type `make install' to install the programs and any data files and
-     documentation.
+Piavca has a number of dependencies:
 
-  4. You can remove the program binaries and object files from the
-     source code directory by typing `make clean'.  
+Yacc and Lex (Bison and Flex): are standard on almost all unices, some (e.g. Ubuntu) don't 
+install them as standard but you can just install the bison and flex packages
 
-Compilers and Options
-=====================
+Automake, Autoconf, aclocal, autoheader, libtools: only needed if you want to regenerated the
+configure file. Again these are UNIX standards and should exist as standard packages if they
+aren't installed already
 
-   Some systems require unusual options for compilation or linking that
-the `configure' script does not know about.  You can give `configure'
-initial values for variables by setting them in the environment.  Using
-a Bourne-compatible shell, you can do that on the command line like
-this:
-     CC=c89 CFLAGS=-O2 LIBS=-lposix ./configure
+Python: if you want to use the python bindings you need to have python installed, if its installed 
+somewhere standard it should just work, otherwise you need to ???
 
-Or on systems that have the `env' program, you can do it like this:
-     env CPPFLAGS=-I/usr/local/include LDFLAGS=-s ./configure
+Cal3D: this is a lower level character animation library. The eventual plan is to remove 
+dependencies on it but its needed for now. You can get it from: 
 
-Compiling For Multiple Architectures
-====================================
+http://cal3d.sourceforge.net/
 
-   You can compile the package for more than one kind of computer at the
-same time, by placing the object files for each architecture in their
-own directory.  To do this, you must use a version of `make' that
-supports the `VPATH' variable, such as GNU `make'.  `cd' to the
-directory where you want the object files and executables to go and run
-the `configure' script.  `configure' automatically checks for the
-source code in the directory that `configure' is in and in `..'.
+If you install it in the standard place (/usr/install/local) configure will find it, otherwise 
+you need to ????
 
-   If you have to use a `make' that does not supports the `VPATH'
-variable, you have to compile the package for one architecture at a time
-in the source code directory.  After you have installed the package for
-one architecture, use `make distclean' before reconfiguring for another
-architecture.
+WINDOWS
 
-Installation Names
-==================
+A set of Visual Studio .Net project files are in the VStudio directory (at time of writing, 2006,
+a free (beer) version of VS can be downloaded from the microsoft site). Building Piavca is a little bit 
+more difficult than under UNIX as I don't know of a portable way to handle include paths etc using VStudio.
+Here is how to deal with the dependencies:
 
-   By default, `make install' will install the package's files in
-`/usr/local/bin', `/usr/local/man', etc.  You can specify an
-installation prefix other than `/usr/local' by giving `configure' the
-option `--prefix=PATH'.
+Yacc and Lex: The lex and yacc files are excluded from the Visual studio build. This means you don't need lex and yacc to build piavca on windows. If you want to edit the bvh parser (not recommended!), you will need to use lex and yacc. To do that you need to right click of bvhparser.lpp and bvhparser.ypp then go do Properties->General->Exclude From Build=No. If you do that the project file assumes that you have the commands bison and flex in your path
 
-   You can specify separate installation prefixes for
-architecture-specific files and architecture-independent files.  If you
-give `configure' the option `--exec-prefix=PATH', the package will use
-PATH as the prefix for installing programs and libraries.
-Documentation and other data files will still use the regular prefix.
+Python: you don't need to use the python bindings (if you don't don't compile PiavcaPythonInterface 
+and make the changes to PiavcaCal3dApp listed below).  If you do want to use python (recommended) you need to install python and change the following:
 
-   If the package supports it, you can cause programs to be installed
-with an extra prefix or suffix on their names by giving `configure' the
-option `--program-prefix=PREFIX' or `--program-suffix=SUFFIX'.
+PiavcaPythonInterface->Properties->C/C++->Additional Include Directories add the path to Python.h
+PiavcaPythonInterface->Properties->Librarian->Additional Library Directories add the path to Python.lib
 
-Optional Features
-=================
+you might need the debug binaries of python to build Piavca in debug, which means building python as debug. If you need to change the python bindings, you will need swig, which was used to create them, this can be downloaded from www.swig.org. The swig configuration is contained in Piavca.i, which is, by default, excluded from the build (as with lex and yacc above). Once you install swig, you can include it in the build and rebuild the bindings (see the swig documentation for more information)
 
-   Some packages pay attention to `--enable-FEATURE' options to
-`configure', where FEATURE indicates an optional part of the package.
-They may also pay attention to `--with-PACKAGE' options, where PACKAGE
-is something like `gnu-as' or `x' (for the X Window System).  The
-`README' should mention any `--enable-' and `--with-' options that the
-package recognizes.
+Cal3D: this is a lower level character animation library. The eventual plan is to remove 
+dependencies on it but its needed for now. You can get it from: 
 
-   For packages that use the X Window System, `configure' can usually
-find the X include and library files automatically, but if it doesn't,
-you can use the `configure' options `--x-includes=DIR' and
-`--x-libraries=DIR' to specify their locations.
+http://cal3d.sourceforge.net/
 
-Specifying the System Type
-==========================
+You will need to make the following changes to get the paths to work:
 
-   There may be some features `configure' can not figure out
-automatically, but needs to determine by the type of host the package
-will run on.  Usually `configure' can figure that out, but if it prints
-a message saying it can not guess the host type, give it the
-`--host=TYPE' option.  TYPE can either be a short name for the system
-type, such as `sun4', or a canonical name with three fields:
-     CPU-COMPANY-SYSTEM
+PiavcaCal3dImp->Properties->C/C++->Additional Include Directories add the path to cal3d\cal3d.h (i.e. the parent of the cal3d include directory)
+PiavcaCal3dApp->Properties->C/C++->Additional Include Directories add the path to cal3d\cal3d.h
+PiavcaCal3dImpp->Properties->Librarian->Additional Library Directories add the path to cal3d.lib
 
-See the file `config.sub' for the possible values of each field.  If
-`config.sub' isn't included in this package, then this package doesn't
-need to know the host type.
+Example App:
 
-   If you are building compiler tools for cross-compiling, you can also
-use the `--target=TYPE' option to select the type of system they will
-produce code for and the `--build=TYPE' option to select the type of
-system on which you are compiling the package.
+PiavcaCal3dApp is an example application. It has to run in the path containing cally.cfg. 
+In the unix version you can pass this directory (which should be PIAVCAPATH/cally, where PIAVCAPATH
+is the root of your piavca distribution) as an argument. In VStudio you can do 
 
-Sharing Defaults
-================
+PiavcaCal3dApp->Properties->Debugging->Working Directory = the path
 
-   If you want to set default values for `configure' scripts to share,
-you can create a site shell script called `config.site' that gives
-default values for variables like `CC', `cache_file', and `prefix'.
-`configure' looks for `PREFIX/share/config.site' if it exists, then
-`PREFIX/etc/config.site' if it exists.  Or, you can set the
-`CONFIG_SITE' environment variable to the location of the site script.
-A warning: not all `configure' scripts look for a site script.
+otherwise you can pass the path as a command line argument. The two possible command line arguments are:
+-path <path to .cfg file>
+-script <scipt name>
+where script name is the name of a python script to run (excluding the .py)
 
-Operation Controls
-==================
-
-   `configure' recognizes the following options to control how it
-operates.
-
-`--cache-file=FILE'
-     Use and save the results of the tests in FILE instead of
-     `./config.cache'.  Set FILE to `/dev/null' to disable caching, for
-     debugging `configure'.
-
-`--help'
-     Print a summary of the options to `configure', and exit.
-
-`--quiet'
-`--silent'
-`-q'
-     Do not print messages saying which checks are being made.
-
-`--srcdir=DIR'
-     Look for the package's source code in directory DIR.  Usually
-     `configure' can determine that directory automatically.
-
-`--version'
-     Print the version of Autoconf used to generate the `configure'
-     script, and exit.
-
-`configure' also accepts some other, not widely useful, options.
-
+If you haven't got python you can grep the file PiavcaCal3dApp.cpp and remove the 3 lines that 
+contain references to python. There is a comment just below one of them of some lines that 
+you can uncomment, to get it to do anything without python.
