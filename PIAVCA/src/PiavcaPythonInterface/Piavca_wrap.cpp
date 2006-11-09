@@ -9,6 +9,7 @@
  * ----------------------------------------------------------------------------- */
 
 #define SWIGPYTHON
+#define SWIG_DIRECTORS
 
 #ifdef __cplusplus
 template<class T> class SwigValueWrapper {
@@ -1736,11 +1737,14 @@ static PyObject *Piavca_Vec___getitem__(Piavca::Vec *self,PyObject *args){
 		i = (int) PyInt_AsLong(args);
 		return Py_BuildValue("d", (*self)[i]);
 	}
-static PyObject *Piavca_Vec___setitem__(Piavca::Vec *self,PyObject *args){
+static PyObject *Piavca_Vec___setitem__(Piavca::Vec *self,PyObject *arg1,PyObject *arg2){
 		int i;
 		float f;
-		if(!PyArg_ParseTuple(args, "if", &i, &f))
-			return NULL;
+		//if(!PyArg_ParseTuple(args, "if", &i, &f))
+		//	return NULL;
+		i = (int) PyInt_AsLong(arg1);
+		f = (float) PyFloat_AsDouble(arg2);
+
 		(*self)[i] = f;
 	
 		Py_INCREF(Py_None);
@@ -1758,11 +1762,13 @@ static PyObject *Piavca_Quat___getitem__(Piavca::Quat *self,PyObject *args){
 		i = (int) PyInt_AsLong(args);
 		return Py_BuildValue("d", (*self)[i]);
 	}
-static PyObject *Piavca_Quat___setitem__(Piavca::Quat *self,PyObject *args){
+static PyObject *Piavca_Quat___setitem__(Piavca::Quat *self,PyObject *arg1,PyObject *arg2){
 		int i;
 		float f;
-		if(!PyArg_ParseTuple(args, "if", &i, &f))
-			return NULL;
+		//if(!PyArg_ParseTuple(arg1, "i", &i))
+		//	return NULL;
+		i = (int) PyInt_AsLong(arg1);
+		f = (float) PyFloat_AsDouble(arg2);
 		(*self)[i] = f;
 	
 		Py_INCREF(Py_None);
@@ -2021,6 +2027,1708 @@ static void Piavca_Avatar_interrupt_motion(Piavca::Avatar *self){
 		Piavca::AvatarMotionQueue::getQueue(self)->interrupt();
   
 	}
+
+
+/* ---------------------------------------------------
+ * C++ director class methods
+ * --------------------------------------------------- */
+
+#include "Piavca_wrap.h"
+
+/***********************************************************************
+ * director.swg
+ *
+ *     This file contains support for director classes that proxy
+ *     method calls from C++ to Python extensions.
+ *
+ * Author : Mark Rose (mrose@stm.lbl.gov)
+ ************************************************************************/
+
+#ifdef __cplusplus
+
+namespace Swig {
+  /* simple thread abstraction for pthreads on win32 */
+  Director::~Director() {
+    swig_decref(); 
+  }
+
+  bool Director::swig_up = false;
+
+#ifdef __PTHREAD__
+  MUTEX_INIT(Director::swig_mutex_up);
+  pthread_t Director::swig_mutex_thread;
+  bool Director::swig_mutex_active = false;
+#endif
+
+
+  void UnknownExceptionHandler::handler()  {
+    try {
+      throw;
+    } catch (DirectorException& e) {
+      std::cerr << "Swig Director exception caught:" << std::endl
+                << e.getMessage() << std::endl;
+    } catch (std::exception& e) {
+      std::cerr << "std::exception caught: "<< e.what() << std::endl;
+    } catch (...) {
+      std::cerr << "Unknown exception caught." << std::endl;
+    }
+
+    std::cerr << std::endl
+    	      << "Python interpreter traceback:" << std::endl;
+    PyErr_Print();
+    std::cerr << std::endl;
+
+    std::cerr << "This exception was caught by the SWIG unexpected exception handler." << std::endl
+              << "Try using %feature(\"director:except\") to avoid reaching this point." << std::endl
+	      << std::endl
+              << "Exception is being re-thrown, program will like abort/terminate." << std::endl;
+    throw;
+  }
+
+}
+
+#endif /* __cplusplus */
+
+SwigDirector_TimeCallback::SwigDirector_TimeCallback(PyObject *self, tstring _name): Piavca::TimeCallback(_name), Swig::Director(self) {
+    SWIG_DIRECTOR_RGTR((Piavca::TimeCallback *)this, this); 
+}
+
+
+
+
+void SwigDirector_TimeCallback::timeStep(Piavca::Core *core, float time) {
+    PyObject * obj0 = 0 ;
+    PyObject * obj1 = 0 ;
+    
+    if (swig_get_up()) {
+        Swig::DirectorPureVirtualException::raise("Piavca::TimeCallback::timeStep(core,time).");
+    }
+    {
+        obj0 = SWIG_NewPointerObj(static_cast<void* >(static_cast<Piavca::Core * >(core)), SWIGTYPE_p_Piavca__Core, 0);
+    }
+    {
+        obj1 = SWIG_From_float(static_cast<float >(time)); 
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeCallback.__init__.");
+    }
+    (void) PyObject_CallMethod(swig_get_self(), (char *)"timeStep", (char *)"(OO)" ,obj0,obj1);
+    PyObject *error = PyErr_Occurred();
+    if (error != NULL) {
+        Swig::DirectorMethodException::raise("Error detected when calling TimeCallback.timeStep.\n");
+    }
+    Py_XDECREF(obj0);
+    Py_XDECREF(obj1);
+}
+
+
+SwigDirector_TimeCallback::~SwigDirector_TimeCallback() {
+}
+
+void SwigDirector_TimeCallback::init(Piavca::Core *core) {
+    PyObject * obj0 = 0 ;
+    
+    if (swig_get_up()) {
+        Swig::DirectorPureVirtualException::raise("Piavca::TimeCallback::init(core).");
+    }
+    {
+        obj0 = SWIG_NewPointerObj(static_cast<void* >(static_cast<Piavca::Core * >(core)), SWIGTYPE_p_Piavca__Core, 0);
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeCallback.__init__.");
+    }
+    (void) PyObject_CallMethod(swig_get_self(), (char *)"init", (char *)"(O)" ,obj0);
+    PyObject *error = PyErr_Occurred();
+    if (error != NULL) {
+        Swig::DirectorMethodException::raise("Error detected when calling TimeCallback.init.\n");
+    }
+    Py_XDECREF(obj0);
+}
+
+
+SwigDirector_AvatarTimeCallback::SwigDirector_AvatarTimeCallback(PyObject *self, tstring _name): Piavca::AvatarTimeCallback(_name), Swig::Director(self) {
+    SWIG_DIRECTOR_RGTR((Piavca::AvatarTimeCallback *)this, this); 
+}
+
+
+
+
+void SwigDirector_AvatarTimeCallback::timeStep(Piavca::Avatar *avatar, float time) {
+    PyObject * obj0 = 0 ;
+    PyObject * obj1 = 0 ;
+    
+    if (swig_get_up()) {
+        Swig::DirectorPureVirtualException::raise("Piavca::AvatarTimeCallback::timeStep(avatar,time).");
+    }
+    {
+        obj0 = SWIG_NewPointerObj(static_cast<void* >(static_cast<Piavca::Avatar * >(avatar)), SWIGTYPE_p_Piavca__Avatar, 0);
+    }
+    {
+        obj1 = SWIG_From_float(static_cast<float >(time)); 
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call AvatarTimeCallback.__init__.");
+    }
+    (void) PyObject_CallMethod(swig_get_self(), (char *)"timeStep", (char *)"(OO)" ,obj0,obj1);
+    PyObject *error = PyErr_Occurred();
+    if (error != NULL) {
+        Swig::DirectorMethodException::raise("Error detected when calling AvatarTimeCallback.timeStep.\n");
+    }
+    Py_XDECREF(obj0);
+    Py_XDECREF(obj1);
+}
+
+
+SwigDirector_AvatarTimeCallback::~SwigDirector_AvatarTimeCallback() {
+}
+
+void SwigDirector_AvatarTimeCallback::init(Piavca::Avatar *avatar) {
+    PyObject * obj0 = 0 ;
+    
+    if (swig_get_up()) {
+        Swig::DirectorPureVirtualException::raise("Piavca::AvatarTimeCallback::init(avatar).");
+    }
+    {
+        obj0 = SWIG_NewPointerObj(static_cast<void* >(static_cast<Piavca::Avatar * >(avatar)), SWIGTYPE_p_Piavca__Avatar, 0);
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call AvatarTimeCallback.__init__.");
+    }
+    (void) PyObject_CallMethod(swig_get_self(), (char *)"init", (char *)"(O)" ,obj0);
+    PyObject *error = PyErr_Occurred();
+    if (error != NULL) {
+        Swig::DirectorMethodException::raise("Error detected when calling AvatarTimeCallback.init.\n");
+    }
+    Py_XDECREF(obj0);
+}
+
+
+SwigDirector_Motion::SwigDirector_Motion(PyObject *self): Piavca::Motion(), Swig::Director(self) {
+    SWIG_DIRECTOR_RGTR((Piavca::Motion *)this, this); 
+}
+
+
+
+
+SwigDirector_Motion::SwigDirector_Motion(PyObject *self, Piavca::Motion const &mot): Piavca::Motion(mot), Swig::Director(self) {
+    SWIG_DIRECTOR_RGTR((Piavca::Motion *)this, this); 
+}
+
+
+
+
+Piavca::Motion *SwigDirector_Motion::findSubByType(type_info const &ty) {
+    PyObject * obj0 = 0 ;
+    Piavca::Motion *c_result ;
+    PyObject *result;
+    
+    if (swig_get_up()) {
+        return Piavca::Motion::findSubByType(ty);
+    }
+    {
+        obj0 = SWIG_NewPointerObj(static_cast<void* >(const_cast<type_info * >(&ty)), SWIGTYPE_p_std__type_info, 0);
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Motion.__init__.");
+    }
+    result = PyObject_CallMethod(swig_get_self(), (char *)"findSubByType", (char *)"(O)" ,obj0);
+    if (result == NULL) {
+        PyObject *error = PyErr_Occurred();
+        if (error != NULL) {
+            Swig::DirectorMethodException::raise("Error detected when calling Motion.findSubByType.\n");
+        }
+    }
+    if (!result || (SWIG_ConvertPtr(result,(void **)(&c_result),
+    SWIGTYPE_p_Piavca__Motion,SWIG_POINTER_EXCEPTION | 0 )) == -1)
+    Swig::DirectorTypeMismatchException::raise("Pointer conversion failed.");
+    Py_XDECREF(obj0);
+    Py_XDECREF(result);
+    return (Piavca::Motion *) c_result;
+}
+
+
+void SwigDirector_Motion::load(Piavca::Avatar *av) {
+    PyObject * obj0 = 0 ;
+    
+    if (swig_get_up()) {
+        Piavca::Motion::load(av);
+        return;
+    }
+    {
+        obj0 = SWIG_NewPointerObj(static_cast<void* >(static_cast<Piavca::Avatar * >(av)), SWIGTYPE_p_Piavca__Avatar, 0);
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Motion.__init__.");
+    }
+    (void) PyObject_CallMethod(swig_get_self(), (char *)"load", (char *)"(O)" ,obj0);
+    PyObject *error = PyErr_Occurred();
+    if (error != NULL) {
+        Swig::DirectorMethodException::raise("Error detected when calling Motion.load.\n");
+    }
+    Py_XDECREF(obj0);
+}
+
+
+Piavca::Motion *SwigDirector_Motion::clone() {
+    Piavca::Motion *c_result ;
+    PyObject *result;
+    
+    if (swig_get_up()) {
+        Swig::DirectorPureVirtualException::raise("Piavca::Motion::clone().");
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Motion.__init__.");
+    }
+    result = PyObject_CallMethod(swig_get_self(), (char *)"clone", NULL);
+    if (result == NULL) {
+        PyObject *error = PyErr_Occurred();
+        if (error != NULL) {
+            Swig::DirectorMethodException::raise("Error detected when calling Motion.clone.\n");
+        }
+    }
+    if (!result || (SWIG_ConvertPtr(result,(void **)(&c_result),
+    SWIGTYPE_p_Piavca__Motion,SWIG_POINTER_EXCEPTION | 0 )) == -1)
+    Swig::DirectorTypeMismatchException::raise("Pointer conversion failed.");
+    Py_XDECREF(result);
+    return (Piavca::Motion *) c_result;
+}
+
+
+void SwigDirector_Motion::setStartTime(float t) {
+    PyObject * obj0 = 0 ;
+    
+    if (swig_get_up()) {
+        Piavca::Motion::setStartTime(t);
+        return;
+    }
+    {
+        obj0 = SWIG_From_float(static_cast<float >(t)); 
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Motion.__init__.");
+    }
+    (void) PyObject_CallMethod(swig_get_self(), (char *)"setStartTime", (char *)"(O)" ,obj0);
+    PyObject *error = PyErr_Occurred();
+    if (error != NULL) {
+        Swig::DirectorMethodException::raise("Error detected when calling Motion.setStartTime.\n");
+    }
+    Py_XDECREF(obj0);
+}
+
+
+float SwigDirector_Motion::getFloatValueAtTimeInternal(int trackId, float time) {
+    PyObject * obj0 = 0 ;
+    PyObject * obj1 = 0 ;
+    float c_result ;
+    PyObject *result;
+    
+    if (swig_get_up()) {
+        Swig::DirectorPureVirtualException::raise("Piavca::Motion::getFloatValueAtTimeInternal(trackId,time).");
+    }
+    {
+        obj0 = SWIG_From_int(static_cast<int >(trackId)); 
+    }
+    {
+        obj1 = SWIG_From_float(static_cast<float >(time)); 
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Motion.__init__.");
+    }
+    result = PyObject_CallMethod(swig_get_self(), (char *)"getFloatValueAtTimeInternal", (char *)"(OO)" ,obj0,obj1);
+    if (result == NULL) {
+        PyObject *error = PyErr_Occurred();
+        if (error != NULL) {
+            Swig::DirectorMethodException::raise("Error detected when calling Motion.getFloatValueAtTimeInternal.\n");
+        }
+    }
+    {
+        if (result) c_result = static_cast<float >(SWIG_As_float(result));
+        if (!result || PyErr_Occurred())
+        Swig::DirectorTypeMismatchException::raise("Error converting Python object when using SWIG_As_float.");
+    }
+    Py_XDECREF(obj0);
+    Py_XDECREF(obj1);
+    Py_XDECREF(result);
+    return (float) c_result;
+}
+
+
+Piavca::Vec SwigDirector_Motion::getVecValueAtTimeInternal(int trackId, float time) {
+    PyObject * obj0 = 0 ;
+    PyObject * obj1 = 0 ;
+    Piavca::Vec c_result ;
+    PyObject *result;
+    Piavca::Vec *argp ;
+    
+    if (swig_get_up()) {
+        Swig::DirectorPureVirtualException::raise("Piavca::Motion::getVecValueAtTimeInternal(trackId,time).");
+    }
+    {
+        obj0 = SWIG_From_int(static_cast<int >(trackId)); 
+    }
+    {
+        obj1 = SWIG_From_float(static_cast<float >(time)); 
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Motion.__init__.");
+    }
+    result = PyObject_CallMethod(swig_get_self(), (char *)"getVecValueAtTimeInternal", (char *)"(OO)" ,obj0,obj1);
+    if (result == NULL) {
+        PyObject *error = PyErr_Occurred();
+        if (error != NULL) {
+            Swig::DirectorMethodException::raise("Error detected when calling Motion.getVecValueAtTimeInternal.\n");
+        }
+    }
+    if (!result || (SWIG_ConvertPtr(result, (void **)(&argp),
+    SWIGTYPE_p_Piavca__Vec, SWIG_POINTER_EXCEPTION | 0)) == -1)
+    Swig::DirectorTypeMismatchException::raise("Pointer conversion failed.");
+    c_result = *argp;
+    Py_XDECREF(obj0);
+    Py_XDECREF(obj1);
+    Py_XDECREF(result);
+    return (Piavca::Vec) c_result;
+}
+
+
+Piavca::Quat SwigDirector_Motion::getQuatValueAtTimeInternal(int trackId, float time) {
+    PyObject * obj0 = 0 ;
+    PyObject * obj1 = 0 ;
+    Piavca::Quat c_result ;
+    PyObject *result;
+    Piavca::Quat *argp ;
+    
+    if (swig_get_up()) {
+        Swig::DirectorPureVirtualException::raise("Piavca::Motion::getQuatValueAtTimeInternal(trackId,time).");
+    }
+    {
+        obj0 = SWIG_From_int(static_cast<int >(trackId)); 
+    }
+    {
+        obj1 = SWIG_From_float(static_cast<float >(time)); 
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Motion.__init__.");
+    }
+    result = PyObject_CallMethod(swig_get_self(), (char *)"getQuatValueAtTimeInternal", (char *)"(OO)" ,obj0,obj1);
+    if (result == NULL) {
+        PyObject *error = PyErr_Occurred();
+        if (error != NULL) {
+            Swig::DirectorMethodException::raise("Error detected when calling Motion.getQuatValueAtTimeInternal.\n");
+        }
+    }
+    if (!result || (SWIG_ConvertPtr(result, (void **)(&argp),
+    SWIGTYPE_p_Piavca__Quat, SWIG_POINTER_EXCEPTION | 0)) == -1)
+    Swig::DirectorTypeMismatchException::raise("Pointer conversion failed.");
+    c_result = *argp;
+    Py_XDECREF(obj0);
+    Py_XDECREF(obj1);
+    Py_XDECREF(result);
+    return (Piavca::Quat) c_result;
+}
+
+
+bool SwigDirector_Motion::isRandomAccess() {
+    bool c_result ;
+    PyObject *result;
+    
+    if (swig_get_up()) {
+        return Piavca::Motion::isRandomAccess();
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Motion.__init__.");
+    }
+    result = PyObject_CallMethod(swig_get_self(), (char *)"isRandomAccess", NULL);
+    if (result == NULL) {
+        PyObject *error = PyErr_Occurred();
+        if (error != NULL) {
+            Swig::DirectorMethodException::raise("Error detected when calling Motion.isRandomAccess.\n");
+        }
+    }
+    {
+        if (result) c_result = static_cast<bool >(SWIG_As_bool(result));
+        if (!result || PyErr_Occurred())
+        Swig::DirectorTypeMismatchException::raise("Error converting Python object when using SWIG_As_bool.");
+    }
+    Py_XDECREF(result);
+    return (bool) c_result;
+}
+
+
+void SwigDirector_Motion::reset() {
+    if (swig_get_up()) {
+        Piavca::Motion::reset();
+        return;
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Motion.__init__.");
+    }
+    (void) PyObject_CallMethod(swig_get_self(), (char *)"reset", NULL);
+    PyObject *error = PyErr_Occurred();
+    if (error != NULL) {
+        Swig::DirectorMethodException::raise("Error detected when calling Motion.reset.\n");
+    }
+}
+
+
+SwigDirector_Motion::~SwigDirector_Motion() {
+}
+
+bool SwigDirector_Motion::isFacial() {
+    bool c_result ;
+    PyObject *result;
+    
+    if (swig_get_up()) {
+        return Piavca::Motion::isFacial();
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Motion.__init__.");
+    }
+    result = PyObject_CallMethod(swig_get_self(), (char *)"isFacial", NULL);
+    if (result == NULL) {
+        PyObject *error = PyErr_Occurred();
+        if (error != NULL) {
+            Swig::DirectorMethodException::raise("Error detected when calling Motion.isFacial.\n");
+        }
+    }
+    {
+        if (result) c_result = static_cast<bool >(SWIG_As_bool(result));
+        if (!result || PyErr_Occurred())
+        Swig::DirectorTypeMismatchException::raise("Error converting Python object when using SWIG_As_bool.");
+    }
+    Py_XDECREF(result);
+    return (bool) c_result;
+}
+
+
+float SwigDirector_Motion::getMotionLength() const {
+    float c_result ;
+    PyObject *result;
+    
+    if (swig_get_up()) {
+        Swig::DirectorPureVirtualException::raise("Piavca::Motion::getMotionLength().");
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Motion.__init__.");
+    }
+    result = PyObject_CallMethod(swig_get_self(), (char *)"getMotionLength", NULL);
+    if (result == NULL) {
+        PyObject *error = PyErr_Occurred();
+        if (error != NULL) {
+            Swig::DirectorMethodException::raise("Error detected when calling Motion.getMotionLength.\n");
+        }
+    }
+    {
+        if (result) c_result = static_cast<float >(SWIG_As_float(result));
+        if (!result || PyErr_Occurred())
+        Swig::DirectorTypeMismatchException::raise("Error converting Python object when using SWIG_As_float.");
+    }
+    Py_XDECREF(result);
+    return (float) c_result;
+}
+
+
+bool SwigDirector_Motion::loaded() {
+    bool c_result ;
+    PyObject *result;
+    
+    if (swig_get_up()) {
+        return Piavca::Motion::loaded();
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Motion.__init__.");
+    }
+    result = PyObject_CallMethod(swig_get_self(), (char *)"loaded", NULL);
+    if (result == NULL) {
+        PyObject *error = PyErr_Occurred();
+        if (error != NULL) {
+            Swig::DirectorMethodException::raise("Error detected when calling Motion.loaded.\n");
+        }
+    }
+    {
+        if (result) c_result = static_cast<bool >(SWIG_As_bool(result));
+        if (!result || PyErr_Occurred())
+        Swig::DirectorTypeMismatchException::raise("Error converting Python object when using SWIG_As_bool.");
+    }
+    Py_XDECREF(result);
+    return (bool) c_result;
+}
+
+
+void SwigDirector_Motion::unload() {
+    if (swig_get_up()) {
+        Piavca::Motion::unload();
+        return;
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Motion.__init__.");
+    }
+    (void) PyObject_CallMethod(swig_get_self(), (char *)"unload", NULL);
+    PyObject *error = PyErr_Occurred();
+    if (error != NULL) {
+        Swig::DirectorMethodException::raise("Error detected when calling Motion.unload.\n");
+    }
+}
+
+
+void SwigDirector_Motion::printInfo() {
+    if (swig_get_up()) {
+        Piavca::Motion::printInfo();
+        return;
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Motion.__init__.");
+    }
+    (void) PyObject_CallMethod(swig_get_self(), (char *)"printInfo", NULL);
+    PyObject *error = PyErr_Occurred();
+    if (error != NULL) {
+        Swig::DirectorMethodException::raise("Error detected when calling Motion.printInfo.\n");
+    }
+}
+
+
+Piavca::Motion *SwigDirector_Motion::findSub(Piavca::tstring nm) {
+    PyObject * obj0 = 0 ;
+    Piavca::Motion *c_result ;
+    PyObject *result;
+    
+    if (swig_get_up()) {
+        return Piavca::Motion::findSub(nm);
+    }
+    {
+        obj0 = SWIG_NewPointerObj(static_cast<void* >(static_cast<Piavca::tstring * >(&nm)), SWIGTYPE_p_std__string, 0);
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Motion.__init__.");
+    }
+    result = PyObject_CallMethod(swig_get_self(), (char *)"findSub", (char *)"(O)" ,obj0);
+    if (result == NULL) {
+        PyObject *error = PyErr_Occurred();
+        if (error != NULL) {
+            Swig::DirectorMethodException::raise("Error detected when calling Motion.findSub.\n");
+        }
+    }
+    if (!result || (SWIG_ConvertPtr(result,(void **)(&c_result),
+    SWIGTYPE_p_Piavca__Motion,SWIG_POINTER_EXCEPTION | 0 )) == -1)
+    Swig::DirectorTypeMismatchException::raise("Pointer conversion failed.");
+    Py_XDECREF(obj0);
+    Py_XDECREF(result);
+    return (Piavca::Motion *) c_result;
+}
+
+
+bool SwigDirector_Motion::isNull(int trackId) const {
+    PyObject * obj0 = 0 ;
+    bool c_result ;
+    PyObject *result;
+    
+    if (swig_get_up()) {
+        Swig::DirectorPureVirtualException::raise("Piavca::Motion::isNull(trackId).");
+    }
+    {
+        obj0 = SWIG_From_int(static_cast<int >(trackId)); 
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Motion.__init__.");
+    }
+    result = PyObject_CallMethod(swig_get_self(), (char *)"isNull", (char *)"(O)" ,obj0);
+    if (result == NULL) {
+        PyObject *error = PyErr_Occurred();
+        if (error != NULL) {
+            Swig::DirectorMethodException::raise("Error detected when calling Motion.isNull.\n");
+        }
+    }
+    {
+        if (result) c_result = static_cast<bool >(SWIG_As_bool(result));
+        if (!result || PyErr_Occurred())
+        Swig::DirectorTypeMismatchException::raise("Error converting Python object when using SWIG_As_bool.");
+    }
+    Py_XDECREF(obj0);
+    Py_XDECREF(result);
+    return (bool) c_result;
+}
+
+
+Piavca::trackType SwigDirector_Motion::getTrackType(int trackId) const {
+    PyObject * obj0 = 0 ;
+    Piavca::trackType c_result ;
+    PyObject *result;
+    
+    if (swig_get_up()) {
+        Swig::DirectorPureVirtualException::raise("Piavca::Motion::getTrackType(trackId).");
+    }
+    {
+        obj0 = SWIG_From_int(static_cast<int >(trackId)); 
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Motion.__init__.");
+    }
+    result = PyObject_CallMethod(swig_get_self(), (char *)"getTrackType", (char *)"(O)" ,obj0);
+    if (result == NULL) {
+        PyObject *error = PyErr_Occurred();
+        if (error != NULL) {
+            Swig::DirectorMethodException::raise("Error detected when calling Motion.getTrackType.\n");
+        }
+    }
+    {
+        if (result) c_result = static_cast<Piavca::trackType >(SWIG_As_int(result));
+        if (!result || PyErr_Occurred())
+        Swig::DirectorTypeMismatchException::raise("Error converting Python object when using SWIG_As_int.");
+    }
+    Py_XDECREF(obj0);
+    Py_XDECREF(result);
+    return (Piavca::trackType) c_result;
+}
+
+
+SwigDirector_TwoMotionCombiner::SwigDirector_TwoMotionCombiner(PyObject *self): Piavca::TwoMotionCombiner(), Swig::Director(self) {
+    SWIG_DIRECTOR_RGTR((Piavca::TwoMotionCombiner *)this, this); 
+}
+
+
+
+
+SwigDirector_TwoMotionCombiner::SwigDirector_TwoMotionCombiner(PyObject *self, Piavca::Motion *m1, Piavca::Motion *m2): Piavca::TwoMotionCombiner(m1, m2), Swig::Director(self) {
+    SWIG_DIRECTOR_RGTR((Piavca::TwoMotionCombiner *)this, this); 
+}
+
+
+
+
+SwigDirector_TwoMotionCombiner::SwigDirector_TwoMotionCombiner(PyObject *self, Piavca::TwoMotionCombiner const &tmc): Piavca::TwoMotionCombiner(tmc), Swig::Director(self) {
+    SWIG_DIRECTOR_RGTR((Piavca::TwoMotionCombiner *)this, this); 
+}
+
+
+
+
+Piavca::Motion *SwigDirector_TwoMotionCombiner::findSubByType(type_info const &ty) {
+    PyObject * obj0 = 0 ;
+    Piavca::Motion *c_result ;
+    PyObject *result;
+    
+    if (swig_get_up()) {
+        return Piavca::TwoMotionCombiner::findSubByType(ty);
+    }
+    {
+        obj0 = SWIG_NewPointerObj(static_cast<void* >(const_cast<type_info * >(&ty)), SWIGTYPE_p_std__type_info, 0);
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TwoMotionCombiner.__init__.");
+    }
+    result = PyObject_CallMethod(swig_get_self(), (char *)"findSubByType", (char *)"(O)" ,obj0);
+    if (result == NULL) {
+        PyObject *error = PyErr_Occurred();
+        if (error != NULL) {
+            Swig::DirectorMethodException::raise("Error detected when calling TwoMotionCombiner.findSubByType.\n");
+        }
+    }
+    if (!result || (SWIG_ConvertPtr(result,(void **)(&c_result),
+    SWIGTYPE_p_Piavca__Motion,SWIG_POINTER_EXCEPTION | 0 )) == -1)
+    Swig::DirectorTypeMismatchException::raise("Pointer conversion failed.");
+    Py_XDECREF(obj0);
+    Py_XDECREF(result);
+    return (Piavca::Motion *) c_result;
+}
+
+
+void SwigDirector_TwoMotionCombiner::load(Piavca::Avatar *av) {
+    PyObject * obj0 = 0 ;
+    
+    if (swig_get_up()) {
+        Piavca::TwoMotionCombiner::load(av);
+        return;
+    }
+    {
+        obj0 = SWIG_NewPointerObj(static_cast<void* >(static_cast<Piavca::Avatar * >(av)), SWIGTYPE_p_Piavca__Avatar, 0);
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TwoMotionCombiner.__init__.");
+    }
+    (void) PyObject_CallMethod(swig_get_self(), (char *)"load", (char *)"(O)" ,obj0);
+    PyObject *error = PyErr_Occurred();
+    if (error != NULL) {
+        Swig::DirectorMethodException::raise("Error detected when calling TwoMotionCombiner.load.\n");
+    }
+    Py_XDECREF(obj0);
+}
+
+
+Piavca::Motion *SwigDirector_TwoMotionCombiner::clone() {
+    Piavca::Motion *c_result ;
+    PyObject *result;
+    
+    if (swig_get_up()) {
+        Swig::DirectorPureVirtualException::raise("Piavca::Motion::clone().");
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TwoMotionCombiner.__init__.");
+    }
+    result = PyObject_CallMethod(swig_get_self(), (char *)"clone", NULL);
+    if (result == NULL) {
+        PyObject *error = PyErr_Occurred();
+        if (error != NULL) {
+            Swig::DirectorMethodException::raise("Error detected when calling TwoMotionCombiner.clone.\n");
+        }
+    }
+    if (!result || (SWIG_ConvertPtr(result,(void **)(&c_result),
+    SWIGTYPE_p_Piavca__Motion,SWIG_POINTER_EXCEPTION | 0 )) == -1)
+    Swig::DirectorTypeMismatchException::raise("Pointer conversion failed.");
+    Py_XDECREF(result);
+    return (Piavca::Motion *) c_result;
+}
+
+
+float SwigDirector_TwoMotionCombiner::getFloatValueAtTimeInternal(int trackId, float time) {
+    PyObject * obj0 = 0 ;
+    PyObject * obj1 = 0 ;
+    float c_result ;
+    PyObject *result;
+    
+    if (swig_get_up()) {
+        Swig::DirectorPureVirtualException::raise("Piavca::Motion::getFloatValueAtTimeInternal(trackId,time).");
+    }
+    {
+        obj0 = SWIG_From_int(static_cast<int >(trackId)); 
+    }
+    {
+        obj1 = SWIG_From_float(static_cast<float >(time)); 
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TwoMotionCombiner.__init__.");
+    }
+    result = PyObject_CallMethod(swig_get_self(), (char *)"getFloatValueAtTimeInternal", (char *)"(OO)" ,obj0,obj1);
+    if (result == NULL) {
+        PyObject *error = PyErr_Occurred();
+        if (error != NULL) {
+            Swig::DirectorMethodException::raise("Error detected when calling TwoMotionCombiner.getFloatValueAtTimeInternal.\n");
+        }
+    }
+    {
+        if (result) c_result = static_cast<float >(SWIG_As_float(result));
+        if (!result || PyErr_Occurred())
+        Swig::DirectorTypeMismatchException::raise("Error converting Python object when using SWIG_As_float.");
+    }
+    Py_XDECREF(obj0);
+    Py_XDECREF(obj1);
+    Py_XDECREF(result);
+    return (float) c_result;
+}
+
+
+Piavca::Vec SwigDirector_TwoMotionCombiner::getVecValueAtTimeInternal(int trackId, float time) {
+    PyObject * obj0 = 0 ;
+    PyObject * obj1 = 0 ;
+    Piavca::Vec c_result ;
+    PyObject *result;
+    Piavca::Vec *argp ;
+    
+    if (swig_get_up()) {
+        Swig::DirectorPureVirtualException::raise("Piavca::Motion::getVecValueAtTimeInternal(trackId,time).");
+    }
+    {
+        obj0 = SWIG_From_int(static_cast<int >(trackId)); 
+    }
+    {
+        obj1 = SWIG_From_float(static_cast<float >(time)); 
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TwoMotionCombiner.__init__.");
+    }
+    result = PyObject_CallMethod(swig_get_self(), (char *)"getVecValueAtTimeInternal", (char *)"(OO)" ,obj0,obj1);
+    if (result == NULL) {
+        PyObject *error = PyErr_Occurred();
+        if (error != NULL) {
+            Swig::DirectorMethodException::raise("Error detected when calling TwoMotionCombiner.getVecValueAtTimeInternal.\n");
+        }
+    }
+    if (!result || (SWIG_ConvertPtr(result, (void **)(&argp),
+    SWIGTYPE_p_Piavca__Vec, SWIG_POINTER_EXCEPTION | 0)) == -1)
+    Swig::DirectorTypeMismatchException::raise("Pointer conversion failed.");
+    c_result = *argp;
+    Py_XDECREF(obj0);
+    Py_XDECREF(obj1);
+    Py_XDECREF(result);
+    return (Piavca::Vec) c_result;
+}
+
+
+Piavca::Quat SwigDirector_TwoMotionCombiner::getQuatValueAtTimeInternal(int trackId, float time) {
+    PyObject * obj0 = 0 ;
+    PyObject * obj1 = 0 ;
+    Piavca::Quat c_result ;
+    PyObject *result;
+    Piavca::Quat *argp ;
+    
+    if (swig_get_up()) {
+        Swig::DirectorPureVirtualException::raise("Piavca::Motion::getQuatValueAtTimeInternal(trackId,time).");
+    }
+    {
+        obj0 = SWIG_From_int(static_cast<int >(trackId)); 
+    }
+    {
+        obj1 = SWIG_From_float(static_cast<float >(time)); 
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TwoMotionCombiner.__init__.");
+    }
+    result = PyObject_CallMethod(swig_get_self(), (char *)"getQuatValueAtTimeInternal", (char *)"(OO)" ,obj0,obj1);
+    if (result == NULL) {
+        PyObject *error = PyErr_Occurred();
+        if (error != NULL) {
+            Swig::DirectorMethodException::raise("Error detected when calling TwoMotionCombiner.getQuatValueAtTimeInternal.\n");
+        }
+    }
+    if (!result || (SWIG_ConvertPtr(result, (void **)(&argp),
+    SWIGTYPE_p_Piavca__Quat, SWIG_POINTER_EXCEPTION | 0)) == -1)
+    Swig::DirectorTypeMismatchException::raise("Pointer conversion failed.");
+    c_result = *argp;
+    Py_XDECREF(obj0);
+    Py_XDECREF(obj1);
+    Py_XDECREF(result);
+    return (Piavca::Quat) c_result;
+}
+
+
+void SwigDirector_TwoMotionCombiner::setStartTime(float time) {
+    PyObject * obj0 = 0 ;
+    
+    if (swig_get_up()) {
+        Piavca::TwoMotionCombiner::setStartTime(time);
+        return;
+    }
+    {
+        obj0 = SWIG_From_float(static_cast<float >(time)); 
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TwoMotionCombiner.__init__.");
+    }
+    (void) PyObject_CallMethod(swig_get_self(), (char *)"setStartTime", (char *)"(O)" ,obj0);
+    PyObject *error = PyErr_Occurred();
+    if (error != NULL) {
+        Swig::DirectorMethodException::raise("Error detected when calling TwoMotionCombiner.setStartTime.\n");
+    }
+    Py_XDECREF(obj0);
+}
+
+
+bool SwigDirector_TwoMotionCombiner::isRandomAccess() {
+    bool c_result ;
+    PyObject *result;
+    
+    if (swig_get_up()) {
+        return Piavca::TwoMotionCombiner::isRandomAccess();
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TwoMotionCombiner.__init__.");
+    }
+    result = PyObject_CallMethod(swig_get_self(), (char *)"isRandomAccess", NULL);
+    if (result == NULL) {
+        PyObject *error = PyErr_Occurred();
+        if (error != NULL) {
+            Swig::DirectorMethodException::raise("Error detected when calling TwoMotionCombiner.isRandomAccess.\n");
+        }
+    }
+    {
+        if (result) c_result = static_cast<bool >(SWIG_As_bool(result));
+        if (!result || PyErr_Occurred())
+        Swig::DirectorTypeMismatchException::raise("Error converting Python object when using SWIG_As_bool.");
+    }
+    Py_XDECREF(result);
+    return (bool) c_result;
+}
+
+
+SwigDirector_TwoMotionCombiner::~SwigDirector_TwoMotionCombiner() {
+}
+
+void SwigDirector_TwoMotionCombiner::reset() {
+    if (swig_get_up()) {
+        Piavca::TwoMotionCombiner::reset();
+        return;
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TwoMotionCombiner.__init__.");
+    }
+    (void) PyObject_CallMethod(swig_get_self(), (char *)"reset", NULL);
+    PyObject *error = PyErr_Occurred();
+    if (error != NULL) {
+        Swig::DirectorMethodException::raise("Error detected when calling TwoMotionCombiner.reset.\n");
+    }
+}
+
+
+float SwigDirector_TwoMotionCombiner::getMotionLength() const {
+    float c_result ;
+    PyObject *result;
+    
+    if (swig_get_up()) {
+        return Piavca::TwoMotionCombiner::getMotionLength();
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TwoMotionCombiner.__init__.");
+    }
+    result = PyObject_CallMethod(swig_get_self(), (char *)"getMotionLength", NULL);
+    if (result == NULL) {
+        PyObject *error = PyErr_Occurred();
+        if (error != NULL) {
+            Swig::DirectorMethodException::raise("Error detected when calling TwoMotionCombiner.getMotionLength.\n");
+        }
+    }
+    {
+        if (result) c_result = static_cast<float >(SWIG_As_float(result));
+        if (!result || PyErr_Occurred())
+        Swig::DirectorTypeMismatchException::raise("Error converting Python object when using SWIG_As_float.");
+    }
+    Py_XDECREF(result);
+    return (float) c_result;
+}
+
+
+bool SwigDirector_TwoMotionCombiner::isFacial() {
+    bool c_result ;
+    PyObject *result;
+    
+    if (swig_get_up()) {
+        return Piavca::TwoMotionCombiner::isFacial();
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TwoMotionCombiner.__init__.");
+    }
+    result = PyObject_CallMethod(swig_get_self(), (char *)"isFacial", NULL);
+    if (result == NULL) {
+        PyObject *error = PyErr_Occurred();
+        if (error != NULL) {
+            Swig::DirectorMethodException::raise("Error detected when calling TwoMotionCombiner.isFacial.\n");
+        }
+    }
+    {
+        if (result) c_result = static_cast<bool >(SWIG_As_bool(result));
+        if (!result || PyErr_Occurred())
+        Swig::DirectorTypeMismatchException::raise("Error converting Python object when using SWIG_As_bool.");
+    }
+    Py_XDECREF(result);
+    return (bool) c_result;
+}
+
+
+void SwigDirector_TwoMotionCombiner::unload() {
+    if (swig_get_up()) {
+        Piavca::TwoMotionCombiner::unload();
+        return;
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TwoMotionCombiner.__init__.");
+    }
+    (void) PyObject_CallMethod(swig_get_self(), (char *)"unload", NULL);
+    PyObject *error = PyErr_Occurred();
+    if (error != NULL) {
+        Swig::DirectorMethodException::raise("Error detected when calling TwoMotionCombiner.unload.\n");
+    }
+}
+
+
+bool SwigDirector_TwoMotionCombiner::loaded() {
+    bool c_result ;
+    PyObject *result;
+    
+    if (swig_get_up()) {
+        return Piavca::TwoMotionCombiner::loaded();
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TwoMotionCombiner.__init__.");
+    }
+    result = PyObject_CallMethod(swig_get_self(), (char *)"loaded", NULL);
+    if (result == NULL) {
+        PyObject *error = PyErr_Occurred();
+        if (error != NULL) {
+            Swig::DirectorMethodException::raise("Error detected when calling TwoMotionCombiner.loaded.\n");
+        }
+    }
+    {
+        if (result) c_result = static_cast<bool >(SWIG_As_bool(result));
+        if (!result || PyErr_Occurred())
+        Swig::DirectorTypeMismatchException::raise("Error converting Python object when using SWIG_As_bool.");
+    }
+    Py_XDECREF(result);
+    return (bool) c_result;
+}
+
+
+void SwigDirector_TwoMotionCombiner::printInfo() {
+    if (swig_get_up()) {
+        Piavca::TwoMotionCombiner::printInfo();
+        return;
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TwoMotionCombiner.__init__.");
+    }
+    (void) PyObject_CallMethod(swig_get_self(), (char *)"printInfo", NULL);
+    PyObject *error = PyErr_Occurred();
+    if (error != NULL) {
+        Swig::DirectorMethodException::raise("Error detected when calling TwoMotionCombiner.printInfo.\n");
+    }
+}
+
+
+Piavca::Motion *SwigDirector_TwoMotionCombiner::findSub(Piavca::tstring nm) {
+    PyObject * obj0 = 0 ;
+    Piavca::Motion *c_result ;
+    PyObject *result;
+    
+    if (swig_get_up()) {
+        return Piavca::TwoMotionCombiner::findSub(nm);
+    }
+    {
+        obj0 = SWIG_NewPointerObj(static_cast<void* >(static_cast<Piavca::tstring * >(&nm)), SWIGTYPE_p_std__string, 0);
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TwoMotionCombiner.__init__.");
+    }
+    result = PyObject_CallMethod(swig_get_self(), (char *)"findSub", (char *)"(O)" ,obj0);
+    if (result == NULL) {
+        PyObject *error = PyErr_Occurred();
+        if (error != NULL) {
+            Swig::DirectorMethodException::raise("Error detected when calling TwoMotionCombiner.findSub.\n");
+        }
+    }
+    if (!result || (SWIG_ConvertPtr(result,(void **)(&c_result),
+    SWIGTYPE_p_Piavca__Motion,SWIG_POINTER_EXCEPTION | 0 )) == -1)
+    Swig::DirectorTypeMismatchException::raise("Pointer conversion failed.");
+    Py_XDECREF(obj0);
+    Py_XDECREF(result);
+    return (Piavca::Motion *) c_result;
+}
+
+
+bool SwigDirector_TwoMotionCombiner::isNull(int trackId) const {
+    PyObject * obj0 = 0 ;
+    bool c_result ;
+    PyObject *result;
+    
+    if (swig_get_up()) {
+        return Piavca::TwoMotionCombiner::isNull(trackId);
+    }
+    {
+        obj0 = SWIG_From_int(static_cast<int >(trackId)); 
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TwoMotionCombiner.__init__.");
+    }
+    result = PyObject_CallMethod(swig_get_self(), (char *)"isNull", (char *)"(O)" ,obj0);
+    if (result == NULL) {
+        PyObject *error = PyErr_Occurred();
+        if (error != NULL) {
+            Swig::DirectorMethodException::raise("Error detected when calling TwoMotionCombiner.isNull.\n");
+        }
+    }
+    {
+        if (result) c_result = static_cast<bool >(SWIG_As_bool(result));
+        if (!result || PyErr_Occurred())
+        Swig::DirectorTypeMismatchException::raise("Error converting Python object when using SWIG_As_bool.");
+    }
+    Py_XDECREF(obj0);
+    Py_XDECREF(result);
+    return (bool) c_result;
+}
+
+
+Piavca::trackType SwigDirector_TwoMotionCombiner::getTrackType(int trackId) const {
+    PyObject * obj0 = 0 ;
+    Piavca::trackType c_result ;
+    PyObject *result;
+    
+    if (swig_get_up()) {
+        return Piavca::TwoMotionCombiner::getTrackType(trackId);
+    }
+    {
+        obj0 = SWIG_From_int(static_cast<int >(trackId)); 
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TwoMotionCombiner.__init__.");
+    }
+    result = PyObject_CallMethod(swig_get_self(), (char *)"getTrackType", (char *)"(O)" ,obj0);
+    if (result == NULL) {
+        PyObject *error = PyErr_Occurred();
+        if (error != NULL) {
+            Swig::DirectorMethodException::raise("Error detected when calling TwoMotionCombiner.getTrackType.\n");
+        }
+    }
+    {
+        if (result) c_result = static_cast<Piavca::trackType >(SWIG_As_int(result));
+        if (!result || PyErr_Occurred())
+        Swig::DirectorTypeMismatchException::raise("Error converting Python object when using SWIG_As_int.");
+    }
+    Py_XDECREF(obj0);
+    Py_XDECREF(result);
+    return (Piavca::trackType) c_result;
+}
+
+
+SwigDirector_SelfBlend::SwigDirector_SelfBlend(PyObject *self, Piavca::Motion *mot, float interval): Piavca::SelfBlend(mot, interval), Swig::Director(self) {
+    SWIG_DIRECTOR_RGTR((Piavca::SelfBlend *)this, this); 
+}
+
+
+
+
+SwigDirector_SelfBlend::SwigDirector_SelfBlend(PyObject *self, Piavca::SelfBlend const &sb): Piavca::SelfBlend(sb), Swig::Director(self) {
+    SWIG_DIRECTOR_RGTR((Piavca::SelfBlend *)this, this); 
+}
+
+
+
+
+Piavca::Motion *SwigDirector_SelfBlend::findSubByType(type_info const &ty) {
+    PyObject * obj0 = 0 ;
+    Piavca::Motion *c_result ;
+    PyObject *result;
+    
+    if (swig_get_up()) {
+        return Piavca::TwoMotionCombiner::findSubByType(ty);
+    }
+    {
+        obj0 = SWIG_NewPointerObj(static_cast<void* >(const_cast<type_info * >(&ty)), SWIGTYPE_p_std__type_info, 0);
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
+    }
+    result = PyObject_CallMethod(swig_get_self(), (char *)"findSubByType", (char *)"(O)" ,obj0);
+    if (result == NULL) {
+        PyObject *error = PyErr_Occurred();
+        if (error != NULL) {
+            Swig::DirectorMethodException::raise("Error detected when calling SelfBlend.findSubByType.\n");
+        }
+    }
+    if (!result || (SWIG_ConvertPtr(result,(void **)(&c_result),
+    SWIGTYPE_p_Piavca__Motion,SWIG_POINTER_EXCEPTION | 0 )) == -1)
+    Swig::DirectorTypeMismatchException::raise("Pointer conversion failed.");
+    Py_XDECREF(obj0);
+    Py_XDECREF(result);
+    return (Piavca::Motion *) c_result;
+}
+
+
+void SwigDirector_SelfBlend::load(Piavca::Avatar *av) {
+    PyObject * obj0 = 0 ;
+    
+    if (swig_get_up()) {
+        Piavca::TwoMotionCombiner::load(av);
+        return;
+    }
+    {
+        obj0 = SWIG_NewPointerObj(static_cast<void* >(static_cast<Piavca::Avatar * >(av)), SWIGTYPE_p_Piavca__Avatar, 0);
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
+    }
+    (void) PyObject_CallMethod(swig_get_self(), (char *)"load", (char *)"(O)" ,obj0);
+    PyObject *error = PyErr_Occurred();
+    if (error != NULL) {
+        Swig::DirectorMethodException::raise("Error detected when calling SelfBlend.load.\n");
+    }
+    Py_XDECREF(obj0);
+}
+
+
+void SwigDirector_SelfBlend::setStartTime(float time) {
+    PyObject * obj0 = 0 ;
+    
+    if (swig_get_up()) {
+        Piavca::SequentialBlend::setStartTime(time);
+        return;
+    }
+    {
+        obj0 = SWIG_From_float(static_cast<float >(time)); 
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
+    }
+    (void) PyObject_CallMethod(swig_get_self(), (char *)"setStartTime", (char *)"(O)" ,obj0);
+    PyObject *error = PyErr_Occurred();
+    if (error != NULL) {
+        Swig::DirectorMethodException::raise("Error detected when calling SelfBlend.setStartTime.\n");
+    }
+    Py_XDECREF(obj0);
+}
+
+
+float SwigDirector_SelfBlend::getFloatValueAtTimeInternal(int trackId, float time) {
+    PyObject * obj0 = 0 ;
+    PyObject * obj1 = 0 ;
+    float c_result ;
+    PyObject *result;
+    
+    if (swig_get_up()) {
+        return Piavca::SequentialBlend::getFloatValueAtTimeInternal(trackId,time);
+    }
+    {
+        obj0 = SWIG_From_int(static_cast<int >(trackId)); 
+    }
+    {
+        obj1 = SWIG_From_float(static_cast<float >(time)); 
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
+    }
+    result = PyObject_CallMethod(swig_get_self(), (char *)"getFloatValueAtTimeInternal", (char *)"(OO)" ,obj0,obj1);
+    if (result == NULL) {
+        PyObject *error = PyErr_Occurred();
+        if (error != NULL) {
+            Swig::DirectorMethodException::raise("Error detected when calling SelfBlend.getFloatValueAtTimeInternal.\n");
+        }
+    }
+    {
+        if (result) c_result = static_cast<float >(SWIG_As_float(result));
+        if (!result || PyErr_Occurred())
+        Swig::DirectorTypeMismatchException::raise("Error converting Python object when using SWIG_As_float.");
+    }
+    Py_XDECREF(obj0);
+    Py_XDECREF(obj1);
+    Py_XDECREF(result);
+    return (float) c_result;
+}
+
+
+Piavca::Vec SwigDirector_SelfBlend::getVecValueAtTimeInternal(int trackId, float time) {
+    PyObject * obj0 = 0 ;
+    PyObject * obj1 = 0 ;
+    Piavca::Vec c_result ;
+    PyObject *result;
+    Piavca::Vec *argp ;
+    
+    if (swig_get_up()) {
+        return Piavca::SequentialBlend::getVecValueAtTimeInternal(trackId,time);
+    }
+    {
+        obj0 = SWIG_From_int(static_cast<int >(trackId)); 
+    }
+    {
+        obj1 = SWIG_From_float(static_cast<float >(time)); 
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
+    }
+    result = PyObject_CallMethod(swig_get_self(), (char *)"getVecValueAtTimeInternal", (char *)"(OO)" ,obj0,obj1);
+    if (result == NULL) {
+        PyObject *error = PyErr_Occurred();
+        if (error != NULL) {
+            Swig::DirectorMethodException::raise("Error detected when calling SelfBlend.getVecValueAtTimeInternal.\n");
+        }
+    }
+    if (!result || (SWIG_ConvertPtr(result, (void **)(&argp),
+    SWIGTYPE_p_Piavca__Vec, SWIG_POINTER_EXCEPTION | 0)) == -1)
+    Swig::DirectorTypeMismatchException::raise("Pointer conversion failed.");
+    c_result = *argp;
+    Py_XDECREF(obj0);
+    Py_XDECREF(obj1);
+    Py_XDECREF(result);
+    return (Piavca::Vec) c_result;
+}
+
+
+Piavca::Quat SwigDirector_SelfBlend::getQuatValueAtTimeInternal(int trackId, float time) {
+    PyObject * obj0 = 0 ;
+    PyObject * obj1 = 0 ;
+    Piavca::Quat c_result ;
+    PyObject *result;
+    Piavca::Quat *argp ;
+    
+    if (swig_get_up()) {
+        return Piavca::SequentialBlend::getQuatValueAtTimeInternal(trackId,time);
+    }
+    {
+        obj0 = SWIG_From_int(static_cast<int >(trackId)); 
+    }
+    {
+        obj1 = SWIG_From_float(static_cast<float >(time)); 
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
+    }
+    result = PyObject_CallMethod(swig_get_self(), (char *)"getQuatValueAtTimeInternal", (char *)"(OO)" ,obj0,obj1);
+    if (result == NULL) {
+        PyObject *error = PyErr_Occurred();
+        if (error != NULL) {
+            Swig::DirectorMethodException::raise("Error detected when calling SelfBlend.getQuatValueAtTimeInternal.\n");
+        }
+    }
+    if (!result || (SWIG_ConvertPtr(result, (void **)(&argp),
+    SWIGTYPE_p_Piavca__Quat, SWIG_POINTER_EXCEPTION | 0)) == -1)
+    Swig::DirectorTypeMismatchException::raise("Pointer conversion failed.");
+    c_result = *argp;
+    Py_XDECREF(obj0);
+    Py_XDECREF(obj1);
+    Py_XDECREF(result);
+    return (Piavca::Quat) c_result;
+}
+
+
+Piavca::Motion *SwigDirector_SelfBlend::clone() {
+    Piavca::Motion *c_result ;
+    PyObject *result;
+    
+    if (swig_get_up()) {
+        return Piavca::SelfBlend::clone();
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
+    }
+    result = PyObject_CallMethod(swig_get_self(), (char *)"clone", NULL);
+    if (result == NULL) {
+        PyObject *error = PyErr_Occurred();
+        if (error != NULL) {
+            Swig::DirectorMethodException::raise("Error detected when calling SelfBlend.clone.\n");
+        }
+    }
+    if (!result || (SWIG_ConvertPtr(result,(void **)(&c_result),
+    SWIGTYPE_p_Piavca__Motion,SWIG_POINTER_EXCEPTION | 0 )) == -1)
+    Swig::DirectorTypeMismatchException::raise("Pointer conversion failed.");
+    Py_XDECREF(result);
+    return (Piavca::Motion *) c_result;
+}
+
+
+void SwigDirector_SelfBlend::reblend(float time) {
+    PyObject * obj0 = 0 ;
+    
+    if (swig_get_up()) {
+        Piavca::SelfBlend::reblend(time);
+        return;
+    }
+    {
+        obj0 = SWIG_From_float(static_cast<float >(time)); 
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
+    }
+    (void) PyObject_CallMethod(swig_get_self(), (char *)"reblend", (char *)"(O)" ,obj0);
+    PyObject *error = PyErr_Occurred();
+    if (error != NULL) {
+        Swig::DirectorMethodException::raise("Error detected when calling SelfBlend.reblend.\n");
+    }
+    Py_XDECREF(obj0);
+}
+
+
+bool SwigDirector_SelfBlend::isRandomAccess() {
+    bool c_result ;
+    PyObject *result;
+    
+    if (swig_get_up()) {
+        return Piavca::TwoMotionCombiner::isRandomAccess();
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
+    }
+    result = PyObject_CallMethod(swig_get_self(), (char *)"isRandomAccess", NULL);
+    if (result == NULL) {
+        PyObject *error = PyErr_Occurred();
+        if (error != NULL) {
+            Swig::DirectorMethodException::raise("Error detected when calling SelfBlend.isRandomAccess.\n");
+        }
+    }
+    {
+        if (result) c_result = static_cast<bool >(SWIG_As_bool(result));
+        if (!result || PyErr_Occurred())
+        Swig::DirectorTypeMismatchException::raise("Error converting Python object when using SWIG_As_bool.");
+    }
+    Py_XDECREF(result);
+    return (bool) c_result;
+}
+
+
+SwigDirector_SelfBlend::~SwigDirector_SelfBlend() {
+}
+
+void SwigDirector_SelfBlend::reset() {
+    if (swig_get_up()) {
+        Piavca::SelfBlend::reset();
+        return;
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
+    }
+    (void) PyObject_CallMethod(swig_get_self(), (char *)"reset", NULL);
+    PyObject *error = PyErr_Occurred();
+    if (error != NULL) {
+        Swig::DirectorMethodException::raise("Error detected when calling SelfBlend.reset.\n");
+    }
+}
+
+
+bool SwigDirector_SelfBlend::isFacial() {
+    bool c_result ;
+    PyObject *result;
+    
+    if (swig_get_up()) {
+        return Piavca::TwoMotionCombiner::isFacial();
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
+    }
+    result = PyObject_CallMethod(swig_get_self(), (char *)"isFacial", NULL);
+    if (result == NULL) {
+        PyObject *error = PyErr_Occurred();
+        if (error != NULL) {
+            Swig::DirectorMethodException::raise("Error detected when calling SelfBlend.isFacial.\n");
+        }
+    }
+    {
+        if (result) c_result = static_cast<bool >(SWIG_As_bool(result));
+        if (!result || PyErr_Occurred())
+        Swig::DirectorTypeMismatchException::raise("Error converting Python object when using SWIG_As_bool.");
+    }
+    Py_XDECREF(result);
+    return (bool) c_result;
+}
+
+
+float SwigDirector_SelfBlend::getMotionLength() const {
+    float c_result ;
+    PyObject *result;
+    
+    if (swig_get_up()) {
+        return Piavca::SequentialBlend::getMotionLength();
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
+    }
+    result = PyObject_CallMethod(swig_get_self(), (char *)"getMotionLength", NULL);
+    if (result == NULL) {
+        PyObject *error = PyErr_Occurred();
+        if (error != NULL) {
+            Swig::DirectorMethodException::raise("Error detected when calling SelfBlend.getMotionLength.\n");
+        }
+    }
+    {
+        if (result) c_result = static_cast<float >(SWIG_As_float(result));
+        if (!result || PyErr_Occurred())
+        Swig::DirectorTypeMismatchException::raise("Error converting Python object when using SWIG_As_float.");
+    }
+    Py_XDECREF(result);
+    return (float) c_result;
+}
+
+
+void SwigDirector_SelfBlend::unload() {
+    if (swig_get_up()) {
+        Piavca::TwoMotionCombiner::unload();
+        return;
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
+    }
+    (void) PyObject_CallMethod(swig_get_self(), (char *)"unload", NULL);
+    PyObject *error = PyErr_Occurred();
+    if (error != NULL) {
+        Swig::DirectorMethodException::raise("Error detected when calling SelfBlend.unload.\n");
+    }
+}
+
+
+bool SwigDirector_SelfBlend::loaded() {
+    bool c_result ;
+    PyObject *result;
+    
+    if (swig_get_up()) {
+        return Piavca::TwoMotionCombiner::loaded();
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
+    }
+    result = PyObject_CallMethod(swig_get_self(), (char *)"loaded", NULL);
+    if (result == NULL) {
+        PyObject *error = PyErr_Occurred();
+        if (error != NULL) {
+            Swig::DirectorMethodException::raise("Error detected when calling SelfBlend.loaded.\n");
+        }
+    }
+    {
+        if (result) c_result = static_cast<bool >(SWIG_As_bool(result));
+        if (!result || PyErr_Occurred())
+        Swig::DirectorTypeMismatchException::raise("Error converting Python object when using SWIG_As_bool.");
+    }
+    Py_XDECREF(result);
+    return (bool) c_result;
+}
+
+
+void SwigDirector_SelfBlend::printInfo() {
+    if (swig_get_up()) {
+        Piavca::TwoMotionCombiner::printInfo();
+        return;
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
+    }
+    (void) PyObject_CallMethod(swig_get_self(), (char *)"printInfo", NULL);
+    PyObject *error = PyErr_Occurred();
+    if (error != NULL) {
+        Swig::DirectorMethodException::raise("Error detected when calling SelfBlend.printInfo.\n");
+    }
+}
+
+
+void SwigDirector_SelfBlend::setMaintainY(bool b) {
+    PyObject * obj0 = 0 ;
+    
+    if (swig_get_up()) {
+        Piavca::SequentialBlend::setMaintainY(b);
+        return;
+    }
+    {
+        obj0 = SWIG_From_bool(static_cast<bool >(b)); 
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
+    }
+    (void) PyObject_CallMethod(swig_get_self(), (char *)"setMaintainY", (char *)"(O)" ,obj0);
+    PyObject *error = PyErr_Occurred();
+    if (error != NULL) {
+        Swig::DirectorMethodException::raise("Error detected when calling SelfBlend.setMaintainY.\n");
+    }
+    Py_XDECREF(obj0);
+}
+
+
+void SwigDirector_SelfBlend::setAccumulateRoot(bool b) {
+    PyObject * obj0 = 0 ;
+    
+    if (swig_get_up()) {
+        Piavca::SequentialBlend::setAccumulateRoot(b);
+        return;
+    }
+    {
+        obj0 = SWIG_From_bool(static_cast<bool >(b)); 
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
+    }
+    (void) PyObject_CallMethod(swig_get_self(), (char *)"setAccumulateRoot", (char *)"(O)" ,obj0);
+    PyObject *error = PyErr_Occurred();
+    if (error != NULL) {
+        Swig::DirectorMethodException::raise("Error detected when calling SelfBlend.setAccumulateRoot.\n");
+    }
+    Py_XDECREF(obj0);
+}
+
+
+Piavca::Motion *SwigDirector_SelfBlend::findSub(Piavca::tstring nm) {
+    PyObject * obj0 = 0 ;
+    Piavca::Motion *c_result ;
+    PyObject *result;
+    
+    if (swig_get_up()) {
+        return Piavca::TwoMotionCombiner::findSub(nm);
+    }
+    {
+        obj0 = SWIG_NewPointerObj(static_cast<void* >(static_cast<Piavca::tstring * >(&nm)), SWIGTYPE_p_std__string, 0);
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
+    }
+    result = PyObject_CallMethod(swig_get_self(), (char *)"findSub", (char *)"(O)" ,obj0);
+    if (result == NULL) {
+        PyObject *error = PyErr_Occurred();
+        if (error != NULL) {
+            Swig::DirectorMethodException::raise("Error detected when calling SelfBlend.findSub.\n");
+        }
+    }
+    if (!result || (SWIG_ConvertPtr(result,(void **)(&c_result),
+    SWIGTYPE_p_Piavca__Motion,SWIG_POINTER_EXCEPTION | 0 )) == -1)
+    Swig::DirectorTypeMismatchException::raise("Pointer conversion failed.");
+    Py_XDECREF(obj0);
+    Py_XDECREF(result);
+    return (Piavca::Motion *) c_result;
+}
+
+
+void SwigDirector_SelfBlend::setMotion(Piavca::Motion *mot) {
+    PyObject * obj0 = 0 ;
+    
+    if (swig_get_up()) {
+        Piavca::SelfBlend::setMotion(mot);
+        return;
+    }
+    {
+        obj0 = SWIG_NewPointerObj(static_cast<void* >(static_cast<Piavca::Motion * >(mot)), SWIGTYPE_p_Piavca__Motion, 0);
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
+    }
+    (void) PyObject_CallMethod(swig_get_self(), (char *)"setMotion", (char *)"(O)" ,obj0);
+    PyObject *error = PyErr_Occurred();
+    if (error != NULL) {
+        Swig::DirectorMethodException::raise("Error detected when calling SelfBlend.setMotion.\n");
+    }
+    Py_XDECREF(obj0);
+}
+
+
+bool SwigDirector_SelfBlend::isNull(int trackId) const {
+    PyObject * obj0 = 0 ;
+    bool c_result ;
+    PyObject *result;
+    
+    if (swig_get_up()) {
+        return Piavca::TwoMotionCombiner::isNull(trackId);
+    }
+    {
+        obj0 = SWIG_From_int(static_cast<int >(trackId)); 
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
+    }
+    result = PyObject_CallMethod(swig_get_self(), (char *)"isNull", (char *)"(O)" ,obj0);
+    if (result == NULL) {
+        PyObject *error = PyErr_Occurred();
+        if (error != NULL) {
+            Swig::DirectorMethodException::raise("Error detected when calling SelfBlend.isNull.\n");
+        }
+    }
+    {
+        if (result) c_result = static_cast<bool >(SWIG_As_bool(result));
+        if (!result || PyErr_Occurred())
+        Swig::DirectorTypeMismatchException::raise("Error converting Python object when using SWIG_As_bool.");
+    }
+    Py_XDECREF(obj0);
+    Py_XDECREF(result);
+    return (bool) c_result;
+}
+
+
+Piavca::trackType SwigDirector_SelfBlend::getTrackType(int trackId) const {
+    PyObject * obj0 = 0 ;
+    Piavca::trackType c_result ;
+    PyObject *result;
+    
+    if (swig_get_up()) {
+        return Piavca::TwoMotionCombiner::getTrackType(trackId);
+    }
+    {
+        obj0 = SWIG_From_int(static_cast<int >(trackId)); 
+    }
+    if (!swig_get_self()) {
+        Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
+    }
+    result = PyObject_CallMethod(swig_get_self(), (char *)"getTrackType", (char *)"(O)" ,obj0);
+    if (result == NULL) {
+        PyObject *error = PyErr_Occurred();
+        if (error != NULL) {
+            Swig::DirectorMethodException::raise("Error detected when calling SelfBlend.getTrackType.\n");
+        }
+    }
+    {
+        if (result) c_result = static_cast<Piavca::trackType >(SWIG_As_int(result));
+        if (!result || PyErr_Occurred())
+        Swig::DirectorTypeMismatchException::raise("Error converting Python object when using SWIG_As_int.");
+    }
+    Py_XDECREF(obj0);
+    Py_XDECREF(result);
+    return (Piavca::trackType) c_result;
+}
+
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -2035,8 +3743,13 @@ static PyObject *_wrap_GetAvatarPointer(PyObject *, PyObject *args) {
         arg1 = static_cast<long >(SWIG_As_long(obj0)); 
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::Avatar *)GetAvatarPointer(arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Avatar *)GetAvatarPointer(arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Avatar, 0);
     return resultobj;
     fail:
@@ -2055,8 +3768,13 @@ static PyObject *_wrap_GetPiavcaCorePointer(PyObject *, PyObject *args) {
         arg1 = static_cast<long >(SWIG_As_long(obj0)); 
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::Core *)GetPiavcaCorePointer(arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Core *)GetPiavcaCorePointer(arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Core, 0);
     return resultobj;
     fail:
@@ -2069,8 +3787,13 @@ static PyObject *_wrap_new_Vec__SWIG_0(PyObject *, PyObject *args) {
     Piavca::Vec *result;
     
     if(!PyArg_ParseTuple(args,(char *)":new_Vec")) goto fail;
-    result = (Piavca::Vec *)new Piavca::Vec();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Vec *)new Piavca::Vec();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Vec, 1);
     return resultobj;
     fail:
@@ -2101,8 +3824,13 @@ static PyObject *_wrap_new_Vec__SWIG_1(PyObject *, PyObject *args) {
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (Piavca::Vec *)new Piavca::Vec(arg1,arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Vec *)new Piavca::Vec(arg1,arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Vec, 1);
     return resultobj;
     fail:
@@ -2119,8 +3847,13 @@ static PyObject *_wrap_new_Vec__SWIG_2(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:new_Vec",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_float, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Vec *)new Piavca::Vec((float const (*))arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Vec *)new Piavca::Vec((float const (*))arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Vec, 1);
     return resultobj;
     fail:
@@ -2143,8 +3876,13 @@ static PyObject *_wrap_new_Vec__SWIG_3(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::Vec *)new Piavca::Vec((Piavca::Vec const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Vec *)new Piavca::Vec((Piavca::Vec const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Vec, 1);
     return resultobj;
     fail:
@@ -2221,8 +3959,13 @@ static PyObject *_wrap_delete_Vec(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_Vec",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Vec, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    delete arg1;
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        delete arg1;
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -2239,11 +3982,16 @@ static PyObject *_wrap_Vec_X__SWIG_0(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Vec_X",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Vec, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    {
-        float &_result_ref = (arg1)->X();
-        result = (float *) &_result_ref;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        {
+            float &_result_ref = (arg1)->X();
+            result = (float *) &_result_ref;
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
     }
-    
     {
         resultobj = PyFloat_FromDouble(*result);
     }
@@ -2262,11 +4010,16 @@ static PyObject *_wrap_Vec_Y__SWIG_0(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Vec_Y",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Vec, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    {
-        float &_result_ref = (arg1)->Y();
-        result = (float *) &_result_ref;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        {
+            float &_result_ref = (arg1)->Y();
+            result = (float *) &_result_ref;
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
     }
-    
     {
         resultobj = PyFloat_FromDouble(*result);
     }
@@ -2285,11 +4038,16 @@ static PyObject *_wrap_Vec_Z__SWIG_0(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Vec_Z",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Vec, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    {
-        float &_result_ref = (arg1)->Z();
-        result = (float *) &_result_ref;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        {
+            float &_result_ref = (arg1)->Z();
+            result = (float *) &_result_ref;
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
     }
-    
     {
         resultobj = PyFloat_FromDouble(*result);
     }
@@ -2308,11 +4066,16 @@ static PyObject *_wrap_Vec_X__SWIG_1(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Vec_X",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Vec, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    {
-        float const &_result_ref = ((Piavca::Vec const *)arg1)->X();
-        result = (float *) &_result_ref;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        {
+            float const &_result_ref = ((Piavca::Vec const *)arg1)->X();
+            result = (float *) &_result_ref;
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
     }
-    
     {
         resultobj = SWIG_From_float(static_cast<float >(*result)); 
     }
@@ -2376,11 +4139,16 @@ static PyObject *_wrap_Vec_Y__SWIG_1(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Vec_Y",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Vec, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    {
-        float const &_result_ref = ((Piavca::Vec const *)arg1)->Y();
-        result = (float *) &_result_ref;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        {
+            float const &_result_ref = ((Piavca::Vec const *)arg1)->Y();
+            result = (float *) &_result_ref;
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
     }
-    
     {
         resultobj = SWIG_From_float(static_cast<float >(*result)); 
     }
@@ -2444,11 +4212,16 @@ static PyObject *_wrap_Vec_Z__SWIG_1(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Vec_Z",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Vec, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    {
-        float const &_result_ref = ((Piavca::Vec const *)arg1)->Z();
-        result = (float *) &_result_ref;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        {
+            float const &_result_ref = ((Piavca::Vec const *)arg1)->Z();
+            result = (float *) &_result_ref;
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
     }
-    
     {
         resultobj = SWIG_From_float(static_cast<float >(*result)); 
     }
@@ -2508,8 +4281,13 @@ static PyObject *_wrap_Vec_XAxis(PyObject *, PyObject *args) {
     Piavca::Vec result;
     
     if(!PyArg_ParseTuple(args,(char *)":Vec_XAxis")) goto fail;
-    result = Piavca::Vec::XAxis();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = Piavca::Vec::XAxis();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec & >(result));
@@ -2526,8 +4304,13 @@ static PyObject *_wrap_Vec_YAxis(PyObject *, PyObject *args) {
     Piavca::Vec result;
     
     if(!PyArg_ParseTuple(args,(char *)":Vec_YAxis")) goto fail;
-    result = Piavca::Vec::YAxis();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = Piavca::Vec::YAxis();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec & >(result));
@@ -2544,8 +4327,13 @@ static PyObject *_wrap_Vec_ZAxis(PyObject *, PyObject *args) {
     Piavca::Vec result;
     
     if(!PyArg_ParseTuple(args,(char *)":Vec_ZAxis")) goto fail;
-    result = Piavca::Vec::ZAxis();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = Piavca::Vec::ZAxis();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec & >(result));
@@ -2566,8 +4354,13 @@ static PyObject *_wrap_Vec_mag(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Vec_mag",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Vec, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (float)((Piavca::Vec const *)arg1)->mag();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)((Piavca::Vec const *)arg1)->mag();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -2596,8 +4389,13 @@ static PyObject *_wrap_Vec___add____SWIG_0(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = ((Piavca::Vec const *)arg1)->operator +((Piavca::Vec const &)*arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = ((Piavca::Vec const *)arg1)->operator +((Piavca::Vec const &)*arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec const & >(result));
@@ -2628,11 +4426,16 @@ static PyObject *_wrap_Vec___iadd____SWIG_0(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    {
-        Piavca::Vec const &_result_ref = (arg1)->operator +=((Piavca::Vec const &)*arg2);
-        result = (Piavca::Vec *) &_result_ref;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        {
+            Piavca::Vec const &_result_ref = (arg1)->operator +=((Piavca::Vec const &)*arg2);
+            result = (Piavca::Vec *) &_result_ref;
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
     }
-    
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Vec, 1);
     return resultobj;
     fail:
@@ -2655,8 +4458,13 @@ static PyObject *_wrap_Vec___add____SWIG_1(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = ((Piavca::Vec const *)arg1)->operator +(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = ((Piavca::Vec const *)arg1)->operator +(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec const & >(result));
@@ -2742,11 +4550,16 @@ static PyObject *_wrap_Vec___iadd____SWIG_1(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    {
-        Piavca::Vec const &_result_ref = (arg1)->operator +=(arg2);
-        result = (Piavca::Vec *) &_result_ref;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        {
+            Piavca::Vec const &_result_ref = (arg1)->operator +=(arg2);
+            result = (Piavca::Vec *) &_result_ref;
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
     }
-    
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Vec, 1);
     return resultobj;
     fail:
@@ -2832,8 +4645,13 @@ static PyObject *_wrap_Vec___sub____SWIG_0(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = ((Piavca::Vec const *)arg1)->operator -((Piavca::Vec const &)*arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = ((Piavca::Vec const *)arg1)->operator -((Piavca::Vec const &)*arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec const & >(result));
@@ -2864,11 +4682,16 @@ static PyObject *_wrap_Vec___isub____SWIG_0(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    {
-        Piavca::Vec const &_result_ref = (arg1)->operator -=((Piavca::Vec const &)*arg2);
-        result = (Piavca::Vec *) &_result_ref;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        {
+            Piavca::Vec const &_result_ref = (arg1)->operator -=((Piavca::Vec const &)*arg2);
+            result = (Piavca::Vec *) &_result_ref;
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
     }
-    
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Vec, 1);
     return resultobj;
     fail:
@@ -2891,8 +4714,13 @@ static PyObject *_wrap_Vec___sub____SWIG_1(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = ((Piavca::Vec const *)arg1)->operator -(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = ((Piavca::Vec const *)arg1)->operator -(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec const & >(result));
@@ -2978,11 +4806,16 @@ static PyObject *_wrap_Vec___isub____SWIG_1(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    {
-        Piavca::Vec const &_result_ref = (arg1)->operator -=(arg2);
-        result = (Piavca::Vec *) &_result_ref;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        {
+            Piavca::Vec const &_result_ref = (arg1)->operator -=(arg2);
+            result = (Piavca::Vec *) &_result_ref;
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
     }
-    
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Vec, 1);
     return resultobj;
     fail:
@@ -3058,8 +4891,13 @@ static PyObject *_wrap_Vec___neg__(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Vec___neg__",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Vec, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = ((Piavca::Vec const *)arg1)->operator -();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = ((Piavca::Vec const *)arg1)->operator -();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec const & >(result));
@@ -3090,8 +4928,13 @@ static PyObject *_wrap_Vec___mul____SWIG_0(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = ((Piavca::Vec const *)arg1)->operator *((Piavca::Vec const &)*arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = ((Piavca::Vec const *)arg1)->operator *((Piavca::Vec const &)*arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec const & >(result));
@@ -3122,11 +4965,16 @@ static PyObject *_wrap_Vec___imul____SWIG_0(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    {
-        Piavca::Vec const &_result_ref = (arg1)->operator *=((Piavca::Vec const &)*arg2);
-        result = (Piavca::Vec *) &_result_ref;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        {
+            Piavca::Vec const &_result_ref = (arg1)->operator *=((Piavca::Vec const &)*arg2);
+            result = (Piavca::Vec *) &_result_ref;
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
     }
-    
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Vec, 1);
     return resultobj;
     fail:
@@ -3149,8 +4997,13 @@ static PyObject *_wrap_Vec___mul____SWIG_1(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = ((Piavca::Vec const *)arg1)->operator *(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = ((Piavca::Vec const *)arg1)->operator *(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec const & >(result));
@@ -3236,11 +5089,16 @@ static PyObject *_wrap_Vec___imul____SWIG_1(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    {
-        Piavca::Vec const &_result_ref = (arg1)->operator *=(arg2);
-        result = (Piavca::Vec *) &_result_ref;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        {
+            Piavca::Vec const &_result_ref = (arg1)->operator *=(arg2);
+            result = (Piavca::Vec *) &_result_ref;
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
     }
-    
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Vec, 1);
     return resultobj;
     fail:
@@ -3326,8 +5184,13 @@ static PyObject *_wrap_Vec___div____SWIG_0(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = ((Piavca::Vec const *)arg1)->operator /((Piavca::Vec const &)*arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = ((Piavca::Vec const *)arg1)->operator /((Piavca::Vec const &)*arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec const & >(result));
@@ -3358,11 +5221,16 @@ static PyObject *_wrap_Vec___idiv____SWIG_0(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    {
-        Piavca::Vec const &_result_ref = (arg1)->operator /=((Piavca::Vec const &)*arg2);
-        result = (Piavca::Vec *) &_result_ref;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        {
+            Piavca::Vec const &_result_ref = (arg1)->operator /=((Piavca::Vec const &)*arg2);
+            result = (Piavca::Vec *) &_result_ref;
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
     }
-    
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Vec, 1);
     return resultobj;
     fail:
@@ -3385,8 +5253,13 @@ static PyObject *_wrap_Vec___div____SWIG_1(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = ((Piavca::Vec const *)arg1)->operator /(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = ((Piavca::Vec const *)arg1)->operator /(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec const & >(result));
@@ -3472,11 +5345,16 @@ static PyObject *_wrap_Vec___idiv____SWIG_1(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    {
-        Piavca::Vec const &_result_ref = (arg1)->operator /=(arg2);
-        result = (Piavca::Vec *) &_result_ref;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        {
+            Piavca::Vec const &_result_ref = (arg1)->operator /=(arg2);
+            result = (Piavca::Vec *) &_result_ref;
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
     }
-    
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Vec, 1);
     return resultobj;
     fail:
@@ -3562,8 +5440,13 @@ static PyObject *_wrap_Vec___eq__(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (bool)((Piavca::Vec const *)arg1)->operator ==((Piavca::Vec const &)*arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)((Piavca::Vec const *)arg1)->operator ==((Piavca::Vec const &)*arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -3592,8 +5475,13 @@ static PyObject *_wrap_Vec___ne__(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (bool)((Piavca::Vec const *)arg1)->operator !=((Piavca::Vec const &)*arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)((Piavca::Vec const *)arg1)->operator !=((Piavca::Vec const &)*arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -3612,8 +5500,13 @@ static PyObject *_wrap_Vec_inverse(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Vec_inverse",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Vec, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = ((Piavca::Vec const *)arg1)->inverse();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = ((Piavca::Vec const *)arg1)->inverse();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec & >(result));
@@ -3633,8 +5526,13 @@ static PyObject *_wrap_Vec_invert(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Vec_invert",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Vec, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->invert();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->invert();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -3661,8 +5559,13 @@ static PyObject *_wrap_Vec_dot(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (float)((Piavca::Vec const *)arg1)->dot((Piavca::Vec const &)*arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)((Piavca::Vec const *)arg1)->dot((Piavca::Vec const &)*arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -3691,8 +5594,13 @@ static PyObject *_wrap_Vec_cross(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = ((Piavca::Vec const *)arg1)->cross((Piavca::Vec const &)*arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = ((Piavca::Vec const *)arg1)->cross((Piavca::Vec const &)*arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec & >(result));
@@ -3723,11 +5631,16 @@ static PyObject *_wrap_Vec_crossinplace(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    {
-        Piavca::Vec const &_result_ref = (arg1)->crossinplace((Piavca::Vec const &)*arg2);
-        result = (Piavca::Vec *) &_result_ref;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        {
+            Piavca::Vec const &_result_ref = (arg1)->crossinplace((Piavca::Vec const &)*arg2);
+            result = (Piavca::Vec *) &_result_ref;
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
     }
-    
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Vec, 0);
     return resultobj;
     fail:
@@ -3744,8 +5657,13 @@ static PyObject *_wrap_Vec_normalized(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Vec_normalized",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Vec, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = ((Piavca::Vec const *)arg1)->normalized();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = ((Piavca::Vec const *)arg1)->normalized();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec & >(result));
@@ -3765,8 +5683,13 @@ static PyObject *_wrap_Vec_normalize(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Vec_normalize",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Vec, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->normalize();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->normalize();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -3786,8 +5709,13 @@ static PyObject *_wrap_Vec___getitem__(PyObject *, PyObject *args) {
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Vec, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
     arg2 = obj1;
-    result = (PyObject *)Piavca_Vec___getitem__(arg1,arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (PyObject *)Piavca_Vec___getitem__(arg1,arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = result;
     return resultobj;
     fail:
@@ -3799,16 +5727,24 @@ static PyObject *_wrap_Vec___setitem__(PyObject *, PyObject *args) {
     PyObject *resultobj = NULL;
     Piavca::Vec *arg1 = (Piavca::Vec *) 0 ;
     PyObject *arg2 = (PyObject *) 0 ;
+    PyObject *arg3 = (PyObject *) 0 ;
     PyObject *result;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    PyObject * obj2 = 0 ;
     
-    if(!PyArg_ParseTuple(args,(char *)"OO:Vec___setitem__",&obj0,&obj1)) goto fail;
+    if(!PyArg_ParseTuple(args,(char *)"OOO:Vec___setitem__",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Vec, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
     arg2 = obj1;
-    result = (PyObject *)Piavca_Vec___setitem__(arg1,arg2);
-    
+    arg3 = obj2;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (PyObject *)Piavca_Vec___setitem__(arg1,arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = result;
     return resultobj;
     fail:
@@ -3825,8 +5761,13 @@ static PyObject *_wrap_Vec___repr__(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Vec___repr__",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Vec, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (PyObject *)Piavca_Vec___repr__(arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (PyObject *)Piavca_Vec___repr__(arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = result;
     return resultobj;
     fail:
@@ -3841,13 +5782,13 @@ static PyObject * Vec_swigregister(PyObject *, PyObject *args) {
     Py_INCREF(obj);
     return Py_BuildValue((char *)"");
 }
-static PyObject *_wrap__isnan(PyObject *, PyObject *args) {
+static PyObject *_wrap_checkNaN(PyObject *, PyObject *args) {
     PyObject *resultobj = NULL;
     Piavca::Vec *arg1 = 0 ;
     bool result;
     PyObject * obj0 = 0 ;
     
-    if(!PyArg_ParseTuple(args,(char *)"O:_isnan",&obj0)) goto fail;
+    if(!PyArg_ParseTuple(args,(char *)"O:checkNaN",&obj0)) goto fail;
     {
         SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Vec, SWIG_POINTER_EXCEPTION | 0);
         if (SWIG_arg_fail(1)) SWIG_fail;
@@ -3856,8 +5797,13 @@ static PyObject *_wrap__isnan(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (bool)_isnan(*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)Piavca::checkNaN(*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -3872,8 +5818,13 @@ static PyObject *_wrap_new_Quat__SWIG_0(PyObject *, PyObject *args) {
     Piavca::Quat *result;
     
     if(!PyArg_ParseTuple(args,(char *)":new_Quat")) goto fail;
-    result = (Piavca::Quat *)new Piavca::Quat();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Quat *)new Piavca::Quat();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Quat, 1);
     return resultobj;
     fail:
@@ -3910,8 +5861,13 @@ static PyObject *_wrap_new_Quat__SWIG_1(PyObject *, PyObject *args) {
         arg4 = static_cast<float >(SWIG_As_float(obj3)); 
         if (SWIG_arg_fail(4)) SWIG_fail;
     }
-    result = (Piavca::Quat *)new Piavca::Quat(arg1,arg2,arg3,arg4);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Quat *)new Piavca::Quat(arg1,arg2,arg3,arg4);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Quat, 1);
     return resultobj;
     fail:
@@ -3928,8 +5884,13 @@ static PyObject *_wrap_new_Quat__SWIG_2(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:new_Quat",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_float, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Quat *)new Piavca::Quat((float const (*))arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Quat *)new Piavca::Quat((float const (*))arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Quat, 1);
     return resultobj;
     fail:
@@ -3958,8 +5919,13 @@ static PyObject *_wrap_new_Quat__SWIG_3(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::Quat *)new Piavca::Quat(arg1,(Piavca::Vec const &)*arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Quat *)new Piavca::Quat(arg1,(Piavca::Vec const &)*arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Quat, 1);
     return resultobj;
     fail:
@@ -3982,8 +5948,13 @@ static PyObject *_wrap_new_Quat__SWIG_4(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::Quat *)new Piavca::Quat((Piavca::Quat const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Quat *)new Piavca::Quat((Piavca::Quat const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Quat, 1);
     return resultobj;
     fail:
@@ -4081,8 +6052,13 @@ static PyObject *_wrap_delete_Quat(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_Quat",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Quat, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    delete arg1;
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        delete arg1;
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -4099,11 +6075,16 @@ static PyObject *_wrap_Quat_S__SWIG_0(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Quat_S",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Quat, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    {
-        float const &_result_ref = ((Piavca::Quat const *)arg1)->S();
-        result = (float *) &_result_ref;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        {
+            float const &_result_ref = ((Piavca::Quat const *)arg1)->S();
+            result = (float *) &_result_ref;
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
     }
-    
     {
         resultobj = SWIG_From_float(static_cast<float >(*result)); 
     }
@@ -4122,11 +6103,16 @@ static PyObject *_wrap_Quat_I__SWIG_0(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Quat_I",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Quat, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    {
-        float const &_result_ref = ((Piavca::Quat const *)arg1)->I();
-        result = (float *) &_result_ref;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        {
+            float const &_result_ref = ((Piavca::Quat const *)arg1)->I();
+            result = (float *) &_result_ref;
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
     }
-    
     {
         resultobj = SWIG_From_float(static_cast<float >(*result)); 
     }
@@ -4145,11 +6131,16 @@ static PyObject *_wrap_Quat_J__SWIG_0(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Quat_J",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Quat, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    {
-        float const &_result_ref = ((Piavca::Quat const *)arg1)->J();
-        result = (float *) &_result_ref;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        {
+            float const &_result_ref = ((Piavca::Quat const *)arg1)->J();
+            result = (float *) &_result_ref;
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
     }
-    
     {
         resultobj = SWIG_From_float(static_cast<float >(*result)); 
     }
@@ -4168,11 +6159,16 @@ static PyObject *_wrap_Quat_K__SWIG_0(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Quat_K",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Quat, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    {
-        float const &_result_ref = ((Piavca::Quat const *)arg1)->K();
-        result = (float *) &_result_ref;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        {
+            float const &_result_ref = ((Piavca::Quat const *)arg1)->K();
+            result = (float *) &_result_ref;
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
     }
-    
     {
         resultobj = SWIG_From_float(static_cast<float >(*result)); 
     }
@@ -4191,11 +6187,16 @@ static PyObject *_wrap_Quat_S__SWIG_1(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Quat_S",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Quat, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    {
-        float &_result_ref = (arg1)->S();
-        result = (float *) &_result_ref;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        {
+            float &_result_ref = (arg1)->S();
+            result = (float *) &_result_ref;
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
     }
-    
     {
         resultobj = PyFloat_FromDouble(*result);
     }
@@ -4259,11 +6260,16 @@ static PyObject *_wrap_Quat_I__SWIG_1(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Quat_I",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Quat, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    {
-        float &_result_ref = (arg1)->I();
-        result = (float *) &_result_ref;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        {
+            float &_result_ref = (arg1)->I();
+            result = (float *) &_result_ref;
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
     }
-    
     {
         resultobj = PyFloat_FromDouble(*result);
     }
@@ -4327,11 +6333,16 @@ static PyObject *_wrap_Quat_J__SWIG_1(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Quat_J",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Quat, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    {
-        float &_result_ref = (arg1)->J();
-        result = (float *) &_result_ref;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        {
+            float &_result_ref = (arg1)->J();
+            result = (float *) &_result_ref;
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
     }
-    
     {
         resultobj = PyFloat_FromDouble(*result);
     }
@@ -4395,11 +6406,16 @@ static PyObject *_wrap_Quat_K__SWIG_1(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Quat_K",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Quat, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    {
-        float &_result_ref = (arg1)->K();
-        result = (float *) &_result_ref;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        {
+            float &_result_ref = (arg1)->K();
+            result = (float *) &_result_ref;
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
     }
-    
     {
         resultobj = PyFloat_FromDouble(*result);
     }
@@ -4478,8 +6494,13 @@ static PyObject *_wrap_Quat_setAngleAxis__SWIG_0(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    (arg1)->setAngleAxis(arg2,(Piavca::Vec const &)*arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setAngleAxis(arg2,(Piavca::Vec const &)*arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -4519,8 +6540,13 @@ static PyObject *_wrap_Quat_setAngleAxis__SWIG_1(PyObject *, PyObject *args) {
         arg5 = static_cast<float >(SWIG_As_float(obj4)); 
         if (SWIG_arg_fail(5)) SWIG_fail;
     }
-    (arg1)->setAngleAxis(arg2,arg3,arg4,arg5);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setAngleAxis(arg2,arg3,arg4,arg5);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -4627,8 +6653,13 @@ static PyObject *_wrap_Quat_getAngleAxis(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    ((Piavca::Quat const *)arg1)->getAngleAxis(*arg2,*arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        ((Piavca::Quat const *)arg1)->getAngleAxis(*arg2,*arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -4645,8 +6676,13 @@ static PyObject *_wrap_Quat_getAngle(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Quat_getAngle",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Quat, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (float)((Piavca::Quat const *)arg1)->getAngle();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)((Piavca::Quat const *)arg1)->getAngle();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -4665,8 +6701,13 @@ static PyObject *_wrap_Quat_getAxis(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Quat_getAxis",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Quat, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = ((Piavca::Quat const *)arg1)->getAxis();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = ((Piavca::Quat const *)arg1)->getAxis();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec & >(result));
@@ -4716,8 +6757,13 @@ static PyObject *_wrap_Quat_getEulerAngles(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(4)) SWIG_fail;
     }
-    (arg1)->getEulerAngles(*arg2,*arg3,*arg4);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->getEulerAngles(*arg2,*arg3,*arg4);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -4734,8 +6780,13 @@ static PyObject *_wrap_Quat_Xangle(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Quat_Xangle",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Quat, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (float)(arg1)->Xangle();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)(arg1)->Xangle();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -4754,8 +6805,13 @@ static PyObject *_wrap_Quat_Yangle(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Quat_Yangle",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Quat, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (float)(arg1)->Yangle();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)(arg1)->Yangle();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -4774,8 +6830,13 @@ static PyObject *_wrap_Quat_Zangle(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Quat_Zangle",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Quat, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (float)(arg1)->Zangle();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)(arg1)->Zangle();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -4814,11 +6875,16 @@ static PyObject *_wrap_Quat_pointAt(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    {
-        Piavca::Quat &_result_ref = (arg1)->pointAt((Piavca::Vec const &)*arg2,(Piavca::Vec const &)*arg3);
-        result = (Piavca::Quat *) &_result_ref;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        {
+            Piavca::Quat &_result_ref = (arg1)->pointAt((Piavca::Vec const &)*arg2,(Piavca::Vec const &)*arg3);
+            result = (Piavca::Quat *) &_result_ref;
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
     }
-    
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Quat, 0);
     return resultobj;
     fail:
@@ -4845,8 +6911,13 @@ static PyObject *_wrap_Quat___mul__(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = ((Piavca::Quat const *)arg1)->operator *((Piavca::Quat const &)*arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = ((Piavca::Quat const *)arg1)->operator *((Piavca::Quat const &)*arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Quat * resultptr;
         resultptr = new Piavca::Quat(static_cast<Piavca::Quat const & >(result));
@@ -4877,11 +6948,16 @@ static PyObject *_wrap_Quat___imul__(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    {
-        Piavca::Quat const &_result_ref = (arg1)->operator *=((Piavca::Quat const &)*arg2);
-        result = (Piavca::Quat *) &_result_ref;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        {
+            Piavca::Quat const &_result_ref = (arg1)->operator *=((Piavca::Quat const &)*arg2);
+            result = (Piavca::Quat *) &_result_ref;
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
     }
-    
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Quat, 1);
     return resultobj;
     fail:
@@ -4908,8 +6984,13 @@ static PyObject *_wrap_Quat___div__(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = ((Piavca::Quat const *)arg1)->operator /((Piavca::Quat const &)*arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = ((Piavca::Quat const *)arg1)->operator /((Piavca::Quat const &)*arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Quat * resultptr;
         resultptr = new Piavca::Quat(static_cast<Piavca::Quat const & >(result));
@@ -4940,11 +7021,16 @@ static PyObject *_wrap_Quat___idiv__(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    {
-        Piavca::Quat const &_result_ref = (arg1)->operator /=((Piavca::Quat const &)*arg2);
-        result = (Piavca::Quat *) &_result_ref;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        {
+            Piavca::Quat const &_result_ref = (arg1)->operator /=((Piavca::Quat const &)*arg2);
+            result = (Piavca::Quat *) &_result_ref;
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
     }
-    
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Quat, 1);
     return resultobj;
     fail:
@@ -4971,8 +7057,13 @@ static PyObject *_wrap_Quat___eq__(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (bool)((Piavca::Quat const *)arg1)->operator ==((Piavca::Quat const &)*arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)((Piavca::Quat const *)arg1)->operator ==((Piavca::Quat const &)*arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -5001,8 +7092,13 @@ static PyObject *_wrap_Quat___ne__(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (bool)((Piavca::Quat const *)arg1)->operator !=((Piavca::Quat const &)*arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)((Piavca::Quat const *)arg1)->operator !=((Piavca::Quat const &)*arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -5026,8 +7122,13 @@ static PyObject *_wrap_Quat_Scale(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->Scale(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->Scale(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -5044,8 +7145,13 @@ static PyObject *_wrap_Quat_inverse(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Quat_inverse",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Quat, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = ((Piavca::Quat const *)arg1)->inverse();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = ((Piavca::Quat const *)arg1)->inverse();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Quat * resultptr;
         resultptr = new Piavca::Quat(static_cast<Piavca::Quat & >(result));
@@ -5065,8 +7171,13 @@ static PyObject *_wrap_Quat_invert(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Quat_invert",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Quat, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->invert();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->invert();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -5082,8 +7193,13 @@ static PyObject *_wrap_Quat_normalise(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Quat_normalise",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Quat, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->normalise();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->normalise();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -5110,8 +7226,13 @@ static PyObject *_wrap_Quat_transform(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = ((Piavca::Quat const *)arg1)->transform((Piavca::Vec const &)*arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = ((Piavca::Quat const *)arg1)->transform((Piavca::Vec const &)*arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec & >(result));
@@ -5141,8 +7262,13 @@ static PyObject *_wrap_Quat_transformInPlace(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    ((Piavca::Quat const *)arg1)->transformInPlace(*arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        ((Piavca::Quat const *)arg1)->transformInPlace(*arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -5175,8 +7301,13 @@ static PyObject *_wrap_Quat_spherical_distance(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (float)Piavca::Quat::spherical_distance((Piavca::Quat const &)*arg1,(Piavca::Quat const &)*arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)Piavca::Quat::spherical_distance((Piavca::Quat const &)*arg1,(Piavca::Quat const &)*arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -5217,8 +7348,13 @@ static PyObject *_wrap_slerp(PyObject *, PyObject *args) {
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = slerp((Piavca::Quat const &)*arg1,(Piavca::Quat const &)*arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = slerp((Piavca::Quat const &)*arg1,(Piavca::Quat const &)*arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Quat * resultptr;
         resultptr = new Piavca::Quat(static_cast<Piavca::Quat & >(result));
@@ -5242,8 +7378,13 @@ static PyObject *_wrap_Quat___getitem__(PyObject *, PyObject *args) {
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Quat, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
     arg2 = obj1;
-    result = (PyObject *)Piavca_Quat___getitem__(arg1,arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (PyObject *)Piavca_Quat___getitem__(arg1,arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = result;
     return resultobj;
     fail:
@@ -5255,16 +7396,24 @@ static PyObject *_wrap_Quat___setitem__(PyObject *, PyObject *args) {
     PyObject *resultobj = NULL;
     Piavca::Quat *arg1 = (Piavca::Quat *) 0 ;
     PyObject *arg2 = (PyObject *) 0 ;
+    PyObject *arg3 = (PyObject *) 0 ;
     PyObject *result;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    PyObject * obj2 = 0 ;
     
-    if(!PyArg_ParseTuple(args,(char *)"OO:Quat___setitem__",&obj0,&obj1)) goto fail;
+    if(!PyArg_ParseTuple(args,(char *)"OOO:Quat___setitem__",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Quat, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
     arg2 = obj1;
-    result = (PyObject *)Piavca_Quat___setitem__(arg1,arg2);
-    
+    arg3 = obj2;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (PyObject *)Piavca_Quat___setitem__(arg1,arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = result;
     return resultobj;
     fail:
@@ -5281,8 +7430,13 @@ static PyObject *_wrap_Quat___repr__(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Quat___repr__",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Quat, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (PyObject *)Piavca_Quat___repr__(arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (PyObject *)Piavca_Quat___repr__(arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = result;
     return resultobj;
     fail:
@@ -5297,6 +7451,40 @@ static PyObject * Quat_swigregister(PyObject *, PyObject *args) {
     Py_INCREF(obj);
     return Py_BuildValue((char *)"");
 }
+static PyObject *_wrap_new_TimeCallback(PyObject *, PyObject *args) {
+    PyObject *resultobj = NULL;
+    PyObject *arg1 = (PyObject *) 0 ;
+    tstring arg2 ;
+    Piavca::TimeCallback *result;
+    PyObject * obj0 = 0 ;
+    PyObject * obj1 = 0 ;
+    
+    if(!PyArg_ParseTuple(args,(char *)"OO:new_TimeCallback",&obj0,&obj1)) goto fail;
+    arg1 = obj0;
+    {
+        arg2 = StringToTString(PyString_AsString(obj1));
+    }
+    try {
+        Swig::UnknownExceptionHandler dh;
+        if ( arg1 != Py_None ) {
+            /* subclassed */
+            result = (Piavca::TimeCallback *)new SwigDirector_TimeCallback(arg1,arg2);
+            
+        } else {
+            PyErr_SetString(PyExc_RuntimeError,    "accessing abstract class or protected constructor"); 
+            SWIG_fail;
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__TimeCallback, 1);
+    return resultobj;
+    fail:
+    return NULL;
+}
+
+
 static PyObject *_wrap_delete_TimeCallback(PyObject *, PyObject *args) {
     PyObject *resultobj = NULL;
     Piavca::TimeCallback *arg1 = (Piavca::TimeCallback *) 0 ;
@@ -5305,8 +7493,13 @@ static PyObject *_wrap_delete_TimeCallback(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_TimeCallback",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TimeCallback, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    delete arg1;
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        delete arg1;
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -5323,8 +7516,13 @@ static PyObject *_wrap_TimeCallback_getName(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:TimeCallback_getName",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TimeCallback, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (arg1)->getName();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getName();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = PyString_FromString(TStringToString(result).c_str());
     }
@@ -5340,14 +7538,22 @@ static PyObject *_wrap_TimeCallback_init(PyObject *, PyObject *args) {
     Piavca::Core *arg2 = (Piavca::Core *) 0 ;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:TimeCallback_init",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TimeCallback, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    (arg1)->init(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->init(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -5363,6 +7569,7 @@ static PyObject *_wrap_TimeCallback_timeStep(PyObject *, PyObject *args) {
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:TimeCallback_timeStep",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TimeCallback, SWIG_POINTER_EXCEPTION | 0);
@@ -5373,8 +7580,40 @@ static PyObject *_wrap_TimeCallback_timeStep(PyObject *, PyObject *args) {
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    (arg1)->timeStep(arg2,arg3);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->timeStep(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    Py_INCREF(Py_None); resultobj = Py_None;
+    return resultobj;
+    fail:
+    return NULL;
+}
+
+
+static PyObject *_wrap_disown_TimeCallback(PyObject *, PyObject *args) {
+    PyObject *resultobj = NULL;
+    Piavca::TimeCallback *arg1 = (Piavca::TimeCallback *) 0 ;
+    PyObject * obj0 = 0 ;
     
+    if(!PyArg_ParseTuple(args,(char *)"O:disown_TimeCallback",&obj0)) goto fail;
+    SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TimeCallback, SWIG_POINTER_EXCEPTION | 0);
+    if (SWIG_arg_fail(1)) SWIG_fail;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        {
+            Swig::Director *director = dynamic_cast<Swig::Director *>(arg1);
+            if (director) director->swig_disown();
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -5389,6 +7628,40 @@ static PyObject * TimeCallback_swigregister(PyObject *, PyObject *args) {
     Py_INCREF(obj);
     return Py_BuildValue((char *)"");
 }
+static PyObject *_wrap_new_AvatarTimeCallback(PyObject *, PyObject *args) {
+    PyObject *resultobj = NULL;
+    PyObject *arg1 = (PyObject *) 0 ;
+    tstring arg2 ;
+    Piavca::AvatarTimeCallback *result;
+    PyObject * obj0 = 0 ;
+    PyObject * obj1 = 0 ;
+    
+    if(!PyArg_ParseTuple(args,(char *)"OO:new_AvatarTimeCallback",&obj0,&obj1)) goto fail;
+    arg1 = obj0;
+    {
+        arg2 = StringToTString(PyString_AsString(obj1));
+    }
+    try {
+        Swig::UnknownExceptionHandler dh;
+        if ( arg1 != Py_None ) {
+            /* subclassed */
+            result = (Piavca::AvatarTimeCallback *)new SwigDirector_AvatarTimeCallback(arg1,arg2);
+            
+        } else {
+            PyErr_SetString(PyExc_RuntimeError,    "accessing abstract class or protected constructor"); 
+            SWIG_fail;
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__AvatarTimeCallback, 1);
+    return resultobj;
+    fail:
+    return NULL;
+}
+
+
 static PyObject *_wrap_delete_AvatarTimeCallback(PyObject *, PyObject *args) {
     PyObject *resultobj = NULL;
     Piavca::AvatarTimeCallback *arg1 = (Piavca::AvatarTimeCallback *) 0 ;
@@ -5397,8 +7670,13 @@ static PyObject *_wrap_delete_AvatarTimeCallback(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_AvatarTimeCallback",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__AvatarTimeCallback, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    delete arg1;
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        delete arg1;
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -5415,8 +7693,13 @@ static PyObject *_wrap_AvatarTimeCallback_getName(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:AvatarTimeCallback_getName",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__AvatarTimeCallback, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (arg1)->getName();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getName();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = PyString_FromString(TStringToString(result).c_str());
     }
@@ -5432,14 +7715,22 @@ static PyObject *_wrap_AvatarTimeCallback_init(PyObject *, PyObject *args) {
     Piavca::Avatar *arg2 = (Piavca::Avatar *) 0 ;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:AvatarTimeCallback_init",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__AvatarTimeCallback, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    (arg1)->init(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->init(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -5455,6 +7746,7 @@ static PyObject *_wrap_AvatarTimeCallback_timeStep(PyObject *, PyObject *args) {
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:AvatarTimeCallback_timeStep",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__AvatarTimeCallback, SWIG_POINTER_EXCEPTION | 0);
@@ -5465,8 +7757,40 @@ static PyObject *_wrap_AvatarTimeCallback_timeStep(PyObject *, PyObject *args) {
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    (arg1)->timeStep(arg2,arg3);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->timeStep(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    Py_INCREF(Py_None); resultobj = Py_None;
+    return resultobj;
+    fail:
+    return NULL;
+}
+
+
+static PyObject *_wrap_disown_AvatarTimeCallback(PyObject *, PyObject *args) {
+    PyObject *resultobj = NULL;
+    Piavca::AvatarTimeCallback *arg1 = (Piavca::AvatarTimeCallback *) 0 ;
+    PyObject * obj0 = 0 ;
     
+    if(!PyArg_ParseTuple(args,(char *)"O:disown_AvatarTimeCallback",&obj0)) goto fail;
+    SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__AvatarTimeCallback, SWIG_POINTER_EXCEPTION | 0);
+    if (SWIG_arg_fail(1)) SWIG_fail;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        {
+            Swig::Director *director = dynamic_cast<Swig::Director *>(arg1);
+            if (director) director->swig_disown();
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -5494,8 +7818,13 @@ static PyObject *_wrap_Core_dir_set(PyObject *, PyObject *args) {
     {
         arg2 = StringToTString(PyString_AsString(obj1));
     }
-    if (arg1) (arg1)->dir = arg2;
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        if (arg1) (arg1)->dir = arg2;
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -5512,8 +7841,13 @@ static PyObject *_wrap_Core_dir_get(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Core_dir_get",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result =  ((arg1)->dir);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result =  ((arg1)->dir);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = PyString_FromString(TStringToString(result).c_str());
     }
@@ -5531,8 +7865,13 @@ static PyObject *_wrap_delete_Core(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_Core",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    delete arg1;
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        delete arg1;
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -5544,12 +7883,20 @@ static PyObject *_wrap_Core_reset(PyObject *, PyObject *args) {
     PyObject *resultobj = NULL;
     Piavca::Core *arg1 = (Piavca::Core *) 0 ;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:Core_reset",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->reset();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->reset();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -5562,8 +7909,13 @@ static PyObject *_wrap_Core_getCore(PyObject *, PyObject *args) {
     Piavca::Core *result;
     
     if(!PyArg_ParseTuple(args,(char *)":Core_getCore")) goto fail;
-    result = (Piavca::Core *)Piavca::Core::getCore();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Core *)Piavca::Core::getCore();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Core, 0);
     return resultobj;
     fail:
@@ -5583,8 +7935,13 @@ static PyObject *_wrap_Core_registerCallback(PyObject *, PyObject *args) {
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__TimeCallback, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    (arg1)->registerCallback(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->registerCallback(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -5600,8 +7957,13 @@ static PyObject *_wrap_Core_timeStep__SWIG_0(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Core_timeStep",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->timeStep();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->timeStep();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -5615,6 +7977,7 @@ static PyObject *_wrap_Core_timeStep__SWIG_1(PyObject *, PyObject *args) {
     float arg2 ;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:Core_timeStep",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
@@ -5623,8 +7986,15 @@ static PyObject *_wrap_Core_timeStep__SWIG_1(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->timeStep(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->timeStep(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -5684,12 +8054,20 @@ static PyObject *_wrap_Core_prerender(PyObject *, PyObject *args) {
     PyObject *resultobj = NULL;
     Piavca::Core *arg1 = (Piavca::Core *) 0 ;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:Core_prerender",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->prerender();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->prerender();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -5701,12 +8079,20 @@ static PyObject *_wrap_Core_render(PyObject *, PyObject *args) {
     PyObject *resultobj = NULL;
     Piavca::Core *arg1 = (Piavca::Core *) 0 ;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:Core_render",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->render();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->render();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -5728,8 +8114,13 @@ static PyObject *_wrap_Core_getJointId(PyObject *, PyObject *args) {
     {
         arg2 = StringToTString(PyString_AsString(obj1));
     }
-    result = (int)(arg1)->getJointId(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (int)(arg1)->getJointId(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_int(static_cast<int >(result)); 
     }
@@ -5748,8 +8139,13 @@ static PyObject *_wrap_Core_getMaxJointId(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Core_getMaxJointId",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (int)(arg1)->getMaxJointId();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (int)(arg1)->getMaxJointId();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_int(static_cast<int >(result)); 
     }
@@ -5779,8 +8175,13 @@ static PyObject *_wrap_Core_addJointNameSet(PyObject *, PyObject *args) {
         if (SWIG_arg_fail(2)) SWIG_fail;
         arg2 = *argp;
     }
-    (arg1)->addJointNameSet(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->addJointNameSet(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -5803,8 +8204,13 @@ static PyObject *_wrap_Core_getJointName(PyObject *, PyObject *args) {
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (arg1)->getJointName(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getJointName(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = PyString_FromString(TStringToString(result).c_str());
     }
@@ -5823,8 +8229,13 @@ static PyObject *_wrap_Core_getJointNameAssociations(PyObject *, PyObject *args)
     if(!PyArg_ParseTuple(args,(char *)"O:Core_getJointNameAssociations",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (arg1)->getJointNameAssociations();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getJointNameAssociations();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         std::vector<std::pair<tstring,int > > * resultptr;
         resultptr = new std::vector<std::pair<tstring,int > >(static_cast<std::vector<std::pair<tstring,int > > & >(result));
@@ -5850,8 +8261,13 @@ static PyObject *_wrap_Core_getExpressionId(PyObject *, PyObject *args) {
     {
         arg2 = StringToTString(PyString_AsString(obj1));
     }
-    result = (int)(arg1)->getExpressionId(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (int)(arg1)->getExpressionId(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_int(static_cast<int >(result)); 
     }
@@ -5870,8 +8286,13 @@ static PyObject *_wrap_Core_getMaxExpressionId(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Core_getMaxExpressionId",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (int)(arg1)->getMaxExpressionId();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (int)(arg1)->getMaxExpressionId();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_int(static_cast<int >(result)); 
     }
@@ -5901,8 +8322,13 @@ static PyObject *_wrap_Core_addExpressionNameSet(PyObject *, PyObject *args) {
         if (SWIG_arg_fail(2)) SWIG_fail;
         arg2 = *argp;
     }
-    (arg1)->addExpressionNameSet(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->addExpressionNameSet(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -5925,8 +8351,13 @@ static PyObject *_wrap_Core_getExpressionName(PyObject *, PyObject *args) {
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (arg1)->getExpressionName(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getExpressionName(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = PyString_FromString(TStringToString(result).c_str());
     }
@@ -5945,8 +8376,13 @@ static PyObject *_wrap_Core_getExpressionNameAssociations(PyObject *, PyObject *
     if(!PyArg_ParseTuple(args,(char *)"O:Core_getExpressionNameAssociations",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (arg1)->getExpressionNameAssociations();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getExpressionNameAssociations();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         std::vector<std::pair<tstring,int > > * resultptr;
         resultptr = new std::vector<std::pair<tstring,int > >(static_cast<std::vector<std::pair<tstring,int > > & >(result));
@@ -5992,8 +8428,13 @@ static PyObject *_wrap_Core_loadMotion__SWIG_0(PyObject *, PyObject *args) {
     }
     SWIG_Python_ConvertPtr(obj5, (void **)&arg6, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(6)) SWIG_fail;
-    (arg1)->loadMotion(arg2,arg3,arg4,arg5,arg6);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->loadMotion(arg2,arg3,arg4,arg5,arg6);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -6031,8 +8472,13 @@ static PyObject *_wrap_Core_loadMotion__SWIG_1(PyObject *, PyObject *args) {
         arg5 = static_cast<bool >(SWIG_As_bool(obj4)); 
         if (SWIG_arg_fail(5)) SWIG_fail;
     }
-    (arg1)->loadMotion(arg2,arg3,arg4,arg5);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->loadMotion(arg2,arg3,arg4,arg5);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -6064,8 +8510,13 @@ static PyObject *_wrap_Core_loadMotion__SWIG_2(PyObject *, PyObject *args) {
         arg4 = static_cast<int >(SWIG_As_int(obj3)); 
         if (SWIG_arg_fail(4)) SWIG_fail;
     }
-    (arg1)->loadMotion(arg2,arg3,arg4);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->loadMotion(arg2,arg3,arg4);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -6091,8 +8542,13 @@ static PyObject *_wrap_Core_loadMotion__SWIG_3(PyObject *, PyObject *args) {
     {
         arg3 = StringToTString(PyString_AsString(obj2));
     }
-    (arg1)->loadMotion(arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->loadMotion(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -6127,8 +8583,13 @@ static PyObject *_wrap_Core_loadMotion__SWIG_4(PyObject *, PyObject *args) {
     }
     SWIG_Python_ConvertPtr(obj4, (void **)&arg5, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(5)) SWIG_fail;
-    (arg1)->loadMotion(arg2,arg3,arg4,arg5);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->loadMotion(arg2,arg3,arg4,arg5);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -6159,8 +8620,13 @@ static PyObject *_wrap_Core_loadMotion__SWIG_5(PyObject *, PyObject *args) {
         arg4 = static_cast<bool >(SWIG_As_bool(obj3)); 
         if (SWIG_arg_fail(4)) SWIG_fail;
     }
-    (arg1)->loadMotion(arg2,arg3,arg4);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->loadMotion(arg2,arg3,arg4);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -6185,8 +8651,13 @@ static PyObject *_wrap_Core_loadMotion__SWIG_6(PyObject *, PyObject *args) {
     }
     SWIG_Python_ConvertPtr(obj2, (void **)&arg3, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(3)) SWIG_fail;
-    (arg1)->loadMotion(arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->loadMotion(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -6441,8 +8912,13 @@ static PyObject *_wrap_Core_renameMotion(PyObject *, PyObject *args) {
     {
         arg3 = StringToTString(PyString_AsString(obj2));
     }
-    (arg1)->renameMotion(arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->renameMotion(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -6463,8 +8939,13 @@ static PyObject *_wrap_Core_unloadMotion(PyObject *, PyObject *args) {
     {
         arg2 = StringToTString(PyString_AsString(obj1));
     }
-    (arg1)->unloadMotion(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->unloadMotion(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -6486,8 +8967,13 @@ static PyObject *_wrap_Core_getMotion__SWIG_0(PyObject *, PyObject *args) {
     {
         arg2 = StringToTString(PyString_AsString(obj1));
     }
-    result = (Piavca::Motion *)(arg1)->getMotion(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->getMotion(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
     return resultobj;
     fail:
@@ -6510,8 +8996,13 @@ static PyObject *_wrap_Core_getMotionNames__SWIG_0(PyObject *, PyObject *args) {
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (arg1)->getMotionNames(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getMotionNames(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         std::vector<std::string > * resultptr;
         resultptr = new std::vector<std::string >(static_cast<std::vector<std::string > & >(result));
@@ -6532,8 +9023,13 @@ static PyObject *_wrap_Core_getMotionNames__SWIG_1(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Core_getMotionNames",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (arg1)->getMotionNames();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getMotionNames();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         std::vector<std::string > * resultptr;
         resultptr = new std::vector<std::string >(static_cast<std::vector<std::string > & >(result));
@@ -6602,8 +9098,13 @@ static PyObject *_wrap_Core_getNumberOfMotions(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Core_getNumberOfMotions",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (int)(arg1)->getNumberOfMotions();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (int)(arg1)->getNumberOfMotions();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_int(static_cast<int >(result)); 
     }
@@ -6622,8 +9123,13 @@ static PyObject *_wrap_Core_getAllmotions(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Core_getAllmotions",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (arg1)->getAllmotions();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getAllmotions();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         std::list<tstring > * resultptr;
         resultptr = new std::list<tstring >(static_cast<std::list<tstring > & >(result));
@@ -6650,8 +9156,13 @@ static PyObject *_wrap_Core_getMotion__SWIG_1(PyObject *, PyObject *args) {
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::Motion *)(arg1)->getMotion(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->getMotion(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
     return resultobj;
     fail:
@@ -6724,8 +9235,13 @@ static PyObject *_wrap_Core_getAvatar__SWIG_0(PyObject *, PyObject *args) {
     {
         arg2 = StringToTString(PyString_AsString(obj1));
     }
-    result = (Piavca::Avatar *)(arg1)->getAvatar(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Avatar *)(arg1)->getAvatar(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Avatar, 0);
     return resultobj;
     fail:
@@ -6742,8 +9258,13 @@ static PyObject *_wrap_Core_getAvatarNames(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Core_getAvatarNames",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (arg1)->getAvatarNames();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getAvatarNames();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         std::vector<tstring > * resultptr;
         resultptr = new std::vector<tstring >(static_cast<std::vector<tstring > & >(result));
@@ -6764,8 +9285,13 @@ static PyObject *_wrap_Core_numAvatars(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Core_numAvatars",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (int)(arg1)->numAvatars();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (int)(arg1)->numAvatars();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_int(static_cast<int >(result)); 
     }
@@ -6790,8 +9316,13 @@ static PyObject *_wrap_Core_getAvatar__SWIG_1(PyObject *, PyObject *args) {
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::Avatar *)(arg1)->getAvatar(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Avatar *)(arg1)->getAvatar(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Avatar, 0);
     return resultobj;
     fail:
@@ -6868,8 +9399,13 @@ static PyObject *_wrap_Core_renameAvatar(PyObject *, PyObject *args) {
     {
         arg3 = StringToTString(PyString_AsString(obj2));
     }
-    (arg1)->renameAvatar(arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->renameAvatar(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -6889,8 +9425,13 @@ static PyObject *_wrap_Core_removeAvatar(PyObject *, PyObject *args) {
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    (arg1)->removeAvatar(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->removeAvatar(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -6912,6 +9453,7 @@ static PyObject *_wrap_Core_initAvatar__SWIG_0(PyObject *, PyObject *args) {
     PyObject * obj3 = 0 ;
     PyObject * obj4 = 0 ;
     PyObject * obj5 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOOOOO:Core_initAvatar",&obj0,&obj1,&obj2,&obj3,&obj4,&obj5)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
@@ -6941,8 +9483,15 @@ static PyObject *_wrap_Core_initAvatar__SWIG_0(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(6)) SWIG_fail;
     }
-    (arg1)->initAvatar(arg2,arg3,arg4,(Piavca::Vec const &)*arg5,(Piavca::Quat const &)*arg6);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->initAvatar(arg2,arg3,arg4,(Piavca::Vec const &)*arg5,(Piavca::Quat const &)*arg6);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -6962,6 +9511,7 @@ static PyObject *_wrap_Core_initAvatar__SWIG_1(PyObject *, PyObject *args) {
     PyObject * obj2 = 0 ;
     PyObject * obj3 = 0 ;
     PyObject * obj4 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOOOO:Core_initAvatar",&obj0,&obj1,&obj2,&obj3,&obj4)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
@@ -6983,8 +9533,15 @@ static PyObject *_wrap_Core_initAvatar__SWIG_1(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(5)) SWIG_fail;
     }
-    (arg1)->initAvatar(arg2,arg3,arg4,(Piavca::Vec const &)*arg5);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->initAvatar(arg2,arg3,arg4,(Piavca::Vec const &)*arg5);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -7002,6 +9559,7 @@ static PyObject *_wrap_Core_initAvatar__SWIG_2(PyObject *, PyObject *args) {
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
     PyObject * obj3 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOOO:Core_initAvatar",&obj0,&obj1,&obj2,&obj3)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
@@ -7015,8 +9573,15 @@ static PyObject *_wrap_Core_initAvatar__SWIG_2(PyObject *, PyObject *args) {
         arg4 = static_cast<bool >(SWIG_As_bool(obj3)); 
         if (SWIG_arg_fail(4)) SWIG_fail;
     }
-    (arg1)->initAvatar(arg2,arg3,arg4);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->initAvatar(arg2,arg3,arg4);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -7032,6 +9597,7 @@ static PyObject *_wrap_Core_initAvatar__SWIG_3(PyObject *, PyObject *args) {
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:Core_initAvatar",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
@@ -7041,8 +9607,15 @@ static PyObject *_wrap_Core_initAvatar__SWIG_3(PyObject *, PyObject *args) {
     {
         arg3 = StringToTString(PyString_AsString(obj2));
     }
-    (arg1)->initAvatar(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->initAvatar(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -7237,8 +9810,13 @@ static PyObject *_wrap_Core_getObject__SWIG_0(PyObject *, PyObject *args) {
     {
         arg2 = StringToTString(PyString_AsString(obj1));
     }
-    result = (Piavca::Object *)(arg1)->getObject(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Object *)(arg1)->getObject(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Object, 0);
     return resultobj;
     fail:
@@ -7255,8 +9833,13 @@ static PyObject *_wrap_Core_numObjects(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Core_numObjects",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (int)(arg1)->numObjects();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (int)(arg1)->numObjects();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_int(static_cast<int >(result)); 
     }
@@ -7281,8 +9864,13 @@ static PyObject *_wrap_Core_getObject__SWIG_1(PyObject *, PyObject *args) {
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::Object *)(arg1)->getObject(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Object *)(arg1)->getObject(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Object, 0);
     return resultobj;
     fail:
@@ -7359,8 +9947,13 @@ static PyObject *_wrap_Core_renameObject(PyObject *, PyObject *args) {
     {
         arg3 = StringToTString(PyString_AsString(obj2));
     }
-    (arg1)->renameObject(arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->renameObject(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -7380,8 +9973,13 @@ static PyObject *_wrap_Core_removeObject(PyObject *, PyObject *args) {
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Object, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    (arg1)->removeObject(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->removeObject(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -7401,6 +9999,7 @@ static PyObject *_wrap_Core_initObject__SWIG_0(PyObject *, PyObject *args) {
     PyObject * obj2 = 0 ;
     PyObject * obj3 = 0 ;
     PyObject * obj4 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOOOO:Core_initObject",&obj0,&obj1,&obj2,&obj3,&obj4)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
@@ -7426,8 +10025,15 @@ static PyObject *_wrap_Core_initObject__SWIG_0(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(5)) SWIG_fail;
     }
-    (arg1)->initObject(arg2,arg3,(Piavca::Vec const &)*arg4,(Piavca::Quat const &)*arg5);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->initObject(arg2,arg3,(Piavca::Vec const &)*arg4,(Piavca::Quat const &)*arg5);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -7445,6 +10051,7 @@ static PyObject *_wrap_Core_initObject__SWIG_1(PyObject *, PyObject *args) {
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
     PyObject * obj3 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOOO:Core_initObject",&obj0,&obj1,&obj2,&obj3)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
@@ -7462,8 +10069,15 @@ static PyObject *_wrap_Core_initObject__SWIG_1(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(4)) SWIG_fail;
     }
-    (arg1)->initObject(arg2,arg3,(Piavca::Vec const &)*arg4);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->initObject(arg2,arg3,(Piavca::Vec const &)*arg4);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -7479,6 +10093,7 @@ static PyObject *_wrap_Core_initObject__SWIG_2(PyObject *, PyObject *args) {
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:Core_initObject",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
@@ -7488,8 +10103,15 @@ static PyObject *_wrap_Core_initObject__SWIG_2(PyObject *, PyObject *args) {
     {
         arg3 = StringToTString(PyString_AsString(obj2));
     }
-    (arg1)->initObject(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->initObject(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -7646,6 +10268,7 @@ static PyObject *_wrap_Core_initMotion__SWIG_0(PyObject *, PyObject *args) {
     PyObject * obj3 = 0 ;
     PyObject * obj4 = 0 ;
     PyObject * obj5 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOOOOO:Core_initMotion",&obj0,&obj1,&obj2,&obj3,&obj4,&obj5)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
@@ -7665,8 +10288,15 @@ static PyObject *_wrap_Core_initMotion__SWIG_0(PyObject *, PyObject *args) {
     }
     SWIG_Python_ConvertPtr(obj5, (void **)&arg6, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(6)) SWIG_fail;
-    (arg1)->initMotion(arg2,arg3,arg4,arg5,arg6);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->initMotion(arg2,arg3,arg4,arg5,arg6);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -7686,6 +10316,7 @@ static PyObject *_wrap_Core_initMotion__SWIG_1(PyObject *, PyObject *args) {
     PyObject * obj2 = 0 ;
     PyObject * obj3 = 0 ;
     PyObject * obj4 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOOOO:Core_initMotion",&obj0,&obj1,&obj2,&obj3,&obj4)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
@@ -7703,8 +10334,15 @@ static PyObject *_wrap_Core_initMotion__SWIG_1(PyObject *, PyObject *args) {
         arg5 = static_cast<int >(SWIG_As_int(obj4)); 
         if (SWIG_arg_fail(5)) SWIG_fail;
     }
-    (arg1)->initMotion(arg2,arg3,arg4,arg5);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->initMotion(arg2,arg3,arg4,arg5);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -7722,6 +10360,7 @@ static PyObject *_wrap_Core_initMotion__SWIG_2(PyObject *, PyObject *args) {
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
     PyObject * obj3 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOOO:Core_initMotion",&obj0,&obj1,&obj2,&obj3)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
@@ -7735,8 +10374,15 @@ static PyObject *_wrap_Core_initMotion__SWIG_2(PyObject *, PyObject *args) {
         arg4 = static_cast<bool >(SWIG_As_bool(obj3)); 
         if (SWIG_arg_fail(4)) SWIG_fail;
     }
-    (arg1)->initMotion(arg2,arg3,arg4);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->initMotion(arg2,arg3,arg4);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -7752,6 +10398,7 @@ static PyObject *_wrap_Core_initMotion__SWIG_3(PyObject *, PyObject *args) {
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:Core_initMotion",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
@@ -7761,8 +10408,15 @@ static PyObject *_wrap_Core_initMotion__SWIG_3(PyObject *, PyObject *args) {
     {
         arg3 = StringToTString(PyString_AsString(obj2));
     }
-    (arg1)->initMotion(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->initMotion(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -7776,14 +10430,22 @@ static PyObject *_wrap_Core_initMotion__SWIG_4(PyObject *, PyObject *args) {
     Piavca::TrackMotion *arg2 = (Piavca::TrackMotion *) 0 ;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:Core_initMotion",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__TrackMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    (arg1)->initMotion(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->initMotion(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -7987,8 +10649,13 @@ static PyObject *_wrap_Core_setDir(PyObject *, PyObject *args) {
     {
         arg2 = StringToTString(PyString_AsString(obj1));
     }
-    (arg1)->setDir(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setDir(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -8005,8 +10672,13 @@ static PyObject *_wrap_Core_getTime(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Core_getTime",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (float)(arg1)->getTime();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)(arg1)->getTime();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -8021,12 +10693,20 @@ static PyObject *_wrap_Core_getSystemTime(PyObject *, PyObject *args) {
     Piavca::Core *arg1 = (Piavca::Core *) 0 ;
     float result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:Core_getSystemTime",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (float)(arg1)->getSystemTime();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)(arg1)->getSystemTime();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -8044,8 +10724,13 @@ static PyObject *_wrap_Core_setAutoTimeOff(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Core_setAutoTimeOff",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->setAutoTimeOff();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setAutoTimeOff();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -8061,8 +10746,13 @@ static PyObject *_wrap_Core_setAutoTimeOn(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Core_setAutoTimeOn",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->setAutoTimeOn();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setAutoTimeOn();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -8084,8 +10774,13 @@ static PyObject *_wrap_Core_setCurrentTime(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setCurrentTime(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setCurrentTime(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -8106,8 +10801,13 @@ static PyObject *_wrap_Core_addError(PyObject *, PyObject *args) {
     {
         arg2 = StringToTString(PyString_AsString(obj1));
     }
-    (arg1)->addError(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->addError(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -8124,11 +10824,16 @@ static PyObject *_wrap_Core_error(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Core_error",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    {
-        tostringstream &_result_ref = (arg1)->error();
-        result = (tostringstream *) &_result_ref;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        {
+            tostringstream &_result_ref = (arg1)->error();
+            result = (tostringstream *) &_result_ref;
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
     }
-    
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_tostringstream, 0);
     return resultobj;
     fail:
@@ -8144,8 +10849,13 @@ static PyObject *_wrap_Core_clearErrors(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Core_clearErrors",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->clearErrors();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->clearErrors();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -8162,8 +10872,13 @@ static PyObject *_wrap_Core_getErrors(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Core_getErrors",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (arg1)->getErrors();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getErrors();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = PyString_FromString(TStringToString(result).c_str());
     }
@@ -8182,8 +10897,13 @@ static PyObject *_wrap_Core_errorsPresent(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Core_errorsPresent",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (bool)(arg1)->errorsPresent();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)(arg1)->errorsPresent();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -8206,8 +10926,13 @@ static PyObject *_wrap_Core_addWarning(PyObject *, PyObject *args) {
     {
         arg2 = StringToTString(PyString_AsString(obj1));
     }
-    (arg1)->addWarning(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->addWarning(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -8224,11 +10949,16 @@ static PyObject *_wrap_Core_Warning(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Core_Warning",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    {
-        tostringstream &_result_ref = (arg1)->Warning();
-        result = (tostringstream *) &_result_ref;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        {
+            tostringstream &_result_ref = (arg1)->Warning();
+            result = (tostringstream *) &_result_ref;
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
     }
-    
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_tostringstream, 0);
     return resultobj;
     fail:
@@ -8244,8 +10974,13 @@ static PyObject *_wrap_Core_clearWarnings(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Core_clearWarnings",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->clearWarnings();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->clearWarnings();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -8262,8 +10997,13 @@ static PyObject *_wrap_Core_getWarnings(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Core_getWarnings",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (arg1)->getWarnings();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getWarnings();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = PyString_FromString(TStringToString(result).c_str());
     }
@@ -8282,8 +11022,13 @@ static PyObject *_wrap_Core_warningsPresent(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Core_warningsPresent",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (bool)(arg1)->warningsPresent();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)(arg1)->warningsPresent();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -8302,8 +11047,13 @@ static PyObject *_wrap_Core_exceptionsOn(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Core_exceptionsOn",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (bool)(arg1)->exceptionsOn();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)(arg1)->exceptionsOn();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -8321,8 +11071,13 @@ static PyObject *_wrap_Core_setExceptionsOn(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Core_setExceptionsOn",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->setExceptionsOn();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setExceptionsOn();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -8338,8 +11093,13 @@ static PyObject *_wrap_Core_setExceptionsOff(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Core_setExceptionsOff",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->setExceptionsOff();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setExceptionsOff();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -8356,11 +11116,16 @@ static PyObject *_wrap_Core_log(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Core_log",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    {
-        std::ostream &_result_ref = (arg1)->log();
-        result = (std::ostream *) &_result_ref;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        {
+            std::ostream &_result_ref = (arg1)->log();
+            result = (std::ostream *) &_result_ref;
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
     }
-    
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_std__ostream, 0);
     return resultobj;
     fail:
@@ -8382,8 +11147,13 @@ static PyObject *_wrap_Core_addProfilePoint(PyObject *, PyObject *args) {
     {
         arg2 = StringToTString(PyString_AsString(obj1));
     }
-    result = (int)(arg1)->addProfilePoint(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (int)(arg1)->addProfilePoint(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_int(static_cast<int >(result)); 
     }
@@ -8407,8 +11177,13 @@ static PyObject *_wrap_Core_profilePointStart(PyObject *, PyObject *args) {
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->profilePointStart(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->profilePointStart(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -8430,8 +11205,13 @@ static PyObject *_wrap_Core_profilePointEnd(PyObject *, PyObject *args) {
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->profilePointEnd(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->profilePointEnd(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -8447,8 +11227,13 @@ static PyObject *_wrap_Core_printProfileData(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Core_printProfileData",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->printProfileData();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->printProfileData();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -8478,8 +11263,13 @@ static PyObject *_wrap_StringToWString(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = StringToWString((std::string const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = StringToWString((std::string const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         std::wstring * resultptr;
         resultptr = new std::wstring(static_cast<std::wstring & >(result));
@@ -8506,13 +11296,128 @@ static PyObject *_wrap_WStringToString(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = WStringToString((std::wstring const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = WStringToString((std::wstring const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = PyString_FromString((&result)->c_str());
     }
     return resultobj;
     fail:
+    return NULL;
+}
+
+
+static PyObject *_wrap_new_Motion__SWIG_0(PyObject *, PyObject *args) {
+    PyObject *resultobj = NULL;
+    PyObject *arg1 = (PyObject *) 0 ;
+    Piavca::Motion *result;
+    PyObject * obj0 = 0 ;
+    
+    if(!PyArg_ParseTuple(args,(char *)"O:new_Motion",&obj0)) goto fail;
+    arg1 = obj0;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        if ( arg1 != Py_None ) {
+            /* subclassed */
+            result = (Piavca::Motion *)new SwigDirector_Motion(arg1);
+            
+        } else {
+            PyErr_SetString(PyExc_RuntimeError,    "accessing abstract class or protected constructor"); 
+            SWIG_fail;
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 1);
+    result->Reference();
+    return resultobj;
+    fail:
+    return NULL;
+}
+
+
+static PyObject *_wrap_new_Motion__SWIG_1(PyObject *, PyObject *args) {
+    PyObject *resultobj = NULL;
+    PyObject *arg1 = (PyObject *) 0 ;
+    Piavca::Motion *arg2 = 0 ;
+    Piavca::Motion *result;
+    PyObject * obj0 = 0 ;
+    PyObject * obj1 = 0 ;
+    
+    if(!PyArg_ParseTuple(args,(char *)"OO:new_Motion",&obj0,&obj1)) goto fail;
+    arg1 = obj0;
+    {
+        SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
+        if (SWIG_arg_fail(2)) SWIG_fail;
+        if (arg2 == NULL) {
+            SWIG_null_ref("Piavca::Motion");
+        }
+        if (SWIG_arg_fail(2)) SWIG_fail;
+    }
+    try {
+        Swig::UnknownExceptionHandler dh;
+        if ( arg1 != Py_None ) {
+            /* subclassed */
+            result = (Piavca::Motion *)new SwigDirector_Motion(arg1,(Piavca::Motion const &)*arg2);
+            
+        } else {
+            PyErr_SetString(PyExc_RuntimeError,    "accessing abstract class or protected constructor"); 
+            SWIG_fail;
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 1);
+    result->Reference();
+    return resultobj;
+    fail:
+    return NULL;
+}
+
+
+static PyObject *_wrap_new_Motion(PyObject *self, PyObject *args) {
+    int argc;
+    PyObject *argv[3];
+    int ii;
+    
+    argc = PyObject_Length(args);
+    for (ii = 0; (ii < argc) && (ii < 2); ii++) {
+        argv[ii] = PyTuple_GetItem(args,ii);
+    }
+    if (argc == 1) {
+        int _v;
+        _v = (argv[0] != 0);
+        if (_v) {
+            return _wrap_new_Motion__SWIG_0(self,args);
+        }
+    }
+    if (argc == 2) {
+        int _v;
+        _v = (argv[0] != 0);
+        if (_v) {
+            {
+                void *ptr = 0;
+                if (SWIG_ConvertPtr(argv[1], &ptr, SWIGTYPE_p_Piavca__Motion, 0) == -1) {
+                    _v = 0;
+                    PyErr_Clear();
+                } else {
+                    _v = (ptr != 0);
+                }
+            }
+            if (_v) {
+                return _wrap_new_Motion__SWIG_1(self,args);
+            }
+        }
+    }
+    
+    PyErr_SetString(PyExc_NotImplementedError,"No matching function for overloaded 'new_Motion'");
     return NULL;
 }
 
@@ -8525,8 +11430,13 @@ static PyObject *_wrap_delete_Motion(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_Motion",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    arg1->Dispose();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        arg1->Dispose();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -8539,13 +11449,28 @@ static PyObject *_wrap_Motion_clone(PyObject *, PyObject *args) {
     Piavca::Motion *arg1 = (Piavca::Motion *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:Motion_clone",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)(arg1)->clone();
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->clone();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -8556,12 +11481,20 @@ static PyObject *_wrap_Motion_printInfo(PyObject *, PyObject *args) {
     PyObject *resultobj = NULL;
     Piavca::Motion *arg1 = (Piavca::Motion *) 0 ;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:Motion_printInfo",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->printInfo();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->printInfo();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -8575,14 +11508,22 @@ static PyObject *_wrap_Motion_load(PyObject *, PyObject *args) {
     Piavca::Avatar *arg2 = (Piavca::Avatar *) 0 ;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:Motion_load",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    (arg1)->load(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->load(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -8594,12 +11535,20 @@ static PyObject *_wrap_Motion_unload(PyObject *, PyObject *args) {
     PyObject *resultobj = NULL;
     Piavca::Motion *arg1 = (Piavca::Motion *) 0 ;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:Motion_unload",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->unload();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->unload();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -8612,12 +11561,20 @@ static PyObject *_wrap_Motion_loaded(PyObject *, PyObject *args) {
     Piavca::Motion *arg1 = (Piavca::Motion *) 0 ;
     bool result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:Motion_loaded",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (bool)(arg1)->loaded();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)(arg1)->loaded();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -8633,6 +11590,7 @@ static PyObject *_wrap_Motion_setStartTime(PyObject *, PyObject *args) {
     float arg2 ;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:Motion_setStartTime",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
@@ -8641,8 +11599,15 @@ static PyObject *_wrap_Motion_setStartTime(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setStartTime(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setStartTime(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -8659,8 +11624,13 @@ static PyObject *_wrap_Motion_getStartTime(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Motion_getStartTime",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (float)(arg1)->getStartTime();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)(arg1)->getStartTime();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -8679,8 +11649,13 @@ static PyObject *_wrap_Motion_getEndTime(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Motion_getEndTime",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (float)(arg1)->getEndTime();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)(arg1)->getEndTime();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -8694,12 +11669,20 @@ static PyObject *_wrap_Motion_reset(PyObject *, PyObject *args) {
     PyObject *resultobj = NULL;
     Piavca::Motion *arg1 = (Piavca::Motion *) 0 ;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:Motion_reset",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->reset();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->reset();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -8715,8 +11698,13 @@ static PyObject *_wrap_Motion_Reference(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Motion_Reference",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->Reference();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->Reference();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -8732,8 +11720,13 @@ static PyObject *_wrap_Motion_Dispose(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Motion_Dispose",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->Dispose();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->Dispose();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -8749,8 +11742,13 @@ static PyObject *_wrap_Motion_makeTemp(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Motion_makeTemp",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->makeTemp();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->makeTemp();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -8771,8 +11769,13 @@ static PyObject *_wrap_Motion_setName(PyObject *, PyObject *args) {
     {
         arg2 = PyString_AsString(obj1);
     }
-    (arg1)->setName(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setName(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -8789,8 +11792,13 @@ static PyObject *_wrap_Motion_getName(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Motion_getName",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (arg1)->getName();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getName();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = PyString_FromString((&result)->c_str());
     }
@@ -8807,6 +11815,8 @@ static PyObject *_wrap_Motion_findSub(PyObject *, PyObject *args) {
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:Motion_findSub",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
@@ -8814,9 +11824,22 @@ static PyObject *_wrap_Motion_findSub(PyObject *, PyObject *args) {
     {
         arg2 = PyString_AsString(obj1);
     }
-    result = (Piavca::Motion *)(arg1)->findSub(arg2);
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->findSub(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -8830,6 +11853,8 @@ static PyObject *_wrap_Motion_findSubByType(PyObject *, PyObject *args) {
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:Motion_findSubByType",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
@@ -8842,9 +11867,22 @@ static PyObject *_wrap_Motion_findSubByType(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::Motion *)(arg1)->findSubByType((std::type_info const &)*arg2);
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->findSubByType((std::type_info const &)*arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -8864,8 +11902,13 @@ static PyObject *_wrap_Motion_saveMotion(PyObject *, PyObject *args) {
     {
         arg2 = PyString_AsString(obj1);
     }
-    (arg1)->saveMotion(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->saveMotion(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -8878,12 +11921,20 @@ static PyObject *_wrap_Motion_getMotionLength(PyObject *, PyObject *args) {
     Piavca::Motion *arg1 = (Piavca::Motion *) 0 ;
     float result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:Motion_getMotionLength",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (float)((Piavca::Motion const *)arg1)->getMotionLength();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)((Piavca::Motion const *)arg1)->getMotionLength();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -8898,12 +11949,20 @@ static PyObject *_wrap_Motion_isFacial(PyObject *, PyObject *args) {
     Piavca::Motion *arg1 = (Piavca::Motion *) 0 ;
     bool result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:Motion_isFacial",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (bool)(arg1)->isFacial();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)(arg1)->isFacial();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -8918,12 +11977,20 @@ static PyObject *_wrap_Motion_isRandomAccess(PyObject *, PyObject *args) {
     Piavca::Motion *arg1 = (Piavca::Motion *) 0 ;
     bool result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:Motion_isRandomAccess",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (bool)(arg1)->isRandomAccess();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)(arg1)->isRandomAccess();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -8942,8 +12009,13 @@ static PyObject *_wrap_Motion_begin(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Motion_begin",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (int)((Piavca::Motion const *)arg1)->begin();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (int)((Piavca::Motion const *)arg1)->begin();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_int(static_cast<int >(result)); 
     }
@@ -8962,8 +12034,13 @@ static PyObject *_wrap_Motion_end(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Motion_end",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (int)((Piavca::Motion const *)arg1)->end();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (int)((Piavca::Motion const *)arg1)->end();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_int(static_cast<int >(result)); 
     }
@@ -8992,8 +12069,13 @@ static PyObject *_wrap_Motion_next(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (int)((Piavca::Motion const *)arg1)->next(*arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (int)((Piavca::Motion const *)arg1)->next(*arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_int(static_cast<int >(result)); 
     }
@@ -9010,6 +12092,7 @@ static PyObject *_wrap_Motion_isNull(PyObject *, PyObject *args) {
     bool result;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:Motion_isNull",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
@@ -9018,8 +12101,15 @@ static PyObject *_wrap_Motion_isNull(PyObject *, PyObject *args) {
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (bool)((Piavca::Motion const *)arg1)->isNull(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)((Piavca::Motion const *)arg1)->isNull(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -9036,6 +12126,7 @@ static PyObject *_wrap_Motion_getTrackType(PyObject *, PyObject *args) {
     Piavca::trackType result;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:Motion_getTrackType",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
@@ -9044,8 +12135,15 @@ static PyObject *_wrap_Motion_getTrackType(PyObject *, PyObject *args) {
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::trackType)((Piavca::Motion const *)arg1)->getTrackType(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::trackType)((Piavca::Motion const *)arg1)->getTrackType(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_From_int((result));
     return resultobj;
     fail:
@@ -9061,8 +12159,13 @@ static PyObject *_wrap_Motion_pause(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Motion_pause",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->pause();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->pause();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -9078,8 +12181,13 @@ static PyObject *_wrap_Motion_unpause(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Motion_unpause",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->unpause();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->unpause();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -9108,8 +12216,13 @@ static PyObject *_wrap_Motion_getFloatValueAtTime(PyObject *, PyObject *args) {
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (float)(arg1)->getFloatValueAtTime(arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)(arg1)->getFloatValueAtTime(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -9140,8 +12253,13 @@ static PyObject *_wrap_Motion_getVecValueAtTime(PyObject *, PyObject *args) {
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getVecValueAtTime(arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getVecValueAtTime(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec & >(result));
@@ -9174,8 +12292,13 @@ static PyObject *_wrap_Motion_getQuatValueAtTime(PyObject *, PyObject *args) {
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getQuatValueAtTime(arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getQuatValueAtTime(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Quat * resultptr;
         resultptr = new Piavca::Quat(static_cast<Piavca::Quat & >(result));
@@ -9196,6 +12319,7 @@ static PyObject *_wrap_Motion_getFloatValueAtTimeInternal(PyObject *, PyObject *
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:Motion_getFloatValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
@@ -9208,8 +12332,15 @@ static PyObject *_wrap_Motion_getFloatValueAtTimeInternal(PyObject *, PyObject *
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -9228,6 +12359,7 @@ static PyObject *_wrap_Motion_getVecValueAtTimeInternal(PyObject *, PyObject *ar
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:Motion_getVecValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
@@ -9240,8 +12372,15 @@ static PyObject *_wrap_Motion_getVecValueAtTimeInternal(PyObject *, PyObject *ar
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec & >(result));
@@ -9262,6 +12401,7 @@ static PyObject *_wrap_Motion_getQuatValueAtTimeInternal(PyObject *, PyObject *a
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:Motion_getQuatValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
@@ -9274,13 +12414,45 @@ static PyObject *_wrap_Motion_getQuatValueAtTimeInternal(PyObject *, PyObject *a
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Quat * resultptr;
         resultptr = new Piavca::Quat(static_cast<Piavca::Quat & >(result));
         resultobj = SWIG_NewPointerObj((void *)(resultptr), SWIGTYPE_p_Piavca__Quat, 1);
     }
+    return resultobj;
+    fail:
+    return NULL;
+}
+
+
+static PyObject *_wrap_disown_Motion(PyObject *, PyObject *args) {
+    PyObject *resultobj = NULL;
+    Piavca::Motion *arg1 = (Piavca::Motion *) 0 ;
+    PyObject * obj0 = 0 ;
+    
+    if(!PyArg_ParseTuple(args,(char *)"O:disown_Motion",&obj0)) goto fail;
+    SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
+    if (SWIG_arg_fail(1)) SWIG_fail;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        {
+            Swig::Director *director = dynamic_cast<Swig::Director *>(arg1);
+            if (director) director->swig_disown();
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
     return NULL;
@@ -9314,8 +12486,13 @@ static PyObject *_wrap_new_TrackMotion__SWIG_0(PyObject *, PyObject *args) {
     }
     SWIG_Python_ConvertPtr(obj2, (void **)&arg3, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(3)) SWIG_fail;
-    result = (Piavca::TrackMotion *)new Piavca::TrackMotion(arg1,arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::TrackMotion *)new Piavca::TrackMotion(arg1,arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__TrackMotion, 1);
     result->Reference();
     return resultobj;
@@ -9340,8 +12517,13 @@ static PyObject *_wrap_new_TrackMotion__SWIG_1(PyObject *, PyObject *args) {
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::TrackMotion *)new Piavca::TrackMotion(arg1,arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::TrackMotion *)new Piavca::TrackMotion(arg1,arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__TrackMotion, 1);
     result->Reference();
     return resultobj;
@@ -9360,8 +12542,13 @@ static PyObject *_wrap_new_TrackMotion__SWIG_2(PyObject *, PyObject *args) {
     {
         arg1 = PyString_AsString(obj0);
     }
-    result = (Piavca::TrackMotion *)new Piavca::TrackMotion(arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::TrackMotion *)new Piavca::TrackMotion(arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__TrackMotion, 1);
     result->Reference();
     return resultobj;
@@ -9381,8 +12568,13 @@ static PyObject *_wrap_new_TrackMotion__SWIG_3(PyObject *, PyObject *args) {
         arg1 = static_cast<bool >(SWIG_As_bool(obj0)); 
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::TrackMotion *)new Piavca::TrackMotion(arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::TrackMotion *)new Piavca::TrackMotion(arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__TrackMotion, 1);
     result->Reference();
     return resultobj;
@@ -9396,8 +12588,13 @@ static PyObject *_wrap_new_TrackMotion__SWIG_4(PyObject *, PyObject *args) {
     Piavca::TrackMotion *result;
     
     if(!PyArg_ParseTuple(args,(char *)":new_TrackMotion")) goto fail;
-    result = (Piavca::TrackMotion *)new Piavca::TrackMotion();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::TrackMotion *)new Piavca::TrackMotion();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__TrackMotion, 1);
     result->Reference();
     return resultobj;
@@ -9415,8 +12612,13 @@ static PyObject *_wrap_new_TrackMotion__SWIG_5(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:new_TrackMotion",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MotionImp, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::TrackMotion *)new Piavca::TrackMotion(arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::TrackMotion *)new Piavca::TrackMotion(arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__TrackMotion, 1);
     result->Reference();
     return resultobj;
@@ -9440,8 +12642,13 @@ static PyObject *_wrap_new_TrackMotion__SWIG_6(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::TrackMotion *)new Piavca::TrackMotion((Piavca::TrackMotion const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::TrackMotion *)new Piavca::TrackMotion((Piavca::TrackMotion const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__TrackMotion, 1);
     result->Reference();
     return resultobj;
@@ -9465,8 +12672,13 @@ static PyObject *_wrap_new_TrackMotion__SWIG_7(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::TrackMotion *)new Piavca::TrackMotion(*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::TrackMotion *)new Piavca::TrackMotion(*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__TrackMotion, 1);
     result->Reference();
     return resultobj;
@@ -9591,8 +12803,13 @@ static PyObject *_wrap_delete_TrackMotion(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_TrackMotion",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TrackMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    arg1->Dispose();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        arg1->Dispose();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -9605,13 +12822,28 @@ static PyObject *_wrap_TrackMotion_clone(PyObject *, PyObject *args) {
     Piavca::TrackMotion *arg1 = (Piavca::TrackMotion *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:TrackMotion_clone",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TrackMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)(arg1)->clone();
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->clone();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -9623,12 +12855,20 @@ static PyObject *_wrap_TrackMotion_getMotionLength(PyObject *, PyObject *args) {
     Piavca::TrackMotion *arg1 = (Piavca::TrackMotion *) 0 ;
     float result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:TrackMotion_getMotionLength",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TrackMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (float)((Piavca::TrackMotion const *)arg1)->getMotionLength();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)((Piavca::TrackMotion const *)arg1)->getMotionLength();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -9643,12 +12883,20 @@ static PyObject *_wrap_TrackMotion_isFacial(PyObject *, PyObject *args) {
     Piavca::TrackMotion *arg1 = (Piavca::TrackMotion *) 0 ;
     bool result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:TrackMotion_isFacial",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TrackMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (bool)(arg1)->isFacial();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)(arg1)->isFacial();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -9663,12 +12911,20 @@ static PyObject *_wrap_TrackMotion_isRandomAccess(PyObject *, PyObject *args) {
     Piavca::TrackMotion *arg1 = (Piavca::TrackMotion *) 0 ;
     bool result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:TrackMotion_isRandomAccess",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TrackMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (bool)(arg1)->isRandomAccess();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)(arg1)->isRandomAccess();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -9685,6 +12941,7 @@ static PyObject *_wrap_TrackMotion_isNull(PyObject *, PyObject *args) {
     bool result;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:TrackMotion_isNull",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TrackMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -9693,8 +12950,15 @@ static PyObject *_wrap_TrackMotion_isNull(PyObject *, PyObject *args) {
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (bool)((Piavca::TrackMotion const *)arg1)->isNull(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)((Piavca::TrackMotion const *)arg1)->isNull(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -9711,6 +12975,7 @@ static PyObject *_wrap_TrackMotion_getTrackType(PyObject *, PyObject *args) {
     Piavca::trackType result;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:TrackMotion_getTrackType",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TrackMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -9719,8 +12984,15 @@ static PyObject *_wrap_TrackMotion_getTrackType(PyObject *, PyObject *args) {
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::trackType)((Piavca::TrackMotion const *)arg1)->getTrackType(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::trackType)((Piavca::TrackMotion const *)arg1)->getTrackType(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_From_int((result));
     return resultobj;
     fail:
@@ -9748,8 +13020,13 @@ static PyObject *_wrap_TrackMotion_addFloatTrack(PyObject *, PyObject *args) {
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    (arg1)->addFloatTrack(arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->addFloatTrack(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -9781,8 +13058,13 @@ static PyObject *_wrap_TrackMotion_addVecTrack(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    (arg1)->addVecTrack(arg2,(Piavca::Vec const &)*arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->addVecTrack(arg2,(Piavca::Vec const &)*arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -9814,8 +13096,13 @@ static PyObject *_wrap_TrackMotion_addQuatTrack(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    (arg1)->addQuatTrack(arg2,(Piavca::Quat const &)*arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->addQuatTrack(arg2,(Piavca::Quat const &)*arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -9849,8 +13136,13 @@ static PyObject *_wrap_TrackMotion_setFloatKeyframe__SWIG_0(PyObject *, PyObject
         arg4 = static_cast<float >(SWIG_As_float(obj3)); 
         if (SWIG_arg_fail(4)) SWIG_fail;
     }
-    (arg1)->setFloatKeyframe(arg2,arg3,arg4);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setFloatKeyframe(arg2,arg3,arg4);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -9890,8 +13182,13 @@ static PyObject *_wrap_TrackMotion_setFloatKeyframe__SWIG_1(PyObject *, PyObject
         arg5 = static_cast<float >(SWIG_As_float(obj4)); 
         if (SWIG_arg_fail(5)) SWIG_fail;
     }
-    (arg1)->setFloatKeyframe(arg2,arg3,arg4,arg5);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setFloatKeyframe(arg2,arg3,arg4,arg5);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -9997,8 +13294,13 @@ static PyObject *_wrap_TrackMotion_setVecKeyframe__SWIG_0(PyObject *, PyObject *
         if (SWIG_arg_fail(4)) SWIG_fail;
         arg4 = *argp;
     }
-    (arg1)->setVecKeyframe(arg2,arg3,arg4);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setVecKeyframe(arg2,arg3,arg4);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -10050,8 +13352,13 @@ static PyObject *_wrap_TrackMotion_setVecKeyframe__SWIG_1(PyObject *, PyObject *
         if (SWIG_arg_fail(5)) SWIG_fail;
         arg5 = *argp;
     }
-    (arg1)->setVecKeyframe(arg2,arg3,arg4,arg5);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setVecKeyframe(arg2,arg3,arg4,arg5);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -10181,8 +13488,13 @@ static PyObject *_wrap_TrackMotion_setQuatKeyframe__SWIG_0(PyObject *, PyObject 
         if (SWIG_arg_fail(4)) SWIG_fail;
         arg4 = *argp;
     }
-    (arg1)->setQuatKeyframe(arg2,arg3,arg4);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setQuatKeyframe(arg2,arg3,arg4);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -10234,8 +13546,13 @@ static PyObject *_wrap_TrackMotion_setQuatKeyframe__SWIG_1(PyObject *, PyObject 
         if (SWIG_arg_fail(5)) SWIG_fail;
         arg5 = *argp;
     }
-    (arg1)->setQuatKeyframe(arg2,arg3,arg4,arg5);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setQuatKeyframe(arg2,arg3,arg4,arg5);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -10348,8 +13665,13 @@ static PyObject *_wrap_TrackMotion_getNumKeyframes(PyObject *, PyObject *args) {
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (int)(arg1)->getNumKeyframes(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (int)(arg1)->getNumKeyframes(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_int(static_cast<int >(result)); 
     }
@@ -10380,8 +13702,13 @@ static PyObject *_wrap_TrackMotion_getKeyframeTime(PyObject *, PyObject *args) {
         arg3 = static_cast<int >(SWIG_As_int(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (float)(arg1)->getKeyframeTime(arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)(arg1)->getKeyframeTime(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -10400,6 +13727,7 @@ static PyObject *_wrap_TrackMotion_getFloatValueAtTimeInternal(PyObject *, PyObj
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:TrackMotion_getFloatValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TrackMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -10412,8 +13740,15 @@ static PyObject *_wrap_TrackMotion_getFloatValueAtTimeInternal(PyObject *, PyObj
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -10432,6 +13767,7 @@ static PyObject *_wrap_TrackMotion_getVecValueAtTimeInternal(PyObject *, PyObjec
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:TrackMotion_getVecValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TrackMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -10444,8 +13780,15 @@ static PyObject *_wrap_TrackMotion_getVecValueAtTimeInternal(PyObject *, PyObjec
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec & >(result));
@@ -10466,6 +13809,7 @@ static PyObject *_wrap_TrackMotion_getQuatValueAtTimeInternal(PyObject *, PyObje
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:TrackMotion_getQuatValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TrackMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -10478,8 +13822,15 @@ static PyObject *_wrap_TrackMotion_getQuatValueAtTimeInternal(PyObject *, PyObje
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Quat * resultptr;
         resultptr = new Piavca::Quat(static_cast<Piavca::Quat & >(result));
@@ -10499,8 +13850,13 @@ static PyObject *_wrap_TrackMotion_deleteAllTracks(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:TrackMotion_deleteAllTracks",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TrackMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->deleteAllTracks();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->deleteAllTracks();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -10528,8 +13884,13 @@ static PyObject *_wrap_TrackMotion_clearTrack__SWIG_0(PyObject *, PyObject *args
         arg3 = static_cast<bool >(SWIG_As_bool(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    (arg1)->clearTrack(arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->clearTrack(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -10551,8 +13912,13 @@ static PyObject *_wrap_TrackMotion_clearTrack__SWIG_1(PyObject *, PyObject *args
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->clearTrack(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->clearTrack(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -10628,8 +13994,13 @@ static PyObject *_wrap_TrackMotion_clearAllTracks__SWIG_0(PyObject *, PyObject *
         arg2 = static_cast<bool >(SWIG_As_bool(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->clearAllTracks(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->clearAllTracks(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -10645,8 +14016,13 @@ static PyObject *_wrap_TrackMotion_clearAllTracks__SWIG_1(PyObject *, PyObject *
     if(!PyArg_ParseTuple(args,(char *)"O:TrackMotion_clearAllTracks",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TrackMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->clearAllTracks();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->clearAllTracks();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -10724,8 +14100,13 @@ static PyObject *_wrap_copyMotionPosture(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::TrackMotion *)Piavca::copyMotionPosture(arg1,arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::TrackMotion *)Piavca::copyMotionPosture(arg1,arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__TrackMotion, 0);
     return resultobj;
     fail:
@@ -10779,8 +14160,13 @@ static PyObject *_wrap_new_Avatar__SWIG_0(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(5)) SWIG_fail;
     }
-    result = (Piavca::Avatar *)new Piavca::Avatar(arg1,arg2,(Piavca::Vec const &)*arg3,(Piavca::Quat const &)*arg4,(Piavca::Vec const &)*arg5);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Avatar *)new Piavca::Avatar(arg1,arg2,(Piavca::Vec const &)*arg3,(Piavca::Quat const &)*arg4,(Piavca::Vec const &)*arg5);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Avatar, 1);
     return resultobj;
     fail:
@@ -10824,8 +14210,13 @@ static PyObject *_wrap_new_Avatar__SWIG_1(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(4)) SWIG_fail;
     }
-    result = (Piavca::Avatar *)new Piavca::Avatar(arg1,arg2,(Piavca::Vec const &)*arg3,(Piavca::Quat const &)*arg4);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Avatar *)new Piavca::Avatar(arg1,arg2,(Piavca::Vec const &)*arg3,(Piavca::Quat const &)*arg4);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Avatar, 1);
     return resultobj;
     fail:
@@ -10859,8 +14250,13 @@ static PyObject *_wrap_new_Avatar__SWIG_2(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (Piavca::Avatar *)new Piavca::Avatar(arg1,arg2,(Piavca::Vec const &)*arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Avatar *)new Piavca::Avatar(arg1,arg2,(Piavca::Vec const &)*arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Avatar, 1);
     return resultobj;
     fail:
@@ -10884,8 +14280,13 @@ static PyObject *_wrap_new_Avatar__SWIG_3(PyObject *, PyObject *args) {
         arg2 = static_cast<bool >(SWIG_As_bool(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::Avatar *)new Piavca::Avatar(arg1,arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Avatar *)new Piavca::Avatar(arg1,arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Avatar, 1);
     return resultobj;
     fail:
@@ -10903,8 +14304,13 @@ static PyObject *_wrap_new_Avatar__SWIG_4(PyObject *, PyObject *args) {
     {
         arg1 = PyString_AsString(obj0);
     }
-    result = (Piavca::Avatar *)new Piavca::Avatar(arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Avatar *)new Piavca::Avatar(arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Avatar, 1);
     return resultobj;
     fail:
@@ -11049,8 +14455,13 @@ static PyObject *_wrap_Avatar_isValid(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Avatar_isValid",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (bool)(arg1)->isValid();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)(arg1)->isValid();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -11068,8 +14479,13 @@ static PyObject *_wrap_Avatar_activate(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Avatar_activate",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->activate();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->activate();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -11085,8 +14501,13 @@ static PyObject *_wrap_Avatar_deactivate(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Avatar_deactivate",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->deactivate();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->deactivate();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -11103,8 +14524,13 @@ static PyObject *_wrap_Avatar_getName(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Avatar_getName",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (arg1)->getName();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getName();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = PyString_FromString((&result)->c_str());
     }
@@ -11128,8 +14554,13 @@ static PyObject *_wrap_Avatar_setName(PyObject *, PyObject *args) {
     {
         arg2 = PyString_AsString(obj1);
     }
-    result = (arg1)->setName(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->setName(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = PyString_FromString((&result)->c_str());
     }
@@ -11148,11 +14579,16 @@ static PyObject *_wrap_Avatar_getForwardDirection(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Avatar_getForwardDirection",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    {
-        Piavca::Vec const &_result_ref = (arg1)->getForwardDirection();
-        result = (Piavca::Vec *) &_result_ref;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        {
+            Piavca::Vec const &_result_ref = (arg1)->getForwardDirection();
+            result = (Piavca::Vec *) &_result_ref;
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
     }
-    
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Vec, 0);
     return resultobj;
     fail:
@@ -11178,8 +14614,13 @@ static PyObject *_wrap_Avatar_setForwardDirection(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setForwardDirection((Piavca::Vec const &)*arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setForwardDirection((Piavca::Vec const &)*arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -11214,8 +14655,13 @@ static PyObject *_wrap_Avatar_setFacialExpressionWeight__SWIG_0(PyObject *, PyOb
         arg4 = static_cast<float >(SWIG_As_float(obj3)); 
         if (SWIG_arg_fail(4)) SWIG_fail;
     }
-    result = (bool)(arg1)->setFacialExpressionWeight(arg2,arg3,arg4);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)(arg1)->setFacialExpressionWeight(arg2,arg3,arg4);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -11246,8 +14692,13 @@ static PyObject *_wrap_Avatar_setFacialExpressionWeight__SWIG_1(PyObject *, PyOb
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (bool)(arg1)->setFacialExpressionWeight(arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)(arg1)->setFacialExpressionWeight(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -11272,8 +14723,13 @@ static PyObject *_wrap_Avatar_getFacialExpressionWeight__SWIG_0(PyObject *, PyOb
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (float)(arg1)->getFacialExpressionWeight(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)(arg1)->getFacialExpressionWeight(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -11291,8 +14747,13 @@ static PyObject *_wrap_Avatar_clearFacialExpressionWeights(PyObject *, PyObject 
     if(!PyArg_ParseTuple(args,(char *)"O:Avatar_clearFacialExpressionWeights",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->clearFacialExpressionWeights();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->clearFacialExpressionWeights();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -11309,8 +14770,13 @@ static PyObject *_wrap_Avatar_beginExpression(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Avatar_beginExpression",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (int)((Piavca::Avatar const *)arg1)->beginExpression();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (int)((Piavca::Avatar const *)arg1)->beginExpression();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_int(static_cast<int >(result)); 
     }
@@ -11329,8 +14795,13 @@ static PyObject *_wrap_Avatar_endExpression(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Avatar_endExpression",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (int)((Piavca::Avatar const *)arg1)->endExpression();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (int)((Piavca::Avatar const *)arg1)->endExpression();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_int(static_cast<int >(result)); 
     }
@@ -11361,8 +14832,13 @@ static PyObject *_wrap_Avatar_nextExpression(PyObject *, PyObject *args) {
             res2 = SWIG_NEWOBJ;
         }
     }
-    result = (int)(arg1)->nextExpression(*arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (int)(arg1)->nextExpression(*arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_int(static_cast<int >(result)); 
     }
@@ -11387,8 +14863,13 @@ static PyObject *_wrap_Avatar_isExpressionNull(PyObject *, PyObject *args) {
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (bool)((Piavca::Avatar const *)arg1)->isExpressionNull(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)((Piavca::Avatar const *)arg1)->isExpressionNull(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -11416,8 +14897,13 @@ static PyObject *_wrap_Avatar_setRootPosition(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setRootPosition((Piavca::Vec const &)*arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setRootPosition((Piavca::Vec const &)*arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -11434,8 +14920,13 @@ static PyObject *_wrap_Avatar_getRootPosition(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Avatar_getRootPosition",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (arg1)->getRootPosition();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getRootPosition();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec & >(result));
@@ -11465,8 +14956,13 @@ static PyObject *_wrap_Avatar_setRootOrientation(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setRootOrientation((Piavca::Quat const &)*arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setRootOrientation((Piavca::Quat const &)*arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -11488,8 +14984,13 @@ static PyObject *_wrap_Avatar_setRootAngle(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setRootAngle(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setRootAngle(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -11511,8 +15012,13 @@ static PyObject *_wrap_Avatar_setRootAngleDeg(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setRootAngleDeg(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setRootAngleDeg(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -11529,8 +15035,13 @@ static PyObject *_wrap_Avatar_getRootOrientation(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Avatar_getRootOrientation",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (arg1)->getRootOrientation();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getRootOrientation();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Quat * resultptr;
         resultptr = new Piavca::Quat(static_cast<Piavca::Quat & >(result));
@@ -11556,8 +15067,13 @@ static PyObject *_wrap_Avatar_createJoint(PyObject *, PyObject *args) {
     {
         arg2 = PyString_AsString(obj1);
     }
-    result = (bool)(arg1)->createJoint(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)(arg1)->createJoint(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -11576,8 +15092,13 @@ static PyObject *_wrap_Avatar_begin(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Avatar_begin",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (int)((Piavca::Avatar const *)arg1)->begin();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (int)((Piavca::Avatar const *)arg1)->begin();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_int(static_cast<int >(result)); 
     }
@@ -11596,8 +15117,13 @@ static PyObject *_wrap_Avatar_end(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Avatar_end",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (int)((Piavca::Avatar const *)arg1)->end();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (int)((Piavca::Avatar const *)arg1)->end();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_int(static_cast<int >(result)); 
     }
@@ -11628,8 +15154,13 @@ static PyObject *_wrap_Avatar_next(PyObject *, PyObject *args) {
             res2 = SWIG_NEWOBJ;
         }
     }
-    result = (int)(arg1)->next(*arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (int)(arg1)->next(*arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_int(static_cast<int >(result)); 
     }
@@ -11654,8 +15185,13 @@ static PyObject *_wrap_Avatar_getParent(PyObject *, PyObject *args) {
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (int)((Piavca::Avatar const *)arg1)->getParent(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (int)((Piavca::Avatar const *)arg1)->getParent(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_int(static_cast<int >(result)); 
     }
@@ -11680,8 +15216,13 @@ static PyObject *_wrap_Avatar_getJointName(PyObject *, PyObject *args) {
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (arg1)->getJointName(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getJointName(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = PyString_FromString((&result)->c_str());
     }
@@ -11706,8 +15247,13 @@ static PyObject *_wrap_Avatar_isNull(PyObject *, PyObject *args) {
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (bool)((Piavca::Avatar const *)arg1)->isNull(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)((Piavca::Avatar const *)arg1)->isNull(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -11732,8 +15278,13 @@ static PyObject *_wrap_Avatar_hasChanged(PyObject *, PyObject *args) {
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (bool)(arg1)->hasChanged(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)(arg1)->hasChanged(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -11757,8 +15308,13 @@ static PyObject *_wrap_Avatar_clearChange(PyObject *, PyObject *args) {
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->clearChange(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->clearChange(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -11796,8 +15352,13 @@ static PyObject *_wrap_Avatar_setJointOrientation__SWIG_0(PyObject *, PyObject *
         arg4 = static_cast<Piavca::jointCoord >(SWIG_As_int(obj3)); 
         if (SWIG_arg_fail(4)) SWIG_fail;
     }
-    (arg1)->setJointOrientation(arg2,(Piavca::Quat const &)*arg3,arg4);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setJointOrientation(arg2,(Piavca::Quat const &)*arg3,arg4);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -11829,8 +15390,13 @@ static PyObject *_wrap_Avatar_setJointOrientation__SWIG_1(PyObject *, PyObject *
         }
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    (arg1)->setJointOrientation(arg2,(Piavca::Quat const &)*arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setJointOrientation(arg2,(Piavca::Quat const &)*arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -11859,8 +15425,13 @@ static PyObject *_wrap_Avatar_getJointOrientation__SWIG_0(PyObject *, PyObject *
         arg3 = static_cast<Piavca::jointCoord >(SWIG_As_int(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getJointOrientation(arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getJointOrientation(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Quat * resultptr;
         resultptr = new Piavca::Quat(static_cast<Piavca::Quat & >(result));
@@ -11887,8 +15458,13 @@ static PyObject *_wrap_Avatar_getJointOrientation__SWIG_1(PyObject *, PyObject *
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (arg1)->getJointOrientation(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getJointOrientation(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Quat * resultptr;
         resultptr = new Piavca::Quat(static_cast<Piavca::Quat & >(result));
@@ -11926,8 +15502,13 @@ static PyObject *_wrap_Avatar_setJointOrientation__SWIG_2(PyObject *, PyObject *
         arg3 = static_cast<Piavca::jointCoord >(SWIG_As_int(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    (arg1)->setJointOrientation(arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setJointOrientation(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -11955,8 +15536,13 @@ static PyObject *_wrap_Avatar_setJointOrientation__SWIG_3(PyObject *, PyObject *
         if (SWIG_arg_fail(2)) SWIG_fail;
         arg2 = *argp;
     }
-    (arg1)->setJointOrientation(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setJointOrientation(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -11985,8 +15571,13 @@ static PyObject *_wrap_Avatar_getJointBasePosition__SWIG_0(PyObject *, PyObject 
         arg3 = static_cast<Piavca::jointCoord >(SWIG_As_int(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getJointBasePosition(arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getJointBasePosition(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec & >(result));
@@ -12013,8 +15604,13 @@ static PyObject *_wrap_Avatar_getJointBasePosition__SWIG_1(PyObject *, PyObject 
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (arg1)->getJointBasePosition(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getJointBasePosition(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec & >(result));
@@ -12046,8 +15642,13 @@ static PyObject *_wrap_Avatar_scaleRoot(PyObject *, PyObject *args) {
         if (SWIG_arg_fail(2)) SWIG_fail;
         arg2 = *argp;
     }
-    (arg1)->scaleRoot(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->scaleRoot(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -12081,8 +15682,13 @@ static PyObject *_wrap_Avatar_scaleJoint(PyObject *, PyObject *args) {
         if (SWIG_arg_fail(3)) SWIG_fail;
         arg3 = *argp;
     }
-    (arg1)->scaleJoint(arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->scaleJoint(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -12104,8 +15710,13 @@ static PyObject *_wrap_Avatar_timeStep(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->timeStep(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->timeStep(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -12125,8 +15736,13 @@ static PyObject *_wrap_Avatar_loadMotion(PyObject *, PyObject *args) {
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    (arg1)->loadMotion(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->loadMotion(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -12142,8 +15758,13 @@ static PyObject *_wrap_Avatar_unloadMotion(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Avatar_unloadMotion",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->unloadMotion();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->unloadMotion();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -12156,13 +15777,25 @@ static PyObject *_wrap_Avatar_getMotion__SWIG_0(PyObject *, PyObject *args) {
     Piavca::Avatar *arg1 = (Piavca::Avatar *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:Avatar_getMotion",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)(arg1)->getMotion();
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->getMotion();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -12174,13 +15807,25 @@ static PyObject *_wrap_Avatar_getMotion__SWIG_1(PyObject *, PyObject *args) {
     Piavca::Avatar *arg1 = (Piavca::Avatar *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:Avatar_getMotion",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)((Piavca::Avatar const *)arg1)->getMotion();
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)((Piavca::Avatar const *)arg1)->getMotion();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -12240,8 +15885,13 @@ static PyObject *_wrap_Avatar_playMotion__SWIG_0(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Avatar_playMotion",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->playMotion();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->playMotion();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -12263,8 +15913,13 @@ static PyObject *_wrap_Avatar_playMotion__SWIG_1(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->playMotion(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->playMotion(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -12290,8 +15945,13 @@ static PyObject *_wrap_Avatar_playMotion__SWIG_2(PyObject *, PyObject *args) {
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    (arg1)->playMotion(arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->playMotion(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -12388,8 +16048,13 @@ static PyObject *_wrap_Avatar_playMotionDirect(PyObject *, PyObject *args) {
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    (arg1)->playMotion(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->playMotion(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -12405,8 +16070,13 @@ static PyObject *_wrap_Avatar_stopMotion(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Avatar_stopMotion",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->stopMotion();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->stopMotion();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -12422,8 +16092,13 @@ static PyObject *_wrap_Avatar_restartMotion(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Avatar_restartMotion",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->restartMotion();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->restartMotion();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -12445,8 +16120,13 @@ static PyObject *_wrap_Avatar_setMotionStartTime(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setMotionStartTime(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setMotionStartTime(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -12463,8 +16143,13 @@ static PyObject *_wrap_Avatar_getMotionStartTime(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Avatar_getMotionStartTime",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (float)(arg1)->getMotionStartTime();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)(arg1)->getMotionStartTime();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -12483,8 +16168,13 @@ static PyObject *_wrap_Avatar_getMotionEndTime(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Avatar_getMotionEndTime",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (float)(arg1)->getMotionEndTime();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)(arg1)->getMotionEndTime();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -12508,8 +16198,13 @@ static PyObject *_wrap_Avatar_showMotionAtTime(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->showMotionAtTime(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->showMotionAtTime(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -12529,8 +16224,13 @@ static PyObject *_wrap_Avatar_loadFacialMotion(PyObject *, PyObject *args) {
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    (arg1)->loadFacialMotion(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->loadFacialMotion(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -12546,8 +16246,13 @@ static PyObject *_wrap_Avatar_unloadFacialMotion(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Avatar_unloadFacialMotion",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->unloadFacialMotion();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->unloadFacialMotion();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -12560,13 +16265,25 @@ static PyObject *_wrap_Avatar_getFacialMotion__SWIG_0(PyObject *, PyObject *args
     Piavca::Avatar *arg1 = (Piavca::Avatar *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:Avatar_getFacialMotion",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)(arg1)->getFacialMotion();
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->getFacialMotion();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -12578,13 +16295,25 @@ static PyObject *_wrap_Avatar_getFacialMotion__SWIG_1(PyObject *, PyObject *args
     Piavca::Avatar *arg1 = (Piavca::Avatar *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:Avatar_getFacialMotion",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)((Piavca::Avatar const *)arg1)->getFacialMotion();
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)((Piavca::Avatar const *)arg1)->getFacialMotion();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -12644,8 +16373,13 @@ static PyObject *_wrap_Avatar_playFacialMotion__SWIG_0(PyObject *, PyObject *arg
     if(!PyArg_ParseTuple(args,(char *)"O:Avatar_playFacialMotion",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->playFacialMotion();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->playFacialMotion();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -12667,8 +16401,13 @@ static PyObject *_wrap_Avatar_playFacialMotion__SWIG_1(PyObject *, PyObject *arg
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->playFacialMotion(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->playFacialMotion(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -12694,8 +16433,13 @@ static PyObject *_wrap_Avatar_playFacialMotion__SWIG_2(PyObject *, PyObject *arg
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    (arg1)->playFacialMotion(arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->playFacialMotion(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -12715,8 +16459,13 @@ static PyObject *_wrap_Avatar_playFacialMotion__SWIG_3(PyObject *, PyObject *arg
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    (arg1)->playFacialMotion(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->playFacialMotion(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -12835,8 +16584,13 @@ static PyObject *_wrap_Avatar_stopFacialMotion(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Avatar_stopFacialMotion",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->stopFacialMotion();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->stopFacialMotion();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -12852,8 +16606,13 @@ static PyObject *_wrap_Avatar_restartFacialMotion(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Avatar_restartFacialMotion",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->restartFacialMotion();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->restartFacialMotion();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -12875,8 +16634,13 @@ static PyObject *_wrap_Avatar_setFacialMotionStartTime(PyObject *, PyObject *arg
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setFacialMotionStartTime(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setFacialMotionStartTime(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -12893,8 +16657,13 @@ static PyObject *_wrap_Avatar_getFacialMotionStartTime(PyObject *, PyObject *arg
     if(!PyArg_ParseTuple(args,(char *)"O:Avatar_getFacialMotionStartTime",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (float)(arg1)->getFacialMotionStartTime();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)(arg1)->getFacialMotionStartTime();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -12913,8 +16682,13 @@ static PyObject *_wrap_Avatar_getFacialMotionEndTime(PyObject *, PyObject *args)
     if(!PyArg_ParseTuple(args,(char *)"O:Avatar_getFacialMotionEndTime",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (float)(arg1)->getFacialMotionEndTime();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)(arg1)->getFacialMotionEndTime();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -12938,8 +16712,13 @@ static PyObject *_wrap_Avatar_showFacialMotionAtTime(PyObject *, PyObject *args)
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->showFacialMotionAtTime(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->showFacialMotionAtTime(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -12959,8 +16738,13 @@ static PyObject *_wrap_Avatar_loadScaleMotion(PyObject *, PyObject *args) {
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    (arg1)->loadScaleMotion(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->loadScaleMotion(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -12976,8 +16760,13 @@ static PyObject *_wrap_Avatar_unloadScaleMotion(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Avatar_unloadScaleMotion",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->unloadScaleMotion();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->unloadScaleMotion();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -12990,13 +16779,25 @@ static PyObject *_wrap_Avatar_getScaleMotion__SWIG_0(PyObject *, PyObject *args)
     Piavca::Avatar *arg1 = (Piavca::Avatar *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:Avatar_getScaleMotion",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)(arg1)->getScaleMotion();
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->getScaleMotion();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -13008,13 +16809,25 @@ static PyObject *_wrap_Avatar_getScaleMotion__SWIG_1(PyObject *, PyObject *args)
     Piavca::Avatar *arg1 = (Piavca::Avatar *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:Avatar_getScaleMotion",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)((Piavca::Avatar const *)arg1)->getScaleMotion();
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)((Piavca::Avatar const *)arg1)->getScaleMotion();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -13074,8 +16887,13 @@ static PyObject *_wrap_Avatar_playScaleMotion__SWIG_0(PyObject *, PyObject *args
     if(!PyArg_ParseTuple(args,(char *)"O:Avatar_playScaleMotion",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->playScaleMotion();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->playScaleMotion();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -13097,8 +16915,13 @@ static PyObject *_wrap_Avatar_playScaleMotion__SWIG_1(PyObject *, PyObject *args
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->playScaleMotion(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->playScaleMotion(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -13124,8 +16947,13 @@ static PyObject *_wrap_Avatar_playScaleMotion__SWIG_2(PyObject *, PyObject *args
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    (arg1)->playScaleMotion(arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->playScaleMotion(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -13145,8 +16973,13 @@ static PyObject *_wrap_Avatar_playScaleMotion__SWIG_3(PyObject *, PyObject *args
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    (arg1)->playScaleMotion(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->playScaleMotion(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -13265,8 +17098,13 @@ static PyObject *_wrap_Avatar_stopScaleMotion(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Avatar_stopScaleMotion",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->stopScaleMotion();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->stopScaleMotion();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -13282,8 +17120,13 @@ static PyObject *_wrap_Avatar_restartScaleMotion(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Avatar_restartScaleMotion",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->restartScaleMotion();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->restartScaleMotion();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -13305,8 +17148,13 @@ static PyObject *_wrap_Avatar_setScaleMotionStartTime(PyObject *, PyObject *args
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setScaleMotionStartTime(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setScaleMotionStartTime(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -13323,8 +17171,13 @@ static PyObject *_wrap_Avatar_getScaleMotionStartTime(PyObject *, PyObject *args
     if(!PyArg_ParseTuple(args,(char *)"O:Avatar_getScaleMotionStartTime",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (float)(arg1)->getScaleMotionStartTime();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)(arg1)->getScaleMotionStartTime();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -13343,8 +17196,13 @@ static PyObject *_wrap_Avatar_getScaleMotionEndTime(PyObject *, PyObject *args) 
     if(!PyArg_ParseTuple(args,(char *)"O:Avatar_getScaleMotionEndTime",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (float)(arg1)->getScaleMotionEndTime();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)(arg1)->getScaleMotionEndTime();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -13368,8 +17226,13 @@ static PyObject *_wrap_Avatar_showScaleMotionAtTime(PyObject *, PyObject *args) 
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->showScaleMotionAtTime(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->showScaleMotionAtTime(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -13389,8 +17252,13 @@ static PyObject *_wrap_Avatar_registerCallback(PyObject *, PyObject *args) {
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__AvatarTimeCallback, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    (arg1)->registerCallback(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->registerCallback(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -13411,8 +17279,13 @@ static PyObject *_wrap_Avatar_removeCallback(PyObject *, PyObject *args) {
     {
         arg2 = PyString_AsString(obj1);
     }
-    (arg1)->removeCallback(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->removeCallback(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -13427,6 +17300,7 @@ static PyObject *_wrap_Avatar_getCallback__SWIG_0(PyObject *, PyObject *args) {
     Piavca::AvatarTimeCallback *result;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:Avatar_getCallback",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
@@ -13434,9 +17308,20 @@ static PyObject *_wrap_Avatar_getCallback__SWIG_0(PyObject *, PyObject *args) {
     {
         arg2 = PyString_AsString(obj1);
     }
-    result = (Piavca::AvatarTimeCallback *)(arg1)->getCallback(arg2);
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__AvatarTimeCallback, 0);
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::AvatarTimeCallback *)(arg1)->getCallback(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__AvatarTimeCallback, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -13452,8 +17337,13 @@ static PyObject *_wrap_Avatar_getNumCallbacks(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Avatar_getNumCallbacks",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (int)(arg1)->getNumCallbacks();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (int)(arg1)->getNumCallbacks();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_int(static_cast<int >(result)); 
     }
@@ -13470,6 +17360,7 @@ static PyObject *_wrap_Avatar_getCallback__SWIG_1(PyObject *, PyObject *args) {
     Piavca::AvatarTimeCallback *result;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:Avatar_getCallback",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
@@ -13478,9 +17369,20 @@ static PyObject *_wrap_Avatar_getCallback__SWIG_1(PyObject *, PyObject *args) {
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::AvatarTimeCallback *)(arg1)->getCallback(arg2);
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__AvatarTimeCallback, 0);
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::AvatarTimeCallback *)(arg1)->getCallback(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__AvatarTimeCallback, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -13558,8 +17460,13 @@ static PyObject *_wrap_Avatar_setFacialExpressionWeight__SWIG_2(PyObject *, PyOb
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (bool)Piavca_Avatar_setFacialExpressionWeight__SWIG_2(arg1,(char const *)arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)Piavca_Avatar_setFacialExpressionWeight__SWIG_2(arg1,(char const *)arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -13664,8 +17571,13 @@ static PyObject *_wrap_Avatar_getFacialExpressionWeight__SWIG_1(PyObject *, PyOb
     if (!SWIG_AsCharPtr(obj1, (char**)&arg2)) {
         SWIG_arg_fail(2);SWIG_fail;
     }
-    result = (float)Piavca_Avatar_getFacialExpressionWeight__SWIG_1(arg1,(char const *)arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)Piavca_Avatar_getFacialExpressionWeight__SWIG_1(arg1,(char const *)arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -13754,8 +17666,13 @@ static PyObject *_wrap_Avatar_setJointOrientation__SWIG_4(PyObject *, PyObject *
     if (!SWIG_AsCharPtr(obj3, (char**)&arg4)) {
         SWIG_arg_fail(4);SWIG_fail;
     }
-    Piavca_Avatar_setJointOrientation__SWIG_4(arg1,(char const *)arg2,(Piavca::Quat const &)*arg3,(char const *)arg4);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        Piavca_Avatar_setJointOrientation__SWIG_4(arg1,(char const *)arg2,(Piavca::Quat const &)*arg3,(char const *)arg4);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -13786,8 +17703,13 @@ static PyObject *_wrap_Avatar_setJointOrientation__SWIG_5(PyObject *, PyObject *
         }
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    Piavca_Avatar_setJointOrientation__SWIG_4(arg1,(char const *)arg2,(Piavca::Quat const &)*arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        Piavca_Avatar_setJointOrientation__SWIG_4(arg1,(char const *)arg2,(Piavca::Quat const &)*arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -14006,8 +17928,13 @@ static PyObject *_wrap_Avatar_getJointOrientation__SWIG_2(PyObject *, PyObject *
     if (!SWIG_AsCharPtr(obj2, (char**)&arg3)) {
         SWIG_arg_fail(3);SWIG_fail;
     }
-    result = Piavca_Avatar_getJointOrientation__SWIG_2(arg1,(char const *)arg2,(char const *)arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = Piavca_Avatar_getJointOrientation__SWIG_2(arg1,(char const *)arg2,(char const *)arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Quat * resultptr;
         resultptr = new Piavca::Quat(static_cast<Piavca::Quat & >(result));
@@ -14033,8 +17960,13 @@ static PyObject *_wrap_Avatar_getJointOrientation__SWIG_3(PyObject *, PyObject *
     if (!SWIG_AsCharPtr(obj1, (char**)&arg2)) {
         SWIG_arg_fail(2);SWIG_fail;
     }
-    result = Piavca_Avatar_getJointOrientation__SWIG_2(arg1,(char const *)arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = Piavca_Avatar_getJointOrientation__SWIG_2(arg1,(char const *)arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Quat * resultptr;
         resultptr = new Piavca::Quat(static_cast<Piavca::Quat & >(result));
@@ -14158,8 +18090,13 @@ static PyObject *_wrap_Avatar_getJointBasePosition__SWIG_2(PyObject *, PyObject 
     if (!SWIG_AsCharPtr(obj2, (char**)&arg3)) {
         SWIG_arg_fail(3);SWIG_fail;
     }
-    result = Piavca_Avatar_getJointBasePosition__SWIG_2(arg1,(char const *)arg2,(char const *)arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = Piavca_Avatar_getJointBasePosition__SWIG_2(arg1,(char const *)arg2,(char const *)arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec & >(result));
@@ -14185,8 +18122,13 @@ static PyObject *_wrap_Avatar_getJointBasePosition__SWIG_3(PyObject *, PyObject 
     if (!SWIG_AsCharPtr(obj1, (char**)&arg2)) {
         SWIG_arg_fail(2);SWIG_fail;
     }
-    result = Piavca_Avatar_getJointBasePosition__SWIG_2(arg1,(char const *)arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = Piavca_Avatar_getJointBasePosition__SWIG_2(arg1,(char const *)arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec & >(result));
@@ -14303,8 +18245,13 @@ static PyObject *_wrap_Avatar_play_motion__SWIG_0(PyObject *, PyObject *args) {
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    Piavca_Avatar_play_motion__SWIG_0(arg1,arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        Piavca_Avatar_play_motion__SWIG_0(arg1,arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -14325,8 +18272,13 @@ static PyObject *_wrap_Avatar_play_motion__SWIG_1(PyObject *, PyObject *args) {
     if (!SWIG_AsCharPtr(obj1, (char**)&arg2)) {
         SWIG_arg_fail(2);SWIG_fail;
     }
-    Piavca_Avatar_play_motion__SWIG_1(arg1,(char const *)arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        Piavca_Avatar_play_motion__SWIG_1(arg1,(char const *)arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -14405,8 +18357,13 @@ static PyObject *_wrap_Avatar_add_background_motion__SWIG_0(PyObject *, PyObject
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    Piavca_Avatar_add_background_motion__SWIG_0(arg1,arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        Piavca_Avatar_add_background_motion__SWIG_0(arg1,arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -14427,8 +18384,13 @@ static PyObject *_wrap_Avatar_add_background_motion__SWIG_1(PyObject *, PyObject
     if (!SWIG_AsCharPtr(obj1, (char**)&arg2)) {
         SWIG_arg_fail(2);SWIG_fail;
     }
-    Piavca_Avatar_add_background_motion__SWIG_1(arg1,(char const *)arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        Piavca_Avatar_add_background_motion__SWIG_1(arg1,(char const *)arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -14503,8 +18465,13 @@ static PyObject *_wrap_Avatar_interrupt_motion(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Avatar_interrupt_motion",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    Piavca_Avatar_interrupt_motion(arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        Piavca_Avatar_interrupt_motion(arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -14531,8 +18498,13 @@ static PyObject *_wrap_queueElement_mot_set(PyObject *, PyObject *args) {
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | SWIG_POINTER_DISOWN);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    if (arg1) (arg1)->mot = arg2;
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        if (arg1) (arg1)->mot = arg2;
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -14549,8 +18521,13 @@ static PyObject *_wrap_queueElement_mot_get(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:queueElement_mot_get",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__queueElement, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *) ((arg1)->mot);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *) ((arg1)->mot);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
     return resultobj;
     fail:
@@ -14571,8 +18548,13 @@ static PyObject *_wrap_queueElement_name_set(PyObject *, PyObject *args) {
     {
         arg2 = PyString_AsString(obj1);
     }
-    if (arg1) (arg1)->name = arg2;
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        if (arg1) (arg1)->name = arg2;
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -14589,8 +18571,13 @@ static PyObject *_wrap_queueElement_name_get(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:queueElement_name_get",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__queueElement, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result =  ((arg1)->name);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result =  ((arg1)->name);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = PyString_FromString((&result)->c_str());
     }
@@ -14614,8 +18601,13 @@ static PyObject *_wrap_queueElement_atTime_set(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    if (arg1) (arg1)->atTime = arg2;
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        if (arg1) (arg1)->atTime = arg2;
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -14632,8 +18624,13 @@ static PyObject *_wrap_queueElement_atTime_get(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:queueElement_atTime_get",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__queueElement, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (float) ((arg1)->atTime);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float) ((arg1)->atTime);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -14657,8 +18654,13 @@ static PyObject *_wrap_queueElement_background_set(PyObject *, PyObject *args) {
         arg2 = static_cast<bool >(SWIG_As_bool(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    if (arg1) (arg1)->background = arg2;
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        if (arg1) (arg1)->background = arg2;
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -14675,8 +18677,13 @@ static PyObject *_wrap_queueElement_background_get(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:queueElement_background_get",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__queueElement, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (bool) ((arg1)->background);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool) ((arg1)->background);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -14691,8 +18698,13 @@ static PyObject *_wrap_new_queueElement__SWIG_0(PyObject *, PyObject *args) {
     Piavca::queueElement *result;
     
     if(!PyArg_ParseTuple(args,(char *)":new_queueElement")) goto fail;
-    result = (Piavca::queueElement *)new Piavca::queueElement();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::queueElement *)new Piavca::queueElement();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__queueElement, 1);
     return resultobj;
     fail:
@@ -14726,8 +18738,13 @@ static PyObject *_wrap_new_queueElement__SWIG_1(PyObject *, PyObject *args) {
         arg4 = static_cast<bool >(SWIG_As_bool(obj3)); 
         if (SWIG_arg_fail(4)) SWIG_fail;
     }
-    result = (Piavca::queueElement *)new Piavca::queueElement(arg1,arg2,arg3,arg4);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::queueElement *)new Piavca::queueElement(arg1,arg2,arg3,arg4);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__queueElement, 1);
     return resultobj;
     fail:
@@ -14755,8 +18772,13 @@ static PyObject *_wrap_new_queueElement__SWIG_2(PyObject *, PyObject *args) {
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (Piavca::queueElement *)new Piavca::queueElement(arg1,arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::queueElement *)new Piavca::queueElement(arg1,arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__queueElement, 1);
     return resultobj;
     fail:
@@ -14779,8 +18801,13 @@ static PyObject *_wrap_new_queueElement__SWIG_3(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::queueElement *)new Piavca::queueElement((Piavca::queueElement const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::queueElement *)new Piavca::queueElement((Piavca::queueElement const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__queueElement, 1);
     return resultobj;
     fail:
@@ -14874,8 +18901,13 @@ static PyObject *_wrap_delete_queueElement(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_queueElement",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__queueElement, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    delete arg1;
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        delete arg1;
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -14895,8 +18927,13 @@ static PyObject *_wrap_new_AvatarMotionQueue__SWIG_0(PyObject *, PyObject *args)
     Piavca::AvatarMotionQueue *result;
     
     if(!PyArg_ParseTuple(args,(char *)":new_AvatarMotionQueue")) goto fail;
-    result = (Piavca::AvatarMotionQueue *)new Piavca::AvatarMotionQueue();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::AvatarMotionQueue *)new Piavca::AvatarMotionQueue();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__AvatarMotionQueue, 1);
     return resultobj;
     fail:
@@ -14933,8 +18970,13 @@ static PyObject *_wrap_new_AvatarMotionQueue__SWIG_1(PyObject *, PyObject *args)
         arg4 = static_cast<int >(SWIG_As_int(obj3)); 
         if (SWIG_arg_fail(4)) SWIG_fail;
     }
-    result = (Piavca::AvatarMotionQueue *)new Piavca::AvatarMotionQueue(arg1,arg2,arg3,arg4);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::AvatarMotionQueue *)new Piavca::AvatarMotionQueue(arg1,arg2,arg3,arg4);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__AvatarMotionQueue, 1);
     return resultobj;
     fail:
@@ -14965,8 +19007,13 @@ static PyObject *_wrap_new_AvatarMotionQueue__SWIG_2(PyObject *, PyObject *args)
         arg3 = static_cast<bool >(SWIG_As_bool(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (Piavca::AvatarMotionQueue *)new Piavca::AvatarMotionQueue(arg1,arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::AvatarMotionQueue *)new Piavca::AvatarMotionQueue(arg1,arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__AvatarMotionQueue, 1);
     return resultobj;
     fail:
@@ -14991,8 +19038,13 @@ static PyObject *_wrap_new_AvatarMotionQueue__SWIG_3(PyObject *, PyObject *args)
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::AvatarMotionQueue *)new Piavca::AvatarMotionQueue(arg1,arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::AvatarMotionQueue *)new Piavca::AvatarMotionQueue(arg1,arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__AvatarMotionQueue, 1);
     return resultobj;
     fail:
@@ -15011,8 +19063,13 @@ static PyObject *_wrap_new_AvatarMotionQueue__SWIG_4(PyObject *, PyObject *args)
         arg1 = static_cast<float >(SWIG_As_float(obj0)); 
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::AvatarMotionQueue *)new Piavca::AvatarMotionQueue(arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::AvatarMotionQueue *)new Piavca::AvatarMotionQueue(arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__AvatarMotionQueue, 1);
     return resultobj;
     fail:
@@ -15092,8 +19149,13 @@ static PyObject *_wrap_delete_AvatarMotionQueue(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_AvatarMotionQueue",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__AvatarMotionQueue, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    delete arg1;
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        delete arg1;
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -15107,14 +19169,22 @@ static PyObject *_wrap_AvatarMotionQueue_init(PyObject *, PyObject *args) {
     Piavca::Avatar *arg2 = (Piavca::Avatar *) 0 ;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:AvatarMotionQueue_init",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__AvatarMotionQueue, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    (arg1)->init(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->init(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -15130,6 +19200,7 @@ static PyObject *_wrap_AvatarMotionQueue_timeStep(PyObject *, PyObject *args) {
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:AvatarMotionQueue_timeStep",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__AvatarMotionQueue, SWIG_POINTER_EXCEPTION | 0);
@@ -15140,8 +19211,15 @@ static PyObject *_wrap_AvatarMotionQueue_timeStep(PyObject *, PyObject *args) {
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    (arg1)->timeStep(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->timeStep(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -15158,8 +19236,13 @@ static PyObject *_wrap_AvatarMotionQueue_isFacial(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:AvatarMotionQueue_isFacial",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__AvatarMotionQueue, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (bool)(arg1)->isFacial();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)(arg1)->isFacial();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -15178,8 +19261,13 @@ static PyObject *_wrap_AvatarMotionQueue_getCurrentMotionStart(PyObject *, PyObj
     if(!PyArg_ParseTuple(args,(char *)"O:AvatarMotionQueue_getCurrentMotionStart",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__AvatarMotionQueue, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (float)(arg1)->getCurrentMotionStart();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)(arg1)->getCurrentMotionStart();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -15197,8 +19285,13 @@ static PyObject *_wrap_AvatarMotionQueue_reblend(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:AvatarMotionQueue_reblend",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__AvatarMotionQueue, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->reblend();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->reblend();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -15220,8 +19313,13 @@ static PyObject *_wrap_AvatarMotionQueue_setBlendInterval(PyObject *, PyObject *
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setBlendInterval(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setBlendInterval(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -15252,8 +19350,13 @@ static PyObject *_wrap_AvatarMotionQueue_enqueueMotion__SWIG_0(PyObject *, PyObj
         arg4 = static_cast<float >(SWIG_As_float(obj3)); 
         if (SWIG_arg_fail(4)) SWIG_fail;
     }
-    (arg1)->enqueueMotion(arg2,arg3,arg4);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->enqueueMotion(arg2,arg3,arg4);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -15278,8 +19381,13 @@ static PyObject *_wrap_AvatarMotionQueue_enqueueMotion__SWIG_1(PyObject *, PyObj
     }
     SWIG_Python_ConvertPtr(obj2, (void **)&arg3, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(3)) SWIG_fail;
-    (arg1)->enqueueMotion(arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->enqueueMotion(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -15377,8 +19485,13 @@ static PyObject *_wrap_AvatarMotionQueue_enqueueRandomMotions__SWIG_0(PyObject *
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->enqueueRandomMotions(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->enqueueRandomMotions(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -15394,8 +19507,13 @@ static PyObject *_wrap_AvatarMotionQueue_enqueueRandomMotions__SWIG_1(PyObject *
     if(!PyArg_ParseTuple(args,(char *)"O:AvatarMotionQueue_enqueueRandomMotions",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__AvatarMotionQueue, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->enqueueRandomMotions();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->enqueueRandomMotions();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -15460,8 +19578,13 @@ static PyObject *_wrap_AvatarMotionQueue_queueTopIsBackground(PyObject *, PyObje
     if(!PyArg_ParseTuple(args,(char *)"O:AvatarMotionQueue_queueTopIsBackground",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__AvatarMotionQueue, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (bool)(arg1)->queueTopIsBackground();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)(arg1)->queueTopIsBackground();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -15480,8 +19603,13 @@ static PyObject *_wrap_AvatarMotionQueue_queueTopTime(PyObject *, PyObject *args
     if(!PyArg_ParseTuple(args,(char *)"O:AvatarMotionQueue_queueTopTime",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__AvatarMotionQueue, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (float)(arg1)->queueTopTime();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)(arg1)->queueTopTime();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -15496,13 +19624,25 @@ static PyObject *_wrap_AvatarMotionQueue_dequeueMotion(PyObject *, PyObject *arg
     Piavca::AvatarMotionQueue *arg1 = (Piavca::AvatarMotionQueue *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:AvatarMotionQueue_dequeueMotion",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__AvatarMotionQueue, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)(arg1)->dequeueMotion();
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->dequeueMotion();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -15518,8 +19658,13 @@ static PyObject *_wrap_AvatarMotionQueue_getQueueSize(PyObject *, PyObject *args
     if(!PyArg_ParseTuple(args,(char *)"O:AvatarMotionQueue_getQueueSize",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__AvatarMotionQueue, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (int)(arg1)->getQueueSize();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (int)(arg1)->getQueueSize();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_int(static_cast<int >(result)); 
     }
@@ -15543,8 +19688,13 @@ static PyObject *_wrap_AvatarMotionQueue_updateDelay(PyObject *, PyObject *args)
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->updateDelay(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->updateDelay(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -15560,8 +19710,13 @@ static PyObject *_wrap_AvatarMotionQueue_clearQueue(PyObject *, PyObject *args) 
     if(!PyArg_ParseTuple(args,(char *)"O:AvatarMotionQueue_clearQueue",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__AvatarMotionQueue, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->clearQueue();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->clearQueue();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -15582,8 +19737,13 @@ static PyObject *_wrap_AvatarMotionQueue_removeMotion(PyObject *, PyObject *args
     {
         arg2 = PyString_AsString(obj1);
     }
-    (arg1)->removeMotion(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->removeMotion(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -15604,8 +19764,13 @@ static PyObject *_wrap_AvatarMotionQueue_pauseMotion(PyObject *, PyObject *args)
     {
         arg2 = PyString_AsString(obj1);
     }
-    (arg1)->pauseMotion(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->pauseMotion(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -15626,8 +19791,13 @@ static PyObject *_wrap_AvatarMotionQueue_unpauseMotion(PyObject *, PyObject *arg
     {
         arg2 = PyString_AsString(obj1);
     }
-    (arg1)->unpauseMotion(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->unpauseMotion(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -15643,8 +19813,13 @@ static PyObject *_wrap_AvatarMotionQueue_clearAllBackgroundMotions(PyObject *, P
     if(!PyArg_ParseTuple(args,(char *)"O:AvatarMotionQueue_clearAllBackgroundMotions",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__AvatarMotionQueue, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->clearAllBackgroundMotions();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->clearAllBackgroundMotions();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -15660,8 +19835,13 @@ static PyObject *_wrap_AvatarMotionQueue_clearFinishedBackgroundMotions(PyObject
     if(!PyArg_ParseTuple(args,(char *)"O:AvatarMotionQueue_clearFinishedBackgroundMotions",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__AvatarMotionQueue, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->clearFinishedBackgroundMotions();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->clearFinishedBackgroundMotions();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -15682,8 +19862,13 @@ static PyObject *_wrap_AvatarMotionQueue_removeBackgroundMotion(PyObject *, PyOb
     {
         arg2 = PyString_AsString(obj1);
     }
-    (arg1)->removeBackgroundMotion(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->removeBackgroundMotion(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -15709,8 +19894,13 @@ static PyObject *_wrap_AvatarMotionQueue_removeBackgroundMotionByType(PyObject *
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->removeBackgroundMotionByType((std::type_info const &)*arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->removeBackgroundMotionByType((std::type_info const &)*arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -15731,8 +19921,13 @@ static PyObject *_wrap_AvatarMotionQueue_pauseBackgroundMotion(PyObject *, PyObj
     {
         arg2 = PyString_AsString(obj1);
     }
-    (arg1)->pauseBackgroundMotion(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->pauseBackgroundMotion(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -15753,8 +19948,13 @@ static PyObject *_wrap_AvatarMotionQueue_unpauseBackgroundMotion(PyObject *, PyO
     {
         arg2 = PyString_AsString(obj1);
     }
-    (arg1)->unpauseBackgroundMotion(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->unpauseBackgroundMotion(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -15770,8 +19970,13 @@ static PyObject *_wrap_AvatarMotionQueue_interrupt(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:AvatarMotionQueue_interrupt",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__AvatarMotionQueue, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->interrupt();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->interrupt();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -15784,13 +19989,28 @@ static PyObject *_wrap_AvatarMotionQueue_getMotion(PyObject *, PyObject *args) {
     Piavca::AvatarMotionQueue *arg1 = (Piavca::AvatarMotionQueue *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:AvatarMotionQueue_getMotion",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__AvatarMotionQueue, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)(arg1)->getMotion();
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->getMotion();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -15808,6 +20028,7 @@ static PyObject *_wrap_AvatarMotionQueue_blendMotion(PyObject *, PyObject *args)
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
     PyObject * obj3 = 0 ;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOOO:AvatarMotionQueue_blendMotion",&obj0,&obj1,&obj2,&obj3)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__AvatarMotionQueue, SWIG_POINTER_EXCEPTION | 0);
@@ -15820,9 +20041,20 @@ static PyObject *_wrap_AvatarMotionQueue_blendMotion(PyObject *, PyObject *args)
         arg4 = static_cast<float >(SWIG_As_float(obj3)); 
         if (SWIG_arg_fail(4)) SWIG_fail;
     }
-    result = (Piavca::Motion *)(arg1)->blendMotion(arg2,arg3,arg4);
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->blendMotion(arg2,arg3,arg4);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -15852,8 +20084,13 @@ static PyObject *_wrap_AvatarMotionQueue_addBackgroundMotion__SWIG_0(PyObject *,
         arg4 = static_cast<float >(SWIG_As_float(obj3)); 
         if (SWIG_arg_fail(4)) SWIG_fail;
     }
-    (arg1)->addBackgroundMotion(arg2,arg3,arg4);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->addBackgroundMotion(arg2,arg3,arg4);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -15878,8 +20115,13 @@ static PyObject *_wrap_AvatarMotionQueue_addBackgroundMotion__SWIG_1(PyObject *,
     }
     SWIG_Python_ConvertPtr(obj2, (void **)&arg3, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(3)) SWIG_fail;
-    (arg1)->addBackgroundMotion(arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->addBackgroundMotion(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -16000,8 +20242,13 @@ static PyObject *_wrap_new_Object__SWIG_0(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (Piavca::Object *)new Piavca::Object(arg1,(Piavca::Vec const &)*arg2,(Piavca::Quat const &)*arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Object *)new Piavca::Object(arg1,(Piavca::Vec const &)*arg2,(Piavca::Quat const &)*arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Object, 1);
     return resultobj;
     fail:
@@ -16029,8 +20276,13 @@ static PyObject *_wrap_new_Object__SWIG_1(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::Object *)new Piavca::Object(arg1,(Piavca::Vec const &)*arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Object *)new Piavca::Object(arg1,(Piavca::Vec const &)*arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Object, 1);
     return resultobj;
     fail:
@@ -16048,8 +20300,13 @@ static PyObject *_wrap_new_Object__SWIG_2(PyObject *, PyObject *args) {
     {
         arg1 = PyString_AsString(obj0);
     }
-    result = (Piavca::Object *)new Piavca::Object(arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Object *)new Piavca::Object(arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Object, 1);
     return resultobj;
     fail:
@@ -16135,8 +20392,13 @@ static PyObject *_wrap_Object_getName(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Object_getName",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Object, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (arg1)->getName();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getName();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = PyString_FromString((&result)->c_str());
     }
@@ -16160,8 +20422,13 @@ static PyObject *_wrap_Object_setName(PyObject *, PyObject *args) {
     {
         arg2 = PyString_AsString(obj1);
     }
-    result = (arg1)->setName(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->setName(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = PyString_FromString((&result)->c_str());
     }
@@ -16189,8 +20456,13 @@ static PyObject *_wrap_Object_setPosition(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setPosition((Piavca::Vec const &)*arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setPosition((Piavca::Vec const &)*arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -16207,8 +20479,13 @@ static PyObject *_wrap_Object_getPosition(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Object_getPosition",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Object, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (arg1)->getPosition();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getPosition();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec & >(result));
@@ -16238,8 +20515,13 @@ static PyObject *_wrap_Object_setOrientation(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setOrientation((Piavca::Quat const &)*arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setOrientation((Piavca::Quat const &)*arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -16261,8 +20543,13 @@ static PyObject *_wrap_Object_setAngle(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setAngle(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setAngle(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -16284,8 +20571,13 @@ static PyObject *_wrap_Object_setAngleDeg(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setAngleDeg(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setAngleDeg(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -16302,8 +20594,13 @@ static PyObject *_wrap_Object_getOrientation(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:Object_getOrientation",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Object, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (arg1)->getOrientation();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getOrientation();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Quat * resultptr;
         resultptr = new Piavca::Quat(static_cast<Piavca::Quat & >(result));
@@ -16335,8 +20632,13 @@ static PyObject *_wrap_Object_scale(PyObject *, PyObject *args) {
         if (SWIG_arg_fail(2)) SWIG_fail;
         arg2 = *argp;
     }
-    (arg1)->scale(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->scale(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -16364,8 +20666,13 @@ static PyObject *_wrap_new_PyTimeCallback(PyObject *, PyObject *args) {
     {
         arg2 = PyString_AsString(obj1);
     }
-    result = (Piavca::PyTimeCallback *)new Piavca::PyTimeCallback(arg1,arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::PyTimeCallback *)new Piavca::PyTimeCallback(arg1,arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__PyTimeCallback, 1);
     return resultobj;
     fail:
@@ -16381,8 +20688,13 @@ static PyObject *_wrap_delete_PyTimeCallback(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_PyTimeCallback",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__PyTimeCallback, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    delete arg1;
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        delete arg1;
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -16396,14 +20708,22 @@ static PyObject *_wrap_PyTimeCallback_init(PyObject *, PyObject *args) {
     Piavca::Core *arg2 = (Piavca::Core *) 0 ;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:PyTimeCallback_init",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__PyTimeCallback, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Core, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    (arg1)->init(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->init(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -16419,6 +20739,7 @@ static PyObject *_wrap_PyTimeCallback_timeStep(PyObject *, PyObject *args) {
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:PyTimeCallback_timeStep",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__PyTimeCallback, SWIG_POINTER_EXCEPTION | 0);
@@ -16429,8 +20750,15 @@ static PyObject *_wrap_PyTimeCallback_timeStep(PyObject *, PyObject *args) {
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    (arg1)->timeStep(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->timeStep(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -16458,8 +20786,13 @@ static PyObject *_wrap_new_PyAvatarTimeCallback(PyObject *, PyObject *args) {
     {
         arg2 = PyString_AsString(obj1);
     }
-    result = (Piavca::PyAvatarTimeCallback *)new Piavca::PyAvatarTimeCallback(arg1,arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::PyAvatarTimeCallback *)new Piavca::PyAvatarTimeCallback(arg1,arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__PyAvatarTimeCallback, 1);
     return resultobj;
     fail:
@@ -16475,8 +20808,13 @@ static PyObject *_wrap_delete_PyAvatarTimeCallback(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_PyAvatarTimeCallback",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__PyAvatarTimeCallback, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    delete arg1;
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        delete arg1;
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -16490,14 +20828,22 @@ static PyObject *_wrap_PyAvatarTimeCallback_init(PyObject *, PyObject *args) {
     Piavca::Avatar *arg2 = (Piavca::Avatar *) 0 ;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:PyAvatarTimeCallback_init",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__PyAvatarTimeCallback, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    (arg1)->init(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->init(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -16513,6 +20859,7 @@ static PyObject *_wrap_PyAvatarTimeCallback_timeStep(PyObject *, PyObject *args)
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:PyAvatarTimeCallback_timeStep",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__PyAvatarTimeCallback, SWIG_POINTER_EXCEPTION | 0);
@@ -16523,8 +20870,15 @@ static PyObject *_wrap_PyAvatarTimeCallback_timeStep(PyObject *, PyObject *args)
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    (arg1)->timeStep(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->timeStep(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -16544,8 +20898,13 @@ static PyObject *_wrap_new_PyMotion__SWIG_0(PyObject *, PyObject *args) {
     Piavca::PyMotion *result;
     
     if(!PyArg_ParseTuple(args,(char *)":new_PyMotion")) goto fail;
-    result = (Piavca::PyMotion *)new Piavca::PyMotion();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::PyMotion *)new Piavca::PyMotion();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__PyMotion, 1);
     result->Reference();
     return resultobj;
@@ -16562,8 +20921,13 @@ static PyObject *_wrap_new_PyMotion__SWIG_1(PyObject *, PyObject *args) {
     
     if(!PyArg_ParseTuple(args,(char *)"O:new_PyMotion",&obj0)) goto fail;
     arg1 = obj0;
-    result = (Piavca::PyMotion *)new Piavca::PyMotion(arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::PyMotion *)new Piavca::PyMotion(arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__PyMotion, 1);
     result->Reference();
     return resultobj;
@@ -16587,8 +20951,13 @@ static PyObject *_wrap_new_PyMotion__SWIG_2(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::PyMotion *)new Piavca::PyMotion((Piavca::PyMotion const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::PyMotion *)new Piavca::PyMotion((Piavca::PyMotion const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__PyMotion, 1);
     result->Reference();
     return resultobj;
@@ -16642,13 +21011,28 @@ static PyObject *_wrap_PyMotion_clone(PyObject *, PyObject *args) {
     Piavca::PyMotion *arg1 = (Piavca::PyMotion *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:PyMotion_clone",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__PyMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)(arg1)->clone();
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->clone();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -16663,8 +21047,13 @@ static PyObject *_wrap_delete_PyMotion(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_PyMotion",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__PyMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    arg1->Dispose();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        arg1->Dispose();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -16683,8 +21072,13 @@ static PyObject *_wrap_PyMotion_setPyObj(PyObject *, PyObject *args) {
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__PyMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
     arg2 = obj1;
-    (arg1)->setPyObj(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setPyObj(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -16697,13 +21091,25 @@ static PyObject *_wrap_PyMotion_getMotionPtr(PyObject *, PyObject *args) {
     Piavca::PyMotion *arg1 = (Piavca::PyMotion *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:PyMotion_getMotionPtr",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__PyMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)(arg1)->getMotionPtr();
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->getMotionPtr();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -16715,12 +21121,20 @@ static PyObject *_wrap_PyMotion_getMotionLength(PyObject *, PyObject *args) {
     Piavca::PyMotion *arg1 = (Piavca::PyMotion *) 0 ;
     float result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:PyMotion_getMotionLength",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__PyMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (float)((Piavca::PyMotion const *)arg1)->getMotionLength();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)((Piavca::PyMotion const *)arg1)->getMotionLength();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -16737,6 +21151,7 @@ static PyObject *_wrap_PyMotion_isNull(PyObject *, PyObject *args) {
     bool result;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:PyMotion_isNull",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__PyMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -16745,8 +21160,15 @@ static PyObject *_wrap_PyMotion_isNull(PyObject *, PyObject *args) {
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (bool)((Piavca::PyMotion const *)arg1)->isNull(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)((Piavca::PyMotion const *)arg1)->isNull(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -16763,6 +21185,7 @@ static PyObject *_wrap_PyMotion_getTrackType(PyObject *, PyObject *args) {
     Piavca::trackType result;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:PyMotion_getTrackType",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__PyMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -16771,8 +21194,15 @@ static PyObject *_wrap_PyMotion_getTrackType(PyObject *, PyObject *args) {
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::trackType)((Piavca::PyMotion const *)arg1)->getTrackType(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::trackType)((Piavca::PyMotion const *)arg1)->getTrackType(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_From_int((result));
     return resultobj;
     fail:
@@ -16789,6 +21219,7 @@ static PyObject *_wrap_PyMotion_getFloatValueAtTimeInternal(PyObject *, PyObject
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:PyMotion_getFloatValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__PyMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -16801,8 +21232,15 @@ static PyObject *_wrap_PyMotion_getFloatValueAtTimeInternal(PyObject *, PyObject
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -16821,6 +21259,7 @@ static PyObject *_wrap_PyMotion_getVecValueAtTimeInternal(PyObject *, PyObject *
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:PyMotion_getVecValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__PyMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -16833,8 +21272,15 @@ static PyObject *_wrap_PyMotion_getVecValueAtTimeInternal(PyObject *, PyObject *
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec & >(result));
@@ -16855,6 +21301,7 @@ static PyObject *_wrap_PyMotion_getQuatValueAtTimeInternal(PyObject *, PyObject 
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:PyMotion_getQuatValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__PyMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -16867,8 +21314,15 @@ static PyObject *_wrap_PyMotion_getQuatValueAtTimeInternal(PyObject *, PyObject 
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Quat * resultptr;
         resultptr = new Piavca::Quat(static_cast<Piavca::Quat & >(result));
@@ -16914,8 +21368,13 @@ static PyObject *_wrap_degToRad(PyObject *, PyObject *args) {
         arg1 = static_cast<float >(SWIG_As_float(obj0)); 
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (float)Piavca::degToRad(arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)Piavca::degToRad(arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -16936,8 +21395,13 @@ static PyObject *_wrap_radToDeg(PyObject *, PyObject *args) {
         arg1 = static_cast<float >(SWIG_As_float(obj0)); 
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (float)Piavca::radToDeg(arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)Piavca::radToDeg(arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -16955,8 +21419,13 @@ static PyObject *_wrap_delete_MotionFilter(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_MotionFilter",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MotionFilter, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    arg1->Dispose();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        arg1->Dispose();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -16968,12 +21437,20 @@ static PyObject *_wrap_MotionFilter_printInfo(PyObject *, PyObject *args) {
     PyObject *resultobj = NULL;
     Piavca::MotionFilter *arg1 = (Piavca::MotionFilter *) 0 ;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:MotionFilter_printInfo",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MotionFilter, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->printInfo();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->printInfo();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -16988,6 +21465,8 @@ static PyObject *_wrap_MotionFilter_findSub(PyObject *, PyObject *args) {
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:MotionFilter_findSub",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MotionFilter, SWIG_POINTER_EXCEPTION | 0);
@@ -16995,9 +21474,22 @@ static PyObject *_wrap_MotionFilter_findSub(PyObject *, PyObject *args) {
     {
         arg2 = PyString_AsString(obj1);
     }
-    result = (Piavca::Motion *)(arg1)->findSub(arg2);
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->findSub(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -17011,6 +21503,8 @@ static PyObject *_wrap_MotionFilter_findSubByType(PyObject *, PyObject *args) {
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:MotionFilter_findSubByType",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MotionFilter, SWIG_POINTER_EXCEPTION | 0);
@@ -17023,9 +21517,22 @@ static PyObject *_wrap_MotionFilter_findSubByType(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::Motion *)(arg1)->findSubByType((std::type_info const &)*arg2);
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->findSubByType((std::type_info const &)*arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -17038,14 +21545,22 @@ static PyObject *_wrap_MotionFilter_load(PyObject *, PyObject *args) {
     Piavca::Avatar *arg2 = (Piavca::Avatar *) 0 ;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:MotionFilter_load",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MotionFilter, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    (arg1)->load(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->load(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -17057,12 +21572,20 @@ static PyObject *_wrap_MotionFilter_unload(PyObject *, PyObject *args) {
     PyObject *resultobj = NULL;
     Piavca::MotionFilter *arg1 = (Piavca::MotionFilter *) 0 ;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:MotionFilter_unload",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MotionFilter, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->unload();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->unload();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -17075,12 +21598,20 @@ static PyObject *_wrap_MotionFilter_loaded(PyObject *, PyObject *args) {
     Piavca::MotionFilter *arg1 = (Piavca::MotionFilter *) 0 ;
     bool result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:MotionFilter_loaded",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MotionFilter, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (bool)(arg1)->loaded();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)(arg1)->loaded();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -17096,6 +21627,7 @@ static PyObject *_wrap_MotionFilter_setStartTime(PyObject *, PyObject *args) {
     float arg2 ;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:MotionFilter_setStartTime",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MotionFilter, SWIG_POINTER_EXCEPTION | 0);
@@ -17104,8 +21636,15 @@ static PyObject *_wrap_MotionFilter_setStartTime(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setStartTime(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setStartTime(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -17117,12 +21656,20 @@ static PyObject *_wrap_MotionFilter_reset(PyObject *, PyObject *args) {
     PyObject *resultobj = NULL;
     Piavca::MotionFilter *arg1 = (Piavca::MotionFilter *) 0 ;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:MotionFilter_reset",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MotionFilter, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->reset();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->reset();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -17142,8 +21689,13 @@ static PyObject *_wrap_MotionFilter_setMotion(PyObject *, PyObject *args) {
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    (arg1)->setMotion(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setMotion(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -17156,12 +21708,20 @@ static PyObject *_wrap_MotionFilter_getMotionLength(PyObject *, PyObject *args) 
     Piavca::MotionFilter *arg1 = (Piavca::MotionFilter *) 0 ;
     float result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:MotionFilter_getMotionLength",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MotionFilter, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (float)((Piavca::MotionFilter const *)arg1)->getMotionLength();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)((Piavca::MotionFilter const *)arg1)->getMotionLength();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -17176,12 +21736,20 @@ static PyObject *_wrap_MotionFilter_isFacial(PyObject *, PyObject *args) {
     Piavca::MotionFilter *arg1 = (Piavca::MotionFilter *) 0 ;
     bool result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:MotionFilter_isFacial",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MotionFilter, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (bool)(arg1)->isFacial();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)(arg1)->isFacial();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -17196,12 +21764,20 @@ static PyObject *_wrap_MotionFilter_isRandomAccess(PyObject *, PyObject *args) {
     Piavca::MotionFilter *arg1 = (Piavca::MotionFilter *) 0 ;
     bool result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:MotionFilter_isRandomAccess",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MotionFilter, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (bool)(arg1)->isRandomAccess();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)(arg1)->isRandomAccess();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -17218,6 +21794,7 @@ static PyObject *_wrap_MotionFilter_isNull(PyObject *, PyObject *args) {
     bool result;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:MotionFilter_isNull",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MotionFilter, SWIG_POINTER_EXCEPTION | 0);
@@ -17226,8 +21803,15 @@ static PyObject *_wrap_MotionFilter_isNull(PyObject *, PyObject *args) {
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (bool)((Piavca::MotionFilter const *)arg1)->isNull(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)((Piavca::MotionFilter const *)arg1)->isNull(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -17244,6 +21828,7 @@ static PyObject *_wrap_MotionFilter_getTrackType(PyObject *, PyObject *args) {
     Piavca::trackType result;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:MotionFilter_getTrackType",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MotionFilter, SWIG_POINTER_EXCEPTION | 0);
@@ -17252,8 +21837,15 @@ static PyObject *_wrap_MotionFilter_getTrackType(PyObject *, PyObject *args) {
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::trackType)((Piavca::MotionFilter const *)arg1)->getTrackType(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::trackType)((Piavca::MotionFilter const *)arg1)->getTrackType(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_From_int((result));
     return resultobj;
     fail:
@@ -17268,6 +21860,183 @@ static PyObject * MotionFilter_swigregister(PyObject *, PyObject *args) {
     Py_INCREF(obj);
     return Py_BuildValue((char *)"");
 }
+static PyObject *_wrap_new_TwoMotionCombiner__SWIG_0(PyObject *, PyObject *args) {
+    PyObject *resultobj = NULL;
+    PyObject *arg1 = (PyObject *) 0 ;
+    Piavca::TwoMotionCombiner *result;
+    PyObject * obj0 = 0 ;
+    
+    if(!PyArg_ParseTuple(args,(char *)"O:new_TwoMotionCombiner",&obj0)) goto fail;
+    arg1 = obj0;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        if ( arg1 != Py_None ) {
+            /* subclassed */
+            result = (Piavca::TwoMotionCombiner *)new SwigDirector_TwoMotionCombiner(arg1);
+            
+        } else {
+            PyErr_SetString(PyExc_RuntimeError,    "accessing abstract class or protected constructor"); 
+            SWIG_fail;
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__TwoMotionCombiner, 1);
+    result->Reference();
+    return resultobj;
+    fail:
+    return NULL;
+}
+
+
+static PyObject *_wrap_new_TwoMotionCombiner__SWIG_1(PyObject *, PyObject *args) {
+    PyObject *resultobj = NULL;
+    PyObject *arg1 = (PyObject *) 0 ;
+    Piavca::Motion *arg2 = (Piavca::Motion *) 0 ;
+    Piavca::Motion *arg3 = (Piavca::Motion *) 0 ;
+    Piavca::TwoMotionCombiner *result;
+    PyObject * obj0 = 0 ;
+    PyObject * obj1 = 0 ;
+    PyObject * obj2 = 0 ;
+    
+    if(!PyArg_ParseTuple(args,(char *)"OOO:new_TwoMotionCombiner",&obj0,&obj1,&obj2)) goto fail;
+    arg1 = obj0;
+    SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
+    if (SWIG_arg_fail(2)) SWIG_fail;
+    SWIG_Python_ConvertPtr(obj2, (void **)&arg3, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
+    if (SWIG_arg_fail(3)) SWIG_fail;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        if ( arg1 != Py_None ) {
+            /* subclassed */
+            result = (Piavca::TwoMotionCombiner *)new SwigDirector_TwoMotionCombiner(arg1,arg2,arg3);
+            
+        } else {
+            PyErr_SetString(PyExc_RuntimeError,    "accessing abstract class or protected constructor"); 
+            SWIG_fail;
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__TwoMotionCombiner, 1);
+    result->Reference();
+    return resultobj;
+    fail:
+    return NULL;
+}
+
+
+static PyObject *_wrap_new_TwoMotionCombiner__SWIG_2(PyObject *, PyObject *args) {
+    PyObject *resultobj = NULL;
+    PyObject *arg1 = (PyObject *) 0 ;
+    Piavca::TwoMotionCombiner *arg2 = 0 ;
+    Piavca::TwoMotionCombiner *result;
+    PyObject * obj0 = 0 ;
+    PyObject * obj1 = 0 ;
+    
+    if(!PyArg_ParseTuple(args,(char *)"OO:new_TwoMotionCombiner",&obj0,&obj1)) goto fail;
+    arg1 = obj0;
+    {
+        SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__TwoMotionCombiner, SWIG_POINTER_EXCEPTION | 0);
+        if (SWIG_arg_fail(2)) SWIG_fail;
+        if (arg2 == NULL) {
+            SWIG_null_ref("Piavca::TwoMotionCombiner");
+        }
+        if (SWIG_arg_fail(2)) SWIG_fail;
+    }
+    try {
+        Swig::UnknownExceptionHandler dh;
+        if ( arg1 != Py_None ) {
+            /* subclassed */
+            result = (Piavca::TwoMotionCombiner *)new SwigDirector_TwoMotionCombiner(arg1,(Piavca::TwoMotionCombiner const &)*arg2);
+            
+        } else {
+            PyErr_SetString(PyExc_RuntimeError,    "accessing abstract class or protected constructor"); 
+            SWIG_fail;
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__TwoMotionCombiner, 1);
+    result->Reference();
+    return resultobj;
+    fail:
+    return NULL;
+}
+
+
+static PyObject *_wrap_new_TwoMotionCombiner(PyObject *self, PyObject *args) {
+    int argc;
+    PyObject *argv[4];
+    int ii;
+    
+    argc = PyObject_Length(args);
+    for (ii = 0; (ii < argc) && (ii < 3); ii++) {
+        argv[ii] = PyTuple_GetItem(args,ii);
+    }
+    if (argc == 1) {
+        int _v;
+        _v = (argv[0] != 0);
+        if (_v) {
+            return _wrap_new_TwoMotionCombiner__SWIG_0(self,args);
+        }
+    }
+    if (argc == 2) {
+        int _v;
+        _v = (argv[0] != 0);
+        if (_v) {
+            {
+                void *ptr = 0;
+                if (SWIG_ConvertPtr(argv[1], &ptr, SWIGTYPE_p_Piavca__TwoMotionCombiner, 0) == -1) {
+                    _v = 0;
+                    PyErr_Clear();
+                } else {
+                    _v = (ptr != 0);
+                }
+            }
+            if (_v) {
+                return _wrap_new_TwoMotionCombiner__SWIG_2(self,args);
+            }
+        }
+    }
+    if (argc == 3) {
+        int _v;
+        _v = (argv[0] != 0);
+        if (_v) {
+            {
+                void *ptr;
+                if (SWIG_ConvertPtr(argv[1], &ptr, SWIGTYPE_p_Piavca__Motion, 0) == -1) {
+                    _v = 0;
+                    PyErr_Clear();
+                } else {
+                    _v = 1;
+                }
+            }
+            if (_v) {
+                {
+                    void *ptr;
+                    if (SWIG_ConvertPtr(argv[2], &ptr, SWIGTYPE_p_Piavca__Motion, 0) == -1) {
+                        _v = 0;
+                        PyErr_Clear();
+                    } else {
+                        _v = 1;
+                    }
+                }
+                if (_v) {
+                    return _wrap_new_TwoMotionCombiner__SWIG_1(self,args);
+                }
+            }
+        }
+    }
+    
+    PyErr_SetString(PyExc_NotImplementedError,"No matching function for overloaded 'new_TwoMotionCombiner'");
+    return NULL;
+}
+
+
 static PyObject *_wrap_delete_TwoMotionCombiner(PyObject *, PyObject *args) {
     PyObject *resultobj = NULL;
     Piavca::TwoMotionCombiner *arg1 = (Piavca::TwoMotionCombiner *) 0 ;
@@ -17276,8 +22045,13 @@ static PyObject *_wrap_delete_TwoMotionCombiner(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_TwoMotionCombiner",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TwoMotionCombiner, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    arg1->Dispose();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        arg1->Dispose();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -17289,12 +22063,20 @@ static PyObject *_wrap_TwoMotionCombiner_printInfo(PyObject *, PyObject *args) {
     PyObject *resultobj = NULL;
     Piavca::TwoMotionCombiner *arg1 = (Piavca::TwoMotionCombiner *) 0 ;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:TwoMotionCombiner_printInfo",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TwoMotionCombiner, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->printInfo();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->printInfo();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -17309,6 +22091,8 @@ static PyObject *_wrap_TwoMotionCombiner_findSub(PyObject *, PyObject *args) {
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:TwoMotionCombiner_findSub",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TwoMotionCombiner, SWIG_POINTER_EXCEPTION | 0);
@@ -17316,9 +22100,22 @@ static PyObject *_wrap_TwoMotionCombiner_findSub(PyObject *, PyObject *args) {
     {
         arg2 = PyString_AsString(obj1);
     }
-    result = (Piavca::Motion *)(arg1)->findSub(arg2);
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->findSub(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -17332,6 +22129,8 @@ static PyObject *_wrap_TwoMotionCombiner_findSubByType(PyObject *, PyObject *arg
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:TwoMotionCombiner_findSubByType",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TwoMotionCombiner, SWIG_POINTER_EXCEPTION | 0);
@@ -17344,9 +22143,22 @@ static PyObject *_wrap_TwoMotionCombiner_findSubByType(PyObject *, PyObject *arg
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::Motion *)(arg1)->findSubByType((std::type_info const &)*arg2);
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->findSubByType((std::type_info const &)*arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -17359,14 +22171,22 @@ static PyObject *_wrap_TwoMotionCombiner_load(PyObject *, PyObject *args) {
     Piavca::Avatar *arg2 = (Piavca::Avatar *) 0 ;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:TwoMotionCombiner_load",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TwoMotionCombiner, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    (arg1)->load(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->load(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -17378,12 +22198,20 @@ static PyObject *_wrap_TwoMotionCombiner_unload(PyObject *, PyObject *args) {
     PyObject *resultobj = NULL;
     Piavca::TwoMotionCombiner *arg1 = (Piavca::TwoMotionCombiner *) 0 ;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:TwoMotionCombiner_unload",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TwoMotionCombiner, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->unload();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->unload();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -17396,12 +22224,20 @@ static PyObject *_wrap_TwoMotionCombiner_loaded(PyObject *, PyObject *args) {
     Piavca::TwoMotionCombiner *arg1 = (Piavca::TwoMotionCombiner *) 0 ;
     bool result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:TwoMotionCombiner_loaded",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TwoMotionCombiner, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (bool)(arg1)->loaded();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)(arg1)->loaded();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -17417,6 +22253,7 @@ static PyObject *_wrap_TwoMotionCombiner_setStartTime(PyObject *, PyObject *args
     float arg2 ;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:TwoMotionCombiner_setStartTime",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TwoMotionCombiner, SWIG_POINTER_EXCEPTION | 0);
@@ -17425,8 +22262,15 @@ static PyObject *_wrap_TwoMotionCombiner_setStartTime(PyObject *, PyObject *args
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setStartTime(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setStartTime(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -17438,12 +22282,20 @@ static PyObject *_wrap_TwoMotionCombiner_reset(PyObject *, PyObject *args) {
     PyObject *resultobj = NULL;
     Piavca::TwoMotionCombiner *arg1 = (Piavca::TwoMotionCombiner *) 0 ;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:TwoMotionCombiner_reset",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TwoMotionCombiner, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->reset();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->reset();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -17456,12 +22308,20 @@ static PyObject *_wrap_TwoMotionCombiner_getMotionLength(PyObject *, PyObject *a
     Piavca::TwoMotionCombiner *arg1 = (Piavca::TwoMotionCombiner *) 0 ;
     float result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:TwoMotionCombiner_getMotionLength",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TwoMotionCombiner, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (float)((Piavca::TwoMotionCombiner const *)arg1)->getMotionLength();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)((Piavca::TwoMotionCombiner const *)arg1)->getMotionLength();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -17476,12 +22336,20 @@ static PyObject *_wrap_TwoMotionCombiner_isFacial(PyObject *, PyObject *args) {
     Piavca::TwoMotionCombiner *arg1 = (Piavca::TwoMotionCombiner *) 0 ;
     bool result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:TwoMotionCombiner_isFacial",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TwoMotionCombiner, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (bool)(arg1)->isFacial();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)(arg1)->isFacial();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -17496,12 +22364,20 @@ static PyObject *_wrap_TwoMotionCombiner_isRandomAccess(PyObject *, PyObject *ar
     Piavca::TwoMotionCombiner *arg1 = (Piavca::TwoMotionCombiner *) 0 ;
     bool result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:TwoMotionCombiner_isRandomAccess",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TwoMotionCombiner, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (bool)(arg1)->isRandomAccess();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)(arg1)->isRandomAccess();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -17518,6 +22394,7 @@ static PyObject *_wrap_TwoMotionCombiner_isNull(PyObject *, PyObject *args) {
     bool result;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:TwoMotionCombiner_isNull",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TwoMotionCombiner, SWIG_POINTER_EXCEPTION | 0);
@@ -17526,8 +22403,15 @@ static PyObject *_wrap_TwoMotionCombiner_isNull(PyObject *, PyObject *args) {
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (bool)((Piavca::TwoMotionCombiner const *)arg1)->isNull(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)((Piavca::TwoMotionCombiner const *)arg1)->isNull(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -17544,6 +22428,7 @@ static PyObject *_wrap_TwoMotionCombiner_getTrackType(PyObject *, PyObject *args
     Piavca::trackType result;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:TwoMotionCombiner_getTrackType",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TwoMotionCombiner, SWIG_POINTER_EXCEPTION | 0);
@@ -17552,8 +22437,15 @@ static PyObject *_wrap_TwoMotionCombiner_getTrackType(PyObject *, PyObject *args
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::trackType)((Piavca::TwoMotionCombiner const *)arg1)->getTrackType(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::trackType)((Piavca::TwoMotionCombiner const *)arg1)->getTrackType(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_From_int((result));
     return resultobj;
     fail:
@@ -17573,8 +22465,13 @@ static PyObject *_wrap_TwoMotionCombiner_setMotion1(PyObject *, PyObject *args) 
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    (arg1)->setMotion1(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setMotion1(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -17594,8 +22491,13 @@ static PyObject *_wrap_TwoMotionCombiner_setMotion2(PyObject *, PyObject *args) 
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    (arg1)->setMotion2(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setMotion2(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -17608,13 +22510,25 @@ static PyObject *_wrap_TwoMotionCombiner_getMotion1(PyObject *, PyObject *args) 
     Piavca::TwoMotionCombiner *arg1 = (Piavca::TwoMotionCombiner *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:TwoMotionCombiner_getMotion1",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TwoMotionCombiner, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)(arg1)->getMotion1();
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->getMotion1();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -17626,13 +22540,50 @@ static PyObject *_wrap_TwoMotionCombiner_getMotion2(PyObject *, PyObject *args) 
     Piavca::TwoMotionCombiner *arg1 = (Piavca::TwoMotionCombiner *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:TwoMotionCombiner_getMotion2",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TwoMotionCombiner, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)(arg1)->getMotion2();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->getMotion2();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
+    return resultobj;
+    fail:
+    return NULL;
+}
+
+
+static PyObject *_wrap_disown_TwoMotionCombiner(PyObject *, PyObject *args) {
+    PyObject *resultobj = NULL;
+    Piavca::TwoMotionCombiner *arg1 = (Piavca::TwoMotionCombiner *) 0 ;
+    PyObject * obj0 = 0 ;
     
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    if(!PyArg_ParseTuple(args,(char *)"O:disown_TwoMotionCombiner",&obj0)) goto fail;
+    SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TwoMotionCombiner, SWIG_POINTER_EXCEPTION | 0);
+    if (SWIG_arg_fail(1)) SWIG_fail;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        {
+            Swig::Director *director = dynamic_cast<Swig::Director *>(arg1);
+            if (director) director->swig_disown();
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
     return NULL;
@@ -17661,8 +22612,13 @@ static PyObject *_wrap_new_ScaleMotion__SWIG_0(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::ScaleMotion *)new Piavca::ScaleMotion(arg1,arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::ScaleMotion *)new Piavca::ScaleMotion(arg1,arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__ScaleMotion, 1);
     result->Reference();
     return resultobj;
@@ -17680,8 +22636,13 @@ static PyObject *_wrap_new_ScaleMotion__SWIG_1(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:new_ScaleMotion",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::ScaleMotion *)new Piavca::ScaleMotion(arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::ScaleMotion *)new Piavca::ScaleMotion(arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__ScaleMotion, 1);
     result->Reference();
     return resultobj;
@@ -17695,8 +22656,13 @@ static PyObject *_wrap_new_ScaleMotion__SWIG_2(PyObject *, PyObject *args) {
     Piavca::ScaleMotion *result;
     
     if(!PyArg_ParseTuple(args,(char *)":new_ScaleMotion")) goto fail;
-    result = (Piavca::ScaleMotion *)new Piavca::ScaleMotion();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::ScaleMotion *)new Piavca::ScaleMotion();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__ScaleMotion, 1);
     result->Reference();
     return resultobj;
@@ -17720,8 +22686,13 @@ static PyObject *_wrap_new_ScaleMotion__SWIG_3(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::ScaleMotion *)new Piavca::ScaleMotion((Piavca::ScaleMotion const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::ScaleMotion *)new Piavca::ScaleMotion((Piavca::ScaleMotion const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__ScaleMotion, 1);
     result->Reference();
     return resultobj;
@@ -17801,13 +22772,28 @@ static PyObject *_wrap_ScaleMotion_clone(PyObject *, PyObject *args) {
     Piavca::ScaleMotion *arg1 = (Piavca::ScaleMotion *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:ScaleMotion_clone",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__ScaleMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)(arg1)->clone();
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->clone();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -17823,6 +22809,7 @@ static PyObject *_wrap_ScaleMotion_getFloatValueAtTimeInternal(PyObject *, PyObj
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:ScaleMotion_getFloatValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__ScaleMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -17835,8 +22822,15 @@ static PyObject *_wrap_ScaleMotion_getFloatValueAtTimeInternal(PyObject *, PyObj
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -17855,6 +22849,7 @@ static PyObject *_wrap_ScaleMotion_getVecValueAtTimeInternal(PyObject *, PyObjec
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:ScaleMotion_getVecValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__ScaleMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -17867,8 +22862,15 @@ static PyObject *_wrap_ScaleMotion_getVecValueAtTimeInternal(PyObject *, PyObjec
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec & >(result));
@@ -17889,6 +22891,7 @@ static PyObject *_wrap_ScaleMotion_getQuatValueAtTimeInternal(PyObject *, PyObje
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:ScaleMotion_getQuatValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__ScaleMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -17901,8 +22904,15 @@ static PyObject *_wrap_ScaleMotion_getQuatValueAtTimeInternal(PyObject *, PyObje
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Quat * resultptr;
         resultptr = new Piavca::Quat(static_cast<Piavca::Quat & >(result));
@@ -17928,8 +22938,13 @@ static PyObject *_wrap_ScaleMotion_setScaleFactor(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setScaleFactor(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setScaleFactor(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -17945,8 +22960,13 @@ static PyObject *_wrap_delete_ScaleMotion(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_ScaleMotion",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__ScaleMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    arg1->Dispose();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        arg1->Dispose();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -17976,8 +22996,13 @@ static PyObject *_wrap_new_ScaleMotionSpeed__SWIG_0(PyObject *, PyObject *args) 
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::ScaleMotionSpeed *)new Piavca::ScaleMotionSpeed(arg1,arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::ScaleMotionSpeed *)new Piavca::ScaleMotionSpeed(arg1,arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__ScaleMotionSpeed, 1);
     result->Reference();
     return resultobj;
@@ -17995,8 +23020,13 @@ static PyObject *_wrap_new_ScaleMotionSpeed__SWIG_1(PyObject *, PyObject *args) 
     if(!PyArg_ParseTuple(args,(char *)"O:new_ScaleMotionSpeed",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::ScaleMotionSpeed *)new Piavca::ScaleMotionSpeed(arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::ScaleMotionSpeed *)new Piavca::ScaleMotionSpeed(arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__ScaleMotionSpeed, 1);
     result->Reference();
     return resultobj;
@@ -18010,8 +23040,13 @@ static PyObject *_wrap_new_ScaleMotionSpeed__SWIG_2(PyObject *, PyObject *args) 
     Piavca::ScaleMotionSpeed *result;
     
     if(!PyArg_ParseTuple(args,(char *)":new_ScaleMotionSpeed")) goto fail;
-    result = (Piavca::ScaleMotionSpeed *)new Piavca::ScaleMotionSpeed();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::ScaleMotionSpeed *)new Piavca::ScaleMotionSpeed();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__ScaleMotionSpeed, 1);
     result->Reference();
     return resultobj;
@@ -18035,8 +23070,13 @@ static PyObject *_wrap_new_ScaleMotionSpeed__SWIG_3(PyObject *, PyObject *args) 
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::ScaleMotionSpeed *)new Piavca::ScaleMotionSpeed((Piavca::ScaleMotionSpeed const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::ScaleMotionSpeed *)new Piavca::ScaleMotionSpeed((Piavca::ScaleMotionSpeed const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__ScaleMotionSpeed, 1);
     result->Reference();
     return resultobj;
@@ -18116,13 +23156,28 @@ static PyObject *_wrap_ScaleMotionSpeed_clone(PyObject *, PyObject *args) {
     Piavca::ScaleMotionSpeed *arg1 = (Piavca::ScaleMotionSpeed *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:ScaleMotionSpeed_clone",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__ScaleMotionSpeed, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)(arg1)->clone();
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->clone();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -18134,12 +23189,20 @@ static PyObject *_wrap_ScaleMotionSpeed_getMotionLength(PyObject *, PyObject *ar
     Piavca::ScaleMotionSpeed *arg1 = (Piavca::ScaleMotionSpeed *) 0 ;
     float result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:ScaleMotionSpeed_getMotionLength",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__ScaleMotionSpeed, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (float)((Piavca::ScaleMotionSpeed const *)arg1)->getMotionLength();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)((Piavca::ScaleMotionSpeed const *)arg1)->getMotionLength();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -18158,6 +23221,7 @@ static PyObject *_wrap_ScaleMotionSpeed_getFloatValueAtTimeInternal(PyObject *, 
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:ScaleMotionSpeed_getFloatValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__ScaleMotionSpeed, SWIG_POINTER_EXCEPTION | 0);
@@ -18170,8 +23234,15 @@ static PyObject *_wrap_ScaleMotionSpeed_getFloatValueAtTimeInternal(PyObject *, 
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -18190,6 +23261,7 @@ static PyObject *_wrap_ScaleMotionSpeed_getVecValueAtTimeInternal(PyObject *, Py
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:ScaleMotionSpeed_getVecValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__ScaleMotionSpeed, SWIG_POINTER_EXCEPTION | 0);
@@ -18202,8 +23274,15 @@ static PyObject *_wrap_ScaleMotionSpeed_getVecValueAtTimeInternal(PyObject *, Py
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec & >(result));
@@ -18224,6 +23303,7 @@ static PyObject *_wrap_ScaleMotionSpeed_getQuatValueAtTimeInternal(PyObject *, P
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:ScaleMotionSpeed_getQuatValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__ScaleMotionSpeed, SWIG_POINTER_EXCEPTION | 0);
@@ -18236,8 +23316,15 @@ static PyObject *_wrap_ScaleMotionSpeed_getQuatValueAtTimeInternal(PyObject *, P
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Quat * resultptr;
         resultptr = new Piavca::Quat(static_cast<Piavca::Quat & >(result));
@@ -18263,8 +23350,13 @@ static PyObject *_wrap_ScaleMotionSpeed_setScaleFactor(PyObject *, PyObject *arg
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setScaleFactor(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setScaleFactor(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -18280,8 +23372,13 @@ static PyObject *_wrap_delete_ScaleMotionSpeed(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_ScaleMotionSpeed",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__ScaleMotionSpeed, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    arg1->Dispose();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        arg1->Dispose();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -18311,8 +23408,13 @@ static PyObject *_wrap_new_ScaleMotionRoot__SWIG_0(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::ScaleMotionRoot *)new Piavca::ScaleMotionRoot(arg1,arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::ScaleMotionRoot *)new Piavca::ScaleMotionRoot(arg1,arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__ScaleMotionRoot, 1);
     result->Reference();
     return resultobj;
@@ -18330,8 +23432,13 @@ static PyObject *_wrap_new_ScaleMotionRoot__SWIG_1(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:new_ScaleMotionRoot",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::ScaleMotionRoot *)new Piavca::ScaleMotionRoot(arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::ScaleMotionRoot *)new Piavca::ScaleMotionRoot(arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__ScaleMotionRoot, 1);
     result->Reference();
     return resultobj;
@@ -18345,8 +23452,13 @@ static PyObject *_wrap_new_ScaleMotionRoot__SWIG_2(PyObject *, PyObject *args) {
     Piavca::ScaleMotionRoot *result;
     
     if(!PyArg_ParseTuple(args,(char *)":new_ScaleMotionRoot")) goto fail;
-    result = (Piavca::ScaleMotionRoot *)new Piavca::ScaleMotionRoot();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::ScaleMotionRoot *)new Piavca::ScaleMotionRoot();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__ScaleMotionRoot, 1);
     result->Reference();
     return resultobj;
@@ -18370,8 +23482,13 @@ static PyObject *_wrap_new_ScaleMotionRoot__SWIG_3(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::ScaleMotionRoot *)new Piavca::ScaleMotionRoot((Piavca::ScaleMotionRoot const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::ScaleMotionRoot *)new Piavca::ScaleMotionRoot((Piavca::ScaleMotionRoot const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__ScaleMotionRoot, 1);
     result->Reference();
     return resultobj;
@@ -18454,8 +23571,13 @@ static PyObject *_wrap_delete_ScaleMotionRoot(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_ScaleMotionRoot",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__ScaleMotionRoot, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    arg1->Dispose();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        arg1->Dispose();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -18468,13 +23590,28 @@ static PyObject *_wrap_ScaleMotionRoot_clone(PyObject *, PyObject *args) {
     Piavca::ScaleMotionRoot *arg1 = (Piavca::ScaleMotionRoot *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:ScaleMotionRoot_clone",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__ScaleMotionRoot, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)(arg1)->clone();
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->clone();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -18490,6 +23627,7 @@ static PyObject *_wrap_ScaleMotionRoot_getFloatValueAtTimeInternal(PyObject *, P
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:ScaleMotionRoot_getFloatValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__ScaleMotionRoot, SWIG_POINTER_EXCEPTION | 0);
@@ -18502,8 +23640,15 @@ static PyObject *_wrap_ScaleMotionRoot_getFloatValueAtTimeInternal(PyObject *, P
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -18522,6 +23667,7 @@ static PyObject *_wrap_ScaleMotionRoot_getVecValueAtTimeInternal(PyObject *, PyO
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:ScaleMotionRoot_getVecValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__ScaleMotionRoot, SWIG_POINTER_EXCEPTION | 0);
@@ -18534,8 +23680,15 @@ static PyObject *_wrap_ScaleMotionRoot_getVecValueAtTimeInternal(PyObject *, PyO
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec & >(result));
@@ -18556,6 +23709,7 @@ static PyObject *_wrap_ScaleMotionRoot_getQuatValueAtTimeInternal(PyObject *, Py
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:ScaleMotionRoot_getQuatValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__ScaleMotionRoot, SWIG_POINTER_EXCEPTION | 0);
@@ -18568,8 +23722,15 @@ static PyObject *_wrap_ScaleMotionRoot_getQuatValueAtTimeInternal(PyObject *, Py
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Quat * resultptr;
         resultptr = new Piavca::Quat(static_cast<Piavca::Quat & >(result));
@@ -18595,8 +23756,13 @@ static PyObject *_wrap_ScaleMotionRoot_setScaleFactor(PyObject *, PyObject *args
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setScaleFactor(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setScaleFactor(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -18626,8 +23792,13 @@ static PyObject *_wrap_new_TimeOffset__SWIG_0(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::TimeOffset *)new Piavca::TimeOffset(arg1,arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::TimeOffset *)new Piavca::TimeOffset(arg1,arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__TimeOffset, 1);
     result->Reference();
     return resultobj;
@@ -18645,8 +23816,13 @@ static PyObject *_wrap_new_TimeOffset__SWIG_1(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:new_TimeOffset",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::TimeOffset *)new Piavca::TimeOffset(arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::TimeOffset *)new Piavca::TimeOffset(arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__TimeOffset, 1);
     result->Reference();
     return resultobj;
@@ -18660,8 +23836,13 @@ static PyObject *_wrap_new_TimeOffset__SWIG_2(PyObject *, PyObject *args) {
     Piavca::TimeOffset *result;
     
     if(!PyArg_ParseTuple(args,(char *)":new_TimeOffset")) goto fail;
-    result = (Piavca::TimeOffset *)new Piavca::TimeOffset();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::TimeOffset *)new Piavca::TimeOffset();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__TimeOffset, 1);
     result->Reference();
     return resultobj;
@@ -18685,8 +23866,13 @@ static PyObject *_wrap_new_TimeOffset__SWIG_3(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::TimeOffset *)new Piavca::TimeOffset((Piavca::TimeOffset const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::TimeOffset *)new Piavca::TimeOffset((Piavca::TimeOffset const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__TimeOffset, 1);
     result->Reference();
     return resultobj;
@@ -18766,13 +23952,28 @@ static PyObject *_wrap_TimeOffset_clone(PyObject *, PyObject *args) {
     Piavca::TimeOffset *arg1 = (Piavca::TimeOffset *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:TimeOffset_clone",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TimeOffset, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)(arg1)->clone();
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->clone();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -18785,6 +23986,7 @@ static PyObject *_wrap_TimeOffset_setStartTime(PyObject *, PyObject *args) {
     float arg2 ;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:TimeOffset_setStartTime",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TimeOffset, SWIG_POINTER_EXCEPTION | 0);
@@ -18793,8 +23995,15 @@ static PyObject *_wrap_TimeOffset_setStartTime(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setStartTime(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setStartTime(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -18811,6 +24020,7 @@ static PyObject *_wrap_TimeOffset_getFloatValueAtTimeInternal(PyObject *, PyObje
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:TimeOffset_getFloatValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TimeOffset, SWIG_POINTER_EXCEPTION | 0);
@@ -18823,8 +24033,15 @@ static PyObject *_wrap_TimeOffset_getFloatValueAtTimeInternal(PyObject *, PyObje
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -18843,6 +24060,7 @@ static PyObject *_wrap_TimeOffset_getVecValueAtTimeInternal(PyObject *, PyObject
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:TimeOffset_getVecValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TimeOffset, SWIG_POINTER_EXCEPTION | 0);
@@ -18855,8 +24073,15 @@ static PyObject *_wrap_TimeOffset_getVecValueAtTimeInternal(PyObject *, PyObject
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec & >(result));
@@ -18877,6 +24102,7 @@ static PyObject *_wrap_TimeOffset_getQuatValueAtTimeInternal(PyObject *, PyObjec
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:TimeOffset_getQuatValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TimeOffset, SWIG_POINTER_EXCEPTION | 0);
@@ -18889,8 +24115,15 @@ static PyObject *_wrap_TimeOffset_getQuatValueAtTimeInternal(PyObject *, PyObjec
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Quat * resultptr;
         resultptr = new Piavca::Quat(static_cast<Piavca::Quat & >(result));
@@ -18916,8 +24149,13 @@ static PyObject *_wrap_TimeOffset_setOffset(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setOffset(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setOffset(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -18933,8 +24171,13 @@ static PyObject *_wrap_delete_TimeOffset(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_TimeOffset",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TimeOffset, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    arg1->Dispose();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        arg1->Dispose();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -18970,8 +24213,13 @@ static PyObject *_wrap_new_TurnMotion__SWIG_0(PyObject *, PyObject *args) {
         if (SWIG_arg_fail(2)) SWIG_fail;
         arg2 = *argp;
     }
-    result = (Piavca::TurnMotion *)new Piavca::TurnMotion(arg1,arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::TurnMotion *)new Piavca::TurnMotion(arg1,arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__TurnMotion, 1);
     result->Reference();
     return resultobj;
@@ -18989,8 +24237,13 @@ static PyObject *_wrap_new_TurnMotion__SWIG_1(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:new_TurnMotion",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::TurnMotion *)new Piavca::TurnMotion(arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::TurnMotion *)new Piavca::TurnMotion(arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__TurnMotion, 1);
     result->Reference();
     return resultobj;
@@ -19004,8 +24257,13 @@ static PyObject *_wrap_new_TurnMotion__SWIG_2(PyObject *, PyObject *args) {
     Piavca::TurnMotion *result;
     
     if(!PyArg_ParseTuple(args,(char *)":new_TurnMotion")) goto fail;
-    result = (Piavca::TurnMotion *)new Piavca::TurnMotion();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::TurnMotion *)new Piavca::TurnMotion();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__TurnMotion, 1);
     result->Reference();
     return resultobj;
@@ -19029,8 +24287,13 @@ static PyObject *_wrap_new_TurnMotion__SWIG_3(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::TurnMotion *)new Piavca::TurnMotion((Piavca::TurnMotion const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::TurnMotion *)new Piavca::TurnMotion((Piavca::TurnMotion const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__TurnMotion, 1);
     result->Reference();
     return resultobj;
@@ -19118,13 +24381,28 @@ static PyObject *_wrap_TurnMotion_clone(PyObject *, PyObject *args) {
     Piavca::TurnMotion *arg1 = (Piavca::TurnMotion *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:TurnMotion_clone",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TurnMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)(arg1)->clone();
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->clone();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -19140,6 +24418,7 @@ static PyObject *_wrap_TurnMotion_getFloatValueAtTimeInternal(PyObject *, PyObje
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:TurnMotion_getFloatValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TurnMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -19152,8 +24431,15 @@ static PyObject *_wrap_TurnMotion_getFloatValueAtTimeInternal(PyObject *, PyObje
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -19172,6 +24458,7 @@ static PyObject *_wrap_TurnMotion_getVecValueAtTimeInternal(PyObject *, PyObject
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:TurnMotion_getVecValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TurnMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -19184,8 +24471,15 @@ static PyObject *_wrap_TurnMotion_getVecValueAtTimeInternal(PyObject *, PyObject
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec & >(result));
@@ -19206,6 +24500,7 @@ static PyObject *_wrap_TurnMotion_getQuatValueAtTimeInternal(PyObject *, PyObjec
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:TurnMotion_getQuatValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TurnMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -19218,8 +24513,15 @@ static PyObject *_wrap_TurnMotion_getQuatValueAtTimeInternal(PyObject *, PyObjec
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Quat * resultptr;
         resultptr = new Piavca::Quat(static_cast<Piavca::Quat & >(result));
@@ -19251,8 +24553,13 @@ static PyObject *_wrap_TurnMotion_setRotation(PyObject *, PyObject *args) {
         if (SWIG_arg_fail(2)) SWIG_fail;
         arg2 = *argp;
     }
-    (arg1)->setRotation(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setRotation(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -19268,8 +24575,13 @@ static PyObject *_wrap_delete_TurnMotion(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_TurnMotion",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TurnMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    arg1->Dispose();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        arg1->Dispose();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -19309,8 +24621,13 @@ static PyObject *_wrap_new_SequentialBlend__SWIG_0(PyObject *, PyObject *args) {
         arg4 = static_cast<float >(SWIG_As_float(obj3)); 
         if (SWIG_arg_fail(4)) SWIG_fail;
     }
-    result = (Piavca::SequentialBlend *)new Piavca::SequentialBlend(arg1,arg2,arg3,arg4);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::SequentialBlend *)new Piavca::SequentialBlend(arg1,arg2,arg3,arg4);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__SequentialBlend, 1);
     result->Reference();
     return resultobj;
@@ -19338,8 +24655,13 @@ static PyObject *_wrap_new_SequentialBlend__SWIG_1(PyObject *, PyObject *args) {
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (Piavca::SequentialBlend *)new Piavca::SequentialBlend(arg1,arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::SequentialBlend *)new Piavca::SequentialBlend(arg1,arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__SequentialBlend, 1);
     result->Reference();
     return resultobj;
@@ -19361,8 +24683,13 @@ static PyObject *_wrap_new_SequentialBlend__SWIG_2(PyObject *, PyObject *args) {
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    result = (Piavca::SequentialBlend *)new Piavca::SequentialBlend(arg1,arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::SequentialBlend *)new Piavca::SequentialBlend(arg1,arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__SequentialBlend, 1);
     result->Reference();
     return resultobj;
@@ -19380,8 +24707,13 @@ static PyObject *_wrap_new_SequentialBlend__SWIG_3(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:new_SequentialBlend",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::SequentialBlend *)new Piavca::SequentialBlend(arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::SequentialBlend *)new Piavca::SequentialBlend(arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__SequentialBlend, 1);
     result->Reference();
     return resultobj;
@@ -19395,8 +24727,13 @@ static PyObject *_wrap_new_SequentialBlend__SWIG_4(PyObject *, PyObject *args) {
     Piavca::SequentialBlend *result;
     
     if(!PyArg_ParseTuple(args,(char *)":new_SequentialBlend")) goto fail;
-    result = (Piavca::SequentialBlend *)new Piavca::SequentialBlend();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::SequentialBlend *)new Piavca::SequentialBlend();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__SequentialBlend, 1);
     result->Reference();
     return resultobj;
@@ -19420,8 +24757,13 @@ static PyObject *_wrap_new_SequentialBlend__SWIG_5(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::SequentialBlend *)new Piavca::SequentialBlend((Piavca::SequentialBlend const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::SequentialBlend *)new Piavca::SequentialBlend((Piavca::SequentialBlend const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__SequentialBlend, 1);
     result->Reference();
     return resultobj;
@@ -19570,13 +24912,28 @@ static PyObject *_wrap_SequentialBlend_clone(PyObject *, PyObject *args) {
     Piavca::SequentialBlend *arg1 = (Piavca::SequentialBlend *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:SequentialBlend_clone",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__SequentialBlend, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)(arg1)->clone();
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->clone();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -19589,6 +24946,7 @@ static PyObject *_wrap_SequentialBlend_setMaintainY(PyObject *, PyObject *args) 
     bool arg2 ;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:SequentialBlend_setMaintainY",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__SequentialBlend, SWIG_POINTER_EXCEPTION | 0);
@@ -19597,8 +24955,15 @@ static PyObject *_wrap_SequentialBlend_setMaintainY(PyObject *, PyObject *args) 
         arg2 = static_cast<bool >(SWIG_As_bool(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setMaintainY(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setMaintainY(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -19612,6 +24977,7 @@ static PyObject *_wrap_SequentialBlend_setAccumulateRoot(PyObject *, PyObject *a
     bool arg2 ;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:SequentialBlend_setAccumulateRoot",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__SequentialBlend, SWIG_POINTER_EXCEPTION | 0);
@@ -19620,8 +24986,15 @@ static PyObject *_wrap_SequentialBlend_setAccumulateRoot(PyObject *, PyObject *a
         arg2 = static_cast<bool >(SWIG_As_bool(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setAccumulateRoot(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setAccumulateRoot(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -19635,6 +25008,7 @@ static PyObject *_wrap_SequentialBlend_setStartTime(PyObject *, PyObject *args) 
     float arg2 ;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:SequentialBlend_setStartTime",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__SequentialBlend, SWIG_POINTER_EXCEPTION | 0);
@@ -19643,8 +25017,15 @@ static PyObject *_wrap_SequentialBlend_setStartTime(PyObject *, PyObject *args) 
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setStartTime(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setStartTime(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -19657,12 +25038,20 @@ static PyObject *_wrap_SequentialBlend_getMotionLength(PyObject *, PyObject *arg
     Piavca::SequentialBlend *arg1 = (Piavca::SequentialBlend *) 0 ;
     float result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:SequentialBlend_getMotionLength",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__SequentialBlend, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (float)((Piavca::SequentialBlend const *)arg1)->getMotionLength();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)((Piavca::SequentialBlend const *)arg1)->getMotionLength();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -19681,6 +25070,7 @@ static PyObject *_wrap_SequentialBlend_getFloatValueAtTimeInternal(PyObject *, P
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:SequentialBlend_getFloatValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__SequentialBlend, SWIG_POINTER_EXCEPTION | 0);
@@ -19693,8 +25083,15 @@ static PyObject *_wrap_SequentialBlend_getFloatValueAtTimeInternal(PyObject *, P
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -19713,6 +25110,7 @@ static PyObject *_wrap_SequentialBlend_getVecValueAtTimeInternal(PyObject *, PyO
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:SequentialBlend_getVecValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__SequentialBlend, SWIG_POINTER_EXCEPTION | 0);
@@ -19725,8 +25123,15 @@ static PyObject *_wrap_SequentialBlend_getVecValueAtTimeInternal(PyObject *, PyO
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec & >(result));
@@ -19747,6 +25152,7 @@ static PyObject *_wrap_SequentialBlend_getQuatValueAtTimeInternal(PyObject *, Py
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:SequentialBlend_getQuatValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__SequentialBlend, SWIG_POINTER_EXCEPTION | 0);
@@ -19759,8 +25165,15 @@ static PyObject *_wrap_SequentialBlend_getQuatValueAtTimeInternal(PyObject *, Py
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Quat * resultptr;
         resultptr = new Piavca::Quat(static_cast<Piavca::Quat & >(result));
@@ -19786,8 +25199,13 @@ static PyObject *_wrap_SequentialBlend_setBlendStart(PyObject *, PyObject *args)
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setBlendStart(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setBlendStart(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -19809,8 +25227,13 @@ static PyObject *_wrap_SequentialBlend_setBlendInterval(PyObject *, PyObject *ar
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setBlendInterval(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setBlendInterval(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -19827,8 +25250,13 @@ static PyObject *_wrap_SequentialBlend_getBlendStart(PyObject *, PyObject *args)
     if(!PyArg_ParseTuple(args,(char *)"O:SequentialBlend_getBlendStart",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__SequentialBlend, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (float)(arg1)->getBlendStart();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)(arg1)->getBlendStart();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -19847,8 +25275,13 @@ static PyObject *_wrap_SequentialBlend_getBlendInterval(PyObject *, PyObject *ar
     if(!PyArg_ParseTuple(args,(char *)"O:SequentialBlend_getBlendInterval",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__SequentialBlend, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (float)(arg1)->getBlendInterval();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)(arg1)->getBlendInterval();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -19866,8 +25299,13 @@ static PyObject *_wrap_delete_SequentialBlend(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_SequentialBlend",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__SequentialBlend, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    arg1->Dispose();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        arg1->Dispose();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -19884,21 +25322,36 @@ static PyObject * SequentialBlend_swigregister(PyObject *, PyObject *args) {
 }
 static PyObject *_wrap_new_SelfBlend__SWIG_0(PyObject *, PyObject *args) {
     PyObject *resultobj = NULL;
-    Piavca::Motion *arg1 = (Piavca::Motion *) 0 ;
-    float arg2 ;
+    PyObject *arg1 = (PyObject *) 0 ;
+    Piavca::Motion *arg2 = (Piavca::Motion *) 0 ;
+    float arg3 ;
     Piavca::SelfBlend *result;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    PyObject * obj2 = 0 ;
     
-    if(!PyArg_ParseTuple(args,(char *)"OO:new_SelfBlend",&obj0,&obj1)) goto fail;
-    SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
-    if (SWIG_arg_fail(1)) SWIG_fail;
+    if(!PyArg_ParseTuple(args,(char *)"OOO:new_SelfBlend",&obj0,&obj1,&obj2)) goto fail;
+    arg1 = obj0;
+    SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
+    if (SWIG_arg_fail(2)) SWIG_fail;
     {
-        arg2 = static_cast<float >(SWIG_As_float(obj1)); 
-        if (SWIG_arg_fail(2)) SWIG_fail;
+        arg3 = static_cast<float >(SWIG_As_float(obj2)); 
+        if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (Piavca::SelfBlend *)new Piavca::SelfBlend(arg1,arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        if ( arg1 != Py_None ) {
+            /* subclassed */
+            result = (Piavca::SelfBlend *)new SwigDirector_SelfBlend(arg1,arg2,arg3);
+            
+        } else {
+            result = (Piavca::SelfBlend *)new Piavca::SelfBlend(arg2,arg3);
+            
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__SelfBlend, 1);
     result->Reference();
     return resultobj;
@@ -19909,15 +25362,30 @@ static PyObject *_wrap_new_SelfBlend__SWIG_0(PyObject *, PyObject *args) {
 
 static PyObject *_wrap_new_SelfBlend__SWIG_1(PyObject *, PyObject *args) {
     PyObject *resultobj = NULL;
-    Piavca::Motion *arg1 = (Piavca::Motion *) 0 ;
+    PyObject *arg1 = (PyObject *) 0 ;
+    Piavca::Motion *arg2 = (Piavca::Motion *) 0 ;
     Piavca::SelfBlend *result;
     PyObject * obj0 = 0 ;
+    PyObject * obj1 = 0 ;
     
-    if(!PyArg_ParseTuple(args,(char *)"O:new_SelfBlend",&obj0)) goto fail;
-    SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
-    if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::SelfBlend *)new Piavca::SelfBlend(arg1);
-    
+    if(!PyArg_ParseTuple(args,(char *)"OO:new_SelfBlend",&obj0,&obj1)) goto fail;
+    arg1 = obj0;
+    SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
+    if (SWIG_arg_fail(2)) SWIG_fail;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        if ( arg1 != Py_None ) {
+            /* subclassed */
+            result = (Piavca::SelfBlend *)new SwigDirector_SelfBlend(arg1,arg2);
+            
+        } else {
+            result = (Piavca::SelfBlend *)new Piavca::SelfBlend(arg2);
+            
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__SelfBlend, 1);
     result->Reference();
     return resultobj;
@@ -19928,11 +25396,26 @@ static PyObject *_wrap_new_SelfBlend__SWIG_1(PyObject *, PyObject *args) {
 
 static PyObject *_wrap_new_SelfBlend__SWIG_2(PyObject *, PyObject *args) {
     PyObject *resultobj = NULL;
+    PyObject *arg1 = (PyObject *) 0 ;
     Piavca::SelfBlend *result;
+    PyObject * obj0 = 0 ;
     
-    if(!PyArg_ParseTuple(args,(char *)":new_SelfBlend")) goto fail;
-    result = (Piavca::SelfBlend *)new Piavca::SelfBlend();
-    
+    if(!PyArg_ParseTuple(args,(char *)"O:new_SelfBlend",&obj0)) goto fail;
+    arg1 = obj0;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        if ( arg1 != Py_None ) {
+            /* subclassed */
+            result = (Piavca::SelfBlend *)new SwigDirector_SelfBlend(arg1);
+            
+        } else {
+            result = (Piavca::SelfBlend *)new Piavca::SelfBlend();
+            
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__SelfBlend, 1);
     result->Reference();
     return resultobj;
@@ -19943,21 +25426,36 @@ static PyObject *_wrap_new_SelfBlend__SWIG_2(PyObject *, PyObject *args) {
 
 static PyObject *_wrap_new_SelfBlend__SWIG_3(PyObject *, PyObject *args) {
     PyObject *resultobj = NULL;
-    Piavca::SelfBlend *arg1 = 0 ;
+    PyObject *arg1 = (PyObject *) 0 ;
+    Piavca::SelfBlend *arg2 = 0 ;
     Piavca::SelfBlend *result;
     PyObject * obj0 = 0 ;
+    PyObject * obj1 = 0 ;
     
-    if(!PyArg_ParseTuple(args,(char *)"O:new_SelfBlend",&obj0)) goto fail;
+    if(!PyArg_ParseTuple(args,(char *)"OO:new_SelfBlend",&obj0,&obj1)) goto fail;
+    arg1 = obj0;
     {
-        SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__SelfBlend, SWIG_POINTER_EXCEPTION | 0);
-        if (SWIG_arg_fail(1)) SWIG_fail;
-        if (arg1 == NULL) {
+        SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__SelfBlend, SWIG_POINTER_EXCEPTION | 0);
+        if (SWIG_arg_fail(2)) SWIG_fail;
+        if (arg2 == NULL) {
             SWIG_null_ref("Piavca::SelfBlend");
         }
-        if (SWIG_arg_fail(1)) SWIG_fail;
+        if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::SelfBlend *)new Piavca::SelfBlend((Piavca::SelfBlend const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        if ( arg1 != Py_None ) {
+            /* subclassed */
+            result = (Piavca::SelfBlend *)new SwigDirector_SelfBlend(arg1,(Piavca::SelfBlend const &)*arg2);
+            
+        } else {
+            result = (Piavca::SelfBlend *)new Piavca::SelfBlend((Piavca::SelfBlend const &)*arg2);
+            
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__SelfBlend, 1);
     result->Reference();
     return resultobj;
@@ -19968,61 +25466,74 @@ static PyObject *_wrap_new_SelfBlend__SWIG_3(PyObject *, PyObject *args) {
 
 static PyObject *_wrap_new_SelfBlend(PyObject *self, PyObject *args) {
     int argc;
-    PyObject *argv[3];
+    PyObject *argv[4];
     int ii;
     
     argc = PyObject_Length(args);
-    for (ii = 0; (ii < argc) && (ii < 2); ii++) {
+    for (ii = 0; (ii < argc) && (ii < 3); ii++) {
         argv[ii] = PyTuple_GetItem(args,ii);
     }
-    if (argc == 0) {
-        return _wrap_new_SelfBlend__SWIG_2(self,args);
-    }
     if (argc == 1) {
         int _v;
-        {
-            void *ptr = 0;
-            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_Piavca__SelfBlend, 0) == -1) {
-                _v = 0;
-                PyErr_Clear();
-            } else {
-                _v = (ptr != 0);
-            }
-        }
+        _v = (argv[0] != 0);
         if (_v) {
-            return _wrap_new_SelfBlend__SWIG_3(self,args);
-        }
-    }
-    if (argc == 1) {
-        int _v;
-        {
-            void *ptr;
-            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_Piavca__Motion, 0) == -1) {
-                _v = 0;
-                PyErr_Clear();
-            } else {
-                _v = 1;
-            }
-        }
-        if (_v) {
-            return _wrap_new_SelfBlend__SWIG_1(self,args);
+            return _wrap_new_SelfBlend__SWIG_2(self,args);
         }
     }
     if (argc == 2) {
         int _v;
-        {
-            void *ptr;
-            if (SWIG_ConvertPtr(argv[0], &ptr, SWIGTYPE_p_Piavca__Motion, 0) == -1) {
-                _v = 0;
-                PyErr_Clear();
-            } else {
-                _v = 1;
+        _v = (argv[0] != 0);
+        if (_v) {
+            {
+                void *ptr = 0;
+                if (SWIG_ConvertPtr(argv[1], &ptr, SWIGTYPE_p_Piavca__SelfBlend, 0) == -1) {
+                    _v = 0;
+                    PyErr_Clear();
+                } else {
+                    _v = (ptr != 0);
+                }
+            }
+            if (_v) {
+                return _wrap_new_SelfBlend__SWIG_3(self,args);
             }
         }
+    }
+    if (argc == 2) {
+        int _v;
+        _v = (argv[0] != 0);
         if (_v) {
-            _v = SWIG_Check_float(argv[1]);
+            {
+                void *ptr;
+                if (SWIG_ConvertPtr(argv[1], &ptr, SWIGTYPE_p_Piavca__Motion, 0) == -1) {
+                    _v = 0;
+                    PyErr_Clear();
+                } else {
+                    _v = 1;
+                }
+            }
             if (_v) {
-                return _wrap_new_SelfBlend__SWIG_0(self,args);
+                return _wrap_new_SelfBlend__SWIG_1(self,args);
+            }
+        }
+    }
+    if (argc == 3) {
+        int _v;
+        _v = (argv[0] != 0);
+        if (_v) {
+            {
+                void *ptr;
+                if (SWIG_ConvertPtr(argv[1], &ptr, SWIGTYPE_p_Piavca__Motion, 0) == -1) {
+                    _v = 0;
+                    PyErr_Clear();
+                } else {
+                    _v = 1;
+                }
+            }
+            if (_v) {
+                _v = SWIG_Check_float(argv[2]);
+                if (_v) {
+                    return _wrap_new_SelfBlend__SWIG_0(self,args);
+                }
             }
         }
     }
@@ -20037,13 +25548,28 @@ static PyObject *_wrap_SelfBlend_clone(PyObject *, PyObject *args) {
     Piavca::SelfBlend *arg1 = (Piavca::SelfBlend *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:SelfBlend_clone",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__SelfBlend, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)(arg1)->clone();
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->clone();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -20054,12 +25580,20 @@ static PyObject *_wrap_SelfBlend_reset(PyObject *, PyObject *args) {
     PyObject *resultobj = NULL;
     Piavca::SelfBlend *arg1 = (Piavca::SelfBlend *) 0 ;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:SelfBlend_reset",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__SelfBlend, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->reset();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->reset();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -20075,8 +25609,13 @@ static PyObject *_wrap_SelfBlend_reblend__SWIG_0(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:SelfBlend_reblend",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__SelfBlend, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->reblend();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->reblend();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -20090,6 +25629,7 @@ static PyObject *_wrap_SelfBlend_reblend__SWIG_1(PyObject *, PyObject *args) {
     float arg2 ;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:SelfBlend_reblend",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__SelfBlend, SWIG_POINTER_EXCEPTION | 0);
@@ -20098,8 +25638,15 @@ static PyObject *_wrap_SelfBlend_reblend__SWIG_1(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->reblend(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->reblend(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -20161,14 +25708,22 @@ static PyObject *_wrap_SelfBlend_setMotion(PyObject *, PyObject *args) {
     Piavca::Motion *arg2 = (Piavca::Motion *) 0 ;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:SelfBlend_setMotion",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__SelfBlend, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    (arg1)->setMotion(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setMotion(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -20184,8 +25739,38 @@ static PyObject *_wrap_delete_SelfBlend(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_SelfBlend",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__SelfBlend, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    arg1->Dispose();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        arg1->Dispose();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    Py_INCREF(Py_None); resultobj = Py_None;
+    return resultobj;
+    fail:
+    return NULL;
+}
+
+
+static PyObject *_wrap_disown_SelfBlend(PyObject *, PyObject *args) {
+    PyObject *resultobj = NULL;
+    Piavca::SelfBlend *arg1 = (Piavca::SelfBlend *) 0 ;
+    PyObject * obj0 = 0 ;
     
+    if(!PyArg_ParseTuple(args,(char *)"O:disown_SelfBlend",&obj0)) goto fail;
+    SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__SelfBlend, SWIG_POINTER_EXCEPTION | 0);
+    if (SWIG_arg_fail(1)) SWIG_fail;
+    try {
+        Swig::UnknownExceptionHandler dh;
+        {
+            Swig::Director *director = dynamic_cast<Swig::Director *>(arg1);
+            if (director) director->swig_disown();
+        }
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -20221,8 +25806,13 @@ static PyObject *_wrap_new_LoopMotion__SWIG_0(PyObject *, PyObject *args) {
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (Piavca::LoopMotion *)new Piavca::LoopMotion(arg1,arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::LoopMotion *)new Piavca::LoopMotion(arg1,arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__LoopMotion, 1);
     result->Reference();
     return resultobj;
@@ -20246,8 +25836,13 @@ static PyObject *_wrap_new_LoopMotion__SWIG_1(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::LoopMotion *)new Piavca::LoopMotion(arg1,arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::LoopMotion *)new Piavca::LoopMotion(arg1,arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__LoopMotion, 1);
     result->Reference();
     return resultobj;
@@ -20265,8 +25860,13 @@ static PyObject *_wrap_new_LoopMotion__SWIG_2(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:new_LoopMotion",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::LoopMotion *)new Piavca::LoopMotion(arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::LoopMotion *)new Piavca::LoopMotion(arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__LoopMotion, 1);
     result->Reference();
     return resultobj;
@@ -20280,8 +25880,13 @@ static PyObject *_wrap_new_LoopMotion__SWIG_3(PyObject *, PyObject *args) {
     Piavca::LoopMotion *result;
     
     if(!PyArg_ParseTuple(args,(char *)":new_LoopMotion")) goto fail;
-    result = (Piavca::LoopMotion *)new Piavca::LoopMotion();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::LoopMotion *)new Piavca::LoopMotion();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__LoopMotion, 1);
     result->Reference();
     return resultobj;
@@ -20305,8 +25910,13 @@ static PyObject *_wrap_new_LoopMotion__SWIG_4(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::LoopMotion *)new Piavca::LoopMotion((Piavca::LoopMotion const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::LoopMotion *)new Piavca::LoopMotion((Piavca::LoopMotion const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__LoopMotion, 1);
     result->Reference();
     return resultobj;
@@ -20407,13 +26017,28 @@ static PyObject *_wrap_LoopMotion_clone(PyObject *, PyObject *args) {
     Piavca::LoopMotion *arg1 = (Piavca::LoopMotion *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:LoopMotion_clone",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__LoopMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)(arg1)->clone();
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->clone();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -20425,12 +26050,20 @@ static PyObject *_wrap_LoopMotion_getMotionLength(PyObject *, PyObject *args) {
     Piavca::LoopMotion *arg1 = (Piavca::LoopMotion *) 0 ;
     float result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:LoopMotion_getMotionLength",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__LoopMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (float)((Piavca::LoopMotion const *)arg1)->getMotionLength();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)((Piavca::LoopMotion const *)arg1)->getMotionLength();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -20454,8 +26087,13 @@ static PyObject *_wrap_LoopMotion_setEndTime(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setEndTime(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setEndTime(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -20472,6 +26110,7 @@ static PyObject *_wrap_LoopMotion_getFloatValueAtTimeInternal(PyObject *, PyObje
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:LoopMotion_getFloatValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__LoopMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -20484,8 +26123,15 @@ static PyObject *_wrap_LoopMotion_getFloatValueAtTimeInternal(PyObject *, PyObje
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -20504,6 +26150,7 @@ static PyObject *_wrap_LoopMotion_getVecValueAtTimeInternal(PyObject *, PyObject
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:LoopMotion_getVecValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__LoopMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -20516,8 +26163,15 @@ static PyObject *_wrap_LoopMotion_getVecValueAtTimeInternal(PyObject *, PyObject
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec & >(result));
@@ -20538,6 +26192,7 @@ static PyObject *_wrap_LoopMotion_getQuatValueAtTimeInternal(PyObject *, PyObjec
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:LoopMotion_getQuatValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__LoopMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -20550,8 +26205,15 @@ static PyObject *_wrap_LoopMotion_getQuatValueAtTimeInternal(PyObject *, PyObjec
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Quat * resultptr;
         resultptr = new Piavca::Quat(static_cast<Piavca::Quat & >(result));
@@ -20571,8 +26233,13 @@ static PyObject *_wrap_delete_LoopMotion(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_LoopMotion",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__LoopMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    arg1->Dispose();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        arg1->Dispose();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -20620,8 +26287,13 @@ static PyObject *_wrap_new_RandomTimingsLoop__SWIG_0(PyObject *, PyObject *args)
         arg5 = static_cast<float >(SWIG_As_float(obj4)); 
         if (SWIG_arg_fail(5)) SWIG_fail;
     }
-    result = (Piavca::RandomTimingsLoop *)new Piavca::RandomTimingsLoop(arg1,arg2,arg3,arg4,arg5);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::RandomTimingsLoop *)new Piavca::RandomTimingsLoop(arg1,arg2,arg3,arg4,arg5);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__RandomTimingsLoop, 1);
     result->Reference();
     return resultobj;
@@ -20657,8 +26329,13 @@ static PyObject *_wrap_new_RandomTimingsLoop__SWIG_1(PyObject *, PyObject *args)
         arg4 = static_cast<float >(SWIG_As_float(obj3)); 
         if (SWIG_arg_fail(4)) SWIG_fail;
     }
-    result = (Piavca::RandomTimingsLoop *)new Piavca::RandomTimingsLoop(arg1,arg2,arg3,arg4);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::RandomTimingsLoop *)new Piavca::RandomTimingsLoop(arg1,arg2,arg3,arg4);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__RandomTimingsLoop, 1);
     result->Reference();
     return resultobj;
@@ -20688,8 +26365,13 @@ static PyObject *_wrap_new_RandomTimingsLoop__SWIG_2(PyObject *, PyObject *args)
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (Piavca::RandomTimingsLoop *)new Piavca::RandomTimingsLoop(arg1,arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::RandomTimingsLoop *)new Piavca::RandomTimingsLoop(arg1,arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__RandomTimingsLoop, 1);
     result->Reference();
     return resultobj;
@@ -20713,8 +26395,13 @@ static PyObject *_wrap_new_RandomTimingsLoop__SWIG_3(PyObject *, PyObject *args)
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::RandomTimingsLoop *)new Piavca::RandomTimingsLoop(arg1,arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::RandomTimingsLoop *)new Piavca::RandomTimingsLoop(arg1,arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__RandomTimingsLoop, 1);
     result->Reference();
     return resultobj;
@@ -20732,8 +26419,13 @@ static PyObject *_wrap_new_RandomTimingsLoop__SWIG_4(PyObject *, PyObject *args)
     if(!PyArg_ParseTuple(args,(char *)"O:new_RandomTimingsLoop",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::RandomTimingsLoop *)new Piavca::RandomTimingsLoop(arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::RandomTimingsLoop *)new Piavca::RandomTimingsLoop(arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__RandomTimingsLoop, 1);
     result->Reference();
     return resultobj;
@@ -20747,8 +26439,13 @@ static PyObject *_wrap_new_RandomTimingsLoop__SWIG_5(PyObject *, PyObject *args)
     Piavca::RandomTimingsLoop *result;
     
     if(!PyArg_ParseTuple(args,(char *)":new_RandomTimingsLoop")) goto fail;
-    result = (Piavca::RandomTimingsLoop *)new Piavca::RandomTimingsLoop();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::RandomTimingsLoop *)new Piavca::RandomTimingsLoop();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__RandomTimingsLoop, 1);
     result->Reference();
     return resultobj;
@@ -20772,8 +26469,13 @@ static PyObject *_wrap_new_RandomTimingsLoop__SWIG_6(PyObject *, PyObject *args)
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::RandomTimingsLoop *)new Piavca::RandomTimingsLoop((Piavca::RandomTimingsLoop const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::RandomTimingsLoop *)new Piavca::RandomTimingsLoop((Piavca::RandomTimingsLoop const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__RandomTimingsLoop, 1);
     result->Reference();
     return resultobj;
@@ -20928,8 +26630,13 @@ static PyObject *_wrap_delete_RandomTimingsLoop(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_RandomTimingsLoop",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__RandomTimingsLoop, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    arg1->Dispose();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        arg1->Dispose();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -20942,13 +26649,28 @@ static PyObject *_wrap_RandomTimingsLoop_clone(PyObject *, PyObject *args) {
     Piavca::RandomTimingsLoop *arg1 = (Piavca::RandomTimingsLoop *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:RandomTimingsLoop_clone",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__RandomTimingsLoop, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)(arg1)->clone();
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->clone();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -20963,6 +26685,7 @@ static PyObject *_wrap_RandomTimingsLoop_setTimingParams(PyObject *, PyObject *a
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:RandomTimingsLoop_setTimingParams",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__RandomTimingsLoop, SWIG_POINTER_EXCEPTION | 0);
@@ -20975,8 +26698,15 @@ static PyObject *_wrap_RandomTimingsLoop_setTimingParams(PyObject *, PyObject *a
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    (arg1)->setTimingParams(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setTimingParams(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -20990,6 +26720,7 @@ static PyObject *_wrap_RandomTimingsLoop_reblend(PyObject *, PyObject *args) {
     float arg2 ;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:RandomTimingsLoop_reblend",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__RandomTimingsLoop, SWIG_POINTER_EXCEPTION | 0);
@@ -20998,8 +26729,15 @@ static PyObject *_wrap_RandomTimingsLoop_reblend(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->reblend(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->reblend(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -21013,14 +26751,22 @@ static PyObject *_wrap_RandomTimingsLoop_setMotion(PyObject *, PyObject *args) {
     Piavca::Motion *arg2 = (Piavca::Motion *) 0 ;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:RandomTimingsLoop_setMotion",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__RandomTimingsLoop, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    (arg1)->setMotion(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setMotion(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -21056,8 +26802,13 @@ static PyObject *_wrap_new_AvatarPostureBlend__SWIG_0(PyObject *, PyObject *args
         arg3 = static_cast<bool >(SWIG_As_bool(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (Piavca::AvatarPostureBlend *)new Piavca::AvatarPostureBlend(arg1,arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::AvatarPostureBlend *)new Piavca::AvatarPostureBlend(arg1,arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__AvatarPostureBlend, 1);
     result->Reference();
     return resultobj;
@@ -21081,8 +26832,13 @@ static PyObject *_wrap_new_AvatarPostureBlend__SWIG_1(PyObject *, PyObject *args
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::AvatarPostureBlend *)new Piavca::AvatarPostureBlend(arg1,arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::AvatarPostureBlend *)new Piavca::AvatarPostureBlend(arg1,arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__AvatarPostureBlend, 1);
     result->Reference();
     return resultobj;
@@ -21100,8 +26856,13 @@ static PyObject *_wrap_new_AvatarPostureBlend__SWIG_2(PyObject *, PyObject *args
     if(!PyArg_ParseTuple(args,(char *)"O:new_AvatarPostureBlend",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::AvatarPostureBlend *)new Piavca::AvatarPostureBlend(arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::AvatarPostureBlend *)new Piavca::AvatarPostureBlend(arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__AvatarPostureBlend, 1);
     result->Reference();
     return resultobj;
@@ -21115,8 +26876,13 @@ static PyObject *_wrap_new_AvatarPostureBlend__SWIG_3(PyObject *, PyObject *args
     Piavca::AvatarPostureBlend *result;
     
     if(!PyArg_ParseTuple(args,(char *)":new_AvatarPostureBlend")) goto fail;
-    result = (Piavca::AvatarPostureBlend *)new Piavca::AvatarPostureBlend();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::AvatarPostureBlend *)new Piavca::AvatarPostureBlend();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__AvatarPostureBlend, 1);
     result->Reference();
     return resultobj;
@@ -21140,8 +26906,13 @@ static PyObject *_wrap_new_AvatarPostureBlend__SWIG_4(PyObject *, PyObject *args
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::AvatarPostureBlend *)new Piavca::AvatarPostureBlend((Piavca::AvatarPostureBlend const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::AvatarPostureBlend *)new Piavca::AvatarPostureBlend((Piavca::AvatarPostureBlend const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__AvatarPostureBlend, 1);
     result->Reference();
     return resultobj;
@@ -21242,13 +27013,28 @@ static PyObject *_wrap_AvatarPostureBlend_clone(PyObject *, PyObject *args) {
     Piavca::AvatarPostureBlend *arg1 = (Piavca::AvatarPostureBlend *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:AvatarPostureBlend_clone",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__AvatarPostureBlend, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)(arg1)->clone();
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->clone();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -21261,14 +27047,22 @@ static PyObject *_wrap_AvatarPostureBlend_load(PyObject *, PyObject *args) {
     Piavca::Avatar *arg2 = (Piavca::Avatar *) 0 ;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:AvatarPostureBlend_load",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__AvatarPostureBlend, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    (arg1)->load(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->load(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -21288,8 +27082,13 @@ static PyObject *_wrap_AvatarPostureBlend_setMotion(PyObject *, PyObject *args) 
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    (arg1)->setMotion(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setMotion(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -21305,8 +27104,13 @@ static PyObject *_wrap_AvatarPostureBlend_reblend__SWIG_0(PyObject *, PyObject *
     if(!PyArg_ParseTuple(args,(char *)"O:AvatarPostureBlend_reblend",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__AvatarPostureBlend, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->reblend();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->reblend();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -21328,8 +27132,13 @@ static PyObject *_wrap_AvatarPostureBlend_reblend__SWIG_1(PyObject *, PyObject *
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->reblend(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->reblend(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -21393,8 +27202,13 @@ static PyObject *_wrap_delete_AvatarPostureBlend(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_AvatarPostureBlend",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__AvatarPostureBlend, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    arg1->Dispose();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        arg1->Dispose();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -21428,8 +27242,13 @@ static PyObject *_wrap_new_BlendBetween__SWIG_0(PyObject *, PyObject *args) {
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (Piavca::BlendBetween *)new Piavca::BlendBetween(arg1,arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::BlendBetween *)new Piavca::BlendBetween(arg1,arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__BlendBetween, 1);
     result->Reference();
     return resultobj;
@@ -21451,8 +27270,13 @@ static PyObject *_wrap_new_BlendBetween__SWIG_1(PyObject *, PyObject *args) {
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    result = (Piavca::BlendBetween *)new Piavca::BlendBetween(arg1,arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::BlendBetween *)new Piavca::BlendBetween(arg1,arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__BlendBetween, 1);
     result->Reference();
     return resultobj;
@@ -21470,8 +27294,13 @@ static PyObject *_wrap_new_BlendBetween__SWIG_2(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:new_BlendBetween",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::BlendBetween *)new Piavca::BlendBetween(arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::BlendBetween *)new Piavca::BlendBetween(arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__BlendBetween, 1);
     result->Reference();
     return resultobj;
@@ -21485,8 +27314,13 @@ static PyObject *_wrap_new_BlendBetween__SWIG_3(PyObject *, PyObject *args) {
     Piavca::BlendBetween *result;
     
     if(!PyArg_ParseTuple(args,(char *)":new_BlendBetween")) goto fail;
-    result = (Piavca::BlendBetween *)new Piavca::BlendBetween();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::BlendBetween *)new Piavca::BlendBetween();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__BlendBetween, 1);
     result->Reference();
     return resultobj;
@@ -21510,8 +27344,13 @@ static PyObject *_wrap_new_BlendBetween__SWIG_4(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::BlendBetween *)new Piavca::BlendBetween((Piavca::BlendBetween const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::BlendBetween *)new Piavca::BlendBetween((Piavca::BlendBetween const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__BlendBetween, 1);
     result->Reference();
     return resultobj;
@@ -21628,13 +27467,28 @@ static PyObject *_wrap_BlendBetween_clone(PyObject *, PyObject *args) {
     Piavca::BlendBetween *arg1 = (Piavca::BlendBetween *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:BlendBetween_clone",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__BlendBetween, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)(arg1)->clone();
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->clone();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -21650,6 +27504,7 @@ static PyObject *_wrap_BlendBetween_getFloatValueAtTimeInternal(PyObject *, PyOb
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:BlendBetween_getFloatValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__BlendBetween, SWIG_POINTER_EXCEPTION | 0);
@@ -21662,8 +27517,15 @@ static PyObject *_wrap_BlendBetween_getFloatValueAtTimeInternal(PyObject *, PyOb
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -21682,6 +27544,7 @@ static PyObject *_wrap_BlendBetween_getVecValueAtTimeInternal(PyObject *, PyObje
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:BlendBetween_getVecValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__BlendBetween, SWIG_POINTER_EXCEPTION | 0);
@@ -21694,8 +27557,15 @@ static PyObject *_wrap_BlendBetween_getVecValueAtTimeInternal(PyObject *, PyObje
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec & >(result));
@@ -21716,6 +27586,7 @@ static PyObject *_wrap_BlendBetween_getQuatValueAtTimeInternal(PyObject *, PyObj
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:BlendBetween_getQuatValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__BlendBetween, SWIG_POINTER_EXCEPTION | 0);
@@ -21728,8 +27599,15 @@ static PyObject *_wrap_BlendBetween_getQuatValueAtTimeInternal(PyObject *, PyObj
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Quat * resultptr;
         resultptr = new Piavca::Quat(static_cast<Piavca::Quat & >(result));
@@ -21755,8 +27633,13 @@ static PyObject *_wrap_BlendBetween_setBlendFactor(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setBlendFactor(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setBlendFactor(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -21772,8 +27655,13 @@ static PyObject *_wrap_delete_BlendBetween(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_BlendBetween",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__BlendBetween, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    arg1->Dispose();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        arg1->Dispose();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -21807,8 +27695,13 @@ static PyObject *_wrap_new_MotionAdder__SWIG_0(PyObject *, PyObject *args) {
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (Piavca::MotionAdder *)new Piavca::MotionAdder(arg1,arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::MotionAdder *)new Piavca::MotionAdder(arg1,arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__MotionAdder, 1);
     result->Reference();
     return resultobj;
@@ -21830,8 +27723,13 @@ static PyObject *_wrap_new_MotionAdder__SWIG_1(PyObject *, PyObject *args) {
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    result = (Piavca::MotionAdder *)new Piavca::MotionAdder(arg1,arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::MotionAdder *)new Piavca::MotionAdder(arg1,arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__MotionAdder, 1);
     result->Reference();
     return resultobj;
@@ -21849,8 +27747,13 @@ static PyObject *_wrap_new_MotionAdder__SWIG_2(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:new_MotionAdder",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::MotionAdder *)new Piavca::MotionAdder(arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::MotionAdder *)new Piavca::MotionAdder(arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__MotionAdder, 1);
     result->Reference();
     return resultobj;
@@ -21864,8 +27767,13 @@ static PyObject *_wrap_new_MotionAdder__SWIG_3(PyObject *, PyObject *args) {
     Piavca::MotionAdder *result;
     
     if(!PyArg_ParseTuple(args,(char *)":new_MotionAdder")) goto fail;
-    result = (Piavca::MotionAdder *)new Piavca::MotionAdder();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::MotionAdder *)new Piavca::MotionAdder();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__MotionAdder, 1);
     result->Reference();
     return resultobj;
@@ -21889,8 +27797,13 @@ static PyObject *_wrap_new_MotionAdder__SWIG_4(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::MotionAdder *)new Piavca::MotionAdder((Piavca::MotionAdder const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::MotionAdder *)new Piavca::MotionAdder((Piavca::MotionAdder const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__MotionAdder, 1);
     result->Reference();
     return resultobj;
@@ -22007,13 +27920,28 @@ static PyObject *_wrap_MotionAdder_clone(PyObject *, PyObject *args) {
     Piavca::MotionAdder *arg1 = (Piavca::MotionAdder *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:MotionAdder_clone",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MotionAdder, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)(arg1)->clone();
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->clone();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -22034,8 +27962,13 @@ static PyObject *_wrap_MotionAdder_setScaleSecond(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setScaleSecond(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setScaleSecond(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -22052,6 +27985,7 @@ static PyObject *_wrap_MotionAdder_getFloatValueAtTimeInternal(PyObject *, PyObj
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:MotionAdder_getFloatValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MotionAdder, SWIG_POINTER_EXCEPTION | 0);
@@ -22064,8 +27998,15 @@ static PyObject *_wrap_MotionAdder_getFloatValueAtTimeInternal(PyObject *, PyObj
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -22084,6 +28025,7 @@ static PyObject *_wrap_MotionAdder_getVecValueAtTimeInternal(PyObject *, PyObjec
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:MotionAdder_getVecValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MotionAdder, SWIG_POINTER_EXCEPTION | 0);
@@ -22096,8 +28038,15 @@ static PyObject *_wrap_MotionAdder_getVecValueAtTimeInternal(PyObject *, PyObjec
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec & >(result));
@@ -22118,6 +28067,7 @@ static PyObject *_wrap_MotionAdder_getQuatValueAtTimeInternal(PyObject *, PyObje
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:MotionAdder_getQuatValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MotionAdder, SWIG_POINTER_EXCEPTION | 0);
@@ -22130,8 +28080,15 @@ static PyObject *_wrap_MotionAdder_getQuatValueAtTimeInternal(PyObject *, PyObje
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Quat * resultptr;
         resultptr = new Piavca::Quat(static_cast<Piavca::Quat & >(result));
@@ -22151,8 +28108,13 @@ static PyObject *_wrap_delete_MotionAdder(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_MotionAdder",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MotionAdder, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    arg1->Dispose();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        arg1->Dispose();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -22178,8 +28140,13 @@ static PyObject *_wrap_new_MotionMask__SWIG_0(PyObject *, PyObject *args) {
         arg1 = static_cast<bool >(SWIG_As_bool(obj0)); 
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::MotionMask *)new Piavca::MotionMask(arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::MotionMask *)new Piavca::MotionMask(arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__MotionMask, 1);
     return resultobj;
     fail:
@@ -22192,8 +28159,13 @@ static PyObject *_wrap_new_MotionMask__SWIG_1(PyObject *, PyObject *args) {
     Piavca::MotionMask *result;
     
     if(!PyArg_ParseTuple(args,(char *)":new_MotionMask")) goto fail;
-    result = (Piavca::MotionMask *)new Piavca::MotionMask();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::MotionMask *)new Piavca::MotionMask();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__MotionMask, 1);
     return resultobj;
     fail:
@@ -22216,8 +28188,13 @@ static PyObject *_wrap_new_MotionMask__SWIG_2(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::MotionMask *)new Piavca::MotionMask((Piavca::MotionMask const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::MotionMask *)new Piavca::MotionMask((Piavca::MotionMask const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__MotionMask, 1);
     return resultobj;
     fail:
@@ -22285,8 +28262,13 @@ static PyObject *_wrap_MotionMask_setMask__SWIG_0(PyObject *, PyObject *args) {
         arg3 = static_cast<bool >(SWIG_As_bool(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    (arg1)->setMask(arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setMask(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -22308,8 +28290,13 @@ static PyObject *_wrap_MotionMask_setMask__SWIG_1(PyObject *, PyObject *args) {
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setMask(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setMask(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -22386,8 +28373,13 @@ static PyObject *_wrap_MotionMask_getMask(PyObject *, PyObject *args) {
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (bool)((Piavca::MotionMask const *)arg1)->getMask(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)((Piavca::MotionMask const *)arg1)->getMask(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -22405,8 +28397,13 @@ static PyObject *_wrap_delete_MotionMask(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_MotionMask",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MotionMask, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    delete arg1;
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        delete arg1;
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -22426,8 +28423,13 @@ static PyObject *_wrap_new_MaskedMotion__SWIG_0(PyObject *, PyObject *args) {
     Piavca::MaskedMotion *result;
     
     if(!PyArg_ParseTuple(args,(char *)":new_MaskedMotion")) goto fail;
-    result = (Piavca::MaskedMotion *)new Piavca::MaskedMotion();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::MaskedMotion *)new Piavca::MaskedMotion();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__MaskedMotion, 1);
     result->Reference();
     return resultobj;
@@ -22475,8 +28477,13 @@ static PyObject *_wrap_new_MaskedMotion__SWIG_1(PyObject *, PyObject *args) {
         arg5 = static_cast<bool >(SWIG_As_bool(obj4)); 
         if (SWIG_arg_fail(5)) SWIG_fail;
     }
-    result = (Piavca::MaskedMotion *)new Piavca::MaskedMotion(arg1,(Piavca::MotionMask const &)*arg2,arg3,(Piavca::MotionMask const &)*arg4,arg5);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::MaskedMotion *)new Piavca::MaskedMotion(arg1,(Piavca::MotionMask const &)*arg2,arg3,(Piavca::MotionMask const &)*arg4,arg5);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__MaskedMotion, 1);
     result->Reference();
     return resultobj;
@@ -22518,8 +28525,13 @@ static PyObject *_wrap_new_MaskedMotion__SWIG_2(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(4)) SWIG_fail;
     }
-    result = (Piavca::MaskedMotion *)new Piavca::MaskedMotion(arg1,(Piavca::MotionMask const &)*arg2,arg3,(Piavca::MotionMask const &)*arg4);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::MaskedMotion *)new Piavca::MaskedMotion(arg1,(Piavca::MotionMask const &)*arg2,arg3,(Piavca::MotionMask const &)*arg4);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__MaskedMotion, 1);
     result->Reference();
     return resultobj;
@@ -22543,8 +28555,13 @@ static PyObject *_wrap_new_MaskedMotion__SWIG_3(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::MaskedMotion *)new Piavca::MaskedMotion((Piavca::MaskedMotion const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::MaskedMotion *)new Piavca::MaskedMotion((Piavca::MaskedMotion const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__MaskedMotion, 1);
     result->Reference();
     return resultobj;
@@ -22690,13 +28707,28 @@ static PyObject *_wrap_MaskedMotion_clone(PyObject *, PyObject *args) {
     Piavca::MaskedMotion *arg1 = (Piavca::MaskedMotion *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:MaskedMotion_clone",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MaskedMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)(arg1)->clone();
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->clone();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -22717,8 +28749,13 @@ static PyObject *_wrap_MaskedMotion_setUseSecondary(PyObject *, PyObject *args) 
         arg2 = static_cast<bool >(SWIG_As_bool(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setUseSecondary(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setUseSecondary(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -22744,8 +28781,13 @@ static PyObject *_wrap_MaskedMotion_setMask1(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setMask1((Piavca::MotionMask const &)*arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setMask1((Piavca::MotionMask const &)*arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -22771,8 +28813,13 @@ static PyObject *_wrap_MaskedMotion_setMask2(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setMask2((Piavca::MotionMask const &)*arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setMask2((Piavca::MotionMask const &)*arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -22794,8 +28841,13 @@ static PyObject *_wrap_MaskedMotion_addToMask1(PyObject *, PyObject *args) {
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->addToMask1(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->addToMask1(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -22817,8 +28869,13 @@ static PyObject *_wrap_MaskedMotion_removeFromMask1(PyObject *, PyObject *args) 
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->removeFromMask1(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->removeFromMask1(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -22840,8 +28897,13 @@ static PyObject *_wrap_MaskedMotion_addToMask2(PyObject *, PyObject *args) {
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->addToMask2(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->addToMask2(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -22863,8 +28925,13 @@ static PyObject *_wrap_MaskedMotion_removeFromMask2(PyObject *, PyObject *args) 
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->removeFromMask2(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->removeFromMask2(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -22881,6 +28948,7 @@ static PyObject *_wrap_MaskedMotion_getFloatValueAtTimeInternal(PyObject *, PyOb
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:MaskedMotion_getFloatValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MaskedMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -22893,8 +28961,15 @@ static PyObject *_wrap_MaskedMotion_getFloatValueAtTimeInternal(PyObject *, PyOb
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -22913,6 +28988,7 @@ static PyObject *_wrap_MaskedMotion_getVecValueAtTimeInternal(PyObject *, PyObje
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:MaskedMotion_getVecValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MaskedMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -22925,8 +29001,15 @@ static PyObject *_wrap_MaskedMotion_getVecValueAtTimeInternal(PyObject *, PyObje
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec & >(result));
@@ -22947,6 +29030,7 @@ static PyObject *_wrap_MaskedMotion_getQuatValueAtTimeInternal(PyObject *, PyObj
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:MaskedMotion_getQuatValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MaskedMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -22959,8 +29043,15 @@ static PyObject *_wrap_MaskedMotion_getQuatValueAtTimeInternal(PyObject *, PyObj
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Quat * resultptr;
         resultptr = new Piavca::Quat(static_cast<Piavca::Quat & >(result));
@@ -22980,8 +29071,13 @@ static PyObject *_wrap_delete_MaskedMotion(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_MaskedMotion",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MaskedMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    arg1->Dispose();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        arg1->Dispose();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -23023,8 +29119,13 @@ static PyObject *_wrap_new_MultiMotionLoop__SWIG_0(PyObject *, PyObject *args) {
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (Piavca::MultiMotionLoop *)new Piavca::MultiMotionLoop((std::vector<Piavca::Motion * > const &)*arg1,arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::MultiMotionLoop *)new Piavca::MultiMotionLoop((std::vector<Piavca::Motion * > const &)*arg1,arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__MultiMotionLoop, 1);
     result->Reference();
     return resultobj;
@@ -23054,8 +29155,13 @@ static PyObject *_wrap_new_MultiMotionLoop__SWIG_1(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::MultiMotionLoop *)new Piavca::MultiMotionLoop((std::vector<Piavca::Motion * > const &)*arg1,arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::MultiMotionLoop *)new Piavca::MultiMotionLoop((std::vector<Piavca::Motion * > const &)*arg1,arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__MultiMotionLoop, 1);
     result->Reference();
     return resultobj;
@@ -23079,8 +29185,13 @@ static PyObject *_wrap_new_MultiMotionLoop__SWIG_2(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::MultiMotionLoop *)new Piavca::MultiMotionLoop((std::vector<Piavca::Motion * > const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::MultiMotionLoop *)new Piavca::MultiMotionLoop((std::vector<Piavca::Motion * > const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__MultiMotionLoop, 1);
     result->Reference();
     return resultobj;
@@ -23106,8 +29217,13 @@ static PyObject *_wrap_new_MultiMotionLoop__SWIG_3(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::MultiMotionLoop *)new Piavca::MultiMotionLoop(arg1,arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::MultiMotionLoop *)new Piavca::MultiMotionLoop(arg1,arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__MultiMotionLoop, 1);
     result->Reference();
     return resultobj;
@@ -23127,8 +29243,13 @@ static PyObject *_wrap_new_MultiMotionLoop__SWIG_4(PyObject *, PyObject *args) {
         arg1 = static_cast<float >(SWIG_As_float(obj0)); 
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::MultiMotionLoop *)new Piavca::MultiMotionLoop(arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::MultiMotionLoop *)new Piavca::MultiMotionLoop(arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__MultiMotionLoop, 1);
     result->Reference();
     return resultobj;
@@ -23142,8 +29263,13 @@ static PyObject *_wrap_new_MultiMotionLoop__SWIG_5(PyObject *, PyObject *args) {
     Piavca::MultiMotionLoop *result;
     
     if(!PyArg_ParseTuple(args,(char *)":new_MultiMotionLoop")) goto fail;
-    result = (Piavca::MultiMotionLoop *)new Piavca::MultiMotionLoop();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::MultiMotionLoop *)new Piavca::MultiMotionLoop();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__MultiMotionLoop, 1);
     result->Reference();
     return resultobj;
@@ -23167,8 +29293,13 @@ static PyObject *_wrap_new_MultiMotionLoop__SWIG_6(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::MultiMotionLoop *)new Piavca::MultiMotionLoop((Piavca::MultiMotionLoop const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::MultiMotionLoop *)new Piavca::MultiMotionLoop((Piavca::MultiMotionLoop const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__MultiMotionLoop, 1);
     result->Reference();
     return resultobj;
@@ -23289,8 +29420,13 @@ static PyObject *_wrap_delete_MultiMotionLoop(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_MultiMotionLoop",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MultiMotionLoop, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    arg1->Dispose();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        arg1->Dispose();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -23303,13 +29439,28 @@ static PyObject *_wrap_MultiMotionLoop_clone(PyObject *, PyObject *args) {
     Piavca::MultiMotionLoop *arg1 = (Piavca::MultiMotionLoop *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:MultiMotionLoop_clone",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MultiMotionLoop, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)(arg1)->clone();
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->clone();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -23320,12 +29471,20 @@ static PyObject *_wrap_MultiMotionLoop_printInfo(PyObject *, PyObject *args) {
     PyObject *resultobj = NULL;
     Piavca::MultiMotionLoop *arg1 = (Piavca::MultiMotionLoop *) 0 ;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:MultiMotionLoop_printInfo",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MultiMotionLoop, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->printInfo();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->printInfo();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -23339,14 +29498,22 @@ static PyObject *_wrap_MultiMotionLoop_addMotion(PyObject *, PyObject *args) {
     Piavca::Motion *arg2 = (Piavca::Motion *) 0 ;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:MultiMotionLoop_addMotion",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MultiMotionLoop, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    (arg1)->addMotion(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->addMotion(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -23361,6 +29528,8 @@ static PyObject *_wrap_MultiMotionLoop_findSub(PyObject *, PyObject *args) {
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:MultiMotionLoop_findSub",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MultiMotionLoop, SWIG_POINTER_EXCEPTION | 0);
@@ -23368,9 +29537,22 @@ static PyObject *_wrap_MultiMotionLoop_findSub(PyObject *, PyObject *args) {
     {
         arg2 = PyString_AsString(obj1);
     }
-    result = (Piavca::Motion *)(arg1)->findSub(arg2);
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->findSub(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -23384,6 +29566,8 @@ static PyObject *_wrap_MultiMotionLoop_findSubByType(PyObject *, PyObject *args)
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:MultiMotionLoop_findSubByType",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MultiMotionLoop, SWIG_POINTER_EXCEPTION | 0);
@@ -23396,9 +29580,22 @@ static PyObject *_wrap_MultiMotionLoop_findSubByType(PyObject *, PyObject *args)
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::Motion *)(arg1)->findSubByType((std::type_info const &)*arg2);
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->findSubByType((std::type_info const &)*arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -23411,14 +29608,22 @@ static PyObject *_wrap_MultiMotionLoop_load(PyObject *, PyObject *args) {
     Piavca::Avatar *arg2 = (Piavca::Avatar *) 0 ;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:MultiMotionLoop_load",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MultiMotionLoop, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    (arg1)->load(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->load(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -23430,12 +29635,20 @@ static PyObject *_wrap_MultiMotionLoop_unload(PyObject *, PyObject *args) {
     PyObject *resultobj = NULL;
     Piavca::MultiMotionLoop *arg1 = (Piavca::MultiMotionLoop *) 0 ;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:MultiMotionLoop_unload",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MultiMotionLoop, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->unload();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->unload();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -23450,14 +29663,22 @@ static PyObject *_wrap_MultiMotionLoop_loaded(PyObject *, PyObject *args) {
     bool result;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:MultiMotionLoop_loaded",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MultiMotionLoop, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    result = (bool)(arg1)->loaded(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)(arg1)->loaded(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -23479,8 +29700,13 @@ static PyObject *_wrap_new_ChoiceLoopMotion__SWIG_0(PyObject *, PyObject *args) 
     Piavca::ChoiceLoopMotion *result;
     
     if(!PyArg_ParseTuple(args,(char *)":new_ChoiceLoopMotion")) goto fail;
-    result = (Piavca::ChoiceLoopMotion *)new Piavca::ChoiceLoopMotion();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::ChoiceLoopMotion *)new Piavca::ChoiceLoopMotion();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__ChoiceLoopMotion, 1);
     result->Reference();
     return resultobj;
@@ -23516,8 +29742,13 @@ static PyObject *_wrap_new_ChoiceLoopMotion__SWIG_1(PyObject *, PyObject *args) 
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (Piavca::ChoiceLoopMotion *)new Piavca::ChoiceLoopMotion((std::vector<Piavca::Motion * > const &)*arg1,arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::ChoiceLoopMotion *)new Piavca::ChoiceLoopMotion((std::vector<Piavca::Motion * > const &)*arg1,arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__ChoiceLoopMotion, 1);
     result->Reference();
     return resultobj;
@@ -23547,8 +29778,13 @@ static PyObject *_wrap_new_ChoiceLoopMotion__SWIG_2(PyObject *, PyObject *args) 
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::ChoiceLoopMotion *)new Piavca::ChoiceLoopMotion((std::vector<Piavca::Motion * > const &)*arg1,arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::ChoiceLoopMotion *)new Piavca::ChoiceLoopMotion((std::vector<Piavca::Motion * > const &)*arg1,arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__ChoiceLoopMotion, 1);
     result->Reference();
     return resultobj;
@@ -23572,8 +29808,13 @@ static PyObject *_wrap_new_ChoiceLoopMotion__SWIG_3(PyObject *, PyObject *args) 
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::ChoiceLoopMotion *)new Piavca::ChoiceLoopMotion((std::vector<Piavca::Motion * > const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::ChoiceLoopMotion *)new Piavca::ChoiceLoopMotion((std::vector<Piavca::Motion * > const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__ChoiceLoopMotion, 1);
     result->Reference();
     return resultobj;
@@ -23597,8 +29838,13 @@ static PyObject *_wrap_new_ChoiceLoopMotion__SWIG_4(PyObject *, PyObject *args) 
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::ChoiceLoopMotion *)new Piavca::ChoiceLoopMotion((Piavca::ChoiceLoopMotion const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::ChoiceLoopMotion *)new Piavca::ChoiceLoopMotion((Piavca::ChoiceLoopMotion const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__ChoiceLoopMotion, 1);
     result->Reference();
     return resultobj;
@@ -23702,8 +29948,13 @@ static PyObject *_wrap_delete_ChoiceLoopMotion(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_ChoiceLoopMotion",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__ChoiceLoopMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    arg1->Dispose();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        arg1->Dispose();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -23716,13 +29967,28 @@ static PyObject *_wrap_ChoiceLoopMotion_clone(PyObject *, PyObject *args) {
     Piavca::ChoiceLoopMotion *arg1 = (Piavca::ChoiceLoopMotion *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:ChoiceLoopMotion_clone",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__ChoiceLoopMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)(arg1)->clone();
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->clone();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -23743,8 +30009,13 @@ static PyObject *_wrap_ChoiceLoopMotion_setCurrentChoice__SWIG_0(PyObject *, PyO
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setCurrentChoice(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setCurrentChoice(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -23765,8 +30036,13 @@ static PyObject *_wrap_ChoiceLoopMotion_setCurrentChoice__SWIG_1(PyObject *, PyO
     {
         arg2 = PyString_AsString(obj1);
     }
-    (arg1)->setCurrentChoice(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setCurrentChoice(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -23831,6 +30107,7 @@ static PyObject *_wrap_ChoiceLoopMotion_reblend(PyObject *, PyObject *args) {
     float arg2 ;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:ChoiceLoopMotion_reblend",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__ChoiceLoopMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -23839,8 +30116,15 @@ static PyObject *_wrap_ChoiceLoopMotion_reblend(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->reblend(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->reblend(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -23860,8 +30144,13 @@ static PyObject *_wrap_new_RandomLoopMotion__SWIG_0(PyObject *, PyObject *args) 
     Piavca::RandomLoopMotion *result;
     
     if(!PyArg_ParseTuple(args,(char *)":new_RandomLoopMotion")) goto fail;
-    result = (Piavca::RandomLoopMotion *)new Piavca::RandomLoopMotion();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::RandomLoopMotion *)new Piavca::RandomLoopMotion();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__RandomLoopMotion, 1);
     result->Reference();
     return resultobj;
@@ -23909,8 +30198,13 @@ static PyObject *_wrap_new_RandomLoopMotion__SWIG_1(PyObject *, PyObject *args) 
         arg4 = static_cast<float >(SWIG_As_float(obj3)); 
         if (SWIG_arg_fail(4)) SWIG_fail;
     }
-    result = (Piavca::RandomLoopMotion *)new Piavca::RandomLoopMotion((std::vector<Piavca::Motion * > const &)*arg1,arg2,arg3,arg4);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::RandomLoopMotion *)new Piavca::RandomLoopMotion((std::vector<Piavca::Motion * > const &)*arg1,arg2,arg3,arg4);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__RandomLoopMotion, 1);
     result->Reference();
     return resultobj;
@@ -23952,8 +30246,13 @@ static PyObject *_wrap_new_RandomLoopMotion__SWIG_2(PyObject *, PyObject *args) 
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (Piavca::RandomLoopMotion *)new Piavca::RandomLoopMotion((std::vector<Piavca::Motion * > const &)*arg1,arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::RandomLoopMotion *)new Piavca::RandomLoopMotion((std::vector<Piavca::Motion * > const &)*arg1,arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__RandomLoopMotion, 1);
     result->Reference();
     return resultobj;
@@ -23989,8 +30288,13 @@ static PyObject *_wrap_new_RandomLoopMotion__SWIG_3(PyObject *, PyObject *args) 
         if (SWIG_arg_fail(2)) SWIG_fail;
         arg2 = *argp;
     }
-    result = (Piavca::RandomLoopMotion *)new Piavca::RandomLoopMotion((std::vector<Piavca::Motion * > const &)*arg1,arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::RandomLoopMotion *)new Piavca::RandomLoopMotion((std::vector<Piavca::Motion * > const &)*arg1,arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__RandomLoopMotion, 1);
     result->Reference();
     return resultobj;
@@ -24014,8 +30318,13 @@ static PyObject *_wrap_new_RandomLoopMotion__SWIG_4(PyObject *, PyObject *args) 
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::RandomLoopMotion *)new Piavca::RandomLoopMotion((Piavca::RandomLoopMotion const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::RandomLoopMotion *)new Piavca::RandomLoopMotion((Piavca::RandomLoopMotion const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__RandomLoopMotion, 1);
     result->Reference();
     return resultobj;
@@ -24152,8 +30461,13 @@ static PyObject *_wrap_delete_RandomLoopMotion(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_RandomLoopMotion",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__RandomLoopMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    arg1->Dispose();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        arg1->Dispose();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -24166,13 +30480,28 @@ static PyObject *_wrap_RandomLoopMotion_clone(PyObject *, PyObject *args) {
     Piavca::RandomLoopMotion *arg1 = (Piavca::RandomLoopMotion *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:RandomLoopMotion_clone",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__RandomLoopMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)(arg1)->clone();
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->clone();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -24188,8 +30517,13 @@ static PyObject *_wrap_RandomLoopMotion_convertTo(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:RandomLoopMotion_convertTo",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::RandomLoopMotion *)Piavca::RandomLoopMotion::convertTo(arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::RandomLoopMotion *)Piavca::RandomLoopMotion::convertTo(arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__RandomLoopMotion, 0);
     return resultobj;
     fail:
@@ -24205,6 +30539,7 @@ static PyObject *_wrap_RandomLoopMotion_addMotion__SWIG_0(PyObject *, PyObject *
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:RandomLoopMotion_addMotion",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__RandomLoopMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -24215,8 +30550,15 @@ static PyObject *_wrap_RandomLoopMotion_addMotion__SWIG_0(PyObject *, PyObject *
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    (arg1)->addMotion(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->addMotion(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -24230,14 +30572,22 @@ static PyObject *_wrap_RandomLoopMotion_addMotion__SWIG_1(PyObject *, PyObject *
     Piavca::Motion *arg2 = (Piavca::Motion *) 0 ;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:RandomLoopMotion_addMotion",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__RandomLoopMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    (arg1)->addMotion(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->addMotion(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -24335,8 +30685,13 @@ static PyObject *_wrap_RandomLoopMotion_setProbability(PyObject *, PyObject *arg
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    (arg1)->setProbability(arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setProbability(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -24350,6 +30705,7 @@ static PyObject *_wrap_RandomLoopMotion_reblend(PyObject *, PyObject *args) {
     float arg2 ;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:RandomLoopMotion_reblend",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__RandomLoopMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -24358,8 +30714,15 @@ static PyObject *_wrap_RandomLoopMotion_reblend(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->reblend(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->reblend(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -24401,8 +30764,13 @@ static PyObject *_wrap_new_RandomBlendLoop__SWIG_0(PyObject *, PyObject *args) {
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (Piavca::RandomBlendLoop *)new Piavca::RandomBlendLoop((std::vector<Piavca::Motion * > const &)*arg1,arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::RandomBlendLoop *)new Piavca::RandomBlendLoop((std::vector<Piavca::Motion * > const &)*arg1,arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__RandomBlendLoop, 1);
     result->Reference();
     return resultobj;
@@ -24432,8 +30800,13 @@ static PyObject *_wrap_new_RandomBlendLoop__SWIG_1(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::RandomBlendLoop *)new Piavca::RandomBlendLoop((std::vector<Piavca::Motion * > const &)*arg1,arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::RandomBlendLoop *)new Piavca::RandomBlendLoop((std::vector<Piavca::Motion * > const &)*arg1,arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__RandomBlendLoop, 1);
     result->Reference();
     return resultobj;
@@ -24457,8 +30830,13 @@ static PyObject *_wrap_new_RandomBlendLoop__SWIG_2(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::RandomBlendLoop *)new Piavca::RandomBlendLoop((std::vector<Piavca::Motion * > const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::RandomBlendLoop *)new Piavca::RandomBlendLoop((std::vector<Piavca::Motion * > const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__RandomBlendLoop, 1);
     result->Reference();
     return resultobj;
@@ -24484,8 +30862,13 @@ static PyObject *_wrap_new_RandomBlendLoop__SWIG_3(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::RandomBlendLoop *)new Piavca::RandomBlendLoop(arg1,arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::RandomBlendLoop *)new Piavca::RandomBlendLoop(arg1,arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__RandomBlendLoop, 1);
     result->Reference();
     return resultobj;
@@ -24505,8 +30888,13 @@ static PyObject *_wrap_new_RandomBlendLoop__SWIG_4(PyObject *, PyObject *args) {
         arg1 = static_cast<float >(SWIG_As_float(obj0)); 
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::RandomBlendLoop *)new Piavca::RandomBlendLoop(arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::RandomBlendLoop *)new Piavca::RandomBlendLoop(arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__RandomBlendLoop, 1);
     result->Reference();
     return resultobj;
@@ -24520,8 +30908,13 @@ static PyObject *_wrap_new_RandomBlendLoop__SWIG_5(PyObject *, PyObject *args) {
     Piavca::RandomBlendLoop *result;
     
     if(!PyArg_ParseTuple(args,(char *)":new_RandomBlendLoop")) goto fail;
-    result = (Piavca::RandomBlendLoop *)new Piavca::RandomBlendLoop();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::RandomBlendLoop *)new Piavca::RandomBlendLoop();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__RandomBlendLoop, 1);
     result->Reference();
     return resultobj;
@@ -24545,8 +30938,13 @@ static PyObject *_wrap_new_RandomBlendLoop__SWIG_6(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::RandomBlendLoop *)new Piavca::RandomBlendLoop((Piavca::RandomBlendLoop const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::RandomBlendLoop *)new Piavca::RandomBlendLoop((Piavca::RandomBlendLoop const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__RandomBlendLoop, 1);
     result->Reference();
     return resultobj;
@@ -24667,8 +31065,13 @@ static PyObject *_wrap_delete_RandomBlendLoop(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_RandomBlendLoop",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__RandomBlendLoop, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    arg1->Dispose();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        arg1->Dispose();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -24681,13 +31084,28 @@ static PyObject *_wrap_RandomBlendLoop_clone(PyObject *, PyObject *args) {
     Piavca::RandomBlendLoop *arg1 = (Piavca::RandomBlendLoop *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:RandomBlendLoop_clone",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__RandomBlendLoop, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)(arg1)->clone();
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->clone();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -24700,14 +31118,22 @@ static PyObject *_wrap_RandomBlendLoop_addMotion__SWIG_0(PyObject *, PyObject *a
     Piavca::Motion *arg2 = (Piavca::Motion *) 0 ;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:RandomBlendLoop_addMotion",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__RandomBlendLoop, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    (arg1)->addMotion(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->addMotion(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -24723,6 +31149,7 @@ static PyObject *_wrap_RandomBlendLoop_addMotion__SWIG_1(PyObject *, PyObject *a
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:RandomBlendLoop_addMotion",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__RandomBlendLoop, SWIG_POINTER_EXCEPTION | 0);
@@ -24733,8 +31160,15 @@ static PyObject *_wrap_RandomBlendLoop_addMotion__SWIG_1(PyObject *, PyObject *a
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    (arg1)->addMotion(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->addMotion(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -24826,8 +31260,13 @@ static PyObject *_wrap_RandomBlendLoop_setAutoShift(PyObject *, PyObject *args) 
         arg2 = static_cast<bool >(SWIG_As_bool(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setAutoShift(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setAutoShift(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -24839,12 +31278,20 @@ static PyObject *_wrap_RandomBlendLoop_shift(PyObject *, PyObject *args) {
     PyObject *resultobj = NULL;
     Piavca::RandomBlendLoop *arg1 = (Piavca::RandomBlendLoop *) 0 ;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:RandomBlendLoop_shift",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__RandomBlendLoop, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->shift();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->shift();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -24858,6 +31305,7 @@ static PyObject *_wrap_RandomBlendLoop_reblend(PyObject *, PyObject *args) {
     float arg2 ;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:RandomBlendLoop_reblend",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__RandomBlendLoop, SWIG_POINTER_EXCEPTION | 0);
@@ -24866,8 +31314,15 @@ static PyObject *_wrap_RandomBlendLoop_reblend(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->reblend(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->reblend(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -24887,8 +31342,13 @@ static PyObject *_wrap_new_RandomAddLoop__SWIG_0(PyObject *, PyObject *args) {
     Piavca::RandomAddLoop *result;
     
     if(!PyArg_ParseTuple(args,(char *)":new_RandomAddLoop")) goto fail;
-    result = (Piavca::RandomAddLoop *)new Piavca::RandomAddLoop();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::RandomAddLoop *)new Piavca::RandomAddLoop();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__RandomAddLoop, 1);
     result->Reference();
     return resultobj;
@@ -24924,8 +31384,13 @@ static PyObject *_wrap_new_RandomAddLoop__SWIG_1(PyObject *, PyObject *args) {
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (Piavca::RandomAddLoop *)new Piavca::RandomAddLoop((std::vector<Piavca::Motion * > const &)*arg1,arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::RandomAddLoop *)new Piavca::RandomAddLoop((std::vector<Piavca::Motion * > const &)*arg1,arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__RandomAddLoop, 1);
     result->Reference();
     return resultobj;
@@ -24955,8 +31420,13 @@ static PyObject *_wrap_new_RandomAddLoop__SWIG_2(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::RandomAddLoop *)new Piavca::RandomAddLoop((std::vector<Piavca::Motion * > const &)*arg1,arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::RandomAddLoop *)new Piavca::RandomAddLoop((std::vector<Piavca::Motion * > const &)*arg1,arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__RandomAddLoop, 1);
     result->Reference();
     return resultobj;
@@ -24980,8 +31450,13 @@ static PyObject *_wrap_new_RandomAddLoop__SWIG_3(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::RandomAddLoop *)new Piavca::RandomAddLoop((std::vector<Piavca::Motion * > const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::RandomAddLoop *)new Piavca::RandomAddLoop((std::vector<Piavca::Motion * > const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__RandomAddLoop, 1);
     result->Reference();
     return resultobj;
@@ -25005,8 +31480,13 @@ static PyObject *_wrap_new_RandomAddLoop__SWIG_4(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::RandomAddLoop *)new Piavca::RandomAddLoop((Piavca::RandomAddLoop const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::RandomAddLoop *)new Piavca::RandomAddLoop((Piavca::RandomAddLoop const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__RandomAddLoop, 1);
     result->Reference();
     return resultobj;
@@ -25110,8 +31590,13 @@ static PyObject *_wrap_delete_RandomAddLoop(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_RandomAddLoop",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__RandomAddLoop, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    arg1->Dispose();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        arg1->Dispose();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -25124,13 +31609,28 @@ static PyObject *_wrap_RandomAddLoop_clone(PyObject *, PyObject *args) {
     Piavca::RandomAddLoop *arg1 = (Piavca::RandomAddLoop *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:RandomAddLoop_clone",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__RandomAddLoop, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)(arg1)->clone();
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->clone();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -25151,8 +31651,13 @@ static PyObject *_wrap_RandomAddLoop_setAutoShift(PyObject *, PyObject *args) {
         arg2 = static_cast<bool >(SWIG_As_bool(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setAutoShift(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setAutoShift(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -25164,12 +31669,20 @@ static PyObject *_wrap_RandomAddLoop_shift(PyObject *, PyObject *args) {
     PyObject *resultobj = NULL;
     Piavca::RandomAddLoop *arg1 = (Piavca::RandomAddLoop *) 0 ;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:RandomAddLoop_shift",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__RandomAddLoop, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->shift();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->shift();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -25183,6 +31696,7 @@ static PyObject *_wrap_RandomAddLoop_reblend(PyObject *, PyObject *args) {
     float arg2 ;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:RandomAddLoop_reblend",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__RandomAddLoop, SWIG_POINTER_EXCEPTION | 0);
@@ -25191,8 +31705,15 @@ static PyObject *_wrap_RandomAddLoop_reblend(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->reblend(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->reblend(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -25250,8 +31771,13 @@ static PyObject *_wrap_new_ProxemicsLoop__SWIG_0(PyObject *, PyObject *args) {
         arg8 = static_cast<float >(SWIG_As_float(obj7)); 
         if (SWIG_arg_fail(8)) SWIG_fail;
     }
-    result = (Piavca::ProxemicsLoop *)new Piavca::ProxemicsLoop(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::ProxemicsLoop *)new Piavca::ProxemicsLoop(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__ProxemicsLoop, 1);
     result->Reference();
     return resultobj;
@@ -25297,8 +31823,13 @@ static PyObject *_wrap_new_ProxemicsLoop__SWIG_1(PyObject *, PyObject *args) {
         arg7 = static_cast<float >(SWIG_As_float(obj6)); 
         if (SWIG_arg_fail(7)) SWIG_fail;
     }
-    result = (Piavca::ProxemicsLoop *)new Piavca::ProxemicsLoop(arg1,arg2,arg3,arg4,arg5,arg6,arg7);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::ProxemicsLoop *)new Piavca::ProxemicsLoop(arg1,arg2,arg3,arg4,arg5,arg6,arg7);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__ProxemicsLoop, 1);
     result->Reference();
     return resultobj;
@@ -25338,8 +31869,13 @@ static PyObject *_wrap_new_ProxemicsLoop__SWIG_2(PyObject *, PyObject *args) {
         arg6 = static_cast<float >(SWIG_As_float(obj5)); 
         if (SWIG_arg_fail(6)) SWIG_fail;
     }
-    result = (Piavca::ProxemicsLoop *)new Piavca::ProxemicsLoop(arg1,arg2,arg3,arg4,arg5,arg6);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::ProxemicsLoop *)new Piavca::ProxemicsLoop(arg1,arg2,arg3,arg4,arg5,arg6);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__ProxemicsLoop, 1);
     result->Reference();
     return resultobj;
@@ -25373,8 +31909,13 @@ static PyObject *_wrap_new_ProxemicsLoop__SWIG_3(PyObject *, PyObject *args) {
     if (SWIG_arg_fail(4)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj4, (void **)&arg5, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(5)) SWIG_fail;
-    result = (Piavca::ProxemicsLoop *)new Piavca::ProxemicsLoop(arg1,arg2,arg3,arg4,arg5);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::ProxemicsLoop *)new Piavca::ProxemicsLoop(arg1,arg2,arg3,arg4,arg5);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__ProxemicsLoop, 1);
     result->Reference();
     return resultobj;
@@ -25404,8 +31945,13 @@ static PyObject *_wrap_new_ProxemicsLoop__SWIG_4(PyObject *, PyObject *args) {
     if (SWIG_arg_fail(3)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj3, (void **)&arg4, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(4)) SWIG_fail;
-    result = (Piavca::ProxemicsLoop *)new Piavca::ProxemicsLoop(arg1,arg2,arg3,arg4);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::ProxemicsLoop *)new Piavca::ProxemicsLoop(arg1,arg2,arg3,arg4);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__ProxemicsLoop, 1);
     result->Reference();
     return resultobj;
@@ -25431,8 +31977,13 @@ static PyObject *_wrap_new_ProxemicsLoop__SWIG_5(PyObject *, PyObject *args) {
     if (SWIG_arg_fail(2)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj2, (void **)&arg3, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(3)) SWIG_fail;
-    result = (Piavca::ProxemicsLoop *)new Piavca::ProxemicsLoop(arg1,arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::ProxemicsLoop *)new Piavca::ProxemicsLoop(arg1,arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__ProxemicsLoop, 1);
     result->Reference();
     return resultobj;
@@ -25454,8 +32005,13 @@ static PyObject *_wrap_new_ProxemicsLoop__SWIG_6(PyObject *, PyObject *args) {
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    result = (Piavca::ProxemicsLoop *)new Piavca::ProxemicsLoop(arg1,arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::ProxemicsLoop *)new Piavca::ProxemicsLoop(arg1,arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__ProxemicsLoop, 1);
     result->Reference();
     return resultobj;
@@ -25473,8 +32029,13 @@ static PyObject *_wrap_new_ProxemicsLoop__SWIG_7(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:new_ProxemicsLoop",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::ProxemicsLoop *)new Piavca::ProxemicsLoop(arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::ProxemicsLoop *)new Piavca::ProxemicsLoop(arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__ProxemicsLoop, 1);
     result->Reference();
     return resultobj;
@@ -25488,8 +32049,13 @@ static PyObject *_wrap_new_ProxemicsLoop__SWIG_8(PyObject *, PyObject *args) {
     Piavca::ProxemicsLoop *result;
     
     if(!PyArg_ParseTuple(args,(char *)":new_ProxemicsLoop")) goto fail;
-    result = (Piavca::ProxemicsLoop *)new Piavca::ProxemicsLoop();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::ProxemicsLoop *)new Piavca::ProxemicsLoop();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__ProxemicsLoop, 1);
     result->Reference();
     return resultobj;
@@ -25513,8 +32079,13 @@ static PyObject *_wrap_new_ProxemicsLoop__SWIG_9(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::ProxemicsLoop *)new Piavca::ProxemicsLoop((Piavca::ProxemicsLoop const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::ProxemicsLoop *)new Piavca::ProxemicsLoop((Piavca::ProxemicsLoop const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__ProxemicsLoop, 1);
     result->Reference();
     return resultobj;
@@ -25944,8 +32515,13 @@ static PyObject *_wrap_delete_ProxemicsLoop(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_ProxemicsLoop",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__ProxemicsLoop, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    arg1->Dispose();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        arg1->Dispose();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -25958,13 +32534,28 @@ static PyObject *_wrap_ProxemicsLoop_clone(PyObject *, PyObject *args) {
     Piavca::ProxemicsLoop *arg1 = (Piavca::ProxemicsLoop *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:ProxemicsLoop_clone",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__ProxemicsLoop, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)(arg1)->clone();
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->clone();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -25985,8 +32576,13 @@ static PyObject *_wrap_ProxemicsLoop_setDistance(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setDistance(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setDistance(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -26008,8 +32604,13 @@ static PyObject *_wrap_ProxemicsLoop_setThreshold(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setThreshold(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setThreshold(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -26031,8 +32632,13 @@ static PyObject *_wrap_ProxemicsLoop_setAngleThreshold(PyObject *, PyObject *arg
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setAngleThreshold(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setAngleThreshold(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -26054,8 +32660,13 @@ static PyObject *_wrap_ProxemicsLoop_turnOff(PyObject *, PyObject *args) {
         arg2 = static_cast<bool >(SWIG_As_bool(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->turnOff(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->turnOff(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -26075,8 +32686,13 @@ static PyObject *_wrap_ProxemicsLoop_addAvatar(PyObject *, PyObject *args) {
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    (arg1)->addAvatar(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->addAvatar(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -26097,8 +32713,13 @@ static PyObject *_wrap_ProxemicsLoop_removeAvatar(PyObject *, PyObject *args) {
     {
         arg2 = PyString_AsString(obj1);
     }
-    (arg1)->removeAvatar(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->removeAvatar(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -26114,8 +32735,13 @@ static PyObject *_wrap_ProxemicsLoop_removeAllAvatars(PyObject *, PyObject *args
     if(!PyArg_ParseTuple(args,(char *)"O:ProxemicsLoop_removeAllAvatars",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__ProxemicsLoop, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->removeAllAvatars();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->removeAllAvatars();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -26129,6 +32755,7 @@ static PyObject *_wrap_ProxemicsLoop_reblend(PyObject *, PyObject *args) {
     float arg2 ;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:ProxemicsLoop_reblend",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__ProxemicsLoop, SWIG_POINTER_EXCEPTION | 0);
@@ -26137,8 +32764,15 @@ static PyObject *_wrap_ProxemicsLoop_reblend(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->reblend(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->reblend(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -26180,8 +32814,13 @@ static PyObject *_wrap_new_LookAtMotion__SWIG_0(PyObject *, PyObject *args) {
         arg4 = static_cast<float >(SWIG_As_float(obj3)); 
         if (SWIG_arg_fail(4)) SWIG_fail;
     }
-    result = (Piavca::LookAtMotion *)new Piavca::LookAtMotion(arg1,arg2,arg3,arg4);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::LookAtMotion *)new Piavca::LookAtMotion(arg1,arg2,arg3,arg4);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__LookAtMotion, 1);
     result->Reference();
     return resultobj;
@@ -26211,8 +32850,13 @@ static PyObject *_wrap_new_LookAtMotion__SWIG_1(PyObject *, PyObject *args) {
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (Piavca::LookAtMotion *)new Piavca::LookAtMotion(arg1,arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::LookAtMotion *)new Piavca::LookAtMotion(arg1,arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__LookAtMotion, 1);
     result->Reference();
     return resultobj;
@@ -26236,8 +32880,13 @@ static PyObject *_wrap_new_LookAtMotion__SWIG_2(PyObject *, PyObject *args) {
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::LookAtMotion *)new Piavca::LookAtMotion(arg1,arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::LookAtMotion *)new Piavca::LookAtMotion(arg1,arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__LookAtMotion, 1);
     result->Reference();
     return resultobj;
@@ -26267,8 +32916,13 @@ static PyObject *_wrap_new_LookAtMotion__SWIG_3(PyObject *, PyObject *args) {
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (Piavca::LookAtMotion *)new Piavca::LookAtMotion(arg1,arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::LookAtMotion *)new Piavca::LookAtMotion(arg1,arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__LookAtMotion, 1);
     result->Reference();
     return resultobj;
@@ -26292,8 +32946,13 @@ static PyObject *_wrap_new_LookAtMotion__SWIG_4(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::LookAtMotion *)new Piavca::LookAtMotion(arg1,arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::LookAtMotion *)new Piavca::LookAtMotion(arg1,arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__LookAtMotion, 1);
     result->Reference();
     return resultobj;
@@ -26311,8 +32970,13 @@ static PyObject *_wrap_new_LookAtMotion__SWIG_5(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:new_LookAtMotion",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Object, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::LookAtMotion *)new Piavca::LookAtMotion(arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::LookAtMotion *)new Piavca::LookAtMotion(arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__LookAtMotion, 1);
     result->Reference();
     return resultobj;
@@ -26354,8 +33018,13 @@ static PyObject *_wrap_new_LookAtMotion__SWIG_6(PyObject *, PyObject *args) {
         arg4 = static_cast<float >(SWIG_As_float(obj3)); 
         if (SWIG_arg_fail(4)) SWIG_fail;
     }
-    result = (Piavca::LookAtMotion *)new Piavca::LookAtMotion((Piavca::Vec const &)*arg1,arg2,arg3,arg4);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::LookAtMotion *)new Piavca::LookAtMotion((Piavca::Vec const &)*arg1,arg2,arg3,arg4);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__LookAtMotion, 1);
     result->Reference();
     return resultobj;
@@ -26391,8 +33060,13 @@ static PyObject *_wrap_new_LookAtMotion__SWIG_7(PyObject *, PyObject *args) {
         arg3 = static_cast<bool >(SWIG_As_bool(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (Piavca::LookAtMotion *)new Piavca::LookAtMotion((Piavca::Vec const &)*arg1,arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::LookAtMotion *)new Piavca::LookAtMotion((Piavca::Vec const &)*arg1,arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__LookAtMotion, 1);
     result->Reference();
     return resultobj;
@@ -26422,8 +33096,13 @@ static PyObject *_wrap_new_LookAtMotion__SWIG_8(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::LookAtMotion *)new Piavca::LookAtMotion((Piavca::Vec const &)*arg1,arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::LookAtMotion *)new Piavca::LookAtMotion((Piavca::Vec const &)*arg1,arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__LookAtMotion, 1);
     result->Reference();
     return resultobj;
@@ -26447,8 +33126,13 @@ static PyObject *_wrap_new_LookAtMotion__SWIG_9(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::LookAtMotion *)new Piavca::LookAtMotion((Piavca::Vec const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::LookAtMotion *)new Piavca::LookAtMotion((Piavca::Vec const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__LookAtMotion, 1);
     result->Reference();
     return resultobj;
@@ -26472,8 +33156,13 @@ static PyObject *_wrap_new_LookAtMotion__SWIG_10(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::LookAtMotion *)new Piavca::LookAtMotion((Piavca::LookAtMotion const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::LookAtMotion *)new Piavca::LookAtMotion((Piavca::LookAtMotion const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__LookAtMotion, 1);
     result->Reference();
     return resultobj;
@@ -26712,13 +33401,28 @@ static PyObject *_wrap_LookAtMotion_clone(PyObject *, PyObject *args) {
     Piavca::LookAtMotion *arg1 = (Piavca::LookAtMotion *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:LookAtMotion_clone",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__LookAtMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)(arg1)->clone();
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->clone();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -26730,12 +33434,20 @@ static PyObject *_wrap_LookAtMotion_isFacial(PyObject *, PyObject *args) {
     Piavca::LookAtMotion *arg1 = (Piavca::LookAtMotion *) 0 ;
     bool result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:LookAtMotion_isFacial",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__LookAtMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (bool)(arg1)->isFacial();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)(arg1)->isFacial();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -26750,12 +33462,20 @@ static PyObject *_wrap_LookAtMotion_isRandomAccess(PyObject *, PyObject *args) {
     Piavca::LookAtMotion *arg1 = (Piavca::LookAtMotion *) 0 ;
     bool result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:LookAtMotion_isRandomAccess",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__LookAtMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (bool)(arg1)->isRandomAccess();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)(arg1)->isRandomAccess();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -26771,14 +33491,22 @@ static PyObject *_wrap_LookAtMotion_load(PyObject *, PyObject *args) {
     Piavca::Avatar *arg2 = (Piavca::Avatar *) 0 ;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:LookAtMotion_load",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__LookAtMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    (arg1)->load(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->load(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -26800,8 +33528,13 @@ static PyObject *_wrap_LookAtMotion_reblend(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->reblend(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->reblend(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -26827,8 +33560,13 @@ static PyObject *_wrap_LookAtMotion_setTarget__SWIG_0(PyObject *, PyObject *args
         arg3 = static_cast<int >(SWIG_As_int(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    (arg1)->setTarget(arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setTarget(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -26848,8 +33586,13 @@ static PyObject *_wrap_LookAtMotion_setTarget__SWIG_1(PyObject *, PyObject *args
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Object, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    (arg1)->setTarget(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setTarget(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -26883,8 +33626,13 @@ static PyObject *_wrap_LookAtMotion_setTarget__SWIG_2(PyObject *, PyObject *args
         arg3 = static_cast<bool >(SWIG_As_bool(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    (arg1)->setTarget(arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setTarget(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -26912,8 +33660,13 @@ static PyObject *_wrap_LookAtMotion_setTarget__SWIG_3(PyObject *, PyObject *args
         if (SWIG_arg_fail(2)) SWIG_fail;
         arg2 = *argp;
     }
-    (arg1)->setTarget(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setTarget(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -27055,8 +33808,13 @@ static PyObject *_wrap_LookAtMotion_getTargetName(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:LookAtMotion_getTargetName",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__LookAtMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (arg1)->getTargetName();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getTargetName();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = PyString_FromString((&result)->c_str());
     }
@@ -27080,8 +33838,13 @@ static PyObject *_wrap_LookAtMotion_setHeadActive__SWIG_0(PyObject *, PyObject *
         arg2 = static_cast<bool >(SWIG_As_bool(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setHeadActive(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setHeadActive(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -27097,8 +33860,13 @@ static PyObject *_wrap_LookAtMotion_setHeadActive__SWIG_1(PyObject *, PyObject *
     if(!PyArg_ParseTuple(args,(char *)"O:LookAtMotion_setHeadActive",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__LookAtMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->setHeadActive();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setHeadActive();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -27168,8 +33936,13 @@ static PyObject *_wrap_LookAtMotion_setBodyActive__SWIG_0(PyObject *, PyObject *
         arg2 = static_cast<bool >(SWIG_As_bool(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setBodyActive(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setBodyActive(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -27185,8 +33958,13 @@ static PyObject *_wrap_LookAtMotion_setBodyActive__SWIG_1(PyObject *, PyObject *
     if(!PyArg_ParseTuple(args,(char *)"O:LookAtMotion_setBodyActive",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__LookAtMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->setBodyActive();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setBodyActive();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -27256,8 +34034,13 @@ static PyObject *_wrap_LookAtMotion_setTurnBodyVertical__SWIG_0(PyObject *, PyOb
         arg2 = static_cast<bool >(SWIG_As_bool(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setTurnBodyVertical(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setTurnBodyVertical(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -27273,8 +34056,13 @@ static PyObject *_wrap_LookAtMotion_setTurnBodyVertical__SWIG_1(PyObject *, PyOb
     if(!PyArg_ParseTuple(args,(char *)"O:LookAtMotion_setTurnBodyVertical",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__LookAtMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->setTurnBodyVertical();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setTurnBodyVertical();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -27344,8 +34132,13 @@ static PyObject *_wrap_LookAtMotion_setTurnBodyFull__SWIG_0(PyObject *, PyObject
         arg2 = static_cast<bool >(SWIG_As_bool(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setTurnBodyFull(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setTurnBodyFull(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -27361,8 +34154,13 @@ static PyObject *_wrap_LookAtMotion_setTurnBodyFull__SWIG_1(PyObject *, PyObject
     if(!PyArg_ParseTuple(args,(char *)"O:LookAtMotion_setTurnBodyFull",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__LookAtMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->setTurnBodyFull();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setTurnBodyFull();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -27432,8 +34230,13 @@ static PyObject *_wrap_LookAtMotion_setLeanTowards__SWIG_0(PyObject *, PyObject 
         arg2 = static_cast<bool >(SWIG_As_bool(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setLeanTowards(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setLeanTowards(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -27449,8 +34252,13 @@ static PyObject *_wrap_LookAtMotion_setLeanTowards__SWIG_1(PyObject *, PyObject 
     if(!PyArg_ParseTuple(args,(char *)"O:LookAtMotion_setLeanTowards",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__LookAtMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->setLeanTowards();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setLeanTowards();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -27520,8 +34328,13 @@ static PyObject *_wrap_LookAtMotion_setEyesLimit(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setEyesLimit(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setEyesLimit(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -27543,8 +34356,13 @@ static PyObject *_wrap_LookAtMotion_setHeadBodyLimit(PyObject *, PyObject *args)
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setHeadBodyLimit(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setHeadBodyLimit(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -27566,8 +34384,13 @@ static PyObject *_wrap_LookAtMotion_setEyesMorphAngle(PyObject *, PyObject *args
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setEyesMorphAngle(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setEyesMorphAngle(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -27589,8 +34412,13 @@ static PyObject *_wrap_LookAtMotion_setEndTime(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setEndTime(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setEndTime(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -27603,12 +34431,20 @@ static PyObject *_wrap_LookAtMotion_getMotionLength(PyObject *, PyObject *args) 
     Piavca::LookAtMotion *arg1 = (Piavca::LookAtMotion *) 0 ;
     float result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:LookAtMotion_getMotionLength",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__LookAtMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (float)((Piavca::LookAtMotion const *)arg1)->getMotionLength();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)((Piavca::LookAtMotion const *)arg1)->getMotionLength();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -27625,6 +34461,7 @@ static PyObject *_wrap_LookAtMotion_isNull(PyObject *, PyObject *args) {
     bool result;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:LookAtMotion_isNull",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__LookAtMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -27633,8 +34470,15 @@ static PyObject *_wrap_LookAtMotion_isNull(PyObject *, PyObject *args) {
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (bool)((Piavca::LookAtMotion const *)arg1)->isNull(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)((Piavca::LookAtMotion const *)arg1)->isNull(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -27659,8 +34503,13 @@ static PyObject *_wrap_LookAtMotion_isNullFacial(PyObject *, PyObject *args) {
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (bool)((Piavca::LookAtMotion const *)arg1)->isNullFacial(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)((Piavca::LookAtMotion const *)arg1)->isNullFacial(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -27677,6 +34526,7 @@ static PyObject *_wrap_LookAtMotion_getTrackType(PyObject *, PyObject *args) {
     Piavca::trackType result;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:LookAtMotion_getTrackType",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__LookAtMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -27685,8 +34535,15 @@ static PyObject *_wrap_LookAtMotion_getTrackType(PyObject *, PyObject *args) {
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::trackType)((Piavca::LookAtMotion const *)arg1)->getTrackType(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::trackType)((Piavca::LookAtMotion const *)arg1)->getTrackType(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_From_int((result));
     return resultobj;
     fail:
@@ -27715,8 +34572,13 @@ static PyObject *_wrap_LookAtMotion_canLookAt(PyObject *, PyObject *args) {
         if (SWIG_arg_fail(2)) SWIG_fail;
         arg2 = *argp;
     }
-    result = (bool)(arg1)->canLookAt(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)(arg1)->canLookAt(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -27735,6 +34597,7 @@ static PyObject *_wrap_LookAtMotion_getFloatValueAtTimeInternal(PyObject *, PyOb
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:LookAtMotion_getFloatValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__LookAtMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -27747,8 +34610,15 @@ static PyObject *_wrap_LookAtMotion_getFloatValueAtTimeInternal(PyObject *, PyOb
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -27767,6 +34637,7 @@ static PyObject *_wrap_LookAtMotion_getVecValueAtTimeInternal(PyObject *, PyObje
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:LookAtMotion_getVecValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__LookAtMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -27779,8 +34650,15 @@ static PyObject *_wrap_LookAtMotion_getVecValueAtTimeInternal(PyObject *, PyObje
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec & >(result));
@@ -27801,6 +34679,7 @@ static PyObject *_wrap_LookAtMotion_getQuatValueAtTimeInternal(PyObject *, PyObj
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:LookAtMotion_getQuatValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__LookAtMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -27813,8 +34692,15 @@ static PyObject *_wrap_LookAtMotion_getQuatValueAtTimeInternal(PyObject *, PyObj
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Quat * resultptr;
         resultptr = new Piavca::Quat(static_cast<Piavca::Quat & >(result));
@@ -27834,8 +34720,13 @@ static PyObject *_wrap_delete_LookAtMotion(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_LookAtMotion",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__LookAtMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    arg1->Dispose();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        arg1->Dispose();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -27859,8 +34750,13 @@ static PyObject *_wrap_new_LookAtToFacial__SWIG_0(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:new_LookAtToFacial",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__LookAtMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::LookAtToFacial *)new Piavca::LookAtToFacial(arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::LookAtToFacial *)new Piavca::LookAtToFacial(arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__LookAtToFacial, 1);
     result->Reference();
     return resultobj;
@@ -27884,8 +34780,13 @@ static PyObject *_wrap_new_LookAtToFacial__SWIG_1(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::LookAtToFacial *)new Piavca::LookAtToFacial((Piavca::LookAtToFacial const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::LookAtToFacial *)new Piavca::LookAtToFacial((Piavca::LookAtToFacial const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__LookAtToFacial, 1);
     result->Reference();
     return resultobj;
@@ -27944,13 +34845,28 @@ static PyObject *_wrap_LookAtToFacial_clone(PyObject *, PyObject *args) {
     Piavca::LookAtToFacial *arg1 = (Piavca::LookAtToFacial *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:LookAtToFacial_clone",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__LookAtToFacial, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)(arg1)->clone();
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->clone();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -27963,14 +34879,22 @@ static PyObject *_wrap_LookAtToFacial_load(PyObject *, PyObject *args) {
     Piavca::Avatar *arg2 = (Piavca::Avatar *) 0 ;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:LookAtToFacial_load",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__LookAtToFacial, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    (arg1)->load(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->load(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -27983,12 +34907,20 @@ static PyObject *_wrap_LookAtToFacial_isFacial(PyObject *, PyObject *args) {
     Piavca::LookAtToFacial *arg1 = (Piavca::LookAtToFacial *) 0 ;
     bool result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:LookAtToFacial_isFacial",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__LookAtToFacial, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (bool)(arg1)->isFacial();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)(arg1)->isFacial();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -28005,6 +34937,7 @@ static PyObject *_wrap_LookAtToFacial_isNull(PyObject *, PyObject *args) {
     bool result;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:LookAtToFacial_isNull",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__LookAtToFacial, SWIG_POINTER_EXCEPTION | 0);
@@ -28013,8 +34946,15 @@ static PyObject *_wrap_LookAtToFacial_isNull(PyObject *, PyObject *args) {
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (bool)((Piavca::LookAtToFacial const *)arg1)->isNull(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)((Piavca::LookAtToFacial const *)arg1)->isNull(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -28033,6 +34973,7 @@ static PyObject *_wrap_LookAtToFacial_getFloatValueAtTimeInternal(PyObject *, Py
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:LookAtToFacial_getFloatValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__LookAtToFacial, SWIG_POINTER_EXCEPTION | 0);
@@ -28045,8 +34986,15 @@ static PyObject *_wrap_LookAtToFacial_getFloatValueAtTimeInternal(PyObject *, Py
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -28065,6 +35013,7 @@ static PyObject *_wrap_LookAtToFacial_getVecValueAtTimeInternal(PyObject *, PyOb
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:LookAtToFacial_getVecValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__LookAtToFacial, SWIG_POINTER_EXCEPTION | 0);
@@ -28077,8 +35026,15 @@ static PyObject *_wrap_LookAtToFacial_getVecValueAtTimeInternal(PyObject *, PyOb
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec & >(result));
@@ -28099,6 +35055,7 @@ static PyObject *_wrap_LookAtToFacial_getQuatValueAtTimeInternal(PyObject *, PyO
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:LookAtToFacial_getQuatValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__LookAtToFacial, SWIG_POINTER_EXCEPTION | 0);
@@ -28111,8 +35068,15 @@ static PyObject *_wrap_LookAtToFacial_getQuatValueAtTimeInternal(PyObject *, PyO
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Quat * resultptr;
         resultptr = new Piavca::Quat(static_cast<Piavca::Quat & >(result));
@@ -28132,8 +35096,13 @@ static PyObject *_wrap_delete_LookAtToFacial(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_LookAtToFacial",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__LookAtToFacial, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    arg1->Dispose();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        arg1->Dispose();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -28162,8 +35131,13 @@ static PyObject *_wrap_flagStruct_headActive_set(PyObject *, PyObject *args) {
         arg2 = static_cast<bool >(SWIG_As_bool(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    if (arg1) (arg1)->headActive = arg2;
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        if (arg1) (arg1)->headActive = arg2;
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -28180,8 +35154,13 @@ static PyObject *_wrap_flagStruct_headActive_get(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:flagStruct_headActive_get",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__flagStruct, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (bool) ((arg1)->headActive);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool) ((arg1)->headActive);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -28205,8 +35184,13 @@ static PyObject *_wrap_flagStruct_bodyActive_set(PyObject *, PyObject *args) {
         arg2 = static_cast<bool >(SWIG_As_bool(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    if (arg1) (arg1)->bodyActive = arg2;
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        if (arg1) (arg1)->bodyActive = arg2;
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -28223,8 +35207,13 @@ static PyObject *_wrap_flagStruct_bodyActive_get(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:flagStruct_bodyActive_get",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__flagStruct, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (bool) ((arg1)->bodyActive);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool) ((arg1)->bodyActive);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -28248,8 +35237,13 @@ static PyObject *_wrap_flagStruct_turnBodyVertical_set(PyObject *, PyObject *arg
         arg2 = static_cast<bool >(SWIG_As_bool(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    if (arg1) (arg1)->turnBodyVertical = arg2;
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        if (arg1) (arg1)->turnBodyVertical = arg2;
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -28266,8 +35260,13 @@ static PyObject *_wrap_flagStruct_turnBodyVertical_get(PyObject *, PyObject *arg
     if(!PyArg_ParseTuple(args,(char *)"O:flagStruct_turnBodyVertical_get",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__flagStruct, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (bool) ((arg1)->turnBodyVertical);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool) ((arg1)->turnBodyVertical);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -28291,8 +35290,13 @@ static PyObject *_wrap_flagStruct_turnBodyFull_set(PyObject *, PyObject *args) {
         arg2 = static_cast<bool >(SWIG_As_bool(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    if (arg1) (arg1)->turnBodyFull = arg2;
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        if (arg1) (arg1)->turnBodyFull = arg2;
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -28309,8 +35313,13 @@ static PyObject *_wrap_flagStruct_turnBodyFull_get(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:flagStruct_turnBodyFull_get",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__flagStruct, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (bool) ((arg1)->turnBodyFull);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool) ((arg1)->turnBodyFull);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -28334,8 +35343,13 @@ static PyObject *_wrap_flagStruct_leanTowards_set(PyObject *, PyObject *args) {
         arg2 = static_cast<bool >(SWIG_As_bool(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    if (arg1) (arg1)->leanTowards = arg2;
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        if (arg1) (arg1)->leanTowards = arg2;
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -28352,8 +35366,13 @@ static PyObject *_wrap_flagStruct_leanTowards_get(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:flagStruct_leanTowards_get",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__flagStruct, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (bool) ((arg1)->leanTowards);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool) ((arg1)->leanTowards);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -28368,8 +35387,13 @@ static PyObject *_wrap_new_flagStruct__SWIG_0(PyObject *, PyObject *args) {
     Piavca::flagStruct *result;
     
     if(!PyArg_ParseTuple(args,(char *)":new_flagStruct")) goto fail;
-    result = (Piavca::flagStruct *)new Piavca::flagStruct();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::flagStruct *)new Piavca::flagStruct();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__flagStruct, 1);
     return resultobj;
     fail:
@@ -28392,8 +35416,13 @@ static PyObject *_wrap_new_flagStruct__SWIG_1(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::flagStruct *)new Piavca::flagStruct((Piavca::flagStruct const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::flagStruct *)new Piavca::flagStruct((Piavca::flagStruct const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__flagStruct, 1);
     return resultobj;
     fail:
@@ -28442,8 +35471,13 @@ static PyObject *_wrap_delete_flagStruct(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_flagStruct",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__flagStruct, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    delete arg1;
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        delete arg1;
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -28470,8 +35504,13 @@ static PyObject *_wrap_AvatarTargetStruct_avatar_set(PyObject *, PyObject *args)
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_EXCEPTION | SWIG_POINTER_DISOWN);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    if (arg1) (arg1)->avatar = arg2;
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        if (arg1) (arg1)->avatar = arg2;
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -28488,8 +35527,13 @@ static PyObject *_wrap_AvatarTargetStruct_avatar_get(PyObject *, PyObject *args)
     if(!PyArg_ParseTuple(args,(char *)"O:AvatarTargetStruct_avatar_get",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__AvatarTargetStruct, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Avatar *) ((arg1)->avatar);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Avatar *) ((arg1)->avatar);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Avatar, 0);
     return resultobj;
     fail:
@@ -28511,8 +35555,13 @@ static PyObject *_wrap_AvatarTargetStruct_joint_set(PyObject *, PyObject *args) 
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    if (arg1) (arg1)->joint = arg2;
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        if (arg1) (arg1)->joint = arg2;
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -28529,8 +35578,13 @@ static PyObject *_wrap_AvatarTargetStruct_joint_get(PyObject *, PyObject *args) 
     if(!PyArg_ParseTuple(args,(char *)"O:AvatarTargetStruct_joint_get",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__AvatarTargetStruct, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (int) ((arg1)->joint);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (int) ((arg1)->joint);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_int(static_cast<int >(result)); 
     }
@@ -28552,8 +35606,13 @@ static PyObject *_wrap_AvatarTargetStruct_flags_set(PyObject *, PyObject *args) 
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__flagStruct, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    if (arg1) (arg1)->flags = *arg2;
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        if (arg1) (arg1)->flags = *arg2;
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -28570,8 +35629,13 @@ static PyObject *_wrap_AvatarTargetStruct_flags_get(PyObject *, PyObject *args) 
     if(!PyArg_ParseTuple(args,(char *)"O:AvatarTargetStruct_flags_get",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__AvatarTargetStruct, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::flagStruct *)& ((arg1)->flags);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::flagStruct *)& ((arg1)->flags);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__flagStruct, 0);
     return resultobj;
     fail:
@@ -28606,8 +35670,13 @@ static PyObject *_wrap_new_AvatarTargetStruct__SWIG_0(PyObject *, PyObject *args
         if (SWIG_arg_fail(3)) SWIG_fail;
         arg3 = *argp;
     }
-    result = (Piavca::AvatarTargetStruct *)new Piavca::AvatarTargetStruct(arg1,arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::AvatarTargetStruct *)new Piavca::AvatarTargetStruct(arg1,arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__AvatarTargetStruct, 1);
     return resultobj;
     fail:
@@ -28630,8 +35699,13 @@ static PyObject *_wrap_new_AvatarTargetStruct__SWIG_1(PyObject *, PyObject *args
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::AvatarTargetStruct *)new Piavca::AvatarTargetStruct((Piavca::AvatarTargetStruct const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::AvatarTargetStruct *)new Piavca::AvatarTargetStruct((Piavca::AvatarTargetStruct const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__AvatarTargetStruct, 1);
     return resultobj;
     fail:
@@ -28706,8 +35780,13 @@ static PyObject *_wrap_delete_AvatarTargetStruct(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_AvatarTargetStruct",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__AvatarTargetStruct, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    delete arg1;
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        delete arg1;
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -28734,8 +35813,13 @@ static PyObject *_wrap_ObjectTargetStruct_object_set(PyObject *, PyObject *args)
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Object, SWIG_POINTER_EXCEPTION | SWIG_POINTER_DISOWN);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    if (arg1) (arg1)->object = arg2;
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        if (arg1) (arg1)->object = arg2;
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -28752,8 +35836,13 @@ static PyObject *_wrap_ObjectTargetStruct_object_get(PyObject *, PyObject *args)
     if(!PyArg_ParseTuple(args,(char *)"O:ObjectTargetStruct_object_get",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__ObjectTargetStruct, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Object *) ((arg1)->object);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Object *) ((arg1)->object);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Object, 0);
     return resultobj;
     fail:
@@ -28773,8 +35862,13 @@ static PyObject *_wrap_ObjectTargetStruct_flags_set(PyObject *, PyObject *args) 
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__flagStruct, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    if (arg1) (arg1)->flags = *arg2;
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        if (arg1) (arg1)->flags = *arg2;
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -28791,8 +35885,13 @@ static PyObject *_wrap_ObjectTargetStruct_flags_get(PyObject *, PyObject *args) 
     if(!PyArg_ParseTuple(args,(char *)"O:ObjectTargetStruct_flags_get",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__ObjectTargetStruct, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::flagStruct *)& ((arg1)->flags);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::flagStruct *)& ((arg1)->flags);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__flagStruct, 0);
     return resultobj;
     fail:
@@ -28821,8 +35920,13 @@ static PyObject *_wrap_new_ObjectTargetStruct__SWIG_0(PyObject *, PyObject *args
         if (SWIG_arg_fail(2)) SWIG_fail;
         arg2 = *argp;
     }
-    result = (Piavca::ObjectTargetStruct *)new Piavca::ObjectTargetStruct(arg1,arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::ObjectTargetStruct *)new Piavca::ObjectTargetStruct(arg1,arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__ObjectTargetStruct, 1);
     return resultobj;
     fail:
@@ -28845,8 +35949,13 @@ static PyObject *_wrap_new_ObjectTargetStruct__SWIG_1(PyObject *, PyObject *args
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::ObjectTargetStruct *)new Piavca::ObjectTargetStruct((Piavca::ObjectTargetStruct const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::ObjectTargetStruct *)new Piavca::ObjectTargetStruct((Piavca::ObjectTargetStruct const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__ObjectTargetStruct, 1);
     return resultobj;
     fail:
@@ -28918,8 +36027,13 @@ static PyObject *_wrap_delete_ObjectTargetStruct(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_ObjectTargetStruct",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__ObjectTargetStruct, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    delete arg1;
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        delete arg1;
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -28951,8 +36065,13 @@ static PyObject *_wrap_new_RandomGazeMotion__SWIG_0(PyObject *, PyObject *args) 
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::RandomGazeMotion *)new Piavca::RandomGazeMotion(arg1,arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::RandomGazeMotion *)new Piavca::RandomGazeMotion(arg1,arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__RandomGazeMotion, 1);
     result->Reference();
     return resultobj;
@@ -28972,8 +36091,13 @@ static PyObject *_wrap_new_RandomGazeMotion__SWIG_1(PyObject *, PyObject *args) 
         arg1 = static_cast<float >(SWIG_As_float(obj0)); 
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::RandomGazeMotion *)new Piavca::RandomGazeMotion(arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::RandomGazeMotion *)new Piavca::RandomGazeMotion(arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__RandomGazeMotion, 1);
     result->Reference();
     return resultobj;
@@ -28987,8 +36111,13 @@ static PyObject *_wrap_new_RandomGazeMotion__SWIG_2(PyObject *, PyObject *args) 
     Piavca::RandomGazeMotion *result;
     
     if(!PyArg_ParseTuple(args,(char *)":new_RandomGazeMotion")) goto fail;
-    result = (Piavca::RandomGazeMotion *)new Piavca::RandomGazeMotion();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::RandomGazeMotion *)new Piavca::RandomGazeMotion();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__RandomGazeMotion, 1);
     result->Reference();
     return resultobj;
@@ -29012,8 +36141,13 @@ static PyObject *_wrap_new_RandomGazeMotion__SWIG_3(PyObject *, PyObject *args) 
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::RandomGazeMotion *)new Piavca::RandomGazeMotion((Piavca::RandomGazeMotion const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::RandomGazeMotion *)new Piavca::RandomGazeMotion((Piavca::RandomGazeMotion const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__RandomGazeMotion, 1);
     result->Reference();
     return resultobj;
@@ -29080,8 +36214,13 @@ static PyObject *_wrap_delete_RandomGazeMotion(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_RandomGazeMotion",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__RandomGazeMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    arg1->Dispose();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        arg1->Dispose();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -29094,13 +36233,28 @@ static PyObject *_wrap_RandomGazeMotion_clone(PyObject *, PyObject *args) {
     Piavca::RandomGazeMotion *arg1 = (Piavca::RandomGazeMotion *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:RandomGazeMotion_clone",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__RandomGazeMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)(arg1)->clone();
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->clone();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -29115,8 +36269,13 @@ static PyObject *_wrap_RandomGazeMotion_clearDirectionTable(PyObject *, PyObject
     if(!PyArg_ParseTuple(args,(char *)"O:RandomGazeMotion_clearDirectionTable",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__RandomGazeMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->clearDirectionTable();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->clearDirectionTable();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -29148,8 +36307,13 @@ static PyObject *_wrap_RandomGazeMotion_addDirection(PyObject *, PyObject *args)
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    (arg1)->addDirection((Piavca::Vec const &)*arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->addDirection((Piavca::Vec const &)*arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -29165,8 +36329,13 @@ static PyObject *_wrap_RandomGazeMotion_normaliseDirectionTable(PyObject *, PyOb
     if(!PyArg_ParseTuple(args,(char *)"O:RandomGazeMotion_normaliseDirectionTable",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__RandomGazeMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    (arg1)->normaliseDirectionTable();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->normaliseDirectionTable();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -29204,8 +36373,13 @@ static PyObject *_wrap_RandomGazeMotion_addAvatarTarget__SWIG_0(PyObject *, PyOb
         if (SWIG_arg_fail(4)) SWIG_fail;
         arg4 = *argp;
     }
-    (arg1)->addAvatarTarget(arg2,arg3,arg4);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->addAvatarTarget(arg2,arg3,arg4);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -29231,8 +36405,13 @@ static PyObject *_wrap_RandomGazeMotion_addAvatarTarget__SWIG_1(PyObject *, PyOb
         arg3 = static_cast<int >(SWIG_As_int(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    (arg1)->addAvatarTarget(arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->addAvatarTarget(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -29348,8 +36527,13 @@ static PyObject *_wrap_RandomGazeMotion_addObjectTarget__SWIG_0(PyObject *, PyOb
         if (SWIG_arg_fail(3)) SWIG_fail;
         arg3 = *argp;
     }
-    (arg1)->addObjectTarget(arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->addObjectTarget(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -29369,8 +36553,13 @@ static PyObject *_wrap_RandomGazeMotion_addObjectTarget__SWIG_1(PyObject *, PyOb
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Object, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    (arg1)->addObjectTarget(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->addObjectTarget(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -29481,8 +36670,13 @@ static PyObject *_wrap_RandomGazeMotion_setTargetFlags(PyObject *, PyObject *arg
         if (SWIG_arg_fail(3)) SWIG_fail;
         arg3 = *argp;
     }
-    (arg1)->setTargetFlags(arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setTargetFlags(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -29510,8 +36704,13 @@ static PyObject *_wrap_RandomGazeMotion_setGazeParams(PyObject *, PyObject *args
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    (arg1)->setGazeParams(arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setGazeParams(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -29533,8 +36732,13 @@ static PyObject *_wrap_RandomGazeMotion_setLookAtLocationProb(PyObject *, PyObje
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setLookAtLocationProb(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setLookAtLocationProb(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -29556,8 +36760,13 @@ static PyObject *_wrap_RandomGazeMotion_setMeanGazeLength(PyObject *, PyObject *
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setMeanGazeLength(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setMeanGazeLength(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -29579,8 +36788,13 @@ static PyObject *_wrap_RandomGazeMotion_setEyesLimit(PyObject *, PyObject *args)
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setEyesLimit(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setEyesLimit(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -29602,8 +36816,13 @@ static PyObject *_wrap_RandomGazeMotion_setHeadBodyLimit(PyObject *, PyObject *a
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setHeadBodyLimit(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setHeadBodyLimit(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -29625,8 +36844,13 @@ static PyObject *_wrap_RandomGazeMotion_setEyesMorphAngle(PyObject *, PyObject *
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setEyesMorphAngle(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setEyesMorphAngle(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -29643,8 +36867,13 @@ static PyObject *_wrap_RandomGazeMotion_randomLocation(PyObject *, PyObject *arg
     if(!PyArg_ParseTuple(args,(char *)"O:RandomGazeMotion_randomLocation",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__RandomGazeMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (arg1)->randomLocation();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->randomLocation();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec & >(result));
@@ -29665,6 +36894,7 @@ static PyObject *_wrap_RandomGazeMotion_lookAt__SWIG_0(PyObject *, PyObject *arg
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:RandomGazeMotion_lookAt",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__RandomGazeMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -29676,8 +36906,15 @@ static PyObject *_wrap_RandomGazeMotion_lookAt__SWIG_0(PyObject *, PyObject *arg
         arg3 = static_cast<bool >(SWIG_As_bool(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (bool)(arg1)->lookAt(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)(arg1)->lookAt(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -29694,6 +36931,7 @@ static PyObject *_wrap_RandomGazeMotion_lookAt__SWIG_1(PyObject *, PyObject *arg
     bool result;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:RandomGazeMotion_lookAt",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__RandomGazeMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -29701,8 +36939,15 @@ static PyObject *_wrap_RandomGazeMotion_lookAt__SWIG_1(PyObject *, PyObject *arg
     {
         arg2 = PyString_AsString(obj1);
     }
-    result = (bool)(arg1)->lookAt(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)(arg1)->lookAt(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -29772,6 +37017,7 @@ static PyObject *_wrap_RandomGazeMotion_reblend(PyObject *, PyObject *args) {
     float arg2 ;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:RandomGazeMotion_reblend",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__RandomGazeMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -29780,8 +37026,15 @@ static PyObject *_wrap_RandomGazeMotion_reblend(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->reblend(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->reblend(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -29807,8 +37060,13 @@ static PyObject *_wrap_new_ZeroMotion__SWIG_0(PyObject *, PyObject *args) {
         arg1 = static_cast<bool >(SWIG_As_bool(obj0)); 
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::ZeroMotion *)new Piavca::ZeroMotion(arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::ZeroMotion *)new Piavca::ZeroMotion(arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__ZeroMotion, 1);
     result->Reference();
     return resultobj;
@@ -29822,8 +37080,13 @@ static PyObject *_wrap_new_ZeroMotion__SWIG_1(PyObject *, PyObject *args) {
     Piavca::ZeroMotion *result;
     
     if(!PyArg_ParseTuple(args,(char *)":new_ZeroMotion")) goto fail;
-    result = (Piavca::ZeroMotion *)new Piavca::ZeroMotion();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::ZeroMotion *)new Piavca::ZeroMotion();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__ZeroMotion, 1);
     result->Reference();
     return resultobj;
@@ -29847,8 +37110,13 @@ static PyObject *_wrap_new_ZeroMotion__SWIG_2(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::ZeroMotion *)new Piavca::ZeroMotion((Piavca::ZeroMotion const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::ZeroMotion *)new Piavca::ZeroMotion((Piavca::ZeroMotion const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__ZeroMotion, 1);
     result->Reference();
     return resultobj;
@@ -29902,13 +37170,28 @@ static PyObject *_wrap_ZeroMotion_clone(PyObject *, PyObject *args) {
     Piavca::ZeroMotion *arg1 = (Piavca::ZeroMotion *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:ZeroMotion_clone",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__ZeroMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)(arg1)->clone();
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->clone();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -29920,12 +37203,20 @@ static PyObject *_wrap_ZeroMotion_isFacial(PyObject *, PyObject *args) {
     Piavca::ZeroMotion *arg1 = (Piavca::ZeroMotion *) 0 ;
     bool result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:ZeroMotion_isFacial",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__ZeroMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (bool)(arg1)->isFacial();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)(arg1)->isFacial();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -29940,12 +37231,20 @@ static PyObject *_wrap_ZeroMotion_isRandomAccess(PyObject *, PyObject *args) {
     Piavca::ZeroMotion *arg1 = (Piavca::ZeroMotion *) 0 ;
     bool result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:ZeroMotion_isRandomAccess",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__ZeroMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (bool)(arg1)->isRandomAccess();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)(arg1)->isRandomAccess();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -29960,12 +37259,20 @@ static PyObject *_wrap_ZeroMotion_getMotionLength(PyObject *, PyObject *args) {
     Piavca::ZeroMotion *arg1 = (Piavca::ZeroMotion *) 0 ;
     float result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:ZeroMotion_getMotionLength",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__ZeroMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (float)((Piavca::ZeroMotion const *)arg1)->getMotionLength();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)((Piavca::ZeroMotion const *)arg1)->getMotionLength();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -29982,6 +37289,7 @@ static PyObject *_wrap_ZeroMotion_isNull(PyObject *, PyObject *args) {
     bool result;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:ZeroMotion_isNull",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__ZeroMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -29990,8 +37298,15 @@ static PyObject *_wrap_ZeroMotion_isNull(PyObject *, PyObject *args) {
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (bool)((Piavca::ZeroMotion const *)arg1)->isNull(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (bool)((Piavca::ZeroMotion const *)arg1)->isNull(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_bool(static_cast<bool >(result)); 
     }
@@ -30008,6 +37323,7 @@ static PyObject *_wrap_ZeroMotion_getTrackType(PyObject *, PyObject *args) {
     Piavca::trackType result;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:ZeroMotion_getTrackType",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__ZeroMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -30016,8 +37332,15 @@ static PyObject *_wrap_ZeroMotion_getTrackType(PyObject *, PyObject *args) {
         arg2 = static_cast<int >(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::trackType)((Piavca::ZeroMotion const *)arg1)->getTrackType(arg2);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::trackType)((Piavca::ZeroMotion const *)arg1)->getTrackType(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_From_int((result));
     return resultobj;
     fail:
@@ -30034,6 +37357,7 @@ static PyObject *_wrap_ZeroMotion_getFloatValueAtTimeInternal(PyObject *, PyObje
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:ZeroMotion_getFloatValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__ZeroMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -30046,8 +37370,15 @@ static PyObject *_wrap_ZeroMotion_getFloatValueAtTimeInternal(PyObject *, PyObje
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -30066,6 +37397,7 @@ static PyObject *_wrap_ZeroMotion_getVecValueAtTimeInternal(PyObject *, PyObject
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:ZeroMotion_getVecValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__ZeroMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -30078,8 +37410,15 @@ static PyObject *_wrap_ZeroMotion_getVecValueAtTimeInternal(PyObject *, PyObject
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec & >(result));
@@ -30100,6 +37439,7 @@ static PyObject *_wrap_ZeroMotion_getQuatValueAtTimeInternal(PyObject *, PyObjec
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:ZeroMotion_getQuatValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__ZeroMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -30112,8 +37452,15 @@ static PyObject *_wrap_ZeroMotion_getQuatValueAtTimeInternal(PyObject *, PyObjec
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Quat * resultptr;
         resultptr = new Piavca::Quat(static_cast<Piavca::Quat & >(result));
@@ -30133,8 +37480,13 @@ static PyObject *_wrap_delete_ZeroMotion(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_ZeroMotion",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__ZeroMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    arg1->Dispose();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        arg1->Dispose();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -30158,8 +37510,13 @@ static PyObject *_wrap_new_MotionSaver__SWIG_0(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:new_MotionSaver",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::MotionSaver *)new Piavca::MotionSaver(arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::MotionSaver *)new Piavca::MotionSaver(arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__MotionSaver, 1);
     result->Reference();
     return resultobj;
@@ -30183,8 +37540,13 @@ static PyObject *_wrap_new_MotionSaver__SWIG_1(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::MotionSaver *)new Piavca::MotionSaver((Piavca::MotionSaver const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::MotionSaver *)new Piavca::MotionSaver((Piavca::MotionSaver const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__MotionSaver, 1);
     result->Reference();
     return resultobj;
@@ -30243,13 +37605,28 @@ static PyObject *_wrap_MotionSaver_clone(PyObject *, PyObject *args) {
     Piavca::MotionSaver *arg1 = (Piavca::MotionSaver *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:MotionSaver_clone",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MotionSaver, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)(arg1)->clone();
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->clone();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -30265,6 +37642,7 @@ static PyObject *_wrap_MotionSaver_getFloatValueAtTimeInternal(PyObject *, PyObj
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:MotionSaver_getFloatValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MotionSaver, SWIG_POINTER_EXCEPTION | 0);
@@ -30277,8 +37655,15 @@ static PyObject *_wrap_MotionSaver_getFloatValueAtTimeInternal(PyObject *, PyObj
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -30297,6 +37682,7 @@ static PyObject *_wrap_MotionSaver_getVecValueAtTimeInternal(PyObject *, PyObjec
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:MotionSaver_getVecValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MotionSaver, SWIG_POINTER_EXCEPTION | 0);
@@ -30309,8 +37695,15 @@ static PyObject *_wrap_MotionSaver_getVecValueAtTimeInternal(PyObject *, PyObjec
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec & >(result));
@@ -30331,6 +37724,7 @@ static PyObject *_wrap_MotionSaver_getQuatValueAtTimeInternal(PyObject *, PyObje
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:MotionSaver_getQuatValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MotionSaver, SWIG_POINTER_EXCEPTION | 0);
@@ -30343,8 +37737,15 @@ static PyObject *_wrap_MotionSaver_getQuatValueAtTimeInternal(PyObject *, PyObje
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Quat * resultptr;
         resultptr = new Piavca::Quat(static_cast<Piavca::Quat & >(result));
@@ -30370,8 +37771,13 @@ static PyObject *_wrap_MotionSaver_collectFrames(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->collectFrames(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->collectFrames(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -30392,8 +37798,13 @@ static PyObject *_wrap_MotionSaver_save(PyObject *, PyObject *args) {
     {
         arg2 = PyString_AsString(obj1);
     }
-    (arg1)->save(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->save(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -30409,8 +37820,13 @@ static PyObject *_wrap_delete_MotionSaver(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_MotionSaver",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MotionSaver, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    arg1->Dispose();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        arg1->Dispose();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -30436,6 +37852,8 @@ static PyObject *_wrap_MotionParser_parseMotion__SWIG_0(PyObject *, PyObject *ar
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
     PyObject * obj3 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOOO:MotionParser_parseMotion",&obj0,&obj1,&obj2,&obj3)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MotionParser, SWIG_POINTER_EXCEPTION | 0);
@@ -30455,9 +37873,22 @@ static PyObject *_wrap_MotionParser_parseMotion__SWIG_0(PyObject *, PyObject *ar
         arg4 = static_cast<float >(SWIG_As_float(obj3)); 
         if (SWIG_arg_fail(4)) SWIG_fail;
     }
-    result = (Piavca::Motion *)(arg1)->parseMotion(*arg2,arg3,arg4);
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->parseMotion(*arg2,arg3,arg4);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -30471,6 +37902,8 @@ static PyObject *_wrap_MotionParser_editMotion(PyObject *, PyObject *args) {
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:MotionParser_editMotion",&obj0,&obj1)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MotionParser, SWIG_POINTER_EXCEPTION | 0);
@@ -30483,9 +37916,22 @@ static PyObject *_wrap_MotionParser_editMotion(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::Motion *)(arg1)->editMotion(*arg2);
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->editMotion(*arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -30502,6 +37948,7 @@ static PyObject *_wrap_MotionParser_editAvatarMotion(PyObject *, PyObject *args)
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
     PyObject * obj3 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOOO:MotionParser_editAvatarMotion",&obj0,&obj1,&obj2,&obj3)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MotionParser, SWIG_POINTER_EXCEPTION | 0);
@@ -30520,8 +37967,15 @@ static PyObject *_wrap_MotionParser_editAvatarMotion(PyObject *, PyObject *args)
         }
         if (SWIG_arg_fail(4)) SWIG_fail;
     }
-    (arg1)->editAvatarMotion(arg2,arg3,*arg4);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->editAvatarMotion(arg2,arg3,*arg4);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -30536,6 +37990,7 @@ static PyObject *_wrap_MotionParser_parseMotion__SWIG_1(PyObject *, PyObject *ar
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OO:MotionParser_parseMotion",&obj0,&obj1)) goto fail;
     {
@@ -30545,9 +38000,20 @@ static PyObject *_wrap_MotionParser_parseMotion__SWIG_1(PyObject *, PyObject *ar
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    result = (Piavca::Motion *)Piavca::MotionParser::parseMotion(arg1,arg2);
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)Piavca::MotionParser::parseMotion(arg1,arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -30559,14 +38025,26 @@ static PyObject *_wrap_MotionParser_parseMotion__SWIG_2(PyObject *, PyObject *ar
     std::string arg1 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:MotionParser_parseMotion",&obj0)) goto fail;
     {
         arg1 = PyString_AsString(obj0);
     }
-    result = (Piavca::Motion *)Piavca::MotionParser::parseMotion(arg1);
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)Piavca::MotionParser::parseMotion(arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -30582,6 +38060,7 @@ static PyObject *_wrap_MotionParser_parseMotion__SWIG_3(PyObject *, PyObject *ar
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:MotionParser_parseMotion",&obj0,&obj1,&obj2)) goto fail;
     {
@@ -30598,9 +38077,20 @@ static PyObject *_wrap_MotionParser_parseMotion__SWIG_3(PyObject *, PyObject *ar
     }
     SWIG_Python_ConvertPtr(obj2, (void **)&arg3, SWIGTYPE_p_p_Piavca__MotionParser, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(3)) SWIG_fail;
-    result = (Piavca::Motion *)Piavca::MotionParser::parseMotion(*arg1,arg2,arg3);
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)Piavca::MotionParser::parseMotion(*arg1,arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -30618,6 +38108,7 @@ static PyObject *_wrap_MotionParser_parseMotion__SWIG_4(PyObject *, PyObject *ar
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
     PyObject * obj3 = 0 ;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOOO:MotionParser_parseMotion",&obj0,&obj1,&obj2,&obj3)) goto fail;
     {
@@ -30637,9 +38128,20 @@ static PyObject *_wrap_MotionParser_parseMotion__SWIG_4(PyObject *, PyObject *ar
     }
     SWIG_Python_ConvertPtr(obj3, (void **)&arg4, SWIGTYPE_p_p_Piavca__MotionParser, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(4)) SWIG_fail;
-    result = (Piavca::Motion *)Piavca::MotionParser::parseMotion(*arg1,arg2,arg3,arg4);
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)Piavca::MotionParser::parseMotion(*arg1,arg2,arg3,arg4);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -30784,8 +38286,13 @@ static PyObject *_wrap_MotionParser_addMotionCommand(PyObject *, PyObject *args)
     }
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__MotionParser, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    Piavca::MotionParser::addMotionCommand(arg1,arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        Piavca::MotionParser::addMotionCommand(arg1,arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -30803,8 +38310,13 @@ static PyObject *_wrap_MotionParser_getMotionCommand(PyObject *, PyObject *args)
     {
         arg1 = PyString_AsString(obj0);
     }
-    result = (Piavca::MotionParser *)Piavca::MotionParser::getMotionCommand(arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::MotionParser *)Piavca::MotionParser::getMotionCommand(arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__MotionParser, 0);
     return resultobj;
     fail:
@@ -30816,8 +38328,13 @@ static PyObject *_wrap_MotionParser_setUpMotionCommands(PyObject *, PyObject *ar
     PyObject *resultobj = NULL;
     
     if(!PyArg_ParseTuple(args,(char *)":MotionParser_setUpMotionCommands")) goto fail;
-    Piavca::MotionParser::setUpMotionCommands();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        Piavca::MotionParser::setUpMotionCommands();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -30833,8 +38350,13 @@ static PyObject *_wrap_delete_MotionParser(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_MotionParser",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__MotionParser, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    delete arg1;
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        delete arg1;
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -30854,8 +38376,13 @@ static PyObject *_wrap_new_SubMotion__SWIG_0(PyObject *, PyObject *args) {
     Piavca::SubMotion *result;
     
     if(!PyArg_ParseTuple(args,(char *)":new_SubMotion")) goto fail;
-    result = (Piavca::SubMotion *)new Piavca::SubMotion();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::SubMotion *)new Piavca::SubMotion();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__SubMotion, 1);
     result->Reference();
     return resultobj;
@@ -30885,8 +38412,13 @@ static PyObject *_wrap_new_SubMotion__SWIG_1(PyObject *, PyObject *args) {
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (Piavca::SubMotion *)new Piavca::SubMotion(arg1,arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::SubMotion *)new Piavca::SubMotion(arg1,arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__SubMotion, 1);
     result->Reference();
     return resultobj;
@@ -30910,8 +38442,13 @@ static PyObject *_wrap_new_SubMotion__SWIG_2(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::SubMotion *)new Piavca::SubMotion((Piavca::SubMotion const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::SubMotion *)new Piavca::SubMotion((Piavca::SubMotion const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__SubMotion, 1);
     result->Reference();
     return resultobj;
@@ -30979,13 +38516,28 @@ static PyObject *_wrap_SubMotion_clone(PyObject *, PyObject *args) {
     Piavca::SubMotion *arg1 = (Piavca::SubMotion *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:SubMotion_clone",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__SubMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)(arg1)->clone();
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->clone();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -30997,12 +38549,20 @@ static PyObject *_wrap_SubMotion_getMotionLength(PyObject *, PyObject *args) {
     Piavca::SubMotion *arg1 = (Piavca::SubMotion *) 0 ;
     float result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:SubMotion_getMotionLength",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__SubMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (float)((Piavca::SubMotion const *)arg1)->getMotionLength();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)((Piavca::SubMotion const *)arg1)->getMotionLength();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -31026,8 +38586,13 @@ static PyObject *_wrap_SubMotion_setStart(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setStart(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setStart(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -31049,8 +38614,13 @@ static PyObject *_wrap_SubMotion_setEnd(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setEnd(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setEnd(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -31067,6 +38637,7 @@ static PyObject *_wrap_SubMotion_getFloatValueAtTimeInternal(PyObject *, PyObjec
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:SubMotion_getFloatValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__SubMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -31079,8 +38650,15 @@ static PyObject *_wrap_SubMotion_getFloatValueAtTimeInternal(PyObject *, PyObjec
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -31099,6 +38677,7 @@ static PyObject *_wrap_SubMotion_getVecValueAtTimeInternal(PyObject *, PyObject 
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:SubMotion_getVecValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__SubMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -31111,8 +38690,15 @@ static PyObject *_wrap_SubMotion_getVecValueAtTimeInternal(PyObject *, PyObject 
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec & >(result));
@@ -31133,6 +38719,7 @@ static PyObject *_wrap_SubMotion_getQuatValueAtTimeInternal(PyObject *, PyObject
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:SubMotion_getQuatValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__SubMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -31145,8 +38732,15 @@ static PyObject *_wrap_SubMotion_getQuatValueAtTimeInternal(PyObject *, PyObject
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Quat * resultptr;
         resultptr = new Piavca::Quat(static_cast<Piavca::Quat & >(result));
@@ -31166,8 +38760,13 @@ static PyObject *_wrap_delete_SubMotion(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_SubMotion",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__SubMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    arg1->Dispose();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        arg1->Dispose();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -31187,8 +38786,13 @@ static PyObject *_wrap_new_TimeRangeMotion__SWIG_0(PyObject *, PyObject *args) {
     Piavca::TimeRangeMotion *result;
     
     if(!PyArg_ParseTuple(args,(char *)":new_TimeRangeMotion")) goto fail;
-    result = (Piavca::TimeRangeMotion *)new Piavca::TimeRangeMotion();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::TimeRangeMotion *)new Piavca::TimeRangeMotion();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__TimeRangeMotion, 1);
     result->Reference();
     return resultobj;
@@ -31218,8 +38822,13 @@ static PyObject *_wrap_new_TimeRangeMotion__SWIG_1(PyObject *, PyObject *args) {
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (Piavca::TimeRangeMotion *)new Piavca::TimeRangeMotion(arg1,arg2,arg3);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::TimeRangeMotion *)new Piavca::TimeRangeMotion(arg1,arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__TimeRangeMotion, 1);
     result->Reference();
     return resultobj;
@@ -31243,8 +38852,13 @@ static PyObject *_wrap_new_TimeRangeMotion__SWIG_2(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::TimeRangeMotion *)new Piavca::TimeRangeMotion((Piavca::TimeRangeMotion const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::TimeRangeMotion *)new Piavca::TimeRangeMotion((Piavca::TimeRangeMotion const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__TimeRangeMotion, 1);
     result->Reference();
     return resultobj;
@@ -31312,13 +38926,28 @@ static PyObject *_wrap_TimeRangeMotion_clone(PyObject *, PyObject *args) {
     Piavca::TimeRangeMotion *arg1 = (Piavca::TimeRangeMotion *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:TimeRangeMotion_clone",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TimeRangeMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)(arg1)->clone();
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->clone();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -31339,8 +38968,13 @@ static PyObject *_wrap_TimeRangeMotion_setStart(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setStart(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setStart(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -31362,8 +38996,13 @@ static PyObject *_wrap_TimeRangeMotion_setEnd(PyObject *, PyObject *args) {
         arg2 = static_cast<float >(SWIG_As_float(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
-    (arg1)->setEnd(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setEnd(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -31380,6 +39019,7 @@ static PyObject *_wrap_TimeRangeMotion_getFloatValueAtTimeInternal(PyObject *, P
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:TimeRangeMotion_getFloatValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TimeRangeMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -31392,8 +39032,15 @@ static PyObject *_wrap_TimeRangeMotion_getFloatValueAtTimeInternal(PyObject *, P
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -31412,6 +39059,7 @@ static PyObject *_wrap_TimeRangeMotion_getVecValueAtTimeInternal(PyObject *, PyO
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:TimeRangeMotion_getVecValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TimeRangeMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -31424,8 +39072,15 @@ static PyObject *_wrap_TimeRangeMotion_getVecValueAtTimeInternal(PyObject *, PyO
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec & >(result));
@@ -31446,6 +39101,7 @@ static PyObject *_wrap_TimeRangeMotion_getQuatValueAtTimeInternal(PyObject *, Py
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:TimeRangeMotion_getQuatValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TimeRangeMotion, SWIG_POINTER_EXCEPTION | 0);
@@ -31458,8 +39114,15 @@ static PyObject *_wrap_TimeRangeMotion_getQuatValueAtTimeInternal(PyObject *, Py
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Quat * resultptr;
         resultptr = new Piavca::Quat(static_cast<Piavca::Quat & >(result));
@@ -31479,8 +39142,13 @@ static PyObject *_wrap_delete_TimeRangeMotion(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_TimeRangeMotion",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TimeRangeMotion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    arg1->Dispose();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        arg1->Dispose();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -31508,8 +39176,13 @@ static PyObject *_wrap_new_TimeWarp__SWIG_0(PyObject *, PyObject *args) {
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    result = (Piavca::TimeWarp *)new Piavca::TimeWarp(arg1,arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::TimeWarp *)new Piavca::TimeWarp(arg1,arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__TimeWarp, 1);
     result->Reference();
     return resultobj;
@@ -31527,8 +39200,13 @@ static PyObject *_wrap_new_TimeWarp__SWIG_1(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:new_TimeWarp",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::TimeWarp *)new Piavca::TimeWarp(arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::TimeWarp *)new Piavca::TimeWarp(arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__TimeWarp, 1);
     result->Reference();
     return resultobj;
@@ -31542,8 +39220,13 @@ static PyObject *_wrap_new_TimeWarp__SWIG_2(PyObject *, PyObject *args) {
     Piavca::TimeWarp *result;
     
     if(!PyArg_ParseTuple(args,(char *)":new_TimeWarp")) goto fail;
-    result = (Piavca::TimeWarp *)new Piavca::TimeWarp();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::TimeWarp *)new Piavca::TimeWarp();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__TimeWarp, 1);
     result->Reference();
     return resultobj;
@@ -31567,8 +39250,13 @@ static PyObject *_wrap_new_TimeWarp__SWIG_3(PyObject *, PyObject *args) {
         }
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
-    result = (Piavca::TimeWarp *)new Piavca::TimeWarp((Piavca::TimeWarp const &)*arg1);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::TimeWarp *)new Piavca::TimeWarp((Piavca::TimeWarp const &)*arg1);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__TimeWarp, 1);
     result->Reference();
     return resultobj;
@@ -31656,13 +39344,28 @@ static PyObject *_wrap_TimeWarp_clone(PyObject *, PyObject *args) {
     Piavca::TimeWarp *arg1 = (Piavca::TimeWarp *) 0 ;
     Piavca::Motion *result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
+    Swig::Director *resultdirector = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:TimeWarp_clone",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TimeWarp, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (Piavca::Motion *)(arg1)->clone();
-    
-    resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (Piavca::Motion *)(arg1)->clone();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
+    resultdirector = SWIG_DIRECTOR_CAST(result);
+    if (resultdirector) {
+        resultobj = resultdirector->swig_get_self();
+        Py_INCREF(resultobj);
+    } else {
+        resultobj = SWIG_NewPointerObj((void*)(result), SWIGTYPE_p_Piavca__Motion, 0);
+    }
     return resultobj;
     fail:
     return NULL;
@@ -31674,12 +39377,20 @@ static PyObject *_wrap_TimeWarp_getMotionLength(PyObject *, PyObject *args) {
     Piavca::TimeWarp *arg1 = (Piavca::TimeWarp *) 0 ;
     float result;
     PyObject * obj0 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"O:TimeWarp_getMotionLength",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TimeWarp, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    result = (float)((Piavca::TimeWarp const *)arg1)->getMotionLength();
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)((Piavca::TimeWarp const *)arg1)->getMotionLength();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -31698,6 +39409,7 @@ static PyObject *_wrap_TimeWarp_getFloatValueAtTimeInternal(PyObject *, PyObject
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:TimeWarp_getFloatValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TimeWarp, SWIG_POINTER_EXCEPTION | 0);
@@ -31710,8 +39422,15 @@ static PyObject *_wrap_TimeWarp_getFloatValueAtTimeInternal(PyObject *, PyObject
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         resultobj = SWIG_From_float(static_cast<float >(result)); 
     }
@@ -31730,6 +39449,7 @@ static PyObject *_wrap_TimeWarp_getVecValueAtTimeInternal(PyObject *, PyObject *
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:TimeWarp_getVecValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TimeWarp, SWIG_POINTER_EXCEPTION | 0);
@@ -31742,8 +39462,15 @@ static PyObject *_wrap_TimeWarp_getVecValueAtTimeInternal(PyObject *, PyObject *
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Vec * resultptr;
         resultptr = new Piavca::Vec(static_cast<Piavca::Vec & >(result));
@@ -31764,6 +39491,7 @@ static PyObject *_wrap_TimeWarp_getQuatValueAtTimeInternal(PyObject *, PyObject 
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
+    Swig::Director *director = 0;
     
     if(!PyArg_ParseTuple(args,(char *)"OOO:TimeWarp_getQuatValueAtTimeInternal",&obj0,&obj1,&obj2)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TimeWarp, SWIG_POINTER_EXCEPTION | 0);
@@ -31776,8 +39504,15 @@ static PyObject *_wrap_TimeWarp_getQuatValueAtTimeInternal(PyObject *, PyObject 
         arg3 = static_cast<float >(SWIG_As_float(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
-    
+    director = SWIG_DIRECTOR_CAST(arg1);
+    if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+    try {
+        Swig::UnknownExceptionHandler dh;
+        result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     {
         Piavca::Quat * resultptr;
         resultptr = new Piavca::Quat(static_cast<Piavca::Quat & >(result));
@@ -31801,8 +39536,13 @@ static PyObject *_wrap_TimeWarp_setWarp(PyObject *, PyObject *args) {
     if (SWIG_arg_fail(1)) SWIG_fail;
     SWIG_Python_ConvertPtr(obj1, (void **)&arg2, SWIGTYPE_p_Piavca__Motion, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(2)) SWIG_fail;
-    (arg1)->setWarp(arg2);
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        (arg1)->setWarp(arg2);
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -31818,8 +39558,13 @@ static PyObject *_wrap_delete_TimeWarp(PyObject *, PyObject *args) {
     if(!PyArg_ParseTuple(args,(char *)"O:delete_TimeWarp",&obj0)) goto fail;
     SWIG_Python_ConvertPtr(obj0, (void **)&arg1, SWIGTYPE_p_Piavca__TimeWarp, SWIG_POINTER_EXCEPTION | 0);
     if (SWIG_arg_fail(1)) SWIG_fail;
-    arg1->Dispose();
-    
+    try {
+        Swig::UnknownExceptionHandler dh;
+        arg1->Dispose();
+        
+    } catch (Swig::DirectorException&) {
+        SWIG_fail;
+    }
     Py_INCREF(Py_None); resultobj = Py_None;
     return resultobj;
     fail:
@@ -31868,7 +39613,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Vec___setitem__", _wrap_Vec___setitem__, METH_VARARGS, NULL},
 	 { (char *)"Vec___repr__", _wrap_Vec___repr__, METH_VARARGS, NULL},
 	 { (char *)"Vec_swigregister", Vec_swigregister, METH_VARARGS, NULL},
-	 { (char *)"_isnan", _wrap__isnan, METH_VARARGS, NULL},
+	 { (char *)"checkNaN", _wrap_checkNaN, METH_VARARGS, NULL},
 	 { (char *)"new_Quat", _wrap_new_Quat, METH_VARARGS, NULL},
 	 { (char *)"delete_Quat", _wrap_delete_Quat, METH_VARARGS, NULL},
 	 { (char *)"Quat_S", _wrap_Quat_S, METH_VARARGS, NULL},
@@ -31902,15 +39647,19 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Quat___setitem__", _wrap_Quat___setitem__, METH_VARARGS, NULL},
 	 { (char *)"Quat___repr__", _wrap_Quat___repr__, METH_VARARGS, NULL},
 	 { (char *)"Quat_swigregister", Quat_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_TimeCallback", _wrap_new_TimeCallback, METH_VARARGS, NULL},
 	 { (char *)"delete_TimeCallback", _wrap_delete_TimeCallback, METH_VARARGS, NULL},
 	 { (char *)"TimeCallback_getName", _wrap_TimeCallback_getName, METH_VARARGS, NULL},
 	 { (char *)"TimeCallback_init", _wrap_TimeCallback_init, METH_VARARGS, NULL},
 	 { (char *)"TimeCallback_timeStep", _wrap_TimeCallback_timeStep, METH_VARARGS, NULL},
+	 { (char *)"disown_TimeCallback", _wrap_disown_TimeCallback, METH_VARARGS, NULL},
 	 { (char *)"TimeCallback_swigregister", TimeCallback_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_AvatarTimeCallback", _wrap_new_AvatarTimeCallback, METH_VARARGS, NULL},
 	 { (char *)"delete_AvatarTimeCallback", _wrap_delete_AvatarTimeCallback, METH_VARARGS, NULL},
 	 { (char *)"AvatarTimeCallback_getName", _wrap_AvatarTimeCallback_getName, METH_VARARGS, NULL},
 	 { (char *)"AvatarTimeCallback_init", _wrap_AvatarTimeCallback_init, METH_VARARGS, NULL},
 	 { (char *)"AvatarTimeCallback_timeStep", _wrap_AvatarTimeCallback_timeStep, METH_VARARGS, NULL},
+	 { (char *)"disown_AvatarTimeCallback", _wrap_disown_AvatarTimeCallback, METH_VARARGS, NULL},
 	 { (char *)"AvatarTimeCallback_swigregister", AvatarTimeCallback_swigregister, METH_VARARGS, NULL},
 	 { (char *)"Core_dir_set", _wrap_Core_dir_set, METH_VARARGS, NULL},
 	 { (char *)"Core_dir_get", _wrap_Core_dir_get, METH_VARARGS, NULL},
@@ -31977,6 +39726,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Core_swigregister", Core_swigregister, METH_VARARGS, NULL},
 	 { (char *)"StringToWString", _wrap_StringToWString, METH_VARARGS, NULL},
 	 { (char *)"WStringToString", _wrap_WStringToString, METH_VARARGS, NULL},
+	 { (char *)"new_Motion", _wrap_new_Motion, METH_VARARGS, NULL},
 	 { (char *)"delete_Motion", _wrap_delete_Motion, METH_VARARGS, NULL},
 	 { (char *)"Motion_clone", _wrap_Motion_clone, METH_VARARGS, NULL},
 	 { (char *)"Motion_printInfo", _wrap_Motion_printInfo, METH_VARARGS, NULL},
@@ -32011,6 +39761,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Motion_getFloatValueAtTimeInternal", _wrap_Motion_getFloatValueAtTimeInternal, METH_VARARGS, NULL},
 	 { (char *)"Motion_getVecValueAtTimeInternal", _wrap_Motion_getVecValueAtTimeInternal, METH_VARARGS, NULL},
 	 { (char *)"Motion_getQuatValueAtTimeInternal", _wrap_Motion_getQuatValueAtTimeInternal, METH_VARARGS, NULL},
+	 { (char *)"disown_Motion", _wrap_disown_Motion, METH_VARARGS, NULL},
 	 { (char *)"Motion_swigregister", Motion_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_TrackMotion", _wrap_new_TrackMotion, METH_VARARGS, NULL},
 	 { (char *)"delete_TrackMotion", _wrap_delete_TrackMotion, METH_VARARGS, NULL},
@@ -32203,6 +39954,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"MotionFilter_isNull", _wrap_MotionFilter_isNull, METH_VARARGS, NULL},
 	 { (char *)"MotionFilter_getTrackType", _wrap_MotionFilter_getTrackType, METH_VARARGS, NULL},
 	 { (char *)"MotionFilter_swigregister", MotionFilter_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_TwoMotionCombiner", _wrap_new_TwoMotionCombiner, METH_VARARGS, NULL},
 	 { (char *)"delete_TwoMotionCombiner", _wrap_delete_TwoMotionCombiner, METH_VARARGS, NULL},
 	 { (char *)"TwoMotionCombiner_printInfo", _wrap_TwoMotionCombiner_printInfo, METH_VARARGS, NULL},
 	 { (char *)"TwoMotionCombiner_findSub", _wrap_TwoMotionCombiner_findSub, METH_VARARGS, NULL},
@@ -32221,6 +39973,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"TwoMotionCombiner_setMotion2", _wrap_TwoMotionCombiner_setMotion2, METH_VARARGS, NULL},
 	 { (char *)"TwoMotionCombiner_getMotion1", _wrap_TwoMotionCombiner_getMotion1, METH_VARARGS, NULL},
 	 { (char *)"TwoMotionCombiner_getMotion2", _wrap_TwoMotionCombiner_getMotion2, METH_VARARGS, NULL},
+	 { (char *)"disown_TwoMotionCombiner", _wrap_disown_TwoMotionCombiner, METH_VARARGS, NULL},
 	 { (char *)"TwoMotionCombiner_swigregister", TwoMotionCombiner_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_ScaleMotion", _wrap_new_ScaleMotion, METH_VARARGS, NULL},
 	 { (char *)"ScaleMotion_clone", _wrap_ScaleMotion_clone, METH_VARARGS, NULL},
@@ -32285,6 +40038,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"SelfBlend_reblend", _wrap_SelfBlend_reblend, METH_VARARGS, NULL},
 	 { (char *)"SelfBlend_setMotion", _wrap_SelfBlend_setMotion, METH_VARARGS, NULL},
 	 { (char *)"delete_SelfBlend", _wrap_delete_SelfBlend, METH_VARARGS, NULL},
+	 { (char *)"disown_SelfBlend", _wrap_disown_SelfBlend, METH_VARARGS, NULL},
 	 { (char *)"SelfBlend_swigregister", SelfBlend_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_LoopMotion", _wrap_new_LoopMotion, METH_VARARGS, NULL},
 	 { (char *)"LoopMotion_clone", _wrap_LoopMotion_clone, METH_VARARGS, NULL},

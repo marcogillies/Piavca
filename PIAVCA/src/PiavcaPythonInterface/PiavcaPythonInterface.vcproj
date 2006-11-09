@@ -239,8 +239,7 @@
 					Outputs=" $(ProjectDir)$(InputName)_wrap.cpp"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="Release|Win32"
-				ExcludedFromBuild="TRUE">
+				Name="Release|Win32">
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="running swig"
