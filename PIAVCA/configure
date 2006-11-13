@@ -1060,8 +1060,8 @@ Some influential environment variables:
   F77         Fortran 77 compiler command
   FFLAGS      Fortran 77 compiler flags
   PYTHON_VERSION
-              The installed Python version to use, for example '2.3'. This
-              string will be appended to the Python interpreter canonical
+              The installed Python version to use, for example '2.3'. This
+              string will be appended to the Python interpreter canonical
               name.
 
 Use these variables to override the choices made by `configure' or to help
