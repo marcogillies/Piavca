@@ -40,8 +40,8 @@ POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
 subdir = src/PiavcaPythonInterface
-DIST_COMMON = $(pyintinclude_HEADERS) $(srcdir)/Makefile.am \
-	$(srcdir)/Makefile.in
+DIST_COMMON = $(pyfiles_PYTHON) $(pyintinclude_HEADERS) \
+	$(srcdir)/Makefile.am $(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/ac_pkg_swig.m4 \
 	$(top_srcdir)/m4/ac_python_devel.m4 $(top_srcdir)/configure.in
@@ -56,7 +56,8 @@ am__vpath_adj = case $$p in \
     *) f=$$p;; \
   esac;
 am__strip_dir = `echo $$p | sed -e 's|^.*/||'`;
-am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(pyintincludedir)"
+am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(pyfilesdir)" \
+	"$(DESTDIR)$(pyintincludedir)"
 libLTLIBRARIES_INSTALL = $(INSTALL)
 LTLIBRARIES = $(lib_LTLIBRARIES)
 libPiavcaPythonInterface_la_LIBADD =
@@ -80,6 +81,8 @@ CXXLINK = $(LIBTOOL) --tag=CXX --mode=link $(CXXLD) $(AM_CXXFLAGS) \
 	$(CXXFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
 SOURCES = $(libPiavcaPythonInterface_la_SOURCES)
 DIST_SOURCES = $(libPiavcaPythonInterface_la_SOURCES)
+pyfilesPYTHON_INSTALL = $(INSTALL_DATA)
+py_compile = $(top_srcdir)/py-compile
 pyintincludeHEADERS_INSTALL = $(INSTALL_HEADER)
 HEADERS = $(pyintinclude_HEADERS)
 ETAGS = etags
@@ -201,6 +204,8 @@ target_alias = @target_alias@
 INCLUDES = -I$(srcdir)/.. $(all_includes)
 pyintincludedir = $(includedir)/Piavca/PiavcaPythonInterface
 pyintinclude_HEADERS = PiavcaPythonApp.h
+pyfilesdir = $(includedir)/Piavca/Python
+pyfiles_PYTHON = Piavca.py MotionFile.py
 BUILT_SOURCES = Piavca_wrap.cpp
 SWIG_SOURCES = Piavca.i 
 
@@ -335,6 +340,34 @@ clean-libtool:
 distclean-libtool:
 	-rm -f libtool
 uninstall-info-am:
+install-pyfilesPYTHON: $(pyfiles_PYTHON)
+	@$(NORMAL_INSTALL)
+	test -z "$(pyfilesdir)" || $(mkdir_p) "$(DESTDIR)$(pyfilesdir)"
+	@list='$(pyfiles_PYTHON)'; dlist=''; for p in $$list; do\
+	  if test -f "$$p"; then b=; else b="$(srcdir)/"; fi; \
+	  if test -f $$b$$p; then \
+	    f=$(am__strip_dir) \
+	    dlist="$$dlist $$f"; \
+	    echo " $(pyfilesPYTHON_INSTALL) '$$b$$p' '$(DESTDIR)$(pyfilesdir)/$$f'"; \
+	    $(pyfilesPYTHON_INSTALL) "$$b$$p" "$(DESTDIR)$(pyfilesdir)/$$f"; \
+	  else :; fi; \
+	done; \
+	if test -n "$$dlist"; then \
+	  if test -z "$(DESTDIR)"; then \
+	    PYTHON=$(PYTHON) $(py_compile) --basedir "$(pyfilesdir)" $$dlist; \
+	  else \
+	    PYTHON=$(PYTHON) $(py_compile) --destdir "$(DESTDIR)" --basedir "$(pyfilesdir)" $$dlist; \
+	  fi; \
+	else :; fi
+
+uninstall-pyfilesPYTHON:
+	@$(NORMAL_UNINSTALL)
+	@list='$(pyfiles_PYTHON)'; dlist=''; for p in $$list; do\
+	  f=$(am__strip_dir) \
+	  rm -f "$(DESTDIR)$(pyfilesdir)/$$f"; \
+	  rm -f "$(DESTDIR)$(pyfilesdir)/$${f}c"; \
+	  rm -f "$(DESTDIR)$(pyfilesdir)/$${f}o"; \
+	done
 install-pyintincludeHEADERS: $(pyintinclude_HEADERS)
 	@$(NORMAL_INSTALL)
 	test -z "$(pyintincludedir)" || $(mkdir_p) "$(DESTDIR)$(pyintincludedir)"
@@ -433,7 +466,7 @@ check: $(BUILT_SOURCES)
 	$(MAKE) $(AM_MAKEFLAGS) check-am
 all-am: Makefile $(LTLIBRARIES) $(HEADERS)
 installdirs:
-	for dir in "$(DESTDIR)$(libdir)" "$(DESTDIR)$(pyintincludedir)"; do \
+	for dir in "$(DESTDIR)$(libdir)" "$(DESTDIR)$(pyfilesdir)" "$(DESTDIR)$(pyintincludedir)"; do \
 	  test -z "$$dir" || $(mkdir_p) "$$dir"; \
 	done
 install: $(BUILT_SOURCES)
@@ -483,7 +516,7 @@ info: info-am
 
 info-am:
 
-install-data-am: install-pyintincludeHEADERS
+install-data-am: install-pyfilesPYTHON install-pyintincludeHEADERS
 
 install-exec-am: install-libLTLIBRARIES
 
@@ -512,7 +545,7 @@ ps: ps-am
 ps-am:
 
 uninstall-am: uninstall-info-am uninstall-libLTLIBRARIES \
-	uninstall-pyintincludeHEADERS
+	uninstall-pyfilesPYTHON uninstall-pyintincludeHEADERS
 
 .PHONY: CTAGS GTAGS all all-am check check-am clean clean-generic \
 	clean-libLTLIBRARIES clean-libtool ctags distclean \
@@ -520,12 +553,13 @@ uninstall-am: uninstall-info-am uninstall-libLTLIBRARIES \
 	distclean-tags distdir dvi dvi-am html html-am info info-am \
 	install install-am install-data install-data-am install-exec \
 	install-exec-am install-info install-info-am \
-	install-libLTLIBRARIES install-man install-pyintincludeHEADERS \
-	install-strip installcheck installcheck-am installdirs \
-	maintainer-clean maintainer-clean-generic mostlyclean \
-	mostlyclean-compile mostlyclean-generic mostlyclean-libtool \
-	pdf pdf-am ps ps-am tags uninstall uninstall-am \
-	uninstall-info-am uninstall-libLTLIBRARIES \
+	install-libLTLIBRARIES install-man install-pyfilesPYTHON \
+	install-pyintincludeHEADERS install-strip installcheck \
+	installcheck-am installdirs maintainer-clean \
+	maintainer-clean-generic mostlyclean mostlyclean-compile \
+	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
+	tags uninstall uninstall-am uninstall-info-am \
+	uninstall-libLTLIBRARIES uninstall-pyfilesPYTHON \
 	uninstall-pyintincludeHEADERS
 
 #_your_extension_la_LDFLAGS = -module

@@ -217,6 +217,24 @@ class type_info;
 	}
 }
 
+%feature("director:except") {
+    if ($error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+    }
+}
+
+%exception {
+    try { $action }
+    catch (Swig::DirectorException &e) { SWIG_fail; }
+    catch (Piavca::Exception &e) 
+    {
+        std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+        SWIG_fail; 
+    }
+}
+
 Piavca::Avatar *GetAvatarPointer(long l);
 Piavca::Core *GetPiavcaCorePointer(long l);
 
@@ -315,10 +333,36 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %feature("unref") Piavca::ScaleMotionSpeed "$this->Dispose();"
 
 %feature("director") Motion;   
+%feature("director") TrackMotion;   
+%feature("director") FilterMotion;  
 %feature("director") TwoMotionCombiner;    
-%feature("director") SelfBlend;    
+%feature("director") SelfBlend;        
+%feature("director") SequentialBlend;       
+%feature("director") LoopMotion;           
+%feature("director") ScaleMotion;           
+%feature("director") ScaleMotionSpeed;           
+%feature("director") ScaleMotionRoot;            
+%feature("director") TimeOffset;            
+%feature("director") TurnMotion;            
+%feature("director") BlendBetween;      
+%feature("director") MotionAdder;      
+%feature("director") MaskedMotion;      
+%feature("director") ChoiceLoopMotion;    
+%feature("director") RandomLoopMotion;   
+%feature("director") RandomBlendLoop;   
+%feature("director") RandomAddLoop;   
+%feature("director") LookAtMotion;     
+%feature("director") RandomGazeMotion;     
+%feature("director") ZeroMotion;     
+%feature("director") MotionSaver;    
+%feature("director") SubMotion;    
+%feature("director") TimeRangeMotion;    
+%feature("director") TimeWarp;     
+%feature("director") RandomTimingsLoop;   
+%feature("director") DiadicGazeMotion;
 %feature("director") TimeCallback;    
 %feature("director") AvatarTimeCallback;    
+
 
 %include "PiavcaAPI/TimeCallback.h"
 %include "PiavcaCore.i"
@@ -361,4 +405,4 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %include "PiavcaNVCLib/SubMotion.h"
 %include "PiavcaNVCLib/TimeRangeMotion.h"
 %include "PiavcaNVCLib/TimeWarp.h"
-//%include "PiavcaNVCLib/DiadicGazeMotion.h"
+%include "PiavcaNVCLib/DiadicGazeMotion.h"

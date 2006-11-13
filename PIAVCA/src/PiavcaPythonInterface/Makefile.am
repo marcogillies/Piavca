@@ -5,6 +5,8 @@ INCLUDES= -I$(srcdir)/.. $(all_includes)
 
 pyintincludedir = $(includedir)/Piavca/PiavcaPythonInterface
 pyintinclude_HEADERS = PiavcaPythonApp.h
+pyfilesdir = $(includedir)/Piavca/Python
+pyfiles_PYTHON = Piavca.py MotionFile.py
 
 BUILT_SOURCES = Piavca_wrap.cpp
 SWIG_SOURCES = Piavca.i 

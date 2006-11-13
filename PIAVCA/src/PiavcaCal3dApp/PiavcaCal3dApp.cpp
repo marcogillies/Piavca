@@ -47,10 +47,14 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "PiavcaAPI/TrackMotion.h"
 #include "PiavcaAPI/LoopMotion.h"
 #include "PiavcaAPI/PiavcaError.h"
+#include "PiavcaAPI/PiavcaException.h"
 #include "PiavcaNVCLib/OnTheSpot.h"
 #include "PiavcaNVCLib/AvatarMotionQueue.h"
 
+#include "Python.h"
+
 #include "PiavcaPythonInterface/PiavcaPythonApp.h"
+//#include "PiavcaPythonInterface/Piavca_wrap.h"
 
 
 #include "PiavcaCal3dImp/PiavcaCal3dCore.h"
@@ -85,7 +89,20 @@ void timeStep()
 		lastTime = time;
 	}
 	//CalError::printLastError();
-	Piavca::Core::getCore()->timeStep();
+	try
+	{
+	    Piavca::Core::getCore()->timeStep();
+	}
+	catch (Piavca::Exception &e)
+	{
+	    std::cout << "Piavca Exception: " <<  e.getDetails() << std::endl;
+	    PyErr_Print();
+	}
+	catch (...)
+	{
+	    PyErr_Print();
+	}
+	    
     // update the screen
     glutPostRedisplay();	
 }
