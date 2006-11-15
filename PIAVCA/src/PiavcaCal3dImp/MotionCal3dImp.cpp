@@ -39,13 +39,13 @@ MotionCal3DImp::MotionCal3DImp(tstring motionFilename, CalCoreSkeleton *skel)
 		Piavca::Error(_T("Invalid skeleton passed to MotionCal3DImp constructor, maybe the animation is being loaded before the skeleton file"));
 
 	// set up all the equivalences between Piavca joint Ids and Cal3D Bone ids
-	tracksMap.assign(Piavca::Core::getCore()->getMaxJointId()+1, -1);
+	tracksMap.assign((std::vector<int>::size_type) (Piavca::Core::getCore()->getMaxJointId()+1), -1);
 	//std::vector<CalCoreBone *> &calbonevec = skel->getVectorCoreBone();
 	std::vector< std::pair< tstring, int > > jointAssociations = Piavca::Core::getCore()->getJointNameAssociations();
 	for(int i = 0; i < (int) jointAssociations.size(); i++)
 	{
 		int boneId = skel->getCoreBoneId(TStringToString(jointAssociations[i].first));
-		if(boneId >= 0)
+		if(boneId >= 0 && cal3DAnim->getCoreTrack(boneId))
 		{
 			//std::cout << "found track " << jointAssociations[i].first << std::endl;
 			tracksMap[jointAssociations[i].second] = boneId;

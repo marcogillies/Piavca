@@ -42,16 +42,17 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories="..\"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;UCLAVATARPYTHONINTERFACE_EXPORTS;NO_DEMEANOUR;NO_CONSOLE_PRESENT"
+				AdditionalIncludeDirectories="..\;$(PYTHONDIR)\include;c:\Python25\include;c:\Python24\include;c:\Python23\include"
+				PreprocessorDefinitions="WIN32;_WINDOWS;_USRDLL;UCLAVATARPYTHONINTERFACE_EXPORTS;CONSOLE_PRESENT"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="3"
+				RuntimeLibrary="2"
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="3"
+				UndefinePreprocessorDefinitions="_DEBUG"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -110,7 +111,7 @@
 				Optimization="2"
 				InlineFunctionExpansion="1"
 				OmitFramePointers="true"
-				AdditionalIncludeDirectories="..\"
+				AdditionalIncludeDirectories="..\;$(PYTHONDIR)\include;c:\Python25\include;c:\Python24\include;c:\Python23\include"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;UCLAVATARPYTHONINTERFACE_EXPORTS;CONSOLE_PRESENT;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_DEPRECATE"
 				StringPooling="true"
 				RuntimeLibrary="2"
@@ -133,8 +134,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
-				AdditionalDependencies="Python24.lib"
-				AdditionalLibraryDirectories="d:\Python24\libs"
+				AdditionalLibraryDirectories=""
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -178,7 +178,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\"
+				AdditionalIncludeDirectories="..\;$(PYTHONDIR)\include;c:\Python25\include;c:\Python24\include;c:\Python23\include"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;UCLAVATARPYTHONINTERFACE_EXPORTS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -244,7 +244,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories="..\"
+				AdditionalIncludeDirectories="..\;$(PYTHONDIR)\include;c:\Python25\include;c:\Python24\include;c:\Python23\include"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;UCLAVATARPYTHONINTERFACE_EXPORTS;NO_DEMEANOUR;CONSOLE_PRESENT"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -335,6 +335,7 @@
 			>
 			<FileConfiguration
 				Name="Debug|Win32"
+				ExcludedFromBuild="true"
 				>
 				<Tool
 					Name="VCCustomBuildTool"
@@ -356,6 +357,7 @@
 			</FileConfiguration>
 			<FileConfiguration
 				Name="C Only Debug|Win32"
+				ExcludedFromBuild="true"
 				>
 				<Tool
 					Name="VCCustomBuildTool"
@@ -366,6 +368,7 @@
 			</FileConfiguration>
 			<FileConfiguration
 				Name="Dive Debug|Win32"
+				ExcludedFromBuild="true"
 				>
 				<Tool
 					Name="VCCustomBuildTool"

@@ -1,19 +1,19 @@
-# This file was created automatically by SWIG 1.3.27.
+# This file was created automatically by SWIG 1.3.29.
 # Don't modify this file, modify the SWIG interface instead.
+# This file is compatible with both classic and new-style classes.
 
 import _Piavca
-
-# This file is compatible with both classic and new-style classes.
+import new
+new_instancemethod = new.instancemethod
 def _swig_setattr_nondynamic(self,class_type,name,value,static=1):
+    if (name == "thisown"): return self.this.own(value)
     if (name == "this"):
-        if isinstance(value, class_type):
-            self.__dict__[name] = value.this
-            if hasattr(value,"thisown"): self.__dict__["thisown"] = value.thisown
-            del value.thisown
+        if type(value).__name__ == 'PySwigObject':
+            self.__dict__[name] = value
             return
     method = class_type.__swig_setmethods__.get(name,None)
     if method: return method(self,value)
-    if (not static) or hasattr(self,name) or (name == "thisown"):
+    if (not static) or hasattr(self,name):
         self.__dict__[name] = value
     else:
         raise AttributeError("You cannot add attributes to %s" % self)
@@ -22,9 +22,15 @@ def _swig_setattr(self,class_type,name,value):
     return _swig_setattr_nondynamic(self,class_type,name,value,0)
 
 def _swig_getattr(self,class_type,name):
+    if (name == "thisown"): return self.this.own()
     method = class_type.__swig_getmethods__.get(name,None)
     if method: return method(self)
     raise AttributeError,name
+
+def _swig_repr(self):
+    try: strthis = "proxy of " + self.this.__repr__()
+    except: strthis = ""
+    return "<%s.%s; %s >" % (self.__class__.__module__, self.__class__.__name__, strthis,)
 
 import types
 try:
@@ -43,23 +49,19 @@ except:
     weakref_proxy = lambda x: x
 
 
-
 GetAvatarPointer = _Piavca.GetAvatarPointer
-
 GetPiavcaCorePointer = _Piavca.GetPiavcaCorePointer
 class Vec(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, Vec, name, value)
     __swig_getmethods__ = {}
     __getattr__ = lambda self, name: _swig_getattr(self, Vec, name)
-    def __init__(self, *args):
-        _swig_setattr(self, Vec, 'this', _Piavca.new_Vec(*args))
-        _swig_setattr(self, Vec, 'thisown', 1)
-    def __del__(self, destroy=_Piavca.delete_Vec):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
+    def __init__(self, *args): 
+        this = _Piavca.new_Vec(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _Piavca.delete_Vec
+    __del__ = lambda self : None;
     def X(*args): return _Piavca.Vec_X(*args)
     def Y(*args): return _Piavca.Vec_Y(*args)
     def Z(*args): return _Piavca.Vec_Z(*args)
@@ -91,20 +93,11 @@ class Vec(_object):
     def __getitem__(*args): return _Piavca.Vec___getitem__(*args)
     def __setitem__(*args): return _Piavca.Vec___setitem__(*args)
     def __repr__(*args): return _Piavca.Vec___repr__(*args)
-
-class VecPtr(Vec):
-    def __init__(self, this):
-        _swig_setattr(self, Vec, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, Vec, 'thisown', 0)
-        self.__class__ = Vec
-_Piavca.Vec_swigregister(VecPtr)
-
+Vec_swigregister = _Piavca.Vec_swigregister
+Vec_swigregister(Vec)
 Vec_XAxis = _Piavca.Vec_XAxis
-
 Vec_YAxis = _Piavca.Vec_YAxis
-
 Vec_ZAxis = _Piavca.Vec_ZAxis
-
 
 checkNaN = _Piavca.checkNaN
 class Quat(_object):
@@ -112,14 +105,12 @@ class Quat(_object):
     __setattr__ = lambda self, name, value: _swig_setattr(self, Quat, name, value)
     __swig_getmethods__ = {}
     __getattr__ = lambda self, name: _swig_getattr(self, Quat, name)
-    def __init__(self, *args):
-        _swig_setattr(self, Quat, 'this', _Piavca.new_Quat(*args))
-        _swig_setattr(self, Quat, 'thisown', 1)
-    def __del__(self, destroy=_Piavca.delete_Quat):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
+    def __init__(self, *args): 
+        this = _Piavca.new_Quat(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _Piavca.delete_Quat
+    __del__ = lambda self : None;
     def S(*args): return _Piavca.Quat_S(*args)
     def I(*args): return _Piavca.Quat_I(*args)
     def J(*args): return _Piavca.Quat_J(*args)
@@ -150,102 +141,75 @@ class Quat(_object):
     def __getitem__(*args): return _Piavca.Quat___getitem__(*args)
     def __setitem__(*args): return _Piavca.Quat___setitem__(*args)
     def __repr__(*args): return _Piavca.Quat___repr__(*args)
-
-class QuatPtr(Quat):
-    def __init__(self, this):
-        _swig_setattr(self, Quat, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, Quat, 'thisown', 0)
-        self.__class__ = Quat
-_Piavca.Quat_swigregister(QuatPtr)
-
+Quat_swigregister = _Piavca.Quat_swigregister
+Quat_swigregister(Quat)
 Quat_spherical_distance = _Piavca.Quat_spherical_distance
 
 slerp = _Piavca.slerp
-
 class TimeCallback(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, TimeCallback, name, value)
     __swig_getmethods__ = {}
     __getattr__ = lambda self, name: _swig_getattr(self, TimeCallback, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::TimeCallback instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
-    def __init__(self, *args):
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
         if self.__class__ == TimeCallback:
             args = (None,) + args
         else:
             args = (self,) + args
-        _swig_setattr(self, TimeCallback, 'this', _Piavca.new_TimeCallback(*args))
-        _swig_setattr(self, TimeCallback, 'thisown', 1)
-    def __del__(self, destroy=_Piavca.delete_TimeCallback):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
+        this = _Piavca.new_TimeCallback(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _Piavca.delete_TimeCallback
+    __del__ = lambda self : None;
     def getName(*args): return _Piavca.TimeCallback_getName(*args)
     def init(*args): return _Piavca.TimeCallback_init(*args)
     def timeStep(*args): return _Piavca.TimeCallback_timeStep(*args)
     def __disown__(self):
-        self.thisown = 0
+        self.this.disown()
         _Piavca.disown_TimeCallback(self)
         return weakref_proxy(self)
-
-class TimeCallbackPtr(TimeCallback):
-    def __init__(self, this):
-        _swig_setattr(self, TimeCallback, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, TimeCallback, 'thisown', 0)
-        self.__class__ = TimeCallback
-_Piavca.TimeCallback_swigregister(TimeCallbackPtr)
+TimeCallback_swigregister = _Piavca.TimeCallback_swigregister
+TimeCallback_swigregister(TimeCallback)
 
 class AvatarTimeCallback(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, AvatarTimeCallback, name, value)
     __swig_getmethods__ = {}
     __getattr__ = lambda self, name: _swig_getattr(self, AvatarTimeCallback, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::AvatarTimeCallback instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
-    def __init__(self, *args):
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
         if self.__class__ == AvatarTimeCallback:
             args = (None,) + args
         else:
             args = (self,) + args
-        _swig_setattr(self, AvatarTimeCallback, 'this', _Piavca.new_AvatarTimeCallback(*args))
-        _swig_setattr(self, AvatarTimeCallback, 'thisown', 1)
-    def __del__(self, destroy=_Piavca.delete_AvatarTimeCallback):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
+        this = _Piavca.new_AvatarTimeCallback(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _Piavca.delete_AvatarTimeCallback
+    __del__ = lambda self : None;
     def getName(*args): return _Piavca.AvatarTimeCallback_getName(*args)
     def init(*args): return _Piavca.AvatarTimeCallback_init(*args)
     def timeStep(*args): return _Piavca.AvatarTimeCallback_timeStep(*args)
     def __disown__(self):
-        self.thisown = 0
+        self.this.disown()
         _Piavca.disown_AvatarTimeCallback(self)
         return weakref_proxy(self)
-
-class AvatarTimeCallbackPtr(AvatarTimeCallback):
-    def __init__(self, this):
-        _swig_setattr(self, AvatarTimeCallback, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, AvatarTimeCallback, 'thisown', 0)
-        self.__class__ = AvatarTimeCallback
-_Piavca.AvatarTimeCallback_swigregister(AvatarTimeCallbackPtr)
+AvatarTimeCallback_swigregister = _Piavca.AvatarTimeCallback_swigregister
+AvatarTimeCallback_swigregister(AvatarTimeCallback)
 
 class Core(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, Core, name, value)
     __swig_getmethods__ = {}
     __getattr__ = lambda self, name: _swig_getattr(self, Core, name)
-    def __init__(self): raise RuntimeError, "No constructor defined"
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::Core instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
+    def __init__(self): raise AttributeError, "No constructor defined"
+    __repr__ = _swig_repr
     __swig_setmethods__["dir"] = _Piavca.Core_dir_set
     __swig_getmethods__["dir"] = _Piavca.Core_dir_get
     if _newclass:dir = property(_Piavca.Core_dir_get, _Piavca.Core_dir_set)
-    def __del__(self, destroy=_Piavca.delete_Core):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
+    __swig_destroy__ = _Piavca.delete_Core
+    __del__ = lambda self : None;
     def reset(*args): return _Piavca.Core_reset(*args)
     __swig_getmethods__["getCore"] = lambda x: _Piavca.Core_getCore
     if _newclass:getCore = staticmethod(_Piavca.Core_getCore)
@@ -306,19 +270,11 @@ class Core(_object):
     def profilePointStart(*args): return _Piavca.Core_profilePointStart(*args)
     def profilePointEnd(*args): return _Piavca.Core_profilePointEnd(*args)
     def printProfileData(*args): return _Piavca.Core_printProfileData(*args)
-
-class CorePtr(Core):
-    def __init__(self, this):
-        _swig_setattr(self, Core, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, Core, 'thisown', 0)
-        self.__class__ = Core
-_Piavca.Core_swigregister(CorePtr)
-
+Core_swigregister = _Piavca.Core_swigregister
+Core_swigregister(Core)
 Core_getCore = _Piavca.Core_getCore
 
-
 StringToWString = _Piavca.StringToWString
-
 WStringToString = _Piavca.WStringToString
 LOCAL_COORD = _Piavca.LOCAL_COORD
 JOINTLOCAL_COORD = _Piavca.JOINTLOCAL_COORD
@@ -350,20 +306,17 @@ class Motion(_object):
     __setattr__ = lambda self, name, value: _swig_setattr(self, Motion, name, value)
     __swig_getmethods__ = {}
     __getattr__ = lambda self, name: _swig_getattr(self, Motion, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::Motion instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
-    def __init__(self, *args):
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
         if self.__class__ == Motion:
             args = (None,) + args
         else:
             args = (self,) + args
-        _swig_setattr(self, Motion, 'this', _Piavca.new_Motion(*args))
-        _swig_setattr(self, Motion, 'thisown', 1)
-    def __del__(self, destroy=_Piavca.delete_Motion):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
+        this = _Piavca.new_Motion(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _Piavca.delete_Motion
+    __del__ = lambda self : None;
     def clone(*args): return _Piavca.Motion_clone(*args)
     def printInfo(*args): return _Piavca.Motion_printInfo(*args)
     def load(*args): return _Piavca.Motion_load(*args)
@@ -398,16 +351,11 @@ class Motion(_object):
     def getVecValueAtTimeInternal(*args): return _Piavca.Motion_getVecValueAtTimeInternal(*args)
     def getQuatValueAtTimeInternal(*args): return _Piavca.Motion_getQuatValueAtTimeInternal(*args)
     def __disown__(self):
-        self.thisown = 0
+        self.this.disown()
         _Piavca.disown_Motion(self)
         return weakref_proxy(self)
-
-class MotionPtr(Motion):
-    def __init__(self, this):
-        _swig_setattr(self, Motion, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, Motion, 'thisown', 0)
-        self.__class__ = Motion
-_Piavca.Motion_swigregister(MotionPtr)
+Motion_swigregister = _Piavca.Motion_swigregister
+Motion_swigregister(Motion)
 
 class TrackMotion(Motion):
     __swig_setmethods__ = {}
@@ -416,20 +364,17 @@ class TrackMotion(Motion):
     __swig_getmethods__ = {}
     for _s in [Motion]: __swig_getmethods__.update(_s.__swig_getmethods__)
     __getattr__ = lambda self, name: _swig_getattr(self, TrackMotion, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::TrackMotion instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
-    def __init__(self, *args):
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
         if self.__class__ == TrackMotion:
             args = (None,) + args
         else:
             args = (self,) + args
-        _swig_setattr(self, TrackMotion, 'this', _Piavca.new_TrackMotion(*args))
-        _swig_setattr(self, TrackMotion, 'thisown', 1)
-    def __del__(self, destroy=_Piavca.delete_TrackMotion):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
+        this = _Piavca.new_TrackMotion(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _Piavca.delete_TrackMotion
+    __del__ = lambda self : None;
     def clone(*args): return _Piavca.TrackMotion_clone(*args)
     def getMotionLength(*args): return _Piavca.TrackMotion_getMotionLength(*args)
     def isFacial(*args): return _Piavca.TrackMotion_isFacial(*args)
@@ -451,17 +396,11 @@ class TrackMotion(Motion):
     def clearTrack(*args): return _Piavca.TrackMotion_clearTrack(*args)
     def clearAllTracks(*args): return _Piavca.TrackMotion_clearAllTracks(*args)
     def __disown__(self):
-        self.thisown = 0
+        self.this.disown()
         _Piavca.disown_TrackMotion(self)
         return weakref_proxy(self)
-
-class TrackMotionPtr(TrackMotion):
-    def __init__(self, this):
-        _swig_setattr(self, TrackMotion, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, TrackMotion, 'thisown', 0)
-        self.__class__ = TrackMotion
-_Piavca.TrackMotion_swigregister(TrackMotionPtr)
-
+TrackMotion_swigregister = _Piavca.TrackMotion_swigregister
+TrackMotion_swigregister(TrackMotion)
 
 copyMotionPosture = _Piavca.copyMotionPosture
 class Avatar(_object):
@@ -469,11 +408,11 @@ class Avatar(_object):
     __setattr__ = lambda self, name, value: _swig_setattr(self, Avatar, name, value)
     __swig_getmethods__ = {}
     __getattr__ = lambda self, name: _swig_getattr(self, Avatar, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::Avatar instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
-    def __init__(self, *args):
-        _swig_setattr(self, Avatar, 'this', _Piavca.new_Avatar(*args))
-        _swig_setattr(self, Avatar, 'thisown', 1)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _Piavca.new_Avatar(*args)
+        try: self.this.append(this)
+        except: self.this = this
     def isValid(*args): return _Piavca.Avatar_isValid(*args)
     def activate(*args): return _Piavca.Avatar_activate(*args)
     def deactivate(*args): return _Piavca.Avatar_deactivate(*args)
@@ -547,21 +486,15 @@ class Avatar(_object):
     def play_motion(*args): return _Piavca.Avatar_play_motion(*args)
     def add_background_motion(*args): return _Piavca.Avatar_add_background_motion(*args)
     def interrupt_motion(*args): return _Piavca.Avatar_interrupt_motion(*args)
-
-class AvatarPtr(Avatar):
-    def __init__(self, this):
-        _swig_setattr(self, Avatar, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, Avatar, 'thisown', 0)
-        self.__class__ = Avatar
-_Piavca.Avatar_swigregister(AvatarPtr)
+Avatar_swigregister = _Piavca.Avatar_swigregister
+Avatar_swigregister(Avatar)
 
 class queueElement(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, queueElement, name, value)
     __swig_getmethods__ = {}
     __getattr__ = lambda self, name: _swig_getattr(self, queueElement, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::queueElement instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
+    __repr__ = _swig_repr
     __swig_setmethods__["mot"] = _Piavca.queueElement_mot_set
     __swig_getmethods__["mot"] = _Piavca.queueElement_mot_get
     if _newclass:mot = property(_Piavca.queueElement_mot_get, _Piavca.queueElement_mot_set)
@@ -574,21 +507,14 @@ class queueElement(_object):
     __swig_setmethods__["background"] = _Piavca.queueElement_background_set
     __swig_getmethods__["background"] = _Piavca.queueElement_background_get
     if _newclass:background = property(_Piavca.queueElement_background_get, _Piavca.queueElement_background_set)
-    def __init__(self, *args):
-        _swig_setattr(self, queueElement, 'this', _Piavca.new_queueElement(*args))
-        _swig_setattr(self, queueElement, 'thisown', 1)
-    def __del__(self, destroy=_Piavca.delete_queueElement):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
-
-class queueElementPtr(queueElement):
-    def __init__(self, this):
-        _swig_setattr(self, queueElement, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, queueElement, 'thisown', 0)
-        self.__class__ = queueElement
-_Piavca.queueElement_swigregister(queueElementPtr)
+    def __init__(self, *args): 
+        this = _Piavca.new_queueElement(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _Piavca.delete_queueElement
+    __del__ = lambda self : None;
+queueElement_swigregister = _Piavca.queueElement_swigregister
+queueElement_swigregister(queueElement)
 
 class AvatarMotionQueue(AvatarTimeCallback):
     __swig_setmethods__ = {}
@@ -597,16 +523,15 @@ class AvatarMotionQueue(AvatarTimeCallback):
     __swig_getmethods__ = {}
     for _s in [AvatarTimeCallback]: __swig_getmethods__.update(_s.__swig_getmethods__)
     __getattr__ = lambda self, name: _swig_getattr(self, AvatarMotionQueue, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::AvatarMotionQueue instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
-    def __init__(self, *args):
-        _swig_setattr(self, AvatarMotionQueue, 'this', _Piavca.new_AvatarMotionQueue(*args))
-        _swig_setattr(self, AvatarMotionQueue, 'thisown', 1)
-    def __del__(self, destroy=_Piavca.delete_AvatarMotionQueue):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _Piavca.new_AvatarMotionQueue(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _Piavca.delete_AvatarMotionQueue
+    __del__ = lambda self : None;
+    __swig_getmethods__["getQueue"] = lambda x: _Piavca.AvatarMotionQueue_getQueue
+    if _newclass:getQueue = staticmethod(_Piavca.AvatarMotionQueue_getQueue)
     def init(*args): return _Piavca.AvatarMotionQueue_init(*args)
     def timeStep(*args): return _Piavca.AvatarMotionQueue_timeStep(*args)
     def isFacial(*args): return _Piavca.AvatarMotionQueue_isFacial(*args)
@@ -634,24 +559,20 @@ class AvatarMotionQueue(AvatarTimeCallback):
     def getMotion(*args): return _Piavca.AvatarMotionQueue_getMotion(*args)
     def blendMotion(*args): return _Piavca.AvatarMotionQueue_blendMotion(*args)
     def addBackgroundMotion(*args): return _Piavca.AvatarMotionQueue_addBackgroundMotion(*args)
-
-class AvatarMotionQueuePtr(AvatarMotionQueue):
-    def __init__(self, this):
-        _swig_setattr(self, AvatarMotionQueue, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, AvatarMotionQueue, 'thisown', 0)
-        self.__class__ = AvatarMotionQueue
-_Piavca.AvatarMotionQueue_swigregister(AvatarMotionQueuePtr)
+AvatarMotionQueue_swigregister = _Piavca.AvatarMotionQueue_swigregister
+AvatarMotionQueue_swigregister(AvatarMotionQueue)
+AvatarMotionQueue_getQueue = _Piavca.AvatarMotionQueue_getQueue
 
 class Object(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, Object, name, value)
     __swig_getmethods__ = {}
     __getattr__ = lambda self, name: _swig_getattr(self, Object, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::Object instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
-    def __init__(self, *args):
-        _swig_setattr(self, Object, 'this', _Piavca.new_Object(*args))
-        _swig_setattr(self, Object, 'thisown', 1)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _Piavca.new_Object(*args)
+        try: self.this.append(this)
+        except: self.this = this
     def getName(*args): return _Piavca.Object_getName(*args)
     def setName(*args): return _Piavca.Object_setName(*args)
     def setPosition(*args): return _Piavca.Object_setPosition(*args)
@@ -661,13 +582,8 @@ class Object(_object):
     def setAngleDeg(*args): return _Piavca.Object_setAngleDeg(*args)
     def getOrientation(*args): return _Piavca.Object_getOrientation(*args)
     def scale(*args): return _Piavca.Object_scale(*args)
-
-class ObjectPtr(Object):
-    def __init__(self, this):
-        _swig_setattr(self, Object, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, Object, 'thisown', 0)
-        self.__class__ = Object
-_Piavca.Object_swigregister(ObjectPtr)
+Object_swigregister = _Piavca.Object_swigregister
+Object_swigregister(Object)
 
 class PyTimeCallback(TimeCallback):
     __swig_setmethods__ = {}
@@ -676,25 +592,17 @@ class PyTimeCallback(TimeCallback):
     __swig_getmethods__ = {}
     for _s in [TimeCallback]: __swig_getmethods__.update(_s.__swig_getmethods__)
     __getattr__ = lambda self, name: _swig_getattr(self, PyTimeCallback, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::PyTimeCallback instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
-    def __init__(self, *args):
-        _swig_setattr(self, PyTimeCallback, 'this', _Piavca.new_PyTimeCallback(*args))
-        _swig_setattr(self, PyTimeCallback, 'thisown', 1)
-    def __del__(self, destroy=_Piavca.delete_PyTimeCallback):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _Piavca.new_PyTimeCallback(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _Piavca.delete_PyTimeCallback
+    __del__ = lambda self : None;
     def init(*args): return _Piavca.PyTimeCallback_init(*args)
     def timeStep(*args): return _Piavca.PyTimeCallback_timeStep(*args)
-
-class PyTimeCallbackPtr(PyTimeCallback):
-    def __init__(self, this):
-        _swig_setattr(self, PyTimeCallback, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, PyTimeCallback, 'thisown', 0)
-        self.__class__ = PyTimeCallback
-_Piavca.PyTimeCallback_swigregister(PyTimeCallbackPtr)
+PyTimeCallback_swigregister = _Piavca.PyTimeCallback_swigregister
+PyTimeCallback_swigregister(PyTimeCallback)
 
 class PyAvatarTimeCallback(AvatarTimeCallback):
     __swig_setmethods__ = {}
@@ -703,25 +611,17 @@ class PyAvatarTimeCallback(AvatarTimeCallback):
     __swig_getmethods__ = {}
     for _s in [AvatarTimeCallback]: __swig_getmethods__.update(_s.__swig_getmethods__)
     __getattr__ = lambda self, name: _swig_getattr(self, PyAvatarTimeCallback, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::PyAvatarTimeCallback instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
-    def __init__(self, *args):
-        _swig_setattr(self, PyAvatarTimeCallback, 'this', _Piavca.new_PyAvatarTimeCallback(*args))
-        _swig_setattr(self, PyAvatarTimeCallback, 'thisown', 1)
-    def __del__(self, destroy=_Piavca.delete_PyAvatarTimeCallback):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _Piavca.new_PyAvatarTimeCallback(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _Piavca.delete_PyAvatarTimeCallback
+    __del__ = lambda self : None;
     def init(*args): return _Piavca.PyAvatarTimeCallback_init(*args)
     def timeStep(*args): return _Piavca.PyAvatarTimeCallback_timeStep(*args)
-
-class PyAvatarTimeCallbackPtr(PyAvatarTimeCallback):
-    def __init__(self, this):
-        _swig_setattr(self, PyAvatarTimeCallback, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, PyAvatarTimeCallback, 'thisown', 0)
-        self.__class__ = PyAvatarTimeCallback
-_Piavca.PyAvatarTimeCallback_swigregister(PyAvatarTimeCallbackPtr)
+PyAvatarTimeCallback_swigregister = _Piavca.PyAvatarTimeCallback_swigregister
+PyAvatarTimeCallback_swigregister(PyAvatarTimeCallback)
 
 class PyMotion(Motion):
     __swig_setmethods__ = {}
@@ -730,17 +630,14 @@ class PyMotion(Motion):
     __swig_getmethods__ = {}
     for _s in [Motion]: __swig_getmethods__.update(_s.__swig_getmethods__)
     __getattr__ = lambda self, name: _swig_getattr(self, PyMotion, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::PyMotion instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
-    def __init__(self, *args):
-        _swig_setattr(self, PyMotion, 'this', _Piavca.new_PyMotion(*args))
-        _swig_setattr(self, PyMotion, 'thisown', 1)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _Piavca.new_PyMotion(*args)
+        try: self.this.append(this)
+        except: self.this = this
     def clone(*args): return _Piavca.PyMotion_clone(*args)
-    def __del__(self, destroy=_Piavca.delete_PyMotion):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
+    __swig_destroy__ = _Piavca.delete_PyMotion
+    __del__ = lambda self : None;
     def setPyObj(*args): return _Piavca.PyMotion_setPyObj(*args)
     def getMotionPtr(*args): return _Piavca.PyMotion_getMotionPtr(*args)
     def getMotionLength(*args): return _Piavca.PyMotion_getMotionLength(*args)
@@ -749,17 +646,10 @@ class PyMotion(Motion):
     def getFloatValueAtTimeInternal(*args): return _Piavca.PyMotion_getFloatValueAtTimeInternal(*args)
     def getVecValueAtTimeInternal(*args): return _Piavca.PyMotion_getVecValueAtTimeInternal(*args)
     def getQuatValueAtTimeInternal(*args): return _Piavca.PyMotion_getQuatValueAtTimeInternal(*args)
-
-class PyMotionPtr(PyMotion):
-    def __init__(self, this):
-        _swig_setattr(self, PyMotion, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, PyMotion, 'thisown', 0)
-        self.__class__ = PyMotion
-_Piavca.PyMotion_swigregister(PyMotionPtr)
-
+PyMotion_swigregister = _Piavca.PyMotion_swigregister
+PyMotion_swigregister(PyMotion)
 
 degToRad = _Piavca.degToRad
-
 radToDeg = _Piavca.radToDeg
 class MotionFilter(Motion):
     __swig_setmethods__ = {}
@@ -768,14 +658,10 @@ class MotionFilter(Motion):
     __swig_getmethods__ = {}
     for _s in [Motion]: __swig_getmethods__.update(_s.__swig_getmethods__)
     __getattr__ = lambda self, name: _swig_getattr(self, MotionFilter, name)
-    def __init__(self): raise RuntimeError, "No constructor defined"
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::MotionFilter instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
-    def __del__(self, destroy=_Piavca.delete_MotionFilter):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
+    def __init__(self): raise AttributeError, "No constructor defined"
+    __repr__ = _swig_repr
+    __swig_destroy__ = _Piavca.delete_MotionFilter
+    __del__ = lambda self : None;
     def printInfo(*args): return _Piavca.MotionFilter_printInfo(*args)
     def findSub(*args): return _Piavca.MotionFilter_findSub(*args)
     def findSubByType(*args): return _Piavca.MotionFilter_findSubByType(*args)
@@ -790,13 +676,8 @@ class MotionFilter(Motion):
     def isRandomAccess(*args): return _Piavca.MotionFilter_isRandomAccess(*args)
     def isNull(*args): return _Piavca.MotionFilter_isNull(*args)
     def getTrackType(*args): return _Piavca.MotionFilter_getTrackType(*args)
-
-class MotionFilterPtr(MotionFilter):
-    def __init__(self, this):
-        _swig_setattr(self, MotionFilter, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, MotionFilter, 'thisown', 0)
-        self.__class__ = MotionFilter
-_Piavca.MotionFilter_swigregister(MotionFilterPtr)
+MotionFilter_swigregister = _Piavca.MotionFilter_swigregister
+MotionFilter_swigregister(MotionFilter)
 cvar = _Piavca.cvar
 Pi = cvar.Pi
 
@@ -807,20 +688,17 @@ class TwoMotionCombiner(Motion):
     __swig_getmethods__ = {}
     for _s in [Motion]: __swig_getmethods__.update(_s.__swig_getmethods__)
     __getattr__ = lambda self, name: _swig_getattr(self, TwoMotionCombiner, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::TwoMotionCombiner instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
-    def __init__(self, *args):
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
         if self.__class__ == TwoMotionCombiner:
             args = (None,) + args
         else:
             args = (self,) + args
-        _swig_setattr(self, TwoMotionCombiner, 'this', _Piavca.new_TwoMotionCombiner(*args))
-        _swig_setattr(self, TwoMotionCombiner, 'thisown', 1)
-    def __del__(self, destroy=_Piavca.delete_TwoMotionCombiner):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
+        this = _Piavca.new_TwoMotionCombiner(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _Piavca.delete_TwoMotionCombiner
+    __del__ = lambda self : None;
     def printInfo(*args): return _Piavca.TwoMotionCombiner_printInfo(*args)
     def findSub(*args): return _Piavca.TwoMotionCombiner_findSub(*args)
     def findSubByType(*args): return _Piavca.TwoMotionCombiner_findSubByType(*args)
@@ -839,16 +717,11 @@ class TwoMotionCombiner(Motion):
     def getMotion1(*args): return _Piavca.TwoMotionCombiner_getMotion1(*args)
     def getMotion2(*args): return _Piavca.TwoMotionCombiner_getMotion2(*args)
     def __disown__(self):
-        self.thisown = 0
+        self.this.disown()
         _Piavca.disown_TwoMotionCombiner(self)
         return weakref_proxy(self)
-
-class TwoMotionCombinerPtr(TwoMotionCombiner):
-    def __init__(self, this):
-        _swig_setattr(self, TwoMotionCombiner, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, TwoMotionCombiner, 'thisown', 0)
-        self.__class__ = TwoMotionCombiner
-_Piavca.TwoMotionCombiner_swigregister(TwoMotionCombinerPtr)
+TwoMotionCombiner_swigregister = _Piavca.TwoMotionCombiner_swigregister
+TwoMotionCombiner_swigregister(TwoMotionCombiner)
 
 class ScaleMotion(MotionFilter):
     __swig_setmethods__ = {}
@@ -857,36 +730,28 @@ class ScaleMotion(MotionFilter):
     __swig_getmethods__ = {}
     for _s in [MotionFilter]: __swig_getmethods__.update(_s.__swig_getmethods__)
     __getattr__ = lambda self, name: _swig_getattr(self, ScaleMotion, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::ScaleMotion instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
-    def __init__(self, *args):
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
         if self.__class__ == ScaleMotion:
             args = (None,) + args
         else:
             args = (self,) + args
-        _swig_setattr(self, ScaleMotion, 'this', _Piavca.new_ScaleMotion(*args))
-        _swig_setattr(self, ScaleMotion, 'thisown', 1)
+        this = _Piavca.new_ScaleMotion(*args)
+        try: self.this.append(this)
+        except: self.this = this
     def clone(*args): return _Piavca.ScaleMotion_clone(*args)
     def getFloatValueAtTimeInternal(*args): return _Piavca.ScaleMotion_getFloatValueAtTimeInternal(*args)
     def getVecValueAtTimeInternal(*args): return _Piavca.ScaleMotion_getVecValueAtTimeInternal(*args)
     def getQuatValueAtTimeInternal(*args): return _Piavca.ScaleMotion_getQuatValueAtTimeInternal(*args)
     def setScaleFactor(*args): return _Piavca.ScaleMotion_setScaleFactor(*args)
-    def __del__(self, destroy=_Piavca.delete_ScaleMotion):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
+    __swig_destroy__ = _Piavca.delete_ScaleMotion
+    __del__ = lambda self : None;
     def __disown__(self):
-        self.thisown = 0
+        self.this.disown()
         _Piavca.disown_ScaleMotion(self)
         return weakref_proxy(self)
-
-class ScaleMotionPtr(ScaleMotion):
-    def __init__(self, this):
-        _swig_setattr(self, ScaleMotion, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, ScaleMotion, 'thisown', 0)
-        self.__class__ = ScaleMotion
-_Piavca.ScaleMotion_swigregister(ScaleMotionPtr)
+ScaleMotion_swigregister = _Piavca.ScaleMotion_swigregister
+ScaleMotion_swigregister(ScaleMotion)
 
 class ScaleMotionSpeed(MotionFilter):
     __swig_setmethods__ = {}
@@ -895,37 +760,29 @@ class ScaleMotionSpeed(MotionFilter):
     __swig_getmethods__ = {}
     for _s in [MotionFilter]: __swig_getmethods__.update(_s.__swig_getmethods__)
     __getattr__ = lambda self, name: _swig_getattr(self, ScaleMotionSpeed, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::ScaleMotionSpeed instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
-    def __init__(self, *args):
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
         if self.__class__ == ScaleMotionSpeed:
             args = (None,) + args
         else:
             args = (self,) + args
-        _swig_setattr(self, ScaleMotionSpeed, 'this', _Piavca.new_ScaleMotionSpeed(*args))
-        _swig_setattr(self, ScaleMotionSpeed, 'thisown', 1)
+        this = _Piavca.new_ScaleMotionSpeed(*args)
+        try: self.this.append(this)
+        except: self.this = this
     def clone(*args): return _Piavca.ScaleMotionSpeed_clone(*args)
     def getMotionLength(*args): return _Piavca.ScaleMotionSpeed_getMotionLength(*args)
     def getFloatValueAtTimeInternal(*args): return _Piavca.ScaleMotionSpeed_getFloatValueAtTimeInternal(*args)
     def getVecValueAtTimeInternal(*args): return _Piavca.ScaleMotionSpeed_getVecValueAtTimeInternal(*args)
     def getQuatValueAtTimeInternal(*args): return _Piavca.ScaleMotionSpeed_getQuatValueAtTimeInternal(*args)
     def setScaleFactor(*args): return _Piavca.ScaleMotionSpeed_setScaleFactor(*args)
-    def __del__(self, destroy=_Piavca.delete_ScaleMotionSpeed):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
+    __swig_destroy__ = _Piavca.delete_ScaleMotionSpeed
+    __del__ = lambda self : None;
     def __disown__(self):
-        self.thisown = 0
+        self.this.disown()
         _Piavca.disown_ScaleMotionSpeed(self)
         return weakref_proxy(self)
-
-class ScaleMotionSpeedPtr(ScaleMotionSpeed):
-    def __init__(self, this):
-        _swig_setattr(self, ScaleMotionSpeed, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, ScaleMotionSpeed, 'thisown', 0)
-        self.__class__ = ScaleMotionSpeed
-_Piavca.ScaleMotionSpeed_swigregister(ScaleMotionSpeedPtr)
+ScaleMotionSpeed_swigregister = _Piavca.ScaleMotionSpeed_swigregister
+ScaleMotionSpeed_swigregister(ScaleMotionSpeed)
 
 class ScaleMotionRoot(MotionFilter):
     __swig_setmethods__ = {}
@@ -934,36 +791,28 @@ class ScaleMotionRoot(MotionFilter):
     __swig_getmethods__ = {}
     for _s in [MotionFilter]: __swig_getmethods__.update(_s.__swig_getmethods__)
     __getattr__ = lambda self, name: _swig_getattr(self, ScaleMotionRoot, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::ScaleMotionRoot instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
-    def __init__(self, *args):
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
         if self.__class__ == ScaleMotionRoot:
             args = (None,) + args
         else:
             args = (self,) + args
-        _swig_setattr(self, ScaleMotionRoot, 'this', _Piavca.new_ScaleMotionRoot(*args))
-        _swig_setattr(self, ScaleMotionRoot, 'thisown', 1)
-    def __del__(self, destroy=_Piavca.delete_ScaleMotionRoot):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
+        this = _Piavca.new_ScaleMotionRoot(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _Piavca.delete_ScaleMotionRoot
+    __del__ = lambda self : None;
     def clone(*args): return _Piavca.ScaleMotionRoot_clone(*args)
     def getFloatValueAtTimeInternal(*args): return _Piavca.ScaleMotionRoot_getFloatValueAtTimeInternal(*args)
     def getVecValueAtTimeInternal(*args): return _Piavca.ScaleMotionRoot_getVecValueAtTimeInternal(*args)
     def getQuatValueAtTimeInternal(*args): return _Piavca.ScaleMotionRoot_getQuatValueAtTimeInternal(*args)
     def setScaleFactor(*args): return _Piavca.ScaleMotionRoot_setScaleFactor(*args)
     def __disown__(self):
-        self.thisown = 0
+        self.this.disown()
         _Piavca.disown_ScaleMotionRoot(self)
         return weakref_proxy(self)
-
-class ScaleMotionRootPtr(ScaleMotionRoot):
-    def __init__(self, this):
-        _swig_setattr(self, ScaleMotionRoot, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, ScaleMotionRoot, 'thisown', 0)
-        self.__class__ = ScaleMotionRoot
-_Piavca.ScaleMotionRoot_swigregister(ScaleMotionRootPtr)
+ScaleMotionRoot_swigregister = _Piavca.ScaleMotionRoot_swigregister
+ScaleMotionRoot_swigregister(ScaleMotionRoot)
 
 class TimeOffset(MotionFilter):
     __swig_setmethods__ = {}
@@ -972,37 +821,29 @@ class TimeOffset(MotionFilter):
     __swig_getmethods__ = {}
     for _s in [MotionFilter]: __swig_getmethods__.update(_s.__swig_getmethods__)
     __getattr__ = lambda self, name: _swig_getattr(self, TimeOffset, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::TimeOffset instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
-    def __init__(self, *args):
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
         if self.__class__ == TimeOffset:
             args = (None,) + args
         else:
             args = (self,) + args
-        _swig_setattr(self, TimeOffset, 'this', _Piavca.new_TimeOffset(*args))
-        _swig_setattr(self, TimeOffset, 'thisown', 1)
+        this = _Piavca.new_TimeOffset(*args)
+        try: self.this.append(this)
+        except: self.this = this
     def clone(*args): return _Piavca.TimeOffset_clone(*args)
     def setStartTime(*args): return _Piavca.TimeOffset_setStartTime(*args)
     def getFloatValueAtTimeInternal(*args): return _Piavca.TimeOffset_getFloatValueAtTimeInternal(*args)
     def getVecValueAtTimeInternal(*args): return _Piavca.TimeOffset_getVecValueAtTimeInternal(*args)
     def getQuatValueAtTimeInternal(*args): return _Piavca.TimeOffset_getQuatValueAtTimeInternal(*args)
     def setOffset(*args): return _Piavca.TimeOffset_setOffset(*args)
-    def __del__(self, destroy=_Piavca.delete_TimeOffset):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
+    __swig_destroy__ = _Piavca.delete_TimeOffset
+    __del__ = lambda self : None;
     def __disown__(self):
-        self.thisown = 0
+        self.this.disown()
         _Piavca.disown_TimeOffset(self)
         return weakref_proxy(self)
-
-class TimeOffsetPtr(TimeOffset):
-    def __init__(self, this):
-        _swig_setattr(self, TimeOffset, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, TimeOffset, 'thisown', 0)
-        self.__class__ = TimeOffset
-_Piavca.TimeOffset_swigregister(TimeOffsetPtr)
+TimeOffset_swigregister = _Piavca.TimeOffset_swigregister
+TimeOffset_swigregister(TimeOffset)
 
 class TurnMotion(MotionFilter):
     __swig_setmethods__ = {}
@@ -1011,36 +852,28 @@ class TurnMotion(MotionFilter):
     __swig_getmethods__ = {}
     for _s in [MotionFilter]: __swig_getmethods__.update(_s.__swig_getmethods__)
     __getattr__ = lambda self, name: _swig_getattr(self, TurnMotion, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::TurnMotion instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
-    def __init__(self, *args):
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
         if self.__class__ == TurnMotion:
             args = (None,) + args
         else:
             args = (self,) + args
-        _swig_setattr(self, TurnMotion, 'this', _Piavca.new_TurnMotion(*args))
-        _swig_setattr(self, TurnMotion, 'thisown', 1)
+        this = _Piavca.new_TurnMotion(*args)
+        try: self.this.append(this)
+        except: self.this = this
     def clone(*args): return _Piavca.TurnMotion_clone(*args)
     def getFloatValueAtTimeInternal(*args): return _Piavca.TurnMotion_getFloatValueAtTimeInternal(*args)
     def getVecValueAtTimeInternal(*args): return _Piavca.TurnMotion_getVecValueAtTimeInternal(*args)
     def getQuatValueAtTimeInternal(*args): return _Piavca.TurnMotion_getQuatValueAtTimeInternal(*args)
     def setRotation(*args): return _Piavca.TurnMotion_setRotation(*args)
-    def __del__(self, destroy=_Piavca.delete_TurnMotion):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
+    __swig_destroy__ = _Piavca.delete_TurnMotion
+    __del__ = lambda self : None;
     def __disown__(self):
-        self.thisown = 0
+        self.this.disown()
         _Piavca.disown_TurnMotion(self)
         return weakref_proxy(self)
-
-class TurnMotionPtr(TurnMotion):
-    def __init__(self, this):
-        _swig_setattr(self, TurnMotion, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, TurnMotion, 'thisown', 0)
-        self.__class__ = TurnMotion
-_Piavca.TurnMotion_swigregister(TurnMotionPtr)
+TurnMotion_swigregister = _Piavca.TurnMotion_swigregister
+TurnMotion_swigregister(TurnMotion)
 
 class SequentialBlend(TwoMotionCombiner):
     __swig_setmethods__ = {}
@@ -1049,15 +882,15 @@ class SequentialBlend(TwoMotionCombiner):
     __swig_getmethods__ = {}
     for _s in [TwoMotionCombiner]: __swig_getmethods__.update(_s.__swig_getmethods__)
     __getattr__ = lambda self, name: _swig_getattr(self, SequentialBlend, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::SequentialBlend instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
-    def __init__(self, *args):
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
         if self.__class__ == SequentialBlend:
             args = (None,) + args
         else:
             args = (self,) + args
-        _swig_setattr(self, SequentialBlend, 'this', _Piavca.new_SequentialBlend(*args))
-        _swig_setattr(self, SequentialBlend, 'thisown', 1)
+        this = _Piavca.new_SequentialBlend(*args)
+        try: self.this.append(this)
+        except: self.this = this
     def clone(*args): return _Piavca.SequentialBlend_clone(*args)
     def setMaintainY(*args): return _Piavca.SequentialBlend_setMaintainY(*args)
     def setAccumulateRoot(*args): return _Piavca.SequentialBlend_setAccumulateRoot(*args)
@@ -1070,22 +903,14 @@ class SequentialBlend(TwoMotionCombiner):
     def setBlendInterval(*args): return _Piavca.SequentialBlend_setBlendInterval(*args)
     def getBlendStart(*args): return _Piavca.SequentialBlend_getBlendStart(*args)
     def getBlendInterval(*args): return _Piavca.SequentialBlend_getBlendInterval(*args)
-    def __del__(self, destroy=_Piavca.delete_SequentialBlend):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
+    __swig_destroy__ = _Piavca.delete_SequentialBlend
+    __del__ = lambda self : None;
     def __disown__(self):
-        self.thisown = 0
+        self.this.disown()
         _Piavca.disown_SequentialBlend(self)
         return weakref_proxy(self)
-
-class SequentialBlendPtr(SequentialBlend):
-    def __init__(self, this):
-        _swig_setattr(self, SequentialBlend, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, SequentialBlend, 'thisown', 0)
-        self.__class__ = SequentialBlend
-_Piavca.SequentialBlend_swigregister(SequentialBlendPtr)
+SequentialBlend_swigregister = _Piavca.SequentialBlend_swigregister
+SequentialBlend_swigregister(SequentialBlend)
 
 class SelfBlend(SequentialBlend):
     __swig_setmethods__ = {}
@@ -1094,35 +919,27 @@ class SelfBlend(SequentialBlend):
     __swig_getmethods__ = {}
     for _s in [SequentialBlend]: __swig_getmethods__.update(_s.__swig_getmethods__)
     __getattr__ = lambda self, name: _swig_getattr(self, SelfBlend, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::SelfBlend instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
-    def __init__(self, *args):
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
         if self.__class__ == SelfBlend:
             args = (None,) + args
         else:
             args = (self,) + args
-        _swig_setattr(self, SelfBlend, 'this', _Piavca.new_SelfBlend(*args))
-        _swig_setattr(self, SelfBlend, 'thisown', 1)
+        this = _Piavca.new_SelfBlend(*args)
+        try: self.this.append(this)
+        except: self.this = this
     def clone(*args): return _Piavca.SelfBlend_clone(*args)
     def reset(*args): return _Piavca.SelfBlend_reset(*args)
     def reblend(*args): return _Piavca.SelfBlend_reblend(*args)
     def setMotion(*args): return _Piavca.SelfBlend_setMotion(*args)
-    def __del__(self, destroy=_Piavca.delete_SelfBlend):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
+    __swig_destroy__ = _Piavca.delete_SelfBlend
+    __del__ = lambda self : None;
     def __disown__(self):
-        self.thisown = 0
+        self.this.disown()
         _Piavca.disown_SelfBlend(self)
         return weakref_proxy(self)
-
-class SelfBlendPtr(SelfBlend):
-    def __init__(self, this):
-        _swig_setattr(self, SelfBlend, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, SelfBlend, 'thisown', 0)
-        self.__class__ = SelfBlend
-_Piavca.SelfBlend_swigregister(SelfBlendPtr)
+SelfBlend_swigregister = _Piavca.SelfBlend_swigregister
+SelfBlend_swigregister(SelfBlend)
 
 class LoopMotion(SelfBlend):
     __swig_setmethods__ = {}
@@ -1131,37 +948,29 @@ class LoopMotion(SelfBlend):
     __swig_getmethods__ = {}
     for _s in [SelfBlend]: __swig_getmethods__.update(_s.__swig_getmethods__)
     __getattr__ = lambda self, name: _swig_getattr(self, LoopMotion, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::LoopMotion instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
-    def __init__(self, *args):
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
         if self.__class__ == LoopMotion:
             args = (None,) + args
         else:
             args = (self,) + args
-        _swig_setattr(self, LoopMotion, 'this', _Piavca.new_LoopMotion(*args))
-        _swig_setattr(self, LoopMotion, 'thisown', 1)
+        this = _Piavca.new_LoopMotion(*args)
+        try: self.this.append(this)
+        except: self.this = this
     def clone(*args): return _Piavca.LoopMotion_clone(*args)
     def getMotionLength(*args): return _Piavca.LoopMotion_getMotionLength(*args)
     def setEndTime(*args): return _Piavca.LoopMotion_setEndTime(*args)
     def getFloatValueAtTimeInternal(*args): return _Piavca.LoopMotion_getFloatValueAtTimeInternal(*args)
     def getVecValueAtTimeInternal(*args): return _Piavca.LoopMotion_getVecValueAtTimeInternal(*args)
     def getQuatValueAtTimeInternal(*args): return _Piavca.LoopMotion_getQuatValueAtTimeInternal(*args)
-    def __del__(self, destroy=_Piavca.delete_LoopMotion):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
+    __swig_destroy__ = _Piavca.delete_LoopMotion
+    __del__ = lambda self : None;
     def __disown__(self):
-        self.thisown = 0
+        self.this.disown()
         _Piavca.disown_LoopMotion(self)
         return weakref_proxy(self)
-
-class LoopMotionPtr(LoopMotion):
-    def __init__(self, this):
-        _swig_setattr(self, LoopMotion, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, LoopMotion, 'thisown', 0)
-        self.__class__ = LoopMotion
-_Piavca.LoopMotion_swigregister(LoopMotionPtr)
+LoopMotion_swigregister = _Piavca.LoopMotion_swigregister
+LoopMotion_swigregister(LoopMotion)
 
 class RandomTimingsLoop(LoopMotion):
     __swig_setmethods__ = {}
@@ -1170,35 +979,27 @@ class RandomTimingsLoop(LoopMotion):
     __swig_getmethods__ = {}
     for _s in [LoopMotion]: __swig_getmethods__.update(_s.__swig_getmethods__)
     __getattr__ = lambda self, name: _swig_getattr(self, RandomTimingsLoop, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::RandomTimingsLoop instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
-    def __init__(self, *args):
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
         if self.__class__ == RandomTimingsLoop:
             args = (None,) + args
         else:
             args = (self,) + args
-        _swig_setattr(self, RandomTimingsLoop, 'this', _Piavca.new_RandomTimingsLoop(*args))
-        _swig_setattr(self, RandomTimingsLoop, 'thisown', 1)
-    def __del__(self, destroy=_Piavca.delete_RandomTimingsLoop):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
+        this = _Piavca.new_RandomTimingsLoop(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _Piavca.delete_RandomTimingsLoop
+    __del__ = lambda self : None;
     def clone(*args): return _Piavca.RandomTimingsLoop_clone(*args)
     def setTimingParams(*args): return _Piavca.RandomTimingsLoop_setTimingParams(*args)
     def reblend(*args): return _Piavca.RandomTimingsLoop_reblend(*args)
     def setMotion(*args): return _Piavca.RandomTimingsLoop_setMotion(*args)
     def __disown__(self):
-        self.thisown = 0
+        self.this.disown()
         _Piavca.disown_RandomTimingsLoop(self)
         return weakref_proxy(self)
-
-class RandomTimingsLoopPtr(RandomTimingsLoop):
-    def __init__(self, this):
-        _swig_setattr(self, RandomTimingsLoop, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, RandomTimingsLoop, 'thisown', 0)
-        self.__class__ = RandomTimingsLoop
-_Piavca.RandomTimingsLoop_swigregister(RandomTimingsLoopPtr)
+RandomTimingsLoop_swigregister = _Piavca.RandomTimingsLoop_swigregister
+RandomTimingsLoop_swigregister(RandomTimingsLoop)
 
 class AvatarPostureBlend(SequentialBlend):
     __swig_setmethods__ = {}
@@ -1207,27 +1008,19 @@ class AvatarPostureBlend(SequentialBlend):
     __swig_getmethods__ = {}
     for _s in [SequentialBlend]: __swig_getmethods__.update(_s.__swig_getmethods__)
     __getattr__ = lambda self, name: _swig_getattr(self, AvatarPostureBlend, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::AvatarPostureBlend instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
-    def __init__(self, *args):
-        _swig_setattr(self, AvatarPostureBlend, 'this', _Piavca.new_AvatarPostureBlend(*args))
-        _swig_setattr(self, AvatarPostureBlend, 'thisown', 1)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _Piavca.new_AvatarPostureBlend(*args)
+        try: self.this.append(this)
+        except: self.this = this
     def clone(*args): return _Piavca.AvatarPostureBlend_clone(*args)
     def load(*args): return _Piavca.AvatarPostureBlend_load(*args)
     def setMotion(*args): return _Piavca.AvatarPostureBlend_setMotion(*args)
     def reblend(*args): return _Piavca.AvatarPostureBlend_reblend(*args)
-    def __del__(self, destroy=_Piavca.delete_AvatarPostureBlend):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
-
-class AvatarPostureBlendPtr(AvatarPostureBlend):
-    def __init__(self, this):
-        _swig_setattr(self, AvatarPostureBlend, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, AvatarPostureBlend, 'thisown', 0)
-        self.__class__ = AvatarPostureBlend
-_Piavca.AvatarPostureBlend_swigregister(AvatarPostureBlendPtr)
+    __swig_destroy__ = _Piavca.delete_AvatarPostureBlend
+    __del__ = lambda self : None;
+AvatarPostureBlend_swigregister = _Piavca.AvatarPostureBlend_swigregister
+AvatarPostureBlend_swigregister(AvatarPostureBlend)
 
 class BlendBetween(TwoMotionCombiner):
     __swig_setmethods__ = {}
@@ -1236,36 +1029,28 @@ class BlendBetween(TwoMotionCombiner):
     __swig_getmethods__ = {}
     for _s in [TwoMotionCombiner]: __swig_getmethods__.update(_s.__swig_getmethods__)
     __getattr__ = lambda self, name: _swig_getattr(self, BlendBetween, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::BlendBetween instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
-    def __init__(self, *args):
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
         if self.__class__ == BlendBetween:
             args = (None,) + args
         else:
             args = (self,) + args
-        _swig_setattr(self, BlendBetween, 'this', _Piavca.new_BlendBetween(*args))
-        _swig_setattr(self, BlendBetween, 'thisown', 1)
+        this = _Piavca.new_BlendBetween(*args)
+        try: self.this.append(this)
+        except: self.this = this
     def clone(*args): return _Piavca.BlendBetween_clone(*args)
     def getFloatValueAtTimeInternal(*args): return _Piavca.BlendBetween_getFloatValueAtTimeInternal(*args)
     def getVecValueAtTimeInternal(*args): return _Piavca.BlendBetween_getVecValueAtTimeInternal(*args)
     def getQuatValueAtTimeInternal(*args): return _Piavca.BlendBetween_getQuatValueAtTimeInternal(*args)
     def setBlendFactor(*args): return _Piavca.BlendBetween_setBlendFactor(*args)
-    def __del__(self, destroy=_Piavca.delete_BlendBetween):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
+    __swig_destroy__ = _Piavca.delete_BlendBetween
+    __del__ = lambda self : None;
     def __disown__(self):
-        self.thisown = 0
+        self.this.disown()
         _Piavca.disown_BlendBetween(self)
         return weakref_proxy(self)
-
-class BlendBetweenPtr(BlendBetween):
-    def __init__(self, this):
-        _swig_setattr(self, BlendBetween, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, BlendBetween, 'thisown', 0)
-        self.__class__ = BlendBetween
-_Piavca.BlendBetween_swigregister(BlendBetweenPtr)
+BlendBetween_swigregister = _Piavca.BlendBetween_swigregister
+BlendBetween_swigregister(BlendBetween)
 
 class MotionAdder(TwoMotionCombiner):
     __swig_setmethods__ = {}
@@ -1274,61 +1059,45 @@ class MotionAdder(TwoMotionCombiner):
     __swig_getmethods__ = {}
     for _s in [TwoMotionCombiner]: __swig_getmethods__.update(_s.__swig_getmethods__)
     __getattr__ = lambda self, name: _swig_getattr(self, MotionAdder, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::MotionAdder instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
-    def __init__(self, *args):
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
         if self.__class__ == MotionAdder:
             args = (None,) + args
         else:
             args = (self,) + args
-        _swig_setattr(self, MotionAdder, 'this', _Piavca.new_MotionAdder(*args))
-        _swig_setattr(self, MotionAdder, 'thisown', 1)
+        this = _Piavca.new_MotionAdder(*args)
+        try: self.this.append(this)
+        except: self.this = this
     def clone(*args): return _Piavca.MotionAdder_clone(*args)
     def setScaleSecond(*args): return _Piavca.MotionAdder_setScaleSecond(*args)
     def getFloatValueAtTimeInternal(*args): return _Piavca.MotionAdder_getFloatValueAtTimeInternal(*args)
     def getVecValueAtTimeInternal(*args): return _Piavca.MotionAdder_getVecValueAtTimeInternal(*args)
     def getQuatValueAtTimeInternal(*args): return _Piavca.MotionAdder_getQuatValueAtTimeInternal(*args)
-    def __del__(self, destroy=_Piavca.delete_MotionAdder):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
+    __swig_destroy__ = _Piavca.delete_MotionAdder
+    __del__ = lambda self : None;
     def __disown__(self):
-        self.thisown = 0
+        self.this.disown()
         _Piavca.disown_MotionAdder(self)
         return weakref_proxy(self)
-
-class MotionAdderPtr(MotionAdder):
-    def __init__(self, this):
-        _swig_setattr(self, MotionAdder, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, MotionAdder, 'thisown', 0)
-        self.__class__ = MotionAdder
-_Piavca.MotionAdder_swigregister(MotionAdderPtr)
+MotionAdder_swigregister = _Piavca.MotionAdder_swigregister
+MotionAdder_swigregister(MotionAdder)
 
 class MotionMask(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, MotionMask, name, value)
     __swig_getmethods__ = {}
     __getattr__ = lambda self, name: _swig_getattr(self, MotionMask, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::MotionMask instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
-    def __init__(self, *args):
-        _swig_setattr(self, MotionMask, 'this', _Piavca.new_MotionMask(*args))
-        _swig_setattr(self, MotionMask, 'thisown', 1)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _Piavca.new_MotionMask(*args)
+        try: self.this.append(this)
+        except: self.this = this
     def setMask(*args): return _Piavca.MotionMask_setMask(*args)
     def getMask(*args): return _Piavca.MotionMask_getMask(*args)
-    def __del__(self, destroy=_Piavca.delete_MotionMask):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
-
-class MotionMaskPtr(MotionMask):
-    def __init__(self, this):
-        _swig_setattr(self, MotionMask, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, MotionMask, 'thisown', 0)
-        self.__class__ = MotionMask
-_Piavca.MotionMask_swigregister(MotionMaskPtr)
+    __swig_destroy__ = _Piavca.delete_MotionMask
+    __del__ = lambda self : None;
+MotionMask_swigregister = _Piavca.MotionMask_swigregister
+MotionMask_swigregister(MotionMask)
 
 class MaskedMotion(TwoMotionCombiner):
     __swig_setmethods__ = {}
@@ -1337,15 +1106,15 @@ class MaskedMotion(TwoMotionCombiner):
     __swig_getmethods__ = {}
     for _s in [TwoMotionCombiner]: __swig_getmethods__.update(_s.__swig_getmethods__)
     __getattr__ = lambda self, name: _swig_getattr(self, MaskedMotion, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::MaskedMotion instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
-    def __init__(self, *args):
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
         if self.__class__ == MaskedMotion:
             args = (None,) + args
         else:
             args = (self,) + args
-        _swig_setattr(self, MaskedMotion, 'this', _Piavca.new_MaskedMotion(*args))
-        _swig_setattr(self, MaskedMotion, 'thisown', 1)
+        this = _Piavca.new_MaskedMotion(*args)
+        try: self.this.append(this)
+        except: self.this = this
     def clone(*args): return _Piavca.MaskedMotion_clone(*args)
     def setUseSecondary(*args): return _Piavca.MaskedMotion_setUseSecondary(*args)
     def setMask1(*args): return _Piavca.MaskedMotion_setMask1(*args)
@@ -1357,22 +1126,14 @@ class MaskedMotion(TwoMotionCombiner):
     def getFloatValueAtTimeInternal(*args): return _Piavca.MaskedMotion_getFloatValueAtTimeInternal(*args)
     def getVecValueAtTimeInternal(*args): return _Piavca.MaskedMotion_getVecValueAtTimeInternal(*args)
     def getQuatValueAtTimeInternal(*args): return _Piavca.MaskedMotion_getQuatValueAtTimeInternal(*args)
-    def __del__(self, destroy=_Piavca.delete_MaskedMotion):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
+    __swig_destroy__ = _Piavca.delete_MaskedMotion
+    __del__ = lambda self : None;
     def __disown__(self):
-        self.thisown = 0
+        self.this.disown()
         _Piavca.disown_MaskedMotion(self)
         return weakref_proxy(self)
-
-class MaskedMotionPtr(MaskedMotion):
-    def __init__(self, this):
-        _swig_setattr(self, MaskedMotion, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, MaskedMotion, 'thisown', 0)
-        self.__class__ = MaskedMotion
-_Piavca.MaskedMotion_swigregister(MaskedMotionPtr)
+MaskedMotion_swigregister = _Piavca.MaskedMotion_swigregister
+MaskedMotion_swigregister(MaskedMotion)
 
 class MultiMotionLoop(RandomTimingsLoop):
     __swig_setmethods__ = {}
@@ -1381,16 +1142,13 @@ class MultiMotionLoop(RandomTimingsLoop):
     __swig_getmethods__ = {}
     for _s in [RandomTimingsLoop]: __swig_getmethods__.update(_s.__swig_getmethods__)
     __getattr__ = lambda self, name: _swig_getattr(self, MultiMotionLoop, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::MultiMotionLoop instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
-    def __init__(self, *args):
-        _swig_setattr(self, MultiMotionLoop, 'this', _Piavca.new_MultiMotionLoop(*args))
-        _swig_setattr(self, MultiMotionLoop, 'thisown', 1)
-    def __del__(self, destroy=_Piavca.delete_MultiMotionLoop):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _Piavca.new_MultiMotionLoop(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _Piavca.delete_MultiMotionLoop
+    __del__ = lambda self : None;
     def clone(*args): return _Piavca.MultiMotionLoop_clone(*args)
     def printInfo(*args): return _Piavca.MultiMotionLoop_printInfo(*args)
     def addMotion(*args): return _Piavca.MultiMotionLoop_addMotion(*args)
@@ -1399,13 +1157,8 @@ class MultiMotionLoop(RandomTimingsLoop):
     def load(*args): return _Piavca.MultiMotionLoop_load(*args)
     def unload(*args): return _Piavca.MultiMotionLoop_unload(*args)
     def loaded(*args): return _Piavca.MultiMotionLoop_loaded(*args)
-
-class MultiMotionLoopPtr(MultiMotionLoop):
-    def __init__(self, this):
-        _swig_setattr(self, MultiMotionLoop, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, MultiMotionLoop, 'thisown', 0)
-        self.__class__ = MultiMotionLoop
-_Piavca.MultiMotionLoop_swigregister(MultiMotionLoopPtr)
+MultiMotionLoop_swigregister = _Piavca.MultiMotionLoop_swigregister
+MultiMotionLoop_swigregister(MultiMotionLoop)
 
 class ChoiceLoopMotion(MultiMotionLoop):
     __swig_setmethods__ = {}
@@ -1414,34 +1167,26 @@ class ChoiceLoopMotion(MultiMotionLoop):
     __swig_getmethods__ = {}
     for _s in [MultiMotionLoop]: __swig_getmethods__.update(_s.__swig_getmethods__)
     __getattr__ = lambda self, name: _swig_getattr(self, ChoiceLoopMotion, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::ChoiceLoopMotion instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
-    def __init__(self, *args):
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
         if self.__class__ == ChoiceLoopMotion:
             args = (None,) + args
         else:
             args = (self,) + args
-        _swig_setattr(self, ChoiceLoopMotion, 'this', _Piavca.new_ChoiceLoopMotion(*args))
-        _swig_setattr(self, ChoiceLoopMotion, 'thisown', 1)
-    def __del__(self, destroy=_Piavca.delete_ChoiceLoopMotion):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
+        this = _Piavca.new_ChoiceLoopMotion(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _Piavca.delete_ChoiceLoopMotion
+    __del__ = lambda self : None;
     def clone(*args): return _Piavca.ChoiceLoopMotion_clone(*args)
     def setCurrentChoice(*args): return _Piavca.ChoiceLoopMotion_setCurrentChoice(*args)
     def reblend(*args): return _Piavca.ChoiceLoopMotion_reblend(*args)
     def __disown__(self):
-        self.thisown = 0
+        self.this.disown()
         _Piavca.disown_ChoiceLoopMotion(self)
         return weakref_proxy(self)
-
-class ChoiceLoopMotionPtr(ChoiceLoopMotion):
-    def __init__(self, this):
-        _swig_setattr(self, ChoiceLoopMotion, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, ChoiceLoopMotion, 'thisown', 0)
-        self.__class__ = ChoiceLoopMotion
-_Piavca.ChoiceLoopMotion_swigregister(ChoiceLoopMotionPtr)
+ChoiceLoopMotion_swigregister = _Piavca.ChoiceLoopMotion_swigregister
+ChoiceLoopMotion_swigregister(ChoiceLoopMotion)
 
 class RandomLoopMotion(ChoiceLoopMotion):
     __swig_setmethods__ = {}
@@ -1450,20 +1195,17 @@ class RandomLoopMotion(ChoiceLoopMotion):
     __swig_getmethods__ = {}
     for _s in [ChoiceLoopMotion]: __swig_getmethods__.update(_s.__swig_getmethods__)
     __getattr__ = lambda self, name: _swig_getattr(self, RandomLoopMotion, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::RandomLoopMotion instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
-    def __init__(self, *args):
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
         if self.__class__ == RandomLoopMotion:
             args = (None,) + args
         else:
             args = (self,) + args
-        _swig_setattr(self, RandomLoopMotion, 'this', _Piavca.new_RandomLoopMotion(*args))
-        _swig_setattr(self, RandomLoopMotion, 'thisown', 1)
-    def __del__(self, destroy=_Piavca.delete_RandomLoopMotion):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
+        this = _Piavca.new_RandomLoopMotion(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _Piavca.delete_RandomLoopMotion
+    __del__ = lambda self : None;
     def clone(*args): return _Piavca.RandomLoopMotion_clone(*args)
     __swig_getmethods__["convertTo"] = lambda x: _Piavca.RandomLoopMotion_convertTo
     if _newclass:convertTo = staticmethod(_Piavca.RandomLoopMotion_convertTo)
@@ -1471,17 +1213,11 @@ class RandomLoopMotion(ChoiceLoopMotion):
     def setProbability(*args): return _Piavca.RandomLoopMotion_setProbability(*args)
     def reblend(*args): return _Piavca.RandomLoopMotion_reblend(*args)
     def __disown__(self):
-        self.thisown = 0
+        self.this.disown()
         _Piavca.disown_RandomLoopMotion(self)
         return weakref_proxy(self)
-
-class RandomLoopMotionPtr(RandomLoopMotion):
-    def __init__(self, this):
-        _swig_setattr(self, RandomLoopMotion, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, RandomLoopMotion, 'thisown', 0)
-        self.__class__ = RandomLoopMotion
-_Piavca.RandomLoopMotion_swigregister(RandomLoopMotionPtr)
-
+RandomLoopMotion_swigregister = _Piavca.RandomLoopMotion_swigregister
+RandomLoopMotion_swigregister(RandomLoopMotion)
 RandomLoopMotion_convertTo = _Piavca.RandomLoopMotion_convertTo
 
 class RandomBlendLoop(MultiMotionLoop):
@@ -1491,36 +1227,28 @@ class RandomBlendLoop(MultiMotionLoop):
     __swig_getmethods__ = {}
     for _s in [MultiMotionLoop]: __swig_getmethods__.update(_s.__swig_getmethods__)
     __getattr__ = lambda self, name: _swig_getattr(self, RandomBlendLoop, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::RandomBlendLoop instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
-    def __init__(self, *args):
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
         if self.__class__ == RandomBlendLoop:
             args = (None,) + args
         else:
             args = (self,) + args
-        _swig_setattr(self, RandomBlendLoop, 'this', _Piavca.new_RandomBlendLoop(*args))
-        _swig_setattr(self, RandomBlendLoop, 'thisown', 1)
-    def __del__(self, destroy=_Piavca.delete_RandomBlendLoop):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
+        this = _Piavca.new_RandomBlendLoop(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _Piavca.delete_RandomBlendLoop
+    __del__ = lambda self : None;
     def clone(*args): return _Piavca.RandomBlendLoop_clone(*args)
     def addMotion(*args): return _Piavca.RandomBlendLoop_addMotion(*args)
     def setAutoShift(*args): return _Piavca.RandomBlendLoop_setAutoShift(*args)
     def shift(*args): return _Piavca.RandomBlendLoop_shift(*args)
     def reblend(*args): return _Piavca.RandomBlendLoop_reblend(*args)
     def __disown__(self):
-        self.thisown = 0
+        self.this.disown()
         _Piavca.disown_RandomBlendLoop(self)
         return weakref_proxy(self)
-
-class RandomBlendLoopPtr(RandomBlendLoop):
-    def __init__(self, this):
-        _swig_setattr(self, RandomBlendLoop, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, RandomBlendLoop, 'thisown', 0)
-        self.__class__ = RandomBlendLoop
-_Piavca.RandomBlendLoop_swigregister(RandomBlendLoopPtr)
+RandomBlendLoop_swigregister = _Piavca.RandomBlendLoop_swigregister
+RandomBlendLoop_swigregister(RandomBlendLoop)
 
 class RandomAddLoop(MultiMotionLoop):
     __swig_setmethods__ = {}
@@ -1529,35 +1257,27 @@ class RandomAddLoop(MultiMotionLoop):
     __swig_getmethods__ = {}
     for _s in [MultiMotionLoop]: __swig_getmethods__.update(_s.__swig_getmethods__)
     __getattr__ = lambda self, name: _swig_getattr(self, RandomAddLoop, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::RandomAddLoop instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
-    def __init__(self, *args):
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
         if self.__class__ == RandomAddLoop:
             args = (None,) + args
         else:
             args = (self,) + args
-        _swig_setattr(self, RandomAddLoop, 'this', _Piavca.new_RandomAddLoop(*args))
-        _swig_setattr(self, RandomAddLoop, 'thisown', 1)
-    def __del__(self, destroy=_Piavca.delete_RandomAddLoop):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
+        this = _Piavca.new_RandomAddLoop(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _Piavca.delete_RandomAddLoop
+    __del__ = lambda self : None;
     def clone(*args): return _Piavca.RandomAddLoop_clone(*args)
     def setAutoShift(*args): return _Piavca.RandomAddLoop_setAutoShift(*args)
     def shift(*args): return _Piavca.RandomAddLoop_shift(*args)
     def reblend(*args): return _Piavca.RandomAddLoop_reblend(*args)
     def __disown__(self):
-        self.thisown = 0
+        self.this.disown()
         _Piavca.disown_RandomAddLoop(self)
         return weakref_proxy(self)
-
-class RandomAddLoopPtr(RandomAddLoop):
-    def __init__(self, this):
-        _swig_setattr(self, RandomAddLoop, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, RandomAddLoop, 'thisown', 0)
-        self.__class__ = RandomAddLoop
-_Piavca.RandomAddLoop_swigregister(RandomAddLoopPtr)
+RandomAddLoop_swigregister = _Piavca.RandomAddLoop_swigregister
+RandomAddLoop_swigregister(RandomAddLoop)
 
 class ProxemicsLoop(MultiMotionLoop):
     __swig_setmethods__ = {}
@@ -1566,16 +1286,13 @@ class ProxemicsLoop(MultiMotionLoop):
     __swig_getmethods__ = {}
     for _s in [MultiMotionLoop]: __swig_getmethods__.update(_s.__swig_getmethods__)
     __getattr__ = lambda self, name: _swig_getattr(self, ProxemicsLoop, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::ProxemicsLoop instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
-    def __init__(self, *args):
-        _swig_setattr(self, ProxemicsLoop, 'this', _Piavca.new_ProxemicsLoop(*args))
-        _swig_setattr(self, ProxemicsLoop, 'thisown', 1)
-    def __del__(self, destroy=_Piavca.delete_ProxemicsLoop):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _Piavca.new_ProxemicsLoop(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _Piavca.delete_ProxemicsLoop
+    __del__ = lambda self : None;
     def clone(*args): return _Piavca.ProxemicsLoop_clone(*args)
     def setDistance(*args): return _Piavca.ProxemicsLoop_setDistance(*args)
     def setThreshold(*args): return _Piavca.ProxemicsLoop_setThreshold(*args)
@@ -1585,13 +1302,8 @@ class ProxemicsLoop(MultiMotionLoop):
     def removeAvatar(*args): return _Piavca.ProxemicsLoop_removeAvatar(*args)
     def removeAllAvatars(*args): return _Piavca.ProxemicsLoop_removeAllAvatars(*args)
     def reblend(*args): return _Piavca.ProxemicsLoop_reblend(*args)
-
-class ProxemicsLoopPtr(ProxemicsLoop):
-    def __init__(self, this):
-        _swig_setattr(self, ProxemicsLoop, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, ProxemicsLoop, 'thisown', 0)
-        self.__class__ = ProxemicsLoop
-_Piavca.ProxemicsLoop_swigregister(ProxemicsLoopPtr)
+ProxemicsLoop_swigregister = _Piavca.ProxemicsLoop_swigregister
+ProxemicsLoop_swigregister(ProxemicsLoop)
 
 class LookAtMotion(Motion):
     __swig_setmethods__ = {}
@@ -1600,15 +1312,15 @@ class LookAtMotion(Motion):
     __swig_getmethods__ = {}
     for _s in [Motion]: __swig_getmethods__.update(_s.__swig_getmethods__)
     __getattr__ = lambda self, name: _swig_getattr(self, LookAtMotion, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::LookAtMotion instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
-    def __init__(self, *args):
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
         if self.__class__ == LookAtMotion:
             args = (None,) + args
         else:
             args = (self,) + args
-        _swig_setattr(self, LookAtMotion, 'this', _Piavca.new_LookAtMotion(*args))
-        _swig_setattr(self, LookAtMotion, 'thisown', 1)
+        this = _Piavca.new_LookAtMotion(*args)
+        try: self.this.append(this)
+        except: self.this = this
     def clone(*args): return _Piavca.LookAtMotion_clone(*args)
     def isFacial(*args): return _Piavca.LookAtMotion_isFacial(*args)
     def isRandomAccess(*args): return _Piavca.LookAtMotion_isRandomAccess(*args)
@@ -1633,22 +1345,14 @@ class LookAtMotion(Motion):
     def getFloatValueAtTimeInternal(*args): return _Piavca.LookAtMotion_getFloatValueAtTimeInternal(*args)
     def getVecValueAtTimeInternal(*args): return _Piavca.LookAtMotion_getVecValueAtTimeInternal(*args)
     def getQuatValueAtTimeInternal(*args): return _Piavca.LookAtMotion_getQuatValueAtTimeInternal(*args)
-    def __del__(self, destroy=_Piavca.delete_LookAtMotion):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
+    __swig_destroy__ = _Piavca.delete_LookAtMotion
+    __del__ = lambda self : None;
     def __disown__(self):
-        self.thisown = 0
+        self.this.disown()
         _Piavca.disown_LookAtMotion(self)
         return weakref_proxy(self)
-
-class LookAtMotionPtr(LookAtMotion):
-    def __init__(self, this):
-        _swig_setattr(self, LookAtMotion, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, LookAtMotion, 'thisown', 0)
-        self.__class__ = LookAtMotion
-_Piavca.LookAtMotion_swigregister(LookAtMotionPtr)
+LookAtMotion_swigregister = _Piavca.LookAtMotion_swigregister
+LookAtMotion_swigregister(LookAtMotion)
 
 class LookAtToFacial(MotionFilter):
     __swig_setmethods__ = {}
@@ -1657,11 +1361,11 @@ class LookAtToFacial(MotionFilter):
     __swig_getmethods__ = {}
     for _s in [MotionFilter]: __swig_getmethods__.update(_s.__swig_getmethods__)
     __getattr__ = lambda self, name: _swig_getattr(self, LookAtToFacial, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::LookAtToFacial instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
-    def __init__(self, *args):
-        _swig_setattr(self, LookAtToFacial, 'this', _Piavca.new_LookAtToFacial(*args))
-        _swig_setattr(self, LookAtToFacial, 'thisown', 1)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _Piavca.new_LookAtToFacial(*args)
+        try: self.this.append(this)
+        except: self.this = this
     def clone(*args): return _Piavca.LookAtToFacial_clone(*args)
     def load(*args): return _Piavca.LookAtToFacial_load(*args)
     def isFacial(*args): return _Piavca.LookAtToFacial_isFacial(*args)
@@ -1669,26 +1373,17 @@ class LookAtToFacial(MotionFilter):
     def getFloatValueAtTimeInternal(*args): return _Piavca.LookAtToFacial_getFloatValueAtTimeInternal(*args)
     def getVecValueAtTimeInternal(*args): return _Piavca.LookAtToFacial_getVecValueAtTimeInternal(*args)
     def getQuatValueAtTimeInternal(*args): return _Piavca.LookAtToFacial_getQuatValueAtTimeInternal(*args)
-    def __del__(self, destroy=_Piavca.delete_LookAtToFacial):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
-
-class LookAtToFacialPtr(LookAtToFacial):
-    def __init__(self, this):
-        _swig_setattr(self, LookAtToFacial, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, LookAtToFacial, 'thisown', 0)
-        self.__class__ = LookAtToFacial
-_Piavca.LookAtToFacial_swigregister(LookAtToFacialPtr)
+    __swig_destroy__ = _Piavca.delete_LookAtToFacial
+    __del__ = lambda self : None;
+LookAtToFacial_swigregister = _Piavca.LookAtToFacial_swigregister
+LookAtToFacial_swigregister(LookAtToFacial)
 
 class flagStruct(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, flagStruct, name, value)
     __swig_getmethods__ = {}
     __getattr__ = lambda self, name: _swig_getattr(self, flagStruct, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::flagStruct instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
+    __repr__ = _swig_repr
     __swig_setmethods__["headActive"] = _Piavca.flagStruct_headActive_set
     __swig_getmethods__["headActive"] = _Piavca.flagStruct_headActive_get
     if _newclass:headActive = property(_Piavca.flagStruct_headActive_get, _Piavca.flagStruct_headActive_set)
@@ -1704,29 +1399,21 @@ class flagStruct(_object):
     __swig_setmethods__["leanTowards"] = _Piavca.flagStruct_leanTowards_set
     __swig_getmethods__["leanTowards"] = _Piavca.flagStruct_leanTowards_get
     if _newclass:leanTowards = property(_Piavca.flagStruct_leanTowards_get, _Piavca.flagStruct_leanTowards_set)
-    def __init__(self, *args):
-        _swig_setattr(self, flagStruct, 'this', _Piavca.new_flagStruct(*args))
-        _swig_setattr(self, flagStruct, 'thisown', 1)
-    def __del__(self, destroy=_Piavca.delete_flagStruct):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
-
-class flagStructPtr(flagStruct):
-    def __init__(self, this):
-        _swig_setattr(self, flagStruct, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, flagStruct, 'thisown', 0)
-        self.__class__ = flagStruct
-_Piavca.flagStruct_swigregister(flagStructPtr)
+    def __init__(self, *args): 
+        this = _Piavca.new_flagStruct(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _Piavca.delete_flagStruct
+    __del__ = lambda self : None;
+flagStruct_swigregister = _Piavca.flagStruct_swigregister
+flagStruct_swigregister(flagStruct)
 
 class AvatarTargetStruct(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, AvatarTargetStruct, name, value)
     __swig_getmethods__ = {}
     __getattr__ = lambda self, name: _swig_getattr(self, AvatarTargetStruct, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::AvatarTargetStruct instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
+    __repr__ = _swig_repr
     __swig_setmethods__["avatar"] = _Piavca.AvatarTargetStruct_avatar_set
     __swig_getmethods__["avatar"] = _Piavca.AvatarTargetStruct_avatar_get
     if _newclass:avatar = property(_Piavca.AvatarTargetStruct_avatar_get, _Piavca.AvatarTargetStruct_avatar_set)
@@ -1736,50 +1423,35 @@ class AvatarTargetStruct(_object):
     __swig_setmethods__["flags"] = _Piavca.AvatarTargetStruct_flags_set
     __swig_getmethods__["flags"] = _Piavca.AvatarTargetStruct_flags_get
     if _newclass:flags = property(_Piavca.AvatarTargetStruct_flags_get, _Piavca.AvatarTargetStruct_flags_set)
-    def __init__(self, *args):
-        _swig_setattr(self, AvatarTargetStruct, 'this', _Piavca.new_AvatarTargetStruct(*args))
-        _swig_setattr(self, AvatarTargetStruct, 'thisown', 1)
-    def __del__(self, destroy=_Piavca.delete_AvatarTargetStruct):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
-
-class AvatarTargetStructPtr(AvatarTargetStruct):
-    def __init__(self, this):
-        _swig_setattr(self, AvatarTargetStruct, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, AvatarTargetStruct, 'thisown', 0)
-        self.__class__ = AvatarTargetStruct
-_Piavca.AvatarTargetStruct_swigregister(AvatarTargetStructPtr)
+    def __init__(self, *args): 
+        this = _Piavca.new_AvatarTargetStruct(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _Piavca.delete_AvatarTargetStruct
+    __del__ = lambda self : None;
+AvatarTargetStruct_swigregister = _Piavca.AvatarTargetStruct_swigregister
+AvatarTargetStruct_swigregister(AvatarTargetStruct)
 
 class ObjectTargetStruct(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, ObjectTargetStruct, name, value)
     __swig_getmethods__ = {}
     __getattr__ = lambda self, name: _swig_getattr(self, ObjectTargetStruct, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::ObjectTargetStruct instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
+    __repr__ = _swig_repr
     __swig_setmethods__["object"] = _Piavca.ObjectTargetStruct_object_set
     __swig_getmethods__["object"] = _Piavca.ObjectTargetStruct_object_get
     if _newclass:object = property(_Piavca.ObjectTargetStruct_object_get, _Piavca.ObjectTargetStruct_object_set)
     __swig_setmethods__["flags"] = _Piavca.ObjectTargetStruct_flags_set
     __swig_getmethods__["flags"] = _Piavca.ObjectTargetStruct_flags_get
     if _newclass:flags = property(_Piavca.ObjectTargetStruct_flags_get, _Piavca.ObjectTargetStruct_flags_set)
-    def __init__(self, *args):
-        _swig_setattr(self, ObjectTargetStruct, 'this', _Piavca.new_ObjectTargetStruct(*args))
-        _swig_setattr(self, ObjectTargetStruct, 'thisown', 1)
-    def __del__(self, destroy=_Piavca.delete_ObjectTargetStruct):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
-
-class ObjectTargetStructPtr(ObjectTargetStruct):
-    def __init__(self, this):
-        _swig_setattr(self, ObjectTargetStruct, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, ObjectTargetStruct, 'thisown', 0)
-        self.__class__ = ObjectTargetStruct
-_Piavca.ObjectTargetStruct_swigregister(ObjectTargetStructPtr)
+    def __init__(self, *args): 
+        this = _Piavca.new_ObjectTargetStruct(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _Piavca.delete_ObjectTargetStruct
+    __del__ = lambda self : None;
+ObjectTargetStruct_swigregister = _Piavca.ObjectTargetStruct_swigregister
+ObjectTargetStruct_swigregister(ObjectTargetStruct)
 
 class RandomGazeMotion(LoopMotion):
     __swig_setmethods__ = {}
@@ -1788,20 +1460,17 @@ class RandomGazeMotion(LoopMotion):
     __swig_getmethods__ = {}
     for _s in [LoopMotion]: __swig_getmethods__.update(_s.__swig_getmethods__)
     __getattr__ = lambda self, name: _swig_getattr(self, RandomGazeMotion, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::RandomGazeMotion instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
-    def __init__(self, *args):
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
         if self.__class__ == RandomGazeMotion:
             args = (None,) + args
         else:
             args = (self,) + args
-        _swig_setattr(self, RandomGazeMotion, 'this', _Piavca.new_RandomGazeMotion(*args))
-        _swig_setattr(self, RandomGazeMotion, 'thisown', 1)
-    def __del__(self, destroy=_Piavca.delete_RandomGazeMotion):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
+        this = _Piavca.new_RandomGazeMotion(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _Piavca.delete_RandomGazeMotion
+    __del__ = lambda self : None;
     def clone(*args): return _Piavca.RandomGazeMotion_clone(*args)
     def clearDirectionTable(*args): return _Piavca.RandomGazeMotion_clearDirectionTable(*args)
     def addDirection(*args): return _Piavca.RandomGazeMotion_addDirection(*args)
@@ -1819,16 +1488,11 @@ class RandomGazeMotion(LoopMotion):
     def lookAt(*args): return _Piavca.RandomGazeMotion_lookAt(*args)
     def reblend(*args): return _Piavca.RandomGazeMotion_reblend(*args)
     def __disown__(self):
-        self.thisown = 0
+        self.this.disown()
         _Piavca.disown_RandomGazeMotion(self)
         return weakref_proxy(self)
-
-class RandomGazeMotionPtr(RandomGazeMotion):
-    def __init__(self, this):
-        _swig_setattr(self, RandomGazeMotion, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, RandomGazeMotion, 'thisown', 0)
-        self.__class__ = RandomGazeMotion
-_Piavca.RandomGazeMotion_swigregister(RandomGazeMotionPtr)
+RandomGazeMotion_swigregister = _Piavca.RandomGazeMotion_swigregister
+RandomGazeMotion_swigregister(RandomGazeMotion)
 
 class ZeroMotion(Motion):
     __swig_setmethods__ = {}
@@ -1837,15 +1501,15 @@ class ZeroMotion(Motion):
     __swig_getmethods__ = {}
     for _s in [Motion]: __swig_getmethods__.update(_s.__swig_getmethods__)
     __getattr__ = lambda self, name: _swig_getattr(self, ZeroMotion, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::ZeroMotion instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
-    def __init__(self, *args):
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
         if self.__class__ == ZeroMotion:
             args = (None,) + args
         else:
             args = (self,) + args
-        _swig_setattr(self, ZeroMotion, 'this', _Piavca.new_ZeroMotion(*args))
-        _swig_setattr(self, ZeroMotion, 'thisown', 1)
+        this = _Piavca.new_ZeroMotion(*args)
+        try: self.this.append(this)
+        except: self.this = this
     def clone(*args): return _Piavca.ZeroMotion_clone(*args)
     def isFacial(*args): return _Piavca.ZeroMotion_isFacial(*args)
     def isRandomAccess(*args): return _Piavca.ZeroMotion_isRandomAccess(*args)
@@ -1855,22 +1519,14 @@ class ZeroMotion(Motion):
     def getFloatValueAtTimeInternal(*args): return _Piavca.ZeroMotion_getFloatValueAtTimeInternal(*args)
     def getVecValueAtTimeInternal(*args): return _Piavca.ZeroMotion_getVecValueAtTimeInternal(*args)
     def getQuatValueAtTimeInternal(*args): return _Piavca.ZeroMotion_getQuatValueAtTimeInternal(*args)
-    def __del__(self, destroy=_Piavca.delete_ZeroMotion):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
+    __swig_destroy__ = _Piavca.delete_ZeroMotion
+    __del__ = lambda self : None;
     def __disown__(self):
-        self.thisown = 0
+        self.this.disown()
         _Piavca.disown_ZeroMotion(self)
         return weakref_proxy(self)
-
-class ZeroMotionPtr(ZeroMotion):
-    def __init__(self, this):
-        _swig_setattr(self, ZeroMotion, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, ZeroMotion, 'thisown', 0)
-        self.__class__ = ZeroMotion
-_Piavca.ZeroMotion_swigregister(ZeroMotionPtr)
+ZeroMotion_swigregister = _Piavca.ZeroMotion_swigregister
+ZeroMotion_swigregister(ZeroMotion)
 
 class MotionSaver(MotionFilter):
     __swig_setmethods__ = {}
@@ -1879,46 +1535,37 @@ class MotionSaver(MotionFilter):
     __swig_getmethods__ = {}
     for _s in [MotionFilter]: __swig_getmethods__.update(_s.__swig_getmethods__)
     __getattr__ = lambda self, name: _swig_getattr(self, MotionSaver, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::MotionSaver instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
-    def __init__(self, *args):
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
         if self.__class__ == MotionSaver:
             args = (None,) + args
         else:
             args = (self,) + args
-        _swig_setattr(self, MotionSaver, 'this', _Piavca.new_MotionSaver(*args))
-        _swig_setattr(self, MotionSaver, 'thisown', 1)
+        this = _Piavca.new_MotionSaver(*args)
+        try: self.this.append(this)
+        except: self.this = this
     def clone(*args): return _Piavca.MotionSaver_clone(*args)
     def getFloatValueAtTimeInternal(*args): return _Piavca.MotionSaver_getFloatValueAtTimeInternal(*args)
     def getVecValueAtTimeInternal(*args): return _Piavca.MotionSaver_getVecValueAtTimeInternal(*args)
     def getQuatValueAtTimeInternal(*args): return _Piavca.MotionSaver_getQuatValueAtTimeInternal(*args)
     def collectFrames(*args): return _Piavca.MotionSaver_collectFrames(*args)
     def save(*args): return _Piavca.MotionSaver_save(*args)
-    def __del__(self, destroy=_Piavca.delete_MotionSaver):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
+    __swig_destroy__ = _Piavca.delete_MotionSaver
+    __del__ = lambda self : None;
     def __disown__(self):
-        self.thisown = 0
+        self.this.disown()
         _Piavca.disown_MotionSaver(self)
         return weakref_proxy(self)
-
-class MotionSaverPtr(MotionSaver):
-    def __init__(self, this):
-        _swig_setattr(self, MotionSaver, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, MotionSaver, 'thisown', 0)
-        self.__class__ = MotionSaver
-_Piavca.MotionSaver_swigregister(MotionSaverPtr)
+MotionSaver_swigregister = _Piavca.MotionSaver_swigregister
+MotionSaver_swigregister(MotionSaver)
 
 class MotionParser(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, MotionParser, name, value)
     __swig_getmethods__ = {}
     __getattr__ = lambda self, name: _swig_getattr(self, MotionParser, name)
-    def __init__(self): raise RuntimeError, "No constructor defined"
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::MotionParser instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
+    def __init__(self): raise AttributeError, "No constructor defined"
+    __repr__ = _swig_repr
     def editMotion(*args): return _Piavca.MotionParser_editMotion(*args)
     def editAvatarMotion(*args): return _Piavca.MotionParser_editAvatarMotion(*args)
     __swig_getmethods__["parseMotion"] = lambda x: _Piavca.MotionParser_parseMotion
@@ -1929,25 +1576,13 @@ class MotionParser(_object):
     if _newclass:getMotionCommand = staticmethod(_Piavca.MotionParser_getMotionCommand)
     __swig_getmethods__["setUpMotionCommands"] = lambda x: _Piavca.MotionParser_setUpMotionCommands
     if _newclass:setUpMotionCommands = staticmethod(_Piavca.MotionParser_setUpMotionCommands)
-    def __del__(self, destroy=_Piavca.delete_MotionParser):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
-
-class MotionParserPtr(MotionParser):
-    def __init__(self, this):
-        _swig_setattr(self, MotionParser, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, MotionParser, 'thisown', 0)
-        self.__class__ = MotionParser
-_Piavca.MotionParser_swigregister(MotionParserPtr)
-
+    __swig_destroy__ = _Piavca.delete_MotionParser
+    __del__ = lambda self : None;
+MotionParser_swigregister = _Piavca.MotionParser_swigregister
+MotionParser_swigregister(MotionParser)
 MotionParser_parseMotion = _Piavca.MotionParser_parseMotion
-
 MotionParser_addMotionCommand = _Piavca.MotionParser_addMotionCommand
-
 MotionParser_getMotionCommand = _Piavca.MotionParser_getMotionCommand
-
 MotionParser_setUpMotionCommands = _Piavca.MotionParser_setUpMotionCommands
 
 class SubMotion(MotionFilter):
@@ -1957,15 +1592,15 @@ class SubMotion(MotionFilter):
     __swig_getmethods__ = {}
     for _s in [MotionFilter]: __swig_getmethods__.update(_s.__swig_getmethods__)
     __getattr__ = lambda self, name: _swig_getattr(self, SubMotion, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::SubMotion instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
-    def __init__(self, *args):
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
         if self.__class__ == SubMotion:
             args = (None,) + args
         else:
             args = (self,) + args
-        _swig_setattr(self, SubMotion, 'this', _Piavca.new_SubMotion(*args))
-        _swig_setattr(self, SubMotion, 'thisown', 1)
+        this = _Piavca.new_SubMotion(*args)
+        try: self.this.append(this)
+        except: self.this = this
     def clone(*args): return _Piavca.SubMotion_clone(*args)
     def getMotionLength(*args): return _Piavca.SubMotion_getMotionLength(*args)
     def setStart(*args): return _Piavca.SubMotion_setStart(*args)
@@ -1973,22 +1608,14 @@ class SubMotion(MotionFilter):
     def getFloatValueAtTimeInternal(*args): return _Piavca.SubMotion_getFloatValueAtTimeInternal(*args)
     def getVecValueAtTimeInternal(*args): return _Piavca.SubMotion_getVecValueAtTimeInternal(*args)
     def getQuatValueAtTimeInternal(*args): return _Piavca.SubMotion_getQuatValueAtTimeInternal(*args)
-    def __del__(self, destroy=_Piavca.delete_SubMotion):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
+    __swig_destroy__ = _Piavca.delete_SubMotion
+    __del__ = lambda self : None;
     def __disown__(self):
-        self.thisown = 0
+        self.this.disown()
         _Piavca.disown_SubMotion(self)
         return weakref_proxy(self)
-
-class SubMotionPtr(SubMotion):
-    def __init__(self, this):
-        _swig_setattr(self, SubMotion, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, SubMotion, 'thisown', 0)
-        self.__class__ = SubMotion
-_Piavca.SubMotion_swigregister(SubMotionPtr)
+SubMotion_swigregister = _Piavca.SubMotion_swigregister
+SubMotion_swigregister(SubMotion)
 
 class TimeRangeMotion(MotionFilter):
     __swig_setmethods__ = {}
@@ -1997,37 +1624,29 @@ class TimeRangeMotion(MotionFilter):
     __swig_getmethods__ = {}
     for _s in [MotionFilter]: __swig_getmethods__.update(_s.__swig_getmethods__)
     __getattr__ = lambda self, name: _swig_getattr(self, TimeRangeMotion, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::TimeRangeMotion instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
-    def __init__(self, *args):
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
         if self.__class__ == TimeRangeMotion:
             args = (None,) + args
         else:
             args = (self,) + args
-        _swig_setattr(self, TimeRangeMotion, 'this', _Piavca.new_TimeRangeMotion(*args))
-        _swig_setattr(self, TimeRangeMotion, 'thisown', 1)
+        this = _Piavca.new_TimeRangeMotion(*args)
+        try: self.this.append(this)
+        except: self.this = this
     def clone(*args): return _Piavca.TimeRangeMotion_clone(*args)
     def setStart(*args): return _Piavca.TimeRangeMotion_setStart(*args)
     def setEnd(*args): return _Piavca.TimeRangeMotion_setEnd(*args)
     def getFloatValueAtTimeInternal(*args): return _Piavca.TimeRangeMotion_getFloatValueAtTimeInternal(*args)
     def getVecValueAtTimeInternal(*args): return _Piavca.TimeRangeMotion_getVecValueAtTimeInternal(*args)
     def getQuatValueAtTimeInternal(*args): return _Piavca.TimeRangeMotion_getQuatValueAtTimeInternal(*args)
-    def __del__(self, destroy=_Piavca.delete_TimeRangeMotion):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
+    __swig_destroy__ = _Piavca.delete_TimeRangeMotion
+    __del__ = lambda self : None;
     def __disown__(self):
-        self.thisown = 0
+        self.this.disown()
         _Piavca.disown_TimeRangeMotion(self)
         return weakref_proxy(self)
-
-class TimeRangeMotionPtr(TimeRangeMotion):
-    def __init__(self, this):
-        _swig_setattr(self, TimeRangeMotion, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, TimeRangeMotion, 'thisown', 0)
-        self.__class__ = TimeRangeMotion
-_Piavca.TimeRangeMotion_swigregister(TimeRangeMotionPtr)
+TimeRangeMotion_swigregister = _Piavca.TimeRangeMotion_swigregister
+TimeRangeMotion_swigregister(TimeRangeMotion)
 
 class TimeWarp(MotionFilter):
     __swig_setmethods__ = {}
@@ -2036,37 +1655,29 @@ class TimeWarp(MotionFilter):
     __swig_getmethods__ = {}
     for _s in [MotionFilter]: __swig_getmethods__.update(_s.__swig_getmethods__)
     __getattr__ = lambda self, name: _swig_getattr(self, TimeWarp, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::TimeWarp instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
-    def __init__(self, *args):
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
         if self.__class__ == TimeWarp:
             args = (None,) + args
         else:
             args = (self,) + args
-        _swig_setattr(self, TimeWarp, 'this', _Piavca.new_TimeWarp(*args))
-        _swig_setattr(self, TimeWarp, 'thisown', 1)
+        this = _Piavca.new_TimeWarp(*args)
+        try: self.this.append(this)
+        except: self.this = this
     def clone(*args): return _Piavca.TimeWarp_clone(*args)
     def getMotionLength(*args): return _Piavca.TimeWarp_getMotionLength(*args)
     def getFloatValueAtTimeInternal(*args): return _Piavca.TimeWarp_getFloatValueAtTimeInternal(*args)
     def getVecValueAtTimeInternal(*args): return _Piavca.TimeWarp_getVecValueAtTimeInternal(*args)
     def getQuatValueAtTimeInternal(*args): return _Piavca.TimeWarp_getQuatValueAtTimeInternal(*args)
     def setWarp(*args): return _Piavca.TimeWarp_setWarp(*args)
-    def __del__(self, destroy=_Piavca.delete_TimeWarp):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
+    __swig_destroy__ = _Piavca.delete_TimeWarp
+    __del__ = lambda self : None;
     def __disown__(self):
-        self.thisown = 0
+        self.this.disown()
         _Piavca.disown_TimeWarp(self)
         return weakref_proxy(self)
-
-class TimeWarpPtr(TimeWarp):
-    def __init__(self, this):
-        _swig_setattr(self, TimeWarp, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, TimeWarp, 'thisown', 0)
-        self.__class__ = TimeWarp
-_Piavca.TimeWarp_swigregister(TimeWarpPtr)
+TimeWarp_swigregister = _Piavca.TimeWarp_swigregister
+TimeWarp_swigregister(TimeWarp)
 
 class DiadicGazeMotion(RandomGazeMotion):
     __swig_setmethods__ = {}
@@ -2075,23 +1686,20 @@ class DiadicGazeMotion(RandomGazeMotion):
     __swig_getmethods__ = {}
     for _s in [RandomGazeMotion]: __swig_getmethods__.update(_s.__swig_getmethods__)
     __getattr__ = lambda self, name: _swig_getattr(self, DiadicGazeMotion, name)
-    def __repr__(self):
-        return "<%s.%s; proxy of C++ Piavca::DiadicGazeMotion instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
+    __repr__ = _swig_repr
     talking = _Piavca.DiadicGazeMotion_talking
     listening = _Piavca.DiadicGazeMotion_listening
     neither = _Piavca.DiadicGazeMotion_neither
-    def __init__(self, *args):
+    def __init__(self, *args): 
         if self.__class__ == DiadicGazeMotion:
             args = (None,) + args
         else:
             args = (self,) + args
-        _swig_setattr(self, DiadicGazeMotion, 'this', _Piavca.new_DiadicGazeMotion(*args))
-        _swig_setattr(self, DiadicGazeMotion, 'thisown', 1)
-    def __del__(self, destroy=_Piavca.delete_DiadicGazeMotion):
-        try:
-            if self.thisown: destroy(self)
-        except: pass
-
+        this = _Piavca.new_DiadicGazeMotion(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _Piavca.delete_DiadicGazeMotion
+    __del__ = lambda self : None;
     def clone(*args): return _Piavca.DiadicGazeMotion_clone(*args)
     def setTalking(*args): return _Piavca.DiadicGazeMotion_setTalking(*args)
     def setTalkingLookAt(*args): return _Piavca.DiadicGazeMotion_setTalkingLookAt(*args)
@@ -2108,16 +1716,11 @@ class DiadicGazeMotion(RandomGazeMotion):
     def lookAt(*args): return _Piavca.DiadicGazeMotion_lookAt(*args)
     def reblend(*args): return _Piavca.DiadicGazeMotion_reblend(*args)
     def __disown__(self):
-        self.thisown = 0
+        self.this.disown()
         _Piavca.disown_DiadicGazeMotion(self)
         return weakref_proxy(self)
-
-class DiadicGazeMotionPtr(DiadicGazeMotion):
-    def __init__(self, this):
-        _swig_setattr(self, DiadicGazeMotion, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, DiadicGazeMotion, 'thisown', 0)
-        self.__class__ = DiadicGazeMotion
-_Piavca.DiadicGazeMotion_swigregister(DiadicGazeMotionPtr)
+DiadicGazeMotion_swigregister = _Piavca.DiadicGazeMotion_swigregister
+DiadicGazeMotion_swigregister(DiadicGazeMotion)
 
 
 

@@ -51,7 +51,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "PiavcaNVCLib/OnTheSpot.h"
 #include "PiavcaNVCLib/AvatarMotionQueue.h"
 
-#include "Python.h"
+//#include "Python.h"
 
 #include "PiavcaPythonInterface/PiavcaPythonApp.h"
 //#include "PiavcaPythonInterface/Piavca_wrap.h"
@@ -96,11 +96,11 @@ void timeStep()
 	catch (Piavca::Exception &e)
 	{
 	    std::cout << "Piavca Exception: " <<  e.getDetails() << std::endl;
-	    PyErr_Print();
+		Piavca::PrintPythonErrors();
 	}
 	catch (...)
 	{
-	    PyErr_Print();
+		Piavca::PrintPythonErrors();
 	}
 	    
     // update the screen
@@ -388,150 +388,160 @@ int main(int argc, char *argv[])
   std::ifstream file(jointsFilename.c_str(), std::ios::in );
   if(!file)
   {
-	  Piavca::Error("Failed to open joint names file '" 
-	  	+ jointsFilename + "'\n");
+	  std::cout << "Failed to open joint names file '" 
+	  	<< jointsFilename << "'\n";
   }
-
-  Piavca::StringVector jointVec;
-  std::string jointName;
-  while(true)
+  else
   {
-	// read the next model configuration line
-    std::string strBuffer;
-    std::getline(file, strBuffer);
+	  Piavca::StringVector jointVec;
+	  std::string jointName;
+	  while(true)
+	  {
+		// read the next model configuration line
+		std::string strBuffer;
+		std::getline(file, strBuffer);
 
-    // stop if we reached the end of file
-    if(file.eof()) 
-	{
-		Piavca::Core::getCore()->addJointNameSet(jointVec);
-		jointVec.clear();
-		break;
-	}
-
-    // check if an error happend while reading from the file
-    if(!file)
-    {
-		Piavca::Error("Error while reading from the joint names file");
-		return NULL;
-    }
-
-	// find the first non-whitespace character
-    std::string::size_type pos=0, new_pos;
-
-	while (true)
-	{
-		pos = strBuffer.find_first_not_of(" \t", pos);
-
-		// check for empty lines and comments
-		if((pos == std::string::npos) || (strBuffer[pos] == '\n') 
-			|| (strBuffer[pos] == '\r') || (strBuffer[pos] == 0)
-			|| strBuffer[pos] == '#') 
+		// stop if we reached the end of file
+		if(file.eof()) 
 		{
-			if(!jointVec.empty())
-			{
-				Piavca::Core::getCore()->addJointNameSet(jointVec);
-				jointVec.clear();
-			}
+			Piavca::Core::getCore()->addJointNameSet(jointVec);
+			jointVec.clear();
 			break;
 		}
 
-		
-		if(strBuffer[pos] == '\"')
+		// check if an error happend while reading from the file
+		if(!file)
 		{
-			pos++;
-			new_pos = strBuffer.find_first_of("\"", pos);
-			if(new_pos == std::string::npos)
-				Piavca::Error("Unmatched quotes in joint names file");
-			jointName = strBuffer.substr(pos, new_pos - pos);
-			pos = new_pos+1;
+			Piavca::Error("Error while reading from the joint names file");
+			return NULL;
 		}
-		else
-		{
-			new_pos = strBuffer.find_first_of(" =\t\n\r", pos);
-			jointName = strBuffer.substr(pos, new_pos - pos);
-			pos = new_pos;
-		}
-		jointVec.push_back(StringToTString(jointName));
-		std::cout << jointName << "; ";
-		
-	}
-  };
-  std::cout << std::endl;
 
+		// find the first non-whitespace character
+		std::string::size_type pos=0, new_pos;
+
+		while (true)
+		{
+			pos = strBuffer.find_first_not_of(" \t", pos);
+
+			// check for empty lines and comments
+			if((pos == std::string::npos) || (strBuffer[pos] == '\n') 
+				|| (strBuffer[pos] == '\r') || (strBuffer[pos] == 0)
+				|| strBuffer[pos] == '#') 
+			{
+				if(!jointVec.empty())
+				{
+					Piavca::Core::getCore()->addJointNameSet(jointVec);
+					jointVec.clear();
+				}
+				break;
+			}
+
+			
+			if(strBuffer[pos] == '\"')
+			{
+				pos++;
+				new_pos = strBuffer.find_first_of("\"", pos);
+				if(new_pos == std::string::npos)
+					Piavca::Error("Unmatched quotes in joint names file");
+				jointName = strBuffer.substr(pos, new_pos - pos);
+				pos = new_pos+1;
+			}
+			else
+			{
+				new_pos = strBuffer.find_first_of(" =\t\n\r", pos);
+				jointName = strBuffer.substr(pos, new_pos - pos);
+				pos = new_pos;
+			}
+			jointVec.push_back(StringToTString(jointName));
+			std::cout << jointName << "; ";
+			
+		}
+	  };
+	  std::cout << std::endl;
+  }
 
   std::string expressionFilename = path + "ExpressionNames.txt";
   std::ifstream expressionFile(expressionFilename.c_str(), std::ios::in );
   if(!expressionFile)
   {
-	  Piavca::Error("Failed to open expression names file '" );
+	  std::cout << "Failed to open expression names file '" << expressionFilename << std::endl;
   }
-
-  Piavca::StringVector expressionVec;
-  std::string expressionName;
-  while(true)
+  else
   {
-	// read the next model configuration line
-    std::string strBuffer;
-    std::getline(expressionFile, strBuffer);
+	  Piavca::StringVector expressionVec;
+	  std::string expressionName;
+	  while(true)
+	  {
+		// read the next model configuration line
+		std::string strBuffer;
+		std::getline(expressionFile, strBuffer);
 
-    // stop if we reached the end of file
-    if(expressionFile.eof()) 
-	{
-		Piavca::Core::getCore()->addExpressionNameSet(expressionVec);
-		expressionVec.clear();
-		break;
-	}
-
-    // check if an error happend while reading from the file
-    if(!expressionFile)
-    {
-		Piavca::Error("Error while reading from the expression names file");
-		return NULL;
-    }
-
-	// find the first non-whitespace character
-    std::string::size_type pos=0, new_pos;
-
-	while (true)
-	{
-		pos = strBuffer.find_first_not_of(" \t", pos);
-
-		// check for empty lines and comments
-		if((pos == std::string::npos) || (strBuffer[pos] == '\n') 
-			|| (strBuffer[pos] == '\r') || (strBuffer[pos] == 0)
-			|| strBuffer[pos] == '#') 
+		// stop if we reached the end of file
+		if(expressionFile.eof()) 
 		{
-			if(!jointVec.empty())
-			{
-				Piavca::Core::getCore()->addExpressionNameSet(expressionVec);
-				expressionVec.clear();
-			}
+			Piavca::Core::getCore()->addExpressionNameSet(expressionVec);
+			expressionVec.clear();
 			break;
 		}
 
-		
-		if(strBuffer[pos] == '\"')
+		// check if an error happend while reading from the file
+		if(!expressionFile)
 		{
-			pos++;
-			new_pos = strBuffer.find_first_of("\"", pos);
-			if(new_pos == std::string::npos)
-				Piavca::Error("Unmatched quotes in expression names file");
-			expressionName = strBuffer.substr(pos, new_pos - pos);
-			pos = new_pos+1;
+			Piavca::Error("Error while reading from the expression names file");
+			return NULL;
 		}
-		else
-		{
-			new_pos = strBuffer.find_first_of(" =\t\n\r", pos);
-			expressionName = strBuffer.substr(pos, new_pos - pos);
-			pos = new_pos;
-		}
-		expressionVec.push_back(StringToTString(expressionName));
-		std::cout << expressionName << "; ";
-		
-	}
-  };
-  std::cout << std::endl;
 
+		// find the first non-whitespace character
+		std::string::size_type pos=0, new_pos;
+
+		while (true)
+		{
+			pos = strBuffer.find_first_not_of(" \t", pos);
+
+			// check for empty lines and comments
+			if((pos == std::string::npos) || (strBuffer[pos] == '\n') 
+				|| (strBuffer[pos] == '\r') || (strBuffer[pos] == 0)
+				|| strBuffer[pos] == '#') 
+			{
+				if(!expressionVec.empty())
+				{
+					Piavca::Core::getCore()->addExpressionNameSet(expressionVec);
+					expressionVec.clear();
+				}
+				break;
+			}
+
+			
+			if(strBuffer[pos] == '\"')
+			{
+				pos++;
+				new_pos = strBuffer.find_first_of("\"", pos);
+				if(new_pos == std::string::npos)
+					Piavca::Error("Unmatched quotes in expression names file");
+				expressionName = strBuffer.substr(pos, new_pos - pos);
+				pos = new_pos+1;
+			}
+			else
+			{
+				new_pos = strBuffer.find_first_of(" =\t\n\r", pos);
+				expressionName = strBuffer.substr(pos, new_pos - pos);
+				pos = new_pos;
+			}
+			expressionVec.push_back(StringToTString(expressionName));
+			std::cout << expressionName << "; ";
+			
+		}
+	  };
+	  std::cout << std::endl;
+  }
+
+  ////////////////////////////////////////////////////////////////////////
+  //
+  // In this demo app we setting up piavca by running a python script
+  // if you want to just use C++ the code below gives an example of how
+  // you might create an avatar, load and play some motions
+  //
+  ////////////////////////////////////////////////////////////////////////
 
   //std::string avatarFilename = "cally";
   //Piavca::Avatar *av = new Piavca::Avatar(avatarFilename);

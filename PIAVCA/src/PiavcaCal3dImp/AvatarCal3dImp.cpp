@@ -76,7 +76,6 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 		updateBuffer = 1;
 	}
 
-	joints.assign(Piavca::Core::getCore()->getMaxJointId()+1, JointHolder());
 	expressions.assign(Piavca::Core::getCore()->getMaxExpressionId()+1, FacialExpressionHolder());
   
     // open the model configuration file
@@ -163,6 +162,22 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 				CalError::printLastError();
 				Piavca::Error(_T("Error loading skeleton"));
 			}
+			CalCoreSkeleton *skel = cal_core_model->getCoreSkeleton();
+			// if there are any joints in the Cal3d Skeleton that don't already exist in 
+			// Piavca add them
+			std::vector<CalCoreBone *>& bones = skel->getVectorCoreBone();
+			for(int i = 0; i < (int) bones.size(); i++)
+			{
+				int jointid = Piavca::Core::getCore()->getJointId(StringToTString(bones[i]->getName()));
+				if (jointid < 0)
+				{
+					StringVector jointNames;
+					jointNames.push_back(StringToTString(bones[i]->getName()));
+					std::cout << "Adding Joint "<< bones[i]->getName() << std::endl;
+					Piavca::Core::getCore()->addJointNameSet(jointNames);
+				}	
+			}
+			joints.assign(Piavca::Core::getCore()->getMaxJointId()+1, JointHolder());
 		}
 		else if(strKey == "mesh")
 		{

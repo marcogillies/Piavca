@@ -45,6 +45,7 @@ namespace Piavca
 {
 
 void InitPiavcaPython(Piavca::Core *core, tstring fileName);
+void PrintPythonErrors();
 void RunPythonMethod(Piavca::Core *core, char *methodName);
 void EndPiavcaPython(Piavca::Core *core);
 

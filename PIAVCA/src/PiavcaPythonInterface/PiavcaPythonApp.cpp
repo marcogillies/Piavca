@@ -294,6 +294,11 @@ PIAVCA_EXPORT void PyAvatarTimeCallback::timeStep(Avatar *avatar, float time)
 }; 
 
 
+void Piavca::PrintPythonErrors()
+{
+	PyErr_Print();
+}
+
 void Piavca::InitPiavcaPython(Piavca::Core *core, tstring fileName)
 { 
 	PyObject *pyInitMethod, *pyArgs;
