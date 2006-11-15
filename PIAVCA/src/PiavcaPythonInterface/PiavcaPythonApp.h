@@ -37,17 +37,37 @@
 #ifndef PIAVCA_PYTHON_APP
 #define PIAVCA_PYTHON_APP
 
+typedef struct _object PyObject;
+
 //#include <Python.h>
 
 #include "PiavcaAPI/PiavcaCore.h"
 
+
 namespace Piavca
 {
-
+//! Initialise the Python bindings and load the python module in filename
 void InitPiavcaPython(Piavca::Core *core, tstring fileName);
-void PrintPythonErrors();
-void RunPythonMethod(Piavca::Core *core, char *methodName);
+//! Close down the Python bindings
 void EndPiavcaPython(Piavca::Core *core);
+
+//! print out any outstanding python errors
+void PrintPythonErrors();
+
+//! Run a method from the loaded python module (no arguments)
+void RunPythonMethod(Piavca::Core *core, char *methodName);
+//! Run a method from the loaded python module (integer argument)
+void RunPythonMethod(Piavca::Core *core, char *methodName, int arg);
+//! Run a method from the loaded python module (float argument)
+void RunPythonMethod(Piavca::Core *core, char *methodName, float arg);
+//! Run a method from the loaded python module (string argument)
+void RunPythonMethod(Piavca::Core *core, char *methodName, std::string arg);
+//! Run a method from the loaded python module with an arbitrary python object as an argument
+/*!
+ *	This can be used for passing arbitrary arguments by creating the
+ *  argument with Py_BuildValue.
+ */
+void RunPythonMethod(Piavca::Core *core, char *methodName, PyObject *arg);
 
 };
 

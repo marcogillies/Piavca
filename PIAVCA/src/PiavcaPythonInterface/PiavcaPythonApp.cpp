@@ -72,6 +72,7 @@ extern "C"
 };
 //#undef _DEBUG
 
+#include "PiavcaPythonApp.h"
 
 #include <Python.h>
 
@@ -79,7 +80,6 @@ extern "C"
 #include "PiavcaAPI/Avatar.h"
 #include "PiavcaAPI/TimeCallback.h"
 #include "PiavcaAPI/PiavcaError.h"
-#include "PiavcaPythonApp.h"
 #include "PyTimeCallback.h"
 //#include "PlatformDefs.h"
 
@@ -449,10 +449,34 @@ void Piavca::InitPiavcaPython(Piavca::Core *core, tstring fileName)
 
 void Piavca::RunPythonMethod(Piavca::Core *core, char *methodName)
 {
+	PyObject *pyArgs = Py_BuildValue("()");
+	RunPythonMethod(core, methodName, pyArgs);
+};
+
+void Piavca::RunPythonMethod(Piavca::Core *core, char *methodName, int arg)
+{
+	PyObject *pyArgs = Py_BuildValue("i", arg);
+	RunPythonMethod(core, methodName, pyArgs);
+};
+
+void Piavca::RunPythonMethod(Piavca::Core *core, char *methodName, float arg)
+{
+	PyObject *pyArgs = Py_BuildValue("f", arg);
+	RunPythonMethod(core, methodName, pyArgs);
+};
+
+void Piavca::RunPythonMethod(Piavca::Core *core, char *methodName, std::string arg)
+{
+	PyObject *pyArgs = Py_BuildValue("s#", arg.c_str(), arg.length());
+	RunPythonMethod(core, methodName, pyArgs);
+};
+
+
+void Piavca::RunPythonMethod(Piavca::Core *core, char *methodName, PyObject *pyArgs)
+{
 	PyObject *pyMethod = PyObject_GetAttrString(g_pPyMod, methodName);
 	if(pyMethod)
 	{
-		PyObject *pyArgs = Py_BuildValue("()");
 		PyEval_CallObject(pyMethod, pyArgs);
 		if(PyErr_Occurred())
 		{
