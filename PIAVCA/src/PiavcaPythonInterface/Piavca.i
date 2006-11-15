@@ -245,6 +245,7 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %ignore operator<<;
 %ignore operator>>;
 
+
 %include "PiavcaAPI/Vec.h"
 
 %extend Piavca::Vec {
@@ -363,6 +364,8 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %feature("director") TimeCallback;    
 %feature("director") AvatarTimeCallback;    
 
+
+%include "piavca_doc.i"
 
 %include "PiavcaAPI/TimeCallback.h"
 %include "PiavcaCore.i"
