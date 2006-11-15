@@ -4,10 +4,8 @@
 	Version="7.10"
 	Name="Standard Motion Implementation"
 	ProjectGUID="{E2404604-543C-4863-BF9D-BE3E995DF4E4}"
-	SccProjectName="SAK"
-	SccAuxPath="SAK"
-	SccLocalPath="SAK"
-	SccProvider="SAK"
+	SccProjectName=""
+	SccLocalPath=""
 	Keyword="Win32Proj">
 	<Platforms>
 		<Platform

@@ -4,10 +4,8 @@
 	Version="7.10"
 	Name="PiavcaPythonInterface"
 	ProjectGUID="{9BE2E296-9B8C-4972-B627-06F7A635204C}"
-	SccProjectName="SAK"
-	SccAuxPath="SAK"
-	SccLocalPath="SAK"
-	SccProvider="SAK"
+	SccProjectName=""
+	SccLocalPath=""
 	Keyword="Win32Proj">
 	<Platforms>
 		<Platform

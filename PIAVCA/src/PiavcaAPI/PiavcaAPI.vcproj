@@ -4,10 +4,8 @@
 	Version="7.10"
 	Name="PiavcaAPI"
 	ProjectGUID="{7E061BC4-F08C-40F0-8A91-8CAFD582054D}"
-	SccProjectName="&quot;$/PIAVCA&quot;, DPDAAAAA"
-	SccAuxPath=""
-	SccLocalPath=".."
-	SccProvider="MSSCCI:Microsoft Visual SourceSafe"
+	SccProjectName=""
+	SccLocalPath=""
 	Keyword="Win32Proj">
 	<Platforms>
 		<Platform
