@@ -202,7 +202,7 @@
 				RelativePath=".\bvhParser.tab.cpp">
 			</File>
 			<File
-				RelativePath="StdMotionCore.cpp">
+				RelativePath=".\StdMotionCore.cpp">
 			</File>
 			<File
 				RelativePath="StdMotionImp.cpp">
