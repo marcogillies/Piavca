@@ -19,11 +19,11 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\;..\..\..\cal3d-0.10.0\src\"
-				PreprocessorDefinitions="WIN32;_DEBUG;_LIB"
+				AdditionalIncludeDirectories="..\;$(CAL3DDIR)\src\;..\..\..\cal3d-0.10.0\src\"
+				PreprocessorDefinitions="WIN32;_LIB"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="3"
+				RuntimeLibrary="2"
 				RuntimeTypeInfo="TRUE"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
@@ -34,8 +34,9 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLibrarianTool"
+				AdditionalDependencies="cal3d.lib"
 				OutputFile="$(OutDir)/PiavcaCal3DImp.lib"
-				AdditionalLibraryDirectories="..\..\..\cal3d-0.10.0\bin\debug"/>
+				AdditionalLibraryDirectories="$(CAL3DDIR)\bin\release;..\..\..\cal3d-0.10.0\bin\release"/>
 			<Tool
 				Name="VCMIDLTool"/>
 			<Tool
@@ -63,21 +64,24 @@
 			CharacterSet="2">
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\;..\..\..\cal3d-0.10.0\src\"
+				GlobalOptimizations="TRUE"
+				InlineFunctionExpansion="2"
+				OmitFramePointers="TRUE"
+				AdditionalIncludeDirectories="..\;$(CAL3DDIR)\src\;..\..\..\cal3d-0.10.0\src\"
 				PreprocessorDefinitions="WIN32;NDEBUG;_LIB"
 				RuntimeLibrary="2"
 				RuntimeTypeInfo="TRUE"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="TRUE"
-				DebugInformationFormat="3"/>
+				DebugInformationFormat="0"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLibrarianTool"
 				AdditionalDependencies="cal3d.lib"
 				OutputFile="$(OutDir)/PiavcaCal3DImp.lib"
-				AdditionalLibraryDirectories="..\..\..\cal3d-0.10.0\bin\release"/>
+				AdditionalLibraryDirectories="$(CAL3DDIR)\bin\release;..\..\..\cal3d-0.10.0\bin\release"/>
 			<Tool
 				Name="VCMIDLTool"/>
 			<Tool

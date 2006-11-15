@@ -20,10 +20,10 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\;..\..\..\cal3d-0.10.0\src\;c:\Python24\PC\"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;XVR2PIAVCA_EXPORTS"
+				PreprocessorDefinitions="WIN32;_WINDOWS;_USRDLL;XVR2PIAVCA_EXPORTS"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="3"
+				RuntimeLibrary="2"
 				RuntimeTypeInfo="TRUE"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
@@ -72,7 +72,10 @@
 			CharacterSet="2">
 			<Tool
 				Name="VCCLCompilerTool"
-				Optimization="0"
+				Optimization="2"
+				GlobalOptimizations="TRUE"
+				InlineFunctionExpansion="2"
+				OmitFramePointers="TRUE"
 				AdditionalIncludeDirectories="..\;..\..\..\cal3d-0.10.0\src\;c:\Python24\PC\"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;XVR2PIAVCA_EXPORTS"
 				RuntimeLibrary="2"
@@ -80,7 +83,7 @@
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="TRUE"
-				DebugInformationFormat="3"/>
+				DebugInformationFormat="0"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool

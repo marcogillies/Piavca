@@ -24,10 +24,10 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\"
-				PreprocessorDefinitions="WIN32;_DEBUG;_LIB"
+				PreprocessorDefinitions="WIN32;_LIB"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="3"
+				RuntimeLibrary="2"
 				RuntimeTypeInfo="TRUE"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
@@ -67,6 +67,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="2"
+				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="1"
 				OmitFramePointers="TRUE"
 				AdditionalIncludeDirectories="..\"
@@ -78,7 +79,7 @@
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="TRUE"
-				DebugInformationFormat="3"/>
+				DebugInformationFormat="0"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
@@ -116,7 +117,7 @@
 				PreprocessorDefinitions="WIN32;_DEBUG;_LIB"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="3"
+				RuntimeLibrary="2"
 				RuntimeTypeInfo="TRUE"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
@@ -159,7 +160,7 @@
 				PreprocessorDefinitions="WIN32;_DEBUG;_LIB"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="3"
+				RuntimeLibrary="2"
 				RuntimeTypeInfo="TRUE"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
@@ -235,7 +236,8 @@
 		<File
 			RelativePath="bvhLexer.lpp">
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				ExcludedFromBuild="TRUE">
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="running flex"
@@ -254,7 +256,8 @@
 					Outputs=" $(ProjectDir)bvhLexer.cpp"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="C Only Debug|Win32">
+				Name="C Only Debug|Win32"
+				ExcludedFromBuild="TRUE">
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="running flex"
@@ -263,7 +266,8 @@
 					Outputs=" $(ProjectDir)bvhLexer.cpp"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="Dive Debug|Win32">
+				Name="Dive Debug|Win32"
+				ExcludedFromBuild="TRUE">
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="running flex"
@@ -275,7 +279,8 @@
 		<File
 			RelativePath="bvhParser.ypp">
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				ExcludedFromBuild="TRUE">
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="running bison"
@@ -294,7 +299,8 @@
 					Outputs="&quot;$(ProjectDir)bvhParser.tab.cpp&quot;;&quot;$(ProjectDir)bvhParser.tab.hpp&quot;"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="C Only Debug|Win32">
+				Name="C Only Debug|Win32"
+				ExcludedFromBuild="TRUE">
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="running bison"
@@ -303,7 +309,8 @@
 					Outputs="&quot;$(ProjectDir)bvhParser_tab.cpp&quot;;&quot;$(ProjectDir)bvhParser_tab.h&quot;"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="Dive Debug|Win32">
+				Name="Dive Debug|Win32"
+				ExcludedFromBuild="TRUE">
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="running bison"

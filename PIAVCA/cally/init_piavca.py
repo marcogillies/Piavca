@@ -1,41 +1,36 @@
-# File: hello1.py
-
-print "hello world"
-
+# make sure we can find the piavca modules
 import sys
 
 sys.path.append("../src/PiavcaPythonInterface/")
 sys.path.append("../Python/")
-
 print sys.path
 
+# load piavca (This loads a python wrapper module which in turn loads the C++ code)
 import Piavca
-
-#sys.path.append("../../ExponentialMap/")
-#import ExpMapTest
 
 # hack to make TK work, it expects the name of the app to be
 # in sys.argv[0] but argv is not set up if python is run from
 # within a windows app as it is here
 sys.argv = ['Piavca']
 
+# but we're not actually using tk in this example
 #from Tkinter import *
 
-
-
+# create an avatar, this loads cally.cfg
 cally = Piavca.Avatar("cally")
+# position and rotate the avatar
 cally.setRootPosition(Piavca.Vec(0.0, 250.0, -200))
 cally.setRootOrientation(Piavca.Quat(Piavca.degToRad(-90), Piavca.Vec(0, 0, 1)))
-#sally = Piavca.Avatar("sally")
-#sally.setRootPosition(Piavca.Vec(40.0, 0, 0))
-#sally.setRootOrientation(Piavca.Quat(Piavca.degToRad(-45), Piavca.Vec(0, 0, 1)))
+# we could also change her facial expression
 #avatar.setFacialExpressionWeight("smile", 1.0)
 
+# we could load a motion from bvh or piavca's own .paf file but we don't
 #mot = Piavca.Core.getCore().loadMotion("walk", "walk_cycle.bvh")
-
 #mot = Piavca.Core.getCore().loadMotion("testmot", "output.paf")
 #avatar.play_motion(mot)
 
+# we could build up motion out of piavca's various motion operators
+# the base gesture[1-4] motions are cal3d animations loaded as part of cally.cfg
 #random_gesture = Piavca.RandomBlendLoop(-1, 2.0)
 #random_gesture.addMotion(Piavca.ScaleMotionSpeed(Piavca.Core.getCore().getMotion("gesture1"), 2.0))
 #random_gesture.addMotion(Piavca.ScaleMotionSpeed(Piavca.Core.getCore().getMotion("gesture2"), 2.0))
@@ -54,61 +49,14 @@ cally.setRootOrientation(Piavca.Quat(Piavca.degToRad(-90), Piavca.Vec(0, 0, 1)))
 #mot2 = Piavca.ScaleMotionRoot(mot, 0.0025)
 #mot3 = Piavca.ScaleMotionSpeed(mot2, 2.0)
 #mot4 = Piavca.LoopMotion(mot3)
-#saver = Piavca.MotionSaver(mot4)
 
+#avatar.play_motion(Piavca.AddMotion(randomgesture, mot4)
 
+#what we actually do is load the MotionFile module  (an auxilliary module written in Python)
+# This loads in motion descriptions form a standard Piavca file format
 import MotionFile
-
+# load in the motion descriptions from file
 MotionFile.readMotionFile("motions.conf")
 
-#cally.play_motion(Piavca.LoopMotion(Piavca.Core.getCore().getMotion("nod")))
-#cally.play_motion(Piavca.Core.getCore().getMotion("gethit"))
-
-#def PlayMotion ():
+# play one of the motions defined in the file
 cally.play_motion(Piavca.Core.getCore().getMotion("gestures"))
-
-#sally.play_motion(random_gesture)
-#avatar.play_motion(saver)
-
-print "finished adding motion"
-
-#avatar.play_motion(Piavca.Core.getCore().getMotion("Cally_rest"))
-
-#avatar.playMotionDirect(mot)
-
-#import idlelib.PyShell
-
-#idlelib.PyShell.main()
-
-#from Tkinter import *
-
-#avatar.registerCallback(Piavca.PyAvatarTimeCallback(testCallback, "test"))
-
-#root = Tk()
-
-#w = Label(root, text="Hello, world!")
-#w.pack()
-
-#def save():
-#	print "saving"
-#	saver.save("output.paf")
-
-#b = Button(root, text="save", command=save)
-#b.pack()
-
-#class testCallback:
-#	def __init__(self, Widget):
-#		self.Widget = Widget
-#	def callbackInit(self, core):
-#		self.Widget.update()
-#		print "starting callback"
-#	def callbackMethod(self, core, time):
-#		#print "in callback"
-#		self.Widget.update()
-
-	
-#cb = Piavca.PyTimeCallback(testCallback(root), "test")
-#cb.thisown = 0
-#Piavca.Core.getCore().registerCallback(cb)
-
-#root.mainloop()

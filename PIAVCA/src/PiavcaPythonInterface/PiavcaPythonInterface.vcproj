@@ -24,17 +24,18 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories="..\"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;UCLAVATARPYTHONINTERFACE_EXPORTS;NO_DEMEANOUR;NO_CONSOLE_PRESENT"
+				AdditionalIncludeDirectories="..\;$(PYTHONDIR)\include;c:\Python25\include;c:\Python24\include;c:\Python23\include"
+				PreprocessorDefinitions="WIN32;_WINDOWS;_USRDLL;UCLAVATARPYTHONINTERFACE_EXPORTS;NO_DEMEANOUR;CONSOLE_PRESENT"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="3"
+				RuntimeLibrary="2"
 				RuntimeTypeInfo="TRUE"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="TRUE"
 				DebugInformationFormat="3"
-				DisableSpecificWarnings="4251 /wd4312 /wd4244 /wd4311 /wd4800"/>
+				DisableSpecificWarnings="4251 /wd4312 /wd4244 /wd4311 /wd4800"
+				UndefinePreprocessorDefinitions="_DEBUG"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
@@ -68,9 +69,10 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="2"
+				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="1"
 				OmitFramePointers="TRUE"
-				AdditionalIncludeDirectories="..\"
+				AdditionalIncludeDirectories="..\;$(PYTHONDIR)\include;c:\Python25\include;c:\Python24\include;c:\Python23\include"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOW;_USRDLL;UCLAVATARPYTHONINTERFACE_EXPORTS;CONSOLE_PRESENT"
 				StringPooling="TRUE"
 				RuntimeLibrary="2"
@@ -79,13 +81,12 @@
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="TRUE"
-				DebugInformationFormat="3"/>
+				DebugInformationFormat="0"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLibrarianTool"
-				AdditionalDependencies="Python24.lib"
-				AdditionalLibraryDirectories="d:\Python24\libs"/>
+				AdditionalLibraryDirectories=""/>
 			<Tool
 				Name="VCMIDLTool"/>
 			<Tool
@@ -114,11 +115,11 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\"
+				AdditionalIncludeDirectories="..\;$(PYTHONDIR)\include;c:\Python25\include;c:\Python24\include;c:\Python23\include"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;UCLAVATARPYTHONINTERFACE_EXPORTS"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="3"
+				RuntimeLibrary="2"
 				RuntimeTypeInfo="TRUE"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
@@ -157,11 +158,11 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories="..\"
+				AdditionalIncludeDirectories="..\;$(PYTHONDIR)\include;c:\Python25\include;c:\Python24\include;c:\Python23\include"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;UCLAVATARPYTHONINTERFACE_EXPORTS;NO_DEMEANOUR;CONSOLE_PRESENT"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="0"
+				RuntimeLibrary="2"
 				RuntimeTypeInfo="TRUE"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
@@ -230,7 +231,8 @@
 		<File
 			RelativePath="Piavca.i">
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				ExcludedFromBuild="TRUE">
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Running Swig"
@@ -239,7 +241,8 @@
 					Outputs=" $(ProjectDir)$(InputName)_wrap.cpp"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="Release|Win32">
+				Name="Release|Win32"
+				ExcludedFromBuild="TRUE">
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="running swig"
@@ -248,7 +251,8 @@
 					Outputs=" $(ProjectDir)$(InputName)_wrap.cpp"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="C Only Debug|Win32">
+				Name="C Only Debug|Win32"
+				ExcludedFromBuild="TRUE">
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Running Swig"
@@ -257,7 +261,8 @@
 					Outputs=" $(ProjectDir)$(InputName)_wrap.cpp"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="Dive Debug|Win32">
+				Name="Dive Debug|Win32"
+				ExcludedFromBuild="TRUE">
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Running Swig"

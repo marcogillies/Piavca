@@ -23,14 +23,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PiavcaNVCLib", "src\PiavcaN
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PiavcaOpenSGImp", "src\PiavcaOpenSGImp\PiavcaOpenSGImp.vcproj", "{E53AF870-A613-4C4A-A72C-AB798F7D7232}"
-	ProjectSection(ProjectDependencies) = postProject
-	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PiavcaOpenSGApp", "src\PiavcaOpenSGApp\PiavcaOpenSGApp.vcproj", "{999A9F71-19A9-4ED9-A74F-4417BAC6C3A7}"
-	ProjectSection(ProjectDependencies) = postProject
-	EndProjectSection
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XVR2Piavca", "src\XVR2Piavca\XVR2Piavca.vcproj", "{009DF2D1-CCA3-466D-8D2E-DFECF5D50D76}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
@@ -91,22 +83,6 @@ Global
 		{2BE89BA3-3998-4AEC-9426-C6EFB71E0C9E}.Dive Debug.Build.0 = Debug|Win32
 		{2BE89BA3-3998-4AEC-9426-C6EFB71E0C9E}.Release.ActiveCfg = Release|Win32
 		{2BE89BA3-3998-4AEC-9426-C6EFB71E0C9E}.Release.Build.0 = Release|Win32
-		{E53AF870-A613-4C4A-A72C-AB798F7D7232}.C Only Debug.ActiveCfg = Debug|Win32
-		{E53AF870-A613-4C4A-A72C-AB798F7D7232}.C Only Debug.Build.0 = Debug|Win32
-		{E53AF870-A613-4C4A-A72C-AB798F7D7232}.Debug.ActiveCfg = Debug|Win32
-		{E53AF870-A613-4C4A-A72C-AB798F7D7232}.Debug.Build.0 = Debug|Win32
-		{E53AF870-A613-4C4A-A72C-AB798F7D7232}.Dive Debug.ActiveCfg = Debug|Win32
-		{E53AF870-A613-4C4A-A72C-AB798F7D7232}.Dive Debug.Build.0 = Debug|Win32
-		{E53AF870-A613-4C4A-A72C-AB798F7D7232}.Release.ActiveCfg = Release|Win32
-		{E53AF870-A613-4C4A-A72C-AB798F7D7232}.Release.Build.0 = Release|Win32
-		{999A9F71-19A9-4ED9-A74F-4417BAC6C3A7}.C Only Debug.ActiveCfg = Debug|Win32
-		{999A9F71-19A9-4ED9-A74F-4417BAC6C3A7}.C Only Debug.Build.0 = Debug|Win32
-		{999A9F71-19A9-4ED9-A74F-4417BAC6C3A7}.Debug.ActiveCfg = Debug|Win32
-		{999A9F71-19A9-4ED9-A74F-4417BAC6C3A7}.Debug.Build.0 = Debug|Win32
-		{999A9F71-19A9-4ED9-A74F-4417BAC6C3A7}.Dive Debug.ActiveCfg = Debug|Win32
-		{999A9F71-19A9-4ED9-A74F-4417BAC6C3A7}.Dive Debug.Build.0 = Debug|Win32
-		{999A9F71-19A9-4ED9-A74F-4417BAC6C3A7}.Release.ActiveCfg = Release|Win32
-		{999A9F71-19A9-4ED9-A74F-4417BAC6C3A7}.Release.Build.0 = Release|Win32
 		{009DF2D1-CCA3-466D-8D2E-DFECF5D50D76}.C Only Debug.ActiveCfg = Debug|Win32
 		{009DF2D1-CCA3-466D-8D2E-DFECF5D50D76}.C Only Debug.Build.0 = Debug|Win32
 		{009DF2D1-CCA3-466D-8D2E-DFECF5D50D76}.Debug.ActiveCfg = Debug|Win32

@@ -22,10 +22,10 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\;..\..\..\cal3d-0.10.0\src\"
-				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
+				AdditionalIncludeDirectories="..\;$(CAL3DDIR)\src\;..\..\..\cal3d-0.10.0\src\"
+				PreprocessorDefinitions="WIN32;_CONSOLE"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="3"
+				RuntimeLibrary="2"
 				RuntimeTypeInfo="TRUE"
 				PrecompiledHeaderFile=".\Debug/cal3d_miniviewer.pch"
 				AssemblerListingLocation=".\Debug/"
@@ -40,11 +40,11 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="glut32.lib glu32.lib opengl32.lib odbc32.lib odbccp32.lib cal3d_d.lib"
+				AdditionalDependencies="glut32.lib glu32.lib opengl32.lib odbc32.lib odbccp32.lib"
 				OutputFile="PiavcaCal3dApp.exe"
 				LinkIncremental="2"
 				SuppressStartupBanner="TRUE"
-				AdditionalLibraryDirectories="..\..\..\cal3d-0.10.0\bin\debug"
+				AdditionalLibraryDirectories="..\..\..\cal3d-0.10.0\bin\Release"
 				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile=".\Debug/cal3d_miniviewer.pdb"
 				SubSystem="1"
@@ -84,9 +84,11 @@
 			CharacterSet="2">
 			<Tool
 				Name="VCCLCompilerTool"
-				Optimization="0"
-				InlineFunctionExpansion="0"
-				AdditionalIncludeDirectories="..\;..\..\..\cal3d-0.10.0\src\"
+				Optimization="2"
+				GlobalOptimizations="TRUE"
+				InlineFunctionExpansion="2"
+				OmitFramePointers="TRUE"
+				AdditionalIncludeDirectories="..\;$(CAL3DDIR)\src\;..\..\..\cal3d-0.10.0\src\"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
 				StringPooling="TRUE"
 				RuntimeLibrary="2"
@@ -98,13 +100,13 @@
 				ProgramDataBaseFileName=".\Release/"
 				WarningLevel="3"
 				SuppressStartupBanner="TRUE"
-				DebugInformationFormat="4"
+				DebugInformationFormat="0"
 				CompileAs="0"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="glut32.lib glu32.lib opengl32.lib odbc32.lib odbccp32.lib cal3d.lib"
+				AdditionalDependencies="glut32.lib glu32.lib opengl32.lib odbc32.lib odbccp32.lib"
 				OutputFile="PiavcaCal3dApp.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="TRUE"
