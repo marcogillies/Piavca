@@ -36,7 +36,7 @@
 #include "MotionParser.h"
 #include "Piavca.h"
 
-#include "PiavcaAPI/TrackMotion.h"
+#include "PiavcaAPI/KeyframeMotion.h"
 
 #include <string>
 using std::string;
@@ -2157,7 +2157,7 @@ PIAVCA_DECL Piavca::Motion *MotionParser::parseMotion(istringstream &is, std::st
 				Piavca::Error(_T("Not enough arguments for keyframe motion"));
 		}	
 	
-		TrackMotion *tmot = new TrackMotion(facial);
+		KeyframeMotion *tmot = new KeyframeMotion(facial);
 
 		while ( true )
 		{

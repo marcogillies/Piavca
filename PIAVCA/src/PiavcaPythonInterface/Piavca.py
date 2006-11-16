@@ -1294,242 +1294,131 @@ class Motion(_object):
 Motion_swigregister = _Piavca.Motion_swigregister
 Motion_swigregister(Motion)
 
-class TrackMotion(Motion):
-    """
-    A specialisation of the Motion Interface to deal with keyframe motion data.     
-           
-    Motion data can be read in from a bvh file. The actual underlying representation of the motion is forwarded to an implementation class (MotionImp) so that it can be implemented differently on different platforms if there are more efficient methods (a default implementatio is provided). Track motion provide the ability to create tracks and store data to them, if you want to create mtoion data on the fly. You can also cache the values of another motion object and save it as keyframe data.      see also: TrackMotion.h
-    """
+class KeyframeMotion(Motion):
     __swig_setmethods__ = {}
     for _s in [Motion]: __swig_setmethods__.update(_s.__swig_setmethods__)
-    __setattr__ = lambda self, name, value: _swig_setattr(self, TrackMotion, name, value)
+    __setattr__ = lambda self, name, value: _swig_setattr(self, KeyframeMotion, name, value)
     __swig_getmethods__ = {}
     for _s in [Motion]: __swig_getmethods__.update(_s.__swig_getmethods__)
-    __getattr__ = lambda self, name: _swig_getattr(self, TrackMotion, name)
+    __getattr__ = lambda self, name: _swig_getattr(self, KeyframeMotion, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
-        """
-        Piavca::TrackMotion::TrackMotion(Motion &mot)
-                 
-        copy constructor from any motion object         
-                 
-        The other motion object might not be a TrackMotion object and so might not consist of keyframe data, the new motion is sampled at regular intervals and the values saved as keyframes;         
-        """
-        if self.__class__ == TrackMotion:
+        if self.__class__ == KeyframeMotion:
             args = (None,) + args
         else:
             args = (self,) + args
-        this = _Piavca.new_TrackMotion(*args)
+        this = _Piavca.new_KeyframeMotion(*args)
         try: self.this.append(this)
         except: self.this = this
-    __swig_destroy__ = _Piavca.delete_TrackMotion
+    __swig_destroy__ = _Piavca.delete_KeyframeMotion
     __del__ = lambda self : None;
     def clone(*args):
         """
-        virtual Motion* Piavca::TrackMotion::clone()
+        virtual Motion* Piavca::Motion::clone()=0
                  
         creates a copy of the motion         
                  
                 
         """
-        return _Piavca.TrackMotion_clone(*args)
+        return _Piavca.KeyframeMotion_clone(*args)
 
     def getMotionLength(*args):
         """
-        float Piavca::TrackMotion::getMotionLength() const 
+        virtual float Piavca::Motion::getMotionLength() const =0
                  
-        gets the time of the last keyframe of the motion         
+        gets the time of the end of the motion         
                  
-                
+        Though time is represented in floating point, keyframes can only be set as integers to avoid problems with rounding errors. The granularity is the conversion factor between the two.         
         """
-        return _Piavca.TrackMotion_getMotionLength(*args)
+        return _Piavca.KeyframeMotion_getMotionLength(*args)
 
     def isFacial(*args):
         """
-        virtual bool Piavca::TrackMotion::isFacial()
+        virtual bool Piavca::Motion::isFacial()
                  
         whether it is a face or body motion         
                  
                 
         """
-        return _Piavca.TrackMotion_isFacial(*args)
+        return _Piavca.KeyframeMotion_isFacial(*args)
 
     def isRandomAccess(*args):
         """
-        virtual bool Piavca::TrackMotion::isRandomAccess()
+        virtual bool Piavca::Motion::isRandomAccess()
                  
         whether you can access a motions value at frames other than the current one         
                  
                 
         """
-        return _Piavca.TrackMotion_isRandomAccess(*args)
+        return _Piavca.KeyframeMotion_isRandomAccess(*args)
 
     def isNull(*args):
         """
-        bool Piavca::TrackMotion::isNull(int trackId) const 
+        virtual bool Piavca::Motion::isNull(int trackId) const =0
                  
         given a track ID tests whether it actually points to anything or if its null         
                  
                 
         """
-        return _Piavca.TrackMotion_isNull(*args)
+        return _Piavca.KeyframeMotion_isNull(*args)
 
     def getTrackType(*args):
         """
-        trackType Piavca::TrackMotion::getTrackType(int trackId) const 
+        virtual trackType Piavca::Motion::getTrackType(int trackId) const =0
                  
-        get the type of the track corresponding to a track ID         
-                 
-                
-        """
-        return _Piavca.TrackMotion_getTrackType(*args)
-
-    def addFloatTrack(*args):
-        """
-        void Piavca::TrackMotion::addFloatTrack(int trackId, float initialValue)
-                 
-        add a float track         
+        get the type of the track corresponding to an ID         
                  
                 
         """
-        return _Piavca.TrackMotion_addFloatTrack(*args)
+        return _Piavca.KeyframeMotion_getTrackType(*args)
 
-    def addVecTrack(*args):
-        """
-        void Piavca::TrackMotion::addVecTrack(int trackId, const Vec &initialValue)
-                 
-        add a Vec track         
-                 
-                
-        """
-        return _Piavca.TrackMotion_addVecTrack(*args)
-
-    def addQuatTrack(*args):
-        """
-        void Piavca::TrackMotion::addQuatTrack(int trackId, const Quat &initialValue)
-                 
-        add a Quat track         
-                 
-                
-        """
-        return _Piavca.TrackMotion_addQuatTrack(*args)
-
-    def setFloatKeyframe(*args):
-        """
-        void Piavca::TrackMotion::setFloatKeyframe(int trackId, float time, float value, float velocity)
-                 
-        set keyframe value (or create a new one) with a user specified velocity (only works for floats)         
-                 
-                
-        """
-        return _Piavca.TrackMotion_setFloatKeyframe(*args)
-
-    def setVecKeyframe(*args):
-        """
-        void Piavca::TrackMotion::setVecKeyframe(int trackId, float time, Vec value, Vec velocity)
-                 
-        set keyframe value (or create a new one) with a user specified velocity (only works for Vecs)         
-                 
-                
-        """
-        return _Piavca.TrackMotion_setVecKeyframe(*args)
-
-    def setQuatKeyframe(*args):
-        """
-        void Piavca::TrackMotion::setQuatKeyframe(int trackId, float time, Quat value, Quat velocity)
-                 
-        set keyframe value (or create a new one) with a user specified velocity (only works for Quats)         
-                 
-                
-        """
-        return _Piavca.TrackMotion_setQuatKeyframe(*args)
-
-    def getNumKeyframes(*args):
-        """
-        int Piavca::TrackMotion::getNumKeyframes(int trackId)
-                 
-        returns the number of keyframes that a particular track has         
-                 
-                
-        """
-        return _Piavca.TrackMotion_getNumKeyframes(*args)
-
-    def getKeyframeTime(*args):
-        """
-        float Piavca::TrackMotion::getKeyframeTime(int trackId, int keyframe)
-                 
-        returns the time of a particular keyframe         
-                 
-                
-        """
-        return _Piavca.TrackMotion_getKeyframeTime(*args)
-
+    def addFloatTrack(*args): return _Piavca.KeyframeMotion_addFloatTrack(*args)
+    def addVecTrack(*args): return _Piavca.KeyframeMotion_addVecTrack(*args)
+    def addQuatTrack(*args): return _Piavca.KeyframeMotion_addQuatTrack(*args)
+    def setFloatKeyframe(*args): return _Piavca.KeyframeMotion_setFloatKeyframe(*args)
+    def setVecKeyframe(*args): return _Piavca.KeyframeMotion_setVecKeyframe(*args)
+    def setQuatKeyframe(*args): return _Piavca.KeyframeMotion_setQuatKeyframe(*args)
+    def getNumKeyframes(*args): return _Piavca.KeyframeMotion_getNumKeyframes(*args)
+    def getKeyframeTime(*args): return _Piavca.KeyframeMotion_getKeyframeTime(*args)
     def getFloatValueAtTimeInternal(*args):
         """
-        float Piavca::TrackMotion::getFloatValueAtTimeInternal(int trackId, float time)
+        virtual float Piavca::Motion::getFloatValueAtTimeInternal(int trackId, float time)=0
                  
-        get the keyframe value at time (only works for floats)         
+        internal version of getFloatValueAtTime, to be overridden         
                  
                 
         """
-        return _Piavca.TrackMotion_getFloatValueAtTimeInternal(*args)
+        return _Piavca.KeyframeMotion_getFloatValueAtTimeInternal(*args)
 
     def getVecValueAtTimeInternal(*args):
         """
-        Vec Piavca::TrackMotion::getVecValueAtTimeInternal(int trackId, float time)
+        virtual Vec Piavca::Motion::getVecValueAtTimeInternal(int trackId, float time)=0
                  
-        get the keyframe value at time (only works for Vecs)         
+        internal version of getVecValueAtTime, to be overridden         
                  
                 
         """
-        return _Piavca.TrackMotion_getVecValueAtTimeInternal(*args)
+        return _Piavca.KeyframeMotion_getVecValueAtTimeInternal(*args)
 
     def getQuatValueAtTimeInternal(*args):
         """
-        Quat Piavca::TrackMotion::getQuatValueAtTimeInternal(int trackId, float time)
+        virtual Quat Piavca::Motion::getQuatValueAtTimeInternal(int trackId, float time)=0
                  
-        get the keyframe value at time (only works for Quats)         
-                 
-                
-        """
-        return _Piavca.TrackMotion_getQuatValueAtTimeInternal(*args)
-
-    def deleteAllTracks(*args):
-        """
-        void Piavca::TrackMotion::deleteAllTracks()
-                 
-        delete all tracks         
+        internal version of getQuatValueAtTime, to be overridden         
                  
                 
         """
-        return _Piavca.TrackMotion_deleteAllTracks(*args)
+        return _Piavca.KeyframeMotion_getQuatValueAtTimeInternal(*args)
 
-    def clearTrack(*args):
-        """
-        void Piavca::TrackMotion::clearTrack(int trackId, bool createFirstFrame=true)
-                 
-        clears a particular track (deletes all keyframes without deleting the track itself)         
-                 
-                
-        """
-        return _Piavca.TrackMotion_clearTrack(*args)
-
-    def clearAllTracks(*args):
-        """
-        void Piavca::TrackMotion::clearAllTracks(bool createFirstFrame=true)
-                 
-        clear all tracks (deletes all keyframes without deleting the tracks themselves)         
-                 
-                
-        """
-        return _Piavca.TrackMotion_clearAllTracks(*args)
-
+    def deleteAllTracks(*args): return _Piavca.KeyframeMotion_deleteAllTracks(*args)
+    def clearTrack(*args): return _Piavca.KeyframeMotion_clearTrack(*args)
+    def clearAllTracks(*args): return _Piavca.KeyframeMotion_clearAllTracks(*args)
     def __disown__(self):
         self.this.disown()
-        _Piavca.disown_TrackMotion(self)
+        _Piavca.disown_KeyframeMotion(self)
         return weakref_proxy(self)
-TrackMotion_swigregister = _Piavca.TrackMotion_swigregister
-TrackMotion_swigregister(TrackMotion)
+KeyframeMotion_swigregister = _Piavca.KeyframeMotion_swigregister
+KeyframeMotion_swigregister(KeyframeMotion)
 
 
 def copyMotionPosture(*args):

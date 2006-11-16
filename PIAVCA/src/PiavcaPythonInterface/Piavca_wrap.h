@@ -169,15 +169,15 @@ private:
 };
 
 
-class SwigDirector_TrackMotion : public Piavca::TrackMotion, public Swig::Director {
+class SwigDirector_KeyframeMotion : public Piavca::KeyframeMotion, public Swig::Director {
 
 public:
-    SwigDirector_TrackMotion(PyObject *self, Piavca::tstring fileName, int flags = Piavca::TRANS_NONE, Piavca::Motion *basePosture = NULL);
-    SwigDirector_TrackMotion(PyObject *self, bool _facial = false);
-    SwigDirector_TrackMotion(PyObject *self, Piavca::MotionImp *_imp);
-    SwigDirector_TrackMotion(PyObject *self, Piavca::TrackMotion const &mot);
-    SwigDirector_TrackMotion(PyObject *self, Piavca::Motion &mot);
-    virtual ~SwigDirector_TrackMotion();
+    SwigDirector_KeyframeMotion(PyObject *self, Piavca::tstring fileName, int flags = Piavca::TRANS_NONE, Piavca::Motion *basePosture = NULL);
+    SwigDirector_KeyframeMotion(PyObject *self, bool _facial = false);
+    SwigDirector_KeyframeMotion(PyObject *self, Piavca::MotionImp *_imp);
+    SwigDirector_KeyframeMotion(PyObject *self, Piavca::KeyframeMotion const &mot);
+    SwigDirector_KeyframeMotion(PyObject *self, Piavca::Motion &mot);
+    virtual ~SwigDirector_KeyframeMotion();
     virtual Piavca::Motion *clone();
     virtual void printInfo();
     virtual void load(Piavca::Avatar *av);
@@ -219,7 +219,7 @@ private:
         swig::PyObject_var name = PyString_FromString(method_name);
         method = PyObject_GetAttr(swig_get_self(), name);
         if (method == NULL) {
-          std::string msg = "Method in class TrackMotion doesn't exist, undefined ";
+          std::string msg = "Method in class KeyframeMotion doesn't exist, undefined ";
           msg += method_name;
           Swig::DirectorMethodException::raise(msg.c_str());
         }

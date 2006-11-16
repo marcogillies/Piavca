@@ -52,7 +52,7 @@ using std::map;
 #include "../PiavcaAPI/Hermite.h"
 
 //#include "StandardTrackIteratorImp.h"
-#include "../PiavcaAPI/TrackMotion.h"
+#include "../PiavcaAPI/KeyframeMotion.h"
 
 #include "../PiavcaAPI/PiavcaError.h"
 #include "../PiavcaAPI/PiavcaCore.h"

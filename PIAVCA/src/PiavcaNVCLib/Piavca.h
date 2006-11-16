@@ -72,7 +72,7 @@
 #include "PiavcaAPI/SelfBlend.h"
 #include "PiavcaAPI/TimeCallback.h"
 #include "TimeOffset.h"
-#include "PiavcaAPI/TrackMotion.h"
+#include "PiavcaAPI/KeyframeMotion.h"
 #include "TurnMotion.h"
 #include "PiavcaAPI/TwoMotionCombiner.h"
 #include "ZeroMotion.h"

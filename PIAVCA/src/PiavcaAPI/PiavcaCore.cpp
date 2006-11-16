@@ -46,7 +46,7 @@ using namespace Piavca;
 
 #include "Avatar.h"
 #include "Object.h"
-#include "TrackMotion.h"
+#include "KeyframeMotion.h"
 #include "TimeCallback.h"
 
 Piavca::Core *Piavca::Core::core = NULL;
@@ -286,7 +286,7 @@ void Core::loadMotion(tstring motionName, Motion *mot, bool temp, Motion *basePo
 
 void Core::loadMotion(tstring motionName, tstring motionFileName, int flags, bool temp, Motion *basePosture)
 {
-	Motion * mot = new TrackMotion(motionFileName, flags, basePosture);
+	Motion * mot = new KeyframeMotion(motionFileName, flags, basePosture);
 	mot->setName(motionName);
 	//if(!temp) mot->Reference();
 	unloadMotion(motionName);
@@ -548,7 +548,7 @@ void Core::initObject(
 	}
 };
 
-void Core::initMotion(TrackMotion *mot, tstring filename, bool facial, int flags, Motion *basePosture)
+void Core::initMotion(KeyframeMotion *mot, tstring filename, bool facial, int flags, Motion *basePosture)
 {
 	//if(mot->imp) delete mot->imp;
 	mot->imp = createMotionImp(filename, facial, flags, basePosture);

@@ -38,7 +38,7 @@
 #include "PiavcaAPI/PiavcaError.h"
 #include "AvatarMotionQueue.h"
 #include "TurnMotion.h"
-#include "PiavcaAPI/TrackMotion.h"
+#include "PiavcaAPI/KeyframeMotion.h"
 #include "ScaleMotionRoot.h"
 #include "PiavcaAPI/AvatarPostureBlend.h"
 #include "PiavcaAPI/SelfBlend.h"
@@ -86,7 +86,7 @@ void AvatarMotionQueue::init(Avatar *avatar)
 	{
 		//enqueueRandomMotions();	
 		// actually don't load an empty motion
-		enqueueMotion("", new TrackMotion(facial));
+		enqueueMotion("", new KeyframeMotion(facial));
 	}
     
     motion = dequeueMotion();

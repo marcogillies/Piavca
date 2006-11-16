@@ -11,7 +11,7 @@
  * for the specific language governing rights and limitations under the
  * License.
  *
- * The Original Code is TrackMotion.cpp.
+ * The Original Code is KeyframeMotion.cpp.
  *
  * The Initial Developer of the Original Code is Marco (Mark) Gillies.
  * Portions created by the Initial Developer are Copyright (C) BT plc. 2004
@@ -31,27 +31,27 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-#include "TrackMotion.h"
+#include "KeyframeMotion.h"
 #include "PiavcaCore.h"
 #include "PiavcaError.h"
 
 using namespace Piavca;
 
 
-void TrackMotion::initMotion(tstring fileName, bool facial, int flags, Motion *basePosture)
+void KeyframeMotion::initMotion(tstring fileName, bool facial, int flags, Motion *basePosture)
 {
 	Core::getCore()->initMotion(this, fileName, facial, flags, basePosture);
 	imp->refCount++;
 };
 
-TrackMotion::TrackMotion(MotionImp *_imp): imp(_imp)
+KeyframeMotion::KeyframeMotion(MotionImp *_imp): imp(_imp)
 {
 	imp->refCount++;
 };
 
 
 // assignment from a motion, create a new set of tracks and save the motion to them
-const TrackMotion &TrackMotion::operator=(Motion &mot)
+const KeyframeMotion &KeyframeMotion::operator=(Motion &mot)
 {
 	deleteAllTracks();
 	float motionLength = mot.getMotionLength();
@@ -83,9 +83,9 @@ const TrackMotion &TrackMotion::operator=(Motion &mot)
 	return *this;
 };
 
-TrackMotion *Piavca::copyMotionPosture(Motion *mot, float time)
+KeyframeMotion *Piavca::copyMotionPosture(Motion *mot, float time)
 {
-	TrackMotion *tmot = new TrackMotion(mot->isFacial());
+	KeyframeMotion *tmot = new KeyframeMotion(mot->isFacial());
 
 	for (int track = mot->begin(); track < mot->end(); mot->next(track))
 	{

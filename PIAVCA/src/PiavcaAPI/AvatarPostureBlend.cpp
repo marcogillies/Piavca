@@ -42,13 +42,13 @@
 #include "Avatar.h"
 #include "PiavcaError.h"
 #include "PiavcaCore.h"
-#include "TrackMotion.h"
+#include "KeyframeMotion.h"
 
 using namespace Piavca;
 
 
 AvatarPostureBlend::AvatarPostureBlend(Motion *mot, float interval, bool _tracksFromAvatar) 
-	:SequentialBlend(new TrackMotion(mot->isFacial()), mot, interval, 0.0), 
+	:SequentialBlend(new KeyframeMotion(mot->isFacial()), mot, interval, 0.0), 
 	tracksFromAvatar(_tracksFromAvatar)//, avatar(av) 
 {
 	//setMaintainY(true);
@@ -58,7 +58,7 @@ AvatarPostureBlend::AvatarPostureBlend(Motion *mot, float interval, bool _tracks
 void AvatarPostureBlend::load(Avatar *av)
 {
 	SequentialBlend::load(av);
-	TrackMotion *tmot = dynamic_cast<TrackMotion *>(mot1);
+	KeyframeMotion *tmot = dynamic_cast<KeyframeMotion *>(mot1);
 	if(!tmot)
 		Piavca::Error(_T("Motion blending from a non writable motion"));
 	tmot->clearAllTracks();
@@ -101,7 +101,7 @@ void AvatarPostureBlend::load(Avatar *av)
 void AvatarPostureBlend::setMotion(Motion *mot)
 {
 	setMotion2(mot);	
-	TrackMotion *tmot = dynamic_cast<TrackMotion *>(mot1);
+	KeyframeMotion *tmot = dynamic_cast<KeyframeMotion *>(mot1);
 	if(!tmot)
 		Piavca::Error(_T("Motion blending from a non writable motion"));
 	tmot->clearAllTracks();
@@ -146,7 +146,7 @@ void AvatarPostureBlend::setMotion(Motion *mot)
 void AvatarPostureBlend::reblend(float time)
 {
 	if(!m_avatar) return;
-	TrackMotion *tmot = dynamic_cast<TrackMotion *>(mot1);
+	KeyframeMotion *tmot = dynamic_cast<KeyframeMotion *>(mot1);
 	if(!tmot)
 		Piavca::Error(_T("Motion blending from a non writable motion"));
 

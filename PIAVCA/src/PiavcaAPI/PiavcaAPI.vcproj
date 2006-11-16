@@ -206,6 +206,9 @@
 				RelativePath="Hermite.cpp">
 			</File>
 			<File
+				RelativePath=".\KeyframeMotion.cpp">
+			</File>
+			<File
 				RelativePath="Motion.cpp">
 			</File>
 			<File
@@ -228,9 +231,6 @@
 			</File>
 			<File
 				RelativePath=".\SequentialBlend.cpp">
-			</File>
-			<File
-				RelativePath=".\TrackMotion.cpp">
 			</File>
 			<File
 				RelativePath=".\TwoMotionCombiner.cpp">
@@ -256,6 +256,9 @@
 			</File>
 			<File
 				RelativePath="Hermite.h">
+			</File>
+			<File
+				RelativePath=".\KeyframeMotion.h">
 			</File>
 			<File
 				RelativePath=".\LoopMotion.h">
@@ -304,9 +307,6 @@
 			</File>
 			<File
 				RelativePath="TimeCallback.h">
-			</File>
-			<File
-				RelativePath=".\TrackMotion.h">
 			</File>
 			<File
 				RelativePath=".\TwoMotionCombiner.h">

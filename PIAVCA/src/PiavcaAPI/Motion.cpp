@@ -42,7 +42,7 @@
 #include "PiavcaDefs.h"
 #include "PiavcaCore.h"
 #include "Motion.h"
-#include "TrackMotion.h"
+#include "KeyframeMotion.h"
 #include "Avatar.h"
 #include "PiavcaError.h"
 

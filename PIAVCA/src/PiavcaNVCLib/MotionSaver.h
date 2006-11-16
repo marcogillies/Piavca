@@ -38,7 +38,7 @@
 #define MOTION_SAVER_H
 
 #include "PiavcaAPI/MotionFilter.h"
-#include "PiavcaAPI/TrackMotion.h"
+#include "PiavcaAPI/KeyframeMotion.h"
 
 namespace Piavca
 {
@@ -49,23 +49,23 @@ namespace Piavca
 	 */
 	class MotionSaver : public MotionFilter
 	{
-		TrackMotion *tmot;
+		KeyframeMotion *tmot;
 	public:
 		MotionSaver(Motion *mot):MotionFilter(mot)
 		{
-			tmot = new TrackMotion(mot->isFacial());
+			tmot = new KeyframeMotion(mot->isFacial());
 		};
 		MotionSaver(const MotionSaver &to):MotionFilter(to), tmot(to.tmot){};
 	
 		virtual Motion *clone(){return new MotionSaver(*this);};
 	
-	    //! calculates the values of the filter motion on and saves them to a TrackMotion
+	    //! calculates the values of the filter motion on and saves them to a KeyframeMotion
 	    PIAVCA_EXPORT virtual float  getFloatValueAtTimeInternal (int trackId, float time);
 	    
-	    //! calculates the values of the filter motion on and saves them to a TrackMotion
+	    //! calculates the values of the filter motion on and saves them to a KeyframeMotion
 	    PIAVCA_EXPORT virtual Vec  getVecValueAtTimeInternal (int trackId, float time);
 	    
-	    //! calculates the values of the filter motion on and saves them to a TrackMotion
+	    //! calculates the values of the filter motion on and saves them to a KeyframeMotion
 	    PIAVCA_EXPORT virtual Quat  getQuatValueAtTimeInternal (int trackId, float time);
 
 		//! runs through the motion storing frame at the given framerate

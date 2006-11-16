@@ -39,7 +39,7 @@
 //#endif
 
 #include "AvatarImp.h"
-#include "TrackMotion.h"
+#include "KeyframeMotion.h"
 #include "TimeCallback.h"
 
 #include "PiavcaError.h"
@@ -542,7 +542,7 @@ void Avatar::initAvatar(
 	if(imp)
 	  {
 	    imp->frontEnd = this;
-	    loadMotion(new TrackMotion());
+	    loadMotion(new KeyframeMotion());
 	  }
 };
 

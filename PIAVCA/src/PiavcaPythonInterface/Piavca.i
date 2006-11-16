@@ -317,7 +317,7 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %rename(__ne__) operator!=;
 
 
-%ignore Piavca::TrackMotion::operator=;
+%ignore Piavca::KeyframeMotion::operator=;
 %ignore Piavca::MaskedMotion::operator=;
 %ignore Piavca::MotionMask::operator=;
 %ignore Piavca::flagStruct::operator=;
@@ -334,7 +334,7 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %feature("unref") Piavca::ScaleMotionSpeed "$this->Dispose();"
 
 %feature("director") Motion;   
-%feature("director") TrackMotion;   
+%feature("director") KeyframeMotion;   
 %feature("director") FilterMotion;  
 %feature("director") TwoMotionCombiner;    
 %feature("director") SelfBlend;        
@@ -371,7 +371,7 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %include "PiavcaCore.i"
 %include "PiavcaAPI/PiavcaDefs.h"
 %include "PiavcaAPI/Motion.h"
-%include "PiavcaAPI/TrackMotion.h"
+%include "PiavcaAPI/KeyframeMotion.h"
 %include "Avatar.i"
 %include "PiavcaNVCLib/AvatarMotionQueue.h"
 %include "PiavcaAPI/Object.h"

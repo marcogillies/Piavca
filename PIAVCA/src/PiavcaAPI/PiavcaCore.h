@@ -60,7 +60,7 @@ namespace Piavca
 {
 	class PIAVCA_DECL Motion;
 	class PIAVCA_DECL MotionImp;
-	class PIAVCA_DECL TrackMotion;
+	class PIAVCA_DECL KeyframeMotion;
 	class PIAVCA_DECL Avatar;
 	class PIAVCA_DECL AvatarImp;
 	class PIAVCA_DECL Object;
@@ -324,14 +324,14 @@ namespace Piavca
 					const Quat &Orientation = Quat(1.0, 0.0, 0.0, 0.0));
 
 
-		//! Initialises a TrackMotion object.
+		//! Initialises a KeyframeMotion object.
 		/*!
-		*	You pass in a pointer to the TrackMotion and a filename with which to initialise it.
+		*	You pass in a pointer to the KeyframeMotion and a filename with which to initialise it.
 		*	It creates an implementation object which will actually be a platform dependant 
 		*	sub type of MotionImp. 
 		*/
 		virtual void initMotion(
-					TrackMotion *mot, 
+					KeyframeMotion *mot, 
 					tstring filename = _PSTR(""), 
 					bool facial = false,
 					int flags = 0, 

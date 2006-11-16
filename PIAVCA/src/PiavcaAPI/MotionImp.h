@@ -46,13 +46,13 @@ namespace Piavca
 class PIAVCA_DECL Avatar;
 class PIAVCA_DECL Core;
 class PIAVCA_DECL Motion;
-class PIAVCA_DECL TrackMotion;
+class PIAVCA_DECL KeyframeMotion;
 enum trackType;
-//! An implementation class for TrackMotions, see the track Motion object for full details.
+//! An implementation class for KeyframeMotions, see the track Motion object for full details.
 class PIAVCA_DECL MotionImp
 {
 protected:
-	//TrackMotion *frontEnd;
+	//KeyframeMotion *frontEnd;
 	int refCount;
 	
 	//! whether the motions is body or facial motion
@@ -143,7 +143,7 @@ public:
 	virtual void clearAllTracks(bool createFirstFrame = true) = 0;
 
 	//friend class Motion;
-	friend class TrackMotion;
+	friend class KeyframeMotion;
 	friend class Core;
 };
 

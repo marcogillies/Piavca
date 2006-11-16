@@ -61,9 +61,9 @@ public:
 /*!
  *	It uses a mask to tell which motion to play on which joint.
  */
-class MaskedMotion : public TwoMotionCombiner
+class MaskedMotion : public MotionFilter
 {
-	MotionMask mask1, mask2;
+	MotionMask mask
 	bool useSecondary;
 public:
 	MaskedMotion();

@@ -43,7 +43,7 @@
 
 #include "SelfBlend.h"
 #include "PiavcaException.h"
-#include "TrackMotion.h"
+#include "KeyframeMotion.h"
 #include "PiavcaError.h"
 #include "PiavcaCore.h"
 
@@ -54,7 +54,7 @@ SelfBlend::SelfBlend(Motion *mot, float interval)
 {
 	if(!mot) return;
 	
-	TrackMotion *tmot = new TrackMotion(mot->isFacial());
+	KeyframeMotion *tmot = new KeyframeMotion(mot->isFacial());
 	setMotion1(tmot);
 
 	for (int track = mot2->begin(); track < mot2->end(); mot2->next(track))
@@ -80,14 +80,14 @@ SelfBlend::SelfBlend(Motion *mot, float interval)
 
 void SelfBlend::setMotion(Motion *mot)
 {
-	TrackMotion *tmot;
+	KeyframeMotion *tmot;
 	if(mot && (!mot1 || mot->isFacial() != mot1->isFacial()))
 	{
-		tmot = new TrackMotion(mot->isFacial());
+		tmot = new KeyframeMotion(mot->isFacial());
 		setMotion1(tmot);
 	}
 	else
-		tmot = dynamic_cast<TrackMotion *>(mot1);
+		tmot = dynamic_cast<KeyframeMotion *>(mot1);
 	setMotion2(mot);
 
 	if(!mot2) return;
@@ -139,7 +139,7 @@ void SelfBlend::reblend(float time)
 {
 	if(!mot2) return;
 	//std::cout << "reblend " << time << " "<< blendStart << " "<< blendInterval << std::endl;
-	TrackMotion *tmot = dynamic_cast<TrackMotion *>(mot1);
+	KeyframeMotion *tmot = dynamic_cast<KeyframeMotion *>(mot1);
 	if(!tmot)
 		Piavca::Error(_T("Motion blending from a non writable motion"));
 	

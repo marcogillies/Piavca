@@ -2968,41 +2968,41 @@ namespace Swig {
 #define SWIGTYPE_p_Piavca__ChoiceLoopMotion swig_types[6]
 #define SWIGTYPE_p_Piavca__Core swig_types[7]
 #define SWIGTYPE_p_Piavca__DiadicGazeMotion swig_types[8]
-#define SWIGTYPE_p_Piavca__LookAtMotion swig_types[9]
-#define SWIGTYPE_p_Piavca__LookAtToFacial swig_types[10]
-#define SWIGTYPE_p_Piavca__LoopMotion swig_types[11]
-#define SWIGTYPE_p_Piavca__MaskedMotion swig_types[12]
-#define SWIGTYPE_p_Piavca__Motion swig_types[13]
-#define SWIGTYPE_p_Piavca__MotionAdder swig_types[14]
-#define SWIGTYPE_p_Piavca__MotionFilter swig_types[15]
-#define SWIGTYPE_p_Piavca__MotionImp swig_types[16]
-#define SWIGTYPE_p_Piavca__MotionMask swig_types[17]
-#define SWIGTYPE_p_Piavca__MotionParser swig_types[18]
-#define SWIGTYPE_p_Piavca__MotionSaver swig_types[19]
-#define SWIGTYPE_p_Piavca__MultiMotionLoop swig_types[20]
-#define SWIGTYPE_p_Piavca__Object swig_types[21]
-#define SWIGTYPE_p_Piavca__ObjectTargetStruct swig_types[22]
-#define SWIGTYPE_p_Piavca__ProxemicsLoop swig_types[23]
-#define SWIGTYPE_p_Piavca__PyAvatarTimeCallback swig_types[24]
-#define SWIGTYPE_p_Piavca__PyMotion swig_types[25]
-#define SWIGTYPE_p_Piavca__PyTimeCallback swig_types[26]
-#define SWIGTYPE_p_Piavca__Quat swig_types[27]
-#define SWIGTYPE_p_Piavca__RandomAddLoop swig_types[28]
-#define SWIGTYPE_p_Piavca__RandomBlendLoop swig_types[29]
-#define SWIGTYPE_p_Piavca__RandomGazeMotion swig_types[30]
-#define SWIGTYPE_p_Piavca__RandomLoopMotion swig_types[31]
-#define SWIGTYPE_p_Piavca__RandomTimingsLoop swig_types[32]
-#define SWIGTYPE_p_Piavca__ScaleMotion swig_types[33]
-#define SWIGTYPE_p_Piavca__ScaleMotionRoot swig_types[34]
-#define SWIGTYPE_p_Piavca__ScaleMotionSpeed swig_types[35]
-#define SWIGTYPE_p_Piavca__SelfBlend swig_types[36]
-#define SWIGTYPE_p_Piavca__SequentialBlend swig_types[37]
-#define SWIGTYPE_p_Piavca__SubMotion swig_types[38]
-#define SWIGTYPE_p_Piavca__TimeCallback swig_types[39]
-#define SWIGTYPE_p_Piavca__TimeOffset swig_types[40]
-#define SWIGTYPE_p_Piavca__TimeRangeMotion swig_types[41]
-#define SWIGTYPE_p_Piavca__TimeWarp swig_types[42]
-#define SWIGTYPE_p_Piavca__TrackMotion swig_types[43]
+#define SWIGTYPE_p_Piavca__KeyframeMotion swig_types[9]
+#define SWIGTYPE_p_Piavca__LookAtMotion swig_types[10]
+#define SWIGTYPE_p_Piavca__LookAtToFacial swig_types[11]
+#define SWIGTYPE_p_Piavca__LoopMotion swig_types[12]
+#define SWIGTYPE_p_Piavca__MaskedMotion swig_types[13]
+#define SWIGTYPE_p_Piavca__Motion swig_types[14]
+#define SWIGTYPE_p_Piavca__MotionAdder swig_types[15]
+#define SWIGTYPE_p_Piavca__MotionFilter swig_types[16]
+#define SWIGTYPE_p_Piavca__MotionImp swig_types[17]
+#define SWIGTYPE_p_Piavca__MotionMask swig_types[18]
+#define SWIGTYPE_p_Piavca__MotionParser swig_types[19]
+#define SWIGTYPE_p_Piavca__MotionSaver swig_types[20]
+#define SWIGTYPE_p_Piavca__MultiMotionLoop swig_types[21]
+#define SWIGTYPE_p_Piavca__Object swig_types[22]
+#define SWIGTYPE_p_Piavca__ObjectTargetStruct swig_types[23]
+#define SWIGTYPE_p_Piavca__ProxemicsLoop swig_types[24]
+#define SWIGTYPE_p_Piavca__PyAvatarTimeCallback swig_types[25]
+#define SWIGTYPE_p_Piavca__PyMotion swig_types[26]
+#define SWIGTYPE_p_Piavca__PyTimeCallback swig_types[27]
+#define SWIGTYPE_p_Piavca__Quat swig_types[28]
+#define SWIGTYPE_p_Piavca__RandomAddLoop swig_types[29]
+#define SWIGTYPE_p_Piavca__RandomBlendLoop swig_types[30]
+#define SWIGTYPE_p_Piavca__RandomGazeMotion swig_types[31]
+#define SWIGTYPE_p_Piavca__RandomLoopMotion swig_types[32]
+#define SWIGTYPE_p_Piavca__RandomTimingsLoop swig_types[33]
+#define SWIGTYPE_p_Piavca__ScaleMotion swig_types[34]
+#define SWIGTYPE_p_Piavca__ScaleMotionRoot swig_types[35]
+#define SWIGTYPE_p_Piavca__ScaleMotionSpeed swig_types[36]
+#define SWIGTYPE_p_Piavca__SelfBlend swig_types[37]
+#define SWIGTYPE_p_Piavca__SequentialBlend swig_types[38]
+#define SWIGTYPE_p_Piavca__SubMotion swig_types[39]
+#define SWIGTYPE_p_Piavca__TimeCallback swig_types[40]
+#define SWIGTYPE_p_Piavca__TimeOffset swig_types[41]
+#define SWIGTYPE_p_Piavca__TimeRangeMotion swig_types[42]
+#define SWIGTYPE_p_Piavca__TimeWarp swig_types[43]
 #define SWIGTYPE_p_Piavca__TurnMotion swig_types[44]
 #define SWIGTYPE_p_Piavca__TwoMotionCombiner swig_types[45]
 #define SWIGTYPE_p_Piavca__Vec swig_types[46]
@@ -4297,52 +4297,52 @@ Piavca::Quat SwigDirector_Motion::getQuatValueAtTimeInternal(int trackId, float 
 }
 
 
-SwigDirector_TrackMotion::SwigDirector_TrackMotion(PyObject *self, Piavca::tstring fileName, int flags, Piavca::Motion *basePosture): Piavca::TrackMotion(fileName, flags, basePosture), Swig::Director(self) {
-  SWIG_DIRECTOR_RGTR((Piavca::TrackMotion *)this, this); 
+SwigDirector_KeyframeMotion::SwigDirector_KeyframeMotion(PyObject *self, Piavca::tstring fileName, int flags, Piavca::Motion *basePosture): Piavca::KeyframeMotion(fileName, flags, basePosture), Swig::Director(self) {
+  SWIG_DIRECTOR_RGTR((Piavca::KeyframeMotion *)this, this); 
 }
 
 
 
 
-SwigDirector_TrackMotion::SwigDirector_TrackMotion(PyObject *self, bool _facial): Piavca::TrackMotion(_facial), Swig::Director(self) {
-  SWIG_DIRECTOR_RGTR((Piavca::TrackMotion *)this, this); 
+SwigDirector_KeyframeMotion::SwigDirector_KeyframeMotion(PyObject *self, bool _facial): Piavca::KeyframeMotion(_facial), Swig::Director(self) {
+  SWIG_DIRECTOR_RGTR((Piavca::KeyframeMotion *)this, this); 
 }
 
 
 
 
-SwigDirector_TrackMotion::SwigDirector_TrackMotion(PyObject *self, Piavca::MotionImp *_imp): Piavca::TrackMotion(_imp), Swig::Director(self) {
-  SWIG_DIRECTOR_RGTR((Piavca::TrackMotion *)this, this); 
+SwigDirector_KeyframeMotion::SwigDirector_KeyframeMotion(PyObject *self, Piavca::MotionImp *_imp): Piavca::KeyframeMotion(_imp), Swig::Director(self) {
+  SWIG_DIRECTOR_RGTR((Piavca::KeyframeMotion *)this, this); 
 }
 
 
 
 
-SwigDirector_TrackMotion::SwigDirector_TrackMotion(PyObject *self, Piavca::TrackMotion const &mot): Piavca::TrackMotion(mot), Swig::Director(self) {
-  SWIG_DIRECTOR_RGTR((Piavca::TrackMotion *)this, this); 
+SwigDirector_KeyframeMotion::SwigDirector_KeyframeMotion(PyObject *self, Piavca::KeyframeMotion const &mot): Piavca::KeyframeMotion(mot), Swig::Director(self) {
+  SWIG_DIRECTOR_RGTR((Piavca::KeyframeMotion *)this, this); 
 }
 
 
 
 
-SwigDirector_TrackMotion::SwigDirector_TrackMotion(PyObject *self, Piavca::Motion &mot): Piavca::TrackMotion(mot), Swig::Director(self) {
-  SWIG_DIRECTOR_RGTR((Piavca::TrackMotion *)this, this); 
+SwigDirector_KeyframeMotion::SwigDirector_KeyframeMotion(PyObject *self, Piavca::Motion &mot): Piavca::KeyframeMotion(mot), Swig::Director(self) {
+  SWIG_DIRECTOR_RGTR((Piavca::KeyframeMotion *)this, this); 
 }
 
 
 
 
-SwigDirector_TrackMotion::~SwigDirector_TrackMotion() {
+SwigDirector_KeyframeMotion::~SwigDirector_KeyframeMotion() {
 }
 
-Piavca::Motion *SwigDirector_TrackMotion::clone() {
+Piavca::Motion *SwigDirector_KeyframeMotion::clone() {
   void *swig_argp ;
   int swig_res ;
   swig_owntype own ;
   
   Piavca::Motion *c_result;
   if (!swig_get_self()) {
-    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TrackMotion.__init__.");
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call KeyframeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 0;
@@ -4372,9 +4372,9 @@ Piavca::Motion *SwigDirector_TrackMotion::clone() {
 }
 
 
-void SwigDirector_TrackMotion::printInfo() {
+void SwigDirector_KeyframeMotion::printInfo() {
   if (!swig_get_self()) {
-    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TrackMotion.__init__.");
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call KeyframeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 1;
@@ -4397,11 +4397,11 @@ void SwigDirector_TrackMotion::printInfo() {
 }
 
 
-void SwigDirector_TrackMotion::load(Piavca::Avatar *av) {
+void SwigDirector_KeyframeMotion::load(Piavca::Avatar *av) {
   swig::PyObject_var obj0;
   obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(av), SWIGTYPE_p_Piavca__Avatar,  0 );
   if (!swig_get_self()) {
-    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TrackMotion.__init__.");
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call KeyframeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 2;
@@ -4424,9 +4424,9 @@ void SwigDirector_TrackMotion::load(Piavca::Avatar *av) {
 }
 
 
-void SwigDirector_TrackMotion::unload() {
+void SwigDirector_KeyframeMotion::unload() {
   if (!swig_get_self()) {
-    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TrackMotion.__init__.");
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call KeyframeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 3;
@@ -4449,10 +4449,10 @@ void SwigDirector_TrackMotion::unload() {
 }
 
 
-bool SwigDirector_TrackMotion::loaded() {
+bool SwigDirector_KeyframeMotion::loaded() {
   bool c_result;
   if (!swig_get_self()) {
-    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TrackMotion.__init__.");
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call KeyframeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 4;
@@ -4482,11 +4482,11 @@ bool SwigDirector_TrackMotion::loaded() {
 }
 
 
-void SwigDirector_TrackMotion::setStartTime(float t) {
+void SwigDirector_KeyframeMotion::setStartTime(float t) {
   swig::PyObject_var obj0;
   obj0 = SWIG_From_float(static_cast< float >(t));
   if (!swig_get_self()) {
-    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TrackMotion.__init__.");
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call KeyframeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 5;
@@ -4509,9 +4509,9 @@ void SwigDirector_TrackMotion::setStartTime(float t) {
 }
 
 
-void SwigDirector_TrackMotion::reset() {
+void SwigDirector_KeyframeMotion::reset() {
   if (!swig_get_self()) {
-    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TrackMotion.__init__.");
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call KeyframeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 6;
@@ -4534,7 +4534,7 @@ void SwigDirector_TrackMotion::reset() {
 }
 
 
-Piavca::Motion *SwigDirector_TrackMotion::findSub(Piavca::tstring nm) {
+Piavca::Motion *SwigDirector_KeyframeMotion::findSub(Piavca::tstring nm) {
   void *swig_argp ;
   int swig_res ;
   swig_owntype own ;
@@ -4543,7 +4543,7 @@ Piavca::Motion *SwigDirector_TrackMotion::findSub(Piavca::tstring nm) {
   swig::PyObject_var obj0;
   obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&nm), SWIGTYPE_p_std__string,  0 );
   if (!swig_get_self()) {
-    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TrackMotion.__init__.");
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call KeyframeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 7;
@@ -4573,7 +4573,7 @@ Piavca::Motion *SwigDirector_TrackMotion::findSub(Piavca::tstring nm) {
 }
 
 
-Piavca::Motion *SwigDirector_TrackMotion::findSubByType(type_info const &ty) {
+Piavca::Motion *SwigDirector_KeyframeMotion::findSubByType(type_info const &ty) {
   void *swig_argp ;
   int swig_res ;
   swig_owntype own ;
@@ -4582,7 +4582,7 @@ Piavca::Motion *SwigDirector_TrackMotion::findSubByType(type_info const &ty) {
   swig::PyObject_var obj0;
   obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&ty), SWIGTYPE_p_std__type_info,  0 );
   if (!swig_get_self()) {
-    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TrackMotion.__init__.");
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call KeyframeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 8;
@@ -4612,10 +4612,10 @@ Piavca::Motion *SwigDirector_TrackMotion::findSubByType(type_info const &ty) {
 }
 
 
-float SwigDirector_TrackMotion::getMotionLength() const {
+float SwigDirector_KeyframeMotion::getMotionLength() const {
   float c_result;
   if (!swig_get_self()) {
-    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TrackMotion.__init__.");
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call KeyframeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 9;
@@ -4645,10 +4645,10 @@ float SwigDirector_TrackMotion::getMotionLength() const {
 }
 
 
-bool SwigDirector_TrackMotion::isFacial() {
+bool SwigDirector_KeyframeMotion::isFacial() {
   bool c_result;
   if (!swig_get_self()) {
-    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TrackMotion.__init__.");
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call KeyframeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 10;
@@ -4678,10 +4678,10 @@ bool SwigDirector_TrackMotion::isFacial() {
 }
 
 
-bool SwigDirector_TrackMotion::isRandomAccess() {
+bool SwigDirector_KeyframeMotion::isRandomAccess() {
   bool c_result;
   if (!swig_get_self()) {
-    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TrackMotion.__init__.");
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call KeyframeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 11;
@@ -4711,12 +4711,12 @@ bool SwigDirector_TrackMotion::isRandomAccess() {
 }
 
 
-bool SwigDirector_TrackMotion::isNull(int trackId) const {
+bool SwigDirector_KeyframeMotion::isNull(int trackId) const {
   bool c_result;
   swig::PyObject_var obj0;
   obj0 = SWIG_From_int(static_cast< int >(trackId));
   if (!swig_get_self()) {
-    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TrackMotion.__init__.");
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call KeyframeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 12;
@@ -4746,12 +4746,12 @@ bool SwigDirector_TrackMotion::isNull(int trackId) const {
 }
 
 
-Piavca::trackType SwigDirector_TrackMotion::getTrackType(int trackId) const {
+Piavca::trackType SwigDirector_KeyframeMotion::getTrackType(int trackId) const {
   Piavca::trackType c_result;
   swig::PyObject_var obj0;
   obj0 = SWIG_From_int(static_cast< int >(trackId));
   if (!swig_get_self()) {
-    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TrackMotion.__init__.");
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call KeyframeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 13;
@@ -4781,14 +4781,14 @@ Piavca::trackType SwigDirector_TrackMotion::getTrackType(int trackId) const {
 }
 
 
-float SwigDirector_TrackMotion::getFloatValueAtTimeInternal(int trackId, float time) {
+float SwigDirector_KeyframeMotion::getFloatValueAtTimeInternal(int trackId, float time) {
   float c_result;
   swig::PyObject_var obj0;
   obj0 = SWIG_From_int(static_cast< int >(trackId));
   swig::PyObject_var obj1;
   obj1 = SWIG_From_float(static_cast< float >(time));
   if (!swig_get_self()) {
-    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TrackMotion.__init__.");
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call KeyframeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 14;
@@ -4818,7 +4818,7 @@ float SwigDirector_TrackMotion::getFloatValueAtTimeInternal(int trackId, float t
 }
 
 
-Piavca::Vec SwigDirector_TrackMotion::getVecValueAtTimeInternal(int trackId, float time) {
+Piavca::Vec SwigDirector_KeyframeMotion::getVecValueAtTimeInternal(int trackId, float time) {
   void *swig_argp ;
   int swig_res = 0 ;
   
@@ -4828,7 +4828,7 @@ Piavca::Vec SwigDirector_TrackMotion::getVecValueAtTimeInternal(int trackId, flo
   swig::PyObject_var obj1;
   obj1 = SWIG_From_float(static_cast< float >(time));
   if (!swig_get_self()) {
-    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TrackMotion.__init__.");
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call KeyframeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 15;
@@ -4858,7 +4858,7 @@ Piavca::Vec SwigDirector_TrackMotion::getVecValueAtTimeInternal(int trackId, flo
 }
 
 
-Piavca::Quat SwigDirector_TrackMotion::getQuatValueAtTimeInternal(int trackId, float time) {
+Piavca::Quat SwigDirector_KeyframeMotion::getQuatValueAtTimeInternal(int trackId, float time) {
   void *swig_argp ;
   int swig_res = 0 ;
   
@@ -4868,7 +4868,7 @@ Piavca::Quat SwigDirector_TrackMotion::getQuatValueAtTimeInternal(int trackId, f
   swig::PyObject_var obj1;
   obj1 = SWIG_From_float(static_cast< float >(time));
   if (!swig_get_self()) {
-    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TrackMotion.__init__.");
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call KeyframeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 16;
@@ -28917,7 +28917,7 @@ fail:
 SWIGINTERN PyObject *_wrap_Core_initMotion__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Piavca::Core *arg1 = (Piavca::Core *) 0 ;
-  Piavca::TrackMotion *arg2 = (Piavca::TrackMotion *) 0 ;
+  Piavca::KeyframeMotion *arg2 = (Piavca::KeyframeMotion *) 0 ;
   tstring arg3 ;
   bool arg4 ;
   int arg5 ;
@@ -28945,11 +28945,11 @@ SWIGINTERN PyObject *_wrap_Core_initMotion__SWIG_0(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Core_initMotion" "', argument " "1"" of type '" "Piavca::Core *""'"); 
   }
   arg1 = reinterpret_cast< Piavca::Core * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_Piavca__TrackMotion, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_Piavca__KeyframeMotion, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Core_initMotion" "', argument " "2"" of type '" "Piavca::TrackMotion *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Core_initMotion" "', argument " "2"" of type '" "Piavca::KeyframeMotion *""'"); 
   }
-  arg2 = reinterpret_cast< Piavca::TrackMotion * >(argp2);
+  arg2 = reinterpret_cast< Piavca::KeyframeMotion * >(argp2);
   {
     arg3 = StringToTString(PyString_AsString(obj2));
   }
@@ -28991,7 +28991,7 @@ fail:
 SWIGINTERN PyObject *_wrap_Core_initMotion__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Piavca::Core *arg1 = (Piavca::Core *) 0 ;
-  Piavca::TrackMotion *arg2 = (Piavca::TrackMotion *) 0 ;
+  Piavca::KeyframeMotion *arg2 = (Piavca::KeyframeMotion *) 0 ;
   tstring arg3 ;
   bool arg4 ;
   int arg5 ;
@@ -29015,11 +29015,11 @@ SWIGINTERN PyObject *_wrap_Core_initMotion__SWIG_1(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Core_initMotion" "', argument " "1"" of type '" "Piavca::Core *""'"); 
   }
   arg1 = reinterpret_cast< Piavca::Core * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_Piavca__TrackMotion, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_Piavca__KeyframeMotion, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Core_initMotion" "', argument " "2"" of type '" "Piavca::TrackMotion *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Core_initMotion" "', argument " "2"" of type '" "Piavca::KeyframeMotion *""'"); 
   }
-  arg2 = reinterpret_cast< Piavca::TrackMotion * >(argp2);
+  arg2 = reinterpret_cast< Piavca::KeyframeMotion * >(argp2);
   {
     arg3 = StringToTString(PyString_AsString(obj2));
   }
@@ -29056,7 +29056,7 @@ fail:
 SWIGINTERN PyObject *_wrap_Core_initMotion__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Piavca::Core *arg1 = (Piavca::Core *) 0 ;
-  Piavca::TrackMotion *arg2 = (Piavca::TrackMotion *) 0 ;
+  Piavca::KeyframeMotion *arg2 = (Piavca::KeyframeMotion *) 0 ;
   tstring arg3 ;
   bool arg4 ;
   void *argp1 = 0 ;
@@ -29076,11 +29076,11 @@ SWIGINTERN PyObject *_wrap_Core_initMotion__SWIG_2(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Core_initMotion" "', argument " "1"" of type '" "Piavca::Core *""'"); 
   }
   arg1 = reinterpret_cast< Piavca::Core * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_Piavca__TrackMotion, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_Piavca__KeyframeMotion, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Core_initMotion" "', argument " "2"" of type '" "Piavca::TrackMotion *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Core_initMotion" "', argument " "2"" of type '" "Piavca::KeyframeMotion *""'"); 
   }
-  arg2 = reinterpret_cast< Piavca::TrackMotion * >(argp2);
+  arg2 = reinterpret_cast< Piavca::KeyframeMotion * >(argp2);
   {
     arg3 = StringToTString(PyString_AsString(obj2));
   }
@@ -29112,7 +29112,7 @@ fail:
 SWIGINTERN PyObject *_wrap_Core_initMotion__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Piavca::Core *arg1 = (Piavca::Core *) 0 ;
-  Piavca::TrackMotion *arg2 = (Piavca::TrackMotion *) 0 ;
+  Piavca::KeyframeMotion *arg2 = (Piavca::KeyframeMotion *) 0 ;
   tstring arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -29128,11 +29128,11 @@ SWIGINTERN PyObject *_wrap_Core_initMotion__SWIG_3(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Core_initMotion" "', argument " "1"" of type '" "Piavca::Core *""'"); 
   }
   arg1 = reinterpret_cast< Piavca::Core * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_Piavca__TrackMotion, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_Piavca__KeyframeMotion, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Core_initMotion" "', argument " "2"" of type '" "Piavca::TrackMotion *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Core_initMotion" "', argument " "2"" of type '" "Piavca::KeyframeMotion *""'"); 
   }
-  arg2 = reinterpret_cast< Piavca::TrackMotion * >(argp2);
+  arg2 = reinterpret_cast< Piavca::KeyframeMotion * >(argp2);
   {
     arg3 = StringToTString(PyString_AsString(obj2));
   }
@@ -29159,7 +29159,7 @@ fail:
 SWIGINTERN PyObject *_wrap_Core_initMotion__SWIG_4(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Piavca::Core *arg1 = (Piavca::Core *) 0 ;
-  Piavca::TrackMotion *arg2 = (Piavca::TrackMotion *) 0 ;
+  Piavca::KeyframeMotion *arg2 = (Piavca::KeyframeMotion *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -29173,11 +29173,11 @@ SWIGINTERN PyObject *_wrap_Core_initMotion__SWIG_4(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Core_initMotion" "', argument " "1"" of type '" "Piavca::Core *""'"); 
   }
   arg1 = reinterpret_cast< Piavca::Core * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_Piavca__TrackMotion, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_Piavca__KeyframeMotion, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Core_initMotion" "', argument " "2"" of type '" "Piavca::TrackMotion *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Core_initMotion" "', argument " "2"" of type '" "Piavca::KeyframeMotion *""'"); 
   }
-  arg2 = reinterpret_cast< Piavca::TrackMotion * >(argp2);
+  arg2 = reinterpret_cast< Piavca::KeyframeMotion * >(argp2);
   {
     try {
       (arg1)->initMotion(arg2); 
@@ -29215,7 +29215,7 @@ SWIGINTERN PyObject *_wrap_Core_initMotion(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_Piavca__TrackMotion, 0);
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_Piavca__KeyframeMotion, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
         return _wrap_Core_initMotion__SWIG_4(self, args);
@@ -29229,7 +29229,7 @@ SWIGINTERN PyObject *_wrap_Core_initMotion(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_Piavca__TrackMotion, 0);
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_Piavca__KeyframeMotion, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
         int res = SWIG_AsCharPtrAndSize(argv[2], 0, NULL, 0);
@@ -29247,7 +29247,7 @@ SWIGINTERN PyObject *_wrap_Core_initMotion(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_Piavca__TrackMotion, 0);
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_Piavca__KeyframeMotion, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
         int res = SWIG_AsCharPtrAndSize(argv[2], 0, NULL, 0);
@@ -29271,7 +29271,7 @@ SWIGINTERN PyObject *_wrap_Core_initMotion(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_Piavca__TrackMotion, 0);
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_Piavca__KeyframeMotion, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
         int res = SWIG_AsCharPtrAndSize(argv[2], 0, NULL, 0);
@@ -29301,7 +29301,7 @@ SWIGINTERN PyObject *_wrap_Core_initMotion(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_Piavca__TrackMotion, 0);
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_Piavca__KeyframeMotion, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
         int res = SWIG_AsCharPtrAndSize(argv[2], 0, NULL, 0);
@@ -29331,7 +29331,7 @@ SWIGINTERN PyObject *_wrap_Core_initMotion(PyObject *self, PyObject *args) {
   }
   
 fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'Core_initMotion'.\n  Possible C/C++ prototypes are:\n    initMotion(Piavca::TrackMotion *,tstring,bool,int,Piavca::Motion *)\n    initMotion(Piavca::TrackMotion *,tstring,bool,int)\n    initMotion(Piavca::TrackMotion *,tstring,bool)\n    initMotion(Piavca::TrackMotion *,tstring)\n    initMotion(Piavca::TrackMotion *)\n");
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'Core_initMotion'.\n  Possible C/C++ prototypes are:\n    initMotion(Piavca::KeyframeMotion *,tstring,bool,int,Piavca::Motion *)\n    initMotion(Piavca::KeyframeMotion *,tstring,bool,int)\n    initMotion(Piavca::KeyframeMotion *,tstring,bool)\n    initMotion(Piavca::KeyframeMotion *,tstring)\n    initMotion(Piavca::KeyframeMotion *)\n");
   return NULL;
 }
 
@@ -31990,13 +31990,13 @@ SWIGINTERN PyObject *Motion_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObjec
   return SWIG_Py_Void();
 }
 
-SWIGINTERN PyObject *_wrap_new_TrackMotion__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_KeyframeMotion__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   PyObject *arg1 = (PyObject *) 0 ;
   Piavca::tstring arg2 ;
   int arg3 ;
   Piavca::Motion *arg4 = (Piavca::Motion *) 0 ;
-  Piavca::TrackMotion *result = 0 ;
+  Piavca::KeyframeMotion *result = 0 ;
   int val3 ;
   int ecode3 = 0 ;
   void *argp4 = 0 ;
@@ -32006,28 +32006,28 @@ SWIGINTERN PyObject *_wrap_new_TrackMotion__SWIG_0(PyObject *SWIGUNUSEDPARM(self
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OOOO:new_TrackMotion",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:new_KeyframeMotion",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
   arg1 = obj0;
   {
     arg2 = PyString_AsString(obj1);
   }
   ecode3 = SWIG_AsVal_int(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_TrackMotion" "', argument " "3"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_KeyframeMotion" "', argument " "3"" of type '" "int""'");
   } 
   arg3 = static_cast< int >(val3);
   res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_Piavca__Motion, 0 |  0 );
   if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "new_TrackMotion" "', argument " "4"" of type '" "Piavca::Motion *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "new_KeyframeMotion" "', argument " "4"" of type '" "Piavca::Motion *""'"); 
   }
   arg4 = reinterpret_cast< Piavca::Motion * >(argp4);
   {
     try {
       if ( arg1 != Py_None ) {
         /* subclassed */
-        result = (Piavca::TrackMotion *)new SwigDirector_TrackMotion(arg1,arg2,arg3,arg4); 
+        result = (Piavca::KeyframeMotion *)new SwigDirector_KeyframeMotion(arg1,arg2,arg3,arg4); 
       } else {
-        result = (Piavca::TrackMotion *)new Piavca::TrackMotion(arg2,arg3,arg4); 
+        result = (Piavca::KeyframeMotion *)new Piavca::KeyframeMotion(arg2,arg3,arg4); 
       }
     }
     catch (Swig::DirectorException &e) {
@@ -32039,7 +32039,7 @@ SWIGINTERN PyObject *_wrap_new_TrackMotion__SWIG_0(PyObject *SWIGUNUSEDPARM(self
       SWIG_fail; 
     }
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__TrackMotion, SWIG_POINTER_NEW |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__KeyframeMotion, SWIG_POINTER_NEW |  0 );
   result->Reference();
   return resultobj;
 fail:
@@ -32047,35 +32047,35 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_TrackMotion__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_KeyframeMotion__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   PyObject *arg1 = (PyObject *) 0 ;
   Piavca::tstring arg2 ;
   int arg3 ;
-  Piavca::TrackMotion *result = 0 ;
+  Piavca::KeyframeMotion *result = 0 ;
   int val3 ;
   int ecode3 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OOO:new_TrackMotion",&obj0,&obj1,&obj2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OOO:new_KeyframeMotion",&obj0,&obj1,&obj2)) SWIG_fail;
   arg1 = obj0;
   {
     arg2 = PyString_AsString(obj1);
   }
   ecode3 = SWIG_AsVal_int(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_TrackMotion" "', argument " "3"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_KeyframeMotion" "', argument " "3"" of type '" "int""'");
   } 
   arg3 = static_cast< int >(val3);
   {
     try {
       if ( arg1 != Py_None ) {
         /* subclassed */
-        result = (Piavca::TrackMotion *)new SwigDirector_TrackMotion(arg1,arg2,arg3); 
+        result = (Piavca::KeyframeMotion *)new SwigDirector_KeyframeMotion(arg1,arg2,arg3); 
       } else {
-        result = (Piavca::TrackMotion *)new Piavca::TrackMotion(arg2,arg3); 
+        result = (Piavca::KeyframeMotion *)new Piavca::KeyframeMotion(arg2,arg3); 
       }
     }
     catch (Swig::DirectorException &e) {
@@ -32087,7 +32087,7 @@ SWIGINTERN PyObject *_wrap_new_TrackMotion__SWIG_1(PyObject *SWIGUNUSEDPARM(self
       SWIG_fail; 
     }
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__TrackMotion, SWIG_POINTER_NEW |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__KeyframeMotion, SWIG_POINTER_NEW |  0 );
   result->Reference();
   return resultobj;
 fail:
@@ -32095,15 +32095,15 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_TrackMotion__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_KeyframeMotion__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   PyObject *arg1 = (PyObject *) 0 ;
   Piavca::tstring arg2 ;
-  Piavca::TrackMotion *result = 0 ;
+  Piavca::KeyframeMotion *result = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:new_TrackMotion",&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_KeyframeMotion",&obj0,&obj1)) SWIG_fail;
   arg1 = obj0;
   {
     arg2 = PyString_AsString(obj1);
@@ -32112,9 +32112,9 @@ SWIGINTERN PyObject *_wrap_new_TrackMotion__SWIG_2(PyObject *SWIGUNUSEDPARM(self
     try {
       if ( arg1 != Py_None ) {
         /* subclassed */
-        result = (Piavca::TrackMotion *)new SwigDirector_TrackMotion(arg1,arg2); 
+        result = (Piavca::KeyframeMotion *)new SwigDirector_KeyframeMotion(arg1,arg2); 
       } else {
-        result = (Piavca::TrackMotion *)new Piavca::TrackMotion(arg2); 
+        result = (Piavca::KeyframeMotion *)new Piavca::KeyframeMotion(arg2); 
       }
     }
     catch (Swig::DirectorException &e) {
@@ -32126,7 +32126,7 @@ SWIGINTERN PyObject *_wrap_new_TrackMotion__SWIG_2(PyObject *SWIGUNUSEDPARM(self
       SWIG_fail; 
     }
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__TrackMotion, SWIG_POINTER_NEW |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__KeyframeMotion, SWIG_POINTER_NEW |  0 );
   result->Reference();
   return resultobj;
 fail:
@@ -32134,30 +32134,30 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_TrackMotion__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_KeyframeMotion__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   PyObject *arg1 = (PyObject *) 0 ;
   bool arg2 ;
-  Piavca::TrackMotion *result = 0 ;
+  Piavca::KeyframeMotion *result = 0 ;
   bool val2 ;
   int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:new_TrackMotion",&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_KeyframeMotion",&obj0,&obj1)) SWIG_fail;
   arg1 = obj0;
   ecode2 = SWIG_AsVal_bool(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_TrackMotion" "', argument " "2"" of type '" "bool""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_KeyframeMotion" "', argument " "2"" of type '" "bool""'");
   } 
   arg2 = static_cast< bool >(val2);
   {
     try {
       if ( arg1 != Py_None ) {
         /* subclassed */
-        result = (Piavca::TrackMotion *)new SwigDirector_TrackMotion(arg1,arg2); 
+        result = (Piavca::KeyframeMotion *)new SwigDirector_KeyframeMotion(arg1,arg2); 
       } else {
-        result = (Piavca::TrackMotion *)new Piavca::TrackMotion(arg2); 
+        result = (Piavca::KeyframeMotion *)new Piavca::KeyframeMotion(arg2); 
       }
     }
     catch (Swig::DirectorException &e) {
@@ -32169,7 +32169,7 @@ SWIGINTERN PyObject *_wrap_new_TrackMotion__SWIG_3(PyObject *SWIGUNUSEDPARM(self
       SWIG_fail; 
     }
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__TrackMotion, SWIG_POINTER_NEW |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__KeyframeMotion, SWIG_POINTER_NEW |  0 );
   result->Reference();
   return resultobj;
 fail:
@@ -32177,21 +32177,21 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_TrackMotion__SWIG_4(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_KeyframeMotion__SWIG_4(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   PyObject *arg1 = (PyObject *) 0 ;
-  Piavca::TrackMotion *result = 0 ;
+  Piavca::KeyframeMotion *result = 0 ;
   PyObject * obj0 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:new_TrackMotion",&obj0)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:new_KeyframeMotion",&obj0)) SWIG_fail;
   arg1 = obj0;
   {
     try {
       if ( arg1 != Py_None ) {
         /* subclassed */
-        result = (Piavca::TrackMotion *)new SwigDirector_TrackMotion(arg1); 
+        result = (Piavca::KeyframeMotion *)new SwigDirector_KeyframeMotion(arg1); 
       } else {
-        result = (Piavca::TrackMotion *)new Piavca::TrackMotion(); 
+        result = (Piavca::KeyframeMotion *)new Piavca::KeyframeMotion(); 
       }
     }
     catch (Swig::DirectorException &e) {
@@ -32203,7 +32203,7 @@ SWIGINTERN PyObject *_wrap_new_TrackMotion__SWIG_4(PyObject *SWIGUNUSEDPARM(self
       SWIG_fail; 
     }
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__TrackMotion, SWIG_POINTER_NEW |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__KeyframeMotion, SWIG_POINTER_NEW |  0 );
   result->Reference();
   return resultobj;
 fail:
@@ -32211,30 +32211,30 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_TrackMotion__SWIG_5(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_KeyframeMotion__SWIG_5(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   PyObject *arg1 = (PyObject *) 0 ;
   Piavca::MotionImp *arg2 = (Piavca::MotionImp *) 0 ;
-  Piavca::TrackMotion *result = 0 ;
+  Piavca::KeyframeMotion *result = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:new_TrackMotion",&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_KeyframeMotion",&obj0,&obj1)) SWIG_fail;
   arg1 = obj0;
   res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_Piavca__MotionImp, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_TrackMotion" "', argument " "2"" of type '" "Piavca::MotionImp *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_KeyframeMotion" "', argument " "2"" of type '" "Piavca::MotionImp *""'"); 
   }
   arg2 = reinterpret_cast< Piavca::MotionImp * >(argp2);
   {
     try {
       if ( arg1 != Py_None ) {
         /* subclassed */
-        result = (Piavca::TrackMotion *)new SwigDirector_TrackMotion(arg1,arg2); 
+        result = (Piavca::KeyframeMotion *)new SwigDirector_KeyframeMotion(arg1,arg2); 
       } else {
-        result = (Piavca::TrackMotion *)new Piavca::TrackMotion(arg2); 
+        result = (Piavca::KeyframeMotion *)new Piavca::KeyframeMotion(arg2); 
       }
     }
     catch (Swig::DirectorException &e) {
@@ -32246,7 +32246,7 @@ SWIGINTERN PyObject *_wrap_new_TrackMotion__SWIG_5(PyObject *SWIGUNUSEDPARM(self
       SWIG_fail; 
     }
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__TrackMotion, SWIG_POINTER_NEW |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__KeyframeMotion, SWIG_POINTER_NEW |  0 );
   result->Reference();
   return resultobj;
 fail:
@@ -32254,33 +32254,33 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_TrackMotion__SWIG_6(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_KeyframeMotion__SWIG_6(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   PyObject *arg1 = (PyObject *) 0 ;
-  Piavca::TrackMotion *arg2 = 0 ;
-  Piavca::TrackMotion *result = 0 ;
+  Piavca::KeyframeMotion *arg2 = 0 ;
+  Piavca::KeyframeMotion *result = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:new_TrackMotion",&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_KeyframeMotion",&obj0,&obj1)) SWIG_fail;
   arg1 = obj0;
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_Piavca__TrackMotion,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_Piavca__KeyframeMotion,  0  | 0);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_TrackMotion" "', argument " "2"" of type '" "Piavca::TrackMotion const &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_KeyframeMotion" "', argument " "2"" of type '" "Piavca::KeyframeMotion const &""'"); 
   }
   if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_TrackMotion" "', argument " "2"" of type '" "Piavca::TrackMotion const &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_KeyframeMotion" "', argument " "2"" of type '" "Piavca::KeyframeMotion const &""'"); 
   }
-  arg2 = reinterpret_cast< Piavca::TrackMotion * >(argp2);
+  arg2 = reinterpret_cast< Piavca::KeyframeMotion * >(argp2);
   {
     try {
       if ( arg1 != Py_None ) {
         /* subclassed */
-        result = (Piavca::TrackMotion *)new SwigDirector_TrackMotion(arg1,(Piavca::TrackMotion const &)*arg2); 
+        result = (Piavca::KeyframeMotion *)new SwigDirector_KeyframeMotion(arg1,(Piavca::KeyframeMotion const &)*arg2); 
       } else {
-        result = (Piavca::TrackMotion *)new Piavca::TrackMotion((Piavca::TrackMotion const &)*arg2); 
+        result = (Piavca::KeyframeMotion *)new Piavca::KeyframeMotion((Piavca::KeyframeMotion const &)*arg2); 
       }
     }
     catch (Swig::DirectorException &e) {
@@ -32292,7 +32292,7 @@ SWIGINTERN PyObject *_wrap_new_TrackMotion__SWIG_6(PyObject *SWIGUNUSEDPARM(self
       SWIG_fail; 
     }
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__TrackMotion, SWIG_POINTER_NEW |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__KeyframeMotion, SWIG_POINTER_NEW |  0 );
   result->Reference();
   return resultobj;
 fail:
@@ -32300,33 +32300,33 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_TrackMotion__SWIG_7(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_KeyframeMotion__SWIG_7(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   PyObject *arg1 = (PyObject *) 0 ;
   Piavca::Motion *arg2 = 0 ;
-  Piavca::TrackMotion *result = 0 ;
+  Piavca::KeyframeMotion *result = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:new_TrackMotion",&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_KeyframeMotion",&obj0,&obj1)) SWIG_fail;
   arg1 = obj0;
   res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_Piavca__Motion,  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_TrackMotion" "', argument " "2"" of type '" "Piavca::Motion &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_KeyframeMotion" "', argument " "2"" of type '" "Piavca::Motion &""'"); 
   }
   if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_TrackMotion" "', argument " "2"" of type '" "Piavca::Motion &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_KeyframeMotion" "', argument " "2"" of type '" "Piavca::Motion &""'"); 
   }
   arg2 = reinterpret_cast< Piavca::Motion * >(argp2);
   {
     try {
       if ( arg1 != Py_None ) {
         /* subclassed */
-        result = (Piavca::TrackMotion *)new SwigDirector_TrackMotion(arg1,*arg2); 
+        result = (Piavca::KeyframeMotion *)new SwigDirector_KeyframeMotion(arg1,*arg2); 
       } else {
-        result = (Piavca::TrackMotion *)new Piavca::TrackMotion(*arg2); 
+        result = (Piavca::KeyframeMotion *)new Piavca::KeyframeMotion(*arg2); 
       }
     }
     catch (Swig::DirectorException &e) {
@@ -32338,7 +32338,7 @@ SWIGINTERN PyObject *_wrap_new_TrackMotion__SWIG_7(PyObject *SWIGUNUSEDPARM(self
       SWIG_fail; 
     }
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__TrackMotion, SWIG_POINTER_NEW |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__KeyframeMotion, SWIG_POINTER_NEW |  0 );
   result->Reference();
   return resultobj;
 fail:
@@ -32346,7 +32346,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_TrackMotion(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_KeyframeMotion(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[5];
   int ii;
@@ -32360,7 +32360,7 @@ SWIGINTERN PyObject *_wrap_new_TrackMotion(PyObject *self, PyObject *args) {
     int _v;
     _v = (argv[0] != 0);
     if (_v) {
-      return _wrap_new_TrackMotion__SWIG_4(self, args);
+      return _wrap_new_KeyframeMotion__SWIG_4(self, args);
     }
   }
   if (argc == 2) {
@@ -32371,7 +32371,7 @@ SWIGINTERN PyObject *_wrap_new_TrackMotion(PyObject *self, PyObject *args) {
       int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_Piavca__MotionImp, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_new_TrackMotion__SWIG_5(self, args);
+        return _wrap_new_KeyframeMotion__SWIG_5(self, args);
       }
     }
   }
@@ -32379,10 +32379,10 @@ SWIGINTERN PyObject *_wrap_new_TrackMotion(PyObject *self, PyObject *args) {
     int _v;
     _v = (argv[0] != 0);
     if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_Piavca__TrackMotion, 0);
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_Piavca__KeyframeMotion, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_new_TrackMotion__SWIG_6(self, args);
+        return _wrap_new_KeyframeMotion__SWIG_6(self, args);
       }
     }
   }
@@ -32394,7 +32394,7 @@ SWIGINTERN PyObject *_wrap_new_TrackMotion(PyObject *self, PyObject *args) {
       int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_Piavca__Motion, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_new_TrackMotion__SWIG_7(self, args);
+        return _wrap_new_KeyframeMotion__SWIG_7(self, args);
       }
     }
   }
@@ -32405,7 +32405,7 @@ SWIGINTERN PyObject *_wrap_new_TrackMotion(PyObject *self, PyObject *args) {
       int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_new_TrackMotion__SWIG_2(self, args);
+        return _wrap_new_KeyframeMotion__SWIG_2(self, args);
       }
     }
   }
@@ -32418,7 +32418,7 @@ SWIGINTERN PyObject *_wrap_new_TrackMotion(PyObject *self, PyObject *args) {
         _v = SWIG_CheckState(res);
       }
       if (_v) {
-        return _wrap_new_TrackMotion__SWIG_3(self, args);
+        return _wrap_new_KeyframeMotion__SWIG_3(self, args);
       }
     }
   }
@@ -32434,7 +32434,7 @@ SWIGINTERN PyObject *_wrap_new_TrackMotion(PyObject *self, PyObject *args) {
           _v = SWIG_CheckState(res);
         }
         if (_v) {
-          return _wrap_new_TrackMotion__SWIG_1(self, args);
+          return _wrap_new_KeyframeMotion__SWIG_1(self, args);
         }
       }
     }
@@ -32455,7 +32455,7 @@ SWIGINTERN PyObject *_wrap_new_TrackMotion(PyObject *self, PyObject *args) {
           int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_Piavca__Motion, 0);
           _v = SWIG_CheckState(res);
           if (_v) {
-            return _wrap_new_TrackMotion__SWIG_0(self, args);
+            return _wrap_new_KeyframeMotion__SWIG_0(self, args);
           }
         }
       }
@@ -32463,24 +32463,24 @@ SWIGINTERN PyObject *_wrap_new_TrackMotion(PyObject *self, PyObject *args) {
   }
   
 fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'new_TrackMotion'.\n  Possible C/C++ prototypes are:\n    Piavca::TrackMotion(PyObject *,Piavca::tstring,int,Piavca::Motion *)\n    Piavca::TrackMotion(PyObject *,Piavca::tstring,int)\n    Piavca::TrackMotion(PyObject *,Piavca::tstring)\n    Piavca::TrackMotion(PyObject *,bool)\n    Piavca::TrackMotion(PyObject *)\n    Piavca::TrackMotion(PyObject *,Piavca::MotionImp *)\n    Piavca::TrackMotion(PyObject *,Piavca::TrackMotion const &)\n    Piavca::TrackMotion(PyObject *,Piavca::Motion &)\n");
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'new_KeyframeMotion'.\n  Possible C/C++ prototypes are:\n    Piavca::KeyframeMotion(PyObject *,Piavca::tstring,int,Piavca::Motion *)\n    Piavca::KeyframeMotion(PyObject *,Piavca::tstring,int)\n    Piavca::KeyframeMotion(PyObject *,Piavca::tstring)\n    Piavca::KeyframeMotion(PyObject *,bool)\n    Piavca::KeyframeMotion(PyObject *)\n    Piavca::KeyframeMotion(PyObject *,Piavca::MotionImp *)\n    Piavca::KeyframeMotion(PyObject *,Piavca::KeyframeMotion const &)\n    Piavca::KeyframeMotion(PyObject *,Piavca::Motion &)\n");
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_delete_TrackMotion(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_delete_KeyframeMotion(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  Piavca::TrackMotion *arg1 = (Piavca::TrackMotion *) 0 ;
+  Piavca::KeyframeMotion *arg1 = (Piavca::KeyframeMotion *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:delete_TrackMotion",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__TrackMotion, SWIG_POINTER_DISOWN |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_KeyframeMotion",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__KeyframeMotion, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_TrackMotion" "', argument " "1"" of type '" "Piavca::TrackMotion *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_KeyframeMotion" "', argument " "1"" of type '" "Piavca::KeyframeMotion *""'"); 
   }
-  arg1 = reinterpret_cast< Piavca::TrackMotion * >(argp1);
+  arg1 = reinterpret_cast< Piavca::KeyframeMotion * >(argp1);
   {
     try {
       arg1->Dispose();
@@ -32501,9 +32501,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TrackMotion_clone(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_KeyframeMotion_clone(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  Piavca::TrackMotion *arg1 = (Piavca::TrackMotion *) 0 ;
+  Piavca::KeyframeMotion *arg1 = (Piavca::KeyframeMotion *) 0 ;
   Piavca::Motion *result = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -32511,19 +32511,19 @@ SWIGINTERN PyObject *_wrap_TrackMotion_clone(PyObject *SWIGUNUSEDPARM(self), PyO
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:TrackMotion_clone",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__TrackMotion, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"O:KeyframeMotion_clone",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__KeyframeMotion, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TrackMotion_clone" "', argument " "1"" of type '" "Piavca::TrackMotion *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KeyframeMotion_clone" "', argument " "1"" of type '" "Piavca::KeyframeMotion *""'"); 
   }
-  arg1 = reinterpret_cast< Piavca::TrackMotion * >(argp1);
+  arg1 = reinterpret_cast< Piavca::KeyframeMotion * >(argp1);
   director = SWIG_DIRECTOR_CAST(arg1);
   upcall = (director && (director->swig_get_self()==obj0));
   try {
     {
       try {
         if (upcall) {
-          result = (Piavca::Motion *)(arg1)->Piavca::TrackMotion::clone();
+          result = (Piavca::Motion *)(arg1)->Piavca::KeyframeMotion::clone();
         } else {
           result = (Piavca::Motion *)(arg1)->clone();
         } 
@@ -32556,9 +32556,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TrackMotion_getMotionLength(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_KeyframeMotion_getMotionLength(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  Piavca::TrackMotion *arg1 = (Piavca::TrackMotion *) 0 ;
+  Piavca::KeyframeMotion *arg1 = (Piavca::KeyframeMotion *) 0 ;
   float result;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -32566,21 +32566,21 @@ SWIGINTERN PyObject *_wrap_TrackMotion_getMotionLength(PyObject *SWIGUNUSEDPARM(
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:TrackMotion_getMotionLength",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__TrackMotion, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"O:KeyframeMotion_getMotionLength",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__KeyframeMotion, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TrackMotion_getMotionLength" "', argument " "1"" of type '" "Piavca::TrackMotion const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KeyframeMotion_getMotionLength" "', argument " "1"" of type '" "Piavca::KeyframeMotion const *""'"); 
   }
-  arg1 = reinterpret_cast< Piavca::TrackMotion * >(argp1);
+  arg1 = reinterpret_cast< Piavca::KeyframeMotion * >(argp1);
   director = SWIG_DIRECTOR_CAST(arg1);
   upcall = (director && (director->swig_get_self()==obj0));
   try {
     {
       try {
         if (upcall) {
-          result = (float)((Piavca::TrackMotion const *)arg1)->Piavca::TrackMotion::getMotionLength();
+          result = (float)((Piavca::KeyframeMotion const *)arg1)->Piavca::KeyframeMotion::getMotionLength();
         } else {
-          result = (float)((Piavca::TrackMotion const *)arg1)->getMotionLength();
+          result = (float)((Piavca::KeyframeMotion const *)arg1)->getMotionLength();
         } 
       }
       catch (Swig::DirectorException &e) {
@@ -32602,9 +32602,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TrackMotion_isFacial(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_KeyframeMotion_isFacial(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  Piavca::TrackMotion *arg1 = (Piavca::TrackMotion *) 0 ;
+  Piavca::KeyframeMotion *arg1 = (Piavca::KeyframeMotion *) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -32612,19 +32612,19 @@ SWIGINTERN PyObject *_wrap_TrackMotion_isFacial(PyObject *SWIGUNUSEDPARM(self), 
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:TrackMotion_isFacial",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__TrackMotion, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"O:KeyframeMotion_isFacial",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__KeyframeMotion, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TrackMotion_isFacial" "', argument " "1"" of type '" "Piavca::TrackMotion *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KeyframeMotion_isFacial" "', argument " "1"" of type '" "Piavca::KeyframeMotion *""'"); 
   }
-  arg1 = reinterpret_cast< Piavca::TrackMotion * >(argp1);
+  arg1 = reinterpret_cast< Piavca::KeyframeMotion * >(argp1);
   director = SWIG_DIRECTOR_CAST(arg1);
   upcall = (director && (director->swig_get_self()==obj0));
   try {
     {
       try {
         if (upcall) {
-          result = (bool)(arg1)->Piavca::TrackMotion::isFacial();
+          result = (bool)(arg1)->Piavca::KeyframeMotion::isFacial();
         } else {
           result = (bool)(arg1)->isFacial();
         } 
@@ -32648,9 +32648,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TrackMotion_isRandomAccess(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_KeyframeMotion_isRandomAccess(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  Piavca::TrackMotion *arg1 = (Piavca::TrackMotion *) 0 ;
+  Piavca::KeyframeMotion *arg1 = (Piavca::KeyframeMotion *) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -32658,19 +32658,19 @@ SWIGINTERN PyObject *_wrap_TrackMotion_isRandomAccess(PyObject *SWIGUNUSEDPARM(s
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:TrackMotion_isRandomAccess",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__TrackMotion, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"O:KeyframeMotion_isRandomAccess",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__KeyframeMotion, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TrackMotion_isRandomAccess" "', argument " "1"" of type '" "Piavca::TrackMotion *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KeyframeMotion_isRandomAccess" "', argument " "1"" of type '" "Piavca::KeyframeMotion *""'"); 
   }
-  arg1 = reinterpret_cast< Piavca::TrackMotion * >(argp1);
+  arg1 = reinterpret_cast< Piavca::KeyframeMotion * >(argp1);
   director = SWIG_DIRECTOR_CAST(arg1);
   upcall = (director && (director->swig_get_self()==obj0));
   try {
     {
       try {
         if (upcall) {
-          result = (bool)(arg1)->Piavca::TrackMotion::isRandomAccess();
+          result = (bool)(arg1)->Piavca::KeyframeMotion::isRandomAccess();
         } else {
           result = (bool)(arg1)->isRandomAccess();
         } 
@@ -32694,9 +32694,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TrackMotion_isNull(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_KeyframeMotion_isNull(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  Piavca::TrackMotion *arg1 = (Piavca::TrackMotion *) 0 ;
+  Piavca::KeyframeMotion *arg1 = (Piavca::KeyframeMotion *) 0 ;
   int arg2 ;
   bool result;
   void *argp1 = 0 ;
@@ -32708,15 +32708,15 @@ SWIGINTERN PyObject *_wrap_TrackMotion_isNull(PyObject *SWIGUNUSEDPARM(self), Py
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:TrackMotion_isNull",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__TrackMotion, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"OO:KeyframeMotion_isNull",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__KeyframeMotion, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TrackMotion_isNull" "', argument " "1"" of type '" "Piavca::TrackMotion const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KeyframeMotion_isNull" "', argument " "1"" of type '" "Piavca::KeyframeMotion const *""'"); 
   }
-  arg1 = reinterpret_cast< Piavca::TrackMotion * >(argp1);
+  arg1 = reinterpret_cast< Piavca::KeyframeMotion * >(argp1);
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "TrackMotion_isNull" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "KeyframeMotion_isNull" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   director = SWIG_DIRECTOR_CAST(arg1);
@@ -32725,9 +32725,9 @@ SWIGINTERN PyObject *_wrap_TrackMotion_isNull(PyObject *SWIGUNUSEDPARM(self), Py
     {
       try {
         if (upcall) {
-          result = (bool)((Piavca::TrackMotion const *)arg1)->Piavca::TrackMotion::isNull(arg2);
+          result = (bool)((Piavca::KeyframeMotion const *)arg1)->Piavca::KeyframeMotion::isNull(arg2);
         } else {
-          result = (bool)((Piavca::TrackMotion const *)arg1)->isNull(arg2);
+          result = (bool)((Piavca::KeyframeMotion const *)arg1)->isNull(arg2);
         } 
       }
       catch (Swig::DirectorException &e) {
@@ -32749,9 +32749,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TrackMotion_getTrackType(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_KeyframeMotion_getTrackType(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  Piavca::TrackMotion *arg1 = (Piavca::TrackMotion *) 0 ;
+  Piavca::KeyframeMotion *arg1 = (Piavca::KeyframeMotion *) 0 ;
   int arg2 ;
   Piavca::trackType result;
   void *argp1 = 0 ;
@@ -32763,15 +32763,15 @@ SWIGINTERN PyObject *_wrap_TrackMotion_getTrackType(PyObject *SWIGUNUSEDPARM(sel
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:TrackMotion_getTrackType",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__TrackMotion, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"OO:KeyframeMotion_getTrackType",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__KeyframeMotion, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TrackMotion_getTrackType" "', argument " "1"" of type '" "Piavca::TrackMotion const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KeyframeMotion_getTrackType" "', argument " "1"" of type '" "Piavca::KeyframeMotion const *""'"); 
   }
-  arg1 = reinterpret_cast< Piavca::TrackMotion * >(argp1);
+  arg1 = reinterpret_cast< Piavca::KeyframeMotion * >(argp1);
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "TrackMotion_getTrackType" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "KeyframeMotion_getTrackType" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   director = SWIG_DIRECTOR_CAST(arg1);
@@ -32780,9 +32780,9 @@ SWIGINTERN PyObject *_wrap_TrackMotion_getTrackType(PyObject *SWIGUNUSEDPARM(sel
     {
       try {
         if (upcall) {
-          result = (Piavca::trackType)((Piavca::TrackMotion const *)arg1)->Piavca::TrackMotion::getTrackType(arg2);
+          result = (Piavca::trackType)((Piavca::KeyframeMotion const *)arg1)->Piavca::KeyframeMotion::getTrackType(arg2);
         } else {
-          result = (Piavca::trackType)((Piavca::TrackMotion const *)arg1)->getTrackType(arg2);
+          result = (Piavca::trackType)((Piavca::KeyframeMotion const *)arg1)->getTrackType(arg2);
         } 
       }
       catch (Swig::DirectorException &e) {
@@ -32804,9 +32804,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TrackMotion_addFloatTrack(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_KeyframeMotion_addFloatTrack(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  Piavca::TrackMotion *arg1 = (Piavca::TrackMotion *) 0 ;
+  Piavca::KeyframeMotion *arg1 = (Piavca::KeyframeMotion *) 0 ;
   int arg2 ;
   float arg3 ;
   void *argp1 = 0 ;
@@ -32819,20 +32819,20 @@ SWIGINTERN PyObject *_wrap_TrackMotion_addFloatTrack(PyObject *SWIGUNUSEDPARM(se
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OOO:TrackMotion_addFloatTrack",&obj0,&obj1,&obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__TrackMotion, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"OOO:KeyframeMotion_addFloatTrack",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__KeyframeMotion, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TrackMotion_addFloatTrack" "', argument " "1"" of type '" "Piavca::TrackMotion *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KeyframeMotion_addFloatTrack" "', argument " "1"" of type '" "Piavca::KeyframeMotion *""'"); 
   }
-  arg1 = reinterpret_cast< Piavca::TrackMotion * >(argp1);
+  arg1 = reinterpret_cast< Piavca::KeyframeMotion * >(argp1);
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "TrackMotion_addFloatTrack" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "KeyframeMotion_addFloatTrack" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   ecode3 = SWIG_AsVal_float(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "TrackMotion_addFloatTrack" "', argument " "3"" of type '" "float""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "KeyframeMotion_addFloatTrack" "', argument " "3"" of type '" "float""'");
   } 
   arg3 = static_cast< float >(val3);
   {
@@ -32855,9 +32855,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TrackMotion_addVecTrack(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_KeyframeMotion_addVecTrack(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  Piavca::TrackMotion *arg1 = (Piavca::TrackMotion *) 0 ;
+  Piavca::KeyframeMotion *arg1 = (Piavca::KeyframeMotion *) 0 ;
   int arg2 ;
   Piavca::Vec *arg3 = 0 ;
   void *argp1 = 0 ;
@@ -32870,23 +32870,23 @@ SWIGINTERN PyObject *_wrap_TrackMotion_addVecTrack(PyObject *SWIGUNUSEDPARM(self
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OOO:TrackMotion_addVecTrack",&obj0,&obj1,&obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__TrackMotion, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"OOO:KeyframeMotion_addVecTrack",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__KeyframeMotion, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TrackMotion_addVecTrack" "', argument " "1"" of type '" "Piavca::TrackMotion *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KeyframeMotion_addVecTrack" "', argument " "1"" of type '" "Piavca::KeyframeMotion *""'"); 
   }
-  arg1 = reinterpret_cast< Piavca::TrackMotion * >(argp1);
+  arg1 = reinterpret_cast< Piavca::KeyframeMotion * >(argp1);
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "TrackMotion_addVecTrack" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "KeyframeMotion_addVecTrack" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_Piavca__Vec,  0  | 0);
   if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "TrackMotion_addVecTrack" "', argument " "3"" of type '" "Piavca::Vec const &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "KeyframeMotion_addVecTrack" "', argument " "3"" of type '" "Piavca::Vec const &""'"); 
   }
   if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "TrackMotion_addVecTrack" "', argument " "3"" of type '" "Piavca::Vec const &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "KeyframeMotion_addVecTrack" "', argument " "3"" of type '" "Piavca::Vec const &""'"); 
   }
   arg3 = reinterpret_cast< Piavca::Vec * >(argp3);
   {
@@ -32909,9 +32909,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TrackMotion_addQuatTrack(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_KeyframeMotion_addQuatTrack(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  Piavca::TrackMotion *arg1 = (Piavca::TrackMotion *) 0 ;
+  Piavca::KeyframeMotion *arg1 = (Piavca::KeyframeMotion *) 0 ;
   int arg2 ;
   Piavca::Quat *arg3 = 0 ;
   void *argp1 = 0 ;
@@ -32924,23 +32924,23 @@ SWIGINTERN PyObject *_wrap_TrackMotion_addQuatTrack(PyObject *SWIGUNUSEDPARM(sel
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OOO:TrackMotion_addQuatTrack",&obj0,&obj1,&obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__TrackMotion, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"OOO:KeyframeMotion_addQuatTrack",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__KeyframeMotion, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TrackMotion_addQuatTrack" "', argument " "1"" of type '" "Piavca::TrackMotion *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KeyframeMotion_addQuatTrack" "', argument " "1"" of type '" "Piavca::KeyframeMotion *""'"); 
   }
-  arg1 = reinterpret_cast< Piavca::TrackMotion * >(argp1);
+  arg1 = reinterpret_cast< Piavca::KeyframeMotion * >(argp1);
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "TrackMotion_addQuatTrack" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "KeyframeMotion_addQuatTrack" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_Piavca__Quat,  0  | 0);
   if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "TrackMotion_addQuatTrack" "', argument " "3"" of type '" "Piavca::Quat const &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "KeyframeMotion_addQuatTrack" "', argument " "3"" of type '" "Piavca::Quat const &""'"); 
   }
   if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "TrackMotion_addQuatTrack" "', argument " "3"" of type '" "Piavca::Quat const &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "KeyframeMotion_addQuatTrack" "', argument " "3"" of type '" "Piavca::Quat const &""'"); 
   }
   arg3 = reinterpret_cast< Piavca::Quat * >(argp3);
   {
@@ -32963,9 +32963,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TrackMotion_setFloatKeyframe__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_KeyframeMotion_setFloatKeyframe__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  Piavca::TrackMotion *arg1 = (Piavca::TrackMotion *) 0 ;
+  Piavca::KeyframeMotion *arg1 = (Piavca::KeyframeMotion *) 0 ;
   int arg2 ;
   float arg3 ;
   float arg4 ;
@@ -32982,25 +32982,25 @@ SWIGINTERN PyObject *_wrap_TrackMotion_setFloatKeyframe__SWIG_0(PyObject *SWIGUN
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OOOO:TrackMotion_setFloatKeyframe",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__TrackMotion, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:KeyframeMotion_setFloatKeyframe",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__KeyframeMotion, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TrackMotion_setFloatKeyframe" "', argument " "1"" of type '" "Piavca::TrackMotion *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KeyframeMotion_setFloatKeyframe" "', argument " "1"" of type '" "Piavca::KeyframeMotion *""'"); 
   }
-  arg1 = reinterpret_cast< Piavca::TrackMotion * >(argp1);
+  arg1 = reinterpret_cast< Piavca::KeyframeMotion * >(argp1);
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "TrackMotion_setFloatKeyframe" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "KeyframeMotion_setFloatKeyframe" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   ecode3 = SWIG_AsVal_float(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "TrackMotion_setFloatKeyframe" "', argument " "3"" of type '" "float""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "KeyframeMotion_setFloatKeyframe" "', argument " "3"" of type '" "float""'");
   } 
   arg3 = static_cast< float >(val3);
   ecode4 = SWIG_AsVal_float(obj3, &val4);
   if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "TrackMotion_setFloatKeyframe" "', argument " "4"" of type '" "float""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "KeyframeMotion_setFloatKeyframe" "', argument " "4"" of type '" "float""'");
   } 
   arg4 = static_cast< float >(val4);
   {
@@ -33023,9 +33023,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TrackMotion_setFloatKeyframe__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_KeyframeMotion_setFloatKeyframe__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  Piavca::TrackMotion *arg1 = (Piavca::TrackMotion *) 0 ;
+  Piavca::KeyframeMotion *arg1 = (Piavca::KeyframeMotion *) 0 ;
   int arg2 ;
   float arg3 ;
   float arg4 ;
@@ -33046,30 +33046,30 @@ SWIGINTERN PyObject *_wrap_TrackMotion_setFloatKeyframe__SWIG_1(PyObject *SWIGUN
   PyObject * obj3 = 0 ;
   PyObject * obj4 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OOOOO:TrackMotion_setFloatKeyframe",&obj0,&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__TrackMotion, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"OOOOO:KeyframeMotion_setFloatKeyframe",&obj0,&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__KeyframeMotion, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TrackMotion_setFloatKeyframe" "', argument " "1"" of type '" "Piavca::TrackMotion *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KeyframeMotion_setFloatKeyframe" "', argument " "1"" of type '" "Piavca::KeyframeMotion *""'"); 
   }
-  arg1 = reinterpret_cast< Piavca::TrackMotion * >(argp1);
+  arg1 = reinterpret_cast< Piavca::KeyframeMotion * >(argp1);
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "TrackMotion_setFloatKeyframe" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "KeyframeMotion_setFloatKeyframe" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   ecode3 = SWIG_AsVal_float(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "TrackMotion_setFloatKeyframe" "', argument " "3"" of type '" "float""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "KeyframeMotion_setFloatKeyframe" "', argument " "3"" of type '" "float""'");
   } 
   arg3 = static_cast< float >(val3);
   ecode4 = SWIG_AsVal_float(obj3, &val4);
   if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "TrackMotion_setFloatKeyframe" "', argument " "4"" of type '" "float""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "KeyframeMotion_setFloatKeyframe" "', argument " "4"" of type '" "float""'");
   } 
   arg4 = static_cast< float >(val4);
   ecode5 = SWIG_AsVal_float(obj4, &val5);
   if (!SWIG_IsOK(ecode5)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "TrackMotion_setFloatKeyframe" "', argument " "5"" of type '" "float""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "KeyframeMotion_setFloatKeyframe" "', argument " "5"" of type '" "float""'");
   } 
   arg5 = static_cast< float >(val5);
   {
@@ -33092,7 +33092,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TrackMotion_setFloatKeyframe(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_KeyframeMotion_setFloatKeyframe(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[6];
   int ii;
@@ -33105,7 +33105,7 @@ SWIGINTERN PyObject *_wrap_TrackMotion_setFloatKeyframe(PyObject *self, PyObject
   if (argc == 4) {
     int _v;
     void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__TrackMotion, 0);
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__KeyframeMotion, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
       {
@@ -33123,7 +33123,7 @@ SWIGINTERN PyObject *_wrap_TrackMotion_setFloatKeyframe(PyObject *self, PyObject
             _v = SWIG_CheckState(res);
           }
           if (_v) {
-            return _wrap_TrackMotion_setFloatKeyframe__SWIG_0(self, args);
+            return _wrap_KeyframeMotion_setFloatKeyframe__SWIG_0(self, args);
           }
         }
       }
@@ -33132,7 +33132,7 @@ SWIGINTERN PyObject *_wrap_TrackMotion_setFloatKeyframe(PyObject *self, PyObject
   if (argc == 5) {
     int _v;
     void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__TrackMotion, 0);
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__KeyframeMotion, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
       {
@@ -33155,7 +33155,7 @@ SWIGINTERN PyObject *_wrap_TrackMotion_setFloatKeyframe(PyObject *self, PyObject
               _v = SWIG_CheckState(res);
             }
             if (_v) {
-              return _wrap_TrackMotion_setFloatKeyframe__SWIG_1(self, args);
+              return _wrap_KeyframeMotion_setFloatKeyframe__SWIG_1(self, args);
             }
           }
         }
@@ -33164,14 +33164,14 @@ SWIGINTERN PyObject *_wrap_TrackMotion_setFloatKeyframe(PyObject *self, PyObject
   }
   
 fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'TrackMotion_setFloatKeyframe'.\n  Possible C/C++ prototypes are:\n    setFloatKeyframe(int,float,float)\n    setFloatKeyframe(int,float,float,float)\n");
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'KeyframeMotion_setFloatKeyframe'.\n  Possible C/C++ prototypes are:\n    setFloatKeyframe(int,float,float)\n    setFloatKeyframe(int,float,float,float)\n");
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_TrackMotion_setVecKeyframe__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_KeyframeMotion_setVecKeyframe__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  Piavca::TrackMotion *arg1 = (Piavca::TrackMotion *) 0 ;
+  Piavca::KeyframeMotion *arg1 = (Piavca::KeyframeMotion *) 0 ;
   int arg2 ;
   float arg3 ;
   Piavca::Vec arg4 ;
@@ -33188,29 +33188,29 @@ SWIGINTERN PyObject *_wrap_TrackMotion_setVecKeyframe__SWIG_0(PyObject *SWIGUNUS
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OOOO:TrackMotion_setVecKeyframe",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__TrackMotion, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:KeyframeMotion_setVecKeyframe",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__KeyframeMotion, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TrackMotion_setVecKeyframe" "', argument " "1"" of type '" "Piavca::TrackMotion *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KeyframeMotion_setVecKeyframe" "', argument " "1"" of type '" "Piavca::KeyframeMotion *""'"); 
   }
-  arg1 = reinterpret_cast< Piavca::TrackMotion * >(argp1);
+  arg1 = reinterpret_cast< Piavca::KeyframeMotion * >(argp1);
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "TrackMotion_setVecKeyframe" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "KeyframeMotion_setVecKeyframe" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   ecode3 = SWIG_AsVal_float(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "TrackMotion_setVecKeyframe" "', argument " "3"" of type '" "float""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "KeyframeMotion_setVecKeyframe" "', argument " "3"" of type '" "float""'");
   } 
   arg3 = static_cast< float >(val3);
   {
     res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_Piavca__Vec,  0  | 0);
     if (!SWIG_IsOK(res4)) {
-      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "TrackMotion_setVecKeyframe" "', argument " "4"" of type '" "Piavca::Vec""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "KeyframeMotion_setVecKeyframe" "', argument " "4"" of type '" "Piavca::Vec""'"); 
     }  
     if (!argp4) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "TrackMotion_setVecKeyframe" "', argument " "4"" of type '" "Piavca::Vec""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "KeyframeMotion_setVecKeyframe" "', argument " "4"" of type '" "Piavca::Vec""'");
     } else {
       Piavca::Vec * temp = reinterpret_cast< Piavca::Vec * >(argp4);
       arg4 = *temp;
@@ -33237,9 +33237,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TrackMotion_setVecKeyframe__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_KeyframeMotion_setVecKeyframe__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  Piavca::TrackMotion *arg1 = (Piavca::TrackMotion *) 0 ;
+  Piavca::KeyframeMotion *arg1 = (Piavca::KeyframeMotion *) 0 ;
   int arg2 ;
   float arg3 ;
   Piavca::Vec arg4 ;
@@ -33260,29 +33260,29 @@ SWIGINTERN PyObject *_wrap_TrackMotion_setVecKeyframe__SWIG_1(PyObject *SWIGUNUS
   PyObject * obj3 = 0 ;
   PyObject * obj4 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OOOOO:TrackMotion_setVecKeyframe",&obj0,&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__TrackMotion, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"OOOOO:KeyframeMotion_setVecKeyframe",&obj0,&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__KeyframeMotion, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TrackMotion_setVecKeyframe" "', argument " "1"" of type '" "Piavca::TrackMotion *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KeyframeMotion_setVecKeyframe" "', argument " "1"" of type '" "Piavca::KeyframeMotion *""'"); 
   }
-  arg1 = reinterpret_cast< Piavca::TrackMotion * >(argp1);
+  arg1 = reinterpret_cast< Piavca::KeyframeMotion * >(argp1);
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "TrackMotion_setVecKeyframe" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "KeyframeMotion_setVecKeyframe" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   ecode3 = SWIG_AsVal_float(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "TrackMotion_setVecKeyframe" "', argument " "3"" of type '" "float""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "KeyframeMotion_setVecKeyframe" "', argument " "3"" of type '" "float""'");
   } 
   arg3 = static_cast< float >(val3);
   {
     res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_Piavca__Vec,  0  | 0);
     if (!SWIG_IsOK(res4)) {
-      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "TrackMotion_setVecKeyframe" "', argument " "4"" of type '" "Piavca::Vec""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "KeyframeMotion_setVecKeyframe" "', argument " "4"" of type '" "Piavca::Vec""'"); 
     }  
     if (!argp4) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "TrackMotion_setVecKeyframe" "', argument " "4"" of type '" "Piavca::Vec""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "KeyframeMotion_setVecKeyframe" "', argument " "4"" of type '" "Piavca::Vec""'");
     } else {
       Piavca::Vec * temp = reinterpret_cast< Piavca::Vec * >(argp4);
       arg4 = *temp;
@@ -33292,10 +33292,10 @@ SWIGINTERN PyObject *_wrap_TrackMotion_setVecKeyframe__SWIG_1(PyObject *SWIGUNUS
   {
     res5 = SWIG_ConvertPtr(obj4, &argp5, SWIGTYPE_p_Piavca__Vec,  0  | 0);
     if (!SWIG_IsOK(res5)) {
-      SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "TrackMotion_setVecKeyframe" "', argument " "5"" of type '" "Piavca::Vec""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "KeyframeMotion_setVecKeyframe" "', argument " "5"" of type '" "Piavca::Vec""'"); 
     }  
     if (!argp5) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "TrackMotion_setVecKeyframe" "', argument " "5"" of type '" "Piavca::Vec""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "KeyframeMotion_setVecKeyframe" "', argument " "5"" of type '" "Piavca::Vec""'");
     } else {
       Piavca::Vec * temp = reinterpret_cast< Piavca::Vec * >(argp5);
       arg5 = *temp;
@@ -33322,7 +33322,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TrackMotion_setVecKeyframe(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_KeyframeMotion_setVecKeyframe(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[6];
   int ii;
@@ -33335,7 +33335,7 @@ SWIGINTERN PyObject *_wrap_TrackMotion_setVecKeyframe(PyObject *self, PyObject *
   if (argc == 4) {
     int _v;
     void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__TrackMotion, 0);
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__KeyframeMotion, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
       {
@@ -33351,7 +33351,7 @@ SWIGINTERN PyObject *_wrap_TrackMotion_setVecKeyframe(PyObject *self, PyObject *
           int res = SWIG_ConvertPtr(argv[3], 0, SWIGTYPE_p_Piavca__Vec, 0);
           _v = SWIG_CheckState(res);
           if (_v) {
-            return _wrap_TrackMotion_setVecKeyframe__SWIG_0(self, args);
+            return _wrap_KeyframeMotion_setVecKeyframe__SWIG_0(self, args);
           }
         }
       }
@@ -33360,7 +33360,7 @@ SWIGINTERN PyObject *_wrap_TrackMotion_setVecKeyframe(PyObject *self, PyObject *
   if (argc == 5) {
     int _v;
     void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__TrackMotion, 0);
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__KeyframeMotion, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
       {
@@ -33379,7 +33379,7 @@ SWIGINTERN PyObject *_wrap_TrackMotion_setVecKeyframe(PyObject *self, PyObject *
             int res = SWIG_ConvertPtr(argv[4], 0, SWIGTYPE_p_Piavca__Vec, 0);
             _v = SWIG_CheckState(res);
             if (_v) {
-              return _wrap_TrackMotion_setVecKeyframe__SWIG_1(self, args);
+              return _wrap_KeyframeMotion_setVecKeyframe__SWIG_1(self, args);
             }
           }
         }
@@ -33388,14 +33388,14 @@ SWIGINTERN PyObject *_wrap_TrackMotion_setVecKeyframe(PyObject *self, PyObject *
   }
   
 fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'TrackMotion_setVecKeyframe'.\n  Possible C/C++ prototypes are:\n    setVecKeyframe(int,float,Piavca::Vec)\n    setVecKeyframe(int,float,Piavca::Vec,Piavca::Vec)\n");
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'KeyframeMotion_setVecKeyframe'.\n  Possible C/C++ prototypes are:\n    setVecKeyframe(int,float,Piavca::Vec)\n    setVecKeyframe(int,float,Piavca::Vec,Piavca::Vec)\n");
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_TrackMotion_setQuatKeyframe__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_KeyframeMotion_setQuatKeyframe__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  Piavca::TrackMotion *arg1 = (Piavca::TrackMotion *) 0 ;
+  Piavca::KeyframeMotion *arg1 = (Piavca::KeyframeMotion *) 0 ;
   int arg2 ;
   float arg3 ;
   Piavca::Quat arg4 ;
@@ -33412,29 +33412,29 @@ SWIGINTERN PyObject *_wrap_TrackMotion_setQuatKeyframe__SWIG_0(PyObject *SWIGUNU
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OOOO:TrackMotion_setQuatKeyframe",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__TrackMotion, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:KeyframeMotion_setQuatKeyframe",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__KeyframeMotion, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TrackMotion_setQuatKeyframe" "', argument " "1"" of type '" "Piavca::TrackMotion *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KeyframeMotion_setQuatKeyframe" "', argument " "1"" of type '" "Piavca::KeyframeMotion *""'"); 
   }
-  arg1 = reinterpret_cast< Piavca::TrackMotion * >(argp1);
+  arg1 = reinterpret_cast< Piavca::KeyframeMotion * >(argp1);
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "TrackMotion_setQuatKeyframe" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "KeyframeMotion_setQuatKeyframe" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   ecode3 = SWIG_AsVal_float(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "TrackMotion_setQuatKeyframe" "', argument " "3"" of type '" "float""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "KeyframeMotion_setQuatKeyframe" "', argument " "3"" of type '" "float""'");
   } 
   arg3 = static_cast< float >(val3);
   {
     res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_Piavca__Quat,  0  | 0);
     if (!SWIG_IsOK(res4)) {
-      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "TrackMotion_setQuatKeyframe" "', argument " "4"" of type '" "Piavca::Quat""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "KeyframeMotion_setQuatKeyframe" "', argument " "4"" of type '" "Piavca::Quat""'"); 
     }  
     if (!argp4) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "TrackMotion_setQuatKeyframe" "', argument " "4"" of type '" "Piavca::Quat""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "KeyframeMotion_setQuatKeyframe" "', argument " "4"" of type '" "Piavca::Quat""'");
     } else {
       Piavca::Quat * temp = reinterpret_cast< Piavca::Quat * >(argp4);
       arg4 = *temp;
@@ -33461,9 +33461,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TrackMotion_setQuatKeyframe__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_KeyframeMotion_setQuatKeyframe__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  Piavca::TrackMotion *arg1 = (Piavca::TrackMotion *) 0 ;
+  Piavca::KeyframeMotion *arg1 = (Piavca::KeyframeMotion *) 0 ;
   int arg2 ;
   float arg3 ;
   Piavca::Quat arg4 ;
@@ -33484,29 +33484,29 @@ SWIGINTERN PyObject *_wrap_TrackMotion_setQuatKeyframe__SWIG_1(PyObject *SWIGUNU
   PyObject * obj3 = 0 ;
   PyObject * obj4 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OOOOO:TrackMotion_setQuatKeyframe",&obj0,&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__TrackMotion, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"OOOOO:KeyframeMotion_setQuatKeyframe",&obj0,&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__KeyframeMotion, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TrackMotion_setQuatKeyframe" "', argument " "1"" of type '" "Piavca::TrackMotion *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KeyframeMotion_setQuatKeyframe" "', argument " "1"" of type '" "Piavca::KeyframeMotion *""'"); 
   }
-  arg1 = reinterpret_cast< Piavca::TrackMotion * >(argp1);
+  arg1 = reinterpret_cast< Piavca::KeyframeMotion * >(argp1);
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "TrackMotion_setQuatKeyframe" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "KeyframeMotion_setQuatKeyframe" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   ecode3 = SWIG_AsVal_float(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "TrackMotion_setQuatKeyframe" "', argument " "3"" of type '" "float""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "KeyframeMotion_setQuatKeyframe" "', argument " "3"" of type '" "float""'");
   } 
   arg3 = static_cast< float >(val3);
   {
     res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_Piavca__Quat,  0  | 0);
     if (!SWIG_IsOK(res4)) {
-      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "TrackMotion_setQuatKeyframe" "', argument " "4"" of type '" "Piavca::Quat""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "KeyframeMotion_setQuatKeyframe" "', argument " "4"" of type '" "Piavca::Quat""'"); 
     }  
     if (!argp4) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "TrackMotion_setQuatKeyframe" "', argument " "4"" of type '" "Piavca::Quat""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "KeyframeMotion_setQuatKeyframe" "', argument " "4"" of type '" "Piavca::Quat""'");
     } else {
       Piavca::Quat * temp = reinterpret_cast< Piavca::Quat * >(argp4);
       arg4 = *temp;
@@ -33516,10 +33516,10 @@ SWIGINTERN PyObject *_wrap_TrackMotion_setQuatKeyframe__SWIG_1(PyObject *SWIGUNU
   {
     res5 = SWIG_ConvertPtr(obj4, &argp5, SWIGTYPE_p_Piavca__Quat,  0  | 0);
     if (!SWIG_IsOK(res5)) {
-      SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "TrackMotion_setQuatKeyframe" "', argument " "5"" of type '" "Piavca::Quat""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "KeyframeMotion_setQuatKeyframe" "', argument " "5"" of type '" "Piavca::Quat""'"); 
     }  
     if (!argp5) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "TrackMotion_setQuatKeyframe" "', argument " "5"" of type '" "Piavca::Quat""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "KeyframeMotion_setQuatKeyframe" "', argument " "5"" of type '" "Piavca::Quat""'");
     } else {
       Piavca::Quat * temp = reinterpret_cast< Piavca::Quat * >(argp5);
       arg5 = *temp;
@@ -33546,7 +33546,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TrackMotion_setQuatKeyframe(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_KeyframeMotion_setQuatKeyframe(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[6];
   int ii;
@@ -33559,7 +33559,7 @@ SWIGINTERN PyObject *_wrap_TrackMotion_setQuatKeyframe(PyObject *self, PyObject 
   if (argc == 4) {
     int _v;
     void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__TrackMotion, 0);
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__KeyframeMotion, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
       {
@@ -33575,7 +33575,7 @@ SWIGINTERN PyObject *_wrap_TrackMotion_setQuatKeyframe(PyObject *self, PyObject 
           int res = SWIG_ConvertPtr(argv[3], 0, SWIGTYPE_p_Piavca__Quat, 0);
           _v = SWIG_CheckState(res);
           if (_v) {
-            return _wrap_TrackMotion_setQuatKeyframe__SWIG_0(self, args);
+            return _wrap_KeyframeMotion_setQuatKeyframe__SWIG_0(self, args);
           }
         }
       }
@@ -33584,7 +33584,7 @@ SWIGINTERN PyObject *_wrap_TrackMotion_setQuatKeyframe(PyObject *self, PyObject 
   if (argc == 5) {
     int _v;
     void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__TrackMotion, 0);
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__KeyframeMotion, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
       {
@@ -33603,7 +33603,7 @@ SWIGINTERN PyObject *_wrap_TrackMotion_setQuatKeyframe(PyObject *self, PyObject 
             int res = SWIG_ConvertPtr(argv[4], 0, SWIGTYPE_p_Piavca__Quat, 0);
             _v = SWIG_CheckState(res);
             if (_v) {
-              return _wrap_TrackMotion_setQuatKeyframe__SWIG_1(self, args);
+              return _wrap_KeyframeMotion_setQuatKeyframe__SWIG_1(self, args);
             }
           }
         }
@@ -33612,14 +33612,14 @@ SWIGINTERN PyObject *_wrap_TrackMotion_setQuatKeyframe(PyObject *self, PyObject 
   }
   
 fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'TrackMotion_setQuatKeyframe'.\n  Possible C/C++ prototypes are:\n    setQuatKeyframe(int,float,Piavca::Quat)\n    setQuatKeyframe(int,float,Piavca::Quat,Piavca::Quat)\n");
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'KeyframeMotion_setQuatKeyframe'.\n  Possible C/C++ prototypes are:\n    setQuatKeyframe(int,float,Piavca::Quat)\n    setQuatKeyframe(int,float,Piavca::Quat,Piavca::Quat)\n");
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_TrackMotion_getNumKeyframes(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_KeyframeMotion_getNumKeyframes(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  Piavca::TrackMotion *arg1 = (Piavca::TrackMotion *) 0 ;
+  Piavca::KeyframeMotion *arg1 = (Piavca::KeyframeMotion *) 0 ;
   int arg2 ;
   int result;
   void *argp1 = 0 ;
@@ -33629,15 +33629,15 @@ SWIGINTERN PyObject *_wrap_TrackMotion_getNumKeyframes(PyObject *SWIGUNUSEDPARM(
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:TrackMotion_getNumKeyframes",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__TrackMotion, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"OO:KeyframeMotion_getNumKeyframes",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__KeyframeMotion, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TrackMotion_getNumKeyframes" "', argument " "1"" of type '" "Piavca::TrackMotion *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KeyframeMotion_getNumKeyframes" "', argument " "1"" of type '" "Piavca::KeyframeMotion *""'"); 
   }
-  arg1 = reinterpret_cast< Piavca::TrackMotion * >(argp1);
+  arg1 = reinterpret_cast< Piavca::KeyframeMotion * >(argp1);
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "TrackMotion_getNumKeyframes" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "KeyframeMotion_getNumKeyframes" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   {
@@ -33660,9 +33660,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TrackMotion_getKeyframeTime(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_KeyframeMotion_getKeyframeTime(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  Piavca::TrackMotion *arg1 = (Piavca::TrackMotion *) 0 ;
+  Piavca::KeyframeMotion *arg1 = (Piavca::KeyframeMotion *) 0 ;
   int arg2 ;
   int arg3 ;
   float result;
@@ -33676,20 +33676,20 @@ SWIGINTERN PyObject *_wrap_TrackMotion_getKeyframeTime(PyObject *SWIGUNUSEDPARM(
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OOO:TrackMotion_getKeyframeTime",&obj0,&obj1,&obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__TrackMotion, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"OOO:KeyframeMotion_getKeyframeTime",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__KeyframeMotion, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TrackMotion_getKeyframeTime" "', argument " "1"" of type '" "Piavca::TrackMotion *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KeyframeMotion_getKeyframeTime" "', argument " "1"" of type '" "Piavca::KeyframeMotion *""'"); 
   }
-  arg1 = reinterpret_cast< Piavca::TrackMotion * >(argp1);
+  arg1 = reinterpret_cast< Piavca::KeyframeMotion * >(argp1);
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "TrackMotion_getKeyframeTime" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "KeyframeMotion_getKeyframeTime" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   ecode3 = SWIG_AsVal_int(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "TrackMotion_getKeyframeTime" "', argument " "3"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "KeyframeMotion_getKeyframeTime" "', argument " "3"" of type '" "int""'");
   } 
   arg3 = static_cast< int >(val3);
   {
@@ -33712,9 +33712,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TrackMotion_getFloatValueAtTimeInternal(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_KeyframeMotion_getFloatValueAtTimeInternal(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  Piavca::TrackMotion *arg1 = (Piavca::TrackMotion *) 0 ;
+  Piavca::KeyframeMotion *arg1 = (Piavca::KeyframeMotion *) 0 ;
   int arg2 ;
   float arg3 ;
   float result;
@@ -33730,20 +33730,20 @@ SWIGINTERN PyObject *_wrap_TrackMotion_getFloatValueAtTimeInternal(PyObject *SWI
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if (!PyArg_ParseTuple(args,(char *)"OOO:TrackMotion_getFloatValueAtTimeInternal",&obj0,&obj1,&obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__TrackMotion, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"OOO:KeyframeMotion_getFloatValueAtTimeInternal",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__KeyframeMotion, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TrackMotion_getFloatValueAtTimeInternal" "', argument " "1"" of type '" "Piavca::TrackMotion *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KeyframeMotion_getFloatValueAtTimeInternal" "', argument " "1"" of type '" "Piavca::KeyframeMotion *""'"); 
   }
-  arg1 = reinterpret_cast< Piavca::TrackMotion * >(argp1);
+  arg1 = reinterpret_cast< Piavca::KeyframeMotion * >(argp1);
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "TrackMotion_getFloatValueAtTimeInternal" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "KeyframeMotion_getFloatValueAtTimeInternal" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   ecode3 = SWIG_AsVal_float(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "TrackMotion_getFloatValueAtTimeInternal" "', argument " "3"" of type '" "float""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "KeyframeMotion_getFloatValueAtTimeInternal" "', argument " "3"" of type '" "float""'");
   } 
   arg3 = static_cast< float >(val3);
   director = SWIG_DIRECTOR_CAST(arg1);
@@ -33752,7 +33752,7 @@ SWIGINTERN PyObject *_wrap_TrackMotion_getFloatValueAtTimeInternal(PyObject *SWI
     {
       try {
         if (upcall) {
-          result = (float)(arg1)->Piavca::TrackMotion::getFloatValueAtTimeInternal(arg2,arg3);
+          result = (float)(arg1)->Piavca::KeyframeMotion::getFloatValueAtTimeInternal(arg2,arg3);
         } else {
           result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3);
         } 
@@ -33776,9 +33776,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TrackMotion_getVecValueAtTimeInternal(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_KeyframeMotion_getVecValueAtTimeInternal(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  Piavca::TrackMotion *arg1 = (Piavca::TrackMotion *) 0 ;
+  Piavca::KeyframeMotion *arg1 = (Piavca::KeyframeMotion *) 0 ;
   int arg2 ;
   float arg3 ;
   Piavca::Vec result;
@@ -33794,20 +33794,20 @@ SWIGINTERN PyObject *_wrap_TrackMotion_getVecValueAtTimeInternal(PyObject *SWIGU
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if (!PyArg_ParseTuple(args,(char *)"OOO:TrackMotion_getVecValueAtTimeInternal",&obj0,&obj1,&obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__TrackMotion, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"OOO:KeyframeMotion_getVecValueAtTimeInternal",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__KeyframeMotion, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TrackMotion_getVecValueAtTimeInternal" "', argument " "1"" of type '" "Piavca::TrackMotion *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KeyframeMotion_getVecValueAtTimeInternal" "', argument " "1"" of type '" "Piavca::KeyframeMotion *""'"); 
   }
-  arg1 = reinterpret_cast< Piavca::TrackMotion * >(argp1);
+  arg1 = reinterpret_cast< Piavca::KeyframeMotion * >(argp1);
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "TrackMotion_getVecValueAtTimeInternal" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "KeyframeMotion_getVecValueAtTimeInternal" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   ecode3 = SWIG_AsVal_float(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "TrackMotion_getVecValueAtTimeInternal" "', argument " "3"" of type '" "float""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "KeyframeMotion_getVecValueAtTimeInternal" "', argument " "3"" of type '" "float""'");
   } 
   arg3 = static_cast< float >(val3);
   director = SWIG_DIRECTOR_CAST(arg1);
@@ -33816,7 +33816,7 @@ SWIGINTERN PyObject *_wrap_TrackMotion_getVecValueAtTimeInternal(PyObject *SWIGU
     {
       try {
         if (upcall) {
-          result = (arg1)->Piavca::TrackMotion::getVecValueAtTimeInternal(arg2,arg3);
+          result = (arg1)->Piavca::KeyframeMotion::getVecValueAtTimeInternal(arg2,arg3);
         } else {
           result = (arg1)->getVecValueAtTimeInternal(arg2,arg3);
         } 
@@ -33840,9 +33840,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TrackMotion_getQuatValueAtTimeInternal(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_KeyframeMotion_getQuatValueAtTimeInternal(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  Piavca::TrackMotion *arg1 = (Piavca::TrackMotion *) 0 ;
+  Piavca::KeyframeMotion *arg1 = (Piavca::KeyframeMotion *) 0 ;
   int arg2 ;
   float arg3 ;
   Piavca::Quat result;
@@ -33858,20 +33858,20 @@ SWIGINTERN PyObject *_wrap_TrackMotion_getQuatValueAtTimeInternal(PyObject *SWIG
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if (!PyArg_ParseTuple(args,(char *)"OOO:TrackMotion_getQuatValueAtTimeInternal",&obj0,&obj1,&obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__TrackMotion, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"OOO:KeyframeMotion_getQuatValueAtTimeInternal",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__KeyframeMotion, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TrackMotion_getQuatValueAtTimeInternal" "', argument " "1"" of type '" "Piavca::TrackMotion *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KeyframeMotion_getQuatValueAtTimeInternal" "', argument " "1"" of type '" "Piavca::KeyframeMotion *""'"); 
   }
-  arg1 = reinterpret_cast< Piavca::TrackMotion * >(argp1);
+  arg1 = reinterpret_cast< Piavca::KeyframeMotion * >(argp1);
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "TrackMotion_getQuatValueAtTimeInternal" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "KeyframeMotion_getQuatValueAtTimeInternal" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   ecode3 = SWIG_AsVal_float(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "TrackMotion_getQuatValueAtTimeInternal" "', argument " "3"" of type '" "float""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "KeyframeMotion_getQuatValueAtTimeInternal" "', argument " "3"" of type '" "float""'");
   } 
   arg3 = static_cast< float >(val3);
   director = SWIG_DIRECTOR_CAST(arg1);
@@ -33880,7 +33880,7 @@ SWIGINTERN PyObject *_wrap_TrackMotion_getQuatValueAtTimeInternal(PyObject *SWIG
     {
       try {
         if (upcall) {
-          result = (arg1)->Piavca::TrackMotion::getQuatValueAtTimeInternal(arg2,arg3);
+          result = (arg1)->Piavca::KeyframeMotion::getQuatValueAtTimeInternal(arg2,arg3);
         } else {
           result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3);
         } 
@@ -33904,19 +33904,19 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TrackMotion_deleteAllTracks(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_KeyframeMotion_deleteAllTracks(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  Piavca::TrackMotion *arg1 = (Piavca::TrackMotion *) 0 ;
+  Piavca::KeyframeMotion *arg1 = (Piavca::KeyframeMotion *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:TrackMotion_deleteAllTracks",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__TrackMotion, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"O:KeyframeMotion_deleteAllTracks",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__KeyframeMotion, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TrackMotion_deleteAllTracks" "', argument " "1"" of type '" "Piavca::TrackMotion *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KeyframeMotion_deleteAllTracks" "', argument " "1"" of type '" "Piavca::KeyframeMotion *""'"); 
   }
-  arg1 = reinterpret_cast< Piavca::TrackMotion * >(argp1);
+  arg1 = reinterpret_cast< Piavca::KeyframeMotion * >(argp1);
   {
     try {
       (arg1)->deleteAllTracks(); 
@@ -33937,9 +33937,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TrackMotion_clearTrack__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_KeyframeMotion_clearTrack__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  Piavca::TrackMotion *arg1 = (Piavca::TrackMotion *) 0 ;
+  Piavca::KeyframeMotion *arg1 = (Piavca::KeyframeMotion *) 0 ;
   int arg2 ;
   bool arg3 ;
   void *argp1 = 0 ;
@@ -33952,20 +33952,20 @@ SWIGINTERN PyObject *_wrap_TrackMotion_clearTrack__SWIG_0(PyObject *SWIGUNUSEDPA
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OOO:TrackMotion_clearTrack",&obj0,&obj1,&obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__TrackMotion, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"OOO:KeyframeMotion_clearTrack",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__KeyframeMotion, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TrackMotion_clearTrack" "', argument " "1"" of type '" "Piavca::TrackMotion *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KeyframeMotion_clearTrack" "', argument " "1"" of type '" "Piavca::KeyframeMotion *""'"); 
   }
-  arg1 = reinterpret_cast< Piavca::TrackMotion * >(argp1);
+  arg1 = reinterpret_cast< Piavca::KeyframeMotion * >(argp1);
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "TrackMotion_clearTrack" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "KeyframeMotion_clearTrack" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   ecode3 = SWIG_AsVal_bool(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "TrackMotion_clearTrack" "', argument " "3"" of type '" "bool""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "KeyframeMotion_clearTrack" "', argument " "3"" of type '" "bool""'");
   } 
   arg3 = static_cast< bool >(val3);
   {
@@ -33988,9 +33988,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TrackMotion_clearTrack__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_KeyframeMotion_clearTrack__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  Piavca::TrackMotion *arg1 = (Piavca::TrackMotion *) 0 ;
+  Piavca::KeyframeMotion *arg1 = (Piavca::KeyframeMotion *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -33999,15 +33999,15 @@ SWIGINTERN PyObject *_wrap_TrackMotion_clearTrack__SWIG_1(PyObject *SWIGUNUSEDPA
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:TrackMotion_clearTrack",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__TrackMotion, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"OO:KeyframeMotion_clearTrack",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__KeyframeMotion, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TrackMotion_clearTrack" "', argument " "1"" of type '" "Piavca::TrackMotion *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KeyframeMotion_clearTrack" "', argument " "1"" of type '" "Piavca::KeyframeMotion *""'"); 
   }
-  arg1 = reinterpret_cast< Piavca::TrackMotion * >(argp1);
+  arg1 = reinterpret_cast< Piavca::KeyframeMotion * >(argp1);
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "TrackMotion_clearTrack" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "KeyframeMotion_clearTrack" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   {
@@ -34030,7 +34030,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TrackMotion_clearTrack(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_KeyframeMotion_clearTrack(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[4];
   int ii;
@@ -34043,7 +34043,7 @@ SWIGINTERN PyObject *_wrap_TrackMotion_clearTrack(PyObject *self, PyObject *args
   if (argc == 2) {
     int _v;
     void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__TrackMotion, 0);
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__KeyframeMotion, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
       {
@@ -34051,14 +34051,14 @@ SWIGINTERN PyObject *_wrap_TrackMotion_clearTrack(PyObject *self, PyObject *args
         _v = SWIG_CheckState(res);
       }
       if (_v) {
-        return _wrap_TrackMotion_clearTrack__SWIG_1(self, args);
+        return _wrap_KeyframeMotion_clearTrack__SWIG_1(self, args);
       }
     }
   }
   if (argc == 3) {
     int _v;
     void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__TrackMotion, 0);
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__KeyframeMotion, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
       {
@@ -34071,21 +34071,21 @@ SWIGINTERN PyObject *_wrap_TrackMotion_clearTrack(PyObject *self, PyObject *args
           _v = SWIG_CheckState(res);
         }
         if (_v) {
-          return _wrap_TrackMotion_clearTrack__SWIG_0(self, args);
+          return _wrap_KeyframeMotion_clearTrack__SWIG_0(self, args);
         }
       }
     }
   }
   
 fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'TrackMotion_clearTrack'.\n  Possible C/C++ prototypes are:\n    clearTrack(int,bool)\n    clearTrack(int)\n");
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'KeyframeMotion_clearTrack'.\n  Possible C/C++ prototypes are:\n    clearTrack(int,bool)\n    clearTrack(int)\n");
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_TrackMotion_clearAllTracks__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_KeyframeMotion_clearAllTracks__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  Piavca::TrackMotion *arg1 = (Piavca::TrackMotion *) 0 ;
+  Piavca::KeyframeMotion *arg1 = (Piavca::KeyframeMotion *) 0 ;
   bool arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -34094,15 +34094,15 @@ SWIGINTERN PyObject *_wrap_TrackMotion_clearAllTracks__SWIG_0(PyObject *SWIGUNUS
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:TrackMotion_clearAllTracks",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__TrackMotion, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"OO:KeyframeMotion_clearAllTracks",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__KeyframeMotion, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TrackMotion_clearAllTracks" "', argument " "1"" of type '" "Piavca::TrackMotion *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KeyframeMotion_clearAllTracks" "', argument " "1"" of type '" "Piavca::KeyframeMotion *""'"); 
   }
-  arg1 = reinterpret_cast< Piavca::TrackMotion * >(argp1);
+  arg1 = reinterpret_cast< Piavca::KeyframeMotion * >(argp1);
   ecode2 = SWIG_AsVal_bool(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "TrackMotion_clearAllTracks" "', argument " "2"" of type '" "bool""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "KeyframeMotion_clearAllTracks" "', argument " "2"" of type '" "bool""'");
   } 
   arg2 = static_cast< bool >(val2);
   {
@@ -34125,19 +34125,19 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TrackMotion_clearAllTracks__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_KeyframeMotion_clearAllTracks__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  Piavca::TrackMotion *arg1 = (Piavca::TrackMotion *) 0 ;
+  Piavca::KeyframeMotion *arg1 = (Piavca::KeyframeMotion *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:TrackMotion_clearAllTracks",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__TrackMotion, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"O:KeyframeMotion_clearAllTracks",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__KeyframeMotion, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TrackMotion_clearAllTracks" "', argument " "1"" of type '" "Piavca::TrackMotion *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KeyframeMotion_clearAllTracks" "', argument " "1"" of type '" "Piavca::KeyframeMotion *""'"); 
   }
-  arg1 = reinterpret_cast< Piavca::TrackMotion * >(argp1);
+  arg1 = reinterpret_cast< Piavca::KeyframeMotion * >(argp1);
   {
     try {
       (arg1)->clearAllTracks(); 
@@ -34158,7 +34158,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TrackMotion_clearAllTracks(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_KeyframeMotion_clearAllTracks(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[3];
   int ii;
@@ -34171,16 +34171,16 @@ SWIGINTERN PyObject *_wrap_TrackMotion_clearAllTracks(PyObject *self, PyObject *
   if (argc == 1) {
     int _v;
     void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__TrackMotion, 0);
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__KeyframeMotion, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      return _wrap_TrackMotion_clearAllTracks__SWIG_1(self, args);
+      return _wrap_KeyframeMotion_clearAllTracks__SWIG_1(self, args);
     }
   }
   if (argc == 2) {
     int _v;
     void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__TrackMotion, 0);
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__KeyframeMotion, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
       {
@@ -34188,30 +34188,30 @@ SWIGINTERN PyObject *_wrap_TrackMotion_clearAllTracks(PyObject *self, PyObject *
         _v = SWIG_CheckState(res);
       }
       if (_v) {
-        return _wrap_TrackMotion_clearAllTracks__SWIG_0(self, args);
+        return _wrap_KeyframeMotion_clearAllTracks__SWIG_0(self, args);
       }
     }
   }
   
 fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'TrackMotion_clearAllTracks'.\n  Possible C/C++ prototypes are:\n    clearAllTracks(bool)\n    clearAllTracks()\n");
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'KeyframeMotion_clearAllTracks'.\n  Possible C/C++ prototypes are:\n    clearAllTracks(bool)\n    clearAllTracks()\n");
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_disown_TrackMotion(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_disown_KeyframeMotion(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  Piavca::TrackMotion *arg1 = (Piavca::TrackMotion *) 0 ;
+  Piavca::KeyframeMotion *arg1 = (Piavca::KeyframeMotion *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:disown_TrackMotion",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__TrackMotion, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"O:disown_KeyframeMotion",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__KeyframeMotion, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "disown_TrackMotion" "', argument " "1"" of type '" "Piavca::TrackMotion *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "disown_KeyframeMotion" "', argument " "1"" of type '" "Piavca::KeyframeMotion *""'"); 
   }
-  arg1 = reinterpret_cast< Piavca::TrackMotion * >(argp1);
+  arg1 = reinterpret_cast< Piavca::KeyframeMotion * >(argp1);
   {
     Swig::Director *director = dynamic_cast<Swig::Director *>(arg1);
     if (director) director->swig_disown();
@@ -34224,10 +34224,10 @@ fail:
 }
 
 
-SWIGINTERN PyObject *TrackMotion_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *KeyframeMotion_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!PyArg_ParseTuple(args,(char*)"O|swigregister", &obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_Piavca__TrackMotion, SWIG_NewClientData(obj));
+  SWIG_TypeNewClientData(SWIGTYPE_p_Piavca__KeyframeMotion, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
@@ -34235,7 +34235,7 @@ SWIGINTERN PyObject *_wrap_copyMotionPosture(PyObject *SWIGUNUSEDPARM(self), PyO
   PyObject *resultobj = 0;
   Piavca::Motion *arg1 = (Piavca::Motion *) 0 ;
   float arg2 ;
-  Piavca::TrackMotion *result = 0 ;
+  Piavca::KeyframeMotion *result = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   float val2 ;
@@ -34256,7 +34256,7 @@ SWIGINTERN PyObject *_wrap_copyMotionPosture(PyObject *SWIGUNUSEDPARM(self), PyO
   arg2 = static_cast< float >(val2);
   {
     try {
-      result = (Piavca::TrackMotion *)Piavca::copyMotionPosture(arg1,arg2); 
+      result = (Piavca::KeyframeMotion *)Piavca::copyMotionPosture(arg1,arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -34267,7 +34267,7 @@ SWIGINTERN PyObject *_wrap_copyMotionPosture(PyObject *SWIGUNUSEDPARM(self), PyO
       SWIG_fail; 
     }
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__TrackMotion, 0 |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__KeyframeMotion, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -70366,30 +70366,30 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Motion_getQuatValueAtTimeInternal", _wrap_Motion_getQuatValueAtTimeInternal, METH_VARARGS, NULL},
 	 { (char *)"disown_Motion", _wrap_disown_Motion, METH_VARARGS, NULL},
 	 { (char *)"Motion_swigregister", Motion_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_TrackMotion", _wrap_new_TrackMotion, METH_VARARGS, NULL},
-	 { (char *)"delete_TrackMotion", _wrap_delete_TrackMotion, METH_VARARGS, NULL},
-	 { (char *)"TrackMotion_clone", _wrap_TrackMotion_clone, METH_VARARGS, NULL},
-	 { (char *)"TrackMotion_getMotionLength", _wrap_TrackMotion_getMotionLength, METH_VARARGS, NULL},
-	 { (char *)"TrackMotion_isFacial", _wrap_TrackMotion_isFacial, METH_VARARGS, NULL},
-	 { (char *)"TrackMotion_isRandomAccess", _wrap_TrackMotion_isRandomAccess, METH_VARARGS, NULL},
-	 { (char *)"TrackMotion_isNull", _wrap_TrackMotion_isNull, METH_VARARGS, NULL},
-	 { (char *)"TrackMotion_getTrackType", _wrap_TrackMotion_getTrackType, METH_VARARGS, NULL},
-	 { (char *)"TrackMotion_addFloatTrack", _wrap_TrackMotion_addFloatTrack, METH_VARARGS, NULL},
-	 { (char *)"TrackMotion_addVecTrack", _wrap_TrackMotion_addVecTrack, METH_VARARGS, NULL},
-	 { (char *)"TrackMotion_addQuatTrack", _wrap_TrackMotion_addQuatTrack, METH_VARARGS, NULL},
-	 { (char *)"TrackMotion_setFloatKeyframe", _wrap_TrackMotion_setFloatKeyframe, METH_VARARGS, NULL},
-	 { (char *)"TrackMotion_setVecKeyframe", _wrap_TrackMotion_setVecKeyframe, METH_VARARGS, NULL},
-	 { (char *)"TrackMotion_setQuatKeyframe", _wrap_TrackMotion_setQuatKeyframe, METH_VARARGS, NULL},
-	 { (char *)"TrackMotion_getNumKeyframes", _wrap_TrackMotion_getNumKeyframes, METH_VARARGS, NULL},
-	 { (char *)"TrackMotion_getKeyframeTime", _wrap_TrackMotion_getKeyframeTime, METH_VARARGS, NULL},
-	 { (char *)"TrackMotion_getFloatValueAtTimeInternal", _wrap_TrackMotion_getFloatValueAtTimeInternal, METH_VARARGS, NULL},
-	 { (char *)"TrackMotion_getVecValueAtTimeInternal", _wrap_TrackMotion_getVecValueAtTimeInternal, METH_VARARGS, NULL},
-	 { (char *)"TrackMotion_getQuatValueAtTimeInternal", _wrap_TrackMotion_getQuatValueAtTimeInternal, METH_VARARGS, NULL},
-	 { (char *)"TrackMotion_deleteAllTracks", _wrap_TrackMotion_deleteAllTracks, METH_VARARGS, NULL},
-	 { (char *)"TrackMotion_clearTrack", _wrap_TrackMotion_clearTrack, METH_VARARGS, NULL},
-	 { (char *)"TrackMotion_clearAllTracks", _wrap_TrackMotion_clearAllTracks, METH_VARARGS, NULL},
-	 { (char *)"disown_TrackMotion", _wrap_disown_TrackMotion, METH_VARARGS, NULL},
-	 { (char *)"TrackMotion_swigregister", TrackMotion_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_KeyframeMotion", _wrap_new_KeyframeMotion, METH_VARARGS, NULL},
+	 { (char *)"delete_KeyframeMotion", _wrap_delete_KeyframeMotion, METH_VARARGS, NULL},
+	 { (char *)"KeyframeMotion_clone", _wrap_KeyframeMotion_clone, METH_VARARGS, NULL},
+	 { (char *)"KeyframeMotion_getMotionLength", _wrap_KeyframeMotion_getMotionLength, METH_VARARGS, NULL},
+	 { (char *)"KeyframeMotion_isFacial", _wrap_KeyframeMotion_isFacial, METH_VARARGS, NULL},
+	 { (char *)"KeyframeMotion_isRandomAccess", _wrap_KeyframeMotion_isRandomAccess, METH_VARARGS, NULL},
+	 { (char *)"KeyframeMotion_isNull", _wrap_KeyframeMotion_isNull, METH_VARARGS, NULL},
+	 { (char *)"KeyframeMotion_getTrackType", _wrap_KeyframeMotion_getTrackType, METH_VARARGS, NULL},
+	 { (char *)"KeyframeMotion_addFloatTrack", _wrap_KeyframeMotion_addFloatTrack, METH_VARARGS, NULL},
+	 { (char *)"KeyframeMotion_addVecTrack", _wrap_KeyframeMotion_addVecTrack, METH_VARARGS, NULL},
+	 { (char *)"KeyframeMotion_addQuatTrack", _wrap_KeyframeMotion_addQuatTrack, METH_VARARGS, NULL},
+	 { (char *)"KeyframeMotion_setFloatKeyframe", _wrap_KeyframeMotion_setFloatKeyframe, METH_VARARGS, NULL},
+	 { (char *)"KeyframeMotion_setVecKeyframe", _wrap_KeyframeMotion_setVecKeyframe, METH_VARARGS, NULL},
+	 { (char *)"KeyframeMotion_setQuatKeyframe", _wrap_KeyframeMotion_setQuatKeyframe, METH_VARARGS, NULL},
+	 { (char *)"KeyframeMotion_getNumKeyframes", _wrap_KeyframeMotion_getNumKeyframes, METH_VARARGS, NULL},
+	 { (char *)"KeyframeMotion_getKeyframeTime", _wrap_KeyframeMotion_getKeyframeTime, METH_VARARGS, NULL},
+	 { (char *)"KeyframeMotion_getFloatValueAtTimeInternal", _wrap_KeyframeMotion_getFloatValueAtTimeInternal, METH_VARARGS, NULL},
+	 { (char *)"KeyframeMotion_getVecValueAtTimeInternal", _wrap_KeyframeMotion_getVecValueAtTimeInternal, METH_VARARGS, NULL},
+	 { (char *)"KeyframeMotion_getQuatValueAtTimeInternal", _wrap_KeyframeMotion_getQuatValueAtTimeInternal, METH_VARARGS, NULL},
+	 { (char *)"KeyframeMotion_deleteAllTracks", _wrap_KeyframeMotion_deleteAllTracks, METH_VARARGS, NULL},
+	 { (char *)"KeyframeMotion_clearTrack", _wrap_KeyframeMotion_clearTrack, METH_VARARGS, NULL},
+	 { (char *)"KeyframeMotion_clearAllTracks", _wrap_KeyframeMotion_clearAllTracks, METH_VARARGS, NULL},
+	 { (char *)"disown_KeyframeMotion", _wrap_disown_KeyframeMotion, METH_VARARGS, NULL},
+	 { (char *)"KeyframeMotion_swigregister", KeyframeMotion_swigregister, METH_VARARGS, NULL},
 	 { (char *)"copyMotionPosture", _wrap_copyMotionPosture, METH_VARARGS, NULL},
 	 { (char *)"new_Avatar", _wrap_new_Avatar, METH_VARARGS, NULL},
 	 { (char *)"Avatar_isValid", _wrap_Avatar_isValid, METH_VARARGS, NULL},
@@ -71106,8 +71106,8 @@ static void *_p_Piavca__ScaleMotionTo_p_Piavca__Motion(void *x) {
 static void *_p_Piavca__PyMotionTo_p_Piavca__Motion(void *x) {
     return (void *)((Piavca::Motion *)  ((Piavca::PyMotion *) x));
 }
-static void *_p_Piavca__TrackMotionTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *)  ((Piavca::TrackMotion *) x));
+static void *_p_Piavca__KeyframeMotionTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *)  ((Piavca::KeyframeMotion *) x));
 }
 static void *_p_Piavca__RandomGazeMotionTo_p_Piavca__Motion(void *x) {
     return (void *)((Piavca::Motion *) (Piavca::TwoMotionCombiner *)(Piavca::SequentialBlend *)(Piavca::SelfBlend *)(Piavca::LoopMotion *) ((Piavca::RandomGazeMotion *) x));
@@ -71268,6 +71268,7 @@ static swig_type_info _swigt__p_Piavca__BlendBetween = {"_p_Piavca__BlendBetween
 static swig_type_info _swigt__p_Piavca__ChoiceLoopMotion = {"_p_Piavca__ChoiceLoopMotion", "Piavca::ChoiceLoopMotion *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__Core = {"_p_Piavca__Core", "Piavca::Core *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__DiadicGazeMotion = {"_p_Piavca__DiadicGazeMotion", "Piavca::DiadicGazeMotion *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_Piavca__KeyframeMotion = {"_p_Piavca__KeyframeMotion", "Piavca::KeyframeMotion *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__LookAtMotion = {"_p_Piavca__LookAtMotion", "Piavca::LookAtMotion *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__LookAtToFacial = {"_p_Piavca__LookAtToFacial", "Piavca::LookAtToFacial *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__LoopMotion = {"_p_Piavca__LoopMotion", "Piavca::LoopMotion *", 0, 0, (void*)0, 0};
@@ -71302,7 +71303,6 @@ static swig_type_info _swigt__p_Piavca__TimeCallback = {"_p_Piavca__TimeCallback
 static swig_type_info _swigt__p_Piavca__TimeOffset = {"_p_Piavca__TimeOffset", "Piavca::TimeOffset *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__TimeRangeMotion = {"_p_Piavca__TimeRangeMotion", "Piavca::TimeRangeMotion *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__TimeWarp = {"_p_Piavca__TimeWarp", "Piavca::TimeWarp *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_Piavca__TrackMotion = {"_p_Piavca__TrackMotion", "Piavca::TrackMotion *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__TurnMotion = {"_p_Piavca__TurnMotion", "Piavca::TurnMotion *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__TwoMotionCombiner = {"_p_Piavca__TwoMotionCombiner", "Piavca::TwoMotionCombiner *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__Vec = {"_p_Piavca__Vec", "Piavca::Vec *", 0, 0, (void*)0, 0};
@@ -71345,6 +71345,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_Piavca__ChoiceLoopMotion,
   &_swigt__p_Piavca__Core,
   &_swigt__p_Piavca__DiadicGazeMotion,
+  &_swigt__p_Piavca__KeyframeMotion,
   &_swigt__p_Piavca__LookAtMotion,
   &_swigt__p_Piavca__LookAtToFacial,
   &_swigt__p_Piavca__LoopMotion,
@@ -71379,7 +71380,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_Piavca__TimeOffset,
   &_swigt__p_Piavca__TimeRangeMotion,
   &_swigt__p_Piavca__TimeWarp,
-  &_swigt__p_Piavca__TrackMotion,
   &_swigt__p_Piavca__TurnMotion,
   &_swigt__p_Piavca__TwoMotionCombiner,
   &_swigt__p_Piavca__Vec,
@@ -71422,11 +71422,12 @@ static swig_cast_info _swigc__p_Piavca__BlendBetween[] = {  {&_swigt__p_Piavca__
 static swig_cast_info _swigc__p_Piavca__ChoiceLoopMotion[] = {  {&_swigt__p_Piavca__ChoiceLoopMotion, 0, 0, 0},  {&_swigt__p_Piavca__RandomLoopMotion, _p_Piavca__RandomLoopMotionTo_p_Piavca__ChoiceLoopMotion, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__Core[] = {  {&_swigt__p_Piavca__Core, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__DiadicGazeMotion[] = {  {&_swigt__p_Piavca__DiadicGazeMotion, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Piavca__KeyframeMotion[] = {  {&_swigt__p_Piavca__KeyframeMotion, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__LookAtMotion[] = {  {&_swigt__p_Piavca__LookAtMotion, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__LookAtToFacial[] = {  {&_swigt__p_Piavca__LookAtToFacial, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__LoopMotion[] = {  {&_swigt__p_Piavca__RandomGazeMotion, _p_Piavca__RandomGazeMotionTo_p_Piavca__LoopMotion, 0, 0},  {&_swigt__p_Piavca__DiadicGazeMotion, _p_Piavca__DiadicGazeMotionTo_p_Piavca__LoopMotion, 0, 0},  {&_swigt__p_Piavca__MultiMotionLoop, _p_Piavca__MultiMotionLoopTo_p_Piavca__LoopMotion, 0, 0},  {&_swigt__p_Piavca__RandomBlendLoop, _p_Piavca__RandomBlendLoopTo_p_Piavca__LoopMotion, 0, 0},  {&_swigt__p_Piavca__RandomAddLoop, _p_Piavca__RandomAddLoopTo_p_Piavca__LoopMotion, 0, 0},  {&_swigt__p_Piavca__ProxemicsLoop, _p_Piavca__ProxemicsLoopTo_p_Piavca__LoopMotion, 0, 0},  {&_swigt__p_Piavca__LoopMotion, 0, 0, 0},  {&_swigt__p_Piavca__ChoiceLoopMotion, _p_Piavca__ChoiceLoopMotionTo_p_Piavca__LoopMotion, 0, 0},  {&_swigt__p_Piavca__RandomLoopMotion, _p_Piavca__RandomLoopMotionTo_p_Piavca__LoopMotion, 0, 0},  {&_swigt__p_Piavca__RandomTimingsLoop, _p_Piavca__RandomTimingsLoopTo_p_Piavca__LoopMotion, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__MaskedMotion[] = {  {&_swigt__p_Piavca__MaskedMotion, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_Piavca__Motion[] = {  {&_swigt__p_Piavca__TwoMotionCombiner, _p_Piavca__TwoMotionCombinerTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__MotionAdder, _p_Piavca__MotionAdderTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__MultiMotionLoop, _p_Piavca__MultiMotionLoopTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__RandomGazeMotion, _p_Piavca__RandomGazeMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__DiadicGazeMotion, _p_Piavca__DiadicGazeMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__Motion, 0, 0, 0},  {&_swigt__p_Piavca__TimeRangeMotion, _p_Piavca__TimeRangeMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ZeroMotion, _p_Piavca__ZeroMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__TrackMotion, _p_Piavca__TrackMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__PyMotion, _p_Piavca__PyMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ScaleMotion, _p_Piavca__ScaleMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__AvatarPostureBlend, _p_Piavca__AvatarPostureBlendTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__SequentialBlend, _p_Piavca__SequentialBlendTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ProxemicsLoop, _p_Piavca__ProxemicsLoopTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__RandomAddLoop, _p_Piavca__RandomAddLoopTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__SelfBlend, _p_Piavca__SelfBlendTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__RandomLoopMotion, _p_Piavca__RandomLoopMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ChoiceLoopMotion, _p_Piavca__ChoiceLoopMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__LoopMotion, _p_Piavca__LoopMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__MaskedMotion, _p_Piavca__MaskedMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__TurnMotion, _p_Piavca__TurnMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__TimeOffset, _p_Piavca__TimeOffsetTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__LookAtMotion, _p_Piavca__LookAtMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__SubMotion, _p_Piavca__SubMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ScaleMotionRoot, _p_Piavca__ScaleMotionRootTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__RandomBlendLoop, _p_Piavca__RandomBlendLoopTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__TimeWarp, _p_Piavca__TimeWarpTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__RandomTimingsLoop, _p_Piavca__RandomTimingsLoopTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__MotionSaver, _p_Piavca__MotionSaverTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ScaleMotionSpeed, _p_Piavca__ScaleMotionSpeedTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__MotionFilter, _p_Piavca__MotionFilterTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__LookAtToFacial, _p_Piavca__LookAtToFacialTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__BlendBetween, _p_Piavca__BlendBetweenTo_p_Piavca__Motion, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Piavca__Motion[] = {  {&_swigt__p_Piavca__TwoMotionCombiner, _p_Piavca__TwoMotionCombinerTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__MotionAdder, _p_Piavca__MotionAdderTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__MultiMotionLoop, _p_Piavca__MultiMotionLoopTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__RandomGazeMotion, _p_Piavca__RandomGazeMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__DiadicGazeMotion, _p_Piavca__DiadicGazeMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__Motion, 0, 0, 0},  {&_swigt__p_Piavca__TimeRangeMotion, _p_Piavca__TimeRangeMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ZeroMotion, _p_Piavca__ZeroMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__KeyframeMotion, _p_Piavca__KeyframeMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__PyMotion, _p_Piavca__PyMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ScaleMotion, _p_Piavca__ScaleMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__AvatarPostureBlend, _p_Piavca__AvatarPostureBlendTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__SequentialBlend, _p_Piavca__SequentialBlendTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ProxemicsLoop, _p_Piavca__ProxemicsLoopTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__RandomAddLoop, _p_Piavca__RandomAddLoopTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__SelfBlend, _p_Piavca__SelfBlendTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__RandomLoopMotion, _p_Piavca__RandomLoopMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ChoiceLoopMotion, _p_Piavca__ChoiceLoopMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__LoopMotion, _p_Piavca__LoopMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__MaskedMotion, _p_Piavca__MaskedMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__TurnMotion, _p_Piavca__TurnMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__TimeOffset, _p_Piavca__TimeOffsetTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__LookAtMotion, _p_Piavca__LookAtMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__SubMotion, _p_Piavca__SubMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ScaleMotionRoot, _p_Piavca__ScaleMotionRootTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__RandomBlendLoop, _p_Piavca__RandomBlendLoopTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__TimeWarp, _p_Piavca__TimeWarpTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__RandomTimingsLoop, _p_Piavca__RandomTimingsLoopTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__MotionSaver, _p_Piavca__MotionSaverTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ScaleMotionSpeed, _p_Piavca__ScaleMotionSpeedTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__MotionFilter, _p_Piavca__MotionFilterTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__LookAtToFacial, _p_Piavca__LookAtToFacialTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__BlendBetween, _p_Piavca__BlendBetweenTo_p_Piavca__Motion, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__MotionAdder[] = {  {&_swigt__p_Piavca__MotionAdder, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__MotionFilter[] = {  {&_swigt__p_Piavca__ScaleMotion, _p_Piavca__ScaleMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__MotionSaver, _p_Piavca__MotionSaverTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__TimeRangeMotion, _p_Piavca__TimeRangeMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__MotionFilter, 0, 0, 0},  {&_swigt__p_Piavca__ScaleMotionSpeed, _p_Piavca__ScaleMotionSpeedTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__LookAtToFacial, _p_Piavca__LookAtToFacialTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__TimeOffset, _p_Piavca__TimeOffsetTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__ScaleMotionRoot, _p_Piavca__ScaleMotionRootTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__TimeWarp, _p_Piavca__TimeWarpTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__TurnMotion, _p_Piavca__TurnMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__SubMotion, _p_Piavca__SubMotionTo_p_Piavca__MotionFilter, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__MotionImp[] = {  {&_swigt__p_Piavca__MotionImp, 0, 0, 0},{0, 0, 0, 0}};
@@ -71456,7 +71457,6 @@ static swig_cast_info _swigc__p_Piavca__TimeCallback[] = {  {&_swigt__p_Piavca__
 static swig_cast_info _swigc__p_Piavca__TimeOffset[] = {  {&_swigt__p_Piavca__TimeOffset, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__TimeRangeMotion[] = {  {&_swigt__p_Piavca__TimeRangeMotion, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__TimeWarp[] = {  {&_swigt__p_Piavca__TimeWarp, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_Piavca__TrackMotion[] = {  {&_swigt__p_Piavca__TrackMotion, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__TurnMotion[] = {  {&_swigt__p_Piavca__TurnMotion, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__TwoMotionCombiner[] = {  {&_swigt__p_Piavca__TwoMotionCombiner, 0, 0, 0},  {&_swigt__p_Piavca__MotionAdder, _p_Piavca__MotionAdderTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__MultiMotionLoop, _p_Piavca__MultiMotionLoopTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__RandomGazeMotion, _p_Piavca__RandomGazeMotionTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__DiadicGazeMotion, _p_Piavca__DiadicGazeMotionTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__AvatarPostureBlend, _p_Piavca__AvatarPostureBlendTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__SequentialBlend, _p_Piavca__SequentialBlendTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__ProxemicsLoop, _p_Piavca__ProxemicsLoopTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__RandomAddLoop, _p_Piavca__RandomAddLoopTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__SelfBlend, _p_Piavca__SelfBlendTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__LoopMotion, _p_Piavca__LoopMotionTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__RandomLoopMotion, _p_Piavca__RandomLoopMotionTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__ChoiceLoopMotion, _p_Piavca__ChoiceLoopMotionTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__MaskedMotion, _p_Piavca__MaskedMotionTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__RandomBlendLoop, _p_Piavca__RandomBlendLoopTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__RandomTimingsLoop, _p_Piavca__RandomTimingsLoopTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__BlendBetween, _p_Piavca__BlendBetweenTo_p_Piavca__TwoMotionCombiner, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__Vec[] = {  {&_swigt__p_Piavca__Vec, 0, 0, 0},{0, 0, 0, 0}};
@@ -71499,6 +71499,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_Piavca__ChoiceLoopMotion,
   _swigc__p_Piavca__Core,
   _swigc__p_Piavca__DiadicGazeMotion,
+  _swigc__p_Piavca__KeyframeMotion,
   _swigc__p_Piavca__LookAtMotion,
   _swigc__p_Piavca__LookAtToFacial,
   _swigc__p_Piavca__LoopMotion,
@@ -71533,7 +71534,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_Piavca__TimeOffset,
   _swigc__p_Piavca__TimeRangeMotion,
   _swigc__p_Piavca__TimeWarp,
-  _swigc__p_Piavca__TrackMotion,
   _swigc__p_Piavca__TurnMotion,
   _swigc__p_Piavca__TwoMotionCombiner,
   _swigc__p_Piavca__Vec,
