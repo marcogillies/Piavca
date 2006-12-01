@@ -36,6 +36,7 @@
 #define MOTION_FILTER_H
 
 #include "Motion.h"
+#include "PiavcaError.h"
 
 namespace Piavca
 {
@@ -192,6 +193,37 @@ namespace Piavca
 				return filterMot->getTrackType(trackId);
 			else
 				return NULL_TYPE;
+		};
+
+		//! calculates the values of a keyframe
+	    PIAVCA_EXPORT virtual float  getFloatValueAtTimeInternal (int trackId, float time)
+		{
+			if(!filterMot)
+			{
+				Piavca::Error(_T("Scale motion: trying to get a value from a null motion"));
+			}
+			//std::cout << "Scale Motion" << time << " " << filterMot->getFloatValueAtTime(trackId, time) << " " << scaleFactor << std::endl;
+		    return filterMot->getFloatValueAtTime(trackId, time);
+		};
+	    
+	    //! calculates the values of a keyframe
+	    PIAVCA_EXPORT virtual Vec  getVecValueAtTimeInternal (int trackId, float time)
+		{
+		    if(!filterMot)
+			{
+				Piavca::Error(_T("Scale motion: trying to get a value from a null motion"));
+			}
+			return  filterMot->getVecValueAtTime(trackId, time);
+		};
+	    
+	    //! calculates the values of a keyframe
+	    PIAVCA_EXPORT virtual Quat  getQuatValueAtTimeInternal (int trackId, float time)
+		{
+		    if(!filterMot)
+			{
+				Piavca::Error(_T("Scale motion: trying to get a value from a null motion"));
+			}
+		    return filterMot->getQuatValueAtTime(trackId, time);
 		};
 	};
 };

@@ -44,18 +44,27 @@ namespace Piavca
 {
 
 //! a MultiMotionLoop where the client can choose which motion is played
-class ChoiceLoopMotion : public MultiMotionLoop
+class ChoiceLoopMotion : public RandomTimingsLoop
 {
-	int currentChoice;
+	ChoiceMotion *choicemotion;
 public:
-	ChoiceLoopMotion(){};
+	ChoiceLoopMotion():RandomTimingsLoop()
+	{
+		choicemotion = new ChoiceMotion();
+		setMotion(choicemotion);
+	};
 	//! pass in a vector of motions to be used.
 	ChoiceLoopMotion(const MotionVec &mpv, float endTime = -1.0, float interval = 0.01)
-		:MultiMotionLoop(mpv, endTime, interval), currentChoice(0)
+		:RandomTimingsLoop(NULL, endTime, interval)
 	{
+		choicemotion = new ChoiceMotion(mpv);
+		setMotion(choicemotion);
 	};
 	ChoiceLoopMotion(const ChoiceLoopMotion &cl)
-		:MultiMotionLoop(cl), currentChoice(cl.currentChoice){};
+		:RandomTimingsLoop(cl)
+	{
+		choicemotion = dynamic_cast<ChoiceMotion *>(getMotion());
+	};
 	~ChoiceLoopMotion(){};
 	virtual Motion *clone(){return new ChoiceLoopMotion(*this);};
 
@@ -63,32 +72,17 @@ public:
 	//! sets which motion is currently being played
 	void setCurrentChoice(int i)
 	{
-		if(i < 0 || i >= static_cast<int>(mots.size()))
-			Piavca::Error(_T("Illegal motion choice"));
-		currentChoice = i;
+		choicemotion->setCurrentChoice(i);
 	};
 	//! sets which motion is currently being played (by name)
 	void setCurrentChoice(tstring name)
 	{
-		for(MotionVec::size_type i=0; i < mots.size(); i++)
-			if(mots[i]->findSub(name)) 
-			{
-				currentChoice = static_cast<int>(i);
-				reblend_flag = true;
-				//reblend(Piavca::Core::getCore()->getTime());
-				return;
-			}
-		Piavca::Error(tstring(_T("Unknown choice ")) + name);
+		choicemotion->setCurrentChoice(name);
 	};
 
-	//! called each time around the loop
-	/*!
-	 * It can be called by the client to interrupt the current motion.
-	 */
-	virtual void reblend(float time)
+	virtual void addMotion(Motion *mot)
 	{
-		RandomTimingsLoop::reblend(time);
-		setMotion(mots[currentChoice]);
+		choicemotion->addMotion(mot);
 	};
 };
 

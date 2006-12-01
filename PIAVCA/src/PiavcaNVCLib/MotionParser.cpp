@@ -570,7 +570,7 @@ template<> void MotionParserTyped<MotionAdder>::editMotionInternal(MotionAdder *
 
 template<> Piavca::Motion *MotionParserTyped<MaskedMotion>::parseMotion(istringstream &is, std::string currentWord, float scaleFactor)
 {
-	    MotionMask mask1, mask2;
+	    MotionMask mask;
 		bool useSecondary = false;
 		if(currentWord == "")
 			if(!(is >> currentWord)) 
@@ -579,21 +579,12 @@ template<> Piavca::Motion *MotionParserTyped<MaskedMotion>::parseMotion(istrings
 				return NULL;
 			}
 		
-		if(currentWord == "use_secondary")
-		{
-			bool useSecondary = true;
-			if(!(is >> currentWord)) 
-			{
-				Piavca::Error(_T("not enough arguments given for mask motion"));
-				return NULL;
-			}
-		}
 		while (currentWord != "")
 		{
 			int jointId = Piavca::Core::getCore()->getJointId(StringToTString(currentWord));
 			if(Piavca::Core::getCore()->errorsPresent()) return NULL;
 			if(jointId >=0)
-				mask1.setMask(jointId);
+				mask.setMask(jointId);
 			else
 				break;
 			if(!(is >> currentWord))
@@ -602,25 +593,10 @@ template<> Piavca::Motion *MotionParserTyped<MaskedMotion>::parseMotion(istrings
 			}	
 		}
 		MotionParser *mp = NULL;
-		Piavca::Motion *mot1 = MotionParser::parseMotion(is, currentWord, scaleFactor, &mp);
-		if(Piavca::Core::getCore()->errorsPresent()) return NULL;
-		while (currentWord != "")
-		{
-			int jointId = Piavca::Core::getCore()->getJointId(StringToTString(currentWord));
-			if(Piavca::Core::getCore()->errorsPresent()) return NULL;
-			if(jointId >=0)
-				mask2.setMask(jointId);
-			else
-				break;
-			if(!(is >> currentWord))
-			{
-				Piavca::Error(_T("No motions given for Masked motion"));
-			}	
-		}
-		Piavca::Motion *mot2 = MotionParser::parseMotion(is, currentWord, scaleFactor, &mp);
+		Piavca::Motion *mot = MotionParser::parseMotion(is, currentWord, scaleFactor, &mp);
 		if(Piavca::Core::getCore()->errorsPresent()) return NULL;
 		
-		return new MaskedMotion(mot1, mask1, mot2, mask2, useSecondary);
+		return new MaskedMotion(mot, mask);
 };
 
 template<> void MotionParserTyped<MaskedMotion>::editMotionInternal(MaskedMotion *mot, istringstream &is)
@@ -629,7 +605,7 @@ template<> void MotionParserTyped<MaskedMotion>::editMotionInternal(MaskedMotion
 	if(!(is >> currentWord))currentWord = "";
 	while(currentWord != "")
 	{
-		if(currentWord == "mask1")
+		if(currentWord == "mask")
 		{
 			MotionMask mask;
 			while (is >> currentWord)
@@ -641,40 +617,16 @@ template<> void MotionParserTyped<MaskedMotion>::editMotionInternal(MaskedMotion
 				else
 					break;
 			}
-			mot->setMask1(mask);
+			mot->setMask(mask);
 			continue;
 		}
-		if(currentWord == "mask2")
-		{
-			MotionMask mask;
-			while (is >> currentWord)
-			{
-				int jointId = Piavca::Core::getCore()->getJointId(StringToTString(currentWord));
-				if(Piavca::Core::getCore()->errorsPresent()) return;
-				if(jointId >=0)
-					mask.setMask(jointId);
-				else
-					break;
-			}
-			mot->setMask2(mask);
-			continue;
-		}
-		if(currentWord == "mot1")
+		if(currentWord == "mot")
 		{
 			float scaleFactor = 1.0;
 			MotionParser *mp = NULL;
 			Piavca::Motion *m1 = MotionParser::parseMotion(is, "", scaleFactor, &mp);
 			if(Piavca::Core::getCore()->errorsPresent()) return;
-			mot->setMotion1(m1);
-			continue;
-		}
-		if(currentWord == "mot2")
-		{
-			float scaleFactor = 1.0;
-			MotionParser *mp = NULL;
-			Piavca::Motion *m2 = MotionParser::parseMotion(is, "", scaleFactor, &mp);
-			if(Piavca::Core::getCore()->errorsPresent()) return;
-			mot->setMotion2(m2);
+			mot->setMotion(m1);
 			continue;
 		}
 		Piavca::Error(_T("unknown option ") + StringToTString(currentWord));
@@ -1174,6 +1126,71 @@ template<> void MotionParserTyped<DiadicGazeMotion>::editMotionInternal(DiadicGa
 	}    
 };
 
+template<> Piavca::Motion *MotionParserTyped<RandomChoiceMotion>::parseMotion(istringstream &is, std::string currentWord, float scaleFactor)
+{
+	    MotionVec mv;
+		float prob;
+		vector<float> fv;
+		if(currentWord == "")
+			if(!(is >> currentWord)) currentWord = "";
+				
+		while (currentWord != "")
+		{
+			if(currentWord == "end")
+			{
+				currentWord = "";
+				break;
+			}
+			else
+			{
+				if(currentWord == string("prob"))
+				{
+					if(!(is >> prob))
+					{
+						Piavca::Error(_T("no value given for probablility\n"));
+						return NULL;
+					}
+					if(!(is >> currentWord))
+					{
+						Piavca::Error(_T("expected a motion as an argument to Ramdom loop motion"));
+						return NULL;
+					}
+				}
+				MotionParser *mp = NULL;
+				Motion *mot = MotionParser::parseMotion(is, currentWord, scaleFactor, &mp);
+				if(Piavca::Core::getCore()->errorsPresent()) return NULL;
+				if(mot == NULL) 
+				{
+					return NULL;
+				}
+				mv.push_back(mot);
+				fv.push_back((float) prob);
+				if(!(is >> currentWord)) break;
+
+			}
+
+		}
+		
+		Motion *m = new RandomChoiceMotion(mv, fv);
+		return m;
+};
+
+template<> void MotionParserTyped<RandomChoiceMotion >::editMotionInternal(RandomChoiceMotion *mot, istringstream &is)
+{
+		string currentWord;
+		if (is >> currentWord)
+		{
+			if(currentWord == "shift")
+			{
+				mot->shift();
+			}
+		}
+		else
+		{				
+			Piavca::Error(_T("unknown option") + StringToTString(currentWord));
+		}
+};
+
 template<> Piavca::Motion *MotionParserTyped<RandomLoopMotion>::parseMotion(istringstream &is, std::string currentWord, float scaleFactor)
 {
 	    MotionVec mv;
@@ -1328,6 +1345,60 @@ template<> void MotionParserTyped<RandomLoopMotion >::editMotionInternal(RandomL
 		}
 };
 
+template<> Piavca::Motion *MotionParserTyped<ChoiceMotion>::parseMotion(istringstream &is, std::string currentWord, float scaleFactor)
+{
+	    MotionVec mv;
+		if(currentWord == "")
+			if(!(is >> currentWord)) currentWord = "";
+				
+		while (currentWord != "")
+		{
+			if(currentWord == "end")
+			{
+				currentWord = "";
+				break;
+			}
+			else
+			{
+				MotionParser *mp = NULL;
+				Motion *mot = MotionParser::parseMotion(is, currentWord, scaleFactor, &mp);
+				if(Piavca::Core::getCore()->errorsPresent()) return NULL;
+				if(mot == NULL) 
+				{
+					return NULL;
+				}
+				mv.push_back(mot);
+			}
+		}
+		Motion *m = new ChoiceMotion(mv);
+		return m;
+};
+
+template<> void MotionParserTyped<ChoiceMotion>::editMotionInternal(ChoiceMotion *mot, istringstream &is)
+{
+		string currentWord;
+				
+		while (is >> currentWord)
+		{
+			if(currentWord == "set_choice")
+			{
+				if(!(is >> currentWord))
+				{
+					Piavca::Error(_T("no value given for choice\n"));
+					return;
+				}
+				mot->setCurrentChoice(currentWord);
+				if(!(is >> currentWord)) break;
+			} 
+			else
+			{				
+				Piavca::Error(_T("unknown option") + StringToTString(currentWord));
+				break;
+			}
+
+		}
+};
+
 template<> Piavca::Motion *MotionParserTyped<ChoiceLoopMotion>::parseMotion(istringstream &is, std::string currentWord, float scaleFactor)
 {
 	    MotionVec mv;
@@ -1472,6 +1543,59 @@ template<> void MotionParserTyped<ChoiceLoopMotion>::editMotionInternal(ChoiceLo
 		}
 };
 
+
+template<> Piavca::Motion *MotionParserTyped<RandomBlend>::parseMotion(istringstream &is, std::string currentWord, float scaleFactor)
+{
+	    MotionVec mv;
+		if(currentWord == "")
+			if(!(is >> currentWord)) currentWord = "";
+				
+		while (currentWord != "")
+		{
+			if(currentWord == "end")
+			{
+				currentWord = "";
+				break;
+			}
+			else
+			{
+				MotionParser *mp = NULL;
+				Motion *mot = MotionParser::parseMotion(is, currentWord, scaleFactor, &mp);
+				if(Piavca::Core::getCore()->errorsPresent()) return NULL;
+				if(mot == NULL) 
+				{
+					return NULL;
+				}
+				mv.push_back(mot);
+				if(!(is >> currentWord)) break;
+			}
+		}
+			
+		Motion *m = new RandomBlend(mv);
+		return m;
+};
+
+template<> void MotionParserTyped<RandomBlend>::editMotionInternal(RandomBlend *mot, istringstream &is)
+{
+	   string currentWord;
+				
+		while (is >> currentWord)
+		{
+			
+			if(currentWord == "shift")
+			{
+				mot->shift();
+				if(!(is >> currentWord)) break;
+			}
+			else
+			{				
+				Piavca::Error(_T("unknown option") + StringToTString(currentWord));
+				break;
+			}
+
+		}
+};
+
 template<> Piavca::Motion *MotionParserTyped<RandomBlendLoop>::parseMotion(istringstream &is, std::string currentWord, float scaleFactor)
 {
 	    MotionVec mv;
@@ -1557,7 +1681,7 @@ template<> Piavca::Motion *MotionParserTyped<RandomBlendLoop>::parseMotion(istri
 		dynamic_cast<RandomBlendLoop *>(m)->setAccumulateRoot(accumulateRoot);
 		if(randomTimings)
 			dynamic_cast<RandomBlendLoop *>(m)->setTimingParams(min, max);
-		dynamic_cast<RandomBlendLoop *>(m)->setAutoShift(autoshift);
+		//dynamic_cast<RandomBlendLoop *>(m)->setAutoShift(autoshift);
 		return m;
 };
 
@@ -1611,19 +1735,18 @@ template<> void MotionParserTyped<RandomBlendLoop>::editMotionInternal(RandomBle
 				mot->setTimingParams(min, max);
 				if(!(is >> currentWord)) break;
 			} 
-			else if(currentWord == "autoshift")
-			{
-				mot->setAutoShift(true);
-				if(!(is >> currentWord)) break;
-			}
-			else if(currentWord == "autoshift_off")
-			{
-				mot->setAutoShift(false);
-				if(!(is >> currentWord)) break;
-			} 
+			//else if(currentWord == "autoshift")
+			//{
+			//	mot->setAutoShift(true);
+			//	if(!(is >> currentWord)) break;
+			//}
+			//else if(currentWord == "autoshift_off")
+			//{
+			//	mot->setAutoShift(false);
+			//	if(!(is >> currentWord)) break;
+			//} 
 			else if(currentWord == "shift")
 			{
-				mot->SelfBlend::reblend();
 				mot->shift();
 				if(!(is >> currentWord)) break;
 			}
@@ -1635,6 +1758,62 @@ template<> void MotionParserTyped<RandomBlendLoop>::editMotionInternal(RandomBle
 
 		}
 };
+
+
+template<> Piavca::Motion *MotionParserTyped<RandomAdd>::parseMotion(istringstream &is, std::string currentWord, float scaleFactor)
+{
+	    MotionVec mv;
+		if(currentWord == "")
+			if(!(is >> currentWord)) currentWord = "";
+				
+		while (currentWord != "")
+		{
+			if(currentWord == "end")
+			{
+				currentWord = "";
+				break;
+			}
+			else
+			{
+				MotionParser *mp = NULL;
+				Motion *mot = MotionParser::parseMotion(is, currentWord, scaleFactor, &mp);
+				if(Piavca::Core::getCore()->errorsPresent()) return NULL;
+				if(mot == NULL) 
+				{
+					return NULL;
+				}
+				mv.push_back(mot);
+				if(!(is >> currentWord)) break;
+			}
+		}
+		
+		Motion *m = new RandomAdd(mv);
+		return m;
+};
+
+template<> void MotionParserTyped<RandomAdd>::editMotionInternal(RandomAdd *mot, istringstream &is)
+{
+	    float endTime = -1.0f;
+		float interval = 0.01f;
+		float min = 1.0f, max = 1.0f;
+				
+		string currentWord;
+		while (is >> currentWord)
+		{
+			if(currentWord == "shift")
+			{
+				mot->shift();
+				if(!(is >> currentWord)) break;
+			}
+			else
+			{				
+				Piavca::Error(_T("unknown option") + StringToTString(currentWord));
+				break;
+			}
+
+		}
+};
+
 
 template<> Piavca::Motion *MotionParserTyped<RandomAddLoop>::parseMotion(istringstream &is, std::string currentWord, float scaleFactor)
 {
@@ -1693,11 +1872,11 @@ template<> Piavca::Motion *MotionParserTyped<RandomAddLoop>::parseMotion(istring
 				autoshift = true;
 				if(!(is >> currentWord)) break;
 			}
-			else if(currentWord == "autoshift_off")
-			{
-				autoshift = false;
-				if(!(is >> currentWord)) break;
-			}
+			//else if(currentWord == "autoshift_off")
+			//{
+			//	autoshift = false;
+			//	if(!(is >> currentWord)) break;
+			//}
 			else if(currentWord == "end")
 			{
 				currentWord = "";
@@ -1721,7 +1900,7 @@ template<> Piavca::Motion *MotionParserTyped<RandomAddLoop>::parseMotion(istring
 		dynamic_cast<RandomAddLoop *>(m)->setAccumulateRoot(accumulateRoot);
 		if(randomTimings)
 			dynamic_cast<RandomAddLoop *>(m)->setTimingParams(min, max);
-		dynamic_cast<RandomAddLoop *>(m)->setAutoShift(autoshift);
+		//dynamic_cast<RandomAddLoop *>(m)->setAutoShift(autoshift);
 		return m;
 };
 
@@ -1775,20 +1954,217 @@ template<> void MotionParserTyped<RandomAddLoop>::editMotionInternal(RandomAddLo
 				mot->setTimingParams(min, max);
 				if(!(is >> currentWord)) break;
 			} 
-			else if(currentWord == "autoshift")
-			{
-				mot->setAutoShift(true);
-				if(!(is >> currentWord)) break;
-			}
-			else if(currentWord == "autoshift_off")
-			{
-				mot->setAutoShift(false);
-				if(!(is >> currentWord)) break;
-			} 
+			//else if(currentWord == "autoshift")
+			//{
+			//	mot->setAutoShift(true);
+			//	if(!(is >> currentWord)) break;
+			//}
+			//else if(currentWord == "autoshift_off")
+			//{
+			//	mot->setAutoShift(false);
+			//	if(!(is >> currentWord)) break;
+			//} 
 			else if(currentWord == "shift")
 			{
 				mot->SelfBlend::reblend();
 				mot->shift();
+				if(!(is >> currentWord)) break;
+			}
+			else
+			{				
+				Piavca::Error(_T("unknown option") + StringToTString(currentWord));
+				break;
+			}
+
+		}
+};
+
+template<> Piavca::Motion *MotionParserTyped<Proxemics>::parseMotion(istringstream &is, std::string currentWord, float scaleFactor)
+{
+		Motion *forward = NULL, *back = NULL, *left = NULL, *right = NULL, *rest = NULL;
+		float distance = 1.0f, threshold = 0.2f, anglethreshold = 22.5f;
+		vector <Avatar *> avatars;
+		if(currentWord == "")
+			if(!(is >> currentWord)) currentWord = "";
+				
+		while (currentWord != "")
+		{
+			if(currentWord == "-distance")
+			{
+				if(!(is >> distance))
+				{
+					Piavca::Error(_T("no value given for distance\n"));
+					return NULL;
+				}
+				if(!(is >> currentWord)) break;
+			}
+			else if(currentWord == "-threshold")
+			{
+				if(!(is >> threshold))
+				{
+					Piavca::Error(_T("no value given for threshold\n"));
+					return NULL;
+				}
+				if(!(is >> currentWord)) break;
+			}
+			else if(currentWord == "-anglethreshold")
+			{
+				if(!(is >> anglethreshold))
+				{
+					Piavca::Error(_T("no value given for anglethreshold\n"));
+					return NULL;
+				}
+				if(!(is >> currentWord)) break;
+			}
+			else if(currentWord == "-forward")
+			{
+				currentWord = "";
+				MotionParser *mp = NULL;
+				forward = MotionParser::parseMotion(is, currentWord, scaleFactor, &mp);
+				if(Piavca::Core::getCore()->errorsPresent()) return NULL;
+				if(!(is >> currentWord)) break;
+			}
+			else if(currentWord == "-backward")
+			{
+				currentWord = "";
+				MotionParser *mp = NULL;
+				back = MotionParser::parseMotion(is, currentWord, scaleFactor, &mp);
+				if(Piavca::Core::getCore()->errorsPresent()) return NULL;
+				if(!(is >> currentWord)) break;
+			}
+			else if(currentWord == "-turnleft")
+			{
+				currentWord = "";
+				MotionParser *mp = NULL;
+				left = MotionParser::parseMotion(is, currentWord, scaleFactor, &mp);
+				if(Piavca::Core::getCore()->errorsPresent()) return NULL;
+				if(!(is >> currentWord)) break;
+			}
+			else if(currentWord == "-turnright")
+			{
+				currentWord = "";
+				MotionParser *mp = NULL;
+				right = MotionParser::parseMotion(is, currentWord, scaleFactor, &mp);
+				if(Piavca::Core::getCore()->errorsPresent()) return NULL;
+				if(!(is >> currentWord)) break;
+			}
+			else if(currentWord == "-rest")
+			{
+				currentWord = "";
+				MotionParser *mp = NULL;
+				rest = MotionParser::parseMotion(is, currentWord, scaleFactor, &mp);
+				if(Piavca::Core::getCore()->errorsPresent()) return NULL;
+				if(!(is >> currentWord)) break;
+			}
+			else if(currentWord == "-avatar")
+			{
+				if(!(is >> currentWord))
+				{
+					Piavca::Error(_T("no avatar parameter given for proxemics"));
+					return NULL;
+				}
+				Avatar *avatar = Piavca::Core::getCore()->getAvatar(currentWord);
+				if(!avatar)
+				{
+					Piavca::Error(_T("Unknown avatar ") + StringToTString(currentWord));
+					return NULL;
+				}
+				avatars.push_back(avatar);
+				if(Piavca::Core::getCore()->errorsPresent()) return NULL;
+				if(!(is >> currentWord)) break;
+			}
+			else if(currentWord == "end")
+			{
+				currentWord = "";
+				break;
+			}
+			else
+			{
+				Piavca::Error(_T("Unknown option ") + StringToTString(currentWord));
+			}
+		}
+			
+		Motion *m = new ProxemicsLoop(forward, back,rest, left, right, distance);
+		dynamic_cast<ProxemicsLoop *>(m)->setThreshold(threshold);
+		dynamic_cast<ProxemicsLoop *>(m)->setAngleThreshold(Piavca::degToRad(anglethreshold));
+		for (vector <Avatar *>::size_type i = 0; i < avatars.size(); i++)
+			dynamic_cast<ProxemicsLoop *>(m)->addAvatar(avatars[i]);
+		return m;
+};
+
+
+template<> void MotionParserTyped<Proxemics>::editMotionInternal(Proxemics *mot, istringstream &is)
+{
+		string currentWord;		
+
+		while (is >> currentWord)
+		{
+			if(currentWord == "-distance")
+			{
+				float distance;
+				if(!(is >> distance))
+				{
+					Piavca::Error(_T("no value given for end time\n"));
+					return;
+				}
+				mot->setDistance(distance);
+				if(!(is >> currentWord)) break;
+			}
+			else if(currentWord == "set_avatar")
+			{
+				if(!(is >> currentWord))
+				{
+					Piavca::Error(_T("no avatar parameter given for proxemics"));
+					return;
+				}
+				Avatar *avatar = Piavca::Core::getCore()->getAvatar(currentWord);
+				if(!avatar)
+				{
+					Piavca::Error(_T("Unknown avatar ") + StringToTString(currentWord));
+					return ;
+				}
+				mot->removeAllAvatars();
+				mot->addAvatar(avatar);
+				if(Piavca::Core::getCore()->errorsPresent()) return;
+				if(!(is >> currentWord)) break;
+			}
+			else if(currentWord == "add_avatar")
+			{
+				if(!(is >> currentWord))
+				{
+					Piavca::Error(_T("no avatar parameter given for proxemics"));
+					return ;
+				}
+				Avatar *avatar = Piavca::Core::getCore()->getAvatar(currentWord);
+				if(!avatar)
+				{
+					Piavca::Error(_T("Unknown avatar ") + StringToTString(currentWord));
+					return ;
+				}
+				mot->addAvatar(avatar);
+				if(Piavca::Core::getCore()->errorsPresent()) return;
+				if(!(is >> currentWord)) break;
+			}
+			else if(currentWord == "add_avatar")
+			{
+				if(!(is >> currentWord))
+				{
+					Piavca::Error(_T("no avatar parameter given for proxemics"));
+					return ;
+				}
+				Avatar *avatar = Piavca::Core::getCore()->getAvatar(currentWord);
+				if(!avatar)
+				{
+					Piavca::Error(_T("Unknown avatar ") + StringToTString(currentWord));
+					return ;
+				}
+				mot->removeAvatar(currentWord);
+				if(Piavca::Core::getCore()->errorsPresent()) return;
+				if(!(is >> currentWord)) break;
+			}
+			else if(currentWord == "remove_all_avatars")
+			{
+				mot->removeAllAvatars();
 				if(!(is >> currentWord)) break;
 			}
 			else
@@ -2122,6 +2498,8 @@ void MotionParser::setUpMotionCommands()
 	addMotionCommand(_T("random_gaze"), new MotionParserTyped<RandomGazeMotion>());
 	addMotionCommand(_T("diadic_gaze"), new MotionParserTyped<DiadicGazeMotion>());
 
+	addMotionCommand(_T("choice"), new MotionParserTyped<ChoiceMotion>());
+	addMotionCommand(_T("random_choice"), new MotionParserTyped<RandomChoiceMotion>());
 	addMotionCommand(_T("choice_loop"), new MotionParserTyped<ChoiceLoopMotion>());
 	addMotionCommand(_T("random_loop"), new MotionParserTyped<RandomLoopMotion>());
 	addMotionCommand(_T("random_blend"), new MotionParserTyped<RandomBlendLoop>());

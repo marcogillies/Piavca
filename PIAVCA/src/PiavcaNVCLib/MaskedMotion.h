@@ -37,7 +37,7 @@
 #ifndef MASK_MOTION_H
 #define MASK_MOTION_H
 
-#include "PiavcaAPI/TwoMotionCombiner.h"
+#include "PiavcaAPI/MotionFilter.h"
 
 namespace Piavca
 {
@@ -63,8 +63,7 @@ public:
  */
 class MaskedMotion : public MotionFilter
 {
-	MotionMask mask
-	bool useSecondary;
+	MotionMask mask;
 public:
 	MaskedMotion();
 	//! initialise with 1 motions, each with its own mask
@@ -74,20 +73,15 @@ public:
 	 *  otherwise motion2. If it is not set then joints that are in neither mask
 	 *  are unaffected.
 	 */
-	MaskedMotion(Motion *_mot1, const MotionMask &_mask1, Motion *_mot2, const MotionMask &_mask2, bool _useSecondary=true) ;
+	MaskedMotion(Motion *_mot, const MotionMask &_mask) ;
 	MaskedMotion(const MaskedMotion &mm);
 	
 	virtual Motion *clone(){return new MaskedMotion(*this);};
 
-	void setUseSecondary(bool val){useSecondary = val;};
+	void setMask(const MotionMask &_mask){mask = _mask;};
 
-	void setMask1(const MotionMask &mask){mask1 = mask;};
-	void setMask2(const MotionMask &mask){mask2 = mask;};
-
-	void addToMask1(int trackId){mask1.setMask(trackId, true);};
-	void removeFromMask1(int trackId){mask1.setMask(trackId, false);};
-	void addToMask2(int trackId){mask2.setMask(trackId, true);};
-	void removeFromMask2(int trackId){mask2.setMask(trackId, false);};
+	void addToMask(int trackId){mask.setMask(trackId, true);};
+	void removeFromMask(int trackId){mask.setMask(trackId, false);};
 
 	virtual float getFloatValueAtTimeInternal (int trackId, float time);
 	virtual Vec getVecValueAtTimeInternal (int trackId, float time);	

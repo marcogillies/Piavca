@@ -49,46 +49,38 @@ namespace Piavca
  *	The Motions to blend are chosen at random, as are the number of motions.
  *  Each of the motions is scaled by a random ammount before being added.
  */
-class RandomAddLoop : public MultiMotionLoop
+class RandomAddLoop : public RandomTimingsLoop
 {
-	bool autoshift;
+	RandomAdd *randomadd;
 public:
-	RandomAddLoop(){};
+	RandomAddLoop()
+	{
+		randomadd = new RandomAdd;
+		setMotion(randomadd);
+	};
 	//! pass in a vector of motions to be used.
 	RandomAddLoop(const MotionVec &mv, float endTime = -1.0, float interval = 0.01)
-		:MultiMotionLoop(mv, endTime, interval), autoshift(true)
-	{};
+		:RandomTimingsLoop(NULL, endTime, interval)
+	{
+		randomadd = new RandomAdd(mv);
+		setMotion(randomadd);
+	};
 	RandomAddLoop(const RandomAddLoop &rbl)
-		:MultiMotionLoop(rbl), autoshift(rbl.autoshift) {};
+		:RandomTimingsLoop(rbl)
+	{
+		randomadd = dynamic_cast<RandomAdd *>(getMotion());
+	};
 	~RandomAddLoop(){};
 	virtual Motion *clone(){return new RandomAddLoop(*this);};
 
-	void setAutoShift(bool b){autoshift = b;};
+	virtual void addMotion(Motion *mot)
+	{
+		randomadd->addMotion(mot);
+	};
 
 	virtual void shift()
 	{
-		MotionVec::size_type numChosen = rand()%mots.size()+1;
-		Motion *totalMot = NULL;
-		for (MotionVec::size_type i = 0; i < numChosen; i++)
-		{
-			Motion *chosenmot = mots[rand()%mots.size()];
-			float weight = ((float)(rand()%1000))/1000.0f;
-			if(totalMot)
-				totalMot = new MotionAdder(totalMot, chosenmot, weight);
-			else
-				totalMot = new ScaleMotion(chosenmot, weight);
-		}
-		setMotion(totalMot);
-	}
-
-	//! called each time around the loop
-	/*!
-	 * It can be called by the client to interrupt the current motion.
-	 */
-	virtual void reblend(float time)
-	{
-		MultiMotionLoop::reblend(time);
-		if(autoshift) shift();
+		randomadd->shift();
 	};
 };
 

@@ -37,7 +37,7 @@
 #ifndef RANDOM_BLEND_LOOP_H
 #define RANDOM_BLEND_LOOP_H
 
-#include "MultiMotionLoop.h"
+#include "PiavcaAPI/LoopMotion.h"
 
 namespace Piavca
 {
@@ -47,79 +47,45 @@ namespace Piavca
  *	The Motions to blend are chosen at random, as are the number of motions and the 
  *  weights.
  */
-class RandomBlendLoop : public MultiMotionLoop
+class RandomBlendLoop : public RandomTimingsLoop
 {
-	bool autoshift;
-	std::vector<float> weights;
+	RandomBlend *randomblend;
 public:
 	//! pass in a vector of motions to be used.
 	RandomBlendLoop(const MotionVec &mv, float endTime = -1.0, float interval = 0.01)
-		:MultiMotionLoop(mv, endTime, interval), autoshift(true)
+		:RandomTimingsLoop(NULL, endTime, interval)
 	{
-		weights.assign(mv.size(), 1.0f);
+		randomblend = new RandomBlend(mv);
+		setMotion(randomblend);
 	};
 	//! create an empty loop
 	RandomBlendLoop(float endTime = -1.0, float interval = 0.01)
-		:MultiMotionLoop(endTime, interval), autoshift(true)
-	{};
+		:RandomTimingsLoop(NULL, endTime, interval)
+	{
+		randomblend = new RandomBlend;
+		setMotion(randomblend);
+	};
 	RandomBlendLoop(const RandomBlendLoop &rbl)
-		:MultiMotionLoop(rbl), autoshift(rbl.autoshift), weights(rbl.weights) {};
+		:RandomTimingsLoop(rbl)
+	{
+		randomblend = dynamic_cast<RandomBlend *>(getMotion());
+	};
 	~RandomBlendLoop(){};
 	virtual Motion *clone(){return new RandomBlendLoop(*this);};
 
 	virtual void addMotion(Motion *mot)
 	{
-		MultiMotionLoop::addMotion(mot);
-		if(mot)
-		{
-			weights.push_back(1.0f);
-		}
+		randomblend->addMotion(mot);
 	};
 
 	virtual void addMotion(Motion *mot, float weight)
 	{
-		MultiMotionLoop::addMotion(mot);
-		if(mot)
-		{
-			weights.push_back(weight);
-		}
+		randomblend->addMotion(mot, weight);
 	};
-
-	void setAutoShift(bool b){autoshift = b;};
 
 	virtual void shift()
 	{
-		MotionVec::size_type numChosen = rand()%mots.size()+1;
-		Motion *totalMot = NULL;
-		for (MotionVec::size_type i = 0; i < numChosen; i++)
-		{
-			vector<float>::size_type chosen;
-			do
-			{
-				chosen = rand()%weights.size();
-			}while(((float)(rand()%100))/100 > weights[chosen]);
-			Motion *chosenmot = mots[chosen];
-			if(totalMot)
-			{
-				float weight = weights[chosen]*((float)(rand()%1000))/1000.0f;
-				totalMot = new BlendBetween(totalMot, chosenmot, weight);
-			}
-			else
-			{
-				totalMot = chosenmot;
-			}
-		}
-		setMotion(totalMot);
-	}
-
-	//! called each time around the loop
-	/*!
-	 * It can be called by the client to interrupt the current motion.
-	 */
-	virtual void reblend(float time)
-	{
-		MultiMotionLoop::reblend(time);
-		if(autoshift) shift();
+		randomblend->shift();
 	};
 };
 

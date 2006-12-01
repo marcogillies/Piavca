@@ -43,39 +43,31 @@ namespace Piavca
 {
 
 //! a MultiMotionLoop where a new motion is chosen each time around the loop.
-class RandomLoopMotion : public ChoiceLoopMotion
+class RandomLoopMotion : public RandomTimingsLoop
 {
 protected:
-	vector<float> weights;
+	RandomChoiceMotion *randomchoicemotion;
 public:
-	RandomLoopMotion(){};
+	RandomLoopMotion()
+	{
+		randomchoicemotion = new RandomChoiceMotion;
+		setMotion(randomchoicemotion);
+	};
 	//! pass in a vector of motions to be used, and a vector with a weight for each motion.
 	/*!
 	 *	The weights determine the probability of playing each motio
 	 */
 	RandomLoopMotion(const MotionVec &mv, vector<float> ws, float endTime = -1.0, float interval = 0.01)
-		:ChoiceLoopMotion(mv, endTime, interval), weights(ws)
+		:RandomTimingsLoop(NULL, endTime, interval) 
 	{
-		if(mots.size() != weights.size())
-			Piavca::Error(_T("Trying to create a random loop motion with different numbers of motions and weights"));
-		float sum = 0.0;
-		vector<float>::size_type i;
-		for(i = 0; i < weights.size(); i++)
-		{
-			sum += weights[i];
-		}
-		for(i = 0; i < weights.size(); i++)
-		{
-			weights[i] = weights[i]/sum;
-		}
-		do
-		{
-			i = rand()%weights.size();
-		}while(((float)(rand()%100))/100 > weights[i]);
-		setMotion(mots[i]);
+		randomchoicemotion = new RandomChoiceMotion(mv, ws);
+		setMotion(randomchoicemotion);
 	};
 	RandomLoopMotion(const RandomLoopMotion &rl)
-		:ChoiceLoopMotion(rl), weights(rl.weights){};
+		:RandomTimingsLoop(rl)
+	{
+		randomchoicemotion = dynamic_cast<RandomChoiceMotion *>(getMotion());
+	};
 	~RandomLoopMotion(){};
 	virtual Motion *clone(){return new RandomLoopMotion(*this);};
 
@@ -86,43 +78,17 @@ public:
 
 	virtual void addMotion(Motion *mot, float weight = 1.0f)
 	{
-		MultiMotionLoop::addMotion(mot);
-		if(mot)
-		{
-			weights.push_back(weight);
-		}
+		randomchoicemotion->addMotion(mot, weight);
 	};
 
 	void setProbability(int index, float prob)
 	{
-		if(index >= 0 && index < (int)weights.size())
-			weights[index] = prob;
-		
-		float sum = 0.0;
-		vector<float>::size_type i;
-		for(i = 0; i < weights.size(); i++)
-		{
-			sum += weights[i];
-		}
-		for(i = 0; i < weights.size(); i++)
-		{
-			weights[i] = weights[i]/sum;
-		}
+		randomchoicemotion->setProbability(index, prob);
 	}
 
-	//! called each time around the loop
-	/*!
-	 * It can be called by the client to interrupt the current motion.
-	 */
-	virtual void reblend(float time)
+	virtual void shift()
 	{
-		vector<float>::size_type i;
-		do
-		{
-			i = rand()%weights.size();
-		}while(((float)(rand()%100))/100 > weights[i]);
-		setCurrentChoice(static_cast<int>(i));
-		ChoiceLoopMotion::reblend(time);
+		randomchoicemotion->shift();
 	};
 };
 

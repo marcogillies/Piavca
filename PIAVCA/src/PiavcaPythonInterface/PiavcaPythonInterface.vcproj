@@ -229,7 +229,8 @@
 		<File
 			RelativePath="Piavca.i">
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				ExcludedFromBuild="TRUE">
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Running Swig"

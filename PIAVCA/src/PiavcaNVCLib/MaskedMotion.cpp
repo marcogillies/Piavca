@@ -87,100 +87,43 @@ bool MotionMask::getMask(int track) const
 };
 
 MaskedMotion::MaskedMotion()
-	: TwoMotionCombiner()
+	: MotionFilter()
 {
 
 };
 
-MaskedMotion::MaskedMotion(Motion *_mot1, const MotionMask &_mask1, Motion *_mot2, const MotionMask &_mask2, bool _useSecondary) 
-	:TwoMotionCombiner(_mot1,_mot2), mask1(_mask1), 
-		mask2(_mask2), useSecondary(_useSecondary)
-	    {};
+MaskedMotion::MaskedMotion(Motion *_mot, const MotionMask &_mask) 
+	:MotionFilter(_mot), mask(_mask)   {};
 MaskedMotion::MaskedMotion(const MaskedMotion &mm)
-	:TwoMotionCombiner(mm), 
-	mask1(mm.mask1), mask2(mm.mask2), useSecondary(mm.useSecondary)
+	:MotionFilter(mm),  mask(mm.mask)
 	{};
 
 float MaskedMotion::getFloatValueAtTimeInternal (int trackId, float time)
 {
 	// if motion1 has its mask as true then play it 
 	// otherwise if motion2 is has a true mask play it
-	if(mot1 && mask1.getMask(trackId) && !mot1->isNull(trackId))
-		return mot1->getFloatValueAtTime(trackId, time);
-	if(mot2 && mask2.getMask(trackId) && !mot2->isNull(trackId))
-		return mot1->getFloatValueAtTime(trackId, time);
-
-	// if neither has its mask set then play whichever has a valid track
-	if(useSecondary)
-	{
-		if(mot1 && !mot1->isNull(trackId))
-			return mot1->getFloatValueAtTime(trackId, time);
-		if(mot2 && !mot2->isNull(trackId))
-			return mot1->getFloatValueAtTime(trackId, time);
-	}
-	else
-	{
-		if((mot1 && !mot1->isNull(trackId)) || (mot2 && !mot2->isNull(trackId)))
-			return 0.0;
-	}
-
-	// if neither has a valid track then its an error
-	Piavca::Error(_T("Track invalid in both motions of a motion mask"));
-	return 0.0;
+	if(filterMot && mask.getMask(trackId) && !filterMot->isNull(trackId))
+		return filterMot->getFloatValueAtTime(trackId, time);
+	else 
+		return 0.0f;
 }
 
 Vec MaskedMotion::getVecValueAtTimeInternal (int trackId, float time)
 {
 	// if motion1 has its mask as true then play it 
 	// otherwise if motion2 is has a true mask play it
-	if(mot1 && mask1.getMask(trackId) && !mot1->isNull(trackId))
-		return mot1->getVecValueAtTime(trackId, time);
-	if(mot2 && mask2.getMask(trackId) && !mot2->isNull(trackId))
-		return mot1->getVecValueAtTime(trackId, time);
-
-	// if neither has its mask set then play whichever has a valid track
-	if(useSecondary)
-	{
-		if(mot1 && !mot1->isNull(trackId))
-			return mot1->getVecValueAtTime(trackId, time);
-		if(mot2 && !mot2->isNull(trackId))
-			return mot1->getVecValueAtTime(trackId, time);
-	}
+	if(filterMot && mask.getMask(trackId) && !filterMot->isNull(trackId))
+		return filterMot->getVecValueAtTime(trackId, time);
 	else
-	{
-		if((mot1 && !mot1->isNull(trackId)) || (mot2 && !mot2->isNull(trackId)))
-			return Vec();
-	}
-
-	// if neither has a valid track then its an error
-	Piavca::Error(_T("Track invalid in both motions of a motion mask"));
-	return Vec();
+		return Vec();
 }
 
 Quat MaskedMotion::getQuatValueAtTimeInternal (int trackId, float time)
 {
 	// if motion1 has its mask as true then play it 
 	// otherwise if motion2 is has a true mask play it
-	if(mot1 && mask1.getMask(trackId) && !mot1->isNull(trackId))
-		return mot1->getQuatValueAtTime(trackId, time);
-	if(mot2 && mask2.getMask(trackId) && !mot2->isNull(trackId))
-		return mot1->getQuatValueAtTime(trackId, time);
-
-	// if neither has its mask set then play whichever has a valid track
-	if(useSecondary)
-	{
-		if(mot1 && !mot1->isNull(trackId))
-			return mot1->getQuatValueAtTime(trackId, time);
-		if(mot2 && !mot2->isNull(trackId))
-			return mot1->getQuatValueAtTime(trackId, time);
-	}
+	if(filterMot && mask.getMask(trackId) && !filterMot->isNull(trackId))
+		return filterMot->getQuatValueAtTime(trackId, time);
 	else
-	{
-		if((mot1 && !mot1->isNull(trackId)) || (mot2 && !mot2->isNull(trackId)))
-			return Quat();
-	}
-
-	// if neither has a valid track then its an error
-	Piavca::Error(_T("Track invalid in both motions of a motion mask"));
-	return Quat();
+		return Quat();
 }

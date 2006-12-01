@@ -147,6 +147,9 @@
 				RelativePath=".\ChoiceLoopMotion.h">
 			</File>
 			<File
+				RelativePath=".\ChoiceMotion.h">
+			</File>
+			<File
 				RelativePath=".\DiadicGazeMotion.h">
 			</File>
 			<File
@@ -162,7 +165,7 @@
 				RelativePath=".\MotionSaver.h">
 			</File>
 			<File
-				RelativePath=".\MultiMotionLoop.h">
+				RelativePath=".\MultiMotionCombiner.h">
 			</File>
 			<File
 				RelativePath=".\OnTheSpot.h">
@@ -171,13 +174,25 @@
 				RelativePath=".\Piavca.h">
 			</File>
 			<File
+				RelativePath=".\Proxemics.h">
+			</File>
+			<File
 				RelativePath=".\ProxemicsLoop.h">
+			</File>
+			<File
+				RelativePath=".\RandomAdd.h">
 			</File>
 			<File
 				RelativePath=".\RandomAddLoop.h">
 			</File>
 			<File
+				RelativePath=".\RandomBlend.h">
+			</File>
+			<File
 				RelativePath=".\RandomBlendLoop.h">
+			</File>
+			<File
+				RelativePath=".\RandomChoiceMotion.h">
 			</File>
 			<File
 				RelativePath=".\RandomGazeMotion.h">

@@ -698,6 +698,7 @@ public:
     virtual void setAccumulateRoot(bool b);
     virtual void reblend(float time);
     virtual void setMotion(Piavca::Motion *mot);
+    virtual Piavca::Motion *getMotion();
 
 
 /* Internal Director utilities */
@@ -731,7 +732,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[21];
+    mutable swig::PyObject_var vtable[22];
 #endif
 
 };
@@ -764,6 +765,7 @@ public:
     virtual void setAccumulateRoot(bool b);
     virtual void reblend(float time);
     virtual void setMotion(Piavca::Motion *mot);
+    virtual Piavca::Motion *getMotion();
 
 
 /* Internal Director utilities */
@@ -797,7 +799,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[21];
+    mutable swig::PyObject_var vtable[22];
 #endif
 
 };
@@ -830,6 +832,7 @@ public:
     virtual void setAccumulateRoot(bool b);
     virtual void reblend(float time);
     virtual void setMotion(Piavca::Motion *m);
+    virtual Piavca::Motion *getMotion();
     virtual void setTimingParams(float minTimeScale, float maxTimeScale);
 
 
@@ -864,7 +867,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[22];
+    mutable swig::PyObject_var vtable[23];
 #endif
 
 };
@@ -998,7 +1001,7 @@ class SwigDirector_MaskedMotion : public Piavca::MaskedMotion, public Swig::Dire
 
 public:
     SwigDirector_MaskedMotion(PyObject *self);
-    SwigDirector_MaskedMotion(PyObject *self, Piavca::Motion *_mot1, Piavca::MotionMask const &_mask1, Piavca::Motion *_mot2, Piavca::MotionMask const &_mask2, bool _useSecondary = true);
+    SwigDirector_MaskedMotion(PyObject *self, Piavca::Motion *_mot, Piavca::MotionMask const &_mask);
     SwigDirector_MaskedMotion(PyObject *self, Piavca::MaskedMotion const &mm);
     virtual ~SwigDirector_MaskedMotion();
     virtual Piavca::Motion *clone();
@@ -1085,9 +1088,9 @@ public:
     virtual void setAccumulateRoot(bool b);
     virtual void reblend(float time);
     virtual void setMotion(Piavca::Motion *m);
+    virtual Piavca::Motion *getMotion();
     virtual void setTimingParams(float minTimeScale, float maxTimeScale);
     virtual void addMotion(Piavca::Motion *mot);
-    virtual bool loaded(Piavca::Avatar *av);
 
 
 /* Internal Director utilities */
@@ -1155,9 +1158,10 @@ public:
     virtual void setAccumulateRoot(bool b);
     virtual void reblend(float time);
     virtual void setMotion(Piavca::Motion *m);
+    virtual Piavca::Motion *getMotion();
     virtual void setTimingParams(float minTimeScale, float maxTimeScale);
-    virtual bool loaded(Piavca::Avatar *av);
     virtual void addMotion(Piavca::Motion *mot, float weight = 1.0f);
+    virtual void shift();
 
 
 /* Internal Director utilities */
@@ -1191,7 +1195,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[25];
+    mutable swig::PyObject_var vtable[26];
 #endif
 
 };
@@ -1225,9 +1229,9 @@ public:
     virtual void setAccumulateRoot(bool b);
     virtual void reblend(float time);
     virtual void setMotion(Piavca::Motion *m);
+    virtual Piavca::Motion *getMotion();
     virtual void setTimingParams(float minTimeScale, float maxTimeScale);
     virtual void addMotion(Piavca::Motion *mot);
-    virtual bool loaded(Piavca::Avatar *av);
     virtual void addMotion(Piavca::Motion *mot, float weight);
     virtual void shift();
 
@@ -1297,9 +1301,9 @@ public:
     virtual void setAccumulateRoot(bool b);
     virtual void reblend(float time);
     virtual void setMotion(Piavca::Motion *m);
+    virtual Piavca::Motion *getMotion();
     virtual void setTimingParams(float minTimeScale, float maxTimeScale);
     virtual void addMotion(Piavca::Motion *mot);
-    virtual bool loaded(Piavca::Avatar *av);
     virtual void shift();
 
 
@@ -1431,6 +1435,7 @@ public:
     virtual void setAccumulateRoot(bool b);
     virtual void reblend(float time);
     virtual void setMotion(Piavca::Motion *mot);
+    virtual Piavca::Motion *getMotion();
     virtual bool lookAt(Piavca::tstring name, bool force = false);
 
 
@@ -1465,7 +1470,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[23];
+    mutable swig::PyObject_var vtable[24];
 #endif
 
 };
@@ -1810,6 +1815,7 @@ public:
     virtual void setAccumulateRoot(bool b);
     virtual void reblend(float time);
     virtual void setMotion(Piavca::Motion *mot);
+    virtual Piavca::Motion *getMotion();
     virtual bool lookAt(Piavca::tstring name, bool force = false);
 
 
@@ -1844,7 +1850,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[23];
+    mutable swig::PyObject_var vtable[24];
 #endif
 
 };

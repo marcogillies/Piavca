@@ -66,6 +66,8 @@ namespace Piavca
 	    virtual void reblend(float time);
 		//! sets the motion to be blended in
 		virtual void setMotion(Motion *mot);
+		//! sets the motion to be blended in
+		virtual Motion *getMotion();
 	};
 };
 

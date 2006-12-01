@@ -235,7 +235,7 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 			std::string strName = strData.substr(0, pos);
 			// load an animation
 			MotionImp *imp = new MotionCal3DImp(strData, cal_core_model->getCoreSkeleton());
-			Motion *tmot = new TrackMotion(imp);
+			Motion *tmot = new KeyframeMotion(imp);
 			Piavca::Core::getCore()->loadMotion(StringToTString(strName), tmot); 
 		}
 		else if(strKey == "scale")
@@ -393,7 +393,7 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 
   
   // create a rest pose motion for the avatar
-  TrackMotion *tmot = new TrackMotion(false);
+  KeyframeMotion *tmot = new KeyframeMotion(false);
   //std::cout << getRootPosition() << std::endl;
   tmot->addVecTrack(root_position_id, getRootPosition());
   //std::cout << avatarImp->getRootOrientation() << std::endl;

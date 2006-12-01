@@ -78,6 +78,12 @@ SelfBlend::SelfBlend(Motion *mot, float interval)
 	}
 };
 
+
+Motion *SelfBlend::getMotion()
+{
+	return mot2;
+}
+
 void SelfBlend::setMotion(Motion *mot)
 {
 	KeyframeMotion *tmot;
@@ -124,6 +130,7 @@ void SelfBlend::setMotion(Motion *mot)
 	//std::cout << "self blend set motion\n";
 	calculateRootOffsets();
 };
+
 
 void SelfBlend::reset()
 {
