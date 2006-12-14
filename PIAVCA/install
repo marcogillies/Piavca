@@ -36,7 +36,7 @@ www.swig.org
 
 Cal3D: this is a lower level character animation library. You will need version 0.10 or later. You can get it from:
 
-http://cal3d.sourceforge.net/
+https://gna.org/projects/cal3d/
 
 If you install it in the standard place (/usr/install/local) configure will find it. Many linux distros now have cal3d packages
 
@@ -65,7 +65,7 @@ The Piavca solution file will do its best to find the various dependencies.
 
 It assumes that GL and glut are in the standard include/lib path (they should be if you followed the installation instructions). 
 
-For Cal3d and Python it will look in the directories that they are likely to be in. For Python this is the standard installation directory (c:\Python2[345]) for cal3d it assumes it is in the same directory as Piavca. If if doesn't find them you can set the environment variables PYTHONDIR and CAL3DDIR to the root directories of each (e.g. PYTHONDIR="d:\libraries\Python24" and CAL3DDIR="c:\cal3d.0.10.0"). Piavca will find newer versions of python before older ones so if you have more than one installed and want to use the older one you need to use PYTHONDIR.
+For Cal3d and Python it will look in the directories that they are likely to be in. For Python this is the standard installation directory (c:\Python2[345]) for cal3d it assumes it is in the same directory as Piavca (i.e. the parent directory of the piavca directory). If if doesn't find them you can set the environment variables PYTHONDIR and CAL3DDIR to the root directories of each (e.g. PYTHONDIR="d:\libraries\Python24" and CAL3DDIR="c:\cal3d.0.10.0"). Piavca will find newer versions of python before older ones so if you have more than one installed and want to use the older one you need to use PYTHONDIR.
 
 Swig, bison and flex are assumed to be in your path, if you use them.
 
@@ -80,6 +80,8 @@ In the unix version you can pass this directory (which should be PIAVCAPATH/???,
 is the root of your piavca distribution) as an argument. In VStudio you can do 
 
 PiavcaCal3dApp->Properties->Debugging->Working Directory = the path
+
+The intall contains a directory called cally that you can try running from.
 
 If you haven't got python you can grep the file PiavcaCal3dApp.cpp and remove the 3 lines that 
 contain references to python. There is a comment just below one of them of some lines that 
