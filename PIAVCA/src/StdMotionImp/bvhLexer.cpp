@@ -41,7 +41,7 @@
 #ifdef __cplusplus
 
 #include <stdlib.h>
-//#include <unistd.h>
+#include <unistd.h>
 
 /* Use prototypes in function declarations. */
 #define YY_USE_PROTOS
@@ -475,7 +475,7 @@ static char *yy_last_accepting_cpos;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 1 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 #define INITIAL 0
 /* ***** BEGIN LICENSE BLOCK *****
  * Version: MPL 1.1
@@ -496,9 +496,23 @@ char *yytext;
  * Portions created by the Initial Developer are Copyright (C) BT plc. 2004
  * All Rights Reserved.
  *
+ * Contributor(s):
+ *
+ * Alternatively, the contents of this file may be used under the terms of
+ * either the GNU General Public License Version 2 or later (the "GPL"), or
+ * the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+ * in which case the provisions of the GPL or the LGPL are applicable instead
+ * of those above. If you wish to allow use of your version of this file only
+ * under the terms of either the GPL or the LGPL, and not to allow others to
+ * use your version of this file under the terms of the MPL, indicate your
+ * decision by deleting the provisions above and replace them with the notice
+ * and other provisions required by the GPL or the LGPL. If you do not delete
+ * the provisions above, a recipient may use your version of this file under
+ * the terms of any one of the MPL, the GPL or the LGPL.
+ *
  * ***** END LICENSE BLOCK ***** */
 #define YY_NEVER_INTERACTIVE 1
-#line 25 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 39 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 /*
  *  a lexer test
  */
@@ -515,7 +529,7 @@ extern int linenum;
 //extern FILE *g_file;
 #define INTEGER 1
 
-#line 519 "bvhLexer.cpp"
+#line 533 "bvhLexer.cpp"
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -666,11 +680,11 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 43 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 57 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 
 
 
-#line 674 "bvhLexer.cpp"
+#line 688 "bvhLexer.cpp"
 
 	if ( yy_init )
 		{
@@ -755,135 +769,135 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 46 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 60 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {/*fprintf(g_file, " %s ", yytext);*/ return(HIERARCHY);}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 48 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 62 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {/*fprintf(g_file, " %s ", yytext);*/ return(ROOT);}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 50 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 64 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {/*fprintf(g_file, " %s ", yytext);*/ return(OFFSET);}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 52 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 66 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {BEGIN INTEGER; /*fprintf(g_file, " %s ", yytext);*/ return(CHANNELS);}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 54 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 68 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {/*fprintf(g_file, " %s ", yytext);*/ return(JOINT);}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 56 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 70 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {/*fprintf(g_file, " %s ", yytext);*/ return(END_SITE);}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 58 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 72 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {/*fprintf(g_file, " %s ", yytext);*/ return(MOTION);}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 60 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 74 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {BEGIN INTEGER; /*fprintf(g_file, " %s ", yytext);*/ return(FRAMES);}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 62 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 76 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {/*fprintf(g_file, " %s ", yytext);*/ return(FRAME_TIME);}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 64 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 78 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {/*fprintf(g_file, " %s ", yytext);*/ return (L_BRACK);}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 66 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 80 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {/*fprintf(g_file, " %s ", yytext);*/ return (R_BRACK);}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 68 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 82 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {bvhlval.intVal = 0; /*fprintf(g_file, " %s ", yytext);*/ return(DOF_NAME);}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 70 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 84 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {bvhlval.intVal = 1; /*fprintf(g_file, " %s ", yytext);*/ return(DOF_NAME);}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 72 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 86 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {bvhlval.intVal = 2; /*fprintf(g_file, " %s ", yytext);*/ return(DOF_NAME);}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 74 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 88 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {bvhlval.intVal = 3; /*fprintf(g_file, " %s ", yytext);*/ return(DOF_NAME);}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 76 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 90 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {bvhlval.intVal = 4; /*fprintf(g_file, " %s ", yytext);*/ return(DOF_NAME);}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 78 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 92 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {bvhlval.intVal = 5; /*fprintf(g_file, " %s ", yytext);*/ return(DOF_NAME);}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 80 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 94 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {bvhlval.intVal = 6; /*fprintf(g_file, " %s ", yytext);*/ return(DOF_NAME);}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 82 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 96 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {bvhlval.intVal = 7; /*fprintf(g_file, " %s ", yytext);*/ return(DOF_NAME);}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 84 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 98 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {bvhlval.intVal = 8; /*fprintf(g_file, " %s ", yytext);*/ return(DOF_NAME);}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 86 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 100 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {BEGIN 0; bvhlval.intVal = atoi(yytext); /*fprintf(g_file, " %s ", yytext);*/ return NUMBER_INT;}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 88 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 102 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {bvhlval.floatVal = static_cast<float>(atof(yytext)); /*fprintf(g_file, " %s ", yytext);*/ return (NUMBER);}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 90 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 104 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {bvhlval.name = yytext; /*fprintf(g_file, " <name> %s ", yytext);*/ return (NAME);}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 92 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 106 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {linenum++;};
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 94 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 108 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 /* ignore whitespace*/;
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 96 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 110 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 ECHO;
 	YY_BREAK
-#line 887 "bvhLexer.cpp"
+#line 901 "bvhLexer.cpp"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(INTEGER):
 	yyterminate();
@@ -1770,7 +1784,7 @@ int main()
 	return 0;
 	}
 #endif
-#line 96 "c:\\Documents and Settings\\marco\\My Documents\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 110 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 
 
 int yywrap()

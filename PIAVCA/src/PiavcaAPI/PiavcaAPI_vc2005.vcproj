@@ -16,7 +16,7 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="$(ConfigurationName)"
+			OutputDirectory="$(SolutionDir)\bin"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="4"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
@@ -305,6 +305,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\KeyframeMotion.cpp"
+				>
+			</File>
+			<File
 				RelativePath="Motion.cpp"
 				>
 			</File>
@@ -334,10 +338,6 @@
 			</File>
 			<File
 				RelativePath=".\SequentialBlend.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\TrackMotion.cpp"
 				>
 			</File>
 			<File
@@ -371,6 +371,10 @@
 			</File>
 			<File
 				RelativePath="Hermite.h"
+				>
+			</File>
+			<File
+				RelativePath=".\KeyframeMotion.h"
 				>
 			</File>
 			<File
@@ -435,10 +439,6 @@
 			</File>
 			<File
 				RelativePath="TimeCallback.h"
-				>
-			</File>
-			<File
-				RelativePath=".\TrackMotion.h"
 				>
 			</File>
 			<File

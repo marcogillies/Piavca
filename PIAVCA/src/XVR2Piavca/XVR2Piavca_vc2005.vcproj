@@ -16,7 +16,7 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="Debug"
+			OutputDirectory="$(SolutionDir)\bin"
 			IntermediateDirectory="Debug"
 			ConfigurationType="2"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
@@ -41,7 +41,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\;..\..\..\cal3d-0.10.0\src\;c:\Python24\PC\"
-				PreprocessorDefinitions="WIN32_WINDOWS;_USRDLL;XVR2PIAVCA_EXPORTS"
+				PreprocessorDefinitions="WIN32;_WINDOWS;_USRDLL;XVR2PIAVCA_EXPORTS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="2"
@@ -62,10 +62,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="cal3d_d.lib"
+				AdditionalDependencies="cal3d.lib"
 				OutputFile="$(OutDir)/XVR2Piavca.dll"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="c:\Python24\PCbuild;..\..\..\cal3d-0.10.0\bin\debug"
+				AdditionalLibraryDirectories="$(CAL3DDIR)\bin\release;..\..\..\cal3d-0.10.0\bin\Release;$(PYTHONDIR)\libs;c:\Python25\libs;c:\Python24\libs;c:\Python23\libs"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/XVR2Piavca.pdb"
 				SubSystem="2"
@@ -147,7 +147,7 @@
 				AdditionalDependencies="cal3d.lib"
 				OutputFile="$(OutDir)/XVR2Piavca.dll"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="c:\Python24\PCbuild;..\..\..\cal3d-0.10.0\bin\release"
+				AdditionalLibraryDirectories="$(CAL3DDIR)\bin\release;..\..\..\cal3d-0.10.0\bin\Release;$(PYTHONDIR)\libs;c:\Python25\libs;c:\Python24\libs;c:\Python23\libs"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/XVR2Piavca.pdb"
 				SubSystem="2"

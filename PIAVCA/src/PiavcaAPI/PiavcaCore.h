@@ -440,6 +440,9 @@ namespace Piavca
 		//! prints out the profiling data that has been collected.
 		void printProfileData();
 
+		//! prints an output message
+		virtual void output(tstring str);
+
 		friend class Motion;
 	};
 

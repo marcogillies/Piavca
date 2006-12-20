@@ -585,4 +585,9 @@ void Core::printProfileData()
 	}
 }
 
+void Core::output(tstring str)
+{
+	std::cout << str;	
+}
+
 	

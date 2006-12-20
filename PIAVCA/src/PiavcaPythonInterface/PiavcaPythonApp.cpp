@@ -99,7 +99,8 @@ PyObject *g_pPyMod = 0;
 #include <fstream>
 #include <sstream>
 
-#ifdef NO_CONSOLE_PRESENT
+//#ifdef NO_CONSOLE_PRESENT
+bool no_console_present = false;
 std::ostringstream *strstrm;
 std::streambuf *saved_cout;
 std::streambuf *saved_cerr;
@@ -107,7 +108,7 @@ std::streambuf *saved_cerr;
 std::wostringstream *wstrstrm;
 std::wstreambuf *saved_wcout;
 std::wstreambuf *saved_wcerr;
-#endif
+//#endif
 
 PIAVCA_EXPORT void PyTimeCallback::init(Piavca::Core *core)
 {
@@ -168,25 +169,28 @@ PIAVCA_EXPORT void PyTimeCallback::timeStep(Piavca::Core *core, float time)
 	//std::cout << "hello\n";
 
 	//res = strstrm->str();
-#ifdef NO_CONSOLE_PRESENT
-	/*pyMethod = PyObject_GetAttrString(g_pPyMod, "PrintOutput");
-	if(pyMethod)
+//#ifdef NO_CONSOLE_PRESENT
+	if(no_console_present)
 	{
-		pyArgs = Py_BuildValue("(s)", strstrm->str().c_str());
-		PyEval_CallObject(pyMethod, pyArgs);
-		if(PyErr_Occurred())
+		/*pyMethod = PyObject_GetAttrString(g_pPyMod, "PrintOutput");
+		if(pyMethod)
 		{
-			PyErr_Print();
-			//EndPiavcaPython(core);
-			//exit(0);
-		}
-		else
-		{
-			strstrm->str("");
-			wstrstrm->str(L"");
-		}
-	}*/
-#endif
+			pyArgs = Py_BuildValue("(s)", strstrm->str().c_str());
+			PyEval_CallObject(pyMethod, pyArgs);
+			if(PyErr_Occurred())
+			{
+				PyErr_Print();
+				//EndPiavcaPython(core);
+				//exit(0);
+			}
+			else
+			{
+				strstrm->str("");
+				wstrstrm->str(L"");
+			}
+		}*/
+	}
+//#endif
 
 	//Py_DECREF(pyArgs);
 	//Py_DECREF(pyMethod);
@@ -250,42 +254,45 @@ PIAVCA_EXPORT void PyAvatarTimeCallback::timeStep(Avatar *avatar, float time)
 		return;
 	}
 	
-#ifdef NO_CONSOLE_PRESENT
-	std::string res = strstrm->str();
-	std::wstring wres = wstrstrm->str();
-
-	pyMethod = PyObject_GetAttrString(g_pPyMod, "PrintOutput");
-	if(pyMethod)
+//#ifdef NO_CONSOLE_PRESENT
+	if(no_console_present)
 	{
-		pyArgs = Py_BuildValue("(s)", strstrm->str().c_str());
-		PyEval_CallObject(pyMethod, pyArgs);
-		pyArgs = Py_BuildValue("(s)", WStringToString(wstrstrm->str()).c_str());
-		PyEval_CallObject(pyMethod, pyArgs);
-		if(PyErr_Occurred())
-		{
-			PyErr_Print();
-			PyObject *ErrorType, *ErrorValue, *ErrorTraceback, *ErrorString;
-			PyErr_Fetch(&ErrorType, &ErrorValue, &ErrorTraceback);
-			ErrorString = PyObject_Str(ErrorType);
-			std::cout << "Python Exception:\n";
-			std::cout << PyString_AsString(ErrorString) << std::endl;
-			ErrorString = PyObject_Str(ErrorValue);
-			Piavca::tstring error_string = StringToTString(PyString_AsString(ErrorString));
-			std::cout << PyString_AsString(ErrorString) << std::endl;
-			ErrorString = PyObject_Str(ErrorTraceback);
-			std::cout << PyString_AsString(ErrorString) << std::endl;
+		std::string res = strstrm->str();
+		std::wstring wres = wstrstrm->str();
 
-			EndPiavcaPython(Piavca::Core::getCore());
-			Piavca::Error(_T("Error running script: ") + error_string);
-			return;
-		}
-		else
-		{	
-			strstrm->str("");
-			wstrstrm->str(L"");
+		pyMethod = PyObject_GetAttrString(g_pPyMod, "PrintOutput");
+		if(pyMethod)
+		{
+			pyArgs = Py_BuildValue("(s)", strstrm->str().c_str());
+			PyEval_CallObject(pyMethod, pyArgs);
+			pyArgs = Py_BuildValue("(s)", WStringToString(wstrstrm->str()).c_str());
+			PyEval_CallObject(pyMethod, pyArgs);
+			if(PyErr_Occurred())
+			{
+				PyErr_Print();
+				PyObject *ErrorType, *ErrorValue, *ErrorTraceback, *ErrorString;
+				PyErr_Fetch(&ErrorType, &ErrorValue, &ErrorTraceback);
+				ErrorString = PyObject_Str(ErrorType);
+				std::cout << "Python Exception:\n";
+				std::cout << PyString_AsString(ErrorString) << std::endl;
+				ErrorString = PyObject_Str(ErrorValue);
+				Piavca::tstring error_string = StringToTString(PyString_AsString(ErrorString));
+				std::cout << PyString_AsString(ErrorString) << std::endl;
+				ErrorString = PyObject_Str(ErrorTraceback);
+				std::cout << PyString_AsString(ErrorString) << std::endl;
+
+				EndPiavcaPython(Piavca::Core::getCore());
+				Piavca::Error(_T("Error running script: ") + error_string);
+				return;
+			}
+			else
+			{	
+				//strstrm->str("");
+				//wstrstrm->str(L"");
+			}
 		}
 	}
-#endif
+//#endif
 
 	Py_DECREF(pyArgs);
 	Py_DECREF(pyMethod);
@@ -299,27 +306,30 @@ void Piavca::PrintPythonErrors()
 	PyErr_Print();
 }
 
-void Piavca::InitPiavcaPython(Piavca::Core *core, tstring fileName)
+void Piavca::InitPiavcaPython(Piavca::Core *core, tstring fileName, bool no_console)
 { 
 	PyObject *pyInitMethod, *pyArgs;
 	std::cout << "in InitPiavcaPython\n";
+	no_console_present = no_console;
+//#ifdef NO_CONSOLE_PRESENT
+	if(no_console_present)
+	{
+		//file = new std::ofstream("PiavcaCout.txt");
+		strstrm = new std::ostringstream();
+		saved_cout = std::cout.rdbuf();
+		std::cout.rdbuf(strstrm->rdbuf());
+		saved_cerr = std::cerr.rdbuf();
+		std::cerr.rdbuf(strstrm->rdbuf());
+		
+		wstrstrm = new std::wostringstream();
+		saved_wcout = std::wcout.rdbuf();
+		std::wcout.rdbuf(wstrstrm->rdbuf());
+		saved_wcerr = std::wcerr.rdbuf();
+		std::wcerr.rdbuf(wstrstrm->rdbuf());
 
-#ifdef NO_CONSOLE_PRESENT
-	//file = new std::ofstream("PiavcaCout.txt");
-	strstrm = new std::ostringstream();
-	saved_cout = std::cout.rdbuf();
-	std::cout.rdbuf(strstrm->rdbuf());
-	saved_cerr = std::cerr.rdbuf();
-	std::cerr.rdbuf(strstrm->rdbuf());
-	
-	wstrstrm = new std::wostringstream();
-	saved_wcout = std::wcout.rdbuf();
-	std::wcout.rdbuf(wstrstrm->rdbuf());
-	saved_wcerr = std::wcerr.rdbuf();
-	std::wcerr.rdbuf(wstrstrm->rdbuf());
-
-	freopen("piavcaStdout.txt", "w", stdout);
-#endif
+		freopen("piavcaStdout.txt", "w", stdout);
+	}
+//#endif
 	
 	std::cout << "ABOUT TO LOAD PYTHON" << std::endl;
 
@@ -346,6 +356,13 @@ void Piavca::InitPiavcaPython(Piavca::Core *core, tstring fileName)
 	//g_pPyMod = PyImport_ImportModule("IMClient_old");
 	if(PyErr_Occurred())
 	{
+		//PyObject *pyTracebackmod = PyImport_ImportModule("traceback");	
+		//PyObject *pyArgs = Py_BuildValue("()");
+		//PyObject *pyMethod = PyObject_GetAttrString(pyTracebackmod, "format_exc");
+		//PyObject *pyStr = PyEval_CallObject(pyMethod, pyArgs);
+		//char *c = PyString_AsString(pyStr);
+		//std::cout << c << std::endl;
+
 		std::cout << "python bailed during module import\n";
 		PyErr_Print();
 		PyObject *ErrorType, *ErrorValue, *ErrorTraceback, *ErrorString;
@@ -360,6 +377,8 @@ void Piavca::InitPiavcaPython(Piavca::Core *core, tstring fileName)
 		ErrorString = PyObject_Str(ErrorTraceback);
 		Piavca::tstring error_traceback = StringToTString(PyString_AsString(ErrorString));
 		std::cout << PyString_AsString(ErrorString) << std::endl;
+		fflush(stdout);
+		fflush(stderr);
 
 		EndPiavcaPython(core);
 		Piavca::Error(_T("Error running script: ") + error_string);
@@ -376,7 +395,7 @@ void Piavca::InitPiavcaPython(Piavca::Core *core, tstring fileName)
 		PyEval_CallObject(pyInitMethod, pyArgs);
 		if(PyErr_Occurred())
 		{
-			PyErr_Print();
+			//PyErr_Print();
 			PyObject *ErrorType, *ErrorValue, *ErrorTraceback, *ErrorString;
 			PyErr_Fetch(&ErrorType, &ErrorValue, &ErrorTraceback);
 			ErrorString = PyObject_Str(ErrorType);
@@ -401,40 +420,44 @@ void Piavca::InitPiavcaPython(Piavca::Core *core, tstring fileName)
 
 	std::cout << "finished running start up method\n";
 
-#ifdef NO_CONSOLE_PRESENT
-	std::string res = strstrm->str();
-	PyObject *pyPrintMethod = PyObject_GetAttrString(g_pPyMod, "PrintOutput");
-	if(pyPrintMethod)
+//#ifdef NO_CONSOLE_PRESENT
+	
+	if(no_console_present)
 	{
-		pyArgs = Py_BuildValue("(s)", strstrm->str().c_str());
-		PyEval_CallObject(pyPrintMethod, pyArgs);
-		pyArgs = Py_BuildValue("(s)", WStringToString(wstrstrm->str()).c_str());
-		PyEval_CallObject(pyPrintMethod, pyArgs);
-		if(PyErr_Occurred())
+		//std::string res = strstrm->str();
+		PyObject *pyPrintMethod = PyObject_GetAttrString(g_pPyMod, "PrintOutput");
+		if(pyPrintMethod)
 		{
-			PyErr_Print();
-			PyObject *ErrorType, *ErrorValue, *ErrorTraceback, *ErrorString;
-			PyErr_Fetch(&ErrorType, &ErrorValue, &ErrorTraceback);
-			ErrorString = PyObject_Str(ErrorType);
-			std::cout << "Python Exception:\n";
-			std::cout << PyString_AsString(ErrorString) << std::endl;
-			ErrorString = PyObject_Str(ErrorValue);
-			Piavca::tstring error_string = StringToTString(PyString_AsString(ErrorString));
-			std::cout << PyString_AsString(ErrorString) << std::endl;
-			ErrorString = PyObject_Str(ErrorTraceback);
-			std::cout << PyString_AsString(ErrorString) << std::endl;
+			pyArgs = Py_BuildValue("(s)", strstrm->str().c_str());
+			PyEval_CallObject(pyPrintMethod, pyArgs);
+			pyArgs = Py_BuildValue("(s)", WStringToString(wstrstrm->str()).c_str());
+			PyEval_CallObject(pyPrintMethod, pyArgs);
+			if(PyErr_Occurred())
+			{
+				PyErr_Print();
+				PyObject *ErrorType, *ErrorValue, *ErrorTraceback, *ErrorString;
+				PyErr_Fetch(&ErrorType, &ErrorValue, &ErrorTraceback);
+				ErrorString = PyObject_Str(ErrorType);
+				std::cout << "Python Exception:\n";
+				std::cout << PyString_AsString(ErrorString) << std::endl;
+				ErrorString = PyObject_Str(ErrorValue);
+				Piavca::tstring error_string = StringToTString(PyString_AsString(ErrorString));
+				std::cout << PyString_AsString(ErrorString) << std::endl;
+				ErrorString = PyObject_Str(ErrorTraceback);
+				std::cout << PyString_AsString(ErrorString) << std::endl;
 
-			EndPiavcaPython(core);
-			Piavca::Error(_T("Error running script: ") + error_string);
-			return;
-		}
-		else
-		{
-			strstrm->str("");
-			wstrstrm->str(L"");
+				EndPiavcaPython(core);
+				Piavca::Error(_T("Error running script: ") + error_string);
+				return;
+			}
+			else
+			{
+				//strstrm->str("");
+				//wstrstrm->str(L"");
+			}
 		}
 	}
-#endif
+//#endif
 
 	//core->registerTimeCallback(new PyTimeCallback(pyMod));
 
@@ -455,19 +478,31 @@ void Piavca::RunPythonMethod(Piavca::Core *core, char *methodName)
 
 void Piavca::RunPythonMethod(Piavca::Core *core, char *methodName, int arg)
 {
-	PyObject *pyArgs = Py_BuildValue("i", arg);
+	PyObject *pyArgs = Py_BuildValue("(i)", arg);
 	RunPythonMethod(core, methodName, pyArgs);
 };
 
 void Piavca::RunPythonMethod(Piavca::Core *core, char *methodName, float arg)
 {
-	PyObject *pyArgs = Py_BuildValue("f", arg);
+	PyObject *pyArgs = Py_BuildValue("(f)", arg);
 	RunPythonMethod(core, methodName, pyArgs);
 };
 
 void Piavca::RunPythonMethod(Piavca::Core *core, char *methodName, std::string arg)
 {
-	PyObject *pyArgs = Py_BuildValue("s#", arg.c_str(), arg.length());
+	PyObject *pyArgs = Py_BuildValue("(s#)", arg.c_str(), arg.length());
+	RunPythonMethod(core, methodName, pyArgs);
+};
+
+void Piavca::RunPythonMethod(Piavca::Core *core, char *methodName, const Vec &arg)
+{
+	PyObject *pyArgs = Py_BuildValue("([fff])", arg[0], arg[1], arg[2]);
+	RunPythonMethod(core, methodName, pyArgs);
+};
+
+void Piavca::RunPythonMethod(Piavca::Core *core, char *methodName, float farg, const Vec &varg)
+{
+	PyObject *pyArgs = Py_BuildValue("(f[fff])", farg, varg[0], varg[1], varg[2]);
 	RunPythonMethod(core, methodName, pyArgs);
 };
 
@@ -510,16 +545,19 @@ void Piavca::EndPiavcaPython(Piavca::Core *core)
 	PyObject *pyFinalizeMethod, *pyArgs;
 
 	std::cout << "in finalise function\n";
-
-#ifdef NO_CONSOLE_PRESENT
 	std::ofstream file("PiavcaCout.txt");
-	file << strstrm->str();
-	strstrm->str("");
-
 	std::wofstream wfile("PiavcaCout.txt");
-	wfile << wstrstrm->str();
-	wstrstrm->str(L"");
-#endif
+
+//#ifdef NO_CONSOLE_PRESENT
+	if(no_console_present)
+	{
+		file << strstrm->str();
+		strstrm->str("");
+
+		wfile << wstrstrm->str();
+		wstrstrm->str(L"");
+	}
+//#endif
 
 	if(g_pPyMod)
 	{
@@ -555,25 +593,34 @@ void Piavca::EndPiavcaPython(Piavca::Core *core)
 		}
 	}	
 	
-#ifndef NO_CONSOLE_PRESENT
-	std::cout << "Press any key to exit\n";
-	//std::string temp;
-	std::cin.get();
-#endif
+//#ifndef NO_CONSOLE_PRESENT
+	if(!no_console_present)
+	{
+		std::cout << "Press any key to exit\n";
+		//std::string temp;
+		std::cin.get();
+	}
+//#endif
 
-#ifdef NO_CONSOLE_PRESENT
-	file << strstrm->str();
-	std::cout.rdbuf(saved_cout);
-	std::cerr.rdbuf(saved_cerr);
-	
-	wfile << wstrstrm->str();
-	std::wcout.rdbuf(saved_wcout);
-	std::wcerr.rdbuf(saved_wcerr);
+//#ifdef NO_CONSOLE_PRESENT
+	if(no_console_present)
+	{
+		file << strstrm->str();
+		std::cout.rdbuf(saved_cout);
+		std::cerr.rdbuf(saved_cerr);
+		
+		wfile << wstrstrm->str();
+		std::wcout.rdbuf(saved_wcout);
+		std::wcerr.rdbuf(saved_wcerr);
 
-	//delete file;
-	delete strstrm;
-#else
-	std::cout.flush();
-	std::cerr.flush();
-#endif
+		//delete file;
+		delete strstrm;
+	}
+	else
+//#else
+	{
+		std::cout.flush();
+		std::cerr.flush();
+	}
+//#endif
 }

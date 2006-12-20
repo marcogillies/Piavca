@@ -47,7 +47,7 @@ typedef struct _object PyObject;
 namespace Piavca
 {
 //! Initialise the Python bindings and load the python module in filename
-void InitPiavcaPython(Piavca::Core *core, tstring fileName);
+void InitPiavcaPython(Piavca::Core *core, tstring fileName, bool no_console = false);
 //! Close down the Python bindings
 void EndPiavcaPython(Piavca::Core *core);
 
@@ -62,6 +62,10 @@ void RunPythonMethod(Piavca::Core *core, char *methodName, int arg);
 void RunPythonMethod(Piavca::Core *core, char *methodName, float arg);
 //! Run a method from the loaded python module (string argument)
 void RunPythonMethod(Piavca::Core *core, char *methodName, std::string arg);
+//! Run a method from the loaded python module (Vec argument)
+void RunPythonMethod(Piavca::Core *core, char *methodName, const Vec &arg);
+//! Run a method from the loaded python module (float and Vec (angle axis) argument)
+void RunPythonMethod(Piavca::Core *core, char *methodName, float farg, const Vec &varg);
 //! Run a method from the loaded python module with an arbitrary python object as an argument
 /*!
  *	This can be used for passing arbitrary arguments by creating the

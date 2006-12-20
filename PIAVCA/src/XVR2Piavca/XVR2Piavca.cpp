@@ -67,14 +67,31 @@ extern "C" __declspec(dllexport) void displayFunc();
 extern "C" __declspec(dllexport) char* onInitial(char* _path, char * script);
 // runs a python method 
 extern "C" __declspec(dllexport) char* runMethod(char* method);
+extern "C" __declspec(dllexport) char* runMethodInt(char* method, int arg);
+extern "C" __declspec(dllexport) char* runMethodFloat(char* method, float arg);
+extern "C" __declspec(dllexport) char* runMethodStr(char* method, char *arg);
+extern "C" __declspec(dllexport) char* runMethodVec(char* method, float arg1, float arg2, float arg3);
+extern "C" __declspec(dllexport) char* runMethodAngleAxis(char* method, float arg0, float arg1, float arg2, float arg3);
 // does any clean up needed
 extern "C" __declspec(dllexport) void exitFunc();
 
 // returns the last error message/warning
 extern "C" __declspec(dllexport) char* GetLastMessage();
+// gets anything that was printed to cout, generally longer 
+// and worder info than GetLastMessage
+extern "C" __declspec(dllexport) char* GetLastOutput();
 
 char* Str = new char[256];
 char* dirFile = new char[256];
+char* output = new char[1024];
+
+std::ostringstream *_strstrm;
+std::streambuf *_saved_cout;
+std::streambuf *_saved_cerr;
+
+std::wostringstream *_wstrstrm;
+std::wstreambuf *_saved_wcout;
+std::wstreambuf *_saved_wcerr;
 
 Piavca::PiavcaCal3DCore *g_pCore;
 
@@ -103,6 +120,10 @@ extern "C" __declspec(dllexport) void displayFunc()
 // cleans up the state of piavca on exit
 extern "C" __declspec(dllexport) void exitFunc()
 {
+	std::cout.rdbuf(_saved_cout);
+	std::cerr.rdbuf(_saved_cerr);
+	std::wcout.rdbuf(_saved_wcout);
+	std::wcerr.rdbuf(_saved_wcerr);
 	delete g_pCore;
 }
 
@@ -114,26 +135,33 @@ extern "C" __declspec(dllexport) char *onInitial(char* _path, char *script)
 	{
 		int argc = 1;
 		char* argv = "piavcaxvr";
-		std::string path = dirFile;
-		path += "/";
+		std::string path = "";//dirFile;
+		//path += "/";
 		path += _path;
 		path = path + "//";
 		//path = ".\\";
   		_chdir(path.c_str());
 	  	
 		g_pCore = new Piavca::PiavcaCal3DCore();
-		/*g_Params.zooming = false;
-		g_Params.turning = false;
-		g_Params.width = 800;
-		g_Params.height = 600;
-		g_Params.lastMouseX = 0; 
-		g_Params.lastMouseY = 0;
-		g_Params.leftright = 0; 
-		g_Params.updown = -100; 
-		g_Params.distance = 300;
-		g_Params.tiltAngle = -90; 
-		g_Params.twistAngle = 0;	
-		*/
+
+		_strstrm = new std::ostringstream();
+		_saved_cout = std::cout.rdbuf();
+		std::cout.rdbuf(_strstrm->rdbuf());
+		_saved_cerr = std::cerr.rdbuf();
+		std::cerr.rdbuf(_strstrm->rdbuf());
+		
+		_wstrstrm = new std::wostringstream();
+		_saved_wcout = std::wcout.rdbuf();
+		std::wcout.rdbuf(_wstrstrm->rdbuf());
+		_saved_wcerr = std::wcerr.rdbuf();
+		std::wcerr.rdbuf(_wstrstrm->rdbuf());
+
+		string filename = path + "piavcaStdout.txt";
+		std::cout << filename << std::endl;
+		freopen(filename.c_str(), "w", stdout);
+		filename = path + "piavcaStderr.txt";
+		std::cout << filename << std::endl;
+		freopen(filename.c_str(), "w", stderr);
 	  
 	// write a message to the output that can be read from XVR
 //#ifdef WIN32
@@ -147,174 +175,177 @@ extern "C" __declspec(dllexport) char *onInitial(char* _path, char *script)
 	std::ifstream file(jointsFilename.c_str(), std::ios::in );
 	if(!file)
 	{
-		Piavca::Error("Failed to open joint names file '" 
-	  		+ jointsFilename + "'\n");
+	  std::cout << "Failed to open joint names file '" << jointsFilename << std::endl;
 	}
-
-	Piavca::StringVector jointVec;
-	std::string jointName;
-	while(true)
+	else
 	{
-		// read the next model configuration line
-		std::string strBuffer;
-		std::getline(file, strBuffer);
-
-		// stop if we reached the end of file
-		if(file.eof()) 
+		Piavca::StringVector jointVec;
+		std::string jointName;
+		while(true)
 		{
-			Piavca::Core::getCore()->addJointNameSet(jointVec);
-			jointVec.clear();
-			break;
-		}
+			// read the next model configuration line
+			std::string strBuffer;
+			std::getline(file, strBuffer);
 
-		// check if an error happend while reading from the file
-		if(!file)
-		{
-			Piavca::Error("Error while reading from the joint names file");
-			return NULL;
-		}
-
-		// find the first non-whitespace character
-		std::string::size_type pos=0, new_pos;
-
-		while (true)
-		{
-			pos = strBuffer.find_first_not_of(" \t", pos);
-
-			// check for empty lines and comments
-			if((pos == std::string::npos) || (strBuffer[pos] == '\n') 
-				|| (strBuffer[pos] == '\r') || (strBuffer[pos] == 0)
-				|| strBuffer[pos] == '#') 
+			// stop if we reached the end of file
+			if(file.eof()) 
 			{
-				if(!jointVec.empty())
-				{
-					Piavca::Core::getCore()->addJointNameSet(jointVec);
-					jointVec.clear();
-				}
+				Piavca::Core::getCore()->addJointNameSet(jointVec);
+				jointVec.clear();
 				break;
 			}
 
-			
-			if(strBuffer[pos] == '\"')
+			// check if an error happend while reading from the file
+			if(!file)
 			{
-				pos++;
-				new_pos = strBuffer.find_first_of("\"", pos);
-				if(new_pos == std::string::npos)
-					Piavca::Error("Unmatched quotes in joint names file");
-				jointName = strBuffer.substr(pos, new_pos - pos);
-				pos = new_pos+1;
+				Piavca::Error("Error while reading from the joint names file");
+				return NULL;
 			}
-			else
+
+			// find the first non-whitespace character
+			std::string::size_type pos=0, new_pos;
+
+			while (true)
 			{
-				new_pos = strBuffer.find_first_of(" =\t\n\r", pos);
-				jointName = strBuffer.substr(pos, new_pos - pos);
-				pos = new_pos;
+				pos = strBuffer.find_first_not_of(" \t", pos);
+
+				// check for empty lines and comments
+				if((pos == std::string::npos) || (strBuffer[pos] == '\n') 
+					|| (strBuffer[pos] == '\r') || (strBuffer[pos] == 0)
+					|| strBuffer[pos] == '#') 
+				{
+					if(!jointVec.empty())
+					{
+						Piavca::Core::getCore()->addJointNameSet(jointVec);
+						jointVec.clear();
+					}
+					break;
+				}
+
+				
+				if(strBuffer[pos] == '\"')
+				{
+					pos++;
+					new_pos = strBuffer.find_first_of("\"", pos);
+					if(new_pos == std::string::npos)
+						Piavca::Error("Unmatched quotes in joint names file");
+					jointName = strBuffer.substr(pos, new_pos - pos);
+					pos = new_pos+1;
+				}
+				else
+				{
+					new_pos = strBuffer.find_first_of(" =\t\n\r", pos);
+					jointName = strBuffer.substr(pos, new_pos - pos);
+					pos = new_pos;
+				}
+				jointVec.push_back(StringToTString(jointName));
+				std::cout << jointName << "; ";
+				//strcpy(Str, jointName);
+				
 			}
-			jointVec.push_back(StringToTString(jointName));
-			std::cout << jointName << "; ";
-			//strcpy(Str, jointName);
-			
-		}
-	};
-	std::cout << std::endl;
+		};
+		std::cout << std::endl;
+	}
 
 	// read in facial expression names
 	std::string expressionFilename = path + "ExpressionNames.txt";
 	std::ifstream expressionFile(expressionFilename.c_str(), std::ios::in );
 	if(!expressionFile)
 	{
-		Piavca::Error("Failed to open expression names file '" );
+	  std::cout << "Failed to open expression names file '" << expressionFilename << std::endl;
 	}
-
-	Piavca::StringVector expressionVec;
-	std::string expressionName;
-	while(true)
+	else
 	{
-		// read the next model configuration line
-		std::string strBuffer;
-		std::getline(expressionFile, strBuffer);
-
-		// stop if we reached the end of file
-		if(expressionFile.eof()) 
+		Piavca::StringVector expressionVec;
+		std::string expressionName;
+		while(true)
 		{
-			Piavca::Core::getCore()->addExpressionNameSet(expressionVec);
-			expressionVec.clear();
-			break;
-		}
+			// read the next model configuration line
+			std::string strBuffer;
+			std::getline(expressionFile, strBuffer);
 
-		// check if an error happend while reading from the file
-		if(!expressionFile)
-		{
-			Piavca::Error("Error while reading from the expression names file");
-			return NULL;
-		}
-
-		// find the first non-whitespace character
-		std::string::size_type pos=0, new_pos;
-
-		while (true)
-		{
-			pos = strBuffer.find_first_not_of(" \t", pos);
-
-			// check for empty lines and comments
-			if((pos == std::string::npos) || (strBuffer[pos] == '\n') 
-				|| (strBuffer[pos] == '\r') || (strBuffer[pos] == 0)
-				|| strBuffer[pos] == '#') 
+			// stop if we reached the end of file
+			if(expressionFile.eof()) 
 			{
-				if(!jointVec.empty())
-				{
-					Piavca::Core::getCore()->addExpressionNameSet(expressionVec);
-					expressionVec.clear();
-				}
+				Piavca::Core::getCore()->addExpressionNameSet(expressionVec);
+				expressionVec.clear();
 				break;
 			}
 
-			
-			if(strBuffer[pos] == '\"')
+			// check if an error happend while reading from the file
+			if(!expressionFile)
 			{
-				pos++;
-				new_pos = strBuffer.find_first_of("\"", pos);
-				if(new_pos == std::string::npos)
-					Piavca::Error("Unmatched quotes in expression names file");
-				expressionName = strBuffer.substr(pos, new_pos - pos);
-				pos = new_pos+1;
+				Piavca::Error("Error while reading from the expression names file");
+				return NULL;
 			}
-			else
+
+			// find the first non-whitespace character
+			std::string::size_type pos=0, new_pos;
+
+			while (true)
 			{
-				new_pos = strBuffer.find_first_of(" =\t\n\r", pos);
-				expressionName = strBuffer.substr(pos, new_pos - pos);
-				pos = new_pos;
+				pos = strBuffer.find_first_not_of(" \t", pos);
+
+				// check for empty lines and comments
+				if((pos == std::string::npos) || (strBuffer[pos] == '\n') 
+					|| (strBuffer[pos] == '\r') || (strBuffer[pos] == 0)
+					|| strBuffer[pos] == '#') 
+				{
+					if(!expressionVec.empty())
+					{
+						Piavca::Core::getCore()->addExpressionNameSet(expressionVec);
+						expressionVec.clear();
+					}
+					break;
+				}
+
+				
+				if(strBuffer[pos] == '\"')
+				{
+					pos++;
+					new_pos = strBuffer.find_first_of("\"", pos);
+					if(new_pos == std::string::npos)
+						Piavca::Error("Unmatched quotes in expression names file");
+					expressionName = strBuffer.substr(pos, new_pos - pos);
+					pos = new_pos+1;
+				}
+				else
+				{
+					new_pos = strBuffer.find_first_of(" =\t\n\r", pos);
+					expressionName = strBuffer.substr(pos, new_pos - pos);
+					pos = new_pos;
+				}
+				expressionVec.push_back(StringToTString(expressionName));
+				std::cout << expressionName << "; ";
+				
 			}
-			expressionVec.push_back(StringToTString(expressionName));
-			std::cout << expressionName << "; ";
-			
-		}
-	};
-	std::cout << std::endl;
+		};
+		std::cout << std::endl;
 
 
-	// load an avatar (this bit is normally done from python)
-	//std::string avatarFilename = "cally";
-	//Piavca::Avatar *av = new Piavca::Avatar(avatarFilename);
-	//Piavca::Motion *walk = Piavca::Core::getCore()->getMotion("walk");
-	//Piavca::AvatarMotionQueue::getQueue(av)->enqueueMotion("walk", new Piavca::LoopMotion(walk));
-	  
-	std::cout << "finished loading joints\n";
+		// load an avatar (this bit is normally done from python)
+		//std::string avatarFilename = "cally";
+		//Piavca::Avatar *av = new Piavca::Avatar(avatarFilename);
+		//Piavca::Motion *walk = Piavca::Core::getCore()->getMotion("walk");
+		//Piavca::AvatarMotionQueue::getQueue(av)->enqueueMotion("walk", new Piavca::LoopMotion(walk));
+		  
+		std::cout << "finished loading joints\n";
 
-	//////////////////////////////////////////////////Str Variable///////////////////////////////////
+		//////////////////////////////////////////////////Str Variable///////////////////////////////////
 
-//#ifdef WIN32
-//	strcpy_s(Str, 256, "finished loading joints");
-//#else
-	strcpy(Str, "finished loading joints");
-//#endif	
+		//#ifdef WIN32
+		//	strcpy_s(Str, 256, "finished loading joints");
+		//#else
+			strcpy(Str, "finished loading joints");
+		//#endif	
+	}
 
 	//////////////////////////////////////////////////Python ///////////////////////////////////////
 	// load in a script
 	Piavca::tstring tscript = StringToTString(script);
 	if(tscript != _T(""))
 	{
-		Piavca::InitPiavcaPython(Piavca::Core::getCore(), tscript);
+		Piavca::InitPiavcaPython(Piavca::Core::getCore(), tscript, true);
 	}
   }
   catch (Piavca::Exception &e)
@@ -362,10 +393,154 @@ extern "C" __declspec(dllexport) char* runMethod(char* method)
 	return Str;
 }
 
+// calls a method defined in python
+extern "C" __declspec(dllexport) char* runMethodInt(char* method, int arg)
+{
+	try 
+	{
+		RunPythonMethod(Piavca::Core::getCore(), method, arg);
+	}
+	catch (Piavca::Exception &e)
+	{
+		string s = TStringToString(e.getDetails());
+		//s._Copy_s(Str, 256, 256);
+		s.copy(Str, 256);
+
+		return Str;
+	}
+
+	
+//#ifdef WIN32
+//	strcpy_s(Str, 256, "");
+//#else
+	strcpy(Str, "");
+//#endif
+
+	return Str;
+}
+
+// calls a method defined in python
+extern "C" __declspec(dllexport) char* runMethodFloat(char* method, float arg)
+{
+	try 
+	{
+		RunPythonMethod(Piavca::Core::getCore(), method, arg);
+	}
+	catch (Piavca::Exception &e)
+	{
+		string s = TStringToString(e.getDetails());
+		//s._Copy_s(Str, 256, 256);
+		s.copy(Str, 256);
+
+		return Str;
+	}
+
+	
+//#ifdef WIN32
+//	strcpy_s(Str, 256, "");
+//#else
+	strcpy(Str, "");
+//#endif
+
+	return Str;
+}
+
+// calls a method defined in python
+extern "C" __declspec(dllexport) char* runMethodStr(char* method, char * arg)
+{
+	try 
+	{
+		RunPythonMethod(Piavca::Core::getCore(), method, arg);
+	}
+	catch (Piavca::Exception &e)
+	{
+		string s = TStringToString(e.getDetails());
+		//s._Copy_s(Str, 256, 256);
+		s.copy(Str, 256);
+
+		return Str;
+	}
+
+	
+//#ifdef WIN32
+//	strcpy_s(Str, 256, "");
+//#else
+	strcpy(Str, "");
+//#endif
+
+	return Str;
+}
+
+// calls a method defined in python
+extern "C" __declspec(dllexport) char* runMethodVec(char* method, float arg1, float arg2, float arg3)
+{
+	try 
+	{
+		RunPythonMethod(Piavca::Core::getCore(), method, Piavca::Vec(arg1, arg2, arg3));
+	}
+	catch (Piavca::Exception &e)
+	{
+		string s = TStringToString(e.getDetails());
+		//s._Copy_s(Str, 256, 256);
+		s.copy(Str, 256);
+
+		return Str;
+	}
+
+	
+//#ifdef WIN32
+//	strcpy_s(Str, 256, "");
+//#else
+	strcpy(Str, "");
+//#endif
+
+	return Str;
+}
+
+// calls a method defined in python
+extern "C" __declspec(dllexport) char* runMethodAngleAxis(char* method, float arg0, float arg1, float arg2, float arg3)
+{
+	try 
+	{
+		RunPythonMethod(Piavca::Core::getCore(), method, arg0, Piavca::Vec(arg1, arg2, arg3));
+	}
+	catch (Piavca::Exception &e)
+	{
+		string s = TStringToString(e.getDetails());
+		//s._Copy_s(Str, 256, 256);
+		s.copy(Str, 256);
+
+		return Str;
+	}
+
+	
+//#ifdef WIN32
+//	strcpy_s(Str, 256, "");
+//#else
+	strcpy(Str, "");
+//#endif
+
+	return Str;
+}
+
+
 //gets the last error message/warning
 extern "C" __declspec(dllexport) char* GetLastMessage()
 {
 	return Str;
+}
+
+std::string output_string;
+
+extern "C" __declspec(dllexport) char* GetLastOutput()
+{
+	output_string = _strstrm->str();
+	output_string = output_string /*+ "\n"*/ + WStringToString(_wstrstrm->str());// + "\n";
+	_strstrm->str("");
+	_wstrstrm->str(L"");
+	return const_cast<char *>(output_string.c_str());
+	//s.copy(output, 1024);
+	//return output;
 }
 
 
