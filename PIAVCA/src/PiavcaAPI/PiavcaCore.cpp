@@ -590,4 +590,16 @@ void Core::output(tstring str)
 	std::cout << str;	
 }
 
+void Core::message(tstring str)
+{
+	messages = messages + str;
+}
+
+tstring Core::getMessages()
+{
+	tstring m = messages;
+	messages = _T("");
+	return m;
+}
+
 	

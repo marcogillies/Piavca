@@ -309,6 +309,10 @@
 			Filter="h;hpp;hxx;hm;inl;inc"
 			>
 			<File
+				RelativePath=".\Piavca_wrap.h"
+				>
+			</File>
+			<File
 				RelativePath=".\PiavcaPythonApp.h"
 				>
 			</File>

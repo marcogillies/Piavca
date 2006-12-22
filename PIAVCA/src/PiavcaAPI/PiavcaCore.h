@@ -128,6 +128,9 @@ namespace Piavca
 		//! a string stream to hold warnings thrown by piavca
 		tostringstream warningstrm;
 
+		//! a string containing messages printed to piavca
+		tstring messages;
+
 		//! a flag that controls whether exceptions are thrown or not
 		bool exceptionFlag;
 
@@ -442,6 +445,11 @@ namespace Piavca
 
 		//! prints an output message
 		virtual void output(tstring str);
+
+		//! logs a message
+		virtual void message(tstring str);
+		//! gets the previous messages
+		virtual tstring getMessages();
 
 		friend class Motion;
 	};

@@ -81,7 +81,7 @@ extern "C" __declspec(dllexport) char* GetLastMessage();
 // and worder info than GetLastMessage
 extern "C" __declspec(dllexport) char* GetLastOutput();
 
-char* Str = new char[256];
+char* Str = new char[1024];
 char* dirFile = new char[256];
 char* output = new char[1024];
 
@@ -94,6 +94,14 @@ std::wstreambuf *_saved_wcout;
 std::wstreambuf *_saved_wcerr;
 
 Piavca::PiavcaCal3DCore *g_pCore;
+
+char *get_messages()
+{
+	string s = TStringToString(Piavca::Core::getCore()->getMessages());
+	//s._Copy_s(Str, 256, 256);
+	s.copy(Str, 1024);
+	return Str;
+}
 
 // this updates the state of piavca
 void timeStep()
@@ -387,10 +395,10 @@ extern "C" __declspec(dllexport) char* runMethod(char* method)
 //#ifdef WIN32
 //	strcpy_s(Str, 256, "");
 //#else
-	strcpy(Str, "");
+	//strcpy(Str, "");
 //#endif
 
-	return Str;
+	return get_messages();
 }
 
 // calls a method defined in python
@@ -413,10 +421,10 @@ extern "C" __declspec(dllexport) char* runMethodInt(char* method, int arg)
 //#ifdef WIN32
 //	strcpy_s(Str, 256, "");
 //#else
-	strcpy(Str, "");
+	//strcpy(Str, "");
 //#endif
 
-	return Str;
+	return get_messages();
 }
 
 // calls a method defined in python
@@ -439,10 +447,10 @@ extern "C" __declspec(dllexport) char* runMethodFloat(char* method, float arg)
 //#ifdef WIN32
 //	strcpy_s(Str, 256, "");
 //#else
-	strcpy(Str, "");
+	//strcpy(Str, "");
 //#endif
 
-	return Str;
+	return get_messages();
 }
 
 // calls a method defined in python
@@ -465,10 +473,10 @@ extern "C" __declspec(dllexport) char* runMethodStr(char* method, char * arg)
 //#ifdef WIN32
 //	strcpy_s(Str, 256, "");
 //#else
-	strcpy(Str, "");
+	//strcpy(Str, "");
 //#endif
 
-	return Str;
+	return get_messages();
 }
 
 // calls a method defined in python
@@ -491,10 +499,10 @@ extern "C" __declspec(dllexport) char* runMethodVec(char* method, float arg1, fl
 //#ifdef WIN32
 //	strcpy_s(Str, 256, "");
 //#else
-	strcpy(Str, "");
+	//strcpy(Str, "");
 //#endif
 
-	return Str;
+	return get_messages();
 }
 
 // calls a method defined in python
@@ -517,10 +525,10 @@ extern "C" __declspec(dllexport) char* runMethodAngleAxis(char* method, float ar
 //#ifdef WIN32
 //	strcpy_s(Str, 256, "");
 //#else
-	strcpy(Str, "");
+	//strcpy(Str, "");
 //#endif
 
-	return Str;
+	return get_messages();
 }
 
 
