@@ -336,6 +336,11 @@ void Quat::getEulerAngles(float &X, float &Y, float &Z)
 
 float Quat::spherical_distance(const Quat &q1, const Quat &q2)
 {
+	Quat q = q2/q1;
+	return q.getAngle();
+}
+/*
+{
 	float ct = q1.S()*q2.S() + q1.I()*q2.I() + q1.J()*q2.J() + q1.K()*q2.K();
 
 	Quat to, retVal;
@@ -355,7 +360,7 @@ float Quat::spherical_distance(const Quat &q1, const Quat &q2)
 	if(ct > 1.0) ct = 1.0;
 	return (float)acosf(ct);
 };
-
+*/
 
 PIAVCA_DECL Quat Piavca::slerp(const Quat &q1, const Quat &q2, float t)
 {
