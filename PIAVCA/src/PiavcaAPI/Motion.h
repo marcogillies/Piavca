@@ -238,8 +238,12 @@ public:
 
 	//! pause the motion so that it can be restarted from the current point
 	void pause();
-	
 	void unpause();
+
+	/*! do any processing that needs to be done at the start of a frame.
+	 *	This is called before get{Float/Vec/Quat}ValueAtTime
+	 */
+	virtual void preFrame(float time);
 
 	//! get the value of a track at a given time (only works for floats)
 	float getFloatValueAtTime(int trackId, float time)

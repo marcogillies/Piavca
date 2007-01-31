@@ -127,6 +127,7 @@ public:
     virtual bool isRandomAccess();
     virtual bool isNull(int trackId) const;
     virtual Piavca::trackType getTrackType(int trackId) const;
+    virtual void preFrame(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
@@ -163,7 +164,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[17];
+    mutable swig::PyObject_var vtable[18];
 #endif
 
 };
@@ -192,6 +193,7 @@ public:
     virtual bool isRandomAccess();
     virtual bool isNull(int trackId) const;
     virtual Piavca::trackType getTrackType(int trackId) const;
+    virtual void preFrame(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
@@ -228,7 +230,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[17];
+    mutable swig::PyObject_var vtable[18];
 #endif
 
 };
@@ -255,6 +257,7 @@ public:
     virtual bool isRandomAccess();
     virtual bool isNull(int trackId) const;
     virtual Piavca::trackType getTrackType(int trackId) const;
+    virtual void preFrame(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
@@ -291,7 +294,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[17];
+    mutable swig::PyObject_var vtable[18];
 #endif
 
 };
@@ -317,6 +320,7 @@ public:
     virtual bool isRandomAccess();
     virtual bool isNull(int trackId) const;
     virtual Piavca::trackType getTrackType(int trackId) const;
+    virtual void preFrame(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
@@ -353,7 +357,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[17];
+    mutable swig::PyObject_var vtable[18];
 #endif
 
 };
@@ -379,6 +383,7 @@ public:
     virtual bool isRandomAccess();
     virtual bool isNull(int trackId) const;
     virtual Piavca::trackType getTrackType(int trackId) const;
+    virtual void preFrame(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
@@ -415,7 +420,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[17];
+    mutable swig::PyObject_var vtable[18];
 #endif
 
 };
@@ -441,6 +446,7 @@ public:
     virtual bool isRandomAccess();
     virtual bool isNull(int trackId) const;
     virtual Piavca::trackType getTrackType(int trackId) const;
+    virtual void preFrame(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
@@ -477,7 +483,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[17];
+    mutable swig::PyObject_var vtable[18];
 #endif
 
 };
@@ -503,6 +509,7 @@ public:
     virtual bool isRandomAccess();
     virtual bool isNull(int trackId) const;
     virtual Piavca::trackType getTrackType(int trackId) const;
+    virtual void preFrame(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
@@ -539,7 +546,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[17];
+    mutable swig::PyObject_var vtable[18];
 #endif
 
 };
@@ -565,6 +572,7 @@ public:
     virtual bool isRandomAccess();
     virtual bool isNull(int trackId) const;
     virtual Piavca::trackType getTrackType(int trackId) const;
+    virtual void preFrame(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
@@ -601,7 +609,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[17];
+    mutable swig::PyObject_var vtable[18];
 #endif
 
 };
@@ -627,6 +635,7 @@ public:
     virtual bool isRandomAccess();
     virtual bool isNull(int trackId) const;
     virtual Piavca::trackType getTrackType(int trackId) const;
+    virtual void preFrame(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
@@ -665,7 +674,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[19];
+    mutable swig::PyObject_var vtable[20];
 #endif
 
 };
@@ -691,6 +700,7 @@ public:
     virtual bool isRandomAccess();
     virtual bool isNull(int trackId) const;
     virtual Piavca::trackType getTrackType(int trackId) const;
+    virtual void preFrame(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
@@ -732,7 +742,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[22];
+    mutable swig::PyObject_var vtable[23];
 #endif
 
 };
@@ -758,6 +768,7 @@ public:
     virtual bool isRandomAccess();
     virtual bool isNull(int trackId) const;
     virtual Piavca::trackType getTrackType(int trackId) const;
+    virtual void preFrame(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
@@ -799,7 +810,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[22];
+    mutable swig::PyObject_var vtable[23];
 #endif
 
 };
@@ -825,6 +836,7 @@ public:
     virtual bool isRandomAccess();
     virtual bool isNull(int trackId) const;
     virtual Piavca::trackType getTrackType(int trackId) const;
+    virtual void preFrame(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
@@ -867,7 +879,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[23];
+    mutable swig::PyObject_var vtable[24];
 #endif
 
 };
@@ -893,6 +905,7 @@ public:
     virtual bool isRandomAccess();
     virtual bool isNull(int trackId) const;
     virtual Piavca::trackType getTrackType(int trackId) const;
+    virtual void preFrame(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
@@ -929,7 +942,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[17];
+    mutable swig::PyObject_var vtable[18];
 #endif
 
 };
@@ -955,6 +968,7 @@ public:
     virtual bool isRandomAccess();
     virtual bool isNull(int trackId) const;
     virtual Piavca::trackType getTrackType(int trackId) const;
+    virtual void preFrame(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
@@ -991,7 +1005,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[17];
+    mutable swig::PyObject_var vtable[18];
 #endif
 
 };
@@ -1018,6 +1032,7 @@ public:
     virtual bool isRandomAccess();
     virtual bool isNull(int trackId) const;
     virtual Piavca::trackType getTrackType(int trackId) const;
+    virtual void preFrame(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
@@ -1054,7 +1069,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[17];
+    mutable swig::PyObject_var vtable[18];
 #endif
 
 };
@@ -1081,6 +1096,7 @@ public:
     virtual bool isRandomAccess();
     virtual bool isNull(int trackId) const;
     virtual Piavca::trackType getTrackType(int trackId) const;
+    virtual void preFrame(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
@@ -1124,7 +1140,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[24];
+    mutable swig::PyObject_var vtable[25];
 #endif
 
 };
@@ -1151,6 +1167,7 @@ public:
     virtual bool isRandomAccess();
     virtual bool isNull(int trackId) const;
     virtual Piavca::trackType getTrackType(int trackId) const;
+    virtual void preFrame(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
@@ -1195,7 +1212,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[26];
+    mutable swig::PyObject_var vtable[27];
 #endif
 
 };
@@ -1222,6 +1239,7 @@ public:
     virtual bool isRandomAccess();
     virtual bool isNull(int trackId) const;
     virtual Piavca::trackType getTrackType(int trackId) const;
+    virtual void preFrame(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
@@ -1267,7 +1285,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[26];
+    mutable swig::PyObject_var vtable[27];
 #endif
 
 };
@@ -1294,6 +1312,7 @@ public:
     virtual bool isRandomAccess();
     virtual bool isNull(int trackId) const;
     virtual Piavca::trackType getTrackType(int trackId) const;
+    virtual void preFrame(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
@@ -1338,7 +1357,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[25];
+    mutable swig::PyObject_var vtable[26];
 #endif
 
 };
@@ -1366,6 +1385,7 @@ public:
     virtual bool isRandomAccess();
     virtual bool isNull(int trackId) const;
     virtual Piavca::trackType getTrackType(int trackId) const;
+    virtual void preFrame(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
@@ -1402,7 +1422,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[17];
+    mutable swig::PyObject_var vtable[18];
 #endif
 
 };
@@ -1428,6 +1448,7 @@ public:
     virtual bool isRandomAccess();
     virtual bool isNull(int trackId) const;
     virtual Piavca::trackType getTrackType(int trackId) const;
+    virtual void preFrame(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
@@ -1470,7 +1491,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[24];
+    mutable swig::PyObject_var vtable[25];
 #endif
 
 };
@@ -1496,6 +1517,7 @@ public:
     virtual bool isRandomAccess();
     virtual bool isNull(int trackId) const;
     virtual Piavca::trackType getTrackType(int trackId) const;
+    virtual void preFrame(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
@@ -1532,7 +1554,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[17];
+    mutable swig::PyObject_var vtable[18];
 #endif
 
 };
@@ -1558,6 +1580,7 @@ public:
     virtual bool isRandomAccess();
     virtual bool isNull(int trackId) const;
     virtual Piavca::trackType getTrackType(int trackId) const;
+    virtual void preFrame(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
@@ -1594,7 +1617,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[17];
+    mutable swig::PyObject_var vtable[18];
 #endif
 
 };
@@ -1621,6 +1644,7 @@ public:
     virtual bool isRandomAccess();
     virtual bool isNull(int trackId) const;
     virtual Piavca::trackType getTrackType(int trackId) const;
+    virtual void preFrame(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
@@ -1657,7 +1681,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[17];
+    mutable swig::PyObject_var vtable[18];
 #endif
 
 };
@@ -1684,6 +1708,7 @@ public:
     virtual bool isRandomAccess();
     virtual bool isNull(int trackId) const;
     virtual Piavca::trackType getTrackType(int trackId) const;
+    virtual void preFrame(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
@@ -1720,7 +1745,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[17];
+    mutable swig::PyObject_var vtable[18];
 #endif
 
 };
@@ -1746,6 +1771,7 @@ public:
     virtual bool isRandomAccess();
     virtual bool isNull(int trackId) const;
     virtual Piavca::trackType getTrackType(int trackId) const;
+    virtual void preFrame(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
@@ -1782,7 +1808,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[17];
+    mutable swig::PyObject_var vtable[18];
 #endif
 
 };
@@ -1808,6 +1834,7 @@ public:
     virtual bool isRandomAccess();
     virtual bool isNull(int trackId) const;
     virtual Piavca::trackType getTrackType(int trackId) const;
+    virtual void preFrame(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
@@ -1850,7 +1877,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[24];
+    mutable swig::PyObject_var vtable[25];
 #endif
 
 };

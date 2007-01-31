@@ -102,6 +102,9 @@ void Motion::unpause()
 	}
 }
 
+void Motion::preFrame(float time)
+{
+}
 
 #include <iostream>
 #include <fstream>

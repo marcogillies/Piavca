@@ -370,25 +370,30 @@ void Avatar::validateMotions()
 	}
 };
 
-void Avatar::showMotionAtTime	(float time)
+void Avatar::showMotionAtTime	(float time, Motion *motion)
 {
-	if(!mot)return;
+	if(!motion)
+		motion = this->mot;
+	if(!motion)return;
 	
 	time = Core::getCore()->getTime();
 	
 	if(time < 0) return;
+
+	motion->preFrame(time);
+
 	// set the root position and orientation
-	if(!mot->isNull(root_position_id))
+	if(!motion->isNull(root_position_id))
 	{
 	    //std::cout << " Avatar.cpp showMotionAtTime in if-else " << std::endl;
-		setRootPosition(mot->getVecValueAtTime(root_position_id, time));
+		setRootPosition(motion->getVecValueAtTime(root_position_id, time));
 		//std::cout << "root " << mot->getVecValueAtTime(root_position_id, time) << std::endl;
 	}
 	//else
 	//  std::cout << "could not find root pos track" << std::endl;
-	if(!mot->isNull(root_orientation_id))
+	if(!motion->isNull(root_orientation_id))
 	{
-		setRootOrientation(mot->getQuatValueAtTime(root_orientation_id, time));
+		setRootOrientation(motion->getQuatValueAtTime(root_orientation_id, time));
 		//std::cout << "root " << mot->getQuatValueAtTime(root_orientation_id, time) << std::endl;
 	}
 	//else
@@ -397,9 +402,9 @@ void Avatar::showMotionAtTime	(float time)
 	// go through all the joints setting those for which there is a track
 	for (int joint = begin(); joint <= Core::getCore()->getMaxJointId(); next(joint))
 	{
-		if(!mot->isNull(joint))
+		if(!motion->isNull(joint))
 		{
-			setJointOrientation(joint, mot->getQuatValueAtTime(joint, time));
+			setJointOrientation(joint, motion->getQuatValueAtTime(joint, time));
 			//std::cout << mot->getQuatValueAtTime(joint, time) << std::endl;
 		}
 		//else

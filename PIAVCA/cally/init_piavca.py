@@ -7,6 +7,9 @@ print sys.path
 
 # load piavca (This loads a python wrapper module which in turn loads the C++ code)
 import Piavca
+from ScriptEngine import ScriptEngine
+
+s = ScriptEngine("master.conf")
 
 # hack to make TK work, it expects the name of the app to be
 # in sys.argv[0] but argv is not set up if python is run from
@@ -17,10 +20,10 @@ sys.argv = ['Piavca']
 #from Tkinter import *
 
 # create an avatar, this loads cally.cfg
-cally = Piavca.Avatar("cally")
+#cally = Piavca.Avatar("cally")
 # position and rotate the avatar
-cally.setRootPosition(Piavca.Vec(0.0, 250.0, -200))
-cally.setRootOrientation(Piavca.Quat(Piavca.degToRad(-90), Piavca.Vec(0, 0, 1)))
+#cally.setRootPosition(Piavca.Vec(0.0, 250.0, -200))
+#cally.setRootOrientation(Piavca.Quat(Piavca.degToRad(-90), Piavca.Vec(0, 0, 1)))
 # we could also change her facial expression
 #avatar.setFacialExpressionWeight("smile", 1.0)
 
@@ -54,9 +57,9 @@ cally.setRootOrientation(Piavca.Quat(Piavca.degToRad(-90), Piavca.Vec(0, 0, 1)))
 
 #what we actually do is load the MotionFile module  (an auxilliary module written in Python)
 # This loads in motion descriptions form a standard Piavca file format
-import MotionFile
+#import MotionFile
 # load in the motion descriptions from file
-MotionFile.readMotionFile("motions.conf")
+#MotionFile.readMotionFile("motions.conf")
 
 # play one of the motions defined in the file
-cally.play_motion(Piavca.Core.getCore().getMotion("gestures"))
+#cally.play_motion(Piavca.Core.getCore().getMotion("gestures"))

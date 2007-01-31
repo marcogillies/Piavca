@@ -1230,6 +1230,7 @@ class Motion(_object):
         """
         return _Piavca.Motion_unpause(*args)
 
+    def preFrame(*args): return _Piavca.Motion_preFrame(*args)
     def getFloatValueAtTime(*args):
         """
         float Piavca::Motion::getFloatValueAtTime(int trackId, float time)
