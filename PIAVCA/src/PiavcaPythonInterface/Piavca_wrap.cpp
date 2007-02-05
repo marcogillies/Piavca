@@ -3577,6 +3577,10 @@ SWIGINTERN void Piavca_Avatar_interrupt_motion(Piavca::Avatar *self){
 		Piavca::AvatarMotionQueue::getQueue(self)->interrupt();
   
 	}
+SWIGINTERN void Piavca_Avatar_stop_motion(Piavca::Avatar *self,char const *motionName){
+		Piavca::AvatarMotionQueue::getQueue(self)->removeMotion(motionName);
+		Piavca::AvatarMotionQueue::getQueue(self)->removeBackgroundMotion(motionName);
+	}
 
 
 /* ---------------------------------------------------
@@ -27401,8 +27405,6 @@ SWIGINTERN PyObject *_wrap_Core_addJointNameSet(PyObject *SWIGUNUSEDPARM(self), 
   StringVector arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -27413,16 +27415,13 @@ SWIGINTERN PyObject *_wrap_Core_addJointNameSet(PyObject *SWIGUNUSEDPARM(self), 
   }
   arg1 = reinterpret_cast< Piavca::Core * >(argp1);
   {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_StringVector,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Core_addJointNameSet" "', argument " "2"" of type '" "StringVector""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Core_addJointNameSet" "', argument " "2"" of type '" "StringVector""'");
-    } else {
-      StringVector * temp = reinterpret_cast< StringVector * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
+    PyObject *py_str;
+    Piavca::tstring tstr;
+    for (int i = 0; i < PyList_Size(obj1); i++)
+    {
+      py_str = PyList_GetItem(obj1, i);
+      tstr = StringToTString(PyString_AsString(py_str));
+      (&arg2)->push_back(tstr);
     }
   }
   {
@@ -27603,8 +27602,6 @@ SWIGINTERN PyObject *_wrap_Core_addExpressionNameSet(PyObject *SWIGUNUSEDPARM(se
   StringVector arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -27615,16 +27612,13 @@ SWIGINTERN PyObject *_wrap_Core_addExpressionNameSet(PyObject *SWIGUNUSEDPARM(se
   }
   arg1 = reinterpret_cast< Piavca::Core * >(argp1);
   {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_StringVector,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Core_addExpressionNameSet" "', argument " "2"" of type '" "StringVector""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Core_addExpressionNameSet" "', argument " "2"" of type '" "StringVector""'");
-    } else {
-      StringVector * temp = reinterpret_cast< StringVector * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
+    PyObject *py_str;
+    Piavca::tstring tstr;
+    for (int i = 0; i < PyList_Size(obj1); i++)
+    {
+      py_str = PyList_GetItem(obj1, i);
+      tstr = StringToTString(PyString_AsString(py_str));
+      (&arg2)->push_back(tstr);
     }
   }
   {
@@ -28467,7 +28461,15 @@ SWIGINTERN PyObject *_wrap_Core_getMotionNames__SWIG_0(PyObject *SWIGUNUSEDPARM(
       SWIG_fail; 
     }
   }
-  resultobj = SWIG_NewPointerObj((new std::vector<std::string >(static_cast< const std::vector<std::string >& >(result))), SWIGTYPE_p_std__vectorTstd__string_t, SWIG_POINTER_OWN |  0 );
+  {
+    int len = (&result)->size();
+    resultobj = PyList_New(0);
+    for (int i = 0; i < len; i++)
+    {
+      PyList_Append(resultobj,  
+        PyString_FromString((*(&(result)))[i].c_str()));
+    }
+  }
   return resultobj;
 fail:
   return NULL;
@@ -28501,7 +28503,15 @@ SWIGINTERN PyObject *_wrap_Core_getMotionNames__SWIG_1(PyObject *SWIGUNUSEDPARM(
       SWIG_fail; 
     }
   }
-  resultobj = SWIG_NewPointerObj((new std::vector<std::string >(static_cast< const std::vector<std::string >& >(result))), SWIGTYPE_p_std__vectorTstd__string_t, SWIG_POINTER_OWN |  0 );
+  {
+    int len = (&result)->size();
+    resultobj = PyList_New(0);
+    for (int i = 0; i < len; i++)
+    {
+      PyList_Append(resultobj,  
+        PyString_FromString((*(&(result)))[i].c_str()));
+    }
+  }
   return resultobj;
 fail:
   return NULL;
@@ -40996,6 +41006,51 @@ SWIGINTERN PyObject *_wrap_Avatar_interrupt_motion(PyObject *SWIGUNUSEDPARM(self
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Avatar_stop_motion(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Avatar *arg1 = (Piavca::Avatar *) 0 ;
+  char *arg2 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Avatar_stop_motion",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Avatar, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Avatar_stop_motion" "', argument " "1"" of type '" "Piavca::Avatar *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Avatar * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Avatar_stop_motion" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    try {
+      Piavca_Avatar_stop_motion(arg1,(char const *)arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
   return NULL;
 }
 
@@ -71390,6 +71445,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Avatar_play_motion", _wrap_Avatar_play_motion, METH_VARARGS, NULL},
 	 { (char *)"Avatar_add_background_motion", _wrap_Avatar_add_background_motion, METH_VARARGS, NULL},
 	 { (char *)"Avatar_interrupt_motion", _wrap_Avatar_interrupt_motion, METH_VARARGS, NULL},
+	 { (char *)"Avatar_stop_motion", _wrap_Avatar_stop_motion, METH_VARARGS, NULL},
 	 { (char *)"Avatar_swigregister", Avatar_swigregister, METH_VARARGS, NULL},
 	 { (char *)"queueElement_mot_set", _wrap_queueElement_mot_set, METH_VARARGS, NULL},
 	 { (char *)"queueElement_mot_get", _wrap_queueElement_mot_get, METH_VARARGS, NULL},

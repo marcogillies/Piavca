@@ -132,6 +132,7 @@ Vec SequentialBlend::getTransformedVec(int trackId, float t)const
 
 Vec SequentialBlend::getVecValueAtTimeInternal(int trackId, float time)
 {
+	//std::cout << "blendstart " << blendStart << " time " << time << std::endl;
 	if(mot1->isNull(trackId))  
 	{
 		if(mot2->isNull(trackId)) 

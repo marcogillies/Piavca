@@ -65,7 +65,7 @@ public:
 	Quat(float s, float i, float j, float k);
 	Quat(const float q[4]);
 	//! a constuctor from angle axis representation of a rotation
-	Quat(float Angle, const Vec &Axis);
+	Quat(float Angle, const Vec &Axis); 
 
 	Quat(const Quat &q);
 	const Quat &operator=(const Quat &q)

@@ -41,11 +41,11 @@ using namespace Piavca;
 float SubMotion::getAdjustedTime(float time)
 {
 	time = time - getStartTime();
-	//std::cout << "start " << start << " time " << time << " ";
+	std::cout << "start " << start << " time " << time << " ";
 	if(start >= 0) time += start;
-	//std::cout << time << " end " << end << " ";
+	std::cout << time << " end " << end << " ";
 	if(end >= 0 && time > end) time = end;
-	//std::cout << " time " << time << std::endl;
+	std::cout << " time " << time << std::endl;
 	return time + getStartTime();
 }
 

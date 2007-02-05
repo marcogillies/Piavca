@@ -9,12 +9,45 @@ print sys.path
 import Piavca
 from ScriptEngine import ScriptEngine
 
-s = ScriptEngine("master.conf")
+import wx
+import thread
+
+script_engine = ScriptEngine("callycontroller", "master.conf")
+
+app = wx.PySimpleApp()
+
+frame=wx.Frame(None,-1)
+sizer=wx.BoxSizer(wx.HORIZONTAL)
+	
+f = open("sample.act", "r")
+lines = f.readlines()
+f.close()
+
+id_counter = 0
+for line in lines:
+	line = line.split()
+	if len(line) > 0 and line[0] == "script":
+		name = line[1]
+		button=wx.Button(frame, id_counter, label=name)
+		wx.EVT_BUTTON (frame, id_counter, lambda e, s = script_engine, n=name : s.playScript("cally", n))
+		sizer.Add(button,1 )
+		id_counter+=1
+	
+frame.SetSizer(sizer)
+frame.SetAutoLayout(1)
+sizer.Fit(frame)
+
+frame.Show(True)
+frame.Layout()
+
+	
+thread.start_new_thread(app.MainLoop, ())
+		
 
 # hack to make TK work, it expects the name of the app to be
 # in sys.argv[0] but argv is not set up if python is run from
 # within a windows app as it is here
-sys.argv = ['Piavca']
+#sys.argv = ['Piavca']
 
 # but we're not actually using tk in this example
 #from Tkinter import *

@@ -34,6 +34,98 @@
  * ***** END LICENSE BLOCK ***** */
 
 
+%typemap(in) Piavca::StringVector
+{
+	PyObject *py_str;
+	Piavca::tstring tstr;
+	for (int i = 0; i < PyList_Size($input); i++)
+	{
+		py_str = PyList_GetItem($input, i);
+		tstr = StringToTString(PyString_AsString(py_str));
+		$1.push_back(tstr);
+	}
+}
+
+
+%typemap(in) StringVector
+{
+	PyObject *py_str;
+	Piavca::tstring tstr;
+	for (int i = 0; i < PyList_Size($input); i++)
+	{
+		py_str = PyList_GetItem($input, i);
+		tstr = StringToTString(PyString_AsString(py_str));
+		$1.push_back(tstr);
+	}
+}
+
+
+%typemap(in) tstring
+{
+	$1 = StringToTString(PyString_AsString($input));
+}
+
+%typemap(out) tstring
+{
+	$result = PyString_FromString(TStringToString($1).c_str());
+}
+
+%typemap(out) tstring&
+{
+	$result = PyString_FromString(TStringToString(*$1).c_str());
+}
+
+%typemap(in) std::string
+{
+	$1 = PyString_AsString($input);
+}
+
+%typemap(out) std::string
+{
+	$result = PyString_FromString($1.c_str());
+}
+
+%typemap(out) std::string&
+{
+	$result = PyString_FromString((*$1).c_str());
+}
+
+
+%typemap(out) std::vector< std::pair<TString, int> > 
+{
+	int len = $1.size();
+	$result = PyDict_New();
+	for (int i = 0; i < len; i++)
+	{
+		PyDict_SetItem($result,  
+			PyString_FromString(TStringToString((*(&($1)))[i].first).c_str()),
+			PyInt_FromLong($1[i].second));
+	}
+}
+
+
+%typemap(out) std::vector<std::string>
+{
+	int len = $1.size();
+	$result = PyList_New(0);
+	for (int i = 0; i < len; i++)
+	{
+		PyList_Append($result,  
+			PyString_FromString((*(&($1)))[i].c_str()));
+	}
+}
+
+%typemap(out) std::vector<Piavca::tstring>
+{
+	int len = $1.size();
+	$result = PyList_New(0);
+	for (int i = 0; i < len; i++)
+	{
+		PyList_Append($result,  
+			PyString_FromString(TStringToString((*(&($1)))[i]).c_str()));
+	}
+}
+
 %include "PiavcaAPI/PiavcaCore.h"
 
 

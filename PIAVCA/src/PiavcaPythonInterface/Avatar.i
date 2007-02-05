@@ -148,5 +148,11 @@
 		Piavca::AvatarMotionQueue::getQueue(self)->interrupt();
   
 	}
+	
+	void stop_motion(const char *motionName)
+	{
+		Piavca::AvatarMotionQueue::getQueue(self)->removeMotion(motionName);
+		Piavca::AvatarMotionQueue::getQueue(self)->removeBackgroundMotion(motionName);
+	}
 
 }

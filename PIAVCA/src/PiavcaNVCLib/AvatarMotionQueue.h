@@ -190,7 +190,11 @@ class PIAVCA_DECL AvatarMotionQueue : public AvatarTimeCallback
   /*!
    *  so the next motion is played immediately, without waiting for the current one stop
    */
-  void interrupt(){interruptMot = true;};
+  void interrupt()
+  {
+	  std::cout << "interrupt\n";
+	  interruptMot = true;
+  };
 
   //! return the resulting motion
   virtual Piavca::Motion *getMotion(){ return avatarBlend; };

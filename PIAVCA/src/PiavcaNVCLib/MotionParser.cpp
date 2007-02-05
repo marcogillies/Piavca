@@ -208,6 +208,82 @@ void MotionParserTyped<LoopMotion>::editMotionInternal(LoopMotion *mot, istrings
 		}
 };
 
+
+
+template<> 
+Piavca::Motion *MotionParserTyped<SubMotion>::parseMotion(istringstream &is, std::string currentWord, float scaleFactor)
+{
+		float startTime = -1.0;
+		float endTime = -1.0f;
+		if(currentWord == "")
+			if(!(is >> currentWord)) currentWord = "";
+				
+		while (currentWord != "")
+		{
+			if(currentWord == "end")
+			{
+				if(!(is >> endTime))
+				{
+					Piavca::Error(_T("no value given for end time\n"));
+					return NULL;
+				}
+				if(!(is >> currentWord)) break;
+			}
+			else if(currentWord == "start")
+			{
+				if(!(is >> startTime))
+				{
+					Piavca::Error(_T("no value given for end time\n"));
+					return NULL;
+				}
+				if(!(is >> currentWord)) break;
+			}
+			else
+				break;
+
+		}
+		MotionParser *mp = NULL;
+		Motion *mot = MotionParser::parseMotion(is, currentWord, scaleFactor, &mp);
+		if(Piavca::Core::getCore()->errorsPresent()) return NULL;
+		SubMotion *m = new SubMotion(mot, startTime, endTime);
+		return m;
+};
+
+template<>
+void MotionParserTyped<SubMotion>::editMotionInternal(SubMotion *mot, istringstream &is)
+{
+		float endTime = -1.0f;
+		float startTime = 0.0f;
+		float interval = 0.01f;
+		string currentWord;
+		while(is >> currentWord)
+		{
+			if(currentWord == "end")
+			{
+				if(!(is >> endTime))
+				{
+					Piavca::Error(_T("no value given for end time"));
+					return;
+				}
+				mot->setEnd(endTime);
+				continue;
+			}
+			if(currentWord == "start")
+			{
+				if(!(is >> startTime))
+				{
+					Piavca::Error(_T("no value given for end time"));
+					return;
+				}
+				mot->setStart(startTime);
+				continue;
+			}
+			Piavca::Error(_T("unknown option ") + StringToTString(currentWord));
+			return;
+		}
+};
+
+
 template<>  Piavca::Motion *MotionParserTyped<ScaleMotionRoot>::parseMotion(istringstream &is, std::string currentWord, float scaleFactor)
 {
 		if(!(is >> scaleFactor))
@@ -2486,6 +2562,7 @@ void MotionParser::setUpMotionCommands()
 	addMotionCommand(_T("-scale"), new MotionParserTyped<ScaleMotion>());
 	addMotionCommand(_T("-speed"), new MotionParserTyped<ScaleMotionSpeed>());
 	addMotionCommand(_T("-change"), new MotionParserTyped<ChangeMotionProp>());
+	addMotionCommand(_T("submotion"), new MotionParserTyped<SubMotion>());
 
 	addMotionCommand(_T("-length"), new MotionParserTyped<ChangeMotionLength>());
 	addMotionCommand(_T("-turn"), new MotionParserTyped<TurnMotion>());

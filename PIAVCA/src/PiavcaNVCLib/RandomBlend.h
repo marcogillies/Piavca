@@ -59,7 +59,7 @@ public:
 		weights.assign(mv.size(), 1.0f);
 	};
 	RandomBlend(const RandomBlend &rbl)
-		:MultiMotionCombiner(rbl) {};
+		:MultiMotionCombiner(rbl), weights(rbl.weights) {};
 	~RandomBlend(){};
 	virtual Motion *clone(){return new RandomBlend(*this);};
 
@@ -83,6 +83,8 @@ public:
 
 	virtual void shift()
 	{
+		if (mots.size() <= 0)
+			return;
 		MotionVec::size_type numChosen = rand()%mots.size()+1;
 		Motion *totalMot = NULL;
 		for (MotionVec::size_type i = 0; i < numChosen; i++)

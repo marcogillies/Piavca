@@ -212,10 +212,34 @@ class type_info;
 	for (int i = 0; i < len; i++)
 	{
 		PyDict_SetItem($result,  
-			PyString_FromString(TStringToString($1[i].first).c_str()),
+			PyString_FromString(TStringToString((*(&($1)))[i].first).c_str()),
 			PyFloat_FromDouble($1[i].second));
 	}
 }
+
+
+%typemap(out) std::vector<std::string>
+{
+	int len = $1.size();
+	$result = PyList_New(0);
+	for (int i = 0; i < len; i++)
+	{
+		PyList_Append($result,  
+			PyString_FromString((*(&($1)))[i].c_str()));
+	}
+}
+
+%typemap(out) std::vector<Piavca::tstring>
+{
+	int len = $1.size();
+	$result = PyList_New(0);
+	for (int i = 0; i < len; i++)
+	{
+		PyList_Append($result,  
+			PyString_FromString(TStringToString((*(&($1)))[i]).c_str()));
+	}
+}
+
 
 %feature("director:except") {
     if ($error != NULL) {

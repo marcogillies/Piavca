@@ -14,7 +14,7 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="$(ConfigurationName)"
+			OutputDirectory="$(SolutionDir)\bin"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="4"
 			CharacterSet="2">
@@ -60,7 +60,7 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="."
+			OutputDirectory="$(SolutionDir)\bin"
 			IntermediateDirectory="Release"
 			ConfigurationType="4"
 			CharacterSet="2">
@@ -229,8 +229,7 @@
 		<File
 			RelativePath="Piavca.i">
 			<FileConfiguration
-				Name="Debug|Win32"
-				ExcludedFromBuild="TRUE">
+				Name="Debug|Win32">
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Running Swig"

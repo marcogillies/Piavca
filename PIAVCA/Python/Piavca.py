@@ -2159,6 +2159,7 @@ class Avatar(_object):
     def play_motion(*args): return _Piavca.Avatar_play_motion(*args)
     def add_background_motion(*args): return _Piavca.Avatar_add_background_motion(*args)
     def interrupt_motion(*args): return _Piavca.Avatar_interrupt_motion(*args)
+    def stop_motion(*args): return _Piavca.Avatar_stop_motion(*args)
 Avatar_swigregister = _Piavca.Avatar_swigregister
 Avatar_swigregister(Avatar)
 

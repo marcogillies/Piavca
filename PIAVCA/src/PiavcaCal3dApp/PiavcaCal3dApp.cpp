@@ -98,10 +98,10 @@ void timeStep()
 	    std::cout << "Piavca Exception: " <<  e.getDetails() << std::endl;
 		Piavca::PrintPythonErrors();
 	}
-	catch (...)
-	{
-		Piavca::PrintPythonErrors();
-	}
+	//catch (...)
+	//{
+	//	Piavca::PrintPythonErrors();
+	//}
 	//Piavca::RunPythonMethod(Piavca::Core::getCore(), "headMove", Piavca::Vec(1, 2, 3));
 	std::cout << TStringToString(Piavca::Core::getCore()->getMessages());
     // update the screen

@@ -133,7 +133,7 @@ void AvatarMotionQueue::timeStep(Avatar *avatar, float time)
 		float at_time = queueTopTime();
 		if(at_time > 0.0 && at_time < time)
 		{
-			interruptMot = false;
+			//interruptMot = false;
 			Motion *motion = dequeueMotion();
 			if (motion)
 			{ 
@@ -142,9 +142,9 @@ void AvatarMotionQueue::timeStep(Avatar *avatar, float time)
 				if(background)
 				{
 					if(adder)
-						adder->setMotion1(new MotionAdder(adder->getMotion1(), new TimeOffset(motion, (time-motionStartTime))));
+						adder->setMotion1(new MotionAdder(adder->getMotion1(), new SelfBlend(new TimeOffset(motion, (time-motionStartTime)))));
 					else
-						adder = new MotionAdder(new TimeOffset(motion, (time-motionStartTime)), selfBlend);
+						adder = new MotionAdder(new SelfBlend(new TimeOffset(motion, (time-motionStartTime))), selfBlend);
 					// we've handed ownership over to the adder so we give up ownership
 					//delete motion;
 					motion->Dispose();
@@ -158,12 +158,23 @@ void AvatarMotionQueue::timeStep(Avatar *avatar, float time)
 					selfBlend->reblend( time );
 					selfBlend->setMotion(motion);
 					currentMotion = motion;
+					std::cout << "playing motion " << currentMotion->getName() << std::endl;
 					// we've handed ownership over to the self blend so we give up ownership
 					//delete motion;
 					motion->Dispose();
 				}
 
 			}
+			else
+			{
+				if (interruptMot)
+				{
+					currentMotion = NULL;
+					selfBlend->reblend( time );
+					selfBlend->setMotion(NULL);
+				}
+			}
+			interruptMot = false;
 		}
     }
 
@@ -325,12 +336,17 @@ void AvatarMotionQueue::enqueueRandomMotions(int num)
 			//s->reblend();
 			//temp_adder_child->setMotion2(s->getMotion1());
 			//s->Dispose();
-			temp_adder_child->setMotion2(
-				new SequentialBlend(
-					temp_adder_child->getMotion2(), 
-					new ZeroMotion(temp_adder_child->isFacial()),
-					1.0, Piavca::Core::getCore()->getTime()));
-			//removeList.push_back(temp_adder_parent);
+			
+			//temp_adder_child->setMotion2(
+			//	new SequentialBlend(
+			//		temp_adder_child->getMotion2(), 
+			//		new ZeroMotion(temp_adder_child->isFacial()),
+			//		1.0, Piavca::Core::getCore()->getTime()));
+			
+			  temp_adder_child->getMotion2()->reset();
+			  dynamic_cast<SelfBlend *>(temp_adder_child->getMotion2())->setMotion(new ZeroMotion(temp_adder_child->isFacial()));
+			  
+			  //removeList.push_back(temp_adder_parent);
 			//temp_adder_parent->setMotion1(temp_adder_child->getMotion1());
 		  }
 		  //else
@@ -344,8 +360,10 @@ void AvatarMotionQueue::enqueueRandomMotions(int num)
   
   void AvatarMotionQueue::removeMotion(tstring name)
   {
+	  std::cout << "removing motion " << currentMotion << " " << TStringToString(name) << std::endl;
 	  if(currentMotion && currentMotion->findSub(name))
 	  {
+		  std::cout << "removing motion " << TStringToString(name) << std::endl;
 		  interrupt();
 		  selfBlend->reblend();
 		  selfBlend->setMotion(NULL);
@@ -370,6 +388,7 @@ void AvatarMotionQueue::enqueueRandomMotions(int num)
 	  {
 		  if(temp_adder_child->getMotion2()->findSub(name))
 		  {
+			std::cout << "removing background motion " << TStringToString(name) << std::endl;
 			// slightly hacky way of replacing a motion with a single framed
 			// track motion of its current position
 			//SelfBlend *s = new SelfBlend(temp_adder_child->getMotion2());
@@ -379,6 +398,7 @@ void AvatarMotionQueue::enqueueRandomMotions(int num)
 			//temp_adder_child->setMotion2(
 			//	copyMotionPosture(temp_adder_child->getMotion2(),
 			//	Piavca::Core::getCore()->getTime()));
+			std::cout << "blendstart " << Piavca::Core::getCore()->getTime() << std::endl;
 			temp_adder_child->setMotion2(
 				new SequentialBlend(
 					temp_adder_child->getMotion2(), 
@@ -389,7 +409,7 @@ void AvatarMotionQueue::enqueueRandomMotions(int num)
 		  }
 		  //else
 		  //{
-			temp_adder_parent = temp_adder_child;
+		  temp_adder_parent = temp_adder_child;
 		  //}
 		  temp_adder_child = dynamic_cast<MotionAdder *>(temp_adder_parent->getMotion1());
 	  };
