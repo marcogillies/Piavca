@@ -1,14 +1,10 @@
-# This file was created automatically by SWIG 1.3.30.
+# This file was created automatically by SWIG 1.3.29.
 # Don't modify this file, modify the SWIG interface instead.
 # This file is compatible with both classic and new-style classes.
 
 import _Piavca
 import new
 new_instancemethod = new.instancemethod
-try:
-    _swig_property = property
-except NameError:
-    pass # Python < 2.2 doesn't have 'property'.
 def _swig_setattr_nondynamic(self,class_type,name,value,static=1):
     if (name == "thisown"): return self.this.own(value)
     if (name == "this"):
@@ -142,12 +138,16 @@ class Quat(_object):
     def transformInPlace(*args): return _Piavca.Quat_transformInPlace(*args)
     __swig_getmethods__["spherical_distance"] = lambda x: _Piavca.Quat_spherical_distance
     if _newclass:spherical_distance = staticmethod(_Piavca.Quat_spherical_distance)
+    def logMap(*args): return _Piavca.Quat_logMap(*args)
+    __swig_getmethods__["expMap"] = lambda x: _Piavca.Quat_expMap
+    if _newclass:expMap = staticmethod(_Piavca.Quat_expMap)
     def __getitem__(*args): return _Piavca.Quat___getitem__(*args)
     def __setitem__(*args): return _Piavca.Quat___setitem__(*args)
     def __repr__(*args): return _Piavca.Quat___repr__(*args)
 Quat_swigregister = _Piavca.Quat_swigregister
 Quat_swigregister(Quat)
 Quat_spherical_distance = _Piavca.Quat_spherical_distance
+Quat_expMap = _Piavca.Quat_expMap
 
 slerp = _Piavca.slerp
 class TimeCallback(_object):
@@ -294,7 +294,7 @@ class Core(_object):
     __repr__ = _swig_repr
     __swig_setmethods__["dir"] = _Piavca.Core_dir_set
     __swig_getmethods__["dir"] = _Piavca.Core_dir_get
-    if _newclass:dir = _swig_property(_Piavca.Core_dir_get, _Piavca.Core_dir_set)
+    if _newclass:dir = property(_Piavca.Core_dir_get, _Piavca.Core_dir_set)
     __swig_destroy__ = _Piavca.delete_Core
     __del__ = lambda self : None;
     def reset(*args):
@@ -2171,16 +2171,16 @@ class queueElement(_object):
     __repr__ = _swig_repr
     __swig_setmethods__["mot"] = _Piavca.queueElement_mot_set
     __swig_getmethods__["mot"] = _Piavca.queueElement_mot_get
-    if _newclass:mot = _swig_property(_Piavca.queueElement_mot_get, _Piavca.queueElement_mot_set)
+    if _newclass:mot = property(_Piavca.queueElement_mot_get, _Piavca.queueElement_mot_set)
     __swig_setmethods__["name"] = _Piavca.queueElement_name_set
     __swig_getmethods__["name"] = _Piavca.queueElement_name_get
-    if _newclass:name = _swig_property(_Piavca.queueElement_name_get, _Piavca.queueElement_name_set)
+    if _newclass:name = property(_Piavca.queueElement_name_get, _Piavca.queueElement_name_set)
     __swig_setmethods__["atTime"] = _Piavca.queueElement_atTime_set
     __swig_getmethods__["atTime"] = _Piavca.queueElement_atTime_get
-    if _newclass:atTime = _swig_property(_Piavca.queueElement_atTime_get, _Piavca.queueElement_atTime_set)
+    if _newclass:atTime = property(_Piavca.queueElement_atTime_get, _Piavca.queueElement_atTime_set)
     __swig_setmethods__["background"] = _Piavca.queueElement_background_set
     __swig_getmethods__["background"] = _Piavca.queueElement_background_get
-    if _newclass:background = _swig_property(_Piavca.queueElement_background_get, _Piavca.queueElement_background_set)
+    if _newclass:background = property(_Piavca.queueElement_background_get, _Piavca.queueElement_background_set)
     def __init__(self, *args): 
         this = _Piavca.new_queueElement(*args)
         try: self.this.append(this)
@@ -2850,10 +2850,30 @@ class MotionFilter(Motion):
     __swig_getmethods__ = {}
     for _s in [Motion]: __swig_getmethods__.update(_s.__swig_getmethods__)
     __getattr__ = lambda self, name: _swig_getattr(self, MotionFilter, name)
-    def __init__(self): raise AttributeError, "No constructor defined"
     __repr__ = _swig_repr
+    def __init__(self, *args): 
+        """
+        Piavca::MotionFilter::MotionFilter(const MotionFilter &mf)
+                 
+                
+                 
+                
+        """
+        this = _Piavca.new_MotionFilter(*args)
+        try: self.this.append(this)
+        except: self.this = this
     __swig_destroy__ = _Piavca.delete_MotionFilter
     __del__ = lambda self : None;
+    def clone(*args):
+        """
+        virtual Motion* Piavca::Motion::clone()=0
+                 
+        creates a copy of the motion         
+                 
+                
+        """
+        return _Piavca.MotionFilter_clone(*args)
+
     def printInfo(*args):
         """
         void Piavca::MotionFilter::printInfo()
@@ -5344,19 +5364,19 @@ class flagStruct(_object):
     __repr__ = _swig_repr
     __swig_setmethods__["headActive"] = _Piavca.flagStruct_headActive_set
     __swig_getmethods__["headActive"] = _Piavca.flagStruct_headActive_get
-    if _newclass:headActive = _swig_property(_Piavca.flagStruct_headActive_get, _Piavca.flagStruct_headActive_set)
+    if _newclass:headActive = property(_Piavca.flagStruct_headActive_get, _Piavca.flagStruct_headActive_set)
     __swig_setmethods__["bodyActive"] = _Piavca.flagStruct_bodyActive_set
     __swig_getmethods__["bodyActive"] = _Piavca.flagStruct_bodyActive_get
-    if _newclass:bodyActive = _swig_property(_Piavca.flagStruct_bodyActive_get, _Piavca.flagStruct_bodyActive_set)
+    if _newclass:bodyActive = property(_Piavca.flagStruct_bodyActive_get, _Piavca.flagStruct_bodyActive_set)
     __swig_setmethods__["turnBodyVertical"] = _Piavca.flagStruct_turnBodyVertical_set
     __swig_getmethods__["turnBodyVertical"] = _Piavca.flagStruct_turnBodyVertical_get
-    if _newclass:turnBodyVertical = _swig_property(_Piavca.flagStruct_turnBodyVertical_get, _Piavca.flagStruct_turnBodyVertical_set)
+    if _newclass:turnBodyVertical = property(_Piavca.flagStruct_turnBodyVertical_get, _Piavca.flagStruct_turnBodyVertical_set)
     __swig_setmethods__["turnBodyFull"] = _Piavca.flagStruct_turnBodyFull_set
     __swig_getmethods__["turnBodyFull"] = _Piavca.flagStruct_turnBodyFull_get
-    if _newclass:turnBodyFull = _swig_property(_Piavca.flagStruct_turnBodyFull_get, _Piavca.flagStruct_turnBodyFull_set)
+    if _newclass:turnBodyFull = property(_Piavca.flagStruct_turnBodyFull_get, _Piavca.flagStruct_turnBodyFull_set)
     __swig_setmethods__["leanTowards"] = _Piavca.flagStruct_leanTowards_set
     __swig_getmethods__["leanTowards"] = _Piavca.flagStruct_leanTowards_get
-    if _newclass:leanTowards = _swig_property(_Piavca.flagStruct_leanTowards_get, _Piavca.flagStruct_leanTowards_set)
+    if _newclass:leanTowards = property(_Piavca.flagStruct_leanTowards_get, _Piavca.flagStruct_leanTowards_set)
     def __init__(self, *args): 
         this = _Piavca.new_flagStruct(*args)
         try: self.this.append(this)
@@ -5374,13 +5394,13 @@ class AvatarTargetStruct(_object):
     __repr__ = _swig_repr
     __swig_setmethods__["avatar"] = _Piavca.AvatarTargetStruct_avatar_set
     __swig_getmethods__["avatar"] = _Piavca.AvatarTargetStruct_avatar_get
-    if _newclass:avatar = _swig_property(_Piavca.AvatarTargetStruct_avatar_get, _Piavca.AvatarTargetStruct_avatar_set)
+    if _newclass:avatar = property(_Piavca.AvatarTargetStruct_avatar_get, _Piavca.AvatarTargetStruct_avatar_set)
     __swig_setmethods__["joint"] = _Piavca.AvatarTargetStruct_joint_set
     __swig_getmethods__["joint"] = _Piavca.AvatarTargetStruct_joint_get
-    if _newclass:joint = _swig_property(_Piavca.AvatarTargetStruct_joint_get, _Piavca.AvatarTargetStruct_joint_set)
+    if _newclass:joint = property(_Piavca.AvatarTargetStruct_joint_get, _Piavca.AvatarTargetStruct_joint_set)
     __swig_setmethods__["flags"] = _Piavca.AvatarTargetStruct_flags_set
     __swig_getmethods__["flags"] = _Piavca.AvatarTargetStruct_flags_get
-    if _newclass:flags = _swig_property(_Piavca.AvatarTargetStruct_flags_get, _Piavca.AvatarTargetStruct_flags_set)
+    if _newclass:flags = property(_Piavca.AvatarTargetStruct_flags_get, _Piavca.AvatarTargetStruct_flags_set)
     def __init__(self, *args): 
         this = _Piavca.new_AvatarTargetStruct(*args)
         try: self.this.append(this)
@@ -5398,10 +5418,10 @@ class ObjectTargetStruct(_object):
     __repr__ = _swig_repr
     __swig_setmethods__["object"] = _Piavca.ObjectTargetStruct_object_set
     __swig_getmethods__["object"] = _Piavca.ObjectTargetStruct_object_get
-    if _newclass:object = _swig_property(_Piavca.ObjectTargetStruct_object_get, _Piavca.ObjectTargetStruct_object_set)
+    if _newclass:object = property(_Piavca.ObjectTargetStruct_object_get, _Piavca.ObjectTargetStruct_object_set)
     __swig_setmethods__["flags"] = _Piavca.ObjectTargetStruct_flags_set
     __swig_getmethods__["flags"] = _Piavca.ObjectTargetStruct_flags_get
-    if _newclass:flags = _swig_property(_Piavca.ObjectTargetStruct_flags_get, _Piavca.ObjectTargetStruct_flags_set)
+    if _newclass:flags = property(_Piavca.ObjectTargetStruct_flags_get, _Piavca.ObjectTargetStruct_flags_set)
     def __init__(self, *args): 
         this = _Piavca.new_ObjectTargetStruct(*args)
         try: self.this.append(this)

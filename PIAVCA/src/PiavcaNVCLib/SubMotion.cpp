@@ -58,7 +58,12 @@ SubMotion::SubMotion()
 SubMotion::SubMotion(Motion *m, float _start, float _end)
 	:MotionFilter(m), start(_start), end(_end)
 {
-	
+	if(filterMot)
+	{
+		//std::cout << "Submotion constructor: start " << start << " end " << end << std::endl;
+		if (filterMot->getMotionLength() < start)
+			Piavca::Error(_T("SubMotion: start is greater than motion length"));
+	}
 };
 
 SubMotion::SubMotion(const SubMotion &sm)
@@ -77,10 +82,14 @@ float SubMotion::getMotionLength() const
 {
 	if(filterMot)
 	{
+		//std::cout << "Submotion: start " << start << " end " << end << std::endl;
 		float s = 0;
 		if(start >= 0) s = start;
+		//std::cout << "s " << s << std::endl;
 		float e = filterMot->getMotionLength();
 		if(end >= 0 && end < e) e = end;
+		//std::cout << "e " << e << std::endl;
+		if ((e-s) <= 0) Piavca::Error(_T("Motion length < 0"));
 		return e - s;	
 	}
 	else

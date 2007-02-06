@@ -339,6 +339,20 @@ float Quat::spherical_distance(const Quat &q1, const Quat &q2)
 	Quat q = q2/q1;
 	return q.getAngle();
 }
+
+Vec Quat::logMap()
+{
+    float angle;
+    Vec axis;
+    getAngleAxis(angle, axis);
+    return axis*angle;
+}
+
+Quat Quat::expMap(const Vec &v)
+{
+    return Quat(v.mag(), v.normalized());
+}
+
 /*
 {
 	float ct = q1.S()*q2.S() + q1.I()*q2.I() + q1.J()*q2.J() + q1.K()*q2.K();

@@ -536,7 +536,7 @@ void Piavca::RunPythonMethod(Piavca::Core *core, char *methodName, PyObject *pyA
 	else
 	{
 		PyErr_Clear();
-		std::cout << "failed to find PiavcaStartUp method\n";
+		std::cout << "failed to find method" << methodName << std::endl;
 	}
 }
 

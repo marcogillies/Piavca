@@ -78,6 +78,11 @@ namespace Piavca
 			if(filterMot) filterMot->Dispose();
 		}
 
+		virtual Motion *clone()
+		{
+			return new MotionFilter(*this);
+		};
+
 		void printInfo()
 		{
 			Motion::printInfo();

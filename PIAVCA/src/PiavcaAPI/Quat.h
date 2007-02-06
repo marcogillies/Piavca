@@ -213,6 +213,15 @@ public:
      *  It uses spherical distance, the same measure used by slerp
 	 */
 	static float spherical_distance(const Quat &q1, const Quat &q2);
+	
+	/*! perform the logorithmic map to convert a quaternion into a vector in linear space
+	 *
+	 */
+    Vec logMap();
+	/*! perform the exponential map, the inverse of the log map
+	 *
+	 */
+    static Quat expMap(const Vec &v);
 
 	//! interpolates two quaternions
 	friend PIAVCA_DECL Quat slerp(const Quat &q1, const Quat &q2, float t);
