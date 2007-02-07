@@ -141,7 +141,11 @@ void displayFunc()
   // set the projection transformation
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-  gluPerspective(45.0f, (GLdouble)g_Params.width / (GLdouble)g_Params.height, 0.01, 10000);
+  //gluPerspective(45.0f, (GLdouble)g_Params.width / (GLdouble)g_Params.height, 0.01, 10000);
+  float ratio = g_Params.width / g_Params.height;
+  float height = 0.4142135*0.01;
+  float width = (height*g_Params.width)/ g_Params.height;
+  glFrustum(-(GLdouble)(width),(GLdouble)(width), -(GLdouble)(height),(GLdouble)(height), 0.01, 10000);
 
   // set the model transformation
   glMatrixMode(GL_MODELVIEW);

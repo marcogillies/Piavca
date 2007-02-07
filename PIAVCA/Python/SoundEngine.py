@@ -13,7 +13,7 @@ except ImportError:
 	print "text to speech functionality will not be available"
 	print "This engine only runs on windows"
 	print "If you are running windows please intall it to get text-to-speech"
-	ttsAvaiable = 0
+	ttsAvailable = 0
 	
 class SoundEngine:
 	def __init__(self, samplerate = 44100, channels = 2, format = sound.AFMT_S16_LE):
