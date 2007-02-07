@@ -398,12 +398,19 @@ void AvatarMotionQueue::enqueueRandomMotions(int num)
 			//temp_adder_child->setMotion2(
 			//	copyMotionPosture(temp_adder_child->getMotion2(),
 			//	Piavca::Core::getCore()->getTime()));
-			std::cout << "blendstart " << Piavca::Core::getCore()->getTime() << std::endl;
-			temp_adder_child->setMotion2(
-				new SequentialBlend(
-					temp_adder_child->getMotion2(), 
-					new ZeroMotion(temp_adder_child->isFacial()),
-					1.0, Piavca::Core::getCore()->getTime()));
+			
+			//std::cout << "blendstart " << Piavca::Core::getCore()->getTime() << std::endl;
+			//temp_adder_child->setMotion2(
+			//	new SequentialBlend(
+			//		temp_adder_child->getMotion2(), 
+			//		new ZeroMotion(temp_adder_child->isFacial()),
+			//		1.0, Piavca::Core::getCore()->getTime()));
+			
+			
+			temp_adder_child->getMotion2()->reset();
+			dynamic_cast<SelfBlend *>(temp_adder_child->getMotion2())->setMotion(new ZeroMotion(temp_adder_child->isFacial()));
+			  
+
 			//removeList.push_back(temp_adder_parent);
 			//temp_adder_parent->setMotion1(temp_adder_child->getMotion1());
 		  }
@@ -459,11 +466,18 @@ void AvatarMotionQueue::enqueueRandomMotions(int num)
 			//s->reblend();
 			//temp_adder_child->setMotion2(s->getMotion1());
 			//s->Dispose();
-			temp_adder_child->setMotion2(
-				new SequentialBlend(
-					temp_adder_child->getMotion2(), 
-					new ZeroMotion(temp_adder_child->isFacial()),
-					1.0, Piavca::Core::getCore()->getTime()));
+
+			//temp_adder_child->setMotion2(
+			//	new SequentialBlend(
+			//		temp_adder_child->getMotion2(), 
+			//		new ZeroMotion(temp_adder_child->isFacial()),
+			//		1.0, Piavca::Core::getCore()->getTime()));
+			
+			
+			temp_adder_child->getMotion2()->reset();
+			dynamic_cast<SelfBlend *>(temp_adder_child->getMotion2())->setMotion(new ZeroMotion(temp_adder_child->isFacial()));
+			  
+
 			//removeList.push_back(temp_adder_parent);
 			//temp_adder_parent->setMotion1(temp_adder_child->getMotion1());
 		  }

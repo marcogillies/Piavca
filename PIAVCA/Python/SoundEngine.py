@@ -26,7 +26,8 @@ class SoundEngine:
 
 		self.sounds = {}
 		
-		self.tts = pyTTS.Create()
+		if ttsAvailable:
+			self.tts = pyTTS.Create()
 		
 	def addSound(self, name, filename):
 		print "adding", name, filename
@@ -56,7 +57,11 @@ class SoundEngine:
 		self.output.play(self.sounds[name])
 			
 	def say(self, text):
-		self.tts.Speak(text, pyTTS.tts_async, pyTTS.tts_purge_before_speak)
+		if ttsAvailable:
+			self.tts.Speak(text, pyTTS.tts_async, pyTTS.tts_purge_before_speak)
+		else:
+			print "no Text-To-Speech available"
+			print text
 
 		
 import time

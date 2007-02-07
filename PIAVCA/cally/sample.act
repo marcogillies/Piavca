@@ -1,0 +1,26 @@
+script nodding
+0	motion     fastnod
+stop
+
+script saysomething
+0	say    "hello there"
+0.5	motion gest1
+stop
+
+script listen
+0	backgroundmotion	nodding
+stop
+
+script stoplistening
+0	stop	nodding
+stop
+
+script talk
+1	backgroundmotion gestures
+0   sound  outro
+stop
+
+
+script stoptalking
+0	stop	gestures
+stop
