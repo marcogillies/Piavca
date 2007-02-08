@@ -53,6 +53,7 @@
 #include "MaskedMotion.h"
 #include "PiavcaAPI/MathsUtils.h"
 #include "PiavcaAPI/MotionAdder.h"
+#include "Subtract.h"
 #include "PiavcaAPI/MotionFilter.h"
 #include "PiavcaAPI/Quat.h"
 #include "RandomTimingsLoop.h"

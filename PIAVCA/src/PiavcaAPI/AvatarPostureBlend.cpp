@@ -48,9 +48,11 @@ using namespace Piavca;
 
 
 AvatarPostureBlend::AvatarPostureBlend(Motion *mot, float interval, bool _tracksFromAvatar) 
-	:SequentialBlend(new KeyframeMotion(mot->isFacial()), mot, interval, 0.0), 
+	:SequentialBlend(NULL, mot, interval, 0.0), 
 	tracksFromAvatar(_tracksFromAvatar)//, avatar(av) 
 {
+	if (mot)
+			setMotion1(new KeyframeMotion(mot->isFacial()));
 	//setMaintainY(true);
 	
 };
@@ -100,10 +102,15 @@ void AvatarPostureBlend::load(Avatar *av)
 
 void AvatarPostureBlend::setMotion(Motion *mot)
 {
-	setMotion2(mot);	
+	setMotion2(mot);
+	if (!mot) 
+		return;
+	if(!mot1)
+		setMotion1(new KeyframeMotion(mot->isFacial()));
 	KeyframeMotion *tmot = dynamic_cast<KeyframeMotion *>(mot1);
-	if(!tmot)
+	if(mot1 && !tmot)
 		Piavca::Error(_T("Motion blending from a non writable motion"));
+		
 	tmot->clearAllTracks();
 	if(!mot2)
 		return;

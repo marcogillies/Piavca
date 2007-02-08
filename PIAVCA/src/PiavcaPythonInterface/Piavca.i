@@ -39,8 +39,8 @@
 #define NO_PIAVCA_DLL
 
 #include "PiavcaNVCLib/Piavca.h"
-#include "PyTimeCallback.h"
-#include "PyMotion.h"
+//#include "PyTimeCallback.h"
+//#include "PyMotion.h"
 
 #include <sstream>
 
@@ -158,11 +158,11 @@ class type_info;
 }
 
 
-%typemap(in) PyMotion *
-{
-	if ((SWIG_ConvertPtr($input,(void **) &$1, SWIGTYPE_p_Piavca__PyMotion,SWIG_POINTER_EXCEPTION | 0 )) == -1) SWIG_fail;
-    //$1 = static_cast<AvatarTimeCallback *>($input);
-}
+//%typemap(in) PyMotion *
+//{
+//	if ((SWIG_ConvertPtr($input,(void **) &$1, SWIGTYPE_p_Piavca__PyMotion,SWIG_POINTER_EXCEPTION | 0 )) == -1) SWIG_fail;
+ //   //$1 = static_cast<AvatarTimeCallback *>($input);
+//}
 
 %typemap(in) Piavca::MotionList
 {
@@ -359,7 +359,7 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 
 %feature("director") Motion;   
 %feature("director") KeyframeMotion;   
-%feature("director") FilterMotion;  
+%feature("director") MotionFilter;  
 %feature("director") TwoMotionCombiner;    
 %feature("director") SelfBlend;        
 %feature("director") SequentialBlend;       
@@ -370,7 +370,8 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %feature("director") TimeOffset;            
 %feature("director") TurnMotion;            
 %feature("director") BlendBetween;      
-%feature("director") MotionAdder;      
+%feature("director") MotionAdder;     
+%feature("director") Subtract;        
 %feature("director") MaskedMotion;      
 %feature("director") ChoiceLoopMotion;    
 %feature("director") RandomLoopMotion;   
@@ -399,8 +400,8 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %include "Avatar.i"
 %include "PiavcaNVCLib/AvatarMotionQueue.h"
 %include "PiavcaAPI/Object.h"
-%include "PiavcaPythonInterface/PyTimeCallback.h"
-%include "PyMotion.h"
+//%include "PiavcaPythonInterface/PyTimeCallback.h"
+//%include "PyMotion.h"
 
 %include "PiavcaAPI/MathsUtils.h"
 %include "PiavcaAPI/MotionFilter.h"
@@ -417,10 +418,15 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %include "PiavcaAPI/AvatarPostureBlend.h"
 %include "PiavcaAPI/BlendBetween.h"
 %include "PiavcaAPI/MotionAdder.h"
+%include "PiavcaNVCLib/Subtract.h"
 %include "PiavcaNVCLib/MaskedMotion.h"
-%include "PiavcaNVCLib/MultiMotionLoop.h"
+%include "PiavcaNVCLib/MultiMotionCombiner.h"
+%include "PiavcaNVCLib/ChoiceMotion.h"
+%include "PiavcaNVCLib/RandomChoiceMotion.h"
 %include "PiavcaNVCLib/ChoiceLoopMotion.h"
 %include "PiavcaNVCLib/RandomLoopMotion.h"
+%include "PiavcaNVCLib/RandomBlend.h"
+%include "PiavcaNVCLib/RandomAdd.h"
 %include "PiavcaNVCLib/RandomBlendLoop.h"
 %include "PiavcaNVCLib/RandomAddLoop.h"
 %include "PiavcaNVCLib/ProxemicsLoop.h"

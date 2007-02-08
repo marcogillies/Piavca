@@ -81,6 +81,23 @@ namespace Piavca
 
 		void init();
 	public:
+		/*! create with a location target
+		 *  There is also a local flag, to indicate whether the vector is local
+		 *  to the avatar or in world coordinates.
+		 *  NB: LookAtMotion assumes you are using a motion queue,
+		 *  it won't work properly otherwise.
+		 */
+		LookAtMotion()
+			:Motion(), LocationTarget(Vec(0.0, 0.0, 1.0)), AvatarTarget(NULL), targetJointId(-1), ObjectTarget(NULL),
+			endTime(-1), local(true), 
+			eyesLimit(Piavca::Pi/12.0f), headbodyLimit(Piavca::Pi/2.0f),
+			eyesMorphAngle(Piavca::Pi/8.0f),
+			headActive(false), bodyActive(false), turnBodyVertical(false), turnBodyFull(false),
+			reyeId(-1), leyeId(-1), headId(-1), bodyId(-1), interval(0.5),
+			lookLeftId(-1), lookRightId(-1), lookUpId(-1), lookDownId(-1)
+		{
+			init();
+		};
 		/*! create with an avatar target.
 		 *  Pass in an avatar, and a joint of that avatar to look at
 		 */
@@ -237,7 +254,7 @@ namespace Piavca
 		/*!
 		 *	Pass in the motion to be filtered and a scale factor
 		 */
-		LookAtToFacial(LookAtMotion *m): MotionFilter(m){};
+		LookAtToFacial(LookAtMotion *m=NULL): MotionFilter(m){};
 		LookAtToFacial(const LookAtToFacial &sm): MotionFilter(sm){};
 	
 		virtual Motion *clone(){return new LookAtToFacial(*this);};

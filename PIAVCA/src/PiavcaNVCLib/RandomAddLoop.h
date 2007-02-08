@@ -37,7 +37,7 @@
 #ifndef RANDOM_ADD_LOOP_H
 #define RANDOM_ADD_LOOP_H
 
-#include "MultiMotionLoop.h"
+//#include "MultiMotionLoop.h"
 #include "PiavcaAPI/MotionAdder.h"
 #include "ScaleMotion.h"
 
@@ -55,7 +55,7 @@ class RandomAddLoop : public RandomTimingsLoop
 public:
 	RandomAddLoop()
 	{
-		randomadd = new RandomAdd;
+		randomadd = new RandomAdd();
 		setMotion(randomadd);
 	};
 	//! pass in a vector of motions to be used.

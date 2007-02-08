@@ -52,7 +52,7 @@ namespace Piavca
 class RandomAdd : public MultiMotionCombiner
 {
 public:
-	RandomAdd(){};
+	RandomAdd():MultiMotionCombiner(){};
 	//! pass in a vector of motions to be used.
 	RandomAdd(const MotionVec &mv)
 		:MultiMotionCombiner(mv)
@@ -64,6 +64,8 @@ public:
 
 	virtual void shift()
 	{
+		if (mots.size() <= 0)
+			return;
 		MotionVec::size_type numChosen = rand()%mots.size()+1;
 		Motion *totalMot = NULL;
 		for (MotionVec::size_type i = 0; i < numChosen; i++)

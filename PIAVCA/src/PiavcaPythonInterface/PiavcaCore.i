@@ -126,6 +126,16 @@
 	}
 }
 
+
+%typemap(typecheck) tstring = char *;
+%typemap(typecheck) tstring& = char *;
+%typemap(typecheck) Piavca::tstring = char *;
+%typemap(typecheck) Piavca::tstring& = char *;
+%typemap(typecheck) string = char *;
+%typemap(typecheck) string& = char *;
+%typemap(typecheck) std::string = char *;
+%typemap(typecheck) std::string& = char *;
+
 %include "PiavcaAPI/PiavcaCore.h"
 
 

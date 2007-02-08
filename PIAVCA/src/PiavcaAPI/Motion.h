@@ -271,11 +271,20 @@ public:
 	};
 	
 	//! internal version of getFloatValueAtTime, to be overridden
-	virtual float getFloatValueAtTimeInternal(int trackId, float time)=0;
+	virtual float getFloatValueAtTimeInternal(int trackId, float time)
+	{
+		return 0.0f;	
+	};
 	//! internal version of getVecValueAtTime, to be overridden
-	virtual Vec getVecValueAtTimeInternal(int trackId, float time)=0;
+	virtual Vec getVecValueAtTimeInternal(int trackId, float time)
+	{
+		return Vec();
+	};
 	//! internal version of getQuatValueAtTime, to be overridden
-	virtual Quat getQuatValueAtTimeInternal(int trackId, float time)=0;
+	virtual Quat getQuatValueAtTimeInternal(int trackId, float time)
+	{
+		return Quat();
+	};
 	//@}
 
 	friend class Core;

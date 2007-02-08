@@ -59,6 +59,8 @@ namespace Piavca
 		TwoMotionCombiner(const TwoMotionCombiner &tmc);
 		virtual ~TwoMotionCombiner();
 	
+		virtual Motion *clone(){return new TwoMotionCombiner(*this);};
+	
 		void printInfo();
 
 		//! finds the first submotion with a given name

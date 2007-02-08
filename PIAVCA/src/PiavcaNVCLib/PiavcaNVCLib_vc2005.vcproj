@@ -178,6 +178,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Subtract.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\TimeRangeMotion.cpp"
 				>
 			</File>
@@ -232,7 +236,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\MultiMotionLoop.h"
+				RelativePath=".\MultiMotionCombiner.h"
 				>
 			</File>
 			<File
@@ -297,6 +301,10 @@
 			</File>
 			<File
 				RelativePath=".\SubMotion.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Subtract.h"
 				>
 			</File>
 			<File

@@ -86,6 +86,16 @@ public:
 		randomchoicemotion->setProbability(index, prob);
 	}
 
+	void setMotionProb(int index, float prob)
+	{
+		randomchoicemotion->setMotionProb(index, prob);
+	}
+
+	void setMotionProb(tstring motName, float prob)
+	{
+		randomchoicemotion->setMotionProb(motName, prob);
+	}
+
 	virtual void shift()
 	{
 		randomchoicemotion->shift();

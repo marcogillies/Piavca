@@ -69,7 +69,7 @@ public:
 	};
 	//! create an empty multi-motionloop
 	MultiMotionCombiner()
-		:MotionFilter()
+		:MotionFilter(), mots()
 	{
 	};
 	MultiMotionCombiner(const MultiMotionCombiner &rl)
@@ -106,6 +106,14 @@ public:
 			mots.back()->Reference();
 			if(mots.size() == 1) setMotion(mots.back());
 		}
+	}
+
+	int getMotionIndex(tstring motionName)
+	{
+		for (int i = 0; i < mots.size(); i++)
+			if (mots[i]->getName() == motionName)
+				return i;
+		return -1;
 	}
 
 	//! finds the first submotion with a given name

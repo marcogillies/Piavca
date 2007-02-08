@@ -63,7 +63,7 @@ protected:
 	talkingstate isTalking;
 public:
 
-	DiadicGazeMotion(Avatar *other, float endTime = -1.0, float interval = 0.01)
+	DiadicGazeMotion(Avatar *other = NULL, float endTime = -1.0, float interval = 0.01)
 		:RandomGazeMotion(endTime, interval), 
 		otherAvatar(other), isTalking(neither), lookingAt(false), 
 		talkingLookAt(1.8f), talkingLookAway(2.1f),

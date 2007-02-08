@@ -755,6 +755,70 @@ private:
 };
 
 
+class SwigDirector_MotionFilter : public Piavca::MotionFilter, public Swig::Director {
+
+public:
+    SwigDirector_MotionFilter(PyObject *self);
+    SwigDirector_MotionFilter(PyObject *self, Piavca::Motion *mot);
+    SwigDirector_MotionFilter(PyObject *self, Piavca::MotionFilter const &mf);
+    virtual Piavca::Motion *findSub(Piavca::tstring nm);
+    virtual void load(Piavca::Avatar *av);
+    virtual void preFrame(float time);
+    virtual void setStartTime(float time);
+    virtual float getFloatValueAtTimeInternal(int trackId, float time);
+    virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
+    virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
+    virtual bool isRandomAccess();
+    virtual ~SwigDirector_MotionFilter();
+    virtual Piavca::Motion *clone();
+    virtual void reset();
+    virtual float getMotionLength() const;
+    virtual bool isFacial();
+    virtual void unload();
+    virtual bool loaded();
+    virtual void printInfo();
+    virtual Piavca::Motion *findSubByType(type_info const &ty);
+    virtual bool isNull(int trackId) const;
+    virtual Piavca::trackType getTrackType(int trackId) const;
+
+
+/* Internal Director utilities */
+public:
+    bool swig_get_inner(const char* name) const {
+      std::map<std::string, bool>::const_iterator iv = inner.find(name);
+      return (iv != inner.end() ? iv->second : false);
+    }
+
+    void swig_set_inner(const char* name, bool val) const
+    { inner[name] = val;}
+
+private:
+    mutable std::map<std::string, bool> inner;
+
+
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+/* VTable implementation */
+    PyObject *swig_get_method(size_t method_index, const char *method_name) const {
+      PyObject *method = vtable[method_index];
+      if (!method) {
+        swig::PyObject_var name = PyString_FromString(method_name);
+        method = PyObject_GetAttr(swig_get_self(), name);
+        if (method == NULL) {
+          std::string msg = "Method in class MotionFilter doesn't exist, undefined ";
+          msg += method_name;
+          Swig::DirectorMethodException::raise(msg.c_str());
+        }
+        vtable[method_index] = method;
+      };
+      return method;
+    }
+private:
+    mutable swig::PyObject_var vtable[18];
+#endif
+
+};
+
+
 class SwigDirector_TwoMotionCombiner : public Piavca::TwoMotionCombiner, public Swig::Director {
 
 public:
@@ -769,8 +833,8 @@ public:
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
     virtual void setStartTime(float time);
     virtual bool isRandomAccess();
-    virtual Piavca::Motion *clone();
     virtual ~SwigDirector_TwoMotionCombiner();
+    virtual Piavca::Motion *clone();
     virtual void reset();
     virtual float getMotionLength() const;
     virtual bool isFacial();
@@ -1530,6 +1594,69 @@ private:
 };
 
 
+class SwigDirector_Subtract : public Piavca::Subtract, public Swig::Director {
+
+public:
+    SwigDirector_Subtract(PyObject *self, Piavca::Motion *m1 = NULL, Piavca::Motion *m2 = NULL);
+    SwigDirector_Subtract(PyObject *self, Piavca::Subtract const &su);
+    virtual Piavca::Motion *findSub(Piavca::tstring nm);
+    virtual void load(Piavca::Avatar *av);
+    virtual void preFrame(float time);
+    virtual void setStartTime(float time);
+    virtual float getFloatValueAtTimeInternal(int trackId, float time);
+    virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
+    virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
+    virtual bool isRandomAccess();
+    virtual ~SwigDirector_Subtract();
+    virtual void reset();
+    virtual Piavca::Motion *clone();
+    virtual float getMotionLength() const;
+    virtual bool isFacial();
+    virtual void unload();
+    virtual bool loaded();
+    virtual void printInfo();
+    virtual Piavca::Motion *findSubByType(type_info const &ty);
+    virtual bool isNull(int trackId) const;
+    virtual Piavca::trackType getTrackType(int trackId) const;
+
+
+/* Internal Director utilities */
+public:
+    bool swig_get_inner(const char* name) const {
+      std::map<std::string, bool>::const_iterator iv = inner.find(name);
+      return (iv != inner.end() ? iv->second : false);
+    }
+
+    void swig_set_inner(const char* name, bool val) const
+    { inner[name] = val;}
+
+private:
+    mutable std::map<std::string, bool> inner;
+
+
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+/* VTable implementation */
+    PyObject *swig_get_method(size_t method_index, const char *method_name) const {
+      PyObject *method = vtable[method_index];
+      if (!method) {
+        swig::PyObject_var name = PyString_FromString(method_name);
+        method = PyObject_GetAttr(swig_get_self(), name);
+        if (method == NULL) {
+          std::string msg = "Method in class Subtract doesn't exist, undefined ";
+          msg += method_name;
+          Swig::DirectorMethodException::raise(msg.c_str());
+        }
+        vtable[method_index] = method;
+      };
+      return method;
+    }
+private:
+    mutable swig::PyObject_var vtable[18];
+#endif
+
+};
+
+
 class SwigDirector_MaskedMotion : public Piavca::MaskedMotion, public Swig::Director {
 
 public:
@@ -1885,6 +2012,7 @@ private:
 class SwigDirector_LookAtMotion : public Piavca::LookAtMotion, public Swig::Director {
 
 public:
+    SwigDirector_LookAtMotion(PyObject *self);
     SwigDirector_LookAtMotion(PyObject *self, Piavca::Avatar *target, int joint, float _endTime = -1, float _interval = 0.5);
     SwigDirector_LookAtMotion(PyObject *self, Piavca::Object *target, float _endTime = -1, float _interval = 0.5);
     SwigDirector_LookAtMotion(PyObject *self, Piavca::Vec const &target, float _endTime = -1, bool _local = false, float _interval = 0.5);
@@ -2082,7 +2210,7 @@ private:
 class SwigDirector_MotionSaver : public Piavca::MotionSaver, public Swig::Director {
 
 public:
-    SwigDirector_MotionSaver(PyObject *self, Piavca::Motion *mot);
+    SwigDirector_MotionSaver(PyObject *self, Piavca::Motion *mot = NULL);
     SwigDirector_MotionSaver(PyObject *self, Piavca::MotionSaver const &to);
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual void load(Piavca::Avatar *av);
@@ -2336,7 +2464,7 @@ private:
 class SwigDirector_DiadicGazeMotion : public Piavca::DiadicGazeMotion, public Swig::Director {
 
 public:
-    SwigDirector_DiadicGazeMotion(PyObject *self, Piavca::Avatar *other, float endTime = -1.0, float interval = 0.01);
+    SwigDirector_DiadicGazeMotion(PyObject *self, Piavca::Avatar *other = NULL, float endTime = -1.0, float interval = 0.01);
     SwigDirector_DiadicGazeMotion(PyObject *self, Piavca::DiadicGazeMotion const &dg);
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual void load(Piavca::Avatar *av);

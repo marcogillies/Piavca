@@ -156,6 +156,11 @@ namespace Piavca
 			setStartTime(startTime);
 		}
 
+		Motion *getMotion()
+		{
+			return filterMot;
+		};
+
 		//! gets the length of the motion in seconds
 		float getMotionLength() const
 		{
@@ -205,7 +210,7 @@ namespace Piavca
 		{
 			if(!filterMot)
 			{
-				Piavca::Error(_T("Scale motion: trying to get a value from a null motion"));
+				Piavca::Error(_T("Filter motion: trying to get a value from a null motion"));
 			}
 			//std::cout << "Scale Motion" << time << " " << filterMot->getFloatValueAtTime(trackId, time) << " " << scaleFactor << std::endl;
 		    return filterMot->getFloatValueAtTime(trackId, time);
@@ -216,7 +221,7 @@ namespace Piavca
 		{
 		    if(!filterMot)
 			{
-				Piavca::Error(_T("Scale motion: trying to get a value from a null motion"));
+				Piavca::Error(_T("Filter motion: trying to get a value from a null motion"));
 			}
 			return  filterMot->getVecValueAtTime(trackId, time);
 		};
@@ -226,7 +231,7 @@ namespace Piavca
 		{
 		    if(!filterMot)
 			{
-				Piavca::Error(_T("Scale motion: trying to get a value from a null motion"));
+				Piavca::Error(_T("Filter motion: trying to get a value from a null motion"));
 			}
 		    return filterMot->getQuatValueAtTime(trackId, time);
 		};

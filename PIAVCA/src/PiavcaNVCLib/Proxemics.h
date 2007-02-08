@@ -91,7 +91,7 @@ public:
 		if(!turnRight) Piavca::Warning(_T("Proxemics: No turn right motion"));
 		addMotion(turnRight);
 		
-		if(mots[Rest])setMotion(mots[Rest]);
+		if(mots.size() > 0 && mots[Rest])setMotion(mots[Rest]);
 	};
 	Proxemics(const Proxemics &rl)
 		:MultiMotionCombiner(rl), 

@@ -1,5 +1,6 @@
 import Piavca
 import os
+import XMLMotionFile
 
 Piavca.MotionParser.setUpMotionCommands()
 
@@ -38,7 +39,12 @@ def readMotionFile (filename):
 		os.chdir(filename[0:pathpos])
 		filestart = pathpos+1
 	#print os.getcwd()
-	in_file = open(filename[filestart:],"r")
+	filename = filename[filestart:]
+	dotpos = filename.rfind(".")
+	if filename[dotpos+1] == "x":
+		XMLMotionFile.parse(filename)
+		return
+	in_file = open(filename,"r")
 	for line in in_file.readlines():
 		print line
 		if line[0] == '#' :

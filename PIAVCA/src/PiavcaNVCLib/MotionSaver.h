@@ -51,13 +51,18 @@ namespace Piavca
 	{
 		KeyframeMotion *tmot;
 	public:
-		MotionSaver(Motion *mot):MotionFilter(mot)
+		MotionSaver(Motion *mot=NULL):MotionFilter(mot)
 		{
-			tmot = new KeyframeMotion(mot->isFacial());
+			if(mot)
+				tmot = new KeyframeMotion(mot->isFacial());
+			else
+				tmot == NULL;
 		};
 		MotionSaver(const MotionSaver &to):MotionFilter(to), tmot(to.tmot){};
 	
 		virtual Motion *clone(){return new MotionSaver(*this);};
+
+		void setMotion(Motion *mot);
 	
 	    //! calculates the values of the filter motion on and saves them to a KeyframeMotion
 	    PIAVCA_EXPORT virtual float  getFloatValueAtTimeInternal (int trackId, float time);

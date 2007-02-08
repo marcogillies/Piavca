@@ -280,7 +280,7 @@ void Core::loadMotion(tstring motionName, Motion *mot, bool temp, Motion *basePo
 	mot->setName(motionName);
 	//if(!temp) mot->Reference();
 	unloadMotion(motionName);
-	mot->ownedByCore = temp;
+	mot->ownedByCore = !temp;
 	motions.push_back(std::make_pair(motionName, mot));
 };
 
@@ -325,6 +325,7 @@ void Core::removeMotion(Motion *mot)
 		{
 			if((*i).second == mot)
 				i = motions.erase(i);
+			break;
 		}
 		delete mot;
 	}

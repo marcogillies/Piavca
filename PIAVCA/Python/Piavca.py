@@ -2607,217 +2607,6 @@ class Object(_object):
 Object_swigregister = _Piavca.Object_swigregister
 Object_swigregister(Object)
 
-class PyTimeCallback(TimeCallback):
-    """
-    see also: PyTimeCallback.h
-    """
-    __swig_setmethods__ = {}
-    for _s in [TimeCallback]: __swig_setmethods__.update(_s.__swig_setmethods__)
-    __setattr__ = lambda self, name, value: _swig_setattr(self, PyTimeCallback, name, value)
-    __swig_getmethods__ = {}
-    for _s in [TimeCallback]: __swig_getmethods__.update(_s.__swig_getmethods__)
-    __getattr__ = lambda self, name: _swig_getattr(self, PyTimeCallback, name)
-    __repr__ = _swig_repr
-    def __init__(self, *args): 
-        """
-        Piavca::PyTimeCallback::PyTimeCallback(PyObject *pyCallback, tstring name)
-                 
-                
-                 
-                
-        """
-        this = _Piavca.new_PyTimeCallback(*args)
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _Piavca.delete_PyTimeCallback
-    __del__ = lambda self : None;
-    def init(*args):
-        """
-        PIAVCA_EXPORT void PyTimeCallback::init(Core *core)
-                 
-        This is a setup method for the callback.         
-                 
-        It's called when the callback is registered         
-        """
-        return _Piavca.PyTimeCallback_init(*args)
-
-    def timeStep(*args):
-        """
-        PIAVCA_EXPORT void PyTimeCallback::timeStep(Core *core, float time)
-                 
-        implement this to make the callback do things         
-                 
-        It's called every frame with by the API         
-        """
-        return _Piavca.PyTimeCallback_timeStep(*args)
-
-PyTimeCallback_swigregister = _Piavca.PyTimeCallback_swigregister
-PyTimeCallback_swigregister(PyTimeCallback)
-
-class PyAvatarTimeCallback(AvatarTimeCallback):
-    """
-    see also: PyTimeCallback.h
-    """
-    __swig_setmethods__ = {}
-    for _s in [AvatarTimeCallback]: __swig_setmethods__.update(_s.__swig_setmethods__)
-    __setattr__ = lambda self, name, value: _swig_setattr(self, PyAvatarTimeCallback, name, value)
-    __swig_getmethods__ = {}
-    for _s in [AvatarTimeCallback]: __swig_getmethods__.update(_s.__swig_getmethods__)
-    __getattr__ = lambda self, name: _swig_getattr(self, PyAvatarTimeCallback, name)
-    __repr__ = _swig_repr
-    def __init__(self, *args): 
-        """
-        Piavca::PyAvatarTimeCallback::PyAvatarTimeCallback(PyObject *pyCallback, tstring name)
-                 
-                
-                 
-                
-        """
-        this = _Piavca.new_PyAvatarTimeCallback(*args)
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _Piavca.delete_PyAvatarTimeCallback
-    __del__ = lambda self : None;
-    def init(*args):
-        """
-        PIAVCA_EXPORT void PyAvatarTimeCallback::init(Avatar *avatar)
-                 
-        This is a setup method for the callback.         
-                 
-        It's called when the callback is registered         
-        """
-        return _Piavca.PyAvatarTimeCallback_init(*args)
-
-    def timeStep(*args):
-        """
-        PIAVCA_EXPORT void PyAvatarTimeCallback::timeStep(Avatar *av, float time)
-                 
-        implement this to make the callback do things         
-                 
-        It's called every frame with by the API which passes in the avatar to which the callback is attatched         
-        """
-        return _Piavca.PyAvatarTimeCallback_timeStep(*args)
-
-PyAvatarTimeCallback_swigregister = _Piavca.PyAvatarTimeCallback_swigregister
-PyAvatarTimeCallback_swigregister(PyAvatarTimeCallback)
-
-class PyMotion(Motion):
-    """
-    see also: PyMotion.h
-    """
-    __swig_setmethods__ = {}
-    for _s in [Motion]: __swig_setmethods__.update(_s.__swig_setmethods__)
-    __setattr__ = lambda self, name, value: _swig_setattr(self, PyMotion, name, value)
-    __swig_getmethods__ = {}
-    for _s in [Motion]: __swig_getmethods__.update(_s.__swig_getmethods__)
-    __getattr__ = lambda self, name: _swig_getattr(self, PyMotion, name)
-    __repr__ = _swig_repr
-    def __init__(self, *args): 
-        """
-        Piavca::PyMotion::PyMotion(const PyMotion &pm)
-                 
-                
-                 
-                
-        """
-        this = _Piavca.new_PyMotion(*args)
-        try: self.this.append(this)
-        except: self.this = this
-    def clone(*args):
-        """
-        Motion* Piavca::PyMotion::clone()
-                 
-        creates a copy of the motion         
-                 
-                
-        """
-        return _Piavca.PyMotion_clone(*args)
-
-    __swig_destroy__ = _Piavca.delete_PyMotion
-    __del__ = lambda self : None;
-    def setPyObj(*args):
-        """
-        void Piavca::PyMotion::setPyObj(PyObject *pObj)
-                 
-                
-                 
-                
-        """
-        return _Piavca.PyMotion_setPyObj(*args)
-
-    def getMotionPtr(*args):
-        """
-        Motion* Piavca::PyMotion::getMotionPtr()
-                 
-        returns a point to the motion object as swig won't recognise the python overload?         
-                 
-                
-        """
-        return _Piavca.PyMotion_getMotionPtr(*args)
-
-    def getMotionLength(*args):
-        """
-        float PyMotion::getMotionLength() const 
-                 
-        gets the time of the end of the motion         
-                 
-                
-        """
-        return _Piavca.PyMotion_getMotionLength(*args)
-
-    def isNull(*args):
-        """
-        bool PyMotion::isNull(int trackId) const 
-                 
-        given a track ID tests whether it actually points to anything or if its null         
-                 
-                
-        """
-        return _Piavca.PyMotion_isNull(*args)
-
-    def getTrackType(*args):
-        """
-        trackType PyMotion::getTrackType(int trackId) const 
-                 
-        get the type of the track corresponding to an ID         
-                 
-                
-        """
-        return _Piavca.PyMotion_getTrackType(*args)
-
-    def getFloatValueAtTimeInternal(*args):
-        """
-        float PyMotion::getFloatValueAtTimeInternal(int trackId, float time)
-                 
-        get the value of a track at a given time (only works for floats)         
-                 
-                
-        """
-        return _Piavca.PyMotion_getFloatValueAtTimeInternal(*args)
-
-    def getVecValueAtTimeInternal(*args):
-        """
-        Vec PyMotion::getVecValueAtTimeInternal(int trackId, float time)
-                 
-        get the value of a track at a given time (only works for Vecs)         
-                 
-                
-        """
-        return _Piavca.PyMotion_getVecValueAtTimeInternal(*args)
-
-    def getQuatValueAtTimeInternal(*args):
-        """
-        Quat PyMotion::getQuatValueAtTimeInternal(int trackId, float time)
-                 
-        get the value of a track at a given time (only works for Quats)         
-                 
-                
-        """
-        return _Piavca.PyMotion_getQuatValueAtTimeInternal(*args)
-
-PyMotion_swigregister = _Piavca.PyMotion_swigregister
-PyMotion_swigregister(PyMotion)
-
 
 def degToRad(*args):
   """
@@ -2859,6 +2648,10 @@ class MotionFilter(Motion):
                  
                 
         """
+        if self.__class__ == MotionFilter:
+            args = (None,) + args
+        else:
+            args = (self,) + args
         this = _Piavca.new_MotionFilter(*args)
         try: self.this.append(this)
         except: self.this = this
@@ -2964,6 +2757,7 @@ class MotionFilter(Motion):
         """
         return _Piavca.MotionFilter_setMotion(*args)
 
+    def getMotion(*args): return _Piavca.MotionFilter_getMotion(*args)
     def getMotionLength(*args):
         """
         float Piavca::MotionFilter::getMotionLength() const 
@@ -3044,6 +2838,10 @@ class MotionFilter(Motion):
         """
         return _Piavca.MotionFilter_getQuatValueAtTimeInternal(*args)
 
+    def __disown__(self):
+        self.this.disown()
+        _Piavca.disown_MotionFilter(self)
+        return weakref_proxy(self)
 MotionFilter_swigregister = _Piavca.MotionFilter_swigregister
 MotionFilter_swigregister(MotionFilter)
 cvar = _Piavca.cvar
@@ -3079,6 +2877,16 @@ class TwoMotionCombiner(Motion):
         except: self.this = this
     __swig_destroy__ = _Piavca.delete_TwoMotionCombiner
     __del__ = lambda self : None;
+    def clone(*args):
+        """
+        virtual Motion* Piavca::Motion::clone()=0
+                 
+        creates a copy of the motion         
+                 
+                
+        """
+        return _Piavca.TwoMotionCombiner_clone(*args)
+
     def printInfo(*args):
         """
         void TwoMotionCombiner::printInfo()
@@ -4093,6 +3901,8 @@ class RandomTimingsLoop(LoopMotion):
         """
         return _Piavca.RandomTimingsLoop_setTimingParams(*args)
 
+    def setMinTimeScale(*args): return _Piavca.RandomTimingsLoop_setMinTimeScale(*args)
+    def setMaxTimeScale(*args): return _Piavca.RandomTimingsLoop_setMaxTimeScale(*args)
     def reblend(*args):
         """
         virtual void Piavca::RandomTimingsLoop::reblend(float time)
@@ -4364,6 +4174,71 @@ class MotionAdder(TwoMotionCombiner):
 MotionAdder_swigregister = _Piavca.MotionAdder_swigregister
 MotionAdder_swigregister(MotionAdder)
 
+class Subtract(TwoMotionCombiner):
+    __swig_setmethods__ = {}
+    for _s in [TwoMotionCombiner]: __swig_setmethods__.update(_s.__swig_setmethods__)
+    __setattr__ = lambda self, name, value: _swig_setattr(self, Subtract, name, value)
+    __swig_getmethods__ = {}
+    for _s in [TwoMotionCombiner]: __swig_getmethods__.update(_s.__swig_getmethods__)
+    __getattr__ = lambda self, name: _swig_getattr(self, Subtract, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        if self.__class__ == Subtract:
+            args = (None,) + args
+        else:
+            args = (self,) + args
+        this = _Piavca.new_Subtract(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    def clone(*args):
+        """
+        virtual Motion* Piavca::Motion::clone()=0
+                 
+        creates a copy of the motion         
+                 
+                
+        """
+        return _Piavca.Subtract_clone(*args)
+
+    def getFloatValueAtTimeInternal(*args):
+        """
+        virtual float Piavca::Motion::getFloatValueAtTimeInternal(int trackId, float time)=0
+                 
+        internal version of getFloatValueAtTime, to be overridden         
+                 
+                
+        """
+        return _Piavca.Subtract_getFloatValueAtTimeInternal(*args)
+
+    def getVecValueAtTimeInternal(*args):
+        """
+        virtual Vec Piavca::Motion::getVecValueAtTimeInternal(int trackId, float time)=0
+                 
+        internal version of getVecValueAtTime, to be overridden         
+                 
+                
+        """
+        return _Piavca.Subtract_getVecValueAtTimeInternal(*args)
+
+    def getQuatValueAtTimeInternal(*args):
+        """
+        virtual Quat Piavca::Motion::getQuatValueAtTimeInternal(int trackId, float time)=0
+                 
+        internal version of getQuatValueAtTime, to be overridden         
+                 
+                
+        """
+        return _Piavca.Subtract_getQuatValueAtTimeInternal(*args)
+
+    __swig_destroy__ = _Piavca.delete_Subtract
+    __del__ = lambda self : None;
+    def __disown__(self):
+        self.this.disown()
+        _Piavca.disown_Subtract(self)
+        return weakref_proxy(self)
+Subtract_swigregister = _Piavca.Subtract_swigregister
+Subtract_swigregister(Subtract)
+
 class MotionMask(_object):
     """
     a set of masks specifying which joints should be played in a masked motion     
@@ -4491,114 +4366,176 @@ class MaskedMotion(MotionFilter):
 MaskedMotion_swigregister = _Piavca.MaskedMotion_swigregister
 MaskedMotion_swigregister(MaskedMotion)
 
-class MultiMotionLoop(RandomTimingsLoop):
-    """
-    A loop class with a set of different motions.     
-           
-    One of these motions is chosen each time around the loop. This is a base class for other loop classes. It is a template so that it can either be a sub class of a normal LoopMotion or a RandomTimingsLoop (or something else)      see also: MultiMotionLoop.h
-    """
+class MultiMotionCombiner(MotionFilter):
     __swig_setmethods__ = {}
-    for _s in [RandomTimingsLoop]: __swig_setmethods__.update(_s.__swig_setmethods__)
-    __setattr__ = lambda self, name, value: _swig_setattr(self, MultiMotionLoop, name, value)
+    for _s in [MotionFilter]: __swig_setmethods__.update(_s.__swig_setmethods__)
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MultiMotionCombiner, name, value)
     __swig_getmethods__ = {}
-    for _s in [RandomTimingsLoop]: __swig_getmethods__.update(_s.__swig_getmethods__)
-    __getattr__ = lambda self, name: _swig_getattr(self, MultiMotionLoop, name)
+    for _s in [MotionFilter]: __swig_getmethods__.update(_s.__swig_getmethods__)
+    __getattr__ = lambda self, name: _swig_getattr(self, MultiMotionCombiner, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
-        """
-        Piavca::MultiMotionLoop::MultiMotionLoop(const MultiMotionLoop &rl)
-                 
-                
-                 
-                
-        """
-        this = _Piavca.new_MultiMotionLoop(*args)
+        this = _Piavca.new_MultiMotionCombiner(*args)
         try: self.this.append(this)
         except: self.this = this
-    __swig_destroy__ = _Piavca.delete_MultiMotionLoop
+    __swig_destroy__ = _Piavca.delete_MultiMotionCombiner
     __del__ = lambda self : None;
     def clone(*args):
         """
-        virtual Motion* Piavca::MultiMotionLoop::clone()
+        virtual Motion* Piavca::Motion::clone()=0
                  
         creates a copy of the motion         
                  
                 
         """
-        return _Piavca.MultiMotionLoop_clone(*args)
+        return _Piavca.MultiMotionCombiner_clone(*args)
 
     def printInfo(*args):
         """
-        void Piavca::MultiMotionLoop::printInfo()
+        void Piavca::MotionFilter::printInfo()
                  
         prints out info about the motion heirarchy         
                  
                 
         """
-        return _Piavca.MultiMotionLoop_printInfo(*args)
+        return _Piavca.MultiMotionCombiner_printInfo(*args)
 
-    def addMotion(*args):
-        """
-        virtual void Piavca::MultiMotionLoop::addMotion(Motion *mot)
-                 
-                
-                 
-                
-        """
-        return _Piavca.MultiMotionLoop_addMotion(*args)
-
+    def addMotion(*args): return _Piavca.MultiMotionCombiner_addMotion(*args)
+    def getMotionIndex(*args): return _Piavca.MultiMotionCombiner_getMotionIndex(*args)
     def findSub(*args):
         """
-        virtual Motion* Piavca::MultiMotionLoop::findSub(tstring nm)
+        virtual Motion* Piavca::MotionFilter::findSub(tstring nm)
                  
         finds the first submotion with a given name         
                  
                 
         """
-        return _Piavca.MultiMotionLoop_findSub(*args)
+        return _Piavca.MultiMotionCombiner_findSub(*args)
 
     def findSubByType(*args):
         """
-        virtual Motion* Piavca::MultiMotionLoop::findSubByType(const type_info &ty)
+        virtual Motion* Piavca::MotionFilter::findSubByType(const type_info &ty)
                  
         finds the first submotion with a given type         
                  
                 
         """
-        return _Piavca.MultiMotionLoop_findSubByType(*args)
+        return _Piavca.MultiMotionCombiner_findSubByType(*args)
 
     def load(*args):
         """
-        virtual void Piavca::MultiMotionLoop::load(Avatar *av)
+        virtual void Piavca::MotionFilter::load(Avatar *av)
                  
         called when the motion is loaded into an avatar         
                  
                 
         """
-        return _Piavca.MultiMotionLoop_load(*args)
+        return _Piavca.MultiMotionCombiner_load(*args)
 
     def unload(*args):
         """
-        virtual void Piavca::MultiMotionLoop::unload()
+        virtual void Piavca::MotionFilter::unload()
                  
         called when the motion is unloaded from an avatar         
                  
                 
         """
-        return _Piavca.MultiMotionLoop_unload(*args)
+        return _Piavca.MultiMotionCombiner_unload(*args)
 
     def loaded(*args):
         """
-        virtual bool Piavca::MultiMotionLoop::loaded(Avatar *av)
+        virtual bool Piavca::MotionFilter::loaded()
                  
-                
+        checks if the motion has been loaded into an avatar         
                  
                 
         """
-        return _Piavca.MultiMotionLoop_loaded(*args)
+        return _Piavca.MultiMotionCombiner_loaded(*args)
 
-MultiMotionLoop_swigregister = _Piavca.MultiMotionLoop_swigregister
-MultiMotionLoop_swigregister(MultiMotionLoop)
+MultiMotionCombiner_swigregister = _Piavca.MultiMotionCombiner_swigregister
+MultiMotionCombiner_swigregister(MultiMotionCombiner)
+
+class ChoiceMotion(MultiMotionCombiner):
+    __swig_setmethods__ = {}
+    for _s in [MultiMotionCombiner]: __swig_setmethods__.update(_s.__swig_setmethods__)
+    __setattr__ = lambda self, name, value: _swig_setattr(self, ChoiceMotion, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MultiMotionCombiner]: __swig_getmethods__.update(_s.__swig_getmethods__)
+    __getattr__ = lambda self, name: _swig_getattr(self, ChoiceMotion, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _Piavca.new_ChoiceMotion(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _Piavca.delete_ChoiceMotion
+    __del__ = lambda self : None;
+    def clone(*args):
+        """
+        virtual Motion* Piavca::Motion::clone()=0
+                 
+        creates a copy of the motion         
+                 
+                
+        """
+        return _Piavca.ChoiceMotion_clone(*args)
+
+    def setCurrentChoice(*args): return _Piavca.ChoiceMotion_setCurrentChoice(*args)
+    def reset(*args):
+        """
+        void Piavca::MotionFilter::reset()
+                 
+        does any resetting needed         
+                 
+                
+        """
+        return _Piavca.ChoiceMotion_reset(*args)
+
+ChoiceMotion_swigregister = _Piavca.ChoiceMotion_swigregister
+ChoiceMotion_swigregister(ChoiceMotion)
+
+class RandomChoiceMotion(ChoiceMotion):
+    __swig_setmethods__ = {}
+    for _s in [ChoiceMotion]: __swig_setmethods__.update(_s.__swig_setmethods__)
+    __setattr__ = lambda self, name, value: _swig_setattr(self, RandomChoiceMotion, name, value)
+    __swig_getmethods__ = {}
+    for _s in [ChoiceMotion]: __swig_getmethods__.update(_s.__swig_getmethods__)
+    __getattr__ = lambda self, name: _swig_getattr(self, RandomChoiceMotion, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _Piavca.new_RandomChoiceMotion(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _Piavca.delete_RandomChoiceMotion
+    __del__ = lambda self : None;
+    def clone(*args):
+        """
+        virtual Motion* Piavca::Motion::clone()=0
+                 
+        creates a copy of the motion         
+                 
+                
+        """
+        return _Piavca.RandomChoiceMotion_clone(*args)
+
+    __swig_getmethods__["convertTo"] = lambda x: _Piavca.RandomChoiceMotion_convertTo
+    if _newclass:convertTo = staticmethod(_Piavca.RandomChoiceMotion_convertTo)
+    def addMotion(*args): return _Piavca.RandomChoiceMotion_addMotion(*args)
+    def setProbability(*args): return _Piavca.RandomChoiceMotion_setProbability(*args)
+    def setMotionProb(*args): return _Piavca.RandomChoiceMotion_setMotionProb(*args)
+    def shift(*args): return _Piavca.RandomChoiceMotion_shift(*args)
+    def reset(*args):
+        """
+        void Piavca::MotionFilter::reset()
+                 
+        does any resetting needed         
+                 
+                
+        """
+        return _Piavca.RandomChoiceMotion_reset(*args)
+
+RandomChoiceMotion_swigregister = _Piavca.RandomChoiceMotion_swigregister
+RandomChoiceMotion_swigregister(RandomChoiceMotion)
+RandomChoiceMotion_convertTo = _Piavca.RandomChoiceMotion_convertTo
 
 class ChoiceLoopMotion(RandomTimingsLoop):
     """
@@ -4730,6 +4667,7 @@ class RandomLoopMotion(RandomTimingsLoop):
         """
         return _Piavca.RandomLoopMotion_setProbability(*args)
 
+    def setMotionProb(*args): return _Piavca.RandomLoopMotion_setMotionProb(*args)
     def shift(*args): return _Piavca.RandomLoopMotion_shift(*args)
     def __disown__(self):
         self.this.disown()
@@ -4747,6 +4685,83 @@ def RandomLoopMotion_convertTo(*args):
             
     """
   return _Piavca.RandomLoopMotion_convertTo(*args)
+
+class RandomBlend(MultiMotionCombiner):
+    __swig_setmethods__ = {}
+    for _s in [MultiMotionCombiner]: __swig_setmethods__.update(_s.__swig_setmethods__)
+    __setattr__ = lambda self, name, value: _swig_setattr(self, RandomBlend, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MultiMotionCombiner]: __swig_getmethods__.update(_s.__swig_getmethods__)
+    __getattr__ = lambda self, name: _swig_getattr(self, RandomBlend, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _Piavca.new_RandomBlend(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _Piavca.delete_RandomBlend
+    __del__ = lambda self : None;
+    def clone(*args):
+        """
+        virtual Motion* Piavca::Motion::clone()=0
+                 
+        creates a copy of the motion         
+                 
+                
+        """
+        return _Piavca.RandomBlend_clone(*args)
+
+    def addMotion(*args): return _Piavca.RandomBlend_addMotion(*args)
+    def shift(*args): return _Piavca.RandomBlend_shift(*args)
+    def reset(*args):
+        """
+        void Piavca::MotionFilter::reset()
+                 
+        does any resetting needed         
+                 
+                
+        """
+        return _Piavca.RandomBlend_reset(*args)
+
+RandomBlend_swigregister = _Piavca.RandomBlend_swigregister
+RandomBlend_swigregister(RandomBlend)
+
+class RandomAdd(MultiMotionCombiner):
+    __swig_setmethods__ = {}
+    for _s in [MultiMotionCombiner]: __swig_setmethods__.update(_s.__swig_setmethods__)
+    __setattr__ = lambda self, name, value: _swig_setattr(self, RandomAdd, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MultiMotionCombiner]: __swig_getmethods__.update(_s.__swig_getmethods__)
+    __getattr__ = lambda self, name: _swig_getattr(self, RandomAdd, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _Piavca.new_RandomAdd(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _Piavca.delete_RandomAdd
+    __del__ = lambda self : None;
+    def clone(*args):
+        """
+        virtual Motion* Piavca::Motion::clone()=0
+                 
+        creates a copy of the motion         
+                 
+                
+        """
+        return _Piavca.RandomAdd_clone(*args)
+
+    def shift(*args): return _Piavca.RandomAdd_shift(*args)
+    def reset(*args):
+        """
+        void Piavca::MotionFilter::reset()
+                 
+        does any resetting needed         
+                 
+                
+        """
+        return _Piavca.RandomAdd_reset(*args)
+
+RandomAdd_swigregister = _Piavca.RandomAdd_swigregister
+RandomAdd_swigregister(RandomAdd)
 
 class RandomBlendLoop(RandomTimingsLoop):
     """
@@ -5786,6 +5801,16 @@ class MotionSaver(MotionFilter):
                 
         """
         return _Piavca.MotionSaver_clone(*args)
+
+    def setMotion(*args):
+        """
+        void Piavca::MotionFilter::setMotion(Motion *mot)
+                 
+                
+                 
+                
+        """
+        return _Piavca.MotionSaver_setMotion(*args)
 
     def getFloatValueAtTimeInternal(*args):
         """

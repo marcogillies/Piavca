@@ -411,6 +411,10 @@ void AvatarMotionQueue::enqueueRandomMotions(int num)
 			dynamic_cast<SelfBlend *>(temp_adder_child->getMotion2())->setMotion(new ZeroMotion(temp_adder_child->isFacial()));
 			  
 
+			
+			//temp_adder_child->getMotion2()->reset();
+			//dynamic_cast<SelfBlend *>(temp_adder_child->getMotion2())->setMotion(new ZeroMotion(temp_adder_child->isFacial()));
+			  
 			//removeList.push_back(temp_adder_parent);
 			//temp_adder_parent->setMotion1(temp_adder_child->getMotion1());
 		  }

@@ -40,6 +40,13 @@
 
 using namespace Piavca;
 
+void MotionSaver::setMotion(Motion *mot)
+{
+	MotionFilter::setMotion(mot);
+	if (mot)
+		tmot = new KeyframeMotion(mot->isFacial());
+}
+
 PIAVCA_EXPORT float  MotionSaver::getFloatValueAtTimeInternal (int trackId, float time)
 {
 	if(!filterMot)

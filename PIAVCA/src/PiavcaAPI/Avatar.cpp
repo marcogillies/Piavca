@@ -145,7 +145,8 @@ void Avatar::loadMotion				(Motion *motion)
 	// disposing the old one in case they are the same
 	if(motion)
 	{
-		if(motion->loaded())motion = motion->clone();
+		if(motion->loaded())
+			motion = motion->clone();
 		motion->Reference();
 	}
 	if(mot) 

@@ -9,6 +9,9 @@ print sys.path
 import Piavca
 from ScriptEngine import ScriptEngine
 
+
+import XMLMotionFile
+
 import wx
 import thread
 

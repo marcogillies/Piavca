@@ -644,6 +644,45 @@ template<> void MotionParserTyped<MotionAdder>::editMotionInternal(MotionAdder *
 };
 
 
+template<> Piavca::Motion *MotionParserTyped<Subtract>::parseMotion(istringstream &is, std::string currentWord, float scaleFactor)
+{
+	MotionParser *mp = NULL;
+	Piavca::Motion *m1 = MotionParser::parseMotion(is, currentWord, scaleFactor, &mp);
+	if(Piavca::Core::getCore()->errorsPresent()) return NULL;
+	Piavca::Motion *m2 = MotionParser::parseMotion(is, currentWord, scaleFactor, &mp);
+	if(Piavca::Core::getCore()->errorsPresent()) return NULL;
+	return new Subtract(m1, m2);
+};
+
+template<> void MotionParserTyped<Subtract>::editMotionInternal(Subtract *mot, istringstream &is)
+{
+	string currentWord;
+	while(is >> currentWord)
+	{
+		if(currentWord == "mot1")
+		{
+			float scaleFactor = 1.0;
+			MotionParser *mp = NULL;
+			Piavca::Motion *m1 = MotionParser::parseMotion(is, "", scaleFactor, &mp);
+			if(Piavca::Core::getCore()->errorsPresent()) return;
+			mot->setMotion1(m1);
+			continue;
+		}
+		if(currentWord == "mot2")
+		{
+			float scaleFactor = 1.0;
+			MotionParser *mp = NULL;
+			Piavca::Motion *m2 = MotionParser::parseMotion(is, "", scaleFactor, &mp);
+			if(Piavca::Core::getCore()->errorsPresent()) return;
+			mot->setMotion2(m2);
+			continue;
+		}
+		Piavca::Error(_T("unknown option ") + StringToTString(currentWord));
+		return;
+	}
+};
+
+
 template<> Piavca::Motion *MotionParserTyped<MaskedMotion>::parseMotion(istringstream &is, std::string currentWord, float scaleFactor)
 {
 	    MotionMask mask;
@@ -2569,6 +2608,7 @@ void MotionParser::setUpMotionCommands()
 
 	addMotionCommand(_T("blend"), new MotionParserTyped<BlendBetween>());
 	addMotionCommand(_T("add"), new MotionParserTyped<MotionAdder>());
+	addMotionCommand(_T("subtract"), new MotionParserTyped<MotionAdder>());
 	addMotionCommand(_T("mask"), new MotionParserTyped<MaskedMotion>());
 
 	addMotionCommand(_T("look_at"), new MotionParserTyped<LookAtMotion>());

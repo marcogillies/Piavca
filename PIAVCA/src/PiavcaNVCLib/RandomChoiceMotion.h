@@ -110,8 +110,22 @@ public:
 		}
 	}
 
+	void setMotionProb(int index, float prob)
+	{
+		setProbability(index, prob);
+	}
+
+	void setMotionProb(tstring motName, float prob)
+	{
+		int index = getMotionIndex(motName);
+		if (index >= 0)
+			setProbability(index, prob);
+	}
+
 	virtual void shift()
 	{
+		if (mots.size() <= 0)
+			return;
 		vector<float>::size_type i;
 		do
 		{

@@ -83,6 +83,16 @@ public:
 		maxScale = maxTimeScale;
 	}
 
+	void setMinTimeScale(float minTimeScale)
+	{
+		minScale = minTimeScale;
+	}
+
+	void setMaxTimeScale(float maxTimeScale)
+	{
+		maxScale = maxTimeScale;
+	}
+
 	//! This is called each time around the loop
 	virtual void reblend(float time)
 	{
