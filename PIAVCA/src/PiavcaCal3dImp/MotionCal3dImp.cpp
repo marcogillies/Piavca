@@ -22,6 +22,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "PiavcaAPI/PiavcaCore.h"
 #include "PiavcaAPI/PiavcaError.h"
 
+#include "cal3d/coretrack.h"
+#include "cal3d/corekeyframe.h"
+
 
 using namespace Piavca;
 

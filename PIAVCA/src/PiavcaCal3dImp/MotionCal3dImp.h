@@ -29,12 +29,16 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 #include <vector>
 
+#ifndef CAL_REF_PTR_H
+typedef CalCoreAnimation *CalCoreAnimationPtr;
+#endif
+
 namespace Piavca
 {
 
 class PIAVCA_DECL MotionCal3DImp : public MotionImp
 {
-	CalCoreAnimation *cal3DAnim;
+	CalCoreAnimationPtr cal3DAnim;
 	CalCoreSkeleton *cal3DSkel;
 	std::vector<int> tracksMap;
 public:

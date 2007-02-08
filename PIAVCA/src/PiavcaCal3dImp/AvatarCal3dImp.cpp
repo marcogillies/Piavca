@@ -37,6 +37,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "MotionCal3dImp.h"
 
 
+#ifndef CAL_REF_PTR_H
+typedef CalCoreMesh *CalCoreMeshPtr;
+#define get_pointer(x) (x)
+#endif
+
+
 #ifdef _WIN32
 #include <windows.h>
 #endif
@@ -204,13 +210,13 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 		else if(strKey == "morphtarget")
 		{
 			std::cout << "Loading mesh as morph target '" << strData << "'..." << std::endl;
-			CalCoreMesh *pCoreMesh = CalLoader::loadCoreMesh(strPath + strData);
+			CalCoreMeshPtr pCoreMesh = CalLoader::loadCoreMesh(strPath + strData);
 			if(pCoreMesh == 0 || lastMeshId < 0) 
 			{
 				CalError::printLastError();
 				Piavca::Error(_T("Error loading morph targets"));
 			}
-			int morphtargetId = cal_core_model->getCoreMesh(lastMeshId)->addAsMorphTarget(pCoreMesh);
+			int morphtargetId = cal_core_model->getCoreMesh(lastMeshId)->addAsMorphTarget(get_pointer(pCoreMesh));
 			if(morphtargetId < 0) 
 			{
 				CalError::printLastError();
