@@ -228,6 +228,14 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 			pos = strData.find_first_of(".", pos);
 			std::string strName = strData.substr(0, pos);
 			int expressionId = Piavca::Core::getCore()->getExpressionId(StringToTString(strName));
+			if(expressionId < 0)
+			{
+				StringVector exprNames;
+				exprNames.push_back(StringToTString(strName));
+				std::cout << "Adding Joint "<< strName << std::endl;
+				Piavca::Core::getCore()->addExpressionNameSet(exprNames);
+				expressionId = Piavca::Core::getCore()->getExpressionId(StringToTString(strName));
+			}
 			expressions[expressionId].name = StringToTString(strName);
 			expressions[expressionId].meshId = lastMeshId;
 			expressions[expressionId].morphtargetId = morphtargetId;
