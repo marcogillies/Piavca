@@ -40,7 +40,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\;$(CAL3DDIR)\src;..\..\..\cal3d-0.10.0\src\"
+				AdditionalIncludeDirectories="..\;$(CAL3DDIR)\src;..\..\..\cal3d-0.11.0\src\;..\..\..\cal3d-0.10.0\src\"
 				PreprocessorDefinitions="WIN32;_LIB"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -64,7 +64,7 @@
 				Name="VCLibrarianTool"
 				AdditionalDependencies="cal3d.lib"
 				OutputFile="$(OutDir)/PiavcaCal3DImp.lib"
-				AdditionalLibraryDirectories="$(CAL3DDIR)\bin\release;..\..\..\cal3d-0.10.0\bin\Release"
+				AdditionalLibraryDirectories="$(CAL3DDIR)\bin\release;..\..\..\cal3d-0.11.0\bin\Release;..\..\..\cal3d-0.10.0\bin\Release"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -107,7 +107,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\;$(CAL3DDIR)\src;..\..\..\cal3d-0.10.0\src\"
+				AdditionalIncludeDirectories="..\;$(CAL3DDIR)\src;..\..\..\cal3d-0.11.0\src\;..\..\..\cal3d-0.10.0\src\"
 				PreprocessorDefinitions="WIN32;NDEBUG;_LIB;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_DEPRECATE"
 				RuntimeLibrary="2"
 				RuntimeTypeInfo="true"
@@ -130,7 +130,7 @@
 				Name="VCLibrarianTool"
 				AdditionalDependencies="cal3d.lib"
 				OutputFile="$(OutDir)/PiavcaCal3DImp.lib"
-				AdditionalLibraryDirectories="$(CAL3DDIR)\bin\release;..\..\..\cal3d-0.10.0\bin\Release"
+				AdditionalLibraryDirectories="$(CAL3DDIR)\bin\release;..\..\..\cal3d-0.11.0\bin\Release;..\..\..\cal3d-0.10.0\bin\Release"
 			/>
 			<Tool
 				Name="VCALinkTool"
