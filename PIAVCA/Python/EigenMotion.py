@@ -21,7 +21,7 @@ class EigenMotion(Piavca.MotionFilter):
 		#return self
 		newMot = EigenMotion()
 		newMot.filename = self.filename
-		newMot.analysis = self.analysis
+		newMot.analysis = self.analysis.clone()
 		newMot.input_motions = self.input_motions
 		newMot.frames_per_second = self.frames_per_second
 		newMot.num_pcs = self.num_pcs

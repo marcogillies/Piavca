@@ -30,7 +30,22 @@ class EigenAnalysis :
 		self.jointmap = []
 		# the cluster means for vector quantization
 		self.quants = None
-		self.precentageToKeep = 0.8#0.99
+		self.precentageToKeep = 0.99
+		
+	def clone(self):
+		newEA = EigenAnalysis()
+		newEA.num_pcs = self.num_pcs
+		newEA.expmaps = list(self.expmaps)
+		newEA.joint_types = list(self.joint_types)
+		newEA.jointmap = list(self.jointmap)
+		if self.quants != None:
+			newEA.quants = list(self.quants)
+		newEA.precentageToKeep = self.precentageToKeep
+		newEA.pcs = scipy.array(self.pcs)
+		newEA.weights = scipy.zeros((newEA.num_pcs,),'d')
+		newEA.generateMotion()
+		return newEA
+		
 
 	# this has to be calculated by the sub types
 	def get_matrix (self, data):
