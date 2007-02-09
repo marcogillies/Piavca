@@ -422,6 +422,7 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
   
   platformSpecific_timeStep(Piavca::Core::getCore()->getTime());
   
+  renderer = cal_model->getRenderer();
   renderer = new CalRenderer(cal_model->getRenderer());
   for (buffer = 0; buffer < numBuffers; buffer++)
 	{
@@ -433,7 +434,10 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 		{
 		  renderer->selectMeshSubmesh( i, j );
 		  // get the texture coordinates of the submesh
-		  mTextureCoordCounts[buffer][i][j] = renderer->getTextureCoordinates(0, mTextureCoords[buffer][i][j] ) ;
+		  if(renderer->getMapCount() > 0)
+		  {
+				mTextureCoordCounts[buffer][i][j] = renderer->getTextureCoordinates(0, mTextureCoords[buffer][i][j] ) ;
+		  };
 		
 		  // get the faces of the submesh
 		  mFaceCounts[buffer][i][j] = renderer->getFaces( mFaces[buffer][i][j] ) ;
