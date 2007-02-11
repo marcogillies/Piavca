@@ -152,6 +152,11 @@ public:
 	{
 		return !(m_avatar == NULL);
 	}
+	//! gets the avatar that the motion is loaded into
+	virtual Avatar *getAvatar()
+	{
+		return m_avatar;
+	}
 	//! sets the start time of the motion. Called when its loaded into an avatar.
 	virtual void  setStartTime(float t)
 	{

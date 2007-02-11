@@ -130,6 +130,14 @@ namespace Piavca
 			else
 				return Motion::loaded();
 		}
+		
+		//! gets the avatar that the motion is loaded into
+		virtual Avatar *getAvatar()
+		{
+			Avatar *av = Motion::getAvatar();
+			if(!av && filterMot)av = filterMot->getAvatar();
+			return av;
+		}
 
 		virtual void setStartTime(float time)
 		{

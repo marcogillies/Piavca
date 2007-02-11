@@ -163,6 +163,20 @@ public:
 			retval |= mots[i]->loaded();
 		return retval;
 	}
+		
+	//! gets the avatar that the motion is loaded into
+	virtual Avatar *getAvatar()
+	{
+		Avatar *av = Motion::getAvatar();
+		if (av)
+			return av;
+		for(MotionVec::size_type i = 0; i < mots.size(); i++)
+		{
+			av = mots[i]->getAvatar();
+			if (av) return av;
+		}
+		return NULL;
+	}
 
 	
 };

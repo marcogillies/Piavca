@@ -1010,6 +1010,7 @@ class Motion(_object):
         """
         return _Piavca.Motion_loaded(*args)
 
+    def getAvatar(*args): return _Piavca.Motion_getAvatar(*args)
     def setStartTime(*args):
         """
         virtual void Piavca::Motion::setStartTime(float t)
@@ -2821,6 +2822,7 @@ class MotionFilter(Motion):
         """
         return _Piavca.MotionFilter_loaded(*args)
 
+    def getAvatar(*args): return _Piavca.MotionFilter_getAvatar(*args)
     def setStartTime(*args):
         """
         virtual void Piavca::MotionFilter::setStartTime(float time)
@@ -3041,6 +3043,7 @@ class TwoMotionCombiner(Motion):
         """
         return _Piavca.TwoMotionCombiner_loaded(*args)
 
+    def getAvatar(*args): return _Piavca.TwoMotionCombiner_getAvatar(*args)
     def setStartTime(*args):
         """
         void TwoMotionCombiner::setStartTime(float time)
@@ -4546,6 +4549,7 @@ class MultiMotionCombiner(MotionFilter):
         """
         return _Piavca.MultiMotionCombiner_loaded(*args)
 
+    def getAvatar(*args): return _Piavca.MultiMotionCombiner_getAvatar(*args)
 MultiMotionCombiner_swigregister = _Piavca.MultiMotionCombiner_swigregister
 MultiMotionCombiner_swigregister(MultiMotionCombiner)
 

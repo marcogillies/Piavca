@@ -127,6 +127,15 @@ bool TwoMotionCombiner::loaded()
 	return retval;
 }
 
+//! gets the avatar that the motion is loaded into
+Avatar *TwoMotionCombiner::getAvatar()
+{
+	Avatar *av = Motion::getAvatar();
+	if(!av && mot1)av = mot1->getAvatar();
+	if(!av && mot2)av = mot2->getAvatar();
+	return av;
+}
+
 void TwoMotionCombiner::setStartTime(float time)
 {
 	Motion::setStartTime(time);

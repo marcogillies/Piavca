@@ -3391,6 +3391,46 @@ void SwigDirector_Motion::load(Piavca::Avatar *av) {
 }
 
 
+Piavca::Avatar *SwigDirector_Motion::getAvatar() {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::Motion::getAvatar();
+  }
+  Piavca::Avatar *swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Motion.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 2;
+  const char * const swig_method_name = "getAvatar";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "getAvatar", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Avatar,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Avatar *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Avatar * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Avatar *) swig_c_result;
+}
+
+
 void SwigDirector_Motion::setStartTime(float t) {
   if (swig_get_up()) {
     Piavca::Motion::setStartTime(t);
@@ -3402,7 +3442,7 @@ void SwigDirector_Motion::setStartTime(float t) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Motion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 2;
+  const size_t swig_method_index = 3;
   const char * const swig_method_name = "setStartTime";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -3433,7 +3473,7 @@ void SwigDirector_Motion::preFrame(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Motion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 3;
+  const size_t swig_method_index = 4;
   const char * const swig_method_name = "preFrame";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -3466,7 +3506,7 @@ float SwigDirector_Motion::getFloatValueAtTimeInternal(int trackId, float time) 
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Motion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 4;
+  const size_t swig_method_index = 5;
   const char * const swig_method_name = "getFloatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -3509,7 +3549,7 @@ Piavca::Vec SwigDirector_Motion::getVecValueAtTimeInternal(int trackId, float ti
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Motion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 5;
+  const size_t swig_method_index = 6;
   const char * const swig_method_name = "getVecValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -3552,7 +3592,7 @@ Piavca::Quat SwigDirector_Motion::getQuatValueAtTimeInternal(int trackId, float 
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Motion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 6;
+  const size_t swig_method_index = 7;
   const char * const swig_method_name = "getQuatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -3588,7 +3628,7 @@ bool SwigDirector_Motion::isRandomAccess() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Motion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 7;
+  const size_t swig_method_index = 8;
   const char * const swig_method_name = "isRandomAccess";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -3624,7 +3664,7 @@ void SwigDirector_Motion::reset() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Motion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 8;
+  const size_t swig_method_index = 9;
   const char * const swig_method_name = "reset";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -3657,7 +3697,7 @@ Piavca::Motion *SwigDirector_Motion::clone() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Motion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 9;
+  const size_t swig_method_index = 10;
   const char * const swig_method_name = "clone";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -3696,7 +3736,7 @@ bool SwigDirector_Motion::isFacial() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Motion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 10;
+  const size_t swig_method_index = 11;
   const char * const swig_method_name = "isFacial";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -3732,7 +3772,7 @@ float SwigDirector_Motion::getMotionLength() const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Motion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 11;
+  const size_t swig_method_index = 12;
   const char * const swig_method_name = "getMotionLength";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -3768,7 +3808,7 @@ bool SwigDirector_Motion::loaded() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Motion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 12;
+  const size_t swig_method_index = 13;
   const char * const swig_method_name = "loaded";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -3804,7 +3844,7 @@ void SwigDirector_Motion::unload() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Motion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 13;
+  const size_t swig_method_index = 14;
   const char * const swig_method_name = "unload";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -3833,7 +3873,7 @@ void SwigDirector_Motion::printInfo() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Motion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 14;
+  const size_t swig_method_index = 15;
   const char * const swig_method_name = "printInfo";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -3868,7 +3908,7 @@ Piavca::Motion *SwigDirector_Motion::findSubByType(type_info const &ty) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Motion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 15;
+  const size_t swig_method_index = 16;
   const char * const swig_method_name = "findSubByType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -3906,7 +3946,7 @@ bool SwigDirector_Motion::isNull(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Motion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 16;
+  const size_t swig_method_index = 17;
   const char * const swig_method_name = "isNull";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -3944,7 +3984,7 @@ Piavca::trackType SwigDirector_Motion::getTrackType(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Motion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 17;
+  const size_t swig_method_index = 18;
   const char * const swig_method_name = "getTrackType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -4079,6 +4119,46 @@ void SwigDirector_KeyframeMotion::load(Piavca::Avatar *av) {
 }
 
 
+Piavca::Avatar *SwigDirector_KeyframeMotion::getAvatar() {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::Motion::getAvatar();
+  }
+  Piavca::Avatar *swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call KeyframeMotion.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 2;
+  const char * const swig_method_name = "getAvatar";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "getAvatar", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Avatar,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Avatar *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Avatar * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Avatar *) swig_c_result;
+}
+
+
 void SwigDirector_KeyframeMotion::setStartTime(float t) {
   if (swig_get_up()) {
     Piavca::Motion::setStartTime(t);
@@ -4090,7 +4170,7 @@ void SwigDirector_KeyframeMotion::setStartTime(float t) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call KeyframeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 2;
+  const size_t swig_method_index = 3;
   const char * const swig_method_name = "setStartTime";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -4121,7 +4201,7 @@ void SwigDirector_KeyframeMotion::preFrame(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call KeyframeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 3;
+  const size_t swig_method_index = 4;
   const char * const swig_method_name = "preFrame";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -4154,7 +4234,7 @@ float SwigDirector_KeyframeMotion::getFloatValueAtTimeInternal(int trackId, floa
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call KeyframeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 4;
+  const size_t swig_method_index = 5;
   const char * const swig_method_name = "getFloatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -4197,7 +4277,7 @@ Piavca::Vec SwigDirector_KeyframeMotion::getVecValueAtTimeInternal(int trackId, 
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call KeyframeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 5;
+  const size_t swig_method_index = 6;
   const char * const swig_method_name = "getVecValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -4240,7 +4320,7 @@ Piavca::Quat SwigDirector_KeyframeMotion::getQuatValueAtTimeInternal(int trackId
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call KeyframeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 6;
+  const size_t swig_method_index = 7;
   const char * const swig_method_name = "getQuatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -4276,7 +4356,7 @@ bool SwigDirector_KeyframeMotion::isRandomAccess() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call KeyframeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 7;
+  const size_t swig_method_index = 8;
   const char * const swig_method_name = "isRandomAccess";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -4312,7 +4392,7 @@ void SwigDirector_KeyframeMotion::reset() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call KeyframeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 8;
+  const size_t swig_method_index = 9;
   const char * const swig_method_name = "reset";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -4348,7 +4428,7 @@ Piavca::Motion *SwigDirector_KeyframeMotion::clone() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call KeyframeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 9;
+  const size_t swig_method_index = 10;
   const char * const swig_method_name = "clone";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -4384,7 +4464,7 @@ float SwigDirector_KeyframeMotion::getMotionLength() const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call KeyframeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 10;
+  const size_t swig_method_index = 11;
   const char * const swig_method_name = "getMotionLength";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -4420,7 +4500,7 @@ bool SwigDirector_KeyframeMotion::isFacial() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call KeyframeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 11;
+  const size_t swig_method_index = 12;
   const char * const swig_method_name = "isFacial";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -4456,7 +4536,7 @@ bool SwigDirector_KeyframeMotion::loaded() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call KeyframeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 12;
+  const size_t swig_method_index = 13;
   const char * const swig_method_name = "loaded";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -4492,7 +4572,7 @@ void SwigDirector_KeyframeMotion::unload() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call KeyframeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 13;
+  const size_t swig_method_index = 14;
   const char * const swig_method_name = "unload";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -4521,7 +4601,7 @@ void SwigDirector_KeyframeMotion::printInfo() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call KeyframeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 14;
+  const size_t swig_method_index = 15;
   const char * const swig_method_name = "printInfo";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -4556,7 +4636,7 @@ Piavca::Motion *SwigDirector_KeyframeMotion::findSubByType(type_info const &ty) 
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call KeyframeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 15;
+  const size_t swig_method_index = 16;
   const char * const swig_method_name = "findSubByType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -4594,7 +4674,7 @@ bool SwigDirector_KeyframeMotion::isNull(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call KeyframeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 16;
+  const size_t swig_method_index = 17;
   const char * const swig_method_name = "isNull";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -4632,7 +4712,7 @@ Piavca::trackType SwigDirector_KeyframeMotion::getTrackType(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call KeyframeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 17;
+  const size_t swig_method_index = 18;
   const char * const swig_method_name = "getTrackType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -4753,6 +4833,46 @@ void SwigDirector_MotionFilter::load(Piavca::Avatar *av) {
 }
 
 
+Piavca::Avatar *SwigDirector_MotionFilter::getAvatar() {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::MotionFilter::getAvatar();
+  }
+  Piavca::Avatar *swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionFilter.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 2;
+  const char * const swig_method_name = "getAvatar";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "getAvatar", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Avatar,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Avatar *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Avatar * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Avatar *) swig_c_result;
+}
+
+
 void SwigDirector_MotionFilter::preFrame(float time) {
   if (swig_get_up()) {
     Piavca::Motion::preFrame(time);
@@ -4764,7 +4884,7 @@ void SwigDirector_MotionFilter::preFrame(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionFilter.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 2;
+  const size_t swig_method_index = 3;
   const char * const swig_method_name = "preFrame";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -4795,7 +4915,7 @@ void SwigDirector_MotionFilter::setStartTime(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionFilter.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 3;
+  const size_t swig_method_index = 4;
   const char * const swig_method_name = "setStartTime";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -4828,7 +4948,7 @@ float SwigDirector_MotionFilter::getFloatValueAtTimeInternal(int trackId, float 
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionFilter.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 4;
+  const size_t swig_method_index = 5;
   const char * const swig_method_name = "getFloatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -4871,7 +4991,7 @@ Piavca::Vec SwigDirector_MotionFilter::getVecValueAtTimeInternal(int trackId, fl
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionFilter.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 5;
+  const size_t swig_method_index = 6;
   const char * const swig_method_name = "getVecValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -4914,7 +5034,7 @@ Piavca::Quat SwigDirector_MotionFilter::getQuatValueAtTimeInternal(int trackId, 
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionFilter.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 6;
+  const size_t swig_method_index = 7;
   const char * const swig_method_name = "getQuatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -4950,7 +5070,7 @@ bool SwigDirector_MotionFilter::isRandomAccess() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionFilter.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 7;
+  const size_t swig_method_index = 8;
   const char * const swig_method_name = "isRandomAccess";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -4993,7 +5113,7 @@ Piavca::Motion *SwigDirector_MotionFilter::clone() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionFilter.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 8;
+  const size_t swig_method_index = 9;
   const char * const swig_method_name = "clone";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -5029,7 +5149,7 @@ void SwigDirector_MotionFilter::reset() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionFilter.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 9;
+  const size_t swig_method_index = 10;
   const char * const swig_method_name = "reset";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -5058,7 +5178,7 @@ float SwigDirector_MotionFilter::getMotionLength() const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionFilter.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 10;
+  const size_t swig_method_index = 11;
   const char * const swig_method_name = "getMotionLength";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -5094,7 +5214,7 @@ bool SwigDirector_MotionFilter::isFacial() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionFilter.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 11;
+  const size_t swig_method_index = 12;
   const char * const swig_method_name = "isFacial";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -5130,7 +5250,7 @@ void SwigDirector_MotionFilter::unload() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionFilter.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 12;
+  const size_t swig_method_index = 13;
   const char * const swig_method_name = "unload";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -5159,7 +5279,7 @@ bool SwigDirector_MotionFilter::loaded() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionFilter.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 13;
+  const size_t swig_method_index = 14;
   const char * const swig_method_name = "loaded";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -5195,7 +5315,7 @@ void SwigDirector_MotionFilter::printInfo() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionFilter.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 14;
+  const size_t swig_method_index = 15;
   const char * const swig_method_name = "printInfo";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -5230,7 +5350,7 @@ Piavca::Motion *SwigDirector_MotionFilter::findSubByType(type_info const &ty) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionFilter.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 15;
+  const size_t swig_method_index = 16;
   const char * const swig_method_name = "findSubByType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -5268,7 +5388,7 @@ bool SwigDirector_MotionFilter::isNull(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionFilter.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 16;
+  const size_t swig_method_index = 17;
   const char * const swig_method_name = "isNull";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -5306,7 +5426,7 @@ Piavca::trackType SwigDirector_MotionFilter::getTrackType(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionFilter.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 17;
+  const size_t swig_method_index = 18;
   const char * const swig_method_name = "getTrackType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -5427,6 +5547,46 @@ void SwigDirector_TwoMotionCombiner::load(Piavca::Avatar *av) {
 }
 
 
+Piavca::Avatar *SwigDirector_TwoMotionCombiner::getAvatar() {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::TwoMotionCombiner::getAvatar();
+  }
+  Piavca::Avatar *swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TwoMotionCombiner.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 2;
+  const char * const swig_method_name = "getAvatar";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "getAvatar", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Avatar,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Avatar *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Avatar * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Avatar *) swig_c_result;
+}
+
+
 void SwigDirector_TwoMotionCombiner::preFrame(float time) {
   if (swig_get_up()) {
     Piavca::Motion::preFrame(time);
@@ -5438,7 +5598,7 @@ void SwigDirector_TwoMotionCombiner::preFrame(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TwoMotionCombiner.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 2;
+  const size_t swig_method_index = 3;
   const char * const swig_method_name = "preFrame";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -5471,7 +5631,7 @@ float SwigDirector_TwoMotionCombiner::getFloatValueAtTimeInternal(int trackId, f
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TwoMotionCombiner.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 3;
+  const size_t swig_method_index = 4;
   const char * const swig_method_name = "getFloatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -5514,7 +5674,7 @@ Piavca::Vec SwigDirector_TwoMotionCombiner::getVecValueAtTimeInternal(int trackI
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TwoMotionCombiner.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 4;
+  const size_t swig_method_index = 5;
   const char * const swig_method_name = "getVecValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -5557,7 +5717,7 @@ Piavca::Quat SwigDirector_TwoMotionCombiner::getQuatValueAtTimeInternal(int trac
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TwoMotionCombiner.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 5;
+  const size_t swig_method_index = 6;
   const char * const swig_method_name = "getQuatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -5595,7 +5755,7 @@ void SwigDirector_TwoMotionCombiner::setStartTime(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TwoMotionCombiner.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 6;
+  const size_t swig_method_index = 7;
   const char * const swig_method_name = "setStartTime";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -5624,7 +5784,7 @@ bool SwigDirector_TwoMotionCombiner::isRandomAccess() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TwoMotionCombiner.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 7;
+  const size_t swig_method_index = 8;
   const char * const swig_method_name = "isRandomAccess";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -5667,7 +5827,7 @@ Piavca::Motion *SwigDirector_TwoMotionCombiner::clone() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TwoMotionCombiner.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 8;
+  const size_t swig_method_index = 9;
   const char * const swig_method_name = "clone";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -5703,7 +5863,7 @@ void SwigDirector_TwoMotionCombiner::reset() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TwoMotionCombiner.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 9;
+  const size_t swig_method_index = 10;
   const char * const swig_method_name = "reset";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -5732,7 +5892,7 @@ float SwigDirector_TwoMotionCombiner::getMotionLength() const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TwoMotionCombiner.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 10;
+  const size_t swig_method_index = 11;
   const char * const swig_method_name = "getMotionLength";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -5768,7 +5928,7 @@ bool SwigDirector_TwoMotionCombiner::isFacial() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TwoMotionCombiner.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 11;
+  const size_t swig_method_index = 12;
   const char * const swig_method_name = "isFacial";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -5804,7 +5964,7 @@ void SwigDirector_TwoMotionCombiner::unload() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TwoMotionCombiner.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 12;
+  const size_t swig_method_index = 13;
   const char * const swig_method_name = "unload";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -5833,7 +5993,7 @@ bool SwigDirector_TwoMotionCombiner::loaded() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TwoMotionCombiner.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 13;
+  const size_t swig_method_index = 14;
   const char * const swig_method_name = "loaded";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -5869,7 +6029,7 @@ void SwigDirector_TwoMotionCombiner::printInfo() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TwoMotionCombiner.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 14;
+  const size_t swig_method_index = 15;
   const char * const swig_method_name = "printInfo";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -5904,7 +6064,7 @@ Piavca::Motion *SwigDirector_TwoMotionCombiner::findSubByType(type_info const &t
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TwoMotionCombiner.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 15;
+  const size_t swig_method_index = 16;
   const char * const swig_method_name = "findSubByType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -5942,7 +6102,7 @@ bool SwigDirector_TwoMotionCombiner::isNull(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TwoMotionCombiner.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 16;
+  const size_t swig_method_index = 17;
   const char * const swig_method_name = "isNull";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -5980,7 +6140,7 @@ Piavca::trackType SwigDirector_TwoMotionCombiner::getTrackType(int trackId) cons
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TwoMotionCombiner.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 17;
+  const size_t swig_method_index = 18;
   const char * const swig_method_name = "getTrackType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -6094,6 +6254,46 @@ void SwigDirector_ScaleMotion::load(Piavca::Avatar *av) {
 }
 
 
+Piavca::Avatar *SwigDirector_ScaleMotion::getAvatar() {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::MotionFilter::getAvatar();
+  }
+  Piavca::Avatar *swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotion.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 2;
+  const char * const swig_method_name = "getAvatar";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "getAvatar", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Avatar,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Avatar *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Avatar * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Avatar *) swig_c_result;
+}
+
+
 void SwigDirector_ScaleMotion::preFrame(float time) {
   if (swig_get_up()) {
     Piavca::Motion::preFrame(time);
@@ -6105,7 +6305,7 @@ void SwigDirector_ScaleMotion::preFrame(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 2;
+  const size_t swig_method_index = 3;
   const char * const swig_method_name = "preFrame";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -6136,7 +6336,7 @@ void SwigDirector_ScaleMotion::setStartTime(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 3;
+  const size_t swig_method_index = 4;
   const char * const swig_method_name = "setStartTime";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -6169,7 +6369,7 @@ float SwigDirector_ScaleMotion::getFloatValueAtTimeInternal(int trackId, float t
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 4;
+  const size_t swig_method_index = 5;
   const char * const swig_method_name = "getFloatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -6212,7 +6412,7 @@ Piavca::Vec SwigDirector_ScaleMotion::getVecValueAtTimeInternal(int trackId, flo
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 5;
+  const size_t swig_method_index = 6;
   const char * const swig_method_name = "getVecValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -6255,7 +6455,7 @@ Piavca::Quat SwigDirector_ScaleMotion::getQuatValueAtTimeInternal(int trackId, f
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 6;
+  const size_t swig_method_index = 7;
   const char * const swig_method_name = "getQuatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -6291,7 +6491,7 @@ bool SwigDirector_ScaleMotion::isRandomAccess() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 7;
+  const size_t swig_method_index = 8;
   const char * const swig_method_name = "isRandomAccess";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -6330,7 +6530,7 @@ void SwigDirector_ScaleMotion::reset() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 8;
+  const size_t swig_method_index = 9;
   const char * const swig_method_name = "reset";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -6363,7 +6563,7 @@ Piavca::Motion *SwigDirector_ScaleMotion::clone() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 9;
+  const size_t swig_method_index = 10;
   const char * const swig_method_name = "clone";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -6399,7 +6599,7 @@ float SwigDirector_ScaleMotion::getMotionLength() const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 10;
+  const size_t swig_method_index = 11;
   const char * const swig_method_name = "getMotionLength";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -6435,7 +6635,7 @@ bool SwigDirector_ScaleMotion::isFacial() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 11;
+  const size_t swig_method_index = 12;
   const char * const swig_method_name = "isFacial";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -6471,7 +6671,7 @@ void SwigDirector_ScaleMotion::unload() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 12;
+  const size_t swig_method_index = 13;
   const char * const swig_method_name = "unload";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -6500,7 +6700,7 @@ bool SwigDirector_ScaleMotion::loaded() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 13;
+  const size_t swig_method_index = 14;
   const char * const swig_method_name = "loaded";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -6536,7 +6736,7 @@ void SwigDirector_ScaleMotion::printInfo() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 14;
+  const size_t swig_method_index = 15;
   const char * const swig_method_name = "printInfo";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -6571,7 +6771,7 @@ Piavca::Motion *SwigDirector_ScaleMotion::findSubByType(type_info const &ty) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 15;
+  const size_t swig_method_index = 16;
   const char * const swig_method_name = "findSubByType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -6609,7 +6809,7 @@ bool SwigDirector_ScaleMotion::isNull(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 16;
+  const size_t swig_method_index = 17;
   const char * const swig_method_name = "isNull";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -6647,7 +6847,7 @@ Piavca::trackType SwigDirector_ScaleMotion::getTrackType(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 17;
+  const size_t swig_method_index = 18;
   const char * const swig_method_name = "getTrackType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -6761,6 +6961,46 @@ void SwigDirector_ScaleMotionSpeed::load(Piavca::Avatar *av) {
 }
 
 
+Piavca::Avatar *SwigDirector_ScaleMotionSpeed::getAvatar() {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::MotionFilter::getAvatar();
+  }
+  Piavca::Avatar *swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotionSpeed.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 2;
+  const char * const swig_method_name = "getAvatar";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "getAvatar", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Avatar,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Avatar *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Avatar * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Avatar *) swig_c_result;
+}
+
+
 void SwigDirector_ScaleMotionSpeed::preFrame(float time) {
   if (swig_get_up()) {
     Piavca::Motion::preFrame(time);
@@ -6772,7 +7012,7 @@ void SwigDirector_ScaleMotionSpeed::preFrame(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotionSpeed.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 2;
+  const size_t swig_method_index = 3;
   const char * const swig_method_name = "preFrame";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -6803,7 +7043,7 @@ void SwigDirector_ScaleMotionSpeed::setStartTime(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotionSpeed.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 3;
+  const size_t swig_method_index = 4;
   const char * const swig_method_name = "setStartTime";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -6836,7 +7076,7 @@ float SwigDirector_ScaleMotionSpeed::getFloatValueAtTimeInternal(int trackId, fl
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotionSpeed.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 4;
+  const size_t swig_method_index = 5;
   const char * const swig_method_name = "getFloatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -6879,7 +7119,7 @@ Piavca::Vec SwigDirector_ScaleMotionSpeed::getVecValueAtTimeInternal(int trackId
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotionSpeed.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 5;
+  const size_t swig_method_index = 6;
   const char * const swig_method_name = "getVecValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -6922,7 +7162,7 @@ Piavca::Quat SwigDirector_ScaleMotionSpeed::getQuatValueAtTimeInternal(int track
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotionSpeed.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 6;
+  const size_t swig_method_index = 7;
   const char * const swig_method_name = "getQuatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -6958,7 +7198,7 @@ bool SwigDirector_ScaleMotionSpeed::isRandomAccess() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotionSpeed.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 7;
+  const size_t swig_method_index = 8;
   const char * const swig_method_name = "isRandomAccess";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -6997,7 +7237,7 @@ void SwigDirector_ScaleMotionSpeed::reset() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotionSpeed.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 8;
+  const size_t swig_method_index = 9;
   const char * const swig_method_name = "reset";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -7030,7 +7270,7 @@ Piavca::Motion *SwigDirector_ScaleMotionSpeed::clone() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotionSpeed.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 9;
+  const size_t swig_method_index = 10;
   const char * const swig_method_name = "clone";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -7066,7 +7306,7 @@ bool SwigDirector_ScaleMotionSpeed::isFacial() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotionSpeed.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 10;
+  const size_t swig_method_index = 11;
   const char * const swig_method_name = "isFacial";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -7102,7 +7342,7 @@ float SwigDirector_ScaleMotionSpeed::getMotionLength() const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotionSpeed.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 11;
+  const size_t swig_method_index = 12;
   const char * const swig_method_name = "getMotionLength";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -7138,7 +7378,7 @@ void SwigDirector_ScaleMotionSpeed::unload() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotionSpeed.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 12;
+  const size_t swig_method_index = 13;
   const char * const swig_method_name = "unload";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -7167,7 +7407,7 @@ bool SwigDirector_ScaleMotionSpeed::loaded() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotionSpeed.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 13;
+  const size_t swig_method_index = 14;
   const char * const swig_method_name = "loaded";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -7203,7 +7443,7 @@ void SwigDirector_ScaleMotionSpeed::printInfo() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotionSpeed.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 14;
+  const size_t swig_method_index = 15;
   const char * const swig_method_name = "printInfo";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -7238,7 +7478,7 @@ Piavca::Motion *SwigDirector_ScaleMotionSpeed::findSubByType(type_info const &ty
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotionSpeed.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 15;
+  const size_t swig_method_index = 16;
   const char * const swig_method_name = "findSubByType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -7276,7 +7516,7 @@ bool SwigDirector_ScaleMotionSpeed::isNull(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotionSpeed.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 16;
+  const size_t swig_method_index = 17;
   const char * const swig_method_name = "isNull";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -7314,7 +7554,7 @@ Piavca::trackType SwigDirector_ScaleMotionSpeed::getTrackType(int trackId) const
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotionSpeed.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 17;
+  const size_t swig_method_index = 18;
   const char * const swig_method_name = "getTrackType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -7428,6 +7668,46 @@ void SwigDirector_ScaleMotionRoot::load(Piavca::Avatar *av) {
 }
 
 
+Piavca::Avatar *SwigDirector_ScaleMotionRoot::getAvatar() {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::MotionFilter::getAvatar();
+  }
+  Piavca::Avatar *swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotionRoot.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 2;
+  const char * const swig_method_name = "getAvatar";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "getAvatar", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Avatar,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Avatar *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Avatar * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Avatar *) swig_c_result;
+}
+
+
 void SwigDirector_ScaleMotionRoot::preFrame(float time) {
   if (swig_get_up()) {
     Piavca::Motion::preFrame(time);
@@ -7439,7 +7719,7 @@ void SwigDirector_ScaleMotionRoot::preFrame(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotionRoot.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 2;
+  const size_t swig_method_index = 3;
   const char * const swig_method_name = "preFrame";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -7470,7 +7750,7 @@ void SwigDirector_ScaleMotionRoot::setStartTime(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotionRoot.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 3;
+  const size_t swig_method_index = 4;
   const char * const swig_method_name = "setStartTime";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -7503,7 +7783,7 @@ float SwigDirector_ScaleMotionRoot::getFloatValueAtTimeInternal(int trackId, flo
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotionRoot.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 4;
+  const size_t swig_method_index = 5;
   const char * const swig_method_name = "getFloatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -7546,7 +7826,7 @@ Piavca::Vec SwigDirector_ScaleMotionRoot::getVecValueAtTimeInternal(int trackId,
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotionRoot.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 5;
+  const size_t swig_method_index = 6;
   const char * const swig_method_name = "getVecValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -7589,7 +7869,7 @@ Piavca::Quat SwigDirector_ScaleMotionRoot::getQuatValueAtTimeInternal(int trackI
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotionRoot.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 6;
+  const size_t swig_method_index = 7;
   const char * const swig_method_name = "getQuatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -7625,7 +7905,7 @@ bool SwigDirector_ScaleMotionRoot::isRandomAccess() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotionRoot.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 7;
+  const size_t swig_method_index = 8;
   const char * const swig_method_name = "isRandomAccess";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -7661,7 +7941,7 @@ void SwigDirector_ScaleMotionRoot::reset() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotionRoot.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 8;
+  const size_t swig_method_index = 9;
   const char * const swig_method_name = "reset";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -7697,7 +7977,7 @@ Piavca::Motion *SwigDirector_ScaleMotionRoot::clone() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotionRoot.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 9;
+  const size_t swig_method_index = 10;
   const char * const swig_method_name = "clone";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -7733,7 +8013,7 @@ float SwigDirector_ScaleMotionRoot::getMotionLength() const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotionRoot.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 10;
+  const size_t swig_method_index = 11;
   const char * const swig_method_name = "getMotionLength";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -7769,7 +8049,7 @@ bool SwigDirector_ScaleMotionRoot::isFacial() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotionRoot.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 11;
+  const size_t swig_method_index = 12;
   const char * const swig_method_name = "isFacial";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -7805,7 +8085,7 @@ void SwigDirector_ScaleMotionRoot::unload() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotionRoot.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 12;
+  const size_t swig_method_index = 13;
   const char * const swig_method_name = "unload";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -7834,7 +8114,7 @@ bool SwigDirector_ScaleMotionRoot::loaded() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotionRoot.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 13;
+  const size_t swig_method_index = 14;
   const char * const swig_method_name = "loaded";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -7870,7 +8150,7 @@ void SwigDirector_ScaleMotionRoot::printInfo() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotionRoot.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 14;
+  const size_t swig_method_index = 15;
   const char * const swig_method_name = "printInfo";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -7905,7 +8185,7 @@ Piavca::Motion *SwigDirector_ScaleMotionRoot::findSubByType(type_info const &ty)
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotionRoot.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 15;
+  const size_t swig_method_index = 16;
   const char * const swig_method_name = "findSubByType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -7943,7 +8223,7 @@ bool SwigDirector_ScaleMotionRoot::isNull(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotionRoot.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 16;
+  const size_t swig_method_index = 17;
   const char * const swig_method_name = "isNull";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -7981,7 +8261,7 @@ Piavca::trackType SwigDirector_ScaleMotionRoot::getTrackType(int trackId) const 
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ScaleMotionRoot.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 17;
+  const size_t swig_method_index = 18;
   const char * const swig_method_name = "getTrackType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -8095,6 +8375,46 @@ void SwigDirector_TimeOffset::load(Piavca::Avatar *av) {
 }
 
 
+Piavca::Avatar *SwigDirector_TimeOffset::getAvatar() {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::MotionFilter::getAvatar();
+  }
+  Piavca::Avatar *swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeOffset.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 2;
+  const char * const swig_method_name = "getAvatar";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "getAvatar", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Avatar,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Avatar *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Avatar * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Avatar *) swig_c_result;
+}
+
+
 void SwigDirector_TimeOffset::preFrame(float time) {
   if (swig_get_up()) {
     Piavca::Motion::preFrame(time);
@@ -8106,7 +8426,7 @@ void SwigDirector_TimeOffset::preFrame(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeOffset.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 2;
+  const size_t swig_method_index = 3;
   const char * const swig_method_name = "preFrame";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -8137,7 +8457,7 @@ void SwigDirector_TimeOffset::setStartTime(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeOffset.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 3;
+  const size_t swig_method_index = 4;
   const char * const swig_method_name = "setStartTime";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -8170,7 +8490,7 @@ float SwigDirector_TimeOffset::getFloatValueAtTimeInternal(int trackId, float ti
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeOffset.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 4;
+  const size_t swig_method_index = 5;
   const char * const swig_method_name = "getFloatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -8213,7 +8533,7 @@ Piavca::Vec SwigDirector_TimeOffset::getVecValueAtTimeInternal(int trackId, floa
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeOffset.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 5;
+  const size_t swig_method_index = 6;
   const char * const swig_method_name = "getVecValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -8256,7 +8576,7 @@ Piavca::Quat SwigDirector_TimeOffset::getQuatValueAtTimeInternal(int trackId, fl
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeOffset.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 6;
+  const size_t swig_method_index = 7;
   const char * const swig_method_name = "getQuatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -8292,7 +8612,7 @@ bool SwigDirector_TimeOffset::isRandomAccess() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeOffset.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 7;
+  const size_t swig_method_index = 8;
   const char * const swig_method_name = "isRandomAccess";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -8331,7 +8651,7 @@ void SwigDirector_TimeOffset::reset() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeOffset.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 8;
+  const size_t swig_method_index = 9;
   const char * const swig_method_name = "reset";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -8364,7 +8684,7 @@ Piavca::Motion *SwigDirector_TimeOffset::clone() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeOffset.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 9;
+  const size_t swig_method_index = 10;
   const char * const swig_method_name = "clone";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -8400,7 +8720,7 @@ float SwigDirector_TimeOffset::getMotionLength() const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeOffset.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 10;
+  const size_t swig_method_index = 11;
   const char * const swig_method_name = "getMotionLength";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -8436,7 +8756,7 @@ bool SwigDirector_TimeOffset::isFacial() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeOffset.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 11;
+  const size_t swig_method_index = 12;
   const char * const swig_method_name = "isFacial";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -8472,7 +8792,7 @@ void SwigDirector_TimeOffset::unload() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeOffset.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 12;
+  const size_t swig_method_index = 13;
   const char * const swig_method_name = "unload";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -8501,7 +8821,7 @@ bool SwigDirector_TimeOffset::loaded() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeOffset.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 13;
+  const size_t swig_method_index = 14;
   const char * const swig_method_name = "loaded";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -8537,7 +8857,7 @@ void SwigDirector_TimeOffset::printInfo() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeOffset.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 14;
+  const size_t swig_method_index = 15;
   const char * const swig_method_name = "printInfo";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -8572,7 +8892,7 @@ Piavca::Motion *SwigDirector_TimeOffset::findSubByType(type_info const &ty) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeOffset.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 15;
+  const size_t swig_method_index = 16;
   const char * const swig_method_name = "findSubByType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -8610,7 +8930,7 @@ bool SwigDirector_TimeOffset::isNull(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeOffset.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 16;
+  const size_t swig_method_index = 17;
   const char * const swig_method_name = "isNull";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -8648,7 +8968,7 @@ Piavca::trackType SwigDirector_TimeOffset::getTrackType(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeOffset.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 17;
+  const size_t swig_method_index = 18;
   const char * const swig_method_name = "getTrackType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -8762,6 +9082,46 @@ void SwigDirector_TurnMotion::load(Piavca::Avatar *av) {
 }
 
 
+Piavca::Avatar *SwigDirector_TurnMotion::getAvatar() {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::MotionFilter::getAvatar();
+  }
+  Piavca::Avatar *swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TurnMotion.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 2;
+  const char * const swig_method_name = "getAvatar";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "getAvatar", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Avatar,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Avatar *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Avatar * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Avatar *) swig_c_result;
+}
+
+
 void SwigDirector_TurnMotion::preFrame(float time) {
   if (swig_get_up()) {
     Piavca::Motion::preFrame(time);
@@ -8773,7 +9133,7 @@ void SwigDirector_TurnMotion::preFrame(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TurnMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 2;
+  const size_t swig_method_index = 3;
   const char * const swig_method_name = "preFrame";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -8804,7 +9164,7 @@ void SwigDirector_TurnMotion::setStartTime(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TurnMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 3;
+  const size_t swig_method_index = 4;
   const char * const swig_method_name = "setStartTime";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -8837,7 +9197,7 @@ float SwigDirector_TurnMotion::getFloatValueAtTimeInternal(int trackId, float ti
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TurnMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 4;
+  const size_t swig_method_index = 5;
   const char * const swig_method_name = "getFloatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -8880,7 +9240,7 @@ Piavca::Vec SwigDirector_TurnMotion::getVecValueAtTimeInternal(int trackId, floa
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TurnMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 5;
+  const size_t swig_method_index = 6;
   const char * const swig_method_name = "getVecValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -8923,7 +9283,7 @@ Piavca::Quat SwigDirector_TurnMotion::getQuatValueAtTimeInternal(int trackId, fl
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TurnMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 6;
+  const size_t swig_method_index = 7;
   const char * const swig_method_name = "getQuatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -8959,7 +9319,7 @@ bool SwigDirector_TurnMotion::isRandomAccess() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TurnMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 7;
+  const size_t swig_method_index = 8;
   const char * const swig_method_name = "isRandomAccess";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -8998,7 +9358,7 @@ void SwigDirector_TurnMotion::reset() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TurnMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 8;
+  const size_t swig_method_index = 9;
   const char * const swig_method_name = "reset";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -9031,7 +9391,7 @@ Piavca::Motion *SwigDirector_TurnMotion::clone() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TurnMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 9;
+  const size_t swig_method_index = 10;
   const char * const swig_method_name = "clone";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -9067,7 +9427,7 @@ float SwigDirector_TurnMotion::getMotionLength() const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TurnMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 10;
+  const size_t swig_method_index = 11;
   const char * const swig_method_name = "getMotionLength";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -9103,7 +9463,7 @@ bool SwigDirector_TurnMotion::isFacial() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TurnMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 11;
+  const size_t swig_method_index = 12;
   const char * const swig_method_name = "isFacial";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -9139,7 +9499,7 @@ void SwigDirector_TurnMotion::unload() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TurnMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 12;
+  const size_t swig_method_index = 13;
   const char * const swig_method_name = "unload";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -9168,7 +9528,7 @@ bool SwigDirector_TurnMotion::loaded() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TurnMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 13;
+  const size_t swig_method_index = 14;
   const char * const swig_method_name = "loaded";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -9204,7 +9564,7 @@ void SwigDirector_TurnMotion::printInfo() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TurnMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 14;
+  const size_t swig_method_index = 15;
   const char * const swig_method_name = "printInfo";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -9239,7 +9599,7 @@ Piavca::Motion *SwigDirector_TurnMotion::findSubByType(type_info const &ty) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TurnMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 15;
+  const size_t swig_method_index = 16;
   const char * const swig_method_name = "findSubByType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -9277,7 +9637,7 @@ bool SwigDirector_TurnMotion::isNull(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TurnMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 16;
+  const size_t swig_method_index = 17;
   const char * const swig_method_name = "isNull";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -9315,7 +9675,7 @@ Piavca::trackType SwigDirector_TurnMotion::getTrackType(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TurnMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 17;
+  const size_t swig_method_index = 18;
   const char * const swig_method_name = "getTrackType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -9429,6 +9789,46 @@ void SwigDirector_SequentialBlend::load(Piavca::Avatar *av) {
 }
 
 
+Piavca::Avatar *SwigDirector_SequentialBlend::getAvatar() {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::TwoMotionCombiner::getAvatar();
+  }
+  Piavca::Avatar *swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SequentialBlend.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 2;
+  const char * const swig_method_name = "getAvatar";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "getAvatar", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Avatar,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Avatar *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Avatar * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Avatar *) swig_c_result;
+}
+
+
 void SwigDirector_SequentialBlend::preFrame(float time) {
   if (swig_get_up()) {
     Piavca::Motion::preFrame(time);
@@ -9440,7 +9840,7 @@ void SwigDirector_SequentialBlend::preFrame(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SequentialBlend.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 2;
+  const size_t swig_method_index = 3;
   const char * const swig_method_name = "preFrame";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -9471,7 +9871,7 @@ void SwigDirector_SequentialBlend::setStartTime(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SequentialBlend.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 3;
+  const size_t swig_method_index = 4;
   const char * const swig_method_name = "setStartTime";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -9504,7 +9904,7 @@ float SwigDirector_SequentialBlend::getFloatValueAtTimeInternal(int trackId, flo
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SequentialBlend.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 4;
+  const size_t swig_method_index = 5;
   const char * const swig_method_name = "getFloatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -9547,7 +9947,7 @@ Piavca::Vec SwigDirector_SequentialBlend::getVecValueAtTimeInternal(int trackId,
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SequentialBlend.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 5;
+  const size_t swig_method_index = 6;
   const char * const swig_method_name = "getVecValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -9590,7 +9990,7 @@ Piavca::Quat SwigDirector_SequentialBlend::getQuatValueAtTimeInternal(int trackI
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SequentialBlend.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 6;
+  const size_t swig_method_index = 7;
   const char * const swig_method_name = "getQuatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -9626,7 +10026,7 @@ bool SwigDirector_SequentialBlend::isRandomAccess() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SequentialBlend.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 7;
+  const size_t swig_method_index = 8;
   const char * const swig_method_name = "isRandomAccess";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -9665,7 +10065,7 @@ void SwigDirector_SequentialBlend::reset() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SequentialBlend.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 8;
+  const size_t swig_method_index = 9;
   const char * const swig_method_name = "reset";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -9698,7 +10098,7 @@ Piavca::Motion *SwigDirector_SequentialBlend::clone() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SequentialBlend.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 9;
+  const size_t swig_method_index = 10;
   const char * const swig_method_name = "clone";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -9734,7 +10134,7 @@ bool SwigDirector_SequentialBlend::isFacial() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SequentialBlend.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 10;
+  const size_t swig_method_index = 11;
   const char * const swig_method_name = "isFacial";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -9770,7 +10170,7 @@ float SwigDirector_SequentialBlend::getMotionLength() const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SequentialBlend.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 11;
+  const size_t swig_method_index = 12;
   const char * const swig_method_name = "getMotionLength";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -9806,7 +10206,7 @@ void SwigDirector_SequentialBlend::unload() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SequentialBlend.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 12;
+  const size_t swig_method_index = 13;
   const char * const swig_method_name = "unload";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -9835,7 +10235,7 @@ bool SwigDirector_SequentialBlend::loaded() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SequentialBlend.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 13;
+  const size_t swig_method_index = 14;
   const char * const swig_method_name = "loaded";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -9871,7 +10271,7 @@ void SwigDirector_SequentialBlend::printInfo() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SequentialBlend.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 14;
+  const size_t swig_method_index = 15;
   const char * const swig_method_name = "printInfo";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -9902,7 +10302,7 @@ void SwigDirector_SequentialBlend::setMaintainY(bool b) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SequentialBlend.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 15;
+  const size_t swig_method_index = 16;
   const char * const swig_method_name = "setMaintainY";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -9933,7 +10333,7 @@ void SwigDirector_SequentialBlend::setAccumulateRoot(bool b) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SequentialBlend.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 16;
+  const size_t swig_method_index = 17;
   const char * const swig_method_name = "setAccumulateRoot";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -9968,7 +10368,7 @@ Piavca::Motion *SwigDirector_SequentialBlend::findSubByType(type_info const &ty)
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SequentialBlend.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 17;
+  const size_t swig_method_index = 18;
   const char * const swig_method_name = "findSubByType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -10006,7 +10406,7 @@ bool SwigDirector_SequentialBlend::isNull(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SequentialBlend.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 18;
+  const size_t swig_method_index = 19;
   const char * const swig_method_name = "isNull";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -10044,7 +10444,7 @@ Piavca::trackType SwigDirector_SequentialBlend::getTrackType(int trackId) const 
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SequentialBlend.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 19;
+  const size_t swig_method_index = 20;
   const char * const swig_method_name = "getTrackType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -10158,6 +10558,46 @@ void SwigDirector_SelfBlend::load(Piavca::Avatar *av) {
 }
 
 
+Piavca::Avatar *SwigDirector_SelfBlend::getAvatar() {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::TwoMotionCombiner::getAvatar();
+  }
+  Piavca::Avatar *swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 2;
+  const char * const swig_method_name = "getAvatar";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "getAvatar", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Avatar,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Avatar *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Avatar * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Avatar *) swig_c_result;
+}
+
+
 void SwigDirector_SelfBlend::preFrame(float time) {
   if (swig_get_up()) {
     Piavca::Motion::preFrame(time);
@@ -10169,7 +10609,7 @@ void SwigDirector_SelfBlend::preFrame(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 2;
+  const size_t swig_method_index = 3;
   const char * const swig_method_name = "preFrame";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -10200,7 +10640,7 @@ void SwigDirector_SelfBlend::setStartTime(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 3;
+  const size_t swig_method_index = 4;
   const char * const swig_method_name = "setStartTime";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -10233,7 +10673,7 @@ float SwigDirector_SelfBlend::getFloatValueAtTimeInternal(int trackId, float tim
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 4;
+  const size_t swig_method_index = 5;
   const char * const swig_method_name = "getFloatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -10276,7 +10716,7 @@ Piavca::Vec SwigDirector_SelfBlend::getVecValueAtTimeInternal(int trackId, float
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 5;
+  const size_t swig_method_index = 6;
   const char * const swig_method_name = "getVecValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -10319,7 +10759,7 @@ Piavca::Quat SwigDirector_SelfBlend::getQuatValueAtTimeInternal(int trackId, flo
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 6;
+  const size_t swig_method_index = 7;
   const char * const swig_method_name = "getQuatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -10357,7 +10797,7 @@ void SwigDirector_SelfBlend::reblend(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 7;
+  const size_t swig_method_index = 8;
   const char * const swig_method_name = "reblend";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -10386,7 +10826,7 @@ bool SwigDirector_SelfBlend::isRandomAccess() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 8;
+  const size_t swig_method_index = 9;
   const char * const swig_method_name = "isRandomAccess";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -10429,7 +10869,7 @@ Piavca::Motion *SwigDirector_SelfBlend::clone() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 9;
+  const size_t swig_method_index = 10;
   const char * const swig_method_name = "clone";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -10465,7 +10905,7 @@ void SwigDirector_SelfBlend::reset() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 10;
+  const size_t swig_method_index = 11;
   const char * const swig_method_name = "reset";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -10494,7 +10934,7 @@ bool SwigDirector_SelfBlend::isFacial() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 11;
+  const size_t swig_method_index = 12;
   const char * const swig_method_name = "isFacial";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -10530,7 +10970,7 @@ float SwigDirector_SelfBlend::getMotionLength() const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 12;
+  const size_t swig_method_index = 13;
   const char * const swig_method_name = "getMotionLength";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -10566,7 +11006,7 @@ void SwigDirector_SelfBlend::unload() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 13;
+  const size_t swig_method_index = 14;
   const char * const swig_method_name = "unload";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -10595,7 +11035,7 @@ bool SwigDirector_SelfBlend::loaded() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 14;
+  const size_t swig_method_index = 15;
   const char * const swig_method_name = "loaded";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -10631,7 +11071,7 @@ void SwigDirector_SelfBlend::printInfo() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 15;
+  const size_t swig_method_index = 16;
   const char * const swig_method_name = "printInfo";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -10662,7 +11102,7 @@ void SwigDirector_SelfBlend::setMaintainY(bool b) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 16;
+  const size_t swig_method_index = 17;
   const char * const swig_method_name = "setMaintainY";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -10693,7 +11133,7 @@ void SwigDirector_SelfBlend::setAccumulateRoot(bool b) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 17;
+  const size_t swig_method_index = 18;
   const char * const swig_method_name = "setAccumulateRoot";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -10728,7 +11168,7 @@ Piavca::Motion *SwigDirector_SelfBlend::findSubByType(type_info const &ty) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 18;
+  const size_t swig_method_index = 19;
   const char * const swig_method_name = "findSubByType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -10768,7 +11208,7 @@ Piavca::Motion *SwigDirector_SelfBlend::getMotion() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 19;
+  const size_t swig_method_index = 20;
   const char * const swig_method_name = "getMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -10806,7 +11246,7 @@ void SwigDirector_SelfBlend::setMotion(Piavca::Motion *mot) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 20;
+  const size_t swig_method_index = 21;
   const char * const swig_method_name = "setMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -10837,7 +11277,7 @@ bool SwigDirector_SelfBlend::isNull(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 21;
+  const size_t swig_method_index = 22;
   const char * const swig_method_name = "isNull";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -10875,7 +11315,7 @@ Piavca::trackType SwigDirector_SelfBlend::getTrackType(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SelfBlend.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 22;
+  const size_t swig_method_index = 23;
   const char * const swig_method_name = "getTrackType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -10989,6 +11429,46 @@ void SwigDirector_LoopMotion::load(Piavca::Avatar *av) {
 }
 
 
+Piavca::Avatar *SwigDirector_LoopMotion::getAvatar() {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::TwoMotionCombiner::getAvatar();
+  }
+  Piavca::Avatar *swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LoopMotion.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 2;
+  const char * const swig_method_name = "getAvatar";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "getAvatar", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Avatar,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Avatar *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Avatar * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Avatar *) swig_c_result;
+}
+
+
 void SwigDirector_LoopMotion::preFrame(float time) {
   if (swig_get_up()) {
     Piavca::Motion::preFrame(time);
@@ -11000,7 +11480,7 @@ void SwigDirector_LoopMotion::preFrame(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 2;
+  const size_t swig_method_index = 3;
   const char * const swig_method_name = "preFrame";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -11031,7 +11511,7 @@ void SwigDirector_LoopMotion::setStartTime(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 3;
+  const size_t swig_method_index = 4;
   const char * const swig_method_name = "setStartTime";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -11062,7 +11542,7 @@ void SwigDirector_LoopMotion::reblend(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 4;
+  const size_t swig_method_index = 5;
   const char * const swig_method_name = "reblend";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -11095,7 +11575,7 @@ float SwigDirector_LoopMotion::getFloatValueAtTimeInternal(int trackId, float ti
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 5;
+  const size_t swig_method_index = 6;
   const char * const swig_method_name = "getFloatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -11138,7 +11618,7 @@ Piavca::Vec SwigDirector_LoopMotion::getVecValueAtTimeInternal(int trackId, floa
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 6;
+  const size_t swig_method_index = 7;
   const char * const swig_method_name = "getVecValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -11181,7 +11661,7 @@ Piavca::Quat SwigDirector_LoopMotion::getQuatValueAtTimeInternal(int trackId, fl
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 7;
+  const size_t swig_method_index = 8;
   const char * const swig_method_name = "getQuatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -11217,7 +11697,7 @@ bool SwigDirector_LoopMotion::isRandomAccess() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 8;
+  const size_t swig_method_index = 9;
   const char * const swig_method_name = "isRandomAccess";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -11256,7 +11736,7 @@ void SwigDirector_LoopMotion::reset() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 9;
+  const size_t swig_method_index = 10;
   const char * const swig_method_name = "reset";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -11289,7 +11769,7 @@ Piavca::Motion *SwigDirector_LoopMotion::clone() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 10;
+  const size_t swig_method_index = 11;
   const char * const swig_method_name = "clone";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -11325,7 +11805,7 @@ bool SwigDirector_LoopMotion::isFacial() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 11;
+  const size_t swig_method_index = 12;
   const char * const swig_method_name = "isFacial";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -11361,7 +11841,7 @@ float SwigDirector_LoopMotion::getMotionLength() const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 12;
+  const size_t swig_method_index = 13;
   const char * const swig_method_name = "getMotionLength";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -11397,7 +11877,7 @@ void SwigDirector_LoopMotion::unload() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 13;
+  const size_t swig_method_index = 14;
   const char * const swig_method_name = "unload";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -11426,7 +11906,7 @@ bool SwigDirector_LoopMotion::loaded() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 14;
+  const size_t swig_method_index = 15;
   const char * const swig_method_name = "loaded";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -11462,7 +11942,7 @@ void SwigDirector_LoopMotion::printInfo() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 15;
+  const size_t swig_method_index = 16;
   const char * const swig_method_name = "printInfo";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -11493,7 +11973,7 @@ void SwigDirector_LoopMotion::setMaintainY(bool b) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 16;
+  const size_t swig_method_index = 17;
   const char * const swig_method_name = "setMaintainY";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -11524,7 +12004,7 @@ void SwigDirector_LoopMotion::setAccumulateRoot(bool b) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 17;
+  const size_t swig_method_index = 18;
   const char * const swig_method_name = "setAccumulateRoot";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -11559,7 +12039,7 @@ Piavca::Motion *SwigDirector_LoopMotion::findSubByType(type_info const &ty) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 18;
+  const size_t swig_method_index = 19;
   const char * const swig_method_name = "findSubByType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -11599,7 +12079,7 @@ Piavca::Motion *SwigDirector_LoopMotion::getMotion() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 19;
+  const size_t swig_method_index = 20;
   const char * const swig_method_name = "getMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -11637,7 +12117,7 @@ void SwigDirector_LoopMotion::setMotion(Piavca::Motion *mot) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 20;
+  const size_t swig_method_index = 21;
   const char * const swig_method_name = "setMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -11668,7 +12148,7 @@ bool SwigDirector_LoopMotion::isNull(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 21;
+  const size_t swig_method_index = 22;
   const char * const swig_method_name = "isNull";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -11706,7 +12186,7 @@ Piavca::trackType SwigDirector_LoopMotion::getTrackType(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 22;
+  const size_t swig_method_index = 23;
   const char * const swig_method_name = "getTrackType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -11820,6 +12300,46 @@ void SwigDirector_RandomTimingsLoop::load(Piavca::Avatar *av) {
 }
 
 
+Piavca::Avatar *SwigDirector_RandomTimingsLoop::getAvatar() {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::TwoMotionCombiner::getAvatar();
+  }
+  Piavca::Avatar *swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomTimingsLoop.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 2;
+  const char * const swig_method_name = "getAvatar";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "getAvatar", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Avatar,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Avatar *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Avatar * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Avatar *) swig_c_result;
+}
+
+
 void SwigDirector_RandomTimingsLoop::preFrame(float time) {
   if (swig_get_up()) {
     Piavca::Motion::preFrame(time);
@@ -11831,7 +12351,7 @@ void SwigDirector_RandomTimingsLoop::preFrame(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomTimingsLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 2;
+  const size_t swig_method_index = 3;
   const char * const swig_method_name = "preFrame";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -11862,7 +12382,7 @@ void SwigDirector_RandomTimingsLoop::setStartTime(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomTimingsLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 3;
+  const size_t swig_method_index = 4;
   const char * const swig_method_name = "setStartTime";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -11895,7 +12415,7 @@ float SwigDirector_RandomTimingsLoop::getFloatValueAtTimeInternal(int trackId, f
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomTimingsLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 4;
+  const size_t swig_method_index = 5;
   const char * const swig_method_name = "getFloatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -11938,7 +12458,7 @@ Piavca::Vec SwigDirector_RandomTimingsLoop::getVecValueAtTimeInternal(int trackI
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomTimingsLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 5;
+  const size_t swig_method_index = 6;
   const char * const swig_method_name = "getVecValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -11981,7 +12501,7 @@ Piavca::Quat SwigDirector_RandomTimingsLoop::getQuatValueAtTimeInternal(int trac
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomTimingsLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 6;
+  const size_t swig_method_index = 7;
   const char * const swig_method_name = "getQuatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -12021,7 +12541,7 @@ void SwigDirector_RandomTimingsLoop::setTimingParams(float minTimeScale, float m
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomTimingsLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 7;
+  const size_t swig_method_index = 8;
   const char * const swig_method_name = "setTimingParams";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -12052,7 +12572,7 @@ void SwigDirector_RandomTimingsLoop::reblend(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomTimingsLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 8;
+  const size_t swig_method_index = 9;
   const char * const swig_method_name = "reblend";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -12081,7 +12601,7 @@ bool SwigDirector_RandomTimingsLoop::isRandomAccess() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomTimingsLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 9;
+  const size_t swig_method_index = 10;
   const char * const swig_method_name = "isRandomAccess";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -12120,7 +12640,7 @@ void SwigDirector_RandomTimingsLoop::reset() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomTimingsLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 10;
+  const size_t swig_method_index = 11;
   const char * const swig_method_name = "reset";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -12153,7 +12673,7 @@ Piavca::Motion *SwigDirector_RandomTimingsLoop::clone() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomTimingsLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 11;
+  const size_t swig_method_index = 12;
   const char * const swig_method_name = "clone";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -12189,7 +12709,7 @@ bool SwigDirector_RandomTimingsLoop::isFacial() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomTimingsLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 12;
+  const size_t swig_method_index = 13;
   const char * const swig_method_name = "isFacial";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -12225,7 +12745,7 @@ float SwigDirector_RandomTimingsLoop::getMotionLength() const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomTimingsLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 13;
+  const size_t swig_method_index = 14;
   const char * const swig_method_name = "getMotionLength";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -12261,7 +12781,7 @@ void SwigDirector_RandomTimingsLoop::unload() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomTimingsLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 14;
+  const size_t swig_method_index = 15;
   const char * const swig_method_name = "unload";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -12290,7 +12810,7 @@ bool SwigDirector_RandomTimingsLoop::loaded() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomTimingsLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 15;
+  const size_t swig_method_index = 16;
   const char * const swig_method_name = "loaded";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -12326,7 +12846,7 @@ void SwigDirector_RandomTimingsLoop::printInfo() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomTimingsLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 16;
+  const size_t swig_method_index = 17;
   const char * const swig_method_name = "printInfo";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -12357,7 +12877,7 @@ void SwigDirector_RandomTimingsLoop::setMaintainY(bool b) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomTimingsLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 17;
+  const size_t swig_method_index = 18;
   const char * const swig_method_name = "setMaintainY";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -12388,7 +12908,7 @@ void SwigDirector_RandomTimingsLoop::setAccumulateRoot(bool b) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomTimingsLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 18;
+  const size_t swig_method_index = 19;
   const char * const swig_method_name = "setAccumulateRoot";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -12423,7 +12943,7 @@ Piavca::Motion *SwigDirector_RandomTimingsLoop::findSubByType(type_info const &t
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomTimingsLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 19;
+  const size_t swig_method_index = 20;
   const char * const swig_method_name = "findSubByType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -12463,7 +12983,7 @@ Piavca::Motion *SwigDirector_RandomTimingsLoop::getMotion() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomTimingsLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 20;
+  const size_t swig_method_index = 21;
   const char * const swig_method_name = "getMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -12501,7 +13021,7 @@ void SwigDirector_RandomTimingsLoop::setMotion(Piavca::Motion *m) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomTimingsLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 21;
+  const size_t swig_method_index = 22;
   const char * const swig_method_name = "setMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -12532,7 +13052,7 @@ bool SwigDirector_RandomTimingsLoop::isNull(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomTimingsLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 22;
+  const size_t swig_method_index = 23;
   const char * const swig_method_name = "isNull";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -12570,7 +13090,7 @@ Piavca::trackType SwigDirector_RandomTimingsLoop::getTrackType(int trackId) cons
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomTimingsLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 23;
+  const size_t swig_method_index = 24;
   const char * const swig_method_name = "getTrackType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -12684,6 +13204,46 @@ void SwigDirector_BlendBetween::load(Piavca::Avatar *av) {
 }
 
 
+Piavca::Avatar *SwigDirector_BlendBetween::getAvatar() {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::TwoMotionCombiner::getAvatar();
+  }
+  Piavca::Avatar *swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call BlendBetween.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 2;
+  const char * const swig_method_name = "getAvatar";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "getAvatar", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Avatar,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Avatar *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Avatar * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Avatar *) swig_c_result;
+}
+
+
 void SwigDirector_BlendBetween::preFrame(float time) {
   if (swig_get_up()) {
     Piavca::Motion::preFrame(time);
@@ -12695,7 +13255,7 @@ void SwigDirector_BlendBetween::preFrame(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call BlendBetween.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 2;
+  const size_t swig_method_index = 3;
   const char * const swig_method_name = "preFrame";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -12726,7 +13286,7 @@ void SwigDirector_BlendBetween::setStartTime(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call BlendBetween.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 3;
+  const size_t swig_method_index = 4;
   const char * const swig_method_name = "setStartTime";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -12759,7 +13319,7 @@ float SwigDirector_BlendBetween::getFloatValueAtTimeInternal(int trackId, float 
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call BlendBetween.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 4;
+  const size_t swig_method_index = 5;
   const char * const swig_method_name = "getFloatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -12802,7 +13362,7 @@ Piavca::Vec SwigDirector_BlendBetween::getVecValueAtTimeInternal(int trackId, fl
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call BlendBetween.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 5;
+  const size_t swig_method_index = 6;
   const char * const swig_method_name = "getVecValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -12845,7 +13405,7 @@ Piavca::Quat SwigDirector_BlendBetween::getQuatValueAtTimeInternal(int trackId, 
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call BlendBetween.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 6;
+  const size_t swig_method_index = 7;
   const char * const swig_method_name = "getQuatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -12881,7 +13441,7 @@ bool SwigDirector_BlendBetween::isRandomAccess() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call BlendBetween.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 7;
+  const size_t swig_method_index = 8;
   const char * const swig_method_name = "isRandomAccess";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -12920,7 +13480,7 @@ void SwigDirector_BlendBetween::reset() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call BlendBetween.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 8;
+  const size_t swig_method_index = 9;
   const char * const swig_method_name = "reset";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -12953,7 +13513,7 @@ Piavca::Motion *SwigDirector_BlendBetween::clone() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call BlendBetween.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 9;
+  const size_t swig_method_index = 10;
   const char * const swig_method_name = "clone";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -12989,7 +13549,7 @@ float SwigDirector_BlendBetween::getMotionLength() const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call BlendBetween.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 10;
+  const size_t swig_method_index = 11;
   const char * const swig_method_name = "getMotionLength";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -13025,7 +13585,7 @@ bool SwigDirector_BlendBetween::isFacial() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call BlendBetween.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 11;
+  const size_t swig_method_index = 12;
   const char * const swig_method_name = "isFacial";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -13061,7 +13621,7 @@ void SwigDirector_BlendBetween::unload() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call BlendBetween.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 12;
+  const size_t swig_method_index = 13;
   const char * const swig_method_name = "unload";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -13090,7 +13650,7 @@ bool SwigDirector_BlendBetween::loaded() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call BlendBetween.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 13;
+  const size_t swig_method_index = 14;
   const char * const swig_method_name = "loaded";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -13126,7 +13686,7 @@ void SwigDirector_BlendBetween::printInfo() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call BlendBetween.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 14;
+  const size_t swig_method_index = 15;
   const char * const swig_method_name = "printInfo";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -13161,7 +13721,7 @@ Piavca::Motion *SwigDirector_BlendBetween::findSubByType(type_info const &ty) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call BlendBetween.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 15;
+  const size_t swig_method_index = 16;
   const char * const swig_method_name = "findSubByType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -13199,7 +13759,7 @@ bool SwigDirector_BlendBetween::isNull(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call BlendBetween.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 16;
+  const size_t swig_method_index = 17;
   const char * const swig_method_name = "isNull";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -13237,7 +13797,7 @@ Piavca::trackType SwigDirector_BlendBetween::getTrackType(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call BlendBetween.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 17;
+  const size_t swig_method_index = 18;
   const char * const swig_method_name = "getTrackType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -13351,6 +13911,46 @@ void SwigDirector_MotionAdder::load(Piavca::Avatar *av) {
 }
 
 
+Piavca::Avatar *SwigDirector_MotionAdder::getAvatar() {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::TwoMotionCombiner::getAvatar();
+  }
+  Piavca::Avatar *swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionAdder.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 2;
+  const char * const swig_method_name = "getAvatar";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "getAvatar", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Avatar,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Avatar *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Avatar * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Avatar *) swig_c_result;
+}
+
+
 void SwigDirector_MotionAdder::preFrame(float time) {
   if (swig_get_up()) {
     Piavca::Motion::preFrame(time);
@@ -13362,7 +13962,7 @@ void SwigDirector_MotionAdder::preFrame(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionAdder.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 2;
+  const size_t swig_method_index = 3;
   const char * const swig_method_name = "preFrame";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -13393,7 +13993,7 @@ void SwigDirector_MotionAdder::setStartTime(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionAdder.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 3;
+  const size_t swig_method_index = 4;
   const char * const swig_method_name = "setStartTime";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -13426,7 +14026,7 @@ float SwigDirector_MotionAdder::getFloatValueAtTimeInternal(int trackId, float t
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionAdder.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 4;
+  const size_t swig_method_index = 5;
   const char * const swig_method_name = "getFloatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -13469,7 +14069,7 @@ Piavca::Vec SwigDirector_MotionAdder::getVecValueAtTimeInternal(int trackId, flo
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionAdder.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 5;
+  const size_t swig_method_index = 6;
   const char * const swig_method_name = "getVecValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -13512,7 +14112,7 @@ Piavca::Quat SwigDirector_MotionAdder::getQuatValueAtTimeInternal(int trackId, f
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionAdder.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 6;
+  const size_t swig_method_index = 7;
   const char * const swig_method_name = "getQuatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -13548,7 +14148,7 @@ bool SwigDirector_MotionAdder::isRandomAccess() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionAdder.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 7;
+  const size_t swig_method_index = 8;
   const char * const swig_method_name = "isRandomAccess";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -13587,7 +14187,7 @@ void SwigDirector_MotionAdder::reset() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionAdder.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 8;
+  const size_t swig_method_index = 9;
   const char * const swig_method_name = "reset";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -13620,7 +14220,7 @@ Piavca::Motion *SwigDirector_MotionAdder::clone() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionAdder.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 9;
+  const size_t swig_method_index = 10;
   const char * const swig_method_name = "clone";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -13656,7 +14256,7 @@ float SwigDirector_MotionAdder::getMotionLength() const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionAdder.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 10;
+  const size_t swig_method_index = 11;
   const char * const swig_method_name = "getMotionLength";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -13692,7 +14292,7 @@ bool SwigDirector_MotionAdder::isFacial() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionAdder.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 11;
+  const size_t swig_method_index = 12;
   const char * const swig_method_name = "isFacial";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -13728,7 +14328,7 @@ void SwigDirector_MotionAdder::unload() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionAdder.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 12;
+  const size_t swig_method_index = 13;
   const char * const swig_method_name = "unload";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -13757,7 +14357,7 @@ bool SwigDirector_MotionAdder::loaded() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionAdder.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 13;
+  const size_t swig_method_index = 14;
   const char * const swig_method_name = "loaded";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -13793,7 +14393,7 @@ void SwigDirector_MotionAdder::printInfo() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionAdder.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 14;
+  const size_t swig_method_index = 15;
   const char * const swig_method_name = "printInfo";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -13828,7 +14428,7 @@ Piavca::Motion *SwigDirector_MotionAdder::findSubByType(type_info const &ty) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionAdder.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 15;
+  const size_t swig_method_index = 16;
   const char * const swig_method_name = "findSubByType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -13866,7 +14466,7 @@ bool SwigDirector_MotionAdder::isNull(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionAdder.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 16;
+  const size_t swig_method_index = 17;
   const char * const swig_method_name = "isNull";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -13904,7 +14504,7 @@ Piavca::trackType SwigDirector_MotionAdder::getTrackType(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionAdder.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 17;
+  const size_t swig_method_index = 18;
   const char * const swig_method_name = "getTrackType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -14018,6 +14618,46 @@ void SwigDirector_Subtract::load(Piavca::Avatar *av) {
 }
 
 
+Piavca::Avatar *SwigDirector_Subtract::getAvatar() {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::TwoMotionCombiner::getAvatar();
+  }
+  Piavca::Avatar *swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Subtract.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 2;
+  const char * const swig_method_name = "getAvatar";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "getAvatar", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Avatar,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Avatar *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Avatar * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Avatar *) swig_c_result;
+}
+
+
 void SwigDirector_Subtract::preFrame(float time) {
   if (swig_get_up()) {
     Piavca::Motion::preFrame(time);
@@ -14029,7 +14669,7 @@ void SwigDirector_Subtract::preFrame(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Subtract.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 2;
+  const size_t swig_method_index = 3;
   const char * const swig_method_name = "preFrame";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -14060,7 +14700,7 @@ void SwigDirector_Subtract::setStartTime(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Subtract.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 3;
+  const size_t swig_method_index = 4;
   const char * const swig_method_name = "setStartTime";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -14093,7 +14733,7 @@ float SwigDirector_Subtract::getFloatValueAtTimeInternal(int trackId, float time
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Subtract.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 4;
+  const size_t swig_method_index = 5;
   const char * const swig_method_name = "getFloatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -14136,7 +14776,7 @@ Piavca::Vec SwigDirector_Subtract::getVecValueAtTimeInternal(int trackId, float 
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Subtract.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 5;
+  const size_t swig_method_index = 6;
   const char * const swig_method_name = "getVecValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -14179,7 +14819,7 @@ Piavca::Quat SwigDirector_Subtract::getQuatValueAtTimeInternal(int trackId, floa
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Subtract.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 6;
+  const size_t swig_method_index = 7;
   const char * const swig_method_name = "getQuatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -14215,7 +14855,7 @@ bool SwigDirector_Subtract::isRandomAccess() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Subtract.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 7;
+  const size_t swig_method_index = 8;
   const char * const swig_method_name = "isRandomAccess";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -14254,7 +14894,7 @@ void SwigDirector_Subtract::reset() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Subtract.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 8;
+  const size_t swig_method_index = 9;
   const char * const swig_method_name = "reset";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -14287,7 +14927,7 @@ Piavca::Motion *SwigDirector_Subtract::clone() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Subtract.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 9;
+  const size_t swig_method_index = 10;
   const char * const swig_method_name = "clone";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -14323,7 +14963,7 @@ float SwigDirector_Subtract::getMotionLength() const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Subtract.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 10;
+  const size_t swig_method_index = 11;
   const char * const swig_method_name = "getMotionLength";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -14359,7 +14999,7 @@ bool SwigDirector_Subtract::isFacial() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Subtract.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 11;
+  const size_t swig_method_index = 12;
   const char * const swig_method_name = "isFacial";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -14395,7 +15035,7 @@ void SwigDirector_Subtract::unload() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Subtract.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 12;
+  const size_t swig_method_index = 13;
   const char * const swig_method_name = "unload";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -14424,7 +15064,7 @@ bool SwigDirector_Subtract::loaded() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Subtract.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 13;
+  const size_t swig_method_index = 14;
   const char * const swig_method_name = "loaded";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -14460,7 +15100,7 @@ void SwigDirector_Subtract::printInfo() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Subtract.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 14;
+  const size_t swig_method_index = 15;
   const char * const swig_method_name = "printInfo";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -14495,7 +15135,7 @@ Piavca::Motion *SwigDirector_Subtract::findSubByType(type_info const &ty) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Subtract.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 15;
+  const size_t swig_method_index = 16;
   const char * const swig_method_name = "findSubByType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -14533,7 +15173,7 @@ bool SwigDirector_Subtract::isNull(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Subtract.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 16;
+  const size_t swig_method_index = 17;
   const char * const swig_method_name = "isNull";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -14571,7 +15211,7 @@ Piavca::trackType SwigDirector_Subtract::getTrackType(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Subtract.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 17;
+  const size_t swig_method_index = 18;
   const char * const swig_method_name = "getTrackType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -14692,6 +15332,46 @@ void SwigDirector_MaskedMotion::load(Piavca::Avatar *av) {
 }
 
 
+Piavca::Avatar *SwigDirector_MaskedMotion::getAvatar() {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::MotionFilter::getAvatar();
+  }
+  Piavca::Avatar *swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MaskedMotion.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 2;
+  const char * const swig_method_name = "getAvatar";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "getAvatar", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Avatar,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Avatar *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Avatar * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Avatar *) swig_c_result;
+}
+
+
 void SwigDirector_MaskedMotion::preFrame(float time) {
   if (swig_get_up()) {
     Piavca::Motion::preFrame(time);
@@ -14703,7 +15383,7 @@ void SwigDirector_MaskedMotion::preFrame(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MaskedMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 2;
+  const size_t swig_method_index = 3;
   const char * const swig_method_name = "preFrame";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -14734,7 +15414,7 @@ void SwigDirector_MaskedMotion::setStartTime(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MaskedMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 3;
+  const size_t swig_method_index = 4;
   const char * const swig_method_name = "setStartTime";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -14767,7 +15447,7 @@ float SwigDirector_MaskedMotion::getFloatValueAtTimeInternal(int trackId, float 
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MaskedMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 4;
+  const size_t swig_method_index = 5;
   const char * const swig_method_name = "getFloatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -14810,7 +15490,7 @@ Piavca::Vec SwigDirector_MaskedMotion::getVecValueAtTimeInternal(int trackId, fl
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MaskedMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 5;
+  const size_t swig_method_index = 6;
   const char * const swig_method_name = "getVecValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -14853,7 +15533,7 @@ Piavca::Quat SwigDirector_MaskedMotion::getQuatValueAtTimeInternal(int trackId, 
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MaskedMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 6;
+  const size_t swig_method_index = 7;
   const char * const swig_method_name = "getQuatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -14889,7 +15569,7 @@ bool SwigDirector_MaskedMotion::isRandomAccess() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MaskedMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 7;
+  const size_t swig_method_index = 8;
   const char * const swig_method_name = "isRandomAccess";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -14928,7 +15608,7 @@ void SwigDirector_MaskedMotion::reset() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MaskedMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 8;
+  const size_t swig_method_index = 9;
   const char * const swig_method_name = "reset";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -14961,7 +15641,7 @@ Piavca::Motion *SwigDirector_MaskedMotion::clone() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MaskedMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 9;
+  const size_t swig_method_index = 10;
   const char * const swig_method_name = "clone";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -14997,7 +15677,7 @@ float SwigDirector_MaskedMotion::getMotionLength() const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MaskedMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 10;
+  const size_t swig_method_index = 11;
   const char * const swig_method_name = "getMotionLength";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -15033,7 +15713,7 @@ bool SwigDirector_MaskedMotion::isFacial() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MaskedMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 11;
+  const size_t swig_method_index = 12;
   const char * const swig_method_name = "isFacial";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -15069,7 +15749,7 @@ void SwigDirector_MaskedMotion::unload() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MaskedMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 12;
+  const size_t swig_method_index = 13;
   const char * const swig_method_name = "unload";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -15098,7 +15778,7 @@ bool SwigDirector_MaskedMotion::loaded() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MaskedMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 13;
+  const size_t swig_method_index = 14;
   const char * const swig_method_name = "loaded";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -15134,7 +15814,7 @@ void SwigDirector_MaskedMotion::printInfo() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MaskedMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 14;
+  const size_t swig_method_index = 15;
   const char * const swig_method_name = "printInfo";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -15169,7 +15849,7 @@ Piavca::Motion *SwigDirector_MaskedMotion::findSubByType(type_info const &ty) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MaskedMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 15;
+  const size_t swig_method_index = 16;
   const char * const swig_method_name = "findSubByType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -15207,7 +15887,7 @@ bool SwigDirector_MaskedMotion::isNull(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MaskedMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 16;
+  const size_t swig_method_index = 17;
   const char * const swig_method_name = "isNull";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -15245,7 +15925,7 @@ Piavca::trackType SwigDirector_MaskedMotion::getTrackType(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MaskedMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 17;
+  const size_t swig_method_index = 18;
   const char * const swig_method_name = "getTrackType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -15366,6 +16046,46 @@ void SwigDirector_ChoiceLoopMotion::load(Piavca::Avatar *av) {
 }
 
 
+Piavca::Avatar *SwigDirector_ChoiceLoopMotion::getAvatar() {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::TwoMotionCombiner::getAvatar();
+  }
+  Piavca::Avatar *swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ChoiceLoopMotion.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 2;
+  const char * const swig_method_name = "getAvatar";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "getAvatar", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Avatar,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Avatar *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Avatar * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Avatar *) swig_c_result;
+}
+
+
 void SwigDirector_ChoiceLoopMotion::preFrame(float time) {
   if (swig_get_up()) {
     Piavca::Motion::preFrame(time);
@@ -15377,7 +16097,7 @@ void SwigDirector_ChoiceLoopMotion::preFrame(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ChoiceLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 2;
+  const size_t swig_method_index = 3;
   const char * const swig_method_name = "preFrame";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -15408,7 +16128,7 @@ void SwigDirector_ChoiceLoopMotion::setStartTime(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ChoiceLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 3;
+  const size_t swig_method_index = 4;
   const char * const swig_method_name = "setStartTime";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -15441,7 +16161,7 @@ float SwigDirector_ChoiceLoopMotion::getFloatValueAtTimeInternal(int trackId, fl
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ChoiceLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 4;
+  const size_t swig_method_index = 5;
   const char * const swig_method_name = "getFloatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -15484,7 +16204,7 @@ Piavca::Vec SwigDirector_ChoiceLoopMotion::getVecValueAtTimeInternal(int trackId
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ChoiceLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 5;
+  const size_t swig_method_index = 6;
   const char * const swig_method_name = "getVecValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -15527,7 +16247,7 @@ Piavca::Quat SwigDirector_ChoiceLoopMotion::getQuatValueAtTimeInternal(int track
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ChoiceLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 6;
+  const size_t swig_method_index = 7;
   const char * const swig_method_name = "getQuatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -15567,7 +16287,7 @@ void SwigDirector_ChoiceLoopMotion::setTimingParams(float minTimeScale, float ma
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ChoiceLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 7;
+  const size_t swig_method_index = 8;
   const char * const swig_method_name = "setTimingParams";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -15598,7 +16318,7 @@ void SwigDirector_ChoiceLoopMotion::reblend(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ChoiceLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 8;
+  const size_t swig_method_index = 9;
   const char * const swig_method_name = "reblend";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -15627,7 +16347,7 @@ bool SwigDirector_ChoiceLoopMotion::isRandomAccess() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ChoiceLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 9;
+  const size_t swig_method_index = 10;
   const char * const swig_method_name = "isRandomAccess";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -15666,7 +16386,7 @@ void SwigDirector_ChoiceLoopMotion::reset() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ChoiceLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 10;
+  const size_t swig_method_index = 11;
   const char * const swig_method_name = "reset";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -15699,7 +16419,7 @@ Piavca::Motion *SwigDirector_ChoiceLoopMotion::clone() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ChoiceLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 11;
+  const size_t swig_method_index = 12;
   const char * const swig_method_name = "clone";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -15735,7 +16455,7 @@ bool SwigDirector_ChoiceLoopMotion::isFacial() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ChoiceLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 12;
+  const size_t swig_method_index = 13;
   const char * const swig_method_name = "isFacial";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -15771,7 +16491,7 @@ float SwigDirector_ChoiceLoopMotion::getMotionLength() const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ChoiceLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 13;
+  const size_t swig_method_index = 14;
   const char * const swig_method_name = "getMotionLength";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -15807,7 +16527,7 @@ void SwigDirector_ChoiceLoopMotion::unload() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ChoiceLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 14;
+  const size_t swig_method_index = 15;
   const char * const swig_method_name = "unload";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -15836,7 +16556,7 @@ bool SwigDirector_ChoiceLoopMotion::loaded() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ChoiceLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 15;
+  const size_t swig_method_index = 16;
   const char * const swig_method_name = "loaded";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -15872,7 +16592,7 @@ void SwigDirector_ChoiceLoopMotion::printInfo() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ChoiceLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 16;
+  const size_t swig_method_index = 17;
   const char * const swig_method_name = "printInfo";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -15903,7 +16623,7 @@ void SwigDirector_ChoiceLoopMotion::setMaintainY(bool b) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ChoiceLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 17;
+  const size_t swig_method_index = 18;
   const char * const swig_method_name = "setMaintainY";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -15934,7 +16654,7 @@ void SwigDirector_ChoiceLoopMotion::setAccumulateRoot(bool b) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ChoiceLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 18;
+  const size_t swig_method_index = 19;
   const char * const swig_method_name = "setAccumulateRoot";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -15969,7 +16689,7 @@ Piavca::Motion *SwigDirector_ChoiceLoopMotion::findSubByType(type_info const &ty
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ChoiceLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 19;
+  const size_t swig_method_index = 20;
   const char * const swig_method_name = "findSubByType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -16009,7 +16729,7 @@ Piavca::Motion *SwigDirector_ChoiceLoopMotion::getMotion() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ChoiceLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 20;
+  const size_t swig_method_index = 21;
   const char * const swig_method_name = "getMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -16047,7 +16767,7 @@ void SwigDirector_ChoiceLoopMotion::setMotion(Piavca::Motion *m) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ChoiceLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 21;
+  const size_t swig_method_index = 22;
   const char * const swig_method_name = "setMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -16078,7 +16798,7 @@ void SwigDirector_ChoiceLoopMotion::addMotion(Piavca::Motion *mot) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ChoiceLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 22;
+  const size_t swig_method_index = 23;
   const char * const swig_method_name = "addMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -16109,7 +16829,7 @@ bool SwigDirector_ChoiceLoopMotion::isNull(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ChoiceLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 23;
+  const size_t swig_method_index = 24;
   const char * const swig_method_name = "isNull";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -16147,7 +16867,7 @@ Piavca::trackType SwigDirector_ChoiceLoopMotion::getTrackType(int trackId) const
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ChoiceLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 24;
+  const size_t swig_method_index = 25;
   const char * const swig_method_name = "getTrackType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -16268,6 +16988,46 @@ void SwigDirector_RandomLoopMotion::load(Piavca::Avatar *av) {
 }
 
 
+Piavca::Avatar *SwigDirector_RandomLoopMotion::getAvatar() {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::TwoMotionCombiner::getAvatar();
+  }
+  Piavca::Avatar *swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomLoopMotion.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 2;
+  const char * const swig_method_name = "getAvatar";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "getAvatar", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Avatar,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Avatar *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Avatar * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Avatar *) swig_c_result;
+}
+
+
 void SwigDirector_RandomLoopMotion::shift() {
   if (swig_get_up()) {
     Piavca::RandomLoopMotion::shift();
@@ -16277,7 +17037,7 @@ void SwigDirector_RandomLoopMotion::shift() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 2;
+  const size_t swig_method_index = 3;
   const char * const swig_method_name = "shift";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -16308,7 +17068,7 @@ void SwigDirector_RandomLoopMotion::preFrame(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 3;
+  const size_t swig_method_index = 4;
   const char * const swig_method_name = "preFrame";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -16339,7 +17099,7 @@ void SwigDirector_RandomLoopMotion::setStartTime(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 4;
+  const size_t swig_method_index = 5;
   const char * const swig_method_name = "setStartTime";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -16372,7 +17132,7 @@ float SwigDirector_RandomLoopMotion::getFloatValueAtTimeInternal(int trackId, fl
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 5;
+  const size_t swig_method_index = 6;
   const char * const swig_method_name = "getFloatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -16415,7 +17175,7 @@ Piavca::Vec SwigDirector_RandomLoopMotion::getVecValueAtTimeInternal(int trackId
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 6;
+  const size_t swig_method_index = 7;
   const char * const swig_method_name = "getVecValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -16458,7 +17218,7 @@ Piavca::Quat SwigDirector_RandomLoopMotion::getQuatValueAtTimeInternal(int track
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 7;
+  const size_t swig_method_index = 8;
   const char * const swig_method_name = "getQuatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -16498,7 +17258,7 @@ void SwigDirector_RandomLoopMotion::setTimingParams(float minTimeScale, float ma
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 8;
+  const size_t swig_method_index = 9;
   const char * const swig_method_name = "setTimingParams";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -16529,7 +17289,7 @@ void SwigDirector_RandomLoopMotion::reblend(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 9;
+  const size_t swig_method_index = 10;
   const char * const swig_method_name = "reblend";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -16562,7 +17322,7 @@ void SwigDirector_RandomLoopMotion::addMotion(Piavca::Motion *mot, float weight)
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 10;
+  const size_t swig_method_index = 11;
   const char * const swig_method_name = "addMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -16591,7 +17351,7 @@ bool SwigDirector_RandomLoopMotion::isRandomAccess() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 11;
+  const size_t swig_method_index = 12;
   const char * const swig_method_name = "isRandomAccess";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -16630,7 +17390,7 @@ void SwigDirector_RandomLoopMotion::reset() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 12;
+  const size_t swig_method_index = 13;
   const char * const swig_method_name = "reset";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -16663,7 +17423,7 @@ Piavca::Motion *SwigDirector_RandomLoopMotion::clone() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 13;
+  const size_t swig_method_index = 14;
   const char * const swig_method_name = "clone";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -16699,7 +17459,7 @@ bool SwigDirector_RandomLoopMotion::isFacial() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 14;
+  const size_t swig_method_index = 15;
   const char * const swig_method_name = "isFacial";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -16735,7 +17495,7 @@ float SwigDirector_RandomLoopMotion::getMotionLength() const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 15;
+  const size_t swig_method_index = 16;
   const char * const swig_method_name = "getMotionLength";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -16771,7 +17531,7 @@ void SwigDirector_RandomLoopMotion::unload() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 16;
+  const size_t swig_method_index = 17;
   const char * const swig_method_name = "unload";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -16800,7 +17560,7 @@ bool SwigDirector_RandomLoopMotion::loaded() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 17;
+  const size_t swig_method_index = 18;
   const char * const swig_method_name = "loaded";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -16836,7 +17596,7 @@ void SwigDirector_RandomLoopMotion::printInfo() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 18;
+  const size_t swig_method_index = 19;
   const char * const swig_method_name = "printInfo";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -16867,7 +17627,7 @@ void SwigDirector_RandomLoopMotion::setMaintainY(bool b) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 19;
+  const size_t swig_method_index = 20;
   const char * const swig_method_name = "setMaintainY";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -16898,7 +17658,7 @@ void SwigDirector_RandomLoopMotion::setAccumulateRoot(bool b) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 20;
+  const size_t swig_method_index = 21;
   const char * const swig_method_name = "setAccumulateRoot";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -16933,7 +17693,7 @@ Piavca::Motion *SwigDirector_RandomLoopMotion::findSubByType(type_info const &ty
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 21;
+  const size_t swig_method_index = 22;
   const char * const swig_method_name = "findSubByType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -16973,7 +17733,7 @@ Piavca::Motion *SwigDirector_RandomLoopMotion::getMotion() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 22;
+  const size_t swig_method_index = 23;
   const char * const swig_method_name = "getMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -17011,7 +17771,7 @@ void SwigDirector_RandomLoopMotion::setMotion(Piavca::Motion *m) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 23;
+  const size_t swig_method_index = 24;
   const char * const swig_method_name = "setMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -17042,7 +17802,7 @@ bool SwigDirector_RandomLoopMotion::isNull(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 25;
+  const size_t swig_method_index = 26;
   const char * const swig_method_name = "isNull";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -17080,7 +17840,7 @@ Piavca::trackType SwigDirector_RandomLoopMotion::getTrackType(int trackId) const
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 26;
+  const size_t swig_method_index = 27;
   const char * const swig_method_name = "getTrackType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -17201,6 +17961,46 @@ void SwigDirector_RandomBlendLoop::load(Piavca::Avatar *av) {
 }
 
 
+Piavca::Avatar *SwigDirector_RandomBlendLoop::getAvatar() {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::TwoMotionCombiner::getAvatar();
+  }
+  Piavca::Avatar *swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomBlendLoop.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 2;
+  const char * const swig_method_name = "getAvatar";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "getAvatar", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Avatar,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Avatar *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Avatar * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Avatar *) swig_c_result;
+}
+
+
 void SwigDirector_RandomBlendLoop::shift() {
   if (swig_get_up()) {
     Piavca::RandomBlendLoop::shift();
@@ -17210,7 +18010,7 @@ void SwigDirector_RandomBlendLoop::shift() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomBlendLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 2;
+  const size_t swig_method_index = 3;
   const char * const swig_method_name = "shift";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -17241,7 +18041,7 @@ void SwigDirector_RandomBlendLoop::preFrame(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomBlendLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 3;
+  const size_t swig_method_index = 4;
   const char * const swig_method_name = "preFrame";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -17272,7 +18072,7 @@ void SwigDirector_RandomBlendLoop::setStartTime(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomBlendLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 4;
+  const size_t swig_method_index = 5;
   const char * const swig_method_name = "setStartTime";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -17305,7 +18105,7 @@ float SwigDirector_RandomBlendLoop::getFloatValueAtTimeInternal(int trackId, flo
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomBlendLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 5;
+  const size_t swig_method_index = 6;
   const char * const swig_method_name = "getFloatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -17348,7 +18148,7 @@ Piavca::Vec SwigDirector_RandomBlendLoop::getVecValueAtTimeInternal(int trackId,
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomBlendLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 6;
+  const size_t swig_method_index = 7;
   const char * const swig_method_name = "getVecValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -17391,7 +18191,7 @@ Piavca::Quat SwigDirector_RandomBlendLoop::getQuatValueAtTimeInternal(int trackI
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomBlendLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 7;
+  const size_t swig_method_index = 8;
   const char * const swig_method_name = "getQuatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -17431,7 +18231,7 @@ void SwigDirector_RandomBlendLoop::setTimingParams(float minTimeScale, float max
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomBlendLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 8;
+  const size_t swig_method_index = 9;
   const char * const swig_method_name = "setTimingParams";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -17462,7 +18262,7 @@ void SwigDirector_RandomBlendLoop::reblend(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomBlendLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 9;
+  const size_t swig_method_index = 10;
   const char * const swig_method_name = "reblend";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -17495,7 +18295,7 @@ void SwigDirector_RandomBlendLoop::addMotion(Piavca::Motion *mot, float weight) 
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomBlendLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 10;
+  const size_t swig_method_index = 11;
   const char * const swig_method_name = "addMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -17524,7 +18324,7 @@ bool SwigDirector_RandomBlendLoop::isRandomAccess() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomBlendLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 11;
+  const size_t swig_method_index = 12;
   const char * const swig_method_name = "isRandomAccess";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -17563,7 +18363,7 @@ void SwigDirector_RandomBlendLoop::reset() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomBlendLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 12;
+  const size_t swig_method_index = 13;
   const char * const swig_method_name = "reset";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -17596,7 +18396,7 @@ Piavca::Motion *SwigDirector_RandomBlendLoop::clone() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomBlendLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 13;
+  const size_t swig_method_index = 14;
   const char * const swig_method_name = "clone";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -17632,7 +18432,7 @@ bool SwigDirector_RandomBlendLoop::isFacial() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomBlendLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 14;
+  const size_t swig_method_index = 15;
   const char * const swig_method_name = "isFacial";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -17668,7 +18468,7 @@ float SwigDirector_RandomBlendLoop::getMotionLength() const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomBlendLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 15;
+  const size_t swig_method_index = 16;
   const char * const swig_method_name = "getMotionLength";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -17704,7 +18504,7 @@ void SwigDirector_RandomBlendLoop::unload() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomBlendLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 16;
+  const size_t swig_method_index = 17;
   const char * const swig_method_name = "unload";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -17733,7 +18533,7 @@ bool SwigDirector_RandomBlendLoop::loaded() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomBlendLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 17;
+  const size_t swig_method_index = 18;
   const char * const swig_method_name = "loaded";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -17769,7 +18569,7 @@ void SwigDirector_RandomBlendLoop::printInfo() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomBlendLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 18;
+  const size_t swig_method_index = 19;
   const char * const swig_method_name = "printInfo";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -17800,7 +18600,7 @@ void SwigDirector_RandomBlendLoop::setMaintainY(bool b) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomBlendLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 19;
+  const size_t swig_method_index = 20;
   const char * const swig_method_name = "setMaintainY";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -17831,7 +18631,7 @@ void SwigDirector_RandomBlendLoop::setAccumulateRoot(bool b) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomBlendLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 20;
+  const size_t swig_method_index = 21;
   const char * const swig_method_name = "setAccumulateRoot";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -17866,7 +18666,7 @@ Piavca::Motion *SwigDirector_RandomBlendLoop::findSubByType(type_info const &ty)
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomBlendLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 21;
+  const size_t swig_method_index = 22;
   const char * const swig_method_name = "findSubByType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -17906,7 +18706,7 @@ Piavca::Motion *SwigDirector_RandomBlendLoop::getMotion() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomBlendLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 22;
+  const size_t swig_method_index = 23;
   const char * const swig_method_name = "getMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -17944,7 +18744,7 @@ void SwigDirector_RandomBlendLoop::setMotion(Piavca::Motion *m) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomBlendLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 23;
+  const size_t swig_method_index = 24;
   const char * const swig_method_name = "setMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -17975,7 +18775,7 @@ void SwigDirector_RandomBlendLoop::addMotion(Piavca::Motion *mot) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomBlendLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 24;
+  const size_t swig_method_index = 25;
   const char * const swig_method_name = "addMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -18006,7 +18806,7 @@ bool SwigDirector_RandomBlendLoop::isNull(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomBlendLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 25;
+  const size_t swig_method_index = 26;
   const char * const swig_method_name = "isNull";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -18044,7 +18844,7 @@ Piavca::trackType SwigDirector_RandomBlendLoop::getTrackType(int trackId) const 
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomBlendLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 26;
+  const size_t swig_method_index = 27;
   const char * const swig_method_name = "getTrackType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -18165,6 +18965,46 @@ void SwigDirector_RandomAddLoop::load(Piavca::Avatar *av) {
 }
 
 
+Piavca::Avatar *SwigDirector_RandomAddLoop::getAvatar() {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::TwoMotionCombiner::getAvatar();
+  }
+  Piavca::Avatar *swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomAddLoop.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 2;
+  const char * const swig_method_name = "getAvatar";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "getAvatar", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Avatar,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Avatar *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Avatar * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Avatar *) swig_c_result;
+}
+
+
 void SwigDirector_RandomAddLoop::shift() {
   if (swig_get_up()) {
     Piavca::RandomAddLoop::shift();
@@ -18174,7 +19014,7 @@ void SwigDirector_RandomAddLoop::shift() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomAddLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 2;
+  const size_t swig_method_index = 3;
   const char * const swig_method_name = "shift";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -18205,7 +19045,7 @@ void SwigDirector_RandomAddLoop::preFrame(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomAddLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 3;
+  const size_t swig_method_index = 4;
   const char * const swig_method_name = "preFrame";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -18236,7 +19076,7 @@ void SwigDirector_RandomAddLoop::setStartTime(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomAddLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 4;
+  const size_t swig_method_index = 5;
   const char * const swig_method_name = "setStartTime";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -18269,7 +19109,7 @@ float SwigDirector_RandomAddLoop::getFloatValueAtTimeInternal(int trackId, float
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomAddLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 5;
+  const size_t swig_method_index = 6;
   const char * const swig_method_name = "getFloatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -18312,7 +19152,7 @@ Piavca::Vec SwigDirector_RandomAddLoop::getVecValueAtTimeInternal(int trackId, f
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomAddLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 6;
+  const size_t swig_method_index = 7;
   const char * const swig_method_name = "getVecValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -18355,7 +19195,7 @@ Piavca::Quat SwigDirector_RandomAddLoop::getQuatValueAtTimeInternal(int trackId,
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomAddLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 7;
+  const size_t swig_method_index = 8;
   const char * const swig_method_name = "getQuatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -18395,7 +19235,7 @@ void SwigDirector_RandomAddLoop::setTimingParams(float minTimeScale, float maxTi
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomAddLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 8;
+  const size_t swig_method_index = 9;
   const char * const swig_method_name = "setTimingParams";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -18426,7 +19266,7 @@ void SwigDirector_RandomAddLoop::reblend(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomAddLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 9;
+  const size_t swig_method_index = 10;
   const char * const swig_method_name = "reblend";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -18455,7 +19295,7 @@ bool SwigDirector_RandomAddLoop::isRandomAccess() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomAddLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 10;
+  const size_t swig_method_index = 11;
   const char * const swig_method_name = "isRandomAccess";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -18494,7 +19334,7 @@ void SwigDirector_RandomAddLoop::reset() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomAddLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 11;
+  const size_t swig_method_index = 12;
   const char * const swig_method_name = "reset";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -18527,7 +19367,7 @@ Piavca::Motion *SwigDirector_RandomAddLoop::clone() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomAddLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 12;
+  const size_t swig_method_index = 13;
   const char * const swig_method_name = "clone";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -18563,7 +19403,7 @@ bool SwigDirector_RandomAddLoop::isFacial() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomAddLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 13;
+  const size_t swig_method_index = 14;
   const char * const swig_method_name = "isFacial";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -18599,7 +19439,7 @@ float SwigDirector_RandomAddLoop::getMotionLength() const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomAddLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 14;
+  const size_t swig_method_index = 15;
   const char * const swig_method_name = "getMotionLength";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -18635,7 +19475,7 @@ void SwigDirector_RandomAddLoop::unload() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomAddLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 15;
+  const size_t swig_method_index = 16;
   const char * const swig_method_name = "unload";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -18664,7 +19504,7 @@ bool SwigDirector_RandomAddLoop::loaded() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomAddLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 16;
+  const size_t swig_method_index = 17;
   const char * const swig_method_name = "loaded";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -18700,7 +19540,7 @@ void SwigDirector_RandomAddLoop::printInfo() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomAddLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 17;
+  const size_t swig_method_index = 18;
   const char * const swig_method_name = "printInfo";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -18731,7 +19571,7 @@ void SwigDirector_RandomAddLoop::setMaintainY(bool b) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomAddLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 18;
+  const size_t swig_method_index = 19;
   const char * const swig_method_name = "setMaintainY";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -18762,7 +19602,7 @@ void SwigDirector_RandomAddLoop::setAccumulateRoot(bool b) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomAddLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 19;
+  const size_t swig_method_index = 20;
   const char * const swig_method_name = "setAccumulateRoot";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -18797,7 +19637,7 @@ Piavca::Motion *SwigDirector_RandomAddLoop::findSubByType(type_info const &ty) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomAddLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 20;
+  const size_t swig_method_index = 21;
   const char * const swig_method_name = "findSubByType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -18837,7 +19677,7 @@ Piavca::Motion *SwigDirector_RandomAddLoop::getMotion() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomAddLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 21;
+  const size_t swig_method_index = 22;
   const char * const swig_method_name = "getMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -18875,7 +19715,7 @@ void SwigDirector_RandomAddLoop::setMotion(Piavca::Motion *m) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomAddLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 22;
+  const size_t swig_method_index = 23;
   const char * const swig_method_name = "setMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -18906,7 +19746,7 @@ void SwigDirector_RandomAddLoop::addMotion(Piavca::Motion *mot) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomAddLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 23;
+  const size_t swig_method_index = 24;
   const char * const swig_method_name = "addMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -18937,7 +19777,7 @@ bool SwigDirector_RandomAddLoop::isNull(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomAddLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 24;
+  const size_t swig_method_index = 25;
   const char * const swig_method_name = "isNull";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -18975,7 +19815,7 @@ Piavca::trackType SwigDirector_RandomAddLoop::getTrackType(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomAddLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 25;
+  const size_t swig_method_index = 26;
   const char * const swig_method_name = "getTrackType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -19079,6 +19919,46 @@ Piavca::Motion *SwigDirector_LookAtMotion::findSub(Piavca::tstring nm) {
 }
 
 
+Piavca::Avatar *SwigDirector_LookAtMotion::getAvatar() {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::Motion::getAvatar();
+  }
+  Piavca::Avatar *swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LookAtMotion.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 1;
+  const char * const swig_method_name = "getAvatar";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "getAvatar", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Avatar,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Avatar *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Avatar * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Avatar *) swig_c_result;
+}
+
+
 void SwigDirector_LookAtMotion::load(Piavca::Avatar *av) {
   if (swig_get_up()) {
     Piavca::LookAtMotion::load(av);
@@ -19090,7 +19970,7 @@ void SwigDirector_LookAtMotion::load(Piavca::Avatar *av) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LookAtMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 1;
+  const size_t swig_method_index = 2;
   const char * const swig_method_name = "load";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -19121,7 +20001,7 @@ void SwigDirector_LookAtMotion::setStartTime(float t) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LookAtMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 2;
+  const size_t swig_method_index = 3;
   const char * const swig_method_name = "setStartTime";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -19152,7 +20032,7 @@ void SwigDirector_LookAtMotion::preFrame(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LookAtMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 3;
+  const size_t swig_method_index = 4;
   const char * const swig_method_name = "preFrame";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -19185,7 +20065,7 @@ float SwigDirector_LookAtMotion::getFloatValueAtTimeInternal(int trackId, float 
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LookAtMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 4;
+  const size_t swig_method_index = 5;
   const char * const swig_method_name = "getFloatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -19228,7 +20108,7 @@ Piavca::Vec SwigDirector_LookAtMotion::getVecValueAtTimeInternal(int trackId, fl
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LookAtMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 5;
+  const size_t swig_method_index = 6;
   const char * const swig_method_name = "getVecValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -19271,7 +20151,7 @@ Piavca::Quat SwigDirector_LookAtMotion::getQuatValueAtTimeInternal(int trackId, 
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LookAtMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 6;
+  const size_t swig_method_index = 7;
   const char * const swig_method_name = "getQuatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -19307,7 +20187,7 @@ bool SwigDirector_LookAtMotion::isRandomAccess() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LookAtMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 7;
+  const size_t swig_method_index = 8;
   const char * const swig_method_name = "isRandomAccess";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -19343,7 +20223,7 @@ void SwigDirector_LookAtMotion::reset() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LookAtMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 8;
+  const size_t swig_method_index = 9;
   const char * const swig_method_name = "reset";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -19379,7 +20259,7 @@ Piavca::Motion *SwigDirector_LookAtMotion::clone() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LookAtMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 9;
+  const size_t swig_method_index = 10;
   const char * const swig_method_name = "clone";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -19415,7 +20295,7 @@ bool SwigDirector_LookAtMotion::isFacial() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LookAtMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 10;
+  const size_t swig_method_index = 11;
   const char * const swig_method_name = "isFacial";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -19451,7 +20331,7 @@ float SwigDirector_LookAtMotion::getMotionLength() const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LookAtMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 11;
+  const size_t swig_method_index = 12;
   const char * const swig_method_name = "getMotionLength";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -19487,7 +20367,7 @@ bool SwigDirector_LookAtMotion::loaded() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LookAtMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 12;
+  const size_t swig_method_index = 13;
   const char * const swig_method_name = "loaded";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -19523,7 +20403,7 @@ void SwigDirector_LookAtMotion::unload() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LookAtMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 13;
+  const size_t swig_method_index = 14;
   const char * const swig_method_name = "unload";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -19552,7 +20432,7 @@ void SwigDirector_LookAtMotion::printInfo() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LookAtMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 14;
+  const size_t swig_method_index = 15;
   const char * const swig_method_name = "printInfo";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -19587,7 +20467,7 @@ Piavca::Motion *SwigDirector_LookAtMotion::findSubByType(type_info const &ty) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LookAtMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 15;
+  const size_t swig_method_index = 16;
   const char * const swig_method_name = "findSubByType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -19625,7 +20505,7 @@ bool SwigDirector_LookAtMotion::isNull(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LookAtMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 16;
+  const size_t swig_method_index = 17;
   const char * const swig_method_name = "isNull";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -19663,7 +20543,7 @@ Piavca::trackType SwigDirector_LookAtMotion::getTrackType(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LookAtMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 17;
+  const size_t swig_method_index = 18;
   const char * const swig_method_name = "getTrackType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -19777,6 +20657,46 @@ void SwigDirector_RandomGazeMotion::load(Piavca::Avatar *av) {
 }
 
 
+Piavca::Avatar *SwigDirector_RandomGazeMotion::getAvatar() {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::TwoMotionCombiner::getAvatar();
+  }
+  Piavca::Avatar *swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomGazeMotion.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 3;
+  const char * const swig_method_name = "getAvatar";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "getAvatar", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Avatar,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Avatar *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Avatar * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Avatar *) swig_c_result;
+}
+
+
 void SwigDirector_RandomGazeMotion::preFrame(float time) {
   if (swig_get_up()) {
     Piavca::Motion::preFrame(time);
@@ -19788,7 +20708,7 @@ void SwigDirector_RandomGazeMotion::preFrame(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 3;
+  const size_t swig_method_index = 4;
   const char * const swig_method_name = "preFrame";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -19819,7 +20739,7 @@ void SwigDirector_RandomGazeMotion::setStartTime(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 4;
+  const size_t swig_method_index = 5;
   const char * const swig_method_name = "setStartTime";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -19852,7 +20772,7 @@ float SwigDirector_RandomGazeMotion::getFloatValueAtTimeInternal(int trackId, fl
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 5;
+  const size_t swig_method_index = 6;
   const char * const swig_method_name = "getFloatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -19895,7 +20815,7 @@ Piavca::Vec SwigDirector_RandomGazeMotion::getVecValueAtTimeInternal(int trackId
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 6;
+  const size_t swig_method_index = 7;
   const char * const swig_method_name = "getVecValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -19938,7 +20858,7 @@ Piavca::Quat SwigDirector_RandomGazeMotion::getQuatValueAtTimeInternal(int track
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 7;
+  const size_t swig_method_index = 8;
   const char * const swig_method_name = "getQuatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -19976,7 +20896,7 @@ void SwigDirector_RandomGazeMotion::reblend(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 8;
+  const size_t swig_method_index = 9;
   const char * const swig_method_name = "reblend";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -20005,7 +20925,7 @@ bool SwigDirector_RandomGazeMotion::isRandomAccess() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 9;
+  const size_t swig_method_index = 10;
   const char * const swig_method_name = "isRandomAccess";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -20044,7 +20964,7 @@ void SwigDirector_RandomGazeMotion::reset() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 10;
+  const size_t swig_method_index = 11;
   const char * const swig_method_name = "reset";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -20077,7 +20997,7 @@ Piavca::Motion *SwigDirector_RandomGazeMotion::clone() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 11;
+  const size_t swig_method_index = 12;
   const char * const swig_method_name = "clone";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -20113,7 +21033,7 @@ bool SwigDirector_RandomGazeMotion::isFacial() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 12;
+  const size_t swig_method_index = 13;
   const char * const swig_method_name = "isFacial";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -20149,7 +21069,7 @@ float SwigDirector_RandomGazeMotion::getMotionLength() const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 13;
+  const size_t swig_method_index = 14;
   const char * const swig_method_name = "getMotionLength";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -20185,7 +21105,7 @@ void SwigDirector_RandomGazeMotion::unload() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 14;
+  const size_t swig_method_index = 15;
   const char * const swig_method_name = "unload";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -20214,7 +21134,7 @@ bool SwigDirector_RandomGazeMotion::loaded() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 15;
+  const size_t swig_method_index = 16;
   const char * const swig_method_name = "loaded";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -20250,7 +21170,7 @@ void SwigDirector_RandomGazeMotion::printInfo() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 16;
+  const size_t swig_method_index = 17;
   const char * const swig_method_name = "printInfo";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -20281,7 +21201,7 @@ void SwigDirector_RandomGazeMotion::setMaintainY(bool b) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 17;
+  const size_t swig_method_index = 18;
   const char * const swig_method_name = "setMaintainY";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -20312,7 +21232,7 @@ void SwigDirector_RandomGazeMotion::setAccumulateRoot(bool b) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 18;
+  const size_t swig_method_index = 19;
   const char * const swig_method_name = "setAccumulateRoot";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -20345,7 +21265,7 @@ bool SwigDirector_RandomGazeMotion::lookAt(Piavca::tstring name, bool force) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 19;
+  const size_t swig_method_index = 20;
   const char * const swig_method_name = "lookAt";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -20387,7 +21307,7 @@ Piavca::Motion *SwigDirector_RandomGazeMotion::findSubByType(type_info const &ty
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 20;
+  const size_t swig_method_index = 21;
   const char * const swig_method_name = "findSubByType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -20427,7 +21347,7 @@ Piavca::Motion *SwigDirector_RandomGazeMotion::getMotion() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 21;
+  const size_t swig_method_index = 22;
   const char * const swig_method_name = "getMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -20465,7 +21385,7 @@ void SwigDirector_RandomGazeMotion::setMotion(Piavca::Motion *mot) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 22;
+  const size_t swig_method_index = 23;
   const char * const swig_method_name = "setMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -20496,7 +21416,7 @@ bool SwigDirector_RandomGazeMotion::isNull(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 23;
+  const size_t swig_method_index = 24;
   const char * const swig_method_name = "isNull";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -20534,7 +21454,7 @@ Piavca::trackType SwigDirector_RandomGazeMotion::getTrackType(int trackId) const
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 24;
+  const size_t swig_method_index = 25;
   const char * const swig_method_name = "getTrackType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -20648,6 +21568,46 @@ void SwigDirector_ZeroMotion::load(Piavca::Avatar *av) {
 }
 
 
+Piavca::Avatar *SwigDirector_ZeroMotion::getAvatar() {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::Motion::getAvatar();
+  }
+  Piavca::Avatar *swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ZeroMotion.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 2;
+  const char * const swig_method_name = "getAvatar";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "getAvatar", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Avatar,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Avatar *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Avatar * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Avatar *) swig_c_result;
+}
+
+
 void SwigDirector_ZeroMotion::setStartTime(float t) {
   if (swig_get_up()) {
     Piavca::Motion::setStartTime(t);
@@ -20659,7 +21619,7 @@ void SwigDirector_ZeroMotion::setStartTime(float t) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ZeroMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 2;
+  const size_t swig_method_index = 3;
   const char * const swig_method_name = "setStartTime";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -20690,7 +21650,7 @@ void SwigDirector_ZeroMotion::preFrame(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ZeroMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 3;
+  const size_t swig_method_index = 4;
   const char * const swig_method_name = "preFrame";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -20723,7 +21683,7 @@ float SwigDirector_ZeroMotion::getFloatValueAtTimeInternal(int trackId, float ti
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ZeroMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 4;
+  const size_t swig_method_index = 5;
   const char * const swig_method_name = "getFloatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -20766,7 +21726,7 @@ Piavca::Vec SwigDirector_ZeroMotion::getVecValueAtTimeInternal(int trackId, floa
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ZeroMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 5;
+  const size_t swig_method_index = 6;
   const char * const swig_method_name = "getVecValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -20809,7 +21769,7 @@ Piavca::Quat SwigDirector_ZeroMotion::getQuatValueAtTimeInternal(int trackId, fl
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ZeroMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 6;
+  const size_t swig_method_index = 7;
   const char * const swig_method_name = "getQuatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -20845,7 +21805,7 @@ bool SwigDirector_ZeroMotion::isRandomAccess() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ZeroMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 7;
+  const size_t swig_method_index = 8;
   const char * const swig_method_name = "isRandomAccess";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -20881,7 +21841,7 @@ void SwigDirector_ZeroMotion::reset() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ZeroMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 8;
+  const size_t swig_method_index = 9;
   const char * const swig_method_name = "reset";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -20917,7 +21877,7 @@ Piavca::Motion *SwigDirector_ZeroMotion::clone() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ZeroMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 9;
+  const size_t swig_method_index = 10;
   const char * const swig_method_name = "clone";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -20953,7 +21913,7 @@ bool SwigDirector_ZeroMotion::isFacial() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ZeroMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 10;
+  const size_t swig_method_index = 11;
   const char * const swig_method_name = "isFacial";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -20989,7 +21949,7 @@ float SwigDirector_ZeroMotion::getMotionLength() const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ZeroMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 11;
+  const size_t swig_method_index = 12;
   const char * const swig_method_name = "getMotionLength";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -21025,7 +21985,7 @@ bool SwigDirector_ZeroMotion::loaded() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ZeroMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 12;
+  const size_t swig_method_index = 13;
   const char * const swig_method_name = "loaded";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -21061,7 +22021,7 @@ void SwigDirector_ZeroMotion::unload() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ZeroMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 13;
+  const size_t swig_method_index = 14;
   const char * const swig_method_name = "unload";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -21090,7 +22050,7 @@ void SwigDirector_ZeroMotion::printInfo() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ZeroMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 14;
+  const size_t swig_method_index = 15;
   const char * const swig_method_name = "printInfo";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -21125,7 +22085,7 @@ Piavca::Motion *SwigDirector_ZeroMotion::findSubByType(type_info const &ty) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ZeroMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 15;
+  const size_t swig_method_index = 16;
   const char * const swig_method_name = "findSubByType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -21163,7 +22123,7 @@ bool SwigDirector_ZeroMotion::isNull(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ZeroMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 16;
+  const size_t swig_method_index = 17;
   const char * const swig_method_name = "isNull";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -21201,7 +22161,7 @@ Piavca::trackType SwigDirector_ZeroMotion::getTrackType(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ZeroMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 17;
+  const size_t swig_method_index = 18;
   const char * const swig_method_name = "getTrackType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -21315,6 +22275,46 @@ void SwigDirector_MotionSaver::load(Piavca::Avatar *av) {
 }
 
 
+Piavca::Avatar *SwigDirector_MotionSaver::getAvatar() {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::MotionFilter::getAvatar();
+  }
+  Piavca::Avatar *swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionSaver.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 2;
+  const char * const swig_method_name = "getAvatar";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "getAvatar", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Avatar,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Avatar *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Avatar * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Avatar *) swig_c_result;
+}
+
+
 void SwigDirector_MotionSaver::preFrame(float time) {
   if (swig_get_up()) {
     Piavca::Motion::preFrame(time);
@@ -21326,7 +22326,7 @@ void SwigDirector_MotionSaver::preFrame(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionSaver.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 2;
+  const size_t swig_method_index = 3;
   const char * const swig_method_name = "preFrame";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -21357,7 +22357,7 @@ void SwigDirector_MotionSaver::setStartTime(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionSaver.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 3;
+  const size_t swig_method_index = 4;
   const char * const swig_method_name = "setStartTime";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -21390,7 +22390,7 @@ float SwigDirector_MotionSaver::getFloatValueAtTimeInternal(int trackId, float t
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionSaver.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 4;
+  const size_t swig_method_index = 5;
   const char * const swig_method_name = "getFloatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -21433,7 +22433,7 @@ Piavca::Vec SwigDirector_MotionSaver::getVecValueAtTimeInternal(int trackId, flo
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionSaver.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 5;
+  const size_t swig_method_index = 6;
   const char * const swig_method_name = "getVecValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -21476,7 +22476,7 @@ Piavca::Quat SwigDirector_MotionSaver::getQuatValueAtTimeInternal(int trackId, f
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionSaver.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 6;
+  const size_t swig_method_index = 7;
   const char * const swig_method_name = "getQuatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -21512,7 +22512,7 @@ bool SwigDirector_MotionSaver::isRandomAccess() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionSaver.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 7;
+  const size_t swig_method_index = 8;
   const char * const swig_method_name = "isRandomAccess";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -21551,7 +22551,7 @@ void SwigDirector_MotionSaver::reset() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionSaver.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 8;
+  const size_t swig_method_index = 9;
   const char * const swig_method_name = "reset";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -21584,7 +22584,7 @@ Piavca::Motion *SwigDirector_MotionSaver::clone() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionSaver.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 9;
+  const size_t swig_method_index = 10;
   const char * const swig_method_name = "clone";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -21620,7 +22620,7 @@ float SwigDirector_MotionSaver::getMotionLength() const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionSaver.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 10;
+  const size_t swig_method_index = 11;
   const char * const swig_method_name = "getMotionLength";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -21656,7 +22656,7 @@ bool SwigDirector_MotionSaver::isFacial() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionSaver.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 11;
+  const size_t swig_method_index = 12;
   const char * const swig_method_name = "isFacial";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -21692,7 +22692,7 @@ void SwigDirector_MotionSaver::unload() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionSaver.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 12;
+  const size_t swig_method_index = 13;
   const char * const swig_method_name = "unload";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -21721,7 +22721,7 @@ bool SwigDirector_MotionSaver::loaded() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionSaver.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 13;
+  const size_t swig_method_index = 14;
   const char * const swig_method_name = "loaded";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -21757,7 +22757,7 @@ void SwigDirector_MotionSaver::printInfo() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionSaver.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 14;
+  const size_t swig_method_index = 15;
   const char * const swig_method_name = "printInfo";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -21792,7 +22792,7 @@ Piavca::Motion *SwigDirector_MotionSaver::findSubByType(type_info const &ty) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionSaver.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 15;
+  const size_t swig_method_index = 16;
   const char * const swig_method_name = "findSubByType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -21830,7 +22830,7 @@ bool SwigDirector_MotionSaver::isNull(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionSaver.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 16;
+  const size_t swig_method_index = 17;
   const char * const swig_method_name = "isNull";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -21868,7 +22868,7 @@ Piavca::trackType SwigDirector_MotionSaver::getTrackType(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionSaver.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 17;
+  const size_t swig_method_index = 18;
   const char * const swig_method_name = "getTrackType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -21989,6 +22989,46 @@ void SwigDirector_SubMotion::load(Piavca::Avatar *av) {
 }
 
 
+Piavca::Avatar *SwigDirector_SubMotion::getAvatar() {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::MotionFilter::getAvatar();
+  }
+  Piavca::Avatar *swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SubMotion.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 2;
+  const char * const swig_method_name = "getAvatar";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "getAvatar", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Avatar,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Avatar *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Avatar * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Avatar *) swig_c_result;
+}
+
+
 void SwigDirector_SubMotion::preFrame(float time) {
   if (swig_get_up()) {
     Piavca::Motion::preFrame(time);
@@ -22000,7 +23040,7 @@ void SwigDirector_SubMotion::preFrame(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SubMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 2;
+  const size_t swig_method_index = 3;
   const char * const swig_method_name = "preFrame";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -22031,7 +23071,7 @@ void SwigDirector_SubMotion::setStartTime(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SubMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 3;
+  const size_t swig_method_index = 4;
   const char * const swig_method_name = "setStartTime";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -22064,7 +23104,7 @@ float SwigDirector_SubMotion::getFloatValueAtTimeInternal(int trackId, float tim
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SubMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 4;
+  const size_t swig_method_index = 5;
   const char * const swig_method_name = "getFloatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -22107,7 +23147,7 @@ Piavca::Vec SwigDirector_SubMotion::getVecValueAtTimeInternal(int trackId, float
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SubMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 5;
+  const size_t swig_method_index = 6;
   const char * const swig_method_name = "getVecValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -22150,7 +23190,7 @@ Piavca::Quat SwigDirector_SubMotion::getQuatValueAtTimeInternal(int trackId, flo
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SubMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 6;
+  const size_t swig_method_index = 7;
   const char * const swig_method_name = "getQuatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -22186,7 +23226,7 @@ bool SwigDirector_SubMotion::isRandomAccess() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SubMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 7;
+  const size_t swig_method_index = 8;
   const char * const swig_method_name = "isRandomAccess";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -22225,7 +23265,7 @@ void SwigDirector_SubMotion::reset() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SubMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 8;
+  const size_t swig_method_index = 9;
   const char * const swig_method_name = "reset";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -22258,7 +23298,7 @@ Piavca::Motion *SwigDirector_SubMotion::clone() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SubMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 9;
+  const size_t swig_method_index = 10;
   const char * const swig_method_name = "clone";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -22294,7 +23334,7 @@ bool SwigDirector_SubMotion::isFacial() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SubMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 10;
+  const size_t swig_method_index = 11;
   const char * const swig_method_name = "isFacial";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -22330,7 +23370,7 @@ float SwigDirector_SubMotion::getMotionLength() const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SubMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 11;
+  const size_t swig_method_index = 12;
   const char * const swig_method_name = "getMotionLength";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -22366,7 +23406,7 @@ void SwigDirector_SubMotion::unload() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SubMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 12;
+  const size_t swig_method_index = 13;
   const char * const swig_method_name = "unload";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -22395,7 +23435,7 @@ bool SwigDirector_SubMotion::loaded() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SubMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 13;
+  const size_t swig_method_index = 14;
   const char * const swig_method_name = "loaded";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -22431,7 +23471,7 @@ void SwigDirector_SubMotion::printInfo() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SubMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 14;
+  const size_t swig_method_index = 15;
   const char * const swig_method_name = "printInfo";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -22466,7 +23506,7 @@ Piavca::Motion *SwigDirector_SubMotion::findSubByType(type_info const &ty) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SubMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 15;
+  const size_t swig_method_index = 16;
   const char * const swig_method_name = "findSubByType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -22504,7 +23544,7 @@ bool SwigDirector_SubMotion::isNull(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SubMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 16;
+  const size_t swig_method_index = 17;
   const char * const swig_method_name = "isNull";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -22542,7 +23582,7 @@ Piavca::trackType SwigDirector_SubMotion::getTrackType(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call SubMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 17;
+  const size_t swig_method_index = 18;
   const char * const swig_method_name = "getTrackType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -22663,6 +23703,46 @@ void SwigDirector_TimeRangeMotion::load(Piavca::Avatar *av) {
 }
 
 
+Piavca::Avatar *SwigDirector_TimeRangeMotion::getAvatar() {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::MotionFilter::getAvatar();
+  }
+  Piavca::Avatar *swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeRangeMotion.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 2;
+  const char * const swig_method_name = "getAvatar";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "getAvatar", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Avatar,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Avatar *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Avatar * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Avatar *) swig_c_result;
+}
+
+
 void SwigDirector_TimeRangeMotion::preFrame(float time) {
   if (swig_get_up()) {
     Piavca::Motion::preFrame(time);
@@ -22674,7 +23754,7 @@ void SwigDirector_TimeRangeMotion::preFrame(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeRangeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 2;
+  const size_t swig_method_index = 3;
   const char * const swig_method_name = "preFrame";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -22705,7 +23785,7 @@ void SwigDirector_TimeRangeMotion::setStartTime(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeRangeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 3;
+  const size_t swig_method_index = 4;
   const char * const swig_method_name = "setStartTime";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -22738,7 +23818,7 @@ float SwigDirector_TimeRangeMotion::getFloatValueAtTimeInternal(int trackId, flo
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeRangeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 4;
+  const size_t swig_method_index = 5;
   const char * const swig_method_name = "getFloatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -22781,7 +23861,7 @@ Piavca::Vec SwigDirector_TimeRangeMotion::getVecValueAtTimeInternal(int trackId,
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeRangeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 5;
+  const size_t swig_method_index = 6;
   const char * const swig_method_name = "getVecValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -22824,7 +23904,7 @@ Piavca::Quat SwigDirector_TimeRangeMotion::getQuatValueAtTimeInternal(int trackI
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeRangeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 6;
+  const size_t swig_method_index = 7;
   const char * const swig_method_name = "getQuatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -22860,7 +23940,7 @@ bool SwigDirector_TimeRangeMotion::isRandomAccess() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeRangeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 7;
+  const size_t swig_method_index = 8;
   const char * const swig_method_name = "isRandomAccess";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -22899,7 +23979,7 @@ void SwigDirector_TimeRangeMotion::reset() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeRangeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 8;
+  const size_t swig_method_index = 9;
   const char * const swig_method_name = "reset";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -22932,7 +24012,7 @@ Piavca::Motion *SwigDirector_TimeRangeMotion::clone() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeRangeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 9;
+  const size_t swig_method_index = 10;
   const char * const swig_method_name = "clone";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -22968,7 +24048,7 @@ float SwigDirector_TimeRangeMotion::getMotionLength() const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeRangeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 10;
+  const size_t swig_method_index = 11;
   const char * const swig_method_name = "getMotionLength";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -23004,7 +24084,7 @@ bool SwigDirector_TimeRangeMotion::isFacial() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeRangeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 11;
+  const size_t swig_method_index = 12;
   const char * const swig_method_name = "isFacial";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -23040,7 +24120,7 @@ void SwigDirector_TimeRangeMotion::unload() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeRangeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 12;
+  const size_t swig_method_index = 13;
   const char * const swig_method_name = "unload";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -23069,7 +24149,7 @@ bool SwigDirector_TimeRangeMotion::loaded() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeRangeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 13;
+  const size_t swig_method_index = 14;
   const char * const swig_method_name = "loaded";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -23105,7 +24185,7 @@ void SwigDirector_TimeRangeMotion::printInfo() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeRangeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 14;
+  const size_t swig_method_index = 15;
   const char * const swig_method_name = "printInfo";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -23140,7 +24220,7 @@ Piavca::Motion *SwigDirector_TimeRangeMotion::findSubByType(type_info const &ty)
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeRangeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 15;
+  const size_t swig_method_index = 16;
   const char * const swig_method_name = "findSubByType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -23178,7 +24258,7 @@ bool SwigDirector_TimeRangeMotion::isNull(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeRangeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 16;
+  const size_t swig_method_index = 17;
   const char * const swig_method_name = "isNull";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -23216,7 +24296,7 @@ Piavca::trackType SwigDirector_TimeRangeMotion::getTrackType(int trackId) const 
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeRangeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 17;
+  const size_t swig_method_index = 18;
   const char * const swig_method_name = "getTrackType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -23330,6 +24410,46 @@ void SwigDirector_TimeWarp::load(Piavca::Avatar *av) {
 }
 
 
+Piavca::Avatar *SwigDirector_TimeWarp::getAvatar() {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::MotionFilter::getAvatar();
+  }
+  Piavca::Avatar *swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeWarp.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 2;
+  const char * const swig_method_name = "getAvatar";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "getAvatar", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Avatar,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Avatar *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Avatar * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Avatar *) swig_c_result;
+}
+
+
 void SwigDirector_TimeWarp::preFrame(float time) {
   if (swig_get_up()) {
     Piavca::Motion::preFrame(time);
@@ -23341,7 +24461,7 @@ void SwigDirector_TimeWarp::preFrame(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeWarp.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 2;
+  const size_t swig_method_index = 3;
   const char * const swig_method_name = "preFrame";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -23372,7 +24492,7 @@ void SwigDirector_TimeWarp::setStartTime(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeWarp.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 3;
+  const size_t swig_method_index = 4;
   const char * const swig_method_name = "setStartTime";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -23405,7 +24525,7 @@ float SwigDirector_TimeWarp::getFloatValueAtTimeInternal(int trackId, float time
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeWarp.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 4;
+  const size_t swig_method_index = 5;
   const char * const swig_method_name = "getFloatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -23448,7 +24568,7 @@ Piavca::Vec SwigDirector_TimeWarp::getVecValueAtTimeInternal(int trackId, float 
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeWarp.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 5;
+  const size_t swig_method_index = 6;
   const char * const swig_method_name = "getVecValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -23491,7 +24611,7 @@ Piavca::Quat SwigDirector_TimeWarp::getQuatValueAtTimeInternal(int trackId, floa
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeWarp.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 6;
+  const size_t swig_method_index = 7;
   const char * const swig_method_name = "getQuatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -23527,7 +24647,7 @@ bool SwigDirector_TimeWarp::isRandomAccess() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeWarp.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 7;
+  const size_t swig_method_index = 8;
   const char * const swig_method_name = "isRandomAccess";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -23566,7 +24686,7 @@ void SwigDirector_TimeWarp::reset() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeWarp.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 8;
+  const size_t swig_method_index = 9;
   const char * const swig_method_name = "reset";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -23599,7 +24719,7 @@ Piavca::Motion *SwigDirector_TimeWarp::clone() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeWarp.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 9;
+  const size_t swig_method_index = 10;
   const char * const swig_method_name = "clone";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -23635,7 +24755,7 @@ bool SwigDirector_TimeWarp::isFacial() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeWarp.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 10;
+  const size_t swig_method_index = 11;
   const char * const swig_method_name = "isFacial";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -23671,7 +24791,7 @@ float SwigDirector_TimeWarp::getMotionLength() const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeWarp.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 11;
+  const size_t swig_method_index = 12;
   const char * const swig_method_name = "getMotionLength";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -23707,7 +24827,7 @@ void SwigDirector_TimeWarp::unload() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeWarp.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 12;
+  const size_t swig_method_index = 13;
   const char * const swig_method_name = "unload";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -23736,7 +24856,7 @@ bool SwigDirector_TimeWarp::loaded() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeWarp.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 13;
+  const size_t swig_method_index = 14;
   const char * const swig_method_name = "loaded";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -23772,7 +24892,7 @@ void SwigDirector_TimeWarp::printInfo() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeWarp.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 14;
+  const size_t swig_method_index = 15;
   const char * const swig_method_name = "printInfo";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -23807,7 +24927,7 @@ Piavca::Motion *SwigDirector_TimeWarp::findSubByType(type_info const &ty) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeWarp.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 15;
+  const size_t swig_method_index = 16;
   const char * const swig_method_name = "findSubByType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -23845,7 +24965,7 @@ bool SwigDirector_TimeWarp::isNull(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeWarp.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 16;
+  const size_t swig_method_index = 17;
   const char * const swig_method_name = "isNull";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -23883,7 +25003,7 @@ Piavca::trackType SwigDirector_TimeWarp::getTrackType(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call TimeWarp.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 17;
+  const size_t swig_method_index = 18;
   const char * const swig_method_name = "getTrackType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -23997,6 +25117,46 @@ void SwigDirector_DiadicGazeMotion::load(Piavca::Avatar *av) {
 }
 
 
+Piavca::Avatar *SwigDirector_DiadicGazeMotion::getAvatar() {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::TwoMotionCombiner::getAvatar();
+  }
+  Piavca::Avatar *swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call DiadicGazeMotion.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 3;
+  const char * const swig_method_name = "getAvatar";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "getAvatar", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Avatar,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Avatar *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Avatar * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Avatar *) swig_c_result;
+}
+
+
 void SwigDirector_DiadicGazeMotion::preFrame(float time) {
   if (swig_get_up()) {
     Piavca::Motion::preFrame(time);
@@ -24008,7 +25168,7 @@ void SwigDirector_DiadicGazeMotion::preFrame(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call DiadicGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 3;
+  const size_t swig_method_index = 4;
   const char * const swig_method_name = "preFrame";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -24039,7 +25199,7 @@ void SwigDirector_DiadicGazeMotion::setStartTime(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call DiadicGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 4;
+  const size_t swig_method_index = 5;
   const char * const swig_method_name = "setStartTime";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -24072,7 +25232,7 @@ float SwigDirector_DiadicGazeMotion::getFloatValueAtTimeInternal(int trackId, fl
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call DiadicGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 5;
+  const size_t swig_method_index = 6;
   const char * const swig_method_name = "getFloatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -24115,7 +25275,7 @@ Piavca::Vec SwigDirector_DiadicGazeMotion::getVecValueAtTimeInternal(int trackId
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call DiadicGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 6;
+  const size_t swig_method_index = 7;
   const char * const swig_method_name = "getVecValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -24158,7 +25318,7 @@ Piavca::Quat SwigDirector_DiadicGazeMotion::getQuatValueAtTimeInternal(int track
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call DiadicGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 7;
+  const size_t swig_method_index = 8;
   const char * const swig_method_name = "getQuatValueAtTimeInternal";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -24196,7 +25356,7 @@ void SwigDirector_DiadicGazeMotion::reblend(float time) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call DiadicGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 8;
+  const size_t swig_method_index = 9;
   const char * const swig_method_name = "reblend";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -24225,7 +25385,7 @@ bool SwigDirector_DiadicGazeMotion::isRandomAccess() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call DiadicGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 9;
+  const size_t swig_method_index = 10;
   const char * const swig_method_name = "isRandomAccess";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -24264,7 +25424,7 @@ void SwigDirector_DiadicGazeMotion::reset() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call DiadicGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 10;
+  const size_t swig_method_index = 11;
   const char * const swig_method_name = "reset";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -24297,7 +25457,7 @@ Piavca::Motion *SwigDirector_DiadicGazeMotion::clone() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call DiadicGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 11;
+  const size_t swig_method_index = 12;
   const char * const swig_method_name = "clone";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -24333,7 +25493,7 @@ bool SwigDirector_DiadicGazeMotion::isFacial() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call DiadicGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 12;
+  const size_t swig_method_index = 13;
   const char * const swig_method_name = "isFacial";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -24369,7 +25529,7 @@ float SwigDirector_DiadicGazeMotion::getMotionLength() const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call DiadicGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 13;
+  const size_t swig_method_index = 14;
   const char * const swig_method_name = "getMotionLength";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -24405,7 +25565,7 @@ void SwigDirector_DiadicGazeMotion::unload() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call DiadicGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 14;
+  const size_t swig_method_index = 15;
   const char * const swig_method_name = "unload";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -24434,7 +25594,7 @@ bool SwigDirector_DiadicGazeMotion::loaded() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call DiadicGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 15;
+  const size_t swig_method_index = 16;
   const char * const swig_method_name = "loaded";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -24470,7 +25630,7 @@ void SwigDirector_DiadicGazeMotion::printInfo() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call DiadicGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 16;
+  const size_t swig_method_index = 17;
   const char * const swig_method_name = "printInfo";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -24501,7 +25661,7 @@ void SwigDirector_DiadicGazeMotion::setMaintainY(bool b) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call DiadicGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 17;
+  const size_t swig_method_index = 18;
   const char * const swig_method_name = "setMaintainY";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -24532,7 +25692,7 @@ void SwigDirector_DiadicGazeMotion::setAccumulateRoot(bool b) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call DiadicGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 18;
+  const size_t swig_method_index = 19;
   const char * const swig_method_name = "setAccumulateRoot";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -24565,7 +25725,7 @@ bool SwigDirector_DiadicGazeMotion::lookAt(Piavca::tstring name, bool force) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call DiadicGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 19;
+  const size_t swig_method_index = 20;
   const char * const swig_method_name = "lookAt";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -24607,7 +25767,7 @@ Piavca::Motion *SwigDirector_DiadicGazeMotion::findSubByType(type_info const &ty
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call DiadicGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 20;
+  const size_t swig_method_index = 21;
   const char * const swig_method_name = "findSubByType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -24647,7 +25807,7 @@ Piavca::Motion *SwigDirector_DiadicGazeMotion::getMotion() {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call DiadicGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 21;
+  const size_t swig_method_index = 22;
   const char * const swig_method_name = "getMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -24685,7 +25845,7 @@ void SwigDirector_DiadicGazeMotion::setMotion(Piavca::Motion *mot) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call DiadicGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 22;
+  const size_t swig_method_index = 23;
   const char * const swig_method_name = "setMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -24716,7 +25876,7 @@ bool SwigDirector_DiadicGazeMotion::isNull(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call DiadicGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 23;
+  const size_t swig_method_index = 24;
   const char * const swig_method_name = "isNull";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -24754,7 +25914,7 @@ Piavca::trackType SwigDirector_DiadicGazeMotion::getTrackType(int trackId) const
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call DiadicGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 24;
+  const size_t swig_method_index = 25;
   const char * const swig_method_name = "getTrackType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -34723,6 +35883,51 @@ SWIGINTERN PyObject *_wrap_Motion_loaded(PyObject *SWIGUNUSEDPARM(self), PyObjec
     SWIG_fail;
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Motion_getAvatar(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Motion *arg1 = (Piavca::Motion *) 0 ;
+  Piavca::Avatar *result = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  Swig::Director *director = 0;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Motion_getAvatar",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Motion, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Motion_getAvatar" "', argument " "1"" of type '" "Piavca::Motion *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Motion * >(argp1);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+  try {
+    Swig::UnknownExceptionHandler dh;
+    {
+      try {
+        result = (Piavca::Avatar *)(arg1)->getAvatar(); 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }
+      catch (Piavca::Exception &e) 
+      {
+        std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+        SWIG_fail; 
+      }
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__Avatar, 0 |  0 );
+  if (director) {
+    SWIG_AcquirePtr(resultobj, director->swig_release_ownership(SWIG_as_voidptr(result)));
+  }
   return resultobj;
 fail:
   return NULL;
@@ -48145,6 +49350,51 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_MotionFilter_getAvatar(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::MotionFilter *arg1 = (Piavca::MotionFilter *) 0 ;
+  Piavca::Avatar *result = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  Swig::Director *director = 0;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:MotionFilter_getAvatar",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__MotionFilter, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MotionFilter_getAvatar" "', argument " "1"" of type '" "Piavca::MotionFilter *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::MotionFilter * >(argp1);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+  try {
+    Swig::UnknownExceptionHandler dh;
+    {
+      try {
+        result = (Piavca::Avatar *)(arg1)->getAvatar(); 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }
+      catch (Piavca::Exception &e) 
+      {
+        std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+        SWIG_fail; 
+      }
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__Avatar, 0 |  0 );
+  if (director) {
+    SWIG_AcquirePtr(resultobj, director->swig_release_ownership(SWIG_as_voidptr(result)));
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_MotionFilter_setStartTime(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Piavca::MotionFilter *arg1 = (Piavca::MotionFilter *) 0 ;
@@ -49314,6 +50564,51 @@ SWIGINTERN PyObject *_wrap_TwoMotionCombiner_loaded(PyObject *SWIGUNUSEDPARM(sel
     SWIG_fail;
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_TwoMotionCombiner_getAvatar(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::TwoMotionCombiner *arg1 = (Piavca::TwoMotionCombiner *) 0 ;
+  Piavca::Avatar *result = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  Swig::Director *director = 0;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:TwoMotionCombiner_getAvatar",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__TwoMotionCombiner, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TwoMotionCombiner_getAvatar" "', argument " "1"" of type '" "Piavca::TwoMotionCombiner *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::TwoMotionCombiner * >(argp1);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+  try {
+    Swig::UnknownExceptionHandler dh;
+    {
+      try {
+        result = (Piavca::Avatar *)(arg1)->getAvatar(); 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }
+      catch (Piavca::Exception &e) 
+      {
+        std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+        SWIG_fail; 
+      }
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__Avatar, 0 |  0 );
+  if (director) {
+    SWIG_AcquirePtr(resultobj, director->swig_release_ownership(SWIG_as_voidptr(result)));
+  }
   return resultobj;
 fail:
   return NULL;
@@ -60127,6 +61422,51 @@ SWIGINTERN PyObject *_wrap_MultiMotionCombiner_loaded(PyObject *SWIGUNUSEDPARM(s
     SWIG_fail;
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MultiMotionCombiner_getAvatar(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::MultiMotionCombiner *arg1 = (Piavca::MultiMotionCombiner *) 0 ;
+  Piavca::Avatar *result = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  Swig::Director *director = 0;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:MultiMotionCombiner_getAvatar",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__MultiMotionCombiner, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MultiMotionCombiner_getAvatar" "', argument " "1"" of type '" "Piavca::MultiMotionCombiner *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::MultiMotionCombiner * >(argp1);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+  try {
+    Swig::UnknownExceptionHandler dh;
+    {
+      try {
+        result = (Piavca::Avatar *)(arg1)->getAvatar(); 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }
+      catch (Piavca::Exception &e) 
+      {
+        std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+        SWIG_fail; 
+      }
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__Avatar, 0 |  0 );
+  if (director) {
+    SWIG_AcquirePtr(resultobj, director->swig_release_ownership(SWIG_as_voidptr(result)));
+  }
   return resultobj;
 fail:
   return NULL;
@@ -76806,6 +78146,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Motion_load", _wrap_Motion_load, METH_VARARGS, NULL},
 	 { (char *)"Motion_unload", _wrap_Motion_unload, METH_VARARGS, NULL},
 	 { (char *)"Motion_loaded", _wrap_Motion_loaded, METH_VARARGS, NULL},
+	 { (char *)"Motion_getAvatar", _wrap_Motion_getAvatar, METH_VARARGS, NULL},
 	 { (char *)"Motion_setStartTime", _wrap_Motion_setStartTime, METH_VARARGS, NULL},
 	 { (char *)"Motion_getStartTime", _wrap_Motion_getStartTime, METH_VARARGS, NULL},
 	 { (char *)"Motion_getEndTime", _wrap_Motion_getEndTime, METH_VARARGS, NULL},
@@ -77012,6 +78353,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"MotionFilter_load", _wrap_MotionFilter_load, METH_VARARGS, NULL},
 	 { (char *)"MotionFilter_unload", _wrap_MotionFilter_unload, METH_VARARGS, NULL},
 	 { (char *)"MotionFilter_loaded", _wrap_MotionFilter_loaded, METH_VARARGS, NULL},
+	 { (char *)"MotionFilter_getAvatar", _wrap_MotionFilter_getAvatar, METH_VARARGS, NULL},
 	 { (char *)"MotionFilter_setStartTime", _wrap_MotionFilter_setStartTime, METH_VARARGS, NULL},
 	 { (char *)"MotionFilter_reset", _wrap_MotionFilter_reset, METH_VARARGS, NULL},
 	 { (char *)"MotionFilter_setMotion", _wrap_MotionFilter_setMotion, METH_VARARGS, NULL},
@@ -77035,6 +78377,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"TwoMotionCombiner_load", _wrap_TwoMotionCombiner_load, METH_VARARGS, NULL},
 	 { (char *)"TwoMotionCombiner_unload", _wrap_TwoMotionCombiner_unload, METH_VARARGS, NULL},
 	 { (char *)"TwoMotionCombiner_loaded", _wrap_TwoMotionCombiner_loaded, METH_VARARGS, NULL},
+	 { (char *)"TwoMotionCombiner_getAvatar", _wrap_TwoMotionCombiner_getAvatar, METH_VARARGS, NULL},
 	 { (char *)"TwoMotionCombiner_setStartTime", _wrap_TwoMotionCombiner_setStartTime, METH_VARARGS, NULL},
 	 { (char *)"TwoMotionCombiner_reset", _wrap_TwoMotionCombiner_reset, METH_VARARGS, NULL},
 	 { (char *)"TwoMotionCombiner_getMotionLength", _wrap_TwoMotionCombiner_getMotionLength, METH_VARARGS, NULL},
@@ -77200,6 +78543,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"MultiMotionCombiner_load", _wrap_MultiMotionCombiner_load, METH_VARARGS, NULL},
 	 { (char *)"MultiMotionCombiner_unload", _wrap_MultiMotionCombiner_unload, METH_VARARGS, NULL},
 	 { (char *)"MultiMotionCombiner_loaded", _wrap_MultiMotionCombiner_loaded, METH_VARARGS, NULL},
+	 { (char *)"MultiMotionCombiner_getAvatar", _wrap_MultiMotionCombiner_getAvatar, METH_VARARGS, NULL},
 	 { (char *)"MultiMotionCombiner_swigregister", MultiMotionCombiner_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_ChoiceMotion", _wrap_new_ChoiceMotion, METH_VARARGS, NULL},
 	 { (char *)"delete_ChoiceMotion", _wrap_delete_ChoiceMotion, METH_VARARGS, NULL},

@@ -71,6 +71,9 @@ namespace Piavca
 		virtual void load(Avatar *av);
 		virtual void unload();
 		virtual bool loaded();
+		
+		//! gets the avatar that the motion is loaded into
+		virtual Avatar *getAvatar();
 
 		virtual void setStartTime(float time);
 

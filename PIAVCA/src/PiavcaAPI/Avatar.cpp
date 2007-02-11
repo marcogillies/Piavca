@@ -145,7 +145,7 @@ void Avatar::loadMotion				(Motion *motion)
 	// disposing the old one in case they are the same
 	if(motion)
 	{
-		if(motion->loaded())
+		if(motion->loaded() && motion->getAvatar() != this)
 			motion = motion->clone();
 		motion->Reference();
 	}
@@ -208,7 +208,8 @@ void Avatar::loadFacialMotion(Motion *motion)
 	// disposing the old one in case they are the same
 	if(motion)
 	{
-		if(motion->loaded())motion = motion->clone();
+		if(motion->loaded() && motion->getAvatar() != this)
+			motion = motion->clone();
 		motion->Reference();
 	}
 	if(facialMot)
@@ -266,7 +267,8 @@ void Avatar::loadScaleMotion (Motion *motion)
 	// disposing the old one in case they are the same
 	if(motion)
 	{
-		if(motion->loaded())motion = motion->clone();
+		if(motion->loaded() && motion->getAvatar() != this)
+			motion = motion->clone();
 		motion->Reference();
 	}
 	if(scaleMot) 

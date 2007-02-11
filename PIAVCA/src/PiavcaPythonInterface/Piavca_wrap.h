@@ -633,6 +633,7 @@ public:
     SwigDirector_Motion(PyObject *self, Piavca::Motion const &mot);
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual void load(Piavca::Avatar *av);
+    virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float t);
     virtual void preFrame(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
@@ -683,7 +684,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[18];
+    mutable swig::PyObject_var vtable[19];
 #endif
 
 };
@@ -699,6 +700,7 @@ public:
     SwigDirector_KeyframeMotion(PyObject *self, Piavca::Motion &mot);
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual void load(Piavca::Avatar *av);
+    virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float t);
     virtual void preFrame(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
@@ -749,7 +751,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[18];
+    mutable swig::PyObject_var vtable[19];
 #endif
 
 };
@@ -763,6 +765,7 @@ public:
     SwigDirector_MotionFilter(PyObject *self, Piavca::MotionFilter const &mf);
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual void load(Piavca::Avatar *av);
+    virtual Piavca::Avatar *getAvatar();
     virtual void preFrame(float time);
     virtual void setStartTime(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
@@ -813,7 +816,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[18];
+    mutable swig::PyObject_var vtable[19];
 #endif
 
 };
@@ -827,6 +830,7 @@ public:
     SwigDirector_TwoMotionCombiner(PyObject *self, Piavca::TwoMotionCombiner const &tmc);
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual void load(Piavca::Avatar *av);
+    virtual Piavca::Avatar *getAvatar();
     virtual void preFrame(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
@@ -877,7 +881,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[18];
+    mutable swig::PyObject_var vtable[19];
 #endif
 
 };
@@ -890,6 +894,7 @@ public:
     SwigDirector_ScaleMotion(PyObject *self, Piavca::ScaleMotion const &sm);
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual void load(Piavca::Avatar *av);
+    virtual Piavca::Avatar *getAvatar();
     virtual void preFrame(float time);
     virtual void setStartTime(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
@@ -940,7 +945,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[18];
+    mutable swig::PyObject_var vtable[19];
 #endif
 
 };
@@ -953,6 +958,7 @@ public:
     SwigDirector_ScaleMotionSpeed(PyObject *self, Piavca::ScaleMotionSpeed const &sm);
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual void load(Piavca::Avatar *av);
+    virtual Piavca::Avatar *getAvatar();
     virtual void preFrame(float time);
     virtual void setStartTime(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
@@ -1003,7 +1009,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[18];
+    mutable swig::PyObject_var vtable[19];
 #endif
 
 };
@@ -1016,6 +1022,7 @@ public:
     SwigDirector_ScaleMotionRoot(PyObject *self, Piavca::ScaleMotionRoot const &sm);
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual void load(Piavca::Avatar *av);
+    virtual Piavca::Avatar *getAvatar();
     virtual void preFrame(float time);
     virtual void setStartTime(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
@@ -1066,7 +1073,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[18];
+    mutable swig::PyObject_var vtable[19];
 #endif
 
 };
@@ -1079,6 +1086,7 @@ public:
     SwigDirector_TimeOffset(PyObject *self, Piavca::TimeOffset const &to);
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual void load(Piavca::Avatar *av);
+    virtual Piavca::Avatar *getAvatar();
     virtual void preFrame(float time);
     virtual void setStartTime(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
@@ -1129,7 +1137,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[18];
+    mutable swig::PyObject_var vtable[19];
 #endif
 
 };
@@ -1142,6 +1150,7 @@ public:
     SwigDirector_TurnMotion(PyObject *self, Piavca::TurnMotion const &tm);
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual void load(Piavca::Avatar *av);
+    virtual Piavca::Avatar *getAvatar();
     virtual void preFrame(float time);
     virtual void setStartTime(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
@@ -1192,7 +1201,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[18];
+    mutable swig::PyObject_var vtable[19];
 #endif
 
 };
@@ -1205,6 +1214,7 @@ public:
     SwigDirector_SequentialBlend(PyObject *self, Piavca::SequentialBlend const &sb);
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual void load(Piavca::Avatar *av);
+    virtual Piavca::Avatar *getAvatar();
     virtual void preFrame(float time);
     virtual void setStartTime(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
@@ -1257,7 +1267,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[20];
+    mutable swig::PyObject_var vtable[21];
 #endif
 
 };
@@ -1270,6 +1280,7 @@ public:
     SwigDirector_SelfBlend(PyObject *self, Piavca::SelfBlend const &sb);
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual void load(Piavca::Avatar *av);
+    virtual Piavca::Avatar *getAvatar();
     virtual void preFrame(float time);
     virtual void setStartTime(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
@@ -1325,7 +1336,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[23];
+    mutable swig::PyObject_var vtable[24];
 #endif
 
 };
@@ -1338,6 +1349,7 @@ public:
     SwigDirector_LoopMotion(PyObject *self, Piavca::LoopMotion const &l);
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual void load(Piavca::Avatar *av);
+    virtual Piavca::Avatar *getAvatar();
     virtual void preFrame(float time);
     virtual void setStartTime(float time);
     virtual void reblend(float time);
@@ -1393,7 +1405,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[23];
+    mutable swig::PyObject_var vtable[24];
 #endif
 
 };
@@ -1406,6 +1418,7 @@ public:
     SwigDirector_RandomTimingsLoop(PyObject *self, Piavca::RandomTimingsLoop const &rtl);
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual void load(Piavca::Avatar *av);
+    virtual Piavca::Avatar *getAvatar();
     virtual void preFrame(float time);
     virtual void setStartTime(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
@@ -1462,7 +1475,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[24];
+    mutable swig::PyObject_var vtable[25];
 #endif
 
 };
@@ -1475,6 +1488,7 @@ public:
     SwigDirector_BlendBetween(PyObject *self, Piavca::BlendBetween const &b);
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual void load(Piavca::Avatar *av);
+    virtual Piavca::Avatar *getAvatar();
     virtual void preFrame(float time);
     virtual void setStartTime(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
@@ -1525,7 +1539,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[18];
+    mutable swig::PyObject_var vtable[19];
 #endif
 
 };
@@ -1538,6 +1552,7 @@ public:
     SwigDirector_MotionAdder(PyObject *self, Piavca::MotionAdder const &ma);
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual void load(Piavca::Avatar *av);
+    virtual Piavca::Avatar *getAvatar();
     virtual void preFrame(float time);
     virtual void setStartTime(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
@@ -1588,7 +1603,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[18];
+    mutable swig::PyObject_var vtable[19];
 #endif
 
 };
@@ -1601,6 +1616,7 @@ public:
     SwigDirector_Subtract(PyObject *self, Piavca::Subtract const &su);
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual void load(Piavca::Avatar *av);
+    virtual Piavca::Avatar *getAvatar();
     virtual void preFrame(float time);
     virtual void setStartTime(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
@@ -1651,7 +1667,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[18];
+    mutable swig::PyObject_var vtable[19];
 #endif
 
 };
@@ -1665,6 +1681,7 @@ public:
     SwigDirector_MaskedMotion(PyObject *self, Piavca::MaskedMotion const &mm);
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual void load(Piavca::Avatar *av);
+    virtual Piavca::Avatar *getAvatar();
     virtual void preFrame(float time);
     virtual void setStartTime(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
@@ -1715,7 +1732,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[18];
+    mutable swig::PyObject_var vtable[19];
 #endif
 
 };
@@ -1729,6 +1746,7 @@ public:
     SwigDirector_ChoiceLoopMotion(PyObject *self, Piavca::ChoiceLoopMotion const &cl);
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual void load(Piavca::Avatar *av);
+    virtual Piavca::Avatar *getAvatar();
     virtual void preFrame(float time);
     virtual void setStartTime(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
@@ -1786,7 +1804,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[25];
+    mutable swig::PyObject_var vtable[26];
 #endif
 
 };
@@ -1800,6 +1818,7 @@ public:
     SwigDirector_RandomLoopMotion(PyObject *self, Piavca::RandomLoopMotion const &rl);
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual void load(Piavca::Avatar *av);
+    virtual Piavca::Avatar *getAvatar();
     virtual void shift();
     virtual void preFrame(float time);
     virtual void setStartTime(float time);
@@ -1858,7 +1877,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[27];
+    mutable swig::PyObject_var vtable[28];
 #endif
 
 };
@@ -1872,6 +1891,7 @@ public:
     SwigDirector_RandomBlendLoop(PyObject *self, Piavca::RandomBlendLoop const &rbl);
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual void load(Piavca::Avatar *av);
+    virtual Piavca::Avatar *getAvatar();
     virtual void shift();
     virtual void preFrame(float time);
     virtual void setStartTime(float time);
@@ -1931,7 +1951,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[27];
+    mutable swig::PyObject_var vtable[28];
 #endif
 
 };
@@ -1945,6 +1965,7 @@ public:
     SwigDirector_RandomAddLoop(PyObject *self, Piavca::RandomAddLoop const &rbl);
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual void load(Piavca::Avatar *av);
+    virtual Piavca::Avatar *getAvatar();
     virtual void shift();
     virtual void preFrame(float time);
     virtual void setStartTime(float time);
@@ -2003,7 +2024,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[26];
+    mutable swig::PyObject_var vtable[27];
 #endif
 
 };
@@ -2018,6 +2039,7 @@ public:
     SwigDirector_LookAtMotion(PyObject *self, Piavca::Vec const &target, float _endTime = -1, bool _local = false, float _interval = 0.5);
     SwigDirector_LookAtMotion(PyObject *self, Piavca::LookAtMotion const &lam);
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
+    virtual Piavca::Avatar *getAvatar();
     virtual void load(Piavca::Avatar *av);
     virtual void setStartTime(float t);
     virtual void preFrame(float time);
@@ -2069,7 +2091,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[18];
+    mutable swig::PyObject_var vtable[19];
 #endif
 
 };
@@ -2082,6 +2104,7 @@ public:
     SwigDirector_RandomGazeMotion(PyObject *self, Piavca::RandomGazeMotion const &rg);
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual void load(Piavca::Avatar *av);
+    virtual Piavca::Avatar *getAvatar();
     virtual void preFrame(float time);
     virtual void setStartTime(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
@@ -2138,7 +2161,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[25];
+    mutable swig::PyObject_var vtable[26];
 #endif
 
 };
@@ -2151,6 +2174,7 @@ public:
     SwigDirector_ZeroMotion(PyObject *self, Piavca::ZeroMotion const &zm);
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual void load(Piavca::Avatar *av);
+    virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float t);
     virtual void preFrame(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
@@ -2201,7 +2225,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[18];
+    mutable swig::PyObject_var vtable[19];
 #endif
 
 };
@@ -2214,6 +2238,7 @@ public:
     SwigDirector_MotionSaver(PyObject *self, Piavca::MotionSaver const &to);
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual void load(Piavca::Avatar *av);
+    virtual Piavca::Avatar *getAvatar();
     virtual void preFrame(float time);
     virtual void setStartTime(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
@@ -2264,7 +2289,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[18];
+    mutable swig::PyObject_var vtable[19];
 #endif
 
 };
@@ -2278,6 +2303,7 @@ public:
     SwigDirector_SubMotion(PyObject *self, Piavca::SubMotion const &sm);
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual void load(Piavca::Avatar *av);
+    virtual Piavca::Avatar *getAvatar();
     virtual void preFrame(float time);
     virtual void setStartTime(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
@@ -2328,7 +2354,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[18];
+    mutable swig::PyObject_var vtable[19];
 #endif
 
 };
@@ -2342,6 +2368,7 @@ public:
     SwigDirector_TimeRangeMotion(PyObject *self, Piavca::TimeRangeMotion const &sm);
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual void load(Piavca::Avatar *av);
+    virtual Piavca::Avatar *getAvatar();
     virtual void preFrame(float time);
     virtual void setStartTime(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
@@ -2392,7 +2419,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[18];
+    mutable swig::PyObject_var vtable[19];
 #endif
 
 };
@@ -2405,6 +2432,7 @@ public:
     SwigDirector_TimeWarp(PyObject *self, Piavca::TimeWarp const &tw);
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual void load(Piavca::Avatar *av);
+    virtual Piavca::Avatar *getAvatar();
     virtual void preFrame(float time);
     virtual void setStartTime(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
@@ -2455,7 +2483,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[18];
+    mutable swig::PyObject_var vtable[19];
 #endif
 
 };
@@ -2468,6 +2496,7 @@ public:
     SwigDirector_DiadicGazeMotion(PyObject *self, Piavca::DiadicGazeMotion const &dg);
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual void load(Piavca::Avatar *av);
+    virtual Piavca::Avatar *getAvatar();
     virtual void preFrame(float time);
     virtual void setStartTime(float time);
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
@@ -2524,7 +2553,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[25];
+    mutable swig::PyObject_var vtable[26];
 #endif
 
 };
