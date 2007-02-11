@@ -117,28 +117,27 @@
 	// a new user friendly version of playMotion
 	void play_motion(Motion *m)
 	{
-		Piavca::AvatarMotionQueue::getQueue(self)->enqueueMotion(_T(""), m);
+		Piavca::AvatarMotionQueue::getQueue(self, m->isFacial())->enqueueMotion(_T(""), m);
   
 	}
 	void play_motion(const char *motionName)
 	{
-		Piavca::AvatarMotionQueue::getQueue(self)->enqueueMotion
-				(StringToTString(motionName), 
-				Piavca::Core::getCore()->getMotion(StringToTString(motionName)));
-  
+		Motion *m = Piavca::Core::getCore()->getMotion(StringToTString(motionName));
+		Piavca::AvatarMotionQueue::getQueue(self, m->isFacial())->enqueueMotion
+				(StringToTString(motionName), m);
 	}
 
 	// a new user friendly version of playMotion
 	void add_background_motion(Motion *m)
 	{
-		Piavca::AvatarMotionQueue::getQueue(self)->addBackgroundMotion(_T(""), m);
+		Piavca::AvatarMotionQueue::getQueue(self, m->isFacial())->addBackgroundMotion(_T(""), m);
   
 	}
 	void add_background_motion(const char *motionName)
 	{
-		Piavca::AvatarMotionQueue::getQueue(self)->addBackgroundMotion
-				(StringToTString(motionName), 
-				Piavca::Core::getCore()->getMotion(StringToTString(motionName)));
+		Motion *m = Piavca::Core::getCore()->getMotion(StringToTString(motionName));
+		Piavca::AvatarMotionQueue::getQueue(self, m->isFacial())->addBackgroundMotion
+				(StringToTString(motionName), m);
   
 	}
 	

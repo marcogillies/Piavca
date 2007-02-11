@@ -4,6 +4,14 @@ from JointNames import *
 import sys, thread
 from SoundEngine import *
 
+wxAvailable = 1
+try:
+	import wx
+	import thread
+except ImportError:
+	wxAvailable = 0
+	
+	
 class scriptCallback:
 	def __init__(self, time, args):
 		self.time = time
@@ -15,9 +23,16 @@ class scriptCallback:
 class motionCallback(scriptCallback):
 	def __init__(self, time, args):
 		scriptCallback.__init__(self, time, args)
-		self.motionName = args[0]
+		if issubclass(args[0].__class__, Piavca.Motion) :
+			self.motion = args[0]
+			self.motionName = ""
+		else:
+			self.motion = None
+			self.motionName = args[0]
 	def __call__(self, avatar):
-		avatar.play_motion(Piavca.Core.getCore().getMotion(self.motionName))
+		if self.motion == None:
+			self.motion = Piavca.Core.getCore().getMotion(self.motionName)
+		avatar.play_motion(self.motion)
 		
 class backgroundMotionCallback(scriptCallback):
 	def __init__(self, time, args):
@@ -65,8 +80,9 @@ class ScriptEngine(Piavca.TimeCallback):
 		inputfile.close()
 		for line in lines:
 			line = line.strip()
-			if len(line) <= 0 or line[0] == "#":
-				continue
+			commentpos = line.find("#")
+			if commentpos >= 0:
+				line = line[:commentpos]
 			line = line.split()
 			if len(line) <= 0:
 				continue
@@ -108,6 +124,10 @@ class ScriptEngine(Piavca.TimeCallback):
 		readingscript = 0
 		self.faceMotion = None
 		for line in lines:
+			line = line.strip()
+			commentpos = line.find("#")
+			if commentpos >= 0:
+				line = line[:commentpos]
 			line = line.split()
 			if len(line) <= 0:
 				continue
@@ -127,7 +147,9 @@ class ScriptEngine(Piavca.TimeCallback):
 					self.faceMotion = None
 				else:
 					time = float(line[0])
-					script.append(self.getCallback(line[1], time, line[2:]))
+					cb = self.getCallback(line[1], time, line[2:])
+					if cb != None:
+						script.append(cb)
 					
 	def getCallback(self, callbackname, time, args):
 		if callbackname == "motion":
@@ -141,12 +163,15 @@ class ScriptEngine(Piavca.TimeCallback):
 		if callbackname == "say":
 			return sayCallback(time, args, self.soundEngine)
 		if callbackname == "expression":
-			print "expression keyword not yet supported"
-			return None
+			retVal = None
 			if self.faceMotion == None :
 				self.faceMotion = Piavca.KeyframeMotion(1)
-			self.faceMotion.addKeyframe(Piavca.Core.getCore().getExpressionId(args[0]), time, float(args[1]))
-			return None
+				retVal = motionCallback(time, (self.faceMotion,))
+			trackId = Piavca.Core.getCore().getExpressionId(args[0])
+			if self.faceMotion.isNull(trackId):
+				self.faceMotion.addFloatTrack(trackId, 0.0);
+			self.faceMotion.setFloatKeyframe(trackId, time, float(args[1]))
+			return retVal
 	
 	def playScript(self, avatarname, scriptname):
 		print "keys", self.scripts.keys()
@@ -168,6 +193,32 @@ class ScriptEngine(Piavca.TimeCallback):
 						item(Piavca.Core.getCore().getAvatar(avatar))
 						item.done = 1
 			
+	def GUI(self, avatarName):
+		if not wxAvailable:
+			print "can't instantiate GUI, wx python not present"
+
+		app = wx.PySimpleApp()
+
+		frame=wx.Frame(None,-1)
+		sizer=wx.BoxSizer(wx.HORIZONTAL)
+
+		id_counter = 0
+		for scriptname in self.scripts.keys():
+			button=wx.Button(frame, id_counter, label=scriptname)
+			wx.EVT_BUTTON (frame, id_counter, lambda e, s = self, n=scriptname : s.playScript(avatarName, n))
+			sizer.Add(button,1 )
+			id_counter+=1
+			
+		frame.SetSizer(sizer)
+		frame.SetAutoLayout(1)
+		sizer.Fit(frame)
+
+		frame.Show(True)
+		frame.Layout()
+
+		thread.start_new_thread(app.MainLoop, ())
+		
+
 		
 if __name__ == "__main__":
 	analyzer = ScriptEngine(sys.argv[1])

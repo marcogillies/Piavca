@@ -172,17 +172,17 @@ namespace Piavca
 		//! \name create new tracks of a specific type
 		//@{
 		//! add a float track
-		void addFloatTrack(int trackId, float initialValue)
+		void addFloatTrack(int trackId, float initialValue=0.0f)
 		{
 			imp->addFloatTrack(trackId, initialValue);
 		};
 		//! add a Vec track
-		void addVecTrack(int trackId, const Vec &initialValue)
+		void addVecTrack(int trackId, const Vec &initialValue=Vec())
 		{
 			imp->addVecTrack(trackId, initialValue);
 		};
 		//! add a Quat track
-		void addQuatTrack(int trackId, const Quat &initialValue)
+		void addQuatTrack(int trackId, const Quat &initialValue=Quat())
 		{
 			imp->addQuatTrack(trackId, initialValue);
 		};

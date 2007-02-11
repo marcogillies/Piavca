@@ -3058,23 +3058,22 @@ SWIGINTERN Piavca::Vec Piavca_Avatar_getJointBasePosition__SWIG_2(Piavca::Avatar
 				Piavca::LOCAL_COORD);
 	}
 SWIGINTERN void Piavca_Avatar_play_motion__SWIG_0(Piavca::Avatar *self,Piavca::Motion *m){
-		Piavca::AvatarMotionQueue::getQueue(self)->enqueueMotion("", m);
+		Piavca::AvatarMotionQueue::getQueue(self, m->isFacial())->enqueueMotion("", m);
   
 	}
 SWIGINTERN void Piavca_Avatar_play_motion__SWIG_1(Piavca::Avatar *self,char const *motionName){
-		Piavca::AvatarMotionQueue::getQueue(self)->enqueueMotion
-				((motionName), 
-				Piavca::Core::getCore()->getMotion((motionName)));
-  
+		Motion *m = Piavca::Core::getCore()->getMotion((motionName));
+		Piavca::AvatarMotionQueue::getQueue(self, m->isFacial())->enqueueMotion
+				((motionName), m);
 	}
 SWIGINTERN void Piavca_Avatar_add_background_motion__SWIG_0(Piavca::Avatar *self,Piavca::Motion *m){
-		Piavca::AvatarMotionQueue::getQueue(self)->addBackgroundMotion("", m);
+		Piavca::AvatarMotionQueue::getQueue(self, m->isFacial())->addBackgroundMotion("", m);
   
 	}
 SWIGINTERN void Piavca_Avatar_add_background_motion__SWIG_1(Piavca::Avatar *self,char const *motionName){
-		Piavca::AvatarMotionQueue::getQueue(self)->addBackgroundMotion
-				((motionName), 
-				Piavca::Core::getCore()->getMotion((motionName)));
+		Motion *m = Piavca::Core::getCore()->getMotion((motionName));
+		Piavca::AvatarMotionQueue::getQueue(self, m->isFacial())->addBackgroundMotion
+				((motionName), m);
   
 	}
 SWIGINTERN void Piavca_Avatar_interrupt_motion(Piavca::Avatar *self){
@@ -36835,7 +36834,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_KeyframeMotion_addFloatTrack(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_KeyframeMotion_addFloatTrack__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Piavca::KeyframeMotion *arg1 = (Piavca::KeyframeMotion *) 0 ;
   int arg2 ;
@@ -36886,7 +36885,102 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_KeyframeMotion_addVecTrack(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_KeyframeMotion_addFloatTrack__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::KeyframeMotion *arg1 = (Piavca::KeyframeMotion *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:KeyframeMotion_addFloatTrack",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__KeyframeMotion, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KeyframeMotion_addFloatTrack" "', argument " "1"" of type '" "Piavca::KeyframeMotion *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::KeyframeMotion * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "KeyframeMotion_addFloatTrack" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  {
+    try {
+      (arg1)->addFloatTrack(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KeyframeMotion_addFloatTrack(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[4];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = PyObject_Length(args);
+  for (ii = 0; (ii < argc) && (ii < 3); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__KeyframeMotion, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_KeyframeMotion_addFloatTrack__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__KeyframeMotion, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_float(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_KeyframeMotion_addFloatTrack__SWIG_0(self, args);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"No matching function for overloaded 'KeyframeMotion_addFloatTrack'");
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KeyframeMotion_addVecTrack__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Piavca::KeyframeMotion *arg1 = (Piavca::KeyframeMotion *) 0 ;
   int arg2 ;
@@ -36940,7 +37034,100 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_KeyframeMotion_addQuatTrack(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_KeyframeMotion_addVecTrack__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::KeyframeMotion *arg1 = (Piavca::KeyframeMotion *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:KeyframeMotion_addVecTrack",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__KeyframeMotion, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KeyframeMotion_addVecTrack" "', argument " "1"" of type '" "Piavca::KeyframeMotion *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::KeyframeMotion * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "KeyframeMotion_addVecTrack" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  {
+    try {
+      (arg1)->addVecTrack(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KeyframeMotion_addVecTrack(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[4];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = PyObject_Length(args);
+  for (ii = 0; (ii < argc) && (ii < 3); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__KeyframeMotion, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_KeyframeMotion_addVecTrack__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__KeyframeMotion, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_Piavca__Vec, 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_KeyframeMotion_addVecTrack__SWIG_0(self, args);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"No matching function for overloaded 'KeyframeMotion_addVecTrack'");
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KeyframeMotion_addQuatTrack__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Piavca::KeyframeMotion *arg1 = (Piavca::KeyframeMotion *) 0 ;
   int arg2 ;
@@ -36990,6 +37177,99 @@ SWIGINTERN PyObject *_wrap_KeyframeMotion_addQuatTrack(PyObject *SWIGUNUSEDPARM(
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KeyframeMotion_addQuatTrack__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::KeyframeMotion *arg1 = (Piavca::KeyframeMotion *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:KeyframeMotion_addQuatTrack",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__KeyframeMotion, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KeyframeMotion_addQuatTrack" "', argument " "1"" of type '" "Piavca::KeyframeMotion *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::KeyframeMotion * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "KeyframeMotion_addQuatTrack" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  {
+    try {
+      (arg1)->addQuatTrack(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KeyframeMotion_addQuatTrack(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[4];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = PyObject_Length(args);
+  for (ii = 0; (ii < argc) && (ii < 3); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__KeyframeMotion, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_KeyframeMotion_addQuatTrack__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__KeyframeMotion, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_Piavca__Quat, 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_KeyframeMotion_addQuatTrack__SWIG_0(self, args);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"No matching function for overloaded 'KeyframeMotion_addQuatTrack'");
   return NULL;
 }
 
