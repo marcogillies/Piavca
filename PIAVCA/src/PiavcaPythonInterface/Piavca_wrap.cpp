@@ -2557,11 +2557,11 @@ static swig_module_info swig_module = {swig_types, 83, 0, 0, 0, 0};
 #endif
 
 /*-----------------------------------------------
-              @(target):= _Piavca.so
+              @(target):= _Piavca_base.so
   ------------------------------------------------*/
-#define SWIG_init    init_Piavca
+#define SWIG_init    init_Piavca_base
 
-#define SWIG_name    "_Piavca"
+#define SWIG_name    "_Piavca_base"
 
 #define SWIGVERSION 0x010329 
 

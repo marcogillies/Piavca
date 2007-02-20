@@ -35,6 +35,7 @@
 # ***** END LICENSE BLOCK *****
 
 import Piavca
+import Piavca.ExpMap
 
 import string
 import re
@@ -48,7 +49,7 @@ import time
 
 #sys.path.append("../ExponentialMap/ExpMap/")
 
-import ExpMap
+#import ExpMap
 
 #import Track
 
@@ -153,7 +154,7 @@ class EigenAnalysis :
 				quatlisttime += qtime - starttime
 					
 				# create a tangent space based on the averages of the postures
-				expmap = ExpMap.TangentSpace(quatlist)
+				expmap = Piavca.ExpMap.TangentSpace(quatlist)
 					
 				ttime = time.clock()
 				tangentspacetime += ttime - qtime
@@ -324,7 +325,7 @@ class EigenAnalysis :
 						print numbers
 						q = Piavca.Quat(float(numbers[0]), float(numbers[1]), float(numbers[2]), float(numbers[3]))
 						print q
-						self.expmaps.append(ExpMap.TangentSpace(q))
+						self.expmaps.append(Piavca.ExpMap.TangentSpace(q))
 					print matches
 				if contents[0] == "Joint Types":
 					self.joint_types = []

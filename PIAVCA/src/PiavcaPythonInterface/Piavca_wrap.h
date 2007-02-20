@@ -8,8 +8,8 @@
  * interface file instead. 
  * ----------------------------------------------------------------------------- */
 
-#ifndef SWIG_Piavca_WRAP_H_
-#define SWIG_Piavca_WRAP_H_
+#ifndef SWIG_Piavca_base_WRAP_H_
+#define SWIG_Piavca_base_WRAP_H_
 
 #include <map>
 #include <string>

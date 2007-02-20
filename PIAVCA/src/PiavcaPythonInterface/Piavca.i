@@ -33,7 +33,7 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-%module(directors="1") Piavca
+%module(directors="1") Piavca_base
 %{
 
 #define NO_PIAVCA_DLL

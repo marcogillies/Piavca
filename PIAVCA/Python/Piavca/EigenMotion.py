@@ -35,7 +35,7 @@
 # ***** END LICENSE BLOCK *****
 
 import Piavca
-from EigenAnalysis import *
+from Piavca.EigenAnalysis import *
 from PCA import *
 
 class EigenMotion(Piavca.MotionFilter):

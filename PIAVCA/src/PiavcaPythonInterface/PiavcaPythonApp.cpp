@@ -65,7 +65,7 @@
 
 extern "C" 
 {
-	SWIGEXPORT(void) init_Piavca(void) ;
+	SWIGEXPORT(void) init_Piavca_base(void) ;
 };
 //#undef _DEBUG
 
@@ -330,7 +330,7 @@ void Piavca::InitPiavcaPython(Piavca::Core *core, tstring fileName, bool no_cons
 	
 	std::cout << "ABOUT TO LOAD PYTHON" << std::endl;
 
-	PyImport_AppendInittab( "_Piavca", init_Piavca); 
+	PyImport_AppendInittab( "_Piavca_base", init_Piavca_base); 
 
 	Py_Initialize();
 

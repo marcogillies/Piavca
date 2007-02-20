@@ -7,15 +7,11 @@ print sys.path
 
 # load piavca (This loads a python wrapper module which in turn loads the C++ code)
 import Piavca
-from ScriptEngine import ScriptEngine
-
-
-import XMLMotionFile
 
 import wx
 import thread
 
-script_engine = ScriptEngine("callycontroller", "master.conf")
+script_engine = Piavca.ScriptEngine("callycontroller", "master.conf")
 
 app = wx.PySimpleApp()
 

@@ -35,8 +35,8 @@
 # ***** END LICENSE BLOCK *****
 
 import Piavca
+import Piavca.XMLMotionFile
 import os
-import XMLMotionFile
 
 Piavca.MotionParser.setUpMotionCommands()
 
@@ -78,7 +78,7 @@ def readMotionFile (filename):
 	filename = filename[filestart:]
 	dotpos = filename.rfind(".")
 	if filename[dotpos+1] == "x":
-		XMLMotionFile.parse(filename)
+		Piavca.XMLMotionFile.parse(filename)
 		return
 	in_file = open(filename,"r")
 	for line in in_file.readlines():
