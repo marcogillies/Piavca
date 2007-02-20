@@ -51,6 +51,7 @@
 #include "PiavcaAPI/LoopMotion.h"
 #include "LookAtMotion.h"
 #include "MaskedMotion.h"
+#include "MotionTransition.h"
 #include "PiavcaAPI/MathsUtils.h"
 #include "PiavcaAPI/MotionAdder.h"
 #include "Subtract.h"

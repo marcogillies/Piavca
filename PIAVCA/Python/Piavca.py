@@ -970,6 +970,7 @@ class Motion(_object):
         """
         return _Piavca.Motion_clone(*args)
 
+    def create(*args): return _Piavca.Motion_create(*args)
     def printInfo(*args):
         """
         void Motion::printInfo()
@@ -4462,6 +4463,126 @@ class MaskedMotion(MotionFilter):
         return weakref_proxy(self)
 MaskedMotion_swigregister = _Piavca.MaskedMotion_swigregister
 MaskedMotion_swigregister(MaskedMotion)
+
+class TransitionFunction(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, TransitionFunction, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, TransitionFunction, name)
+    def __init__(self): raise AttributeError, "No constructor defined"
+    __repr__ = _swig_repr
+    def eval(*args): return _Piavca.TransitionFunction_eval(*args)
+    __swig_destroy__ = _Piavca.delete_TransitionFunction
+    __del__ = lambda self : None;
+TransitionFunction_swigregister = _Piavca.TransitionFunction_swigregister
+TransitionFunction_swigregister(TransitionFunction)
+
+class LinearTransition(TransitionFunction):
+    __swig_setmethods__ = {}
+    for _s in [TransitionFunction]: __swig_setmethods__.update(_s.__swig_setmethods__)
+    __setattr__ = lambda self, name, value: _swig_setattr(self, LinearTransition, name, value)
+    __swig_getmethods__ = {}
+    for _s in [TransitionFunction]: __swig_getmethods__.update(_s.__swig_getmethods__)
+    __getattr__ = lambda self, name: _swig_getattr(self, LinearTransition, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _Piavca.new_LinearTransition(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    def eval(*args): return _Piavca.LinearTransition_eval(*args)
+    __swig_destroy__ = _Piavca.delete_LinearTransition
+    __del__ = lambda self : None;
+LinearTransition_swigregister = _Piavca.LinearTransition_swigregister
+LinearTransition_swigregister(LinearTransition)
+
+class SmoothTransition(TransitionFunction):
+    __swig_setmethods__ = {}
+    for _s in [TransitionFunction]: __swig_setmethods__.update(_s.__swig_setmethods__)
+    __setattr__ = lambda self, name, value: _swig_setattr(self, SmoothTransition, name, value)
+    __swig_getmethods__ = {}
+    for _s in [TransitionFunction]: __swig_getmethods__.update(_s.__swig_getmethods__)
+    __getattr__ = lambda self, name: _swig_getattr(self, SmoothTransition, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _Piavca.new_SmoothTransition(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    def eval(*args): return _Piavca.SmoothTransition_eval(*args)
+    __swig_destroy__ = _Piavca.delete_SmoothTransition
+    __del__ = lambda self : None;
+SmoothTransition_swigregister = _Piavca.SmoothTransition_swigregister
+SmoothTransition_swigregister(SmoothTransition)
+
+class MotionTransition(TwoMotionCombiner):
+    __swig_setmethods__ = {}
+    for _s in [TwoMotionCombiner]: __swig_setmethods__.update(_s.__swig_setmethods__)
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MotionTransition, name, value)
+    __swig_getmethods__ = {}
+    for _s in [TwoMotionCombiner]: __swig_getmethods__.update(_s.__swig_getmethods__)
+    __getattr__ = lambda self, name: _swig_getattr(self, MotionTransition, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _Piavca.new_MotionTransition(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    def clone(*args):
+        """
+        virtual Motion* Piavca::Motion::clone()=0
+                 
+        creates a copy of the motion         
+                 
+                
+        """
+        return _Piavca.MotionTransition_clone(*args)
+
+    def setTransitionFunction(*args): return _Piavca.MotionTransition_setTransitionFunction(*args)
+    def setTransitionTime1(*args): return _Piavca.MotionTransition_setTransitionTime1(*args)
+    def setTransitionTime2(*args): return _Piavca.MotionTransition_setTransitionTime2(*args)
+    def setWindow(*args): return _Piavca.MotionTransition_setWindow(*args)
+    def getMotionLength(*args):
+        """
+        float TwoMotionCombiner::getMotionLength() const 
+                 
+        gets the length of the combined motion (by default the length of the longer of the two)         
+                 
+                
+        """
+        return _Piavca.MotionTransition_getMotionLength(*args)
+
+    def getFloatValueAtTimeInternal(*args):
+        """
+        virtual float Piavca::Motion::getFloatValueAtTimeInternal(int trackId, float time)=0
+                 
+        internal version of getFloatValueAtTime, to be overridden         
+                 
+                
+        """
+        return _Piavca.MotionTransition_getFloatValueAtTimeInternal(*args)
+
+    def getVecValueAtTimeInternal(*args):
+        """
+        virtual Vec Piavca::Motion::getVecValueAtTimeInternal(int trackId, float time)=0
+                 
+        internal version of getVecValueAtTime, to be overridden         
+                 
+                
+        """
+        return _Piavca.MotionTransition_getVecValueAtTimeInternal(*args)
+
+    def getQuatValueAtTimeInternal(*args):
+        """
+        virtual Quat Piavca::Motion::getQuatValueAtTimeInternal(int trackId, float time)=0
+                 
+        internal version of getQuatValueAtTime, to be overridden         
+                 
+                
+        """
+        return _Piavca.MotionTransition_getQuatValueAtTimeInternal(*args)
+
+    __swig_destroy__ = _Piavca.delete_MotionTransition
+    __del__ = lambda self : None;
+MotionTransition_swigregister = _Piavca.MotionTransition_swigregister
+MotionTransition_swigregister(MotionTransition)
 
 class MultiMotionCombiner(MotionFilter):
     __swig_setmethods__ = {}

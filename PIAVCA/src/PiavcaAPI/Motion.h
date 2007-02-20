@@ -134,6 +134,9 @@ public:
 	//! creates a copy of the motion
 	virtual Motion *clone()=0;
 
+	//! initializes the motion
+	virtual void create();
+
 	//! prints out info about the motion heirarchy
 	virtual void printInfo();
 

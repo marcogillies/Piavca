@@ -53,6 +53,11 @@ using namespace Piavca;
 
 int Motion::debug_prefix = 0;
 
+void Motion::create()
+{
+	
+};
+
 void Motion::printInfo()
 {
 	for(int i = 0; i < debug_prefix; i++)

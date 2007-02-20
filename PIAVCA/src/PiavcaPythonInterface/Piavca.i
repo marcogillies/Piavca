@@ -420,6 +420,7 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %include "PiavcaAPI/MotionAdder.h"
 %include "PiavcaNVCLib/Subtract.h"
 %include "PiavcaNVCLib/MaskedMotion.h"
+%include "PiavcaNVCLib/MotionTransition.h"
 %include "PiavcaNVCLib/MultiMotionCombiner.h"
 %include "PiavcaNVCLib/ChoiceMotion.h"
 %include "PiavcaNVCLib/RandomChoiceMotion.h"

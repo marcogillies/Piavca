@@ -641,6 +641,7 @@ public:
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
     virtual bool isRandomAccess();
     virtual void reset();
+    virtual void create();
     virtual Piavca::Motion *clone();
     virtual ~SwigDirector_Motion();
     virtual bool isFacial();
@@ -684,7 +685,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[19];
+    mutable swig::PyObject_var vtable[20];
 #endif
 
 };
@@ -708,6 +709,7 @@ public:
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
     virtual bool isRandomAccess();
     virtual void reset();
+    virtual void create();
     virtual ~SwigDirector_KeyframeMotion();
     virtual Piavca::Motion *clone();
     virtual float getMotionLength() const;
@@ -751,7 +753,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[19];
+    mutable swig::PyObject_var vtable[20];
 #endif
 
 };
@@ -772,6 +774,7 @@ public:
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
     virtual bool isRandomAccess();
+    virtual void create();
     virtual ~SwigDirector_MotionFilter();
     virtual Piavca::Motion *clone();
     virtual void reset();
@@ -816,7 +819,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[19];
+    mutable swig::PyObject_var vtable[20];
 #endif
 
 };
@@ -837,6 +840,7 @@ public:
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
     virtual void setStartTime(float time);
     virtual bool isRandomAccess();
+    virtual void create();
     virtual ~SwigDirector_TwoMotionCombiner();
     virtual Piavca::Motion *clone();
     virtual void reset();
@@ -881,7 +885,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[19];
+    mutable swig::PyObject_var vtable[20];
 #endif
 
 };
@@ -901,6 +905,7 @@ public:
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
     virtual bool isRandomAccess();
+    virtual void create();
     virtual ~SwigDirector_ScaleMotion();
     virtual void reset();
     virtual Piavca::Motion *clone();
@@ -945,7 +950,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[19];
+    mutable swig::PyObject_var vtable[20];
 #endif
 
 };
@@ -965,6 +970,7 @@ public:
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
     virtual bool isRandomAccess();
+    virtual void create();
     virtual ~SwigDirector_ScaleMotionSpeed();
     virtual void reset();
     virtual Piavca::Motion *clone();
@@ -1009,7 +1015,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[19];
+    mutable swig::PyObject_var vtable[20];
 #endif
 
 };
@@ -1029,6 +1035,7 @@ public:
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
     virtual bool isRandomAccess();
+    virtual void create();
     virtual void reset();
     virtual ~SwigDirector_ScaleMotionRoot();
     virtual Piavca::Motion *clone();
@@ -1073,7 +1080,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[19];
+    mutable swig::PyObject_var vtable[20];
 #endif
 
 };
@@ -1093,6 +1100,7 @@ public:
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
     virtual bool isRandomAccess();
+    virtual void create();
     virtual ~SwigDirector_TimeOffset();
     virtual void reset();
     virtual Piavca::Motion *clone();
@@ -1137,7 +1145,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[19];
+    mutable swig::PyObject_var vtable[20];
 #endif
 
 };
@@ -1157,6 +1165,7 @@ public:
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
     virtual bool isRandomAccess();
+    virtual void create();
     virtual ~SwigDirector_TurnMotion();
     virtual void reset();
     virtual Piavca::Motion *clone();
@@ -1201,7 +1210,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[19];
+    mutable swig::PyObject_var vtable[20];
 #endif
 
 };
@@ -1221,6 +1230,7 @@ public:
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
     virtual bool isRandomAccess();
+    virtual void create();
     virtual ~SwigDirector_SequentialBlend();
     virtual void reset();
     virtual Piavca::Motion *clone();
@@ -1267,7 +1277,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[21];
+    mutable swig::PyObject_var vtable[22];
 #endif
 
 };
@@ -1288,6 +1298,7 @@ public:
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
     virtual void reblend(float time);
     virtual bool isRandomAccess();
+    virtual void create();
     virtual ~SwigDirector_SelfBlend();
     virtual Piavca::Motion *clone();
     virtual void reset();
@@ -1336,7 +1347,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[24];
+    mutable swig::PyObject_var vtable[25];
 #endif
 
 };
@@ -1357,6 +1368,7 @@ public:
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
     virtual bool isRandomAccess();
+    virtual void create();
     virtual ~SwigDirector_LoopMotion();
     virtual void reset();
     virtual Piavca::Motion *clone();
@@ -1405,7 +1417,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[24];
+    mutable swig::PyObject_var vtable[25];
 #endif
 
 };
@@ -1427,6 +1439,7 @@ public:
     virtual void setTimingParams(float minTimeScale, float maxTimeScale);
     virtual void reblend(float time);
     virtual bool isRandomAccess();
+    virtual void create();
     virtual ~SwigDirector_RandomTimingsLoop();
     virtual void reset();
     virtual Piavca::Motion *clone();
@@ -1475,7 +1488,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[25];
+    mutable swig::PyObject_var vtable[26];
 #endif
 
 };
@@ -1495,6 +1508,7 @@ public:
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
     virtual bool isRandomAccess();
+    virtual void create();
     virtual ~SwigDirector_BlendBetween();
     virtual void reset();
     virtual Piavca::Motion *clone();
@@ -1539,7 +1553,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[19];
+    mutable swig::PyObject_var vtable[20];
 #endif
 
 };
@@ -1559,6 +1573,7 @@ public:
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
     virtual bool isRandomAccess();
+    virtual void create();
     virtual ~SwigDirector_MotionAdder();
     virtual void reset();
     virtual Piavca::Motion *clone();
@@ -1603,7 +1618,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[19];
+    mutable swig::PyObject_var vtable[20];
 #endif
 
 };
@@ -1623,6 +1638,7 @@ public:
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
     virtual bool isRandomAccess();
+    virtual void create();
     virtual ~SwigDirector_Subtract();
     virtual void reset();
     virtual Piavca::Motion *clone();
@@ -1667,7 +1683,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[19];
+    mutable swig::PyObject_var vtable[20];
 #endif
 
 };
@@ -1688,6 +1704,7 @@ public:
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
     virtual bool isRandomAccess();
+    virtual void create();
     virtual ~SwigDirector_MaskedMotion();
     virtual void reset();
     virtual Piavca::Motion *clone();
@@ -1732,7 +1749,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[19];
+    mutable swig::PyObject_var vtable[20];
 #endif
 
 };
@@ -1755,6 +1772,7 @@ public:
     virtual void setTimingParams(float minTimeScale, float maxTimeScale);
     virtual void reblend(float time);
     virtual bool isRandomAccess();
+    virtual void create();
     virtual ~SwigDirector_ChoiceLoopMotion();
     virtual void reset();
     virtual Piavca::Motion *clone();
@@ -1804,7 +1822,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[26];
+    mutable swig::PyObject_var vtable[27];
 #endif
 
 };
@@ -1829,6 +1847,7 @@ public:
     virtual void reblend(float time);
     virtual void addMotion(Piavca::Motion *mot, float weight = 1.0f);
     virtual bool isRandomAccess();
+    virtual void create();
     virtual ~SwigDirector_RandomLoopMotion();
     virtual void reset();
     virtual Piavca::Motion *clone();
@@ -1877,7 +1896,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[28];
+    mutable swig::PyObject_var vtable[29];
 #endif
 
 };
@@ -1902,6 +1921,7 @@ public:
     virtual void reblend(float time);
     virtual void addMotion(Piavca::Motion *mot, float weight);
     virtual bool isRandomAccess();
+    virtual void create();
     virtual ~SwigDirector_RandomBlendLoop();
     virtual void reset();
     virtual Piavca::Motion *clone();
@@ -1951,7 +1971,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[28];
+    mutable swig::PyObject_var vtable[29];
 #endif
 
 };
@@ -1975,6 +1995,7 @@ public:
     virtual void setTimingParams(float minTimeScale, float maxTimeScale);
     virtual void reblend(float time);
     virtual bool isRandomAccess();
+    virtual void create();
     virtual ~SwigDirector_RandomAddLoop();
     virtual void reset();
     virtual Piavca::Motion *clone();
@@ -2024,7 +2045,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[27];
+    mutable swig::PyObject_var vtable[28];
 #endif
 
 };
@@ -2048,6 +2069,7 @@ public:
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
     virtual bool isRandomAccess();
     virtual void reset();
+    virtual void create();
     virtual ~SwigDirector_LookAtMotion();
     virtual Piavca::Motion *clone();
     virtual bool isFacial();
@@ -2091,7 +2113,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[19];
+    mutable swig::PyObject_var vtable[20];
 #endif
 
 };
@@ -2112,6 +2134,7 @@ public:
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
     virtual void reblend(float time);
     virtual bool isRandomAccess();
+    virtual void create();
     virtual ~SwigDirector_RandomGazeMotion();
     virtual void reset();
     virtual Piavca::Motion *clone();
@@ -2161,7 +2184,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[26];
+    mutable swig::PyObject_var vtable[27];
 #endif
 
 };
@@ -2182,6 +2205,7 @@ public:
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
     virtual bool isRandomAccess();
     virtual void reset();
+    virtual void create();
     virtual ~SwigDirector_ZeroMotion();
     virtual Piavca::Motion *clone();
     virtual bool isFacial();
@@ -2225,7 +2249,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[19];
+    mutable swig::PyObject_var vtable[20];
 #endif
 
 };
@@ -2245,6 +2269,7 @@ public:
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
     virtual bool isRandomAccess();
+    virtual void create();
     virtual ~SwigDirector_MotionSaver();
     virtual void reset();
     virtual Piavca::Motion *clone();
@@ -2289,7 +2314,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[19];
+    mutable swig::PyObject_var vtable[20];
 #endif
 
 };
@@ -2310,6 +2335,7 @@ public:
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
     virtual bool isRandomAccess();
+    virtual void create();
     virtual ~SwigDirector_SubMotion();
     virtual void reset();
     virtual Piavca::Motion *clone();
@@ -2354,7 +2380,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[19];
+    mutable swig::PyObject_var vtable[20];
 #endif
 
 };
@@ -2375,6 +2401,7 @@ public:
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
     virtual bool isRandomAccess();
+    virtual void create();
     virtual ~SwigDirector_TimeRangeMotion();
     virtual void reset();
     virtual Piavca::Motion *clone();
@@ -2419,7 +2446,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[19];
+    mutable swig::PyObject_var vtable[20];
 #endif
 
 };
@@ -2439,6 +2466,7 @@ public:
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
     virtual bool isRandomAccess();
+    virtual void create();
     virtual ~SwigDirector_TimeWarp();
     virtual void reset();
     virtual Piavca::Motion *clone();
@@ -2483,7 +2511,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[19];
+    mutable swig::PyObject_var vtable[20];
 #endif
 
 };
@@ -2504,6 +2532,7 @@ public:
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
     virtual void reblend(float time);
     virtual bool isRandomAccess();
+    virtual void create();
     virtual ~SwigDirector_DiadicGazeMotion();
     virtual void reset();
     virtual Piavca::Motion *clone();
@@ -2553,7 +2582,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[26];
+    mutable swig::PyObject_var vtable[27];
 #endif
 
 };

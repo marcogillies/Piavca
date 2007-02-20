@@ -66,9 +66,6 @@
 extern "C" 
 {
 	SWIGEXPORT(void) init_Piavca(void) ;
-#ifndef NO_DEMEANOUR
-	SWIGEXPORT(void) init_Demeanor(void) ;
-#endif
 };
 //#undef _DEBUG
 
