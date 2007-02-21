@@ -51,7 +51,16 @@ MotionCal3DImp::MotionCal3DImp(tstring motionFilename, CalCoreSkeleton *skel)
 		if(boneId >= 0 && cal3DAnim->getCoreTrack(boneId))
 		{
 			//std::cout << "found track " << jointAssociations[i].first << std::endl;
-			tracksMap[jointAssociations[i].second] = boneId;
+			if (jointAssociations[i].second == root_position_id
+				|| jointAssociations[i].second == root_orientation_id)
+			{
+				tracksMap[root_position_id] = boneId;
+				tracksMap[root_orientation_id] = boneId;
+			}
+			else
+			{
+				tracksMap[jointAssociations[i].second] = boneId;
+			}
 		}
 	}
 }
