@@ -38,7 +38,7 @@
 import Piavca
 import MotionFile
 from JointNames import *
-import sys, thread
+import sys, thread, re
 from SoundEngine import *
 
 wxAvailable = 1
@@ -216,6 +216,14 @@ class ScriptEngine(Piavca.TimeCallback):
 		self.starttimes[avatarname] = Piavca.Core.getCore().getTime()
 		for item in self.currentscript[avatarname]:
 			item.done = 0
+			
+	def utterance(self, avatarname, utterance):
+		expr = re.compile("<[^>]*>")
+		scripts = expr.findall(utterance)
+		text = expr.sub("", utterance)
+		self.soundEngine.say(text)
+		for script in scripts:
+			self.playScript(avatarname, script.strip("<> "))
 	
 	# callback initialization, don't need to do anything
 	def init(self, core):

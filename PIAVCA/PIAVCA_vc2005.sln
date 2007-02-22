@@ -14,6 +14,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Standard Motion Implementat
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XVR2Piavca", "src\XVR2Piavca\XVR2Piavca_vc2005.vcproj", "{009DF2D1-CCA3-466D-8D2E-DFECF5D50D76}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SpeechToTextInterface", "src\SpeechToTextInterface\SpeechToTextInterface.vcproj", "{8CC8040D-8DB6-41A7-BA0A-E4331E4D5B2F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		C Only Debug|Win32 = C Only Debug|Win32
@@ -78,6 +80,14 @@ Global
 		{009DF2D1-CCA3-466D-8D2E-DFECF5D50D76}.Dive Debug|Win32.Build.0 = Debug|Win32
 		{009DF2D1-CCA3-466D-8D2E-DFECF5D50D76}.Release|Win32.ActiveCfg = Release|Win32
 		{009DF2D1-CCA3-466D-8D2E-DFECF5D50D76}.Release|Win32.Build.0 = Release|Win32
+		{8CC8040D-8DB6-41A7-BA0A-E4331E4D5B2F}.C Only Debug|Win32.ActiveCfg = Debug|Win32
+		{8CC8040D-8DB6-41A7-BA0A-E4331E4D5B2F}.C Only Debug|Win32.Build.0 = Debug|Win32
+		{8CC8040D-8DB6-41A7-BA0A-E4331E4D5B2F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8CC8040D-8DB6-41A7-BA0A-E4331E4D5B2F}.Debug|Win32.Build.0 = Debug|Win32
+		{8CC8040D-8DB6-41A7-BA0A-E4331E4D5B2F}.Dive Debug|Win32.ActiveCfg = Debug|Win32
+		{8CC8040D-8DB6-41A7-BA0A-E4331E4D5B2F}.Dive Debug|Win32.Build.0 = Debug|Win32
+		{8CC8040D-8DB6-41A7-BA0A-E4331E4D5B2F}.Release|Win32.ActiveCfg = Release|Win32
+		{8CC8040D-8DB6-41A7-BA0A-E4331E4D5B2F}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
