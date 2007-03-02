@@ -99,17 +99,9 @@ namespace Piavca
 		virtual void setStartTime(float time)
 		{
 			
-			//if(name != _T(""))
-			//	std::cout << "SequentialBlend::setStartTime " << name << " " 
-			//		<< blendStart << " "  << startTime << std::endl; 
 			blendStart += time - startTime;
 			Motion::setStartTime(time);
 			float t = Piavca::Core::getCore()->getTime();
-			//if(name != _T(""))
-			///	std::cout << "SequentialBlend::setStartTime " << name << " " 
-			//		<< blendStart << " " << t << " " << startTime << std::endl; 
-			//if(startTime > t)
-			//	std::cout << "starting later\n";
 			if(mot1) mot1->setStartTime(time);
 			if(mot2) mot2->setStartTime(blendStart+blendInterval);
 		}
@@ -136,17 +128,7 @@ namespace Piavca
 		void setBlendStart(float start)
 		{
 			float t = Piavca::Core::getCore()->getTime();
-			/*std::cout << "SequentialBlend::setBlendStart " 
-				<< start << " " << t << " " << startTime << std::endl; 
-			if(start > t)
-				std::cout << "late start " << start << " " << t << std::endl;*/
-			//if(name != _T(""))
-			//	std::cout << "SequentialBlend::setBlendStart " << name << " " 
-			//		<< blendStart << " "  << startTime << std::endl; 
 			blendStart = start;
-			//if(name != _T(""))
-			//	std::cout << "SequentialBlend::setBlendStart " << name << " " 
-			//		<< blendStart << " " << t << " " << startTime << std::endl; 
 			if(mot2) mot2->setStartTime(blendStart+blendInterval);
 		};
 		//! sets the length of the transition between the two motions.

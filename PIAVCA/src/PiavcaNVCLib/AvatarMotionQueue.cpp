@@ -41,7 +41,7 @@
 #include "PiavcaAPI/KeyframeMotion.h"
 #include "ScaleMotionRoot.h"
 #include "PiavcaAPI/AvatarPostureBlend.h"
-#include "PiavcaAPI/SelfBlend.h"
+#include "PiavcaAPI/PostureBlend.h"
 #include "TimeOffset.h"
 #include "ZeroMotion.h"
 
@@ -92,7 +92,7 @@ void AvatarMotionQueue::init(Avatar *avatar)
     motion = dequeueMotion();
     
     // & use it to initialise the avatar "mega-motion" 
-    selfBlend = new SelfBlend(motion, 0.6f);
+    selfBlend = new PostureBlend(motion, 0.6f);
 	currentMotion = motion;
 	//selfBlend->setBlendInterval(0.0);
 	adder = new MotionAdder(NULL, selfBlend);
@@ -142,9 +142,9 @@ void AvatarMotionQueue::timeStep(Avatar *avatar, float time)
 				if(background)
 				{
 					if(adder)
-						adder->setMotion1(new MotionAdder(adder->getMotion1(), new SelfBlend(new TimeOffset(motion, (time-motionStartTime)))));
+						adder->setMotion1(new MotionAdder(adder->getMotion1(), new PostureBlend(new TimeOffset(motion, (time-motionStartTime)))));
 					else
-						adder = new MotionAdder(new SelfBlend(new TimeOffset(motion, (time-motionStartTime))), selfBlend);
+						adder = new MotionAdder(new PostureBlend(new TimeOffset(motion, (time-motionStartTime))), selfBlend);
 					// we've handed ownership over to the adder so we give up ownership
 					//delete motion;
 					motion->Dispose();
@@ -344,7 +344,7 @@ void AvatarMotionQueue::enqueueRandomMotions(int num)
 			//		1.0, Piavca::Core::getCore()->getTime()));
 			
 			  temp_adder_child->getMotion2()->reset();
-			  dynamic_cast<SelfBlend *>(temp_adder_child->getMotion2())->setMotion(new ZeroMotion(temp_adder_child->isFacial()));
+			  dynamic_cast<PostureBlend *>(temp_adder_child->getMotion2())->setMotion(new ZeroMotion(temp_adder_child->isFacial()));
 			  
 			  //removeList.push_back(temp_adder_parent);
 			//temp_adder_parent->setMotion1(temp_adder_child->getMotion1());
@@ -408,12 +408,12 @@ void AvatarMotionQueue::enqueueRandomMotions(int num)
 			
 			
 			temp_adder_child->getMotion2()->reset();
-			dynamic_cast<SelfBlend *>(temp_adder_child->getMotion2())->setMotion(new ZeroMotion(temp_adder_child->isFacial()));
+			dynamic_cast<PostureBlend *>(temp_adder_child->getMotion2())->setMotion(new ZeroMotion(temp_adder_child->isFacial()));
 			  
 
 			
 			//temp_adder_child->getMotion2()->reset();
-			//dynamic_cast<SelfBlend *>(temp_adder_child->getMotion2())->setMotion(new ZeroMotion(temp_adder_child->isFacial()));
+			//dynamic_cast<PostureBlend *>(temp_adder_child->getMotion2())->setMotion(new ZeroMotion(temp_adder_child->isFacial()));
 			  
 			//removeList.push_back(temp_adder_parent);
 			//temp_adder_parent->setMotion1(temp_adder_child->getMotion1());
@@ -479,7 +479,7 @@ void AvatarMotionQueue::enqueueRandomMotions(int num)
 			
 			
 			temp_adder_child->getMotion2()->reset();
-			dynamic_cast<SelfBlend *>(temp_adder_child->getMotion2())->setMotion(new ZeroMotion(temp_adder_child->isFacial()));
+			dynamic_cast<PostureBlend *>(temp_adder_child->getMotion2())->setMotion(new ZeroMotion(temp_adder_child->isFacial()));
 			  
 
 			//removeList.push_back(temp_adder_parent);

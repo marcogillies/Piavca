@@ -74,7 +74,7 @@ namespace Piavca
 	    
 	public:
 	    //! Pass in the two motion and the interpolation parameter blend (has to be between 0 and 1)
-	    MotionTransition(Motion *m1=NULL, Motion *m2=NULL, float transtime1=0.0f, float transtime2=0.0f, float w=1.0f, TransitionFunction *tf=NULL);
+	    MotionTransition(Motion *m1=NULL, Motion *m2=NULL, float transtime1=-1.0f, float transtime2=-1.0f, float w=1.0f, TransitionFunction *tf=NULL);
 		MotionTransition(const MotionTransition &mt);
 
 		virtual Motion *clone()
@@ -82,10 +82,15 @@ namespace Piavca
 			return new MotionTransition(*this);
 		}
 
+		static const int MotionStart = -1;
+		static const int MotionEnd = -1;
+
 		void setTransitionFunction(TransitionFunction *tf){transfunc = tf;};
-		void setTransitionTime1(float t1){transitionTime1 = t1;};
-		void setTransitionTime2(float t2){transitionTime2 = t2;};
+		void setTransitionTime1(float t1=MotionEnd){transitionTime1 = t1;};
+		void setTransitionTime2(float t2=MotionStart){transitionTime2 = t2;};
 		void setWindow(float w){window = w;};
+
+		virtual void setStartTime(float time);
 
 		float getMotionLength() const
 		{

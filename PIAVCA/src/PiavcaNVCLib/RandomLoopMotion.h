@@ -66,7 +66,7 @@ public:
 	RandomLoopMotion(const RandomLoopMotion &rl)
 		:RandomTimingsLoop(rl)
 	{
-		randomchoicemotion = dynamic_cast<RandomChoiceMotion *>(getMotion());
+		randomchoicemotion = dynamic_cast<RandomChoiceMotion *>(rl.randomchoicemotion->clone());
 	};
 	~RandomLoopMotion(){};
 	virtual Motion *clone(){return new RandomLoopMotion(*this);};
@@ -100,6 +100,12 @@ public:
 	{
 		randomchoicemotion->shift();
 	};
+
+	virtual void reblend(float time)
+	{
+		shift();
+		RandomTimingsLoop::reblend(time);
+	}
 };
 
 };

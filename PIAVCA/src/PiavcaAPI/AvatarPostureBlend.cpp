@@ -39,6 +39,8 @@
 //#endif
 
 #include "AvatarPostureBlend.h"
+#include "AvatarPosture.h"
+#include "MotionTransition.h"
 #include "Avatar.h"
 #include "PiavcaError.h"
 #include "PiavcaCore.h"
@@ -47,139 +49,68 @@
 using namespace Piavca;
 
 
-AvatarPostureBlend::AvatarPostureBlend(Motion *mot, float interval, bool _tracksFromAvatar) 
-	:SequentialBlend(NULL, mot, interval, 0.0), 
+AvatarPostureBlend::AvatarPostureBlend(Motion *mot, float _interval, bool _tracksFromAvatar) 
+	:Sequence(NULL, mot), interval(_interval), 
+	originalMotion(mot), repositioner(NULL), 
 	tracksFromAvatar(_tracksFromAvatar)//, avatar(av) 
 {
-	if (mot)
-			setMotion1(new KeyframeMotion(mot->isFacial()));
-	//setMaintainY(true);
-	
+	reblend();
 };
 
-void AvatarPostureBlend::load(Avatar *av)
+Motion *AvatarPostureBlend::getMotion()
 {
-	SequentialBlend::load(av);
-	KeyframeMotion *tmot = dynamic_cast<KeyframeMotion *>(mot1);
-	if(!tmot)
-		Piavca::Error(_T("Motion blending from a non writable motion"));
-	tmot->clearAllTracks();
-	if(!mot2)
-		return;
-	if(tracksFromAvatar)
-	{
-		if(mot2->isFacial())
-		{	
-			for(int track = av->beginExpression(); track < av->endExpression(); av->nextExpression(track))
-				tmot->addFloatTrack(track, 0.0f);
-		}
-		else
-		{
-			tmot->addVecTrack(root_position_id, Vec());
-			tmot->addQuatTrack(root_orientation_id, Quat());
-			for(int track = av->begin(); track < av->end(); av->next(track))
-				tmot->addQuatTrack(track, Quat());
-		}
-	}
-	else
-	{
-		for (int track = mot2->begin(); track < mot2->end(); mot2->next(track))
-		{
-			switch(mot2->getTrackType(track))
-			{
-			case FLOAT_TYPE:  tmot->addFloatTrack(track, 0.0);
-							break;
-			case VEC_TYPE:    tmot->addVecTrack(track, Vec());
-							break;
-			case QUAT_TYPE:   tmot->addQuatTrack(track, Quat());
-							break;
-			default:		  Piavca::Error(_T("Unknown track type"));
-			}
-		}
-	}
-	reblend(0.0);
+	return originalMotion;
 }
+
+bool AvatarPostureBlend::isNull(int trackId) const 
+{
+	if (tracksFromAvatar)
+		return Sequence::isNull(trackId);
+	else
+		return (!mot2 || mot2->isNull(trackId));
+};
 
 void AvatarPostureBlend::setMotion(Motion *mot)
 {
-	setMotion2(mot);
-	if (!mot) 
-		return;
-	if(!mot1)
-		setMotion1(new KeyframeMotion(mot->isFacial()));
-	KeyframeMotion *tmot = dynamic_cast<KeyframeMotion *>(mot1);
-	if(mot1 && !tmot)
-		Piavca::Error(_T("Motion blending from a non writable motion"));
-		
-	tmot->clearAllTracks();
-	if(!mot2)
-		return;
-	if(tracksFromAvatar)
+	originalMotion = mot;
+	if(repositioner)
 	{
-		if(!m_avatar)
-			return;
-		if(mot2->isFacial())
-		{	
-			for(int track = m_avatar->beginExpression(); track < m_avatar->endExpression(); m_avatar->nextExpression(track))
-				tmot->addFloatTrack(track, 0.0f);
-		}
-		else
-		{
-			tmot->addVecTrack(root_position_id, Vec());
-			tmot->addQuatTrack(root_orientation_id, Quat());
-			for(int track = m_avatar->begin(); track < m_avatar->end(); m_avatar->next(track))
-				tmot->addQuatTrack(track, Quat());
-		}
+		repositioner->setMotion(mot);
+		setMotion2(repositioner);
 	}
 	else
 	{
-		for (int track = mot2->begin(); track < mot2->end(); mot2->next(track))
-		{
-			switch(mot2->getTrackType(track))
-			{
-			case FLOAT_TYPE:  tmot->addFloatTrack(track, 0.0);
-							break;
-			case VEC_TYPE:    tmot->addVecTrack(track, Vec());
-							break;
-			case QUAT_TYPE:   tmot->addQuatTrack(track, Quat());
-							break;
-			default:		  Piavca::Error(_T("Unknown track type"));
-			}
-		}
+		setMotion2(mot);
 	}
-	reblend(0.0);
+
+	if(!originalMotion) return;
+	
+	originalMotion->reset();
+	reblend();
 };
 
 void AvatarPostureBlend::reblend(float time)
 {
-	if(!m_avatar) return;
-	KeyframeMotion *tmot = dynamic_cast<KeyframeMotion *>(mot1);
-	if(!tmot)
-		Piavca::Error(_T("Motion blending from a non writable motion"));
-
-	if(tmot->isFacial())
+	if(!originalMotion) return;
+	if(!getAvatar()) return;
+	
+	if(!repositioner)
 	{
-		for(int expr = m_avatar->beginExpression(); expr < m_avatar->endExpression(); m_avatar->nextExpression(expr))
-		{
-	 		if(!tmot->isNull(expr))
-				tmot->setFloatKeyframe(expr, 0, m_avatar->getFacialExpressionWeight(expr));
-		}
+		repositioner = new Reposition(originalMotion);
+		repositioner->setStartPosition(getAvatar()->getRootPosition());
+		repositioner->setStartOrientation(getAvatar()->getRootOrientation());
+		setMotion2(repositioner);
 	}
 	else
-	{
-		if(!tmot->isNull(root_position_id))
-				tmot->setVecKeyframe(root_position_id, 0, m_avatar->getRootPosition());
-		if(!tmot->isNull(root_orientation_id))
-				tmot->setQuatKeyframe(root_orientation_id, 0, m_avatar->getRootOrientation());
-		for(int joint = m_avatar->begin(); joint < m_avatar->end(); m_avatar->next(joint))
-		{
-	 		if(!tmot->isNull(joint))
-				tmot->setQuatKeyframe(joint, 0, m_avatar->getJointOrientation(joint));
-		}
-	}
-	calculateRootOffsets();
-	setBlendStart(time);
-	if(mot2) mot2->setStartTime(startTime+blendStart+blendInterval);
+		repositioner->setStartFromMotion(this, time);
+	
+	AvatarPosture *posture = new AvatarPosture(originalMotion->isFacial());
+	posture->getPostureFromAvatar(getAvatar());
+	MotionTransition *trans = new MotionTransition(posture, mot2);
+	setMotion1(trans);
+
+	setStartTime(time);
+	originalMotion->reset();
 };
 
 void AvatarPostureBlend::reblend()

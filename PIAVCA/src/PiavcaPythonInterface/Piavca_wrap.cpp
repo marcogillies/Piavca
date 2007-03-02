@@ -2462,89 +2462,95 @@ SWIG_Python_MustGetPtr(PyObject *obj, swig_type_info *ty, int argnum, int flags)
 
 #define SWIGTYPE_p_Piavca__Avatar swig_types[0]
 #define SWIGTYPE_p_Piavca__AvatarMotionQueue swig_types[1]
-#define SWIGTYPE_p_Piavca__AvatarPostureBlend swig_types[2]
-#define SWIGTYPE_p_Piavca__AvatarTargetStruct swig_types[3]
-#define SWIGTYPE_p_Piavca__AvatarTimeCallback swig_types[4]
-#define SWIGTYPE_p_Piavca__BlendBetween swig_types[5]
-#define SWIGTYPE_p_Piavca__ChoiceLoopMotion swig_types[6]
-#define SWIGTYPE_p_Piavca__ChoiceMotion swig_types[7]
-#define SWIGTYPE_p_Piavca__Core swig_types[8]
-#define SWIGTYPE_p_Piavca__DiadicGazeMotion swig_types[9]
-#define SWIGTYPE_p_Piavca__KeyframeMotion swig_types[10]
-#define SWIGTYPE_p_Piavca__LinearTransition swig_types[11]
-#define SWIGTYPE_p_Piavca__LookAtMotion swig_types[12]
-#define SWIGTYPE_p_Piavca__LookAtToFacial swig_types[13]
-#define SWIGTYPE_p_Piavca__LoopMotion swig_types[14]
-#define SWIGTYPE_p_Piavca__MaskedMotion swig_types[15]
-#define SWIGTYPE_p_Piavca__Motion swig_types[16]
-#define SWIGTYPE_p_Piavca__MotionAdder swig_types[17]
-#define SWIGTYPE_p_Piavca__MotionFilter swig_types[18]
-#define SWIGTYPE_p_Piavca__MotionImp swig_types[19]
-#define SWIGTYPE_p_Piavca__MotionMask swig_types[20]
-#define SWIGTYPE_p_Piavca__MotionParser swig_types[21]
-#define SWIGTYPE_p_Piavca__MotionSaver swig_types[22]
-#define SWIGTYPE_p_Piavca__MotionTransition swig_types[23]
-#define SWIGTYPE_p_Piavca__MultiMotionCombiner swig_types[24]
-#define SWIGTYPE_p_Piavca__Object swig_types[25]
-#define SWIGTYPE_p_Piavca__ObjectTargetStruct swig_types[26]
-#define SWIGTYPE_p_Piavca__ProxemicsLoop swig_types[27]
-#define SWIGTYPE_p_Piavca__PyAvatarTimeCallback swig_types[28]
-#define SWIGTYPE_p_Piavca__PyTimeCallback swig_types[29]
-#define SWIGTYPE_p_Piavca__Quat swig_types[30]
-#define SWIGTYPE_p_Piavca__RandomAdd swig_types[31]
-#define SWIGTYPE_p_Piavca__RandomAddLoop swig_types[32]
-#define SWIGTYPE_p_Piavca__RandomBlend swig_types[33]
-#define SWIGTYPE_p_Piavca__RandomBlendLoop swig_types[34]
-#define SWIGTYPE_p_Piavca__RandomChoiceMotion swig_types[35]
-#define SWIGTYPE_p_Piavca__RandomGazeMotion swig_types[36]
-#define SWIGTYPE_p_Piavca__RandomLoopMotion swig_types[37]
-#define SWIGTYPE_p_Piavca__RandomTimingsLoop swig_types[38]
-#define SWIGTYPE_p_Piavca__ScaleMotion swig_types[39]
-#define SWIGTYPE_p_Piavca__ScaleMotionRoot swig_types[40]
-#define SWIGTYPE_p_Piavca__ScaleMotionSpeed swig_types[41]
-#define SWIGTYPE_p_Piavca__SelfBlend swig_types[42]
-#define SWIGTYPE_p_Piavca__SequentialBlend swig_types[43]
-#define SWIGTYPE_p_Piavca__SmoothTransition swig_types[44]
-#define SWIGTYPE_p_Piavca__SubMotion swig_types[45]
-#define SWIGTYPE_p_Piavca__Subtract swig_types[46]
-#define SWIGTYPE_p_Piavca__TimeCallback swig_types[47]
-#define SWIGTYPE_p_Piavca__TimeOffset swig_types[48]
-#define SWIGTYPE_p_Piavca__TimeRangeMotion swig_types[49]
-#define SWIGTYPE_p_Piavca__TimeWarp swig_types[50]
-#define SWIGTYPE_p_Piavca__TransitionFunction swig_types[51]
-#define SWIGTYPE_p_Piavca__TurnMotion swig_types[52]
-#define SWIGTYPE_p_Piavca__TwoMotionCombiner swig_types[53]
-#define SWIGTYPE_p_Piavca__Vec swig_types[54]
-#define SWIGTYPE_p_Piavca__ZeroMotion swig_types[55]
-#define SWIGTYPE_p_Piavca__flagStruct swig_types[56]
-#define SWIGTYPE_p_Piavca__queueElement swig_types[57]
-#define SWIGTYPE_p_StringVector swig_types[58]
-#define SWIGTYPE_p_char swig_types[59]
-#define SWIGTYPE_p_float swig_types[60]
-#define SWIGTYPE_p_int swig_types[61]
-#define SWIGTYPE_p_p_Piavca__MotionParser swig_types[62]
-#define SWIGTYPE_p_std__fstream swig_types[63]
-#define SWIGTYPE_p_std__ifstream swig_types[64]
-#define SWIGTYPE_p_std__istringstream swig_types[65]
-#define SWIGTYPE_p_std__listTtstring_t swig_types[66]
-#define SWIGTYPE_p_std__ofstream swig_types[67]
-#define SWIGTYPE_p_std__ostream swig_types[68]
-#define SWIGTYPE_p_std__ostringstream swig_types[69]
-#define SWIGTYPE_p_std__string swig_types[70]
-#define SWIGTYPE_p_std__stringstream swig_types[71]
-#define SWIGTYPE_p_std__type_info swig_types[72]
-#define SWIGTYPE_p_std__vectorTPiavca__AvatarTargetStruct_t swig_types[73]
-#define SWIGTYPE_p_std__vectorTPiavca__Motion_p_t swig_types[74]
-#define SWIGTYPE_p_std__vectorTPiavca__ObjectTargetStruct_t swig_types[75]
-#define SWIGTYPE_p_std__vectorTstd__pairTint_Piavca__Quat_t_t swig_types[76]
-#define SWIGTYPE_p_std__vectorTstd__pairTtstring_int_t_t swig_types[77]
-#define SWIGTYPE_p_std__vectorTstd__string_t swig_types[78]
-#define SWIGTYPE_p_std__vectorTtstring_t swig_types[79]
-#define SWIGTYPE_p_std__wstring swig_types[80]
-#define SWIGTYPE_p_tostringstream swig_types[81]
-#define SWIGTYPE_p_vectorTfloat_t swig_types[82]
-static swig_type_info *swig_types[84];
-static swig_module_info swig_module = {swig_types, 83, 0, 0, 0, 0};
+#define SWIGTYPE_p_Piavca__AvatarPosture swig_types[2]
+#define SWIGTYPE_p_Piavca__AvatarPostureBlend swig_types[3]
+#define SWIGTYPE_p_Piavca__AvatarTargetStruct swig_types[4]
+#define SWIGTYPE_p_Piavca__AvatarTimeCallback swig_types[5]
+#define SWIGTYPE_p_Piavca__BlendBetween swig_types[6]
+#define SWIGTYPE_p_Piavca__ChoiceLoopMotion swig_types[7]
+#define SWIGTYPE_p_Piavca__ChoiceMotion swig_types[8]
+#define SWIGTYPE_p_Piavca__Core swig_types[9]
+#define SWIGTYPE_p_Piavca__DiadicGazeMotion swig_types[10]
+#define SWIGTYPE_p_Piavca__KeyframeMotion swig_types[11]
+#define SWIGTYPE_p_Piavca__LinearTransition swig_types[12]
+#define SWIGTYPE_p_Piavca__LookAtMotion swig_types[13]
+#define SWIGTYPE_p_Piavca__LookAtToFacial swig_types[14]
+#define SWIGTYPE_p_Piavca__LoopMotion swig_types[15]
+#define SWIGTYPE_p_Piavca__MaskedMotion swig_types[16]
+#define SWIGTYPE_p_Piavca__Motion swig_types[17]
+#define SWIGTYPE_p_Piavca__MotionAdder swig_types[18]
+#define SWIGTYPE_p_Piavca__MotionFilter swig_types[19]
+#define SWIGTYPE_p_Piavca__MotionImp swig_types[20]
+#define SWIGTYPE_p_Piavca__MotionMask swig_types[21]
+#define SWIGTYPE_p_Piavca__MotionParser swig_types[22]
+#define SWIGTYPE_p_Piavca__MotionPosture swig_types[23]
+#define SWIGTYPE_p_Piavca__MotionSaver swig_types[24]
+#define SWIGTYPE_p_Piavca__MotionTransition swig_types[25]
+#define SWIGTYPE_p_Piavca__MultiMotionCombiner swig_types[26]
+#define SWIGTYPE_p_Piavca__Object swig_types[27]
+#define SWIGTYPE_p_Piavca__ObjectTargetStruct swig_types[28]
+#define SWIGTYPE_p_Piavca__PostureBlend swig_types[29]
+#define SWIGTYPE_p_Piavca__ProxemicsLoop swig_types[30]
+#define SWIGTYPE_p_Piavca__PyAvatarTimeCallback swig_types[31]
+#define SWIGTYPE_p_Piavca__PyTimeCallback swig_types[32]
+#define SWIGTYPE_p_Piavca__Quat swig_types[33]
+#define SWIGTYPE_p_Piavca__RandomAdd swig_types[34]
+#define SWIGTYPE_p_Piavca__RandomAddLoop swig_types[35]
+#define SWIGTYPE_p_Piavca__RandomBlend swig_types[36]
+#define SWIGTYPE_p_Piavca__RandomBlendLoop swig_types[37]
+#define SWIGTYPE_p_Piavca__RandomChoiceMotion swig_types[38]
+#define SWIGTYPE_p_Piavca__RandomGazeMotion swig_types[39]
+#define SWIGTYPE_p_Piavca__RandomLoopMotion swig_types[40]
+#define SWIGTYPE_p_Piavca__RandomTimingsLoop swig_types[41]
+#define SWIGTYPE_p_Piavca__Reposition swig_types[42]
+#define SWIGTYPE_p_Piavca__ScaleMotion swig_types[43]
+#define SWIGTYPE_p_Piavca__ScaleMotionRoot swig_types[44]
+#define SWIGTYPE_p_Piavca__ScaleMotionSpeed swig_types[45]
+#define SWIGTYPE_p_Piavca__SelfBlend swig_types[46]
+#define SWIGTYPE_p_Piavca__Sequence swig_types[47]
+#define SWIGTYPE_p_Piavca__SequentialBlend swig_types[48]
+#define SWIGTYPE_p_Piavca__SmoothSequence swig_types[49]
+#define SWIGTYPE_p_Piavca__SmoothTransition swig_types[50]
+#define SWIGTYPE_p_Piavca__SubMotion swig_types[51]
+#define SWIGTYPE_p_Piavca__Subtract swig_types[52]
+#define SWIGTYPE_p_Piavca__TimeCallback swig_types[53]
+#define SWIGTYPE_p_Piavca__TimeOffset swig_types[54]
+#define SWIGTYPE_p_Piavca__TimeRangeMotion swig_types[55]
+#define SWIGTYPE_p_Piavca__TimeWarp swig_types[56]
+#define SWIGTYPE_p_Piavca__TransitionFunction swig_types[57]
+#define SWIGTYPE_p_Piavca__TurnMotion swig_types[58]
+#define SWIGTYPE_p_Piavca__TwoMotionCombiner swig_types[59]
+#define SWIGTYPE_p_Piavca__Vec swig_types[60]
+#define SWIGTYPE_p_Piavca__ZeroMotion swig_types[61]
+#define SWIGTYPE_p_Piavca__flagStruct swig_types[62]
+#define SWIGTYPE_p_Piavca__queueElement swig_types[63]
+#define SWIGTYPE_p_StringVector swig_types[64]
+#define SWIGTYPE_p_char swig_types[65]
+#define SWIGTYPE_p_float swig_types[66]
+#define SWIGTYPE_p_int swig_types[67]
+#define SWIGTYPE_p_p_Piavca__MotionParser swig_types[68]
+#define SWIGTYPE_p_std__fstream swig_types[69]
+#define SWIGTYPE_p_std__ifstream swig_types[70]
+#define SWIGTYPE_p_std__istringstream swig_types[71]
+#define SWIGTYPE_p_std__listTtstring_t swig_types[72]
+#define SWIGTYPE_p_std__ofstream swig_types[73]
+#define SWIGTYPE_p_std__ostream swig_types[74]
+#define SWIGTYPE_p_std__ostringstream swig_types[75]
+#define SWIGTYPE_p_std__string swig_types[76]
+#define SWIGTYPE_p_std__stringstream swig_types[77]
+#define SWIGTYPE_p_std__type_info swig_types[78]
+#define SWIGTYPE_p_std__vectorTPiavca__AvatarTargetStruct_t swig_types[79]
+#define SWIGTYPE_p_std__vectorTPiavca__Motion_p_t swig_types[80]
+#define SWIGTYPE_p_std__vectorTPiavca__ObjectTargetStruct_t swig_types[81]
+#define SWIGTYPE_p_std__vectorTstd__pairTint_Piavca__Quat_t_t swig_types[82]
+#define SWIGTYPE_p_std__vectorTstd__pairTtstring_int_t_t swig_types[83]
+#define SWIGTYPE_p_std__vectorTstd__string_t swig_types[84]
+#define SWIGTYPE_p_std__vectorTtstring_t swig_types[85]
+#define SWIGTYPE_p_std__wstring swig_types[86]
+#define SWIGTYPE_p_tostringstream swig_types[87]
+#define SWIGTYPE_p_vectorTfloat_t swig_types[88]
+static swig_type_info *swig_types[90];
+static swig_module_info swig_module = {swig_types, 89, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -4683,6 +4689,37 @@ void SwigDirector_KeyframeMotion::printInfo() {
 }
 
 
+void SwigDirector_KeyframeMotion::setFacial(bool _facial) {
+  if (swig_get_up()) {
+    Piavca::KeyframeMotion::setFacial(_facial);
+    return;
+  }
+  swig::PyObject_var obj0;
+  obj0 = SWIG_From_bool(static_cast< bool >(_facial));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call KeyframeMotion.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 17;
+  const char * const swig_method_name = "setFacial";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"setFacial", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
 Piavca::Motion *SwigDirector_KeyframeMotion::findSubByType(type_info const &ty) {
   void *argp ;
   int res ;
@@ -4698,7 +4735,7 @@ Piavca::Motion *SwigDirector_KeyframeMotion::findSubByType(type_info const &ty) 
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call KeyframeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 17;
+  const size_t swig_method_index = 18;
   const char * const swig_method_name = "findSubByType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -4736,7 +4773,7 @@ bool SwigDirector_KeyframeMotion::isNull(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call KeyframeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 18;
+  const size_t swig_method_index = 19;
   const char * const swig_method_name = "isNull";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -4774,7 +4811,7 @@ Piavca::trackType SwigDirector_KeyframeMotion::getTrackType(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call KeyframeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 19;
+  const size_t swig_method_index = 20;
   const char * const swig_method_name = "getTrackType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -10765,6 +10802,3881 @@ Piavca::trackType SwigDirector_SequentialBlend::getTrackType(int trackId) const 
 }
 
 
+SwigDirector_Sequence::SwigDirector_Sequence(PyObject *self, Piavca::Motion *mot1, Piavca::Motion *mot2): Piavca::Sequence(mot1, mot2), Swig::Director(self) {
+  SWIG_DIRECTOR_RGTR((Piavca::Sequence *)this, this); 
+}
+
+
+
+
+SwigDirector_Sequence::SwigDirector_Sequence(PyObject *self, Piavca::Sequence const &sb): Piavca::Sequence(sb), Swig::Director(self) {
+  SWIG_DIRECTOR_RGTR((Piavca::Sequence *)this, this); 
+}
+
+
+
+
+Piavca::Motion *SwigDirector_Sequence::findSub(Piavca::tstring nm) {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::TwoMotionCombiner::findSub(nm);
+  }
+  Piavca::Motion *swig_c_result;
+  swig::PyObject_var obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&nm), SWIGTYPE_p_std__string,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Sequence.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 0;
+  const char * const swig_method_name = "findSub";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"findSub", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Motion,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Motion *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Motion * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Motion *) swig_c_result;
+}
+
+
+void SwigDirector_Sequence::load(Piavca::Avatar *av) {
+  if (swig_get_up()) {
+    Piavca::TwoMotionCombiner::load(av);
+    return;
+  }
+  swig::PyObject_var obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(av), SWIGTYPE_p_Piavca__Avatar,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Sequence.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 1;
+  const char * const swig_method_name = "load";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"load", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
+Piavca::Avatar *SwigDirector_Sequence::getAvatar() {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::TwoMotionCombiner::getAvatar();
+  }
+  Piavca::Avatar *swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Sequence.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 2;
+  const char * const swig_method_name = "getAvatar";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "getAvatar", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Avatar,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Avatar *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Avatar * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Avatar *) swig_c_result;
+}
+
+
+void SwigDirector_Sequence::preFrame(float time) {
+  if (swig_get_up()) {
+    Piavca::Motion::preFrame(time);
+    return;
+  }
+  swig::PyObject_var obj0;
+  obj0 = SWIG_From_float(static_cast< float >(time));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Sequence.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 3;
+  const char * const swig_method_name = "preFrame";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"preFrame", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
+void SwigDirector_Sequence::setStartTime(float time) {
+  if (swig_get_up()) {
+    Piavca::Sequence::setStartTime(time);
+    return;
+  }
+  swig::PyObject_var obj0;
+  obj0 = SWIG_From_float(static_cast< float >(time));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Sequence.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 4;
+  const char * const swig_method_name = "setStartTime";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"setStartTime", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
+float SwigDirector_Sequence::getFloatValueAtTimeInternal(int trackId, float time) {
+  if (swig_get_up()) {
+    return Piavca::Sequence::getFloatValueAtTimeInternal(trackId,time);
+  }
+  float swig_c_result;
+  swig::PyObject_var obj0;
+  obj0 = SWIG_From_int(static_cast< int >(trackId));
+  swig::PyObject_var obj1;
+  obj1 = SWIG_From_float(static_cast< float >(time));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Sequence.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 5;
+  const char * const swig_method_name = "getFloatValueAtTimeInternal";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"getFloatValueAtTimeInternal", (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  float val;
+  int res = SWIG_AsVal_float(result, &val);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""float""'");
+  }
+  swig_c_result = static_cast< float >(val);
+  return (float) swig_c_result;
+}
+
+
+Piavca::Vec SwigDirector_Sequence::getVecValueAtTimeInternal(int trackId, float time) {
+  void *argp ;
+  int res = 0 ;
+  
+  if (swig_get_up()) {
+    return Piavca::Sequence::getVecValueAtTimeInternal(trackId,time);
+  }
+  Piavca::Vec swig_c_result;
+  swig::PyObject_var obj0;
+  obj0 = SWIG_From_int(static_cast< int >(trackId));
+  swig::PyObject_var obj1;
+  obj1 = SWIG_From_float(static_cast< float >(time));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Sequence.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 6;
+  const char * const swig_method_name = "getVecValueAtTimeInternal";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"getVecValueAtTimeInternal", (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtr(result,&argp,SWIGTYPE_p_Piavca__Vec,  0  | 0);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Vec""'");
+  }
+  swig_c_result = *(reinterpret_cast< Piavca::Vec * >(argp));
+  if (SWIG_IsNewObj(res)) delete reinterpret_cast< Piavca::Vec * >(argp);
+  return (Piavca::Vec) swig_c_result;
+}
+
+
+Piavca::Quat SwigDirector_Sequence::getQuatValueAtTimeInternal(int trackId, float time) {
+  void *argp ;
+  int res = 0 ;
+  
+  if (swig_get_up()) {
+    return Piavca::Sequence::getQuatValueAtTimeInternal(trackId,time);
+  }
+  Piavca::Quat swig_c_result;
+  swig::PyObject_var obj0;
+  obj0 = SWIG_From_int(static_cast< int >(trackId));
+  swig::PyObject_var obj1;
+  obj1 = SWIG_From_float(static_cast< float >(time));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Sequence.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 7;
+  const char * const swig_method_name = "getQuatValueAtTimeInternal";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"getQuatValueAtTimeInternal", (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtr(result,&argp,SWIGTYPE_p_Piavca__Quat,  0  | 0);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Quat""'");
+  }
+  swig_c_result = *(reinterpret_cast< Piavca::Quat * >(argp));
+  if (SWIG_IsNewObj(res)) delete reinterpret_cast< Piavca::Quat * >(argp);
+  return (Piavca::Quat) swig_c_result;
+}
+
+
+bool SwigDirector_Sequence::isRandomAccess() {
+  if (swig_get_up()) {
+    return Piavca::TwoMotionCombiner::isRandomAccess();
+  }
+  bool swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Sequence.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 8;
+  const char * const swig_method_name = "isRandomAccess";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "isRandomAccess", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  bool val;
+  int res = SWIG_AsVal_bool(result, &val);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""bool""'");
+  }
+  swig_c_result = static_cast< bool >(val);
+  return (bool) swig_c_result;
+}
+
+
+void SwigDirector_Sequence::create() {
+  if (swig_get_up()) {
+    Piavca::Motion::create();
+    return;
+  }
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Sequence.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 9;
+  const char * const swig_method_name = "create";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "create", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
+SwigDirector_Sequence::~SwigDirector_Sequence() {
+}
+
+void SwigDirector_Sequence::reset() {
+  if (swig_get_up()) {
+    Piavca::TwoMotionCombiner::reset();
+    return;
+  }
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Sequence.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 10;
+  const char * const swig_method_name = "reset";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "reset", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
+Piavca::Motion *SwigDirector_Sequence::clone() {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::Sequence::clone();
+  }
+  Piavca::Motion *swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Sequence.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 11;
+  const char * const swig_method_name = "clone";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "clone", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Motion,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Motion *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Motion * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Motion *) swig_c_result;
+}
+
+
+bool SwigDirector_Sequence::isFacial() {
+  if (swig_get_up()) {
+    return Piavca::TwoMotionCombiner::isFacial();
+  }
+  bool swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Sequence.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 12;
+  const char * const swig_method_name = "isFacial";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "isFacial", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  bool val;
+  int res = SWIG_AsVal_bool(result, &val);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""bool""'");
+  }
+  swig_c_result = static_cast< bool >(val);
+  return (bool) swig_c_result;
+}
+
+
+float SwigDirector_Sequence::getMotionLength() const {
+  if (swig_get_up()) {
+    return Piavca::Sequence::getMotionLength();
+  }
+  float swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Sequence.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 13;
+  const char * const swig_method_name = "getMotionLength";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "getMotionLength", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  float val;
+  int res = SWIG_AsVal_float(result, &val);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""float""'");
+  }
+  swig_c_result = static_cast< float >(val);
+  return (float) swig_c_result;
+}
+
+
+void SwigDirector_Sequence::unload() {
+  if (swig_get_up()) {
+    Piavca::TwoMotionCombiner::unload();
+    return;
+  }
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Sequence.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 14;
+  const char * const swig_method_name = "unload";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "unload", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
+bool SwigDirector_Sequence::loaded() {
+  if (swig_get_up()) {
+    return Piavca::TwoMotionCombiner::loaded();
+  }
+  bool swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Sequence.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 15;
+  const char * const swig_method_name = "loaded";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "loaded", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  bool val;
+  int res = SWIG_AsVal_bool(result, &val);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""bool""'");
+  }
+  swig_c_result = static_cast< bool >(val);
+  return (bool) swig_c_result;
+}
+
+
+void SwigDirector_Sequence::printInfo() {
+  if (swig_get_up()) {
+    Piavca::TwoMotionCombiner::printInfo();
+    return;
+  }
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Sequence.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 16;
+  const char * const swig_method_name = "printInfo";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "printInfo", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
+Piavca::Motion *SwigDirector_Sequence::findSubByType(type_info const &ty) {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::TwoMotionCombiner::findSubByType(ty);
+  }
+  Piavca::Motion *swig_c_result;
+  swig::PyObject_var obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&ty), SWIGTYPE_p_std__type_info,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Sequence.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 17;
+  const char * const swig_method_name = "findSubByType";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"findSubByType", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Motion,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Motion *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Motion * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Motion *) swig_c_result;
+}
+
+
+bool SwigDirector_Sequence::isNull(int trackId) const {
+  if (swig_get_up()) {
+    return Piavca::TwoMotionCombiner::isNull(trackId);
+  }
+  bool swig_c_result;
+  swig::PyObject_var obj0;
+  obj0 = SWIG_From_int(static_cast< int >(trackId));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Sequence.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 18;
+  const char * const swig_method_name = "isNull";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"isNull", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  bool val;
+  int res = SWIG_AsVal_bool(result, &val);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""bool""'");
+  }
+  swig_c_result = static_cast< bool >(val);
+  return (bool) swig_c_result;
+}
+
+
+Piavca::trackType SwigDirector_Sequence::getTrackType(int trackId) const {
+  if (swig_get_up()) {
+    return Piavca::TwoMotionCombiner::getTrackType(trackId);
+  }
+  Piavca::trackType swig_c_result;
+  swig::PyObject_var obj0;
+  obj0 = SWIG_From_int(static_cast< int >(trackId));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Sequence.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 19;
+  const char * const swig_method_name = "getTrackType";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"getTrackType", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  int val;
+  int res = SWIG_AsVal_int(result, &val);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::trackType""'");
+  }
+  swig_c_result = static_cast< Piavca::trackType >(val);
+  return (Piavca::trackType) swig_c_result;
+}
+
+
+SwigDirector_MotionPosture::SwigDirector_MotionPosture(PyObject *self, Piavca::Motion *m, bool _facial): Piavca::MotionPosture(m, _facial), Swig::Director(self) {
+  SWIG_DIRECTOR_RGTR((Piavca::MotionPosture *)this, this); 
+}
+
+
+
+
+SwigDirector_MotionPosture::SwigDirector_MotionPosture(PyObject *self, Piavca::MotionPosture const &m): Piavca::MotionPosture(m), Swig::Director(self) {
+  SWIG_DIRECTOR_RGTR((Piavca::MotionPosture *)this, this); 
+}
+
+
+
+
+Piavca::Motion *SwigDirector_MotionPosture::findSub(Piavca::tstring nm) {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::Motion::findSub(nm);
+  }
+  Piavca::Motion *swig_c_result;
+  swig::PyObject_var obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&nm), SWIGTYPE_p_std__string,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 0;
+  const char * const swig_method_name = "findSub";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"findSub", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Motion,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Motion *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Motion * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Motion *) swig_c_result;
+}
+
+
+void SwigDirector_MotionPosture::load(Piavca::Avatar *av) {
+  if (swig_get_up()) {
+    Piavca::Motion::load(av);
+    return;
+  }
+  swig::PyObject_var obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(av), SWIGTYPE_p_Piavca__Avatar,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 1;
+  const char * const swig_method_name = "load";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"load", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
+Piavca::Avatar *SwigDirector_MotionPosture::getAvatar() {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::Motion::getAvatar();
+  }
+  Piavca::Avatar *swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 2;
+  const char * const swig_method_name = "getAvatar";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "getAvatar", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Avatar,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Avatar *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Avatar * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Avatar *) swig_c_result;
+}
+
+
+void SwigDirector_MotionPosture::setStartTime(float t) {
+  if (swig_get_up()) {
+    Piavca::Motion::setStartTime(t);
+    return;
+  }
+  swig::PyObject_var obj0;
+  obj0 = SWIG_From_float(static_cast< float >(t));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 3;
+  const char * const swig_method_name = "setStartTime";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"setStartTime", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
+void SwigDirector_MotionPosture::preFrame(float time) {
+  if (swig_get_up()) {
+    Piavca::Motion::preFrame(time);
+    return;
+  }
+  swig::PyObject_var obj0;
+  obj0 = SWIG_From_float(static_cast< float >(time));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 4;
+  const char * const swig_method_name = "preFrame";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"preFrame", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
+float SwigDirector_MotionPosture::getFloatValueAtTimeInternal(int trackId, float time) {
+  if (swig_get_up()) {
+    return Piavca::KeyframeMotion::getFloatValueAtTimeInternal(trackId,time);
+  }
+  float swig_c_result;
+  swig::PyObject_var obj0;
+  obj0 = SWIG_From_int(static_cast< int >(trackId));
+  swig::PyObject_var obj1;
+  obj1 = SWIG_From_float(static_cast< float >(time));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 5;
+  const char * const swig_method_name = "getFloatValueAtTimeInternal";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"getFloatValueAtTimeInternal", (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  float val;
+  int res = SWIG_AsVal_float(result, &val);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""float""'");
+  }
+  swig_c_result = static_cast< float >(val);
+  return (float) swig_c_result;
+}
+
+
+Piavca::Vec SwigDirector_MotionPosture::getVecValueAtTimeInternal(int trackId, float time) {
+  void *argp ;
+  int res = 0 ;
+  
+  if (swig_get_up()) {
+    return Piavca::KeyframeMotion::getVecValueAtTimeInternal(trackId,time);
+  }
+  Piavca::Vec swig_c_result;
+  swig::PyObject_var obj0;
+  obj0 = SWIG_From_int(static_cast< int >(trackId));
+  swig::PyObject_var obj1;
+  obj1 = SWIG_From_float(static_cast< float >(time));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 6;
+  const char * const swig_method_name = "getVecValueAtTimeInternal";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"getVecValueAtTimeInternal", (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtr(result,&argp,SWIGTYPE_p_Piavca__Vec,  0  | 0);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Vec""'");
+  }
+  swig_c_result = *(reinterpret_cast< Piavca::Vec * >(argp));
+  if (SWIG_IsNewObj(res)) delete reinterpret_cast< Piavca::Vec * >(argp);
+  return (Piavca::Vec) swig_c_result;
+}
+
+
+Piavca::Quat SwigDirector_MotionPosture::getQuatValueAtTimeInternal(int trackId, float time) {
+  void *argp ;
+  int res = 0 ;
+  
+  if (swig_get_up()) {
+    return Piavca::KeyframeMotion::getQuatValueAtTimeInternal(trackId,time);
+  }
+  Piavca::Quat swig_c_result;
+  swig::PyObject_var obj0;
+  obj0 = SWIG_From_int(static_cast< int >(trackId));
+  swig::PyObject_var obj1;
+  obj1 = SWIG_From_float(static_cast< float >(time));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 7;
+  const char * const swig_method_name = "getQuatValueAtTimeInternal";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"getQuatValueAtTimeInternal", (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtr(result,&argp,SWIGTYPE_p_Piavca__Quat,  0  | 0);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Quat""'");
+  }
+  swig_c_result = *(reinterpret_cast< Piavca::Quat * >(argp));
+  if (SWIG_IsNewObj(res)) delete reinterpret_cast< Piavca::Quat * >(argp);
+  return (Piavca::Quat) swig_c_result;
+}
+
+
+bool SwigDirector_MotionPosture::isRandomAccess() {
+  if (swig_get_up()) {
+    return Piavca::KeyframeMotion::isRandomAccess();
+  }
+  bool swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 8;
+  const char * const swig_method_name = "isRandomAccess";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "isRandomAccess", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  bool val;
+  int res = SWIG_AsVal_bool(result, &val);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""bool""'");
+  }
+  swig_c_result = static_cast< bool >(val);
+  return (bool) swig_c_result;
+}
+
+
+void SwigDirector_MotionPosture::reset() {
+  if (swig_get_up()) {
+    Piavca::Motion::reset();
+    return;
+  }
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 9;
+  const char * const swig_method_name = "reset";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "reset", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
+void SwigDirector_MotionPosture::create() {
+  if (swig_get_up()) {
+    Piavca::Motion::create();
+    return;
+  }
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 10;
+  const char * const swig_method_name = "create";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "create", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
+SwigDirector_MotionPosture::~SwigDirector_MotionPosture() {
+}
+
+Piavca::Motion *SwigDirector_MotionPosture::clone() {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::MotionPosture::clone();
+  }
+  Piavca::Motion *swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 11;
+  const char * const swig_method_name = "clone";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "clone", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Motion,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Motion *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Motion * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Motion *) swig_c_result;
+}
+
+
+float SwigDirector_MotionPosture::getMotionLength() const {
+  if (swig_get_up()) {
+    return Piavca::KeyframeMotion::getMotionLength();
+  }
+  float swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 12;
+  const char * const swig_method_name = "getMotionLength";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "getMotionLength", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  float val;
+  int res = SWIG_AsVal_float(result, &val);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""float""'");
+  }
+  swig_c_result = static_cast< float >(val);
+  return (float) swig_c_result;
+}
+
+
+bool SwigDirector_MotionPosture::isFacial() {
+  if (swig_get_up()) {
+    return Piavca::KeyframeMotion::isFacial();
+  }
+  bool swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 13;
+  const char * const swig_method_name = "isFacial";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "isFacial", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  bool val;
+  int res = SWIG_AsVal_bool(result, &val);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""bool""'");
+  }
+  swig_c_result = static_cast< bool >(val);
+  return (bool) swig_c_result;
+}
+
+
+bool SwigDirector_MotionPosture::loaded() {
+  if (swig_get_up()) {
+    return Piavca::Motion::loaded();
+  }
+  bool swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 14;
+  const char * const swig_method_name = "loaded";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "loaded", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  bool val;
+  int res = SWIG_AsVal_bool(result, &val);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""bool""'");
+  }
+  swig_c_result = static_cast< bool >(val);
+  return (bool) swig_c_result;
+}
+
+
+void SwigDirector_MotionPosture::unload() {
+  if (swig_get_up()) {
+    Piavca::Motion::unload();
+    return;
+  }
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 15;
+  const char * const swig_method_name = "unload";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "unload", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
+void SwigDirector_MotionPosture::printInfo() {
+  if (swig_get_up()) {
+    Piavca::Motion::printInfo();
+    return;
+  }
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 16;
+  const char * const swig_method_name = "printInfo";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "printInfo", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
+void SwigDirector_MotionPosture::setFacial(bool _facial) {
+  if (swig_get_up()) {
+    Piavca::KeyframeMotion::setFacial(_facial);
+    return;
+  }
+  swig::PyObject_var obj0;
+  obj0 = SWIG_From_bool(static_cast< bool >(_facial));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 17;
+  const char * const swig_method_name = "setFacial";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"setFacial", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
+Piavca::Motion *SwigDirector_MotionPosture::findSubByType(type_info const &ty) {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::Motion::findSubByType(ty);
+  }
+  Piavca::Motion *swig_c_result;
+  swig::PyObject_var obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&ty), SWIGTYPE_p_std__type_info,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 18;
+  const char * const swig_method_name = "findSubByType";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"findSubByType", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Motion,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Motion *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Motion * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Motion *) swig_c_result;
+}
+
+
+bool SwigDirector_MotionPosture::isNull(int trackId) const {
+  if (swig_get_up()) {
+    return Piavca::KeyframeMotion::isNull(trackId);
+  }
+  bool swig_c_result;
+  swig::PyObject_var obj0;
+  obj0 = SWIG_From_int(static_cast< int >(trackId));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 19;
+  const char * const swig_method_name = "isNull";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"isNull", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  bool val;
+  int res = SWIG_AsVal_bool(result, &val);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""bool""'");
+  }
+  swig_c_result = static_cast< bool >(val);
+  return (bool) swig_c_result;
+}
+
+
+Piavca::trackType SwigDirector_MotionPosture::getTrackType(int trackId) const {
+  if (swig_get_up()) {
+    return Piavca::KeyframeMotion::getTrackType(trackId);
+  }
+  Piavca::trackType swig_c_result;
+  swig::PyObject_var obj0;
+  obj0 = SWIG_From_int(static_cast< int >(trackId));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call MotionPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 20;
+  const char * const swig_method_name = "getTrackType";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"getTrackType", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  int val;
+  int res = SWIG_AsVal_int(result, &val);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::trackType""'");
+  }
+  swig_c_result = static_cast< Piavca::trackType >(val);
+  return (Piavca::trackType) swig_c_result;
+}
+
+
+SwigDirector_AvatarPosture::SwigDirector_AvatarPosture(PyObject *self, bool _facial): Piavca::AvatarPosture(_facial), Swig::Director(self) {
+  SWIG_DIRECTOR_RGTR((Piavca::AvatarPosture *)this, this); 
+}
+
+
+
+
+SwigDirector_AvatarPosture::SwigDirector_AvatarPosture(PyObject *self, Piavca::AvatarPosture const &m): Piavca::AvatarPosture(m), Swig::Director(self) {
+  SWIG_DIRECTOR_RGTR((Piavca::AvatarPosture *)this, this); 
+}
+
+
+
+
+Piavca::Motion *SwigDirector_AvatarPosture::findSub(Piavca::tstring nm) {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::Motion::findSub(nm);
+  }
+  Piavca::Motion *swig_c_result;
+  swig::PyObject_var obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&nm), SWIGTYPE_p_std__string,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call AvatarPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 0;
+  const char * const swig_method_name = "findSub";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"findSub", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Motion,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Motion *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Motion * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Motion *) swig_c_result;
+}
+
+
+Piavca::Avatar *SwigDirector_AvatarPosture::getAvatar() {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::Motion::getAvatar();
+  }
+  Piavca::Avatar *swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call AvatarPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 1;
+  const char * const swig_method_name = "getAvatar";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "getAvatar", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Avatar,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Avatar *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Avatar * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Avatar *) swig_c_result;
+}
+
+
+void SwigDirector_AvatarPosture::load(Piavca::Avatar *av) {
+  if (swig_get_up()) {
+    Piavca::AvatarPosture::load(av);
+    return;
+  }
+  swig::PyObject_var obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(av), SWIGTYPE_p_Piavca__Avatar,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call AvatarPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 2;
+  const char * const swig_method_name = "load";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"load", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
+void SwigDirector_AvatarPosture::setStartTime(float t) {
+  if (swig_get_up()) {
+    Piavca::Motion::setStartTime(t);
+    return;
+  }
+  swig::PyObject_var obj0;
+  obj0 = SWIG_From_float(static_cast< float >(t));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call AvatarPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 3;
+  const char * const swig_method_name = "setStartTime";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"setStartTime", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
+void SwigDirector_AvatarPosture::preFrame(float time) {
+  if (swig_get_up()) {
+    Piavca::Motion::preFrame(time);
+    return;
+  }
+  swig::PyObject_var obj0;
+  obj0 = SWIG_From_float(static_cast< float >(time));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call AvatarPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 4;
+  const char * const swig_method_name = "preFrame";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"preFrame", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
+float SwigDirector_AvatarPosture::getFloatValueAtTimeInternal(int trackId, float time) {
+  if (swig_get_up()) {
+    return Piavca::KeyframeMotion::getFloatValueAtTimeInternal(trackId,time);
+  }
+  float swig_c_result;
+  swig::PyObject_var obj0;
+  obj0 = SWIG_From_int(static_cast< int >(trackId));
+  swig::PyObject_var obj1;
+  obj1 = SWIG_From_float(static_cast< float >(time));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call AvatarPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 5;
+  const char * const swig_method_name = "getFloatValueAtTimeInternal";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"getFloatValueAtTimeInternal", (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  float val;
+  int res = SWIG_AsVal_float(result, &val);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""float""'");
+  }
+  swig_c_result = static_cast< float >(val);
+  return (float) swig_c_result;
+}
+
+
+Piavca::Vec SwigDirector_AvatarPosture::getVecValueAtTimeInternal(int trackId, float time) {
+  void *argp ;
+  int res = 0 ;
+  
+  if (swig_get_up()) {
+    return Piavca::KeyframeMotion::getVecValueAtTimeInternal(trackId,time);
+  }
+  Piavca::Vec swig_c_result;
+  swig::PyObject_var obj0;
+  obj0 = SWIG_From_int(static_cast< int >(trackId));
+  swig::PyObject_var obj1;
+  obj1 = SWIG_From_float(static_cast< float >(time));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call AvatarPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 6;
+  const char * const swig_method_name = "getVecValueAtTimeInternal";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"getVecValueAtTimeInternal", (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtr(result,&argp,SWIGTYPE_p_Piavca__Vec,  0  | 0);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Vec""'");
+  }
+  swig_c_result = *(reinterpret_cast< Piavca::Vec * >(argp));
+  if (SWIG_IsNewObj(res)) delete reinterpret_cast< Piavca::Vec * >(argp);
+  return (Piavca::Vec) swig_c_result;
+}
+
+
+Piavca::Quat SwigDirector_AvatarPosture::getQuatValueAtTimeInternal(int trackId, float time) {
+  void *argp ;
+  int res = 0 ;
+  
+  if (swig_get_up()) {
+    return Piavca::KeyframeMotion::getQuatValueAtTimeInternal(trackId,time);
+  }
+  Piavca::Quat swig_c_result;
+  swig::PyObject_var obj0;
+  obj0 = SWIG_From_int(static_cast< int >(trackId));
+  swig::PyObject_var obj1;
+  obj1 = SWIG_From_float(static_cast< float >(time));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call AvatarPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 7;
+  const char * const swig_method_name = "getQuatValueAtTimeInternal";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"getQuatValueAtTimeInternal", (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtr(result,&argp,SWIGTYPE_p_Piavca__Quat,  0  | 0);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Quat""'");
+  }
+  swig_c_result = *(reinterpret_cast< Piavca::Quat * >(argp));
+  if (SWIG_IsNewObj(res)) delete reinterpret_cast< Piavca::Quat * >(argp);
+  return (Piavca::Quat) swig_c_result;
+}
+
+
+bool SwigDirector_AvatarPosture::isRandomAccess() {
+  if (swig_get_up()) {
+    return Piavca::KeyframeMotion::isRandomAccess();
+  }
+  bool swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call AvatarPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 8;
+  const char * const swig_method_name = "isRandomAccess";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "isRandomAccess", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  bool val;
+  int res = SWIG_AsVal_bool(result, &val);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""bool""'");
+  }
+  swig_c_result = static_cast< bool >(val);
+  return (bool) swig_c_result;
+}
+
+
+void SwigDirector_AvatarPosture::reset() {
+  if (swig_get_up()) {
+    Piavca::Motion::reset();
+    return;
+  }
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call AvatarPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 9;
+  const char * const swig_method_name = "reset";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "reset", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
+void SwigDirector_AvatarPosture::create() {
+  if (swig_get_up()) {
+    Piavca::Motion::create();
+    return;
+  }
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call AvatarPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 10;
+  const char * const swig_method_name = "create";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "create", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
+SwigDirector_AvatarPosture::~SwigDirector_AvatarPosture() {
+}
+
+Piavca::Motion *SwigDirector_AvatarPosture::clone() {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::AvatarPosture::clone();
+  }
+  Piavca::Motion *swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call AvatarPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 11;
+  const char * const swig_method_name = "clone";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "clone", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Motion,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Motion *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Motion * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Motion *) swig_c_result;
+}
+
+
+float SwigDirector_AvatarPosture::getMotionLength() const {
+  if (swig_get_up()) {
+    return Piavca::KeyframeMotion::getMotionLength();
+  }
+  float swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call AvatarPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 12;
+  const char * const swig_method_name = "getMotionLength";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "getMotionLength", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  float val;
+  int res = SWIG_AsVal_float(result, &val);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""float""'");
+  }
+  swig_c_result = static_cast< float >(val);
+  return (float) swig_c_result;
+}
+
+
+bool SwigDirector_AvatarPosture::isFacial() {
+  if (swig_get_up()) {
+    return Piavca::KeyframeMotion::isFacial();
+  }
+  bool swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call AvatarPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 13;
+  const char * const swig_method_name = "isFacial";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "isFacial", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  bool val;
+  int res = SWIG_AsVal_bool(result, &val);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""bool""'");
+  }
+  swig_c_result = static_cast< bool >(val);
+  return (bool) swig_c_result;
+}
+
+
+bool SwigDirector_AvatarPosture::loaded() {
+  if (swig_get_up()) {
+    return Piavca::Motion::loaded();
+  }
+  bool swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call AvatarPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 14;
+  const char * const swig_method_name = "loaded";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "loaded", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  bool val;
+  int res = SWIG_AsVal_bool(result, &val);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""bool""'");
+  }
+  swig_c_result = static_cast< bool >(val);
+  return (bool) swig_c_result;
+}
+
+
+void SwigDirector_AvatarPosture::unload() {
+  if (swig_get_up()) {
+    Piavca::Motion::unload();
+    return;
+  }
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call AvatarPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 15;
+  const char * const swig_method_name = "unload";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "unload", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
+void SwigDirector_AvatarPosture::printInfo() {
+  if (swig_get_up()) {
+    Piavca::Motion::printInfo();
+    return;
+  }
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call AvatarPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 16;
+  const char * const swig_method_name = "printInfo";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "printInfo", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
+void SwigDirector_AvatarPosture::setFacial(bool _facial) {
+  if (swig_get_up()) {
+    Piavca::KeyframeMotion::setFacial(_facial);
+    return;
+  }
+  swig::PyObject_var obj0;
+  obj0 = SWIG_From_bool(static_cast< bool >(_facial));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call AvatarPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 17;
+  const char * const swig_method_name = "setFacial";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"setFacial", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
+Piavca::Motion *SwigDirector_AvatarPosture::findSubByType(type_info const &ty) {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::Motion::findSubByType(ty);
+  }
+  Piavca::Motion *swig_c_result;
+  swig::PyObject_var obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&ty), SWIGTYPE_p_std__type_info,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call AvatarPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 18;
+  const char * const swig_method_name = "findSubByType";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"findSubByType", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Motion,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Motion *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Motion * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Motion *) swig_c_result;
+}
+
+
+bool SwigDirector_AvatarPosture::isNull(int trackId) const {
+  if (swig_get_up()) {
+    return Piavca::KeyframeMotion::isNull(trackId);
+  }
+  bool swig_c_result;
+  swig::PyObject_var obj0;
+  obj0 = SWIG_From_int(static_cast< int >(trackId));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call AvatarPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 19;
+  const char * const swig_method_name = "isNull";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"isNull", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  bool val;
+  int res = SWIG_AsVal_bool(result, &val);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""bool""'");
+  }
+  swig_c_result = static_cast< bool >(val);
+  return (bool) swig_c_result;
+}
+
+
+Piavca::trackType SwigDirector_AvatarPosture::getTrackType(int trackId) const {
+  if (swig_get_up()) {
+    return Piavca::KeyframeMotion::getTrackType(trackId);
+  }
+  Piavca::trackType swig_c_result;
+  swig::PyObject_var obj0;
+  obj0 = SWIG_From_int(static_cast< int >(trackId));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call AvatarPosture.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 20;
+  const char * const swig_method_name = "getTrackType";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"getTrackType", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  int val;
+  int res = SWIG_AsVal_int(result, &val);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::trackType""'");
+  }
+  swig_c_result = static_cast< Piavca::trackType >(val);
+  return (Piavca::trackType) swig_c_result;
+}
+
+
+SwigDirector_PostureBlend::SwigDirector_PostureBlend(PyObject *self, Piavca::Motion *mot, float interval): Piavca::PostureBlend(mot, interval), Swig::Director(self) {
+  SWIG_DIRECTOR_RGTR((Piavca::PostureBlend *)this, this); 
+}
+
+
+
+
+SwigDirector_PostureBlend::SwigDirector_PostureBlend(PyObject *self, Piavca::PostureBlend const &pb): Piavca::PostureBlend(pb), Swig::Director(self) {
+  SWIG_DIRECTOR_RGTR((Piavca::PostureBlend *)this, this); 
+}
+
+
+
+
+Piavca::Motion *SwigDirector_PostureBlend::findSub(Piavca::tstring nm) {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::TwoMotionCombiner::findSub(nm);
+  }
+  Piavca::Motion *swig_c_result;
+  swig::PyObject_var obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&nm), SWIGTYPE_p_std__string,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call PostureBlend.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 0;
+  const char * const swig_method_name = "findSub";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"findSub", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Motion,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Motion *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Motion * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Motion *) swig_c_result;
+}
+
+
+void SwigDirector_PostureBlend::load(Piavca::Avatar *av) {
+  if (swig_get_up()) {
+    Piavca::TwoMotionCombiner::load(av);
+    return;
+  }
+  swig::PyObject_var obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(av), SWIGTYPE_p_Piavca__Avatar,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call PostureBlend.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 1;
+  const char * const swig_method_name = "load";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"load", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
+Piavca::Avatar *SwigDirector_PostureBlend::getAvatar() {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::TwoMotionCombiner::getAvatar();
+  }
+  Piavca::Avatar *swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call PostureBlend.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 2;
+  const char * const swig_method_name = "getAvatar";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "getAvatar", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Avatar,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Avatar *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Avatar * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Avatar *) swig_c_result;
+}
+
+
+void SwigDirector_PostureBlend::preFrame(float time) {
+  if (swig_get_up()) {
+    Piavca::Motion::preFrame(time);
+    return;
+  }
+  swig::PyObject_var obj0;
+  obj0 = SWIG_From_float(static_cast< float >(time));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call PostureBlend.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 3;
+  const char * const swig_method_name = "preFrame";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"preFrame", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
+void SwigDirector_PostureBlend::setStartTime(float time) {
+  if (swig_get_up()) {
+    Piavca::Sequence::setStartTime(time);
+    return;
+  }
+  swig::PyObject_var obj0;
+  obj0 = SWIG_From_float(static_cast< float >(time));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call PostureBlend.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 4;
+  const char * const swig_method_name = "setStartTime";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"setStartTime", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
+float SwigDirector_PostureBlend::getFloatValueAtTimeInternal(int trackId, float time) {
+  if (swig_get_up()) {
+    return Piavca::Sequence::getFloatValueAtTimeInternal(trackId,time);
+  }
+  float swig_c_result;
+  swig::PyObject_var obj0;
+  obj0 = SWIG_From_int(static_cast< int >(trackId));
+  swig::PyObject_var obj1;
+  obj1 = SWIG_From_float(static_cast< float >(time));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call PostureBlend.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 5;
+  const char * const swig_method_name = "getFloatValueAtTimeInternal";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"getFloatValueAtTimeInternal", (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  float val;
+  int res = SWIG_AsVal_float(result, &val);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""float""'");
+  }
+  swig_c_result = static_cast< float >(val);
+  return (float) swig_c_result;
+}
+
+
+Piavca::Vec SwigDirector_PostureBlend::getVecValueAtTimeInternal(int trackId, float time) {
+  void *argp ;
+  int res = 0 ;
+  
+  if (swig_get_up()) {
+    return Piavca::Sequence::getVecValueAtTimeInternal(trackId,time);
+  }
+  Piavca::Vec swig_c_result;
+  swig::PyObject_var obj0;
+  obj0 = SWIG_From_int(static_cast< int >(trackId));
+  swig::PyObject_var obj1;
+  obj1 = SWIG_From_float(static_cast< float >(time));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call PostureBlend.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 6;
+  const char * const swig_method_name = "getVecValueAtTimeInternal";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"getVecValueAtTimeInternal", (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtr(result,&argp,SWIGTYPE_p_Piavca__Vec,  0  | 0);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Vec""'");
+  }
+  swig_c_result = *(reinterpret_cast< Piavca::Vec * >(argp));
+  if (SWIG_IsNewObj(res)) delete reinterpret_cast< Piavca::Vec * >(argp);
+  return (Piavca::Vec) swig_c_result;
+}
+
+
+Piavca::Quat SwigDirector_PostureBlend::getQuatValueAtTimeInternal(int trackId, float time) {
+  void *argp ;
+  int res = 0 ;
+  
+  if (swig_get_up()) {
+    return Piavca::Sequence::getQuatValueAtTimeInternal(trackId,time);
+  }
+  Piavca::Quat swig_c_result;
+  swig::PyObject_var obj0;
+  obj0 = SWIG_From_int(static_cast< int >(trackId));
+  swig::PyObject_var obj1;
+  obj1 = SWIG_From_float(static_cast< float >(time));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call PostureBlend.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 7;
+  const char * const swig_method_name = "getQuatValueAtTimeInternal";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"getQuatValueAtTimeInternal", (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtr(result,&argp,SWIGTYPE_p_Piavca__Quat,  0  | 0);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Quat""'");
+  }
+  swig_c_result = *(reinterpret_cast< Piavca::Quat * >(argp));
+  if (SWIG_IsNewObj(res)) delete reinterpret_cast< Piavca::Quat * >(argp);
+  return (Piavca::Quat) swig_c_result;
+}
+
+
+void SwigDirector_PostureBlend::reblend(float time) {
+  if (swig_get_up()) {
+    Piavca::PostureBlend::reblend(time);
+    return;
+  }
+  swig::PyObject_var obj0;
+  obj0 = SWIG_From_float(static_cast< float >(time));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call PostureBlend.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 8;
+  const char * const swig_method_name = "reblend";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"reblend", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
+bool SwigDirector_PostureBlend::isRandomAccess() {
+  if (swig_get_up()) {
+    return Piavca::TwoMotionCombiner::isRandomAccess();
+  }
+  bool swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call PostureBlend.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 9;
+  const char * const swig_method_name = "isRandomAccess";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "isRandomAccess", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  bool val;
+  int res = SWIG_AsVal_bool(result, &val);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""bool""'");
+  }
+  swig_c_result = static_cast< bool >(val);
+  return (bool) swig_c_result;
+}
+
+
+void SwigDirector_PostureBlend::create() {
+  if (swig_get_up()) {
+    Piavca::Motion::create();
+    return;
+  }
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call PostureBlend.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 10;
+  const char * const swig_method_name = "create";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "create", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
+SwigDirector_PostureBlend::~SwigDirector_PostureBlend() {
+}
+
+Piavca::Motion *SwigDirector_PostureBlend::clone() {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::PostureBlend::clone();
+  }
+  Piavca::Motion *swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call PostureBlend.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 11;
+  const char * const swig_method_name = "clone";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "clone", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Motion,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Motion *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Motion * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Motion *) swig_c_result;
+}
+
+
+void SwigDirector_PostureBlend::reset() {
+  if (swig_get_up()) {
+    Piavca::PostureBlend::reset();
+    return;
+  }
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call PostureBlend.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 12;
+  const char * const swig_method_name = "reset";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "reset", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
+bool SwigDirector_PostureBlend::isFacial() {
+  if (swig_get_up()) {
+    return Piavca::TwoMotionCombiner::isFacial();
+  }
+  bool swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call PostureBlend.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 13;
+  const char * const swig_method_name = "isFacial";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "isFacial", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  bool val;
+  int res = SWIG_AsVal_bool(result, &val);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""bool""'");
+  }
+  swig_c_result = static_cast< bool >(val);
+  return (bool) swig_c_result;
+}
+
+
+float SwigDirector_PostureBlend::getMotionLength() const {
+  if (swig_get_up()) {
+    return Piavca::Sequence::getMotionLength();
+  }
+  float swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call PostureBlend.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 14;
+  const char * const swig_method_name = "getMotionLength";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "getMotionLength", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  float val;
+  int res = SWIG_AsVal_float(result, &val);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""float""'");
+  }
+  swig_c_result = static_cast< float >(val);
+  return (float) swig_c_result;
+}
+
+
+void SwigDirector_PostureBlend::unload() {
+  if (swig_get_up()) {
+    Piavca::TwoMotionCombiner::unload();
+    return;
+  }
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call PostureBlend.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 15;
+  const char * const swig_method_name = "unload";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "unload", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
+bool SwigDirector_PostureBlend::loaded() {
+  if (swig_get_up()) {
+    return Piavca::TwoMotionCombiner::loaded();
+  }
+  bool swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call PostureBlend.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 16;
+  const char * const swig_method_name = "loaded";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "loaded", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  bool val;
+  int res = SWIG_AsVal_bool(result, &val);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""bool""'");
+  }
+  swig_c_result = static_cast< bool >(val);
+  return (bool) swig_c_result;
+}
+
+
+void SwigDirector_PostureBlend::printInfo() {
+  if (swig_get_up()) {
+    Piavca::TwoMotionCombiner::printInfo();
+    return;
+  }
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call PostureBlend.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 17;
+  const char * const swig_method_name = "printInfo";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "printInfo", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
+Piavca::Motion *SwigDirector_PostureBlend::findSubByType(type_info const &ty) {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::TwoMotionCombiner::findSubByType(ty);
+  }
+  Piavca::Motion *swig_c_result;
+  swig::PyObject_var obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&ty), SWIGTYPE_p_std__type_info,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call PostureBlend.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 18;
+  const char * const swig_method_name = "findSubByType";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"findSubByType", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Motion,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Motion *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Motion * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Motion *) swig_c_result;
+}
+
+
+Piavca::Motion *SwigDirector_PostureBlend::getMotion() {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::PostureBlend::getMotion();
+  }
+  Piavca::Motion *swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call PostureBlend.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 19;
+  const char * const swig_method_name = "getMotion";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "getMotion", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Motion,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Motion *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Motion * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Motion *) swig_c_result;
+}
+
+
+void SwigDirector_PostureBlend::setMotion(Piavca::Motion *mot) {
+  if (swig_get_up()) {
+    Piavca::PostureBlend::setMotion(mot);
+    return;
+  }
+  swig::PyObject_var obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(mot), SWIGTYPE_p_Piavca__Motion,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call PostureBlend.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 20;
+  const char * const swig_method_name = "setMotion";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"setMotion", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
+bool SwigDirector_PostureBlend::isNull(int trackId) const {
+  if (swig_get_up()) {
+    return Piavca::TwoMotionCombiner::isNull(trackId);
+  }
+  bool swig_c_result;
+  swig::PyObject_var obj0;
+  obj0 = SWIG_From_int(static_cast< int >(trackId));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call PostureBlend.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 21;
+  const char * const swig_method_name = "isNull";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"isNull", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  bool val;
+  int res = SWIG_AsVal_bool(result, &val);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""bool""'");
+  }
+  swig_c_result = static_cast< bool >(val);
+  return (bool) swig_c_result;
+}
+
+
+Piavca::trackType SwigDirector_PostureBlend::getTrackType(int trackId) const {
+  if (swig_get_up()) {
+    return Piavca::TwoMotionCombiner::getTrackType(trackId);
+  }
+  Piavca::trackType swig_c_result;
+  swig::PyObject_var obj0;
+  obj0 = SWIG_From_int(static_cast< int >(trackId));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call PostureBlend.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 22;
+  const char * const swig_method_name = "getTrackType";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"getTrackType", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  int val;
+  int res = SWIG_AsVal_int(result, &val);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::trackType""'");
+  }
+  swig_c_result = static_cast< Piavca::trackType >(val);
+  return (Piavca::trackType) swig_c_result;
+}
+
+
+SwigDirector_Reposition::SwigDirector_Reposition(PyObject *self, Piavca::Motion *m, Piavca::Vec pos, Piavca::Quat ori): Piavca::Reposition(m, pos, ori), Swig::Director(self) {
+  SWIG_DIRECTOR_RGTR((Piavca::Reposition *)this, this); 
+}
+
+
+
+
+SwigDirector_Reposition::SwigDirector_Reposition(PyObject *self, Piavca::Reposition const &r): Piavca::Reposition(r), Swig::Director(self) {
+  SWIG_DIRECTOR_RGTR((Piavca::Reposition *)this, this); 
+}
+
+
+
+
+Piavca::Motion *SwigDirector_Reposition::findSub(Piavca::tstring nm) {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::MotionFilter::findSub(nm);
+  }
+  Piavca::Motion *swig_c_result;
+  swig::PyObject_var obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&nm), SWIGTYPE_p_std__string,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Reposition.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 0;
+  const char * const swig_method_name = "findSub";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"findSub", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Motion,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Motion *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Motion * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Motion *) swig_c_result;
+}
+
+
+void SwigDirector_Reposition::load(Piavca::Avatar *av) {
+  if (swig_get_up()) {
+    Piavca::MotionFilter::load(av);
+    return;
+  }
+  swig::PyObject_var obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(av), SWIGTYPE_p_Piavca__Avatar,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Reposition.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 1;
+  const char * const swig_method_name = "load";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"load", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
+Piavca::Avatar *SwigDirector_Reposition::getAvatar() {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::MotionFilter::getAvatar();
+  }
+  Piavca::Avatar *swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Reposition.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 2;
+  const char * const swig_method_name = "getAvatar";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "getAvatar", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Avatar,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Avatar *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Avatar * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Avatar *) swig_c_result;
+}
+
+
+void SwigDirector_Reposition::preFrame(float time) {
+  if (swig_get_up()) {
+    Piavca::Motion::preFrame(time);
+    return;
+  }
+  swig::PyObject_var obj0;
+  obj0 = SWIG_From_float(static_cast< float >(time));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Reposition.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 3;
+  const char * const swig_method_name = "preFrame";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"preFrame", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
+void SwigDirector_Reposition::setStartTime(float time) {
+  if (swig_get_up()) {
+    Piavca::MotionFilter::setStartTime(time);
+    return;
+  }
+  swig::PyObject_var obj0;
+  obj0 = SWIG_From_float(static_cast< float >(time));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Reposition.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 4;
+  const char * const swig_method_name = "setStartTime";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"setStartTime", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
+float SwigDirector_Reposition::getFloatValueAtTimeInternal(int trackId, float time) {
+  if (swig_get_up()) {
+    return Piavca::Reposition::getFloatValueAtTimeInternal(trackId,time);
+  }
+  float swig_c_result;
+  swig::PyObject_var obj0;
+  obj0 = SWIG_From_int(static_cast< int >(trackId));
+  swig::PyObject_var obj1;
+  obj1 = SWIG_From_float(static_cast< float >(time));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Reposition.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 5;
+  const char * const swig_method_name = "getFloatValueAtTimeInternal";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"getFloatValueAtTimeInternal", (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  float val;
+  int res = SWIG_AsVal_float(result, &val);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""float""'");
+  }
+  swig_c_result = static_cast< float >(val);
+  return (float) swig_c_result;
+}
+
+
+Piavca::Vec SwigDirector_Reposition::getVecValueAtTimeInternal(int trackId, float time) {
+  void *argp ;
+  int res = 0 ;
+  
+  if (swig_get_up()) {
+    return Piavca::Reposition::getVecValueAtTimeInternal(trackId,time);
+  }
+  Piavca::Vec swig_c_result;
+  swig::PyObject_var obj0;
+  obj0 = SWIG_From_int(static_cast< int >(trackId));
+  swig::PyObject_var obj1;
+  obj1 = SWIG_From_float(static_cast< float >(time));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Reposition.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 6;
+  const char * const swig_method_name = "getVecValueAtTimeInternal";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"getVecValueAtTimeInternal", (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtr(result,&argp,SWIGTYPE_p_Piavca__Vec,  0  | 0);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Vec""'");
+  }
+  swig_c_result = *(reinterpret_cast< Piavca::Vec * >(argp));
+  if (SWIG_IsNewObj(res)) delete reinterpret_cast< Piavca::Vec * >(argp);
+  return (Piavca::Vec) swig_c_result;
+}
+
+
+Piavca::Quat SwigDirector_Reposition::getQuatValueAtTimeInternal(int trackId, float time) {
+  void *argp ;
+  int res = 0 ;
+  
+  if (swig_get_up()) {
+    return Piavca::Reposition::getQuatValueAtTimeInternal(trackId,time);
+  }
+  Piavca::Quat swig_c_result;
+  swig::PyObject_var obj0;
+  obj0 = SWIG_From_int(static_cast< int >(trackId));
+  swig::PyObject_var obj1;
+  obj1 = SWIG_From_float(static_cast< float >(time));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Reposition.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 7;
+  const char * const swig_method_name = "getQuatValueAtTimeInternal";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"getQuatValueAtTimeInternal", (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtr(result,&argp,SWIGTYPE_p_Piavca__Quat,  0  | 0);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Quat""'");
+  }
+  swig_c_result = *(reinterpret_cast< Piavca::Quat * >(argp));
+  if (SWIG_IsNewObj(res)) delete reinterpret_cast< Piavca::Quat * >(argp);
+  return (Piavca::Quat) swig_c_result;
+}
+
+
+bool SwigDirector_Reposition::isRandomAccess() {
+  if (swig_get_up()) {
+    return Piavca::MotionFilter::isRandomAccess();
+  }
+  bool swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Reposition.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 8;
+  const char * const swig_method_name = "isRandomAccess";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "isRandomAccess", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  bool val;
+  int res = SWIG_AsVal_bool(result, &val);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""bool""'");
+  }
+  swig_c_result = static_cast< bool >(val);
+  return (bool) swig_c_result;
+}
+
+
+void SwigDirector_Reposition::create() {
+  if (swig_get_up()) {
+    Piavca::Motion::create();
+    return;
+  }
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Reposition.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 9;
+  const char * const swig_method_name = "create";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "create", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
+SwigDirector_Reposition::~SwigDirector_Reposition() {
+}
+
+void SwigDirector_Reposition::reset() {
+  if (swig_get_up()) {
+    Piavca::MotionFilter::reset();
+    return;
+  }
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Reposition.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 10;
+  const char * const swig_method_name = "reset";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "reset", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
+Piavca::Motion *SwigDirector_Reposition::clone() {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::Reposition::clone();
+  }
+  Piavca::Motion *swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Reposition.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 11;
+  const char * const swig_method_name = "clone";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "clone", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Motion,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Motion *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Motion * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Motion *) swig_c_result;
+}
+
+
+float SwigDirector_Reposition::getMotionLength() const {
+  if (swig_get_up()) {
+    return Piavca::MotionFilter::getMotionLength();
+  }
+  float swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Reposition.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 12;
+  const char * const swig_method_name = "getMotionLength";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "getMotionLength", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  float val;
+  int res = SWIG_AsVal_float(result, &val);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""float""'");
+  }
+  swig_c_result = static_cast< float >(val);
+  return (float) swig_c_result;
+}
+
+
+bool SwigDirector_Reposition::isFacial() {
+  if (swig_get_up()) {
+    return Piavca::MotionFilter::isFacial();
+  }
+  bool swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Reposition.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 13;
+  const char * const swig_method_name = "isFacial";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "isFacial", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  bool val;
+  int res = SWIG_AsVal_bool(result, &val);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""bool""'");
+  }
+  swig_c_result = static_cast< bool >(val);
+  return (bool) swig_c_result;
+}
+
+
+void SwigDirector_Reposition::unload() {
+  if (swig_get_up()) {
+    Piavca::MotionFilter::unload();
+    return;
+  }
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Reposition.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 14;
+  const char * const swig_method_name = "unload";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "unload", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
+bool SwigDirector_Reposition::loaded() {
+  if (swig_get_up()) {
+    return Piavca::MotionFilter::loaded();
+  }
+  bool swig_c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Reposition.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 15;
+  const char * const swig_method_name = "loaded";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "loaded", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  bool val;
+  int res = SWIG_AsVal_bool(result, &val);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""bool""'");
+  }
+  swig_c_result = static_cast< bool >(val);
+  return (bool) swig_c_result;
+}
+
+
+void SwigDirector_Reposition::printInfo() {
+  if (swig_get_up()) {
+    Piavca::MotionFilter::printInfo();
+    return;
+  }
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Reposition.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 16;
+  const char * const swig_method_name = "printInfo";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "printInfo", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
+void SwigDirector_Reposition::setMaintainY(bool b) {
+  if (swig_get_up()) {
+    Piavca::Reposition::setMaintainY(b);
+    return;
+  }
+  swig::PyObject_var obj0;
+  obj0 = SWIG_From_bool(static_cast< bool >(b));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Reposition.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 17;
+  const char * const swig_method_name = "setMaintainY";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"setMaintainY", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+}
+
+
+Piavca::Motion *SwigDirector_Reposition::findSubByType(type_info const &ty) {
+  void *argp ;
+  int res ;
+  swig_owntype own ;
+  
+  if (swig_get_up()) {
+    return Piavca::MotionFilter::findSubByType(ty);
+  }
+  Piavca::Motion *swig_c_result;
+  swig::PyObject_var obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&ty), SWIGTYPE_p_std__type_info,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Reposition.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 18;
+  const char * const swig_method_name = "findSubByType";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"findSubByType", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  res = SWIG_ConvertPtrAndOwn(result, &argp, SWIGTYPE_p_Piavca__Motion,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::Motion *""'");
+  }
+  swig_c_result = reinterpret_cast< Piavca::Motion * >(argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(swig_c_result), own);
+  return (Piavca::Motion *) swig_c_result;
+}
+
+
+Piavca::trackType SwigDirector_Reposition::getTrackType(int trackId) const {
+  if (swig_get_up()) {
+    return Piavca::MotionFilter::getTrackType(trackId);
+  }
+  Piavca::trackType swig_c_result;
+  swig::PyObject_var obj0;
+  obj0 = SWIG_From_int(static_cast< int >(trackId));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Reposition.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 19;
+  const char * const swig_method_name = "getTrackType";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"getTrackType", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  int val;
+  int res = SWIG_AsVal_int(result, &val);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""Piavca::trackType""'");
+  }
+  swig_c_result = static_cast< Piavca::trackType >(val);
+  return (Piavca::trackType) swig_c_result;
+}
+
+
+bool SwigDirector_Reposition::isNull(int trackId) const {
+  if (swig_get_up()) {
+    return Piavca::Reposition::isNull(trackId);
+  }
+  bool swig_c_result;
+  swig::PyObject_var obj0;
+  obj0 = SWIG_From_int(static_cast< int >(trackId));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call Reposition.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 20;
+  const char * const swig_method_name = "isNull";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"isNull", (char *)"(O)" ,(PyObject *)obj0);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  bool val;
+  int res = SWIG_AsVal_bool(result, &val);
+  if (!SWIG_IsOK(res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(res)), "in output value of type '""bool""'");
+  }
+  swig_c_result = static_cast< bool >(val);
+  return (bool) swig_c_result;
+}
+
+
 SwigDirector_SelfBlend::SwigDirector_SelfBlend(PyObject *self, Piavca::Motion *mot, float interval): Piavca::SelfBlend(mot, interval), Swig::Director(self) {
   SWIG_DIRECTOR_RGTR((Piavca::SelfBlend *)this, this); 
 }
@@ -11825,7 +15737,7 @@ void SwigDirector_LoopMotion::preFrame(float time) {
 
 void SwigDirector_LoopMotion::setStartTime(float time) {
   if (swig_get_up()) {
-    Piavca::SequentialBlend::setStartTime(time);
+    Piavca::Sequence::setStartTime(time);
     return;
   }
   swig::PyObject_var obj0;
@@ -11856,7 +15768,7 @@ void SwigDirector_LoopMotion::setStartTime(float time) {
 
 void SwigDirector_LoopMotion::reblend(float time) {
   if (swig_get_up()) {
-    Piavca::SelfBlend::reblend(time);
+    Piavca::PostureBlend::reblend(time);
     return;
   }
   swig::PyObject_var obj0;
@@ -12081,7 +15993,7 @@ SwigDirector_LoopMotion::~SwigDirector_LoopMotion() {
 
 void SwigDirector_LoopMotion::reset() {
   if (swig_get_up()) {
-    Piavca::SelfBlend::reset();
+    Piavca::PostureBlend::reset();
     return;
   }
   if (!swig_get_self()) {
@@ -12314,68 +16226,6 @@ void SwigDirector_LoopMotion::printInfo() {
 }
 
 
-void SwigDirector_LoopMotion::setMaintainY(bool b) {
-  if (swig_get_up()) {
-    Piavca::SequentialBlend::setMaintainY(b);
-    return;
-  }
-  swig::PyObject_var obj0;
-  obj0 = SWIG_From_bool(static_cast< bool >(b));
-  if (!swig_get_self()) {
-    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LoopMotion.__init__.");
-  }
-#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 18;
-  const char * const swig_method_name = "setMaintainY";
-  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
-  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
-#else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"setMaintainY", (char *)"(O)" ,(PyObject *)obj0);
-#endif
-  if (result == NULL) {
-    PyObject *error = PyErr_Occurred();
-    {
-      if (error != NULL) {
-        //std::cout << "got a director exception" << std::endl;
-        PyErr_Print();
-        Piavca::Error("error when calling a python director method");
-      }
-    }
-  }
-}
-
-
-void SwigDirector_LoopMotion::setAccumulateRoot(bool b) {
-  if (swig_get_up()) {
-    Piavca::SequentialBlend::setAccumulateRoot(b);
-    return;
-  }
-  swig::PyObject_var obj0;
-  obj0 = SWIG_From_bool(static_cast< bool >(b));
-  if (!swig_get_self()) {
-    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LoopMotion.__init__.");
-  }
-#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 19;
-  const char * const swig_method_name = "setAccumulateRoot";
-  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
-  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
-#else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"setAccumulateRoot", (char *)"(O)" ,(PyObject *)obj0);
-#endif
-  if (result == NULL) {
-    PyObject *error = PyErr_Occurred();
-    {
-      if (error != NULL) {
-        //std::cout << "got a director exception" << std::endl;
-        PyErr_Print();
-        Piavca::Error("error when calling a python director method");
-      }
-    }
-  }
-}
-
-
 Piavca::Motion *SwigDirector_LoopMotion::findSubByType(type_info const &ty) {
   void *argp ;
   int res ;
@@ -12391,7 +16241,7 @@ Piavca::Motion *SwigDirector_LoopMotion::findSubByType(type_info const &ty) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 20;
+  const size_t swig_method_index = 18;
   const char * const swig_method_name = "findSubByType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -12424,14 +16274,14 @@ Piavca::Motion *SwigDirector_LoopMotion::getMotion() {
   swig_owntype own ;
   
   if (swig_get_up()) {
-    return Piavca::SelfBlend::getMotion();
+    return Piavca::PostureBlend::getMotion();
   }
   Piavca::Motion *swig_c_result;
   if (!swig_get_self()) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 21;
+  const size_t swig_method_index = 19;
   const char * const swig_method_name = "getMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -12460,7 +16310,7 @@ Piavca::Motion *SwigDirector_LoopMotion::getMotion() {
 
 void SwigDirector_LoopMotion::setMotion(Piavca::Motion *mot) {
   if (swig_get_up()) {
-    Piavca::SelfBlend::setMotion(mot);
+    Piavca::PostureBlend::setMotion(mot);
     return;
   }
   swig::PyObject_var obj0;
@@ -12469,7 +16319,7 @@ void SwigDirector_LoopMotion::setMotion(Piavca::Motion *mot) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 22;
+  const size_t swig_method_index = 20;
   const char * const swig_method_name = "setMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -12500,7 +16350,7 @@ bool SwigDirector_LoopMotion::isNull(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 23;
+  const size_t swig_method_index = 21;
   const char * const swig_method_name = "isNull";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -12538,7 +16388,7 @@ Piavca::trackType SwigDirector_LoopMotion::getTrackType(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call LoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 24;
+  const size_t swig_method_index = 22;
   const char * const swig_method_name = "getTrackType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -12725,7 +16575,7 @@ void SwigDirector_RandomTimingsLoop::preFrame(float time) {
 
 void SwigDirector_RandomTimingsLoop::setStartTime(float time) {
   if (swig_get_up()) {
-    Piavca::SequentialBlend::setStartTime(time);
+    Piavca::Sequence::setStartTime(time);
     return;
   }
   swig::PyObject_var obj0;
@@ -13014,7 +16864,7 @@ SwigDirector_RandomTimingsLoop::~SwigDirector_RandomTimingsLoop() {
 
 void SwigDirector_RandomTimingsLoop::reset() {
   if (swig_get_up()) {
-    Piavca::SelfBlend::reset();
+    Piavca::PostureBlend::reset();
     return;
   }
   if (!swig_get_self()) {
@@ -13247,68 +17097,6 @@ void SwigDirector_RandomTimingsLoop::printInfo() {
 }
 
 
-void SwigDirector_RandomTimingsLoop::setMaintainY(bool b) {
-  if (swig_get_up()) {
-    Piavca::SequentialBlend::setMaintainY(b);
-    return;
-  }
-  swig::PyObject_var obj0;
-  obj0 = SWIG_From_bool(static_cast< bool >(b));
-  if (!swig_get_self()) {
-    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomTimingsLoop.__init__.");
-  }
-#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 19;
-  const char * const swig_method_name = "setMaintainY";
-  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
-  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
-#else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"setMaintainY", (char *)"(O)" ,(PyObject *)obj0);
-#endif
-  if (result == NULL) {
-    PyObject *error = PyErr_Occurred();
-    {
-      if (error != NULL) {
-        //std::cout << "got a director exception" << std::endl;
-        PyErr_Print();
-        Piavca::Error("error when calling a python director method");
-      }
-    }
-  }
-}
-
-
-void SwigDirector_RandomTimingsLoop::setAccumulateRoot(bool b) {
-  if (swig_get_up()) {
-    Piavca::SequentialBlend::setAccumulateRoot(b);
-    return;
-  }
-  swig::PyObject_var obj0;
-  obj0 = SWIG_From_bool(static_cast< bool >(b));
-  if (!swig_get_self()) {
-    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomTimingsLoop.__init__.");
-  }
-#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 20;
-  const char * const swig_method_name = "setAccumulateRoot";
-  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
-  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
-#else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"setAccumulateRoot", (char *)"(O)" ,(PyObject *)obj0);
-#endif
-  if (result == NULL) {
-    PyObject *error = PyErr_Occurred();
-    {
-      if (error != NULL) {
-        //std::cout << "got a director exception" << std::endl;
-        PyErr_Print();
-        Piavca::Error("error when calling a python director method");
-      }
-    }
-  }
-}
-
-
 Piavca::Motion *SwigDirector_RandomTimingsLoop::findSubByType(type_info const &ty) {
   void *argp ;
   int res ;
@@ -13324,7 +17112,7 @@ Piavca::Motion *SwigDirector_RandomTimingsLoop::findSubByType(type_info const &t
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomTimingsLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 21;
+  const size_t swig_method_index = 19;
   const char * const swig_method_name = "findSubByType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -13357,14 +17145,14 @@ Piavca::Motion *SwigDirector_RandomTimingsLoop::getMotion() {
   swig_owntype own ;
   
   if (swig_get_up()) {
-    return Piavca::SelfBlend::getMotion();
+    return Piavca::PostureBlend::getMotion();
   }
   Piavca::Motion *swig_c_result;
   if (!swig_get_self()) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomTimingsLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 22;
+  const size_t swig_method_index = 20;
   const char * const swig_method_name = "getMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -13402,7 +17190,7 @@ void SwigDirector_RandomTimingsLoop::setMotion(Piavca::Motion *m) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomTimingsLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 23;
+  const size_t swig_method_index = 21;
   const char * const swig_method_name = "setMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -13433,7 +17221,7 @@ bool SwigDirector_RandomTimingsLoop::isNull(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomTimingsLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 24;
+  const size_t swig_method_index = 22;
   const char * const swig_method_name = "isNull";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -13471,7 +17259,7 @@ Piavca::trackType SwigDirector_RandomTimingsLoop::getTrackType(int trackId) cons
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomTimingsLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 25;
+  const size_t swig_method_index = 23;
   const char * const swig_method_name = "getTrackType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -16616,7 +20404,7 @@ void SwigDirector_ChoiceLoopMotion::preFrame(float time) {
 
 void SwigDirector_ChoiceLoopMotion::setStartTime(float time) {
   if (swig_get_up()) {
-    Piavca::SequentialBlend::setStartTime(time);
+    Piavca::Sequence::setStartTime(time);
     return;
   }
   swig::PyObject_var obj0;
@@ -16905,7 +20693,7 @@ SwigDirector_ChoiceLoopMotion::~SwigDirector_ChoiceLoopMotion() {
 
 void SwigDirector_ChoiceLoopMotion::reset() {
   if (swig_get_up()) {
-    Piavca::SelfBlend::reset();
+    Piavca::PostureBlend::reset();
     return;
   }
   if (!swig_get_self()) {
@@ -17138,68 +20926,6 @@ void SwigDirector_ChoiceLoopMotion::printInfo() {
 }
 
 
-void SwigDirector_ChoiceLoopMotion::setMaintainY(bool b) {
-  if (swig_get_up()) {
-    Piavca::SequentialBlend::setMaintainY(b);
-    return;
-  }
-  swig::PyObject_var obj0;
-  obj0 = SWIG_From_bool(static_cast< bool >(b));
-  if (!swig_get_self()) {
-    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ChoiceLoopMotion.__init__.");
-  }
-#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 19;
-  const char * const swig_method_name = "setMaintainY";
-  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
-  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
-#else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"setMaintainY", (char *)"(O)" ,(PyObject *)obj0);
-#endif
-  if (result == NULL) {
-    PyObject *error = PyErr_Occurred();
-    {
-      if (error != NULL) {
-        //std::cout << "got a director exception" << std::endl;
-        PyErr_Print();
-        Piavca::Error("error when calling a python director method");
-      }
-    }
-  }
-}
-
-
-void SwigDirector_ChoiceLoopMotion::setAccumulateRoot(bool b) {
-  if (swig_get_up()) {
-    Piavca::SequentialBlend::setAccumulateRoot(b);
-    return;
-  }
-  swig::PyObject_var obj0;
-  obj0 = SWIG_From_bool(static_cast< bool >(b));
-  if (!swig_get_self()) {
-    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ChoiceLoopMotion.__init__.");
-  }
-#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 20;
-  const char * const swig_method_name = "setAccumulateRoot";
-  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
-  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
-#else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"setAccumulateRoot", (char *)"(O)" ,(PyObject *)obj0);
-#endif
-  if (result == NULL) {
-    PyObject *error = PyErr_Occurred();
-    {
-      if (error != NULL) {
-        //std::cout << "got a director exception" << std::endl;
-        PyErr_Print();
-        Piavca::Error("error when calling a python director method");
-      }
-    }
-  }
-}
-
-
 Piavca::Motion *SwigDirector_ChoiceLoopMotion::findSubByType(type_info const &ty) {
   void *argp ;
   int res ;
@@ -17215,7 +20941,7 @@ Piavca::Motion *SwigDirector_ChoiceLoopMotion::findSubByType(type_info const &ty
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ChoiceLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 21;
+  const size_t swig_method_index = 19;
   const char * const swig_method_name = "findSubByType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -17248,14 +20974,14 @@ Piavca::Motion *SwigDirector_ChoiceLoopMotion::getMotion() {
   swig_owntype own ;
   
   if (swig_get_up()) {
-    return Piavca::SelfBlend::getMotion();
+    return Piavca::PostureBlend::getMotion();
   }
   Piavca::Motion *swig_c_result;
   if (!swig_get_self()) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ChoiceLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 22;
+  const size_t swig_method_index = 20;
   const char * const swig_method_name = "getMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -17293,7 +21019,7 @@ void SwigDirector_ChoiceLoopMotion::setMotion(Piavca::Motion *m) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ChoiceLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 23;
+  const size_t swig_method_index = 21;
   const char * const swig_method_name = "setMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -17324,7 +21050,7 @@ void SwigDirector_ChoiceLoopMotion::addMotion(Piavca::Motion *mot) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ChoiceLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 24;
+  const size_t swig_method_index = 22;
   const char * const swig_method_name = "addMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -17355,7 +21081,7 @@ bool SwigDirector_ChoiceLoopMotion::isNull(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ChoiceLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 25;
+  const size_t swig_method_index = 23;
   const char * const swig_method_name = "isNull";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -17393,7 +21119,7 @@ Piavca::trackType SwigDirector_ChoiceLoopMotion::getTrackType(int trackId) const
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call ChoiceLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 26;
+  const size_t swig_method_index = 24;
   const char * const swig_method_name = "getTrackType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -17616,7 +21342,7 @@ void SwigDirector_RandomLoopMotion::preFrame(float time) {
 
 void SwigDirector_RandomLoopMotion::setStartTime(float time) {
   if (swig_get_up()) {
-    Piavca::SequentialBlend::setStartTime(time);
+    Piavca::Sequence::setStartTime(time);
     return;
   }
   swig::PyObject_var obj0;
@@ -17804,23 +21530,25 @@ void SwigDirector_RandomLoopMotion::setTimingParams(float minTimeScale, float ma
 }
 
 
-void SwigDirector_RandomLoopMotion::reblend(float time) {
+void SwigDirector_RandomLoopMotion::addMotion(Piavca::Motion *mot, float weight) {
   if (swig_get_up()) {
-    Piavca::RandomTimingsLoop::reblend(time);
+    Piavca::RandomLoopMotion::addMotion(mot,weight);
     return;
   }
   swig::PyObject_var obj0;
-  obj0 = SWIG_From_float(static_cast< float >(time));
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(mot), SWIGTYPE_p_Piavca__Motion,  0 );
+  swig::PyObject_var obj1;
+  obj1 = SWIG_From_float(static_cast< float >(weight));
   if (!swig_get_self()) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 10;
-  const char * const swig_method_name = "reblend";
+  const char * const swig_method_name = "addMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
-  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
 #else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"reblend", (char *)"(O)" ,(PyObject *)obj0);
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"addMotion", (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
 #endif
   if (result == NULL) {
     PyObject *error = PyErr_Occurred();
@@ -17835,25 +21563,23 @@ void SwigDirector_RandomLoopMotion::reblend(float time) {
 }
 
 
-void SwigDirector_RandomLoopMotion::addMotion(Piavca::Motion *mot, float weight) {
+void SwigDirector_RandomLoopMotion::reblend(float time) {
   if (swig_get_up()) {
-    Piavca::RandomLoopMotion::addMotion(mot,weight);
+    Piavca::RandomLoopMotion::reblend(time);
     return;
   }
   swig::PyObject_var obj0;
-  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(mot), SWIGTYPE_p_Piavca__Motion,  0 );
-  swig::PyObject_var obj1;
-  obj1 = SWIG_From_float(static_cast< float >(weight));
+  obj0 = SWIG_From_float(static_cast< float >(time));
   if (!swig_get_self()) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 11;
-  const char * const swig_method_name = "addMotion";
+  const char * const swig_method_name = "reblend";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
-  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
 #else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"addMotion", (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"reblend", (char *)"(O)" ,(PyObject *)obj0);
 #endif
   if (result == NULL) {
     PyObject *error = PyErr_Occurred();
@@ -17938,7 +21664,7 @@ SwigDirector_RandomLoopMotion::~SwigDirector_RandomLoopMotion() {
 
 void SwigDirector_RandomLoopMotion::reset() {
   if (swig_get_up()) {
-    Piavca::SelfBlend::reset();
+    Piavca::PostureBlend::reset();
     return;
   }
   if (!swig_get_self()) {
@@ -18171,68 +21897,6 @@ void SwigDirector_RandomLoopMotion::printInfo() {
 }
 
 
-void SwigDirector_RandomLoopMotion::setMaintainY(bool b) {
-  if (swig_get_up()) {
-    Piavca::SequentialBlend::setMaintainY(b);
-    return;
-  }
-  swig::PyObject_var obj0;
-  obj0 = SWIG_From_bool(static_cast< bool >(b));
-  if (!swig_get_self()) {
-    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomLoopMotion.__init__.");
-  }
-#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 21;
-  const char * const swig_method_name = "setMaintainY";
-  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
-  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
-#else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"setMaintainY", (char *)"(O)" ,(PyObject *)obj0);
-#endif
-  if (result == NULL) {
-    PyObject *error = PyErr_Occurred();
-    {
-      if (error != NULL) {
-        //std::cout << "got a director exception" << std::endl;
-        PyErr_Print();
-        Piavca::Error("error when calling a python director method");
-      }
-    }
-  }
-}
-
-
-void SwigDirector_RandomLoopMotion::setAccumulateRoot(bool b) {
-  if (swig_get_up()) {
-    Piavca::SequentialBlend::setAccumulateRoot(b);
-    return;
-  }
-  swig::PyObject_var obj0;
-  obj0 = SWIG_From_bool(static_cast< bool >(b));
-  if (!swig_get_self()) {
-    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomLoopMotion.__init__.");
-  }
-#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 22;
-  const char * const swig_method_name = "setAccumulateRoot";
-  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
-  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
-#else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"setAccumulateRoot", (char *)"(O)" ,(PyObject *)obj0);
-#endif
-  if (result == NULL) {
-    PyObject *error = PyErr_Occurred();
-    {
-      if (error != NULL) {
-        //std::cout << "got a director exception" << std::endl;
-        PyErr_Print();
-        Piavca::Error("error when calling a python director method");
-      }
-    }
-  }
-}
-
-
 Piavca::Motion *SwigDirector_RandomLoopMotion::findSubByType(type_info const &ty) {
   void *argp ;
   int res ;
@@ -18248,7 +21912,7 @@ Piavca::Motion *SwigDirector_RandomLoopMotion::findSubByType(type_info const &ty
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 23;
+  const size_t swig_method_index = 21;
   const char * const swig_method_name = "findSubByType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -18281,14 +21945,14 @@ Piavca::Motion *SwigDirector_RandomLoopMotion::getMotion() {
   swig_owntype own ;
   
   if (swig_get_up()) {
-    return Piavca::SelfBlend::getMotion();
+    return Piavca::PostureBlend::getMotion();
   }
   Piavca::Motion *swig_c_result;
   if (!swig_get_self()) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 24;
+  const size_t swig_method_index = 22;
   const char * const swig_method_name = "getMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -18326,7 +21990,7 @@ void SwigDirector_RandomLoopMotion::setMotion(Piavca::Motion *m) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 25;
+  const size_t swig_method_index = 23;
   const char * const swig_method_name = "setMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -18357,7 +22021,7 @@ bool SwigDirector_RandomLoopMotion::isNull(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 27;
+  const size_t swig_method_index = 25;
   const char * const swig_method_name = "isNull";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -18395,7 +22059,7 @@ Piavca::trackType SwigDirector_RandomLoopMotion::getTrackType(int trackId) const
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomLoopMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 28;
+  const size_t swig_method_index = 26;
   const char * const swig_method_name = "getTrackType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -18618,7 +22282,7 @@ void SwigDirector_RandomBlendLoop::preFrame(float time) {
 
 void SwigDirector_RandomBlendLoop::setStartTime(float time) {
   if (swig_get_up()) {
-    Piavca::SequentialBlend::setStartTime(time);
+    Piavca::Sequence::setStartTime(time);
     return;
   }
   swig::PyObject_var obj0;
@@ -18806,23 +22470,25 @@ void SwigDirector_RandomBlendLoop::setTimingParams(float minTimeScale, float max
 }
 
 
-void SwigDirector_RandomBlendLoop::reblend(float time) {
+void SwigDirector_RandomBlendLoop::addMotion(Piavca::Motion *mot, float weight) {
   if (swig_get_up()) {
-    Piavca::RandomTimingsLoop::reblend(time);
+    Piavca::RandomBlendLoop::addMotion(mot,weight);
     return;
   }
   swig::PyObject_var obj0;
-  obj0 = SWIG_From_float(static_cast< float >(time));
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(mot), SWIGTYPE_p_Piavca__Motion,  0 );
+  swig::PyObject_var obj1;
+  obj1 = SWIG_From_float(static_cast< float >(weight));
   if (!swig_get_self()) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomBlendLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 10;
-  const char * const swig_method_name = "reblend";
+  const char * const swig_method_name = "addMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
-  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
 #else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"reblend", (char *)"(O)" ,(PyObject *)obj0);
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"addMotion", (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
 #endif
   if (result == NULL) {
     PyObject *error = PyErr_Occurred();
@@ -18837,25 +22503,23 @@ void SwigDirector_RandomBlendLoop::reblend(float time) {
 }
 
 
-void SwigDirector_RandomBlendLoop::addMotion(Piavca::Motion *mot, float weight) {
+void SwigDirector_RandomBlendLoop::reblend(float time) {
   if (swig_get_up()) {
-    Piavca::RandomBlendLoop::addMotion(mot,weight);
+    Piavca::RandomBlendLoop::reblend(time);
     return;
   }
   swig::PyObject_var obj0;
-  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(mot), SWIGTYPE_p_Piavca__Motion,  0 );
-  swig::PyObject_var obj1;
-  obj1 = SWIG_From_float(static_cast< float >(weight));
+  obj0 = SWIG_From_float(static_cast< float >(time));
   if (!swig_get_self()) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomBlendLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 11;
-  const char * const swig_method_name = "addMotion";
+  const char * const swig_method_name = "reblend";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
-  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
+  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
 #else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"addMotion", (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"reblend", (char *)"(O)" ,(PyObject *)obj0);
 #endif
   if (result == NULL) {
     PyObject *error = PyErr_Occurred();
@@ -18940,7 +22604,7 @@ SwigDirector_RandomBlendLoop::~SwigDirector_RandomBlendLoop() {
 
 void SwigDirector_RandomBlendLoop::reset() {
   if (swig_get_up()) {
-    Piavca::SelfBlend::reset();
+    Piavca::PostureBlend::reset();
     return;
   }
   if (!swig_get_self()) {
@@ -19173,68 +22837,6 @@ void SwigDirector_RandomBlendLoop::printInfo() {
 }
 
 
-void SwigDirector_RandomBlendLoop::setMaintainY(bool b) {
-  if (swig_get_up()) {
-    Piavca::SequentialBlend::setMaintainY(b);
-    return;
-  }
-  swig::PyObject_var obj0;
-  obj0 = SWIG_From_bool(static_cast< bool >(b));
-  if (!swig_get_self()) {
-    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomBlendLoop.__init__.");
-  }
-#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 21;
-  const char * const swig_method_name = "setMaintainY";
-  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
-  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
-#else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"setMaintainY", (char *)"(O)" ,(PyObject *)obj0);
-#endif
-  if (result == NULL) {
-    PyObject *error = PyErr_Occurred();
-    {
-      if (error != NULL) {
-        //std::cout << "got a director exception" << std::endl;
-        PyErr_Print();
-        Piavca::Error("error when calling a python director method");
-      }
-    }
-  }
-}
-
-
-void SwigDirector_RandomBlendLoop::setAccumulateRoot(bool b) {
-  if (swig_get_up()) {
-    Piavca::SequentialBlend::setAccumulateRoot(b);
-    return;
-  }
-  swig::PyObject_var obj0;
-  obj0 = SWIG_From_bool(static_cast< bool >(b));
-  if (!swig_get_self()) {
-    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomBlendLoop.__init__.");
-  }
-#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 22;
-  const char * const swig_method_name = "setAccumulateRoot";
-  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
-  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
-#else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"setAccumulateRoot", (char *)"(O)" ,(PyObject *)obj0);
-#endif
-  if (result == NULL) {
-    PyObject *error = PyErr_Occurred();
-    {
-      if (error != NULL) {
-        //std::cout << "got a director exception" << std::endl;
-        PyErr_Print();
-        Piavca::Error("error when calling a python director method");
-      }
-    }
-  }
-}
-
-
 Piavca::Motion *SwigDirector_RandomBlendLoop::findSubByType(type_info const &ty) {
   void *argp ;
   int res ;
@@ -19250,7 +22852,7 @@ Piavca::Motion *SwigDirector_RandomBlendLoop::findSubByType(type_info const &ty)
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomBlendLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 23;
+  const size_t swig_method_index = 21;
   const char * const swig_method_name = "findSubByType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -19283,14 +22885,14 @@ Piavca::Motion *SwigDirector_RandomBlendLoop::getMotion() {
   swig_owntype own ;
   
   if (swig_get_up()) {
-    return Piavca::SelfBlend::getMotion();
+    return Piavca::PostureBlend::getMotion();
   }
   Piavca::Motion *swig_c_result;
   if (!swig_get_self()) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomBlendLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 24;
+  const size_t swig_method_index = 22;
   const char * const swig_method_name = "getMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -19328,7 +22930,7 @@ void SwigDirector_RandomBlendLoop::setMotion(Piavca::Motion *m) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomBlendLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 25;
+  const size_t swig_method_index = 23;
   const char * const swig_method_name = "setMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -19359,7 +22961,7 @@ void SwigDirector_RandomBlendLoop::addMotion(Piavca::Motion *mot) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomBlendLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 26;
+  const size_t swig_method_index = 24;
   const char * const swig_method_name = "addMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -19390,7 +22992,7 @@ bool SwigDirector_RandomBlendLoop::isNull(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomBlendLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 27;
+  const size_t swig_method_index = 25;
   const char * const swig_method_name = "isNull";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -19428,7 +23030,7 @@ Piavca::trackType SwigDirector_RandomBlendLoop::getTrackType(int trackId) const 
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomBlendLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 28;
+  const size_t swig_method_index = 26;
   const char * const swig_method_name = "getTrackType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -19651,7 +23253,7 @@ void SwigDirector_RandomAddLoop::preFrame(float time) {
 
 void SwigDirector_RandomAddLoop::setStartTime(float time) {
   if (swig_get_up()) {
-    Piavca::SequentialBlend::setStartTime(time);
+    Piavca::Sequence::setStartTime(time);
     return;
   }
   swig::PyObject_var obj0;
@@ -19841,7 +23443,7 @@ void SwigDirector_RandomAddLoop::setTimingParams(float minTimeScale, float maxTi
 
 void SwigDirector_RandomAddLoop::reblend(float time) {
   if (swig_get_up()) {
-    Piavca::RandomTimingsLoop::reblend(time);
+    Piavca::RandomAddLoop::reblend(time);
     return;
   }
   swig::PyObject_var obj0;
@@ -19940,7 +23542,7 @@ SwigDirector_RandomAddLoop::~SwigDirector_RandomAddLoop() {
 
 void SwigDirector_RandomAddLoop::reset() {
   if (swig_get_up()) {
-    Piavca::SelfBlend::reset();
+    Piavca::PostureBlend::reset();
     return;
   }
   if (!swig_get_self()) {
@@ -20173,68 +23775,6 @@ void SwigDirector_RandomAddLoop::printInfo() {
 }
 
 
-void SwigDirector_RandomAddLoop::setMaintainY(bool b) {
-  if (swig_get_up()) {
-    Piavca::SequentialBlend::setMaintainY(b);
-    return;
-  }
-  swig::PyObject_var obj0;
-  obj0 = SWIG_From_bool(static_cast< bool >(b));
-  if (!swig_get_self()) {
-    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomAddLoop.__init__.");
-  }
-#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 20;
-  const char * const swig_method_name = "setMaintainY";
-  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
-  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
-#else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"setMaintainY", (char *)"(O)" ,(PyObject *)obj0);
-#endif
-  if (result == NULL) {
-    PyObject *error = PyErr_Occurred();
-    {
-      if (error != NULL) {
-        //std::cout << "got a director exception" << std::endl;
-        PyErr_Print();
-        Piavca::Error("error when calling a python director method");
-      }
-    }
-  }
-}
-
-
-void SwigDirector_RandomAddLoop::setAccumulateRoot(bool b) {
-  if (swig_get_up()) {
-    Piavca::SequentialBlend::setAccumulateRoot(b);
-    return;
-  }
-  swig::PyObject_var obj0;
-  obj0 = SWIG_From_bool(static_cast< bool >(b));
-  if (!swig_get_self()) {
-    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomAddLoop.__init__.");
-  }
-#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 21;
-  const char * const swig_method_name = "setAccumulateRoot";
-  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
-  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
-#else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"setAccumulateRoot", (char *)"(O)" ,(PyObject *)obj0);
-#endif
-  if (result == NULL) {
-    PyObject *error = PyErr_Occurred();
-    {
-      if (error != NULL) {
-        //std::cout << "got a director exception" << std::endl;
-        PyErr_Print();
-        Piavca::Error("error when calling a python director method");
-      }
-    }
-  }
-}
-
-
 Piavca::Motion *SwigDirector_RandomAddLoop::findSubByType(type_info const &ty) {
   void *argp ;
   int res ;
@@ -20250,7 +23790,7 @@ Piavca::Motion *SwigDirector_RandomAddLoop::findSubByType(type_info const &ty) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomAddLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 22;
+  const size_t swig_method_index = 20;
   const char * const swig_method_name = "findSubByType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -20283,14 +23823,14 @@ Piavca::Motion *SwigDirector_RandomAddLoop::getMotion() {
   swig_owntype own ;
   
   if (swig_get_up()) {
-    return Piavca::SelfBlend::getMotion();
+    return Piavca::PostureBlend::getMotion();
   }
   Piavca::Motion *swig_c_result;
   if (!swig_get_self()) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomAddLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 23;
+  const size_t swig_method_index = 21;
   const char * const swig_method_name = "getMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -20328,7 +23868,7 @@ void SwigDirector_RandomAddLoop::setMotion(Piavca::Motion *m) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomAddLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 24;
+  const size_t swig_method_index = 22;
   const char * const swig_method_name = "setMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -20359,7 +23899,7 @@ void SwigDirector_RandomAddLoop::addMotion(Piavca::Motion *mot) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomAddLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 25;
+  const size_t swig_method_index = 23;
   const char * const swig_method_name = "addMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -20390,7 +23930,7 @@ bool SwigDirector_RandomAddLoop::isNull(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomAddLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 26;
+  const size_t swig_method_index = 24;
   const char * const swig_method_name = "isNull";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -20428,7 +23968,7 @@ Piavca::trackType SwigDirector_RandomAddLoop::getTrackType(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomAddLoop.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 27;
+  const size_t swig_method_index = 25;
   const char * const swig_method_name = "getTrackType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -21372,7 +24912,7 @@ void SwigDirector_RandomGazeMotion::preFrame(float time) {
 
 void SwigDirector_RandomGazeMotion::setStartTime(float time) {
   if (swig_get_up()) {
-    Piavca::SequentialBlend::setStartTime(time);
+    Piavca::Sequence::setStartTime(time);
     return;
   }
   swig::PyObject_var obj0;
@@ -21628,7 +25168,7 @@ SwigDirector_RandomGazeMotion::~SwigDirector_RandomGazeMotion() {
 
 void SwigDirector_RandomGazeMotion::reset() {
   if (swig_get_up()) {
-    Piavca::SelfBlend::reset();
+    Piavca::PostureBlend::reset();
     return;
   }
   if (!swig_get_self()) {
@@ -21861,68 +25401,6 @@ void SwigDirector_RandomGazeMotion::printInfo() {
 }
 
 
-void SwigDirector_RandomGazeMotion::setMaintainY(bool b) {
-  if (swig_get_up()) {
-    Piavca::SequentialBlend::setMaintainY(b);
-    return;
-  }
-  swig::PyObject_var obj0;
-  obj0 = SWIG_From_bool(static_cast< bool >(b));
-  if (!swig_get_self()) {
-    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomGazeMotion.__init__.");
-  }
-#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 19;
-  const char * const swig_method_name = "setMaintainY";
-  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
-  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
-#else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"setMaintainY", (char *)"(O)" ,(PyObject *)obj0);
-#endif
-  if (result == NULL) {
-    PyObject *error = PyErr_Occurred();
-    {
-      if (error != NULL) {
-        //std::cout << "got a director exception" << std::endl;
-        PyErr_Print();
-        Piavca::Error("error when calling a python director method");
-      }
-    }
-  }
-}
-
-
-void SwigDirector_RandomGazeMotion::setAccumulateRoot(bool b) {
-  if (swig_get_up()) {
-    Piavca::SequentialBlend::setAccumulateRoot(b);
-    return;
-  }
-  swig::PyObject_var obj0;
-  obj0 = SWIG_From_bool(static_cast< bool >(b));
-  if (!swig_get_self()) {
-    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomGazeMotion.__init__.");
-  }
-#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 20;
-  const char * const swig_method_name = "setAccumulateRoot";
-  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
-  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
-#else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"setAccumulateRoot", (char *)"(O)" ,(PyObject *)obj0);
-#endif
-  if (result == NULL) {
-    PyObject *error = PyErr_Occurred();
-    {
-      if (error != NULL) {
-        //std::cout << "got a director exception" << std::endl;
-        PyErr_Print();
-        Piavca::Error("error when calling a python director method");
-      }
-    }
-  }
-}
-
-
 bool SwigDirector_RandomGazeMotion::lookAt(Piavca::tstring name, bool force) {
   if (swig_get_up()) {
     return Piavca::RandomGazeMotion::lookAt(name,force);
@@ -21936,7 +25414,7 @@ bool SwigDirector_RandomGazeMotion::lookAt(Piavca::tstring name, bool force) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 21;
+  const size_t swig_method_index = 19;
   const char * const swig_method_name = "lookAt";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -21978,7 +25456,7 @@ Piavca::Motion *SwigDirector_RandomGazeMotion::findSubByType(type_info const &ty
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 22;
+  const size_t swig_method_index = 20;
   const char * const swig_method_name = "findSubByType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -22011,14 +25489,14 @@ Piavca::Motion *SwigDirector_RandomGazeMotion::getMotion() {
   swig_owntype own ;
   
   if (swig_get_up()) {
-    return Piavca::SelfBlend::getMotion();
+    return Piavca::PostureBlend::getMotion();
   }
   Piavca::Motion *swig_c_result;
   if (!swig_get_self()) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 23;
+  const size_t swig_method_index = 21;
   const char * const swig_method_name = "getMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -22047,7 +25525,7 @@ Piavca::Motion *SwigDirector_RandomGazeMotion::getMotion() {
 
 void SwigDirector_RandomGazeMotion::setMotion(Piavca::Motion *mot) {
   if (swig_get_up()) {
-    Piavca::SelfBlend::setMotion(mot);
+    Piavca::PostureBlend::setMotion(mot);
     return;
   }
   swig::PyObject_var obj0;
@@ -22056,7 +25534,7 @@ void SwigDirector_RandomGazeMotion::setMotion(Piavca::Motion *mot) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 24;
+  const size_t swig_method_index = 22;
   const char * const swig_method_name = "setMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -22087,7 +25565,7 @@ bool SwigDirector_RandomGazeMotion::isNull(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 25;
+  const size_t swig_method_index = 23;
   const char * const swig_method_name = "isNull";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -22125,7 +25603,7 @@ Piavca::trackType SwigDirector_RandomGazeMotion::getTrackType(int trackId) const
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call RandomGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 26;
+  const size_t swig_method_index = 24;
   const char * const swig_method_name = "getTrackType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -26006,7 +29484,7 @@ void SwigDirector_DiadicGazeMotion::preFrame(float time) {
 
 void SwigDirector_DiadicGazeMotion::setStartTime(float time) {
   if (swig_get_up()) {
-    Piavca::SequentialBlend::setStartTime(time);
+    Piavca::Sequence::setStartTime(time);
     return;
   }
   swig::PyObject_var obj0;
@@ -26262,7 +29740,7 @@ SwigDirector_DiadicGazeMotion::~SwigDirector_DiadicGazeMotion() {
 
 void SwigDirector_DiadicGazeMotion::reset() {
   if (swig_get_up()) {
-    Piavca::SelfBlend::reset();
+    Piavca::PostureBlend::reset();
     return;
   }
   if (!swig_get_self()) {
@@ -26495,68 +29973,6 @@ void SwigDirector_DiadicGazeMotion::printInfo() {
 }
 
 
-void SwigDirector_DiadicGazeMotion::setMaintainY(bool b) {
-  if (swig_get_up()) {
-    Piavca::SequentialBlend::setMaintainY(b);
-    return;
-  }
-  swig::PyObject_var obj0;
-  obj0 = SWIG_From_bool(static_cast< bool >(b));
-  if (!swig_get_self()) {
-    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call DiadicGazeMotion.__init__.");
-  }
-#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 19;
-  const char * const swig_method_name = "setMaintainY";
-  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
-  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
-#else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"setMaintainY", (char *)"(O)" ,(PyObject *)obj0);
-#endif
-  if (result == NULL) {
-    PyObject *error = PyErr_Occurred();
-    {
-      if (error != NULL) {
-        //std::cout << "got a director exception" << std::endl;
-        PyErr_Print();
-        Piavca::Error("error when calling a python director method");
-      }
-    }
-  }
-}
-
-
-void SwigDirector_DiadicGazeMotion::setAccumulateRoot(bool b) {
-  if (swig_get_up()) {
-    Piavca::SequentialBlend::setAccumulateRoot(b);
-    return;
-  }
-  swig::PyObject_var obj0;
-  obj0 = SWIG_From_bool(static_cast< bool >(b));
-  if (!swig_get_self()) {
-    Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call DiadicGazeMotion.__init__.");
-  }
-#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 20;
-  const char * const swig_method_name = "setAccumulateRoot";
-  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
-  swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
-#else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"setAccumulateRoot", (char *)"(O)" ,(PyObject *)obj0);
-#endif
-  if (result == NULL) {
-    PyObject *error = PyErr_Occurred();
-    {
-      if (error != NULL) {
-        //std::cout << "got a director exception" << std::endl;
-        PyErr_Print();
-        Piavca::Error("error when calling a python director method");
-      }
-    }
-  }
-}
-
-
 bool SwigDirector_DiadicGazeMotion::lookAt(Piavca::tstring name, bool force) {
   if (swig_get_up()) {
     return Piavca::DiadicGazeMotion::lookAt(name,force);
@@ -26570,7 +29986,7 @@ bool SwigDirector_DiadicGazeMotion::lookAt(Piavca::tstring name, bool force) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call DiadicGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 21;
+  const size_t swig_method_index = 19;
   const char * const swig_method_name = "lookAt";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -26612,7 +30028,7 @@ Piavca::Motion *SwigDirector_DiadicGazeMotion::findSubByType(type_info const &ty
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call DiadicGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 22;
+  const size_t swig_method_index = 20;
   const char * const swig_method_name = "findSubByType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -26645,14 +30061,14 @@ Piavca::Motion *SwigDirector_DiadicGazeMotion::getMotion() {
   swig_owntype own ;
   
   if (swig_get_up()) {
-    return Piavca::SelfBlend::getMotion();
+    return Piavca::PostureBlend::getMotion();
   }
   Piavca::Motion *swig_c_result;
   if (!swig_get_self()) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call DiadicGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 23;
+  const size_t swig_method_index = 21;
   const char * const swig_method_name = "getMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
@@ -26681,7 +30097,7 @@ Piavca::Motion *SwigDirector_DiadicGazeMotion::getMotion() {
 
 void SwigDirector_DiadicGazeMotion::setMotion(Piavca::Motion *mot) {
   if (swig_get_up()) {
-    Piavca::SelfBlend::setMotion(mot);
+    Piavca::PostureBlend::setMotion(mot);
     return;
   }
   swig::PyObject_var obj0;
@@ -26690,7 +30106,7 @@ void SwigDirector_DiadicGazeMotion::setMotion(Piavca::Motion *mot) {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call DiadicGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 24;
+  const size_t swig_method_index = 22;
   const char * const swig_method_name = "setMotion";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -26721,7 +30137,7 @@ bool SwigDirector_DiadicGazeMotion::isNull(int trackId) const {
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call DiadicGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 25;
+  const size_t swig_method_index = 23;
   const char * const swig_method_name = "isNull";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -26759,7 +30175,7 @@ Piavca::trackType SwigDirector_DiadicGazeMotion::getTrackType(int trackId) const
     Swig::DirectorException::raise("'self' unitialized, maybe you forgot to call DiadicGazeMotion.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 26;
+  const size_t swig_method_index = 24;
   const char * const swig_method_name = "getTrackType";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -38775,6 +42191,56 @@ SWIGINTERN PyObject *_wrap_KeyframeMotion_isFacial(PyObject *SWIGUNUSEDPARM(self
     SWIG_fail;
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KeyframeMotion_setFacial(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::KeyframeMotion *arg1 = (Piavca::KeyframeMotion *) 0 ;
+  bool arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  Swig::Director *director = 0;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:KeyframeMotion_setFacial",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__KeyframeMotion, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KeyframeMotion_setFacial" "', argument " "1"" of type '" "Piavca::KeyframeMotion *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::KeyframeMotion * >(argp1);
+  ecode2 = SWIG_AsVal_bool(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "KeyframeMotion_setFacial" "', argument " "2"" of type '" "bool""'");
+  } 
+  arg2 = static_cast< bool >(val2);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+  try {
+    Swig::UnknownExceptionHandler dh;
+    {
+      try {
+        (arg1)->setFacial(arg2); 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }
+      catch (Piavca::Exception &e) 
+      {
+        std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+        SWIG_fail; 
+      }
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
   return NULL;
@@ -56076,6 +59542,3881 @@ SWIGINTERN PyObject *SequentialBlend_swigregister(PyObject *SWIGUNUSEDPARM(self)
   return SWIG_Py_Void();
 }
 
+SWIGINTERN PyObject *_wrap_new_Sequence__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PyObject *arg1 = (PyObject *) 0 ;
+  Piavca::Motion *arg2 = (Piavca::Motion *) 0 ;
+  Piavca::Motion *arg3 = (Piavca::Motion *) 0 ;
+  Piavca::Sequence *result = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:new_Sequence",&obj0,&obj1,&obj2)) SWIG_fail;
+  arg1 = obj0;
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_Piavca__Motion, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_Sequence" "', argument " "2"" of type '" "Piavca::Motion *""'"); 
+  }
+  arg2 = reinterpret_cast< Piavca::Motion * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_Piavca__Motion, 0 |  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_Sequence" "', argument " "3"" of type '" "Piavca::Motion *""'"); 
+  }
+  arg3 = reinterpret_cast< Piavca::Motion * >(argp3);
+  {
+    try {
+      if ( arg1 != Py_None ) {
+        /* subclassed */
+        result = (Piavca::Sequence *)new SwigDirector_Sequence(arg1,arg2,arg3); 
+      } else {
+        result = (Piavca::Sequence *)new Piavca::Sequence(arg2,arg3); 
+      }
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__Sequence, SWIG_POINTER_NEW |  0 );
+  result->Reference();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_Sequence__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PyObject *arg1 = (PyObject *) 0 ;
+  Piavca::Motion *arg2 = (Piavca::Motion *) 0 ;
+  Piavca::Sequence *result = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_Sequence",&obj0,&obj1)) SWIG_fail;
+  arg1 = obj0;
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_Piavca__Motion, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_Sequence" "', argument " "2"" of type '" "Piavca::Motion *""'"); 
+  }
+  arg2 = reinterpret_cast< Piavca::Motion * >(argp2);
+  {
+    try {
+      if ( arg1 != Py_None ) {
+        /* subclassed */
+        result = (Piavca::Sequence *)new SwigDirector_Sequence(arg1,arg2); 
+      } else {
+        result = (Piavca::Sequence *)new Piavca::Sequence(arg2); 
+      }
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__Sequence, SWIG_POINTER_NEW |  0 );
+  result->Reference();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_Sequence__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PyObject *arg1 = (PyObject *) 0 ;
+  Piavca::Sequence *result = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_Sequence",&obj0)) SWIG_fail;
+  arg1 = obj0;
+  {
+    try {
+      if ( arg1 != Py_None ) {
+        /* subclassed */
+        result = (Piavca::Sequence *)new SwigDirector_Sequence(arg1); 
+      } else {
+        result = (Piavca::Sequence *)new Piavca::Sequence(); 
+      }
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__Sequence, SWIG_POINTER_NEW |  0 );
+  result->Reference();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_Sequence__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PyObject *arg1 = (PyObject *) 0 ;
+  Piavca::Sequence *arg2 = 0 ;
+  Piavca::Sequence *result = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_Sequence",&obj0,&obj1)) SWIG_fail;
+  arg1 = obj0;
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_Piavca__Sequence,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_Sequence" "', argument " "2"" of type '" "Piavca::Sequence const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_Sequence" "', argument " "2"" of type '" "Piavca::Sequence const &""'"); 
+  }
+  arg2 = reinterpret_cast< Piavca::Sequence * >(argp2);
+  {
+    try {
+      if ( arg1 != Py_None ) {
+        /* subclassed */
+        result = (Piavca::Sequence *)new SwigDirector_Sequence(arg1,(Piavca::Sequence const &)*arg2); 
+      } else {
+        result = (Piavca::Sequence *)new Piavca::Sequence((Piavca::Sequence const &)*arg2); 
+      }
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__Sequence, SWIG_POINTER_NEW |  0 );
+  result->Reference();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_Sequence(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[4];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = PyObject_Length(args);
+  for (ii = 0; (ii < argc) && (ii < 3); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    _v = (argv[0] != 0);
+    if (_v) {
+      return _wrap_new_Sequence__SWIG_2(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    _v = (argv[0] != 0);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_Piavca__Sequence, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_new_Sequence__SWIG_3(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    _v = (argv[0] != 0);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_Piavca__Motion, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_new_Sequence__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    _v = (argv[0] != 0);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_Piavca__Motion, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_Piavca__Motion, 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_new_Sequence__SWIG_0(self, args);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"No matching function for overloaded 'new_Sequence'");
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Sequence_clone(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Sequence *arg1 = (Piavca::Sequence *) 0 ;
+  Piavca::Motion *result = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  Swig::Director *director = 0;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Sequence_clone",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Sequence, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Sequence_clone" "', argument " "1"" of type '" "Piavca::Sequence *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Sequence * >(argp1);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+  try {
+    Swig::UnknownExceptionHandler dh;
+    {
+      try {
+        result = (Piavca::Motion *)(arg1)->clone(); 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }
+      catch (Piavca::Exception &e) 
+      {
+        std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+        SWIG_fail; 
+      }
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  director = SWIG_DIRECTOR_CAST(result);
+  if (director) {
+    resultobj = director->swig_get_self();
+    Py_INCREF(resultobj);
+  } else {
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__Motion, 0 |  0 );
+  }
+  if (director) {
+    SWIG_AcquirePtr(resultobj, director->swig_release_ownership(SWIG_as_voidptr(result)));
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Sequence_setStartTime(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Sequence *arg1 = (Piavca::Sequence *) 0 ;
+  float arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  float val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  Swig::Director *director = 0;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Sequence_setStartTime",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Sequence, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Sequence_setStartTime" "', argument " "1"" of type '" "Piavca::Sequence *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Sequence * >(argp1);
+  ecode2 = SWIG_AsVal_float(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Sequence_setStartTime" "', argument " "2"" of type '" "float""'");
+  } 
+  arg2 = static_cast< float >(val2);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+  try {
+    Swig::UnknownExceptionHandler dh;
+    {
+      try {
+        (arg1)->setStartTime(arg2); 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }
+      catch (Piavca::Exception &e) 
+      {
+        std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+        SWIG_fail; 
+      }
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Sequence_getMotionLength(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Sequence *arg1 = (Piavca::Sequence *) 0 ;
+  float result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  Swig::Director *director = 0;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Sequence_getMotionLength",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Sequence, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Sequence_getMotionLength" "', argument " "1"" of type '" "Piavca::Sequence const *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Sequence * >(argp1);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+  try {
+    Swig::UnknownExceptionHandler dh;
+    {
+      try {
+        result = (float)((Piavca::Sequence const *)arg1)->getMotionLength(); 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }
+      catch (Piavca::Exception &e) 
+      {
+        std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+        SWIG_fail; 
+      }
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Sequence_getFloatValueAtTimeInternal(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Sequence *arg1 = (Piavca::Sequence *) 0 ;
+  int arg2 ;
+  float arg3 ;
+  float result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  float val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  Swig::Director *director = 0;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:Sequence_getFloatValueAtTimeInternal",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Sequence, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Sequence_getFloatValueAtTimeInternal" "', argument " "1"" of type '" "Piavca::Sequence *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Sequence * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Sequence_getFloatValueAtTimeInternal" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  ecode3 = SWIG_AsVal_float(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Sequence_getFloatValueAtTimeInternal" "', argument " "3"" of type '" "float""'");
+  } 
+  arg3 = static_cast< float >(val3);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+  try {
+    Swig::UnknownExceptionHandler dh;
+    {
+      try {
+        result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3); 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }
+      catch (Piavca::Exception &e) 
+      {
+        std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+        SWIG_fail; 
+      }
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Sequence_getVecValueAtTimeInternal(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Sequence *arg1 = (Piavca::Sequence *) 0 ;
+  int arg2 ;
+  float arg3 ;
+  Piavca::Vec result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  float val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  Swig::Director *director = 0;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:Sequence_getVecValueAtTimeInternal",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Sequence, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Sequence_getVecValueAtTimeInternal" "', argument " "1"" of type '" "Piavca::Sequence *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Sequence * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Sequence_getVecValueAtTimeInternal" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  ecode3 = SWIG_AsVal_float(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Sequence_getVecValueAtTimeInternal" "', argument " "3"" of type '" "float""'");
+  } 
+  arg3 = static_cast< float >(val3);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+  try {
+    Swig::UnknownExceptionHandler dh;
+    {
+      try {
+        result = (arg1)->getVecValueAtTimeInternal(arg2,arg3); 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }
+      catch (Piavca::Exception &e) 
+      {
+        std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+        SWIG_fail; 
+      }
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_NewPointerObj((new Piavca::Vec(static_cast< const Piavca::Vec& >(result))), SWIGTYPE_p_Piavca__Vec, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Sequence_getQuatValueAtTimeInternal(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Sequence *arg1 = (Piavca::Sequence *) 0 ;
+  int arg2 ;
+  float arg3 ;
+  Piavca::Quat result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  float val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  Swig::Director *director = 0;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:Sequence_getQuatValueAtTimeInternal",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Sequence, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Sequence_getQuatValueAtTimeInternal" "', argument " "1"" of type '" "Piavca::Sequence *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Sequence * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Sequence_getQuatValueAtTimeInternal" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  ecode3 = SWIG_AsVal_float(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Sequence_getQuatValueAtTimeInternal" "', argument " "3"" of type '" "float""'");
+  } 
+  arg3 = static_cast< float >(val3);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+  try {
+    Swig::UnknownExceptionHandler dh;
+    {
+      try {
+        result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3); 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }
+      catch (Piavca::Exception &e) 
+      {
+        std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+        SWIG_fail; 
+      }
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_NewPointerObj((new Piavca::Quat(static_cast< const Piavca::Quat& >(result))), SWIGTYPE_p_Piavca__Quat, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_Sequence(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Sequence *arg1 = (Piavca::Sequence *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_Sequence",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Sequence, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Sequence" "', argument " "1"" of type '" "Piavca::Sequence *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Sequence * >(argp1);
+  {
+    try {
+      arg1->Dispose();
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_disown_Sequence(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Sequence *arg1 = (Piavca::Sequence *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:disown_Sequence",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Sequence, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "disown_Sequence" "', argument " "1"" of type '" "Piavca::Sequence *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Sequence * >(argp1);
+  {
+    Swig::Director *director = dynamic_cast<Swig::Director *>(arg1);
+    if (director) director->swig_disown();
+  }
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *Sequence_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char*)"O|swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_Piavca__Sequence, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_SmoothSequence__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Motion *arg1 = (Piavca::Motion *) 0 ;
+  Piavca::Motion *arg2 = (Piavca::Motion *) 0 ;
+  float arg3 ;
+  float arg4 ;
+  Piavca::SmoothSequence *result = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  float val3 ;
+  int ecode3 = 0 ;
+  float val4 ;
+  int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:new_SmoothSequence",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Motion, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SmoothSequence" "', argument " "1"" of type '" "Piavca::Motion *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Motion * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_Piavca__Motion, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_SmoothSequence" "', argument " "2"" of type '" "Piavca::Motion *""'"); 
+  }
+  arg2 = reinterpret_cast< Piavca::Motion * >(argp2);
+  ecode3 = SWIG_AsVal_float(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_SmoothSequence" "', argument " "3"" of type '" "float""'");
+  } 
+  arg3 = static_cast< float >(val3);
+  ecode4 = SWIG_AsVal_float(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_SmoothSequence" "', argument " "4"" of type '" "float""'");
+  } 
+  arg4 = static_cast< float >(val4);
+  {
+    try {
+      result = (Piavca::SmoothSequence *)new Piavca::SmoothSequence(arg1,arg2,arg3,arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__SmoothSequence, SWIG_POINTER_NEW |  0 );
+  result->Reference();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_SmoothSequence__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Motion *arg1 = (Piavca::Motion *) 0 ;
+  Piavca::Motion *arg2 = (Piavca::Motion *) 0 ;
+  float arg3 ;
+  Piavca::SmoothSequence *result = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  float val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:new_SmoothSequence",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Motion, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SmoothSequence" "', argument " "1"" of type '" "Piavca::Motion *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Motion * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_Piavca__Motion, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_SmoothSequence" "', argument " "2"" of type '" "Piavca::Motion *""'"); 
+  }
+  arg2 = reinterpret_cast< Piavca::Motion * >(argp2);
+  ecode3 = SWIG_AsVal_float(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_SmoothSequence" "', argument " "3"" of type '" "float""'");
+  } 
+  arg3 = static_cast< float >(val3);
+  {
+    try {
+      result = (Piavca::SmoothSequence *)new Piavca::SmoothSequence(arg1,arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__SmoothSequence, SWIG_POINTER_NEW |  0 );
+  result->Reference();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_SmoothSequence__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Motion *arg1 = (Piavca::Motion *) 0 ;
+  Piavca::Motion *arg2 = (Piavca::Motion *) 0 ;
+  Piavca::SmoothSequence *result = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_SmoothSequence",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Motion, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SmoothSequence" "', argument " "1"" of type '" "Piavca::Motion *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Motion * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_Piavca__Motion, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_SmoothSequence" "', argument " "2"" of type '" "Piavca::Motion *""'"); 
+  }
+  arg2 = reinterpret_cast< Piavca::Motion * >(argp2);
+  {
+    try {
+      result = (Piavca::SmoothSequence *)new Piavca::SmoothSequence(arg1,arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__SmoothSequence, SWIG_POINTER_NEW |  0 );
+  result->Reference();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_SmoothSequence__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Motion *arg1 = (Piavca::Motion *) 0 ;
+  Piavca::SmoothSequence *result = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_SmoothSequence",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Motion, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SmoothSequence" "', argument " "1"" of type '" "Piavca::Motion *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Motion * >(argp1);
+  {
+    try {
+      result = (Piavca::SmoothSequence *)new Piavca::SmoothSequence(arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__SmoothSequence, SWIG_POINTER_NEW |  0 );
+  result->Reference();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_SmoothSequence__SWIG_4(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::SmoothSequence *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)":new_SmoothSequence")) SWIG_fail;
+  {
+    try {
+      result = (Piavca::SmoothSequence *)new Piavca::SmoothSequence(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__SmoothSequence, SWIG_POINTER_NEW |  0 );
+  result->Reference();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_SmoothSequence__SWIG_5(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::SmoothSequence *arg1 = 0 ;
+  Piavca::SmoothSequence *result = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_SmoothSequence",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_Piavca__SmoothSequence,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SmoothSequence" "', argument " "1"" of type '" "Piavca::SmoothSequence const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SmoothSequence" "', argument " "1"" of type '" "Piavca::SmoothSequence const &""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::SmoothSequence * >(argp1);
+  {
+    try {
+      result = (Piavca::SmoothSequence *)new Piavca::SmoothSequence((Piavca::SmoothSequence const &)*arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__SmoothSequence, SWIG_POINTER_NEW |  0 );
+  result->Reference();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_SmoothSequence(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[5];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = PyObject_Length(args);
+  for (ii = 0; (ii < argc) && (ii < 4); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 0) {
+    return _wrap_new_SmoothSequence__SWIG_4(self, args);
+  }
+  if (argc == 1) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_Piavca__SmoothSequence, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_SmoothSequence__SWIG_5(self, args);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__Motion, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_SmoothSequence__SWIG_3(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__Motion, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_Piavca__Motion, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_new_SmoothSequence__SWIG_2(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__Motion, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_Piavca__Motion, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_float(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_new_SmoothSequence__SWIG_1(self, args);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__Motion, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_Piavca__Motion, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_float(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_float(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            return _wrap_new_SmoothSequence__SWIG_0(self, args);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"No matching function for overloaded 'new_SmoothSequence'");
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SmoothSequence_clone(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::SmoothSequence *arg1 = (Piavca::SmoothSequence *) 0 ;
+  Piavca::Motion *result = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  Swig::Director *director = 0;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:SmoothSequence_clone",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__SmoothSequence, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SmoothSequence_clone" "', argument " "1"" of type '" "Piavca::SmoothSequence *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::SmoothSequence * >(argp1);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+  try {
+    Swig::UnknownExceptionHandler dh;
+    {
+      try {
+        result = (Piavca::Motion *)(arg1)->clone(); 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }
+      catch (Piavca::Exception &e) 
+      {
+        std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+        SWIG_fail; 
+      }
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  director = SWIG_DIRECTOR_CAST(result);
+  if (director) {
+    resultobj = director->swig_get_self();
+    Py_INCREF(resultobj);
+  } else {
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__Motion, 0 |  0 );
+  }
+  if (director) {
+    SWIG_AcquirePtr(resultobj, director->swig_release_ownership(SWIG_as_voidptr(result)));
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SmoothSequence_create(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::SmoothSequence *arg1 = (Piavca::SmoothSequence *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  Swig::Director *director = 0;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:SmoothSequence_create",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__SmoothSequence, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SmoothSequence_create" "', argument " "1"" of type '" "Piavca::SmoothSequence *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::SmoothSequence * >(argp1);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+  try {
+    Swig::UnknownExceptionHandler dh;
+    {
+      try {
+        (arg1)->create(); 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }
+      catch (Piavca::Exception &e) 
+      {
+        std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+        SWIG_fail; 
+      }
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SmoothSequence_setMaintainY(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::SmoothSequence *arg1 = (Piavca::SmoothSequence *) 0 ;
+  bool arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  Swig::Director *director = 0;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:SmoothSequence_setMaintainY",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__SmoothSequence, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SmoothSequence_setMaintainY" "', argument " "1"" of type '" "Piavca::SmoothSequence *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::SmoothSequence * >(argp1);
+  ecode2 = SWIG_AsVal_bool(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SmoothSequence_setMaintainY" "', argument " "2"" of type '" "bool""'");
+  } 
+  arg2 = static_cast< bool >(val2);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+  try {
+    Swig::UnknownExceptionHandler dh;
+    {
+      try {
+        (arg1)->setMaintainY(arg2); 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }
+      catch (Piavca::Exception &e) 
+      {
+        std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+        SWIG_fail; 
+      }
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SmoothSequence_setAccumulateRoot(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::SmoothSequence *arg1 = (Piavca::SmoothSequence *) 0 ;
+  bool arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  Swig::Director *director = 0;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:SmoothSequence_setAccumulateRoot",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__SmoothSequence, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SmoothSequence_setAccumulateRoot" "', argument " "1"" of type '" "Piavca::SmoothSequence *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::SmoothSequence * >(argp1);
+  ecode2 = SWIG_AsVal_bool(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SmoothSequence_setAccumulateRoot" "', argument " "2"" of type '" "bool""'");
+  } 
+  arg2 = static_cast< bool >(val2);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+  try {
+    Swig::UnknownExceptionHandler dh;
+    {
+      try {
+        (arg1)->setAccumulateRoot(arg2); 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }
+      catch (Piavca::Exception &e) 
+      {
+        std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+        SWIG_fail; 
+      }
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SmoothSequence_setMotion1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::SmoothSequence *arg1 = (Piavca::SmoothSequence *) 0 ;
+  Piavca::Motion *arg2 = (Piavca::Motion *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:SmoothSequence_setMotion1",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__SmoothSequence, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SmoothSequence_setMotion1" "', argument " "1"" of type '" "Piavca::SmoothSequence *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::SmoothSequence * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_Piavca__Motion, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SmoothSequence_setMotion1" "', argument " "2"" of type '" "Piavca::Motion *""'"); 
+  }
+  arg2 = reinterpret_cast< Piavca::Motion * >(argp2);
+  {
+    try {
+      (arg1)->setMotion1(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SmoothSequence_setMotion2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::SmoothSequence *arg1 = (Piavca::SmoothSequence *) 0 ;
+  Piavca::Motion *arg2 = (Piavca::Motion *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:SmoothSequence_setMotion2",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__SmoothSequence, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SmoothSequence_setMotion2" "', argument " "1"" of type '" "Piavca::SmoothSequence *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::SmoothSequence * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_Piavca__Motion, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SmoothSequence_setMotion2" "', argument " "2"" of type '" "Piavca::Motion *""'"); 
+  }
+  arg2 = reinterpret_cast< Piavca::Motion * >(argp2);
+  {
+    try {
+      (arg1)->setMotion2(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SmoothSequence_setBlendStart(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::SmoothSequence *arg1 = (Piavca::SmoothSequence *) 0 ;
+  float arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  float val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:SmoothSequence_setBlendStart",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__SmoothSequence, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SmoothSequence_setBlendStart" "', argument " "1"" of type '" "Piavca::SmoothSequence *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::SmoothSequence * >(argp1);
+  ecode2 = SWIG_AsVal_float(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SmoothSequence_setBlendStart" "', argument " "2"" of type '" "float""'");
+  } 
+  arg2 = static_cast< float >(val2);
+  {
+    try {
+      (arg1)->setBlendStart(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SmoothSequence_setBlendInterval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::SmoothSequence *arg1 = (Piavca::SmoothSequence *) 0 ;
+  float arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  float val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:SmoothSequence_setBlendInterval",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__SmoothSequence, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SmoothSequence_setBlendInterval" "', argument " "1"" of type '" "Piavca::SmoothSequence *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::SmoothSequence * >(argp1);
+  ecode2 = SWIG_AsVal_float(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SmoothSequence_setBlendInterval" "', argument " "2"" of type '" "float""'");
+  } 
+  arg2 = static_cast< float >(val2);
+  {
+    try {
+      (arg1)->setBlendInterval(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SmoothSequence_getBlendStart(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::SmoothSequence *arg1 = (Piavca::SmoothSequence *) 0 ;
+  float result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:SmoothSequence_getBlendStart",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__SmoothSequence, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SmoothSequence_getBlendStart" "', argument " "1"" of type '" "Piavca::SmoothSequence *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::SmoothSequence * >(argp1);
+  {
+    try {
+      result = (float)(arg1)->getBlendStart(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SmoothSequence_getBlendInterval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::SmoothSequence *arg1 = (Piavca::SmoothSequence *) 0 ;
+  float result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:SmoothSequence_getBlendInterval",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__SmoothSequence, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SmoothSequence_getBlendInterval" "', argument " "1"" of type '" "Piavca::SmoothSequence *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::SmoothSequence * >(argp1);
+  {
+    try {
+      result = (float)(arg1)->getBlendInterval(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_SmoothSequence(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::SmoothSequence *arg1 = (Piavca::SmoothSequence *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_SmoothSequence",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__SmoothSequence, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_SmoothSequence" "', argument " "1"" of type '" "Piavca::SmoothSequence *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::SmoothSequence * >(argp1);
+  {
+    try {
+      arg1->Dispose();
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *SmoothSequence_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char*)"O|swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_Piavca__SmoothSequence, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_MotionPosture__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PyObject *arg1 = (PyObject *) 0 ;
+  Piavca::Motion *arg2 = (Piavca::Motion *) 0 ;
+  bool arg3 ;
+  Piavca::MotionPosture *result = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  bool val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:new_MotionPosture",&obj0,&obj1,&obj2)) SWIG_fail;
+  arg1 = obj0;
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_Piavca__Motion, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_MotionPosture" "', argument " "2"" of type '" "Piavca::Motion *""'"); 
+  }
+  arg2 = reinterpret_cast< Piavca::Motion * >(argp2);
+  ecode3 = SWIG_AsVal_bool(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_MotionPosture" "', argument " "3"" of type '" "bool""'");
+  } 
+  arg3 = static_cast< bool >(val3);
+  {
+    try {
+      if ( arg1 != Py_None ) {
+        /* subclassed */
+        result = (Piavca::MotionPosture *)new SwigDirector_MotionPosture(arg1,arg2,arg3); 
+      } else {
+        result = (Piavca::MotionPosture *)new Piavca::MotionPosture(arg2,arg3); 
+      }
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__MotionPosture, SWIG_POINTER_NEW |  0 );
+  result->Reference();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_MotionPosture__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PyObject *arg1 = (PyObject *) 0 ;
+  Piavca::Motion *arg2 = (Piavca::Motion *) 0 ;
+  Piavca::MotionPosture *result = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_MotionPosture",&obj0,&obj1)) SWIG_fail;
+  arg1 = obj0;
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_Piavca__Motion, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_MotionPosture" "', argument " "2"" of type '" "Piavca::Motion *""'"); 
+  }
+  arg2 = reinterpret_cast< Piavca::Motion * >(argp2);
+  {
+    try {
+      if ( arg1 != Py_None ) {
+        /* subclassed */
+        result = (Piavca::MotionPosture *)new SwigDirector_MotionPosture(arg1,arg2); 
+      } else {
+        result = (Piavca::MotionPosture *)new Piavca::MotionPosture(arg2); 
+      }
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__MotionPosture, SWIG_POINTER_NEW |  0 );
+  result->Reference();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_MotionPosture__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PyObject *arg1 = (PyObject *) 0 ;
+  Piavca::MotionPosture *result = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_MotionPosture",&obj0)) SWIG_fail;
+  arg1 = obj0;
+  {
+    try {
+      if ( arg1 != Py_None ) {
+        /* subclassed */
+        result = (Piavca::MotionPosture *)new SwigDirector_MotionPosture(arg1); 
+      } else {
+        result = (Piavca::MotionPosture *)new Piavca::MotionPosture(); 
+      }
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__MotionPosture, SWIG_POINTER_NEW |  0 );
+  result->Reference();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_MotionPosture__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PyObject *arg1 = (PyObject *) 0 ;
+  Piavca::MotionPosture *arg2 = 0 ;
+  Piavca::MotionPosture *result = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_MotionPosture",&obj0,&obj1)) SWIG_fail;
+  arg1 = obj0;
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_Piavca__MotionPosture,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_MotionPosture" "', argument " "2"" of type '" "Piavca::MotionPosture const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_MotionPosture" "', argument " "2"" of type '" "Piavca::MotionPosture const &""'"); 
+  }
+  arg2 = reinterpret_cast< Piavca::MotionPosture * >(argp2);
+  {
+    try {
+      if ( arg1 != Py_None ) {
+        /* subclassed */
+        result = (Piavca::MotionPosture *)new SwigDirector_MotionPosture(arg1,(Piavca::MotionPosture const &)*arg2); 
+      } else {
+        result = (Piavca::MotionPosture *)new Piavca::MotionPosture((Piavca::MotionPosture const &)*arg2); 
+      }
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__MotionPosture, SWIG_POINTER_NEW |  0 );
+  result->Reference();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_MotionPosture(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[4];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = PyObject_Length(args);
+  for (ii = 0; (ii < argc) && (ii < 3); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    _v = (argv[0] != 0);
+    if (_v) {
+      return _wrap_new_MotionPosture__SWIG_2(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    _v = (argv[0] != 0);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_Piavca__MotionPosture, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_new_MotionPosture__SWIG_3(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    _v = (argv[0] != 0);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_Piavca__Motion, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_new_MotionPosture__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    _v = (argv[0] != 0);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_Piavca__Motion, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_bool(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_new_MotionPosture__SWIG_0(self, args);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"No matching function for overloaded 'new_MotionPosture'");
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MotionPosture_clone(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::MotionPosture *arg1 = (Piavca::MotionPosture *) 0 ;
+  Piavca::Motion *result = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  Swig::Director *director = 0;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:MotionPosture_clone",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__MotionPosture, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MotionPosture_clone" "', argument " "1"" of type '" "Piavca::MotionPosture *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::MotionPosture * >(argp1);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+  try {
+    Swig::UnknownExceptionHandler dh;
+    {
+      try {
+        result = (Piavca::Motion *)(arg1)->clone(); 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }
+      catch (Piavca::Exception &e) 
+      {
+        std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+        SWIG_fail; 
+      }
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  director = SWIG_DIRECTOR_CAST(result);
+  if (director) {
+    resultobj = director->swig_get_self();
+    Py_INCREF(resultobj);
+  } else {
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__Motion, 0 |  0 );
+  }
+  if (director) {
+    SWIG_AcquirePtr(resultobj, director->swig_release_ownership(SWIG_as_voidptr(result)));
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MotionPosture_getPostureFromMotion(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::MotionPosture *arg1 = (Piavca::MotionPosture *) 0 ;
+  Piavca::Motion *arg2 = (Piavca::Motion *) 0 ;
+  float arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  float val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:MotionPosture_getPostureFromMotion",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__MotionPosture, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MotionPosture_getPostureFromMotion" "', argument " "1"" of type '" "Piavca::MotionPosture *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::MotionPosture * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_Piavca__Motion, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MotionPosture_getPostureFromMotion" "', argument " "2"" of type '" "Piavca::Motion *""'"); 
+  }
+  arg2 = reinterpret_cast< Piavca::Motion * >(argp2);
+  ecode3 = SWIG_AsVal_float(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "MotionPosture_getPostureFromMotion" "', argument " "3"" of type '" "float""'");
+  } 
+  arg3 = static_cast< float >(val3);
+  {
+    try {
+      (arg1)->getPostureFromMotion(arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_MotionPosture(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::MotionPosture *arg1 = (Piavca::MotionPosture *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_MotionPosture",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__MotionPosture, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_MotionPosture" "', argument " "1"" of type '" "Piavca::MotionPosture *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::MotionPosture * >(argp1);
+  {
+    try {
+      arg1->Dispose();
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_disown_MotionPosture(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::MotionPosture *arg1 = (Piavca::MotionPosture *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:disown_MotionPosture",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__MotionPosture, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "disown_MotionPosture" "', argument " "1"" of type '" "Piavca::MotionPosture *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::MotionPosture * >(argp1);
+  {
+    Swig::Director *director = dynamic_cast<Swig::Director *>(arg1);
+    if (director) director->swig_disown();
+  }
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *MotionPosture_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char*)"O|swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_Piavca__MotionPosture, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_AvatarPosture__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PyObject *arg1 = (PyObject *) 0 ;
+  bool arg2 ;
+  Piavca::AvatarPosture *result = 0 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_AvatarPosture",&obj0,&obj1)) SWIG_fail;
+  arg1 = obj0;
+  ecode2 = SWIG_AsVal_bool(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_AvatarPosture" "', argument " "2"" of type '" "bool""'");
+  } 
+  arg2 = static_cast< bool >(val2);
+  {
+    try {
+      if ( arg1 != Py_None ) {
+        /* subclassed */
+        result = (Piavca::AvatarPosture *)new SwigDirector_AvatarPosture(arg1,arg2); 
+      } else {
+        result = (Piavca::AvatarPosture *)new Piavca::AvatarPosture(arg2); 
+      }
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__AvatarPosture, SWIG_POINTER_NEW |  0 );
+  result->Reference();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_AvatarPosture__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PyObject *arg1 = (PyObject *) 0 ;
+  Piavca::AvatarPosture *result = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_AvatarPosture",&obj0)) SWIG_fail;
+  arg1 = obj0;
+  {
+    try {
+      if ( arg1 != Py_None ) {
+        /* subclassed */
+        result = (Piavca::AvatarPosture *)new SwigDirector_AvatarPosture(arg1); 
+      } else {
+        result = (Piavca::AvatarPosture *)new Piavca::AvatarPosture(); 
+      }
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__AvatarPosture, SWIG_POINTER_NEW |  0 );
+  result->Reference();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_AvatarPosture__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PyObject *arg1 = (PyObject *) 0 ;
+  Piavca::AvatarPosture *arg2 = 0 ;
+  Piavca::AvatarPosture *result = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_AvatarPosture",&obj0,&obj1)) SWIG_fail;
+  arg1 = obj0;
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_Piavca__AvatarPosture,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_AvatarPosture" "', argument " "2"" of type '" "Piavca::AvatarPosture const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_AvatarPosture" "', argument " "2"" of type '" "Piavca::AvatarPosture const &""'"); 
+  }
+  arg2 = reinterpret_cast< Piavca::AvatarPosture * >(argp2);
+  {
+    try {
+      if ( arg1 != Py_None ) {
+        /* subclassed */
+        result = (Piavca::AvatarPosture *)new SwigDirector_AvatarPosture(arg1,(Piavca::AvatarPosture const &)*arg2); 
+      } else {
+        result = (Piavca::AvatarPosture *)new Piavca::AvatarPosture((Piavca::AvatarPosture const &)*arg2); 
+      }
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__AvatarPosture, SWIG_POINTER_NEW |  0 );
+  result->Reference();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_AvatarPosture(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = PyObject_Length(args);
+  for (ii = 0; (ii < argc) && (ii < 2); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    _v = (argv[0] != 0);
+    if (_v) {
+      return _wrap_new_AvatarPosture__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    _v = (argv[0] != 0);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_Piavca__AvatarPosture, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_new_AvatarPosture__SWIG_2(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    _v = (argv[0] != 0);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_bool(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_new_AvatarPosture__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"No matching function for overloaded 'new_AvatarPosture'");
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_AvatarPosture_clone(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::AvatarPosture *arg1 = (Piavca::AvatarPosture *) 0 ;
+  Piavca::Motion *result = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  Swig::Director *director = 0;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:AvatarPosture_clone",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__AvatarPosture, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AvatarPosture_clone" "', argument " "1"" of type '" "Piavca::AvatarPosture *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::AvatarPosture * >(argp1);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+  try {
+    Swig::UnknownExceptionHandler dh;
+    {
+      try {
+        result = (Piavca::Motion *)(arg1)->clone(); 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }
+      catch (Piavca::Exception &e) 
+      {
+        std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+        SWIG_fail; 
+      }
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  director = SWIG_DIRECTOR_CAST(result);
+  if (director) {
+    resultobj = director->swig_get_self();
+    Py_INCREF(resultobj);
+  } else {
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__Motion, 0 |  0 );
+  }
+  if (director) {
+    SWIG_AcquirePtr(resultobj, director->swig_release_ownership(SWIG_as_voidptr(result)));
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_AvatarPosture_load(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::AvatarPosture *arg1 = (Piavca::AvatarPosture *) 0 ;
+  Piavca::Avatar *arg2 = (Piavca::Avatar *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  Swig::Director *director = 0;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:AvatarPosture_load",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__AvatarPosture, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AvatarPosture_load" "', argument " "1"" of type '" "Piavca::AvatarPosture *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::AvatarPosture * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_Piavca__Avatar, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "AvatarPosture_load" "', argument " "2"" of type '" "Piavca::Avatar *""'"); 
+  }
+  arg2 = reinterpret_cast< Piavca::Avatar * >(argp2);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+  try {
+    Swig::UnknownExceptionHandler dh;
+    {
+      try {
+        (arg1)->load(arg2); 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }
+      catch (Piavca::Exception &e) 
+      {
+        std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+        SWIG_fail; 
+      }
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_AvatarPosture_getPostureFromAvatar(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::AvatarPosture *arg1 = (Piavca::AvatarPosture *) 0 ;
+  Piavca::Avatar *arg2 = (Piavca::Avatar *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:AvatarPosture_getPostureFromAvatar",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__AvatarPosture, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AvatarPosture_getPostureFromAvatar" "', argument " "1"" of type '" "Piavca::AvatarPosture *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::AvatarPosture * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_Piavca__Avatar, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "AvatarPosture_getPostureFromAvatar" "', argument " "2"" of type '" "Piavca::Avatar *""'"); 
+  }
+  arg2 = reinterpret_cast< Piavca::Avatar * >(argp2);
+  {
+    try {
+      (arg1)->getPostureFromAvatar(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_AvatarPosture(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::AvatarPosture *arg1 = (Piavca::AvatarPosture *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_AvatarPosture",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__AvatarPosture, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_AvatarPosture" "', argument " "1"" of type '" "Piavca::AvatarPosture *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::AvatarPosture * >(argp1);
+  {
+    try {
+      arg1->Dispose();
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_disown_AvatarPosture(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::AvatarPosture *arg1 = (Piavca::AvatarPosture *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:disown_AvatarPosture",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__AvatarPosture, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "disown_AvatarPosture" "', argument " "1"" of type '" "Piavca::AvatarPosture *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::AvatarPosture * >(argp1);
+  {
+    Swig::Director *director = dynamic_cast<Swig::Director *>(arg1);
+    if (director) director->swig_disown();
+  }
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *AvatarPosture_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char*)"O|swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_Piavca__AvatarPosture, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_PostureBlend__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PyObject *arg1 = (PyObject *) 0 ;
+  Piavca::Motion *arg2 = (Piavca::Motion *) 0 ;
+  float arg3 ;
+  Piavca::PostureBlend *result = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  float val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:new_PostureBlend",&obj0,&obj1,&obj2)) SWIG_fail;
+  arg1 = obj0;
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_Piavca__Motion, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_PostureBlend" "', argument " "2"" of type '" "Piavca::Motion *""'"); 
+  }
+  arg2 = reinterpret_cast< Piavca::Motion * >(argp2);
+  ecode3 = SWIG_AsVal_float(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_PostureBlend" "', argument " "3"" of type '" "float""'");
+  } 
+  arg3 = static_cast< float >(val3);
+  {
+    try {
+      if ( arg1 != Py_None ) {
+        /* subclassed */
+        result = (Piavca::PostureBlend *)new SwigDirector_PostureBlend(arg1,arg2,arg3); 
+      } else {
+        result = (Piavca::PostureBlend *)new Piavca::PostureBlend(arg2,arg3); 
+      }
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__PostureBlend, SWIG_POINTER_NEW |  0 );
+  result->Reference();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_PostureBlend__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PyObject *arg1 = (PyObject *) 0 ;
+  Piavca::Motion *arg2 = (Piavca::Motion *) 0 ;
+  Piavca::PostureBlend *result = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_PostureBlend",&obj0,&obj1)) SWIG_fail;
+  arg1 = obj0;
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_Piavca__Motion, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_PostureBlend" "', argument " "2"" of type '" "Piavca::Motion *""'"); 
+  }
+  arg2 = reinterpret_cast< Piavca::Motion * >(argp2);
+  {
+    try {
+      if ( arg1 != Py_None ) {
+        /* subclassed */
+        result = (Piavca::PostureBlend *)new SwigDirector_PostureBlend(arg1,arg2); 
+      } else {
+        result = (Piavca::PostureBlend *)new Piavca::PostureBlend(arg2); 
+      }
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__PostureBlend, SWIG_POINTER_NEW |  0 );
+  result->Reference();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_PostureBlend__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PyObject *arg1 = (PyObject *) 0 ;
+  Piavca::PostureBlend *result = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_PostureBlend",&obj0)) SWIG_fail;
+  arg1 = obj0;
+  {
+    try {
+      if ( arg1 != Py_None ) {
+        /* subclassed */
+        result = (Piavca::PostureBlend *)new SwigDirector_PostureBlend(arg1); 
+      } else {
+        result = (Piavca::PostureBlend *)new Piavca::PostureBlend(); 
+      }
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__PostureBlend, SWIG_POINTER_NEW |  0 );
+  result->Reference();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_PostureBlend__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PyObject *arg1 = (PyObject *) 0 ;
+  Piavca::PostureBlend *arg2 = 0 ;
+  Piavca::PostureBlend *result = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_PostureBlend",&obj0,&obj1)) SWIG_fail;
+  arg1 = obj0;
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_Piavca__PostureBlend,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_PostureBlend" "', argument " "2"" of type '" "Piavca::PostureBlend const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_PostureBlend" "', argument " "2"" of type '" "Piavca::PostureBlend const &""'"); 
+  }
+  arg2 = reinterpret_cast< Piavca::PostureBlend * >(argp2);
+  {
+    try {
+      if ( arg1 != Py_None ) {
+        /* subclassed */
+        result = (Piavca::PostureBlend *)new SwigDirector_PostureBlend(arg1,(Piavca::PostureBlend const &)*arg2); 
+      } else {
+        result = (Piavca::PostureBlend *)new Piavca::PostureBlend((Piavca::PostureBlend const &)*arg2); 
+      }
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__PostureBlend, SWIG_POINTER_NEW |  0 );
+  result->Reference();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_PostureBlend(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[4];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = PyObject_Length(args);
+  for (ii = 0; (ii < argc) && (ii < 3); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    _v = (argv[0] != 0);
+    if (_v) {
+      return _wrap_new_PostureBlend__SWIG_2(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    _v = (argv[0] != 0);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_Piavca__PostureBlend, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_new_PostureBlend__SWIG_3(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    _v = (argv[0] != 0);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_Piavca__Motion, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_new_PostureBlend__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    _v = (argv[0] != 0);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_Piavca__Motion, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_float(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_new_PostureBlend__SWIG_0(self, args);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"No matching function for overloaded 'new_PostureBlend'");
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_PostureBlend_clone(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::PostureBlend *arg1 = (Piavca::PostureBlend *) 0 ;
+  Piavca::Motion *result = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  Swig::Director *director = 0;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:PostureBlend_clone",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__PostureBlend, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PostureBlend_clone" "', argument " "1"" of type '" "Piavca::PostureBlend *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::PostureBlend * >(argp1);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+  try {
+    Swig::UnknownExceptionHandler dh;
+    {
+      try {
+        result = (Piavca::Motion *)(arg1)->clone(); 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }
+      catch (Piavca::Exception &e) 
+      {
+        std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+        SWIG_fail; 
+      }
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  director = SWIG_DIRECTOR_CAST(result);
+  if (director) {
+    resultobj = director->swig_get_self();
+    Py_INCREF(resultobj);
+  } else {
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__Motion, 0 |  0 );
+  }
+  if (director) {
+    SWIG_AcquirePtr(resultobj, director->swig_release_ownership(SWIG_as_voidptr(result)));
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_PostureBlend_setBlendInterval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::PostureBlend *arg1 = (Piavca::PostureBlend *) 0 ;
+  float arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  float val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:PostureBlend_setBlendInterval",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__PostureBlend, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PostureBlend_setBlendInterval" "', argument " "1"" of type '" "Piavca::PostureBlend *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::PostureBlend * >(argp1);
+  ecode2 = SWIG_AsVal_float(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "PostureBlend_setBlendInterval" "', argument " "2"" of type '" "float""'");
+  } 
+  arg2 = static_cast< float >(val2);
+  {
+    try {
+      (arg1)->setBlendInterval(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_PostureBlend_setAccumulateRoot(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::PostureBlend *arg1 = (Piavca::PostureBlend *) 0 ;
+  bool arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:PostureBlend_setAccumulateRoot",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__PostureBlend, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PostureBlend_setAccumulateRoot" "', argument " "1"" of type '" "Piavca::PostureBlend *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::PostureBlend * >(argp1);
+  ecode2 = SWIG_AsVal_bool(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "PostureBlend_setAccumulateRoot" "', argument " "2"" of type '" "bool""'");
+  } 
+  arg2 = static_cast< bool >(val2);
+  {
+    try {
+      (arg1)->setAccumulateRoot(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_PostureBlend_reset(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::PostureBlend *arg1 = (Piavca::PostureBlend *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  Swig::Director *director = 0;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:PostureBlend_reset",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__PostureBlend, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PostureBlend_reset" "', argument " "1"" of type '" "Piavca::PostureBlend *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::PostureBlend * >(argp1);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+  try {
+    Swig::UnknownExceptionHandler dh;
+    {
+      try {
+        (arg1)->reset(); 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }
+      catch (Piavca::Exception &e) 
+      {
+        std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+        SWIG_fail; 
+      }
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_PostureBlend_reblend__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::PostureBlend *arg1 = (Piavca::PostureBlend *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:PostureBlend_reblend",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__PostureBlend, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PostureBlend_reblend" "', argument " "1"" of type '" "Piavca::PostureBlend *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::PostureBlend * >(argp1);
+  {
+    try {
+      (arg1)->reblend(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_PostureBlend_reblend__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::PostureBlend *arg1 = (Piavca::PostureBlend *) 0 ;
+  float arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  float val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  Swig::Director *director = 0;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:PostureBlend_reblend",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__PostureBlend, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PostureBlend_reblend" "', argument " "1"" of type '" "Piavca::PostureBlend *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::PostureBlend * >(argp1);
+  ecode2 = SWIG_AsVal_float(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "PostureBlend_reblend" "', argument " "2"" of type '" "float""'");
+  } 
+  arg2 = static_cast< float >(val2);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+  try {
+    Swig::UnknownExceptionHandler dh;
+    {
+      try {
+        (arg1)->reblend(arg2); 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }
+      catch (Piavca::Exception &e) 
+      {
+        std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+        SWIG_fail; 
+      }
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_PostureBlend_reblend(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = PyObject_Length(args);
+  for (ii = 0; (ii < argc) && (ii < 2); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__PostureBlend, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_PostureBlend_reblend__SWIG_0(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__PostureBlend, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_float(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_PostureBlend_reblend__SWIG_1(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"No matching function for overloaded 'PostureBlend_reblend'");
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_PostureBlend_setMotion(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::PostureBlend *arg1 = (Piavca::PostureBlend *) 0 ;
+  Piavca::Motion *arg2 = (Piavca::Motion *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  Swig::Director *director = 0;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:PostureBlend_setMotion",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__PostureBlend, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PostureBlend_setMotion" "', argument " "1"" of type '" "Piavca::PostureBlend *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::PostureBlend * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_Piavca__Motion, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PostureBlend_setMotion" "', argument " "2"" of type '" "Piavca::Motion *""'"); 
+  }
+  arg2 = reinterpret_cast< Piavca::Motion * >(argp2);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+  try {
+    Swig::UnknownExceptionHandler dh;
+    {
+      try {
+        (arg1)->setMotion(arg2); 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }
+      catch (Piavca::Exception &e) 
+      {
+        std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+        SWIG_fail; 
+      }
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_PostureBlend_getMotion(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::PostureBlend *arg1 = (Piavca::PostureBlend *) 0 ;
+  Piavca::Motion *result = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  Swig::Director *director = 0;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:PostureBlend_getMotion",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__PostureBlend, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PostureBlend_getMotion" "', argument " "1"" of type '" "Piavca::PostureBlend *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::PostureBlend * >(argp1);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+  try {
+    Swig::UnknownExceptionHandler dh;
+    {
+      try {
+        result = (Piavca::Motion *)(arg1)->getMotion(); 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }
+      catch (Piavca::Exception &e) 
+      {
+        std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+        SWIG_fail; 
+      }
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  director = SWIG_DIRECTOR_CAST(result);
+  if (director) {
+    resultobj = director->swig_get_self();
+    Py_INCREF(resultobj);
+  } else {
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__Motion, 0 |  0 );
+  }
+  if (director) {
+    SWIG_AcquirePtr(resultobj, director->swig_release_ownership(SWIG_as_voidptr(result)));
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_PostureBlend(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::PostureBlend *arg1 = (Piavca::PostureBlend *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_PostureBlend",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__PostureBlend, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_PostureBlend" "', argument " "1"" of type '" "Piavca::PostureBlend *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::PostureBlend * >(argp1);
+  {
+    try {
+      arg1->Dispose();
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_disown_PostureBlend(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::PostureBlend *arg1 = (Piavca::PostureBlend *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:disown_PostureBlend",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__PostureBlend, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "disown_PostureBlend" "', argument " "1"" of type '" "Piavca::PostureBlend *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::PostureBlend * >(argp1);
+  {
+    Swig::Director *director = dynamic_cast<Swig::Director *>(arg1);
+    if (director) director->swig_disown();
+  }
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *PostureBlend_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char*)"O|swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_Piavca__PostureBlend, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_Reposition__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PyObject *arg1 = (PyObject *) 0 ;
+  Piavca::Motion *arg2 = (Piavca::Motion *) 0 ;
+  Piavca::Vec arg3 ;
+  Piavca::Quat arg4 ;
+  Piavca::Reposition *result = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 ;
+  int res3 = 0 ;
+  void *argp4 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:new_Reposition",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  arg1 = obj0;
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_Piavca__Motion, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_Reposition" "', argument " "2"" of type '" "Piavca::Motion *""'"); 
+  }
+  arg2 = reinterpret_cast< Piavca::Motion * >(argp2);
+  {
+    res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_Piavca__Vec,  0  | 0);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_Reposition" "', argument " "3"" of type '" "Piavca::Vec""'"); 
+    }  
+    if (!argp3) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_Reposition" "', argument " "3"" of type '" "Piavca::Vec""'");
+    } else {
+      Piavca::Vec * temp = reinterpret_cast< Piavca::Vec * >(argp3);
+      arg3 = *temp;
+      if (SWIG_IsNewObj(res3)) delete temp;
+    }
+  }
+  {
+    res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_Piavca__Quat,  0  | 0);
+    if (!SWIG_IsOK(res4)) {
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "new_Reposition" "', argument " "4"" of type '" "Piavca::Quat""'"); 
+    }  
+    if (!argp4) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_Reposition" "', argument " "4"" of type '" "Piavca::Quat""'");
+    } else {
+      Piavca::Quat * temp = reinterpret_cast< Piavca::Quat * >(argp4);
+      arg4 = *temp;
+      if (SWIG_IsNewObj(res4)) delete temp;
+    }
+  }
+  {
+    try {
+      if ( arg1 != Py_None ) {
+        /* subclassed */
+        result = (Piavca::Reposition *)new SwigDirector_Reposition(arg1,arg2,arg3,arg4); 
+      } else {
+        result = (Piavca::Reposition *)new Piavca::Reposition(arg2,arg3,arg4); 
+      }
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__Reposition, SWIG_POINTER_NEW |  0 );
+  result->Reference();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_Reposition__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PyObject *arg1 = (PyObject *) 0 ;
+  Piavca::Motion *arg2 = (Piavca::Motion *) 0 ;
+  Piavca::Vec arg3 ;
+  Piavca::Reposition *result = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:new_Reposition",&obj0,&obj1,&obj2)) SWIG_fail;
+  arg1 = obj0;
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_Piavca__Motion, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_Reposition" "', argument " "2"" of type '" "Piavca::Motion *""'"); 
+  }
+  arg2 = reinterpret_cast< Piavca::Motion * >(argp2);
+  {
+    res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_Piavca__Vec,  0  | 0);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_Reposition" "', argument " "3"" of type '" "Piavca::Vec""'"); 
+    }  
+    if (!argp3) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_Reposition" "', argument " "3"" of type '" "Piavca::Vec""'");
+    } else {
+      Piavca::Vec * temp = reinterpret_cast< Piavca::Vec * >(argp3);
+      arg3 = *temp;
+      if (SWIG_IsNewObj(res3)) delete temp;
+    }
+  }
+  {
+    try {
+      if ( arg1 != Py_None ) {
+        /* subclassed */
+        result = (Piavca::Reposition *)new SwigDirector_Reposition(arg1,arg2,arg3); 
+      } else {
+        result = (Piavca::Reposition *)new Piavca::Reposition(arg2,arg3); 
+      }
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__Reposition, SWIG_POINTER_NEW |  0 );
+  result->Reference();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_Reposition__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PyObject *arg1 = (PyObject *) 0 ;
+  Piavca::Motion *arg2 = (Piavca::Motion *) 0 ;
+  Piavca::Reposition *result = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_Reposition",&obj0,&obj1)) SWIG_fail;
+  arg1 = obj0;
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_Piavca__Motion, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_Reposition" "', argument " "2"" of type '" "Piavca::Motion *""'"); 
+  }
+  arg2 = reinterpret_cast< Piavca::Motion * >(argp2);
+  {
+    try {
+      if ( arg1 != Py_None ) {
+        /* subclassed */
+        result = (Piavca::Reposition *)new SwigDirector_Reposition(arg1,arg2); 
+      } else {
+        result = (Piavca::Reposition *)new Piavca::Reposition(arg2); 
+      }
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__Reposition, SWIG_POINTER_NEW |  0 );
+  result->Reference();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_Reposition__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PyObject *arg1 = (PyObject *) 0 ;
+  Piavca::Reposition *result = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_Reposition",&obj0)) SWIG_fail;
+  arg1 = obj0;
+  {
+    try {
+      if ( arg1 != Py_None ) {
+        /* subclassed */
+        result = (Piavca::Reposition *)new SwigDirector_Reposition(arg1); 
+      } else {
+        result = (Piavca::Reposition *)new Piavca::Reposition(); 
+      }
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__Reposition, SWIG_POINTER_NEW |  0 );
+  result->Reference();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_Reposition__SWIG_4(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PyObject *arg1 = (PyObject *) 0 ;
+  Piavca::Reposition *arg2 = 0 ;
+  Piavca::Reposition *result = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_Reposition",&obj0,&obj1)) SWIG_fail;
+  arg1 = obj0;
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_Piavca__Reposition,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_Reposition" "', argument " "2"" of type '" "Piavca::Reposition const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_Reposition" "', argument " "2"" of type '" "Piavca::Reposition const &""'"); 
+  }
+  arg2 = reinterpret_cast< Piavca::Reposition * >(argp2);
+  {
+    try {
+      if ( arg1 != Py_None ) {
+        /* subclassed */
+        result = (Piavca::Reposition *)new SwigDirector_Reposition(arg1,(Piavca::Reposition const &)*arg2); 
+      } else {
+        result = (Piavca::Reposition *)new Piavca::Reposition((Piavca::Reposition const &)*arg2); 
+      }
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__Reposition, SWIG_POINTER_NEW |  0 );
+  result->Reference();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_Reposition(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[5];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = PyObject_Length(args);
+  for (ii = 0; (ii < argc) && (ii < 4); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    _v = (argv[0] != 0);
+    if (_v) {
+      return _wrap_new_Reposition__SWIG_3(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    _v = (argv[0] != 0);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_Piavca__Reposition, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_new_Reposition__SWIG_4(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    _v = (argv[0] != 0);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_Piavca__Motion, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_new_Reposition__SWIG_2(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    _v = (argv[0] != 0);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_Piavca__Motion, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_Piavca__Vec, 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_new_Reposition__SWIG_1(self, args);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    _v = (argv[0] != 0);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_Piavca__Motion, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_Piavca__Vec, 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          int res = SWIG_ConvertPtr(argv[3], 0, SWIGTYPE_p_Piavca__Quat, 0);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_new_Reposition__SWIG_0(self, args);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"No matching function for overloaded 'new_Reposition'");
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Reposition_clone(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Reposition *arg1 = (Piavca::Reposition *) 0 ;
+  Piavca::Motion *result = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  Swig::Director *director = 0;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Reposition_clone",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Reposition, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Reposition_clone" "', argument " "1"" of type '" "Piavca::Reposition *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Reposition * >(argp1);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+  try {
+    Swig::UnknownExceptionHandler dh;
+    {
+      try {
+        result = (Piavca::Motion *)(arg1)->clone(); 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }
+      catch (Piavca::Exception &e) 
+      {
+        std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+        SWIG_fail; 
+      }
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  director = SWIG_DIRECTOR_CAST(result);
+  if (director) {
+    resultobj = director->swig_get_self();
+    Py_INCREF(resultobj);
+  } else {
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__Motion, 0 |  0 );
+  }
+  if (director) {
+    SWIG_AcquirePtr(resultobj, director->swig_release_ownership(SWIG_as_voidptr(result)));
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Reposition_setStartPosition(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Reposition *arg1 = (Piavca::Reposition *) 0 ;
+  Piavca::Vec arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Reposition_setStartPosition",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Reposition, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Reposition_setStartPosition" "', argument " "1"" of type '" "Piavca::Reposition *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Reposition * >(argp1);
+  {
+    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_Piavca__Vec,  0  | 0);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Reposition_setStartPosition" "', argument " "2"" of type '" "Piavca::Vec""'"); 
+    }  
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Reposition_setStartPosition" "', argument " "2"" of type '" "Piavca::Vec""'");
+    } else {
+      Piavca::Vec * temp = reinterpret_cast< Piavca::Vec * >(argp2);
+      arg2 = *temp;
+      if (SWIG_IsNewObj(res2)) delete temp;
+    }
+  }
+  {
+    try {
+      (arg1)->setStartPosition(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Reposition_setStartOrientation(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Reposition *arg1 = (Piavca::Reposition *) 0 ;
+  Piavca::Quat arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Reposition_setStartOrientation",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Reposition, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Reposition_setStartOrientation" "', argument " "1"" of type '" "Piavca::Reposition *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Reposition * >(argp1);
+  {
+    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_Piavca__Quat,  0  | 0);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Reposition_setStartOrientation" "', argument " "2"" of type '" "Piavca::Quat""'"); 
+    }  
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Reposition_setStartOrientation" "', argument " "2"" of type '" "Piavca::Quat""'");
+    } else {
+      Piavca::Quat * temp = reinterpret_cast< Piavca::Quat * >(argp2);
+      arg2 = *temp;
+      if (SWIG_IsNewObj(res2)) delete temp;
+    }
+  }
+  {
+    try {
+      (arg1)->setStartOrientation(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Reposition_setStartFromMotion(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Reposition *arg1 = (Piavca::Reposition *) 0 ;
+  Piavca::Motion *arg2 = (Piavca::Motion *) 0 ;
+  float arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  float val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:Reposition_setStartFromMotion",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Reposition, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Reposition_setStartFromMotion" "', argument " "1"" of type '" "Piavca::Reposition *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Reposition * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_Piavca__Motion, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Reposition_setStartFromMotion" "', argument " "2"" of type '" "Piavca::Motion *""'"); 
+  }
+  arg2 = reinterpret_cast< Piavca::Motion * >(argp2);
+  ecode3 = SWIG_AsVal_float(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Reposition_setStartFromMotion" "', argument " "3"" of type '" "float""'");
+  } 
+  arg3 = static_cast< float >(val3);
+  {
+    try {
+      (arg1)->setStartFromMotion(arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Reposition_setMotion(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Reposition *arg1 = (Piavca::Reposition *) 0 ;
+  Piavca::Motion *arg2 = (Piavca::Motion *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Reposition_setMotion",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Reposition, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Reposition_setMotion" "', argument " "1"" of type '" "Piavca::Reposition *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Reposition * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_Piavca__Motion, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Reposition_setMotion" "', argument " "2"" of type '" "Piavca::Motion *""'"); 
+  }
+  arg2 = reinterpret_cast< Piavca::Motion * >(argp2);
+  {
+    try {
+      (arg1)->setMotion(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Reposition_setMaintainY(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Reposition *arg1 = (Piavca::Reposition *) 0 ;
+  bool arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  Swig::Director *director = 0;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Reposition_setMaintainY",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Reposition, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Reposition_setMaintainY" "', argument " "1"" of type '" "Piavca::Reposition *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Reposition * >(argp1);
+  ecode2 = SWIG_AsVal_bool(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Reposition_setMaintainY" "', argument " "2"" of type '" "bool""'");
+  } 
+  arg2 = static_cast< bool >(val2);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+  try {
+    Swig::UnknownExceptionHandler dh;
+    {
+      try {
+        (arg1)->setMaintainY(arg2); 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }
+      catch (Piavca::Exception &e) 
+      {
+        std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+        SWIG_fail; 
+      }
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Reposition_isNull(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Reposition *arg1 = (Piavca::Reposition *) 0 ;
+  int arg2 ;
+  bool result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  Swig::Director *director = 0;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Reposition_isNull",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Reposition, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Reposition_isNull" "', argument " "1"" of type '" "Piavca::Reposition const *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Reposition * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Reposition_isNull" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+  try {
+    Swig::UnknownExceptionHandler dh;
+    {
+      try {
+        result = (bool)((Piavca::Reposition const *)arg1)->isNull(arg2); 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }
+      catch (Piavca::Exception &e) 
+      {
+        std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+        SWIG_fail; 
+      }
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Reposition_getFloatValueAtTimeInternal(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Reposition *arg1 = (Piavca::Reposition *) 0 ;
+  int arg2 ;
+  float arg3 ;
+  float result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  float val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  Swig::Director *director = 0;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:Reposition_getFloatValueAtTimeInternal",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Reposition, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Reposition_getFloatValueAtTimeInternal" "', argument " "1"" of type '" "Piavca::Reposition *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Reposition * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Reposition_getFloatValueAtTimeInternal" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  ecode3 = SWIG_AsVal_float(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Reposition_getFloatValueAtTimeInternal" "', argument " "3"" of type '" "float""'");
+  } 
+  arg3 = static_cast< float >(val3);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+  try {
+    Swig::UnknownExceptionHandler dh;
+    {
+      try {
+        result = (float)(arg1)->getFloatValueAtTimeInternal(arg2,arg3); 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }
+      catch (Piavca::Exception &e) 
+      {
+        std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+        SWIG_fail; 
+      }
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Reposition_getVecValueAtTimeInternal(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Reposition *arg1 = (Piavca::Reposition *) 0 ;
+  int arg2 ;
+  float arg3 ;
+  Piavca::Vec result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  float val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  Swig::Director *director = 0;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:Reposition_getVecValueAtTimeInternal",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Reposition, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Reposition_getVecValueAtTimeInternal" "', argument " "1"" of type '" "Piavca::Reposition *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Reposition * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Reposition_getVecValueAtTimeInternal" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  ecode3 = SWIG_AsVal_float(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Reposition_getVecValueAtTimeInternal" "', argument " "3"" of type '" "float""'");
+  } 
+  arg3 = static_cast< float >(val3);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+  try {
+    Swig::UnknownExceptionHandler dh;
+    {
+      try {
+        result = (arg1)->getVecValueAtTimeInternal(arg2,arg3); 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }
+      catch (Piavca::Exception &e) 
+      {
+        std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+        SWIG_fail; 
+      }
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_NewPointerObj((new Piavca::Vec(static_cast< const Piavca::Vec& >(result))), SWIGTYPE_p_Piavca__Vec, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Reposition_getQuatValueAtTimeInternal(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Reposition *arg1 = (Piavca::Reposition *) 0 ;
+  int arg2 ;
+  float arg3 ;
+  Piavca::Quat result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  float val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  Swig::Director *director = 0;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:Reposition_getQuatValueAtTimeInternal",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Reposition, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Reposition_getQuatValueAtTimeInternal" "', argument " "1"" of type '" "Piavca::Reposition *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Reposition * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Reposition_getQuatValueAtTimeInternal" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  ecode3 = SWIG_AsVal_float(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Reposition_getQuatValueAtTimeInternal" "', argument " "3"" of type '" "float""'");
+  } 
+  arg3 = static_cast< float >(val3);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+  try {
+    Swig::UnknownExceptionHandler dh;
+    {
+      try {
+        result = (arg1)->getQuatValueAtTimeInternal(arg2,arg3); 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }
+      catch (Piavca::Exception &e) 
+      {
+        std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+        SWIG_fail; 
+      }
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_NewPointerObj((new Piavca::Quat(static_cast< const Piavca::Quat& >(result))), SWIGTYPE_p_Piavca__Quat, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_Reposition(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Reposition *arg1 = (Piavca::Reposition *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_Reposition",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Reposition, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Reposition" "', argument " "1"" of type '" "Piavca::Reposition *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Reposition * >(argp1);
+  {
+    try {
+      arg1->Dispose();
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_disown_Reposition(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Reposition *arg1 = (Piavca::Reposition *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:disown_Reposition",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Reposition, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "disown_Reposition" "', argument " "1"" of type '" "Piavca::Reposition *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Reposition * >(argp1);
+  {
+    Swig::Director *director = dynamic_cast<Swig::Director *>(arg1);
+    if (director) director->swig_disown();
+  }
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *Reposition_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char*)"O|swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_Piavca__Reposition, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
 SWIGINTERN PyObject *_wrap_new_SelfBlend__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   PyObject *arg1 = (PyObject *) 0 ;
@@ -58622,36 +65963,79 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_AvatarPostureBlend_load(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_AvatarPostureBlend_setBlendInterval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Piavca::AvatarPostureBlend *arg1 = (Piavca::AvatarPostureBlend *) 0 ;
-  Piavca::Avatar *arg2 = (Piavca::Avatar *) 0 ;
+  float arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
+  float val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:AvatarPostureBlend_setBlendInterval",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__AvatarPostureBlend, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AvatarPostureBlend_setBlendInterval" "', argument " "1"" of type '" "Piavca::AvatarPostureBlend *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::AvatarPostureBlend * >(argp1);
+  ecode2 = SWIG_AsVal_float(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "AvatarPostureBlend_setBlendInterval" "', argument " "2"" of type '" "float""'");
+  } 
+  arg2 = static_cast< float >(val2);
+  {
+    try {
+      (arg1)->setBlendInterval(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_AvatarPostureBlend_isNull(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::AvatarPostureBlend *arg1 = (Piavca::AvatarPostureBlend *) 0 ;
+  int arg2 ;
+  bool result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   Swig::Director *director = 0;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:AvatarPostureBlend_load",&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:AvatarPostureBlend_isNull",&obj0,&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__AvatarPostureBlend, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AvatarPostureBlend_load" "', argument " "1"" of type '" "Piavca::AvatarPostureBlend *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AvatarPostureBlend_isNull" "', argument " "1"" of type '" "Piavca::AvatarPostureBlend const *""'"); 
   }
   arg1 = reinterpret_cast< Piavca::AvatarPostureBlend * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_Piavca__Avatar, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "AvatarPostureBlend_load" "', argument " "2"" of type '" "Piavca::Avatar *""'"); 
-  }
-  arg2 = reinterpret_cast< Piavca::Avatar * >(argp2);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "AvatarPostureBlend_isNull" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
   director = SWIG_DIRECTOR_CAST(arg1);
   if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
   try {
     Swig::UnknownExceptionHandler dh;
     {
       try {
-        (arg1)->load(arg2); 
+        result = (bool)((Piavca::AvatarPostureBlend const *)arg1)->isNull(arg2); 
       }
       catch (Swig::DirectorException &e) {
         SWIG_fail; 
@@ -58665,7 +66049,7 @@ SWIGINTERN PyObject *_wrap_AvatarPostureBlend_load(PyObject *SWIGUNUSEDPARM(self
   } catch (Swig::DirectorException&) {
     SWIG_fail;
   }
-  resultobj = SWIG_Py_Void();
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
 fail:
   return NULL;
@@ -58708,6 +66092,57 @@ SWIGINTERN PyObject *_wrap_AvatarPostureBlend_setMotion(PyObject *SWIGUNUSEDPARM
     }
   }
   resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_AvatarPostureBlend_getMotion(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::AvatarPostureBlend *arg1 = (Piavca::AvatarPostureBlend *) 0 ;
+  Piavca::Motion *result = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  Swig::Director *director = 0;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:AvatarPostureBlend_getMotion",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__AvatarPostureBlend, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AvatarPostureBlend_getMotion" "', argument " "1"" of type '" "Piavca::AvatarPostureBlend *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::AvatarPostureBlend * >(argp1);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+  try {
+    Swig::UnknownExceptionHandler dh;
+    {
+      try {
+        result = (Piavca::Motion *)(arg1)->getMotion(); 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }
+      catch (Piavca::Exception &e) 
+      {
+        std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+        SWIG_fail; 
+      }
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  director = SWIG_DIRECTOR_CAST(result);
+  if (director) {
+    resultobj = director->swig_get_self();
+    Py_INCREF(resultobj);
+  } else {
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__Motion, 0 |  0 );
+  }
+  if (director) {
+    SWIG_AcquirePtr(resultobj, director->swig_release_ownership(SWIG_as_voidptr(result)));
+  }
   return resultobj;
 fail:
   return NULL;
@@ -62692,7 +70127,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_MotionTransition_setTransitionTime1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_MotionTransition_setTransitionTime1__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Piavca::MotionTransition *arg1 = (Piavca::MotionTransition *) 0 ;
   float arg2 ;
@@ -62734,7 +70169,81 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_MotionTransition_setTransitionTime2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_MotionTransition_setTransitionTime1__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::MotionTransition *arg1 = (Piavca::MotionTransition *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:MotionTransition_setTransitionTime1",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__MotionTransition, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MotionTransition_setTransitionTime1" "', argument " "1"" of type '" "Piavca::MotionTransition *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::MotionTransition * >(argp1);
+  {
+    try {
+      (arg1)->setTransitionTime1(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MotionTransition_setTransitionTime1(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = PyObject_Length(args);
+  for (ii = 0; (ii < argc) && (ii < 2); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__MotionTransition, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_MotionTransition_setTransitionTime1__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__MotionTransition, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_float(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_MotionTransition_setTransitionTime1__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"No matching function for overloaded 'MotionTransition_setTransitionTime1'");
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MotionTransition_setTransitionTime2__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Piavca::MotionTransition *arg1 = (Piavca::MotionTransition *) 0 ;
   float arg2 ;
@@ -62772,6 +70281,80 @@ SWIGINTERN PyObject *_wrap_MotionTransition_setTransitionTime2(PyObject *SWIGUNU
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MotionTransition_setTransitionTime2__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::MotionTransition *arg1 = (Piavca::MotionTransition *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:MotionTransition_setTransitionTime2",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__MotionTransition, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MotionTransition_setTransitionTime2" "', argument " "1"" of type '" "Piavca::MotionTransition *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::MotionTransition * >(argp1);
+  {
+    try {
+      (arg1)->setTransitionTime2(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MotionTransition_setTransitionTime2(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = PyObject_Length(args);
+  for (ii = 0; (ii < argc) && (ii < 2); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__MotionTransition, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_MotionTransition_setTransitionTime2__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__MotionTransition, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_float(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_MotionTransition_setTransitionTime2__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"No matching function for overloaded 'MotionTransition_setTransitionTime2'");
   return NULL;
 }
 
@@ -66420,6 +74003,56 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_RandomLoopMotion_reblend(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::RandomLoopMotion *arg1 = (Piavca::RandomLoopMotion *) 0 ;
+  float arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  float val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  Swig::Director *director = 0;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:RandomLoopMotion_reblend",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__RandomLoopMotion, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RandomLoopMotion_reblend" "', argument " "1"" of type '" "Piavca::RandomLoopMotion *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::RandomLoopMotion * >(argp1);
+  ecode2 = SWIG_AsVal_float(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RandomLoopMotion_reblend" "', argument " "2"" of type '" "float""'");
+  } 
+  arg2 = static_cast< float >(val2);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+  try {
+    Swig::UnknownExceptionHandler dh;
+    {
+      try {
+        (arg1)->reblend(arg2); 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }
+      catch (Piavca::Exception &e) 
+      {
+        std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+        SWIG_fail; 
+      }
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_disown_RandomLoopMotion(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Piavca::RandomLoopMotion *arg1 = (Piavca::RandomLoopMotion *) 0 ;
@@ -67977,6 +75610,56 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_RandomBlendLoop_reblend(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::RandomBlendLoop *arg1 = (Piavca::RandomBlendLoop *) 0 ;
+  float arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  float val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  Swig::Director *director = 0;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:RandomBlendLoop_reblend",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__RandomBlendLoop, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RandomBlendLoop_reblend" "', argument " "1"" of type '" "Piavca::RandomBlendLoop *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::RandomBlendLoop * >(argp1);
+  ecode2 = SWIG_AsVal_float(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RandomBlendLoop_reblend" "', argument " "2"" of type '" "float""'");
+  } 
+  arg2 = static_cast< float >(val2);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+  try {
+    Swig::UnknownExceptionHandler dh;
+    {
+      try {
+        (arg1)->reblend(arg2); 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }
+      catch (Piavca::Exception &e) 
+      {
+        std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+        SWIG_fail; 
+      }
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_disown_RandomBlendLoop(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Piavca::RandomBlendLoop *arg1 = (Piavca::RandomBlendLoop *) 0 ;
@@ -68495,6 +76178,56 @@ SWIGINTERN PyObject *_wrap_RandomAddLoop_shift(PyObject *SWIGUNUSEDPARM(self), P
     {
       try {
         (arg1)->shift(); 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }
+      catch (Piavca::Exception &e) 
+      {
+        std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+        SWIG_fail; 
+      }
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RandomAddLoop_reblend(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::RandomAddLoop *arg1 = (Piavca::RandomAddLoop *) 0 ;
+  float arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  float val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  Swig::Director *director = 0;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:RandomAddLoop_reblend",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__RandomAddLoop, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RandomAddLoop_reblend" "', argument " "1"" of type '" "Piavca::RandomAddLoop *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::RandomAddLoop * >(argp1);
+  ecode2 = SWIG_AsVal_float(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RandomAddLoop_reblend" "', argument " "2"" of type '" "float""'");
+  } 
+  arg2 = static_cast< float >(val2);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  if (director && (director->swig_get_self()==obj0)) director->swig_set_up();
+  try {
+    Swig::UnknownExceptionHandler dh;
+    {
+      try {
+        (arg1)->reblend(arg2); 
       }
       catch (Swig::DirectorException &e) {
         SWIG_fail; 
@@ -80449,6 +88182,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"KeyframeMotion_clone", _wrap_KeyframeMotion_clone, METH_VARARGS, NULL},
 	 { (char *)"KeyframeMotion_getMotionLength", _wrap_KeyframeMotion_getMotionLength, METH_VARARGS, NULL},
 	 { (char *)"KeyframeMotion_isFacial", _wrap_KeyframeMotion_isFacial, METH_VARARGS, NULL},
+	 { (char *)"KeyframeMotion_setFacial", _wrap_KeyframeMotion_setFacial, METH_VARARGS, NULL},
 	 { (char *)"KeyframeMotion_isRandomAccess", _wrap_KeyframeMotion_isRandomAccess, METH_VARARGS, NULL},
 	 { (char *)"KeyframeMotion_isNull", _wrap_KeyframeMotion_isNull, METH_VARARGS, NULL},
 	 { (char *)"KeyframeMotion_getTrackType", _wrap_KeyframeMotion_getTrackType, METH_VARARGS, NULL},
@@ -80720,6 +88454,67 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"delete_SequentialBlend", _wrap_delete_SequentialBlend, METH_VARARGS, NULL},
 	 { (char *)"disown_SequentialBlend", _wrap_disown_SequentialBlend, METH_VARARGS, NULL},
 	 { (char *)"SequentialBlend_swigregister", SequentialBlend_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_Sequence", _wrap_new_Sequence, METH_VARARGS, NULL},
+	 { (char *)"Sequence_clone", _wrap_Sequence_clone, METH_VARARGS, NULL},
+	 { (char *)"Sequence_setStartTime", _wrap_Sequence_setStartTime, METH_VARARGS, NULL},
+	 { (char *)"Sequence_getMotionLength", _wrap_Sequence_getMotionLength, METH_VARARGS, NULL},
+	 { (char *)"Sequence_getFloatValueAtTimeInternal", _wrap_Sequence_getFloatValueAtTimeInternal, METH_VARARGS, NULL},
+	 { (char *)"Sequence_getVecValueAtTimeInternal", _wrap_Sequence_getVecValueAtTimeInternal, METH_VARARGS, NULL},
+	 { (char *)"Sequence_getQuatValueAtTimeInternal", _wrap_Sequence_getQuatValueAtTimeInternal, METH_VARARGS, NULL},
+	 { (char *)"delete_Sequence", _wrap_delete_Sequence, METH_VARARGS, NULL},
+	 { (char *)"disown_Sequence", _wrap_disown_Sequence, METH_VARARGS, NULL},
+	 { (char *)"Sequence_swigregister", Sequence_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_SmoothSequence", _wrap_new_SmoothSequence, METH_VARARGS, NULL},
+	 { (char *)"SmoothSequence_clone", _wrap_SmoothSequence_clone, METH_VARARGS, NULL},
+	 { (char *)"SmoothSequence_create", _wrap_SmoothSequence_create, METH_VARARGS, NULL},
+	 { (char *)"SmoothSequence_setMaintainY", _wrap_SmoothSequence_setMaintainY, METH_VARARGS, NULL},
+	 { (char *)"SmoothSequence_setAccumulateRoot", _wrap_SmoothSequence_setAccumulateRoot, METH_VARARGS, NULL},
+	 { (char *)"SmoothSequence_setMotion1", _wrap_SmoothSequence_setMotion1, METH_VARARGS, NULL},
+	 { (char *)"SmoothSequence_setMotion2", _wrap_SmoothSequence_setMotion2, METH_VARARGS, NULL},
+	 { (char *)"SmoothSequence_setBlendStart", _wrap_SmoothSequence_setBlendStart, METH_VARARGS, NULL},
+	 { (char *)"SmoothSequence_setBlendInterval", _wrap_SmoothSequence_setBlendInterval, METH_VARARGS, NULL},
+	 { (char *)"SmoothSequence_getBlendStart", _wrap_SmoothSequence_getBlendStart, METH_VARARGS, NULL},
+	 { (char *)"SmoothSequence_getBlendInterval", _wrap_SmoothSequence_getBlendInterval, METH_VARARGS, NULL},
+	 { (char *)"delete_SmoothSequence", _wrap_delete_SmoothSequence, METH_VARARGS, NULL},
+	 { (char *)"SmoothSequence_swigregister", SmoothSequence_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_MotionPosture", _wrap_new_MotionPosture, METH_VARARGS, NULL},
+	 { (char *)"MotionPosture_clone", _wrap_MotionPosture_clone, METH_VARARGS, NULL},
+	 { (char *)"MotionPosture_getPostureFromMotion", _wrap_MotionPosture_getPostureFromMotion, METH_VARARGS, NULL},
+	 { (char *)"delete_MotionPosture", _wrap_delete_MotionPosture, METH_VARARGS, NULL},
+	 { (char *)"disown_MotionPosture", _wrap_disown_MotionPosture, METH_VARARGS, NULL},
+	 { (char *)"MotionPosture_swigregister", MotionPosture_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_AvatarPosture", _wrap_new_AvatarPosture, METH_VARARGS, NULL},
+	 { (char *)"AvatarPosture_clone", _wrap_AvatarPosture_clone, METH_VARARGS, NULL},
+	 { (char *)"AvatarPosture_load", _wrap_AvatarPosture_load, METH_VARARGS, NULL},
+	 { (char *)"AvatarPosture_getPostureFromAvatar", _wrap_AvatarPosture_getPostureFromAvatar, METH_VARARGS, NULL},
+	 { (char *)"delete_AvatarPosture", _wrap_delete_AvatarPosture, METH_VARARGS, NULL},
+	 { (char *)"disown_AvatarPosture", _wrap_disown_AvatarPosture, METH_VARARGS, NULL},
+	 { (char *)"AvatarPosture_swigregister", AvatarPosture_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_PostureBlend", _wrap_new_PostureBlend, METH_VARARGS, NULL},
+	 { (char *)"PostureBlend_clone", _wrap_PostureBlend_clone, METH_VARARGS, NULL},
+	 { (char *)"PostureBlend_setBlendInterval", _wrap_PostureBlend_setBlendInterval, METH_VARARGS, NULL},
+	 { (char *)"PostureBlend_setAccumulateRoot", _wrap_PostureBlend_setAccumulateRoot, METH_VARARGS, NULL},
+	 { (char *)"PostureBlend_reset", _wrap_PostureBlend_reset, METH_VARARGS, NULL},
+	 { (char *)"PostureBlend_reblend", _wrap_PostureBlend_reblend, METH_VARARGS, NULL},
+	 { (char *)"PostureBlend_setMotion", _wrap_PostureBlend_setMotion, METH_VARARGS, NULL},
+	 { (char *)"PostureBlend_getMotion", _wrap_PostureBlend_getMotion, METH_VARARGS, NULL},
+	 { (char *)"delete_PostureBlend", _wrap_delete_PostureBlend, METH_VARARGS, NULL},
+	 { (char *)"disown_PostureBlend", _wrap_disown_PostureBlend, METH_VARARGS, NULL},
+	 { (char *)"PostureBlend_swigregister", PostureBlend_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_Reposition", _wrap_new_Reposition, METH_VARARGS, NULL},
+	 { (char *)"Reposition_clone", _wrap_Reposition_clone, METH_VARARGS, NULL},
+	 { (char *)"Reposition_setStartPosition", _wrap_Reposition_setStartPosition, METH_VARARGS, NULL},
+	 { (char *)"Reposition_setStartOrientation", _wrap_Reposition_setStartOrientation, METH_VARARGS, NULL},
+	 { (char *)"Reposition_setStartFromMotion", _wrap_Reposition_setStartFromMotion, METH_VARARGS, NULL},
+	 { (char *)"Reposition_setMotion", _wrap_Reposition_setMotion, METH_VARARGS, NULL},
+	 { (char *)"Reposition_setMaintainY", _wrap_Reposition_setMaintainY, METH_VARARGS, NULL},
+	 { (char *)"Reposition_isNull", _wrap_Reposition_isNull, METH_VARARGS, NULL},
+	 { (char *)"Reposition_getFloatValueAtTimeInternal", _wrap_Reposition_getFloatValueAtTimeInternal, METH_VARARGS, NULL},
+	 { (char *)"Reposition_getVecValueAtTimeInternal", _wrap_Reposition_getVecValueAtTimeInternal, METH_VARARGS, NULL},
+	 { (char *)"Reposition_getQuatValueAtTimeInternal", _wrap_Reposition_getQuatValueAtTimeInternal, METH_VARARGS, NULL},
+	 { (char *)"delete_Reposition", _wrap_delete_Reposition, METH_VARARGS, NULL},
+	 { (char *)"disown_Reposition", _wrap_disown_Reposition, METH_VARARGS, NULL},
+	 { (char *)"Reposition_swigregister", Reposition_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_SelfBlend", _wrap_new_SelfBlend, METH_VARARGS, NULL},
 	 { (char *)"SelfBlend_clone", _wrap_SelfBlend_clone, METH_VARARGS, NULL},
 	 { (char *)"SelfBlend_reset", _wrap_SelfBlend_reset, METH_VARARGS, NULL},
@@ -80751,8 +88546,10 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"RandomTimingsLoop_swigregister", RandomTimingsLoop_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_AvatarPostureBlend", _wrap_new_AvatarPostureBlend, METH_VARARGS, NULL},
 	 { (char *)"AvatarPostureBlend_clone", _wrap_AvatarPostureBlend_clone, METH_VARARGS, NULL},
-	 { (char *)"AvatarPostureBlend_load", _wrap_AvatarPostureBlend_load, METH_VARARGS, NULL},
+	 { (char *)"AvatarPostureBlend_setBlendInterval", _wrap_AvatarPostureBlend_setBlendInterval, METH_VARARGS, NULL},
+	 { (char *)"AvatarPostureBlend_isNull", _wrap_AvatarPostureBlend_isNull, METH_VARARGS, NULL},
 	 { (char *)"AvatarPostureBlend_setMotion", _wrap_AvatarPostureBlend_setMotion, METH_VARARGS, NULL},
+	 { (char *)"AvatarPostureBlend_getMotion", _wrap_AvatarPostureBlend_getMotion, METH_VARARGS, NULL},
 	 { (char *)"AvatarPostureBlend_reblend", _wrap_AvatarPostureBlend_reblend, METH_VARARGS, NULL},
 	 { (char *)"delete_AvatarPostureBlend", _wrap_delete_AvatarPostureBlend, METH_VARARGS, NULL},
 	 { (char *)"AvatarPostureBlend_swigregister", AvatarPostureBlend_swigregister, METH_VARARGS, NULL},
@@ -80865,6 +88662,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"RandomLoopMotion_setProbability", _wrap_RandomLoopMotion_setProbability, METH_VARARGS, NULL},
 	 { (char *)"RandomLoopMotion_setMotionProb", _wrap_RandomLoopMotion_setMotionProb, METH_VARARGS, NULL},
 	 { (char *)"RandomLoopMotion_shift", _wrap_RandomLoopMotion_shift, METH_VARARGS, NULL},
+	 { (char *)"RandomLoopMotion_reblend", _wrap_RandomLoopMotion_reblend, METH_VARARGS, NULL},
 	 { (char *)"disown_RandomLoopMotion", _wrap_disown_RandomLoopMotion, METH_VARARGS, NULL},
 	 { (char *)"RandomLoopMotion_swigregister", RandomLoopMotion_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_RandomBlend", _wrap_new_RandomBlend, METH_VARARGS, NULL},
@@ -80885,6 +88683,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"RandomBlendLoop_clone", _wrap_RandomBlendLoop_clone, METH_VARARGS, NULL},
 	 { (char *)"RandomBlendLoop_addMotion", _wrap_RandomBlendLoop_addMotion, METH_VARARGS, NULL},
 	 { (char *)"RandomBlendLoop_shift", _wrap_RandomBlendLoop_shift, METH_VARARGS, NULL},
+	 { (char *)"RandomBlendLoop_reblend", _wrap_RandomBlendLoop_reblend, METH_VARARGS, NULL},
 	 { (char *)"disown_RandomBlendLoop", _wrap_disown_RandomBlendLoop, METH_VARARGS, NULL},
 	 { (char *)"RandomBlendLoop_swigregister", RandomBlendLoop_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_RandomAddLoop", _wrap_new_RandomAddLoop, METH_VARARGS, NULL},
@@ -80892,6 +88691,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"RandomAddLoop_clone", _wrap_RandomAddLoop_clone, METH_VARARGS, NULL},
 	 { (char *)"RandomAddLoop_addMotion", _wrap_RandomAddLoop_addMotion, METH_VARARGS, NULL},
 	 { (char *)"RandomAddLoop_shift", _wrap_RandomAddLoop_shift, METH_VARARGS, NULL},
+	 { (char *)"RandomAddLoop_reblend", _wrap_RandomAddLoop_reblend, METH_VARARGS, NULL},
 	 { (char *)"disown_RandomAddLoop", _wrap_disown_RandomAddLoop, METH_VARARGS, NULL},
 	 { (char *)"RandomAddLoop_swigregister", RandomAddLoop_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_ProxemicsLoop", _wrap_new_ProxemicsLoop, METH_VARARGS, NULL},
@@ -81083,36 +88883,6 @@ static PyMethodDef SwigMethods[] = {
 static void *_p_Piavca__SelfBlendTo_p_Piavca__SequentialBlend(void *x) {
     return (void *)((Piavca::SequentialBlend *)  ((Piavca::SelfBlend *) x));
 }
-static void *_p_Piavca__RandomGazeMotionTo_p_Piavca__SequentialBlend(void *x) {
-    return (void *)((Piavca::SequentialBlend *) (Piavca::SelfBlend *)(Piavca::LoopMotion *) ((Piavca::RandomGazeMotion *) x));
-}
-static void *_p_Piavca__DiadicGazeMotionTo_p_Piavca__SequentialBlend(void *x) {
-    return (void *)((Piavca::SequentialBlend *) (Piavca::SelfBlend *)(Piavca::LoopMotion *)(Piavca::RandomGazeMotion *) ((Piavca::DiadicGazeMotion *) x));
-}
-static void *_p_Piavca__RandomBlendLoopTo_p_Piavca__SequentialBlend(void *x) {
-    return (void *)((Piavca::SequentialBlend *) (Piavca::SelfBlend *)(Piavca::LoopMotion *)(Piavca::RandomTimingsLoop *) ((Piavca::RandomBlendLoop *) x));
-}
-static void *_p_Piavca__RandomAddLoopTo_p_Piavca__SequentialBlend(void *x) {
-    return (void *)((Piavca::SequentialBlend *) (Piavca::SelfBlend *)(Piavca::LoopMotion *)(Piavca::RandomTimingsLoop *) ((Piavca::RandomAddLoop *) x));
-}
-static void *_p_Piavca__ProxemicsLoopTo_p_Piavca__SequentialBlend(void *x) {
-    return (void *)((Piavca::SequentialBlend *) (Piavca::SelfBlend *)(Piavca::LoopMotion *)(Piavca::RandomTimingsLoop *) ((Piavca::ProxemicsLoop *) x));
-}
-static void *_p_Piavca__AvatarPostureBlendTo_p_Piavca__SequentialBlend(void *x) {
-    return (void *)((Piavca::SequentialBlend *)  ((Piavca::AvatarPostureBlend *) x));
-}
-static void *_p_Piavca__LoopMotionTo_p_Piavca__SequentialBlend(void *x) {
-    return (void *)((Piavca::SequentialBlend *) (Piavca::SelfBlend *) ((Piavca::LoopMotion *) x));
-}
-static void *_p_Piavca__RandomTimingsLoopTo_p_Piavca__SequentialBlend(void *x) {
-    return (void *)((Piavca::SequentialBlend *) (Piavca::SelfBlend *)(Piavca::LoopMotion *) ((Piavca::RandomTimingsLoop *) x));
-}
-static void *_p_Piavca__ChoiceLoopMotionTo_p_Piavca__SequentialBlend(void *x) {
-    return (void *)((Piavca::SequentialBlend *) (Piavca::SelfBlend *)(Piavca::LoopMotion *)(Piavca::RandomTimingsLoop *) ((Piavca::ChoiceLoopMotion *) x));
-}
-static void *_p_Piavca__RandomLoopMotionTo_p_Piavca__SequentialBlend(void *x) {
-    return (void *)((Piavca::SequentialBlend *) (Piavca::SelfBlend *)(Piavca::LoopMotion *)(Piavca::RandomTimingsLoop *) ((Piavca::RandomLoopMotion *) x));
-}
 static void *_p_Piavca__RandomBlendLoopTo_p_Piavca__RandomTimingsLoop(void *x) {
     return (void *)((Piavca::RandomTimingsLoop *)  ((Piavca::RandomBlendLoop *) x));
 }
@@ -81128,23 +88898,32 @@ static void *_p_Piavca__ChoiceLoopMotionTo_p_Piavca__RandomTimingsLoop(void *x) 
 static void *_p_Piavca__RandomLoopMotionTo_p_Piavca__RandomTimingsLoop(void *x) {
     return (void *)((Piavca::RandomTimingsLoop *)  ((Piavca::RandomLoopMotion *) x));
 }
-static void *_p_Piavca__DiadicGazeMotionTo_p_Piavca__RandomGazeMotion(void *x) {
-    return (void *)((Piavca::RandomGazeMotion *)  ((Piavca::DiadicGazeMotion *) x));
+static void *_p_Piavca__MotionPostureTo_p_Piavca__KeyframeMotion(void *x) {
+    return (void *)((Piavca::KeyframeMotion *)  ((Piavca::MotionPosture *) x));
+}
+static void *_p_Piavca__AvatarPostureTo_p_Piavca__KeyframeMotion(void *x) {
+    return (void *)((Piavca::KeyframeMotion *)  ((Piavca::AvatarPosture *) x));
 }
 static void *_p_Piavca__RandomChoiceMotionTo_p_Piavca__ChoiceMotion(void *x) {
     return (void *)((Piavca::ChoiceMotion *)  ((Piavca::RandomChoiceMotion *) x));
+}
+static void *_p_Piavca__DiadicGazeMotionTo_p_Piavca__RandomGazeMotion(void *x) {
+    return (void *)((Piavca::RandomGazeMotion *)  ((Piavca::DiadicGazeMotion *) x));
 }
 static void *_p_Piavca__MotionAdderTo_p_Piavca__TwoMotionCombiner(void *x) {
     return (void *)((Piavca::TwoMotionCombiner *)  ((Piavca::MotionAdder *) x));
 }
 static void *_p_Piavca__RandomGazeMotionTo_p_Piavca__TwoMotionCombiner(void *x) {
-    return (void *)((Piavca::TwoMotionCombiner *) (Piavca::SequentialBlend *)(Piavca::SelfBlend *)(Piavca::LoopMotion *) ((Piavca::RandomGazeMotion *) x));
+    return (void *)((Piavca::TwoMotionCombiner *) (Piavca::Sequence *)(Piavca::PostureBlend *)(Piavca::LoopMotion *) ((Piavca::RandomGazeMotion *) x));
 }
 static void *_p_Piavca__DiadicGazeMotionTo_p_Piavca__TwoMotionCombiner(void *x) {
-    return (void *)((Piavca::TwoMotionCombiner *) (Piavca::SequentialBlend *)(Piavca::SelfBlend *)(Piavca::LoopMotion *)(Piavca::RandomGazeMotion *) ((Piavca::DiadicGazeMotion *) x));
+    return (void *)((Piavca::TwoMotionCombiner *) (Piavca::Sequence *)(Piavca::PostureBlend *)(Piavca::LoopMotion *)(Piavca::RandomGazeMotion *) ((Piavca::DiadicGazeMotion *) x));
 }
 static void *_p_Piavca__AvatarPostureBlendTo_p_Piavca__TwoMotionCombiner(void *x) {
-    return (void *)((Piavca::TwoMotionCombiner *) (Piavca::SequentialBlend *) ((Piavca::AvatarPostureBlend *) x));
+    return (void *)((Piavca::TwoMotionCombiner *) (Piavca::Sequence *) ((Piavca::AvatarPostureBlend *) x));
+}
+static void *_p_Piavca__PostureBlendTo_p_Piavca__TwoMotionCombiner(void *x) {
+    return (void *)((Piavca::TwoMotionCombiner *) (Piavca::Sequence *) ((Piavca::PostureBlend *) x));
 }
 static void *_p_Piavca__MotionTransitionTo_p_Piavca__TwoMotionCombiner(void *x) {
     return (void *)((Piavca::TwoMotionCombiner *)  ((Piavca::MotionTransition *) x));
@@ -81152,29 +88931,35 @@ static void *_p_Piavca__MotionTransitionTo_p_Piavca__TwoMotionCombiner(void *x) 
 static void *_p_Piavca__SequentialBlendTo_p_Piavca__TwoMotionCombiner(void *x) {
     return (void *)((Piavca::TwoMotionCombiner *)  ((Piavca::SequentialBlend *) x));
 }
-static void *_p_Piavca__ProxemicsLoopTo_p_Piavca__TwoMotionCombiner(void *x) {
-    return (void *)((Piavca::TwoMotionCombiner *) (Piavca::SequentialBlend *)(Piavca::SelfBlend *)(Piavca::LoopMotion *)(Piavca::RandomTimingsLoop *) ((Piavca::ProxemicsLoop *) x));
-}
-static void *_p_Piavca__RandomAddLoopTo_p_Piavca__TwoMotionCombiner(void *x) {
-    return (void *)((Piavca::TwoMotionCombiner *) (Piavca::SequentialBlend *)(Piavca::SelfBlend *)(Piavca::LoopMotion *)(Piavca::RandomTimingsLoop *) ((Piavca::RandomAddLoop *) x));
-}
 static void *_p_Piavca__SelfBlendTo_p_Piavca__TwoMotionCombiner(void *x) {
     return (void *)((Piavca::TwoMotionCombiner *) (Piavca::SequentialBlend *) ((Piavca::SelfBlend *) x));
 }
+static void *_p_Piavca__RandomAddLoopTo_p_Piavca__TwoMotionCombiner(void *x) {
+    return (void *)((Piavca::TwoMotionCombiner *) (Piavca::Sequence *)(Piavca::PostureBlend *)(Piavca::LoopMotion *)(Piavca::RandomTimingsLoop *) ((Piavca::RandomAddLoop *) x));
+}
+static void *_p_Piavca__ProxemicsLoopTo_p_Piavca__TwoMotionCombiner(void *x) {
+    return (void *)((Piavca::TwoMotionCombiner *) (Piavca::Sequence *)(Piavca::PostureBlend *)(Piavca::LoopMotion *)(Piavca::RandomTimingsLoop *) ((Piavca::ProxemicsLoop *) x));
+}
 static void *_p_Piavca__RandomLoopMotionTo_p_Piavca__TwoMotionCombiner(void *x) {
-    return (void *)((Piavca::TwoMotionCombiner *) (Piavca::SequentialBlend *)(Piavca::SelfBlend *)(Piavca::LoopMotion *)(Piavca::RandomTimingsLoop *) ((Piavca::RandomLoopMotion *) x));
+    return (void *)((Piavca::TwoMotionCombiner *) (Piavca::Sequence *)(Piavca::PostureBlend *)(Piavca::LoopMotion *)(Piavca::RandomTimingsLoop *) ((Piavca::RandomLoopMotion *) x));
 }
 static void *_p_Piavca__ChoiceLoopMotionTo_p_Piavca__TwoMotionCombiner(void *x) {
-    return (void *)((Piavca::TwoMotionCombiner *) (Piavca::SequentialBlend *)(Piavca::SelfBlend *)(Piavca::LoopMotion *)(Piavca::RandomTimingsLoop *) ((Piavca::ChoiceLoopMotion *) x));
+    return (void *)((Piavca::TwoMotionCombiner *) (Piavca::Sequence *)(Piavca::PostureBlend *)(Piavca::LoopMotion *)(Piavca::RandomTimingsLoop *) ((Piavca::ChoiceLoopMotion *) x));
 }
 static void *_p_Piavca__LoopMotionTo_p_Piavca__TwoMotionCombiner(void *x) {
-    return (void *)((Piavca::TwoMotionCombiner *) (Piavca::SequentialBlend *)(Piavca::SelfBlend *) ((Piavca::LoopMotion *) x));
+    return (void *)((Piavca::TwoMotionCombiner *) (Piavca::Sequence *)(Piavca::PostureBlend *) ((Piavca::LoopMotion *) x));
 }
 static void *_p_Piavca__RandomBlendLoopTo_p_Piavca__TwoMotionCombiner(void *x) {
-    return (void *)((Piavca::TwoMotionCombiner *) (Piavca::SequentialBlend *)(Piavca::SelfBlend *)(Piavca::LoopMotion *)(Piavca::RandomTimingsLoop *) ((Piavca::RandomBlendLoop *) x));
+    return (void *)((Piavca::TwoMotionCombiner *) (Piavca::Sequence *)(Piavca::PostureBlend *)(Piavca::LoopMotion *)(Piavca::RandomTimingsLoop *) ((Piavca::RandomBlendLoop *) x));
 }
 static void *_p_Piavca__RandomTimingsLoopTo_p_Piavca__TwoMotionCombiner(void *x) {
-    return (void *)((Piavca::TwoMotionCombiner *) (Piavca::SequentialBlend *)(Piavca::SelfBlend *)(Piavca::LoopMotion *) ((Piavca::RandomTimingsLoop *) x));
+    return (void *)((Piavca::TwoMotionCombiner *) (Piavca::Sequence *)(Piavca::PostureBlend *)(Piavca::LoopMotion *) ((Piavca::RandomTimingsLoop *) x));
+}
+static void *_p_Piavca__SmoothSequenceTo_p_Piavca__TwoMotionCombiner(void *x) {
+    return (void *)((Piavca::TwoMotionCombiner *) (Piavca::Sequence *) ((Piavca::SmoothSequence *) x));
+}
+static void *_p_Piavca__SequenceTo_p_Piavca__TwoMotionCombiner(void *x) {
+    return (void *)((Piavca::TwoMotionCombiner *)  ((Piavca::Sequence *) x));
 }
 static void *_p_Piavca__SubtractTo_p_Piavca__TwoMotionCombiner(void *x) {
     return (void *)((Piavca::TwoMotionCombiner *)  ((Piavca::Subtract *) x));
@@ -81193,6 +88978,162 @@ static void *_p_Piavca__RandomAddTo_p_Piavca__MultiMotionCombiner(void *x) {
 }
 static void *_p_Piavca__RandomBlendTo_p_Piavca__MultiMotionCombiner(void *x) {
     return (void *)((Piavca::MultiMotionCombiner *)  ((Piavca::RandomBlend *) x));
+}
+static void *_p_Piavca__RandomGazeMotionTo_p_Piavca__PostureBlend(void *x) {
+    return (void *)((Piavca::PostureBlend *) (Piavca::LoopMotion *) ((Piavca::RandomGazeMotion *) x));
+}
+static void *_p_Piavca__DiadicGazeMotionTo_p_Piavca__PostureBlend(void *x) {
+    return (void *)((Piavca::PostureBlend *) (Piavca::LoopMotion *)(Piavca::RandomGazeMotion *) ((Piavca::DiadicGazeMotion *) x));
+}
+static void *_p_Piavca__RandomBlendLoopTo_p_Piavca__PostureBlend(void *x) {
+    return (void *)((Piavca::PostureBlend *) (Piavca::LoopMotion *)(Piavca::RandomTimingsLoop *) ((Piavca::RandomBlendLoop *) x));
+}
+static void *_p_Piavca__RandomAddLoopTo_p_Piavca__PostureBlend(void *x) {
+    return (void *)((Piavca::PostureBlend *) (Piavca::LoopMotion *)(Piavca::RandomTimingsLoop *) ((Piavca::RandomAddLoop *) x));
+}
+static void *_p_Piavca__ProxemicsLoopTo_p_Piavca__PostureBlend(void *x) {
+    return (void *)((Piavca::PostureBlend *) (Piavca::LoopMotion *)(Piavca::RandomTimingsLoop *) ((Piavca::ProxemicsLoop *) x));
+}
+static void *_p_Piavca__LoopMotionTo_p_Piavca__PostureBlend(void *x) {
+    return (void *)((Piavca::PostureBlend *)  ((Piavca::LoopMotion *) x));
+}
+static void *_p_Piavca__RandomTimingsLoopTo_p_Piavca__PostureBlend(void *x) {
+    return (void *)((Piavca::PostureBlend *) (Piavca::LoopMotion *) ((Piavca::RandomTimingsLoop *) x));
+}
+static void *_p_Piavca__ChoiceLoopMotionTo_p_Piavca__PostureBlend(void *x) {
+    return (void *)((Piavca::PostureBlend *) (Piavca::LoopMotion *)(Piavca::RandomTimingsLoop *) ((Piavca::ChoiceLoopMotion *) x));
+}
+static void *_p_Piavca__RandomLoopMotionTo_p_Piavca__PostureBlend(void *x) {
+    return (void *)((Piavca::PostureBlend *) (Piavca::LoopMotion *)(Piavca::RandomTimingsLoop *) ((Piavca::RandomLoopMotion *) x));
+}
+static void *_p_Piavca__BlendBetweenTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *) (Piavca::TwoMotionCombiner *) ((Piavca::BlendBetween *) x));
+}
+static void *_p_Piavca__SequenceTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *) (Piavca::TwoMotionCombiner *) ((Piavca::Sequence *) x));
+}
+static void *_p_Piavca__SmoothSequenceTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *) (Piavca::TwoMotionCombiner *)(Piavca::Sequence *) ((Piavca::SmoothSequence *) x));
+}
+static void *_p_Piavca__RandomBlendLoopTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *) (Piavca::TwoMotionCombiner *)(Piavca::Sequence *)(Piavca::PostureBlend *)(Piavca::LoopMotion *)(Piavca::RandomTimingsLoop *) ((Piavca::RandomBlendLoop *) x));
+}
+static void *_p_Piavca__RandomLoopMotionTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *) (Piavca::TwoMotionCombiner *)(Piavca::Sequence *)(Piavca::PostureBlend *)(Piavca::LoopMotion *)(Piavca::RandomTimingsLoop *) ((Piavca::RandomLoopMotion *) x));
+}
+static void *_p_Piavca__ChoiceLoopMotionTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *) (Piavca::TwoMotionCombiner *)(Piavca::Sequence *)(Piavca::PostureBlend *)(Piavca::LoopMotion *)(Piavca::RandomTimingsLoop *) ((Piavca::ChoiceLoopMotion *) x));
+}
+static void *_p_Piavca__MaskedMotionTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *) (Piavca::MotionFilter *) ((Piavca::MaskedMotion *) x));
+}
+static void *_p_Piavca__LoopMotionTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *) (Piavca::TwoMotionCombiner *)(Piavca::Sequence *)(Piavca::PostureBlend *) ((Piavca::LoopMotion *) x));
+}
+static void *_p_Piavca__TurnMotionTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *) (Piavca::MotionFilter *) ((Piavca::TurnMotion *) x));
+}
+static void *_p_Piavca__LookAtMotionTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *)  ((Piavca::LookAtMotion *) x));
+}
+static void *_p_Piavca__MotionSaverTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *) (Piavca::MotionFilter *) ((Piavca::MotionSaver *) x));
+}
+static void *_p_Piavca__SubMotionTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *) (Piavca::MotionFilter *) ((Piavca::SubMotion *) x));
+}
+static void *_p_Piavca__AvatarPostureBlendTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *) (Piavca::TwoMotionCombiner *)(Piavca::Sequence *) ((Piavca::AvatarPostureBlend *) x));
+}
+static void *_p_Piavca__PostureBlendTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *) (Piavca::TwoMotionCombiner *)(Piavca::Sequence *) ((Piavca::PostureBlend *) x));
+}
+static void *_p_Piavca__RandomBlendTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *) (Piavca::MotionFilter *)(Piavca::MultiMotionCombiner *) ((Piavca::RandomBlend *) x));
+}
+static void *_p_Piavca__MotionTransitionTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *) (Piavca::TwoMotionCombiner *) ((Piavca::MotionTransition *) x));
+}
+static void *_p_Piavca__RandomAddTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *) (Piavca::MotionFilter *)(Piavca::MultiMotionCombiner *) ((Piavca::RandomAdd *) x));
+}
+static void *_p_Piavca__ScaleMotionRootTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *) (Piavca::MotionFilter *) ((Piavca::ScaleMotionRoot *) x));
+}
+static void *_p_Piavca__RandomChoiceMotionTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *) (Piavca::MotionFilter *)(Piavca::MultiMotionCombiner *)(Piavca::ChoiceMotion *) ((Piavca::RandomChoiceMotion *) x));
+}
+static void *_p_Piavca__ChoiceMotionTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *) (Piavca::MotionFilter *)(Piavca::MultiMotionCombiner *) ((Piavca::ChoiceMotion *) x));
+}
+static void *_p_Piavca__KeyframeMotionTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *)  ((Piavca::KeyframeMotion *) x));
+}
+static void *_p_Piavca__ScaleMotionTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *) (Piavca::MotionFilter *) ((Piavca::ScaleMotion *) x));
+}
+static void *_p_Piavca__LookAtToFacialTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *) (Piavca::MotionFilter *) ((Piavca::LookAtToFacial *) x));
+}
+static void *_p_Piavca__RandomGazeMotionTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *) (Piavca::TwoMotionCombiner *)(Piavca::Sequence *)(Piavca::PostureBlend *)(Piavca::LoopMotion *) ((Piavca::RandomGazeMotion *) x));
+}
+static void *_p_Piavca__ZeroMotionTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *)  ((Piavca::ZeroMotion *) x));
+}
+static void *_p_Piavca__TimeRangeMotionTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *) (Piavca::MotionFilter *) ((Piavca::TimeRangeMotion *) x));
+}
+static void *_p_Piavca__TimeWarpTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *) (Piavca::MotionFilter *) ((Piavca::TimeWarp *) x));
+}
+static void *_p_Piavca__DiadicGazeMotionTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *) (Piavca::TwoMotionCombiner *)(Piavca::Sequence *)(Piavca::PostureBlend *)(Piavca::LoopMotion *)(Piavca::RandomGazeMotion *) ((Piavca::DiadicGazeMotion *) x));
+}
+static void *_p_Piavca__ProxemicsLoopTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *) (Piavca::TwoMotionCombiner *)(Piavca::Sequence *)(Piavca::PostureBlend *)(Piavca::LoopMotion *)(Piavca::RandomTimingsLoop *) ((Piavca::ProxemicsLoop *) x));
+}
+static void *_p_Piavca__MotionPostureTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *) (Piavca::KeyframeMotion *) ((Piavca::MotionPosture *) x));
+}
+static void *_p_Piavca__AvatarPostureTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *) (Piavca::KeyframeMotion *) ((Piavca::AvatarPosture *) x));
+}
+static void *_p_Piavca__MultiMotionCombinerTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *) (Piavca::MotionFilter *) ((Piavca::MultiMotionCombiner *) x));
+}
+static void *_p_Piavca__TwoMotionCombinerTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *)  ((Piavca::TwoMotionCombiner *) x));
+}
+static void *_p_Piavca__ScaleMotionSpeedTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *) (Piavca::MotionFilter *) ((Piavca::ScaleMotionSpeed *) x));
+}
+static void *_p_Piavca__SequentialBlendTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *) (Piavca::TwoMotionCombiner *) ((Piavca::SequentialBlend *) x));
+}
+static void *_p_Piavca__RandomAddLoopTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *) (Piavca::TwoMotionCombiner *)(Piavca::Sequence *)(Piavca::PostureBlend *)(Piavca::LoopMotion *)(Piavca::RandomTimingsLoop *) ((Piavca::RandomAddLoop *) x));
+}
+static void *_p_Piavca__SelfBlendTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *) (Piavca::TwoMotionCombiner *)(Piavca::SequentialBlend *) ((Piavca::SelfBlend *) x));
+}
+static void *_p_Piavca__SubtractTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *) (Piavca::TwoMotionCombiner *) ((Piavca::Subtract *) x));
+}
+static void *_p_Piavca__MotionAdderTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *) (Piavca::TwoMotionCombiner *) ((Piavca::MotionAdder *) x));
+}
+static void *_p_Piavca__MotionFilterTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *)  ((Piavca::MotionFilter *) x));
+}
+static void *_p_Piavca__RandomTimingsLoopTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *) (Piavca::TwoMotionCombiner *)(Piavca::Sequence *)(Piavca::PostureBlend *)(Piavca::LoopMotion *) ((Piavca::RandomTimingsLoop *) x));
+}
+static void *_p_Piavca__RepositionTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *) (Piavca::MotionFilter *) ((Piavca::Reposition *) x));
+}
+static void *_p_Piavca__TimeOffsetTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *) (Piavca::MotionFilter *) ((Piavca::TimeOffset *) x));
 }
 static void *_p_Piavca__RandomGazeMotionTo_p_Piavca__LoopMotion(void *x) {
     return (void *)((Piavca::LoopMotion *)  ((Piavca::RandomGazeMotion *) x));
@@ -81218,117 +89159,6 @@ static void *_p_Piavca__ChoiceLoopMotionTo_p_Piavca__LoopMotion(void *x) {
 static void *_p_Piavca__RandomLoopMotionTo_p_Piavca__LoopMotion(void *x) {
     return (void *)((Piavca::LoopMotion *) (Piavca::RandomTimingsLoop *) ((Piavca::RandomLoopMotion *) x));
 }
-static void *_p_Piavca__BlendBetweenTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *) (Piavca::TwoMotionCombiner *) ((Piavca::BlendBetween *) x));
-}
-static void *_p_Piavca__RandomBlendLoopTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *) (Piavca::TwoMotionCombiner *)(Piavca::SequentialBlend *)(Piavca::SelfBlend *)(Piavca::LoopMotion *)(Piavca::RandomTimingsLoop *) ((Piavca::RandomBlendLoop *) x));
-}
-static void *_p_Piavca__MotionSaverTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *) (Piavca::MotionFilter *) ((Piavca::MotionSaver *) x));
-}
-static void *_p_Piavca__SubMotionTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *) (Piavca::MotionFilter *) ((Piavca::SubMotion *) x));
-}
-static void *_p_Piavca__LookAtMotionTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *)  ((Piavca::LookAtMotion *) x));
-}
-static void *_p_Piavca__RandomLoopMotionTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *) (Piavca::TwoMotionCombiner *)(Piavca::SequentialBlend *)(Piavca::SelfBlend *)(Piavca::LoopMotion *)(Piavca::RandomTimingsLoop *) ((Piavca::RandomLoopMotion *) x));
-}
-static void *_p_Piavca__ChoiceLoopMotionTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *) (Piavca::TwoMotionCombiner *)(Piavca::SequentialBlend *)(Piavca::SelfBlend *)(Piavca::LoopMotion *)(Piavca::RandomTimingsLoop *) ((Piavca::ChoiceLoopMotion *) x));
-}
-static void *_p_Piavca__MaskedMotionTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *) (Piavca::MotionFilter *) ((Piavca::MaskedMotion *) x));
-}
-static void *_p_Piavca__TurnMotionTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *) (Piavca::MotionFilter *) ((Piavca::TurnMotion *) x));
-}
-static void *_p_Piavca__LoopMotionTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *) (Piavca::TwoMotionCombiner *)(Piavca::SequentialBlend *)(Piavca::SelfBlend *) ((Piavca::LoopMotion *) x));
-}
-static void *_p_Piavca__AvatarPostureBlendTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *) (Piavca::TwoMotionCombiner *)(Piavca::SequentialBlend *) ((Piavca::AvatarPostureBlend *) x));
-}
-static void *_p_Piavca__RandomBlendTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *) (Piavca::MotionFilter *)(Piavca::MultiMotionCombiner *) ((Piavca::RandomBlend *) x));
-}
-static void *_p_Piavca__MotionTransitionTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *) (Piavca::TwoMotionCombiner *) ((Piavca::MotionTransition *) x));
-}
-static void *_p_Piavca__RandomAddTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *) (Piavca::MotionFilter *)(Piavca::MultiMotionCombiner *) ((Piavca::RandomAdd *) x));
-}
-static void *_p_Piavca__ScaleMotionRootTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *) (Piavca::MotionFilter *) ((Piavca::ScaleMotionRoot *) x));
-}
-static void *_p_Piavca__LookAtToFacialTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *) (Piavca::MotionFilter *) ((Piavca::LookAtToFacial *) x));
-}
-static void *_p_Piavca__ZeroMotionTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *)  ((Piavca::ZeroMotion *) x));
-}
-static void *_p_Piavca__RandomGazeMotionTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *) (Piavca::TwoMotionCombiner *)(Piavca::SequentialBlend *)(Piavca::SelfBlend *)(Piavca::LoopMotion *) ((Piavca::RandomGazeMotion *) x));
-}
-static void *_p_Piavca__RandomChoiceMotionTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *) (Piavca::MotionFilter *)(Piavca::MultiMotionCombiner *)(Piavca::ChoiceMotion *) ((Piavca::RandomChoiceMotion *) x));
-}
-static void *_p_Piavca__ChoiceMotionTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *) (Piavca::MotionFilter *)(Piavca::MultiMotionCombiner *) ((Piavca::ChoiceMotion *) x));
-}
-static void *_p_Piavca__KeyframeMotionTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *)  ((Piavca::KeyframeMotion *) x));
-}
-static void *_p_Piavca__ScaleMotionTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *) (Piavca::MotionFilter *) ((Piavca::ScaleMotion *) x));
-}
-static void *_p_Piavca__TimeRangeMotionTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *) (Piavca::MotionFilter *) ((Piavca::TimeRangeMotion *) x));
-}
-static void *_p_Piavca__TimeWarpTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *) (Piavca::MotionFilter *) ((Piavca::TimeWarp *) x));
-}
-static void *_p_Piavca__DiadicGazeMotionTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *) (Piavca::TwoMotionCombiner *)(Piavca::SequentialBlend *)(Piavca::SelfBlend *)(Piavca::LoopMotion *)(Piavca::RandomGazeMotion *) ((Piavca::DiadicGazeMotion *) x));
-}
-static void *_p_Piavca__ProxemicsLoopTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *) (Piavca::TwoMotionCombiner *)(Piavca::SequentialBlend *)(Piavca::SelfBlend *)(Piavca::LoopMotion *)(Piavca::RandomTimingsLoop *) ((Piavca::ProxemicsLoop *) x));
-}
-static void *_p_Piavca__MultiMotionCombinerTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *) (Piavca::MotionFilter *) ((Piavca::MultiMotionCombiner *) x));
-}
-static void *_p_Piavca__TwoMotionCombinerTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *)  ((Piavca::TwoMotionCombiner *) x));
-}
-static void *_p_Piavca__ScaleMotionSpeedTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *) (Piavca::MotionFilter *) ((Piavca::ScaleMotionSpeed *) x));
-}
-static void *_p_Piavca__SequentialBlendTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *) (Piavca::TwoMotionCombiner *) ((Piavca::SequentialBlend *) x));
-}
-static void *_p_Piavca__RandomAddLoopTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *) (Piavca::TwoMotionCombiner *)(Piavca::SequentialBlend *)(Piavca::SelfBlend *)(Piavca::LoopMotion *)(Piavca::RandomTimingsLoop *) ((Piavca::RandomAddLoop *) x));
-}
-static void *_p_Piavca__SelfBlendTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *) (Piavca::TwoMotionCombiner *)(Piavca::SequentialBlend *) ((Piavca::SelfBlend *) x));
-}
-static void *_p_Piavca__SubtractTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *) (Piavca::TwoMotionCombiner *) ((Piavca::Subtract *) x));
-}
-static void *_p_Piavca__MotionAdderTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *) (Piavca::TwoMotionCombiner *) ((Piavca::MotionAdder *) x));
-}
-static void *_p_Piavca__MotionFilterTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *)  ((Piavca::MotionFilter *) x));
-}
-static void *_p_Piavca__RandomTimingsLoopTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *) (Piavca::TwoMotionCombiner *)(Piavca::SequentialBlend *)(Piavca::SelfBlend *)(Piavca::LoopMotion *) ((Piavca::RandomTimingsLoop *) x));
-}
-static void *_p_Piavca__TimeOffsetTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *) (Piavca::MotionFilter *) ((Piavca::TimeOffset *) x));
-}
 static void *_p_Piavca__MultiMotionCombinerTo_p_Piavca__MotionFilter(void *x) {
     return (void *)((Piavca::MotionFilter *)  ((Piavca::MultiMotionCombiner *) x));
 }
@@ -81344,9 +89174,6 @@ static void *_p_Piavca__ScaleMotionTo_p_Piavca__MotionFilter(void *x) {
 static void *_p_Piavca__TimeRangeMotionTo_p_Piavca__MotionFilter(void *x) {
     return (void *)((Piavca::MotionFilter *)  ((Piavca::TimeRangeMotion *) x));
 }
-static void *_p_Piavca__SubMotionTo_p_Piavca__MotionFilter(void *x) {
-    return (void *)((Piavca::MotionFilter *)  ((Piavca::SubMotion *) x));
-}
 static void *_p_Piavca__RandomBlendTo_p_Piavca__MotionFilter(void *x) {
     return (void *)((Piavca::MotionFilter *) (Piavca::MultiMotionCombiner *) ((Piavca::RandomBlend *) x));
 }
@@ -81359,8 +89186,14 @@ static void *_p_Piavca__TurnMotionTo_p_Piavca__MotionFilter(void *x) {
 static void *_p_Piavca__TimeOffsetTo_p_Piavca__MotionFilter(void *x) {
     return (void *)((Piavca::MotionFilter *)  ((Piavca::TimeOffset *) x));
 }
+static void *_p_Piavca__SubMotionTo_p_Piavca__MotionFilter(void *x) {
+    return (void *)((Piavca::MotionFilter *)  ((Piavca::SubMotion *) x));
+}
 static void *_p_Piavca__ScaleMotionRootTo_p_Piavca__MotionFilter(void *x) {
     return (void *)((Piavca::MotionFilter *)  ((Piavca::ScaleMotionRoot *) x));
+}
+static void *_p_Piavca__RepositionTo_p_Piavca__MotionFilter(void *x) {
+    return (void *)((Piavca::MotionFilter *)  ((Piavca::Reposition *) x));
 }
 static void *_p_Piavca__TimeWarpTo_p_Piavca__MotionFilter(void *x) {
     return (void *)((Piavca::MotionFilter *)  ((Piavca::TimeWarp *) x));
@@ -81392,35 +89225,45 @@ static void *_p_Piavca__AvatarMotionQueueTo_p_Piavca__AvatarTimeCallback(void *x
 static void *_p_Piavca__PyAvatarTimeCallbackTo_p_Piavca__AvatarTimeCallback(void *x) {
     return (void *)((Piavca::AvatarTimeCallback *)  ((Piavca::PyAvatarTimeCallback *) x));
 }
-static void *_p_Piavca__RandomGazeMotionTo_p_Piavca__SelfBlend(void *x) {
-    return (void *)((Piavca::SelfBlend *) (Piavca::LoopMotion *) ((Piavca::RandomGazeMotion *) x));
+static void *_p_Piavca__RandomGazeMotionTo_p_Piavca__Sequence(void *x) {
+    return (void *)((Piavca::Sequence *) (Piavca::PostureBlend *)(Piavca::LoopMotion *) ((Piavca::RandomGazeMotion *) x));
 }
-static void *_p_Piavca__DiadicGazeMotionTo_p_Piavca__SelfBlend(void *x) {
-    return (void *)((Piavca::SelfBlend *) (Piavca::LoopMotion *)(Piavca::RandomGazeMotion *) ((Piavca::DiadicGazeMotion *) x));
+static void *_p_Piavca__DiadicGazeMotionTo_p_Piavca__Sequence(void *x) {
+    return (void *)((Piavca::Sequence *) (Piavca::PostureBlend *)(Piavca::LoopMotion *)(Piavca::RandomGazeMotion *) ((Piavca::DiadicGazeMotion *) x));
 }
-static void *_p_Piavca__RandomBlendLoopTo_p_Piavca__SelfBlend(void *x) {
-    return (void *)((Piavca::SelfBlend *) (Piavca::LoopMotion *)(Piavca::RandomTimingsLoop *) ((Piavca::RandomBlendLoop *) x));
+static void *_p_Piavca__RandomBlendLoopTo_p_Piavca__Sequence(void *x) {
+    return (void *)((Piavca::Sequence *) (Piavca::PostureBlend *)(Piavca::LoopMotion *)(Piavca::RandomTimingsLoop *) ((Piavca::RandomBlendLoop *) x));
 }
-static void *_p_Piavca__RandomAddLoopTo_p_Piavca__SelfBlend(void *x) {
-    return (void *)((Piavca::SelfBlend *) (Piavca::LoopMotion *)(Piavca::RandomTimingsLoop *) ((Piavca::RandomAddLoop *) x));
+static void *_p_Piavca__RandomAddLoopTo_p_Piavca__Sequence(void *x) {
+    return (void *)((Piavca::Sequence *) (Piavca::PostureBlend *)(Piavca::LoopMotion *)(Piavca::RandomTimingsLoop *) ((Piavca::RandomAddLoop *) x));
 }
-static void *_p_Piavca__ProxemicsLoopTo_p_Piavca__SelfBlend(void *x) {
-    return (void *)((Piavca::SelfBlend *) (Piavca::LoopMotion *)(Piavca::RandomTimingsLoop *) ((Piavca::ProxemicsLoop *) x));
+static void *_p_Piavca__SmoothSequenceTo_p_Piavca__Sequence(void *x) {
+    return (void *)((Piavca::Sequence *)  ((Piavca::SmoothSequence *) x));
 }
-static void *_p_Piavca__LoopMotionTo_p_Piavca__SelfBlend(void *x) {
-    return (void *)((Piavca::SelfBlend *)  ((Piavca::LoopMotion *) x));
+static void *_p_Piavca__ProxemicsLoopTo_p_Piavca__Sequence(void *x) {
+    return (void *)((Piavca::Sequence *) (Piavca::PostureBlend *)(Piavca::LoopMotion *)(Piavca::RandomTimingsLoop *) ((Piavca::ProxemicsLoop *) x));
 }
-static void *_p_Piavca__RandomTimingsLoopTo_p_Piavca__SelfBlend(void *x) {
-    return (void *)((Piavca::SelfBlend *) (Piavca::LoopMotion *) ((Piavca::RandomTimingsLoop *) x));
+static void *_p_Piavca__PostureBlendTo_p_Piavca__Sequence(void *x) {
+    return (void *)((Piavca::Sequence *)  ((Piavca::PostureBlend *) x));
 }
-static void *_p_Piavca__ChoiceLoopMotionTo_p_Piavca__SelfBlend(void *x) {
-    return (void *)((Piavca::SelfBlend *) (Piavca::LoopMotion *)(Piavca::RandomTimingsLoop *) ((Piavca::ChoiceLoopMotion *) x));
+static void *_p_Piavca__AvatarPostureBlendTo_p_Piavca__Sequence(void *x) {
+    return (void *)((Piavca::Sequence *)  ((Piavca::AvatarPostureBlend *) x));
 }
-static void *_p_Piavca__RandomLoopMotionTo_p_Piavca__SelfBlend(void *x) {
-    return (void *)((Piavca::SelfBlend *) (Piavca::LoopMotion *)(Piavca::RandomTimingsLoop *) ((Piavca::RandomLoopMotion *) x));
+static void *_p_Piavca__LoopMotionTo_p_Piavca__Sequence(void *x) {
+    return (void *)((Piavca::Sequence *) (Piavca::PostureBlend *) ((Piavca::LoopMotion *) x));
+}
+static void *_p_Piavca__RandomTimingsLoopTo_p_Piavca__Sequence(void *x) {
+    return (void *)((Piavca::Sequence *) (Piavca::PostureBlend *)(Piavca::LoopMotion *) ((Piavca::RandomTimingsLoop *) x));
+}
+static void *_p_Piavca__ChoiceLoopMotionTo_p_Piavca__Sequence(void *x) {
+    return (void *)((Piavca::Sequence *) (Piavca::PostureBlend *)(Piavca::LoopMotion *)(Piavca::RandomTimingsLoop *) ((Piavca::ChoiceLoopMotion *) x));
+}
+static void *_p_Piavca__RandomLoopMotionTo_p_Piavca__Sequence(void *x) {
+    return (void *)((Piavca::Sequence *) (Piavca::PostureBlend *)(Piavca::LoopMotion *)(Piavca::RandomTimingsLoop *) ((Piavca::RandomLoopMotion *) x));
 }
 static swig_type_info _swigt__p_Piavca__Avatar = {"_p_Piavca__Avatar", "Piavca::Avatar *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__AvatarMotionQueue = {"_p_Piavca__AvatarMotionQueue", "Piavca::AvatarMotionQueue *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_Piavca__AvatarPosture = {"_p_Piavca__AvatarPosture", "Piavca::AvatarPosture *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__AvatarPostureBlend = {"_p_Piavca__AvatarPostureBlend", "Piavca::AvatarPostureBlend *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__AvatarTargetStruct = {"_p_Piavca__AvatarTargetStruct", "Piavca::AvatarTargetStruct *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__AvatarTimeCallback = {"_p_Piavca__AvatarTimeCallback", "Piavca::AvatarTimeCallback *", 0, 0, (void*)0, 0};
@@ -81441,11 +89284,13 @@ static swig_type_info _swigt__p_Piavca__MotionFilter = {"_p_Piavca__MotionFilter
 static swig_type_info _swigt__p_Piavca__MotionImp = {"_p_Piavca__MotionImp", "Piavca::MotionImp *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__MotionMask = {"_p_Piavca__MotionMask", "Piavca::MotionMask *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__MotionParser = {"_p_Piavca__MotionParser", "Piavca::MotionParser *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_Piavca__MotionPosture = {"_p_Piavca__MotionPosture", "Piavca::MotionPosture *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__MotionSaver = {"_p_Piavca__MotionSaver", "Piavca::MotionSaver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__MotionTransition = {"_p_Piavca__MotionTransition", "Piavca::MotionTransition *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__MultiMotionCombiner = {"_p_Piavca__MultiMotionCombiner", "Piavca::MultiMotionCombiner *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__Object = {"_p_Piavca__Object", "Piavca::Object *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__ObjectTargetStruct = {"_p_Piavca__ObjectTargetStruct", "Piavca::ObjectTargetStruct *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_Piavca__PostureBlend = {"_p_Piavca__PostureBlend", "Piavca::PostureBlend *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__ProxemicsLoop = {"_p_Piavca__ProxemicsLoop", "Piavca::ProxemicsLoop *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__PyAvatarTimeCallback = {"_p_Piavca__PyAvatarTimeCallback", "Piavca::PyAvatarTimeCallback *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__PyTimeCallback = {"_p_Piavca__PyTimeCallback", "Piavca::PyTimeCallback *", 0, 0, (void*)0, 0};
@@ -81458,11 +89303,14 @@ static swig_type_info _swigt__p_Piavca__RandomChoiceMotion = {"_p_Piavca__Random
 static swig_type_info _swigt__p_Piavca__RandomGazeMotion = {"_p_Piavca__RandomGazeMotion", "Piavca::RandomGazeMotion *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__RandomLoopMotion = {"_p_Piavca__RandomLoopMotion", "Piavca::RandomLoopMotion *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__RandomTimingsLoop = {"_p_Piavca__RandomTimingsLoop", "Piavca::RandomTimingsLoop *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_Piavca__Reposition = {"_p_Piavca__Reposition", "Piavca::Reposition *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__ScaleMotion = {"_p_Piavca__ScaleMotion", "Piavca::ScaleMotion *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__ScaleMotionRoot = {"_p_Piavca__ScaleMotionRoot", "Piavca::ScaleMotionRoot *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__ScaleMotionSpeed = {"_p_Piavca__ScaleMotionSpeed", "Piavca::ScaleMotionSpeed *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__SelfBlend = {"_p_Piavca__SelfBlend", "Piavca::SelfBlend *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_Piavca__Sequence = {"_p_Piavca__Sequence", "Piavca::Sequence *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__SequentialBlend = {"_p_Piavca__SequentialBlend", "Piavca::SequentialBlend *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_Piavca__SmoothSequence = {"_p_Piavca__SmoothSequence", "Piavca::SmoothSequence *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__SmoothTransition = {"_p_Piavca__SmoothTransition", "Piavca::SmoothTransition *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__SubMotion = {"_p_Piavca__SubMotion", "Piavca::SubMotion *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__Subtract = {"_p_Piavca__Subtract", "Piavca::Subtract *", 0, 0, (void*)0, 0};
@@ -81506,6 +89354,7 @@ static swig_type_info _swigt__p_vectorTfloat_t = {"_p_vectorTfloat_t", "vector<f
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_Piavca__Avatar,
   &_swigt__p_Piavca__AvatarMotionQueue,
+  &_swigt__p_Piavca__AvatarPosture,
   &_swigt__p_Piavca__AvatarPostureBlend,
   &_swigt__p_Piavca__AvatarTargetStruct,
   &_swigt__p_Piavca__AvatarTimeCallback,
@@ -81526,11 +89375,13 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_Piavca__MotionImp,
   &_swigt__p_Piavca__MotionMask,
   &_swigt__p_Piavca__MotionParser,
+  &_swigt__p_Piavca__MotionPosture,
   &_swigt__p_Piavca__MotionSaver,
   &_swigt__p_Piavca__MotionTransition,
   &_swigt__p_Piavca__MultiMotionCombiner,
   &_swigt__p_Piavca__Object,
   &_swigt__p_Piavca__ObjectTargetStruct,
+  &_swigt__p_Piavca__PostureBlend,
   &_swigt__p_Piavca__ProxemicsLoop,
   &_swigt__p_Piavca__PyAvatarTimeCallback,
   &_swigt__p_Piavca__PyTimeCallback,
@@ -81543,11 +89394,14 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_Piavca__RandomGazeMotion,
   &_swigt__p_Piavca__RandomLoopMotion,
   &_swigt__p_Piavca__RandomTimingsLoop,
+  &_swigt__p_Piavca__Reposition,
   &_swigt__p_Piavca__ScaleMotion,
   &_swigt__p_Piavca__ScaleMotionRoot,
   &_swigt__p_Piavca__ScaleMotionSpeed,
   &_swigt__p_Piavca__SelfBlend,
+  &_swigt__p_Piavca__Sequence,
   &_swigt__p_Piavca__SequentialBlend,
+  &_swigt__p_Piavca__SmoothSequence,
   &_swigt__p_Piavca__SmoothTransition,
   &_swigt__p_Piavca__SubMotion,
   &_swigt__p_Piavca__Subtract,
@@ -81591,6 +89445,7 @@ static swig_type_info *swig_type_initial[] = {
 
 static swig_cast_info _swigc__p_Piavca__Avatar[] = {  {&_swigt__p_Piavca__Avatar, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__AvatarMotionQueue[] = {  {&_swigt__p_Piavca__AvatarMotionQueue, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Piavca__AvatarPosture[] = {  {&_swigt__p_Piavca__AvatarPosture, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__AvatarPostureBlend[] = {  {&_swigt__p_Piavca__AvatarPostureBlend, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__AvatarTargetStruct[] = {  {&_swigt__p_Piavca__AvatarTargetStruct, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__AvatarTimeCallback[] = {  {&_swigt__p_Piavca__AvatarMotionQueue, _p_Piavca__AvatarMotionQueueTo_p_Piavca__AvatarTimeCallback, 0, 0},  {&_swigt__p_Piavca__AvatarTimeCallback, 0, 0, 0},  {&_swigt__p_Piavca__PyAvatarTimeCallback, _p_Piavca__PyAvatarTimeCallbackTo_p_Piavca__AvatarTimeCallback, 0, 0},{0, 0, 0, 0}};
@@ -81599,23 +89454,25 @@ static swig_cast_info _swigc__p_Piavca__ChoiceLoopMotion[] = {  {&_swigt__p_Piav
 static swig_cast_info _swigc__p_Piavca__ChoiceMotion[] = {  {&_swigt__p_Piavca__ChoiceMotion, 0, 0, 0},  {&_swigt__p_Piavca__RandomChoiceMotion, _p_Piavca__RandomChoiceMotionTo_p_Piavca__ChoiceMotion, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__Core[] = {  {&_swigt__p_Piavca__Core, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__DiadicGazeMotion[] = {  {&_swigt__p_Piavca__DiadicGazeMotion, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_Piavca__KeyframeMotion[] = {  {&_swigt__p_Piavca__KeyframeMotion, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Piavca__KeyframeMotion[] = {  {&_swigt__p_Piavca__KeyframeMotion, 0, 0, 0},  {&_swigt__p_Piavca__MotionPosture, _p_Piavca__MotionPostureTo_p_Piavca__KeyframeMotion, 0, 0},  {&_swigt__p_Piavca__AvatarPosture, _p_Piavca__AvatarPostureTo_p_Piavca__KeyframeMotion, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__LinearTransition[] = {  {&_swigt__p_Piavca__LinearTransition, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__LookAtMotion[] = {  {&_swigt__p_Piavca__LookAtMotion, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__LookAtToFacial[] = {  {&_swigt__p_Piavca__LookAtToFacial, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__LoopMotion[] = {  {&_swigt__p_Piavca__RandomGazeMotion, _p_Piavca__RandomGazeMotionTo_p_Piavca__LoopMotion, 0, 0},  {&_swigt__p_Piavca__DiadicGazeMotion, _p_Piavca__DiadicGazeMotionTo_p_Piavca__LoopMotion, 0, 0},  {&_swigt__p_Piavca__RandomBlendLoop, _p_Piavca__RandomBlendLoopTo_p_Piavca__LoopMotion, 0, 0},  {&_swigt__p_Piavca__RandomAddLoop, _p_Piavca__RandomAddLoopTo_p_Piavca__LoopMotion, 0, 0},  {&_swigt__p_Piavca__ProxemicsLoop, _p_Piavca__ProxemicsLoopTo_p_Piavca__LoopMotion, 0, 0},  {&_swigt__p_Piavca__LoopMotion, 0, 0, 0},  {&_swigt__p_Piavca__RandomTimingsLoop, _p_Piavca__RandomTimingsLoopTo_p_Piavca__LoopMotion, 0, 0},  {&_swigt__p_Piavca__ChoiceLoopMotion, _p_Piavca__ChoiceLoopMotionTo_p_Piavca__LoopMotion, 0, 0},  {&_swigt__p_Piavca__RandomLoopMotion, _p_Piavca__RandomLoopMotionTo_p_Piavca__LoopMotion, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__MaskedMotion[] = {  {&_swigt__p_Piavca__MaskedMotion, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_Piavca__Motion[] = {  {&_swigt__p_Piavca__BlendBetween, _p_Piavca__BlendBetweenTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__RandomBlendLoop, _p_Piavca__RandomBlendLoopTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__MotionSaver, _p_Piavca__MotionSaverTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__SubMotion, _p_Piavca__SubMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__LookAtMotion, _p_Piavca__LookAtMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__RandomLoopMotion, _p_Piavca__RandomLoopMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ChoiceLoopMotion, _p_Piavca__ChoiceLoopMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__MaskedMotion, _p_Piavca__MaskedMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__TurnMotion, _p_Piavca__TurnMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__LoopMotion, _p_Piavca__LoopMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__AvatarPostureBlend, _p_Piavca__AvatarPostureBlendTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__RandomBlend, _p_Piavca__RandomBlendTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__MotionTransition, _p_Piavca__MotionTransitionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__RandomAdd, _p_Piavca__RandomAddTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ScaleMotionRoot, _p_Piavca__ScaleMotionRootTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__LookAtToFacial, _p_Piavca__LookAtToFacialTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__TimeWarp, _p_Piavca__TimeWarpTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ZeroMotion, _p_Piavca__ZeroMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__RandomChoiceMotion, _p_Piavca__RandomChoiceMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ChoiceMotion, _p_Piavca__ChoiceMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__KeyframeMotion, _p_Piavca__KeyframeMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ScaleMotion, _p_Piavca__ScaleMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__TimeRangeMotion, _p_Piavca__TimeRangeMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__Motion, 0, 0, 0},  {&_swigt__p_Piavca__RandomGazeMotion, _p_Piavca__RandomGazeMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__DiadicGazeMotion, _p_Piavca__DiadicGazeMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ProxemicsLoop, _p_Piavca__ProxemicsLoopTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__TwoMotionCombiner, _p_Piavca__TwoMotionCombinerTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__MultiMotionCombiner, _p_Piavca__MultiMotionCombinerTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ScaleMotionSpeed, _p_Piavca__ScaleMotionSpeedTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__SequentialBlend, _p_Piavca__SequentialBlendTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__SelfBlend, _p_Piavca__SelfBlendTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__RandomAddLoop, _p_Piavca__RandomAddLoopTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__Subtract, _p_Piavca__SubtractTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__MotionAdder, _p_Piavca__MotionAdderTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__MotionFilter, _p_Piavca__MotionFilterTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__RandomTimingsLoop, _p_Piavca__RandomTimingsLoopTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__TimeOffset, _p_Piavca__TimeOffsetTo_p_Piavca__Motion, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Piavca__Motion[] = {  {&_swigt__p_Piavca__BlendBetween, _p_Piavca__BlendBetweenTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__Sequence, _p_Piavca__SequenceTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__SmoothSequence, _p_Piavca__SmoothSequenceTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__RandomBlendLoop, _p_Piavca__RandomBlendLoopTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__MotionSaver, _p_Piavca__MotionSaverTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__SubMotion, _p_Piavca__SubMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__LookAtMotion, _p_Piavca__LookAtMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__TurnMotion, _p_Piavca__TurnMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__MaskedMotion, _p_Piavca__MaskedMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__LoopMotion, _p_Piavca__LoopMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ChoiceLoopMotion, _p_Piavca__ChoiceLoopMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__RandomLoopMotion, _p_Piavca__RandomLoopMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__AvatarPostureBlend, _p_Piavca__AvatarPostureBlendTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__PostureBlend, _p_Piavca__PostureBlendTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__RandomBlend, _p_Piavca__RandomBlendTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__MotionTransition, _p_Piavca__MotionTransitionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__RandomAdd, _p_Piavca__RandomAddTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ScaleMotionRoot, _p_Piavca__ScaleMotionRootTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__LookAtToFacial, _p_Piavca__LookAtToFacialTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__TimeWarp, _p_Piavca__TimeWarpTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__RandomChoiceMotion, _p_Piavca__RandomChoiceMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ChoiceMotion, _p_Piavca__ChoiceMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__KeyframeMotion, _p_Piavca__KeyframeMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ScaleMotion, _p_Piavca__ScaleMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ZeroMotion, _p_Piavca__ZeroMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__TimeRangeMotion, _p_Piavca__TimeRangeMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__Motion, 0, 0, 0},  {&_swigt__p_Piavca__RandomGazeMotion, _p_Piavca__RandomGazeMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__DiadicGazeMotion, _p_Piavca__DiadicGazeMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ProxemicsLoop, _p_Piavca__ProxemicsLoopTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__AvatarPosture, _p_Piavca__AvatarPostureTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__MotionPosture, _p_Piavca__MotionPostureTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__TwoMotionCombiner, _p_Piavca__TwoMotionCombinerTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__MultiMotionCombiner, _p_Piavca__MultiMotionCombinerTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ScaleMotionSpeed, _p_Piavca__ScaleMotionSpeedTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__SequentialBlend, _p_Piavca__SequentialBlendTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__RandomAddLoop, _p_Piavca__RandomAddLoopTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__SelfBlend, _p_Piavca__SelfBlendTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__MotionAdder, _p_Piavca__MotionAdderTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__Subtract, _p_Piavca__SubtractTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__MotionFilter, _p_Piavca__MotionFilterTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__RandomTimingsLoop, _p_Piavca__RandomTimingsLoopTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__Reposition, _p_Piavca__RepositionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__TimeOffset, _p_Piavca__TimeOffsetTo_p_Piavca__Motion, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__MotionAdder[] = {  {&_swigt__p_Piavca__MotionAdder, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_Piavca__MotionFilter[] = {  {&_swigt__p_Piavca__MultiMotionCombiner, _p_Piavca__MultiMotionCombinerTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__ScaleMotion, _p_Piavca__ScaleMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__TimeRangeMotion, _p_Piavca__TimeRangeMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__RandomChoiceMotion, _p_Piavca__RandomChoiceMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__ChoiceMotion, _p_Piavca__ChoiceMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__SubMotion, _p_Piavca__SubMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__MaskedMotion, _p_Piavca__MaskedMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__TurnMotion, _p_Piavca__TurnMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__RandomBlend, _p_Piavca__RandomBlendTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__TimeOffset, _p_Piavca__TimeOffsetTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__ScaleMotionRoot, _p_Piavca__ScaleMotionRootTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__TimeWarp, _p_Piavca__TimeWarpTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__MotionSaver, _p_Piavca__MotionSaverTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__RandomAdd, _p_Piavca__RandomAddTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__MotionFilter, 0, 0, 0},  {&_swigt__p_Piavca__LookAtToFacial, _p_Piavca__LookAtToFacialTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__ScaleMotionSpeed, _p_Piavca__ScaleMotionSpeedTo_p_Piavca__MotionFilter, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Piavca__MotionFilter[] = {  {&_swigt__p_Piavca__MultiMotionCombiner, _p_Piavca__MultiMotionCombinerTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__ScaleMotion, _p_Piavca__ScaleMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__TimeRangeMotion, _p_Piavca__TimeRangeMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__RandomChoiceMotion, _p_Piavca__RandomChoiceMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__ChoiceMotion, _p_Piavca__ChoiceMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__MaskedMotion, _p_Piavca__MaskedMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__TurnMotion, _p_Piavca__TurnMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__SubMotion, _p_Piavca__SubMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__RandomBlend, _p_Piavca__RandomBlendTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__TimeOffset, _p_Piavca__TimeOffsetTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__ScaleMotionRoot, _p_Piavca__ScaleMotionRootTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__Reposition, _p_Piavca__RepositionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__TimeWarp, _p_Piavca__TimeWarpTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__MotionSaver, _p_Piavca__MotionSaverTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__RandomAdd, _p_Piavca__RandomAddTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__MotionFilter, 0, 0, 0},  {&_swigt__p_Piavca__LookAtToFacial, _p_Piavca__LookAtToFacialTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__ScaleMotionSpeed, _p_Piavca__ScaleMotionSpeedTo_p_Piavca__MotionFilter, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__MotionImp[] = {  {&_swigt__p_Piavca__MotionImp, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__MotionMask[] = {  {&_swigt__p_Piavca__MotionMask, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__MotionParser[] = {  {&_swigt__p_Piavca__MotionParser, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Piavca__MotionPosture[] = {  {&_swigt__p_Piavca__MotionPosture, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__MotionSaver[] = {  {&_swigt__p_Piavca__MotionSaver, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__MotionTransition[] = {  {&_swigt__p_Piavca__MotionTransition, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__MultiMotionCombiner[] = {  {&_swigt__p_Piavca__ChoiceMotion, _p_Piavca__ChoiceMotionTo_p_Piavca__MultiMotionCombiner, 0, 0},  {&_swigt__p_Piavca__RandomChoiceMotion, _p_Piavca__RandomChoiceMotionTo_p_Piavca__MultiMotionCombiner, 0, 0},  {&_swigt__p_Piavca__MultiMotionCombiner, 0, 0, 0},  {&_swigt__p_Piavca__RandomAdd, _p_Piavca__RandomAddTo_p_Piavca__MultiMotionCombiner, 0, 0},  {&_swigt__p_Piavca__RandomBlend, _p_Piavca__RandomBlendTo_p_Piavca__MultiMotionCombiner, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__Object[] = {  {&_swigt__p_Piavca__Object, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__ObjectTargetStruct[] = {  {&_swigt__p_Piavca__ObjectTargetStruct, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Piavca__PostureBlend[] = {  {&_swigt__p_Piavca__RandomGazeMotion, _p_Piavca__RandomGazeMotionTo_p_Piavca__PostureBlend, 0, 0},  {&_swigt__p_Piavca__DiadicGazeMotion, _p_Piavca__DiadicGazeMotionTo_p_Piavca__PostureBlend, 0, 0},  {&_swigt__p_Piavca__RandomBlendLoop, _p_Piavca__RandomBlendLoopTo_p_Piavca__PostureBlend, 0, 0},  {&_swigt__p_Piavca__RandomAddLoop, _p_Piavca__RandomAddLoopTo_p_Piavca__PostureBlend, 0, 0},  {&_swigt__p_Piavca__ProxemicsLoop, _p_Piavca__ProxemicsLoopTo_p_Piavca__PostureBlend, 0, 0},  {&_swigt__p_Piavca__PostureBlend, 0, 0, 0},  {&_swigt__p_Piavca__LoopMotion, _p_Piavca__LoopMotionTo_p_Piavca__PostureBlend, 0, 0},  {&_swigt__p_Piavca__RandomTimingsLoop, _p_Piavca__RandomTimingsLoopTo_p_Piavca__PostureBlend, 0, 0},  {&_swigt__p_Piavca__ChoiceLoopMotion, _p_Piavca__ChoiceLoopMotionTo_p_Piavca__PostureBlend, 0, 0},  {&_swigt__p_Piavca__RandomLoopMotion, _p_Piavca__RandomLoopMotionTo_p_Piavca__PostureBlend, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__ProxemicsLoop[] = {  {&_swigt__p_Piavca__ProxemicsLoop, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__PyAvatarTimeCallback[] = {  {&_swigt__p_Piavca__PyAvatarTimeCallback, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__PyTimeCallback[] = {  {&_swigt__p_Piavca__PyTimeCallback, 0, 0, 0},{0, 0, 0, 0}};
@@ -81628,11 +89485,14 @@ static swig_cast_info _swigc__p_Piavca__RandomChoiceMotion[] = {  {&_swigt__p_Pi
 static swig_cast_info _swigc__p_Piavca__RandomGazeMotion[] = {  {&_swigt__p_Piavca__RandomGazeMotion, 0, 0, 0},  {&_swigt__p_Piavca__DiadicGazeMotion, _p_Piavca__DiadicGazeMotionTo_p_Piavca__RandomGazeMotion, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__RandomLoopMotion[] = {  {&_swigt__p_Piavca__RandomLoopMotion, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__RandomTimingsLoop[] = {  {&_swigt__p_Piavca__RandomBlendLoop, _p_Piavca__RandomBlendLoopTo_p_Piavca__RandomTimingsLoop, 0, 0},  {&_swigt__p_Piavca__RandomAddLoop, _p_Piavca__RandomAddLoopTo_p_Piavca__RandomTimingsLoop, 0, 0},  {&_swigt__p_Piavca__ProxemicsLoop, _p_Piavca__ProxemicsLoopTo_p_Piavca__RandomTimingsLoop, 0, 0},  {&_swigt__p_Piavca__RandomTimingsLoop, 0, 0, 0},  {&_swigt__p_Piavca__ChoiceLoopMotion, _p_Piavca__ChoiceLoopMotionTo_p_Piavca__RandomTimingsLoop, 0, 0},  {&_swigt__p_Piavca__RandomLoopMotion, _p_Piavca__RandomLoopMotionTo_p_Piavca__RandomTimingsLoop, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Piavca__Reposition[] = {  {&_swigt__p_Piavca__Reposition, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__ScaleMotion[] = {  {&_swigt__p_Piavca__ScaleMotion, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__ScaleMotionRoot[] = {  {&_swigt__p_Piavca__ScaleMotionRoot, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__ScaleMotionSpeed[] = {  {&_swigt__p_Piavca__ScaleMotionSpeed, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_Piavca__SelfBlend[] = {  {&_swigt__p_Piavca__SelfBlend, 0, 0, 0},  {&_swigt__p_Piavca__RandomGazeMotion, _p_Piavca__RandomGazeMotionTo_p_Piavca__SelfBlend, 0, 0},  {&_swigt__p_Piavca__DiadicGazeMotion, _p_Piavca__DiadicGazeMotionTo_p_Piavca__SelfBlend, 0, 0},  {&_swigt__p_Piavca__RandomBlendLoop, _p_Piavca__RandomBlendLoopTo_p_Piavca__SelfBlend, 0, 0},  {&_swigt__p_Piavca__RandomAddLoop, _p_Piavca__RandomAddLoopTo_p_Piavca__SelfBlend, 0, 0},  {&_swigt__p_Piavca__ProxemicsLoop, _p_Piavca__ProxemicsLoopTo_p_Piavca__SelfBlend, 0, 0},  {&_swigt__p_Piavca__LoopMotion, _p_Piavca__LoopMotionTo_p_Piavca__SelfBlend, 0, 0},  {&_swigt__p_Piavca__RandomTimingsLoop, _p_Piavca__RandomTimingsLoopTo_p_Piavca__SelfBlend, 0, 0},  {&_swigt__p_Piavca__ChoiceLoopMotion, _p_Piavca__ChoiceLoopMotionTo_p_Piavca__SelfBlend, 0, 0},  {&_swigt__p_Piavca__RandomLoopMotion, _p_Piavca__RandomLoopMotionTo_p_Piavca__SelfBlend, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_Piavca__SequentialBlend[] = {  {&_swigt__p_Piavca__SelfBlend, _p_Piavca__SelfBlendTo_p_Piavca__SequentialBlend, 0, 0},  {&_swigt__p_Piavca__RandomGazeMotion, _p_Piavca__RandomGazeMotionTo_p_Piavca__SequentialBlend, 0, 0},  {&_swigt__p_Piavca__DiadicGazeMotion, _p_Piavca__DiadicGazeMotionTo_p_Piavca__SequentialBlend, 0, 0},  {&_swigt__p_Piavca__RandomBlendLoop, _p_Piavca__RandomBlendLoopTo_p_Piavca__SequentialBlend, 0, 0},  {&_swigt__p_Piavca__RandomAddLoop, _p_Piavca__RandomAddLoopTo_p_Piavca__SequentialBlend, 0, 0},  {&_swigt__p_Piavca__SequentialBlend, 0, 0, 0},  {&_swigt__p_Piavca__ProxemicsLoop, _p_Piavca__ProxemicsLoopTo_p_Piavca__SequentialBlend, 0, 0},  {&_swigt__p_Piavca__AvatarPostureBlend, _p_Piavca__AvatarPostureBlendTo_p_Piavca__SequentialBlend, 0, 0},  {&_swigt__p_Piavca__LoopMotion, _p_Piavca__LoopMotionTo_p_Piavca__SequentialBlend, 0, 0},  {&_swigt__p_Piavca__RandomTimingsLoop, _p_Piavca__RandomTimingsLoopTo_p_Piavca__SequentialBlend, 0, 0},  {&_swigt__p_Piavca__ChoiceLoopMotion, _p_Piavca__ChoiceLoopMotionTo_p_Piavca__SequentialBlend, 0, 0},  {&_swigt__p_Piavca__RandomLoopMotion, _p_Piavca__RandomLoopMotionTo_p_Piavca__SequentialBlend, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Piavca__SelfBlend[] = {  {&_swigt__p_Piavca__SelfBlend, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Piavca__Sequence[] = {  {&_swigt__p_Piavca__RandomGazeMotion, _p_Piavca__RandomGazeMotionTo_p_Piavca__Sequence, 0, 0},  {&_swigt__p_Piavca__DiadicGazeMotion, _p_Piavca__DiadicGazeMotionTo_p_Piavca__Sequence, 0, 0},  {&_swigt__p_Piavca__RandomBlendLoop, _p_Piavca__RandomBlendLoopTo_p_Piavca__Sequence, 0, 0},  {&_swigt__p_Piavca__RandomAddLoop, _p_Piavca__RandomAddLoopTo_p_Piavca__Sequence, 0, 0},  {&_swigt__p_Piavca__Sequence, 0, 0, 0},  {&_swigt__p_Piavca__SmoothSequence, _p_Piavca__SmoothSequenceTo_p_Piavca__Sequence, 0, 0},  {&_swigt__p_Piavca__ProxemicsLoop, _p_Piavca__ProxemicsLoopTo_p_Piavca__Sequence, 0, 0},  {&_swigt__p_Piavca__PostureBlend, _p_Piavca__PostureBlendTo_p_Piavca__Sequence, 0, 0},  {&_swigt__p_Piavca__AvatarPostureBlend, _p_Piavca__AvatarPostureBlendTo_p_Piavca__Sequence, 0, 0},  {&_swigt__p_Piavca__LoopMotion, _p_Piavca__LoopMotionTo_p_Piavca__Sequence, 0, 0},  {&_swigt__p_Piavca__RandomTimingsLoop, _p_Piavca__RandomTimingsLoopTo_p_Piavca__Sequence, 0, 0},  {&_swigt__p_Piavca__ChoiceLoopMotion, _p_Piavca__ChoiceLoopMotionTo_p_Piavca__Sequence, 0, 0},  {&_swigt__p_Piavca__RandomLoopMotion, _p_Piavca__RandomLoopMotionTo_p_Piavca__Sequence, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Piavca__SequentialBlend[] = {  {&_swigt__p_Piavca__SelfBlend, _p_Piavca__SelfBlendTo_p_Piavca__SequentialBlend, 0, 0},  {&_swigt__p_Piavca__SequentialBlend, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Piavca__SmoothSequence[] = {  {&_swigt__p_Piavca__SmoothSequence, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__SmoothTransition[] = {  {&_swigt__p_Piavca__SmoothTransition, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__SubMotion[] = {  {&_swigt__p_Piavca__SubMotion, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__Subtract[] = {  {&_swigt__p_Piavca__Subtract, 0, 0, 0},{0, 0, 0, 0}};
@@ -81642,7 +89502,7 @@ static swig_cast_info _swigc__p_Piavca__TimeRangeMotion[] = {  {&_swigt__p_Piavc
 static swig_cast_info _swigc__p_Piavca__TimeWarp[] = {  {&_swigt__p_Piavca__TimeWarp, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__TransitionFunction[] = {  {&_swigt__p_Piavca__TransitionFunction, 0, 0, 0},  {&_swigt__p_Piavca__LinearTransition, _p_Piavca__LinearTransitionTo_p_Piavca__TransitionFunction, 0, 0},  {&_swigt__p_Piavca__SmoothTransition, _p_Piavca__SmoothTransitionTo_p_Piavca__TransitionFunction, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__TurnMotion[] = {  {&_swigt__p_Piavca__TurnMotion, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_Piavca__TwoMotionCombiner[] = {  {&_swigt__p_Piavca__TwoMotionCombiner, 0, 0, 0},  {&_swigt__p_Piavca__MotionAdder, _p_Piavca__MotionAdderTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__RandomGazeMotion, _p_Piavca__RandomGazeMotionTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__DiadicGazeMotion, _p_Piavca__DiadicGazeMotionTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__AvatarPostureBlend, _p_Piavca__AvatarPostureBlendTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__MotionTransition, _p_Piavca__MotionTransitionTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__SequentialBlend, _p_Piavca__SequentialBlendTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__ProxemicsLoop, _p_Piavca__ProxemicsLoopTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__RandomAddLoop, _p_Piavca__RandomAddLoopTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__SelfBlend, _p_Piavca__SelfBlendTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__ChoiceLoopMotion, _p_Piavca__ChoiceLoopMotionTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__LoopMotion, _p_Piavca__LoopMotionTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__RandomLoopMotion, _p_Piavca__RandomLoopMotionTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__RandomBlendLoop, _p_Piavca__RandomBlendLoopTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__RandomTimingsLoop, _p_Piavca__RandomTimingsLoopTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__Subtract, _p_Piavca__SubtractTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__BlendBetween, _p_Piavca__BlendBetweenTo_p_Piavca__TwoMotionCombiner, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Piavca__TwoMotionCombiner[] = {  {&_swigt__p_Piavca__TwoMotionCombiner, 0, 0, 0},  {&_swigt__p_Piavca__MotionAdder, _p_Piavca__MotionAdderTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__RandomGazeMotion, _p_Piavca__RandomGazeMotionTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__DiadicGazeMotion, _p_Piavca__DiadicGazeMotionTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__AvatarPostureBlend, _p_Piavca__AvatarPostureBlendTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__PostureBlend, _p_Piavca__PostureBlendTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__MotionTransition, _p_Piavca__MotionTransitionTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__SequentialBlend, _p_Piavca__SequentialBlendTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__ProxemicsLoop, _p_Piavca__ProxemicsLoopTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__RandomAddLoop, _p_Piavca__RandomAddLoopTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__SelfBlend, _p_Piavca__SelfBlendTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__RandomLoopMotion, _p_Piavca__RandomLoopMotionTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__ChoiceLoopMotion, _p_Piavca__ChoiceLoopMotionTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__LoopMotion, _p_Piavca__LoopMotionTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__RandomBlendLoop, _p_Piavca__RandomBlendLoopTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__RandomTimingsLoop, _p_Piavca__RandomTimingsLoopTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__SmoothSequence, _p_Piavca__SmoothSequenceTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__Sequence, _p_Piavca__SequenceTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__Subtract, _p_Piavca__SubtractTo_p_Piavca__TwoMotionCombiner, 0, 0},  {&_swigt__p_Piavca__BlendBetween, _p_Piavca__BlendBetweenTo_p_Piavca__TwoMotionCombiner, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__Vec[] = {  {&_swigt__p_Piavca__Vec, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__ZeroMotion[] = {  {&_swigt__p_Piavca__ZeroMotion, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__flagStruct[] = {  {&_swigt__p_Piavca__flagStruct, 0, 0, 0},{0, 0, 0, 0}};
@@ -81676,6 +89536,7 @@ static swig_cast_info _swigc__p_vectorTfloat_t[] = {  {&_swigt__p_vectorTfloat_t
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_Piavca__Avatar,
   _swigc__p_Piavca__AvatarMotionQueue,
+  _swigc__p_Piavca__AvatarPosture,
   _swigc__p_Piavca__AvatarPostureBlend,
   _swigc__p_Piavca__AvatarTargetStruct,
   _swigc__p_Piavca__AvatarTimeCallback,
@@ -81696,11 +89557,13 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_Piavca__MotionImp,
   _swigc__p_Piavca__MotionMask,
   _swigc__p_Piavca__MotionParser,
+  _swigc__p_Piavca__MotionPosture,
   _swigc__p_Piavca__MotionSaver,
   _swigc__p_Piavca__MotionTransition,
   _swigc__p_Piavca__MultiMotionCombiner,
   _swigc__p_Piavca__Object,
   _swigc__p_Piavca__ObjectTargetStruct,
+  _swigc__p_Piavca__PostureBlend,
   _swigc__p_Piavca__ProxemicsLoop,
   _swigc__p_Piavca__PyAvatarTimeCallback,
   _swigc__p_Piavca__PyTimeCallback,
@@ -81713,11 +89576,14 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_Piavca__RandomGazeMotion,
   _swigc__p_Piavca__RandomLoopMotion,
   _swigc__p_Piavca__RandomTimingsLoop,
+  _swigc__p_Piavca__Reposition,
   _swigc__p_Piavca__ScaleMotion,
   _swigc__p_Piavca__ScaleMotionRoot,
   _swigc__p_Piavca__ScaleMotionSpeed,
   _swigc__p_Piavca__SelfBlend,
+  _swigc__p_Piavca__Sequence,
   _swigc__p_Piavca__SequentialBlend,
+  _swigc__p_Piavca__SmoothSequence,
   _swigc__p_Piavca__SmoothTransition,
   _swigc__p_Piavca__SubMotion,
   _swigc__p_Piavca__Subtract,
@@ -82287,6 +90153,8 @@ SWIGEXPORT void SWIG_init(void) {
   SWIG_Python_SetConstant(d, "TRANS_NO_ROOT_POS_CORRECTION",SWIG_From_int(static_cast< int >(Piavca::TRANS_NO_ROOT_POS_CORRECTION)));
   PyDict_SetItemString(d,(char*)"cvar", SWIG_globals());
   SWIG_addvarlink(SWIG_globals(),(char*)"Pi",Pi_get, Pi_set);
+  SWIG_Python_SetConstant(d, "MotionTransition_MotionStart",SWIG_From_int(static_cast< int >(Piavca::MotionTransition::MotionStart)));
+  SWIG_Python_SetConstant(d, "MotionTransition_MotionEnd",SWIG_From_int(static_cast< int >(Piavca::MotionTransition::MotionEnd)));
   SWIG_Python_SetConstant(d, "DiadicGazeMotion_talking",SWIG_From_int(static_cast< int >(Piavca::DiadicGazeMotion::talking)));
   SWIG_Python_SetConstant(d, "DiadicGazeMotion_listening",SWIG_From_int(static_cast< int >(Piavca::DiadicGazeMotion::listening)));
   SWIG_Python_SetConstant(d, "DiadicGazeMotion_neither",SWIG_From_int(static_cast< int >(Piavca::DiadicGazeMotion::neither)));

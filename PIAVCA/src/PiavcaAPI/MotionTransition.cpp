@@ -69,24 +69,48 @@ MotionTransition::MotionTransition(const MotionTransition &mt)
 {
 };
 
+
+void MotionTransition::setStartTime(float time)
+{
+	//std::cout << "setStartTime " << time << " ";
+	Motion::setStartTime(time);
+	if(mot1) 
+		mot1->setStartTime(time-transitionTime1);
+	if(mot2) 
+		mot2->setStartTime(time-transitionTime2+window);
+}
+
+
 float MotionTransition::getFloatValueAtTimeInternal (int trackId, float time)
 {
 	// if this track doesn't exist in mot2 use mot1 otherwise interpolated between them
-	if(mot2->isNull(trackId))
+	if(!mot2 || mot2->isNull(trackId))
 	{
-		if(mot1->isNull(trackId))
+		if(!mot1 || mot1->isNull(trackId))
 		{
 			Piavca::Error(_T("trying to transition between two invalid tracks"));
 			return 0.0;
 		}
 		return mot1->getFloatValueAtTime(trackId, time);
 	}
-	if(mot1->isNull(trackId))
+	if(!mot1 || mot1->isNull(trackId))
 		return mot2->getFloatValueAtTime(trackId, time);
 
+	if (transitionTime1 < 0)
+	{
+		transitionTime1 = mot1->getEndTime() - window;
+		if( transitionTime1 < 0)
+			transitionTime1 = 0.0;
+	}
+
+	if (transitionTime2 < 0)
+	{
+		transitionTime2 = window;
+	}
+
 	float t = time - getStartTime();
-	float f1 = mot1->getFloatValueAtTime(trackId, transitionTime1+time);
-    float f2 = mot2->getFloatValueAtTime(trackId, transitionTime2-window+time);
+	float f1 = mot1->getFloatValueAtTime(trackId, time);//transitionTime1);//+time);
+    float f2 = mot2->getFloatValueAtTime(trackId, time);//transitionTime2);//-window+time);
     float a = transfunc->eval(t/window);
     return a*f1 + (1-a)*f2;
 };
@@ -94,21 +118,33 @@ float MotionTransition::getFloatValueAtTimeInternal (int trackId, float time)
 Vec MotionTransition::getVecValueAtTimeInternal   (int trackId, float time)
 {
 	// if this track doesn't exist in mot2 use mot1 otherwise interpolated between them
-	if(mot2->isNull(trackId))
+	if(!mot2 || mot2->isNull(trackId))
 	{
-		if(mot1->isNull(trackId))
+		if(!mot1 || mot1->isNull(trackId))
 		{
 			Piavca::Error(_T("trying to transition between two invalid tracks"));
 			return Vec();
 		}
 		return mot1->getVecValueAtTime(trackId, time);
 	}
-	if(mot1->isNull(trackId))
+	if(!mot1 || mot1->isNull(trackId))
 		return mot2->getVecValueAtTime(trackId, time);
+
+	if (transitionTime1 < 0)
+	{
+		transitionTime1 = mot1->getEndTime() - window;
+		if( transitionTime1 < 0)
+			transitionTime1 = 0.0;
+	}
+
+	if (transitionTime2 < 0)
+	{
+		transitionTime2 = window;
+	}
 	
 	float t = time - getStartTime();
-	Vec v1 = mot1->getVecValueAtTime(trackId, transitionTime1+time);
-    Vec v2 = mot2->getVecValueAtTime(trackId, transitionTime2-window+time);
+	Vec v1 = mot1->getVecValueAtTime(trackId, time);//transitionTime1);//+time);
+    Vec v2 = mot2->getVecValueAtTime(trackId, time);//transitionTime2);//-window+time);
     float a = transfunc->eval(t/window);
     return v1*a + v2*(1-a);
 };
@@ -116,21 +152,42 @@ Vec MotionTransition::getVecValueAtTimeInternal   (int trackId, float time)
 Quat MotionTransition::getQuatValueAtTimeInternal  (int trackId, float time)
 {
 	// if this track doesn't exist in mot2 use mot1 otherwise interpolated between them
-	if(mot2->isNull(trackId))
+	if(!mot2 || mot2->isNull(trackId))
 	{
-		if(mot1->isNull(trackId))
+		if(!mot1 || mot1->isNull(trackId))
 		{
 			Piavca::Error(_T("trying to transition between two invalid tracks"));
 			return Quat();
 		}
 		return mot1->getQuatValueAtTime(trackId, time);
 	}
-	if(mot1->isNull(trackId))
+	if(!mot1 || mot1->isNull(trackId))
 		return mot2->getQuatValueAtTime(trackId, time);
 
+	if (transitionTime1 < 0)
+	{
+		transitionTime1 = mot1->getEndTime() - window;
+		if( transitionTime1 < 0)
+			transitionTime1 = 0.0;
+	}
+
+	if (transitionTime2 < 0)
+	{
+		transitionTime2 = window;
+	}
+
 	float t = time - getStartTime();
-	Quat q1 = mot1->getQuatValueAtTime(trackId, transitionTime1+time);
-    Quat q2 = mot2->getQuatValueAtTime(trackId, transitionTime2-window+time);
-    float a = transfunc->eval(t/window);
-    return slerp(q1, q2, a);
+	Quat q1 = mot1->getQuatValueAtTime(trackId, time);//transitionTime1);//+time);
+    Quat q2 = mot2->getQuatValueAtTime(trackId, time);//transitionTime2);//-window+time);
+	//Quat q1 = mot1->getQuatValueAtTime(trackId, transitionTime1+t);//transitionTime1);//+time);
+    //Quat q2 = mot2->getQuatValueAtTime(trackId, transitionTime2+t-window);//transitionTime2);//-window+time);
+	//if (trackId == root_orientation_id)
+	//{
+	//	std::cout << "motion transition " << q1 << " " << q2 << " " << transitionTime2-window+time << " " << t << " ";
+	//}
+	float a = transfunc->eval(t/window);
+    Quat q =  slerp(q1, q2, a);
+	//if (trackId == root_orientation_id)
+	//	std::cout << " "  << a << " " << q << std::endl;
+	return q;
 };

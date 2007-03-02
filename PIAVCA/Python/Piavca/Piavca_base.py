@@ -1348,6 +1348,7 @@ class KeyframeMotion(Motion):
         """
         return _Piavca_base.KeyframeMotion_isFacial(*args)
 
+    def setFacial(*args): return _Piavca_base.KeyframeMotion_setFacial(*args)
     def isRandomAccess(*args):
         """
         virtual bool Piavca::Motion::isRandomAccess()
@@ -3774,6 +3775,366 @@ class SequentialBlend(TwoMotionCombiner):
 SequentialBlend_swigregister = _Piavca_base.SequentialBlend_swigregister
 SequentialBlend_swigregister(SequentialBlend)
 
+class Sequence(TwoMotionCombiner):
+    __swig_setmethods__ = {}
+    for _s in [TwoMotionCombiner]: __swig_setmethods__.update(_s.__swig_setmethods__)
+    __setattr__ = lambda self, name, value: _swig_setattr(self, Sequence, name, value)
+    __swig_getmethods__ = {}
+    for _s in [TwoMotionCombiner]: __swig_getmethods__.update(_s.__swig_getmethods__)
+    __getattr__ = lambda self, name: _swig_getattr(self, Sequence, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        if self.__class__ == Sequence:
+            args = (None,) + args
+        else:
+            args = (self,) + args
+        this = _Piavca_base.new_Sequence(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    def clone(*args):
+        """
+        virtual Motion* Piavca::Motion::clone()=0
+                 
+        creates a copy of the motion         
+                 
+                
+        """
+        return _Piavca_base.Sequence_clone(*args)
+
+    def setStartTime(*args):
+        """
+        void TwoMotionCombiner::setStartTime(float time)
+                 
+        sets the start time of the motion. Called when its loaded into an avatar.         
+                 
+                
+        """
+        return _Piavca_base.Sequence_setStartTime(*args)
+
+    def getMotionLength(*args):
+        """
+        float TwoMotionCombiner::getMotionLength() const 
+                 
+        gets the length of the combined motion (by default the length of the longer of the two)         
+                 
+                
+        """
+        return _Piavca_base.Sequence_getMotionLength(*args)
+
+    def getFloatValueAtTimeInternal(*args):
+        """
+        virtual float Piavca::Motion::getFloatValueAtTimeInternal(int trackId, float time)=0
+                 
+        internal version of getFloatValueAtTime, to be overridden         
+                 
+                
+        """
+        return _Piavca_base.Sequence_getFloatValueAtTimeInternal(*args)
+
+    def getVecValueAtTimeInternal(*args):
+        """
+        virtual Vec Piavca::Motion::getVecValueAtTimeInternal(int trackId, float time)=0
+                 
+        internal version of getVecValueAtTime, to be overridden         
+                 
+                
+        """
+        return _Piavca_base.Sequence_getVecValueAtTimeInternal(*args)
+
+    def getQuatValueAtTimeInternal(*args):
+        """
+        virtual Quat Piavca::Motion::getQuatValueAtTimeInternal(int trackId, float time)=0
+                 
+        internal version of getQuatValueAtTime, to be overridden         
+                 
+                
+        """
+        return _Piavca_base.Sequence_getQuatValueAtTimeInternal(*args)
+
+    __swig_destroy__ = _Piavca_base.delete_Sequence
+    __del__ = lambda self : None;
+    def __disown__(self):
+        self.this.disown()
+        _Piavca_base.disown_Sequence(self)
+        return weakref_proxy(self)
+Sequence_swigregister = _Piavca_base.Sequence_swigregister
+Sequence_swigregister(Sequence)
+
+class SmoothSequence(Sequence):
+    __swig_setmethods__ = {}
+    for _s in [Sequence]: __swig_setmethods__.update(_s.__swig_setmethods__)
+    __setattr__ = lambda self, name, value: _swig_setattr(self, SmoothSequence, name, value)
+    __swig_getmethods__ = {}
+    for _s in [Sequence]: __swig_getmethods__.update(_s.__swig_getmethods__)
+    __getattr__ = lambda self, name: _swig_getattr(self, SmoothSequence, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _Piavca_base.new_SmoothSequence(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    def clone(*args):
+        """
+        virtual Motion* Piavca::Motion::clone()=0
+                 
+        creates a copy of the motion         
+                 
+                
+        """
+        return _Piavca_base.SmoothSequence_clone(*args)
+
+    def create(*args): return _Piavca_base.SmoothSequence_create(*args)
+    def setMaintainY(*args): return _Piavca_base.SmoothSequence_setMaintainY(*args)
+    def setAccumulateRoot(*args): return _Piavca_base.SmoothSequence_setAccumulateRoot(*args)
+    def setMotion1(*args):
+        """
+        void TwoMotionCombiner::setMotion1(Motion *mot)
+                 
+                
+                 
+                
+        """
+        return _Piavca_base.SmoothSequence_setMotion1(*args)
+
+    def setMotion2(*args):
+        """
+        void TwoMotionCombiner::setMotion2(Motion *mot)
+                 
+                
+                 
+                
+        """
+        return _Piavca_base.SmoothSequence_setMotion2(*args)
+
+    def setBlendStart(*args): return _Piavca_base.SmoothSequence_setBlendStart(*args)
+    def setBlendInterval(*args): return _Piavca_base.SmoothSequence_setBlendInterval(*args)
+    def getBlendStart(*args): return _Piavca_base.SmoothSequence_getBlendStart(*args)
+    def getBlendInterval(*args): return _Piavca_base.SmoothSequence_getBlendInterval(*args)
+    __swig_destroy__ = _Piavca_base.delete_SmoothSequence
+    __del__ = lambda self : None;
+SmoothSequence_swigregister = _Piavca_base.SmoothSequence_swigregister
+SmoothSequence_swigregister(SmoothSequence)
+
+class MotionPosture(KeyframeMotion):
+    __swig_setmethods__ = {}
+    for _s in [KeyframeMotion]: __swig_setmethods__.update(_s.__swig_setmethods__)
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MotionPosture, name, value)
+    __swig_getmethods__ = {}
+    for _s in [KeyframeMotion]: __swig_getmethods__.update(_s.__swig_getmethods__)
+    __getattr__ = lambda self, name: _swig_getattr(self, MotionPosture, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        if self.__class__ == MotionPosture:
+            args = (None,) + args
+        else:
+            args = (self,) + args
+        this = _Piavca_base.new_MotionPosture(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    def clone(*args):
+        """
+        virtual Motion* Piavca::Motion::clone()=0
+                 
+        creates a copy of the motion         
+                 
+                
+        """
+        return _Piavca_base.MotionPosture_clone(*args)
+
+    def getPostureFromMotion(*args): return _Piavca_base.MotionPosture_getPostureFromMotion(*args)
+    __swig_destroy__ = _Piavca_base.delete_MotionPosture
+    __del__ = lambda self : None;
+    def __disown__(self):
+        self.this.disown()
+        _Piavca_base.disown_MotionPosture(self)
+        return weakref_proxy(self)
+MotionPosture_swigregister = _Piavca_base.MotionPosture_swigregister
+MotionPosture_swigregister(MotionPosture)
+
+class AvatarPosture(KeyframeMotion):
+    __swig_setmethods__ = {}
+    for _s in [KeyframeMotion]: __swig_setmethods__.update(_s.__swig_setmethods__)
+    __setattr__ = lambda self, name, value: _swig_setattr(self, AvatarPosture, name, value)
+    __swig_getmethods__ = {}
+    for _s in [KeyframeMotion]: __swig_getmethods__.update(_s.__swig_getmethods__)
+    __getattr__ = lambda self, name: _swig_getattr(self, AvatarPosture, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        if self.__class__ == AvatarPosture:
+            args = (None,) + args
+        else:
+            args = (self,) + args
+        this = _Piavca_base.new_AvatarPosture(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    def clone(*args):
+        """
+        virtual Motion* Piavca::Motion::clone()=0
+                 
+        creates a copy of the motion         
+                 
+                
+        """
+        return _Piavca_base.AvatarPosture_clone(*args)
+
+    def load(*args):
+        """
+        virtual void Piavca::Motion::load(Avatar *av)
+                 
+        called when the motion is loaded into an avatar         
+                 
+                
+        """
+        return _Piavca_base.AvatarPosture_load(*args)
+
+    def getPostureFromAvatar(*args): return _Piavca_base.AvatarPosture_getPostureFromAvatar(*args)
+    __swig_destroy__ = _Piavca_base.delete_AvatarPosture
+    __del__ = lambda self : None;
+    def __disown__(self):
+        self.this.disown()
+        _Piavca_base.disown_AvatarPosture(self)
+        return weakref_proxy(self)
+AvatarPosture_swigregister = _Piavca_base.AvatarPosture_swigregister
+AvatarPosture_swigregister(AvatarPosture)
+
+class PostureBlend(Sequence):
+    __swig_setmethods__ = {}
+    for _s in [Sequence]: __swig_setmethods__.update(_s.__swig_setmethods__)
+    __setattr__ = lambda self, name, value: _swig_setattr(self, PostureBlend, name, value)
+    __swig_getmethods__ = {}
+    for _s in [Sequence]: __swig_getmethods__.update(_s.__swig_getmethods__)
+    __getattr__ = lambda self, name: _swig_getattr(self, PostureBlend, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        if self.__class__ == PostureBlend:
+            args = (None,) + args
+        else:
+            args = (self,) + args
+        this = _Piavca_base.new_PostureBlend(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    def clone(*args):
+        """
+        virtual Motion* Piavca::Motion::clone()=0
+                 
+        creates a copy of the motion         
+                 
+                
+        """
+        return _Piavca_base.PostureBlend_clone(*args)
+
+    def setBlendInterval(*args): return _Piavca_base.PostureBlend_setBlendInterval(*args)
+    def setAccumulateRoot(*args): return _Piavca_base.PostureBlend_setAccumulateRoot(*args)
+    def reset(*args):
+        """
+        void TwoMotionCombiner::reset()
+                 
+        does any resetting needed         
+                 
+                
+        """
+        return _Piavca_base.PostureBlend_reset(*args)
+
+    def reblend(*args): return _Piavca_base.PostureBlend_reblend(*args)
+    def setMotion(*args): return _Piavca_base.PostureBlend_setMotion(*args)
+    def getMotion(*args): return _Piavca_base.PostureBlend_getMotion(*args)
+    __swig_destroy__ = _Piavca_base.delete_PostureBlend
+    __del__ = lambda self : None;
+    def __disown__(self):
+        self.this.disown()
+        _Piavca_base.disown_PostureBlend(self)
+        return weakref_proxy(self)
+PostureBlend_swigregister = _Piavca_base.PostureBlend_swigregister
+PostureBlend_swigregister(PostureBlend)
+
+class Reposition(MotionFilter):
+    __swig_setmethods__ = {}
+    for _s in [MotionFilter]: __swig_setmethods__.update(_s.__swig_setmethods__)
+    __setattr__ = lambda self, name, value: _swig_setattr(self, Reposition, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MotionFilter]: __swig_getmethods__.update(_s.__swig_getmethods__)
+    __getattr__ = lambda self, name: _swig_getattr(self, Reposition, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        if self.__class__ == Reposition:
+            args = (None,) + args
+        else:
+            args = (self,) + args
+        this = _Piavca_base.new_Reposition(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    def clone(*args):
+        """
+        virtual Motion* Piavca::Motion::clone()=0
+                 
+        creates a copy of the motion         
+                 
+                
+        """
+        return _Piavca_base.Reposition_clone(*args)
+
+    def setStartPosition(*args): return _Piavca_base.Reposition_setStartPosition(*args)
+    def setStartOrientation(*args): return _Piavca_base.Reposition_setStartOrientation(*args)
+    def setStartFromMotion(*args): return _Piavca_base.Reposition_setStartFromMotion(*args)
+    def setMotion(*args):
+        """
+        void Piavca::MotionFilter::setMotion(Motion *mot)
+                 
+                
+                 
+                
+        """
+        return _Piavca_base.Reposition_setMotion(*args)
+
+    def setMaintainY(*args): return _Piavca_base.Reposition_setMaintainY(*args)
+    def isNull(*args):
+        """
+        virtual bool Piavca::MotionFilter::isNull(int trackId) const 
+                 
+        given an iterator tests whether it actually points to anything or if its null         
+                 
+                
+        """
+        return _Piavca_base.Reposition_isNull(*args)
+
+    def getFloatValueAtTimeInternal(*args):
+        """
+        virtual float Piavca::Motion::getFloatValueAtTimeInternal(int trackId, float time)=0
+                 
+        internal version of getFloatValueAtTime, to be overridden         
+                 
+                
+        """
+        return _Piavca_base.Reposition_getFloatValueAtTimeInternal(*args)
+
+    def getVecValueAtTimeInternal(*args):
+        """
+        virtual Vec Piavca::Motion::getVecValueAtTimeInternal(int trackId, float time)=0
+                 
+        internal version of getVecValueAtTime, to be overridden         
+                 
+                
+        """
+        return _Piavca_base.Reposition_getVecValueAtTimeInternal(*args)
+
+    def getQuatValueAtTimeInternal(*args):
+        """
+        virtual Quat Piavca::Motion::getQuatValueAtTimeInternal(int trackId, float time)=0
+                 
+        internal version of getQuatValueAtTime, to be overridden         
+                 
+                
+        """
+        return _Piavca_base.Reposition_getQuatValueAtTimeInternal(*args)
+
+    __swig_destroy__ = _Piavca_base.delete_Reposition
+    __del__ = lambda self : None;
+    def __disown__(self):
+        self.this.disown()
+        _Piavca_base.disown_Reposition(self)
+        return weakref_proxy(self)
+Reposition_swigregister = _Piavca_base.Reposition_swigregister
+Reposition_swigregister(Reposition)
+
 class SelfBlend(SequentialBlend):
     """
     A SequentialBlend motion manipuator that blends a motion into itself.     
@@ -3852,17 +4213,17 @@ class SelfBlend(SequentialBlend):
 SelfBlend_swigregister = _Piavca_base.SelfBlend_swigregister
 SelfBlend_swigregister(SelfBlend)
 
-class LoopMotion(SelfBlend):
+class LoopMotion(PostureBlend):
     """
     a motion filter that makes a motion loop continuously     
            
          see also: LoopMotion.h
     """
     __swig_setmethods__ = {}
-    for _s in [SelfBlend]: __swig_setmethods__.update(_s.__swig_setmethods__)
+    for _s in [PostureBlend]: __swig_setmethods__.update(_s.__swig_setmethods__)
     __setattr__ = lambda self, name, value: _swig_setattr(self, LoopMotion, name, value)
     __swig_getmethods__ = {}
-    for _s in [SelfBlend]: __swig_getmethods__.update(_s.__swig_getmethods__)
+    for _s in [PostureBlend]: __swig_getmethods__.update(_s.__swig_getmethods__)
     __getattr__ = lambda self, name: _swig_getattr(self, LoopMotion, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
@@ -4029,17 +4390,17 @@ class RandomTimingsLoop(LoopMotion):
 RandomTimingsLoop_swigregister = _Piavca_base.RandomTimingsLoop_swigregister
 RandomTimingsLoop_swigregister(RandomTimingsLoop)
 
-class AvatarPostureBlend(SequentialBlend):
+class AvatarPostureBlend(Sequence):
     """
     A motion blend operator that blends a motion into the current position of an avatar.     
            
     This class will blend smoothly from the current postion of an avatar to the motion and will have the motion start at the current position and orientation of the avatar rather than its own start point (see SequentialBlend docs for some details)      see also: AvatarPostureBlend.h
     """
     __swig_setmethods__ = {}
-    for _s in [SequentialBlend]: __swig_setmethods__.update(_s.__swig_setmethods__)
+    for _s in [Sequence]: __swig_setmethods__.update(_s.__swig_setmethods__)
     __setattr__ = lambda self, name, value: _swig_setattr(self, AvatarPostureBlend, name, value)
     __swig_getmethods__ = {}
-    for _s in [SequentialBlend]: __swig_getmethods__.update(_s.__swig_getmethods__)
+    for _s in [Sequence]: __swig_getmethods__.update(_s.__swig_getmethods__)
     __getattr__ = lambda self, name: _swig_getattr(self, AvatarPostureBlend, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
@@ -4063,15 +4424,16 @@ class AvatarPostureBlend(SequentialBlend):
         """
         return _Piavca_base.AvatarPostureBlend_clone(*args)
 
-    def load(*args):
+    def setBlendInterval(*args): return _Piavca_base.AvatarPostureBlend_setBlendInterval(*args)
+    def isNull(*args):
         """
-        void AvatarPostureBlend::load(Avatar *av)
+        bool TwoMotionCombiner::isNull(int trackId) const 
                  
-        called when the motion is loaded into an avatar         
+        given a track ID tests whether it actually points to anything or if its null         
                  
-                
+        is null if the track is null in both motions.         
         """
-        return _Piavca_base.AvatarPostureBlend_load(*args)
+        return _Piavca_base.AvatarPostureBlend_isNull(*args)
 
     def setMotion(*args):
         """
@@ -4083,6 +4445,7 @@ class AvatarPostureBlend(SequentialBlend):
         """
         return _Piavca_base.AvatarPostureBlend_setMotion(*args)
 
+    def getMotion(*args): return _Piavca_base.AvatarPostureBlend_getMotion(*args)
     def reblend(*args):
         """
         void AvatarPostureBlend::reblend(float time)
@@ -4535,6 +4898,8 @@ class MotionTransition(TwoMotionCombiner):
         """
         return _Piavca_base.MotionTransition_clone(*args)
 
+    MotionStart = _Piavca_base.MotionTransition_MotionStart
+    MotionEnd = _Piavca_base.MotionTransition_MotionEnd
     def setTransitionFunction(*args): return _Piavca_base.MotionTransition_setTransitionFunction(*args)
     def setTransitionTime1(*args): return _Piavca_base.MotionTransition_setTransitionTime1(*args)
     def setTransitionTime2(*args): return _Piavca_base.MotionTransition_setTransitionTime2(*args)
@@ -4888,6 +5253,16 @@ class RandomLoopMotion(RandomTimingsLoop):
 
     def setMotionProb(*args): return _Piavca_base.RandomLoopMotion_setMotionProb(*args)
     def shift(*args): return _Piavca_base.RandomLoopMotion_shift(*args)
+    def reblend(*args):
+        """
+        virtual void Piavca::RandomLoopMotion::reblend(float time)
+                 
+        called each time around the loop         
+                 
+        It can be called by the client to interrupt the current motion.         
+        """
+        return _Piavca_base.RandomLoopMotion_reblend(*args)
+
     def __disown__(self):
         self.this.disown()
         _Piavca_base.disown_RandomLoopMotion(self)
@@ -5042,6 +5417,16 @@ class RandomBlendLoop(RandomTimingsLoop):
         """
         return _Piavca_base.RandomBlendLoop_shift(*args)
 
+    def reblend(*args):
+        """
+        virtual void Piavca::RandomBlendLoop::reblend(float time)
+                 
+        called each time around the loop         
+                 
+        It can be called by the client to interrupt the current motion.         
+        """
+        return _Piavca_base.RandomBlendLoop_reblend(*args)
+
     def __disown__(self):
         self.this.disown()
         _Piavca_base.disown_RandomBlendLoop(self)
@@ -5099,6 +5484,16 @@ class RandomAddLoop(RandomTimingsLoop):
                 
         """
         return _Piavca_base.RandomAddLoop_shift(*args)
+
+    def reblend(*args):
+        """
+        virtual void Piavca::RandomAddLoop::reblend(float time)
+                 
+        called each time around the loop         
+                 
+        It can be called by the client to interrupt the current motion.         
+        """
+        return _Piavca_base.RandomAddLoop_reblend(*args)
 
     def __disown__(self):
         self.this.disown()

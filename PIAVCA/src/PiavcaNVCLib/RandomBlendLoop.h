@@ -68,7 +68,8 @@ public:
 	RandomBlendLoop(const RandomBlendLoop &rbl)
 		:RandomTimingsLoop(rbl)
 	{
-		randomblend = dynamic_cast<RandomBlend *>(getMotion());
+		randomblend = dynamic_cast<RandomBlend *>(rbl.randomblend->clone());
+		setMotion(randomblend);
 	};
 	~RandomBlendLoop(){};
 	virtual Motion *clone(){return new RandomBlendLoop(*this);};
@@ -87,6 +88,12 @@ public:
 	{
 		randomblend->shift();
 	};
+
+	virtual void reblend(float time)
+	{
+		shift();
+		RandomTimingsLoop::reblend(time);
+	}
 };
 
 };

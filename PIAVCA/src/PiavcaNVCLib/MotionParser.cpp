@@ -2081,7 +2081,7 @@ template<> void MotionParserTyped<RandomAddLoop>::editMotionInternal(RandomAddLo
 			//} 
 			else if(currentWord == "shift")
 			{
-				mot->SelfBlend::reblend();
+				mot->LoopMotion::reblend();
 				mot->shift();
 				if(!(is >> currentWord)) break;
 			}

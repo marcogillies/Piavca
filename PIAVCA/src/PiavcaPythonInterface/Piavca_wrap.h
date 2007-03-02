@@ -717,6 +717,7 @@ public:
     virtual bool loaded();
     virtual void unload();
     virtual void printInfo();
+    virtual void setFacial(bool _facial);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
     virtual bool isNull(int trackId) const;
     virtual Piavca::trackType getTrackType(int trackId) const;
@@ -753,7 +754,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[20];
+    mutable swig::PyObject_var vtable[21];
 #endif
 
 };
@@ -1283,6 +1284,337 @@ private:
 };
 
 
+class SwigDirector_Sequence : public Piavca::Sequence, public Swig::Director {
+
+public:
+    SwigDirector_Sequence(PyObject *self, Piavca::Motion *mot1 = NULL, Piavca::Motion *mot2 = NULL);
+    SwigDirector_Sequence(PyObject *self, Piavca::Sequence const &sb);
+    virtual Piavca::Motion *findSub(Piavca::tstring nm);
+    virtual void load(Piavca::Avatar *av);
+    virtual Piavca::Avatar *getAvatar();
+    virtual void preFrame(float time);
+    virtual void setStartTime(float time);
+    virtual float getFloatValueAtTimeInternal(int trackId, float time);
+    virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
+    virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
+    virtual bool isRandomAccess();
+    virtual void create();
+    virtual ~SwigDirector_Sequence();
+    virtual void reset();
+    virtual Piavca::Motion *clone();
+    virtual bool isFacial();
+    virtual float getMotionLength() const;
+    virtual void unload();
+    virtual bool loaded();
+    virtual void printInfo();
+    virtual Piavca::Motion *findSubByType(type_info const &ty);
+    virtual bool isNull(int trackId) const;
+    virtual Piavca::trackType getTrackType(int trackId) const;
+
+
+/* Internal Director utilities */
+public:
+    bool swig_get_inner(const char* name) const {
+      std::map<std::string, bool>::const_iterator iv = inner.find(name);
+      return (iv != inner.end() ? iv->second : false);
+    }
+
+    void swig_set_inner(const char* name, bool val) const
+    { inner[name] = val;}
+
+private:
+    mutable std::map<std::string, bool> inner;
+
+
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+/* VTable implementation */
+    PyObject *swig_get_method(size_t method_index, const char *method_name) const {
+      PyObject *method = vtable[method_index];
+      if (!method) {
+        swig::PyObject_var name = PyString_FromString(method_name);
+        method = PyObject_GetAttr(swig_get_self(), name);
+        if (method == NULL) {
+          std::string msg = "Method in class Sequence doesn't exist, undefined ";
+          msg += method_name;
+          Swig::DirectorMethodException::raise(msg.c_str());
+        }
+        vtable[method_index] = method;
+      };
+      return method;
+    }
+private:
+    mutable swig::PyObject_var vtable[20];
+#endif
+
+};
+
+
+class SwigDirector_MotionPosture : public Piavca::MotionPosture, public Swig::Director {
+
+public:
+    SwigDirector_MotionPosture(PyObject *self, Piavca::Motion *m = NULL, bool _facial = false);
+    SwigDirector_MotionPosture(PyObject *self, Piavca::MotionPosture const &m);
+    virtual Piavca::Motion *findSub(Piavca::tstring nm);
+    virtual void load(Piavca::Avatar *av);
+    virtual Piavca::Avatar *getAvatar();
+    virtual void setStartTime(float t);
+    virtual void preFrame(float time);
+    virtual float getFloatValueAtTimeInternal(int trackId, float time);
+    virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
+    virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
+    virtual bool isRandomAccess();
+    virtual void reset();
+    virtual void create();
+    virtual ~SwigDirector_MotionPosture();
+    virtual Piavca::Motion *clone();
+    virtual float getMotionLength() const;
+    virtual bool isFacial();
+    virtual bool loaded();
+    virtual void unload();
+    virtual void printInfo();
+    virtual void setFacial(bool _facial);
+    virtual Piavca::Motion *findSubByType(type_info const &ty);
+    virtual bool isNull(int trackId) const;
+    virtual Piavca::trackType getTrackType(int trackId) const;
+
+
+/* Internal Director utilities */
+public:
+    bool swig_get_inner(const char* name) const {
+      std::map<std::string, bool>::const_iterator iv = inner.find(name);
+      return (iv != inner.end() ? iv->second : false);
+    }
+
+    void swig_set_inner(const char* name, bool val) const
+    { inner[name] = val;}
+
+private:
+    mutable std::map<std::string, bool> inner;
+
+
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+/* VTable implementation */
+    PyObject *swig_get_method(size_t method_index, const char *method_name) const {
+      PyObject *method = vtable[method_index];
+      if (!method) {
+        swig::PyObject_var name = PyString_FromString(method_name);
+        method = PyObject_GetAttr(swig_get_self(), name);
+        if (method == NULL) {
+          std::string msg = "Method in class MotionPosture doesn't exist, undefined ";
+          msg += method_name;
+          Swig::DirectorMethodException::raise(msg.c_str());
+        }
+        vtable[method_index] = method;
+      };
+      return method;
+    }
+private:
+    mutable swig::PyObject_var vtable[21];
+#endif
+
+};
+
+
+class SwigDirector_AvatarPosture : public Piavca::AvatarPosture, public Swig::Director {
+
+public:
+    SwigDirector_AvatarPosture(PyObject *self, bool _facial = false);
+    SwigDirector_AvatarPosture(PyObject *self, Piavca::AvatarPosture const &m);
+    virtual Piavca::Motion *findSub(Piavca::tstring nm);
+    virtual Piavca::Avatar *getAvatar();
+    virtual void load(Piavca::Avatar *av);
+    virtual void setStartTime(float t);
+    virtual void preFrame(float time);
+    virtual float getFloatValueAtTimeInternal(int trackId, float time);
+    virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
+    virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
+    virtual bool isRandomAccess();
+    virtual void reset();
+    virtual void create();
+    virtual ~SwigDirector_AvatarPosture();
+    virtual Piavca::Motion *clone();
+    virtual float getMotionLength() const;
+    virtual bool isFacial();
+    virtual bool loaded();
+    virtual void unload();
+    virtual void printInfo();
+    virtual void setFacial(bool _facial);
+    virtual Piavca::Motion *findSubByType(type_info const &ty);
+    virtual bool isNull(int trackId) const;
+    virtual Piavca::trackType getTrackType(int trackId) const;
+
+
+/* Internal Director utilities */
+public:
+    bool swig_get_inner(const char* name) const {
+      std::map<std::string, bool>::const_iterator iv = inner.find(name);
+      return (iv != inner.end() ? iv->second : false);
+    }
+
+    void swig_set_inner(const char* name, bool val) const
+    { inner[name] = val;}
+
+private:
+    mutable std::map<std::string, bool> inner;
+
+
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+/* VTable implementation */
+    PyObject *swig_get_method(size_t method_index, const char *method_name) const {
+      PyObject *method = vtable[method_index];
+      if (!method) {
+        swig::PyObject_var name = PyString_FromString(method_name);
+        method = PyObject_GetAttr(swig_get_self(), name);
+        if (method == NULL) {
+          std::string msg = "Method in class AvatarPosture doesn't exist, undefined ";
+          msg += method_name;
+          Swig::DirectorMethodException::raise(msg.c_str());
+        }
+        vtable[method_index] = method;
+      };
+      return method;
+    }
+private:
+    mutable swig::PyObject_var vtable[21];
+#endif
+
+};
+
+
+class SwigDirector_PostureBlend : public Piavca::PostureBlend, public Swig::Director {
+
+public:
+    SwigDirector_PostureBlend(PyObject *self, Piavca::Motion *mot = NULL, float interval = 0.2);
+    SwigDirector_PostureBlend(PyObject *self, Piavca::PostureBlend const &pb);
+    virtual Piavca::Motion *findSub(Piavca::tstring nm);
+    virtual void load(Piavca::Avatar *av);
+    virtual Piavca::Avatar *getAvatar();
+    virtual void preFrame(float time);
+    virtual void setStartTime(float time);
+    virtual float getFloatValueAtTimeInternal(int trackId, float time);
+    virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
+    virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
+    virtual void reblend(float time);
+    virtual bool isRandomAccess();
+    virtual void create();
+    virtual ~SwigDirector_PostureBlend();
+    virtual Piavca::Motion *clone();
+    virtual void reset();
+    virtual bool isFacial();
+    virtual float getMotionLength() const;
+    virtual void unload();
+    virtual bool loaded();
+    virtual void printInfo();
+    virtual Piavca::Motion *findSubByType(type_info const &ty);
+    virtual Piavca::Motion *getMotion();
+    virtual void setMotion(Piavca::Motion *mot);
+    virtual bool isNull(int trackId) const;
+    virtual Piavca::trackType getTrackType(int trackId) const;
+
+
+/* Internal Director utilities */
+public:
+    bool swig_get_inner(const char* name) const {
+      std::map<std::string, bool>::const_iterator iv = inner.find(name);
+      return (iv != inner.end() ? iv->second : false);
+    }
+
+    void swig_set_inner(const char* name, bool val) const
+    { inner[name] = val;}
+
+private:
+    mutable std::map<std::string, bool> inner;
+
+
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+/* VTable implementation */
+    PyObject *swig_get_method(size_t method_index, const char *method_name) const {
+      PyObject *method = vtable[method_index];
+      if (!method) {
+        swig::PyObject_var name = PyString_FromString(method_name);
+        method = PyObject_GetAttr(swig_get_self(), name);
+        if (method == NULL) {
+          std::string msg = "Method in class PostureBlend doesn't exist, undefined ";
+          msg += method_name;
+          Swig::DirectorMethodException::raise(msg.c_str());
+        }
+        vtable[method_index] = method;
+      };
+      return method;
+    }
+private:
+    mutable swig::PyObject_var vtable[23];
+#endif
+
+};
+
+
+class SwigDirector_Reposition : public Piavca::Reposition, public Swig::Director {
+
+public:
+    SwigDirector_Reposition(PyObject *self, Piavca::Motion *m = NULL, Piavca::Vec pos = Piavca::Vec(), Piavca::Quat ori = Piavca::Quat());
+    SwigDirector_Reposition(PyObject *self, Piavca::Reposition const &r);
+    virtual Piavca::Motion *findSub(Piavca::tstring nm);
+    virtual void load(Piavca::Avatar *av);
+    virtual Piavca::Avatar *getAvatar();
+    virtual void preFrame(float time);
+    virtual void setStartTime(float time);
+    virtual float getFloatValueAtTimeInternal(int trackId, float time);
+    virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
+    virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
+    virtual bool isRandomAccess();
+    virtual void create();
+    virtual ~SwigDirector_Reposition();
+    virtual void reset();
+    virtual Piavca::Motion *clone();
+    virtual float getMotionLength() const;
+    virtual bool isFacial();
+    virtual void unload();
+    virtual bool loaded();
+    virtual void printInfo();
+    virtual void setMaintainY(bool b);
+    virtual Piavca::Motion *findSubByType(type_info const &ty);
+    virtual Piavca::trackType getTrackType(int trackId) const;
+    virtual bool isNull(int trackId) const;
+
+
+/* Internal Director utilities */
+public:
+    bool swig_get_inner(const char* name) const {
+      std::map<std::string, bool>::const_iterator iv = inner.find(name);
+      return (iv != inner.end() ? iv->second : false);
+    }
+
+    void swig_set_inner(const char* name, bool val) const
+    { inner[name] = val;}
+
+private:
+    mutable std::map<std::string, bool> inner;
+
+
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+/* VTable implementation */
+    PyObject *swig_get_method(size_t method_index, const char *method_name) const {
+      PyObject *method = vtable[method_index];
+      if (!method) {
+        swig::PyObject_var name = PyString_FromString(method_name);
+        method = PyObject_GetAttr(swig_get_self(), name);
+        if (method == NULL) {
+          std::string msg = "Method in class Reposition doesn't exist, undefined ";
+          msg += method_name;
+          Swig::DirectorMethodException::raise(msg.c_str());
+        }
+        vtable[method_index] = method;
+      };
+      return method;
+    }
+private:
+    mutable swig::PyObject_var vtable[21];
+#endif
+
+};
+
+
 class SwigDirector_SelfBlend : public Piavca::SelfBlend, public Swig::Director {
 
 public:
@@ -1377,8 +1709,6 @@ public:
     virtual void unload();
     virtual bool loaded();
     virtual void printInfo();
-    virtual void setMaintainY(bool b);
-    virtual void setAccumulateRoot(bool b);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
     virtual Piavca::Motion *getMotion();
     virtual void setMotion(Piavca::Motion *mot);
@@ -1417,7 +1747,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[25];
+    mutable swig::PyObject_var vtable[23];
 #endif
 
 };
@@ -1448,8 +1778,6 @@ public:
     virtual void unload();
     virtual bool loaded();
     virtual void printInfo();
-    virtual void setMaintainY(bool b);
-    virtual void setAccumulateRoot(bool b);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
     virtual Piavca::Motion *getMotion();
     virtual void setMotion(Piavca::Motion *m);
@@ -1488,7 +1816,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[26];
+    mutable swig::PyObject_var vtable[24];
 #endif
 
 };
@@ -1781,8 +2109,6 @@ public:
     virtual void unload();
     virtual bool loaded();
     virtual void printInfo();
-    virtual void setMaintainY(bool b);
-    virtual void setAccumulateRoot(bool b);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
     virtual Piavca::Motion *getMotion();
     virtual void setMotion(Piavca::Motion *m);
@@ -1822,7 +2148,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[27];
+    mutable swig::PyObject_var vtable[25];
 #endif
 
 };
@@ -1844,8 +2170,8 @@ public:
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
     virtual void setTimingParams(float minTimeScale, float maxTimeScale);
-    virtual void reblend(float time);
     virtual void addMotion(Piavca::Motion *mot, float weight = 1.0f);
+    virtual void reblend(float time);
     virtual bool isRandomAccess();
     virtual void create();
     virtual ~SwigDirector_RandomLoopMotion();
@@ -1856,8 +2182,6 @@ public:
     virtual void unload();
     virtual bool loaded();
     virtual void printInfo();
-    virtual void setMaintainY(bool b);
-    virtual void setAccumulateRoot(bool b);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
     virtual Piavca::Motion *getMotion();
     virtual void setMotion(Piavca::Motion *m);
@@ -1896,7 +2220,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[29];
+    mutable swig::PyObject_var vtable[27];
 #endif
 
 };
@@ -1918,8 +2242,8 @@ public:
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
     virtual void setTimingParams(float minTimeScale, float maxTimeScale);
-    virtual void reblend(float time);
     virtual void addMotion(Piavca::Motion *mot, float weight);
+    virtual void reblend(float time);
     virtual bool isRandomAccess();
     virtual void create();
     virtual ~SwigDirector_RandomBlendLoop();
@@ -1930,8 +2254,6 @@ public:
     virtual void unload();
     virtual bool loaded();
     virtual void printInfo();
-    virtual void setMaintainY(bool b);
-    virtual void setAccumulateRoot(bool b);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
     virtual Piavca::Motion *getMotion();
     virtual void setMotion(Piavca::Motion *m);
@@ -1971,7 +2293,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[29];
+    mutable swig::PyObject_var vtable[27];
 #endif
 
 };
@@ -2004,8 +2326,6 @@ public:
     virtual void unload();
     virtual bool loaded();
     virtual void printInfo();
-    virtual void setMaintainY(bool b);
-    virtual void setAccumulateRoot(bool b);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
     virtual Piavca::Motion *getMotion();
     virtual void setMotion(Piavca::Motion *m);
@@ -2045,7 +2365,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[28];
+    mutable swig::PyObject_var vtable[26];
 #endif
 
 };
@@ -2143,8 +2463,6 @@ public:
     virtual void unload();
     virtual bool loaded();
     virtual void printInfo();
-    virtual void setMaintainY(bool b);
-    virtual void setAccumulateRoot(bool b);
     virtual bool lookAt(Piavca::tstring name, bool force = false);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
     virtual Piavca::Motion *getMotion();
@@ -2184,7 +2502,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[27];
+    mutable swig::PyObject_var vtable[25];
 #endif
 
 };
@@ -2541,8 +2859,6 @@ public:
     virtual void unload();
     virtual bool loaded();
     virtual void printInfo();
-    virtual void setMaintainY(bool b);
-    virtual void setAccumulateRoot(bool b);
     virtual bool lookAt(Piavca::tstring name, bool force = false);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
     virtual Piavca::Motion *getMotion();
@@ -2582,7 +2898,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[27];
+    mutable swig::PyObject_var vtable[25];
 #endif
 
 };

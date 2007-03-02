@@ -174,14 +174,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\MotionTransition.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\SubMotion.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\Subtract.cpp"
 				>
 			</File>
@@ -237,10 +229,6 @@
 			</File>
 			<File
 				RelativePath=".\MotionSaver.h"
-				>
-			</File>
-			<File
-				RelativePath=".\MotionTransition.h"
 				>
 			</File>
 			<File
@@ -305,10 +293,6 @@
 			</File>
 			<File
 				RelativePath=".\ScaleMotionSpeed.h"
-				>
-			</File>
-			<File
-				RelativePath=".\SubMotion.h"
 				>
 			</File>
 			<File

@@ -38,7 +38,7 @@
 
 #include "PiavcaAPI/PiavcaDefs.h"
 #include "PiavcaAPI/Motion.h"
-#include "PiavcaAPI/SelfBlend.h"
+#include "PiavcaAPI/PostureBlend.h"
 #include "PiavcaAPI/AvatarPostureBlend.h"
 #include "PiavcaAPI/MotionAdder.h"
 #include "PiavcaAPI/Avatar.h"
@@ -221,7 +221,7 @@ class PIAVCA_DECL AvatarMotionQueue : public AvatarTimeCallback
   bool facial;
   bool interruptMot;
   Motion *currentMotion;
-  Piavca::SelfBlend* selfBlend;
+  Piavca::PostureBlend* selfBlend;
   Piavca::MotionAdder *adder;
   Piavca::AvatarPostureBlend *avatarBlend;
 };

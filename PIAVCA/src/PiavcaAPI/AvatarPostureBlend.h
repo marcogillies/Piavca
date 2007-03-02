@@ -36,7 +36,8 @@
 
 //#include "Motion.h"
 //#include "PiavcaCore.h"
-#include "SequentialBlend.h"
+#include "Sequence.h"
+#include "Reposition.h"
 
 namespace Piavca
 {
@@ -47,10 +48,14 @@ namespace Piavca
 	 *	and will have the motion start at the current position and orientation of the avatar
 	 *  rather than its own start point (see SequentialBlend docs for some details)
 	 */
-    class PIAVCA_DECL AvatarPostureBlend : public SequentialBlend
+    class PIAVCA_DECL AvatarPostureBlend : public Sequence
 	{
 		//Avatar *avatar;
 		bool tracksFromAvatar;
+		float interval;
+		
+		Motion *originalMotion;
+		Reposition *repositioner;
 	public:
 		/*! 
 		 *	Pass in the motion to be blended in, 
@@ -60,13 +65,24 @@ namespace Piavca
 		 */
 	    AvatarPostureBlend(Motion *mot=NULL, float interval = 0.2, bool tracksFromAvatar=false);
 		AvatarPostureBlend(const AvatarPostureBlend &apb)
-			:SequentialBlend(apb), tracksFromAvatar(apb.tracksFromAvatar){};
+			:Sequence(apb), tracksFromAvatar(apb.tracksFromAvatar),
+			interval(apb.interval)
+		{
+			if(originalMotion)
+				originalMotion = apb.originalMotion->clone();
+			if(repositioner)
+				repositioner = dynamic_cast<Reposition *>(apb.repositioner->clone());
+		};
 
 		virtual Motion *clone(){return new AvatarPostureBlend(*this);};
 
-		virtual void load(Avatar *av);
+		void setBlendInterval(float i){interval = i;};
+
+		virtual bool isNull(int trackId)const;
 
 		void setMotion(Motion *mot);
+		//! sets the motion to be blended in
+		virtual Motion *getMotion();
 
 		//! restart the blend (i.e. start blending from the current avatar posture) at the current time
 	    void reblend();

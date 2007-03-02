@@ -361,8 +361,13 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %feature("director") KeyframeMotion;   
 %feature("director") MotionFilter;  
 %feature("director") TwoMotionCombiner;    
-%feature("director") SelfBlend;        
-%feature("director") SequentialBlend;       
+%feature("director") SelfBlend;           
+%feature("director") PostureBlend;        
+%feature("director") SequentialBlend;     
+%feature("director") Sequence;            
+%feature("director") MotionPosture;       
+%feature("director") AvatarPosture;       
+%feature("director") Reposition;       
 %feature("director") LoopMotion;           
 %feature("director") ScaleMotion;           
 %feature("director") ScaleMotionSpeed;           
@@ -412,6 +417,12 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %include "PiavcaNVCLib/TimeOffset.h"
 %include "PiavcaNVCLib/TurnMotion.h"
 %include "PiavcaAPI/SequentialBlend.h"
+%include "PiavcaAPI/Sequence.h"
+%include "PiavcaAPI/SmoothSequence.h"
+%include "PiavcaAPI/MotionPosture.h"
+%include "PiavcaAPI/AvatarPosture.h"
+%include "PiavcaAPI/PostureBlend.h"
+%include "PiavcaAPI/Reposition.h"
 %include "PiavcaAPI/SelfBlend.h"
 %include "PiavcaAPI/LoopMotion.h"
 %include "PiavcaNVCLib/RandomTimingsLoop.h"
@@ -420,7 +431,7 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %include "PiavcaAPI/MotionAdder.h"
 %include "PiavcaNVCLib/Subtract.h"
 %include "PiavcaNVCLib/MaskedMotion.h"
-%include "PiavcaNVCLib/MotionTransition.h"
+%include "PiavcaAPI/MotionTransition.h"
 %include "PiavcaNVCLib/MultiMotionCombiner.h"
 %include "PiavcaNVCLib/ChoiceMotion.h"
 %include "PiavcaNVCLib/RandomChoiceMotion.h"
@@ -436,7 +447,7 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %include "PiavcaNVCLib/ZeroMotion.h"
 %include "PiavcaNVCLib/MotionSaver.h"
 %include "PiavcaNVCLib/MotionParser.h"
-%include "PiavcaNVCLib/SubMotion.h"
+%include "PiavcaAPI/SubMotion.h"
 %include "PiavcaNVCLib/TimeRangeMotion.h"
 %include "PiavcaNVCLib/TimeWarp.h"
 %include "PiavcaNVCLib/DiadicGazeMotion.h"

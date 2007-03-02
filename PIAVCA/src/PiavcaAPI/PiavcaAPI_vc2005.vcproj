@@ -293,6 +293,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\AvatarPosture.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\AvatarPostureBlend.cpp"
 				>
 			</File>
@@ -317,6 +321,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\MotionPosture.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\MotionTransition.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Object.cpp"
 				>
 			</File>
@@ -329,7 +341,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\PostureBlend.cpp"
+				>
+			</File>
+			<File
 				RelativePath="Quat.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Reposition.cpp"
 				>
 			</File>
 			<File
@@ -337,7 +357,19 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Sequence.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\SequentialBlend.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\SmoothSequence.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\SubMotion.cpp"
 				>
 			</File>
 			<File
@@ -359,6 +391,10 @@
 			</File>
 			<File
 				RelativePath="AvatarImp.h"
+				>
+			</File>
+			<File
+				RelativePath=".\AvatarPosture.h"
 				>
 			</File>
 			<File
@@ -402,6 +438,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\MotionPosture.h"
+				>
+			</File>
+			<File
+				RelativePath=".\MotionTransition.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Object.h"
 				>
 			</File>
@@ -426,7 +470,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\PostureBlend.h"
+				>
+			</File>
+			<File
 				RelativePath="Quat.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Reposition.h"
 				>
 			</File>
 			<File
@@ -434,7 +486,19 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Sequence.h"
+				>
+			</File>
+			<File
 				RelativePath=".\SequentialBlend.h"
+				>
+			</File>
+			<File
+				RelativePath=".\SmoothSequence.h"
+				>
+			</File>
+			<File
+				RelativePath=".\SubMotion.h"
 				>
 			</File>
 			<File

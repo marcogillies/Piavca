@@ -134,5 +134,8 @@ PIAVCA_EXPORT Quat  SubMotion::getQuatValueAtTimeInternal (int trackId, float ti
 	{
 		Piavca::Error(_T("Scale motion speed: trying to get a value from a null motion"));
 	}
-	return filterMot->getQuatValueAtTime(trackId, getAdjustedTime(time));
+	Quat q = filterMot->getQuatValueAtTime(trackId, getAdjustedTime(time));
+	//if (trackId == root_orientation_id)
+	//	std::cout << "submotion " << q << std::endl;
+	return q;
 };

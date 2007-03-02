@@ -152,6 +152,11 @@ namespace Piavca
 			return imp->facial;
 		};
 
+		virtual void setFacial(bool _facial)
+		{
+			imp->facial = _facial;
+		}
+
 		//! whether you can access a motions value at frames other than the current one
 		virtual bool isRandomAccess(){return true;};
 

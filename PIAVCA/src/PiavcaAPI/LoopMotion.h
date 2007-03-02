@@ -34,12 +34,12 @@
 #ifndef LOOP_MOTION_H
 #define LOOP_MOTION_H
 
-#include "SelfBlend.h"
+#include "PostureBlend.h"
 
 namespace Piavca
 {
     //! a motion filter that makes a motion loop continuously
-	class PIAVCA_DECL LoopMotion : public SelfBlend
+	class PIAVCA_DECL LoopMotion : public PostureBlend
 	{
 		bool lock;
 		float endTime;
@@ -50,9 +50,9 @@ namespace Piavca
 		/*!  (How long it takes to blend from the end back to the beginning)
 		 */
 		LoopMotion(Motion *mot = NULL, float _endTime = -1, float interval = 0.01)
-			:SelfBlend(mot, interval), lock(false), reblend_flag(false), endTime(_endTime) {} ;
+			:PostureBlend(mot, interval), lock(false), reblend_flag(false), endTime(_endTime) {} ;
 		LoopMotion(const LoopMotion &l)
-			:SelfBlend(l), lock(false), reblend_flag(false), endTime(l.endTime){};
+			:PostureBlend(l), lock(false), reblend_flag(false), endTime(l.endTime){};
 
 		virtual Motion *clone(){return new LoopMotion(*this);};
 
@@ -76,7 +76,8 @@ namespace Piavca
 			if(!lock 
 				&& (reblend_flag
 				|| ((endTime < 0 || time < endTime)
-				&& (mot2->getMotionLength() > 0 && time > mot2->getEndTime()))))
+				&& (!mot2 ||
+				(mot2->getMotionLength() > 0 && time > mot2->getEndTime())))))
 			{
 			    LoopMotion *nonConstThis = const_cast<LoopMotion *>(this);
 				nonConstThis->lock = true;
@@ -85,7 +86,7 @@ namespace Piavca
 				reblend_flag = false;
 			}
 			//std::cout << "loop motion " << time << " " << blendStart << std::endl;
-			return SelfBlend::getFloatValueAtTimeInternal(trackId, time);
+			return PostureBlend::getFloatValueAtTimeInternal(trackId, time);
 		};
 	    
 	     //! calculates the values of a keyframe
@@ -99,7 +100,8 @@ namespace Piavca
 			if(!lock 
 				&& (reblend_flag
 				|| ((endTime < 0 || time < endTime)
-				&& (mot2->getMotionLength() > 0 && time > mot2->getEndTime()))))
+				&& (!mot2 ||
+				(mot2->getMotionLength() > 0 && time > mot2->getEndTime())))))
 			{
 				LoopMotion *nonConstThis = const_cast<LoopMotion *>(this);
 				nonConstThis->lock = true;
@@ -107,7 +109,7 @@ namespace Piavca
 				nonConstThis->lock = false;
 				reblend_flag = false;
 			}
-			Vec v = SelfBlend::getVecValueAtTimeInternal(trackId, time);
+			Vec v = PostureBlend::getVecValueAtTimeInternal(trackId, time);
 			//std::cout << "loop motion: " << v << std::endl;
 			return v;
 		};
@@ -123,15 +125,20 @@ namespace Piavca
 			if(!lock 
 				&& (reblend_flag
 				|| ((endTime < 0 || time < endTime)
-				&& (mot2->getMotionLength() > 0 && time > mot2->getEndTime()))))
+				&& (!mot2 ||
+				(mot2->getMotionLength() > 0 && time > mot2->getEndTime())))))
 			{
+				//std::cout << "Loop Motion Time " << time << " ";
+				//std::cout << mot2->getEndTime() << " ";
+				//std::cout << mot2->getStartTime() << " ";
+				//std::cout << mot2->getMotionLength() << std::endl;
 				LoopMotion *nonConstThis = const_cast<LoopMotion *>(this);
 				nonConstThis->lock = true;
 				nonConstThis->reblend(time);
 				nonConstThis->lock = false;
 				reblend_flag = false;
 			}
-			return SelfBlend::getQuatValueAtTimeInternal(trackId, time);
+			return PostureBlend::getQuatValueAtTimeInternal(trackId, time);
 		};
 	};
 };

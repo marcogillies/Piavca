@@ -126,8 +126,12 @@ protected:
 	//float keyframeGranularity;
 public:
 	//! default constructor
-	Motion():m_avatar(NULL), startTime(0), pausedTime(-1), offsetTime(0), refCount(0), ownedByCore(false), name(_T("")) {};
-	Motion(const Motion &mot):m_avatar(NULL), startTime(mot.startTime), pausedTime(-1), offsetTime(0), refCount(0), ownedByCore(false), name(mot.name) {};
+	Motion():m_avatar(NULL), startTime(0), pausedTime(-1), offsetTime(0), refCount(0), ownedByCore(false), name(_T("")) 
+	{
+	};
+	Motion(const Motion &mot):m_avatar(NULL), startTime(mot.startTime), pausedTime(-1), offsetTime(0), refCount(0), ownedByCore(false), name(mot.name) 
+	{
+	};
 	
 	virtual ~Motion(){};
 
@@ -267,7 +271,7 @@ public:
 		if(pausedTime >=0)
 			return getVecValueAtTimeInternal(trackId, pausedTime);
 		else
-			return getVecValueAtTimeInternal(trackId, time+offsetTime);
+				return getVecValueAtTimeInternal(trackId, time+offsetTime);
 	};
 	//! get the value of a track at a given time (only works for Quats) 
 	Quat getQuatValueAtTime(int trackId, float time)
