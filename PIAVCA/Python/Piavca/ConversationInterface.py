@@ -71,8 +71,11 @@ class ConversationInterface:
 		thread.start_new_thread(app.MainLoop, ())
 		
 	def respondToSpeech(self):
-		text = self.speechInterface.getText()
-		self.respond(text)
+		while (1):
+			print "waiting for text"
+			text = self.speechInterface.getText()
+			print "got text from speech input:", text
+			self.respond(text)
 		
 	def SpeechInterface(self):
 		if not speechToTextAvailable:

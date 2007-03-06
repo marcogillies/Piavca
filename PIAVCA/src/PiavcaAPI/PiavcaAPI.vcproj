@@ -197,6 +197,9 @@
 				RelativePath=".\AvatarImp.cpp">
 			</File>
 			<File
+				RelativePath=".\AvatarPosture.cpp">
+			</File>
+			<File
 				RelativePath=".\AvatarPostureBlend.cpp">
 			</File>
 			<File
@@ -215,6 +218,12 @@
 				RelativePath=".\MotionAdder.cpp">
 			</File>
 			<File
+				RelativePath=".\MotionPosture.cpp">
+			</File>
+			<File
+				RelativePath=".\MotionTransition.cpp">
+			</File>
+			<File
 				RelativePath=".\Object.cpp">
 			</File>
 			<File
@@ -224,13 +233,28 @@
 				RelativePath=".\PiavcaError.cpp">
 			</File>
 			<File
+				RelativePath=".\PostureBlend.cpp">
+			</File>
+			<File
 				RelativePath="Quat.cpp">
+			</File>
+			<File
+				RelativePath=".\Reposition.cpp">
 			</File>
 			<File
 				RelativePath=".\SelfBlend.cpp">
 			</File>
 			<File
+				RelativePath=".\Sequence.cpp">
+			</File>
+			<File
 				RelativePath=".\SequentialBlend.cpp">
+			</File>
+			<File
+				RelativePath=".\SmoothSequence.cpp">
+			</File>
+			<File
+				RelativePath=".\SubMotion.cpp">
 			</File>
 			<File
 				RelativePath=".\TwoMotionCombiner.cpp">
@@ -247,6 +271,9 @@
 			</File>
 			<File
 				RelativePath="AvatarImp.h">
+			</File>
+			<File
+				RelativePath=".\AvatarPosture.h">
 			</File>
 			<File
 				RelativePath=".\AvatarPostureBlend.h">
@@ -279,6 +306,12 @@
 				RelativePath="MotionImp.h">
 			</File>
 			<File
+				RelativePath=".\MotionPosture.h">
+			</File>
+			<File
+				RelativePath=".\MotionTransition.h">
+			</File>
+			<File
 				RelativePath=".\Object.h">
 			</File>
 			<File
@@ -297,13 +330,28 @@
 				RelativePath="PiavcaException.h">
 			</File>
 			<File
+				RelativePath=".\PostureBlend.h">
+			</File>
+			<File
 				RelativePath="Quat.h">
+			</File>
+			<File
+				RelativePath=".\Reposition.h">
 			</File>
 			<File
 				RelativePath=".\SelfBlend.h">
 			</File>
 			<File
+				RelativePath=".\Sequence.h">
+			</File>
+			<File
 				RelativePath=".\SequentialBlend.h">
+			</File>
+			<File
+				RelativePath=".\SmoothSequence.h">
+			</File>
+			<File
+				RelativePath=".\SubMotion.h">
 			</File>
 			<File
 				RelativePath="TimeCallback.h">

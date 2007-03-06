@@ -121,7 +121,7 @@
 				RelativePath=".\MotionSaver.cpp">
 			</File>
 			<File
-				RelativePath=".\SubMotion.cpp">
+				RelativePath=".\Subtract.cpp">
 			</File>
 			<File
 				RelativePath=".\TimeRangeMotion.cpp">
@@ -213,7 +213,7 @@
 				RelativePath=".\ScaleMotionSpeed.h">
 			</File>
 			<File
-				RelativePath=".\SubMotion.h">
+				RelativePath=".\Subtract.h">
 			</File>
 			<File
 				RelativePath=".\TimeOffset.h">

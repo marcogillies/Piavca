@@ -13,34 +13,41 @@ import thread
 
 script_engine = Piavca.ScriptEngine("callycontroller", "master.conf")
 
-app = wx.PySimpleApp()
+conversation = Piavca.ConversationInterface(script_engine, "cally", "std-startup.xml", "load aiml b")
+conversation.SpeechInterface()
 
-frame=wx.Frame(None,-1)
-sizer=wx.BoxSizer(wx.HORIZONTAL)
+#script_engine.GUI("cally")
+
+
+
+#app = wx.PySimpleApp()
+
+#frame=wx.Frame(None,-1)
+#sizer=wx.BoxSizer(wx.HORIZONTAL)
 	
-f = open("sample.act", "r")
-lines = f.readlines()
-f.close()
+#f = open("sample.act", "r")
+#lines = f.readlines()
+#f.close()
 
-id_counter = 0
-for line in lines:
-	line = line.split()
-	if len(line) > 0 and line[0] == "script":
-		name = line[1]
-		button=wx.Button(frame, id_counter, label=name)
-		wx.EVT_BUTTON (frame, id_counter, lambda e, s = script_engine, n=name : s.playScript("cally", n))
-		sizer.Add(button,1 )
-		id_counter+=1
+#id_counter = 0
+#for line in lines:
+#	line = line.split()
+#	if len(line) > 0 and line[0] == "script":
+#		name = line[1]
+#		button=wx.Button(frame, id_counter, label=name)
+#		wx.EVT_BUTTON (frame, id_counter, lambda e, s = script_engine, n=name : s.playScript("cally", n))
+#		sizer.Add(button,1 )
+#		id_counter+=1
 	
-frame.SetSizer(sizer)
-frame.SetAutoLayout(1)
-sizer.Fit(frame)
+#frame.SetSizer(sizer)
+#frame.SetAutoLayout(1)
+#sizer.Fit(frame)
 
-frame.Show(True)
-frame.Layout()
+#frame.Show(True)
+#frame.Layout()
 
 	
-thread.start_new_thread(app.MainLoop, ())
+#thread.start_new_thread(app.MainLoop, ())
 		
 
 # hack to make TK work, it expects the name of the app to be
