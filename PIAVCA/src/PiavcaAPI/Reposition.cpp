@@ -85,8 +85,10 @@ void Reposition::setStartFromMotion(Motion *m, float time)
 
 bool Reposition::isNull(int trackId) const
 {
-	if (trackId == root_position_id 
-		|| trackId == root_orientation_id)
+	Reposition *non_const_this = const_cast<Reposition *>(this);
+	if (!non_const_this->isFacial() 
+		&& (trackId == root_position_id 
+		|| trackId == root_orientation_id))
 		return false;
 	else
 		return MotionFilter::isNull(trackId);

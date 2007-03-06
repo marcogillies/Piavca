@@ -89,7 +89,7 @@ float SubMotion::getMotionLength() const
 		float e = filterMot->getMotionLength();
 		if(end >= 0 && end < e) e = end;
 		//std::cout << "e " << e << std::endl;
-		if ((e-s) <= 0) Piavca::Error(_T("Motion length < 0"));
+		if ((e-s) < 0) Piavca::Error(_T("Motion length < 0"));
 		return e - s;	
 	}
 	else

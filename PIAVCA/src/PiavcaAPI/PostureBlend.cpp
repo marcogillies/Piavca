@@ -46,6 +46,7 @@
 #include "KeyframeMotion.h"
 #include "MotionTransition.h"
 #include "MotionPosture.h"
+#include "SubMotion.h"
 #include "PiavcaError.h"
 #include "PiavcaCore.h"
 
@@ -95,7 +96,19 @@ void PostureBlend::reblend()
 void PostureBlend::reblend(float time)
 {
 	if(!originalMotion) return;
-	
+
+	MotionPosture *posture = new MotionPosture(this);
+	posture->getPostureFromMotion(this, time);
+	MotionTransition *trans = new MotionTransition(posture, mot2);
+	//MotionTransition *trans = new MotionTransition(posture, NULL);
+	trans->setWindow(interval);
+	setMotion1(trans);
+	//setMotion2(
+	//if (interval < originalMotion->getMotionLength())
+	//	setMotion2(new SubMotion(originalMotion, interval, -1));
+	//else
+	//	setMotion2(new SubMotion(originalMotion, originalMotion->getMotionLength(), -1));
+
 	if(accumulateRoot)
 	{
 		if(!repositioner)
@@ -107,12 +120,6 @@ void PostureBlend::reblend(float time)
 		else
 			repositioner->setStartFromMotion(this, time);
 	}
-
-	MotionPosture *posture = new MotionPosture(this);
-	posture->getPostureFromMotion(this, time);
-	MotionTransition *trans = new MotionTransition(posture, mot2);
-	trans->setWindow(interval);
-	setMotion1(trans);
 
 	setStartTime(time);
 	originalMotion->reset();

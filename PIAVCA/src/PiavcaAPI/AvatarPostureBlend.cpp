@@ -94,6 +94,11 @@ void AvatarPostureBlend::reblend(float time)
 	if(!originalMotion) return;
 	if(!getAvatar()) return;
 	
+	AvatarPosture *posture = new AvatarPosture(originalMotion->isFacial());
+	posture->getPostureFromAvatar(getAvatar());
+	MotionTransition *trans = new MotionTransition(posture, mot2);
+	setMotion1(trans);
+	
 	if(!repositioner)
 	{
 		repositioner = new Reposition(originalMotion);
@@ -103,11 +108,6 @@ void AvatarPostureBlend::reblend(float time)
 	}
 	else
 		repositioner->setStartFromMotion(this, time);
-	
-	AvatarPosture *posture = new AvatarPosture(originalMotion->isFacial());
-	posture->getPostureFromAvatar(getAvatar());
-	MotionTransition *trans = new MotionTransition(posture, mot2);
-	setMotion1(trans);
 
 	setStartTime(time);
 	originalMotion->reset();

@@ -61,6 +61,8 @@ MotionTransition::MotionTransition(Motion *m1, Motion *m2, float transtime1, flo
 {
 	if (transfunc == NULL)
 		transfunc = new SmoothTransition();
+	setTransitionTime1(transtime1);
+	setTransitionTime2(transtime2);
 };
 
 MotionTransition::MotionTransition(const MotionTransition &mt)
@@ -96,17 +98,6 @@ float MotionTransition::getFloatValueAtTimeInternal (int trackId, float time)
 	if(!mot1 || mot1->isNull(trackId))
 		return mot2->getFloatValueAtTime(trackId, time);
 
-	if (transitionTime1 < 0)
-	{
-		transitionTime1 = mot1->getEndTime() - window;
-		if( transitionTime1 < 0)
-			transitionTime1 = 0.0;
-	}
-
-	if (transitionTime2 < 0)
-	{
-		transitionTime2 = window;
-	}
 
 	float t = time - getStartTime();
 	float f1 = mot1->getFloatValueAtTime(trackId, time);//transitionTime1);//+time);
@@ -130,17 +121,6 @@ Vec MotionTransition::getVecValueAtTimeInternal   (int trackId, float time)
 	if(!mot1 || mot1->isNull(trackId))
 		return mot2->getVecValueAtTime(trackId, time);
 
-	if (transitionTime1 < 0)
-	{
-		transitionTime1 = mot1->getEndTime() - window;
-		if( transitionTime1 < 0)
-			transitionTime1 = 0.0;
-	}
-
-	if (transitionTime2 < 0)
-	{
-		transitionTime2 = window;
-	}
 	
 	float t = time - getStartTime();
 	Vec v1 = mot1->getVecValueAtTime(trackId, time);//transitionTime1);//+time);
@@ -164,17 +144,6 @@ Quat MotionTransition::getQuatValueAtTimeInternal  (int trackId, float time)
 	if(!mot1 || mot1->isNull(trackId))
 		return mot2->getQuatValueAtTime(trackId, time);
 
-	if (transitionTime1 < 0)
-	{
-		transitionTime1 = mot1->getEndTime() - window;
-		if( transitionTime1 < 0)
-			transitionTime1 = 0.0;
-	}
-
-	if (transitionTime2 < 0)
-	{
-		transitionTime2 = window;
-	}
 
 	float t = time - getStartTime();
 	Quat q1 = mot1->getQuatValueAtTime(trackId, time);//transitionTime1);//+time);

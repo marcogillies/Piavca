@@ -51,17 +51,17 @@ void MotionPosture::getPostureFromMotion(Motion *mot, float time)
 		case FLOAT_TYPE:  if(isNull(track)) 
 							  addFloatTrack(track, mot->getFloatValueAtTime(track, time));
 						  else
-							  setFloatKeyframe(track, 0.0, mot->getFloatValueAtTime(track, mot->getStartTime()));
+							  setFloatKeyframe(track, 0.0, mot->getFloatValueAtTime(track, time));
 						  break;
 		case VEC_TYPE:    if(isNull(track)) 
-							  addVecTrack(track, mot->getVecValueAtTime(track, mot->getStartTime()));
+							  addVecTrack(track, mot->getVecValueAtTime(track, time));
 						  else
-							  setVecKeyframe(track, 0.0, mot->getVecValueAtTime(track, mot->getStartTime()));
+							  setVecKeyframe(track, 0.0, mot->getVecValueAtTime(track, time));
 						  break;
 		case QUAT_TYPE:   if(isNull(track)) 
-							  addQuatTrack(track, mot->getQuatValueAtTime(track, mot->getStartTime()));
+							  addQuatTrack(track, mot->getQuatValueAtTime(track, time));
 						  else
-						      setQuatKeyframe(track, 0.0, mot->getQuatValueAtTime(track, mot->getStartTime()));
+						      setQuatKeyframe(track, 0.0, mot->getQuatValueAtTime(track, time));
 						  break;
 		default:		  Piavca::Error(_T("Unknown track type"));
 		}

@@ -69,6 +69,7 @@ class motionCallback(scriptCallback):
 	def __call__(self, avatar):
 		if self.motion == None:
 			self.motion = Piavca.Core.getCore().getMotion(self.motionName)
+			self.motion.Reference()
 		avatar.play_motion(self.motion)
 		
 class backgroundMotionCallback(scriptCallback):
