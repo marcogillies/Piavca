@@ -451,8 +451,8 @@ class MotionGraph (Piavca.LoopMotion):
 					#t2 = self.window
 					#print "start time end time", t1, t2
 					
-					edgeMot = Piavca.MotionTransition(mot1.clone(), None, t1, t2, self.window)
-					#edgeMot = Piavca.MotionTransition(mot1.clone(), mot2.clone(), t1, t2, self.window)
+					#edgeMot = Piavca.MotionTransition(mot1.clone(), None, t1, t2, self.window)
+					edgeMot = Piavca.MotionTransition(mot1.clone(), mot2.clone(), t1, t2, self.window)
 					
 					#edgeMot = MotionTransition(mot1, t1, mot2, t2, self.window)
 				self.nodes[n].addTransition(child, edgeMot)
@@ -488,11 +488,15 @@ class MotionGraph (Piavca.LoopMotion):
 			self.nextnode = self.nodes[choice]
 			print "Next Node"
 		else:
-			print "Transition**"
-			self.setBlendInterval(1)
+			motion = self.nextnode.getTransition(choice)
+			self.setBlendInterval(0)
 			self.nextnode = self.nodes[choice]
-			motion = self.nextnode.getTransition(self.nextnode.nextNode)
-			self.nextnode = self.nodes[self.nextnode.nextNode]
+			print "Transition**"
+			
+			#self.setBlendInterval(1)
+			#self.nextnode = self.nodes[choice]
+			#motion = self.nextnode.getTransition(self.nextnode.nextNode)
+			#self.nextnode = self.nodes[self.nextnode.nextNode]
 		#if self.getMotion() != None:
 		#	print self.getQuatValueAtTime(Piavca.root_orientation_id, Piavca.Core.getCore().getTime())
 		#	print self.getQuatValueAtTime(Piavca.root_orientation_id, Piavca.Core.getCore().getTime()-1.0)

@@ -62,6 +62,12 @@ Motion *AvatarPostureBlend::getMotion()
 	return originalMotion;
 }
 
+void AvatarPostureBlend::load(Avatar *av)
+{
+	Sequence::load(av);	
+	reblend();
+};
+
 bool AvatarPostureBlend::isNull(int trackId) const 
 {
 	if (tracksFromAvatar)
@@ -97,11 +103,12 @@ void AvatarPostureBlend::reblend(float time)
 	AvatarPosture *posture = new AvatarPosture(originalMotion->isFacial());
 	posture->getPostureFromAvatar(getAvatar());
 	MotionTransition *trans = new MotionTransition(posture, mot2);
-	setMotion1(trans);
+	setMotion1(NULL);
 	
 	if(!repositioner)
 	{
 		repositioner = new Reposition(originalMotion);
+		repositioner->setMaintainY(true);
 		repositioner->setStartPosition(getAvatar()->getRootPosition());
 		repositioner->setStartOrientation(getAvatar()->getRootOrientation());
 		setMotion2(repositioner);

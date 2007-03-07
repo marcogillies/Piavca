@@ -683,7 +683,7 @@ void	AvatarCal3DImp::setRootPosition (const Vec &Position)
        Piavca::Error("setJointOrientation called on joint that does not exist in avatar");
 	   return;
    }
-   calv += bone->getCoreBone()->getTranslation();
+   //calv += bone->getCoreBone()->getTranslation();
    bone->setTranslation(calv);
 }
 Vec		AvatarCal3DImp::getRootPosition ()
@@ -731,7 +731,7 @@ void	AvatarCal3DImp::setRootOrientation	(const Quat &Orientation)
        Piavca::Error("setJointOrientation called on joint that does not exist in avatar");
 	   return;
    }
-   calq *= bone->getCoreBone()->getRotation();
+   //calq *= bone->getCoreBone()->getRotation();
    bone->setRotation(calq);
 };
 

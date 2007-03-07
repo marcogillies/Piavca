@@ -79,9 +79,17 @@ namespace Piavca
 		virtual Motion *clone(){return new Reposition(*this);};
 
 		//! Sets the new starting position of the motion
-	    void setStartPosition(Vec pos){start_position = pos;};
+	    void setStartPosition(Vec pos)
+		{
+			start_position = pos;
+			calculateRootOffsets();
+		};
 		//! Sets the new starting orientation of the motion
-	    void setStartOrientation(Quat ori){start_orientation = ori;};
+	    void setStartOrientation(Quat ori)
+		{
+			start_orientation = ori;
+			calculateRootOffsets();
+		};
 
 		void setStartFromMotion(Motion *m, float time);
 

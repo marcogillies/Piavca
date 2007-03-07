@@ -150,13 +150,13 @@ Quat MotionTransition::getQuatValueAtTimeInternal  (int trackId, float time)
     Quat q2 = mot2->getQuatValueAtTime(trackId, time);//transitionTime2);//-window+time);
 	//Quat q1 = mot1->getQuatValueAtTime(trackId, transitionTime1+t);//transitionTime1);//+time);
     //Quat q2 = mot2->getQuatValueAtTime(trackId, transitionTime2+t-window);//transitionTime2);//-window+time);
-	//if (trackId == root_orientation_id)
+	//if (trackId == 6)
 	//{
 	//	std::cout << "motion transition " << q1 << " " << q2 << " " << transitionTime2-window+time << " " << t << " ";
 	//}
 	float a = transfunc->eval(t/window);
     Quat q =  slerp(q1, q2, a);
-	//if (trackId == root_orientation_id)
+	//if (trackId == 6)
 	//	std::cout << " "  << a << " " << q << std::endl;
 	return q;
 };

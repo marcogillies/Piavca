@@ -76,6 +76,9 @@ namespace Piavca
 
 		virtual Motion *clone(){return new AvatarPostureBlend(*this);};
 
+		//! called when the motion is loaded into an avatar
+		void load(Avatar *av);
+
 		void setBlendInterval(float i){interval = i;};
 
 		virtual bool isNull(int trackId)const;

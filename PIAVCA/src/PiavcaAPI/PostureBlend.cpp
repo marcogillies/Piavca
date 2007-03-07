@@ -114,6 +114,7 @@ void PostureBlend::reblend(float time)
 		if(!repositioner)
 		{
 			repositioner = new Reposition(originalMotion);
+			repositioner->setMaintainY(true);
 			repositioner->setStartFromMotion(originalMotion, time);
 			setMotion2(repositioner);
 		}
