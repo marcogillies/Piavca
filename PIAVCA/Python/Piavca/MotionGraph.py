@@ -330,6 +330,7 @@ class MotionGraph (Piavca.LoopMotion):
 		
 		# now that we've found the transitions we need to create the graph
 		self.init_nodes(transitions)
+		self.reblend(Piavca.Core.getCore().getTime())
 		
 	# this function creates the graph
 	def init_nodes(self, transitions):
