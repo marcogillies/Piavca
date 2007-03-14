@@ -167,8 +167,8 @@ void displayFunc()
   // set camera position
   glTranslatef(g_Params.leftright, g_Params.updown, 0.0f);
   glTranslatef(0.0f, 0.0f, -g_Params.distance);
-  glRotatef(g_Params.tiltAngle, 1.0f, 0.0f, 0.0f);
   glRotatef(g_Params.twistAngle, 0.0f, 1.0f, 0.0f);
+  glRotatef(g_Params.tiltAngle, 1.0f, 0.0f, 0.0f);
   glTranslatef(0.0f, 0.0f, -90.0f);
 
 

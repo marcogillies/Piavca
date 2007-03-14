@@ -41,12 +41,12 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="glut32.lib glu32.lib opengl32.lib odbc32.lib odbccp32.lib"
-				OutputFile="$(OutDir)/PiavcaCal3dApp.exe"
+				OutputFile="$(OutDir)\PiavcaCal3dApp.exe"
 				LinkIncremental="2"
 				SuppressStartupBanner="TRUE"
 				AdditionalLibraryDirectories="$(CAL3DDIR)\bin\release;..\..\..\cal3d-0.11.0\bin\Release;..\..\..\cal3d-0.10.0\bin\Release;$(PYTHONDIR)\libs;c:\Python25\libs;c:\Python24\lib\;c:\Python23\libs"
 				GenerateDebugInformation="TRUE"
-				ProgramDatabaseFile=".\Debug/cal3d_miniviewer.pdb"
+				ProgramDatabaseFile="$(OutDir)\PiavcaCal3dApp.pdb"
 				SubSystem="1"
 				TargetMachine="1"/>
 			<Tool
@@ -106,11 +106,11 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="glut32.lib glu32.lib opengl32.lib odbc32.lib odbccp32.lib"
-				OutputFile="$(OutputDir)\PiavcaCal3dApp.exe"
+				AdditionalDependencies="glut32.lib glu32.lib opengl32.lib odbc32.lib odbccp32.lib cal3d.lib"
+				OutputFile="$(OutDir)\PiavcaCal3dApp.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="TRUE"
-				AdditionalLibraryDirectories="$(CAL3DDIR)\bin\release;;..\..\..\cal3d-0.11.0\bin\Release;..\..\..\cal3d-0.10.0\bin\Release;$(PYTHONDIR)\libs;c:\Python25\libs;c:\Python24\lib\;c:\Python23\libs"
+				AdditionalLibraryDirectories="$(CAL3DDIR)\bin\release;..\..\..\cal3d-0.11.0\bin\Release;..\..\..\cal3d-0.10.0\bin\Release;$(PYTHONDIR)\libs;c:\Python25\libs;c:\Python24\lib\;c:\Python23\libs"
 				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile=".\Release/cal3d_miniviewer.pdb"
 				SubSystem="1"

@@ -186,9 +186,17 @@ class MotionGraph (Piavca.LoopMotion):
 		self.measure = DistanceMeasure()
 		self.threshold_same = 4
 		self.threshold_diff = 8
+		self.filename = ""
+		self.jointsWeightsFile = ""
 		
 	def addMotion(self, mot):
 		self.motions.append(mot)
+		
+	def getNumMotions(self):
+		return len(self.motions)
+		
+	def getMotionByIndex(self, i):
+		return self.motions[i]
 	
 	def setWindow(self, w):
 		self.window = w
@@ -203,10 +211,38 @@ class MotionGraph (Piavca.LoopMotion):
 		self.threshold_diff = thresh
 		
 	def setJointWeightsFile(self, filename):
-		self.measure.readJointWeightsFile(filename)
+		self.jointsWeightsFile = filename
+		if filename != "":
+			self.measure.readJointWeightsFile(filename)
+	
+	def getWindow(self):
+		return self.window
+	
+	def getFPS(self):
+		return self.fps
+	
+	def getThresholdSame(self):
+		return self.threshold_same
+	
+	def getThresholdDiff(self):
+		return self.threshold_diff
+		
+	def getJointWeightsFile(self):
+		return self.jointsWeightsFile	
+		
+	def setFilename(self, filename):
+		self.filename = filename
+		
+	def getFilename(self):
+		return self.filename
 	
 	# create the graph
 	def create(self):
+		if self.filename != "":
+			self.loadGraph(self.filename)
+			print "loaded graph"
+			return
+		print "creating graph"
 		# create a cached array of the frames of each motion
 		for i, motion in enumerate(self.motions):
 			framearray, numframes = makeFrameArray(motion, self.fps)
@@ -438,7 +474,7 @@ class MotionGraph (Piavca.LoopMotion):
 					starttime = self.nodes[n].time
 					endtime = self.nodes[child].time
 					#print "start time end time", starttime, endtime
-					#print "motion number ", self.nodes[n].motion
+					print "motion number ", self.nodes[n].motion, len(self.motions)
 					edgeMot = Piavca.SubMotion(self.motions[self.nodes[n].motion].clone(), starttime, endtime)
 				# if it is a transition edge, we need to create a transition
 				else:   
@@ -463,6 +499,7 @@ class MotionGraph (Piavca.LoopMotion):
 		file = open(filename, "w")
 		pickle.dump(self.nodes, file)
 		pickle.dump(self.window, file)
+		self.setFilename(filename)
 
 	def loadGraph(self, filename):
 		file = open(filename, "r")
@@ -470,6 +507,7 @@ class MotionGraph (Piavca.LoopMotion):
 		self.window = pickle.load(file)
 		self._createTransitionMots()
 		self.nextnode = self.nodes[self.nodes.keys()[0]]
+		self.setFilename(filename)
 		self.reblend(Piavca.Core.getCore().getTime())
 
 	# pick which motion to play

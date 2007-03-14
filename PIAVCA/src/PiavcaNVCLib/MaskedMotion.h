@@ -55,6 +55,8 @@ public:
 	void setMask(int track, bool val = true);
 	//! gets the mask value for a track
 	bool getMask(int track) const;
+	//! clears all values in the mask
+	void clearMask();
 };
 
 //! plays different motions on different joints.
@@ -82,6 +84,9 @@ public:
 
 	void addToMask(int trackId){mask.setMask(trackId, true);};
 	void removeFromMask(int trackId){mask.setMask(trackId, false);};
+
+	void setMotionMask(std::vector<std::string>  v);
+	StringVector getMotionMask();
 
 	virtual float getFloatValueAtTimeInternal (int trackId, float time);
 	virtual Vec getVecValueAtTimeInternal (int trackId, float time);	

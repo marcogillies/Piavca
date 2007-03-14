@@ -147,7 +147,7 @@ class ScriptEngine(Piavca.TimeCallback):
 					i += 1
 			elif line[0] == "motionpack":
 				print "motionpack", line[2]
-				MotionFile.readMotionFile("motions.conf")
+				MotionFile.readMotionFile(line[2])
 			elif line[0] == "script":
 				self.loadScripts(line[2])
 				

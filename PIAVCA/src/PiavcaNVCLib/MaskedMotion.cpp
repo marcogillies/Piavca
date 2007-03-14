@@ -86,6 +86,13 @@ bool MotionMask::getMask(int track) const
 		return false;
 };
 
+
+void MotionMask::clearMask()
+{
+	for(int i = 0; i < (int)m.size(); i++)
+		m[i] = false;
+};
+
 MaskedMotion::MaskedMotion()
 	: MotionFilter()
 {
@@ -97,6 +104,39 @@ MaskedMotion::MaskedMotion(Motion *_mot, const MotionMask &_mask)
 MaskedMotion::MaskedMotion(const MaskedMotion &mm)
 	:MotionFilter(mm),  mask(mm.mask)
 	{};
+
+void MaskedMotion::setMotionMask(std::vector<std::string> v)
+{
+	mask.clearMask();
+	for (int i = 0; i < v.size(); i++)
+	{
+		int trackid;
+		if(isFacial())
+			trackid = Core::getCore()->getExpressionId(StringToTString(v[i]));
+		else
+			trackid = Core::getCore()->getJointId(StringToTString(v[i]));
+		mask.setMask(trackid, true);
+	}
+};
+
+StringVector MaskedMotion::getMotionMask()
+{
+	int maxTrack;
+	if(isFacial())
+		maxTrack = Core::getCore()->getMaxExpressionId();
+	else
+		maxTrack = Core::getCore()->getMaxJointId();
+	StringVector v;
+	for(int i = 0; i < maxTrack; i++)
+	{
+		if(mask.getMask(i))
+			if(isFacial())
+				v.push_back(Core::getCore()->getExpressionName(i));
+			else
+				v.push_back(Core::getCore()->getJointName(i));
+	}
+	return v;
+};
 
 float MaskedMotion::getFloatValueAtTimeInternal (int trackId, float time)
 {

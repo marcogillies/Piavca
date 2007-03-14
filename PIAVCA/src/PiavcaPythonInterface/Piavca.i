@@ -95,8 +95,16 @@ Vec PyVec_AsVec(PyObject *obj)
 //%define tstring const char * %enddef
 //#define tstring const char *
 
+%include "std_string.i"
+%include "std_vector.i"
+
 namespace std {
-template <class T> class vector;
+   %template(vectorS) vector<std::string>;
+   %template(vectorI) vector<int>;
+};
+
+namespace std {
+//template <class T> class vector;
 class istringstream;
 class type_info;
 }
@@ -192,18 +200,21 @@ class type_info;
 	$1.threshold = PyFloat_AsDouble(PyTuple_GetItem($input, 1));
 }
 
-
+/*
 %typemap(in) Piavca::StringVector
 {
 	PyObject *py_str;
 	Piavca::tstring tstr;
 	for (int i = 0; i < PyList_Size($input); i++)
 	{
+		int i = 0;
+		
 		py_str = PyList_GetItem($input, i);
 		tstr = StringToTString(PyString_AsString(py_str));
 		$1.push_back(tstr);
 	}
 }
+*/
 
 %typemap(out) std::vector< std::pair<TString, float> > 
 {
@@ -229,7 +240,7 @@ class type_info;
 	}
 }
 
-%typemap(out) std::vector<Piavca::tstring>
+%typemap(out) Piavca::StringVector
 {
 	int len = $1.size();
 	$result = PyList_New(0);
@@ -240,6 +251,17 @@ class type_info;
 	}
 }
 
+
+%typemap(out) std::vector<Piavca::tstring>
+{
+	int len = $1.size();
+	$result = PyList_New(0);
+	for (int i = 0; i < len; i++)
+	{
+		PyList_Append($result,  
+			PyString_FromString(TStringToString((*(&($1)))[i]).c_str()));
+	}
+}
 
 %feature("director:except") {
     if ($error != NULL) {
@@ -411,6 +433,7 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %include "PiavcaAPI/MathsUtils.h"
 %include "PiavcaAPI/MotionFilter.h"
 %include "PiavcaAPI/TwoMotionCombiner.h"
+%include "PiavcaNVCLib/MaskedMotion.h"
 %include "PiavcaNVCLib/ScaleMotion.h"
 %include "PiavcaNVCLib/ScaleMotionSpeed.h"
 %include "PiavcaNVCLib/ScaleMotionRoot.h"
@@ -430,7 +453,6 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %include "PiavcaAPI/BlendBetween.h"
 %include "PiavcaAPI/MotionAdder.h"
 %include "PiavcaNVCLib/Subtract.h"
-%include "PiavcaNVCLib/MaskedMotion.h"
 %include "PiavcaAPI/MotionTransition.h"
 %include "PiavcaNVCLib/MultiMotionCombiner.h"
 %include "PiavcaNVCLib/ChoiceMotion.h"

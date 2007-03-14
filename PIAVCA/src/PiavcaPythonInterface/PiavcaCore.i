@@ -38,8 +38,10 @@
 {
 	PyObject *py_str;
 	Piavca::tstring tstr;
+	$1 = StringVector();
 	for (int i = 0; i < PyList_Size($input); i++)
 	{
+		float q;
 		py_str = PyList_GetItem($input, i);
 		tstr = StringToTString(PyString_AsString(py_str));
 		$1.push_back(tstr);
@@ -53,6 +55,7 @@
 	Piavca::tstring tstr;
 	for (int i = 0; i < PyList_Size($input); i++)
 	{
+		float q;
 		py_str = PyList_GetItem($input, i);
 		tstr = StringToTString(PyString_AsString(py_str));
 		$1.push_back(tstr);

@@ -116,6 +116,18 @@ public:
 		return -1;
 	}
 
+	int getNumMotions()
+	{
+		return mots.size();
+	};
+
+	Motion *getMotionByIndex(int index)
+	{
+		if (index < 0 || index >= mots.size())
+			Piavca::Error(_T("invalid index"));
+		return mots[index];
+	}
+
 	//! finds the first submotion with a given name
 	virtual Motion *findSub(tstring nm)
 	{

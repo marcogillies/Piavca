@@ -8,3 +8,5 @@ try :
 	from SpeechToText import SpeechToText
 except ImportError:
 	SpeechToText = None 
+from AnimationTrack import AnimationInterface, AnimationInterfaceCallback
+

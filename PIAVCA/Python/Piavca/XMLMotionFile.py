@@ -55,14 +55,15 @@ def setAttribute(mot, attrName, attrValue, firstArg = None):
 	else:
 		method = lambda x : meth(firstArg, x)
 	value = str(attrValue).strip()
+	value = str(attrValue).strip("[]()")
 	# first try treating it as a list of numbers
 	# delete trailing commas or semicolons
 	valuestripped = value.strip(",;")
-	valuelist = valuestripped.split()
+	valuelist = valuestripped.split(",")
 	if len(valuelist) <= 1:
-		valuelist = valuestripped.split(",")
+		valuelist = valuestripped.split(";")
 		if len(valuelist) <= 1:
-			valuelist = valuestripped.split(";")
+			valuelist = valuestripped.split()
 	# maybe its a quaternion
 	if len(valuelist) == 4:
 		try:
@@ -120,6 +121,8 @@ def setAttribute(mot, attrName, attrValue, firstArg = None):
 			pass
 		# maybe its just a list of strings
 		try:
+			valuelist = [v.strip(" '\"") for v in valuelist]
+			print valuelist
 			method(valuelist)
 			return 1
 		# didn't work so try next option
@@ -180,7 +183,7 @@ def readMotions(motions):
 							continue
 						unknownAttrs=[]
 						for i in range(motion.attributes.length):
-							if str(motion.attributes.item(i).name) == "name":
+							if str(motion.attributes.item(i).name) == "name" or str(motion.attributes.item(i).name) == "Name":
 								name = str(motion.attributes.item(i).nodeValue)
 								Piavca.Core.getCore().loadMotion(name, mot)
 							attrName = motion.attributes.item(i).name
@@ -191,6 +194,13 @@ def readMotions(motions):
 						children = readMotions(motion.childNodes)
 						added = 0
 						if len(children) == 1:
+							if hasattr(mot, "addMotion"):
+								getattr(mot, "addMotion")(children[0][0])
+								for attrName, attrValue in children[0][2]:
+									attrName = "Motion" + string.upper(attrName[0]) + attrName[1:]
+									if not setAttribute(mot, attrName, attrValue):
+										print children[0][1], "unknown attribute", attrName
+								added = 1
 							if hasattr(mot, "setMotion"):
 								getattr(mot, "setMotion")(children[0][0])
 								for attrName, attrValue in children[0][2]:
@@ -228,7 +238,8 @@ def readMotions(motions):
 										attrName = "Motion" + string.upper(attrName[0]) + attrName[1:]
 										if not setAttribute(mot, attrName, attrValue, i):
 											print child[1], "unknown attribute", attrName
-								
+						
+						mot.create()
 						mots.append((mot, str(motion.nodeName), unknownAttrs))
 					else:
 						print motion.nodeName, "is not a motion", motion
@@ -236,7 +247,75 @@ def readMotions(motions):
 					print "couldn't find motion type", motion
 	return mots
 
-
+def saveMotions(filename, motions, element = None, doc = None):
+	writeout = 0
+	if element == None:
+		impl = minidom.getDOMImplementation()
+		doc = impl.createDocument("", "PiavcaMotions", None)
+		element = doc.documentElement
+		writeout = 1
+	
+	allPiavca = Piavca.__dict__
+	print allPiavca
+	
+	members_to_ignore = ["getQuatValueAtTime", "getVecValueAtTime", "getFloatValueAtTime", "getQuatValueAtTimeInternal", 
+						"getVecValueAtTimeInternal", "getFloatValueAtTimeInternal", "getMotionLength"]
+	
+	for motion in motions:
+		motiontype = None
+		motiontypes = []
+		motiontypename = "unknown"
+		for key in allPiavca.keys():
+			if type(allPiavca[key]) == types.TypeType and isinstance(motion, allPiavca[key]):
+				motiontypes.append(allPiavca[key])
+				if motiontype == None or issubclass(allPiavca[key], motiontype):
+					motiontype = allPiavca[key]
+					motiontypename = key
+		#print name, "is a", motiontypename
+		if motiontype == None:
+			print "Motion is of unknown type"
+			continue
+		el = doc.createElement(motiontypename)
+		#el.setAttribute("name", name)
+		#print motion.__dict__
+		ignorelist = set(["getStartTime", "getMotion", "getMotion1", "getMotion2"])
+		for mtype in motiontypes:
+			for key in mtype.__dict__.keys():
+				if key[:3] == "get":
+					print key
+					if key in ignorelist:
+						continue
+					if hasattr(motion, "set" + key[3:]):
+						print key
+						method = getattr(motion, key)
+						value = str(method())
+						print key[3:], value
+						el.setAttribute(key[3:], value)
+		motionlist = []
+		if hasattr(motion, "getNumMotions"):
+			n = motion.getNumMotions()
+			for i in range(n):
+				motionlist.append(motion.getMotionByIndex(i))
+		elif hasattr(motion, "getMotion1"):
+			motionlist.append(motion.getMotion1())
+			motionlist.append(motion.getMotion2())
+		elif hasattr(motion, "getMotion"):
+			motionlist.append(motion.getMotion())
+				
+		for m in motionlist:
+			if m.getName() != "":
+				sub_el = doc.createElement("Motion")
+				sub_el.setAttribute("name", m.getName())
+				el.appendChild(sub_el)
+			else:
+				saveMotions(filename, [m], el, doc)
+				
+		element.appendChild(el)
+		
+	file = open(filename, "w")
+	doc.writexml(file, "", "\t", "\n")
+	file.close()
+		
 def parse(filename):
 	dom = minidom.parse(filename) 
 	for topLevel in dom.childNodes:

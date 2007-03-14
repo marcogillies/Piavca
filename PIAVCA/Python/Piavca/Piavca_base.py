@@ -1,10 +1,14 @@
-# This file was created automatically by SWIG 1.3.29.
+# This file was created automatically by SWIG 1.3.30.
 # Don't modify this file, modify the SWIG interface instead.
 # This file is compatible with both classic and new-style classes.
 
 import _Piavca_base
 import new
 new_instancemethod = new.instancemethod
+try:
+    _swig_property = property
+except NameError:
+    pass # Python < 2.2 doesn't have 'property'.
 def _swig_setattr_nondynamic(self,class_type,name,value,static=1):
     if (name == "thisown"): return self.this.own(value)
     if (name == "this"):
@@ -48,6 +52,126 @@ try:
 except:
     weakref_proxy = lambda x: x
 
+
+class PySwigIterator(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, PySwigIterator, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, PySwigIterator, name)
+    def __init__(self): raise AttributeError, "No constructor defined"
+    __repr__ = _swig_repr
+    __swig_destroy__ = _Piavca_base.delete_PySwigIterator
+    __del__ = lambda self : None;
+    def value(*args): return _Piavca_base.PySwigIterator_value(*args)
+    def incr(*args): return _Piavca_base.PySwigIterator_incr(*args)
+    def decr(*args): return _Piavca_base.PySwigIterator_decr(*args)
+    def distance(*args): return _Piavca_base.PySwigIterator_distance(*args)
+    def equal(*args): return _Piavca_base.PySwigIterator_equal(*args)
+    def copy(*args): return _Piavca_base.PySwigIterator_copy(*args)
+    def next(*args): return _Piavca_base.PySwigIterator_next(*args)
+    def previous(*args): return _Piavca_base.PySwigIterator_previous(*args)
+    def advance(*args): return _Piavca_base.PySwigIterator_advance(*args)
+    def __eq__(*args): return _Piavca_base.PySwigIterator___eq__(*args)
+    def __ne__(*args): return _Piavca_base.PySwigIterator___ne__(*args)
+    def __iadd__(*args): return _Piavca_base.PySwigIterator___iadd__(*args)
+    def __isub__(*args): return _Piavca_base.PySwigIterator___isub__(*args)
+    def __add__(*args): return _Piavca_base.PySwigIterator___add__(*args)
+    def __sub__(*args): return _Piavca_base.PySwigIterator___sub__(*args)
+    def __iter__(self): return self
+PySwigIterator_swigregister = _Piavca_base.PySwigIterator_swigregister
+PySwigIterator_swigregister(PySwigIterator)
+
+class vectorS(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, vectorS, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, vectorS, name)
+    __repr__ = _swig_repr
+    def iterator(*args): return _Piavca_base.vectorS_iterator(*args)
+    def __iter__(self): return self.iterator()
+    def __nonzero__(*args): return _Piavca_base.vectorS___nonzero__(*args)
+    def __len__(*args): return _Piavca_base.vectorS___len__(*args)
+    def pop(*args): return _Piavca_base.vectorS_pop(*args)
+    def __getslice__(*args): return _Piavca_base.vectorS___getslice__(*args)
+    def __setslice__(*args): return _Piavca_base.vectorS___setslice__(*args)
+    def __delslice__(*args): return _Piavca_base.vectorS___delslice__(*args)
+    def __delitem__(*args): return _Piavca_base.vectorS___delitem__(*args)
+    def __getitem__(*args): return _Piavca_base.vectorS___getitem__(*args)
+    def __setitem__(*args): return _Piavca_base.vectorS___setitem__(*args)
+    def append(*args): return _Piavca_base.vectorS_append(*args)
+    def empty(*args): return _Piavca_base.vectorS_empty(*args)
+    def size(*args): return _Piavca_base.vectorS_size(*args)
+    def clear(*args): return _Piavca_base.vectorS_clear(*args)
+    def swap(*args): return _Piavca_base.vectorS_swap(*args)
+    def get_allocator(*args): return _Piavca_base.vectorS_get_allocator(*args)
+    def begin(*args): return _Piavca_base.vectorS_begin(*args)
+    def end(*args): return _Piavca_base.vectorS_end(*args)
+    def rbegin(*args): return _Piavca_base.vectorS_rbegin(*args)
+    def rend(*args): return _Piavca_base.vectorS_rend(*args)
+    def pop_back(*args): return _Piavca_base.vectorS_pop_back(*args)
+    def erase(*args): return _Piavca_base.vectorS_erase(*args)
+    def __init__(self, *args): 
+        this = _Piavca_base.new_vectorS(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    def push_back(*args): return _Piavca_base.vectorS_push_back(*args)
+    def front(*args): return _Piavca_base.vectorS_front(*args)
+    def back(*args): return _Piavca_base.vectorS_back(*args)
+    def assign(*args): return _Piavca_base.vectorS_assign(*args)
+    def resize(*args): return _Piavca_base.vectorS_resize(*args)
+    def insert(*args): return _Piavca_base.vectorS_insert(*args)
+    def reserve(*args): return _Piavca_base.vectorS_reserve(*args)
+    def capacity(*args): return _Piavca_base.vectorS_capacity(*args)
+    __swig_destroy__ = _Piavca_base.delete_vectorS
+    __del__ = lambda self : None;
+vectorS_swigregister = _Piavca_base.vectorS_swigregister
+vectorS_swigregister(vectorS)
+
+class vectorI(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, vectorI, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, vectorI, name)
+    __repr__ = _swig_repr
+    def iterator(*args): return _Piavca_base.vectorI_iterator(*args)
+    def __iter__(self): return self.iterator()
+    def __nonzero__(*args): return _Piavca_base.vectorI___nonzero__(*args)
+    def __len__(*args): return _Piavca_base.vectorI___len__(*args)
+    def pop(*args): return _Piavca_base.vectorI_pop(*args)
+    def __getslice__(*args): return _Piavca_base.vectorI___getslice__(*args)
+    def __setslice__(*args): return _Piavca_base.vectorI___setslice__(*args)
+    def __delslice__(*args): return _Piavca_base.vectorI___delslice__(*args)
+    def __delitem__(*args): return _Piavca_base.vectorI___delitem__(*args)
+    def __getitem__(*args): return _Piavca_base.vectorI___getitem__(*args)
+    def __setitem__(*args): return _Piavca_base.vectorI___setitem__(*args)
+    def append(*args): return _Piavca_base.vectorI_append(*args)
+    def empty(*args): return _Piavca_base.vectorI_empty(*args)
+    def size(*args): return _Piavca_base.vectorI_size(*args)
+    def clear(*args): return _Piavca_base.vectorI_clear(*args)
+    def swap(*args): return _Piavca_base.vectorI_swap(*args)
+    def get_allocator(*args): return _Piavca_base.vectorI_get_allocator(*args)
+    def begin(*args): return _Piavca_base.vectorI_begin(*args)
+    def end(*args): return _Piavca_base.vectorI_end(*args)
+    def rbegin(*args): return _Piavca_base.vectorI_rbegin(*args)
+    def rend(*args): return _Piavca_base.vectorI_rend(*args)
+    def pop_back(*args): return _Piavca_base.vectorI_pop_back(*args)
+    def erase(*args): return _Piavca_base.vectorI_erase(*args)
+    def __init__(self, *args): 
+        this = _Piavca_base.new_vectorI(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    def push_back(*args): return _Piavca_base.vectorI_push_back(*args)
+    def front(*args): return _Piavca_base.vectorI_front(*args)
+    def back(*args): return _Piavca_base.vectorI_back(*args)
+    def assign(*args): return _Piavca_base.vectorI_assign(*args)
+    def resize(*args): return _Piavca_base.vectorI_resize(*args)
+    def insert(*args): return _Piavca_base.vectorI_insert(*args)
+    def reserve(*args): return _Piavca_base.vectorI_reserve(*args)
+    def capacity(*args): return _Piavca_base.vectorI_capacity(*args)
+    __swig_destroy__ = _Piavca_base.delete_vectorI
+    __del__ = lambda self : None;
+vectorI_swigregister = _Piavca_base.vectorI_swigregister
+vectorI_swigregister(vectorI)
 
 GetAvatarPointer = _Piavca_base.GetAvatarPointer
 GetPiavcaCorePointer = _Piavca_base.GetPiavcaCorePointer
@@ -294,7 +418,7 @@ class Core(_object):
     __repr__ = _swig_repr
     __swig_setmethods__["dir"] = _Piavca_base.Core_dir_set
     __swig_getmethods__["dir"] = _Piavca_base.Core_dir_get
-    if _newclass:dir = property(_Piavca_base.Core_dir_get, _Piavca_base.Core_dir_set)
+    if _newclass:dir = _swig_property(_Piavca_base.Core_dir_get, _Piavca_base.Core_dir_set)
     __swig_destroy__ = _Piavca_base.delete_Core
     __del__ = lambda self : None;
     def reset(*args):
@@ -2174,16 +2298,16 @@ class queueElement(_object):
     __repr__ = _swig_repr
     __swig_setmethods__["mot"] = _Piavca_base.queueElement_mot_set
     __swig_getmethods__["mot"] = _Piavca_base.queueElement_mot_get
-    if _newclass:mot = property(_Piavca_base.queueElement_mot_get, _Piavca_base.queueElement_mot_set)
+    if _newclass:mot = _swig_property(_Piavca_base.queueElement_mot_get, _Piavca_base.queueElement_mot_set)
     __swig_setmethods__["name"] = _Piavca_base.queueElement_name_set
     __swig_getmethods__["name"] = _Piavca_base.queueElement_name_get
-    if _newclass:name = property(_Piavca_base.queueElement_name_get, _Piavca_base.queueElement_name_set)
+    if _newclass:name = _swig_property(_Piavca_base.queueElement_name_get, _Piavca_base.queueElement_name_set)
     __swig_setmethods__["atTime"] = _Piavca_base.queueElement_atTime_set
     __swig_getmethods__["atTime"] = _Piavca_base.queueElement_atTime_get
-    if _newclass:atTime = property(_Piavca_base.queueElement_atTime_get, _Piavca_base.queueElement_atTime_set)
+    if _newclass:atTime = _swig_property(_Piavca_base.queueElement_atTime_get, _Piavca_base.queueElement_atTime_set)
     __swig_setmethods__["background"] = _Piavca_base.queueElement_background_set
     __swig_getmethods__["background"] = _Piavca_base.queueElement_background_get
-    if _newclass:background = property(_Piavca_base.queueElement_background_get, _Piavca_base.queueElement_background_set)
+    if _newclass:background = _swig_property(_Piavca_base.queueElement_background_get, _Piavca_base.queueElement_background_set)
     def __init__(self, *args): 
         this = _Piavca_base.new_queueElement(*args)
         try: self.this.append(this)
@@ -3162,6 +3286,136 @@ class TwoMotionCombiner(Motion):
         return weakref_proxy(self)
 TwoMotionCombiner_swigregister = _Piavca_base.TwoMotionCombiner_swigregister
 TwoMotionCombiner_swigregister(TwoMotionCombiner)
+
+class MotionMask(_object):
+    """
+    a set of masks specifying which joints should be played in a masked motion     
+           
+         see also: MaskedMotion.h
+    """
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MotionMask, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, MotionMask, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        """
+        MotionMask::MotionMask(const MotionMask &mm)
+                 
+                
+                 
+                
+        """
+        this = _Piavca_base.new_MotionMask(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    def setMask(*args):
+        """
+        void MotionMask::setMask(int track, bool val=true)
+                 
+        sets whether a given track should be played         
+                 
+                
+        """
+        return _Piavca_base.MotionMask_setMask(*args)
+
+    def getMask(*args):
+        """
+        bool MotionMask::getMask(int track) const 
+                 
+        gets the mask value for a track         
+                 
+                
+        """
+        return _Piavca_base.MotionMask_getMask(*args)
+
+    def clearMask(*args): return _Piavca_base.MotionMask_clearMask(*args)
+    __swig_destroy__ = _Piavca_base.delete_MotionMask
+    __del__ = lambda self : None;
+MotionMask_swigregister = _Piavca_base.MotionMask_swigregister
+MotionMask_swigregister(MotionMask)
+
+class MaskedMotion(MotionFilter):
+    """
+    plays different motions on different joints.     
+           
+    It uses a mask to tell which motion to play on which joint.      see also: MaskedMotion.h
+    """
+    __swig_setmethods__ = {}
+    for _s in [MotionFilter]: __swig_setmethods__.update(_s.__swig_setmethods__)
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MaskedMotion, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MotionFilter]: __swig_getmethods__.update(_s.__swig_getmethods__)
+    __getattr__ = lambda self, name: _swig_getattr(self, MaskedMotion, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        """
+        MaskedMotion::MaskedMotion(const MaskedMotion &mm)
+                 
+                
+                 
+                
+        """
+        if self.__class__ == MaskedMotion:
+            args = (None,) + args
+        else:
+            args = (self,) + args
+        this = _Piavca_base.new_MaskedMotion(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    def clone(*args):
+        """
+        virtual Motion* Piavca::MaskedMotion::clone()
+                 
+        creates a copy of the motion         
+                 
+                
+        """
+        return _Piavca_base.MaskedMotion_clone(*args)
+
+    def setMask(*args): return _Piavca_base.MaskedMotion_setMask(*args)
+    def addToMask(*args): return _Piavca_base.MaskedMotion_addToMask(*args)
+    def removeFromMask(*args): return _Piavca_base.MaskedMotion_removeFromMask(*args)
+    def setMotionMask(*args): return _Piavca_base.MaskedMotion_setMotionMask(*args)
+    def getMotionMask(*args): return _Piavca_base.MaskedMotion_getMotionMask(*args)
+    def getFloatValueAtTimeInternal(*args):
+        """
+        float MaskedMotion::getFloatValueAtTimeInternal(int trackId, float time)
+                 
+        internal version of getFloatValueAtTime, to be overridden         
+                 
+                
+        """
+        return _Piavca_base.MaskedMotion_getFloatValueAtTimeInternal(*args)
+
+    def getVecValueAtTimeInternal(*args):
+        """
+        Vec MaskedMotion::getVecValueAtTimeInternal(int trackId, float time)
+                 
+        internal version of getVecValueAtTime, to be overridden         
+                 
+                
+        """
+        return _Piavca_base.MaskedMotion_getVecValueAtTimeInternal(*args)
+
+    def getQuatValueAtTimeInternal(*args):
+        """
+        Quat MaskedMotion::getQuatValueAtTimeInternal(int trackId, float time)
+                 
+        internal version of getQuatValueAtTime, to be overridden         
+                 
+                
+        """
+        return _Piavca_base.MaskedMotion_getQuatValueAtTimeInternal(*args)
+
+    __swig_destroy__ = _Piavca_base.delete_MaskedMotion
+    __del__ = lambda self : None;
+    def __disown__(self):
+        self.this.disown()
+        _Piavca_base.disown_MaskedMotion(self)
+        return weakref_proxy(self)
+MaskedMotion_swigregister = _Piavca_base.MaskedMotion_swigregister
+MaskedMotion_swigregister(MaskedMotion)
 
 class ScaleMotion(MotionFilter):
     """
@@ -4434,6 +4688,16 @@ class AvatarPostureBlend(Sequence):
         """
         return _Piavca_base.AvatarPostureBlend_clone(*args)
 
+    def load(*args):
+        """
+        void AvatarPostureBlend::load(Avatar *av)
+                 
+        called when the motion is loaded into an avatar         
+                 
+                
+        """
+        return _Piavca_base.AvatarPostureBlend_load(*args)
+
     def setBlendInterval(*args): return _Piavca_base.AvatarPostureBlend_setBlendInterval(*args)
     def isNull(*args):
         """
@@ -4710,133 +4974,6 @@ class Subtract(TwoMotionCombiner):
 Subtract_swigregister = _Piavca_base.Subtract_swigregister
 Subtract_swigregister(Subtract)
 
-class MotionMask(_object):
-    """
-    a set of masks specifying which joints should be played in a masked motion     
-           
-         see also: MaskedMotion.h
-    """
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, MotionMask, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, MotionMask, name)
-    __repr__ = _swig_repr
-    def __init__(self, *args): 
-        """
-        MotionMask::MotionMask(const MotionMask &mm)
-                 
-                
-                 
-                
-        """
-        this = _Piavca_base.new_MotionMask(*args)
-        try: self.this.append(this)
-        except: self.this = this
-    def setMask(*args):
-        """
-        void MotionMask::setMask(int track, bool val=true)
-                 
-        sets whether a given track should be played         
-                 
-                
-        """
-        return _Piavca_base.MotionMask_setMask(*args)
-
-    def getMask(*args):
-        """
-        bool MotionMask::getMask(int track) const 
-                 
-        gets the mask value for a track         
-                 
-                
-        """
-        return _Piavca_base.MotionMask_getMask(*args)
-
-    __swig_destroy__ = _Piavca_base.delete_MotionMask
-    __del__ = lambda self : None;
-MotionMask_swigregister = _Piavca_base.MotionMask_swigregister
-MotionMask_swigregister(MotionMask)
-
-class MaskedMotion(MotionFilter):
-    """
-    plays different motions on different joints.     
-           
-    It uses a mask to tell which motion to play on which joint.      see also: MaskedMotion.h
-    """
-    __swig_setmethods__ = {}
-    for _s in [MotionFilter]: __swig_setmethods__.update(_s.__swig_setmethods__)
-    __setattr__ = lambda self, name, value: _swig_setattr(self, MaskedMotion, name, value)
-    __swig_getmethods__ = {}
-    for _s in [MotionFilter]: __swig_getmethods__.update(_s.__swig_getmethods__)
-    __getattr__ = lambda self, name: _swig_getattr(self, MaskedMotion, name)
-    __repr__ = _swig_repr
-    def __init__(self, *args): 
-        """
-        MaskedMotion::MaskedMotion(const MaskedMotion &mm)
-                 
-                
-                 
-                
-        """
-        if self.__class__ == MaskedMotion:
-            args = (None,) + args
-        else:
-            args = (self,) + args
-        this = _Piavca_base.new_MaskedMotion(*args)
-        try: self.this.append(this)
-        except: self.this = this
-    def clone(*args):
-        """
-        virtual Motion* Piavca::MaskedMotion::clone()
-                 
-        creates a copy of the motion         
-                 
-                
-        """
-        return _Piavca_base.MaskedMotion_clone(*args)
-
-    def setMask(*args): return _Piavca_base.MaskedMotion_setMask(*args)
-    def addToMask(*args): return _Piavca_base.MaskedMotion_addToMask(*args)
-    def removeFromMask(*args): return _Piavca_base.MaskedMotion_removeFromMask(*args)
-    def getFloatValueAtTimeInternal(*args):
-        """
-        float MaskedMotion::getFloatValueAtTimeInternal(int trackId, float time)
-                 
-        internal version of getFloatValueAtTime, to be overridden         
-                 
-                
-        """
-        return _Piavca_base.MaskedMotion_getFloatValueAtTimeInternal(*args)
-
-    def getVecValueAtTimeInternal(*args):
-        """
-        Vec MaskedMotion::getVecValueAtTimeInternal(int trackId, float time)
-                 
-        internal version of getVecValueAtTime, to be overridden         
-                 
-                
-        """
-        return _Piavca_base.MaskedMotion_getVecValueAtTimeInternal(*args)
-
-    def getQuatValueAtTimeInternal(*args):
-        """
-        Quat MaskedMotion::getQuatValueAtTimeInternal(int trackId, float time)
-                 
-        internal version of getQuatValueAtTime, to be overridden         
-                 
-                
-        """
-        return _Piavca_base.MaskedMotion_getQuatValueAtTimeInternal(*args)
-
-    __swig_destroy__ = _Piavca_base.delete_MaskedMotion
-    __del__ = lambda self : None;
-    def __disown__(self):
-        self.this.disown()
-        _Piavca_base.disown_MaskedMotion(self)
-        return weakref_proxy(self)
-MaskedMotion_swigregister = _Piavca_base.MaskedMotion_swigregister
-MaskedMotion_swigregister(MaskedMotion)
-
 class TransitionFunction(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, TransitionFunction, name, value)
@@ -4914,6 +5051,16 @@ class MotionTransition(TwoMotionCombiner):
     def setTransitionTime1(*args): return _Piavca_base.MotionTransition_setTransitionTime1(*args)
     def setTransitionTime2(*args): return _Piavca_base.MotionTransition_setTransitionTime2(*args)
     def setWindow(*args): return _Piavca_base.MotionTransition_setWindow(*args)
+    def setMotion1(*args):
+        """
+        void TwoMotionCombiner::setMotion1(Motion *mot)
+                 
+                
+                 
+                
+        """
+        return _Piavca_base.MotionTransition_setMotion1(*args)
+
     def setStartTime(*args):
         """
         void TwoMotionCombiner::setStartTime(float time)
@@ -5005,6 +5152,8 @@ class MultiMotionCombiner(MotionFilter):
 
     def addMotion(*args): return _Piavca_base.MultiMotionCombiner_addMotion(*args)
     def getMotionIndex(*args): return _Piavca_base.MultiMotionCombiner_getMotionIndex(*args)
+    def getNumMotions(*args): return _Piavca_base.MultiMotionCombiner_getNumMotions(*args)
+    def getMotionByIndex(*args): return _Piavca_base.MultiMotionCombiner_getMotionByIndex(*args)
     def findSub(*args):
         """
         virtual Motion* Piavca::MotionFilter::findSub(tstring nm)
@@ -5111,16 +5260,7 @@ class RandomChoiceMotion(ChoiceMotion):
         except: self.this = this
     __swig_destroy__ = _Piavca_base.delete_RandomChoiceMotion
     __del__ = lambda self : None;
-    def clone(*args):
-        """
-        virtual Motion* Piavca::Motion::clone()=0
-                 
-        creates a copy of the motion         
-                 
-                
-        """
-        return _Piavca_base.RandomChoiceMotion_clone(*args)
-
+    def clone(*args): return _Piavca_base.RandomChoiceMotion_clone(*args)
     __swig_getmethods__["convertTo"] = lambda x: _Piavca_base.RandomChoiceMotion_convertTo
     if _newclass:convertTo = staticmethod(_Piavca_base.RandomChoiceMotion_convertTo)
     def addMotion(*args): return _Piavca_base.RandomChoiceMotion_addMotion(*args)
@@ -6013,19 +6153,19 @@ class flagStruct(_object):
     __repr__ = _swig_repr
     __swig_setmethods__["headActive"] = _Piavca_base.flagStruct_headActive_set
     __swig_getmethods__["headActive"] = _Piavca_base.flagStruct_headActive_get
-    if _newclass:headActive = property(_Piavca_base.flagStruct_headActive_get, _Piavca_base.flagStruct_headActive_set)
+    if _newclass:headActive = _swig_property(_Piavca_base.flagStruct_headActive_get, _Piavca_base.flagStruct_headActive_set)
     __swig_setmethods__["bodyActive"] = _Piavca_base.flagStruct_bodyActive_set
     __swig_getmethods__["bodyActive"] = _Piavca_base.flagStruct_bodyActive_get
-    if _newclass:bodyActive = property(_Piavca_base.flagStruct_bodyActive_get, _Piavca_base.flagStruct_bodyActive_set)
+    if _newclass:bodyActive = _swig_property(_Piavca_base.flagStruct_bodyActive_get, _Piavca_base.flagStruct_bodyActive_set)
     __swig_setmethods__["turnBodyVertical"] = _Piavca_base.flagStruct_turnBodyVertical_set
     __swig_getmethods__["turnBodyVertical"] = _Piavca_base.flagStruct_turnBodyVertical_get
-    if _newclass:turnBodyVertical = property(_Piavca_base.flagStruct_turnBodyVertical_get, _Piavca_base.flagStruct_turnBodyVertical_set)
+    if _newclass:turnBodyVertical = _swig_property(_Piavca_base.flagStruct_turnBodyVertical_get, _Piavca_base.flagStruct_turnBodyVertical_set)
     __swig_setmethods__["turnBodyFull"] = _Piavca_base.flagStruct_turnBodyFull_set
     __swig_getmethods__["turnBodyFull"] = _Piavca_base.flagStruct_turnBodyFull_get
-    if _newclass:turnBodyFull = property(_Piavca_base.flagStruct_turnBodyFull_get, _Piavca_base.flagStruct_turnBodyFull_set)
+    if _newclass:turnBodyFull = _swig_property(_Piavca_base.flagStruct_turnBodyFull_get, _Piavca_base.flagStruct_turnBodyFull_set)
     __swig_setmethods__["leanTowards"] = _Piavca_base.flagStruct_leanTowards_set
     __swig_getmethods__["leanTowards"] = _Piavca_base.flagStruct_leanTowards_get
-    if _newclass:leanTowards = property(_Piavca_base.flagStruct_leanTowards_get, _Piavca_base.flagStruct_leanTowards_set)
+    if _newclass:leanTowards = _swig_property(_Piavca_base.flagStruct_leanTowards_get, _Piavca_base.flagStruct_leanTowards_set)
     def __init__(self, *args): 
         this = _Piavca_base.new_flagStruct(*args)
         try: self.this.append(this)
@@ -6043,13 +6183,13 @@ class AvatarTargetStruct(_object):
     __repr__ = _swig_repr
     __swig_setmethods__["avatar"] = _Piavca_base.AvatarTargetStruct_avatar_set
     __swig_getmethods__["avatar"] = _Piavca_base.AvatarTargetStruct_avatar_get
-    if _newclass:avatar = property(_Piavca_base.AvatarTargetStruct_avatar_get, _Piavca_base.AvatarTargetStruct_avatar_set)
+    if _newclass:avatar = _swig_property(_Piavca_base.AvatarTargetStruct_avatar_get, _Piavca_base.AvatarTargetStruct_avatar_set)
     __swig_setmethods__["joint"] = _Piavca_base.AvatarTargetStruct_joint_set
     __swig_getmethods__["joint"] = _Piavca_base.AvatarTargetStruct_joint_get
-    if _newclass:joint = property(_Piavca_base.AvatarTargetStruct_joint_get, _Piavca_base.AvatarTargetStruct_joint_set)
+    if _newclass:joint = _swig_property(_Piavca_base.AvatarTargetStruct_joint_get, _Piavca_base.AvatarTargetStruct_joint_set)
     __swig_setmethods__["flags"] = _Piavca_base.AvatarTargetStruct_flags_set
     __swig_getmethods__["flags"] = _Piavca_base.AvatarTargetStruct_flags_get
-    if _newclass:flags = property(_Piavca_base.AvatarTargetStruct_flags_get, _Piavca_base.AvatarTargetStruct_flags_set)
+    if _newclass:flags = _swig_property(_Piavca_base.AvatarTargetStruct_flags_get, _Piavca_base.AvatarTargetStruct_flags_set)
     def __init__(self, *args): 
         this = _Piavca_base.new_AvatarTargetStruct(*args)
         try: self.this.append(this)
@@ -6067,10 +6207,10 @@ class ObjectTargetStruct(_object):
     __repr__ = _swig_repr
     __swig_setmethods__["object"] = _Piavca_base.ObjectTargetStruct_object_set
     __swig_getmethods__["object"] = _Piavca_base.ObjectTargetStruct_object_get
-    if _newclass:object = property(_Piavca_base.ObjectTargetStruct_object_get, _Piavca_base.ObjectTargetStruct_object_set)
+    if _newclass:object = _swig_property(_Piavca_base.ObjectTargetStruct_object_get, _Piavca_base.ObjectTargetStruct_object_set)
     __swig_setmethods__["flags"] = _Piavca_base.ObjectTargetStruct_flags_set
     __swig_getmethods__["flags"] = _Piavca_base.ObjectTargetStruct_flags_get
-    if _newclass:flags = property(_Piavca_base.ObjectTargetStruct_flags_get, _Piavca_base.ObjectTargetStruct_flags_set)
+    if _newclass:flags = _swig_property(_Piavca_base.ObjectTargetStruct_flags_get, _Piavca_base.ObjectTargetStruct_flags_set)
     def __init__(self, *args): 
         this = _Piavca_base.new_ObjectTargetStruct(*args)
         try: self.this.append(this)
@@ -6694,6 +6834,8 @@ class SubMotion(MotionFilter):
         """
         return _Piavca_base.SubMotion_setEnd(*args)
 
+    def getStart(*args): return _Piavca_base.SubMotion_getStart(*args)
+    def getEnd(*args): return _Piavca_base.SubMotion_getEnd(*args)
     def getFloatValueAtTimeInternal(*args):
         """
         PIAVCA_EXPORT float SubMotion::getFloatValueAtTimeInternal(int trackId, float time)

@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 #include "MotionCal3dImp.h"
 
-
+// hack to make everything work with both cal3d 10 and 11
 #ifndef CAL_REF_PTR_H
 typedef CalCoreMesh *CalCoreMeshPtr;
 #define get_pointer(x) (x)
