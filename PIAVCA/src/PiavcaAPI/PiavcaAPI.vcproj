@@ -242,13 +242,7 @@
 				RelativePath=".\Reposition.cpp">
 			</File>
 			<File
-				RelativePath=".\SelfBlend.cpp">
-			</File>
-			<File
 				RelativePath=".\Sequence.cpp">
-			</File>
-			<File
-				RelativePath=".\SequentialBlend.cpp">
 			</File>
 			<File
 				RelativePath=".\SmoothSequence.cpp">
@@ -339,13 +333,7 @@
 				RelativePath=".\Reposition.h">
 			</File>
 			<File
-				RelativePath=".\SelfBlend.h">
-			</File>
-			<File
 				RelativePath=".\Sequence.h">
-			</File>
-			<File
-				RelativePath=".\SequentialBlend.h">
 			</File>
 			<File
 				RelativePath=".\SmoothSequence.h">

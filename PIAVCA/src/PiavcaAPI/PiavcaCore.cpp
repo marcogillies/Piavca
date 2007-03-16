@@ -54,7 +54,7 @@ Piavca::Core *Piavca::Core::core = NULL;
 
 
 Core::Core()
-	:maxJointId(0), maxExpressionId(0), 
+	:maxJointId(0), maxExpressionId(-1), 
 	exceptionFlag(true), log_file("piavca_log.txt"),
 	autoTimeOff(false)
 {
@@ -143,7 +143,7 @@ void Core::render()
 int Core::getJointId(tstring name)
 {
 	std::map<tstring, int> ::iterator it = jointMap.find(name);
-	if(it == jointMap.end())return -1;
+	if(it == jointMap.end())return nullId;
 	return (*it).second;
 }
 
@@ -160,7 +160,7 @@ void Core::addJointNameSet(Piavca::StringVector names)
 {
 	// hunt through the joint map searching either for a name that 
 	// matches one in the new list, or the max value
-	int id = -1;
+	int id = nullId;
 	unsigned int i;
 	std::map<tstring, int> ::iterator it;
 	for(i = 0; i < names.size(); i++)
@@ -168,7 +168,7 @@ void Core::addJointNameSet(Piavca::StringVector names)
 		it = jointMap.find(names[i]);
 		if(it != jointMap.end())
 		{
-			if(id >= 0 && id != (*it).second)
+			if(id != nullId && id != (*it).second)
 				Piavca::Error(_T("trying to load inconsistent joint names, problem: ") + names[i]);
 			else
 				id = (*it).second;
@@ -176,7 +176,7 @@ void Core::addJointNameSet(Piavca::StringVector names)
 	}
 	// if you didn't find a matching name use max+1 as the new id
 
-	if(id < 0)
+	if(id == nullId)
 	{
 		it = std::max_element(jointMap.begin(), jointMap.end(), compIds());
 		if(it == jointMap.end()) 
@@ -184,10 +184,6 @@ void Core::addJointNameSet(Piavca::StringVector names)
 		else
 			id = (*it).second+1;
 		maxJointId = id;
-		//for (i = 0; i < avatars.size(); i++)
-		//	avatars[i]->newJoint();
-		//for (i = 0; i < motions.size(); i++)
-		//	motions[i].second->newJoint();
 	}
 	for(i = 0; i < names.size(); i++)
 		jointMap[names[i]] = id;
@@ -207,6 +203,8 @@ public:
 
 tstring Core::getJointName(int jointId)
 {
+	if (jointId > maxJointId)
+		return "";
 	std::map<tstring, int> ::iterator it = std::find_if(jointMap.begin(), jointMap.end(), findId(jointId));
 	return (*it).first;
 };
@@ -221,7 +219,7 @@ std::vector<std::pair<tstring, int> > Core::getJointNameAssociations()
 int Core::getExpressionId(tstring name)
 {
 	std::map<tstring, int> ::iterator it = expressionMap.find(name);
-	if(it == expressionMap.end())return -1;
+	if(it == expressionMap.end())return nullId;
 	return (*it).second;
 }
 
@@ -229,7 +227,7 @@ void Core::addExpressionNameSet(Piavca::StringVector names)
 {
 	// hunt through the joint map searching either for a name that 
 	// matches one in the new list, or the max value
-	int id = -1;
+	int id = nullId;
 	unsigned int i;
 	std::map<tstring, int> ::iterator it;
 	for(i = 0; i < names.size(); i++)
@@ -237,7 +235,7 @@ void Core::addExpressionNameSet(Piavca::StringVector names)
 		it = expressionMap.find(names[i]);
 		if(it != expressionMap.end())
 		{
-			if(id >= 0 && id != (*it).second)
+			if(id != nullId && id != (*it).second)
 				Piavca::Error(_T("trying to load inconsistent expression names, problem: ") + names[i]);
 			else
 				id = (*it).second;
@@ -245,18 +243,16 @@ void Core::addExpressionNameSet(Piavca::StringVector names)
 	}
 	// if you didn't find a matching name use max+1 as the new id
 
-	if(id < 0)
+	if(id == nullId)
 	{
-		it = std::max_element(expressionMap.begin(), expressionMap.end(), compIds());
+		it = std::min_element(expressionMap.begin(), expressionMap.end(), compIds());
+		// expression ids are negative so use -1 as start and subtract from the
+		// current max (min)
 		if(it == expressionMap.end()) 
-			id = 0;
+			id = -1;
 		else
-			id = (*it).second+1;
+			id = (*it).second-1;
 		maxExpressionId = id;
-		//for (i = 0; i < avatars.size(); i++)
-		//	avatars[i]->newExpression();
-		//for (i = 0; i < motions.size(); i++)
-		//	motions[i].second->newExpression();
 	}
 	for(i = 0; i < names.size(); i++)
 		expressionMap[names[i]] = id;
@@ -265,6 +261,8 @@ void Core::addExpressionNameSet(Piavca::StringVector names)
 
 tstring Core::getExpressionName(int expressionId)
 {
+	if (expressionId < maxExpressionId)
+		return "";
 	std::map<tstring, int> ::iterator it = std::find_if(expressionMap.begin(), expressionMap.end(), findId(expressionId));
 	return (*it).first;
 };
@@ -274,6 +272,45 @@ std::vector<std::pair<tstring, int> > Core::getExpressionNameAssociations()
 	std::vector<std::pair<tstring, int> > v(expressionMap.begin(), expressionMap.end());
 	return v;
 }
+
+
+int Core::getTrackId(tstring name)
+{
+	std::map<tstring, int> ::iterator it = jointMap.find(name);
+	if(it == jointMap.end())
+	{
+		std::map<tstring, int> ::iterator it = expressionMap.find(name);
+		if(it == expressionMap.end()) return nullId;
+	}
+	return (*it).second;
+}
+
+tstring Core::getTrackName(int trackId)
+{
+	if (trackId >= 0)
+	{
+		if (trackId > maxJointId)
+			return "";
+		std::map<tstring, int> ::iterator it = std::find_if(jointMap.begin(), jointMap.end(), findId(trackId));
+		return (*it).first;
+	}
+	else
+	{
+		if (trackId < maxExpressionId)
+			return "";
+		std::map<tstring, int> ::iterator it = std::find_if(expressionMap.begin(), expressionMap.end(), findId(trackId));
+		return (*it).first;
+	}
+};
+
+
+std::vector<std::pair<tstring, int> > Core::getTrackNameAssociations()
+{
+	std::vector<std::pair<tstring, int> > v(jointMap.begin(), jointMap.end());
+	v.insert(v.end(), expressionMap.begin(), expressionMap.end());
+	return v;
+}
+
 
 void Core::loadMotion(tstring motionName, Motion *mot, bool temp, Motion *basePosture)
 {

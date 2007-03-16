@@ -82,7 +82,7 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 		updateBuffer = 1;
 	}
 
-	expressions.assign(Piavca::Core::getCore()->getMaxExpressionId()+1, FacialExpressionHolder());
+	expressions.assign((-Piavca::Core::getCore()->getMaxExpressionId())+1, FacialExpressionHolder());
   
     // open the model configuration file
 	std::string strFilename = avatarId + ".cfg";
@@ -228,13 +228,20 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 			pos = strData.find_first_of(".", pos);
 			std::string strName = strData.substr(0, pos);
 			int expressionId = Piavca::Core::getCore()->getExpressionId(StringToTString(strName));
-			if(expressionId < 0)
+			if(expressionId == Piavca::Core::nullId)
 			{
 				StringVector exprNames;
 				exprNames.push_back(StringToTString(strName));
 				std::cout << "Adding Joint "<< strName << std::endl;
 				Piavca::Core::getCore()->addExpressionNameSet(exprNames);
 				expressionId = Piavca::Core::getCore()->getExpressionId(StringToTString(strName));
+			}
+			// facial expression ids are negative, to distinguish then from
+			// joint ids
+			expressionId = -expressionId;
+			if(expressionId >= expressions.size())
+			{
+				expressions.insert(expressions.end(), expressionId - (expressions.size()-1), FacialExpressionHolder());
 			}
 			expressions[expressionId].name = StringToTString(strName);
 			expressions[expressionId].meshId = lastMeshId;
@@ -499,6 +506,12 @@ int   AvatarCal3DImp::getFacialExpressionId(tstring expressionName)
 
 bool  AvatarCal3DImp::setFacialExpressionWeight(int id, float weight, float timeInterval)
 {
+	if(id == Piavca::Core::nullId)
+	{
+		std::cout << "Null expression id passed to setFacialExpressionWeight" << std::endl;
+		return false;
+	}
+	id = -id;
 	if(id < 0 || id >= (int)expressions.size())
 	{
 		std::cout << "Unknown facial expression id " << id << std::endl;
@@ -542,6 +555,12 @@ void AvatarCal3DImp::updateFacialExpressions()
 
 float AvatarCal3DImp::getFacialExpressionWeight(int id)
 {
+	if(id == Piavca::Core::nullId)
+	{
+		std::cout << "Null expression id passed to getFacialExpressionWeight" << std::endl;
+		return false;
+	}
+	id = -id;
 	if(id < 0 || id >= (int)expressions.size())
 	{
 		std::cout << "Unknown facial expression id " << id << std::endl;

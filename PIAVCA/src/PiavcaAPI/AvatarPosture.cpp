@@ -35,6 +35,7 @@
 #include "Avatar.h"
 #include "AvatarPosture.h"
 #include "PiavcaError.h"
+#include "PIAVCACore.h"
 
 using namespace Piavca;
 
@@ -52,7 +53,7 @@ void AvatarPosture::getPostureFromAvatar(Avatar *av)
 
 	if(isFacial())
 	{	
-		for(int track = av->beginExpression(); track < av->endExpression(); av->nextExpression(track))
+		for(int track = av->beginExpression(); track != Core::nullId; av->nextExpression(track))
 			if (isNull(track))
 				addFloatTrack(track, av->getFacialExpressionWeight(track));
 			else
@@ -69,7 +70,7 @@ void AvatarPosture::getPostureFromAvatar(Avatar *av)
 		else
 			setQuatKeyframe(root_orientation_id, 0, av->getRootOrientation());
 
-		for(int joint = av->begin(); joint < av->end(); av->next(joint))
+		for(int joint = av->begin(); joint != Core::nullId; av->next(joint))
 			if (isNull(joint))
 				addQuatTrack(joint, av->getJointOrientation(joint));
 			else

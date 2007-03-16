@@ -158,6 +158,7 @@ public:
 	//! whether the expression is present in the avatar
 	bool isExpressionNull(int expressionId)const
 	{
+		expressionId = -expressionId;
 		return (expressionId < 0 || expressionId >= (int)expressions.size() || expressions[expressionId].morphtargetId < 0);
 	};
 	//!@}

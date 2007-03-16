@@ -191,6 +191,8 @@ namespace Piavca
 		 *
 		 */
 		//!@{
+		//! a const representing an invalid joint id
+		static const int nullId = 100000;
 		//! get an id corresponding to a joint name
 		int getJointId(tstring name);
 		//! gets the maximum joint id
@@ -224,6 +226,22 @@ namespace Piavca
 		tstring getExpressionName(int expressionId);
 		//! get all the expression name associations
 		std::vector<std::pair<tstring, int> > getExpressionNameAssociations();
+		//!@}
+		
+		/*! methods dealing with both joint and expression ids
+		 *
+		 */
+		//!@{
+		//! get an id corresponding to a track name
+		int getTrackId(tstring name);
+		//! gets the maximum joint id
+		int getMaxTrackId(){return maxJointId;};
+		//! gets the maximum track id
+		int getMinTrackId(){return maxExpressionId;};
+		//! returns a name corresponding to a track id (out of many possible)
+		tstring getTrackName(int trackId);
+		//! get all the track name associations
+		std::vector<std::pair<tstring, int> > getTrackNameAssociations();
 		//!@}
 
 		//! loads in a motion from file and adds it to the list of motions

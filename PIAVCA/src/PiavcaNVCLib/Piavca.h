@@ -82,7 +82,7 @@
 #include "PiavcaAPI/Sequence.h"
 #include "PiavcaAPI/SmoothSequence.h"
 #include "PiavcaAPI/Reposition.h"
-#include "PiavcaAPI/SelfBlend.h"
+//#include "PiavcaAPI/SelfBlend.h"
 #include "PiavcaAPI/TimeCallback.h"
 #include "TimeOffset.h"
 #include "PiavcaAPI/KeyframeMotion.h"

@@ -74,21 +74,34 @@ class BaseMotionTrack;
 class PIAVCA_DECL StandardMotionImp : public MotionImp
 {
 	//! the tracks themselves
-	/*!
-	 *	Currently not sure of the best data type to use
-	 */
 	vector <BaseMotionTrack *> tracks;
+	vector <BaseMotionTrack *> facial_tracks;
+
+	BaseMotionTrack *getTrack(int trackId)
+	{
+		if (isNull(trackId)) 
+			return NULL;
+		else
+		{
+			if (trackId >= 0)
+				return tracks[trackId];
+			else
+				return facial_tracks[-trackId];
+		}
+	}
 
 public:
 	//! creates an empty motion (no tracks)
 	StandardMotionImp(bool _facial = false) :MotionImp(_facial)
 	{
-		int numTracks; 
-		if(facial)
-			numTracks = Piavca::Core::getCore()->getMaxExpressionId()+1;
-		else
-			numTracks = Piavca::Core::getCore()->getMaxJointId()+1;
-		tracks.assign(numTracks, static_cast<BaseMotionTrack *>(0));
+		//int numTracks; 
+		//if(facial)
+		//	numTracks = Piavca::Core::getCore()->getMaxExpressionId()+1;
+		//else
+		//	numTracks = Piavca::Core::getCore()->getMaxJointId()+1;
+		//tracks.assign(numTracks, static_cast<BaseMotionTrack *>(0));
+		//if(!facial)
+		//	facial_tracks.assign(Piavca::Core::getCore()->getMaxExpressionId()+1, static_cast<BaseMotionTrack *>(0));
 	};
 	//! read in from a bvh file
 	StandardMotionImp(tstring motionFileName, int flags, Motion *basePosture = NULL, bool test = false);
@@ -106,25 +119,20 @@ public:
 	~StandardMotionImp(){deleteAllTracks();tracks.clear();};
 
 	//! given an iterator tests whether it actually points to anything or if its null
-	bool isNull(int trackId) const  {return (trackId < 0 || trackId >= static_cast<int>(tracks.size()) || tracks[trackId] == NULL);};
-	//! get the name of the track corresponding to an iterator
-	//tstring getTrackName(int trackId)const {return tracks[trackId]->getName();};
+	bool isNull(int trackId) const  
+	{
+		if(trackId >= 0)
+			return (trackId >= static_cast<int>(tracks.size()) || tracks[trackId] == NULL);
+		else
+			return ((-trackId) >= static_cast<int>(facial_tracks.size()) || facial_tracks[(-trackId)] == NULL);
+	};
 	//! get the type of the track corresponding to an iterator
 	trackType getTrackType(int trackId)const ;
 	
 	//! returns the length of the motion
 	virtual float getMotionLength() const;
 	
-	//! gets the number of keyframes defined for a track
-	//virtual int getNumKeyframes(int trackId)const{return tracks[trackId]->getNumKeyframes();};
-	//! gets the i th keyframe time of a particular track
-	//virtual float getKeyframe(int trackId, int i)const{return tracks[trackId]->getTime(i);};
-	//! gets the last calcuated keyframe for a track 
-	/*!
-	 *	For standard motions this is the same as the number of keyframes
-	 */
-	//virtual int getLastCalculatedKeyframe(int trackId){return tracks[trackId]->getNumKeyframes()-1;};
-
+	
 	/*! \name add tracks of a specific type
 	 *	Returns an iterator that points to the track
 	 */

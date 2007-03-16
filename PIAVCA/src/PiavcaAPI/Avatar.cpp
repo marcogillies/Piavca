@@ -65,14 +65,6 @@ Avatar::Avatar(tstring avatarId,
 	initAvatar(avatarId, bailOnMissedJoints, Position, Orientation);
 };
 
-//Avatar::Avatar(const char *avatarId): 
-//		name(StringToTString(avatarId)), active(true), changed(false), rootChanged (false), 
-//		beingEdited(false), forwardDirection(0, 0, 1), //amq(NULL), 
-//		mot(NULL), scaleMot(NULL), facialMot(NULL)
-		//motionOwned(true), facialMotionOwned(true), scaleMotionOwned(true)
-//{
-//	initAvatar(StringToTString(avatarId), false, Vec(), Quat());
-//};
 
 Avatar::~Avatar() 
 {
@@ -333,7 +325,7 @@ void Avatar::validateMotions()
 			Piavca::Error(_T("Trying to load a motion with a non-quaternion root orientation"));
 			unloadMotion();
 		};
-		for (int joint = begin(); joint <= Core::getCore()->getMaxJointId(); next(joint))
+		for (int joint = begin(); joint != Core::nullId; next(joint))
 		{
 			if(mot && !mot->isNull(joint)
 				&& mot->getTrackType(joint) != QUAT_TYPE)
@@ -343,10 +335,20 @@ void Avatar::validateMotions()
 					break;
 			}
 		}
+		for (int expr = beginExpression(); expr != Core::nullId; nextExpression(expr))
+		{
+			if(!mot->isNull(expr)
+				&& mot->getTrackType(expr) != FLOAT_TYPE)
+			{
+				Piavca::Error(_T("Trying to load a motion with a non-float facial track"));
+				unloadMotion();
+				break;
+			}
+		}
 	}
 	if(facialMot)
 	{
-		for (int expr = beginExpression(); expr <= Core::getCore()->getMaxExpressionId(); nextExpression(expr))
+		for (int expr = beginExpression(); expr != Core::nullId; nextExpression(expr))
 		{
 			if(!facialMot->isNull(expr)
 				&& facialMot->getTrackType(expr) != FLOAT_TYPE)
@@ -359,7 +361,7 @@ void Avatar::validateMotions()
 	}
 	if(scaleMot)
 	{
-		for (int joint = begin(); joint <= Core::getCore()->getMaxJointId(); next(joint))
+		for (int joint = begin(); joint != Core::nullId; next(joint))
 		{
 			if(!scaleMot->isNull(joint)
 				&& scaleMot->getTrackType(joint) != FLOAT_TYPE
@@ -403,7 +405,7 @@ void Avatar::showMotionAtTime	(float time, Motion *motion)
 	 //   std::cout << "could not find root pos track" << std::endl;
 	
 	// go through all the joints setting those for which there is a track
-	for (int joint = begin(); joint <= Core::getCore()->getMaxJointId(); next(joint))
+	for (int joint = begin(); joint != Core::nullId; next(joint))
 	{
 		if(!motion->isNull(joint))
 		{
@@ -414,7 +416,16 @@ void Avatar::showMotionAtTime	(float time, Motion *motion)
 		   // std::cout << "could not find track: " << joint << std::endl;
 	}
 	//std::cout << " Avatar.cpp showMotionAtTime BEGINNNNNNNNNNNNNNNNNNNNN" << std::endl;
-
+	
+	// go through all the expressions setting those for which there is a track
+	for (int expr = beginExpression(); expr != Core::nullId; nextExpression(expr))
+	{
+		if(!motion->isNull(expr))
+		{
+			//std::cout << "ShowMotion " << Core::getCore()->getExpressionName(expr) << " " << facialMot->getFloatValueAtTime(expr, time) << std::endl;
+			setFacialExpressionWeight(expr, motion->getFloatValueAtTime(expr, time));
+		}
+	}
 };
 
 
@@ -440,7 +451,7 @@ void Avatar::showScaleMotionAtTime	(float time)
 	}
 	
 	// go through all the joints scaling those for which there is a track
-	for (int joint = begin(); joint <= Core::getCore()->getMaxJointId(); next(joint))
+	for (int joint = begin(); joint != Core::nullId; next(joint))
 	{
 		if(!scaleMot->isNull(joint))
 		{
@@ -467,7 +478,7 @@ void Avatar::showFacialMotionAtTime	(float time)
 	if(time < 0) return;
 	
 	// go through all the expressions setting those for which there is a track
-	for (int expr = beginExpression(); expr <= Core::getCore()->getMaxExpressionId(); nextExpression(expr))
+	for (int expr = beginExpression(); expr != Core::nullId; nextExpression(expr))
 	{
 		if(!facialMot->isNull(expr))
 		{
@@ -554,25 +565,31 @@ void Avatar::initAvatar(
 	  }
 };
 
-int Avatar::end () const 
+int Avatar::end ()  
 {
-	return Core::getCore()->getMaxJointId()+1;
+	return Core::nullId;
+	//return Core::getCore()->getMaxJointId()+1;
 }
 int Avatar::next(int &jointId) 
 {
 	int maxJoint = Core::getCore()->getMaxJointId();
 	while(isNull(++jointId) && jointId <= maxJoint); 
+	if (jointId > maxJoint)
+		jointId = Core::nullId;
 	return jointId;
 };
 
-int Avatar::endExpression () const 
+
+int Avatar::endExpression ()  
 {
-	return Core::getCore()->getMaxExpressionId()+1;
+	return Core::getCore()->getMaxExpressionId()-1;
 };
 int Avatar::nextExpression(int &expressionId) 
 {
 	int maxExpression = Core::getCore()->getMaxExpressionId();
-	while(isExpressionNull(++expressionId) && expressionId <= maxExpression); 
+	while(isExpressionNull(--expressionId) && expressionId >= maxExpression); 
+	if (expressionId < maxExpression)
+		expressionId =  Core::nullId;
 	return expressionId;
 };
 

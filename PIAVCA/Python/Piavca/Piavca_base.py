@@ -483,6 +483,7 @@ class Core(_object):
         """
         return _Piavca_base.Core_render(*args)
 
+    nullId = _Piavca_base.Core_nullId
     def getJointId(*args):
         """
         int Core::getJointId(tstring name)
@@ -583,6 +584,11 @@ class Core(_object):
         """
         return _Piavca_base.Core_getExpressionNameAssociations(*args)
 
+    def getTrackId(*args): return _Piavca_base.Core_getTrackId(*args)
+    def getMaxTrackId(*args): return _Piavca_base.Core_getMaxTrackId(*args)
+    def getMinTrackId(*args): return _Piavca_base.Core_getMinTrackId(*args)
+    def getTrackName(*args): return _Piavca_base.Core_getTrackName(*args)
+    def getTrackNameAssociations(*args): return _Piavca_base.Core_getTrackNameAssociations(*args)
     def loadMotion(*args):
         """
         void Core::loadMotion(tstring motionName, Motion *mot, bool temp=false, Motion *basePosture=NULL)
@@ -1245,16 +1251,6 @@ class Motion(_object):
                 
         """
         return _Piavca_base.Motion_findSubByType(*args)
-
-    def saveMotion(*args):
-        """
-        void Motion::saveMotion(tstring filename)
-                 
-        saves the motion to file in bvh format         
-                 
-                
-        """
-        return _Piavca_base.Motion_saveMotion(*args)
 
     def getMotionLength(*args):
         """
@@ -3872,163 +3868,6 @@ class TurnMotion(MotionFilter):
 TurnMotion_swigregister = _Piavca_base.TurnMotion_swigregister
 TurnMotion_swigregister(TurnMotion)
 
-class SequentialBlend(TwoMotionCombiner):
-    """
-    Initially plays one motion up to a given time then blends into another motion.     
-           
-    This can be used to smoothly transition between motions and is used to implement a number of different motion effects like LoopMotion and AvatarPostureBlend. The seoond motion starts in the ending root position and orientation of the first one rather than its own starting conditions. The transition is controlled by a start time and an interval (length of the transition). The smooth blend is not very sophisticated (just an interpolation) but it will look OK if the start of the second motion is not too different from the end of the first (don't use this to try to transition between lying down and standing up for instance)      see also: SequentialBlend.h
-    """
-    __swig_setmethods__ = {}
-    for _s in [TwoMotionCombiner]: __swig_setmethods__.update(_s.__swig_setmethods__)
-    __setattr__ = lambda self, name, value: _swig_setattr(self, SequentialBlend, name, value)
-    __swig_getmethods__ = {}
-    for _s in [TwoMotionCombiner]: __swig_getmethods__.update(_s.__swig_getmethods__)
-    __getattr__ = lambda self, name: _swig_getattr(self, SequentialBlend, name)
-    __repr__ = _swig_repr
-    def __init__(self, *args): 
-        """
-        Piavca::SequentialBlend::SequentialBlend(const SequentialBlend &sb)
-                 
-                
-                 
-                
-        """
-        if self.__class__ == SequentialBlend:
-            args = (None,) + args
-        else:
-            args = (self,) + args
-        this = _Piavca_base.new_SequentialBlend(*args)
-        try: self.this.append(this)
-        except: self.this = this
-    def clone(*args):
-        """
-        virtual Motion* Piavca::SequentialBlend::clone()
-                 
-        creates a copy of the motion         
-                 
-                
-        """
-        return _Piavca_base.SequentialBlend_clone(*args)
-
-    def setMaintainY(*args):
-        """
-        virtual void Piavca::SequentialBlend::setMaintainY(bool b)
-                 
-                
-                 
-                
-        """
-        return _Piavca_base.SequentialBlend_setMaintainY(*args)
-
-    def setAccumulateRoot(*args):
-        """
-        virtual void Piavca::SequentialBlend::setAccumulateRoot(bool b)
-                 
-                
-                 
-                
-        """
-        return _Piavca_base.SequentialBlend_setAccumulateRoot(*args)
-
-    def setStartTime(*args):
-        """
-        virtual void Piavca::SequentialBlend::setStartTime(float time)
-                 
-                
-                 
-        std::cout << "SequentialBlend::setStartTime " << name << " "         
-        """
-        return _Piavca_base.SequentialBlend_setStartTime(*args)
-
-    def getMotionLength(*args):
-        """
-        float Piavca::SequentialBlend::getMotionLength() const 
-                 
-        gets the motion length (transition start + blend interval + length of second motion)         
-                 
-                
-        """
-        return _Piavca_base.SequentialBlend_getMotionLength(*args)
-
-    def getFloatValueAtTimeInternal(*args):
-        """
-        float SequentialBlend::getFloatValueAtTimeInternal(int trackId, float time)
-                 
-        calculates the values of a keyframe         
-                 
-                
-        """
-        return _Piavca_base.SequentialBlend_getFloatValueAtTimeInternal(*args)
-
-    def getVecValueAtTimeInternal(*args):
-        """
-        Vec SequentialBlend::getVecValueAtTimeInternal(int trackId, float time)
-                 
-        calculates the values of a keyframe         
-                 
-                
-        """
-        return _Piavca_base.SequentialBlend_getVecValueAtTimeInternal(*args)
-
-    def getQuatValueAtTimeInternal(*args):
-        """
-        Quat SequentialBlend::getQuatValueAtTimeInternal(int trackId, float time)
-                 
-        calculates the values of a keyframe         
-                 
-                
-        """
-        return _Piavca_base.SequentialBlend_getQuatValueAtTimeInternal(*args)
-
-    def setBlendStart(*args):
-        """
-        void Piavca::SequentialBlend::setBlendStart(float start)
-                 
-        set the time at which tbe blend between the motions starts         
-                 
-                
-        """
-        return _Piavca_base.SequentialBlend_setBlendStart(*args)
-
-    def setBlendInterval(*args):
-        """
-        void Piavca::SequentialBlend::setBlendInterval(float interval)
-                 
-        sets the length of the transition between the two motions.         
-                 
-                
-        """
-        return _Piavca_base.SequentialBlend_setBlendInterval(*args)
-
-    def getBlendStart(*args):
-        """
-        float Piavca::SequentialBlend::getBlendStart()
-                 
-        get the time at which tbe blend between the motions starts         
-                 
-                
-        """
-        return _Piavca_base.SequentialBlend_getBlendStart(*args)
-
-    def getBlendInterval(*args):
-        """
-        float Piavca::SequentialBlend::getBlendInterval()
-                 
-        gets the length of the transition between the two motions.         
-                 
-                
-        """
-        return _Piavca_base.SequentialBlend_getBlendInterval(*args)
-
-    __swig_destroy__ = _Piavca_base.delete_SequentialBlend
-    __del__ = lambda self : None;
-    def __disown__(self):
-        self.this.disown()
-        _Piavca_base.disown_SequentialBlend(self)
-        return weakref_proxy(self)
-SequentialBlend_swigregister = _Piavca_base.SequentialBlend_swigregister
-SequentialBlend_swigregister(SequentialBlend)
-
 class Sequence(TwoMotionCombiner):
     __swig_setmethods__ = {}
     for _s in [TwoMotionCombiner]: __swig_setmethods__.update(_s.__swig_setmethods__)
@@ -4398,84 +4237,6 @@ class Reposition(MotionFilter):
         return weakref_proxy(self)
 Reposition_swigregister = _Piavca_base.Reposition_swigregister
 Reposition_swigregister(Reposition)
-
-class SelfBlend(SequentialBlend):
-    """
-    A SequentialBlend motion manipuator that blends a motion into itself.     
-           
-    It contains a method reblend which when called will save the motions current state and then starts blending the motion in from the start. This is used in implementing the loop motion class but has other uses. For example if there is a parameterised motion and you want to change the parameters and blend the new motion in smoothly use a selfBlend. and call reblend just before changing the parameters.      see also: SelfBlend.h
-    """
-    __swig_setmethods__ = {}
-    for _s in [SequentialBlend]: __swig_setmethods__.update(_s.__swig_setmethods__)
-    __setattr__ = lambda self, name, value: _swig_setattr(self, SelfBlend, name, value)
-    __swig_getmethods__ = {}
-    for _s in [SequentialBlend]: __swig_getmethods__.update(_s.__swig_getmethods__)
-    __getattr__ = lambda self, name: _swig_getattr(self, SelfBlend, name)
-    __repr__ = _swig_repr
-    def __init__(self, *args): 
-        """
-        Piavca::SelfBlend::SelfBlend(const SelfBlend &sb)
-                 
-                
-                 
-                
-        """
-        if self.__class__ == SelfBlend:
-            args = (None,) + args
-        else:
-            args = (self,) + args
-        this = _Piavca_base.new_SelfBlend(*args)
-        try: self.this.append(this)
-        except: self.this = this
-    def clone(*args):
-        """
-        virtual Motion* Piavca::SelfBlend::clone()
-                 
-        creates a copy of the motion         
-                 
-                
-        """
-        return _Piavca_base.SelfBlend_clone(*args)
-
-    def reset(*args):
-        """
-        void SelfBlend::reset()
-                 
-        does any resetting needed         
-                 
-                
-        """
-        return _Piavca_base.SelfBlend_reset(*args)
-
-    def reblend(*args):
-        """
-        void SelfBlend::reblend(float time)
-                 
-        saves the state of the motion at time and start blending the motion back into that from the start         
-                 
-                
-        """
-        return _Piavca_base.SelfBlend_reblend(*args)
-
-    def setMotion(*args):
-        """
-        void SelfBlend::setMotion(Motion *mot)
-                 
-        sets the motion to be blended in         
-                 
-                
-        """
-        return _Piavca_base.SelfBlend_setMotion(*args)
-
-    def getMotion(*args): return _Piavca_base.SelfBlend_getMotion(*args)
-    __swig_destroy__ = _Piavca_base.delete_SelfBlend
-    __del__ = lambda self : None;
-    def __disown__(self):
-        self.this.disown()
-        _Piavca_base.disown_SelfBlend(self)
-        return weakref_proxy(self)
-SelfBlend_swigregister = _Piavca_base.SelfBlend_swigregister
-SelfBlend_swigregister(SelfBlend)
 
 class LoopMotion(PostureBlend):
     """
@@ -5260,7 +5021,16 @@ class RandomChoiceMotion(ChoiceMotion):
         except: self.this = this
     __swig_destroy__ = _Piavca_base.delete_RandomChoiceMotion
     __del__ = lambda self : None;
-    def clone(*args): return _Piavca_base.RandomChoiceMotion_clone(*args)
+    def clone(*args):
+        """
+        virtual Motion* Piavca::Motion::clone()=0
+                 
+        creates a copy of the motion         
+                 
+                
+        """
+        return _Piavca_base.RandomChoiceMotion_clone(*args)
+
     __swig_getmethods__["convertTo"] = lambda x: _Piavca_base.RandomChoiceMotion_convertTo
     if _newclass:convertTo = staticmethod(_Piavca_base.RandomChoiceMotion_convertTo)
     def addMotion(*args): return _Piavca_base.RandomChoiceMotion_addMotion(*args)

@@ -69,6 +69,9 @@ class motionCallback(scriptCallback):
 	def __call__(self, avatar):
 		if self.motion == None:
 			self.motion = Piavca.Core.getCore().getMotion(self.motionName)
+			if self.motion == None:
+				print "Could not find motion", self.motionName
+				return
 			self.motion.Reference()
 		avatar.play_motion(self.motion)
 		
@@ -246,18 +249,24 @@ class ScriptEngine(Piavca.TimeCallback):
 		app = wx.PySimpleApp()
 
 		frame=wx.Frame(None,-1)
-		sizer=wx.BoxSizer(wx.HORIZONTAL)
+		sizer1=wx.BoxSizer(wx.HORIZONTAL)
+		sizer2=wx.BoxSizer(wx.VERTICAL)
 
 		id_counter = 0
 		for scriptname in self.scripts.keys():
 			button=wx.Button(frame, id_counter, label=scriptname)
 			wx.EVT_BUTTON (frame, id_counter, lambda e, s = self, n=scriptname : s.playScript(avatarName, n))
-			sizer.Add(button,1 )
+			sizer1.Add(button,1 )
 			id_counter+=1
+			if id_counter % 6 == 0:
+				sizer2.Add(sizer1,0)
+				sizer1=wx.BoxSizer(wx.HORIZONTAL)
+				
+		sizer2.Add(sizer1,0)
 			
-		frame.SetSizer(sizer)
+		frame.SetSizer(sizer2)
 		frame.SetAutoLayout(1)
-		sizer.Fit(frame)
+		sizer2.Fit(frame)
 
 		frame.Show(True)
 		frame.Layout()

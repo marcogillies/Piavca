@@ -53,19 +53,7 @@ namespace Piavca
 class PIAVCA_DECL Motion;
 class PIAVCA_DECL AvatarImp;
 class PIAVCA_DECL AvatarTimeCallback;
-//class PIAVCA_DECL Vec;
-//class PIAVCA_DECL Quat;
 
-
-//! an exception that is thrown if an invalid joint id is passed to the avatar
-//class PIAVCA_DECL InvalidJointIdException : public CException
-//{
-//	int jointId;
-//public:
-//	InvalidJointIdException(int i, tstring details):CException(details), jointId(i){};
-//	InvalidJointIdException(const InvalidJointIdException &e):CException(e), jointId(e.jointId){};
-//	const InvalidJointIdException &operator=(const InvalidJointIdException &e){details=e.details; jointId = e.jointId; return (*this);}; 
-//};
 
 
 //! The actual avatar class
@@ -189,12 +177,6 @@ public:
 		   const Quat &Orientation = Quat(1.0, 0.0, 0.0, 0.0),
 		   const Vec &forwardDir = Vec(0.0, 0.0, 1.0));
 
-	//Avatar(const char *avatarId);
-
-	//! get hold of the piavca core
-	//Piavca::Core *getCore() const {return core;};
-	//! set the current piavca core object
-	//void setCore(Piavca::Core *c){core = c;};
 
 	bool isValid(){return imp != NULL;};
 
@@ -215,38 +197,6 @@ public:
 		return name = newName;
 	};
 
-	//! whether the avatar is being edited in the user interface
-	//bool getEditFlag()     
-	/*{
-		return beingEdited;
-	}*/
-	//! this method should if the avatar is being edited in the interface
-	//void setEditFlag()     
-	/*{
-		beingEdited = true;
-	}*/
-	//! clear the edit flag once the edit has finished
-	//void clearEditFlag()   
-	/*{
-		beingEdited = false;
-	}*/
-
-	//! whether the Avatar has been changed by a user interface edit
-	/*bool getChangedFlag()  
-	{
-		return changed;
-	}*/
-	//! this method should if the avatar has been changed in the interface	
-	//void setChangedFlag()  
-	/*{
-		changed = true;
-	}*/
-	//! clear the changed flag once the change has been dealt with
-	//void clearChangedFlag()
-	/*{
-		changed = false;
-	}*/
-
 	//! returns the local direction at which the avatar points forward
 	const Vec &getForwardDirection()
 	{
@@ -260,9 +210,6 @@ public:
 
 	//! \name Facial Animation Methods (based on morph target like system)
 	//!@{
-	//bool  setNeutralFacialExpression(tstring expressionName){return imp->setNeutralFacialExpression(expressionName);};
-	//bool  addFacialExpression(tstring expressionName){return imp->addFacialExpression(expressionName);};
-	//int   getFacialExpressionId(tstring expressionName){return imp->getFacialExpressionId(expressionName);};
 	//! set the weight of a facial expression (used in the blend)
 	bool  setFacialExpressionWeight(int id, float weight, float timeInterval = 0.5)
 	{
@@ -280,14 +227,15 @@ public:
 	};
 	//void  updateFacialExpressions(float time){imp->updateFacialExpressions(time);};
 	//! the ID of the first joint that is present in the avatar (the ordering is arbitrary)
-	int beginExpression() const 
+	int beginExpression()  
 	{
-		int i=0; 
-		while(isExpressionNull(i) && i < end()) i++; 
+		int i=-1;
+		if (isExpressionNull(i))
+			nextExpression(i);
 		return i;
 	};
 	//! the last joint + 1
-	int endExpression () const;
+	int endExpression () ;
 	//! given a joint ID this returns the next joint ID that is present in the avatar
 	int nextExpression(int &expressionId);
 	//! whether the joint is present in the avatar
@@ -342,14 +290,15 @@ public:
 	};
 
 	//! the ID of the first joint that is present in the avatar (the ordering is arbitrary)
-	int begin() const 
+	int begin()  
 	{
 		int i=0; 
-		while(isNull(i) && i < end())i++; 
+		if(isNull(i))
+			next(i);
 		return i;
 	};
 	//! the last joint + 1
-	int end () const;
+	int end () ;
 	//! given a joint ID this returns the next joint ID that is present in the avatar
 	int next(int &jointId);
 	//! returns the ID of the parent of the joint in the joint heirarchy (or a negative value if it doesn't exist

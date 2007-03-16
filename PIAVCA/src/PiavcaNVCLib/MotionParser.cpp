@@ -2666,7 +2666,7 @@ PIAVCA_DECL Piavca::Motion *MotionParser::parseMotion(istringstream &is, std::st
 			if(tmot->isFacial())
 				jointId = Piavca::Core::getCore()->getExpressionId(StringToTString(currentWord));
 			else
-				jointId = Piavca::Core::getCore()->getJointId(StringToTString(currentWord));
+				jointId = Piavca::Core::getCore()->getTrackId(StringToTString(currentWord));
 			
 			if(Piavca::Core::getCore()->errorsPresent()) 
 			{

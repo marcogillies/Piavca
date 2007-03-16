@@ -40,57 +40,63 @@
 
 using namespace Piavca;
 
-MotionMask::MotionMask(bool _facial):facial(_facial)
-{
-	if(facial)
-		m.assign(Core::getCore()->getMaxExpressionId(), false);
-	else
-		m.assign(Core::getCore()->getMaxJointId(), false);
-}
 
 MotionMask::MotionMask(const MotionMask &mm)
-	:facial(mm.facial), m(mm.m)
+	:m_body(mm.m_body), m_facial(mm.m_facial)
 {
 };
 
 const MotionMask &MotionMask::operator=(const MotionMask &mm)
 {
-	facial = mm.facial;
-	m = mm.m;
+	m_body = mm.m_body;
+	m_facial = mm.m_facial;
 	return *this;
 };
 
 void MotionMask::setMask(int track, bool val)
 {
-	int maxTrack;
-	if(facial)
-		maxTrack = Core::getCore()->getMaxExpressionId();
-	else
-		maxTrack = Core::getCore()->getMaxJointId();
+	int maxTrack = Core::getCore()->getMaxTrackId();
+	int minTrack = Core::getCore()->getMinTrackId();
 
-	if(track < 0 || track > maxTrack)
+	if(track < minTrack || track > maxTrack)
 	{
 		Piavca::Error(_T("Unknown track id when setting motion mask"));
 		return;
 	}
-	if(track >= (int)m.size())
-		for(int i = (int)m.size(); i < maxTrack; i++)
-			m.push_back(false);
-	m[track]=val;
+
+	if(track > 0)
+	{
+		if(track >= (int)m_body.size())
+			for(int i = (int)m_body.size(); i < maxTrack; i++)
+				m_body.push_back(false);
+		m_body[track] = val;
+	}
+	else
+	{
+		track = - track;
+		if (track >= (int)m_facial.size())
+			for(int i = (int)m_facial.size(); i < -minTrack; i++)
+				m_facial.push_back(false);
+		m_facial[track] = val;
+	}
 };
 bool MotionMask::getMask(int track) const
 {
-	if(track > 0 && track < (int)m.size())
-		return m[track];
-	else
-		return false;
+	if(track > 0 && track < (int)m_body.size())
+		return m_body[track];
+	track = -track;
+	if(track < (int)m_facial.size())
+		return m_facial[track];
+	return false;
 };
 
 
 void MotionMask::clearMask()
 {
-	for(int i = 0; i < (int)m.size(); i++)
-		m[i] = false;
+	for(int i = 0; i < (int)m_body.size(); i++)
+		m_body[i] = false;
+	for(int i = 0; i < (int)m_facial.size(); i++)
+		m_facial[i] = false;
 };
 
 MaskedMotion::MaskedMotion()
@@ -110,30 +116,20 @@ void MaskedMotion::setMotionMask(std::vector<std::string> v)
 	mask.clearMask();
 	for (int i = 0; i < v.size(); i++)
 	{
-		int trackid;
-		if(isFacial())
-			trackid = Core::getCore()->getExpressionId(StringToTString(v[i]));
-		else
-			trackid = Core::getCore()->getJointId(StringToTString(v[i]));
+		int trackid = Core::getCore()->getTrackId(StringToTString(v[i]));
 		mask.setMask(trackid, true);
 	}
 };
 
 StringVector MaskedMotion::getMotionMask()
 {
-	int maxTrack;
-	if(isFacial())
-		maxTrack = Core::getCore()->getMaxExpressionId();
-	else
-		maxTrack = Core::getCore()->getMaxJointId();
+	int maxTrack = Core::getCore()->getMaxTrackId();
+	int minTrack = Core::getCore()->getMinTrackId();
 	StringVector v;
-	for(int i = 0; i < maxTrack; i++)
+	for(int i = minTrack; i < maxTrack; i++)
 	{
 		if(mask.getMask(i))
-			if(isFacial())
-				v.push_back(Core::getCore()->getExpressionName(i));
-			else
-				v.push_back(Core::getCore()->getJointName(i));
+			v.push_back(Core::getCore()->getTrackName(i));
 	}
 	return v;
 };

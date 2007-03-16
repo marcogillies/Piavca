@@ -68,13 +68,19 @@ void Motion::printInfo()
 // the granularity at which keyframes can be set 
 //float Motion::keyframeGranularity = 1.0/1000.0;
 
+int Motion::begin() const 
+{
+	int i=Core::getCore()->getMinTrackId(); 
+	while(i <= end() && isNull(i))i++; 
+	return i;
+};
 int Motion::end() const 
 {
-	return Core::getCore()->getMaxJointId()+1;
+	return Core::getCore()->getMaxTrackId()+1;
 };
 int Motion::next(int &trackId)const 
 {
-	int maxTrack = Core::getCore()->getMaxJointId();
+	int maxTrack = Core::getCore()->getMaxTrackId();
 	while(isNull(++trackId)&&trackId<=maxTrack);
 	return trackId;
 };
@@ -110,86 +116,3 @@ void Motion::unpause()
 void Motion::preFrame(float time)
 {
 }
-
-#include <iostream>
-#include <fstream>
-#include <string>
-//using std::cout;
-using std::endl;
-using std::ofstream;
-using std::ifstream;
-
-struct PrintQuatKeyframe{
-	Motion *mot;
-	float time;
-	ofstream *outFile;
-	void operator()(int track)
-	{
-		Quat q = mot->getQuatValueAtTime(track, time);
-		// yeah... this bits kind of dodgy
-		float temp = q.I();
-		q.I() = q.J();
-		q.J() = temp;
-		float x, y, z;
-		q.getEulerAngles(y, x, z);
-		(*outFile) << radToDeg(z)  << " " << radToDeg(x)  << " " << radToDeg(y) << " ";
-	}
-};
-
-void Motion::saveMotion(tstring filename)
-{
-	// open bvh template file and the save file
-	/*
-	std::string filePath = PiavcaStringToString(getCore()->dir) + "bvhTemplate.bvh";
-	std::cout << filePath << std::endl;
-	ifstream templateFile(filePath.c_str());
-	ofstream outFile(PiavcaStringToString(filename).c_str());
-	*/
-	std::string filePath = TStringToString(Core::getCore()->dir) + "bvhTemplate.bvh";
-	std::cout << filePath << std::endl;
-	ifstream templateFile(filePath.c_str());
-	ofstream outFile(TStringToString(filename).c_str());
-
-	// put the heirarch section into the file
-	std::string word;
-	vector <int> tracks;
-	char c;
-	while (templateFile.get(c))
-	{
-		if(c == '$') break;
-		outFile.put(c);
-	}
-	// calculate the number of keyframes to save
-	// and write to file
-	float motionLength = getMotionLength();
-	int noKeyframes = static_cast<int>(motionLength*25.0) + 1;
-	float keyframeTime = (noKeyframes > 1) ? (motionLength/static_cast<float>((noKeyframes-1))) : 0.04f;
-
-	outFile << "MOTION Frames: " << noKeyframes << endl;
-	outFile << "Frame Time: " << keyframeTime << endl;
-
-	// work out the order in which to write the tracks
-	// the order of tracks is stored in the template file
-	int rootPos = Core::getCore()->getJointId(_T("Root Position"));
-	tracks.push_back(Core::getCore()->getJointId(_T("Root Orientation")));
-	while (templateFile >> word)
-	{
-		tracks.push_back(Core::getCore()->getJointId(StringToTString(word)));
-	}
-	// print out all the keyframes
-	PrintQuatKeyframe keyframePrinter;
-	keyframePrinter.mot = this;
-	keyframePrinter.outFile = &outFile;
-	float tm = 0.0;
-	for(int i = 0; i < noKeyframes; i++)
-	{
-		Vec v = getVecValueAtTime(rootPos, tm);
-		outFile << v[2] << " " << v[1] << " " << v[0] << " ";
-		keyframePrinter.time = tm;
-		std::for_each(tracks.begin(), tracks.end(), keyframePrinter);
-		outFile << endl;
-		tm = tm + keyframeTime;
-	}
-	outFile << endl;
-}
-

@@ -45,10 +45,10 @@ namespace Piavca
 //! a set of masks specifying which joints should be played in a masked motion
 class MotionMask
 {
-	bool facial;
-	std::vector<bool> m;
+	std::vector<bool> m_body;
+	std::vector<bool> m_facial;
 public:
-	MotionMask(bool _facial = false);
+	MotionMask(){};
 	MotionMask(const MotionMask &mm);
 	const MotionMask &operator=(const MotionMask &mm);
 	//! sets whether a given track should be played

@@ -207,9 +207,6 @@ public:
 			return NULL;
 	};
 
-	//! saves the motion to file in bvh format
-	void saveMotion(tstring filename);
-
 	//! keyframes can only be set with a certain granularity, this sets it
 	/*!
 	 *  Though time is represented in floating point, keyframes can only be 
@@ -235,7 +232,7 @@ public:
 	virtual bool isRandomAccess(){return false;};
 
 	//! the ID of the first track that is present in the motion (the ordering is arbitrary)
-	int begin() const {int i=0; while(i <= end() && isNull(i))i++; return i;};
+	int begin() const ;
 	//! the last track + 1
 	int end() const;
 	//! given a track ID get the next valid ID
