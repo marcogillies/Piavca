@@ -136,7 +136,7 @@ class EigenAnalysis :
 		tangentspacetime = 0
 		logmaptime = 0
 		# this bit assumes that all motions have the same number of valid joints
-		for joint in range(1, motions[0].end()) :
+		for joint in range(motion.begin(), 0) + range(1, Piavca.Core.getCore().getMaxJointId()) :
 			if( not motions[0].isNull(joint)):
 				print "joint ", joint, " type ", motions[0].getTrackType(joint)
 				self.joint_types.append(motions[0].getTrackType(joint))
