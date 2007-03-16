@@ -47,8 +47,10 @@ def makeFrameArray(motion, fps):
 	print "creating frame array...."
 	m = ({}, {}, {})
 	length = int(motion.getMotionLength()*fps)
-	for joint in range(1, motion.end()) :
+	for joint in range(motion.begin(), 0) + range(1, Piavca.Core.getCore().getMaxJointId()) :
+		#print "current joint", joint
 		if( not motion.isNull(joint)):
+			#print joint, "is not null"
 			type = motion.getTrackType(joint)
 			if type == Piavca.FLOAT_TYPE:
 				m[0][joint] = [motion.getFloatValueAtTime(joint, float(t)/float(fps)) for t in range(length)]
@@ -71,10 +73,14 @@ def makeFrameArray(motion, fps):
 	return m, length
 
 class DistanceMeasure:
-	def __init__(self, jointWeights=None, velocityWeight=1):
+	def __init__(self, facial=0, jointWeights=None, velocityWeight=1):
 		self.velocityWeight = velocityWeight
 		if jointWeights == None:
-			self.jointWeights = [(i, 1.0) for i in range(Piavca.Core.getCore().getMaxJointId())]
+			self.jointWeights = [(i, 1.0) for i in range(Piavca.Core.getCore().getMinTrackId(), Piavca.Core.getCore().getMaxTrackId())]
+			#if facial:
+			#	self.jointWeights = [(i, 1.0) for i in range(Piavca.Core.getCore().getMaxJointId())]
+			#else:
+			#	self.jointWeights = [(i, 1.0) for i in range(Piavca.Core.getCore().getMaxExpressionId())]
 		else:
 			self.jointWeights = jointWeights
 		self.expmap = ExpMap.TangentSpace([Piavca.Quat()])
@@ -183,7 +189,10 @@ class MotionGraph (Piavca.LoopMotion):
 		self.motions = list(motions)
 		self.window = window
 		self.fps = 25
-		self.measure = DistanceMeasure()
+		if len(self.motions) > 0:
+			self.measure = DistanceMeasure(facial=self.motions[0].isFacial())
+		else:
+			self.measure = None
 		self.threshold_same = 4
 		self.threshold_diff = 8
 		self.filename = ""
@@ -191,6 +200,8 @@ class MotionGraph (Piavca.LoopMotion):
 		
 	def addMotion(self, mot):
 		self.motions.append(mot)
+		if self.measure == None:
+			self.measure = DistanceMeasure(facial=self.motions[0].isFacial())
 		
 	def getNumMotions(self):
 		return len(self.motions)
@@ -417,6 +428,7 @@ class MotionGraph (Piavca.LoopMotion):
 					ccnodes[n].nextNode = child
 			#print ccnodes[n].children
 		self.nodes = ccnodes
+		print self.nodes
 		
 		# initialise the transitions motions
 		self._createTransitionMots()

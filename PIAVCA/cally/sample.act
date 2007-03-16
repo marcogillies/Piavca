@@ -17,7 +17,6 @@ stop
 
 script talk
 1	backgroundmotion gestures
-0   sound  outro
 stop
 
 

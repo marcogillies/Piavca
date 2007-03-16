@@ -62,6 +62,7 @@ class motionCallback(scriptCallback):
 		scriptCallback.__init__(self, time, args)
 		if issubclass(args[0].__class__, Piavca.Motion) :
 			self.motion = args[0]
+			self.motion.Reference()
 			self.motionName = ""
 		else:
 			self.motion = None
