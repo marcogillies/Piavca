@@ -40,18 +40,18 @@ using namespace Piavca;
 float LinearTransition::eval(float t)
 {
 	if (t < 0) 
-		return 1;
-	if (t > 1)
 		return 0;
-	return 1 - t;		
+	if (t > 1)
+		return 1;
+	return t;		
 };
 
 float SmoothTransition::eval(float t)
 {
 	if (t < 0) 
-		return 1;
-	if (t > 1)
 		return 0;
+	if (t > 1)
+		return 1;
 	return (3 - 2*t)*t*t;	
 };
 
@@ -103,7 +103,8 @@ float MotionTransition::getFloatValueAtTimeInternal (int trackId, float time)
 	float f1 = mot1->getFloatValueAtTime(trackId, time);//transitionTime1);//+time);
     float f2 = mot2->getFloatValueAtTime(trackId, time);//transitionTime2);//-window+time);
     float a = transfunc->eval(t/window);
-    return a*f1 + (1-a)*f2;
+	//return a*f1 + (1-a)*f2;
+    return (1-a)*f1 + a*f2;
 };
 
 Vec MotionTransition::getVecValueAtTimeInternal   (int trackId, float time)
@@ -126,7 +127,8 @@ Vec MotionTransition::getVecValueAtTimeInternal   (int trackId, float time)
 	Vec v1 = mot1->getVecValueAtTime(trackId, time);//transitionTime1);//+time);
     Vec v2 = mot2->getVecValueAtTime(trackId, time);//transitionTime2);//-window+time);
     float a = transfunc->eval(t/window);
-    return v1*a + v2*(1-a);
+    //return v1*a + v2*(1-a);
+    return v1*(1-a) + v2*(a);
 };
 
 Quat MotionTransition::getQuatValueAtTimeInternal  (int trackId, float time)

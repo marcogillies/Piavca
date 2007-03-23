@@ -47,7 +47,7 @@ void Sequence::setStartTime(float time)
 		if(mot2) 
 		{
 			mot2->setStartTime(mot1->getEndTime());
-			std::cout << " motion2 start time " << mot1->getEndTime() << std::endl;
+			//std::cout << " motion2 start time " << mot1->getEndTime() << std::endl;
 		}
 	}
 	else
@@ -55,7 +55,7 @@ void Sequence::setStartTime(float time)
 		if(mot2) 
 		{
 			mot2->setStartTime(time);
-			std::cout << " motion2 start time " << time << std::endl;
+			//std::cout << " motion2 start time " << time << std::endl;
 		}
 	}
 }
