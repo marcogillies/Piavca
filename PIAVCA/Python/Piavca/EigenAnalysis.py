@@ -93,23 +93,33 @@ class EigenAnalysis :
 	def get_eigenvectors (self, mat):
 		vals, vecs = scipy.linalg.eigh(mat)
 		sum = 0.0
+		#for i in range(len(vals)-1, -1, -1):
+		print vals
 		for i in range(len(vals)-1, -1, -1):
+			print vals[i]
 			if vals[i] <= 0.0:
 				break
 			sum += vals[i]
 			#print sum
 		accumulate = 0.0
 		pcs = []
+		#pcs = None #scipy.matrix([])
 		for i in range(len(vals)-1, -1, -1):
 			if vals[i] <= 0.0:
 				break
 			accumulate += vals[i]
-			#print i, vals[i], accumulate
+			print i, vals[i], accumulate, sum
 			#print vecs[i]
 			pcs.append(scipy.transpose(vecs)[i])
+			#if pcs == None:
+			#	pcs = scipy.transpose(vecs)[i]
+			#else:
+			#	pcs = scipy.concatenate((pcs, scipy.transpose(vecs)[i]))
 			print i, vals[i], len(vals), accumulate/sum
-			if accumulate/sum > self.precentageToKeep: break
+			if accumulate/sum > self.precentageToKeep: 
+				break
 		print "number of pcs ", len(pcs)
+		#print pcs
 		return scipy.matrix(pcs)
 		
 	def preprocessData(self, motions, fps):

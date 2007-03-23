@@ -163,6 +163,10 @@ class Node:
 		self.children = []
 		self.nextNode = None
 		self.transitions = {}
+	def copy(self):
+		newNode = Node(self.frame, self.time, self.motion)
+		newNode.children = list(self.children)
+		newMode.nextNode = self.nextNode
 	def addChild(self, child):
 		if not (child in self.children):
 			self.children.append(child)
@@ -197,6 +201,26 @@ class MotionGraph (Piavca.LoopMotion):
 		self.threshold_diff = 8
 		self.filename = ""
 		self.jointsWeightsFile = ""
+		
+	def clone(self):
+		newMot = MotionGraph(self.motions, self.window)
+		
+		self.fps = self.fps
+		self.measure = self.measure
+		self.threshold_same = self.threshold_same
+		self.threshold_diff = self.threshold_diff
+		newMot.setFilename(self.filename)
+		self.jointsWeightsFile = self.jointsWeightsFile
+		
+		try:
+			newMot.nodes = {}
+			for key in self.nodes.keys():
+				newMot.nodes[key] = self.nodes[key].copy()
+			newMot._createTransitionMots()
+			newMot.nextnode = newMot.nodes[(self.nextnode.motion, self.nextnode.time)]
+			newMot.reblend(Piavca.Core.getCore().getTime())
+		except AttributeError:
+			pass
 		
 	def addMotion(self, mot):
 		self.motions.append(mot)

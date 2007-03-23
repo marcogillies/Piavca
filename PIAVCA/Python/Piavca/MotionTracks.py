@@ -266,10 +266,43 @@ class MotionTracks(wx.VListBox):
 		motions = [Piavca.SubMotion(motion, split.GetStart(), split.GetEnd()) for split in splits]
 		splits = [(0, split.GetStart(), split.GetEnd()) for split in splits]
 		length = Track.PositionToTime(self.track_length)*Track.frames_per_second
+		
 		#self.pcs.do_pca([motion], splits, length, Track.frames_per_second)
 		self.pcs.addMotions(motions)
 		self.pcs.setFramesPerSecond(Track.frames_per_second)
+		
 		ssa = SlowSubSpace.SlowSubSpace()
+		
+		val = None
+		dialog = wxTextEntryDialog ( None, message="enter slow subspace trade off (alpha)" )
+		dialog.SetValue("0.2")
+		# The user pressed the "OK" button in the dialog
+		if dialog.ShowModal() == wxID_OK:
+			print 'Position of selection:', dialog.GetValue()
+			val = float(dialog.GetValue())
+			print val
+		else:
+			path = None
+			print 'You did not select anything.'
+		dialog.Destroy()
+		if val != None:
+			ssa.setAlpha(val)
+			
+		val = None
+		dialog = wxTextEntryDialog ( None, message="enter percentage to keep" )
+		dialog.SetValue("0.99")
+		# The user pressed the "OK" button in the dialog
+		if dialog.ShowModal() == wxID_OK:
+			print 'Position of selection:', dialog.GetValue()
+			val = float(dialog.GetValue())
+			print val
+		else:
+			path = None
+			print 'You did not select anything.'
+		dialog.Destroy()
+		if val != None:
+			ssa.setPercentageToKeep(val)
+			
 		self.pcs.setAnalysis(ssa)
 		self.pcs.create()
 		#self.pcs.setMotion(motion)

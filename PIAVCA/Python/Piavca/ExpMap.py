@@ -58,7 +58,10 @@ class TangentSpace:
 		count = 0;
 		while 1:
 			if count > 500 :
-				raise u
+				print "error", u, u.mag()
+				if u.mag() < 0.001: 
+					break
+				raise "exceeded maximum iterations"
 			count += 1
 
 			self._calcCoordAxes(q)
@@ -69,7 +72,7 @@ class TangentSpace:
 			q = self.expMap(u);
 			#print "curent iter",  u, q
 
-			if u.mag() < 0.00001: 
+			if u.mag() < 0.0005: 
 				break
 		self._calcCoordAxes(q)
 			
