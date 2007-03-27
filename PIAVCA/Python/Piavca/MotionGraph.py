@@ -201,6 +201,7 @@ class MotionGraph (Piavca.LoopMotion):
 		self.threshold_diff = 8
 		self.filename = ""
 		self.jointsWeightsFile = ""
+		self.nextmotions = []
 		
 	def clone(self):
 		newMot = MotionGraph(self.motions, self.window)
@@ -550,40 +551,53 @@ class MotionGraph (Piavca.LoopMotion):
 	# this function should be overridden in subtypes to produce different functionalities
 	# this version just picks a child of the current node at random
 	def chooseNextMotion(self):
-		candidates = self.nextnode.children
-		#print candidates
-		choice = random.choice(candidates)
-		#choice = self.nextnode.nextNode
-		print self.nextnode.motion, self.nextnode.time
-		print choice
-		motion = self.nextnode.getTransition(choice)
-		if choice == self.nextnode.nextNode or self.nodes[choice].nextNode == None:
+		if len(self.nextmotions) == 0:
+			candidates = self.nextnode.children
+			#print candidates
+			choice = random.choice(candidates)
+			#choice = self.nextnode.nextNode
+			print self.nextnode.motion, self.nextnode.time
+			print choice
 			motion = self.nextnode.getTransition(choice)
-			self.setBlendInterval(0)
-			self.nextnode = self.nodes[choice]
-			print "Next Node"
-		else:
-			motion = self.nextnode.getTransition(choice)
-			self.setBlendInterval(0)
-			self.nextnode = self.nodes[choice]
-			print "Transition**"
-			
-			#self.setBlendInterval(1)
+			if choice == self.nextnode.nextNode or self.nodes[choice].nextNode == None:
+				motion = self.nextnode.getTransition(choice)
+				self.setBlendInterval(0)
+				self.nextnode = self.nodes[choice]
+				print "Next Node"
+			else:
+				motion = self.nextnode.getTransition(choice)
+				self.setBlendInterval(0)
+				self.nextnode = self.nodes[choice]
+				print "Transition**"
+				
+				#self.setBlendInterval(1)
+				#self.nextnode = self.nodes[choice]
+				#motion = self.nextnode.getTransition(self.nextnode.nextNode)
+				#self.nextnode = self.nodes[self.nextnode.nextNode]
+			#if self.getMotion() != None:
+			#	print self.getQuatValueAtTime(Piavca.root_orientation_id, Piavca.Core.getCore().getTime())
+			#	print self.getQuatValueAtTime(Piavca.root_orientation_id, Piavca.Core.getCore().getTime()-1.0)
+			self.motions[self.nextnode.motion].setStartTime(0)
+			#print self.motions[self.nextnode.motion].getQuatValueAtTime(Piavca.root_orientation_id, self.nextnode.time)
+			self.motions[choice[0]].setStartTime(0)
+			#print self.motions[choice[0]].getQuatValueAtTime(Piavca.root_orientation_id, float(choice[1])/10.0)
+			motion.setStartTime(0)
+			#print motion.getQuatValueAtTime(Piavca.root_orientation_id, 0) 
+			#print motion.getQuatValueAtTime(Piavca.root_orientation_id, 1) 
+			#print motion.getQuatValueAtTime(Piavca.root_orientation_id, motion.getEndTime()) 
 			#self.nextnode = self.nodes[choice]
-			#motion = self.nextnode.getTransition(self.nextnode.nextNode)
-			#self.nextnode = self.nodes[self.nextnode.nextNode]
-		#if self.getMotion() != None:
-		#	print self.getQuatValueAtTime(Piavca.root_orientation_id, Piavca.Core.getCore().getTime())
-		#	print self.getQuatValueAtTime(Piavca.root_orientation_id, Piavca.Core.getCore().getTime()-1.0)
-		self.motions[self.nextnode.motion].setStartTime(0)
-		#print self.motions[self.nextnode.motion].getQuatValueAtTime(Piavca.root_orientation_id, self.nextnode.time)
-		self.motions[choice[0]].setStartTime(0)
-		#print self.motions[choice[0]].getQuatValueAtTime(Piavca.root_orientation_id, float(choice[1])/10.0)
-		motion.setStartTime(0)
-		#print motion.getQuatValueAtTime(Piavca.root_orientation_id, 0) 
-		#print motion.getQuatValueAtTime(Piavca.root_orientation_id, 1) 
-		#print motion.getQuatValueAtTime(Piavca.root_orientation_id, motion.getEndTime()) 
-		#self.nextnode = self.nodes[choice]
+			i=0
+			while i<10 and self.nextnode.nextNode != None:
+				self.nextmotions.append(self.nextnode.getTransition(self.nextnode.nextNode))
+				self.setBlendInterval(0)
+				self.nextnode = self.nodes[self.nextnode.nextNode]
+				i = i + 1
+			
+			print "clip length", self.nextnode.time - float(choice[1])/self.fps
+		else:
+			motion = self.nextmotions.pop(0)
+			self.setBlendInterval(0)
+			
 		return motion
 
 	# this is called at the end of each clip

@@ -30,6 +30,7 @@ class MotionTracks(wx.VListBox):
 		# the Motion tracks will control time in Piavca, not 
 		# the piavca timer
 		Piavca.Core.getCore().setAutoTimeOff()
+		self.showfootplants = 0
 		self.SetTime(0)
 		self.playing = 0
 		
@@ -151,6 +152,24 @@ class MotionTracks(wx.VListBox):
 		Piavca.Core.getCore().setCurrentTime(t)
 		if self.distancemeasure != None:
 			print self.distancemeasure(self.reference_time, t*25, self.framearray)
+		if self.showfootplants:
+			if self.avatar:
+				jointId = Piavca.Core.getCore().getJointId("RFoot")
+				#print "right foot",
+				new_right = self.avatar.getJointBasePosition(jointId, Piavca.WORLD_COORD)
+				diff = new_right - self.prev_right
+				#print diff.mag(), 
+				if diff.mag() > 0.1:
+					print "right foot moving"
+				self.prev_right = new_right
+				jointId = Piavca.Core.getCore().getJointId("LFoot")
+				print "left foot",
+				new_left =  self.avatar.getJointBasePosition(jointId, Piavca.WORLD_COORD)
+				diff = new_left - self.prev_left
+				#print diff.mag()
+				if diff.mag() > 0.1:
+					print "left foot moving"
+				self.prev_left = new_left
 
 	# start playing the motion
 	def Play(self):
@@ -195,6 +214,14 @@ class MotionTracks(wx.VListBox):
 			motstosave.append(self.motiongraph)
 		Piavca.XMLMotionFile.saveMotions(path, motstosave)
 		
+	def showFootplants(self, e):
+		self.showfootplants = 1
+		jointId = Piavca.Core.getCore().getJointId("RFoot")
+		self.prev_right = self.avatar.getJointBasePosition(jointId, Piavca.WORLD_COORD)
+		jointId = Piavca.Core.getCore().getJointId("LFoot")
+		self.prev_left = self.avatar.getJointBasePosition(jointId, Piavca.WORLD_COORD)
+		
+	
 	# perform a PCA on the current Track
 	def PCA (self):
 		print "doing pca"
@@ -338,9 +365,6 @@ class MotionTracks(wx.VListBox):
 		self.reference_time = self.time
 
 	def MotionGraph(self, e):
-		
-		
-	
 		weights = []
 		file = open("TrackWeights.txt", "r")
 		for line in file.readlines():
