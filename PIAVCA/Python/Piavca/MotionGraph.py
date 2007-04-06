@@ -202,6 +202,7 @@ class MotionGraph (Piavca.LoopMotion):
 		self.filename = ""
 		self.jointsWeightsFile = ""
 		self.nextmotions = []
+		self.minClipLength = 1.0/float(self.fps)
 		
 	def clone(self):
 		newMot = MotionGraph(self.motions, self.window)
@@ -250,6 +251,9 @@ class MotionGraph (Piavca.LoopMotion):
 		self.jointsWeightsFile = filename
 		if filename != "":
 			self.measure.readJointWeightsFile(filename)
+			
+	def setMinClipLength(self, length):
+		self.minClipLength = length
 	
 	def getWindow(self):
 		return self.window
@@ -265,6 +269,9 @@ class MotionGraph (Piavca.LoopMotion):
 		
 	def getJointWeightsFile(self):
 		return self.jointsWeightsFile	
+			
+	def getMinClipLength(self):
+		return self.minClipLength
 		
 	def setFilename(self, filename):
 		self.filename = filename
@@ -425,8 +432,30 @@ class MotionGraph (Piavca.LoopMotion):
 		for n1, n2 in zip(keys[:-1], keys[1:]):
 			#print n1, n2
 			if n1[0] == n2[0]:
-				self.nodes[n1].addChild(n2)
+				#self.nodes[n1].addChild(n2)
 				self.nodes[n1].nextNode = n2
+				
+		print "old next nodes", [(n, self.nodes[n].nextNode) for n in keys]
+				
+		# we don't want motion clips that are too short, so for each continuation edge, we extend it along the 
+		# current motion until its up to a minimum length
+		minClipLength = int(self.minClipLength * self.fps)
+		for n in keys:
+			self.nodes[n].tempNext = self.nodes[n].nextNode
+			if self.nodes[n].tempNext == None:
+				continue
+			while (len(self.nodes[n].children) == 1 or self.nodes[n].tempNext[1] - self.nodes[n].frame < minClipLength) and self.nodes[self.nodes[n].tempNext].nextNode != None:
+				self.nodes[n].tempNext = self.nodes[self.nodes[n].tempNext].nextNode
+			
+		for n in keys:
+			self.nodes[n].nextNode = self.nodes[n].tempNext
+			if self.nodes[n].nextNode != None:
+				self.nodes[n].addChild(self.nodes[n].nextNode)
+			del self.nodes[n].tempNext
+				
+		print "new next nodes", [(n, self.nodes[n].nextNode) for n in keys]
+		
+		#print self.nodes.keys()
 		#for n in self.nodes.keys():
 		#	print "node", n, [x for x in self.nodes[n]]
 		
@@ -453,7 +482,8 @@ class MotionGraph (Piavca.LoopMotion):
 					ccnodes[n].nextNode = child
 			#print ccnodes[n].children
 		self.nodes = ccnodes
-		print self.nodes
+		#print self.nodes.keys()
+		print "new next nodes", [(n, self.nodes[n].nextNode) for n in self.nodes.keys()]
 		
 		# initialise the transitions motions
 		self._createTransitionMots()
@@ -504,14 +534,14 @@ class MotionGraph (Piavca.LoopMotion):
 	def _createTransitionMots(self):
 		# go through all the nodes, creating motions for all outgoing edges
 		for n in self.nodes.keys():
-			print "node", n, self.nodes[n].nextNode, self.nodes[n].children
+			#print "node", n, self.nodes[n].nextNode, self.nodes[n].children
 			for child in self.nodes[n]:
 				# if it is a continuation node, then the motion is just a sub-clip of the original motion
 				if child == self.nodes[n].nextNode :
 					starttime = self.nodes[n].time
 					endtime = self.nodes[child].time
 					#print "start time end time", starttime, endtime
-					print "motion number ", self.nodes[n].motion, len(self.motions)
+					#print "motion number ", self.nodes[n].motion, len(self.motions)
 					edgeMot = Piavca.SubMotion(self.motions[self.nodes[n].motion].clone(), starttime, endtime)
 				# if it is a transition edge, we need to create a transition
 				else:   
