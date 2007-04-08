@@ -869,7 +869,7 @@ Quat AvatarCal3DImp::getJointOrientation	(int jointId, jointCoord worldCoord)
 			q = getRootOrientation().inverse()*q;
 			return q;
 		  }
-			break;
+	  break;
       case BASE_COORD:
 		  {
 			calq = bone->getCoreBone()->getRotation();

@@ -88,7 +88,11 @@ namespace Piavca
 
 		//! whether you can access a motions value at frames other than the current one
 		virtual bool isRandomAccess();
-
+		
+		/*! do any processing that needs to be done at the start of a frame.
+		*	This is called before get{Float/Vec/Quat}ValueAtTime
+		*/
+		virtual void preFrame(float time);
 		
 		//! given a track ID tests whether it actually points to anything or if its null
 		/*!

@@ -102,7 +102,11 @@ float MotionTransition::getFloatValueAtTimeInternal (int trackId, float time)
 	float t = time - getStartTime();
 	float f1 = mot1->getFloatValueAtTime(trackId, time);//transitionTime1);//+time);
     float f2 = mot2->getFloatValueAtTime(trackId, time);//transitionTime2);//-window+time);
-    float a = transfunc->eval(t/window);
+    if (fabs(window) < 0.0001)
+		t = 0;
+	else
+		t = t/window;
+	float a = transfunc->eval(t);
 	//return a*f1 + (1-a)*f2;
     return (1-a)*f1 + a*f2;
 };
@@ -126,7 +130,11 @@ Vec MotionTransition::getVecValueAtTimeInternal   (int trackId, float time)
 	float t = time - getStartTime();
 	Vec v1 = mot1->getVecValueAtTime(trackId, time);//transitionTime1);//+time);
     Vec v2 = mot2->getVecValueAtTime(trackId, time);//transitionTime2);//-window+time);
-    float a = transfunc->eval(t/window);
+    if (fabs(window) < 0.0001)
+		t = 0;
+	else
+		t = t/window;
+	float a = transfunc->eval(t);
     //return v1*a + v2*(1-a);
     return v1*(1-a) + v2*(a);
 };
@@ -156,7 +164,11 @@ Quat MotionTransition::getQuatValueAtTimeInternal  (int trackId, float time)
 	//{
 	//	std::cout << "motion transition " << q1 << " " << q2 << " " << transitionTime2-window+time << " " << t << " ";
 	//}
-	float a = transfunc->eval(t/window);
+	if (fabs(window) < 0.0001)
+		t = 0;
+	else
+		t = t/window;
+	float a = transfunc->eval(t);
     Quat q =  slerp(q1, q2, a);
 	//if (trackId == 6)
 	//	std::cout << " "  << a << " " << q << std::endl;

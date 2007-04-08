@@ -149,6 +149,13 @@ void TwoMotionCombiner::reset()
 	if(mot2)mot2->reset();
 };
 
+
+void TwoMotionCombiner::preFrame(float time)
+{
+	if(mot1) mot1->preFrame(time);
+	if(mot2) mot2->preFrame(time);
+}
+
 //! gets the length of the combined motion (by default the length of the longer of the two)
 float TwoMotionCombiner::getMotionLength() const
 {

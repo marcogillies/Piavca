@@ -63,7 +63,8 @@ void MotionPosture::getPostureFromMotion(Motion *mot, float time)
 						  else
 						      setQuatKeyframe(track, 0.0, mot->getQuatValueAtTime(track, time));
 						  break;
-		default:		  Piavca::Error(_T("Unknown track type"));
+		default:		  if(!isNull(track)) 
+							  Piavca::Error(_T("Unknown track type"));
 		}
 	}
 

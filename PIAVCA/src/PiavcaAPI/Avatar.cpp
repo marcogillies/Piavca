@@ -391,14 +391,18 @@ void Avatar::showMotionAtTime	(float time, Motion *motion)
 	if(!motion->isNull(root_position_id))
 	{
 	    //std::cout << " Avatar.cpp showMotionAtTime in if-else " << std::endl;
-		setRootPosition(motion->getVecValueAtTime(root_position_id, time));
+		Vec v = motion->getVecValueAtTime(root_position_id, time);
+		//std::cout << "root orientation in avatar" << v << std::endl;
+		setRootPosition(v);
 		//std::cout << "root " << mot->getVecValueAtTime(root_position_id, time) << std::endl;
 	}
 	//else
 	//  std::cout << "could not find root pos track" << std::endl;
 	if(!motion->isNull(root_orientation_id))
 	{
-		setRootOrientation(motion->getQuatValueAtTime(root_orientation_id, time));
+		Quat q = motion->getQuatValueAtTime(root_orientation_id, time);
+		//std::cout << "root orientation in avatar" << q << std::endl;
+		setRootOrientation(q);
 		//std::cout << "root " << mot->getQuatValueAtTime(root_orientation_id, time) << std::endl;
 	}
 	//else
