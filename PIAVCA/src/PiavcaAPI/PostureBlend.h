@@ -66,7 +66,7 @@ namespace Piavca
 		{
 			if(originalMotion)
 				originalMotion = pb.originalMotion->clone();
-			if(repositioner)
+			if(pb.repositioner)
 				repositioner = dynamic_cast<Reposition *>(pb.repositioner->clone());
 		};
 	

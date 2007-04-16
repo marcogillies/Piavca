@@ -51000,6 +51000,66 @@ SWIGINTERN PyObject *_wrap_Avatar_showMotionAtTime__SWIG_0(PyObject *SWIGUNUSEDP
   Piavca::Avatar *arg1 = (Piavca::Avatar *) 0 ;
   float arg2 ;
   Piavca::Motion *arg3 = (Piavca::Motion *) 0 ;
+  bool arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  float val2 ;
+  int ecode2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  bool val4 ;
+  int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:Avatar_showMotionAtTime",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Avatar, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Avatar_showMotionAtTime" "', argument " "1"" of type '" "Piavca::Avatar *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Avatar * >(argp1);
+  ecode2 = SWIG_AsVal_float(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Avatar_showMotionAtTime" "', argument " "2"" of type '" "float""'");
+  } 
+  arg2 = static_cast< float >(val2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_Piavca__Motion, 0 |  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Avatar_showMotionAtTime" "', argument " "3"" of type '" "Piavca::Motion *""'"); 
+  }
+  arg3 = reinterpret_cast< Piavca::Motion * >(argp3);
+  ecode4 = SWIG_AsVal_bool(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "Avatar_showMotionAtTime" "', argument " "4"" of type '" "bool""'");
+  } 
+  arg4 = static_cast< bool >(val4);
+  {
+    try {
+      (arg1)->showMotionAtTime(arg2,arg3,arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Avatar_showMotionAtTime__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Avatar *arg1 = (Piavca::Avatar *) 0 ;
+  float arg2 ;
+  Piavca::Motion *arg3 = (Piavca::Motion *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   float val2 ;
@@ -51046,7 +51106,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Avatar_showMotionAtTime__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Avatar_showMotionAtTime__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Piavca::Avatar *arg1 = (Piavca::Avatar *) 0 ;
   float arg2 ;
@@ -51090,12 +51150,12 @@ fail:
 
 SWIGINTERN PyObject *_wrap_Avatar_showMotionAtTime(PyObject *self, PyObject *args) {
   int argc;
-  PyObject *argv[4];
+  PyObject *argv[5];
   int ii;
   
   if (!PyTuple_Check(args)) SWIG_fail;
   argc = PyObject_Length(args);
-  for (ii = 0; (ii < argc) && (ii < 3); ii++) {
+  for (ii = 0; (ii < argc) && (ii < 4); ii++) {
     argv[ii] = PyTuple_GET_ITEM(args,ii);
   }
   if (argc == 2) {
@@ -51109,7 +51169,7 @@ SWIGINTERN PyObject *_wrap_Avatar_showMotionAtTime(PyObject *self, PyObject *arg
         _v = SWIG_CheckState(res);
       }
       if (_v) {
-        return _wrap_Avatar_showMotionAtTime__SWIG_1(self, args);
+        return _wrap_Avatar_showMotionAtTime__SWIG_2(self, args);
       }
     }
   }
@@ -51128,7 +51188,33 @@ SWIGINTERN PyObject *_wrap_Avatar_showMotionAtTime(PyObject *self, PyObject *arg
         int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_Piavca__Motion, 0);
         _v = SWIG_CheckState(res);
         if (_v) {
-          return _wrap_Avatar_showMotionAtTime__SWIG_0(self, args);
+          return _wrap_Avatar_showMotionAtTime__SWIG_1(self, args);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__Avatar, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_float(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_Piavca__Motion, 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          {
+            int res = SWIG_AsVal_bool(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            return _wrap_Avatar_showMotionAtTime__SWIG_0(self, args);
+          }
         }
       }
     }

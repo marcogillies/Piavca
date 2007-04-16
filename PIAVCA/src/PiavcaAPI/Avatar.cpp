@@ -375,8 +375,9 @@ void Avatar::validateMotions()
 	}
 };
 
-void Avatar::showMotionAtTime	(float time, Motion *motion)
+void Avatar::showMotionAtTime	(float time, Motion *motion, bool detectChanges)
 {
+	static Vec lastPos;
 	if(!motion)
 		motion = this->mot;
 	if(!motion)return;
@@ -392,6 +393,15 @@ void Avatar::showMotionAtTime	(float time, Motion *motion)
 	{
 	    //std::cout << " Avatar.cpp showMotionAtTime in if-else " << std::endl;
 		Vec v = motion->getVecValueAtTime(root_position_id, time);
+		if (detectChanges)
+		{
+			Vec diff = v - lastPos;
+			if (diff.mag() > 1)
+			{
+				std::cout << "Sudden Position Change " << diff.mag() << " " << lastPos << " " << v << std::endl;
+			}
+			lastPos = v;
+		}
 		//std::cout << "root orientation in avatar" << v << std::endl;
 		setRootPosition(v);
 		//std::cout << "root " << mot->getVecValueAtTime(root_position_id, time) << std::endl;

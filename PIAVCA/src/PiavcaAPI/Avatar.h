@@ -447,7 +447,7 @@ public:
 	//! get the time when the current motion should end
 	float getMotionEndTime();
 	//! displays the motion on the avatar at time
-	void showMotionAtTime(float time, Motion *motion = NULL) ;
+	void showMotionAtTime(float time, Motion *motion = NULL, bool detectChanges = true) ;
 	//@}
 
 	/*! \name facial motion

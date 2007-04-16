@@ -96,13 +96,6 @@ void PostureBlend::reblend()
 void PostureBlend::reblend(float time)
 {
 	if(!originalMotion) return;
-
-	MotionPosture *posture = new MotionPosture(this);
-	posture->getPostureFromMotion(this, time);
-	MotionTransition *trans = new MotionTransition(posture, mot2);
-	//MotionTransition *trans = new MotionTransition(posture, NULL);
-	trans->setWindow(interval);
-	setMotion1(trans);
 	//setMotion2(
 	//if (interval < originalMotion->getMotionLength())
 	//	setMotion2(new SubMotion(originalMotion, interval, -1));
@@ -111,16 +104,28 @@ void PostureBlend::reblend(float time)
 
 	if(accumulateRoot)
 	{
-		if(!repositioner)
-		{
+		//if(!repositioner)
+		//{
 			repositioner = new Reposition(originalMotion);
 			repositioner->setMaintainY(true);
-			repositioner->setStartFromMotion(originalMotion, time);
-			setMotion2(repositioner);
-		}
-		else
 			repositioner->setStartFromMotion(this, time);
+			setMotion2(repositioner);
+		//}
+		//else
+		//{
+		//	repositioner->setStartFromMotion(this, time);
+		//	setMotion2(repositioner);
+		//}
 	}
+	else
+		setMotion2(originalMotion);
+
+	MotionPosture *posture = new MotionPosture(this);
+	posture->getPostureFromMotion(this, time);
+	MotionTransition *trans = new MotionTransition(posture, mot2);
+	//MotionTransition *trans = new MotionTransition(posture, NULL);
+	trans->setWindow(interval);
+	setMotion1(trans);
 
 	setStartTime(time);
 	originalMotion->reset();

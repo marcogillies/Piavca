@@ -80,6 +80,8 @@ void Reposition::setStartFromMotion(Motion *m, float time)
 		setStartOrientation(m->getQuatValueAtTime(root_orientation_id, time));	
 	else
 		setStartOrientation(Quat());
+	std::cout << "Repositioner, time" << time << " start Position: " << start_position << std::endl;
+
 };
 
 

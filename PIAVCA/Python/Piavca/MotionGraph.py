@@ -280,7 +280,7 @@ class MotionGraph (Piavca.LoopMotion):
 		return self.filename
 	
 	# create the graph
-	def create(self):
+	def create(self, avatar = None):
 		if self.filename != "":
 			self.loadGraph(self.filename)
 			print "loaded graph"
@@ -408,11 +408,11 @@ class MotionGraph (Piavca.LoopMotion):
 		transitions = newtrans
 		
 		# now that we've found the transitions we need to create the graph
-		self.init_nodes(transitions)
+		self.init_nodes(transitions, avatar)
 		self.reblend(Piavca.Core.getCore().getTime())
 		
 	# this function creates the graph
-	def init_nodes(self, transitions):
+	def init_nodes(self, transitions, avatar=None):
 		self.nodes = {}
 		# add an edge for each transition
 		for transition in transitions:
@@ -444,7 +444,7 @@ class MotionGraph (Piavca.LoopMotion):
 			self.nodes[n].tempNext = self.nodes[n].nextNode
 			if self.nodes[n].tempNext == None:
 				continue
-			while (len(self.nodes[n].children) == 1 or self.nodes[n].tempNext[1] - self.nodes[n].frame < minClipLength) and self.nodes[self.nodes[n].tempNext].nextNode != None:
+			while (len(self.nodes[self.nodes[n].tempNext].children) == 1 or self.nodes[n].tempNext[1] - self.nodes[n].frame < minClipLength) and self.nodes[self.nodes[n].tempNext].nextNode != None:
 				self.nodes[n].tempNext = self.nodes[self.nodes[n].tempNext].nextNode
 			
 		for n in keys:
@@ -486,7 +486,7 @@ class MotionGraph (Piavca.LoopMotion):
 		print "new next nodes", [(n, self.nodes[n].nextNode) for n in self.nodes.keys()]
 		
 		# initialise the transitions motions
-		self._createTransitionMots()
+		self._createTransitionMots(avatar)
 		# initialise a suitable first node
 		if len(self.nodes.keys()) > 0:
 			self.nextnode = self.nodes[self.nodes.keys()[0]]
@@ -500,7 +500,7 @@ class MotionGraph (Piavca.LoopMotion):
 		return transitions, []
 	
 	# intiialise a graph from transitions that had been dumped to file
-	def testTransitions(self, transitionsfile, fps, window, k, d):
+	def testTransitions(self, transitionsfile, fps, window, k, d, avatar = None):
 		self.window = window
 		self.fps = fps
 		file = open(transitionsfile, "r")
@@ -531,7 +531,7 @@ class MotionGraph (Piavca.LoopMotion):
 		self.init_nodes(newtrans)
 	
 	# create the motions that transitions between nodes
-	def _createTransitionMots(self):
+	def _createTransitionMots(self, avatar = None):
 		# go through all the nodes, creating motions for all outgoing edges
 		for n in self.nodes.keys():
 			#print "node", n, self.nodes[n].nextNode, self.nodes[n].children
@@ -557,22 +557,38 @@ class MotionGraph (Piavca.LoopMotion):
 					
 					#edgeMot = Piavca.MotionTransition(mot1.clone(), None, t1, t2, self.window)
 					edgeMot = Piavca.MotionTransition(mot1.clone(), mot2.clone(), t1, t2, self.window)
+					if avatar != None:
+						edgeMot.footplant_spec = [[1,1],[1,1]]
+						for i, m in enumerate([(t1, mot1), (t2, mot2)]):
+							time, mot = m
+							for j, jointname in enumerate(["LFoot", "RFoot"]):
+								jointId = Piavca.Core.getCore().getJointId(jointname)
+								avatar.showMotionAtTime(time, mot, 0)
+								pos = avatar.getJointBasePosition(jointId, Piavca.WORLD_COORD)
+								for t in [time-0.5, time-0.1, time+0.1, time+0.5]:
+									avatar.showMotionAtTime(t, mot, 0)
+									new_pos = avatar.getJointBasePosition(jointId, Piavca.WORLD_COORD)
+									diff = new_pos - pos
+									if diff.mag() > 0.1:
+										edgeMot.footplant_spec[i][j] = None
+										break
+						#print edgeMot.footplant_spec
 					
 					#edgeMot = MotionTransition(mot1, t1, mot2, t2, self.window)
 				self.nodes[n].addTransition(child, edgeMot)
 	
-	def saveGraph(self, filename):
+	def saveGraph(self, filename): 
 		print "Saving graph"
 		file = open(filename, "w")
 		pickle.dump(self.nodes, file)
 		pickle.dump(self.window, file)
 		self.setFilename(filename)
 
-	def loadGraph(self, filename):
+	def loadGraph(self, filename, avatar = None):
 		file = open(filename, "r")
 		self.nodes = pickle.load(file)
 		self.window = pickle.load(file)
-		self._createTransitionMots()
+		self._createTransitionMots(avatar)
 		self.nextnode = self.nodes[self.nodes.keys()[0]]
 		self.setFilename(filename)
 		self.reblend(Piavca.Core.getCore().getTime())
@@ -636,5 +652,41 @@ class MotionGraph (Piavca.LoopMotion):
 	def reblend(self, time):
 		# get the next motion and play it
 		motion = self.chooseNextMotion()
+		try:
+			footplant_spec = motion.footplant_spec
+		except AttributeError:
+			print "got attribute error"
+			footplant_spec = None
+		self.setAccumulateRoot(1)
+		avatar = self.getAvatar()
+		if avatar:
+			avatar.showMotionAtTime(time)
+			pos = avatar.getRootPosition()
+			print "avatar position", pos, "time", time
+			print "motion position", self.getVecValueAtTime(Piavca.root_position_id, time)
+		if footplant_spec:
+			self.setAccumulateRoot(0)
+			if avatar != None:
+				print "footplants", footplant_spec
+				plantedfeet = 0
+				if footplant_spec[0][0] != None :
+					plantedfeet += 1
+					jointid = Piavca.Core.getCore().getJointId("LFoot")
+					pos = avatar.getJointBasePosition(jointid, Piavca.WORLD_COORD)
+					ori = avatar.getJointOrientation(jointid, Piavca.WORLD_COORD)
+					footplant_spec[0][0] = (pos, ori)
+				if footplant_spec[0][1]  != None:
+					plantedfeet += 1
+					jointid = Piavca.Core.getCore().getJointId("RFoot")
+					pos = avatar.getJointBasePosition(jointid, Piavca.WORLD_COORD)
+					ori = avatar.getJointOrientation(jointid, Piavca.WORLD_COORD)
+					footplant_spec[0][1] = (pos, ori)
+				if plantedfeet == 0:
+					print "****************** neither planted ************************"
+				#print "motion is footplant", footplant_spec
+				motion = Piavca.FootPlantOnSpot(motion, footplant_spec)
+		else:
+			print "############# next node"
 		Piavca.LoopMotion.reblend(self,time)
+		#print "motion", motion
 		self.setMotion(motion)

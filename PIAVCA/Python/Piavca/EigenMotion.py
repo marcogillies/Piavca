@@ -11,11 +11,10 @@
 # for the specific language governing rights and limitations under the
 # License.
 #
-# The Original Code is __________________________________________.
+# The Original Code is EigenMotion.py
 #
-# The Initial Developer of the Original Code is
-# ____________________________________________.
-# Portions created by the Initial Developer are Copyright (C) 2___
+# The Initial Developer of the Original Code is Marco Gillies
+# Portions created by the Initial Developer are Copyright (C) 2007
 # the Initial Developer. All Rights Reserved.
 #
 # Contributor(s):
