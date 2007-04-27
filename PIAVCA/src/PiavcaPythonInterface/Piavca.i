@@ -39,7 +39,8 @@
 #define NO_PIAVCA_DLL
 
 #include "PiavcaNVCLib/Piavca.h"
-#include "PyTimeCallback.h"
+#include "PiavcaCal3dImp/PiavcaCal3dCore.h"
+//#include "PyTimeCallback.h"
 //#include "PyMotion.h"
 
 #include <sstream>
@@ -427,7 +428,7 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %include "Avatar.i"
 %include "PiavcaNVCLib/AvatarMotionQueue.h"
 %include "PiavcaAPI/Object.h"
-%include "PiavcaPythonInterface/PyTimeCallback.h"
+//%include "PiavcaPythonInterface/PyTimeCallback.h"
 //%include "PyMotion.h"
 
 %include "PiavcaAPI/MathsUtils.h"

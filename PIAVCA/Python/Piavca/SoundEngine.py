@@ -34,9 +34,14 @@
 #
 # ***** END LICENSE BLOCK *****
 
-import pymedia.audio.sound as sound
-import pymedia.audio.acodec as acodec
-import pymedia.muxer as muxer
+try:
+	import pymedia.audio.sound as sound
+	import pymedia.audio.acodec as acodec
+	import pymedia.muxer as muxer
+	pymediapresent = 1
+except ImportError:
+	print "pymedia unavailable, please install pymedia to enable sound playback"
+	pymediapresent = 0
 
 import wave
 

@@ -175,9 +175,14 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 			for(int i = 0; i < (int) bones.size(); i++)
 			{
 				int jointid = Piavca::Core::getCore()->getJointId(StringToTString(bones[i]->getName()));
-				if (jointid < 0)
+				if (jointid == Piavca::Core::nullId)//< 0)
 				{
 					StringVector jointNames;
+					if (i == 0)
+					{
+						std::cout << "ROOT JOINT " <<  bones[i]->getName() << std::endl;
+						jointNames.push_back(_T("Root Orientation"));
+					}
 					jointNames.push_back(StringToTString(bones[i]->getName()));
 					std::cout << "Adding Joint "<< bones[i]->getName() << std::endl;
 					Piavca::Core::getCore()->addJointNameSet(jointNames);

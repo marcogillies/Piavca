@@ -115,11 +115,16 @@ class ScriptEngine(Piavca.TimeCallback):
 		self.scripts = {}
 		self.currentscript = {}
 		self.starttimes = {}
-		self.soundEngine = SoundEngine()
 		
+		if pymediapresent:
+			self.soundEngine = SoundEngine()
+		else:
+			self.soundEngine = None
+			
 		inputfile = open(filename, "r")
 		lines = inputfile.readlines()
 		inputfile.close()
+		gui_list = []
 		for line in lines:
 			line = line.strip()
 			commentpos = line.find("#")
@@ -129,7 +134,10 @@ class ScriptEngine(Piavca.TimeCallback):
 			if len(line) <= 0:
 				continue
 			if line[0] == "soundpack":
-				self.soundEngine.loadSounds(line[2])
+				if self.soundEngine != None:
+					self.soundEngine.loadSounds(line[2])
+				else:
+					print "could not load sound packs as audio playback is not supported, please install pymedia"
 			elif line[0] == "expressions":
 				importExpressionNames(line[1])
 			elif line[0] == "joints":
@@ -154,6 +162,13 @@ class ScriptEngine(Piavca.TimeCallback):
 				MotionFile.readMotionFile(line[2])
 			elif line[0] == "script":
 				self.loadScripts(line[2])
+			elif line[0] == "GUI":
+				gui_list.append(line[1])
+			elif line[0] == "gui":
+				gui_list.append(line[1])
+				
+		for gui_name in gui_list:
+			self.GUI(gui_name)
 				
 		Piavca.Core.getCore().registerCallback(self)
 				
@@ -201,7 +216,11 @@ class ScriptEngine(Piavca.TimeCallback):
 		if callbackname == "stop":
 			return stopMotionCallback(time, args)
 		if callbackname == "sound":
-			return soundCallback(time, args, self.soundEngine)
+			if self.soundEngine != None:
+				return soundCallback(time, args, self.soundEngine)
+			else:
+				print "could not load sounds as audio playback is not supported, please install pymedia"
+				return None
 		if callbackname == "say":
 			return sayCallback(time, args, self.soundEngine)
 		if callbackname == "expression":

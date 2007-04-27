@@ -50,6 +50,7 @@ void Reposition::calculateRootOffsets()
 		return;
 	originalStart   = Vec();
 	oriOffset = start_orientation;
+	//oriOffset = Quat(start_orientation.Zangle(), Vec::ZAxis());
 	float startTime=0;
 	if(filterMot && !filterMot->isNull(root_position_id))
 	{
@@ -60,8 +61,12 @@ void Reposition::calculateRootOffsets()
 	if(filterMot && !filterMot->isNull(root_orientation_id))
 	{
 		Quat otherOri = filterMot->getQuatValueAtTime(root_orientation_id, filterMot->getStartTime());
+		//otherOri = Quat(otherOri.Zangle(), Vec::ZAxis());
 		oriOffset = oriOffset/otherOri;
 	}
+	oriOffset = Quat(oriOffset.Zangle(), Vec::ZAxis());
+	//oriOffset = Quat();
+	//oriOffset = Quat(1.57, Vec::ZAxis());
 };
 
 void Reposition::setMotion(Motion *m)
@@ -125,6 +130,7 @@ Vec Reposition::getVecValueAtTimeInternal(int trackId, float time)
 			return start_position;
 		Vec OriginalValue = filterMot->getVecValueAtTime(trackId, time);
 		Vec subtractedVec = oriOffset.transform(OriginalValue - originalStart);
+		//Vec subtractedVec = OriginalValue - originalStart;
 		if(maintainY)
 			return subtractedVec + start_position;
 		else

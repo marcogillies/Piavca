@@ -16,6 +16,19 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XVR2Piavca", "src\XVR2Piavc
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SpeechToTextInterface", "src\SpeechToTextInterface\SpeechToTextInterface_vc2005.vcproj", "{8CC8040D-8DB6-41A7-BA0A-E4331E4D5B2F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Piavca_base", "src\Piavca_base\Piavca_base.vcproj", "{CB1D5D51-F927-4C9A-B704-CAF34FDAA506}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7E061BC4-F08C-40F0-8A91-8CAFD582054D} = {7E061BC4-F08C-40F0-8A91-8CAFD582054D}
+		{2BE89BA3-3998-4AEC-9426-C6EFB71E0C9E} = {2BE89BA3-3998-4AEC-9426-C6EFB71E0C9E}
+		{97813F74-80B5-4861-8CEE-99328B65173C} = {97813F74-80B5-4861-8CEE-99328B65173C}
+		{E2404604-543C-4863-BF9D-BE3E995DF4E4} = {E2404604-543C-4863-BF9D-BE3E995DF4E4}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PiavcaGlut", "src\PiavcaGlut\PiavcaGlut.vcproj", "{7F966FC6-2A00-4955-A173-CEF366A2496D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CB1D5D51-F927-4C9A-B704-CAF34FDAA506} = {CB1D5D51-F927-4C9A-B704-CAF34FDAA506}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		C Only Debug|Win32 = C Only Debug|Win32
@@ -88,6 +101,22 @@ Global
 		{8CC8040D-8DB6-41A7-BA0A-E4331E4D5B2F}.Dive Debug|Win32.Build.0 = Debug|Win32
 		{8CC8040D-8DB6-41A7-BA0A-E4331E4D5B2F}.Release|Win32.ActiveCfg = Release|Win32
 		{8CC8040D-8DB6-41A7-BA0A-E4331E4D5B2F}.Release|Win32.Build.0 = Release|Win32
+		{CB1D5D51-F927-4C9A-B704-CAF34FDAA506}.C Only Debug|Win32.ActiveCfg = Debug|Win32
+		{CB1D5D51-F927-4C9A-B704-CAF34FDAA506}.C Only Debug|Win32.Build.0 = Debug|Win32
+		{CB1D5D51-F927-4C9A-B704-CAF34FDAA506}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CB1D5D51-F927-4C9A-B704-CAF34FDAA506}.Debug|Win32.Build.0 = Debug|Win32
+		{CB1D5D51-F927-4C9A-B704-CAF34FDAA506}.Dive Debug|Win32.ActiveCfg = Debug|Win32
+		{CB1D5D51-F927-4C9A-B704-CAF34FDAA506}.Dive Debug|Win32.Build.0 = Debug|Win32
+		{CB1D5D51-F927-4C9A-B704-CAF34FDAA506}.Release|Win32.ActiveCfg = Release|Win32
+		{CB1D5D51-F927-4C9A-B704-CAF34FDAA506}.Release|Win32.Build.0 = Release|Win32
+		{7F966FC6-2A00-4955-A173-CEF366A2496D}.C Only Debug|Win32.ActiveCfg = Debug|Win32
+		{7F966FC6-2A00-4955-A173-CEF366A2496D}.C Only Debug|Win32.Build.0 = Debug|Win32
+		{7F966FC6-2A00-4955-A173-CEF366A2496D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7F966FC6-2A00-4955-A173-CEF366A2496D}.Debug|Win32.Build.0 = Debug|Win32
+		{7F966FC6-2A00-4955-A173-CEF366A2496D}.Dive Debug|Win32.ActiveCfg = Debug|Win32
+		{7F966FC6-2A00-4955-A173-CEF366A2496D}.Dive Debug|Win32.Build.0 = Debug|Win32
+		{7F966FC6-2A00-4955-A173-CEF366A2496D}.Release|Win32.ActiveCfg = Release|Win32
+		{7F966FC6-2A00-4955-A173-CEF366A2496D}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

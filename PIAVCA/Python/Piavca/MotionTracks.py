@@ -11,8 +11,8 @@ except:
 import Track
 #import ComponentAnalysis
 
-from wxPython.wx import *
-from wxPython.lib.dialogs import *
+from wx import *
+from wx.lib.dialogs import *
 #import MotionGraph
 
 # A display of a motion divided into sub tracks which display
