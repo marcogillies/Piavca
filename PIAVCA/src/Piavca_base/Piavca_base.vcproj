@@ -184,7 +184,7 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath="..\PiavcaPythonInterface\Piavca_wrap.cpp"
+				RelativePath=".\Piavca_wrap.cpp"
 				>
 			</File>
 		</Filter>
@@ -194,7 +194,7 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath="..\PiavcaPythonInterface\Piavca_wrap.h"
+				RelativePath=".\Piavca_wrap.h"
 				>
 			</File>
 		</Filter>
@@ -209,7 +209,7 @@
 			>
 		</File>
 		<File
-			RelativePath="..\PiavcaPythonInterface\Piavca.i"
+			RelativePath=".\Piavca.i"
 			>
 			<FileConfiguration
 				Name="Debug|Win32"
@@ -218,13 +218,12 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Running Swig"
-					CommandLine="swig -c++ -python -shadow -I&quot;$(ProjectDir)/..&quot; -o &quot;$(ProjectDir)\..\PiavcaPythonInterface\$(InputName)_wrap.cpp&quot; -outdir &quot;$(SolutionDir)\Python\Piavca&quot; &quot;$(InputPath)&quot;"
+					CommandLine="swig -c++ -python -shadow -I&quot;$(ProjectDir)/..&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; -outdir &quot;$(SolutionDir)\Python\Piavca&quot; &quot;$(InputPath)&quot;"
 					Outputs=" $(ProjectDir)$(InputName)_wrap.cpp"
 				/>
 			</FileConfiguration>
 			<FileConfiguration
 				Name="Release|Win32"
-				ExcludedFromBuild="true"
 				>
 				<Tool
 					Name="VCCustomBuildTool"

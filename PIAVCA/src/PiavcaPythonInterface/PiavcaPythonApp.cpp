@@ -302,7 +302,7 @@ void Piavca::PrintPythonErrors()
 {
 	PyErr_Print();
 }
-
+/*
 void Piavca::InitPiavcaPython(Piavca::Core *core, tstring fileName, bool no_console)
 { 
 	PyObject *pyInitMethod, *pyArgs;
@@ -465,7 +465,7 @@ void Piavca::InitPiavcaPython(Piavca::Core *core, tstring fileName, bool no_cons
 	//avatar->loadMotion(StringToPiavcaString("../COWBOY1.bvh"));
 	//avatar->enableMotion(true);
 }
-
+*/
 void Piavca::InitPython()
 {
 	Py_Initialize();

@@ -323,6 +323,12 @@ void reshapeFunc(int w, int h)
   glViewport(0, 0, w, h);
 }
 
+
+void initCore()
+{
+	g_Params.core = new Piavca::PiavcaCal3DCore();
+}
+
 //----------------------------------------------------------------------------//
 // Main entry point of the application                                        //
 //----------------------------------------------------------------------------//

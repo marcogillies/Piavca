@@ -9,6 +9,7 @@
 //----------------------------------------------------------------------------//
 
 #include "tga.h"
+#include <iostream>
 
 #define TGA_TYPE_MAPPED 1
 #define TGA_TYPE_COLOR 2
@@ -68,7 +69,10 @@ int CTga::ReadFile(const char *str)
 //#endif
 	
     if(file==NULL)
+	{
+		std::cout << "TGA Texture Load Error: could not open file " << str << std::endl;
         return 0;
+	};
         
     // Read the header
     
@@ -96,20 +100,24 @@ int CTga::ReadFile(const char *str)
     if(TgaHeader.datatypecode!=TGA_TYPE_COLOR
             && TgaHeader.datatypecode!=TGA_TYPE_GRAY
             && TgaHeader.datatypecode!=TGA_TYPE_COLOR_RLE)
+	{
+		std::cout << "TGA Texture Load Error: unsupported TGA type, only color, gray and RLE supported (mapped types not supported)" << std::endl;
         return 0;
-
+	};
 	
     if(TgaHeader.Bpp!=8
             && TgaHeader.Bpp!=24
             && TgaHeader.Bpp!=32)
+	{
+		std::cout << "TGA Texture Load Error: unsupported TGA Bits per pixel, only 8, 24 and 32-bit images supported" << std::endl;
         return 0;
+	};
 
 	
     if(TgaHeader.Bpp==8)
         m_dest = (unsigned char*)malloc(TgaHeader.SizeX*TgaHeader.SizeY);
     if(TgaHeader.Bpp==32 || TgaHeader.Bpp==24)
         m_dest = (unsigned char*)malloc(TgaHeader.SizeX*TgaHeader.SizeY*4);
-
 
 
 

@@ -292,10 +292,6 @@
 			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm"
 			>
 			<File
-				RelativePath="Piavca_wrap.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\PiavcaPythonApp.cpp"
 				>
 			</File>
@@ -304,10 +300,6 @@
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl;inc"
 			>
-			<File
-				RelativePath=".\Piavca_wrap.h"
-				>
-			</File>
 			<File
 				RelativePath=".\PiavcaPythonApp.h"
 				>
@@ -318,62 +310,6 @@
 			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"
 			>
 		</Filter>
-		<File
-			RelativePath=".\Avatar.i"
-			>
-		</File>
-		<File
-			RelativePath="Piavca.i"
-			>
-			<FileConfiguration
-				Name="Debug|Win32"
-				ExcludedFromBuild="true"
-				>
-				<Tool
-					Name="VCCustomBuildTool"
-					Description="Running Swig"
-					CommandLine="swig -c++ -python -shadow -I&quot;$(ProjectDir)/..&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; -outdir &quot;$(SolutionDir)\Python\Piavca&quot; &quot;$(InputPath)&quot;&#x0D;&#x0A;"
-					Outputs=" $(ProjectDir)$(InputName)_wrap.cpp"
-				/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Release|Win32"
-				ExcludedFromBuild="true"
-				>
-				<Tool
-					Name="VCCustomBuildTool"
-					Description="running swig"
-					CommandLine="swig -c++ -python -shadow -I&quot;$(ProjectDir)/..&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; &quot;$(InputPath)&quot;&#x0D;&#x0A;"
-					Outputs=" $(ProjectDir)$(InputName)_wrap.cpp"
-				/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="C Only Debug|Win32"
-				ExcludedFromBuild="true"
-				>
-				<Tool
-					Name="VCCustomBuildTool"
-					Description="Running Swig"
-					CommandLine="&quot;c:\Program Files\swig\swig&quot; -c++ -python -shadow -I&quot;$(ProjectDir)/..&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; &quot;$(InputPath)&quot;&#x0D;&#x0A;"
-					Outputs=" $(ProjectDir)$(InputName)_wrap.cpp"
-				/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Dive Debug|Win32"
-				ExcludedFromBuild="true"
-				>
-				<Tool
-					Name="VCCustomBuildTool"
-					Description="Running Swig"
-					CommandLine="swig -c++ -python -shadow -I&quot;$(ProjectDir)/..&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; &quot;$(InputPath)&quot;&#x0D;&#x0A;"
-					Outputs=" $(ProjectDir)$(InputName)_wrap.cpp"
-				/>
-			</FileConfiguration>
-		</File>
-		<File
-			RelativePath=".\PiavcaCore.i"
-			>
-		</File>
 		<File
 			RelativePath="ReadMe.txt"
 			>

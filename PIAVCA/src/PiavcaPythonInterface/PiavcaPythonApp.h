@@ -47,7 +47,7 @@ typedef struct _object PyObject;
 namespace Piavca
 {
 //! Initialise the Python bindings and load the python module in filename
-void InitPiavcaPython(Piavca::Core *core, tstring fileName, bool no_console = false);
+//void InitPiavcaPython(Piavca::Core *core, tstring fileName, bool no_console = false);
 //! Close down the Python bindings
 void EndPiavcaPython(Piavca::Core *core);
 
