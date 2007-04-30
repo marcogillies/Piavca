@@ -51,27 +51,33 @@ void InitPiavcaPython(Piavca::Core *core, tstring fileName, bool no_console = fa
 //! Close down the Python bindings
 void EndPiavcaPython(Piavca::Core *core);
 
+//! initializes python
+void InitPython();
+
+//! import a module
+void *ImportModule(tstring fileName);
+
 //! print out any outstanding python errors
 void PrintPythonErrors();
 
 //! Run a method from the loaded python module (no arguments)
-void RunPythonMethod(Piavca::Core *core, char *methodName);
+void RunPythonMethod(Piavca::Core *core, char *methodName, void *module=NULL);
 //! Run a method from the loaded python module (integer argument)
-void RunPythonMethod(Piavca::Core *core, char *methodName, int arg);
+void RunPythonMethod(Piavca::Core *core, char *methodName, int arg, void *module=NULL);
 //! Run a method from the loaded python module (float argument)
-void RunPythonMethod(Piavca::Core *core, char *methodName, float arg);
+void RunPythonMethod(Piavca::Core *core, char *methodName, float arg, void *module=NULL);
 //! Run a method from the loaded python module (string argument)
-void RunPythonMethod(Piavca::Core *core, char *methodName, std::string arg);
+void RunPythonMethod(Piavca::Core *core, char *methodName, std::string arg, void *module=NULL);
 //! Run a method from the loaded python module (Vec argument)
-void RunPythonMethod(Piavca::Core *core, char *methodName, const Vec &arg);
+void RunPythonMethod(Piavca::Core *core, char *methodName, const Vec &arg, void *module=NULL);
 //! Run a method from the loaded python module (float and Vec (angle axis) argument)
-void RunPythonMethod(Piavca::Core *core, char *methodName, float farg, const Vec &varg);
+void RunPythonMethod(Piavca::Core *core, char *methodName, float farg, const Vec &varg, void *module=NULL);
 //! Run a method from the loaded python module with an arbitrary python object as an argument
 /*!
  *	This can be used for passing arbitrary arguments by creating the
  *  argument with Py_BuildValue.
  */
-void RunPythonMethod(Piavca::Core *core, char *methodName, PyObject *arg);
+void RunPythonMethod(Piavca::Core *core, char *methodName, PyObject *arg, void *module=NULL);
 
 };
 

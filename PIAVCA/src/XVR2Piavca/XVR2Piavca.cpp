@@ -61,7 +61,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "PiavcaCal3dImp/PiavcaCal3dCore.h"
 
 // called every frame, does the rendering
-extern "C" __declspec(dllexport) void displayFunc();
+extern "C" __declspec(dllexport) char* displayFunc();
 // initialise piavca, passes in a directory to run from 
 // and a python script
 extern "C" __declspec(dllexport) char* onInitial(char* _path, char * script);
@@ -73,7 +73,7 @@ extern "C" __declspec(dllexport) char* runMethodStr(char* method, char *arg);
 extern "C" __declspec(dllexport) char* runMethodVec(char* method, float arg1, float arg2, float arg3);
 extern "C" __declspec(dllexport) char* runMethodAngleAxis(char* method, float arg0, float arg1, float arg2, float arg3);
 // does any clean up needed
-extern "C" __declspec(dllexport) void exitFunc();
+extern "C" __declspec(dllexport) char* exitFunc();
 
 // returns the last error message/warning
 extern "C" __declspec(dllexport) char* GetLastMessage();
@@ -93,7 +93,9 @@ std::wostringstream *_wstrstrm;
 std::wstreambuf *_saved_wcout;
 std::wstreambuf *_saved_wcerr;
 
-Piavca::PiavcaCal3DCore *g_pCore;
+//Piavca::PiavcaCal3DCore *g_pCore;
+void *initScript = NULL;
+void *userScript = NULL;
 
 char *get_messages()
 {
@@ -104,35 +106,71 @@ char *get_messages()
 }
 
 // this updates the state of piavca
-void timeStep()
-{
-	Piavca::Core::getCore()->timeStep();
-}
+//void timeStep()
+//{
+//	Piavca::Core::getCore()->timeStep();
+//}
 
 //----------------------------------------------------------------------------//
 // GLUT callback functions                                                    //
 //----------------------------------------------------------------------------//
 
 // call the rendering code
-extern "C" __declspec(dllexport) void displayFunc()
+extern "C" __declspec(dllexport) char* displayFunc()
 {	
+	string s = "";
+	if(userScript != NULL)
+		s = runMethod("timeStep");
+	if(initScript != NULL)
+	{
+		try 
+		{
+			RunPythonMethod(Piavca::Core::getCore(), "render", initScript);
+		}
+		catch (Piavca::Exception &e)
+		{
+			s = s + "\n" + TStringToString(e.getDetails());
+			//s._Copy_s(Str, 256, 256);
+		}
+	}
+	s.copy(Str, 256);
+	return Str;
 	//updates piavca's state
-	timeStep();
+	//timeStep();
 	//updates mesh
-	g_pCore->prerender();
+	//g_pCore->prerender();
 	
 	// render the model
-	g_pCore->render();
+	//g_pCore->render();
 }
 
 // cleans up the state of piavca on exit
-extern "C" __declspec(dllexport) void exitFunc()
+extern "C" __declspec(dllexport) char* exitFunc()
 {
 	std::cout.rdbuf(_saved_cout);
 	std::cerr.rdbuf(_saved_cerr);
 	std::wcout.rdbuf(_saved_wcout);
 	std::wcerr.rdbuf(_saved_wcerr);
-	delete g_pCore;
+	//delete g_pCore;
+
+	string s = "";
+	if(userScript != NULL)
+		s=runMethod("finalize");
+	if(initScript != NULL)
+	{
+		try 
+		{
+			RunPythonMethod(Piavca::Core::getCore(), "finalize", initScript);
+		}
+		catch (Piavca::Exception &e)
+		{
+			s = s + "\n" + TStringToString(e.getDetails());
+			//s._Copy_s(Str, 256, 256);
+		}
+	}
+	s.copy(Str, 256);
+	return Str;
+	
 }
 
 // initialise piavca, passes in a path to a director to run from 
@@ -150,7 +188,7 @@ extern "C" __declspec(dllexport) char *onInitial(char* _path, char *script)
 		//path = ".\\";
   		_chdir(path.c_str());
 	  	
-		g_pCore = new Piavca::PiavcaCal3DCore();
+		//g_pCore = new Piavca::PiavcaCal3DCore();
 
 		_strstrm = new std::ostringstream();
 		_saved_cout = std::cout.rdbuf();
@@ -179,6 +217,7 @@ extern "C" __declspec(dllexport) char *onInitial(char* _path, char *script)
 //#endif
 
 	// read in the names of joints
+	/*
 	std::string jointsFilename = path + "JointNames.txt";
 	std::ifstream file(jointsFilename.c_str(), std::ios::in );
 	if(!file)
@@ -347,13 +386,16 @@ extern "C" __declspec(dllexport) char *onInitial(char* _path, char *script)
 			strcpy(Str, "finished loading joints");
 		//#endif	
 	}
-
+    */
 	//////////////////////////////////////////////////Python ///////////////////////////////////////
 	// load in a script
+	Piavca::InitPython();
+	initScript = Piavca::ImportModule(_T("initXVRPiavca"));
 	Piavca::tstring tscript = StringToTString(script);
 	if(tscript != _T(""))
 	{
-		Piavca::InitPiavcaPython(Piavca::Core::getCore(), tscript, true);
+		userScript = Piavca::ImportModule(tscript);
+		//Piavca::InitPiavcaPython(Piavca::Core::getCore(), tscript, true);
 	}
   }
   catch (Piavca::Exception &e)
@@ -380,7 +422,7 @@ extern "C" __declspec(dllexport) char* runMethod(char* method)
 {
 	try 
 	{
-		RunPythonMethod(Piavca::Core::getCore(), method);
+		RunPythonMethod(Piavca::Core::getCore(), method, userScript);
 	}
 	catch (Piavca::Exception &e)
 	{
@@ -406,7 +448,7 @@ extern "C" __declspec(dllexport) char* runMethodInt(char* method, int arg)
 {
 	try 
 	{
-		RunPythonMethod(Piavca::Core::getCore(), method, arg);
+		RunPythonMethod(Piavca::Core::getCore(), method, arg, userScript);
 	}
 	catch (Piavca::Exception &e)
 	{
@@ -432,7 +474,7 @@ extern "C" __declspec(dllexport) char* runMethodFloat(char* method, float arg)
 {
 	try 
 	{
-		RunPythonMethod(Piavca::Core::getCore(), method, arg);
+		RunPythonMethod(Piavca::Core::getCore(), method, arg, userScript);
 	}
 	catch (Piavca::Exception &e)
 	{
@@ -458,7 +500,7 @@ extern "C" __declspec(dllexport) char* runMethodStr(char* method, char * arg)
 {
 	try 
 	{
-		RunPythonMethod(Piavca::Core::getCore(), method, arg);
+		RunPythonMethod(Piavca::Core::getCore(), method, arg, userScript);
 	}
 	catch (Piavca::Exception &e)
 	{
@@ -484,7 +526,7 @@ extern "C" __declspec(dllexport) char* runMethodVec(char* method, float arg1, fl
 {
 	try 
 	{
-		RunPythonMethod(Piavca::Core::getCore(), method, Piavca::Vec(arg1, arg2, arg3));
+		RunPythonMethod(Piavca::Core::getCore(), method, Piavca::Vec(arg1, arg2, arg3), userScript);
 	}
 	catch (Piavca::Exception &e)
 	{
@@ -510,7 +552,7 @@ extern "C" __declspec(dllexport) char* runMethodAngleAxis(char* method, float ar
 {
 	try 
 	{
-		RunPythonMethod(Piavca::Core::getCore(), method, arg0, Piavca::Vec(arg1, arg2, arg3));
+		RunPythonMethod(Piavca::Core::getCore(), method, arg0, Piavca::Vec(arg1, arg2, arg3), userScript);
 	}
 	catch (Piavca::Exception &e)
 	{

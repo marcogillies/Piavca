@@ -2871,6 +2871,19 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_render(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)":render")) SWIG_fail;
+  result = (int)render();
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_start(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   int result;
@@ -2886,6 +2899,7 @@ fail:
 
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"init", _wrap_init, METH_VARARGS, NULL},
+	 { (char *)"render", _wrap_render, METH_VARARGS, NULL},
 	 { (char *)"start", _wrap_start, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };

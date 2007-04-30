@@ -23,6 +23,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 int init(int argc, char *argv[]);
 int init();
 
+int render();
+
 int start();
 
 #endif //PIAVCA_GLUT_H

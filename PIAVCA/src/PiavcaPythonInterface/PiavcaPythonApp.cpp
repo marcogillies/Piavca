@@ -106,7 +106,7 @@ std::wostringstream *wstrstrm;
 std::wstreambuf *saved_wcout;
 std::wstreambuf *saved_wcerr;
 //#endif
-
+/*
 PIAVCA_EXPORT void PyTimeCallback::init(Piavca::Core *core)
 {
 	PyObject_CallMethod(pyCallbackObj, "callbackInit", "(l)", (long) core);
@@ -185,7 +185,7 @@ PIAVCA_EXPORT void PyTimeCallback::timeStep(Piavca::Core *core, float time)
 				strstrm->str("");
 				wstrstrm->str(L"");
 			}
-		}*/
+		}* /
 	}
 //#endif
 
@@ -296,7 +296,7 @@ PIAVCA_EXPORT void PyAvatarTimeCallback::timeStep(Avatar *avatar, float time)
 
 	//av->setJointOrientation(head, Quat(time*1.5, Vec(0.0, 1.0, 0.0)));
 }; 
-
+*/
 
 void Piavca::PrintPythonErrors()
 {
@@ -466,47 +466,89 @@ void Piavca::InitPiavcaPython(Piavca::Core *core, tstring fileName, bool no_cons
 	//avatar->enableMotion(true);
 }
 
+void Piavca::InitPython()
+{
+	Py_Initialize();
+}
 
-void Piavca::RunPythonMethod(Piavca::Core *core, char *methodName)
+void *Piavca::ImportModule(tstring fileName)
+{
+	char *buf = new char[fileName.size()+1];
+	TStringToString(fileName).copy(buf, fileName.size());
+	buf[fileName.size()] ='\0';
+	PyObject *module = PyImport_ImportModule(buf);
+	delete buf;
+	
+	if(PyErr_Occurred())
+	{
+		std::cout << "python bailed during module import\n";
+		PyErr_Print();
+		PyObject *ErrorType, *ErrorValue, *ErrorTraceback, *ErrorString;
+		PyErr_Fetch(&ErrorType, &ErrorValue, &ErrorTraceback);
+		ErrorString = PyObject_Str(ErrorType);
+		std::cout << "Python Exception:\n";
+		std::cout << PyString_AsString(ErrorString) << std::endl;
+		Piavca::tstring error_value = StringToTString(PyString_AsString(ErrorString));
+		ErrorString = PyObject_Str(ErrorValue);
+		Piavca::tstring error_string = StringToTString(PyString_AsString(ErrorString));
+		std::cout << PyString_AsString(ErrorString) << std::endl;
+		ErrorString = PyObject_Str(ErrorTraceback);
+		Piavca::tstring error_traceback = StringToTString(PyString_AsString(ErrorString));
+		std::cout << PyString_AsString(ErrorString) << std::endl;
+		fflush(stdout);
+		fflush(stderr);
+
+		//EndPiavcaPython(core);
+		Piavca::Error(_T("Error running script: ") + error_string);
+		return module;
+		//exit(0);
+	}
+	return module;
+
+}
+
+void Piavca::RunPythonMethod(Piavca::Core *core, char *methodName, void *module)
 {
 	PyObject *pyArgs = Py_BuildValue("()");
-	RunPythonMethod(core, methodName, pyArgs);
+	RunPythonMethod(core, methodName, pyArgs, module);
 };
 
-void Piavca::RunPythonMethod(Piavca::Core *core, char *methodName, int arg)
+void Piavca::RunPythonMethod(Piavca::Core *core, char *methodName, int arg, void *module)
 {
 	PyObject *pyArgs = Py_BuildValue("(i)", arg);
-	RunPythonMethod(core, methodName, pyArgs);
+	RunPythonMethod(core, methodName, pyArgs, module);
 };
 
-void Piavca::RunPythonMethod(Piavca::Core *core, char *methodName, float arg)
+void Piavca::RunPythonMethod(Piavca::Core *core, char *methodName, float arg, void *module)
 {
 	PyObject *pyArgs = Py_BuildValue("(f)", arg);
-	RunPythonMethod(core, methodName, pyArgs);
+	RunPythonMethod(core, methodName, pyArgs, module);
 };
 
-void Piavca::RunPythonMethod(Piavca::Core *core, char *methodName, std::string arg)
+void Piavca::RunPythonMethod(Piavca::Core *core, char *methodName, std::string arg, void *module)
 {
 	PyObject *pyArgs = Py_BuildValue("(s#)", arg.c_str(), arg.length());
-	RunPythonMethod(core, methodName, pyArgs);
+	RunPythonMethod(core, methodName, pyArgs, module);
 };
 
-void Piavca::RunPythonMethod(Piavca::Core *core, char *methodName, const Vec &arg)
+void Piavca::RunPythonMethod(Piavca::Core *core, char *methodName, const Vec &arg, void *module)
 {
 	PyObject *pyArgs = Py_BuildValue("([fff])", arg[0], arg[1], arg[2]);
-	RunPythonMethod(core, methodName, pyArgs);
+	RunPythonMethod(core, methodName, pyArgs, module);
 };
 
-void Piavca::RunPythonMethod(Piavca::Core *core, char *methodName, float farg, const Vec &varg)
+void Piavca::RunPythonMethod(Piavca::Core *core, char *methodName, float farg, const Vec &varg, void *module)
 {
 	PyObject *pyArgs = Py_BuildValue("(f[fff])", farg, varg[0], varg[1], varg[2]);
-	RunPythonMethod(core, methodName, pyArgs);
+	RunPythonMethod(core, methodName, pyArgs, module);
 };
 
 
-void Piavca::RunPythonMethod(Piavca::Core *core, char *methodName, PyObject *pyArgs)
+void Piavca::RunPythonMethod(Piavca::Core *core, char *methodName, PyObject *pyArgs, void *module)
 {
-	PyObject *pyMethod = PyObject_GetAttrString(g_pPyMod, methodName);
+	if (module == NULL)
+		module = g_pPyMod;
+	PyObject *pyMethod = PyObject_GetAttrString((PyObject *)module, methodName);
 	if(pyMethod)
 	{
 		PyEval_CallObject(pyMethod, pyArgs);

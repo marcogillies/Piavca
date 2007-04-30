@@ -107,6 +107,19 @@ void timeStep()
 // GLUT callback functions                                                    //
 //----------------------------------------------------------------------------//
 
+int render()
+{
+	//updates piavca's state
+	timeStep();
+	//updates mesh
+	g_Params.core->prerender();
+	
+	// render the model
+	g_Params.core->render();
+
+	return 0;
+}
+
 void displayFunc()
 {
   static float prevTime = Piavca::Core::getCore()->getTime();

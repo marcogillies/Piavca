@@ -49,6 +49,7 @@ except:
     weakref_proxy = lambda x: x
 
 
+render = _PiavcaGlut.render
 start = _PiavcaGlut.start
 
 init = _PiavcaGlut.init

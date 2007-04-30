@@ -299,10 +299,6 @@
 				RelativePath=".\PiavcaPythonApp.cpp"
 				>
 			</File>
-			<File
-				RelativePath=".\PyMotion.cpp"
-				>
-			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -314,14 +310,6 @@
 			</File>
 			<File
 				RelativePath=".\PiavcaPythonApp.h"
-				>
-			</File>
-			<File
-				RelativePath=".\PyMotion.h"
-				>
-			</File>
-			<File
-				RelativePath=".\PyTimeCallback.h"
 				>
 			</File>
 		</Filter>
