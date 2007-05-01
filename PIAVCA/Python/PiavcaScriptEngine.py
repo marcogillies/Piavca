@@ -70,8 +70,8 @@ class PauseCallback(Piavca.TimeCallback):
 	def timeStep(self, core, t):
 		time.sleep(0.02)
  
-#cb = PauseCallback("pause")
-#cb.thisown = 0
-#Piavca.Core.getCore().registerCallback(cb)
+cb = PauseCallback("pause")
+cb.thisown = 0
+Piavca.Core.getCore().registerCallback(cb)
 
 Piavca.PiavcaGlut.start()

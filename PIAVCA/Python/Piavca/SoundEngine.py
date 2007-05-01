@@ -44,6 +44,8 @@ except ImportError:
 	pymediapresent = 0
 
 import wave
+from copy import copy
+import time
 
 try:
 	import pyTTS
@@ -73,11 +75,11 @@ class SoundEngine:
 		print "adding", name, filename
 		input_file= wave.open( filename, 'rb' )
 			
-		s = input_file.readframes(500000)
+		s = input_file.readframes(500000000)
 		frames = s
-		while s:
-			s = input_file.readframes(500000)
-			frames = frames + s
+		#while s:
+		#	s = input_file.readframes(500000)
+		#	frames = frames + s
 			
 		self.sounds[name] = frames
 	
@@ -93,8 +95,13 @@ class SoundEngine:
 			self.addSound(line[0], line[1])
 		
 	def play(self, name):
-		#print name, len(self.sounds[name])
+		print name, len(self.sounds[name])
+		#self.output.stop()
+		#s = copy(self.sounds[name])
 		self.output.play(self.sounds[name])
+		left = self.output.getLeft()
+		print "time left", left
+		time.sleep(left + 1)
 			
 	def say(self, text):
 		if ttsAvailable:
