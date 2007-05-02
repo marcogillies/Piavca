@@ -40,13 +40,21 @@ using namespace Piavca;
 PIAVCA_DECL void Piavca::Error(tstring details)
 {
 	std::cout << "Piavca Error: " << TStringToString(details) << std::endl;
-	Piavca::Core::getCore()->addError(_T("Piavca Error:") + details);
-	if(Piavca::Core::getCore()->exceptionsOn())
+	Piavca::Core *core = Piavca::Core::getCore();
+	if(core)
+	{
+		core->addError(_T("Piavca Error:") + details);
+		if(core->exceptionsOn())
+			throw Piavca::Exception(details);
+	}
+	else
 		throw Piavca::Exception(details);
 }
 
 PIAVCA_DECL void Piavca::Warning(tstring details)
 {
 	std::cout << "Piavca Error: " << TStringToString(details) << std::endl;
-	Piavca::Core::getCore()->addWarning(_T("Piavca Error:") + details);
+	Piavca::Core *core = Piavca::Core::getCore();
+	if(core)
+		core->addWarning(_T("Piavca Error:") + details);
 }

@@ -1,6 +1,6 @@
-print "before wx import"
+#print "before wx import"
 import wx
-print "after wx import"
+#print "after wx import"
 
 import pickle
 import time

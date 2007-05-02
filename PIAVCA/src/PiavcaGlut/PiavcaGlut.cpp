@@ -100,7 +100,6 @@ void timeStep()
 	//Piavca::RunPythonMethod(Piavca::Core::getCore(), "headMove", Piavca::Vec(1, 2, 3));
 	//std::cout << TStringToString(Piavca::Core::getCore()->getMessages());
     // update the screen
-    glutPostRedisplay();	
 }
 
 //----------------------------------------------------------------------------//
@@ -132,6 +131,7 @@ void displayFunc()
 
   float time1 = Piavca::Core::getCore()->getTime();
   timeStep();	
+  glutPostRedisplay();	
   float time2 = Piavca::Core::getCore()->getTime();
   updateTime += time2 - time1;
 	 

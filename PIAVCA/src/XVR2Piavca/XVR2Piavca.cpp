@@ -85,13 +85,13 @@ char* Str = new char[1024];
 char* dirFile = new char[256];
 char* output = new char[1024];
 
-std::ostringstream *_strstrm;
-std::streambuf *_saved_cout;
-std::streambuf *_saved_cerr;
+std::ostringstream *_strstrm = NULL;
+std::streambuf *_saved_cout = NULL;
+std::streambuf *_saved_cerr = NULL;
 
-std::wostringstream *_wstrstrm;
-std::wstreambuf *_saved_wcout;
-std::wstreambuf *_saved_wcerr;
+std::wostringstream *_wstrstrm = NULL;
+std::wstreambuf *_saved_wcout = NULL;
+std::wstreambuf *_saved_wcerr = NULL;
 
 //Piavca::PiavcaCal3DCore *g_pCore;
 void *initScript = NULL;
@@ -99,9 +99,22 @@ void *userScript = NULL;
 
 char *get_messages()
 {
-	string s = TStringToString(Piavca::Core::getCore()->getMessages());
+	//string s = TStringToString(Piavca::Core::getCore()->getMessages());
 	//s._Copy_s(Str, 256, 256);
+	string s = "";
+	if(_strstrm)
+	{
+		s = _strstrm->str();
+	}
 	s.copy(Str, 1024);
+	if (s.size() < 1024)
+		Str[s.size()] = '\0';	
+	else
+		Str[1023] = '\0';	
+	if(_strstrm)
+	{
+		_strstrm->str("");
+	}
 	return Str;
 }
 
@@ -121,20 +134,23 @@ extern "C" __declspec(dllexport) char* displayFunc()
 	string s = "";
 	if(userScript != NULL)
 		s = runMethod("timeStep");
+	std::cout << s;
+	//std::cout << "rendering\n";
 	if(initScript != NULL)
 	{
 		try 
 		{
 			RunPythonMethod(Piavca::Core::getCore(), "render", initScript);
+			//s = s + "\n" + string(get_messages()) + "\n";
 		}
 		catch (Piavca::Exception &e)
 		{
-			s = s + "\n" + TStringToString(e.getDetails());
+			//s = s + "\n" + string(get_messages()) + "\n" + TStringToString(e.getDetails());
 			//s._Copy_s(Str, 256, 256);
 		}
 	}
-	s.copy(Str, 256);
-	return Str;
+	//s.copy(Str, 1024);
+	return get_messages();
 	//updates piavca's state
 	//timeStep();
 	//updates mesh
@@ -177,6 +193,7 @@ extern "C" __declspec(dllexport) char* exitFunc()
 // and a python script file to load
 extern "C" __declspec(dllexport) char *onInitial(char* _path, char *script)
 {
+	//return (char *)0;
 	try
 	{
 		int argc = 1;
@@ -401,6 +418,7 @@ extern "C" __declspec(dllexport) char *onInitial(char* _path, char *script)
   catch (Piavca::Exception &e)
   {
 	string s = TStringToString(e.getDetails());
+	s = string(get_messages()) + "\n" + s;
 	//s._Copy_s(Str, 256, 256);
 	s.copy(Str, 256);
 
@@ -411,10 +429,10 @@ extern "C" __declspec(dllexport) char *onInitial(char* _path, char *script)
 //#ifdef WIN32
 //	strcpy_s(Str, 256, "");
 //#else
-	strcpy(Str, "");
+	//strcpy(Str, "");
 //#endif
 
-  return Str;
+	return get_messages();
 }
 
 // calls a method defined in python
