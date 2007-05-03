@@ -294,6 +294,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\AvatarMotionQueue.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\AvatarPosture.cpp"
 				>
 			</File>
@@ -314,6 +318,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\LookAtMotion.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\MaskedMotion.cpp"
+				>
+			</File>
+			<File
 				RelativePath="Motion.cpp"
 				>
 			</File>
@@ -322,7 +334,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\MotionParser.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\MotionPosture.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\MotionSaver.cpp"
 				>
 			</File>
 			<File
@@ -374,6 +394,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Subtract.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\TimeRangeMotion.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\TwoMotionCombiner.cpp"
 				>
 			</File>
@@ -395,6 +423,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\AvatarMotionQueue.h"
+				>
+			</File>
+			<File
 				RelativePath=".\AvatarPosture.h"
 				>
 			</File>
@@ -407,6 +439,30 @@
 				>
 			</File>
 			<File
+				RelativePath=".\BodyToFacial.h"
+				>
+			</File>
+			<File
+				RelativePath=".\ChangeMotionLength.h"
+				>
+			</File>
+			<File
+				RelativePath=".\ChangeMotionProp.h"
+				>
+			</File>
+			<File
+				RelativePath=".\ChoiceLoopMotion.h"
+				>
+			</File>
+			<File
+				RelativePath=".\ChoiceMotion.h"
+				>
+			</File>
+			<File
+				RelativePath=".\DiadicGazeMotion.h"
+				>
+			</File>
+			<File
 				RelativePath="Hermite.h"
 				>
 			</File>
@@ -415,7 +471,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\LookAtMotion.h"
+				>
+			</File>
+			<File
 				RelativePath=".\LoopMotion.h"
+				>
+			</File>
+			<File
+				RelativePath=".\MaskedMotion.h"
 				>
 			</File>
 			<File
@@ -439,11 +503,27 @@
 				>
 			</File>
 			<File
+				RelativePath=".\MotionParser.h"
+				>
+			</File>
+			<File
 				RelativePath=".\MotionPosture.h"
 				>
 			</File>
 			<File
+				RelativePath=".\MotionSaver.h"
+				>
+			</File>
+			<File
 				RelativePath=".\MotionTransition.h"
+				>
+			</File>
+			<File
+				RelativePath=".\MultiMotionCombiner.h"
+				>
+			</File>
+			<File
+				RelativePath=".\MultiMotionLoop.h"
 				>
 			</File>
 			<File
@@ -452,6 +532,14 @@
 			</File>
 			<File
 				RelativePath=".\ObjectImp.h"
+				>
+			</File>
+			<File
+				RelativePath=".\OnTheSpot.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Piavca.h"
 				>
 			</File>
 			<File
@@ -475,11 +563,63 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Proxemics.h"
+				>
+			</File>
+			<File
+				RelativePath=".\ProxemicsLoop.h"
+				>
+			</File>
+			<File
 				RelativePath="Quat.h"
 				>
 			</File>
 			<File
+				RelativePath=".\RandomAdd.h"
+				>
+			</File>
+			<File
+				RelativePath=".\RandomAddLoop.h"
+				>
+			</File>
+			<File
+				RelativePath=".\RandomBlend.h"
+				>
+			</File>
+			<File
+				RelativePath=".\RandomBlendLoop.h"
+				>
+			</File>
+			<File
+				RelativePath=".\RandomChoiceMotion.h"
+				>
+			</File>
+			<File
+				RelativePath=".\RandomGazeMotion.h"
+				>
+			</File>
+			<File
+				RelativePath=".\RandomLoopMotion.h"
+				>
+			</File>
+			<File
+				RelativePath=".\RandomTimingsLoop.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Reposition.h"
+				>
+			</File>
+			<File
+				RelativePath=".\ScaleMotion.h"
+				>
+			</File>
+			<File
+				RelativePath=".\ScaleMotionRoot.h"
+				>
+			</File>
+			<File
+				RelativePath=".\ScaleMotionSpeed.h"
 				>
 			</File>
 			<File
@@ -503,7 +643,27 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Subtract.h"
+				>
+			</File>
+			<File
 				RelativePath="TimeCallback.h"
+				>
+			</File>
+			<File
+				RelativePath=".\TimeOffset.h"
+				>
+			</File>
+			<File
+				RelativePath=".\TimeRangeMotion.h"
+				>
+			</File>
+			<File
+				RelativePath=".\TimeWarp.h"
+				>
+			</File>
+			<File
+				RelativePath=".\TurnMotion.h"
 				>
 			</File>
 			<File
@@ -512,6 +672,10 @@
 			</File>
 			<File
 				RelativePath="Vec.h"
+				>
+			</File>
+			<File
+				RelativePath=".\ZeroMotion.h"
 				>
 			</File>
 		</Filter>

@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 //----------------------------------------------------------------------------//
 
 #define NO_PIAVCA_DLL
-#include "PiavcaNVCLib/Piavca.h"
+#include "PiavcaAPI/Piavca.h"
 
 #ifdef _WIN32
 //#define WIN32_LEAN_AND_MEAN		// Exclude rarely-used stuff from Windows headers
@@ -49,12 +49,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 #include "cal3d/cal3d.h"
 
-#include "PiavcaAPI/Avatar.h"
-#include "PiavcaAPI/KeyframeMotion.h"
-#include "PiavcaAPI/LoopMotion.h"
-#include "PiavcaNVCLib/OnTheSpot.h"
-#include "PiavcaNVCLib/AvatarMotionQueue.h"
-#include "PiavcaAPI/Quat.h"
 
 #include "PiavcaPythonInterface/PiavcaPythonApp.h"
 

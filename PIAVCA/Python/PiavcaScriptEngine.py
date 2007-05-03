@@ -1,10 +1,6 @@
 # File: hello1.py
 
-
-#sys.path.append("..\..\Piavca\src\PiavcaPythonInterface")
-#sys.path.append("..\..\Piavca\Python")
-#sys.path.append("..\..\")
-#sys.path.append("..\..\ExponentialMap\ExpMap")
+import sys
 
 import Piavca
 Piavca.PiavcaGlut.init()

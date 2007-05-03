@@ -44,7 +44,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 #include "cal3d/cal3d.h"
 
-#include "PiavcaNVCLib/Piavca.h"
+#include "PiavcaAPI/Piavca.h"
 
 //#include "Python.h"
 

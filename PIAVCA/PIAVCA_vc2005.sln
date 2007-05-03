@@ -6,8 +6,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PiavcaCal3dApp", "src\Piavc
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PiavcaCal3DImp", "src\PiavcaCal3dImp\PiavcaCal3DImp_vc2005.vcproj", "{97813F74-80B5-4861-8CEE-99328B65173C}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PiavcaNVCLib", "src\PiavcaNVCLib\PiavcaNVCLib_vc2005.vcproj", "{2BE89BA3-3998-4AEC-9426-C6EFB71E0C9E}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PiavcaPythonInterface", "src\PiavcaPythonInterface\PiavcaPythonInterface_vc2005.vcproj", "{9BE2E296-9B8C-4972-B627-06F7A635204C}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Standard Motion Implementation", "src\StdMotionImp\StdMotionImp_vc2005.vcproj", "{E2404604-543C-4863-BF9D-BE3E995DF4E4}"
@@ -20,7 +18,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Piavca_base", "src\Piavca_b
 	ProjectSection(ProjectDependencies) = postProject
 		{E2404604-543C-4863-BF9D-BE3E995DF4E4} = {E2404604-543C-4863-BF9D-BE3E995DF4E4}
 		{97813F74-80B5-4861-8CEE-99328B65173C} = {97813F74-80B5-4861-8CEE-99328B65173C}
-		{2BE89BA3-3998-4AEC-9426-C6EFB71E0C9E} = {2BE89BA3-3998-4AEC-9426-C6EFB71E0C9E}
 		{7E061BC4-F08C-40F0-8A91-8CAFD582054D} = {7E061BC4-F08C-40F0-8A91-8CAFD582054D}
 	EndProjectSection
 EndProject
@@ -28,6 +25,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PiavcaGlut", "src\PiavcaGlu
 	ProjectSection(ProjectDependencies) = postProject
 		{CB1D5D51-F927-4C9A-B704-CAF34FDAA506} = {CB1D5D51-F927-4C9A-B704-CAF34FDAA506}
 	EndProjectSection
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "PiavcaWindowsSetup", "src\PiavcaWindowsSetup\PiavcaWindowsSetup.vdproj", "{DC072FB2-0467-45EE-B52D-6A31332FF630}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,14 +60,6 @@ Global
 		{97813F74-80B5-4861-8CEE-99328B65173C}.Dive Debug|Win32.Build.0 = Debug|Win32
 		{97813F74-80B5-4861-8CEE-99328B65173C}.Release|Win32.ActiveCfg = Release|Win32
 		{97813F74-80B5-4861-8CEE-99328B65173C}.Release|Win32.Build.0 = Release|Win32
-		{2BE89BA3-3998-4AEC-9426-C6EFB71E0C9E}.C Only Debug|Win32.ActiveCfg = Debug|Win32
-		{2BE89BA3-3998-4AEC-9426-C6EFB71E0C9E}.C Only Debug|Win32.Build.0 = Debug|Win32
-		{2BE89BA3-3998-4AEC-9426-C6EFB71E0C9E}.Debug|Win32.ActiveCfg = Debug|Win32
-		{2BE89BA3-3998-4AEC-9426-C6EFB71E0C9E}.Debug|Win32.Build.0 = Debug|Win32
-		{2BE89BA3-3998-4AEC-9426-C6EFB71E0C9E}.Dive Debug|Win32.ActiveCfg = Debug|Win32
-		{2BE89BA3-3998-4AEC-9426-C6EFB71E0C9E}.Dive Debug|Win32.Build.0 = Debug|Win32
-		{2BE89BA3-3998-4AEC-9426-C6EFB71E0C9E}.Release|Win32.ActiveCfg = Release|Win32
-		{2BE89BA3-3998-4AEC-9426-C6EFB71E0C9E}.Release|Win32.Build.0 = Release|Win32
 		{9BE2E296-9B8C-4972-B627-06F7A635204C}.C Only Debug|Win32.ActiveCfg = C Only Debug|Win32
 		{9BE2E296-9B8C-4972-B627-06F7A635204C}.C Only Debug|Win32.Build.0 = C Only Debug|Win32
 		{9BE2E296-9B8C-4972-B627-06F7A635204C}.Debug|Win32.ActiveCfg = Debug|Win32
@@ -117,6 +108,10 @@ Global
 		{7F966FC6-2A00-4955-A173-CEF366A2496D}.Dive Debug|Win32.Build.0 = Debug|Win32
 		{7F966FC6-2A00-4955-A173-CEF366A2496D}.Release|Win32.ActiveCfg = Release|Win32
 		{7F966FC6-2A00-4955-A173-CEF366A2496D}.Release|Win32.Build.0 = Release|Win32
+		{DC072FB2-0467-45EE-B52D-6A31332FF630}.C Only Debug|Win32.ActiveCfg = Debug
+		{DC072FB2-0467-45EE-B52D-6A31332FF630}.Debug|Win32.ActiveCfg = Debug
+		{DC072FB2-0467-45EE-B52D-6A31332FF630}.Dive Debug|Win32.ActiveCfg = Debug
+		{DC072FB2-0467-45EE-B52D-6A31332FF630}.Release|Win32.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

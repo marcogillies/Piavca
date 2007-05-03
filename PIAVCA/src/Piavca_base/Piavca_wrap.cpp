@@ -3151,7 +3151,7 @@ namespace swig {
 
 #define NO_PIAVCA_DLL
 
-#include "PiavcaNVCLib/Piavca.h"
+#include "PiavcaAPI/Piavca.h"
 #include "PiavcaCal3dImp/PiavcaCal3dCore.h"
 //#include "PyTimeCallback.h"
 //#include "PyMotion.h"

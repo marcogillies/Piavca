@@ -48,8 +48,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "PiavcaAPI/LoopMotion.h"
 #include "PiavcaAPI/PiavcaError.h"
 #include "PiavcaAPI/PiavcaException.h"
-#include "PiavcaNVCLib/OnTheSpot.h"
-#include "PiavcaNVCLib/AvatarMotionQueue.h"
+#include "PiavcaAPI/OnTheSpot.h"
+#include "PiavcaAPI/AvatarMotionQueue.h"
 
 //#include "Python.h"
 
