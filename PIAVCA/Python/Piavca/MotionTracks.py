@@ -185,18 +185,28 @@ class MotionTracks(wx.VListBox):
 	def Save(self):
 		if self.selectedTrack == None:
 			return
-			
-		dialog = wxFileDialog ( None, style = wxSAVE )
+		
+		dialog_return = saveFileDialog()
+		path = dialog_return.paths[0]
+		if path == "":
+			return
+		
+		#dialog = wxFileDialog ( None, style = wxSAVE )
 		# The user pressed the "OK" button in the dialog
-		if dialog.ShowModal() == wxID_OK:
-			print 'Position of selection:', dialog.GetPath()
-			path = dialog.GetPath()
-		else:
-			path = None
-			print 'You did not select anything.'
-		dialog.Destroy()
+		#if dialog.ShowModal() == wxID_OK:
+		#	print 'Position of selection:', dialog.GetPath()
+		#	path = dialog.GetPath()
+		#	dotpos = path.rfind(".")
+		#	scriptpath = path[:dotpos]+".act"
+		#else:
+		#	path = None
+		#	print 'You did not select anything.'
+		#	return
+		#dialog.Destroy()
 		
 		#preloaded = [(self.motion, self.motion_name)]
+		
+		# save the motion pack file
 		motstosave = []
 		motion = self.tracks[self.selectedTrack].GetMotion()
 		if self.tracks[self.selectedTrack].IsMasked():
@@ -213,6 +223,55 @@ class MotionTracks(wx.VListBox):
 				self.motiongraph.setName(self.motion_name+"_motiongraph")
 			motstosave.append(self.motiongraph)
 		Piavca.XMLMotionFile.saveMotions(path, motstosave)
+		
+		# save the scripts file
+		dotpos = path.rfind(".")
+		scriptpath = path[:dotpos]+".act"
+		scriptfile = open(scriptpath, "w")
+		for motion in motstosave:
+			scriptfile.write("script ")
+			scriptfile.write(motion.getName())
+			scriptfile.write("\n")
+			
+			scriptfile.write("0 motion ")
+			scriptfile.write(motion.getName())
+			scriptfile.write("\n")
+			
+			scriptfile.write("stop\n")
+		scriptfile.close()
+		
+		# save the main conf file
+		confpath = path[:dotpos]+".conf"
+		conffile = open(confpath, "w")
+		
+		conffile.write("avatar ")
+		conffile.write(self.avatar.getName())
+		conffile.write("\n")
+		
+		conffile.write("motionpack default ")
+		slashpos = path.rfind("\\")
+		if slashpos < 0:
+			slashpos = path.rfind("/")
+		if slashpos < 0:
+			slashpos = 0
+		conffile.write(path[slashpos+1:])
+		conffile.write("\n")
+		
+		conffile.write("script default ")
+		slashpos = scriptpath.rfind("\\")
+		if slashpos < 0:
+			slashpos = scriptpath.rfind("/")
+		if slashpos < 0:
+			slashpos = 0
+		conffile.write(scriptpath[slashpos+1:])
+		conffile.write("\n")
+		
+		conffile.write("GUI ")
+		conffile.write(self.avatar.getName())
+		conffile.write("\n")
+		
+		conffile.close()
+		
 		
 	def showFootplants(self, e):
 		self.showfootplants = 1

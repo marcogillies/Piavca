@@ -390,4 +390,10 @@ int start()
   return 0;
 }
 
+
+void outputMessage(char *message)
+{
+	std::cout << message;
+}
+
 //----------------------------------------------------------------------------//

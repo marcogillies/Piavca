@@ -75,7 +75,7 @@ extern "C" __declspec(dllexport) char* GetLastMessage();
 // and worder info than GetLastMessage
 extern "C" __declspec(dllexport) char* GetLastOutput();
 
-char* Str = new char[1024];
+char* Str = new char[2048];
 char* dirFile = new char[256];
 char* output = new char[1024];
 
@@ -100,11 +100,11 @@ char *get_messages()
 	{
 		s = _strstrm->str();
 	}
-	s.copy(Str, 1024);
-	if (s.size() < 1024)
+	s.copy(Str, 2048);
+	if (s.size() < 2048)
 		Str[s.size()] = '\0';	
 	else
-		Str[1023] = '\0';	
+		Str[2047] = '\0';	
 	if(_strstrm)
 	{
 		_strstrm->str("");
@@ -161,11 +161,14 @@ extern "C" __declspec(dllexport) char* exitFunc()
 	std::cerr.rdbuf(_saved_cerr);
 	std::wcout.rdbuf(_saved_wcout);
 	std::wcerr.rdbuf(_saved_wcerr);
+	//fclose(stderr);
+
 	//delete g_pCore;
 
 	string s = "";
 	if(userScript != NULL)
 		s=runMethod("finalize");
+	std::cout << s;
 	if(initScript != NULL)
 	{
 		try 
@@ -174,12 +177,12 @@ extern "C" __declspec(dllexport) char* exitFunc()
 		}
 		catch (Piavca::Exception &e)
 		{
-			s = s + "\n" + TStringToString(e.getDetails());
+			std::cout << TStringToString(e.getDetails()) << std::endl;
 			//s._Copy_s(Str, 256, 256);
 		}
 	}
-	s.copy(Str, 256);
-	return Str;
+	//s.copy(Str, 2048);
+	return get_messages();
 	
 }
 
@@ -219,6 +222,7 @@ extern "C" __declspec(dllexport) char *onInitial(char* _path, char *script)
 		filename = path + "piavcaStderr.txt";
 		std::cout << filename << std::endl;
 		freopen(filename.c_str(), "w", stderr);
+		//fprintf(stderr, "test");
 	  
 	// write a message to the output that can be read from XVR
 //#ifdef WIN32
@@ -401,7 +405,17 @@ extern "C" __declspec(dllexport) char *onInitial(char* _path, char *script)
 	//////////////////////////////////////////////////Python ///////////////////////////////////////
 	// load in a script
 	Piavca::InitPython();
-	initScript = Piavca::ImportModule(_T("initXVRPiavca"));
+	try
+	{
+		initScript = Piavca::ImportModule(_T("initXVRPiavca"));
+	}
+	catch (Piavca::Exception &e)
+	{
+		std::cout << "An error occured while importing the Piavca Initialization module\n";
+		std::cout << "This may be due to a problem with your Piavca installations\n";
+		std::cout << "Please see the file PiavcaStderr.txt, in the workind directory for details\n";
+		throw;
+	}
 	Piavca::tstring tscript = StringToTString(script);
 	if(tscript != _T(""))
 	{
@@ -412,11 +426,12 @@ extern "C" __declspec(dllexport) char *onInitial(char* _path, char *script)
   catch (Piavca::Exception &e)
   {
 	string s = TStringToString(e.getDetails());
-	s = string(get_messages()) + "\n" + s;
+	//s = string(get_messages()) + "\n" + s;
 	//s._Copy_s(Str, 256, 256);
-	s.copy(Str, 256);
+	//s.copy(Str, 2048);
+	std::cout << s << std::endl;;
 
-	return Str;
+	return get_messages();
   }
 
 
@@ -438,19 +453,9 @@ extern "C" __declspec(dllexport) char* runMethod(char* method)
 	}
 	catch (Piavca::Exception &e)
 	{
-		string s = TStringToString(e.getDetails());
-		//s._Copy_s(Str, 256, 256);
-		s.copy(Str, 256);
-
-		return Str;
+		std::cout << TStringToString(e.getDetails()) << std::endl;
+		return get_messages();
 	}
-
-	
-//#ifdef WIN32
-//	strcpy_s(Str, 256, "");
-//#else
-	//strcpy(Str, "");
-//#endif
 
 	return get_messages();
 }
@@ -464,19 +469,9 @@ extern "C" __declspec(dllexport) char* runMethodInt(char* method, int arg)
 	}
 	catch (Piavca::Exception &e)
 	{
-		string s = TStringToString(e.getDetails());
-		//s._Copy_s(Str, 256, 256);
-		s.copy(Str, 256);
-
-		return Str;
+		std::cout << TStringToString(e.getDetails()) << std::endl;
+		return get_messages();
 	}
-
-	
-//#ifdef WIN32
-//	strcpy_s(Str, 256, "");
-//#else
-	//strcpy(Str, "");
-//#endif
 
 	return get_messages();
 }
@@ -490,19 +485,9 @@ extern "C" __declspec(dllexport) char* runMethodFloat(char* method, float arg)
 	}
 	catch (Piavca::Exception &e)
 	{
-		string s = TStringToString(e.getDetails());
-		//s._Copy_s(Str, 256, 256);
-		s.copy(Str, 256);
-
-		return Str;
+		std::cout << TStringToString(e.getDetails()) << std::endl;
+		return get_messages();
 	}
-
-	
-//#ifdef WIN32
-//	strcpy_s(Str, 256, "");
-//#else
-	//strcpy(Str, "");
-//#endif
 
 	return get_messages();
 }
@@ -516,19 +501,9 @@ extern "C" __declspec(dllexport) char* runMethodStr(char* method, char * arg)
 	}
 	catch (Piavca::Exception &e)
 	{
-		string s = TStringToString(e.getDetails());
-		//s._Copy_s(Str, 256, 256);
-		s.copy(Str, 256);
-
-		return Str;
+		std::cout << TStringToString(e.getDetails()) << std::endl;
+		return get_messages();
 	}
-
-	
-//#ifdef WIN32
-//	strcpy_s(Str, 256, "");
-//#else
-	//strcpy(Str, "");
-//#endif
 
 	return get_messages();
 }
@@ -542,19 +517,9 @@ extern "C" __declspec(dllexport) char* runMethodVec(char* method, float arg1, fl
 	}
 	catch (Piavca::Exception &e)
 	{
-		string s = TStringToString(e.getDetails());
-		//s._Copy_s(Str, 256, 256);
-		s.copy(Str, 256);
-
-		return Str;
+		std::cout << TStringToString(e.getDetails()) << std::endl;
+		return get_messages();
 	}
-
-	
-//#ifdef WIN32
-//	strcpy_s(Str, 256, "");
-//#else
-	//strcpy(Str, "");
-//#endif
 
 	return get_messages();
 }
@@ -568,19 +533,9 @@ extern "C" __declspec(dllexport) char* runMethodAngleAxis(char* method, float ar
 	}
 	catch (Piavca::Exception &e)
 	{
-		string s = TStringToString(e.getDetails());
-		//s._Copy_s(Str, 256, 256);
-		s.copy(Str, 256);
-
-		return Str;
+		std::cout << TStringToString(e.getDetails()) << std::endl;
+		return get_messages();
 	}
-
-	
-//#ifdef WIN32
-//	strcpy_s(Str, 256, "");
-//#else
-	//strcpy(Str, "");
-//#endif
 
 	return get_messages();
 }

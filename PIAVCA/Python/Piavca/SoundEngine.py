@@ -93,6 +93,13 @@ class SoundEngine:
 			if len(line) < 2:
 				continue
 			self.addSound(line[0], line[1])
+			
+	def hasSound(self, name):
+		try:
+			self.sounds[name]
+			return 1
+		except:
+			return 0
 		
 	def play(self, name):
 		print name, len(self.sounds[name])

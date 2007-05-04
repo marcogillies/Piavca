@@ -28,7 +28,8 @@ if pathend < -1:
 else:
 	filename = path[pathend+1:]
 	path = path[:pathend+1]
-	os.chdir(path)
+	if path != "":
+		os.chdir(path)
 print filename, path
 if filename[-4:] == ".cfg":
 	filename = filename[:-4]

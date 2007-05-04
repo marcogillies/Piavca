@@ -2,6 +2,8 @@
 
 import sys
 
+import sys
+
 import Piavca
 Piavca.PiavcaGlut.init()
 from Piavca import runScriptEngine

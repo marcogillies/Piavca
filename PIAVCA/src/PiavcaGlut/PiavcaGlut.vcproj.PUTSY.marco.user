@@ -11,7 +11,7 @@
 			<DebugSettings
 				Command="python"
 				WorkingDirectory="F:\code\Data\cal3D_export"
-				CommandArguments="..\..\Piavca\Python\PiavcaScriptEngine.py master.conf"
+				CommandArguments="..\..\Piavca\Python\MotionEditor.py nancy.cfg"
 				Attach="false"
 				DebuggerType="3"
 				Remote="1"

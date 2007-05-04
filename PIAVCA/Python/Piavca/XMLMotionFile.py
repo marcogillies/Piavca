@@ -256,7 +256,7 @@ def saveMotions(filename, motions, element = None, doc = None):
 		writeout = 1
 	
 	allPiavca = Piavca.__dict__
-	print allPiavca
+	#print allPiavca
 	
 	members_to_ignore = ["getQuatValueAtTime", "getVecValueAtTime", "getFloatValueAtTime", "getQuatValueAtTimeInternal", 
 						"getVecValueAtTimeInternal", "getFloatValueAtTimeInternal", "getMotionLength"]
@@ -275,6 +275,7 @@ def saveMotions(filename, motions, element = None, doc = None):
 		if motiontype == None:
 			print "Motion is of unknown type"
 			continue
+		print motion.getName(), motiontypename
 		el = doc.createElement(motiontypename)
 		#el.setAttribute("name", name)
 		#print motion.__dict__

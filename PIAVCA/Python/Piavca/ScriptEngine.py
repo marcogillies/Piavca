@@ -96,6 +96,8 @@ class soundCallback(scriptCallback):
 		scriptCallback.__init__(self, time, args)
 		self.soundname = args[0]
 		self.soundengine = soundengine
+		if not self.soundengine.hasSound(self.soundname):
+			self.soundengine.addSound(self.soundname, self.soundname+".wav")
 	def __call__(self, avatar):
 		thread.start_new_thread(self.soundengine.play, (self.soundname,))
 		

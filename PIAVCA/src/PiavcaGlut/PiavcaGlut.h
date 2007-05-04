@@ -31,4 +31,6 @@ int render();
 
 int start();
 
+void outputMessage(char *message);
+
 #endif //PIAVCA_GLUT_H
