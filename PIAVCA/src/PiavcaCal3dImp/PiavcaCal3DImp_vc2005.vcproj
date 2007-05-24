@@ -156,7 +156,6 @@
 		/>
 		<ProjectReference
 			ReferencedProjectIdentifier="{2BE89BA3-3998-4AEC-9426-C6EFB71E0C9E}"
-			RelativePathToProject=".\src\PiavcaNVCLib\PiavcaNVCLib_vc2005.vcproj"
 		/>
 		<ProjectReference
 			ReferencedProjectIdentifier="{E2404604-543C-4863-BF9D-BE3E995DF4E4}"

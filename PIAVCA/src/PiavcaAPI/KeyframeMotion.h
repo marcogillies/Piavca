@@ -168,7 +168,7 @@ namespace Piavca
 		// ! get the name of the track corresponding to an iterator
 		//tstring getTrackName(int trackId)const{return imp->getTrackName(trackId);};
 		//! get the type of the track corresponding to a track ID
-		trackType getTrackType(int trackId)const
+		int getTrackType(int trackId)const
 		{
 			return imp->getTrackType(trackId);
 		};
@@ -241,14 +241,14 @@ namespace Piavca
 		}; 
 		
 		//! returns the number of keyframes that a particular track has
-		int getNumKeyframes(int trackId)
+		int getNumKeyframes(int trackId, int type)
 		{
-			return imp->getNumKeyframes(trackId);
+			return imp->getNumKeyframes(trackId, type);
 		};
 		//! returns the time of a particular keyframe 
-		float getKeyframeTime(int trackId, int keyframe)
+		float getKeyframeTime(int trackId, int type, int keyframe)
 		{
-			return imp->getKeyframeTime(trackId, keyframe);
+			return imp->getKeyframeTime(trackId, type, keyframe);
 		};
 
 		//! get the keyframe value at time (only works for floats)

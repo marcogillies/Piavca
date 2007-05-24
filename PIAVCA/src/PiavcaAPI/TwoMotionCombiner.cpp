@@ -196,7 +196,7 @@ bool TwoMotionCombiner::isNull(int trackId)const
 };
 
 //! get the type of the track corresponding to an iterator
-trackType TwoMotionCombiner::getTrackType(int trackId)const 
+int TwoMotionCombiner::getTrackType(int trackId)const 
 {
 	if(mot1 && !mot1->isNull(trackId))
 		return mot1->getTrackType(trackId);

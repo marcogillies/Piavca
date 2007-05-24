@@ -210,7 +210,7 @@ namespace Piavca
 				return true;
 		};
 		//! get the type of the track corresponding to an iterator
-		trackType getTrackType(int trackId)const 
+		int getTrackType(int trackId)const 
 		{
 			if(filterMot)
 				return filterMot->getTrackType(trackId);

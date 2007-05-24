@@ -48,6 +48,10 @@ void Reposition::calculateRootOffsets()
 {
 	if(isFacial())
 		return;
+	
+	//start_orientation = Quat();
+	//start_position = Vec();
+	
 	originalStart   = Vec();
 	oriOffset = start_orientation;
 	//oriOffset = Quat(start_orientation.Zangle(), Vec::ZAxis());
@@ -64,7 +68,7 @@ void Reposition::calculateRootOffsets()
 		//otherOri = Quat(otherOri.Zangle(), Vec::ZAxis());
 		oriOffset = oriOffset/otherOri;
 	}
-	oriOffset = Quat(oriOffset.Zangle(), Vec::ZAxis());
+	//oriOffset = Quat(oriOffset.Zangle(), Vec::ZAxis());
 	//oriOffset = Quat();
 	//oriOffset = Quat(1.57, Vec::ZAxis());
 };
@@ -101,7 +105,7 @@ bool Reposition::isNull(int trackId) const
 		return MotionFilter::isNull(trackId);
 };
 
-trackType Reposition::getTrackType(int trackId)const
+int Reposition::getTrackType(int trackId)const
 {
 	if (trackId == root_position_id)
 		return VEC_TYPE;
@@ -129,8 +133,10 @@ Vec Reposition::getVecValueAtTimeInternal(int trackId, float time)
 		if(!filterMot || filterMot->isNull(trackId))
 			return start_position;
 		Vec OriginalValue = filterMot->getVecValueAtTime(trackId, time);
+		//return OriginalValue;
 		Vec subtractedVec = oriOffset.transform(OriginalValue - originalStart);
 		//Vec subtractedVec = OriginalValue - originalStart;
+		//return OriginalValue;
 		if(maintainY)
 			return subtractedVec + start_position;
 		else
@@ -153,7 +159,8 @@ Quat Reposition::getQuatValueAtTimeInternal(int trackId, float time)
 	{
 		if(!filterMot || filterMot->isNull(trackId))
 			return start_orientation;
-		return oriOffset * filterMot->getQuatValueAtTime(trackId, time);
+		//return filterMot->getQuatValueAtTime(trackId, time);
+		return oriOffset*filterMot->getQuatValueAtTime(trackId, time);
 	}
 	else
 	{

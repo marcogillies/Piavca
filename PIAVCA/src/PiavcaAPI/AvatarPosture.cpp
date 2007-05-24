@@ -54,24 +54,24 @@ void AvatarPosture::getPostureFromAvatar(Avatar *av)
 	if(isFacial())
 	{	
 		for(int track = av->beginExpression(); track != Core::nullId; av->nextExpression(track))
-			if (isNull(track))
+			if (isNull(track) || !(getTrackType(track) & FLOAT_TYPE))
 				addFloatTrack(track, av->getFacialExpressionWeight(track));
 			else
 				setFloatKeyframe(track, 0, av->getFacialExpressionWeight(track));
 	}
 	else
 	{
-		if (isNull(root_position_id))
+		if (isNull(root_position_id) || !(getTrackType(root_position_id) & VEC_TYPE))
 			addVecTrack(root_position_id, av->getRootPosition());
 		else
 			setVecKeyframe(root_position_id, 0, av->getRootPosition());
-		if (isNull(root_orientation_id))
+		if (isNull(root_orientation_id) || !(getTrackType(root_orientation_id) & QUAT_TYPE))
 			addQuatTrack(root_orientation_id, av->getRootOrientation());
 		else
 			setQuatKeyframe(root_orientation_id, 0, av->getRootOrientation());
 
 		for(int joint = av->begin(); joint != Core::nullId; av->next(joint))
-			if (isNull(joint))
+			if (isNull(joint) || !(getTrackType(joint) & QUAT_TYPE))
 				addQuatTrack(joint, av->getJointOrientation(joint));
 			else
 				setQuatKeyframe(joint, 0, av->getJointOrientation(joint));

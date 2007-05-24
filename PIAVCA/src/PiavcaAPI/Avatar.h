@@ -366,6 +366,19 @@ public:
 	 */
 	void	setJointOrientation(std::vector< std::pair<int, Quat > > jointOrientation, jointCoord worldCoord = JOINTLOCAL_COORD);
 
+	//! set the value of the position of a joint
+	/*!
+	 *	The joint is specified via an ID.
+	 *	This can be done in various coordinate systems, 
+	 *	jointlocal is the coordante space of the joint (default)
+	 *	local is the space of the avatar root
+	 *	world is the world coordinates
+	 *	using the second two is likely to be much less efficient
+	 */
+	void	setJointPosition	(int jointId, const Vec &val, jointCoord worldCoord = JOINTLOCAL_COORD)
+	{
+		imp->setJointPosition(jointId, val, worldCoord);
+	};
 	//! get the current position of the start point of the joint
 	/*!
 	 *	calculated from the root position and joint angles by forward kinematics

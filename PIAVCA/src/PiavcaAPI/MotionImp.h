@@ -47,7 +47,7 @@ class PIAVCA_DECL Avatar;
 class PIAVCA_DECL Core;
 class PIAVCA_DECL Motion;
 class PIAVCA_DECL KeyframeMotion;
-enum trackType;
+//enum trackType;
 //! An implementation class for KeyframeMotions, see the track Motion object for full details.
 class PIAVCA_DECL MotionImp
 {
@@ -76,7 +76,7 @@ public:
 	//! get the name of the track corresponding to an iterator
 	//virtual tstring getTrackName(int trackId) const = 0;
 	//! get the type of the track corresponding to an iterator
-	virtual trackType getTrackType(int trackId) const = 0;
+	virtual int getTrackType(int trackId) const = 0;
 	
 	//! returns the length of the motion
 	virtual float getMotionLength() const=0;
@@ -123,9 +123,9 @@ public:
 	virtual void setQuatKeyframe(int trackId, float time, Quat value, Quat velocity) = 0; 
 	
 	//! returns the number of keyframes that a particular track has
-	virtual int getNumKeyframes(int trackId) = 0;
+	virtual int getNumKeyframes(int trackId, int type) = 0;
 	//! returns the time of a particular keyframe 
-	virtual float getKeyframeTime(int trackId, int keyframe)=0;
+	virtual float getKeyframeTime(int trackId, int type, int keyframe)=0;
 
 	//! get the keyframe value at time (only works for floats)
 	virtual float getFloatValueAtTimeInternal(int trackId, float time) = 0;

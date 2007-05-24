@@ -1,7 +1,3 @@
-# File: hello1.py
-
-import sys
-
 import sys
 
 import Piavca

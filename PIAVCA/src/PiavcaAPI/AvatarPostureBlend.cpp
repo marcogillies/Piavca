@@ -103,7 +103,7 @@ void AvatarPostureBlend::reblend(float time)
 	AvatarPosture *posture = new AvatarPosture(originalMotion->isFacial());
 	posture->getPostureFromAvatar(getAvatar());
 	MotionTransition *trans = new MotionTransition(posture, mot2);
-	setMotion1(NULL);
+	setMotion1(trans);
 	
 	if(!repositioner)
 	{

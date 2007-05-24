@@ -81,7 +81,7 @@ StandardMotionImp::StandardMotionImp(const tstring motionFileName, int flags, Mo
 	std::transform(suff.begin(), suff.end(), suff.begin(), tolower);
 	if(suff == "bvh")
 	{
-		tracks.assign(Piavca::Core::getCore()->getMaxJointId()+1, static_cast<BaseMotionTrack *>(0));
+		tracks.assign(Piavca::Core::getCore()->getMaxJointId()+1, vector<BaseMotionTrack *>());
 	
 		facial = false;
 		readBvhMotion(Piavca::Core::getCore(), this, TStringToString(motionFileName), flags, basePosture, test);
@@ -145,21 +145,21 @@ StandardMotionImp::StandardMotionImp(const tstring motionFileName, int flags, Mo
 			case FLOAT_TYPE :
 				while(is >> time >> fval)
 				{
-					if(isNull(trackId)) addFloatTrack(trackId, fval);
+					if(!(getTrackType(trackId) & FLOAT_TYPE)) addFloatTrack(trackId, fval);
 					setFloatKeyframe(trackId, time, fval);
 				}
 				break;
 			case VEC_TYPE :
 				while(is >> time >> vval)
 				{
-					if(isNull(trackId)) addVecTrack(trackId, vval);
+					if(!(getTrackType(trackId) & VEC_TYPE)) addVecTrack(trackId, vval);
 					setVecKeyframe(trackId, time, vval);
 				}
 				break;
 			case QUAT_TYPE :
 				while(is >> time >> qval)
 				{
-					if(isNull(trackId)) 
+					if(!(getTrackType(trackId) & QUAT_TYPE)) 
 					{
 						addQuatTrack(trackId, qval);
 						//std::cout << "setting first frame " << qval << std::endl;
@@ -204,21 +204,27 @@ StandardMotionImp::StandardMotionImp(const tstring motionFileName, int flags, Mo
 StandardMotionImp::StandardMotionImp(const StandardMotionImp &mot)
 {
 	facial = mot.facial;
-	tracks.reserve(mot.tracks.size());
+	//tracks.reserve(mot.tracks.size());
+	tracks.assign(mot.tracks.size(), vector<BaseMotionTrack *>());
 	for (std::vector< BaseMotionTrack * >::size_type  i = 0; i < mot.tracks.size(); i++)
 	{
-		if(mot.tracks[i])
-			tracks.push_back(mot.tracks[i]->clone());
-		else
-			tracks.push_back(NULL);
+		for(int j = 0; j < (int)mot.tracks.size(); j++)
+			tracks[i].push_back(mot.tracks[i][j]->clone());
+		//if(mot.tracks[i])
+		//	tracks.push_back(mot.tracks[i]->clone());
+		//else
+		//	tracks.push_back(NULL);
 	}
-	facial_tracks.reserve(mot.facial_tracks.size());
+	//facial_tracks.reserve(mot.facial_tracks.size());
+	facial_tracks.assign(mot.facial_tracks.size(), vector<BaseMotionTrack *>());
 	for (std::vector< BaseMotionTrack * >::size_type  i = 0; i < mot.facial_tracks.size(); i++)
 	{
-		if(mot.facial_tracks[i])
-			facial_tracks.push_back(mot.facial_tracks[i]->clone());
-		else
-			facial_tracks.push_back(NULL);
+		for(int j = 0; j < (int)mot.facial_tracks.size(); j++)
+			facial_tracks[i].push_back(mot.facial_tracks[i][j]->clone());
+		//if(mot.facial_tracks[i])
+		//	facial_tracks.push_back(mot.facial_tracks[i]->clone());
+		//else
+		//	facial_tracks.push_back(NULL);
 	}
 };
 	
@@ -231,22 +237,54 @@ const StandardMotionImp &StandardMotionImp::operator=(const StandardMotionImp &m
 	return (*this);
 };
 
-trackType StandardMotionImp::getTrackType(int trackId)const 
+BaseMotionTrack *StandardMotionImp::getTrack(int trackId, int tracktype)
+{
+	if (isNull(trackId)) 
+		return NULL;
+	else
+	{
+		if (trackId >= 0)
+		{
+			for (int i = 0; i < (int) tracks[trackId].size(); i++)
+				if (tracks[trackId][i]->getTrackType() == tracktype)
+					return tracks[trackId][i];
+			return NULL;
+		}
+		else
+		{
+			trackId = -trackId;
+			for (int i = 0; i < (int) tracks[trackId].size(); i++)
+				if (tracks[trackId][i]->getTrackType() == tracktype)
+					return tracks[trackId][i];
+			return NULL;
+		}
+	}
+}
+
+int StandardMotionImp::getTrackType(int trackId)const 
 {
 	if(trackId >= 0)
 	{
-		if (tracks[trackId] == NULL)
-			return NULL_TYPE;
-		else
-			return tracks[trackId]->getTrackType();
+		int type = NULL_TYPE;
+		for (int i = 0; i < (int) tracks[trackId].size(); i++)
+			type |= tracks[trackId][i]->getTrackType();
+		return type;
+		//if (tracks[trackId] == NULL)
+		//	return NULL_TYPE;
+		//else
+		//	return tracks[trackId]->getTrackType();
 	}
 	else
 	{
 		trackId = -trackId;
-		if (facial_tracks[trackId] == NULL)
-			return NULL_TYPE;
-		else
-			return facial_tracks[trackId]->getTrackType();
+		int type = NULL_TYPE;
+		for (int i = 0; i < (int) facial_tracks[trackId].size(); i++)
+			type |= facial_tracks[trackId][i]->getTrackType();
+		return type;
+		//if (facial_tracks[trackId] == NULL)
+		//	return NULL_TYPE;
+		//else
+		//	return facial_tracks[trackId]->getTrackType();
 	}
 };
 
@@ -255,13 +293,17 @@ float StandardMotionImp::getMotionLength() const
 	float max = 0.0;
 	for (std::vector< BaseMotionTrack * >::size_type  i = 0; i < tracks.size(); i++)
 	{
-		if(tracks[i] && tracks[i]->getLength() > max)
-			max = tracks[i]->getLength();
+		//if(tracks[i] && tracks[i]->getLength() > max)
+		for (int j = 0; j < (int) tracks[i].size(); j++)
+			if (tracks[i][j]->getLength() > max)
+				max = tracks[i][j]->getLength();
 	}
 	for (std::vector< BaseMotionTrack * >::size_type  i = 0; i < facial_tracks.size(); i++)
 	{
-		if(facial_tracks[i] && facial_tracks[i]->getLength() > max)
-			max = facial_tracks[i]->getLength();
+		//if(facial_tracks[i] && facial_tracks[i]->getLength() > max)
+		for (int j = 0; j < (int) facial_tracks[i].size(); j++)
+			if (facial_tracks[i][j]->getLength() > max)
+				max = facial_tracks[i][j]->getLength();
 	}
 	return max;
 };
@@ -277,10 +319,10 @@ void StandardMotionImp::addFloatTrack(int trackId, float initialValue)
 		}
 		if(static_cast<size_t>(trackId) >= tracks.size() )
 		{
-			tracks.insert(tracks.end(), trackId - (tracks.size()-1), NULL);
+			tracks.insert(tracks.end(), trackId - (tracks.size()-1),  vector<BaseMotionTrack *>());
 		}
-		if(tracks[trackId] == NULL)
-			tracks[trackId] = new MotionTrack<float>(initialValue, FLOAT_TYPE);
+		if(getTrack(trackId, FLOAT_TYPE) == NULL)
+			tracks[trackId].push_back(new MotionTrack<float>(initialValue, FLOAT_TYPE));
 		else
 			setFloatKeyframe(trackId, 0.0, initialValue);
 	}
@@ -294,10 +336,10 @@ void StandardMotionImp::addFloatTrack(int trackId, float initialValue)
 		trackId = -trackId;
 		if(static_cast<size_t>(trackId) >= facial_tracks.size())
 		{
-			facial_tracks.insert(facial_tracks.end(), trackId - (facial_tracks.size()-1), NULL);
+			facial_tracks.insert(facial_tracks.end(), trackId - (facial_tracks.size()-1),  vector<BaseMotionTrack *>());
 		}
-		if(facial_tracks[trackId] == NULL)
-			facial_tracks[trackId] = new MotionTrack<float>(initialValue, FLOAT_TYPE);
+		if(getTrack(-trackId, FLOAT_TYPE) == NULL)
+			facial_tracks[trackId].push_back(new MotionTrack<float>(initialValue, FLOAT_TYPE));
 		else
 			setFloatKeyframe(-trackId, 0.0, initialValue);
 	}
@@ -313,10 +355,10 @@ void StandardMotionImp::addVecTrack(int trackId, const Vec &initialValue)
 		}
 		if(static_cast<size_t>(trackId) >= tracks.size() )
 		{
-			tracks.insert(tracks.end(), trackId - (tracks.size()-1), NULL);
+			tracks.insert(tracks.end(), trackId - (tracks.size()-1),  vector<BaseMotionTrack *>());
 		}
-		if(tracks[trackId] == NULL)
-			tracks[trackId] = new MotionTrack<Vec>(initialValue, VEC_TYPE);
+		if(getTrack(trackId, VEC_TYPE) == NULL)
+			tracks[trackId].push_back(new MotionTrack<Vec>(initialValue, VEC_TYPE));
 		else
 			setVecKeyframe(trackId, 0.0, initialValue);
 	}
@@ -330,10 +372,10 @@ void StandardMotionImp::addVecTrack(int trackId, const Vec &initialValue)
 		trackId = -trackId;
 		if(static_cast<size_t>(trackId) >= facial_tracks.size())
 		{
-			facial_tracks.insert(facial_tracks.end(), trackId - (facial_tracks.size()-1), NULL);
+			facial_tracks.insert(facial_tracks.end(), trackId - (facial_tracks.size()-1),  vector<BaseMotionTrack *>());
 		}
-		if(facial_tracks[trackId] == NULL)
-			facial_tracks[trackId] = new MotionTrack<Vec>(initialValue, VEC_TYPE);
+		if(getTrack(-trackId, VEC_TYPE) == NULL)
+			facial_tracks[trackId].push_back(new MotionTrack<Vec>(initialValue, VEC_TYPE));
 		else
 			setVecKeyframe(-trackId, 0.0, initialValue);
 	}
@@ -349,10 +391,10 @@ void StandardMotionImp::addQuatTrack(int trackId, const Quat &initialValue)
 		}
 		if(static_cast<size_t>(trackId) >= tracks.size())
 		{
-			tracks.insert(tracks.end(), trackId - (tracks.size()-1), NULL);
+			tracks.insert(tracks.end(), trackId - (tracks.size()-1),  vector<BaseMotionTrack *>());
 		}
-		if(tracks[trackId] == NULL)
-			tracks[trackId] = new MotionTrack<Quat>(initialValue, QUAT_TYPE);
+		if(getTrack(trackId, QUAT_TYPE) == NULL)
+			tracks[trackId].push_back(new MotionTrack<Quat>(initialValue, QUAT_TYPE));
 		else
 			setQuatKeyframe(trackId, 0.0, initialValue);
 	}
@@ -366,10 +408,10 @@ void StandardMotionImp::addQuatTrack(int trackId, const Quat &initialValue)
 		trackId = -trackId;
 		if(static_cast<size_t>(trackId) >= facial_tracks.size())
 		{
-			facial_tracks.insert(facial_tracks.end(), trackId - (facial_tracks.size()-1), NULL);
+			facial_tracks.insert(facial_tracks.end(), trackId - (facial_tracks.size()-1),  vector<BaseMotionTrack *>());
 		}
-		if(facial_tracks[trackId] == NULL)
-			facial_tracks[trackId] = new MotionTrack<Quat>(initialValue, QUAT_TYPE);
+		if(getTrack(-trackId, QUAT_TYPE) == NULL)
+			facial_tracks[trackId].push_back(new MotionTrack<Quat>(initialValue, QUAT_TYPE));
 		else
 			setQuatKeyframe(-trackId, 0.0, initialValue);
 	}
@@ -377,7 +419,7 @@ void StandardMotionImp::addQuatTrack(int trackId, const Quat &initialValue)
 
 void StandardMotionImp::setFloatKeyframe(int trackId, float time, float value)
 {
-    BaseMotionTrack *track = getTrack(trackId);
+    BaseMotionTrack *track = getTrack(trackId, FLOAT_TYPE);
     if(track == NULL)
 	{
 		Piavca::Error(_PSTR("setFloatKeyframe called on a Null track"));
@@ -387,7 +429,7 @@ void StandardMotionImp::setFloatKeyframe(int trackId, float time, float value)
 }; 
 void StandardMotionImp::setFloatKeyframe(int trackId, float time, float value, float velocity)
 {
-    BaseMotionTrack *track = getTrack(trackId);
+    BaseMotionTrack *track = getTrack(trackId, FLOAT_TYPE);
     if(track == NULL)
 	{
 		Piavca::Error(_PSTR("setFloatcKeyframe called on a Null track"));
@@ -398,7 +440,7 @@ void StandardMotionImp::setFloatKeyframe(int trackId, float time, float value, f
 	
 void StandardMotionImp::setVecKeyframe(int trackId, float time, Vec value)
 {
-	BaseMotionTrack *track = getTrack(trackId);
+	BaseMotionTrack *track = getTrack(trackId, VEC_TYPE);
     if(track == NULL)
 	{
 		Piavca::Error(_PSTR("setVecKeyframe called on a Null track"));
@@ -409,7 +451,7 @@ void StandardMotionImp::setVecKeyframe(int trackId, float time, Vec value)
 	
 void StandardMotionImp::setVecKeyframe(int trackId, float time, Vec value, Vec velocity)
 {
-    BaseMotionTrack *track = getTrack(trackId);
+    BaseMotionTrack *track = getTrack(trackId, VEC_TYPE);
     if(track == NULL)
 	{
 		Piavca::Error(_PSTR("setVecKeyframe called on a Null track"));
@@ -420,7 +462,7 @@ void StandardMotionImp::setVecKeyframe(int trackId, float time, Vec value, Vec v
 	
 void StandardMotionImp::setQuatKeyframe(int trackId, float time, Quat value)
 {
-    BaseMotionTrack *track = getTrack(trackId);
+    BaseMotionTrack *track = getTrack(trackId, QUAT_TYPE);
     if(track == NULL)
 	{
 		Piavca::Error(_PSTR("setQuatKeyframe called on a Null track"));
@@ -430,19 +472,19 @@ void StandardMotionImp::setQuatKeyframe(int trackId, float time, Quat value)
 };
 void StandardMotionImp::setQuatKeyframe(int trackId, float time, Quat value, Quat velocity)
 {
-    BaseMotionTrack *track = getTrack(trackId);
+    BaseMotionTrack *track = getTrack(trackId, QUAT_TYPE);
     if(track == NULL)
 	{
 		Piavca::Error(_PSTR("setQuatKeyframe called on a Null track"));
 		return;
 	}
-	tracks[trackId]->setQuatKeyframe(time, value, velocity);
+	track->setQuatKeyframe(time, value, velocity);
 }; 
 
 
-int StandardMotionImp::getNumKeyframes(int trackId)
+int StandardMotionImp::getNumKeyframes(int trackId, int type)
 {
-	BaseMotionTrack *track = getTrack(trackId);
+	BaseMotionTrack *track = getTrack(trackId, type);
     if(track == NULL)
 	{
 		Piavca::Error(_PSTR("getNumKeyframes called on a Null track"));
@@ -451,9 +493,9 @@ int StandardMotionImp::getNumKeyframes(int trackId)
 	return track->getNumKeyframes();	
 };
 
-float StandardMotionImp::getKeyframeTime(int trackId, int keyframe)
+float StandardMotionImp::getKeyframeTime(int trackId, int type, int keyframe)
 {
-	BaseMotionTrack *track = getTrack(trackId);
+	BaseMotionTrack *track = getTrack(trackId, type);
     if(track == NULL)
 	{
 		Piavca::Error(_PSTR("getKeyframeTime called on a Null track"));
@@ -464,7 +506,7 @@ float StandardMotionImp::getKeyframeTime(int trackId, int keyframe)
 	
 float StandardMotionImp::getFloatValueAtTimeInternal(int trackId, float time)  
 {
-    BaseMotionTrack *track = getTrack(trackId);
+    BaseMotionTrack *track = getTrack(trackId, FLOAT_TYPE);
     if(track == NULL)
 	{
 		Piavca::Error(_PSTR("getFloatValueAtTimeInternal called on a Null track"));
@@ -474,7 +516,7 @@ float StandardMotionImp::getFloatValueAtTimeInternal(int trackId, float time)
 };
 Vec StandardMotionImp::getVecValueAtTimeInternal(int trackId, float time)  
 {
-    BaseMotionTrack *track = getTrack(trackId);
+    BaseMotionTrack *track = getTrack(trackId, VEC_TYPE);
     if(track == NULL)
 	{
 		Piavca::Error(_PSTR("getVecValueAtTimeInternal called on a Null track"));
@@ -484,7 +526,7 @@ Vec StandardMotionImp::getVecValueAtTimeInternal(int trackId, float time)
 };
 Quat StandardMotionImp::getQuatValueAtTimeInternal(int trackId, float time) 
 {
-	BaseMotionTrack *track = getTrack(trackId);
+	BaseMotionTrack *track = getTrack(trackId, QUAT_TYPE);
     if(track == NULL)
 	{
 		Piavca::Error(_PSTR("getQuatValueAtTimeInternal called on a Null track"));
@@ -498,37 +540,61 @@ void StandardMotionImp::deleteAllTracks()
 {
 	for (std::vector< BaseMotionTrack * >::size_type i = 0; i < tracks.size(); i++)
 	{
-		delete tracks[i];
-		tracks[i] = NULL;
+		for (int j = 0; j < (int)tracks[i].size(); j++)
+		{
+			delete tracks[i][j];
+		}
+		tracks[i].clear();
 	}
 	for (std::vector< BaseMotionTrack * >::size_type i = 0; i < facial_tracks.size(); i++)
 	{
-		delete facial_tracks[i];
-		facial_tracks[i] = NULL;
+		for (int j = 0; j < (int)facial_tracks[i].size(); j++)
+		{
+			delete facial_tracks[i][j];
+		}
+		facial_tracks[i].clear();
 	}
 };
 void StandardMotionImp::clearTrack(int trackId, bool createFirstFrame)
 {
-	BaseMotionTrack *track = getTrack(trackId);
-    if(track == NULL)
+	if (trackId >= 0)
 	{
-		Piavca::Error(_PSTR("clearTrack called on a Null track"));
-		return;
+		for (int j = 0; j < (int)tracks[trackId].size(); j++)
+		{
+			tracks[trackId][j]->clear(createFirstFrame);
+		}
 	}
-	if(track)
-		track->clear(createFirstFrame);
+	else
+	{
+		for (int j = 0; j < (int)facial_tracks[-trackId].size(); j++)
+		{
+			facial_tracks[-trackId][j]->clear(createFirstFrame);
+		}
+	}
+	//BaseMotionTrack *track = getTrack(trackId);
+    //if(track == NULL)
+	//{
+	//	Piavca::Error(_PSTR("clearTrack called on a Null track"));
+	//	return;
+	//}
+	//if(track)
+	//	track->clear(createFirstFrame);
 }
 
 void StandardMotionImp::clearAllTracks(bool createFirstFrame)
 {
 	for (std::vector< BaseMotionTrack * >::size_type i = 0; i < tracks.size(); i++)
 	{
-		if(tracks[i])
-			tracks[i]->clear(createFirstFrame);
+		for (int j = 0; j < (int)tracks[i].size(); j++)
+		{
+			tracks[i][j]->clear(createFirstFrame);
+		}
 	}
 	for (std::vector< BaseMotionTrack * >::size_type i = 0; i < facial_tracks.size(); i++)
 	{
-		if(facial_tracks[i])
-			facial_tracks[i]->clear(createFirstFrame);
+		for (int j = 0; j < (int)facial_tracks[i].size(); j++)
+		{
+			facial_tracks[i][j]->clear(createFirstFrame);
+		}
 	}
 };

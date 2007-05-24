@@ -816,7 +816,7 @@ void AvatarCal3DImp::setJointOrientation(int jointId, const Quat &Orientation, j
    }
    calq *= bone->getCoreBone()->getRotation();
    bone->setRotation(calq);
-   bone->setTranslation(bone->getCoreBone()->getTranslation());
+   //bone->setTranslation(bone->getCoreBone()->getTranslation());
 };
 	
 Quat AvatarCal3DImp::getJointOrientation	(int jointId, jointCoord worldCoord)
@@ -889,7 +889,46 @@ Quat AvatarCal3DImp::getJointOrientation	(int jointId, jointCoord worldCoord)
       }
   return Quat();
 }
-	
+
+
+void AvatarCal3DImp::setJointPosition(int jointId, const Vec &Position, jointCoord worldCoord)
+{
+   if(jointId < 0)
+   {
+       Piavca::Error("Null joint Id passed in to setJointOrientation");
+	   return;
+   }
+   if(joints[jointId].cal3dId < 0)
+   {
+       Piavca::Error("setJointOrientation called on joint missing in avatar");
+	   return;
+   }
+   if(!cal_model)
+   {
+       Piavca::Error("setJointOrientation called on empty avatar");
+	   return;
+   }
+
+   CalVector calv = VecToCalVec(Position);
+   
+   CalSkeleton *skel = cal_model->getSkeleton();
+   if(!skel)
+   {
+       Piavca::Error("setJointOrientation called on avatar with no skeleton");
+	   return;
+   }
+   CalBone *bone = skel->getBone(joints[jointId].cal3dId);
+   if(!bone)
+   {
+       Piavca::Error("setJointOrientation called on joint that does not exist in avatar");
+	   return;
+   }
+   calv += bone->getCoreBone()->getTranslation();
+   //bone->setRotation(bone->getCoreBone()->getRotation());
+   bone->setTranslation(calv);
+};
+
+
 Vec AvatarCal3DImp::getJointBasePosition (int jointId, jointCoord worldCoord)
 {
 

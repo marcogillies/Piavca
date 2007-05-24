@@ -95,9 +95,9 @@ float MotionCal3DImp::getFloatValueAtTimeInternal(int trackId, float time)
 
 Vec MotionCal3DImp::getVecValueAtTimeInternal(int trackId, float time) 
 {
-	if(trackId != root_position_id)
+	if(trackId == root_orientation_id)
 	{
-		Piavca::Error("attempted to call a Vec method on a non-root track of a Cal3D animation\n");
+		Piavca::Error("attempted to call a Vec method on the root_orientation track of a Cal3D animation\n");
 		return Vec();
 	}
 	else if (isNull(trackId))
@@ -112,9 +112,11 @@ Vec MotionCal3DImp::getVecValueAtTimeInternal(int trackId, float time)
 		CalVector translation;
 		CalQuaternion rotation;
 		track->getState(time, translation, rotation);
+		if(trackId == root_position_id)
+			return CalVecToVec(translation);// - baseTrans;
 		CalCoreBone *bone = cal3DSkel->getCoreBone(tracksMap[trackId]);
 		Vec baseTrans = CalVecToVec(bone->getTranslation());
-		return CalVecToVec(translation);// - baseTrans;
+		return CalVecToVec(translation) - baseTrans;
 	}
 }
 
@@ -146,13 +148,13 @@ Quat MotionCal3DImp::getQuatValueAtTimeInternal(int trackId, float time)
 	}
 }
 
-int MotionCal3DImp::getNumKeyframes(int trackId)
+int MotionCal3DImp::getNumKeyframes(int trackId, int type)
 {
 	CalCoreTrack *track = cal3DAnim->getCoreTrack(tracksMap[trackId]);
 	return track->getCoreKeyframeCount();
 };
 
-float MotionCal3DImp::getKeyframeTime(int trackId, int keyframe)
+float MotionCal3DImp::getKeyframeTime(int trackId, int type, int keyframe)
 {
 	CalCoreTrack *track = cal3DAnim->getCoreTrack(tracksMap[trackId]);
 	return track->getCoreKeyframe(keyframe)->getTime();

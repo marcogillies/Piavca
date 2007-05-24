@@ -59,22 +59,26 @@ SelfBlend::SelfBlend(Motion *mot, float interval)
 
 	for (int track = mot2->begin(); track < mot2->end(); mot2->next(track))
 	{
-		switch(mot2->getTrackType(track))
+		int type = mot2->getTrackType(track);
+		if (type & FLOAT_TYPE)
 		{
-		case FLOAT_TYPE:  tmot->addFloatTrack(track, mot2->getFloatValueAtTime(track, mot2->getStartTime()));
+			tmot->addFloatTrack(track, mot2->getFloatValueAtTime(track, mot2->getStartTime()));
+		}
 						  break;
-		case VEC_TYPE:    tmot->addVecTrack(track, mot2->getVecValueAtTime(track, mot2->getStartTime()));
-						  break;
-		case QUAT_TYPE:   tmot->addQuatTrack(track, mot2->getQuatValueAtTime(track, mot2->getStartTime()));
-						  break;
+		if (type & VEC_TYPE)
+		{
+			tmot->addVecTrack(track, mot2->getVecValueAtTime(track, mot2->getStartTime()));
+		}
+		if (type & QUAT_TYPE)
+		{
+			tmot->addQuatTrack(track, mot2->getQuatValueAtTime(track, mot2->getStartTime()));
+		}
 		//case FLOAT_TYPE:  tmot->addFloatTrack(track, mot2->getFloatValueAtTime(track, 0.0));
 		//				  break;
 		//case VEC_TYPE:    tmot->addVecTrack(track, mot2->getVecValueAtTime(track, 0.0));
 		//				  break;
 		//case QUAT_TYPE:   tmot->addQuatTrack(track, mot2->getQuatValueAtTime(track, 0.0));
 		//				  break;
-		default:		  Piavca::Error(_T("Unknown track type"));
-		}
 	}
 };
 
@@ -107,24 +111,21 @@ void SelfBlend::setMotion(Motion *mot)
 
 	for (int track = mot2->begin(); track < mot2->end(); mot2->next(track))
 	{
-		switch(mot2->getTrackType(track))
+		int type = mot2->getTrackType(track);
+		if (type & FLOAT_TYPE)
 		{
-		case FLOAT_TYPE:  if(tmot->isNull(track)) 
-							  tmot->addFloatTrack(track, mot2->getFloatValueAtTime(track, mot2->getStartTime()));
-						  //else
-						//	  tmot->setFloatKeyframe(track, 0.0, mot2->getFloatValueAtTime(track, mot2->getStartTime()));
-						  break;
-		case VEC_TYPE:    if(tmot->isNull(track)) 
-							  tmot->addVecTrack(track, mot2->getVecValueAtTime(track, mot2->getStartTime()));
-						  //else
-						//	  tmot->setVecKeyframe(track, 0.0, mot2->getVecValueAtTime(track, mot2->getStartTime()));
-						  break;
-		case QUAT_TYPE:   if(tmot->isNull(track)) 
-							  tmot->addQuatTrack(track, mot2->getQuatValueAtTime(track, mot2->getStartTime()));
-						  //else
-							//  tmot->setQuatKeyframe(track, 0.0, mot2->getQuatValueAtTime(track, mot2->getStartTime()));
-						  break;
-		default:		  Piavca::Error(_T("Unknown track type"));
+			if(tmot->isNull(track) || !(getTrackType(track) & FLOAT_TYPE))
+				tmot->addFloatTrack(track, mot2->getFloatValueAtTime(track, mot2->getStartTime()));
+		}
+		if (type & VEC_TYPE)
+		{
+			if(tmot->isNull(track) || !(getTrackType(track) & VEC_TYPE))
+				  tmot->addVecTrack(track, mot2->getVecValueAtTime(track, mot2->getStartTime()));
+		}
+		if (type & QUAT_TYPE)
+		{
+			if(tmot->isNull(track) || !(getTrackType(track) & QUAT_TYPE))
+				  tmot->addQuatTrack(track, mot2->getQuatValueAtTime(track, mot2->getStartTime()));
 		}
 	}
 	//std::cout << "self blend set motion\n";
@@ -152,15 +153,18 @@ void SelfBlend::reblend(float time)
 	
 	for(int track = tmot->begin(); track < tmot->end(); tmot->next(track))
 	{
-		switch(mot1->getTrackType(track))
+		int type = mot2->getTrackType(track);
+		if (type & FLOAT_TYPE)
 		{
-		case FLOAT_TYPE:  tmot->setFloatKeyframe(track, 0, getFloatValueAtTime(track, time));
-						  break;
-		case VEC_TYPE:    tmot->setVecKeyframe(track, 0, getVecValueAtTime(track, time));
-						  break;
-		case QUAT_TYPE:   tmot->setQuatKeyframe(track, 0, getQuatValueAtTime(track, time));
-						  break;
-		default:		  Piavca::Error(_T("Unknown track type"));
+			tmot->setFloatKeyframe(track, 0, getFloatValueAtTime(track, time));
+		}
+		if (type & VEC_TYPE)
+		{
+			  tmot->setVecKeyframe(track, 0, getVecValueAtTime(track, time));
+		}
+		if (type & QUAT_TYPE)
+		{
+			 tmot->setQuatKeyframe(track, 0, getQuatValueAtTime(track, time));
 		}
 	}
 	setBlendStart(time);

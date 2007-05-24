@@ -72,7 +72,7 @@ namespace Piavca
 			return false;
 		}
 		//! get the type of the track corresponding to an ID
-		virtual trackType getTrackType(int trackId)const 
+		virtual int getTrackType(int trackId)const 
 		{ 
 			if(facial) 
 				return FLOAT_TYPE;

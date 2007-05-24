@@ -101,7 +101,7 @@ namespace Piavca
 		bool isNull(int trackId)const;
 		
 		//! get the type of the track corresponding to an iterator
-		trackType getTrackType(int trackId)const ;
+		int getTrackType(int trackId)const ;
 
 		void setMotion1(Motion *mot);
 		void setMotion2(Motion *mot);

@@ -46,25 +46,27 @@ void MotionPosture::getPostureFromMotion(Motion *mot, float time)
 		time = mot->getStartTime();
 	for (int track = mot->begin(); track < mot->end(); mot->next(track))
 	{
-		switch(mot->getTrackType(track))
+		int type = mot->getTrackType(track);
+		if (type & FLOAT_TYPE)
 		{
-		case FLOAT_TYPE:  if(isNull(track)) 
-							  addFloatTrack(track, mot->getFloatValueAtTime(track, time));
-						  else
-							  setFloatKeyframe(track, 0.0, mot->getFloatValueAtTime(track, time));
-						  break;
-		case VEC_TYPE:    if(isNull(track)) 
-							  addVecTrack(track, mot->getVecValueAtTime(track, time));
-						  else
-							  setVecKeyframe(track, 0.0, mot->getVecValueAtTime(track, time));
-						  break;
-		case QUAT_TYPE:   if(isNull(track)) 
-							  addQuatTrack(track, mot->getQuatValueAtTime(track, time));
-						  else
-						      setQuatKeyframe(track, 0.0, mot->getQuatValueAtTime(track, time));
-						  break;
-		default:		  if(!isNull(track)) 
-							  Piavca::Error(_T("Unknown track type"));
+			if(isNull(track) || !(getTrackType(track) & FLOAT_TYPE))
+				  addFloatTrack(track, mot->getFloatValueAtTime(track, time));
+			  else
+				  setFloatKeyframe(track, 0.0, mot->getFloatValueAtTime(track, time));
+		}
+		if (type & VEC_TYPE)
+		{
+			if(isNull(track) || !(getTrackType(track) & VEC_TYPE))
+				  addVecTrack(track, mot->getVecValueAtTime(track, time));
+			  else
+				  setVecKeyframe(track, 0.0, mot->getVecValueAtTime(track, time));
+		}
+		if (type & QUAT_TYPE)
+		{
+			if(isNull(track) || !(getTrackType(track) & QUAT_TYPE)) 
+			  addQuatTrack(track, mot->getQuatValueAtTime(track, time));
+			else
+			  setQuatKeyframe(track, 0.0, mot->getQuatValueAtTime(track, time));
 		}
 	}
 

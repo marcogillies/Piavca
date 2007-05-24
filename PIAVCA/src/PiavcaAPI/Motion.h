@@ -56,7 +56,7 @@ namespace Piavca
 	class Avatar;
 
 	//! an enum defining the types that can be included in motion tracks
-	enum trackType {NULL_TYPE, FLOAT_TYPE, VEC_TYPE, QUAT_TYPE};
+	enum trackType {NULL_TYPE=0, FLOAT_TYPE=1, VEC_TYPE=2, QUAT_TYPE=4};
 
 
 	//! An exception class that is thrown when a type specific method of Motion is called with an iterator of the wrong type.
@@ -242,7 +242,7 @@ public:
 	// ! get the name of the track corresponding to an ID
 	//virtual tstring getTrackName(int trackId)const = 0;
 	//! get the type of the track corresponding to an ID
-	virtual trackType getTrackType(int trackId)const = 0;
+	virtual int getTrackType(int trackId)const = 0;
 	//@}
 
 	//! pause the motion so that it can be restarted from the current point
@@ -268,7 +268,7 @@ public:
 		if(pausedTime >=0)
 			return getVecValueAtTimeInternal(trackId, pausedTime);
 		else
-				return getVecValueAtTimeInternal(trackId, time+offsetTime);
+			return getVecValueAtTimeInternal(trackId, time+offsetTime);
 	};
 	//! get the value of a track at a given time (only works for Quats) 
 	Quat getQuatValueAtTime(int trackId, float time)

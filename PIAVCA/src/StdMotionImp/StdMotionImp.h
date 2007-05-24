@@ -74,34 +74,16 @@ class BaseMotionTrack;
 class PIAVCA_DECL StandardMotionImp : public MotionImp
 {
 	//! the tracks themselves
-	vector <BaseMotionTrack *> tracks;
-	vector <BaseMotionTrack *> facial_tracks;
+	vector < vector<BaseMotionTrack *> > tracks;
+	vector < vector<BaseMotionTrack *> > facial_tracks;
 
-	BaseMotionTrack *getTrack(int trackId)
-	{
-		if (isNull(trackId)) 
-			return NULL;
-		else
-		{
-			if (trackId >= 0)
-				return tracks[trackId];
-			else
-				return facial_tracks[-trackId];
-		}
-	}
+	BaseMotionTrack *getTrack(int trackId, int tracktype);
 
 public:
 	//! creates an empty motion (no tracks)
 	StandardMotionImp(bool _facial = false) :MotionImp(_facial)
 	{
-		//int numTracks; 
-		//if(facial)
-		//	numTracks = Piavca::Core::getCore()->getMaxExpressionId()+1;
-		//else
-		//	numTracks = Piavca::Core::getCore()->getMaxJointId()+1;
-		//tracks.assign(numTracks, static_cast<BaseMotionTrack *>(0));
-		//if(!facial)
-		//	facial_tracks.assign(Piavca::Core::getCore()->getMaxExpressionId()+1, static_cast<BaseMotionTrack *>(0));
+		
 	};
 	//! read in from a bvh file
 	StandardMotionImp(tstring motionFileName, int flags, Motion *basePosture = NULL, bool test = false);
@@ -116,18 +98,18 @@ public:
 	 */
 	MotionImp *clone();
 
-	~StandardMotionImp(){deleteAllTracks();tracks.clear();};
+	~StandardMotionImp(){deleteAllTracks();tracks.clear();facial_tracks.clear();};
 
 	//! given an iterator tests whether it actually points to anything or if its null
 	bool isNull(int trackId) const  
 	{
 		if(trackId >= 0)
-			return (trackId >= static_cast<int>(tracks.size()) || tracks[trackId] == NULL);
+			return (trackId >= static_cast<int>(tracks.size()) || tracks[trackId].empty());
 		else
-			return ((-trackId) >= static_cast<int>(facial_tracks.size()) || facial_tracks[(-trackId)] == NULL);
+			return ((-trackId) >= static_cast<int>(facial_tracks.size()) || facial_tracks[(-trackId)].empty());
 	};
 	//! get the type of the track corresponding to an iterator
-	trackType getTrackType(int trackId)const ;
+	int getTrackType(int trackId)const ;
 	
 	//! returns the length of the motion
 	virtual float getMotionLength() const;
@@ -175,9 +157,9 @@ public:
 	void setQuatKeyframe(int trackId, float time, Quat value, Quat velocity);	
 
 	//! returns the number of keyframes that a particular track has
-	int getNumKeyframes(int trackId);
+	int getNumKeyframes(int trackId, int type);
 	//! returns the time of a particular keyframe 
-	float getKeyframeTime(int trackId, int keyframe);
+	float getKeyframeTime(int trackId, int type, int keyframe);
 
 	//! get the keyframe value at time (only works for floats)
 	float getFloatValueAtTimeInternal(int trackId, float time);

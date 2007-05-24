@@ -58,14 +58,16 @@ public:
 	//! given an iterator tests whether it actually points to anything or if its null
 	bool isNull(int trackId) const  {return (trackId < 0 || trackId >= static_cast<int>(tracksMap.size()) || tracksMap[trackId] < 0);};
 	//! get the type of the track corresponding to an iterator
-	trackType getTrackType(int trackId)const 
+	int getTrackType(int trackId)const 
 	{
 		if(trackId < 0 || tracksMap[trackId] < 0)
 			return NULL_TYPE;
 		else if (trackId == root_position_id)
 			return VEC_TYPE;
-		else
+		else if (trackId == root_orientation_id)
 			return QUAT_TYPE;
+		else
+			return QUAT_TYPE | VEC_TYPE;
 	};
 
 	//! returns the length of the motion
@@ -95,9 +97,9 @@ public:
 
 	
 	//! returns the number of keyframes that a particular track has
-	int getNumKeyframes(int trackId);
+	int getNumKeyframes(int trackId, int type);
 	//! returns the time of a particular keyframe 
-	float getKeyframeTime(int trackId, int keyframe);
+	float getKeyframeTime(int trackId, int type, int keyframe);
 
 	/*! \name methods to write to tracks, Cal3D motions are read only so none of these will work
 	 *	Returns an iterator that points to the track

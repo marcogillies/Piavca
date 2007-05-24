@@ -54,7 +54,7 @@ PIAVCA_EXPORT float  MotionSaver::getFloatValueAtTimeInternal (int trackId, floa
 		Piavca::Error(_T("MotionSaver: trying to get a value from a null motion"));
 	}
 	float val =  filterMot->getFloatValueAtTime(trackId, time);
-	if(tmot->isNull(trackId))
+	if(tmot->isNull(trackId) || !(tmot->getTrackType(trackId) & FLOAT_TYPE))
 		tmot->addFloatTrack(trackId, val);
 	tmot->setFloatKeyframe(trackId, time, val);
 	return val;
@@ -67,7 +67,7 @@ PIAVCA_EXPORT Vec  MotionSaver::getVecValueAtTimeInternal (int trackId, float ti
 		Piavca::Error(_T("MotionSaver: trying to get a value from a null motion"));
 	}
 	Vec val =  filterMot->getVecValueAtTime(trackId, time);
-	if(tmot->isNull(trackId))
+	if(tmot->isNull(trackId) || !(tmot->getTrackType(trackId) & VEC_TYPE))
 		tmot->addVecTrack(trackId, val);
 	tmot->setVecKeyframe(trackId, time, val);
 	return val;
@@ -80,7 +80,7 @@ PIAVCA_EXPORT Quat  MotionSaver::getQuatValueAtTimeInternal (int trackId, float 
 		Piavca::Error(_T("MotionSaver: trying to get a value from a null motion"));
 	}
 	Quat val =  filterMot->getQuatValueAtTime(trackId, time);
-	if(tmot->isNull(trackId))
+	if(tmot->isNull(trackId) || !(tmot->getTrackType(trackId) & QUAT_TYPE))
 		tmot->addQuatTrack(trackId, val);
 	tmot->setQuatKeyframe(trackId, time, val);
 	return val;
@@ -92,10 +92,10 @@ PIAVCA_EXPORT void MotionSaver::collectFrames(float framerate)
 	{
 		for(int i = begin(); i < end(); i++)
 		{
-			trackType type = getTrackType(i);
-			if(type == FLOAT_TYPE) getFloatValueAtTime(i, time);
-			if(type == VEC_TYPE) getVecValueAtTime(i, time);
-			if(type == QUAT_TYPE) getQuatValueAtTime(i, time);
+			int type = getTrackType(i);
+			if(type & FLOAT_TYPE) getFloatValueAtTime(i, time);
+			if(type & VEC_TYPE) getVecValueAtTime(i, time);
+			if(type & QUAT_TYPE) getQuatValueAtTime(i, time);
 		}
 	}
 }
@@ -113,20 +113,28 @@ PIAVCA_EXPORT void MotionSaver::save(tstring filename)
 			of << Core::getCore()->getExpressionName(track) << " ";
 		else
 			of << Core::getCore()->getJointName(track) << " ";
-		trackType type =  tmot->getTrackType(track);
-		switch (type) 
+		int type =  tmot->getTrackType(track);
+		if (type & FLOAT_TYPE)
 		{
-		case FLOAT_TYPE: of << "FLOAT "; break;
-		case VEC_TYPE:   of << "VEC "; break;
-		case QUAT_TYPE:  of << "QUAT "; break;
-		default: Piavca::Error(_T("Unknown track type\n"));
+			of << "FLOAT ";
+			type = FLOAT_TYPE;
+		}
+		else if (type & VEC_TYPE)
+		{
+			of << "VEC "; 
+			type = VEC_TYPE;
+		}
+		else if (type & QUAT_TYPE)
+		{
+			of << "QUAT "; 
+			type = QUAT_TYPE;
 		}
 		float lastKeyframeTime = -100.0;
 		int count = 0;
-		std::cout << tmot->getNumKeyframes(track) << " keyframes\n";
-		for(int i = 0; i < tmot->getNumKeyframes(track); i++)
+		std::cout << tmot->getNumKeyframes(track, type) << " keyframes\n";
+		for(int i = 0; i < tmot->getNumKeyframes(track, type); i++)
 		{
-			float t = tmot->getKeyframeTime(track, i);
+			float t = tmot->getKeyframeTime(track, type, i);
 			// avoid writing out keyframes that are too close together
 			if(fabs(t - lastKeyframeTime) < 0.01)
 				continue;

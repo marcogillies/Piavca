@@ -234,7 +234,7 @@ namespace Piavca
 				|| trackId == lookUpId || trackId == lookDownId);
 		}
 		//! get the type of the track corresponding to an ID
-		virtual trackType getTrackType(int trackId)const { return QUAT_TYPE;};
+		virtual int getTrackType(int trackId)const { return QUAT_TYPE;};
 
 		//! works out whether the avatar can comfortably turn to look at a position
 		bool canLookAt(Vec location);

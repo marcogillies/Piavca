@@ -60,24 +60,24 @@ const KeyframeMotion &KeyframeMotion::operator=(Motion &mot)
 	int i;
 	for(int track = mot.begin(); track < mot.end(); mot.next(track))
 	{
-		switch(mot.getTrackType(track))
+		int type = mot.getTrackType(track);
+		if (type & FLOAT_TYPE)
 		{
-		case FLOAT_TYPE:
 			addFloatTrack(track, mot.getFloatValueAtTime(track, 0));
 			for( i = 0; i <= maxKeyframe; i++) 
 				setFloatKeyframe(track, i*keyframeSpacing, mot.getFloatValueAtTime(track, i*keyframeSpacing));
-			break;
-		case VEC_TYPE:
+		}
+		if (type & VEC_TYPE)
+		{
 			addVecTrack(track, mot.getVecValueAtTime(track, 0));
 			for( i = 0; i <= maxKeyframe; i++) 
 				setVecKeyframe(track, i*keyframeSpacing, mot.getVecValueAtTime(track, i*keyframeSpacing));
-			break;
-		case QUAT_TYPE:
+		}
+		if (type & QUAT_TYPE)
+		{
 			addQuatTrack(track, mot.getQuatValueAtTime(track, 0));
 			for( i = 0; i <= maxKeyframe; i++) 
 				setQuatKeyframe(track, i*keyframeSpacing, mot.getQuatValueAtTime(track, i*keyframeSpacing));
-			break;
-		default: Piavca::Error(_T("Unknown track type"));
 		}
 	}
 	return *this;
@@ -89,15 +89,18 @@ KeyframeMotion *Piavca::copyMotionPosture(Motion *mot, float time)
 
 	for (int track = mot->begin(); track < mot->end(); mot->next(track))
 	{
-		switch(mot->getTrackType(track))
+		int type = tmot->getTrackType(track);
+		if (type & FLOAT_TYPE)
 		{
-		case FLOAT_TYPE:  tmot->addFloatTrack(track, mot->getFloatValueAtTime(track, time));
-						  break;
-		case VEC_TYPE:    tmot->addVecTrack(track, mot->getVecValueAtTime(track, time));
-						  break;
-		case QUAT_TYPE:   tmot->addQuatTrack(track, mot->getQuatValueAtTime(track, time));
-						  break;
-		default:		  Error(_T("Unknown track type"));
+			tmot->addFloatTrack(track, mot->getFloatValueAtTime(track, time));
+		}
+		if (type & VEC_TYPE)
+		{
+			tmot->addVecTrack(track, mot->getVecValueAtTime(track, time));
+		}
+		if (type & QUAT_TYPE)
+		{
+			tmot->addQuatTrack(track, mot->getQuatValueAtTime(track, time));
 		}
 	}
 	return tmot;

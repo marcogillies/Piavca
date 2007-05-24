@@ -52,12 +52,12 @@ def makeFrameArray(motion, fps):
 		if( not motion.isNull(joint)):
 			#print joint, "is not null"
 			type = motion.getTrackType(joint)
-			if type == Piavca.FLOAT_TYPE:
+			if type & Piavca.FLOAT_TYPE:
 				m[0][joint] = [motion.getFloatValueAtTime(joint, float(t)/float(fps)) for t in range(length)]
-			elif type == Piavca.VEC_TYPE:
-				m[0][joint] = [motion.getVecValueAtTime(joint, float(t)/float(fps)) for t in range(length)]
-			elif type == Piavca.QUAT_TYPE:
+			elif type & Piavca.QUAT_TYPE:
 				m[0][joint] = [motion.getQuatValueAtTime(joint, float(t)/float(fps)) for t in range(length)]
+			elif type & Piavca.VEC_TYPE:
+				m[0][joint] = [motion.getVecValueAtTime(joint, float(t)/float(fps)) for t in range(length)]
 			else:
 				Piavca.PiavcaError("Unknown track type " + str(type))
 			m[1][joint] = []

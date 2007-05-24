@@ -77,7 +77,7 @@ namespace Piavca
 				Piavca::Error(_T("Scale motion speed: trying to get a value from a null motion"));
 			}
 			float t = time;
-			if(warpFunc && !warpFunc->isNull(trackId))
+			if(warpFunc && warpFunc->getTrackType(trackId) & FLOAT_TYPE)
 				t = warpFunc->getFloatValueAtTime(trackId, time);
 		    return filterMot->getFloatValueAtTime(trackId, t);
 		};
@@ -90,7 +90,7 @@ namespace Piavca
 				Piavca::Error(_T("Scale motion speed: trying to get a value from a null motion"));
 			}
 			float t = time;
-			if(warpFunc && !warpFunc->isNull(trackId))
+			if(warpFunc && warpFunc->getTrackType(trackId) & FLOAT_TYPE)
 				t = warpFunc->getFloatValueAtTime(trackId, time);
 		    return  filterMot->getVecValueAtTime(trackId, t);
 		};
@@ -103,7 +103,7 @@ namespace Piavca
 				Piavca::Error(_T("Scale motion speed: trying to get a value from a null motion"));
 			}
 			float t = time;
-			if(warpFunc && !warpFunc->isNull(trackId))
+			if(warpFunc && warpFunc->getTrackType(trackId) & FLOAT_TYPE)
 				t = warpFunc->getFloatValueAtTime(trackId, time);
 		    return filterMot->getQuatValueAtTime(trackId, t);
 		};

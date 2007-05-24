@@ -101,7 +101,7 @@ namespace Piavca
 		virtual bool isNull(int trackId)const;
 		
 		//! get the type of the track corresponding to an ID
-		virtual trackType getTrackType(int trackId)const;
+		virtual int getTrackType(int trackId)const;
 
 	    //! calculates the values of a keyframe
 	    PIAVCA_EXPORT virtual float  getFloatValueAtTimeInternal (int trackId, float time);
