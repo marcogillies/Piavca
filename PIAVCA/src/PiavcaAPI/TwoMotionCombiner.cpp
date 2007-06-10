@@ -199,7 +199,10 @@ bool TwoMotionCombiner::isNull(int trackId)const
 int TwoMotionCombiner::getTrackType(int trackId)const 
 {
 	if(mot1 && !mot1->isNull(trackId))
-		return mot1->getTrackType(trackId);
+		if(mot2 && !mot2->isNull(trackId))
+			return mot1->getTrackType(trackId) | mot2->getTrackType(trackId);
+		else 
+			return mot1->getTrackType(trackId);
 	else
 		if(mot2 && !mot2->isNull(trackId))
 			return mot2->getTrackType(trackId);

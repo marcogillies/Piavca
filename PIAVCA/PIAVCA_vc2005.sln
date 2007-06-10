@@ -1,9 +1,5 @@
 Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PiavcaAPI", "src\PiavcaAPI\PiavcaAPI_vc2005.vcproj", "{7E061BC4-F08C-40F0-8A91-8CAFD582054D}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PiavcaCal3dApp", "src\PiavcaCal3dApp\PiavcaCal3dApp_vc2005.vcproj", "{D0D359C9-A81F-430D-AFBB-5CFA65688A24}"
-EndProject
+# Visual C++ Express 2005
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PiavcaCal3DImp", "src\PiavcaCal3dImp\PiavcaCal3DImp_vc2005.vcproj", "{97813F74-80B5-4861-8CEE-99328B65173C}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PiavcaPythonInterface", "src\PiavcaPythonInterface\PiavcaPythonInterface_vc2005.vcproj", "{9BE2E296-9B8C-4972-B627-06F7A635204C}"
@@ -18,7 +14,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Piavca_base", "src\Piavca_b
 	ProjectSection(ProjectDependencies) = postProject
 		{E2404604-543C-4863-BF9D-BE3E995DF4E4} = {E2404604-543C-4863-BF9D-BE3E995DF4E4}
 		{97813F74-80B5-4861-8CEE-99328B65173C} = {97813F74-80B5-4861-8CEE-99328B65173C}
-		{7E061BC4-F08C-40F0-8A91-8CAFD582054D} = {7E061BC4-F08C-40F0-8A91-8CAFD582054D}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PiavcaGlut", "src\PiavcaGlut\PiavcaGlut.vcproj", "{7F966FC6-2A00-4955-A173-CEF366A2496D}"
@@ -36,22 +31,6 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7E061BC4-F08C-40F0-8A91-8CAFD582054D}.C Only Debug|Win32.ActiveCfg = C Only Debug|Win32
-		{7E061BC4-F08C-40F0-8A91-8CAFD582054D}.C Only Debug|Win32.Build.0 = C Only Debug|Win32
-		{7E061BC4-F08C-40F0-8A91-8CAFD582054D}.Debug|Win32.ActiveCfg = Debug|Win32
-		{7E061BC4-F08C-40F0-8A91-8CAFD582054D}.Debug|Win32.Build.0 = Debug|Win32
-		{7E061BC4-F08C-40F0-8A91-8CAFD582054D}.Dive Debug|Win32.ActiveCfg = Dive Debug|Win32
-		{7E061BC4-F08C-40F0-8A91-8CAFD582054D}.Dive Debug|Win32.Build.0 = Dive Debug|Win32
-		{7E061BC4-F08C-40F0-8A91-8CAFD582054D}.Release|Win32.ActiveCfg = Release|Win32
-		{7E061BC4-F08C-40F0-8A91-8CAFD582054D}.Release|Win32.Build.0 = Release|Win32
-		{D0D359C9-A81F-430D-AFBB-5CFA65688A24}.C Only Debug|Win32.ActiveCfg = Debug|Win32
-		{D0D359C9-A81F-430D-AFBB-5CFA65688A24}.C Only Debug|Win32.Build.0 = Debug|Win32
-		{D0D359C9-A81F-430D-AFBB-5CFA65688A24}.Debug|Win32.ActiveCfg = Debug|Win32
-		{D0D359C9-A81F-430D-AFBB-5CFA65688A24}.Debug|Win32.Build.0 = Debug|Win32
-		{D0D359C9-A81F-430D-AFBB-5CFA65688A24}.Dive Debug|Win32.ActiveCfg = Debug|Win32
-		{D0D359C9-A81F-430D-AFBB-5CFA65688A24}.Dive Debug|Win32.Build.0 = Debug|Win32
-		{D0D359C9-A81F-430D-AFBB-5CFA65688A24}.Release|Win32.ActiveCfg = Release|Win32
-		{D0D359C9-A81F-430D-AFBB-5CFA65688A24}.Release|Win32.Build.0 = Release|Win32
 		{97813F74-80B5-4861-8CEE-99328B65173C}.C Only Debug|Win32.ActiveCfg = Debug|Win32
 		{97813F74-80B5-4861-8CEE-99328B65173C}.C Only Debug|Win32.Build.0 = Debug|Win32
 		{97813F74-80B5-4861-8CEE-99328B65173C}.Debug|Win32.ActiveCfg = Debug|Win32

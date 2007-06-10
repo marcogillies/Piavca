@@ -388,7 +388,7 @@ void Avatar::showMotionAtTime	(float time, Motion *motion, bool detectChanges)
 
 	motion->preFrame(time);
 
-	Quat offset = Quat(1.57, Vec(0.0, 0.0, 1.0));
+	//Quat offset = Quat(1.57, Vec(0.0, 0.0, 1.0));
 
 	// set the root position and orientation
 	if(!motion->isNull(root_position_id))
@@ -405,7 +405,7 @@ void Avatar::showMotionAtTime	(float time, Motion *motion, bool detectChanges)
 			lastPos = v;
 		}
 		//std::cout << "root orientation in avatar" << v << std::endl;
-		v = offset.transform(v);
+		//v = offset.transform(v);
 		setRootPosition(v);
 		//std::cout << "root " << mot->getVecValueAtTime(root_position_id, time) << std::endl;
 	}
@@ -415,7 +415,7 @@ void Avatar::showMotionAtTime	(float time, Motion *motion, bool detectChanges)
 	{
 		Quat q = motion->getQuatValueAtTime(root_orientation_id, time);
 		//std::cout << "root orientation in avatar" << q << std::endl;
-		q = offset * q;
+		//q = offset * q;
 		setRootOrientation(q);
 		//std::cout << "root " << mot->getQuatValueAtTime(root_orientation_id, time) << std::endl;
 	}
@@ -428,10 +428,10 @@ void Avatar::showMotionAtTime	(float time, Motion *motion, bool detectChanges)
 		if(!motion->isNull(joint))
 		{
 			int type = motion->getTrackType(joint);
-			//if (type & QUAT_TYPE)
-			//	setJointOrientation(joint, motion->getQuatValueAtTime(joint, time));
-			//if (type & VEC_TYPE)
-			//	setJointPosition(joint, motion->getVecValueAtTime(joint, time));
+			if (type & QUAT_TYPE)
+				setJointOrientation(joint, motion->getQuatValueAtTime(joint, time));
+			if (type & VEC_TYPE)
+				setJointPosition(joint, motion->getVecValueAtTime(joint, time));
 			//std::cout << mot->getQuatValueAtTime(joint, time) << std::endl;
 		}
 		//else

@@ -814,7 +814,7 @@ void AvatarCal3DImp::setJointOrientation(int jointId, const Quat &Orientation, j
        Piavca::Error("setJointOrientation called on joint that does not exist in avatar");
 	   return;
    }
-   calq *= bone->getCoreBone()->getRotation();
+   calq = bone->getCoreBone()->getRotation()*calq;
    bone->setRotation(calq);
    //bone->setTranslation(bone->getCoreBone()->getTranslation());
 };
