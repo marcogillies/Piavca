@@ -79,6 +79,11 @@ void RunPythonMethod(Piavca::Core *core, char *methodName, float farg, const Vec
  */
 void RunPythonMethod(Piavca::Core *core, char *methodName, PyObject *arg, void *module=NULL);
 
+
+long RunPythonMethod_Long(Piavca::Core *core, char *methodName, void *module=NULL);
+long RunPythonMethod_Long(Piavca::Core *core, char *methodName, PyObject *arg, void *module=NULL);
+
+
 };
 
 #endif //PIAVCA_PYTHON_APP

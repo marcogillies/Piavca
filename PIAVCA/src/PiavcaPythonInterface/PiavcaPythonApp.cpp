@@ -507,6 +507,10 @@ void *Piavca::ImportModule(tstring fileName)
 
 }
 
+namespace Piavca{
+PyObject *RunPythonMethod_Internal(Piavca::Core *core, char *methodName, PyObject *pyArgs, void *module);
+};
+
 void Piavca::RunPythonMethod(Piavca::Core *core, char *methodName, void *module)
 {
 	PyObject *pyArgs = Py_BuildValue("()");
@@ -544,14 +548,36 @@ void Piavca::RunPythonMethod(Piavca::Core *core, char *methodName, float farg, c
 };
 
 
-void Piavca::RunPythonMethod(Piavca::Core *core, char *methodName, PyObject *pyArgs, void *module)
+void Piavca::RunPythonMethod(Piavca::Core *core, char *methodName, PyObject *arg, void *module)
 {
+	Piavca::RunPythonMethod_Internal(core, methodName, arg, module);
+};
+
+
+long Piavca::RunPythonMethod_Long(Piavca::Core *core, char *methodName, void *module)
+{
+	PyObject *pyArgs = Py_BuildValue("()");
+	return RunPythonMethod_Long(core, methodName, pyArgs, module);
+};
+long Piavca::RunPythonMethod_Long(Piavca::Core *core, char *methodName, PyObject *arg, void *module)
+{
+	PyObject *result = Piavca::RunPythonMethod_Internal(core, methodName, arg, module);
+	if (result)
+		return PyInt_AsLong(result);
+	else
+		return -1;
+};
+
+
+PyObject *Piavca::RunPythonMethod_Internal(Piavca::Core *core, char *methodName, PyObject *pyArgs, void *module)
+{
+	PyObject *result = NULL;
 	if (module == NULL)
 		module = g_pPyMod;
 	PyObject *pyMethod = PyObject_GetAttrString((PyObject *)module, methodName);
 	if(pyMethod)
 	{
-		PyEval_CallObject(pyMethod, pyArgs);
+		result = PyEval_CallObject(pyMethod, pyArgs);
 		if(PyErr_Occurred())
 		{
 			PyErr_Print();
@@ -569,7 +595,7 @@ void Piavca::RunPythonMethod(Piavca::Core *core, char *methodName, PyObject *pyA
 			EndPiavcaPython(core);
 			tstring tmethodName = StringToTString(methodName);
 			Piavca::Error(_T("Error running method: ") + tmethodName + _T(" ") + error_string);
-			return;
+			return NULL;
 		}
 	}
 	else
@@ -577,6 +603,7 @@ void Piavca::RunPythonMethod(Piavca::Core *core, char *methodName, PyObject *pyA
 		PyErr_Clear();
 		//std::cout << "failed to find method" << methodName << std::endl;
 	}
+	return result;
 }
 
 void Piavca::EndPiavcaPython(Piavca::Core *core)

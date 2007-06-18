@@ -39,7 +39,9 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="glut32.lib glu32.lib opengl32.lib odbc32.lib odbccp32.lib"
-				OutputFile="$(OutDir)/$(ProjectName).pyd"/>
+				OutputFile="$(OutDir)/_$(ProjectName).pyd"
+				GenerateDebugInformation="TRUE"
+				ProgramDatabaseFile="$(TargetDir)/$(TargetName).pdb"/>
 			<Tool
 				Name="VCMIDLTool"/>
 			<Tool
@@ -202,6 +204,9 @@
 		</Configuration>
 	</Configurations>
 	<References>
+		<ProjectReference
+			ReferencedProjectIdentifier="{B61F46AC-8745-4126-AFFD-15AA9B590C69}"
+			Name="Piavca_base"/>
 	</References>
 	<Files>
 		<Filter
@@ -236,7 +241,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Running Swig"
-					CommandLine="swig -c++ -python -shadow -I&quot;$(ProjectDir)/..&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; -outdir &quot;$(SolutionDir)\Python\Piavca&quot; &quot;$(InputPath)&quot;"
+					CommandLine="swig -c++ -python -shadow -I&quot;$(ProjectDir)/..&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; -outdir &quot;$(SolutionDir)\Python\Piavca&quot; &quot;$(InputPath)&quot;
+"
 					Outputs=" $(ProjectDir)$(InputName)_wrap.cpp"/>
 			</FileConfiguration>
 			<FileConfiguration
@@ -244,7 +250,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Running Swig"
-					CommandLine="swig -c++ -python -shadow -I&quot;$(ProjectDir)/..&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; -outdir &quot;$(SolutionDir)\Python\Piavca&quot; &quot;$(InputPath)&quot;"
+					CommandLine="swig -c++ -python -shadow -I&quot;$(ProjectDir)/..&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; -outdir &quot;$(SolutionDir)\Python\Piavca&quot; &quot;$(InputPath)&quot;
+"
 					Outputs=" $(ProjectDir)$(InputName)_wrap.cpp"/>
 			</FileConfiguration>
 			<FileConfiguration
@@ -252,7 +259,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Running Swig"
-					CommandLine="swig -c++ -python -shadow -I&quot;$(ProjectDir)/..&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; -outdir &quot;$(SolutionDir)\Python\Piavca&quot; &quot;$(InputPath)&quot;"
+					CommandLine="swig -c++ -python -shadow -I&quot;$(ProjectDir)/..&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; -outdir &quot;$(SolutionDir)\Python\Piavca&quot; &quot;$(InputPath)&quot;
+"
 					Outputs=" $(ProjectDir)$(InputName)_wrap.cpp"/>
 			</FileConfiguration>
 			<FileConfiguration
@@ -260,7 +268,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Running Swig"
-					CommandLine="swig -c++ -python -shadow -I&quot;$(ProjectDir)/..&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; -outdir &quot;$(SolutionDir)\Python\Piavca&quot; &quot;$(InputPath)&quot;"
+					CommandLine="swig -c++ -python -shadow -I&quot;$(ProjectDir)/..&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; -outdir &quot;$(SolutionDir)\Python\Piavca&quot; &quot;$(InputPath)&quot;
+"
 					Outputs=" $(ProjectDir)$(InputName)_wrap.cpp"/>
 			</FileConfiguration>
 		</File>

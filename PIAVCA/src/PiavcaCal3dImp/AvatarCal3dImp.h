@@ -141,6 +141,11 @@ public:
 	//! given a UCLAvatar object get its implementation 
 	static AvatarCal3DImp *getAvatarImp(Avatar *avatar) ;
 
+	CalModel *getCalModel() 
+	{
+		return cal_model;
+	};
+
 	//! \name Facial Animation Methods (based on morph target like system)
 	//!@{
 	virtual bool  setNeutralFacialExpression(tstring expressionName);

@@ -27,6 +27,7 @@ void displayFunc();
 int init(int argc, char *argv[]);
 int init();
 
+void timeStep();
 int render();
 
 int start();

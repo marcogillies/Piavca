@@ -32,6 +32,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 #define NO_PIAVCA_DLL
 #include "PiavcaAPI/Piavca.h"
+#include "PiavcaCal3dImp/AvatarCal3dImp.h"
 
 #ifdef _WIN32
 //#define WIN32_LEAN_AND_MEAN		// Exclude rarely-used stuff from Windows headers
@@ -56,6 +57,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 // called every frame, does the rendering
 extern "C" __declspec(dllexport) char* displayFunc();
+// same as above but doesn't do any rendering
+extern "C" __declspec(dllexport) char* timeStep();
 // initialise piavca, passes in a directory to run from 
 // and a python script
 extern "C" __declspec(dllexport) char* onInitial(char* _path, char * script);
@@ -66,6 +69,11 @@ extern "C" __declspec(dllexport) char* runMethodFloat(char* method, float arg);
 extern "C" __declspec(dllexport) char* runMethodStr(char* method, char *arg);
 extern "C" __declspec(dllexport) char* runMethodVec(char* method, float arg1, float arg2, float arg3);
 extern "C" __declspec(dllexport) char* runMethodAngleAxis(char* method, float arg0, float arg1, float arg2, float arg3);
+// get the number of avatars
+extern "C" __declspec(dllexport) int getNumAvatars();
+// fetch the cal3d Model corresponding to an avatar
+extern "C" __declspec(dllexport) int getCal3dModel(int i);
+
 // does any clean up needed
 extern "C" __declspec(dllexport) char* exitFunc();
 
@@ -152,6 +160,27 @@ extern "C" __declspec(dllexport) char* displayFunc()
 	
 	// render the model
 	//g_pCore->render();
+}
+
+
+extern "C" __declspec(dllexport) char* timeStep()
+{	
+	string s = "";
+	if(userScript != NULL)
+		s = runMethod("timeStep");
+	std::cout << s;
+	//std::cout << "rendering\n";
+	if(initScript != NULL)
+	{
+		try 
+		{
+			RunPythonMethod(Piavca::Core::getCore(), "timeStep", initScript);
+		}
+		catch (Piavca::Exception &e)
+		{
+		}
+	}
+	return get_messages();
 }
 
 // cleans up the state of piavca on exit
@@ -538,6 +567,31 @@ extern "C" __declspec(dllexport) char* runMethodAngleAxis(char* method, float ar
 	}
 
 	return get_messages();
+}
+
+extern "C" __declspec(dllexport) int getNumAvatars()
+{
+	Piavca::Core *core = (Piavca::Core *) RunPythonMethod_Long(Piavca::Core::getCore(), "getCorePointer", initScript);
+	return core->numAvatars();
+};
+
+extern "C" __declspec(dllexport) int getCal3dModel(int i)
+{
+	//return (int)((char *)dummy);//(char *)Piavca::Core::getCore()->getAvatar(i);
+	Piavca::Core *core = (Piavca::Core *)RunPythonMethod_Long(Piavca::Core::getCore(), "getCorePointer", initScript);
+	Piavca::Avatar *av =  core->getAvatar(i);
+	Piavca::AvatarCal3DImp *cal3dav = Piavca::AvatarCal3DImp::getAvatarImp(av);
+	CalModel *model = cal3dav->getCalModel();
+	return (int) model;
+}
+
+
+extern "C" __declspec(dllexport) void handlePointer(int thing)
+{
+	CalModel *d = (CalModel *) thing;
+	//std::cout << d << std::endl;
+	return ;
+	//return (char *)dummy;//(char *)Piavca::Core::getCore()->getAvatar(i);
 }
 
 

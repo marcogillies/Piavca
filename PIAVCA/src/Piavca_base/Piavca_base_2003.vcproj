@@ -39,7 +39,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="glut32.lib glu32.lib opengl32.lib odbc32.lib odbccp32.lib"
-				OutputFile="$(OutDir)/$(ProjectName).pyd"
+				OutputFile="$(OutDir)/_$(ProjectName).pyd"
 				GenerateDebugInformation="TRUE"/>
 			<Tool
 				Name="VCMIDLTool"/>
@@ -206,6 +206,15 @@
 		</Configuration>
 	</Configurations>
 	<References>
+		<ProjectReference
+			ReferencedProjectIdentifier="{7E061BC4-F08C-40F0-8A91-8CAFD582054D}"
+			Name="PiavcaAPI"/>
+		<ProjectReference
+			ReferencedProjectIdentifier="{97813F74-80B5-4861-8CEE-99328B65173C}"
+			Name="PiavcaCal3DImp"/>
+		<ProjectReference
+			ReferencedProjectIdentifier="{E2404604-543C-4863-BF9D-BE3E995DF4E4}"
+			Name="Standard Motion Implementation"/>
 	</References>
 	<Files>
 		<Filter

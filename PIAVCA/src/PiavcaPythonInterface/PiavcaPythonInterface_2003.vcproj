@@ -199,21 +199,12 @@
 			<File
 				RelativePath=".\PiavcaPythonApp.cpp">
 			</File>
-			<File
-				RelativePath=".\PyMotion.cpp">
-			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl;inc">
 			<File
 				RelativePath=".\PiavcaPythonApp.h">
-			</File>
-			<File
-				RelativePath=".\PyMotion.h">
-			</File>
-			<File
-				RelativePath=".\PyTimeCallback.h">
 			</File>
 		</Filter>
 		<Filter

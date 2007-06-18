@@ -60,18 +60,20 @@ def redirect(filename="python_output.txt"):
 	outputer = outputRedirection(filename)
 	outputer.Show()
 
-	outputer.write("Piavca")
+	outputer.write("Piavca\n")
 
 	import Piavca
 		
 	outputer.setOutputFunc(Piavca.PiavcaGlut.outputMessage)
 
-	outputer.write("output redirection")
+	outputer.write("output redirection\n")
 
 	sys.stderr = outputer
 	sys.stdout = outputer
 
 	#print "hello"
 
+	print "output redirection successful"
+	
 	if wxpresent:
 		thread.start_new_thread(app.MainLoop, ())

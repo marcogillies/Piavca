@@ -165,6 +165,11 @@ namespace Piavca
 		{
 			return core;
 		};
+
+		static long getCorePointerAsLong()
+		{
+			return (long) core;
+		};
 		
 		//! registers a callback to be called every frame
 		void registerCallback(TimeCallback *cb);

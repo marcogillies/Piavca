@@ -53,10 +53,17 @@ def makeFrameArray(motion, fps):
 			#print joint, "is not null"
 			type = motion.getTrackType(joint)
 			if type & Piavca.FLOAT_TYPE:
+				#print "float track"
+				type = Piavca.FLOAT_TYPE
 				m[0][joint] = [motion.getFloatValueAtTime(joint, float(t)/float(fps)) for t in range(length)]
 			elif type & Piavca.QUAT_TYPE:
+				#print "quat track"
+				type = Piavca.QUAT_TYPE
 				m[0][joint] = [motion.getQuatValueAtTime(joint, float(t)/float(fps)) for t in range(length)]
+				#print m[0][joint]
 			elif type & Piavca.VEC_TYPE:
+				#print "vec track"
+				type = Piavca.VEC_TYPE
 				m[0][joint] = [motion.getVecValueAtTime(joint, float(t)/float(fps)) for t in range(length)]
 			else:
 				Piavca.PiavcaError("Unknown track type " + str(type))
@@ -64,7 +71,7 @@ def makeFrameArray(motion, fps):
 			for i in range(1, len(m[0][joint])):
 				q1 = m[0][joint][i-1]
 				q2 = m[0][joint][i]
-				if type == Piavca.QUAT_TYPE:
+				if type & Piavca.QUAT_TYPE:
 					m[1][joint].append(q2/q1)
 				else:
 					m[1][joint].append(q2-q1)
@@ -83,6 +90,7 @@ class DistanceMeasure:
 			#	self.jointWeights = [(i, 1.0) for i in range(Piavca.Core.getCore().getMaxExpressionId())]
 		else:
 			self.jointWeights = jointWeights
+		print "joint weights", self.jointWeights
 		self.expmap = ExpMap.TangentSpace([Piavca.Quat()])
 		self.time = 0
 		self.logtime = 0
@@ -105,13 +113,15 @@ class DistanceMeasure:
 		file.close()
 		
 	def distance(self, f1, f2, type):
-		if type == Piavca.FLOAT_TYPE:
+		#print type
+		if type & Piavca.FLOAT_TYPE:
 			return abs(f1-f2)
-		elif type == Piavca.VEC_TYPE:
+		elif type & Piavca.QUAT_TYPE:
+			#print "quat difference"
+			return Piavca.Quat.spherical_distance(f1, f2)
+		elif type & Piavca.VEC_TYPE:
 			v = f2 - f2
 			return v.mag()
-		elif type == Piavca.QUAT_TYPE:
-			return Piavca.Quat.spherical_distance(f1, f2)
 		else:
 			Piavca.PiavcaError("Unknown track type " + str(type))
 		
@@ -123,10 +133,12 @@ class DistanceMeasure:
 		t1 = int(t1)
 		t2 = int(t2)
 		vw = self.velocityWeight
+		#print self.jointWeights
 		#print "calculating measure with window = ", self.window
 		for joint, weight in self.jointWeights:
 			if not mot1[0].has_key(joint) or not mot2[0].has_key(joint) :
 				continue
+			#print mot1[2][joint], mot2[2][joint]
 			if mot1[2][joint] != mot2[2][joint]:
 					Piavca.PiavcaError("trying to take the distance between tracks of different types")
 			
@@ -347,6 +359,7 @@ class MotionGraph (Piavca.LoopMotion):
 						
 						# if we've found a minimum we need to test if the distance value is below a threshold
 						# if so add the new transition
+						#print distancematrix[1][j]
 						if condition and distancematrix[1][j] < threshold :
 							if motindex1 != motindex2 or abs(i-(j+startframe2)) > 3*int(self.window*self.fps) :
 								print (i,j+startframe2), distancematrix[1][j]
@@ -484,6 +497,26 @@ class MotionGraph (Piavca.LoopMotion):
 		self.nodes = ccnodes
 		#print self.nodes.keys()
 		print "new next nodes", [(n, self.nodes[n].nextNode) for n in self.nodes.keys()]
+		
+		# add new continuation nodes, that may have been lost in the scc process
+		keys = self.nodes.keys()
+		keys.sort()
+		#print keys
+		for n1, n2 in zip(keys[:-1], keys[1:]):
+			#print n1, n2
+			if self.nodes[n1].nextNode == None and n1[0] == n2[0]:
+				#self.nodes[n1].addChild(n2)
+				self.nodes[n1].nextNode = n2
+				self.nodes[n1].tempNext = self.nodes[n].nextNode
+				if self.nodes[n1].tempNext == None:
+					del self.nodes[n1].tempNext
+					continue
+				while (len(self.nodes[self.nodes[n1].tempNext].children) == 1 or self.nodes[n1].tempNext[1] - self.nodes[n1].frame < minClipLength) and self.nodes[self.nodes[n1].tempNext].nextNode != None:
+					self.nodes[n1].tempNext = self.nodes[self.nodes[n1].tempNext].nextNode
+				self.nodes[n1].nextNode = self.nodes[n1].tempNext
+				if self.nodes[n1].nextNode != None:
+					self.nodes[n1].addChild(self.nodes[n1].nextNode)
+				del self.nodes[n1].tempNext
 		
 		# initialise the transitions motions
 		self._createTransitionMots(avatar)

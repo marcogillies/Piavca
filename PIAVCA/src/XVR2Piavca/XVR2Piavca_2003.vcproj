@@ -19,7 +19,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\;$(CAL3DDIR)\src\;..\..\..\cal3d-0.10.0\src\"
+				AdditionalIncludeDirectories="..\;$(CAL3DDIR)\src\;..\..\..\cal3d-0.11.0\src\;..\..\..\cal3d-0.10.0\src\"
 				PreprocessorDefinitions="WIN32;_WINDOWS;_USRDLL;XVR2PIAVCA_EXPORTS"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
@@ -34,10 +34,10 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="cal3d_d.lib"
+				AdditionalDependencies="cal3d.lib"
 				OutputFile="$(OutDir)/XVR2Piavca.dll"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="$(CAL3DDIR)\bin\debug;..\..\..\cal3d-0.10.0\bin\Release;$(PYTHONDIR)\libs;c:\Python25\libs;c:\Python24\lib\;c:\Python23\libs"
+				AdditionalLibraryDirectories="$(CAL3DDIR)\bin\debug;..\..\..\cal3d-0.11.0\bin\Release;..\..\..\cal3d-0.10.0\bin\Release;$(PYTHONDIR)\libs;c:\Python25\libs;c:\Python24\lib\;c:\Python23\libs"
 				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile="$(OutDir)/XVR2Piavca.pdb"
 				SubSystem="2"
