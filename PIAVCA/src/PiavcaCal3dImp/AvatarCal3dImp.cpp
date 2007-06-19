@@ -92,6 +92,8 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 	{
 		Piavca::Error("Failed to open model configuration file '" + strFilename + "'." );
 	}
+	// flip Z and Y axis to fix max outputs
+	//CalLoader::setLoadingMode(LOADER_ROTATE_X_AXIS);
 
 	CalCoreModel *cal_core_model = new CalCoreModel("dummy");
 
@@ -201,6 +203,12 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 				CalError::printLastError();
 				Piavca::Error(_T("Error loading mesh"));
 			}
+			int pos = strData.rfind(".");
+			std::string meshname = strData.substr(0, pos);
+			meshes.push_back(std::make_pair(StringToTString(meshname), false));
+			std::cout << "added mesh" << meshname << std::endl;
+			if (meshes.size()-1 != lastMeshId)
+				Piavca::Error(_T("Meshid doesn't match"));
 		}
 		else if(strKey == "material")
 		{
@@ -460,6 +468,30 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
    delete renderer;
 
 };
+
+
+void AvatarCal3DImp::hideBodyPart(tstring partname)
+{
+	for(int i = 0; i < (int) meshes.size(); i++)
+		if (meshes[i].first == partname)
+		{
+			meshes[i].second = true;
+			return;
+		}
+	std::cout << "could not find body part " << partname << std::endl;
+};
+
+void AvatarCal3DImp::showBodyPart(tstring partname)
+{
+	for(int i = 0; i < (int) meshes.size(); i++)
+		if (meshes[i].first == partname)
+		{
+			meshes[i].second = false;
+			return;
+		}
+	std::cout << "could not find body part " << partname << std::endl;
+}
+;
 
 void AvatarCal3DImp::loadTextures()
 {
@@ -1068,6 +1100,8 @@ void	AvatarCal3DImp::render ()
   if(pCalRenderer->beginRendering())
   {
     // set global OpenGL states
+	glPushAttrib(GL_ALL_ATTRIB_BITS);
+
     glEnable(GL_DEPTH_TEST);
     glShadeModel(GL_SMOOTH);
     glEnable(GL_LIGHTING);
@@ -1086,7 +1120,11 @@ void	AvatarCal3DImp::render ()
     // render all meshes of the model
     for(int meshId = 0; meshId < meshCount; meshId++)
     {
-      // get the number of submeshes
+	  // check if the mesh is supposed to be hidden
+	  if (meshes[meshId].second)
+		  continue;
+      
+	  // get the number of submeshes
       int submeshCount = pCalRenderer->getSubmeshCount(meshId);
 
       // render all submeshes of the mesh
@@ -1181,14 +1219,16 @@ void	AvatarCal3DImp::render ()
       }
     }
 
+	
+	glPopAttrib();
     // clear vertex array state
     glDisableClientState(GL_NORMAL_ARRAY);
     glDisableClientState(GL_VERTEX_ARRAY);
 
     // clear light
-    glDisable(GL_LIGHTING);
-    glDisable(GL_LIGHT0);
-    glDisable(GL_DEPTH_TEST);
+    //glDisable(GL_LIGHTING);
+    //glDisable(GL_LIGHT0);
+    //glDisable(GL_DEPTH_TEST);
 
     // end the rendering
     pCalRenderer->endRendering();

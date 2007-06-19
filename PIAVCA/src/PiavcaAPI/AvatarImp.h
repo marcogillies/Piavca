@@ -94,6 +94,12 @@ public:
 	//! destructor
 	virtual ~AvatarImp() {};
 
+	
+	//! hides a part of the avatars body so it is not rendered
+	virtual void hideBodyPart(tstring partname){};
+	//! shows a part of the avatars body so it is rendered
+	virtual void showBodyPart(tstring partname){};
+
 	//! \name Facial Animation Methods (based on morph target like system)
 	//!@{
 	virtual bool  setNeutralFacialExpression(tstring expressionName)=0;

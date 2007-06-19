@@ -58,8 +58,7 @@ else:
 mot = Piavca.Core.getCore().getMotion(motion_name)
 if mot != None:
 	mot.Reference()
-	avatar.play_motion(Piavca.LoopMotion(mot))
-		
+	avatar.play_motion(Piavca.LoopMotion(mot))	
 		
 Piavca.PiavcaGlut.start()
 	

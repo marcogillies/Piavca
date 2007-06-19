@@ -87,6 +87,8 @@ public:
 	// a look up table to map between Piavca expression id's and Cal3D morph target indexes
 	vector <FacialExpressionHolder> expressions;
 
+	vector <std::pair<tstring, bool> > meshes;
+
 	// whether the avatar uses 2 different arrays of verteces, one being 
 	// updated and one being rendered.
 	// This is used to enable rendering and updating to happen in 
@@ -145,6 +147,11 @@ public:
 	{
 		return cal_model;
 	};
+
+	//! hides a part of the avatars body so it is not rendered
+	virtual void hideBodyPart(tstring partname);
+	//! shows a part of the avatars body so it is rendered
+	virtual void showBodyPart(tstring partname);
 
 	//! \name Facial Animation Methods (based on morph target like system)
 	//!@{

@@ -32,7 +32,7 @@ MotionCal3DImp::MotionCal3DImp(tstring motionFilename, CalCoreSkeleton *skel)
 	:cal3DSkel(skel)
 {
 	// load the animation from file
-	cal3DAnim = CalLoader::loadCoreAnimation(motionFilename);
+	cal3DAnim = CalLoader::loadCoreAnimation(motionFilename, skel);
 
 	if(!cal3DAnim)
 		Piavca::Error(_T("Error loading animation file ") + motionFilename);

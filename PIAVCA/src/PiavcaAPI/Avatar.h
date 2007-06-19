@@ -208,6 +208,18 @@ public:
 		forwardDirection = dir;
 	};
 
+	
+	//! hides a part of the avatars body so it is not rendered
+	void hideBodyPart(tstring partname)
+	{
+		return imp->hideBodyPart(partname);
+	};
+	//! shows a part of the avatars body so it is rendered
+	void showBodyPart(tstring partname)
+	{
+		return imp->showBodyPart(partname);
+	};
+
 	//! \name Facial Animation Methods (based on morph target like system)
 	//!@{
 	//! set the weight of a facial expression (used in the blend)

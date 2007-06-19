@@ -6,6 +6,8 @@ import time
 
 import Piavca
 Piavca.PiavcaGlut.init()
+import Piavca.JointNames
+Piavca.JointNames.loadDefaults()
 import wx
 from wx.lib.dialogs import *
 

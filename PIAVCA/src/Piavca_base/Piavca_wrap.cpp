@@ -46918,6 +46918,82 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Avatar_hideBodyPart(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Avatar *arg1 = (Piavca::Avatar *) 0 ;
+  Piavca::tstring arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Avatar_hideBodyPart",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Avatar, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Avatar_hideBodyPart" "', argument " "1"" of type '" "Piavca::Avatar *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Avatar * >(argp1);
+  {
+    arg2 = PyString_AsString(obj1);
+  }
+  {
+    try {
+      (arg1)->hideBodyPart(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Avatar_showBodyPart(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Avatar *arg1 = (Piavca::Avatar *) 0 ;
+  Piavca::tstring arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Avatar_showBodyPart",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Avatar, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Avatar_showBodyPart" "', argument " "1"" of type '" "Piavca::Avatar *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Avatar * >(argp1);
+  {
+    arg2 = PyString_AsString(obj1);
+  }
+  {
+    try {
+      (arg1)->showBodyPart(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Avatar_setFacialExpressionWeight__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Piavca::Avatar *arg1 = (Piavca::Avatar *) 0 ;
@@ -89382,6 +89458,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Avatar_setName", _wrap_Avatar_setName, METH_VARARGS, NULL},
 	 { (char *)"Avatar_getForwardDirection", _wrap_Avatar_getForwardDirection, METH_VARARGS, NULL},
 	 { (char *)"Avatar_setForwardDirection", _wrap_Avatar_setForwardDirection, METH_VARARGS, NULL},
+	 { (char *)"Avatar_hideBodyPart", _wrap_Avatar_hideBodyPart, METH_VARARGS, NULL},
+	 { (char *)"Avatar_showBodyPart", _wrap_Avatar_showBodyPart, METH_VARARGS, NULL},
 	 { (char *)"Avatar_clearFacialExpressionWeights", _wrap_Avatar_clearFacialExpressionWeights, METH_VARARGS, NULL},
 	 { (char *)"Avatar_beginExpression", _wrap_Avatar_beginExpression, METH_VARARGS, NULL},
 	 { (char *)"Avatar_endExpression", _wrap_Avatar_endExpression, METH_VARARGS, NULL},

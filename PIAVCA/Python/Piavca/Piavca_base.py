@@ -1652,6 +1652,8 @@ class Avatar(_object):
         """
         return _Piavca_base.Avatar_setForwardDirection(*args)
 
+    def hideBodyPart(*args): return _Piavca_base.Avatar_hideBodyPart(*args)
+    def showBodyPart(*args): return _Piavca_base.Avatar_showBodyPart(*args)
     def clearFacialExpressionWeights(*args):
         """
         void Piavca::Avatar::clearFacialExpressionWeights()

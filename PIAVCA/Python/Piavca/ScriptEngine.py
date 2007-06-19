@@ -58,8 +58,9 @@ class scriptCallback:
 		raise "help, unimplemented callback"
 		
 class motionCallback(scriptCallback):
-	def __init__(self, time, args):
+	def __init__(self, time, args, interrupt = 0):
 		scriptCallback.__init__(self, time, args)
+		self.interrupt = interrupt
 		if issubclass(args[0].__class__, Piavca.Motion) :
 			self.motion = args[0]
 			self.motion.Reference()
@@ -74,6 +75,8 @@ class motionCallback(scriptCallback):
 				print "Could not find motion", self.motionName
 				return
 			self.motion.Reference()
+		if self.interrupt:
+			avatar.interrupt_motion()
 		avatar.play_motion(self.motion)
 		
 class backgroundMotionCallback(scriptCallback):
@@ -114,6 +117,8 @@ class ScriptEngine(Piavca.TimeCallback):
 	def __init__(self, name, filename):
 		Piavca.TimeCallback.__init__(self, name)
 	
+		loadDefaults()
+		
 		self.scripts = {}
 		self.currentscript = {}
 		self.starttimes = {}
@@ -212,7 +217,9 @@ class ScriptEngine(Piavca.TimeCallback):
 					
 	def getCallback(self, callbackname, time, args):
 		if callbackname == "motion":
-			return motionCallback(time, args)
+			return motionCallback(time, args, 1)
+		if callbackname == "queue_motion":
+			return motionCallback(time, args, 0)
 		if callbackname == "backgroundmotion":
 			return backgroundMotionCallback(time, args)
 		if callbackname == "stop":
