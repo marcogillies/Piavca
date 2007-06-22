@@ -1,14 +1,10 @@
-# This file was created automatically by SWIG 1.3.30.
+# This file was created automatically by SWIG 1.3.29.
 # Don't modify this file, modify the SWIG interface instead.
 # This file is compatible with both classic and new-style classes.
 
 import _Piavca_base
 import new
 new_instancemethod = new.instancemethod
-try:
-    _swig_property = property
-except NameError:
-    pass # Python < 2.2 doesn't have 'property'.
 def _swig_setattr_nondynamic(self,class_type,name,value,static=1):
     if (name == "thisown"): return self.this.own(value)
     if (name == "this"):
@@ -418,7 +414,7 @@ class Core(_object):
     __repr__ = _swig_repr
     __swig_setmethods__["dir"] = _Piavca_base.Core_dir_set
     __swig_getmethods__["dir"] = _Piavca_base.Core_dir_get
-    if _newclass:dir = _swig_property(_Piavca_base.Core_dir_get, _Piavca_base.Core_dir_set)
+    if _newclass:dir = property(_Piavca_base.Core_dir_get, _Piavca_base.Core_dir_set)
     __swig_destroy__ = _Piavca_base.delete_Core
     __del__ = lambda self : None;
     def reset(*args):
@@ -2289,6 +2285,8 @@ class Avatar(_object):
     def add_background_motion(*args): return _Piavca_base.Avatar_add_background_motion(*args)
     def interrupt_motion(*args): return _Piavca_base.Avatar_interrupt_motion(*args)
     def stop_motion(*args): return _Piavca_base.Avatar_stop_motion(*args)
+    def reposition_relative(*args): return _Piavca_base.Avatar_reposition_relative(*args)
+    def reposition_absolute(*args): return _Piavca_base.Avatar_reposition_absolute(*args)
 Avatar_swigregister = _Piavca_base.Avatar_swigregister
 Avatar_swigregister(Avatar)
 
@@ -2300,16 +2298,16 @@ class queueElement(_object):
     __repr__ = _swig_repr
     __swig_setmethods__["mot"] = _Piavca_base.queueElement_mot_set
     __swig_getmethods__["mot"] = _Piavca_base.queueElement_mot_get
-    if _newclass:mot = _swig_property(_Piavca_base.queueElement_mot_get, _Piavca_base.queueElement_mot_set)
+    if _newclass:mot = property(_Piavca_base.queueElement_mot_get, _Piavca_base.queueElement_mot_set)
     __swig_setmethods__["name"] = _Piavca_base.queueElement_name_set
     __swig_getmethods__["name"] = _Piavca_base.queueElement_name_get
-    if _newclass:name = _swig_property(_Piavca_base.queueElement_name_get, _Piavca_base.queueElement_name_set)
+    if _newclass:name = property(_Piavca_base.queueElement_name_get, _Piavca_base.queueElement_name_set)
     __swig_setmethods__["atTime"] = _Piavca_base.queueElement_atTime_set
     __swig_getmethods__["atTime"] = _Piavca_base.queueElement_atTime_get
-    if _newclass:atTime = _swig_property(_Piavca_base.queueElement_atTime_get, _Piavca_base.queueElement_atTime_set)
+    if _newclass:atTime = property(_Piavca_base.queueElement_atTime_get, _Piavca_base.queueElement_atTime_set)
     __swig_setmethods__["background"] = _Piavca_base.queueElement_background_set
     __swig_getmethods__["background"] = _Piavca_base.queueElement_background_get
-    if _newclass:background = _swig_property(_Piavca_base.queueElement_background_get, _Piavca_base.queueElement_background_set)
+    if _newclass:background = property(_Piavca_base.queueElement_background_get, _Piavca_base.queueElement_background_set)
     def __init__(self, *args): 
         this = _Piavca_base.new_queueElement(*args)
         try: self.this.append(this)
@@ -2347,6 +2345,8 @@ class AvatarMotionQueue(AvatarTimeCallback):
     __del__ = lambda self : None;
     __swig_getmethods__["getQueue"] = lambda x: _Piavca_base.AvatarMotionQueue_getQueue
     if _newclass:getQueue = staticmethod(_Piavca_base.AvatarMotionQueue_getQueue)
+    __swig_getmethods__["hasQueue"] = lambda x: _Piavca_base.AvatarMotionQueue_hasQueue
+    if _newclass:hasQueue = staticmethod(_Piavca_base.AvatarMotionQueue_hasQueue)
     def init(*args):
         """
         void AvatarMotionQueue::init(Piavca::Avatar *avatar)
@@ -2587,6 +2587,8 @@ class AvatarMotionQueue(AvatarTimeCallback):
         """
         return _Piavca_base.AvatarMotionQueue_interrupt(*args)
 
+    def repositionRelative(*args): return _Piavca_base.AvatarMotionQueue_repositionRelative(*args)
+    def repositionAbsolute(*args): return _Piavca_base.AvatarMotionQueue_repositionAbsolute(*args)
     def getMotion(*args):
         """
         virtual Piavca::Motion* Piavca::AvatarMotionQueue::getMotion()
@@ -2620,6 +2622,7 @@ class AvatarMotionQueue(AvatarTimeCallback):
 AvatarMotionQueue_swigregister = _Piavca_base.AvatarMotionQueue_swigregister
 AvatarMotionQueue_swigregister(AvatarMotionQueue)
 AvatarMotionQueue_getQueue = _Piavca_base.AvatarMotionQueue_getQueue
+AvatarMotionQueue_hasQueue = _Piavca_base.AvatarMotionQueue_hasQueue
 
 class Object(_object):
     """
@@ -2756,6 +2759,38 @@ def radToDeg(*args):
             
     """
   return _Piavca_base.radToDeg(*args)
+class CurrentValueMotion(KeyframeMotion):
+    __swig_setmethods__ = {}
+    for _s in [KeyframeMotion]: __swig_setmethods__.update(_s.__swig_setmethods__)
+    __setattr__ = lambda self, name, value: _swig_setattr(self, CurrentValueMotion, name, value)
+    __swig_getmethods__ = {}
+    for _s in [KeyframeMotion]: __swig_getmethods__.update(_s.__swig_getmethods__)
+    __getattr__ = lambda self, name: _swig_getattr(self, CurrentValueMotion, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _Piavca_base.new_CurrentValueMotion(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    def clone(*args):
+        """
+        virtual Motion* Piavca::Motion::clone()=0
+                 
+        creates a copy of the motion         
+                 
+                
+        """
+        return _Piavca_base.CurrentValueMotion_clone(*args)
+
+    def setFloatValue(*args): return _Piavca_base.CurrentValueMotion_setFloatValue(*args)
+    def setVecValue(*args): return _Piavca_base.CurrentValueMotion_setVecValue(*args)
+    def setQuatValue(*args): return _Piavca_base.CurrentValueMotion_setQuatValue(*args)
+    __swig_destroy__ = _Piavca_base.delete_CurrentValueMotion
+    __del__ = lambda self : None;
+CurrentValueMotion_swigregister = _Piavca_base.CurrentValueMotion_swigregister
+CurrentValueMotion_swigregister(CurrentValueMotion)
+cvar = _Piavca_base.cvar
+Pi = cvar.Pi
+
 class MotionFilter(Motion):
     """
     A motion class whose output is some transformation of another motion.     
@@ -2975,8 +3010,6 @@ class MotionFilter(Motion):
         return weakref_proxy(self)
 MotionFilter_swigregister = _Piavca_base.MotionFilter_swigregister
 MotionFilter_swigregister(MotionFilter)
-cvar = _Piavca_base.cvar
-Pi = cvar.Pi
 
 class TwoMotionCombiner(Motion):
     """
@@ -4081,6 +4114,8 @@ class Reposition(MotionFilter):
 
     def setStartPosition(*args): return _Piavca_base.Reposition_setStartPosition(*args)
     def setStartOrientation(*args): return _Piavca_base.Reposition_setStartOrientation(*args)
+    def getStartPosition(*args): return _Piavca_base.Reposition_getStartPosition(*args)
+    def getStartOrientation(*args): return _Piavca_base.Reposition_getStartOrientation(*args)
     def setStartFromMotion(*args): return _Piavca_base.Reposition_setStartFromMotion(*args)
     def setMotion(*args):
         """
@@ -4395,6 +4430,8 @@ class AvatarPostureBlend(Sequence):
         return _Piavca_base.AvatarPostureBlend_setMotion(*args)
 
     def getMotion(*args): return _Piavca_base.AvatarPostureBlend_getMotion(*args)
+    def repositionRelative(*args): return _Piavca_base.AvatarPostureBlend_repositionRelative(*args)
+    def repositionAbsolute(*args): return _Piavca_base.AvatarPostureBlend_repositionAbsolute(*args)
     def reblend(*args):
         """
         void AvatarPostureBlend::reblend(float time)
@@ -5837,19 +5874,19 @@ class flagStruct(_object):
     __repr__ = _swig_repr
     __swig_setmethods__["headActive"] = _Piavca_base.flagStruct_headActive_set
     __swig_getmethods__["headActive"] = _Piavca_base.flagStruct_headActive_get
-    if _newclass:headActive = _swig_property(_Piavca_base.flagStruct_headActive_get, _Piavca_base.flagStruct_headActive_set)
+    if _newclass:headActive = property(_Piavca_base.flagStruct_headActive_get, _Piavca_base.flagStruct_headActive_set)
     __swig_setmethods__["bodyActive"] = _Piavca_base.flagStruct_bodyActive_set
     __swig_getmethods__["bodyActive"] = _Piavca_base.flagStruct_bodyActive_get
-    if _newclass:bodyActive = _swig_property(_Piavca_base.flagStruct_bodyActive_get, _Piavca_base.flagStruct_bodyActive_set)
+    if _newclass:bodyActive = property(_Piavca_base.flagStruct_bodyActive_get, _Piavca_base.flagStruct_bodyActive_set)
     __swig_setmethods__["turnBodyVertical"] = _Piavca_base.flagStruct_turnBodyVertical_set
     __swig_getmethods__["turnBodyVertical"] = _Piavca_base.flagStruct_turnBodyVertical_get
-    if _newclass:turnBodyVertical = _swig_property(_Piavca_base.flagStruct_turnBodyVertical_get, _Piavca_base.flagStruct_turnBodyVertical_set)
+    if _newclass:turnBodyVertical = property(_Piavca_base.flagStruct_turnBodyVertical_get, _Piavca_base.flagStruct_turnBodyVertical_set)
     __swig_setmethods__["turnBodyFull"] = _Piavca_base.flagStruct_turnBodyFull_set
     __swig_getmethods__["turnBodyFull"] = _Piavca_base.flagStruct_turnBodyFull_get
-    if _newclass:turnBodyFull = _swig_property(_Piavca_base.flagStruct_turnBodyFull_get, _Piavca_base.flagStruct_turnBodyFull_set)
+    if _newclass:turnBodyFull = property(_Piavca_base.flagStruct_turnBodyFull_get, _Piavca_base.flagStruct_turnBodyFull_set)
     __swig_setmethods__["leanTowards"] = _Piavca_base.flagStruct_leanTowards_set
     __swig_getmethods__["leanTowards"] = _Piavca_base.flagStruct_leanTowards_get
-    if _newclass:leanTowards = _swig_property(_Piavca_base.flagStruct_leanTowards_get, _Piavca_base.flagStruct_leanTowards_set)
+    if _newclass:leanTowards = property(_Piavca_base.flagStruct_leanTowards_get, _Piavca_base.flagStruct_leanTowards_set)
     def __init__(self, *args): 
         this = _Piavca_base.new_flagStruct(*args)
         try: self.this.append(this)
@@ -5867,13 +5904,13 @@ class AvatarTargetStruct(_object):
     __repr__ = _swig_repr
     __swig_setmethods__["avatar"] = _Piavca_base.AvatarTargetStruct_avatar_set
     __swig_getmethods__["avatar"] = _Piavca_base.AvatarTargetStruct_avatar_get
-    if _newclass:avatar = _swig_property(_Piavca_base.AvatarTargetStruct_avatar_get, _Piavca_base.AvatarTargetStruct_avatar_set)
+    if _newclass:avatar = property(_Piavca_base.AvatarTargetStruct_avatar_get, _Piavca_base.AvatarTargetStruct_avatar_set)
     __swig_setmethods__["joint"] = _Piavca_base.AvatarTargetStruct_joint_set
     __swig_getmethods__["joint"] = _Piavca_base.AvatarTargetStruct_joint_get
-    if _newclass:joint = _swig_property(_Piavca_base.AvatarTargetStruct_joint_get, _Piavca_base.AvatarTargetStruct_joint_set)
+    if _newclass:joint = property(_Piavca_base.AvatarTargetStruct_joint_get, _Piavca_base.AvatarTargetStruct_joint_set)
     __swig_setmethods__["flags"] = _Piavca_base.AvatarTargetStruct_flags_set
     __swig_getmethods__["flags"] = _Piavca_base.AvatarTargetStruct_flags_get
-    if _newclass:flags = _swig_property(_Piavca_base.AvatarTargetStruct_flags_get, _Piavca_base.AvatarTargetStruct_flags_set)
+    if _newclass:flags = property(_Piavca_base.AvatarTargetStruct_flags_get, _Piavca_base.AvatarTargetStruct_flags_set)
     def __init__(self, *args): 
         this = _Piavca_base.new_AvatarTargetStruct(*args)
         try: self.this.append(this)
@@ -5891,10 +5928,10 @@ class ObjectTargetStruct(_object):
     __repr__ = _swig_repr
     __swig_setmethods__["object"] = _Piavca_base.ObjectTargetStruct_object_set
     __swig_getmethods__["object"] = _Piavca_base.ObjectTargetStruct_object_get
-    if _newclass:object = _swig_property(_Piavca_base.ObjectTargetStruct_object_get, _Piavca_base.ObjectTargetStruct_object_set)
+    if _newclass:object = property(_Piavca_base.ObjectTargetStruct_object_get, _Piavca_base.ObjectTargetStruct_object_set)
     __swig_setmethods__["flags"] = _Piavca_base.ObjectTargetStruct_flags_set
     __swig_getmethods__["flags"] = _Piavca_base.ObjectTargetStruct_flags_get
-    if _newclass:flags = _swig_property(_Piavca_base.ObjectTargetStruct_flags_get, _Piavca_base.ObjectTargetStruct_flags_set)
+    if _newclass:flags = property(_Piavca_base.ObjectTargetStruct_flags_get, _Piavca_base.ObjectTargetStruct_flags_set)
     def __init__(self, *args): 
         this = _Piavca_base.new_ObjectTargetStruct(*args)
         try: self.this.append(this)

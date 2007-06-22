@@ -91,6 +91,17 @@ namespace Piavca
 			calculateRootOffsets();
 		};
 
+		//! Gets the new starting position of the motion
+	    Vec getStartPosition()
+		{
+			return start_position;
+		};
+		//! Gets the new starting orientation of the motion
+	    Quat getStartOrientation()
+		{
+			return start_orientation;
+		};
+
 		void setStartFromMotion(Motion *m, float time);
 
 		void setMotion(Motion *m);

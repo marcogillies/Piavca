@@ -100,6 +100,8 @@ class PIAVCA_DECL AvatarMotionQueue : public AvatarTimeCallback
    */
   static AvatarMotionQueue *AvatarMotionQueue::getQueue(Avatar *avatar, bool facial = false);
 
+  static bool hasQueue(Avatar *avatar);
+
   //! This is a setup method for the callback
   /*!
    *	It's called when the callback is registered
@@ -195,6 +197,15 @@ class PIAVCA_DECL AvatarMotionQueue : public AvatarTimeCallback
 	  std::cout << "interrupt\n";
 	  interruptMot = true;
   };
+
+  void repositionRelative(const Vec &pos)
+  {
+	  avatarBlend->repositionRelative(pos);
+  }
+  void repositionAbsolute(const Vec &pos)
+  {
+	  avatarBlend->repositionAbsolute(pos);
+  }
 
   //! return the resulting motion
   virtual Piavca::Motion *getMotion(){ return avatarBlend; };

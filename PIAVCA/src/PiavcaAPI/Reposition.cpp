@@ -135,6 +135,7 @@ Vec Reposition::getVecValueAtTimeInternal(int trackId, float time)
 		Vec OriginalValue = filterMot->getVecValueAtTime(trackId, time);
 		//return OriginalValue;
 		Vec subtractedVec = oriOffset.transform(OriginalValue - originalStart);
+		//return oriOffset.transform(OriginalValue);
 		//Vec subtractedVec = OriginalValue - originalStart;
 		//return OriginalValue;
 		if(maintainY)

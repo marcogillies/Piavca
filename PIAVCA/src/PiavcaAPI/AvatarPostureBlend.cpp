@@ -95,6 +95,21 @@ void AvatarPostureBlend::setMotion(Motion *mot)
 	reblend();
 };
 
+void AvatarPostureBlend::repositionRelative(const Vec &pos)
+{
+	if (repositioner)
+	{
+		Vec repPos = repositioner->getStartPosition();
+		repositioner->setStartPosition(repPos + pos);
+	}
+};
+
+void AvatarPostureBlend::repositionAbsolute(const Vec &pos)
+{
+	repositionRelative(pos - getVecValueAtTime(root_position_id, Piavca::Core::getCore()->getTime()));
+};
+
+
 void AvatarPostureBlend::reblend(float time)
 {
 	if(!originalMotion) return;

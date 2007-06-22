@@ -87,6 +87,11 @@ namespace Piavca
 		//! sets the motion to be blended in
 		virtual Motion *getMotion();
 
+		//! changes the position of the avatar relative to the current position
+		void repositionRelative(const Vec &pos);
+		//! changes the position of the avatar
+		void repositionAbsolute(const Vec &pos);
+
 		//! restart the blend (i.e. start blending from the current avatar posture) at the current time
 	    void reblend();
 	    //! restart the blend (i.e. start blending from the current avatar posture) at the current time

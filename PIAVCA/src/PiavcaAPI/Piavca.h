@@ -86,6 +86,7 @@
 #include "TimeCallback.h"
 #include "TimeOffset.h"
 #include "KeyframeMotion.h"
+#include "CurrentValueMotion.h"
 #include "TurnMotion.h"
 #include "TwoMotionCombiner.h"
 #include "ZeroMotion.h"

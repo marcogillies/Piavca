@@ -128,7 +128,9 @@ Vec MotionTransition::getVecValueAtTimeInternal   (int trackId, float time)
 
 	
 	float t = time - getStartTime();
-	Vec v1 = mot1->getVecValueAtTime(trackId, time);//transitionTime1);//+time);
+	Vec v1;
+	if(!mot1->isNull(trackId) && (mot1->getTrackType(trackId) & VEC_TYPE))
+		v1 = mot1->getVecValueAtTime(trackId, time);//transitionTime1);//+time);
     Vec v2 = mot2->getVecValueAtTime(trackId, time);//transitionTime2);//-window+time);
     if (fabs(window) < 0.0001)
 		t = 0;

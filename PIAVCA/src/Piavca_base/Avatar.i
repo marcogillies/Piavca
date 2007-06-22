@@ -153,5 +153,29 @@
 		Piavca::AvatarMotionQueue::getQueue(self)->removeMotion(motionName);
 		Piavca::AvatarMotionQueue::getQueue(self)->removeBackgroundMotion(motionName);
 	}
+	
+	void reposition_relative(const Vec &pos)
+	{
+		if(Piavca::AvatarMotionQueue::hasQueue(self))
+		{
+			Piavca::AvatarMotionQueue::getQueue(self)->repositionRelative(pos);
+		}
+		else
+		{
+			self->setRootPosition(pos);
+		}
+	};
+	
+	void reposition_absolute(const Vec &pos)
+	{
+		if(Piavca::AvatarMotionQueue::hasQueue(self))
+		{
+			Piavca::AvatarMotionQueue::getQueue(self)->repositionAbsolute(pos);
+		}
+		else
+		{
+			self->setRootPosition(pos);
+		}
+	};
 
 }

@@ -365,8 +365,9 @@ void AvatarMotionQueue::enqueueRandomMotions(int num)
 	  {
 		  std::cout << "removing motion " << TStringToString(name) << std::endl;
 		  interrupt();
-		  selfBlend->reblend();
-		  selfBlend->setMotion(NULL);
+		  selfBlend->getMotion()->pause();
+		  //selfBlend->reblend();
+		  //selfBlend->setMotion(NULL);
 		  currentMotion = NULL;
 	  };
 	  for(std::list< queueElement >::iterator it = motionQueue.begin();
@@ -573,4 +574,18 @@ AvatarMotionQueue *AvatarMotionQueue::getQueue(Avatar *avatar, bool facial)
 	}
 	
 	return amq;
+}
+
+
+
+bool AvatarMotionQueue::hasQueue(Avatar *avatar)
+{
+	// Check if a motion queue exists for this avatar & create one if it does not
+    AvatarMotionQueue *amq = NULL;
+	int i;
+	for (i = 0; i < avatar->getNumCallbacks(); i++)
+	{
+		amq = dynamic_cast<AvatarMotionQueue *>(avatar->getCallback(i));
+		if(amq) return true;
+	}
 }

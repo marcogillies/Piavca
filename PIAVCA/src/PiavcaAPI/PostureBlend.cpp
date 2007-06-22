@@ -95,7 +95,8 @@ void PostureBlend::reblend()
 
 void PostureBlend::reblend(float time)
 {
-	if(!originalMotion) return;
+	//if(!originalMotion) return;
+	
 	//setMotion2(
 	//if (interval < originalMotion->getMotionLength())
 	//	setMotion2(new SubMotion(originalMotion, interval, -1));
@@ -128,6 +129,7 @@ void PostureBlend::reblend(float time)
 	setMotion1(trans);
 
 	setStartTime(time);
-	originalMotion->reset();
+	if(originalMotion)
+		originalMotion->reset();
 };
 

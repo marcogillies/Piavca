@@ -432,6 +432,7 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 //%include "PyMotion.h"
 
 %include "PiavcaAPI/MathsUtils.h"
+%include "PiavcaAPI/CurrentValueMotion.h"
 %include "PiavcaAPI/MotionFilter.h"
 %include "PiavcaAPI/TwoMotionCombiner.h"
 %include "PiavcaAPI/MaskedMotion.h"
