@@ -3292,18 +3292,6 @@ SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
 #ifdef __cplusplus
 extern "C" {
 #endif
-SWIGINTERN PyObject *_wrap_initCore(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  
-  if (!PyArg_ParseTuple(args,(char *)":initCore")) SWIG_fail;
-  initCore();
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_displayFunc(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   
@@ -3458,7 +3446,6 @@ fail:
 
 
 static PyMethodDef SwigMethods[] = {
-	 { (char *)"initCore", _wrap_initCore, METH_VARARGS, NULL},
 	 { (char *)"displayFunc", _wrap_displayFunc, METH_VARARGS, NULL},
 	 { (char *)"init", _wrap_init, METH_VARARGS, NULL},
 	 { (char *)"timeStep", _wrap_timeStep, METH_VARARGS, NULL},

@@ -155,7 +155,7 @@ void AvatarMotionQueue::timeStep(Avatar *avatar, float time)
 					//		- avatarBlend->getBlendStart() 
 					//		- avatarBlend->getBlendInterval()
 					//		+ delay;
-					selfBlend->reblend( time );
+					selfBlend->reblend( );//time );
 					selfBlend->setMotion(motion);
 					currentMotion = motion;
 					std::cout << "playing motion " << currentMotion->getName() << std::endl;

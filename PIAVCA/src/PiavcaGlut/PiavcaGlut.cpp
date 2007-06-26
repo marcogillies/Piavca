@@ -59,7 +59,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 struct displayParams
 {
-	Piavca::PiavcaCal3DCore *core;
+	//Piavca::PiavcaCal3DCore *core;
 	bool zooming, turning;
 	int width, height;
 	int lastMouseX, lastMouseY;
@@ -111,10 +111,10 @@ int render()
 	//updates piavca's state
 	timeStep();
 	//updates mesh
-	g_Params.core->prerender();
+	Piavca::Core::getCore()->prerender();
 	
 	// render the model
-	g_Params.core->render();
+	Piavca::Core::getCore()->render();
 
 	return 0;
 }
@@ -135,7 +135,7 @@ void displayFunc()
   float time2 = Piavca::Core::getCore()->getTime();
   updateTime += time2 - time1;
 	 
-  g_Params.core->prerender();
+  Piavca::Core::getCore()->prerender();
   float time3 = Piavca::Core::getCore()->getTime();
   prerenderTime += time3 - time2;
 
@@ -183,7 +183,7 @@ void displayFunc()
 
 
   // render the model
-  g_Params.core->render();
+  Piavca::Core::getCore()->render();
 
   // swap the front- and back-buffer
   glutSwapBuffers();
@@ -210,7 +210,7 @@ void displayFunc()
 
 void exitFunc()
 {
-	delete g_Params.core;
+	//delete g_Params.core;
 }
 
 void idleFunc()
@@ -323,12 +323,12 @@ void reshapeFunc(int w, int h)
   glViewport(0, 0, w, h);
 }
 
-
+/*
 void initCore()
 {
 	g_Params.core = new Piavca::PiavcaCal3DCore();
 }
-
+*/
 //----------------------------------------------------------------------------//
 // Main entry point of the application                                        //
 //----------------------------------------------------------------------------//
@@ -339,7 +339,7 @@ int init(int argc, char *argv[])
   // initialize the GLUT system
   glutInit(&argc, argv);
 
-  g_Params.core = new Piavca::PiavcaCal3DCore();
+  //g_Params.core = new Piavca::PiavcaCal3DCore();
   g_Params.zooming = false;
   g_Params.turning = false;
   g_Params.width = 800;

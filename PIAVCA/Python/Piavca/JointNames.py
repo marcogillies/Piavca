@@ -47,10 +47,10 @@ joint_specs = ["Root Position, rootpos"
 "HumaniodRoot01 L UpperArm, Cally L UpperArm, Bip01 L UpperArm, upper_left_arm, LUpperArm, lShldr, LeftShoulder, lhumerus",
 "HumaniodRoot01 L Forearm, Cally L Forearm, Bip01 L Forearm, lower_left_arm, LForeArm, LForearm, lForeArm, left_elbow, LeftElbow, lradius, LElbow",
 "HumaniodRoot01 L Hand, Cally L Hand, Bip01 L Hand, left_wrist, LWrist, LHand, lHand, LeftWrist, lhand",
-"HumaniodRoot01 R Clavicle, Cally R Clavicle, Bip01 R Clavicle, right_shoulder, RShoulder, RClavicle, hanim_r_shoulder, rCollar, RightCollar, rclavicle"
-"HumaniodRoot01 R UpperArm, Cally R UpperArm, Bip01 R UpperArm, upper_right_arm, RUpperArm, rShldr, RightShoulder, rhumerus"
-"HumaniodRoot01 R Forearm, Cally R Forearm, Bip01 R Forearm, lower_right_arm, RForeArm, RForearm, rForeArm, right_elbow, RightElbow, rradius, RElbow, "
-"HumaniodRoot01 R Hand, Cally R Hand, Bip01 R Hand, right_wrist, RWrist, RHand, rHand, RightWrist, rhand"
+"HumaniodRoot01 R Clavicle, Cally R Clavicle, Bip01 R Clavicle, right_shoulder, RShoulder, RClavicle, hanim_r_shoulder, rCollar, RightCollar, rclavicle",
+"HumaniodRoot01 R UpperArm, Cally R UpperArm, Bip01 R UpperArm, upper_right_arm, RUpperArm, rShldr, RightShoulder, rhumerus",
+"HumaniodRoot01 R Forearm, Cally R Forearm, Bip01 R Forearm, lower_right_arm, RForeArm, RForearm, rForeArm, right_elbow, RightElbow, rradius, RElbow, ",
+"HumaniodRoot01 R Hand, Cally R Hand, Bip01 R Hand, right_wrist, RWrist, RHand, rHand, RightWrist, rhand",
 "legs",
 "left_hip, lButtock",
 "HumaniodRoot01 L Thigh, Cally L Thigh, Bip01 L Thigh, upper_left_leg, LThigh, lThigh, left_hip, LHip, LeftHip, lfemur",

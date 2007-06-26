@@ -161,6 +161,13 @@ namespace Piavca
 		//! a static function to get the core instances (there is only one)
 		//virtual static Core *getCore()=0;//{};
 
+		static Core *init();
+
+		static void setCore(Core *c)
+		{
+			core = c;
+		}
+
 		static Core *getCore() 
 		{
 			return core;

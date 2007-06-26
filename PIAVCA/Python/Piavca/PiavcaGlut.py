@@ -53,7 +53,6 @@ except:
     weakref_proxy = lambda x: x
 
 
-initCore = _PiavcaGlut.initCore
 displayFunc = _PiavcaGlut.displayFunc
 timeStep = _PiavcaGlut.timeStep
 render = _PiavcaGlut.render

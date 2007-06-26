@@ -53,7 +53,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 //#include "Python.h"
 
-#include "PiavcaPythonInterface/PiavcaPythonApp.h"
+//#include "PiavcaPythonInterface/PiavcaPythonApp.h"
 //#include "PiavcaPythonInterface/Piavca_wrap.h"
 
 
@@ -93,11 +93,11 @@ void timeStep()
 	{
 	    Piavca::Core::getCore()->timeStep();
 	}
-	catch (Piavca::Exception &e)
-	{
-	    std::cout << "Piavca Exception: " <<  e.getDetails() << std::endl;
-		Piavca::PrintPythonErrors();
-	}
+	//catch (Piavca::Exception &e)
+	//{
+	//    std::cout << "Piavca Exception: " <<  e.getDetails() << std::endl;
+		//Piavca::PrintPythonErrors();
+	//}
 	//catch (...)
 	//{
 	//	Piavca::PrintPythonErrors();
@@ -566,9 +566,9 @@ int main(int argc, char *argv[])
 
   std::cout << "finished loading joints\n";
 
-  if(script == "")
-	  script = "init_piavca";
-  Piavca::InitPiavcaPython(Piavca::Core::getCore(), StringToTString(script));
+  //if(script == "")
+	//  script = "init_piavca";
+  //Piavca::InitPiavcaPython(Piavca::Core::getCore(), StringToTString(script));
 
 	//glutSetCursor(GLUT_CURSOR_LEFT_ARROW);
 
@@ -576,7 +576,7 @@ int main(int argc, char *argv[])
   glutMainLoop();
 
   
-  EndPiavcaPython(Piavca::Core::getCore());
+  //EndPiavcaPython(Piavca::Core::getCore());
 
   return 0;
 }

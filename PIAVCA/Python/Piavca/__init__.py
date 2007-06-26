@@ -17,3 +17,11 @@ try:
 	from AnimationTrack import AnimationInterface, AnimationInterfaceCallback
 except ImportError:
 	print "wxPython unavailable, please install wxPython for GUI functions"
+	
+Core.init()
+
+def render ():
+	core = Piavca.Core.getCore()
+	core.timeStep()
+	core.prerender()
+	core.render()

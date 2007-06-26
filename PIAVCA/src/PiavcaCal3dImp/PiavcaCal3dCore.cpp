@@ -47,6 +47,11 @@ using namespace Piavca;
 
 #include <GL/gl.h>
 
+Core *Core::init()
+{
+	return new PiavcaCal3DCore();
+};
+
 PiavcaCal3DCore::PiavcaCal3DCore():start_time(0.0) {
 	start_time = getTimeInternal(true);
 };

@@ -103,6 +103,10 @@ void PostureBlend::reblend(float time)
 	//else
 	//	setMotion2(new SubMotion(originalMotion, originalMotion->getMotionLength(), -1));
 
+	
+	MotionPosture *posture = new MotionPosture(this);
+	posture->getPostureFromMotion(this, time);
+
 	if(accumulateRoot)
 	{
 		//if(!repositioner)
@@ -121,8 +125,6 @@ void PostureBlend::reblend(float time)
 	else
 		setMotion2(originalMotion);
 
-	MotionPosture *posture = new MotionPosture(this);
-	posture->getPostureFromMotion(this, time);
 	MotionTransition *trans = new MotionTransition(posture, mot2);
 	//MotionTransition *trans = new MotionTransition(posture, NULL);
 	trans->setWindow(interval);

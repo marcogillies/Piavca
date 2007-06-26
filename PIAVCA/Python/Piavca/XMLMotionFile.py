@@ -186,6 +186,7 @@ def readMotions(motions):
 							if str(motion.attributes.item(i).name) == "name" or str(motion.attributes.item(i).name) == "Name":
 								name = str(motion.attributes.item(i).nodeValue)
 								Piavca.Core.getCore().loadMotion(name, mot)
+								continue
 							attrName = motion.attributes.item(i).name
 							attrValue = motion.attributes.item(i).nodeValue
 							#print attrName, attrValue
