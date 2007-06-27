@@ -58,13 +58,16 @@ except ImportError:
 	ttsAvailable = 0
 	
 class SoundEngine:
-	def __init__(self, samplerate = 44100, channels = 2, format = sound.AFMT_S16_LE):
+	def __init__(self, samplerate = 44100, channels = 2, format = -1):
 		self.samplerate = samplerate
 		self.channels = channels
 		self.format = format
 		
-		# create an audio output device
-		self.output = sound.Output(samplerate, channels, format )
+		if pymediapresent :
+			if format < 0:
+				format = sound.AFMT_S16_LE
+			# create an audio output device
+			self.output = sound.Output(samplerate, channels, format )
 
 		self.sounds = {}
 		

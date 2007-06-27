@@ -50,6 +50,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "PiavcaAPI/PiavcaException.h"
 #include "PiavcaAPI/OnTheSpot.h"
 #include "PiavcaAPI/AvatarMotionQueue.h"
+#include "PiavcaAPI/MotionParser.h"
 
 //#include "Python.h"
 
@@ -65,6 +66,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 struct displayParams
 {
 	Piavca::PiavcaCal3DCore *core;
+	Piavca::Avatar *avatar;
 	bool zooming, turning;
 	int width, height;
 	int lastMouseX, lastMouseY;
@@ -89,10 +91,10 @@ void timeStep()
 		lastTime = time;
 	}
 	//CalError::printLastError();
-	try
-	{
+	//try
+	//{
 	    Piavca::Core::getCore()->timeStep();
-	}
+	//}
 	//catch (Piavca::Exception &e)
 	//{
 	//    std::cout << "Piavca Exception: " <<  e.getDetails() << std::endl;
@@ -209,6 +211,20 @@ void idleFunc()
 
 }
 
+void play_motion(int motid)
+{
+	Piavca::AvatarMotionQueue *amq = Piavca::AvatarMotionQueue::getQueue(g_Params.avatar);
+	Piavca::Motion *m = Piavca::Core::getCore()->getMotion(motid);
+	if (m == NULL)
+	{
+		std::cout << "could not find motion\n";
+		return;
+	}
+	std::cout << "playing motion " << m->getName() << std::endl;
+	amq->interrupt();
+	amq->enqueueMotion(m->getName(), m);
+}
+
 void keyboardFunc(unsigned char key, int x, int y)
 {
   switch(key)
@@ -244,6 +260,33 @@ void keyboardFunc(unsigned char key, int x, int y)
 		g_Params.updown = 0.0f;
 		g_Params.leftright = 0.0f;
 	  break;
+	case '1':
+		play_motion(0);
+		break;
+	case '2':
+		play_motion(1);
+		break;
+	case '3':
+		play_motion(2);
+		break;
+	case '4':
+		play_motion(3);
+		break;
+	case '5':
+		play_motion(4);
+		break;
+	case '6':
+		play_motion(5);
+		break;
+	case '7':
+		play_motion(6);
+		break;
+	case '8':
+		play_motion(7);
+		break;
+	case '9':
+		play_motion(8);
+		break;
     default:
       break;
   }
@@ -320,7 +363,8 @@ void reshapeFunc(int w, int h)
 int main(int argc, char *argv[])
 {
 	std::string path = "";
-	std::string script = "";
+	std::string motionfile = "";
+	std::string avatarfile = "";
 //#ifndef WIN32
   for(int i = 0; i < argc-1; i++)
   {
@@ -337,15 +381,30 @@ int main(int argc, char *argv[])
   			argv[i] = argv[i+2];
   		//break;
   	}
-	if(std::string(argv[i]) == "-script")
+	if(std::string(argv[i]) == "-motions")
   	{
-  		script = std::string(argv[i+1]);
+  		motionfile = std::string(argv[i+1]);
   		argc = argc - 2;
   		for ( /*nothing*/; i < argc; i++)
   			argv[i] = argv[i+2];
   		//break;
   	}
   }	
+  if (argc <= 1)
+  {
+	  std::cout << "no avatar (.cfg) file provided as input\n";
+	  exit(0);
+  }
+
+  avatarfile = std::string(argv[1]);
+  argc = argc - 1;
+  for ( int i = 1; i < argc; i++)
+  	argv[i] = argv[i+1];
+
+  int dotpos = avatarfile.find_last_of(".");
+  std::cout << avatarfile << " " << dotpos << " ";
+  avatarfile = avatarfile.substr(0, dotpos);
+  std::cout << avatarfile << std::endl;
 //#endif
   
 	
@@ -565,6 +624,64 @@ int main(int argc, char *argv[])
   //av->setFacialExpressionWeight(Piavca::Core::getCore()->getExpressionId(_T("smile")), 1.0);
 
   std::cout << "finished loading joints\n";
+
+  g_Params.avatar = new Piavca::Avatar(avatarfile);
+  if(motionfile != "")
+  {
+	  std::ifstream mFile(motionfile.c_str(), std::ios::in );
+	  if(!mFile)
+	  {
+		  std::cout << "Failed to open motion file '" << motionfile << std::endl;
+	  }
+	  else
+	  {
+		  Piavca::MotionParser::setUpMotionCommands();
+		  while(true)
+		  {
+			std::string strBuffer;
+			std::getline(mFile, strBuffer);
+
+			// stop if we reached the end of file
+			if(mFile.eof()) 
+			{
+				break;
+			}
+
+			// check if an error happend while reading from the file
+			if(!mFile)
+			{
+				Piavca::Error("Error while reading from the motion file");
+				return NULL;
+			}
+
+			int pos = strBuffer.find_first_not_of(" \t");
+
+			
+			// check for empty lines and comments
+			if((pos == std::string::npos) || (strBuffer[pos] == '\n') 
+				|| (strBuffer[pos] == '\r') || (strBuffer[pos] == 0)
+				|| strBuffer[pos] == '#') 
+			{
+				continue;
+			}
+
+			int new_pos = strBuffer.find_first_of(" =\t\n\r", pos);
+			Piavca::tstring motionName = StringToTString(strBuffer.substr(pos, new_pos - pos));
+			strBuffer = strBuffer.substr(new_pos);
+
+
+			Piavca::Motion *m = Piavca::MotionParser::parseMotion(strBuffer);
+			Piavca::Core::getCore()->loadMotion(motionName, m);
+		  }
+	  }
+  }
+
+  std::cout << "Use the number buttons to choose an animation to play\n";
+  std::vector<std::string> motionNames = Piavca::Core::getCore()->getMotionNames(9);
+  for (int i = 0; i < (int) motionNames.size(); i++)
+  {
+	  std::cout << i+1 << ": " << motionNames[i] << std::endl;
+  };
 
   //if(script == "")
 	//  script = "init_piavca";

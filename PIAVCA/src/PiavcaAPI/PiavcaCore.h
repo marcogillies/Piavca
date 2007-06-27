@@ -290,6 +290,8 @@ namespace Piavca
         //! get a motion by its (arbitrary) index
         Motion *getMotion(int i) 
 		{ 
+			if (i < 0 || i >= (int)motions.size())
+				return NULL;
 			return motions[i].second; 
 		};
 
