@@ -53,6 +53,7 @@ def run(path=None):
 	print filename
 
 	script_engine = ScriptEngine("character controller", filename)	
+	return script_engine
 	#script_engine.GUI("nancy")
 
 

@@ -138,11 +138,16 @@ class ScriptEngine(Piavca.TimeCallback):
 			if commentpos >= 0:
 				line = line[:commentpos]
 			line = line.split()
+			print line
 			if len(line) <= 0:
 				continue
 			if line[0] == "soundpack":
+				if len(line) == 2:
+					spackname = line[1]
+				else:
+					spackname = line[2]
 				if self.soundEngine != None:
-					self.soundEngine.loadSounds(line[2])
+					self.soundEngine.loadSounds(spackname)
 				else:
 					print "could not load sound packs as audio playback is not supported, please install pymedia"
 			elif line[0] == "expressions":
@@ -165,10 +170,18 @@ class ScriptEngine(Piavca.TimeCallback):
 						i = i+4
 					i += 1
 			elif line[0] == "motionpack":
-				print "motionpack", line[2]
-				MotionFile.readMotionFile(line[2])
+				if len(line) == 2:
+					mpackname = line[1]
+				else:
+					mpackname = line[2]
+				print "motionpack", mpackname
+				MotionFile.readMotionFile(mpackname)
 			elif line[0] == "script":
-				self.loadScripts(line[2])
+				if len(line) == 2:
+					spackname = line[1]
+				else:
+					spackname = line[2]
+				self.loadScripts(spackname)
 			elif line[0] == "GUI":
 				gui_list.append(line[1])
 			elif line[0] == "gui":
@@ -177,6 +190,7 @@ class ScriptEngine(Piavca.TimeCallback):
 		for gui_name in gui_list:
 			self.GUI(gui_name)
 				
+		self.thisown = 0
 		Piavca.Core.getCore().registerCallback(self)
 				
 	def loadScripts(self, scriptfile):

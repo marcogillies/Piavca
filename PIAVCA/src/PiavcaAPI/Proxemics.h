@@ -71,23 +71,23 @@ public:
 		desiredDistance(distance), threshold(0.2f), anglethreshold(Piavca::Pi/8.0f), distanceOff(false)
 	{
 		if(!stepForward)
-			stepForward = Piavca::Core::getCore()->getMotion("stepForward");
+			stepForward = Piavca::Core::getCore()->getMotion(_T("stepForward"));
 		if(!stepForward) Piavca::Warning(_T("Proxemics: No step forward motion"));
 		addMotion(stepForward);
 		if(!stepBackward)
-			stepBackward = Piavca::Core::getCore()->getMotion("stepBackward");
+			stepBackward = Piavca::Core::getCore()->getMotion(_T("stepBackward"));
 		if(!stepBackward) Piavca::Warning(_T("Proxemics: No step backward motion"));
 		addMotion(stepBackward);
 		if(!rest)
-			rest = Piavca::Core::getCore()->getMotion("rest");
+			rest = Piavca::Core::getCore()->getMotion(_T("rest"));
 		if(!rest) Piavca::Warning(_T("Proxemics: No rest motion"));
 		addMotion(rest);
 		if(!turnLeft)
-			turnLeft = Piavca::Core::getCore()->getMotion("turnLeft");
+			turnLeft = Piavca::Core::getCore()->getMotion(_T("turnLeft"));
 		if(!turnLeft) Piavca::Warning(_T("Proxemics: No turn left motion"));
 		addMotion(turnLeft);
 		if(!turnRight)
-			turnRight = Piavca::Core::getCore()->getMotion("turnRight");
+			turnRight = Piavca::Core::getCore()->getMotion(_T("turnRight"));
 		if(!turnRight) Piavca::Warning(_T("Proxemics: No turn right motion"));
 		addMotion(turnRight);
 		

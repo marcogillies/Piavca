@@ -221,7 +221,7 @@ extern "C" __declspec(dllexport) char *onInitial(char* _path, char *script)
 {
 	//return (char *)0;
 	try
-	{
+ 	{
 		int argc = 1;
 		char* argv = "piavcaxvr";
 		std::string path = "";//dirFile;

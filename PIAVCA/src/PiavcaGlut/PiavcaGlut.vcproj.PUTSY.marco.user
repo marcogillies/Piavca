@@ -11,7 +11,7 @@
 			<DebugSettings
 				Command="python"
 				WorkingDirectory="F:\code\Data\cal3d_export"
-				CommandArguments="..\..\Piavca\Python\PiavcaScriptEngine.py master.conf"
+				CommandArguments="..\..\Piavca\Python\PiavcaScriptEngine.py .\master.conf"
 				Attach="false"
 				DebuggerType="3"
 				Remote="1"
