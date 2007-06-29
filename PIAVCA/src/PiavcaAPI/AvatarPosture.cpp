@@ -35,7 +35,7 @@
 #include "Avatar.h"
 #include "AvatarPosture.h"
 #include "PiavcaError.h"
-#include "PIAVCACore.h"
+#include "PiavcaCore.h"
 
 using namespace Piavca;
 

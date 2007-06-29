@@ -98,9 +98,9 @@ public:
 	};
 };
 
-};
+//};
 
-using namespace Piavca;
+//using namespace Piavca;
 
 
 template<> 
@@ -2778,4 +2778,5 @@ PIAVCA_DECL Piavca::Motion *MotionParser::parseMotion(istringstream &is, std::st
 		Piavca::Error(_T("could not find motion ") + StringToTString(currentWord));
 		return NULL;
 	}
+};
 };

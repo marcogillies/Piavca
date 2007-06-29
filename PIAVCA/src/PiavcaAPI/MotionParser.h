@@ -76,7 +76,7 @@ namespace Piavca
 class Motion;
 class Avatar;
 
-class MotionParser
+class PIAVCA_DECL MotionParser
 {
 	static std::map<tstring, MotionParser *> commandLookup;
 public:

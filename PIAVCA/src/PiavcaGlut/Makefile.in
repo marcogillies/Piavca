@@ -14,6 +14,8 @@
 
 @SET_MAKE@
 
+#piavca_SOURCES = piavca.cpp
+
 srcdir = @srcdir@
 top_srcdir = @top_srcdir@
 VPATH = @srcdir@
@@ -36,9 +38,9 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
-bin_PROGRAMS = PiavcaCal3dApp$(EXEEXT)
-subdir = src/PiavcaCal3dApp
-DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in
+subdir = src/PiavcaGlut
+DIST_COMMON = $(pkgpython_PYTHON) $(srcdir)/Makefile.am \
+	$(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/ac_pkg_swig.m4 \
 	$(top_srcdir)/m4/ac_python_devel.m4 $(top_srcdir)/configure.in
@@ -47,13 +49,24 @@ am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
-am__installdirs = "$(DESTDIR)$(bindir)"
-binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
-PROGRAMS = $(bin_PROGRAMS)
-am_PiavcaCal3dApp_OBJECTS = PiavcaCal3dApp-PiavcaCal3dApp.$(OBJEXT)
-PiavcaCal3dApp_OBJECTS = $(am_PiavcaCal3dApp_OBJECTS)
-PiavcaCal3dApp_DEPENDENCIES = ../PiavcaCal3dImp/libPiavcaCal3dImp.la \
-	../PiavcaPythonInterface/libPiavcaPythonInterface.la
+am__vpath_adj_setup = srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`;
+am__vpath_adj = case $$p in \
+    $(srcdir)/*) f=`echo "$$p" | sed "s|^$$srcdirstrip/||"`;; \
+    *) f=$$p;; \
+  esac;
+am__strip_dir = `echo $$p | sed -e 's|^.*/||'`;
+am__installdirs = "$(DESTDIR)$(pkgpyexecdir)" \
+	"$(DESTDIR)$(pkgpythondir)"
+pkgpyexecLTLIBRARIES_INSTALL = $(INSTALL)
+LTLIBRARIES = $(pkgpyexec_LTLIBRARIES)
+_PiavcaGlut_so_la_DEPENDENCIES = ../PiavcaAPI/libPiavcaAPI.la \
+	../PiavcaCal3dImp/libPiavcaCal3dImp.la \
+	../StdMotionImp/libStdMotionImp.la
+am__objects_1 =
+am__PiavcaGlut_so_la_OBJECTS = $(am__objects_1) \
+	_PiavcaGlut_so_la-PiavcaGlut_wrap.lo \
+	_PiavcaGlut_so_la-PiavcaGlut.lo
+_PiavcaGlut_so_la_OBJECTS = $(am__PiavcaGlut_so_la_OBJECTS)
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -65,8 +78,10 @@ LTCXXCOMPILE = $(LIBTOOL) --tag=CXX --mode=compile $(CXX) $(DEFS) \
 CXXLD = $(CXX)
 CXXLINK = $(LIBTOOL) --tag=CXX --mode=link $(CXXLD) $(AM_CXXFLAGS) \
 	$(CXXFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
-SOURCES = $(PiavcaCal3dApp_SOURCES)
-DIST_SOURCES = $(PiavcaCal3dApp_SOURCES)
+SOURCES = $(_PiavcaGlut_so_la_SOURCES)
+DIST_SOURCES = $(_PiavcaGlut_so_la_SOURCES)
+pkgpythonPYTHON_INSTALL = $(INSTALL_DATA)
+py_compile = $(top_srcdir)/py-compile
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
@@ -124,9 +139,12 @@ PACKAGE_VERSION = @PACKAGE_VERSION@
 PATH_SEPARATOR = @PATH_SEPARATOR@
 PYTHON = @PYTHON@
 PYTHON_CPPFLAGS = @PYTHON_CPPFLAGS@
+PYTHON_EXEC_PREFIX = @PYTHON_EXEC_PREFIX@
 PYTHON_EXTRA_LDFLAGS = @PYTHON_EXTRA_LDFLAGS@
 PYTHON_EXTRA_LIBS = @PYTHON_EXTRA_LIBS@
 PYTHON_LDFLAGS = @PYTHON_LDFLAGS@
+PYTHON_PLATFORM = @PYTHON_PLATFORM@
+PYTHON_PREFIX = @PYTHON_PREFIX@
 PYTHON_SITE_PKG = @PYTHON_SITE_PKG@
 PYTHON_VERSION = @PYTHON_VERSION@
 RANLIB = @RANLIB@
@@ -180,24 +198,36 @@ mandir = @mandir@
 mkdir_p = @mkdir_p@
 oldincludedir = @oldincludedir@
 pdfdir = @pdfdir@
+pkgpyexecdir = @pkgpyexecdir@
+pkgpythondir = @pkgpythondir@
 prefix = @prefix@
 program_transform_name = @program_transform_name@
 psdir = @psdir@
+pyexecdir = @pyexecdir@
+pythondir = @pythondir@
 sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
-PiavcaCal3dApp_SOURCES = PiavcaCal3dApp.cpp
 
 # set the include path found by configure
-INCLUDES = -I$(top_srcdir)/src $(all_includes)
-PiavcaCal3dApp_CPPFLAGS = $(SWIG_PYTHON_CPPFLAGS)
-PiavcaCal3dApp_LDADD = ../PiavcaCal3dImp/libPiavcaCal3dImp.la ../PiavcaPythonInterface/libPiavcaPythonInterface.la
+INCLUDES = -I$(srcdir)/.. $(all_includes)
 
-# the library search path.
-#PiavcaCal3dApp_LDFLAGS = $(PYTHON_LDFLAGS) -R/usr/local/lib -L../PiavcaCal3dImp -L../PiavcaAPI -L../PiavcaNVCLib -L../PiavcaPythonInterface -L../StdMotionImp -lglut -lcal3d -lPiavcaCal3dImp -lPiavcaPythonInterface -lStdMotionImp -lPiavcaNVCLib -lPiavcaAPI $(all_libraries) 
-PiavcaCal3dApp_LDFLAGS = $(PYTHON_LDFLAGS) -R/usr/local/lib  -L../PiavcaCal3dImp -lglut -lcal3d $(all_libraries)
-all: all-am
+#pyfilesdir = $(includedir)/Piavca/Python
+#pyfiles_PYTHON = PiavcaGlut.py PiavcaGlut.so
+#pkgpyexecdir = $(includedir)/Piavca/Python
+BUILT_SOURCES = PiavcaGlut_wrap.cpp
+SWIG_SOURCES = PiavcaGlut.i 
+pkgpython_PYTHON = $(srcdir)/../../Python/Piavca/PiavcaGlut.py
+pkgpyexec_LTLIBRARIES = _PiavcaGlut.so.la
+#_your_extension_la_SOURCES = $(srcdir)/swig_wrap.cpp $(SWIG_SOURCES)
+_PiavcaGlut_so_la_CPPFLAGS = $(PYTHON_CPPFLAGS) $(SWIG_PYTHON_CPPFLAGS)
+_PiavcaGlut_so_la_LDFLAGS = -module -shared $(PYTHON_LDFLAGS)  -lglut -lcal3d $(all_libraries)
+#lib_LTLIBRARIES = libPiavcaPythonInterface.la
+_PiavcaGlut_so_la_SOURCES = $(SWIG_SOURCES) PiavcaGlut_wrap.cpp PiavcaGlut.cpp
+_PiavcaGlut_so_la_LIBADD = ../PiavcaAPI/libPiavcaAPI.la ../PiavcaCal3dImp/libPiavcaCal3dImp.la ../StdMotionImp/libStdMotionImp.la 
+all: $(BUILT_SOURCES)
+	$(MAKE) $(AM_MAKEFLAGS) all-am
 
 .SUFFIXES:
 .SUFFIXES: .cpp .lo .o .obj
@@ -210,9 +240,9 @@ $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu  src/PiavcaCal3dApp/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu  src/PiavcaGlut/Makefile'; \
 	cd $(top_srcdir) && \
-	  $(AUTOMAKE) --gnu  src/PiavcaCal3dApp/Makefile
+	  $(AUTOMAKE) --gnu  src/PiavcaGlut/Makefile
 .PRECIOUS: Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
@@ -230,37 +260,35 @@ $(top_srcdir)/configure:  $(am__configure_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 $(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
-install-binPROGRAMS: $(bin_PROGRAMS)
+install-pkgpyexecLTLIBRARIES: $(pkgpyexec_LTLIBRARIES)
 	@$(NORMAL_INSTALL)
-	test -z "$(bindir)" || $(mkdir_p) "$(DESTDIR)$(bindir)"
-	@list='$(bin_PROGRAMS)'; for p in $$list; do \
-	  p1=`echo $$p|sed 's/$(EXEEXT)$$//'`; \
-	  if test -f $$p \
-	     || test -f $$p1 \
-	  ; then \
-	    f=`echo "$$p1" | sed 's,^.*/,,;$(transform);s/$$/$(EXEEXT)/'`; \
-	   echo " $(INSTALL_PROGRAM_ENV) $(LIBTOOL) --mode=install $(binPROGRAMS_INSTALL) '$$p' '$(DESTDIR)$(bindir)/$$f'"; \
-	   $(INSTALL_PROGRAM_ENV) $(LIBTOOL) --mode=install $(binPROGRAMS_INSTALL) "$$p" "$(DESTDIR)$(bindir)/$$f" || exit 1; \
+	test -z "$(pkgpyexecdir)" || $(mkdir_p) "$(DESTDIR)$(pkgpyexecdir)"
+	@list='$(pkgpyexec_LTLIBRARIES)'; for p in $$list; do \
+	  if test -f $$p; then \
+	    f=$(am__strip_dir) \
+	    echo " $(LIBTOOL) --mode=install $(pkgpyexecLTLIBRARIES_INSTALL) $(INSTALL_STRIP_FLAG) '$$p' '$(DESTDIR)$(pkgpyexecdir)/$$f'"; \
+	    $(LIBTOOL) --mode=install $(pkgpyexecLTLIBRARIES_INSTALL) $(INSTALL_STRIP_FLAG) "$$p" "$(DESTDIR)$(pkgpyexecdir)/$$f"; \
 	  else :; fi; \
 	done
 
-uninstall-binPROGRAMS:
+uninstall-pkgpyexecLTLIBRARIES:
 	@$(NORMAL_UNINSTALL)
-	@list='$(bin_PROGRAMS)'; for p in $$list; do \
-	  f=`echo "$$p" | sed 's,^.*/,,;s/$(EXEEXT)$$//;$(transform);s/$$/$(EXEEXT)/'`; \
-	  echo " rm -f '$(DESTDIR)$(bindir)/$$f'"; \
-	  rm -f "$(DESTDIR)$(bindir)/$$f"; \
+	@set -x; list='$(pkgpyexec_LTLIBRARIES)'; for p in $$list; do \
+	  p=$(am__strip_dir) \
+	  echo " $(LIBTOOL) --mode=uninstall rm -f '$(DESTDIR)$(pkgpyexecdir)/$$p'"; \
+	  $(LIBTOOL) --mode=uninstall rm -f "$(DESTDIR)$(pkgpyexecdir)/$$p"; \
 	done
 
-clean-binPROGRAMS:
-	@list='$(bin_PROGRAMS)'; for p in $$list; do \
-	  f=`echo $$p|sed 's/$(EXEEXT)$$//'`; \
-	  echo " rm -f $$p $$f"; \
-	  rm -f $$p $$f ; \
+clean-pkgpyexecLTLIBRARIES:
+	-test -z "$(pkgpyexec_LTLIBRARIES)" || rm -f $(pkgpyexec_LTLIBRARIES)
+	@list='$(pkgpyexec_LTLIBRARIES)'; for p in $$list; do \
+	  dir="`echo $$p | sed -e 's|/[^/]*$$||'`"; \
+	  test "$$dir" != "$$p" || dir=.; \
+	  echo "rm -f \"$${dir}/so_locations\""; \
+	  rm -f "$${dir}/so_locations"; \
 	done
-PiavcaCal3dApp$(EXEEXT): $(PiavcaCal3dApp_OBJECTS) $(PiavcaCal3dApp_DEPENDENCIES) 
-	@rm -f PiavcaCal3dApp$(EXEEXT)
-	$(CXXLINK) $(PiavcaCal3dApp_LDFLAGS) $(PiavcaCal3dApp_OBJECTS) $(PiavcaCal3dApp_LDADD) $(LIBS)
+_PiavcaGlut.so.la: $(_PiavcaGlut_so_la_OBJECTS) $(_PiavcaGlut_so_la_DEPENDENCIES) 
+	$(CXXLINK) -rpath $(pkgpyexecdir) $(_PiavcaGlut_so_la_LDFLAGS) $(_PiavcaGlut_so_la_OBJECTS) $(_PiavcaGlut_so_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -268,7 +296,8 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PiavcaCal3dApp-PiavcaCal3dApp.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/_PiavcaGlut_so_la-PiavcaGlut.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/_PiavcaGlut_so_la-PiavcaGlut_wrap.Plo@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	if $(CXXCOMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ $<; \
@@ -291,19 +320,19 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(LTCXXCOMPILE) -c -o $@ $<
 
-PiavcaCal3dApp-PiavcaCal3dApp.o: PiavcaCal3dApp.cpp
-@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(PiavcaCal3dApp_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT PiavcaCal3dApp-PiavcaCal3dApp.o -MD -MP -MF "$(DEPDIR)/PiavcaCal3dApp-PiavcaCal3dApp.Tpo" -c -o PiavcaCal3dApp-PiavcaCal3dApp.o `test -f 'PiavcaCal3dApp.cpp' || echo '$(srcdir)/'`PiavcaCal3dApp.cpp; \
-@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/PiavcaCal3dApp-PiavcaCal3dApp.Tpo" "$(DEPDIR)/PiavcaCal3dApp-PiavcaCal3dApp.Po"; else rm -f "$(DEPDIR)/PiavcaCal3dApp-PiavcaCal3dApp.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='PiavcaCal3dApp.cpp' object='PiavcaCal3dApp-PiavcaCal3dApp.o' libtool=no @AMDEPBACKSLASH@
+_PiavcaGlut_so_la-PiavcaGlut_wrap.lo: PiavcaGlut_wrap.cpp
+@am__fastdepCXX_TRUE@	if $(LIBTOOL) --tag=CXX --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_PiavcaGlut_so_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT _PiavcaGlut_so_la-PiavcaGlut_wrap.lo -MD -MP -MF "$(DEPDIR)/_PiavcaGlut_so_la-PiavcaGlut_wrap.Tpo" -c -o _PiavcaGlut_so_la-PiavcaGlut_wrap.lo `test -f 'PiavcaGlut_wrap.cpp' || echo '$(srcdir)/'`PiavcaGlut_wrap.cpp; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/_PiavcaGlut_so_la-PiavcaGlut_wrap.Tpo" "$(DEPDIR)/_PiavcaGlut_so_la-PiavcaGlut_wrap.Plo"; else rm -f "$(DEPDIR)/_PiavcaGlut_so_la-PiavcaGlut_wrap.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='PiavcaGlut_wrap.cpp' object='_PiavcaGlut_so_la-PiavcaGlut_wrap.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(PiavcaCal3dApp_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o PiavcaCal3dApp-PiavcaCal3dApp.o `test -f 'PiavcaCal3dApp.cpp' || echo '$(srcdir)/'`PiavcaCal3dApp.cpp
+@am__fastdepCXX_FALSE@	$(LIBTOOL) --tag=CXX --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_PiavcaGlut_so_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o _PiavcaGlut_so_la-PiavcaGlut_wrap.lo `test -f 'PiavcaGlut_wrap.cpp' || echo '$(srcdir)/'`PiavcaGlut_wrap.cpp
 
-PiavcaCal3dApp-PiavcaCal3dApp.obj: PiavcaCal3dApp.cpp
-@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(PiavcaCal3dApp_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT PiavcaCal3dApp-PiavcaCal3dApp.obj -MD -MP -MF "$(DEPDIR)/PiavcaCal3dApp-PiavcaCal3dApp.Tpo" -c -o PiavcaCal3dApp-PiavcaCal3dApp.obj `if test -f 'PiavcaCal3dApp.cpp'; then $(CYGPATH_W) 'PiavcaCal3dApp.cpp'; else $(CYGPATH_W) '$(srcdir)/PiavcaCal3dApp.cpp'; fi`; \
-@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/PiavcaCal3dApp-PiavcaCal3dApp.Tpo" "$(DEPDIR)/PiavcaCal3dApp-PiavcaCal3dApp.Po"; else rm -f "$(DEPDIR)/PiavcaCal3dApp-PiavcaCal3dApp.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='PiavcaCal3dApp.cpp' object='PiavcaCal3dApp-PiavcaCal3dApp.obj' libtool=no @AMDEPBACKSLASH@
+_PiavcaGlut_so_la-PiavcaGlut.lo: PiavcaGlut.cpp
+@am__fastdepCXX_TRUE@	if $(LIBTOOL) --tag=CXX --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_PiavcaGlut_so_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT _PiavcaGlut_so_la-PiavcaGlut.lo -MD -MP -MF "$(DEPDIR)/_PiavcaGlut_so_la-PiavcaGlut.Tpo" -c -o _PiavcaGlut_so_la-PiavcaGlut.lo `test -f 'PiavcaGlut.cpp' || echo '$(srcdir)/'`PiavcaGlut.cpp; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/_PiavcaGlut_so_la-PiavcaGlut.Tpo" "$(DEPDIR)/_PiavcaGlut_so_la-PiavcaGlut.Plo"; else rm -f "$(DEPDIR)/_PiavcaGlut_so_la-PiavcaGlut.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='PiavcaGlut.cpp' object='_PiavcaGlut_so_la-PiavcaGlut.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(PiavcaCal3dApp_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o PiavcaCal3dApp-PiavcaCal3dApp.obj `if test -f 'PiavcaCal3dApp.cpp'; then $(CYGPATH_W) 'PiavcaCal3dApp.cpp'; else $(CYGPATH_W) '$(srcdir)/PiavcaCal3dApp.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(LIBTOOL) --tag=CXX --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_PiavcaGlut_so_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o _PiavcaGlut_so_la-PiavcaGlut.lo `test -f 'PiavcaGlut.cpp' || echo '$(srcdir)/'`PiavcaGlut.cpp
 
 mostlyclean-libtool:
 	-rm -f *.lo
@@ -314,6 +343,34 @@ clean-libtool:
 distclean-libtool:
 	-rm -f libtool
 uninstall-info-am:
+install-pkgpythonPYTHON: $(pkgpython_PYTHON)
+	@$(NORMAL_INSTALL)
+	test -z "$(pkgpythondir)" || $(mkdir_p) "$(DESTDIR)$(pkgpythondir)"
+	@list='$(pkgpython_PYTHON)'; dlist=''; for p in $$list; do\
+	  if test -f "$$p"; then b=; else b="$(srcdir)/"; fi; \
+	  if test -f $$b$$p; then \
+	    f=$(am__strip_dir) \
+	    dlist="$$dlist $$f"; \
+	    echo " $(pkgpythonPYTHON_INSTALL) '$$b$$p' '$(DESTDIR)$(pkgpythondir)/$$f'"; \
+	    $(pkgpythonPYTHON_INSTALL) "$$b$$p" "$(DESTDIR)$(pkgpythondir)/$$f"; \
+	  else :; fi; \
+	done; \
+	if test -n "$$dlist"; then \
+	  if test -z "$(DESTDIR)"; then \
+	    PYTHON=$(PYTHON) $(py_compile) --basedir "$(pkgpythondir)" $$dlist; \
+	  else \
+	    PYTHON=$(PYTHON) $(py_compile) --destdir "$(DESTDIR)" --basedir "$(pkgpythondir)" $$dlist; \
+	  fi; \
+	else :; fi
+
+uninstall-pkgpythonPYTHON:
+	@$(NORMAL_UNINSTALL)
+	@list='$(pkgpython_PYTHON)'; dlist=''; for p in $$list; do\
+	  f=$(am__strip_dir) \
+	  rm -f "$(DESTDIR)$(pkgpythondir)/$$f"; \
+	  rm -f "$(DESTDIR)$(pkgpythondir)/$${f}c"; \
+	  rm -f "$(DESTDIR)$(pkgpythondir)/$${f}o"; \
+	done
 
 ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
 	list='$(SOURCES) $(HEADERS) $(LISP) $(TAGS_FILES)'; \
@@ -364,6 +421,7 @@ distclean-tags:
 	-rm -f TAGS ID GTAGS GRTAGS GSYMS GPATH tags
 
 distdir: $(DISTFILES)
+	$(mkdir_p) $(distdir)/../../Python/Piavca
 	@srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`; \
 	topsrcdirstrip=`echo "$(top_srcdir)" | sed 's|.|.|g'`; \
 	list='$(DISTFILES)'; for file in $$list; do \
@@ -391,13 +449,15 @@ distdir: $(DISTFILES)
 	  fi; \
 	done
 check-am: all-am
-check: check-am
-all-am: Makefile $(PROGRAMS)
+check: $(BUILT_SOURCES)
+	$(MAKE) $(AM_MAKEFLAGS) check-am
+all-am: Makefile $(LTLIBRARIES)
 installdirs:
-	for dir in "$(DESTDIR)$(bindir)"; do \
+	for dir in "$(DESTDIR)$(pkgpyexecdir)" "$(DESTDIR)$(pkgpythondir)"; do \
 	  test -z "$$dir" || $(mkdir_p) "$$dir"; \
 	done
-install: install-am
+install: $(BUILT_SOURCES)
+	$(MAKE) $(AM_MAKEFLAGS) install-am
 install-exec: install-exec-am
 install-data: install-data-am
 uninstall: uninstall-am
@@ -421,9 +481,11 @@ distclean-generic:
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
 	@echo "it deletes files that may require special tools to rebuild."
+	-test -z "$(BUILT_SOURCES)" || rm -f $(BUILT_SOURCES)
 clean: clean-am
 
-clean-am: clean-binPROGRAMS clean-generic clean-libtool mostlyclean-am
+clean-am: clean-generic clean-libtool clean-pkgpyexecLTLIBRARIES \
+	mostlyclean-am
 
 distclean: distclean-am
 	-rm -rf ./$(DEPDIR)
@@ -441,9 +503,9 @@ info: info-am
 
 info-am:
 
-install-data-am:
+install-data-am: install-pkgpythonPYTHON
 
-install-exec-am: install-binPROGRAMS
+install-exec-am: install-pkgpyexecLTLIBRARIES
 
 install-info: install-info-am
 
@@ -469,20 +531,29 @@ ps: ps-am
 
 ps-am:
 
-uninstall-am: uninstall-binPROGRAMS uninstall-info-am
+uninstall-am: uninstall-info-am uninstall-pkgpyexecLTLIBRARIES \
+	uninstall-pkgpythonPYTHON
 
-.PHONY: CTAGS GTAGS all all-am check check-am clean clean-binPROGRAMS \
-	clean-generic clean-libtool ctags distclean distclean-compile \
-	distclean-generic distclean-libtool distclean-tags distdir dvi \
-	dvi-am html html-am info info-am install install-am \
-	install-binPROGRAMS install-data install-data-am install-exec \
+.PHONY: CTAGS GTAGS all all-am check check-am clean clean-generic \
+	clean-libtool clean-pkgpyexecLTLIBRARIES ctags distclean \
+	distclean-compile distclean-generic distclean-libtool \
+	distclean-tags distdir dvi dvi-am html html-am info info-am \
+	install install-am install-data install-data-am install-exec \
 	install-exec-am install-info install-info-am install-man \
+	install-pkgpyexecLTLIBRARIES install-pkgpythonPYTHON \
 	install-strip installcheck installcheck-am installdirs \
 	maintainer-clean maintainer-clean-generic mostlyclean \
 	mostlyclean-compile mostlyclean-generic mostlyclean-libtool \
 	pdf pdf-am ps ps-am tags uninstall uninstall-am \
-	uninstall-binPROGRAMS uninstall-info-am
+	uninstall-info-am uninstall-pkgpyexecLTLIBRARIES \
+	uninstall-pkgpythonPYTHON
 
+#_your_extension_la_LIBADD = ../src/libproject.la
+
+$(srcdir)/PiavcaGlut_wrap.cpp : $(SWIG_SOURCES)
+	$(SWIG) $(SWIG_PYTHON_OPT) -I$(srcdir)/.. -o $@ -outdir $(srcdir)/../../Python/Piavca/ $<
+
+#_PiavcaGlut_so_la_LIBADD = ../PiavcaCal3dImp/libPiavcaCal3dImp.la
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:

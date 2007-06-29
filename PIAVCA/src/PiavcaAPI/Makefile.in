@@ -52,11 +52,15 @@ CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 LTLIBRARIES = $(noinst_LTLIBRARIES)
 libPiavcaAPI_la_LIBADD =
-am_libPiavcaAPI_la_OBJECTS = Avatar.lo AvatarPostureBlend.lo \
+am_libPiavcaAPI_la_OBJECTS = Avatar.lo AvatarImp.lo \
+	AvatarMotionQueue.lo AvatarPosture.lo AvatarPostureBlend.lo \
 	PiavcaCore.lo Hermite.lo Motion.lo Object.lo Quat.lo Vec.lo \
-	SequentialBlend.lo SelfBlend.lo AvatarImp.lo BlendBetween.lo \
-	MotionAdder.lo PiavcaError.lo TwoMotionCombiner.lo \
-	KeyframeMotion.lo
+	SequentialBlend.lo LookAtMotion.lo MaskedMotion.lo \
+	MotionParser.lo MotionSaver.lo MotionPosture.lo \
+	MotionTransition.lo PostureBlend.lo Reposition.lo \
+	BlendBetween.lo MotionAdder.lo PiavcaError.lo Sequence.lo \
+	SmoothSequence.lo SubMotion.lo Subtract.lo TimeRangeMotion.lo \
+	TwoMotionCombiner.lo KeyframeMotion.lo
 libPiavcaAPI_la_OBJECTS = $(am_libPiavcaAPI_la_OBJECTS)
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
@@ -112,6 +116,7 @@ EGREP = @EGREP@
 EXEEXT = @EXEEXT@
 F77 = @F77@
 FFLAGS = @FFLAGS@
+GREP = @GREP@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
@@ -136,9 +141,12 @@ PACKAGE_VERSION = @PACKAGE_VERSION@
 PATH_SEPARATOR = @PATH_SEPARATOR@
 PYTHON = @PYTHON@
 PYTHON_CPPFLAGS = @PYTHON_CPPFLAGS@
+PYTHON_EXEC_PREFIX = @PYTHON_EXEC_PREFIX@
 PYTHON_EXTRA_LDFLAGS = @PYTHON_EXTRA_LDFLAGS@
 PYTHON_EXTRA_LIBS = @PYTHON_EXTRA_LIBS@
 PYTHON_LDFLAGS = @PYTHON_LDFLAGS@
+PYTHON_PLATFORM = @PYTHON_PLATFORM@
+PYTHON_PREFIX = @PYTHON_PREFIX@
 PYTHON_SITE_PKG = @PYTHON_SITE_PKG@
 PYTHON_VERSION = @PYTHON_VERSION@
 RANLIB = @RANLIB@
@@ -151,12 +159,10 @@ SWIG_PYTHON_CPPFLAGS = @SWIG_PYTHON_CPPFLAGS@
 SWIG_PYTHON_OPT = @SWIG_PYTHON_OPT@
 VERSION = @VERSION@
 YACC = @YACC@
-ac_ct_AR = @ac_ct_AR@
+YFLAGS = @YFLAGS@
 ac_ct_CC = @ac_ct_CC@
 ac_ct_CXX = @ac_ct_CXX@
 ac_ct_F77 = @ac_ct_F77@
-ac_ct_RANLIB = @ac_ct_RANLIB@
-ac_ct_STRIP = @ac_ct_STRIP@
 am__fastdepCC_FALSE = @am__fastdepCC_FALSE@
 am__fastdepCC_TRUE = @am__fastdepCC_TRUE@
 am__fastdepCXX_FALSE = @am__fastdepCXX_FALSE@
@@ -173,23 +179,34 @@ build_cpu = @build_cpu@
 build_os = @build_os@
 build_vendor = @build_vendor@
 datadir = @datadir@
+datarootdir = @datarootdir@
+docdir = @docdir@
+dvidir = @dvidir@
 exec_prefix = @exec_prefix@
 host = @host@
 host_alias = @host_alias@
 host_cpu = @host_cpu@
 host_os = @host_os@
 host_vendor = @host_vendor@
+htmldir = @htmldir@
 includedir = @includedir@
 infodir = @infodir@
 install_sh = @install_sh@
 libdir = @libdir@
 libexecdir = @libexecdir@
+localedir = @localedir@
 localstatedir = @localstatedir@
 mandir = @mandir@
 mkdir_p = @mkdir_p@
 oldincludedir = @oldincludedir@
+pdfdir = @pdfdir@
+pkgpyexecdir = @pkgpyexecdir@
+pkgpythondir = @pkgpythondir@
 prefix = @prefix@
 program_transform_name = @program_transform_name@
+psdir = @psdir@
+pyexecdir = @pyexecdir@
+pythondir = @pythondir@
 sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
@@ -198,11 +215,13 @@ target_alias = @target_alias@
 # set the include path found by configure
 INCLUDES = -I$(top_srcdir)/src $(all_includes)
 apiincludedir = $(includedir)/Piavca/PiavcaAPI
-apiinclude_HEADERS = Avatar.h AvatarImp.h AvatarPostureBlend.h BlendBetween.h Hermite.h LoopMotion.h MathsUtils.h MotionAdder.h MotionFilter.h MotionImp.h Motion.h ObjectImp.h Object.h PiavcaCore.h PiavcaDefs.h PiavcaException.h Quat.h SelfBlend.h SequentialBlend.h TimeCallback.h KeyframeMotion.h TwoMotionCombiner.h Vec.h
+apiinclude_HEADERS = Avatar.h AvatarImp.h AvatarMotionQueue.h AvatarPosture.h AvatarPostureBlend.h BlendBetween.h ChangeMotionLength.h ChangeMotionProp.h ChoiceLoopMotion.h ChoiceMotion.h DiadicGazeMotion.h Hermite.h KeyframeMotion.h LookAtMotion.h LoopMotion.h MaskedMotion.h MathsUtils.h MotionAdder.h MotionFilter.h MotionImp.h Motion.h MotionParser.h MotionPosture.h MotionSaver.h MotionTransition.h MultiMotionCombiner.h MultiMotionLoop.h ObjectImp.h Object.h OnTheSpot.h Piavca.h PiavcaCore.h PiavcaDefs.h PiavcaError.h PiavcaException.h PostureBlend.h Proxemics.h ProxemicsLoop.h Quat.h RandomAdd.h RandomAddLoop.h RandomBlend.h RandomBlendLoop.h RandomChoiceMotion.h RandomGazeMotion.h RandomLoopMotion.h RandomTimingsLoop.h Reposition.h ScaleMotion.h ScaleMotionRoot.h ScaleMotionSpeed.h SelfBlend.h Sequence.h SmoothSequence.h SubMotion.h Subtract.h TimeCallback.h TimeOffset.h TimeRangeMotion.h TimeWarp.h TurnMotion.h TwoMotionCombiner.h Vec.h ZeroMotion.h
 noinst_LTLIBRARIES = libPiavcaAPI.la
-libPiavcaAPI_la_SOURCES = Avatar.cpp AvatarPostureBlend.cpp PiavcaCore.cpp \
+libPiavcaAPI_la_SOURCES = Avatar.cpp AvatarImp.cpp AvatarMotionQueue.cpp AvatarPosture.cpp AvatarPostureBlend.cpp \ 	PiavcaCore.cpp\
 	Hermite.cpp Motion.cpp Object.cpp Quat.cpp Vec.cpp SequentialBlend.cpp \
-	SelfBlend.cpp AvatarImp.cpp BlendBetween.cpp MotionAdder.cpp PiavcaError.cpp \
+	LookAtMotion.cpp MaskedMotion.cpp MotionParser.cpp MotionSaver.cpp MotionPosture.cpp MotionTransition.cpp PostureBlend.cpp \
+	Reposition.cpp BlendBetween.cpp MotionAdder.cpp PiavcaError.cpp \
+	Sequence.cpp SmoothSequence.cpp SubMotion.cpp Subtract.cpp TimeRangeMotion.cpp\
 	TwoMotionCombiner.cpp KeyframeMotion.cpp
 
 all: all-am
@@ -258,18 +277,32 @@ distclean-compile:
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Avatar.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/AvatarImp.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/AvatarMotionQueue.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/AvatarPosture.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/AvatarPostureBlend.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BlendBetween.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Hermite.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/KeyframeMotion.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/LookAtMotion.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MaskedMotion.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Motion.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MotionAdder.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MotionParser.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MotionPosture.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MotionSaver.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MotionTransition.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Object.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PiavcaCore.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PiavcaError.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PostureBlend.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Quat.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SelfBlend.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Reposition.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Sequence.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SequentialBlend.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SmoothSequence.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SubMotion.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Subtract.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TimeRangeMotion.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TwoMotionCombiner.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Vec.Plo@am__quote@
 

@@ -1,4 +1,4 @@
-# This file was created automatically by SWIG 1.3.29.
+# This file was created automatically by SWIG 1.3.28.
 # Don't modify this file, modify the SWIG interface instead.
 # This file is compatible with both classic and new-style classes.
 
@@ -27,11 +27,6 @@ def _swig_getattr(self,class_type,name):
     if method: return method(self)
     raise AttributeError,name
 
-def _swig_repr(self):
-    try: strthis = "proxy of " + self.this.__repr__()
-    except: strthis = ""
-    return "<%s.%s; %s >" % (self.__class__.__module__, self.__class__.__name__, strthis,)
-
 import types
 try:
     _object = types.ObjectType
@@ -49,11 +44,17 @@ except:
     weakref_proxy = lambda x: x
 
 
+
 displayFunc = _PiavcaGlut.displayFunc
+
 timeStep = _PiavcaGlut.timeStep
+
 render = _PiavcaGlut.render
+
 start = _PiavcaGlut.start
+
 outputMessage = _PiavcaGlut.outputMessage
+
 
 init = _PiavcaGlut.init
 

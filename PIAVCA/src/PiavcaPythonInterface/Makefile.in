@@ -40,8 +40,8 @@ POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
 subdir = src/PiavcaPythonInterface
-DIST_COMMON = $(pyfiles_PYTHON) $(pyintinclude_HEADERS) \
-	$(srcdir)/Makefile.am $(srcdir)/Makefile.in
+DIST_COMMON = $(pyintinclude_HEADERS) $(srcdir)/Makefile.am \
+	$(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/ac_pkg_swig.m4 \
 	$(top_srcdir)/m4/ac_python_devel.m4 $(top_srcdir)/configure.in
@@ -56,16 +56,12 @@ am__vpath_adj = case $$p in \
     *) f=$$p;; \
   esac;
 am__strip_dir = `echo $$p | sed -e 's|^.*/||'`;
-am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(pyfilesdir)" \
-	"$(DESTDIR)$(pyintincludedir)"
+am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(pyintincludedir)"
 libLTLIBRARIES_INSTALL = $(INSTALL)
 LTLIBRARIES = $(lib_LTLIBRARIES)
 libPiavcaPythonInterface_la_LIBADD =
-am__objects_1 =
 am_libPiavcaPythonInterface_la_OBJECTS =  \
-	libPiavcaPythonInterface_la-PiavcaPythonApp.lo \
-	libPiavcaPythonInterface_la-PyMotion.lo $(am__objects_1) \
-	libPiavcaPythonInterface_la-Piavca_wrap.lo
+	libPiavcaPythonInterface_la-PiavcaPythonApp.lo
 libPiavcaPythonInterface_la_OBJECTS =  \
 	$(am_libPiavcaPythonInterface_la_OBJECTS)
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
@@ -81,8 +77,6 @@ CXXLINK = $(LIBTOOL) --tag=CXX --mode=link $(CXXLD) $(AM_CXXFLAGS) \
 	$(CXXFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
 SOURCES = $(libPiavcaPythonInterface_la_SOURCES)
 DIST_SOURCES = $(libPiavcaPythonInterface_la_SOURCES)
-pyfilesPYTHON_INSTALL = $(INSTALL_DATA)
-py_compile = $(top_srcdir)/py-compile
 pyintincludeHEADERS_INSTALL = $(INSTALL_HEADER)
 HEADERS = $(pyintinclude_HEADERS)
 ETAGS = etags
@@ -117,6 +111,7 @@ EGREP = @EGREP@
 EXEEXT = @EXEEXT@
 F77 = @F77@
 FFLAGS = @FFLAGS@
+GREP = @GREP@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
@@ -141,9 +136,12 @@ PACKAGE_VERSION = @PACKAGE_VERSION@
 PATH_SEPARATOR = @PATH_SEPARATOR@
 PYTHON = @PYTHON@
 PYTHON_CPPFLAGS = @PYTHON_CPPFLAGS@
+PYTHON_EXEC_PREFIX = @PYTHON_EXEC_PREFIX@
 PYTHON_EXTRA_LDFLAGS = @PYTHON_EXTRA_LDFLAGS@
 PYTHON_EXTRA_LIBS = @PYTHON_EXTRA_LIBS@
 PYTHON_LDFLAGS = @PYTHON_LDFLAGS@
+PYTHON_PLATFORM = @PYTHON_PLATFORM@
+PYTHON_PREFIX = @PYTHON_PREFIX@
 PYTHON_SITE_PKG = @PYTHON_SITE_PKG@
 PYTHON_VERSION = @PYTHON_VERSION@
 RANLIB = @RANLIB@
@@ -156,12 +154,10 @@ SWIG_PYTHON_CPPFLAGS = @SWIG_PYTHON_CPPFLAGS@
 SWIG_PYTHON_OPT = @SWIG_PYTHON_OPT@
 VERSION = @VERSION@
 YACC = @YACC@
-ac_ct_AR = @ac_ct_AR@
+YFLAGS = @YFLAGS@
 ac_ct_CC = @ac_ct_CC@
 ac_ct_CXX = @ac_ct_CXX@
 ac_ct_F77 = @ac_ct_F77@
-ac_ct_RANLIB = @ac_ct_RANLIB@
-ac_ct_STRIP = @ac_ct_STRIP@
 am__fastdepCC_FALSE = @am__fastdepCC_FALSE@
 am__fastdepCC_TRUE = @am__fastdepCC_TRUE@
 am__fastdepCXX_FALSE = @am__fastdepCXX_FALSE@
@@ -178,23 +174,34 @@ build_cpu = @build_cpu@
 build_os = @build_os@
 build_vendor = @build_vendor@
 datadir = @datadir@
+datarootdir = @datarootdir@
+docdir = @docdir@
+dvidir = @dvidir@
 exec_prefix = @exec_prefix@
 host = @host@
 host_alias = @host_alias@
 host_cpu = @host_cpu@
 host_os = @host_os@
 host_vendor = @host_vendor@
+htmldir = @htmldir@
 includedir = @includedir@
 infodir = @infodir@
 install_sh = @install_sh@
 libdir = @libdir@
 libexecdir = @libexecdir@
+localedir = @localedir@
 localstatedir = @localstatedir@
 mandir = @mandir@
 mkdir_p = @mkdir_p@
 oldincludedir = @oldincludedir@
+pdfdir = @pdfdir@
+pkgpyexecdir = @pkgpyexecdir@
+pkgpythondir = @pkgpythondir@
 prefix = @prefix@
 program_transform_name = @program_transform_name@
+psdir = @psdir@
+pyexecdir = @pyexecdir@
+pythondir = @pythondir@
 sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
@@ -204,19 +211,16 @@ target_alias = @target_alias@
 INCLUDES = -I$(srcdir)/.. $(all_includes)
 pyintincludedir = $(includedir)/Piavca/PiavcaPythonInterface
 pyintinclude_HEADERS = PiavcaPythonApp.h
-pyfilesdir = $(includedir)/Piavca/Python
-pyfiles_PYTHON = Piavca.py MotionFile.py
-BUILT_SOURCES = Piavca_wrap.cpp
-SWIG_SOURCES = Piavca.i 
 
 #pkgpython_PYTHON = your_extension.py
 #pkgpyexec_LTLIBRARIES = _your_extension.la
 #_your_extension_la_SOURCES = $(srcdir)/swig_wrap.cpp $(SWIG_SOURCES)
 libPiavcaPythonInterface_la_CPPFLAGS = $(PYTHON_CPPFLAGS) $(SWIG_PYTHON_CPPFLAGS)
+#_your_extension_la_LDFLAGS = -module
+#_your_extension_la_LIBADD = ../src/libproject.la
 lib_LTLIBRARIES = libPiavcaPythonInterface.la
-libPiavcaPythonInterface_la_SOURCES = PiavcaPythonApp.cpp PyMotion.cpp  $(SWIG_SOURCES) Piavca_wrap.cpp
-all: $(BUILT_SOURCES)
-	$(MAKE) $(AM_MAKEFLAGS) all-am
+libPiavcaPythonInterface_la_SOURCES = PiavcaPythonApp.cpp 
+all: all-am
 
 .SUFFIXES:
 .SUFFIXES: .cpp .lo .o .obj
@@ -286,8 +290,6 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libPiavcaPythonInterface_la-PiavcaPythonApp.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libPiavcaPythonInterface_la-Piavca_wrap.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libPiavcaPythonInterface_la-PyMotion.Plo@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	if $(CXXCOMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ $<; \
@@ -317,20 +319,6 @@ libPiavcaPythonInterface_la-PiavcaPythonApp.lo: PiavcaPythonApp.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(LIBTOOL) --tag=CXX --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libPiavcaPythonInterface_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libPiavcaPythonInterface_la-PiavcaPythonApp.lo `test -f 'PiavcaPythonApp.cpp' || echo '$(srcdir)/'`PiavcaPythonApp.cpp
 
-libPiavcaPythonInterface_la-PyMotion.lo: PyMotion.cpp
-@am__fastdepCXX_TRUE@	if $(LIBTOOL) --tag=CXX --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libPiavcaPythonInterface_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libPiavcaPythonInterface_la-PyMotion.lo -MD -MP -MF "$(DEPDIR)/libPiavcaPythonInterface_la-PyMotion.Tpo" -c -o libPiavcaPythonInterface_la-PyMotion.lo `test -f 'PyMotion.cpp' || echo '$(srcdir)/'`PyMotion.cpp; \
-@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/libPiavcaPythonInterface_la-PyMotion.Tpo" "$(DEPDIR)/libPiavcaPythonInterface_la-PyMotion.Plo"; else rm -f "$(DEPDIR)/libPiavcaPythonInterface_la-PyMotion.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='PyMotion.cpp' object='libPiavcaPythonInterface_la-PyMotion.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(LIBTOOL) --tag=CXX --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libPiavcaPythonInterface_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libPiavcaPythonInterface_la-PyMotion.lo `test -f 'PyMotion.cpp' || echo '$(srcdir)/'`PyMotion.cpp
-
-libPiavcaPythonInterface_la-Piavca_wrap.lo: Piavca_wrap.cpp
-@am__fastdepCXX_TRUE@	if $(LIBTOOL) --tag=CXX --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libPiavcaPythonInterface_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libPiavcaPythonInterface_la-Piavca_wrap.lo -MD -MP -MF "$(DEPDIR)/libPiavcaPythonInterface_la-Piavca_wrap.Tpo" -c -o libPiavcaPythonInterface_la-Piavca_wrap.lo `test -f 'Piavca_wrap.cpp' || echo '$(srcdir)/'`Piavca_wrap.cpp; \
-@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/libPiavcaPythonInterface_la-Piavca_wrap.Tpo" "$(DEPDIR)/libPiavcaPythonInterface_la-Piavca_wrap.Plo"; else rm -f "$(DEPDIR)/libPiavcaPythonInterface_la-Piavca_wrap.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='Piavca_wrap.cpp' object='libPiavcaPythonInterface_la-Piavca_wrap.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(LIBTOOL) --tag=CXX --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libPiavcaPythonInterface_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libPiavcaPythonInterface_la-Piavca_wrap.lo `test -f 'Piavca_wrap.cpp' || echo '$(srcdir)/'`Piavca_wrap.cpp
-
 mostlyclean-libtool:
 	-rm -f *.lo
 
@@ -340,34 +328,6 @@ clean-libtool:
 distclean-libtool:
 	-rm -f libtool
 uninstall-info-am:
-install-pyfilesPYTHON: $(pyfiles_PYTHON)
-	@$(NORMAL_INSTALL)
-	test -z "$(pyfilesdir)" || $(mkdir_p) "$(DESTDIR)$(pyfilesdir)"
-	@list='$(pyfiles_PYTHON)'; dlist=''; for p in $$list; do\
-	  if test -f "$$p"; then b=; else b="$(srcdir)/"; fi; \
-	  if test -f $$b$$p; then \
-	    f=$(am__strip_dir) \
-	    dlist="$$dlist $$f"; \
-	    echo " $(pyfilesPYTHON_INSTALL) '$$b$$p' '$(DESTDIR)$(pyfilesdir)/$$f'"; \
-	    $(pyfilesPYTHON_INSTALL) "$$b$$p" "$(DESTDIR)$(pyfilesdir)/$$f"; \
-	  else :; fi; \
-	done; \
-	if test -n "$$dlist"; then \
-	  if test -z "$(DESTDIR)"; then \
-	    PYTHON=$(PYTHON) $(py_compile) --basedir "$(pyfilesdir)" $$dlist; \
-	  else \
-	    PYTHON=$(PYTHON) $(py_compile) --destdir "$(DESTDIR)" --basedir "$(pyfilesdir)" $$dlist; \
-	  fi; \
-	else :; fi
-
-uninstall-pyfilesPYTHON:
-	@$(NORMAL_UNINSTALL)
-	@list='$(pyfiles_PYTHON)'; dlist=''; for p in $$list; do\
-	  f=$(am__strip_dir) \
-	  rm -f "$(DESTDIR)$(pyfilesdir)/$$f"; \
-	  rm -f "$(DESTDIR)$(pyfilesdir)/$${f}c"; \
-	  rm -f "$(DESTDIR)$(pyfilesdir)/$${f}o"; \
-	done
 install-pyintincludeHEADERS: $(pyintinclude_HEADERS)
 	@$(NORMAL_INSTALL)
 	test -z "$(pyintincludedir)" || $(mkdir_p) "$(DESTDIR)$(pyintincludedir)"
@@ -462,15 +422,13 @@ distdir: $(DISTFILES)
 	  fi; \
 	done
 check-am: all-am
-check: $(BUILT_SOURCES)
-	$(MAKE) $(AM_MAKEFLAGS) check-am
+check: check-am
 all-am: Makefile $(LTLIBRARIES) $(HEADERS)
 installdirs:
-	for dir in "$(DESTDIR)$(libdir)" "$(DESTDIR)$(pyfilesdir)" "$(DESTDIR)$(pyintincludedir)"; do \
+	for dir in "$(DESTDIR)$(libdir)" "$(DESTDIR)$(pyintincludedir)"; do \
 	  test -z "$$dir" || $(mkdir_p) "$$dir"; \
 	done
-install: $(BUILT_SOURCES)
-	$(MAKE) $(AM_MAKEFLAGS) install-am
+install: install-am
 install-exec: install-exec-am
 install-data: install-data-am
 uninstall: uninstall-am
@@ -494,7 +452,6 @@ distclean-generic:
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
 	@echo "it deletes files that may require special tools to rebuild."
-	-test -z "$(BUILT_SOURCES)" || rm -f $(BUILT_SOURCES)
 clean: clean-am
 
 clean-am: clean-generic clean-libLTLIBRARIES clean-libtool \
@@ -516,7 +473,7 @@ info: info-am
 
 info-am:
 
-install-data-am: install-pyfilesPYTHON install-pyintincludeHEADERS
+install-data-am: install-pyintincludeHEADERS
 
 install-exec-am: install-libLTLIBRARIES
 
@@ -545,7 +502,7 @@ ps: ps-am
 ps-am:
 
 uninstall-am: uninstall-info-am uninstall-libLTLIBRARIES \
-	uninstall-pyfilesPYTHON uninstall-pyintincludeHEADERS
+	uninstall-pyintincludeHEADERS
 
 .PHONY: CTAGS GTAGS all all-am check check-am clean clean-generic \
 	clean-libLTLIBRARIES clean-libtool ctags distclean \
@@ -553,20 +510,14 @@ uninstall-am: uninstall-info-am uninstall-libLTLIBRARIES \
 	distclean-tags distdir dvi dvi-am html html-am info info-am \
 	install install-am install-data install-data-am install-exec \
 	install-exec-am install-info install-info-am \
-	install-libLTLIBRARIES install-man install-pyfilesPYTHON \
-	install-pyintincludeHEADERS install-strip installcheck \
-	installcheck-am installdirs maintainer-clean \
-	maintainer-clean-generic mostlyclean mostlyclean-compile \
-	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
-	tags uninstall uninstall-am uninstall-info-am \
-	uninstall-libLTLIBRARIES uninstall-pyfilesPYTHON \
+	install-libLTLIBRARIES install-man install-pyintincludeHEADERS \
+	install-strip installcheck installcheck-am installdirs \
+	maintainer-clean maintainer-clean-generic mostlyclean \
+	mostlyclean-compile mostlyclean-generic mostlyclean-libtool \
+	pdf pdf-am ps ps-am tags uninstall uninstall-am \
+	uninstall-info-am uninstall-libLTLIBRARIES \
 	uninstall-pyintincludeHEADERS
 
-#_your_extension_la_LDFLAGS = -module
-#_your_extension_la_LIBADD = ../src/libproject.la
-
-$(srcdir)/Piavca_wrap.cpp : $(SWIG_SOURCES)
-	$(SWIG) $(SWIG_PYTHON_OPT) -I$(srcdir)/.. -o $@ -outdir $(srcdir)/../../Python $<
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:

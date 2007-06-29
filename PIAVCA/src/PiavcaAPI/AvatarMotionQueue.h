@@ -98,7 +98,7 @@ class PIAVCA_DECL AvatarMotionQueue : public AvatarTimeCallback
    *  The avatar has a queue for body and one for facial motions
    *  the facial flag distinguishes them.
    */
-  static AvatarMotionQueue *AvatarMotionQueue::getQueue(Avatar *avatar, bool facial = false);
+  static AvatarMotionQueue *getQueue(Avatar *avatar, bool facial = false);
 
   static bool hasQueue(Avatar *avatar);
 

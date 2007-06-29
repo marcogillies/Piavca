@@ -25,7 +25,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 void displayFunc();
 
 int init(int argc, char *argv[]);
-int init();
+int init(int core = 0);
 
 void timeStep();
 int render();

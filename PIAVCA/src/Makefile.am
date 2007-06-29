@@ -4,5 +4,4 @@
 INCLUDES= $(all_includes)
 
 # the library search path.
-SUBDIRS = PiavcaAPI PiavcaNVCLib StdMotionImp PiavcaPythonInterface \
-	PiavcaCal3dImp PiavcaCal3dApp 
+SUBDIRS = PiavcaAPI StdMotionImp PiavcaCal3dImp Piavca_base PiavcaPythonInterface PiavcaGlut 

@@ -1,7 +1,10 @@
+#!/usr/bin/python
+
 import sys
 
 import Piavca
-Piavca.PiavcaGlut.init()
+#Piavca.PiavcaGlut.init()
+Piavca.PiavcaGlut.init(Piavca.Core.getCorePointerAsLong())
 from Piavca import runScriptEngine
 
 if len(sys.argv) > 1:

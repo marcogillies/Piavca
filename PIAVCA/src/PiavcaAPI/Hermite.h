@@ -106,11 +106,11 @@ inline Quat keyframeTangent(Quat current, Quat prev, float prevTime, Quat next, 
  */
 //@{
 //! float hermite
-/*PIAVCA_EXPORT*/ float HermiteEvaluate(float t, float length, float p0, float d0, float p1, float d1);
+PIAVCA_EXPORT float HermiteEvaluate(float t, float length, float p0, float d0, float p1, float d1);
 //! Vec hermite
-/*PIAVCA_EXPORT*/ Vec HermiteEvaluate(float t, float length, Vec p0, Vec d0, Vec p1, Vec d1);
+PIAVCA_EXPORT Vec HermiteEvaluate(float t, float length, Vec p0, Vec d0, Vec p1, Vec d1);
 //! Quat hermite
-/*PIAVCA_EXPORT*/ Quat HermiteEvaluate(float t, float length, Quat p0, Quat d0, Quat p1, Quat d1);
+PIAVCA_EXPORT Quat HermiteEvaluate(float t, float length, Quat p0, Quat d0, Quat p1, Quat d1);
 //@}
 };
 

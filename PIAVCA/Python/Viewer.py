@@ -1,3 +1,4 @@
+#!/usr/bin/python
 
 import sys
 import os
@@ -5,7 +6,7 @@ import time
 
 
 import Piavca
-Piavca.PiavcaGlut.init()
+Piavca.PiavcaGlut.init(Piavca.Core.getCorePointerAsLong())
 import wx
 from wx.lib.dialogs import *
 
@@ -17,20 +18,21 @@ if len(sys.argv) > 1:
 	path = sys.argv[1]
 else:
 	dialog_return = openFileDialog ()
-	path = dialog_return.paths[0]
+	path = dialog_return.paths[0].encode("latin-1")
 
 print path
 pathend = path.rfind("\\")
-if pathend < -1:
+if pathend < 0:
 	pathend = path.rfind("/")
-if pathend < -1:
+print pathend, path[0]
+if pathend < 0:
 	filename = path
 else:
 	filename = path[pathend+1:]
 	path = path[:pathend+1]
 	if path != "":
 		os.chdir(path)
-print filename, path
+print filename, "**", path
 if filename[-4:] == ".cfg":
 	filename = filename[:-4]
 print filename
@@ -52,7 +54,7 @@ else:
 	motnames = Piavca.Core.getCore().getMotionNames()
 	print motnames
 	dialog_return = singleChoiceDialog (lst=["None"]+motnames)
-	motion_name = dialog_return.selection
+	motion_name = dialog_return.selection.encode("latin-1")
 
 #motion_name = "biped_mocap_final"
 mot = Piavca.Core.getCore().getMotion(motion_name)
