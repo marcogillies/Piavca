@@ -102,10 +102,10 @@ public:
 	{
 		return parseMotion(is, "", scaleFactor, mp);
 	}
-	PIAVCA_DECL static Motion *parseMotion(istringstream &is, std::string currentWord, float scaleFactor, MotionParser **mp);
-	PIAVCA_DECL static void addMotionCommand(tstring name, MotionParser *command);
-	PIAVCA_DECL static MotionParser *getMotionCommand(tstring name);
-	PIAVCA_DECL static void setUpMotionCommands();
+	static Motion *parseMotion(istringstream &is, std::string currentWord, float scaleFactor, MotionParser **mp);
+	static void addMotionCommand(tstring name, MotionParser *command);
+	static MotionParser *getMotionCommand(tstring name);
+	static void setUpMotionCommands();
 };
 
 };

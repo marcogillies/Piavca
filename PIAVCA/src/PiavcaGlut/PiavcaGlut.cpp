@@ -121,9 +121,9 @@ int render()
 
 void displayFunc()
 {
-  std::cout << "start of displayfunc\n";
+  //std::cout << "start of displayfunc\n";
   //std::cout << "core pointer " << ((int)g_Params.core) << std::endl;
-  std::cout << "core pointer " << Piavca::Core::getCore() << std::endl;
+  //std::cout << "core pointer " << Piavca::Core::getCore() << std::endl;
   static float prevTime = Piavca::Core::getCore()->getTime();
   static int framecount = 0;
   static float updateTime = 0;
@@ -131,7 +131,7 @@ void displayFunc()
   static float renderTime = 0;
 
   //std::cout << "display function \n";
-  std::cout << "core pointer " << (int) Piavca::Core::getCore();
+  //std::cout << "core pointer " << (int) Piavca::Core::getCore();
 
   float time1 = Piavca::Core::getCore()->getTime();
   timeStep();	
