@@ -46,6 +46,7 @@ class Track :
 		for joint in joints:
 			print joint
 			jointid = Piavca.Core.getCore().getJointId(joint)
+			print joint, jointid
 			maskedMotion.addToMask(jointid)
 
 	def GetName(self):

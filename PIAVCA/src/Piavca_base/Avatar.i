@@ -162,7 +162,7 @@
 		}
 		else
 		{
-			self->setRootPosition(pos);
+			self->setRootPosition(pos - self->getRootPosition());
 		}
 	};
 	

@@ -7,6 +7,8 @@ import time
 
 import Piavca
 Piavca.PiavcaGlut.init(Piavca.Core.getCorePointerAsLong())
+import Piavca.JointNames
+Piavca.JointNames.loadDefaults()
 import wx
 from wx.lib.dialogs import *
 

@@ -4522,7 +4522,7 @@ SWIGINTERN void Piavca_Avatar_reposition_relative(Piavca::Avatar *self,Piavca::V
 		}
 		else
 		{
-			self->setRootPosition(pos);
+			self->setRootPosition(pos - self->getRootPosition());
 		}
 	}
 SWIGINTERN void Piavca_Avatar_reposition_absolute(Piavca::Avatar *self,Piavca::Vec const &pos){

@@ -36,20 +36,20 @@
 
 import Piavca
 
-joint_specs = ["Root Position, rootpos"
+joint_specs = ["Root Position, rootpos",
 "Root Orientation, pelvis, HumaniodRoot01, rootori",
 "HumaniodRoot01 Spine, Cally Spine, Bip01 Pelvis, pelvic",
 "HumaniodRoot01 Spine1, Cally Spine1, Bip01 Spine1, lower_tbone, hip, hanim_vc7, abdomen, Spine0, body, thorax",
 "HumaniodRoot01 Spine2, Bip01 Spine2, Spine1, Chest, chest, tbone",
 "HumaniodRoot01 Neck, Cally Neck, Bip01 Neck, neck, Neck, hanim_vc4",
 "HumaniodRoot01 Head, Cally Head, Bip01 Head, face, head, Head, hanim_skullbase",
-"HumaniodRoot01 L Clavicle, Cally L Clavicle, Bip01 L Clavicle, left_shoulder, LShoulder, LClavicle, hanim_l_shoulder, lCollar, LeftCollar, lclavicle",
+"HumaniodRoot01 L Clavicle, Cally L Clavicle, Bip01 L Clavicle, left_shoulder, LShoulder, LClavicle, hanim_l_shoulder, lCollar LeftCollar, lclavicle",
 "HumaniodRoot01 L UpperArm, Cally L UpperArm, Bip01 L UpperArm, upper_left_arm, LUpperArm, lShldr, LeftShoulder, lhumerus",
-"HumaniodRoot01 L Forearm, Cally L Forearm, Bip01 L Forearm, lower_left_arm, LForeArm, LForearm, lForeArm, left_elbow, LeftElbow, lradius, LElbow",
+"HumaniodRoot01 L Forearm, Cally L Forearm, Bip01 L Forearm, lower_left_arm, LForeArm, LForearm, lForeArm, left_elbow LeftElbow, lradius, LElbow",
 "HumaniodRoot01 L Hand, Cally L Hand, Bip01 L Hand, left_wrist, LWrist, LHand, lHand, LeftWrist, lhand",
-"HumaniodRoot01 R Clavicle, Cally R Clavicle, Bip01 R Clavicle, right_shoulder, RShoulder, RClavicle, hanim_r_shoulder, rCollar, RightCollar, rclavicle",
+"HumaniodRoot01 R Clavicle, Cally R Clavicle, Bip01 R Clavicle, right_shoulder, RShoulder, RClavicle, hanim_r_shoulder, rCollar RightCollar, rclavicle",
 "HumaniodRoot01 R UpperArm, Cally R UpperArm, Bip01 R UpperArm, upper_right_arm, RUpperArm, rShldr, RightShoulder, rhumerus",
-"HumaniodRoot01 R Forearm, Cally R Forearm, Bip01 R Forearm, lower_right_arm, RForeArm, RForearm, rForeArm, right_elbow, RightElbow, rradius, RElbow, ",
+"HumaniodRoot01 R Forearm, Cally R Forearm, Bip01 R Forearm, lower_right_arm, RForeArm, RForearm, rForeArm, right_elbow RightElbow, rradius, RElbow, ",
 "HumaniodRoot01 R Hand, Cally R Hand, Bip01 R Hand, right_wrist, RWrist, RHand, rHand, RightWrist, rhand",
 "legs",
 "left_hip, lButtock",
@@ -71,6 +71,7 @@ def loadNames(namelist, joints=1):
 		line = [l.strip() for l in line]
 		if line[-1] == "":
 			line = line[:-1]
+		print line
 		if joints :
 			#print line
 			Piavca.Core.getCore().addJointNameSet(line)
