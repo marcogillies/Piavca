@@ -50,6 +50,7 @@ namespace Piavca
 		Quat start_orientation;
 		Vec originalStart;
 		Quat oriOffset;
+		Vec posOffset;
 
 		// if this is true we keep start a new motion from the previous
 		// y value (as well as x-z) otherwise we reblend to the starting 
@@ -71,7 +72,7 @@ namespace Piavca
 		Reposition(const Reposition &r)
 			:MotionFilter(r), 
 			start_position(r.start_position), 
-			start_orientation(r.start_orientation),
+			start_orientation(r.start_orientation), posOffset(r.posOffset),
 			maintainY(r.maintainY)
 		{
 		};
@@ -89,6 +90,16 @@ namespace Piavca
 		{
 			start_orientation = ori;
 			calculateRootOffsets();
+		};
+
+		void setPosOffset(const Vec &o)
+		{
+			posOffset = o;
+		};
+
+		Vec getPosOffset()
+		{
+			return posOffset;
 		};
 
 		//! Gets the new starting position of the motion

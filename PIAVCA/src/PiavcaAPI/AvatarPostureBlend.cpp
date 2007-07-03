@@ -100,7 +100,8 @@ void AvatarPostureBlend::repositionRelative(const Vec &pos)
 	if (repositioner)
 	{
 		Vec repPos = repositioner->getStartPosition();
-		repositioner->setStartPosition(repPos + pos);
+		//repositioner->setStartPosition(repPos + pos);
+		repositioner->setPosOffset(repositioner->getPosOffset() + pos);
 	}
 };
 
@@ -129,7 +130,10 @@ void AvatarPostureBlend::reblend(float time)
 		setMotion2(repositioner);
 	}
 	else
-		repositioner->setStartFromMotion(this, time);
+	{	
+		std::cout << "reblending again" << std::endl;
+		//repositioner->setStartFromMotion(this, time);
+	}
 
 	setStartTime(time);
 	originalMotion->reset();

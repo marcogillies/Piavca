@@ -246,16 +246,16 @@ BaseMotionTrack *StandardMotionImp::getTrack(int trackId, int tracktype)
 		if (trackId >= 0)
 		{
 			for (int i = 0; i < (int) tracks[trackId].size(); i++)
-				if (tracks[trackId][i]->getTrackType() == tracktype)
+				if (tracks[trackId][i]->getTrackType() & tracktype)
 					return tracks[trackId][i];
 			return NULL;
 		}
 		else
 		{
 			trackId = -trackId;
-			for (int i = 0; i < (int) tracks[trackId].size(); i++)
-				if (tracks[trackId][i]->getTrackType() == tracktype)
-					return tracks[trackId][i];
+			for (int i = 0; i < (int) facial_tracks[trackId].size(); i++)
+				if (facial_tracks[trackId][i]->getTrackType() & tracktype)
+					return facial_tracks[trackId][i];
 			return NULL;
 		}
 	}

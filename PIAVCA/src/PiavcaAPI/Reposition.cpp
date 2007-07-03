@@ -69,7 +69,7 @@ void Reposition::calculateRootOffsets()
 		oriOffset = oriOffset/otherOri;
 	}
 	//oriOffset = Quat(oriOffset.Zangle(), Vec::ZAxis());
-	//oriOffset = Quat();
+	oriOffset = Quat();
 	//oriOffset = Quat(1.57, Vec::ZAxis());
 };
 
@@ -134,7 +134,7 @@ Vec Reposition::getVecValueAtTimeInternal(int trackId, float time)
 			return start_position;
 		Vec OriginalValue = filterMot->getVecValueAtTime(trackId, time);
 		//return OriginalValue;
-		Vec subtractedVec = oriOffset.transform(OriginalValue - originalStart);
+		Vec subtractedVec = oriOffset.transform(OriginalValue - originalStart) + posOffset;
 		//return oriOffset.transform(OriginalValue);
 		//Vec subtractedVec = OriginalValue - originalStart;
 		//return OriginalValue;

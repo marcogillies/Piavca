@@ -117,12 +117,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_6692B0EE23044061AABBDB813B571B1C"
-        "OwnerKey" = "8:_A77C7DE8D6694A3593BBD3377A9EABBA"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_698F685E44B64B8EA43819FD3A2EA8A5"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -131,6 +125,24 @@
         {
         "MsmKey" = "8:_6C9B48778DB24E77BB81147BDCF997AD"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6CBBEF29B18E4CEF956350BBF8141C5E"
+        "OwnerKey" = "8:_0CB9DB440EEE42FF82F0B91520ECC7DE"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6CBBEF29B18E4CEF956350BBF8141C5E"
+        "OwnerKey" = "8:_77990BC1BBA148789CC1462E25BEEF2F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6CBBEF29B18E4CEF956350BBF8141C5E"
+        "OwnerKey" = "8:_0EDB427873744218ACBF6199C4916A0F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -201,24 +213,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_A77C7DE8D6694A3593BBD3377A9EABBA"
-        "OwnerKey" = "8:_0CB9DB440EEE42FF82F0B91520ECC7DE"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_A77C7DE8D6694A3593BBD3377A9EABBA"
-        "OwnerKey" = "8:_77990BC1BBA148789CC1462E25BEEF2F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_A77C7DE8D6694A3593BBD3377A9EABBA"
-        "OwnerKey" = "8:_0EDB427873744218ACBF6199C4916A0F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_ABE40264BE2C4B339A4554836A6C8673"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -275,6 +269,12 @@
         {
         "MsmKey" = "8:_D44C3318068E4CEB8FB27CB2F5719E08"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DF597D227C54430483952060966F8811"
+        "OwnerKey" = "8:_6CBBEF29B18E4CEF956350BBF8141C5E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -854,7 +854,7 @@
             "SourcePath" = "8:..\\..\\Python\\initXVRPiavca.py"
             "TargetName" = "8:initXVRPiavca.py"
             "Tag" = "8:"
-            "Folder" = "8:_030136928E1A4CF9B5AF2948FB4B2634"
+            "Folder" = "8:_F15ED618EE8E4C81A0E40FF057660174"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1256,6 +1256,18 @@
                 {
                 }
             }
+            "{994432C3-9487-495D-8656-3E829A8DBDDE}:_F15ED618EE8E4C81A0E40FF057660174"
+            {
+            "DefaultLocation" = "8:[PYTHON_DIR]\\Lib\\site-packages\\Piavca"
+            "Name" = "8:site-packages"
+            "AlwaysCreate" = "11:FALSE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Property" = "8:NEWPROPERTY2"
+                "Folders"
+                {
+                }
+            }
         }
         "LaunchCondition"
         {
@@ -1280,7 +1292,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Piavca"
         "ProductCode" = "8:{7E07296C-3595-4CA8-9B56-76D102408F36}"
-        "PackageCode" = "8:{28098C6C-070F-4F01-90B6-C8F9F16B07C9}"
+        "PackageCode" = "8:{4DD2C0DB-3FBF-42B9-9CDE-788EBA07B027}"
         "UpgradeCode" = "8:{FE7F39C9-C64C-4F24-BF33-C6B39EF15407}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
@@ -1837,11 +1849,11 @@
         }
         "MergeModule"
         {
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_6692B0EE23044061AABBDB813B571B1C"
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_6CBBEF29B18E4CEF956350BBF8141C5E"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:TRUE"
-            "SourcePath" = "8:policy_8_0_microsoft_vc80_crt_x86.msm"
+            "SourcePath" = "8:Microsoft_VC80_CRT_x86.msm"
                 "Properties"
                 {
                 }
@@ -1851,11 +1863,11 @@
             "Feature" = "8:"
             "IsolateTo" = "8:"
             }
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_A77C7DE8D6694A3593BBD3377A9EABBA"
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_DF597D227C54430483952060966F8811"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:TRUE"
-            "SourcePath" = "8:Microsoft_VC80_CRT_x86.msm"
+            "SourcePath" = "8:policy_8_0_microsoft_vc80_crt_x86.msm"
                 "Properties"
                 {
                 }
