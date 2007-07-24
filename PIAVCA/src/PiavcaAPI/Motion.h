@@ -223,7 +223,13 @@ public:
 	//float getKeyframeGranularity() {return keyframeGranularity;};
 
 	//! gets the time of the end of the motion
-	virtual float getMotionLength() const = 0;
+	virtual float getMotionLength() const 
+	{
+		// by default assume infinte time, or something close
+		// this will cuase a bug if Piavca is ever run constantly for over 
+		// a million years without interruption. I guess its unlikely
+		return 5.0e15;
+	};
 
 	//! whether it is a face or body motion
 	virtual bool isFacial(){return false;};

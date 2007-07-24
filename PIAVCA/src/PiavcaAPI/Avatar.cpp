@@ -398,10 +398,10 @@ void Avatar::showMotionAtTime	(float time, Motion *motion, bool detectChanges)
 		if (detectChanges)
 		{
 			Vec diff = v - lastPos;
-			if (diff.mag() > 1)
-			{
-				std::cout << "Sudden Position Change " << diff.mag() << " " << lastPos << " " << v << std::endl;
-			}
+			//if (diff.mag() > 1)
+			//{
+			//	std::cout << "Sudden Position Change " << diff.mag() << " " << lastPos << " " << v << std::endl;
+			//}
 			lastPos = v;
 		}
 		//std::cout << "root orientation in avatar" << v << std::endl;

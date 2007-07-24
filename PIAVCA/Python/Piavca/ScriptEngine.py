@@ -250,7 +250,7 @@ class ScriptEngine(Piavca.TimeCallback):
 			retVal = None
 			if self.faceMotion == None :
 				self.faceMotion = Piavca.KeyframeMotion(1)
-				retVal = motionCallback(time, (self.faceMotion,))
+				retVal = motionCallback(0.0, (self.faceMotion,))
 			trackId = Piavca.Core.getCore().getExpressionId(args[0])
 			if self.faceMotion.isNull(trackId):
 				self.faceMotion.addFloatTrack(trackId, 0.0);
