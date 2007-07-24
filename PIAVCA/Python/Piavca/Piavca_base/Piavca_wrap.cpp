@@ -5245,7 +5245,7 @@ bool SwigDirector_Motion::isFacial() {
 
 float SwigDirector_Motion::getMotionLength() const {
   if (swig_get_up()) {
-    Swig::DirectorPureVirtualException::raise("Piavca::Motion::getMotionLength().");
+    return Piavca::Motion::getMotionLength();
   }
   float swig_c_result;
   if (!swig_get_self()) {
@@ -67834,6 +67834,85 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Reposition_setPosOffset(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Reposition *arg1 = (Piavca::Reposition *) 0 ;
+  Piavca::Vec *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Reposition_setPosOffset",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Reposition, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Reposition_setPosOffset" "', argument " "1"" of type '" "Piavca::Reposition *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Reposition * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_Piavca__Vec,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Reposition_setPosOffset" "', argument " "2"" of type '" "Piavca::Vec const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Reposition_setPosOffset" "', argument " "2"" of type '" "Piavca::Vec const &""'"); 
+  }
+  arg2 = reinterpret_cast< Piavca::Vec * >(argp2);
+  {
+    try {
+      (arg1)->setPosOffset((Piavca::Vec const &)*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Reposition_getPosOffset(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Reposition *arg1 = (Piavca::Reposition *) 0 ;
+  Piavca::Vec result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Reposition_getPosOffset",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Reposition, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Reposition_getPosOffset" "', argument " "1"" of type '" "Piavca::Reposition *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Reposition * >(argp1);
+  {
+    try {
+      result = (arg1)->getPosOffset(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Piavca::Vec(static_cast< const Piavca::Vec& >(result))), SWIGTYPE_p_Piavca__Vec, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Reposition_getStartPosition(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Piavca::Reposition *arg1 = (Piavca::Reposition *) 0 ;
@@ -92368,6 +92447,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Reposition_clone", _wrap_Reposition_clone, METH_VARARGS, NULL},
 	 { (char *)"Reposition_setStartPosition", _wrap_Reposition_setStartPosition, METH_VARARGS, NULL},
 	 { (char *)"Reposition_setStartOrientation", _wrap_Reposition_setStartOrientation, METH_VARARGS, NULL},
+	 { (char *)"Reposition_setPosOffset", _wrap_Reposition_setPosOffset, METH_VARARGS, NULL},
+	 { (char *)"Reposition_getPosOffset", _wrap_Reposition_getPosOffset, METH_VARARGS, NULL},
 	 { (char *)"Reposition_getStartPosition", _wrap_Reposition_getStartPosition, METH_VARARGS, NULL},
 	 { (char *)"Reposition_getStartOrientation", _wrap_Reposition_getStartOrientation, METH_VARARGS, NULL},
 	 { (char *)"Reposition_setStartFromMotion", _wrap_Reposition_setStartFromMotion, METH_VARARGS, NULL},

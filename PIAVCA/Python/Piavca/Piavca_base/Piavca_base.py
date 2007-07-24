@@ -4120,6 +4120,8 @@ class Reposition(MotionFilter):
 
     def setStartPosition(*args): return _Piavca_base.Reposition_setStartPosition(*args)
     def setStartOrientation(*args): return _Piavca_base.Reposition_setStartOrientation(*args)
+    def setPosOffset(*args): return _Piavca_base.Reposition_setPosOffset(*args)
+    def getPosOffset(*args): return _Piavca_base.Reposition_getPosOffset(*args)
     def getStartPosition(*args): return _Piavca_base.Reposition_getStartPosition(*args)
     def getStartOrientation(*args): return _Piavca_base.Reposition_getStartOrientation(*args)
     def setStartFromMotion(*args): return _Piavca_base.Reposition_setStartFromMotion(*args)
