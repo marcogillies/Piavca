@@ -1,9 +1,10 @@
-#!/usr/bin/python
+#!/usr/bin/python2.4
 
 import sys
 import os
 import time
 
+print sys.path
 
 import Piavca
 Piavca.PiavcaGlut.init(Piavca.Core.getCorePointerAsLong())

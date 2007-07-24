@@ -640,4 +640,4 @@ tstring Core::getMessages()
 	return m;
 }
 
-	
+
