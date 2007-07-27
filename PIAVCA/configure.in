@@ -3,6 +3,7 @@ AC_INIT(configure.in)
 AM_CONFIG_HEADER(config.h)
 AM_INIT_AUTOMAKE(Piavca, 0.0.99)
 
+#lt_cv_objdir=.
 
 AC_LANG_CPLUSPLUS
 AC_PROG_CXX
@@ -10,6 +11,7 @@ AM_PROG_LIBTOOL
 AC_PROG_LEX
 AC_PROG_YACC
 AC_PYTHON_DEVEL(>= '2.3')
+#AC_PYTHON_DEVEL(== '2.4.4')
 AC_PROG_SWIG
 SWIG_ENABLE_CXX
 SWIG_MULTI_MODULE_SUPPORT
@@ -17,4 +19,4 @@ SWIG_PYTHON
 AM_PATH_PYTHON
 
 
-AC_OUTPUT(Makefile src/Makefile src/PiavcaAPI/Makefile src/StdMotionImp/Makefile src/PiavcaPythonInterface/Makefile src/PiavcaCal3dImp/Makefile src/Piavca_base/Makefile src/PiavcaGlut/Makefile)
+AC_OUTPUT(Makefile src/Makefile src/PiavcaAPI/Makefile src/StdMotionImp/Makefile src/PiavcaPythonInterface/Makefile src/PiavcaCal3dImp/Makefile Python/Makefile Python/Piavca/Makefile Python/Piavca/Piavca_base/Makefile Python/Piavca/PiavcaGlut/Makefile)

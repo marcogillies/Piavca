@@ -4,4 +4,7 @@ AUTOMAKE_OPTIONS = foreign 1.4
 
 ACLOCAL_AMFLAGS = -I m4
 
-SUBDIRS = src
+SUBDIRS = src Python
+
+post_build:
+	cd Python && make post_build

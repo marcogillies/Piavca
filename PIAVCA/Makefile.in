@@ -201,7 +201,7 @@ target_alias = @target_alias@
 # have all needed files, that a GNU package needs
 AUTOMAKE_OPTIONS = foreign 1.4
 ACLOCAL_AMFLAGS = -I m4
-SUBDIRS = src
+SUBDIRS = src Python
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
 
@@ -637,6 +637,9 @@ uninstall-info: uninstall-info-recursive
 	mostlyclean-libtool mostlyclean-recursive pdf pdf-am ps ps-am \
 	tags tags-recursive uninstall uninstall-am uninstall-info-am
 
+
+post_build:
+	cd Python && make post_build
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:

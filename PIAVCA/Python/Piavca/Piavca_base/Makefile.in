@@ -23,7 +23,7 @@ VPATH = @srcdir@
 pkgdatadir = $(datadir)/@PACKAGE@
 pkglibdir = $(libdir)/@PACKAGE@
 pkgincludedir = $(includedir)/@PACKAGE@
-top_builddir = ../..
+top_builddir = ../../..
 am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
 INSTALL = @INSTALL@
 install_sh_DATA = $(install_sh) -c -m 644
@@ -39,7 +39,7 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
-subdir = src/Piavca_base
+subdir = Python/Piavca/Piavca_base
 DIST_COMMON = $(pkgpython_PYTHON) $(srcdir)/Makefile.am \
 	$(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -60,9 +60,10 @@ am__installdirs = "$(DESTDIR)$(pkgpyexecdir)" "$(DESTDIR)$(bindir)" \
 	"$(DESTDIR)$(pkgpythondir)"
 pkgpyexecLTLIBRARIES_INSTALL = $(INSTALL)
 LTLIBRARIES = $(pkgpyexec_LTLIBRARIES)
-_Piavca_base_so_la_DEPENDENCIES = ../PiavcaAPI/libPiavcaAPI.la \
-	../PiavcaCal3dImp/libPiavcaCal3dImp.la \
-	../StdMotionImp/libStdMotionImp.la
+_Piavca_base_so_la_DEPENDENCIES =  \
+	../../../src/PiavcaAPI/libPiavcaAPI.la \
+	../../../src/PiavcaCal3dImp/libPiavcaCal3dImp.la \
+	../../../src/StdMotionImp/libStdMotionImp.la
 am__objects_1 =
 am__Piavca_base_so_la_OBJECTS = $(am__objects_1) \
 	_Piavca_base_so_la-Piavca_wrap.lo
@@ -213,43 +214,22 @@ sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 
 # set the include path found by configure
-INCLUDES = -I$(srcdir)/.. $(all_includes)
+INCLUDES = -I$(srcdir)/.. -I$(srcdir)/../../../src $(all_includes)
 
 #pyfilesdir = $(pythondir)  
 #/Piavca/
 #pyfiles_PYTHON = ../../../Python/Piavca/Piavca_base.py $(srcdir)/../../Python/Piavca/__init__.py $(srcdir)/../../#Python/Piavca/MotionFile.py
 BUILT_SOURCES = Piavca_wrap.cpp 
 SWIG_SOURCES = Piavca.i 
-pkgpython_PYTHON = $(srcdir)/../../Python/Piavca/Piavca_base.py \
-	$(srcdir)/../../Python/Piavca/__init__.py \
-	$(srcdir)/../../Python/Piavca/AnimationTrack.py \
-	$(srcdir)/../../Python/Piavca/ConversationInterface.py \
-	$(srcdir)/../../Python/Piavca/EigenAnalysis.py \
-	$(srcdir)/../../Python/Piavca/EigenMotion.py \
-	$(srcdir)/../../Python/Piavca/ExpMap.py \
-	$(srcdir)/../../Python/Piavca/FootPlantOnSpot.py \
-	$(srcdir)/../../Python/Piavca/GraphSearch.py \
-	$(srcdir)/../../Python/Piavca/JointNames.py \
-	$(srcdir)/../../Python/Piavca/MotionFile.py \
-	$(srcdir)/../../Python/Piavca/MotionGraph.py \
-	$(srcdir)/../../Python/Piavca/MotionTracks.py \
-	$(srcdir)/../../Python/Piavca/PCA.py \
-	$(srcdir)/../../Python/Piavca/redirect.py \
-	$(srcdir)/../../Python/Piavca/runScriptEngine.py \
-	$(srcdir)/../../Python/Piavca/ScriptEngine.py \
-	$(srcdir)/../../Python/Piavca/SoundEngine.py \
-	$(srcdir)/../../Python/Piavca/SpeechToText.py \
-	$(srcdir)/../../Python/Piavca/Split.py \
-	$(srcdir)/../../Python/Piavca/StrongConnectivity.py \
-	$(srcdir)/../../Python/Piavca/Track.py \
-	$(srcdir)/../../Python/Piavca/XMLMotionFile.py
-bin_SCRIPTS = $(srcdir)/../../Python/Viewer.py $(srcdir)/../../Python/PiavcaScriptEngine.py $(srcdir)/../../Python/MotionEditor.py
+pkgpython_PYTHON = $(srcdir)/Piavca_base.py $(srcdir)/../__init__.py $(srcdir)/../AnimationTrack.py $(srcdir)/../ConversationInterface.py $(srcdir)/../EigenAnalysis.py $(srcdir)/../EigenMotion.py $(srcdir)/../ExpMap.py  $(srcdir)/../FootPlantOnSpot.py  $(srcdir)/../GraphSearch.py  $(srcdir)/../JointNames.py $(srcdir)/../MotionFile.py $(srcdir)/../MotionGraph.py $(srcdir)/../MotionTracks.py $(srcdir)/../PCA.py $(srcdir)/../redirect.py $(srcdir)/../runScriptEngine.py $(srcdir)/../ScriptEngine.py $(srcdir)/../SoundEngine.py $(srcdir)/../SpeechToText.py $(srcdir)/../Split.py $(srcdir)/../StrongConnectivity.py $(srcdir)/../Track.py $(srcdir)/../XMLMotionFile.py
+bin_SCRIPTS = $(srcdir)/../../Viewer.py $(srcdir)/../../PiavcaScriptEngine.py $(srcdir)/../../MotionEditor.py
 pkgpyexec_LTLIBRARIES = _Piavca_base.so.la
+#	$(SWIG) $(SWIG_PYTHON_OPT) -I$(srcdir)/.. -o $@ -outdir $(srcdir)/../../Python/Piavca $<
 #lib_LTLIBRARIES = libPiavcaPythonInterface.la
 _Piavca_base_so_la_SOURCES = $(SWIG_SOURCES) Piavca_wrap.cpp
 _Piavca_base_so_la_CPPFLAGS = $(PYTHON_CPPFLAGS) $(SWIG_PYTHON_CPPFLAGS)
 _Piavca_base_so_la_LDFLAGS = -module -shared $(PYTHON_LDFLAGS)  -lglut -lcal3d $(all_libraries)
-_Piavca_base_so_la_LIBADD = ../PiavcaAPI/libPiavcaAPI.la ../PiavcaCal3dImp/libPiavcaCal3dImp.la ../StdMotionImp/libStdMotionImp.la 
+_Piavca_base_so_la_LIBADD = ../../../src/PiavcaAPI/libPiavcaAPI.la ../../../src/PiavcaCal3dImp/libPiavcaCal3dImp.la ../../../src/StdMotionImp/libStdMotionImp.la 
 all: $(BUILT_SOURCES)
 	$(MAKE) $(AM_MAKEFLAGS) all-am
 
@@ -264,9 +244,9 @@ $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu  src/Piavca_base/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu  Python/Piavca/Piavca_base/Makefile'; \
 	cd $(top_srcdir) && \
-	  $(AUTOMAKE) --gnu  src/Piavca_base/Makefile
+	  $(AUTOMAKE) --gnu  Python/Piavca/Piavca_base/Makefile
 .PRECIOUS: Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
@@ -456,7 +436,7 @@ distclean-tags:
 	-rm -f TAGS ID GTAGS GRTAGS GSYMS GPATH tags
 
 distdir: $(DISTFILES)
-	$(mkdir_p) $(distdir)/../../Python/Piavca
+	$(mkdir_p) $(distdir)/..
 	@srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`; \
 	topsrcdirstrip=`echo "$(top_srcdir)" | sed 's|.|.|g'`; \
 	list='$(DISTFILES)'; for file in $$list; do \
@@ -588,8 +568,10 @@ uninstall-am: uninstall-binSCRIPTS uninstall-info-am \
 #_your_extension_la_LIBADD = ../src/libproject.la
 
 $(srcdir)/Piavca_wrap.cpp : $(SWIG_SOURCES)
-#	$(SWIG) $(SWIG_PYTHON_OPT) -I$(srcdir)/.. -o $@ $<
-	$(SWIG) $(SWIG_PYTHON_OPT) -I$(srcdir)/.. -o $@ -outdir $(srcdir)/../../Python/Piavca $<
+	$(SWIG) $(SWIG_PYTHON_OPT) -I$(srcdir)/../../../src -o $@ $<
+
+post_build: all
+	if test ! -f _Piavca_base.so; then ln -s .libs/_Piavca_base.so _Piavca_base.so; fi
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:

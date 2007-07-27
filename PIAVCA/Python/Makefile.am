@@ -4,4 +4,8 @@
 INCLUDES= $(all_includes)
 
 # the library search path.
-SUBDIRS = PiavcaAPI StdMotionImp PiavcaCal3dImp PiavcaPythonInterface
+SUBDIRS = Piavca
+
+post_build:
+	cd Piavca && make post_build
+	
