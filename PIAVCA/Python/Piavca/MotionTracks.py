@@ -96,6 +96,7 @@ class MotionTracks(wx.VListBox):
 
 	# the background is drawn in white
 	def OnDrawBackground(self, dc, rect, item):
+		#print "drawing"
 		if item == self.selectedTrack :
 			dc.SetBrush(wx.Brush("orange"))
 		else:

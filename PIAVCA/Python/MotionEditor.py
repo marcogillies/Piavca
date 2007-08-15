@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2.4
 
 import sys
 import os
@@ -20,7 +20,7 @@ app = wx.PySimpleApp()
 if len(sys.argv) > 1:
 	path = sys.argv[1]
 else:
-	dialog_return = openFileDialog ()
+	dialog_return = openFileDialog (wildcard="*.cfg")
 	path = dialog_return.paths[0].encode("latin-1")
 
 print path
@@ -67,6 +67,19 @@ mot.Reference()
 
 frame=Piavca.AnimationInterface(None,-1,'Motion editor', avatar, mot, motion_name)
 frame.Show()
+
+class PauseCallback(Piavca.TimeCallback):
+	def __init__(self):
+		Piavca.TimeCallback.__init__(self, "pause")	
+	def init(self, core):
+		pass
+	def timeStep(self, core, t):
+		time.sleep(0.1)
+		
+cb = PauseCallback()
+cb.thisown = 0
+Piavca.Core.getCore().registerCallback(cb)
+
 
 thread.start_new_thread(app.MainLoop, ())
 		

@@ -103,7 +103,7 @@ class Track :
 	# the draw function of the track
 	# this dipsplays the current splits etc.
 	def OnDraw (self, dc, rect, offset):
-
+		#print "draw"
 		# draw the background bars
 		dc.SetBrush(wx.Brush("pink"))
 		for split in self.splits :
