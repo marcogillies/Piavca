@@ -27,7 +27,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_0CB9DB440EEE42FF82F0B91520ECC7DE"
+        "MsmKey" = "8:_0A0A30A93510469D8D6B3FD96FC213FF"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -69,24 +69,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_42AD894AB96A740C0503DD0A9229DF95"
-        "OwnerKey" = "8:_0CB9DB440EEE42FF82F0B91520ECC7DE"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_42AD894AB96A740C0503DD0A9229DF95"
-        "OwnerKey" = "8:_77990BC1BBA148789CC1462E25BEEF2F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_42AD894AB96A740C0503DD0A9229DF95"
-        "OwnerKey" = "8:_0EDB427873744218ACBF6199C4916A0F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_43EAC9E293624CE6B4B723D0C039BC50"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -111,8 +93,26 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_53D920A00F2B77DD5F8EA056E9CC5B2D"
+        "OwnerKey" = "8:_0EDB427873744218ACBF6199C4916A0F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_53D920A00F2B77DD5F8EA056E9CC5B2D"
+        "OwnerKey" = "8:_E9BF3BD172E74BC1ACDE5669C3B94371"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_53D920A00F2B77DD5F8EA056E9CC5B2D"
+        "OwnerKey" = "8:_7FFBA5A50D144A49A4D665B523A35DF3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_62D04332952BA5064E04F5EF67277A72"
-        "OwnerKey" = "8:_0CB9DB440EEE42FF82F0B91520ECC7DE"
+        "OwnerKey" = "8:_E9BF3BD172E74BC1ACDE5669C3B94371"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -129,20 +129,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_6CBBEF29B18E4CEF956350BBF8141C5E"
-        "OwnerKey" = "8:_0CB9DB440EEE42FF82F0B91520ECC7DE"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_6CBBEF29B18E4CEF956350BBF8141C5E"
-        "OwnerKey" = "8:_77990BC1BBA148789CC1462E25BEEF2F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_6CBBEF29B18E4CEF956350BBF8141C5E"
-        "OwnerKey" = "8:_0EDB427873744218ACBF6199C4916A0F"
+        "MsmKey" = "8:_74AEB86DDF424934A0CDE214D61AD7AC"
+        "OwnerKey" = "8:_9C9BA1364FD945ACA45E8EC121DC5DBD"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -153,13 +141,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_77990BC1BBA148789CC1462E25BEEF2F"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_798D52AAA1954A84BA3208820FDAE062"
+        "MsmKey" = "8:_7FFBA5A50D144A49A4D665B523A35DF3"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -177,20 +159,44 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_98280F72977E034FEF48BB5DEACF0F26"
-        "OwnerKey" = "8:_0CB9DB440EEE42FF82F0B91520ECC7DE"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_98280F72977E034FEF48BB5DEACF0F26"
-        "OwnerKey" = "8:_77990BC1BBA148789CC1462E25BEEF2F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_98280F72977E034FEF48BB5DEACF0F26"
+        "MsmKey" = "8:_8D04DBE6EE998817FD653167BC1EB9AF"
         "OwnerKey" = "8:_0EDB427873744218ACBF6199C4916A0F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_8D04DBE6EE998817FD653167BC1EB9AF"
+        "OwnerKey" = "8:_E9BF3BD172E74BC1ACDE5669C3B94371"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_8D04DBE6EE998817FD653167BC1EB9AF"
+        "OwnerKey" = "8:_7FFBA5A50D144A49A4D665B523A35DF3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9A6A1A2ED3424A0583BEE6170AD45609"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9C9BA1364FD945ACA45E8EC121DC5DBD"
+        "OwnerKey" = "8:_0EDB427873744218ACBF6199C4916A0F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9C9BA1364FD945ACA45E8EC121DC5DBD"
+        "OwnerKey" = "8:_E9BF3BD172E74BC1ACDE5669C3B94371"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9C9BA1364FD945ACA45E8EC121DC5DBD"
+        "OwnerKey" = "8:_7FFBA5A50D144A49A4D665B523A35DF3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -202,7 +208,7 @@
         "Entry"
         {
         "MsmKey" = "8:_9D81CA093EE3632D4124E8507057B432"
-        "OwnerKey" = "8:_77990BC1BBA148789CC1462E25BEEF2F"
+        "OwnerKey" = "8:_7FFBA5A50D144A49A4D665B523A35DF3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -214,6 +220,12 @@
         "Entry"
         {
         "MsmKey" = "8:_ABE40264BE2C4B339A4554836A6C8673"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B27DF344E0084534B4600FFFFF59ACA6"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -249,12 +261,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_CC677E40A5FAB8EA81BA880FF8057DF6"
-        "OwnerKey" = "8:_0CB9DB440EEE42FF82F0B91520ECC7DE"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_CF979D69ED4942FDAF4C50CF7DDBF294"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -273,8 +279,14 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_DF597D227C54430483952060966F8811"
-        "OwnerKey" = "8:_6CBBEF29B18E4CEF956350BBF8141C5E"
+        "MsmKey" = "8:_E9BF3BD172E74BC1ACDE5669C3B94371"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_EE56209D86F24DA1963514FF2B2AEA60"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -292,12 +304,6 @@
         "Entry"
         {
         "MsmKey" = "8:_F58525CFFE14445D947C1C3A1F7C4853"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_FB83F151511E4ED2936A657DC4F974D3"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -429,6 +435,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0A0A30A93510469D8D6B3FD96FC213FF"
+            {
+            "SourcePath" = "8:..\\..\\Python\\Piavca\\Piavca_base\\Piavca_base.py"
+            "TargetName" = "8:Piavca_base.py"
+            "Tag" = "8:"
+            "Folder" = "8:_0C606D47F8BD4B13BFF33C3B7D2B9C27"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1BC709BE9B2D4C75B58206A281AF2B0D"
             {
             "SourcePath" = "8:C:\\WINNT\\system32\\glu32.dll"
@@ -529,26 +555,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_42AD894AB96A740C0503DD0A9229DF95"
-            {
-            "SourcePath" = "8:python24.dll"
-            "TargetName" = "8:python24.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_C32D0F42EC2B427E89BDD8C0DE5EC464"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_43EAC9E293624CE6B4B723D0C039BC50"
             {
             "SourcePath" = "8:..\\..\\Python\\run.bat"
@@ -627,6 +633,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_53D920A00F2B77DD5F8EA056E9CC5B2D"
+            {
+            "SourcePath" = "8:OPENGL32.dll"
+            "TargetName" = "8:OPENGL32.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_030136928E1A4CF9B5AF2948FB4B2634"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_62D04332952BA5064E04F5EF67277A72"
@@ -709,26 +735,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_798D52AAA1954A84BA3208820FDAE062"
-            {
-            "SourcePath" = "8:..\\..\\Python\\Piavca\\Piavca_base.py"
-            "TargetName" = "8:Piavca_base.py"
-            "Tag" = "8:"
-            "Folder" = "8:_030136928E1A4CF9B5AF2948FB4B2634"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_808215E3DA4D4B80ADC14524E85511BF"
             {
             "SourcePath" = "8:..\\..\\Python\\Viewer.py"
@@ -769,12 +775,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_98280F72977E034FEF48BB5DEACF0F26"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8D04DBE6EE998817FD653167BC1EB9AF"
             {
-            "SourcePath" = "8:OPENGL32.dll"
-            "TargetName" = "8:OPENGL32.dll"
+            "SourcePath" = "8:python24.dll"
+            "TargetName" = "8:python24.dll"
             "Tag" = "8:"
-            "Folder" = "8:_030136928E1A4CF9B5AF2948FB4B2634"
+            "Folder" = "8:_C32D0F42EC2B427E89BDD8C0DE5EC464"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -787,6 +793,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9A6A1A2ED3424A0583BEE6170AD45609"
+            {
+            "SourcePath" = "8:..\\..\\Python\\Piavca\\Piavca_base\\__init__.py"
+            "TargetName" = "8:__init__.py"
+            "Tag" = "8:"
+            "Folder" = "8:_0C606D47F8BD4B13BFF33C3B7D2B9C27"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9D81CA093EE3632D4124E8507057B432"
@@ -835,6 +861,26 @@
             "TargetName" = "8:Track.py"
             "Tag" = "8:"
             "Folder" = "8:_030136928E1A4CF9B5AF2948FB4B2634"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B27DF344E0084534B4600FFFFF59ACA6"
+            {
+            "SourcePath" = "8:..\\..\\Python\\Piavca\\PiavcaGlut\\PiavcaGlut.py"
+            "TargetName" = "8:PiavcaGlut.py"
+            "Tag" = "8:"
+            "Folder" = "8:_C311C00B4060407F8C51CD66C8EF17E6"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -949,26 +995,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CC677E40A5FAB8EA81BA880FF8057DF6"
-            {
-            "SourcePath" = "8:_Piavca_base.pyd"
-            "TargetName" = "8:_Piavca_base.pyd"
-            "Tag" = "8:"
-            "Folder" = "8:_030136928E1A4CF9B5AF2948FB4B2634"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CF979D69ED4942FDAF4C50CF7DDBF294"
             {
             "SourcePath" = "8:..\\..\\Python\\Piavca\\redirect.py"
@@ -1029,6 +1055,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EE56209D86F24DA1963514FF2B2AEA60"
+            {
+            "SourcePath" = "8:..\\..\\Python\\Piavca\\PiavcaGlut\\__init__.py"
+            "TargetName" = "8:__init__.py"
+            "Tag" = "8:"
+            "Folder" = "8:_C311C00B4060407F8C51CD66C8EF17E6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F2771721DDEC4C839A3020465D41D825"
             {
             "SourcePath" = "8:..\\..\\Python\\Piavca\\Split.py"
@@ -1073,26 +1119,6 @@
             {
             "SourcePath" = "8:..\\..\\Python\\Piavca\\ExpMap.py"
             "TargetName" = "8:ExpMap.py"
-            "Tag" = "8:"
-            "Folder" = "8:_030136928E1A4CF9B5AF2948FB4B2634"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FB83F151511E4ED2936A657DC4F974D3"
-            {
-            "SourcePath" = "8:..\\..\\Python\\Piavca\\PiavcaGlut.py"
-            "TargetName" = "8:PiavcaGlut.py"
             "Tag" = "8:"
             "Folder" = "8:_030136928E1A4CF9B5AF2948FB4B2634"
             "Condition" = "8:"
@@ -1198,6 +1224,28 @@
             "Property" = "8:NEWPROPERTY1"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_0C606D47F8BD4B13BFF33C3B7D2B9C27"
+                    {
+                    "Name" = "8:Piavca_base"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_59CD338A0BB04FE18F7993C7851DB1A7"
+                        "Folders"
+                        {
+                        }
+                    }
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_C311C00B4060407F8C51CD66C8EF17E6"
+                    {
+                    "Name" = "8:PiavcaGlut"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_20F7E219264B4B1E9F17AFA7F046D88B"
+                        "Folders"
+                        {
+                        }
+                    }
                 }
             }
             "{1525181F-901A-416C-8A58-119130FE478E}:_2C01534358BC499DB5A587789363CFB1"
@@ -1849,21 +1897,7 @@
         }
         "MergeModule"
         {
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_6CBBEF29B18E4CEF956350BBF8141C5E"
-            {
-            "UseDynamicProperties" = "11:TRUE"
-            "IsDependency" = "11:TRUE"
-            "SourcePath" = "8:Microsoft_VC80_CRT_x86.msm"
-                "Properties"
-                {
-                }
-            "LanguageId" = "3:0"
-            "Exclude" = "11:FALSE"
-            "Folder" = "8:"
-            "Feature" = "8:"
-            "IsolateTo" = "8:"
-            }
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_DF597D227C54430483952060966F8811"
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_74AEB86DDF424934A0CDE214D61AD7AC"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:TRUE"
@@ -1877,37 +1911,23 @@
             "Feature" = "8:"
             "IsolateTo" = "8:"
             }
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_9C9BA1364FD945ACA45E8EC121DC5DBD"
+            {
+            "UseDynamicProperties" = "11:TRUE"
+            "IsDependency" = "11:TRUE"
+            "SourcePath" = "8:Microsoft_VC80_CRT_x86.msm"
+                "Properties"
+                {
+                }
+            "LanguageId" = "3:0"
+            "Exclude" = "11:FALSE"
+            "Folder" = "8:"
+            "Feature" = "8:"
+            "IsolateTo" = "8:"
+            }
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_0CB9DB440EEE42FF82F0B91520ECC7DE"
-            {
-            "SourcePath" = "8:..\\..\\Python\\Piavca\\_PiavcaGlut.pyd"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_030136928E1A4CF9B5AF2948FB4B2634"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{7F966FC6-2A00-4955-A173-CEF366A2496D}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_0EDB427873744218ACBF6199C4916A0F"
             {
             "SourcePath" = "8:..\\..\\bin\\XVR2Piavca.dll"
@@ -1992,62 +2012,6 @@
                 {
                 }
             }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_3ED1D273D9E643418E4CB1E5E8F7F124"
-            {
-            "SourcePath" = "8:"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_030136928E1A4CF9B5AF2948FB4B2634"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:LocalizedResourceDlls"
-            "OutputProjectGuid" = "8:{7F966FC6-2A00-4955-A173-CEF366A2496D}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_77990BC1BBA148789CC1462E25BEEF2F"
-            {
-            "SourcePath" = "8:..\\..\\Python\\Piavca\\_Piavca_base.pyd"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_030136928E1A4CF9B5AF2948FB4B2634"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{CB1D5D51-F927-4C9A-B704-CAF34FDAA506}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_782AB20E56A042BCB686182C38C9062D"
             {
             "SourcePath" = "8:"
@@ -2071,6 +2035,62 @@
             "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:LocalizedResourceDlls"
             "OutputProjectGuid" = "8:{009DF2D1-CCA3-466D-8D2E-DFECF5D50D76}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_7FFBA5A50D144A49A4D665B523A35DF3"
+            {
+            "SourcePath" = "8:..\\..\\Python\\Piavca\\Piavca_base\\_Piavca_base.pyd"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_0C606D47F8BD4B13BFF33C3B7D2B9C27"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectGuid" = "8:{CB1D5D51-F927-4C9A-B704-CAF34FDAA506}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_A9C0F23896084D478594C569CD28E29A"
+            {
+            "SourcePath" = "8:"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_C311C00B4060407F8C51CD66C8EF17E6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:LocalizedResourceDlls"
+            "OutputProjectGuid" = "8:{7F966FC6-2A00-4955-A173-CEF366A2496D}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {
@@ -2104,12 +2124,12 @@
                 {
                 }
             }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_E9AEE24400D34E0799D855433397CA8B"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_D81C030038E945E49C5846446B4FC325"
             {
             "SourcePath" = "8:"
             "TargetName" = "8:"
             "Tag" = "8:"
-            "Folder" = "8:_030136928E1A4CF9B5AF2948FB4B2634"
+            "Folder" = "8:_0C606D47F8BD4B13BFF33C3B7D2B9C27"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2127,6 +2147,34 @@
             "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:LocalizedResourceDlls"
             "OutputProjectGuid" = "8:{CB1D5D51-F927-4C9A-B704-CAF34FDAA506}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_E9BF3BD172E74BC1ACDE5669C3B94371"
+            {
+            "SourcePath" = "8:..\\..\\Python\\Piavca\\PiavcaGlut\\_PiavcaGlut.pyd"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_C311C00B4060407F8C51CD66C8EF17E6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectGuid" = "8:{7F966FC6-2A00-4955-A173-CEF366A2496D}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {

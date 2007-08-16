@@ -44,6 +44,30 @@ import string
 	
 import xml.dom.minidom as minidom
 
+def stringToValueList(s):
+	value = str(s).strip()
+	value = str(value).strip("[]()")
+	# first try treating it as a list of numbers
+	# delete trailing commas or semicolons
+	valuestripped = value.strip(",;")
+	valuelist = valuestripped.split(",")
+	if len(valuelist) <= 1:
+		valuelist = valuestripped.split(";")
+		if len(valuelist) <= 1:
+			valuelist = valuestripped.split()
+	valuelist = [v.strip() for v in valuelist]
+	return valuelist
+	
+def ValueListToVec(valuelist):
+	vec = [float(x) for x in valuelist]
+	vec = Piavca.Vec(vec[0], vec[1], vec[2])
+	return vec
+	
+def ValueListToQuat(valuelist):
+	quat = [float(x) for x in valuelist]
+	quat = Piavca.Quat(Piavca.degToRad(quat[0]), Piavca.Vec(quat[1], quat[2], quat[3]))
+	return quat
+	
 def setAttribute(mot, attrName, attrValue, firstArg = None):
 	attrName = str(attrName)
 	if not hasattr(mot, "set" + string.upper(attrName[0]) + attrName[1:]):
@@ -54,36 +78,30 @@ def setAttribute(mot, attrName, attrValue, firstArg = None):
 		method = meth
 	else:
 		method = lambda x : meth(firstArg, x)
+	
 	value = str(attrValue).strip()
-	value = str(attrValue).strip("[]()")
-	# first try treating it as a list of numbers
-	# delete trailing commas or semicolons
-	valuestripped = value.strip(",;")
-	valuelist = valuestripped.split(",")
-	if len(valuelist) <= 1:
-		valuelist = valuestripped.split(";")
-		if len(valuelist) <= 1:
-			valuelist = valuestripped.split()
+	valuelist = stringToValueList(attrValue)
+	
 	# maybe its a quaternion
 	if len(valuelist) == 4:
 		try:
-			quat = [float(x) for x in valuelist]
-			quat = Piavca.Quat(Piavca.degToRad(quat[0]), Piavca.Vec(quat[1], quat[2], quat[3]))
+			quat = ValueListToQuat(valuelist)
 			method(quat)
 			return 1
 		# didn't work so try next option
 		except ValueError:
 			pass
+			
 	# maybe its a Vec
 	if len(valuelist) == 3:
 		try:
-			vec = [float(x) for x in valuelist]
-			vec = Piavca.Vec(vec[1], vec[2], vec[3])
+			vec = ValueListToVec(valuelist)
 			method(vec)
 			return 1
 		# didn't work so try next option
 		except ValueError:
 			pass
+			
 	if len(valuelist) > 1:
 		# maybe its a list of numbers
 		try:
@@ -153,6 +171,7 @@ def readMotions(motions):
 	mots = []
 	for motion in motions:
 		if motion.nodeType == minidom.Node.ELEMENT_NODE:
+		
 			if motion.nodeName == "Motion":
 				#print "found a motion statement", motion
 				for i in range(motion.attributes.length):
@@ -172,6 +191,48 @@ def readMotions(motions):
 					else:
 						mots.append((mot, str(motion.nodeName), unknownAttrs))
 						#print "mots", mots
+						
+			elif motion.nodeName == "Keyframes":
+				for i in range(motion.attributes.length):
+					#print motion.attributes.item(i).name, motion.attributes.item(i).nodeValue
+					unknownAttrs=[]
+					if motion.attributes.item(i).name != "name":
+						unknownAttrs.append((motion.attributes.item(i).name, motion.attributes.item(i).nodeValue))
+				name = str(motion.getAttribute("name"))
+				mot = Piavca.KeyframeMotion()
+				Piavca.Core.getCore().loadMotion(name, mot)
+				for child in motion.childNodes:
+					if child.nodeName != "Key":
+						print "expected a key statement as a child of a keyframe motion but got", child.nodeName
+						continue
+					key_type = str(child.getAttribute("type"))
+					key_value = str(child.getAttribute("value"))
+					key_time = float(child.getAttribute("time"))
+					key_joint = str(child.getAttribute("joint"))
+					if key_type == "FLOAT" or key_type == "Float" or key_type == "float":
+						key_joint = Piavca.Core.getCore().getExpressionId(key_joint)
+					else:
+						key_joint = Piavca.Core.getCore().getJointId(key_joint)
+					if key_joint == Piavca.Core.getCore().nullId :
+						raise ValueError("Unknown Joint Id " + str(child.getAttribute("joint")))
+					if key_type == "FLOAT" or key_type == "Float" or key_type == "float":
+						if mot.isNull(key_joint):
+							mot.addFloatTrack(key_joint, 0.0)
+						key_value = float(key_value)
+						mot.setFloatKeyframe(key_joint, float(key_time), key_value)
+					if key_type== "VEC" or key_type == "Vec" or key_type == "vec":
+						if mot.isNull(key_joint):
+							mot.addVecTrack(key_joint, Piavca.Vec())
+						valuelist = stringToValueList(key_value)
+						key_value = ValueListToVec(valuelist)
+						mot.setVecKeyframe(key_joint, float(key_time), key_value)
+					if key_type == "QUAT" or key_type == "Quat" or key_type == "quat":
+						if mot.isNull(key_joint):
+							mot.addQuatTrack(key_joint, Piavca.Quat())
+						valuelist = stringToValueList(key_value)
+						key_value = ValueListToQuat(valuelist)
+						mot.setQuatKeyframe(key_joint, float(key_time), key_value)
+							
 			else:
 				try:
 					cl = getattr(Piavca, motion.nodeName)
