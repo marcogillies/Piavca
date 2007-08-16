@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="7.10"
 	Name="Piavca_base"
-	ProjectGUID="{9BE2E296-9B8C-4972-B627-06F7A635204C}"
+	ProjectGUID="{78C01584-1FED-4339-AFD1-77FCED462E92}"
 	SccProjectName=""
 	SccLocalPath=""
 	Keyword="Win32Proj">
@@ -14,7 +14,7 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="$(SolutionDir)\Python\Piavca"
+			OutputDirectory="."
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="2"
 			CharacterSet="2">
@@ -22,7 +22,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories="..\;$(PYTHONDIR)\include;c:\Python25\include;c:\Python24\include;c:\Python23\include;$(CAL3DDIR)\src\;..\..\..\cal3d-0.11.0\src;..\..\..\cal3d-0.10.0\src\"
+				AdditionalIncludeDirectories="..\..\..\src;$(PYTHONDIR)\include;c:\Python25\include;c:\Python24\include;c:\Python23\include;$(CAL3DDIR)\src\;..\..\..\..\cal3d-0.11.0\src;..\..\..\..\cal3d-0.10.0\src\"
 				PreprocessorDefinitions="WIN32;_WINDOWS;_USRDLL;UCLAVATARPYTHONINTERFACE_EXPORTS;NO_DEMEANOUR;CONSOLE_PRESENT"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
@@ -75,7 +75,7 @@
 				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="1"
 				OmitFramePointers="TRUE"
-				AdditionalIncludeDirectories="..\;$(PYTHONDIR)\include;c:\Python25\include;c:\Python24\include;c:\Python23\include;$(CAL3DDIR)\src\;..\..\..\cal3d-0.11.0\src;..\..\..\cal3d-0.10.0\src\"
+				AdditionalIncludeDirectories="..\..\..\src;$(PYTHONDIR)\include;c:\Python25\include;c:\Python24\include;c:\Python23\include;$(CAL3DDIR)\src\;..\..\..\cal3d-0.11.0\src;..\..\..\cal3d-0.10.0\src\"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOW;_USRDLL;UCLAVATARPYTHONINTERFACE_EXPORTS;CONSOLE_PRESENT"
 				StringPooling="TRUE"
 				RuntimeLibrary="2"
@@ -121,7 +121,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\;$(PYTHONDIR)\include;c:\Python25\include;c:\Python24\include;c:\Python23\include;$(CAL3DDIR)\src\;..\..\..\cal3d-0.11.0\src;..\..\..\cal3d-0.10.0\src\"
+				AdditionalIncludeDirectories="..\..\..\src;$(PYTHONDIR)\include;c:\Python25\include;c:\Python24\include;c:\Python23\include;$(CAL3DDIR)\src\;..\..\..\cal3d-0.11.0\src;..\..\..\cal3d-0.10.0\src\"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;UCLAVATARPYTHONINTERFACE_EXPORTS"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
@@ -168,7 +168,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories="..\;$(PYTHONDIR)\include;c:\Python25\include;c:\Python24\include;c:\Python23\include;$(CAL3DDIR)\src\;..\..\..\cal3d-0.11.0\src;..\..\..\cal3d-0.10.0\src\"
+				AdditionalIncludeDirectories="..\..\..\src;$(PYTHONDIR)\include;c:\Python25\include;c:\Python24\include;c:\Python23\include;$(CAL3DDIR)\src\;..\..\..\cal3d-0.11.0\src;..\..\..\cal3d-0.10.0\src\"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;UCLAVATARPYTHONINTERFACE_EXPORTS;NO_DEMEANOUR;CONSOLE_PRESENT"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"

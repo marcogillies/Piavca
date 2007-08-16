@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="7.10"
 	Name="PiavcaGlut"
-	ProjectGUID="{9BE2E296-9B8C-4972-B627-06F7A635204C}"
+	ProjectGUID="{5FD4CBC2-A029-4660-BAF7-FC537E3B4754}"
 	SccProjectName=""
 	SccLocalPath=""
 	Keyword="Win32Proj">
@@ -14,7 +14,7 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="$(SolutionDir)\Python\Piavca"
+			OutputDirectory="."
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="2"
 			CharacterSet="2">
@@ -22,7 +22,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories="..\;$(PYTHONDIR)\include;c:\Python25\include;c:\Python24\include;c:\Python23\include;$(CAL3DDIR)\src\;..\..\..\cal3d-0.11.0\src;..\..\..\cal3d-0.10.0\src\"
+				AdditionalIncludeDirectories="..\..\..\src;$(PYTHONDIR)\include;c:\Python25\include;c:\Python24\include;c:\Python23\include;$(CAL3DDIR)\src\;..\..\..\..\cal3d-0.11.0\src;..\..\..\..\cal3d-0.10.0\src\"
 				PreprocessorDefinitions="WIN32;_WINDOWS;_USRDLL;UCLAVATARPYTHONINTERFACE_EXPORTS;NO_DEMEANOUR;CONSOLE_PRESENT"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
@@ -206,7 +206,7 @@
 	</Configurations>
 	<References>
 		<ProjectReference
-			ReferencedProjectIdentifier="{B61F46AC-8745-4126-AFFD-15AA9B590C69}"
+			ReferencedProjectIdentifier="{78C01584-1FED-4339-AFD1-77FCED462E92}"
 			Name="Piavca_base"/>
 	</References>
 	<Files>
