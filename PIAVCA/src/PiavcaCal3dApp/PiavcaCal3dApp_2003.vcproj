@@ -154,12 +154,18 @@
 			Name="Source Files"
 			Filter="cpp;c;cxx;rc;def;r;odl;idl;hpj;bat">
 			<File
+				RelativePath=".\gltb.cpp">
+			</File>
+			<File
 				RelativePath=".\PiavcaCal3dApp.cpp">
 			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl">
+			<File
+				RelativePath=".\gltb.h">
+			</File>
 		</Filter>
 		<Filter
 			Name="Resources"

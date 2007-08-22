@@ -41,6 +41,7 @@
 #include "PiavcaCore.h"
 #include "PiavcaError.h"
 #include <algorithm>
+#include <map>
 
 using namespace Piavca;
 

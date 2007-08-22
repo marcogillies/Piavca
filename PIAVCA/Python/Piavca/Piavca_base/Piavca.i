@@ -80,6 +80,16 @@ Vec PyVec_AsVec(PyObject *obj)
 	return retVal;
 }
 
+Bound PyBound_AsBound(PyObject *obj)
+{
+	Bound retVal, *res;
+	if ((SWIG_ConvertPtr(obj,(void **) &res, SWIGTYPE_p_Piavca__Bound, 1 | 0 )) != -1)
+	{
+		retVal =  *res;
+	}
+	return retVal;
+}
+
 //PyObject *GetPythonJointIterator(JointIterator joint)
 //{
 //    JointIterator *jointptr = new JointIterator((JointIterator &) joint);
@@ -359,6 +369,7 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 	}	
 }
 
+%include "PiavcaAPI/Bound.h"
 
 %rename(__eq__) operator==;
 %rename(__ne__) operator!=;
@@ -475,3 +486,4 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %include "PiavcaAPI/TimeRangeMotion.h"
 %include "PiavcaAPI/TimeWarp.h"
 %include "PiavcaAPI/DiadicGazeMotion.h"
+

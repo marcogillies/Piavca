@@ -40,7 +40,7 @@
 				Name="VCLinkerTool"
 				AdditionalDependencies="glut32.lib glu32.lib opengl32.lib odbc32.lib odbccp32.lib"
 				OutputFile="$(OutDir)/_$(ProjectName).pyd"
-				AdditionalLibraryDirectories="$(CAL3DDIR)\bin\release;..\..\..\cal3d-0.11.0\bin\Release;..\..\..\cal3d-0.10.0\bin\Release;$(PYTHONDIR)\libs;c:\Python25\libs;c:\Python24\lib\;c:\Python23\libs"
+				AdditionalLibraryDirectories="&quot;$(CAL3DDIR)\bin\release&quot;;&quot;..\..\..\cal3d-0.11.0\bin\Release&quot;;&quot;..\..\..\cal3d-0.10.0\bin\Release&quot;;&quot;$(PYTHONDIR)\libs&quot;;c:\Python25\libs;c:\Python24\libs;c:\Python23\libs"
 				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile="$(TargetDir)/$(TargetName).pdb"/>
 			<Tool

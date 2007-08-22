@@ -26,8 +26,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 //----------------------------------------------------------------------------//
 
 
-//#include "PiavcaNVCLib/Piavca.h"
-
 #ifdef _WIN32
 #include <windows.h>
 #include <direct.h>
@@ -51,29 +49,187 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "PiavcaAPI/OnTheSpot.h"
 #include "PiavcaAPI/AvatarMotionQueue.h"
 #include "PiavcaAPI/MotionParser.h"
-
-//#include "Python.h"
-
-//#include "PiavcaPythonInterface/PiavcaPythonApp.h"
-//#include "PiavcaPythonInterface/Piavca_wrap.h"
+#include "PiavcaAPI/Vec.h"
+#include "PiavcaAPI/Bound.h"
 
 
 #include "PiavcaCal3dImp/PiavcaCal3dCore.h"
 
-// a structure holding various parameters of the display
+#include "gltb.h"
 
+// a structure holding various parameters of the display
 
 struct displayParams
 {
 	Piavca::PiavcaCal3DCore *core;
 	Piavca::Avatar *avatar;
-	bool zooming, turning;
 	int width, height;
-	int lastMouseX, lastMouseY;
-	float leftright, updown, distance;
-	float leftright_delta, updown_delta, zoom_delta;
-	float tiltAngle, twistAngle;	
-} g_Params;
+	float scaleBias;
+	boolean tracking;
+} g_Params = 
+{
+	NULL, 
+	NULL,
+	800, 600,
+	1.0f,
+	TRUE
+};
+
+
+//
+// Camera control
+//
+
+
+Piavca::Bound initialAvatarBound;
+Piavca::Vec initialAvatarRoot;
+Piavca::Bound focusBound;
+Piavca::Vec focusRoot;
+
+
+void updateCameraFocus()
+{
+	// There are a number of ways of doing this.
+	// You could get the bounding box each frame, but that would be slow, and the scaling 
+	// of the object would changing each frame. To avoid size changing, we take the original bounding box
+	// we do need to keep tracking the change in root position.
+
+	Piavca::Avatar *avatar;
+	avatar = Piavca::Core::getCore()->getAvatar(0);
+	focusRoot = avatar->getRootPosition();
+	focusBound.min = initialAvatarBound.min+focusRoot-initialAvatarRoot;
+	focusBound.max = initialAvatarBound.max+focusRoot-initialAvatarRoot;
+}
+
+void pushCameraFocus()
+{
+	Piavca::Vec centre = (focusBound.min+focusBound.max)/2.0;
+	Piavca::Vec halfWidths = focusBound.max - centre;
+	float maxDim = max(max(halfWidths[0],halfWidths[1]), halfWidths[2]); 
+
+	glTranslatef(0.0, 0.0, -3.0);
+	gltbMatrix();
+	glPushMatrix();
+	glScalef(g_Params.scaleBias/maxDim, g_Params.scaleBias/maxDim, g_Params.scaleBias/maxDim);
+	glPushMatrix();
+	glTranslatef(-centre[0],-centre[1],-centre[2]);
+}
+
+void popCameraFocus()
+{
+	glPopMatrix();
+	glPopMatrix();
+}
+
+void resetCameraFocus()
+{
+	g_Params.scaleBias = 1.0;
+}
+
+void initCameraFocus()
+{
+	Piavca::Avatar *avatar;
+	avatar = Piavca::Core::getCore()->getAvatar(0);
+
+	initialAvatarBound = avatar->getBoundBox();
+	initialAvatarRoot = avatar->getRootPosition();
+	updateCameraFocus();	
+}
+
+//
+// Helper drawing functions
+//
+
+GLfloat floorScale = 50.0;
+GLfloat floorSize = 500.0;
+
+void drawFloor()
+{
+	// Center of avatar on floor
+	Piavca::Vec centre = (focusBound.min+focusBound.max)/2.0;
+	centre[2] = focusBound.min[2];
+
+	centre[0] = ((int)(centre[0]/floorScale))*floorScale;
+	centre[1] = ((int)(centre[1]/floorScale))*floorScale;
+
+	{
+		int cols = floorSize/floorScale;
+		int color = 0;
+		glDisable(GL_LIGHTING);
+		float x = centre[0] - floorSize/2;
+		float y = centre[1] - floorSize/2;
+		color = (((int)(x/floorScale)) + ((int)(y/floorScale))) %2;
+		for (int i=0;i<cols;i++)
+		{
+			color += ((cols+1)%2);
+			for (int j=0;j<cols;j++)
+			{
+				color = color++;
+				if (color%2 == 0)
+				{
+					glColor3f(0.5,0.5,0.5);
+				}
+				else
+				{
+					glColor3f(0.75,0.75,0.75);
+				}
+				glBegin(GL_QUADS);
+				glVertex3f(x,y,0);
+				glVertex3f(x+floorScale,y,0);
+				glVertex3f(x+floorScale,y+floorScale,0);
+				glVertex3f(x,y+floorScale,0);
+				glEnd();
+				y += floorScale;
+			}
+			y = centre[1] - floorSize/2;
+			x += floorScale;
+		}
+		glEnable(GL_LIGHTING);
+	}
+}
+
+void drawAvatarBound()
+{
+	glDisable(GL_LIGHTING);
+	glColor3f(0.5,1,1);
+
+	Piavca::Vec &v1=focusBound.min;
+	Piavca::Vec &v2=focusBound.max;
+	glBegin(GL_LINES);
+	glVertex3f(v1[0], v1[1], v1[2]);
+	glVertex3f(v2[0], v1[1], v1[2]);
+	glVertex3f(v1[0], v2[1], v1[2]);
+	glVertex3f(v2[0], v2[1], v1[2]);
+	glVertex3f(v1[0], v2[1], v2[2]);
+	glVertex3f(v2[0], v2[1], v2[2]);
+	glVertex3f(v1[0], v1[1], v2[2]);
+	glVertex3f(v2[0], v1[1], v2[2]);
+
+	glVertex3f(v1[0], v1[1], v1[2]);
+	glVertex3f(v1[0], v2[1], v1[2]);
+	glVertex3f(v1[0], v1[1], v2[2]);
+	glVertex3f(v1[0], v2[1], v2[2]);
+	glVertex3f(v2[0], v1[1], v2[2]);
+	glVertex3f(v2[0], v2[1], v2[2]);
+	glVertex3f(v2[0], v1[1], v1[2]);
+	glVertex3f(v2[0], v2[1], v1[2]);
+
+	glVertex3f(v1[0], v1[1], v1[2]);
+	glVertex3f(v1[0], v1[1], v2[2]);
+	glVertex3f(v1[0], v2[1], v1[2]);
+	glVertex3f(v1[0], v2[1], v2[2]);
+	glVertex3f(v2[0], v2[1], v1[2]);
+	glVertex3f(v2[0], v2[1], v2[2]);
+	glVertex3f(v2[0], v1[1], v1[2]);
+	glVertex3f(v2[0], v1[1], v2[2]);
+
+	glEnd();
+	glEnable(GL_LIGHTING);
+}
+
+//
+// Main control functions
+//
 
 void timeStep()
 {
@@ -91,22 +247,14 @@ void timeStep()
 		lastTime = time;
 	}
 	//CalError::printLastError();
-	//try
-	//{
+	try
+	{
 	    Piavca::Core::getCore()->timeStep();
-	//}
-	//catch (Piavca::Exception &e)
-	//{
-	//    std::cout << "Piavca Exception: " <<  e.getDetails() << std::endl;
-		//Piavca::PrintPythonErrors();
-	//}
-	//catch (...)
-	//{
-	//	Piavca::PrintPythonErrors();
-	//}
-	//Piavca::RunPythonMethod(Piavca::Core::getCore(), "headMove", Piavca::Vec(1, 2, 3));
-	//std::cout << TStringToString(Piavca::Core::getCore()->getMessages());
-    // update the screen
+	}
+	catch (Piavca::Exception &e)
+	{
+	    std::cout << "Piavca Exception: " <<  e.getDetails() << std::endl;
+	}
     glutPostRedisplay();	
 }
 
@@ -131,59 +279,36 @@ void displayFunc()
   float time3 = Piavca::Core::getCore()->getTime();
   prerenderTime += time3 - time2;
 
-  // clear the vertex and face counters
-  //m_vertexCount = 0;
-  //m_faceCount = 0;
+  if (g_Params.tracking)
+  {
+	  updateCameraFocus();
+  }
 
   // clear all the buffers
   //glClearColor(0.0f, 0.0f, 0.3f, 0.0f);
   glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-  // set the projection transformation
-  glMatrixMode(GL_PROJECTION);
-  glLoadIdentity();
-  //gluPerspective(45.0f, (GLdouble)g_Params.width / (GLdouble)g_Params.height, 0.01, 10000);
-  float height = 0.4142135*0.01;
-  float width = (height*g_Params.width)/ g_Params.height;
-  glFrustum(-(GLdouble)(width),(GLdouble)(width), -(GLdouble)(height),(GLdouble)(height), 0.01, 10000);
-
   // set the model transformation
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
-
-  // light attributes
-  const GLfloat light_ambient[]  = { 0.3f, 0.3f, 0.3f, 1.0f };
-  const GLfloat light_diffuse[]  = { 0.52f, 0.5f, 0.5f, 1.0f };
-  const GLfloat light_specular[] = { 0.1f, 0.1f, 0.1f, 1.0f };
-
-  // setup the light attributes
-  glLightfv(GL_LIGHT0, GL_AMBIENT, light_ambient);
-  glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
-  glLightfv(GL_LIGHT0, GL_SPECULAR, light_specular);
-
-  // set the light position
-  GLfloat lightPosition[] = { 0.0f, -1.0f, 1.0f, 1.0f };
-  glLightfv(GL_LIGHT0, GL_POSITION, lightPosition);
-
-  // set camera position
-  glTranslatef(g_Params.leftright, g_Params.updown, 0.0f);
-  glTranslatef(0.0f, 0.0f, -g_Params.distance);
-  glRotatef(g_Params.twistAngle, 0.0f, 1.0f, 0.0f);
-  glRotatef(g_Params.tiltAngle, 1.0f, 0.0f, 0.0f);
-  glTranslatef(0.0f, 0.0f, -90.0f);
-
+  pushCameraFocus();
 
   // render the model
   g_Params.core->render();
 
-  // swap the front- and back-buffer
+  // Draw bound box
+  //drawAvatarBound(); // Avatar bounding box
+  drawFloor(); // Floor object
+  popCameraFocus();
+
   glutSwapBuffers();
   
+  //Timing calculations
 	float time4 = Piavca::Core::getCore()->getTime();
 	renderTime += time4 - time3;
 	
-	framecount ++;
+	framecount++;
 	float time = Piavca::Core::getCore()->getTime();
 	if((time - prevTime) > 10.0)
 	{
@@ -197,7 +322,6 @@ void displayFunc()
 		renderTime = 0.0;
 		prevTime = time;
 	}
-  
 }
 
 void exitFunc()
@@ -227,6 +351,7 @@ void play_motion(int motid)
 
 void keyboardFunc(unsigned char key, int x, int y)
 {
+//	gltbKeyboard(key, x, y);
   switch(key)
   {
     // test for quit event
@@ -235,30 +360,19 @@ void keyboardFunc(unsigned char key, int x, int y)
     case 'Q':
       exit(0);
       break;
-	case 'd':
-	  g_Params.leftright += g_Params.leftright_delta;
-	  break;
-	case 'a':
-	  g_Params.leftright -= g_Params.leftright_delta;
-	  break;
-	case 's':
-	  g_Params.updown += g_Params.updown_delta;
-	  break;
-	case 'w':
-	  g_Params.updown -= g_Params.updown_delta;
-	  break;
-	case 'z':
-	  g_Params.distance -= g_Params.zoom_delta;
-	  break;
-	case 'Z':
-	  g_Params.distance += g_Params.zoom_delta;
-	  break;
+	case '-':
+	case '_':
+		g_Params.scaleBias *= 0.75;
+		break;
+	case '+':
+	case '=':
+		g_Params.scaleBias *= 1.25;
+		break;
+	case ' ':
+		g_Params.tracking = !g_Params.tracking;
+		break;
 	case 'r':
-		g_Params.tiltAngle = -70.0f;
-		g_Params.twistAngle = -45.0f;
-		g_Params.distance = 270.0f;
-		g_Params.updown = 0.0f;
-		g_Params.leftright = 0.0f;
+		resetCameraFocus();
 	  break;
 	case '1':
 		play_motion(0);
@@ -294,408 +408,375 @@ void keyboardFunc(unsigned char key, int x, int y)
 
 void motionFunc(int x, int y)
 {
-  // update twist/tilt angles
-  if(g_Params.turning)
-  {
-    // calculate new angles
-    g_Params.twistAngle += (float)(x - g_Params.lastMouseX);
-    g_Params.tiltAngle += (float)(y - g_Params.lastMouseY);
-  }
-
-  // update distance
-  if(g_Params.zooming)
-  {
-    // calculate new distance
-    g_Params.distance -= (float)(y - g_Params.lastMouseY) / 0.02f;
-    if(g_Params.distance < 0.0f) g_Params.distance = 0.0f;
-  }
-
-  // update internal mouse position
-  g_Params.lastMouseX = x;
-  g_Params.lastMouseY = y;
+	gltbMotion(x, y);
 }
 
 void mouseFunc(int button, int state, int x, int y)
 {
-  if(state == GLUT_DOWN)
-  {
-    if(button == GLUT_LEFT_BUTTON)
-	  {
-	    g_Params.zooming = true;
-	  }
-	
-	  if(button == GLUT_RIGHT_BUTTON)
-	  {
-	    g_Params.turning = true;
-	  }
-	  g_Params.lastMouseX = x;
-	  g_Params.lastMouseY = y;
-  }
-  else if(state == GLUT_UP)
-  {
-    if(button == GLUT_LEFT_BUTTON)
-	  {
-	    g_Params.zooming = false;
-	  }
-	
-	  if(button == GLUT_RIGHT_BUTTON)
-	  {
-	    g_Params.turning = false;
-	  }
-	  g_Params.lastMouseX = x;
-	  g_Params.lastMouseY = y;
-  }
+  gltbMouse(button, state, x, y);
 }
 
 void reshapeFunc(int w, int h)
 {
-  // set the new width/height values
-  g_Params.width = w;
-  g_Params.height = h;
-  
-  glViewport(0, 0, w, h);
+	gltbReshape(w,h);
+	// set the new width/height values
+	g_Params.width = w;
+	g_Params.height = h;
+
+	glMatrixMode(GL_PROJECTION);
+	glViewport(0, 0, w, h);
+	glLoadIdentity();
+	gluPerspective(60.0, (GLfloat)w/ (GLfloat)h, 1.0, 1024.0);
+}
+
+void openglInit()
+{
+	// light attributes
+	const GLfloat light_ambient[]  = { 0.3f, 0.3f, 0.3f, 1.0f };
+	const GLfloat light_diffuse[]  = { 0.52f, 0.5f, 0.5f, 1.0f };
+	const GLfloat light_specular[] = { 0.1f, 0.1f, 0.1f, 1.0f };
+
+	// setup the light attributes
+	glLightfv(GL_LIGHT0, GL_AMBIENT, light_ambient);
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
+	glLightfv(GL_LIGHT0, GL_SPECULAR, light_specular);
+
+	// set the light position
+	GLfloat lightPosition[] = { 0.0f, -1.0f, 1.0f, 1.0f };
+	glLightfv(GL_LIGHT0, GL_POSITION, lightPosition);
+	glEnable(GL_NORMALIZE);
+	glEnable(GL_DEPTH_TEST);
+//	glEnable(GL_CULL_FACE);
 }
 
 //----------------------------------------------------------------------------//
 // Main entry point of the application                                        //
 //----------------------------------------------------------------------------//
 
-int main(int argc, char *argv[])
+void piavcaInit(int argc, char *argv[])
 {
 	std::string path = "";
 	std::string motionfile = "";
 	std::string avatarfile = "";
-//#ifndef WIN32
-  for(int i = 0; i < argc-1; i++)
-  {
-  	if(std::string(argv[i]) == "-path")
-  	{
-  		path = std::string(argv[i+1]) + "/";
+
+	g_Params.core = new Piavca::PiavcaCal3DCore();
+
+	//#ifndef WIN32
+	for(int i = 0; i < argc-1; i++)
+	{
+		if(std::string(argv[i]) == "-path")
+		{
+			path = std::string(argv[i+1]) + "/";
 #ifdef WIN32
-  		_chdir(path.c_str());
+			_chdir(path.c_str());
 #else
-		chdir(path.c_str());
+			chdir(path.c_str());
 #endif
-  		argc = argc - 2;
-  		for ( /*nothing*/; i < argc; i++)
-  			argv[i] = argv[i+2];
-  		//break;
-  	}
-	if(std::string(argv[i]) == "-motions")
-  	{
-  		motionfile = std::string(argv[i+1]);
-  		argc = argc - 2;
-  		for ( /*nothing*/; i < argc; i++)
-  			argv[i] = argv[i+2];
-  		//break;
-  	}
-  }	
-  if (argc <= 1)
-  {
-	  std::cout << "no avatar (.cfg) file provided as input\n";
-	  exit(0);
-  }
-
-  avatarfile = std::string(argv[1]);
-  argc = argc - 1;
-  for ( int i = 1; i < argc; i++)
-  	argv[i] = argv[i+1];
-
-  int dotpos = avatarfile.find_last_of(".");
-  std::cout << avatarfile << " " << dotpos << " ";
-  avatarfile = avatarfile.substr(0, dotpos);
-  std::cout << avatarfile << std::endl;
-//#endif
-  
-	
-  // initialize the GLUT system
-  glutInit(&argc, argv);
-
-  g_Params.core = new Piavca::PiavcaCal3DCore();
-  g_Params.zooming = false;
-  g_Params.turning = false;
-  g_Params.width = 800;
-  g_Params.height = 600;
-  g_Params.lastMouseX = 0; 
-  g_Params.lastMouseY = 0;
-  g_Params.leftright = 0; 
-  g_Params.leftright_delta = 10; 
-  g_Params.updown = 85;  
-  g_Params.updown_delta = 10; 
-  g_Params.zoom_delta = 3; 
-  //g_Params.updown = -100; 
-  g_Params.distance = 50;
-  //g_Params.distance = 300;
-  g_Params.tiltAngle = -90; 
-  g_Params.twistAngle = 0;	
-
-  // register our own exit callback
-  atexit(exitFunc);
-
-  // set all GLUT modes
-  glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
-  glutInitWindowSize(g_Params.width, g_Params.height);
-  glutCreateWindow("Piavca Example App");
-
-  // register all GLUT callback functions
-  glutIdleFunc(idleFunc);
-  glutMouseFunc(mouseFunc);
-  glutMotionFunc(motionFunc);
-  glutPassiveMotionFunc(motionFunc);
-  glutReshapeFunc(reshapeFunc);
-  glutDisplayFunc(displayFunc);
-  glutKeyboardFunc(keyboardFunc);
-
-  std::cout << "reading joint names\n";
-
-  std::string jointsFilename = path + "JointNames.txt";
-  std::ifstream file(jointsFilename.c_str(), std::ios::in );
-  if(!file)
-  {
-	  std::cout << "Failed to open joint names file '" 
-	  	<< jointsFilename << "'\n";
-  }
-  else
-  {
-	  Piavca::StringVector jointVec;
-	  std::string jointName;
-	  while(true)
-	  {
-		// read the next model configuration line
-		std::string strBuffer;
-		std::getline(file, strBuffer);
-
-		// stop if we reached the end of file
-		if(file.eof()) 
-		{
-			Piavca::Core::getCore()->addJointNameSet(jointVec);
-			jointVec.clear();
-			break;
+			argc = argc - 2;
+			for ( /*nothing*/; i < argc; i++)
+				argv[i] = argv[i+2];
+			//break;
 		}
-
-		// check if an error happend while reading from the file
-		if(!file)
+		if(std::string(argv[i]) == "-motions")
 		{
-			Piavca::Error("Error while reading from the joint names file");
-			return NULL;
+			motionfile = std::string(argv[i+1]);
+			argc = argc - 2;
+			for ( /*nothing*/; i < argc; i++)
+				argv[i] = argv[i+2];
+			//break;
 		}
+	}	
+	if (argc <= 1)
+	{
+		std::cout << "no avatar (.cfg) file provided as input\n";
+		exit(0);
+	}
 
-		// find the first non-whitespace character
-		std::string::size_type pos=0, new_pos;
+	avatarfile = std::string(argv[1]);
+	argc = argc - 1;
+	for ( int i = 1; i < argc; i++)
+		argv[i] = argv[i+1];
 
-		while (true)
+	int dotpos = avatarfile.find_last_of(".");
+	std::cout << avatarfile << " " << dotpos << " ";
+	avatarfile = avatarfile.substr(0, dotpos);
+	std::cout << avatarfile << std::endl;
+
+
+	std::cout << "reading joint names\n";
+	std::string jointsFilename = path + "JointNames.txt";
+	std::ifstream file(jointsFilename.c_str(), std::ios::in );
+	if(!file)
+	{
+		std::cout << "Failed to open joint names file '" 
+			<< jointsFilename << "'\n";
+	}
+	else
+	{
+		Piavca::StringVector jointVec;
+		std::string jointName;
+		while(true)
 		{
-			pos = strBuffer.find_first_not_of(" \t", pos);
-
-			// check for empty lines and comments
-			if((pos == std::string::npos) || (strBuffer[pos] == '\n') 
-				|| (strBuffer[pos] == '\r') || (strBuffer[pos] == 0)
-				|| strBuffer[pos] == '#') 
-			{
-				if(!jointVec.empty())
-				{
-					Piavca::Core::getCore()->addJointNameSet(jointVec);
-					jointVec.clear();
-				}
-				break;
-			}
-
-			
-			if(strBuffer[pos] == '\"')
-			{
-				pos++;
-				new_pos = strBuffer.find_first_of("\"", pos);
-				if(new_pos == std::string::npos)
-					Piavca::Error("Unmatched quotes in joint names file");
-				jointName = strBuffer.substr(pos, new_pos - pos);
-				pos = new_pos+1;
-			}
-			else
-			{
-				new_pos = strBuffer.find_first_of(" =\t\n\r", pos);
-				jointName = strBuffer.substr(pos, new_pos - pos);
-				pos = new_pos;
-			}
-			jointVec.push_back(StringToTString(jointName));
-			std::cout << jointName << "; ";
-			
-		}
-	  };
-	  std::cout << std::endl;
-  }
-
-  std::string expressionFilename = path + "ExpressionNames.txt";
-  std::ifstream expressionFile(expressionFilename.c_str(), std::ios::in );
-  if(!expressionFile)
-  {
-	  std::cout << "Failed to open expression names file '" << expressionFilename << std::endl;
-  }
-  else
-  {
-	  Piavca::StringVector expressionVec;
-	  std::string expressionName;
-	  while(true)
-	  {
-		// read the next model configuration line
-		std::string strBuffer;
-		std::getline(expressionFile, strBuffer);
-
-		// stop if we reached the end of file
-		if(expressionFile.eof()) 
-		{
-			Piavca::Core::getCore()->addExpressionNameSet(expressionVec);
-			expressionVec.clear();
-			break;
-		}
-
-		// check if an error happend while reading from the file
-		if(!expressionFile)
-		{
-			Piavca::Error("Error while reading from the expression names file");
-			return NULL;
-		}
-
-		// find the first non-whitespace character
-		std::string::size_type pos=0, new_pos;
-
-		while (true)
-		{
-			pos = strBuffer.find_first_not_of(" \t", pos);
-
-			// check for empty lines and comments
-			if((pos == std::string::npos) || (strBuffer[pos] == '\n') 
-				|| (strBuffer[pos] == '\r') || (strBuffer[pos] == 0)
-				|| strBuffer[pos] == '#') 
-			{
-				if(!expressionVec.empty())
-				{
-					Piavca::Core::getCore()->addExpressionNameSet(expressionVec);
-					expressionVec.clear();
-				}
-				break;
-			}
-
-			
-			if(strBuffer[pos] == '\"')
-			{
-				pos++;
-				new_pos = strBuffer.find_first_of("\"", pos);
-				if(new_pos == std::string::npos)
-					Piavca::Error("Unmatched quotes in expression names file");
-				expressionName = strBuffer.substr(pos, new_pos - pos);
-				pos = new_pos+1;
-			}
-			else
-			{
-				new_pos = strBuffer.find_first_of(" =\t\n\r", pos);
-				expressionName = strBuffer.substr(pos, new_pos - pos);
-				pos = new_pos;
-			}
-			expressionVec.push_back(StringToTString(expressionName));
-			std::cout << expressionName << "; ";
-			
-		}
-	  };
-	  std::cout << std::endl;
-  }
-
-  ////////////////////////////////////////////////////////////////////////
-  //
-  // In this demo app we setting up piavca by running a python script
-  // if you want to just use C++ the code below gives an example of how
-  // you might create an avatar, load and play some motions
-  //
-  ////////////////////////////////////////////////////////////////////////
-
-  //std::string avatarFilename = "cally";
-  //Piavca::Avatar *av = new Piavca::Avatar(avatarFilename);
-  //Piavca::Motion *gbo = new Piavca::TrackMotion(StringToTString("gesture_both_out.bvh"), 
-	  //Piavca::TRANS_REVERSE_ORDER 
-//	  Piavca::TRANS_NEG_X 
-//	  | Piavca::TRANS_SWAP_XZ
-	  // Piavca::TRANS_NEG_Y 
-//	  | Piavca::TRANS_ARM_DOWN);
-  //Piavca::Motion *walk = new Piavca::TrackMotion(StringToTString("walk_cycle.bvh"), 
-	  //Piavca::TRANS_NEG_Z 
-	  //| Piavca::TRANS_SWAP_XZ
-	  //| Piavca::TRANS_ARM_DOWN);
-  //Piavca::AvatarMotionQueue::getQueue(av)->enqueueMotion("walk", new Piavca::OnTheSpot(new Piavca::LoopMotion(walk)));
-  //Piavca::AvatarMotionQueue::getQueue(av)->enqueueMotion("walk", Piavca::Core::getCore()->getMotion("walk");
-  //av->setFacialExpressionWeight(Piavca::Core::getCore()->getExpressionId(_T("smile")), 1.0);
-
-  std::cout << "finished loading joints\n";
-
-  g_Params.avatar = new Piavca::Avatar(avatarfile);
-  if(motionfile != "")
-  {
-	  std::ifstream mFile(motionfile.c_str(), std::ios::in );
-	  if(!mFile)
-	  {
-		  std::cout << "Failed to open motion file '" << motionfile << std::endl;
-	  }
-	  else
-	  {
-		  Piavca::MotionParser::setUpMotionCommands();
-		  while(true)
-		  {
+			// read the next model configuration line
 			std::string strBuffer;
-			std::getline(mFile, strBuffer);
+			std::getline(file, strBuffer);
 
 			// stop if we reached the end of file
-			if(mFile.eof()) 
+			if(file.eof()) 
 			{
+				Piavca::Core::getCore()->addJointNameSet(jointVec);
+				jointVec.clear();
 				break;
 			}
 
 			// check if an error happend while reading from the file
-			if(!mFile)
+			if(!file)
 			{
-				Piavca::Error("Error while reading from the motion file");
-				return NULL;
+				Piavca::Error("Error while reading from the joint names file");
+				exit(-1);
 			}
 
-			int pos = strBuffer.find_first_not_of(" \t");
+			// find the first non-whitespace character
+			std::string::size_type pos=0, new_pos;
 
-			
-			// check for empty lines and comments
-			if((pos == std::string::npos) || (strBuffer[pos] == '\n') 
-				|| (strBuffer[pos] == '\r') || (strBuffer[pos] == 0)
-				|| strBuffer[pos] == '#') 
+			while (true)
 			{
-				continue;
+				pos = strBuffer.find_first_not_of(" \t", pos);
+
+				// check for empty lines and comments
+				if((pos == std::string::npos) || (strBuffer[pos] == '\n') 
+					|| (strBuffer[pos] == '\r') || (strBuffer[pos] == 0)
+					|| strBuffer[pos] == '#') 
+				{
+					if(!jointVec.empty())
+					{
+						Piavca::Core::getCore()->addJointNameSet(jointVec);
+						jointVec.clear();
+					}
+					break;
+				}
+
+
+				if(strBuffer[pos] == '\"')
+				{
+					pos++;
+					new_pos = strBuffer.find_first_of("\"", pos);
+					if(new_pos == std::string::npos)
+						Piavca::Error("Unmatched quotes in joint names file");
+					jointName = strBuffer.substr(pos, new_pos - pos);
+					pos = new_pos+1;
+				}
+				else
+				{
+					new_pos = strBuffer.find_first_of(" =\t\n\r", pos);
+					jointName = strBuffer.substr(pos, new_pos - pos);
+					pos = new_pos;
+				}
+				jointVec.push_back(StringToTString(jointName));
+				std::cout << jointName << "; ";
+
+			}
+		};
+		std::cout << std::endl;
+	}
+
+	std::string expressionFilename = path + "ExpressionNames.txt";
+	std::ifstream expressionFile(expressionFilename.c_str(), std::ios::in );
+	if(!expressionFile)
+	{
+		std::cout << "Failed to open expression names file '" << expressionFilename << std::endl;
+	}
+	else
+	{
+		Piavca::StringVector expressionVec;
+		std::string expressionName;
+		while(true)
+		{
+			// read the next model configuration line
+			std::string strBuffer;
+			std::getline(expressionFile, strBuffer);
+
+			// stop if we reached the end of file
+			if(expressionFile.eof()) 
+			{
+				Piavca::Core::getCore()->addExpressionNameSet(expressionVec);
+				expressionVec.clear();
+				break;
 			}
 
-			int new_pos = strBuffer.find_first_of(" =\t\n\r", pos);
-			Piavca::tstring motionName = StringToTString(strBuffer.substr(pos, new_pos - pos));
-			strBuffer = strBuffer.substr(new_pos);
+			// check if an error happend while reading from the file
+			if(!expressionFile)
+			{
+				Piavca::Error("Error while reading from the expression names file");
+				exit(-1);
+			}
+
+			// find the first non-whitespace character
+			std::string::size_type pos=0, new_pos;
+
+			while (true)
+			{
+				pos = strBuffer.find_first_not_of(" \t", pos);
+
+				// check for empty lines and comments
+				if((pos == std::string::npos) || (strBuffer[pos] == '\n') 
+					|| (strBuffer[pos] == '\r') || (strBuffer[pos] == 0)
+					|| strBuffer[pos] == '#') 
+				{
+					if(!expressionVec.empty())
+					{
+						Piavca::Core::getCore()->addExpressionNameSet(expressionVec);
+						expressionVec.clear();
+					}
+					break;
+				}
 
 
-			Piavca::Motion *m = Piavca::MotionParser::parseMotion(strBuffer);
-			Piavca::Core::getCore()->loadMotion(motionName, m);
-		  }
-	  }
-  }
+				if(strBuffer[pos] == '\"')
+				{
+					pos++;
+					new_pos = strBuffer.find_first_of("\"", pos);
+					if(new_pos == std::string::npos)
+						Piavca::Error("Unmatched quotes in expression names file");
+					expressionName = strBuffer.substr(pos, new_pos - pos);
+					pos = new_pos+1;
+				}
+				else
+				{
+					new_pos = strBuffer.find_first_of(" =\t\n\r", pos);
+					expressionName = strBuffer.substr(pos, new_pos - pos);
+					pos = new_pos;
+				}
+				expressionVec.push_back(StringToTString(expressionName));
+				std::cout << expressionName << "; ";
 
-  std::cout << "Use the number buttons to choose an animation to play\n";
-  std::vector<std::string> motionNames = Piavca::Core::getCore()->getMotionNames(9);
-  for (int i = 0; i < (int) motionNames.size(); i++)
-  {
-	  std::cout << i+1 << ": " << motionNames[i] << std::endl;
-  };
+			}
+		};
+		std::cout << std::endl;
+	}
 
-  //if(script == "")
-	//  script = "init_piavca";
-  //Piavca::InitPiavcaPython(Piavca::Core::getCore(), StringToTString(script));
+	////////////////////////////////////////////////////////////////////////
+	//
+	// If you want to just use C++ the code below gives an example of how
+	// you might create an avatar, load and play some motions
+	//
+	////////////////////////////////////////////////////////////////////////
 
-	//glutSetCursor(GLUT_CURSOR_LEFT_ARROW);
+	//std::string avatarFilename = "cally";
+	//Piavca::Avatar *av = new Piavca::Avatar(avatarFilename);
 
-  // run the GLUT message loop
-  glutMainLoop();
+	//Piavca::Motion *gbo = new Piavca::TrackMotion(StringToTString("gesture_both_out.bvh"), 
+	//Piavca::TRANS_REVERSE_ORDER 
+	//	  Piavca::TRANS_NEG_X 
+	//	  | Piavca::TRANS_SWAP_XZ
+	// Piavca::TRANS_NEG_Y 
+	//	  | Piavca::TRANS_ARM_DOWN);
+	//Piavca::Motion *walk = new Piavca::TrackMotion(StringToTString("walk_cycle.bvh"), 
+	//Piavca::TRANS_NEG_Z 
+	//| Piavca::TRANS_SWAP_XZ
+	//| Piavca::TRANS_ARM_DOWN);
+	//Piavca::AvatarMotionQueue::getQueue(av)->enqueueMotion("walk", new Piavca::OnTheSpot(new Piavca::LoopMotion(walk)));
+	//Piavca::AvatarMotionQueue::getQueue(av)->enqueueMotion("walk", Piavca::Core::getCore()->getMotion("walk");
+	//av->setFacialExpressionWeight(Piavca::Core::getCore()->getExpressionId(_T("smile")), 1.0);
 
-  
-  //EndPiavcaPython(Piavca::Core::getCore());
+	std::cout << "finished loading joints\n";
 
-  return 0;
+	g_Params.avatar = new Piavca::Avatar(avatarfile);
+	if(motionfile != "")
+	{
+		std::ifstream mFile(motionfile.c_str(), std::ios::in );
+		if(!mFile)
+		{
+			std::cout << "Failed to open motion file '" << motionfile << std::endl;
+		}
+		else
+		{
+			Piavca::MotionParser::setUpMotionCommands();
+			while(true)
+			{
+				std::string strBuffer;
+				std::getline(mFile, strBuffer);
+
+				// stop if we reached the end of file
+				if(mFile.eof()) 
+				{
+					break;
+				}
+
+				// check if an error happened while reading from the file
+				if(!mFile)
+				{
+					Piavca::Error("Error while reading from the motion file");
+					exit(-1);
+				}
+
+				int pos = strBuffer.find_first_not_of(" \t");
+
+
+				// check for empty lines and comments
+				if((pos == std::string::npos) || (strBuffer[pos] == '\n') 
+					|| (strBuffer[pos] == '\r') || (strBuffer[pos] == 0)
+					|| strBuffer[pos] == '#') 
+				{
+					continue;
+				}
+
+				int new_pos = strBuffer.find_first_of(" =\t\n\r", pos);
+				Piavca::tstring motionName = StringToTString(strBuffer.substr(pos, new_pos - pos));
+				strBuffer = strBuffer.substr(new_pos);
+
+
+				Piavca::Motion *m = Piavca::MotionParser::parseMotion(strBuffer);
+				Piavca::Core::getCore()->loadMotion(motionName, m);
+			}
+		}
+	}
+
+	std::cout << "Use the number buttons to choose an animation to play\n";
+	std::vector<std::string> motionNames = Piavca::Core::getCore()->getMotionNames(9);
+	for (int i = 0; i < (int) motionNames.size(); i++)
+	{
+		std::cout << i+1 << ": " << motionNames[i] << std::endl;
+	};
+
+	// Set up bounds for tracking camera
+	initCameraFocus();
+}
+
+int main(int argc, char *argv[])
+{
+	// initialize Piavca
+	piavcaInit(argc, argv);
+
+	// initialize GLUT
+	glutInit(&argc, argv);
+
+	// register the trackball handler
+	gltbInit(GLUT_LEFT_BUTTON);
+	gltbConfigUp(0.0,0.0,1.0);
+	// register our own exit callback
+	atexit(exitFunc);
+
+	// set all GLUT modes
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
+	glutInitWindowSize(g_Params.width, g_Params.height);
+	glutCreateWindow("Piavca Example App");
+
+	// register all GLUT callback functions
+	glutIdleFunc(idleFunc);
+	glutMouseFunc(mouseFunc);
+	glutMotionFunc(motionFunc);
+	glutPassiveMotionFunc(motionFunc);
+	glutReshapeFunc(reshapeFunc);
+	glutDisplayFunc(displayFunc);
+	glutKeyboardFunc(keyboardFunc);
+
+	// OpenGL initialization
+	openglInit();
+
+	glutMainLoop();
+
+	return 0;
 }
 
 //----------------------------------------------------------------------------//

@@ -2969,97 +2969,98 @@ namespace Swig {
 #define SWIGTYPE_p_Piavca__AvatarTargetStruct swig_types[4]
 #define SWIGTYPE_p_Piavca__AvatarTimeCallback swig_types[5]
 #define SWIGTYPE_p_Piavca__BlendBetween swig_types[6]
-#define SWIGTYPE_p_Piavca__ChoiceLoopMotion swig_types[7]
-#define SWIGTYPE_p_Piavca__ChoiceMotion swig_types[8]
-#define SWIGTYPE_p_Piavca__Core swig_types[9]
-#define SWIGTYPE_p_Piavca__CurrentValueMotion swig_types[10]
-#define SWIGTYPE_p_Piavca__DiadicGazeMotion swig_types[11]
-#define SWIGTYPE_p_Piavca__KeyframeMotion swig_types[12]
-#define SWIGTYPE_p_Piavca__LinearTransition swig_types[13]
-#define SWIGTYPE_p_Piavca__LookAtMotion swig_types[14]
-#define SWIGTYPE_p_Piavca__LookAtToFacial swig_types[15]
-#define SWIGTYPE_p_Piavca__LoopMotion swig_types[16]
-#define SWIGTYPE_p_Piavca__MaskedMotion swig_types[17]
-#define SWIGTYPE_p_Piavca__Motion swig_types[18]
-#define SWIGTYPE_p_Piavca__MotionAdder swig_types[19]
-#define SWIGTYPE_p_Piavca__MotionFilter swig_types[20]
-#define SWIGTYPE_p_Piavca__MotionImp swig_types[21]
-#define SWIGTYPE_p_Piavca__MotionMask swig_types[22]
-#define SWIGTYPE_p_Piavca__MotionParser swig_types[23]
-#define SWIGTYPE_p_Piavca__MotionPosture swig_types[24]
-#define SWIGTYPE_p_Piavca__MotionSaver swig_types[25]
-#define SWIGTYPE_p_Piavca__MotionTransition swig_types[26]
-#define SWIGTYPE_p_Piavca__MultiMotionCombiner swig_types[27]
-#define SWIGTYPE_p_Piavca__Object swig_types[28]
-#define SWIGTYPE_p_Piavca__ObjectTargetStruct swig_types[29]
-#define SWIGTYPE_p_Piavca__PostureBlend swig_types[30]
-#define SWIGTYPE_p_Piavca__ProxemicsLoop swig_types[31]
-#define SWIGTYPE_p_Piavca__Quat swig_types[32]
-#define SWIGTYPE_p_Piavca__RandomAdd swig_types[33]
-#define SWIGTYPE_p_Piavca__RandomAddLoop swig_types[34]
-#define SWIGTYPE_p_Piavca__RandomBlend swig_types[35]
-#define SWIGTYPE_p_Piavca__RandomBlendLoop swig_types[36]
-#define SWIGTYPE_p_Piavca__RandomChoiceMotion swig_types[37]
-#define SWIGTYPE_p_Piavca__RandomGazeMotion swig_types[38]
-#define SWIGTYPE_p_Piavca__RandomLoopMotion swig_types[39]
-#define SWIGTYPE_p_Piavca__RandomTimingsLoop swig_types[40]
-#define SWIGTYPE_p_Piavca__Reposition swig_types[41]
-#define SWIGTYPE_p_Piavca__ScaleMotion swig_types[42]
-#define SWIGTYPE_p_Piavca__ScaleMotionRoot swig_types[43]
-#define SWIGTYPE_p_Piavca__ScaleMotionSpeed swig_types[44]
-#define SWIGTYPE_p_Piavca__Sequence swig_types[45]
-#define SWIGTYPE_p_Piavca__SmoothSequence swig_types[46]
-#define SWIGTYPE_p_Piavca__SmoothTransition swig_types[47]
-#define SWIGTYPE_p_Piavca__SubMotion swig_types[48]
-#define SWIGTYPE_p_Piavca__Subtract swig_types[49]
-#define SWIGTYPE_p_Piavca__TimeCallback swig_types[50]
-#define SWIGTYPE_p_Piavca__TimeOffset swig_types[51]
-#define SWIGTYPE_p_Piavca__TimeRangeMotion swig_types[52]
-#define SWIGTYPE_p_Piavca__TimeWarp swig_types[53]
-#define SWIGTYPE_p_Piavca__TransitionFunction swig_types[54]
-#define SWIGTYPE_p_Piavca__TurnMotion swig_types[55]
-#define SWIGTYPE_p_Piavca__TwoMotionCombiner swig_types[56]
-#define SWIGTYPE_p_Piavca__Vec swig_types[57]
-#define SWIGTYPE_p_Piavca__ZeroMotion swig_types[58]
-#define SWIGTYPE_p_Piavca__flagStruct swig_types[59]
-#define SWIGTYPE_p_Piavca__queueElement swig_types[60]
-#define SWIGTYPE_p_StringVector swig_types[61]
-#define SWIGTYPE_p_allocator_type swig_types[62]
-#define SWIGTYPE_p_char swig_types[63]
-#define SWIGTYPE_p_difference_type swig_types[64]
-#define SWIGTYPE_p_float swig_types[65]
-#define SWIGTYPE_p_int swig_types[66]
-#define SWIGTYPE_p_p_Piavca__MotionParser swig_types[67]
-#define SWIGTYPE_p_p_PyObject swig_types[68]
-#define SWIGTYPE_p_size_type swig_types[69]
-#define SWIGTYPE_p_std__fstream swig_types[70]
-#define SWIGTYPE_p_std__ifstream swig_types[71]
-#define SWIGTYPE_p_std__invalid_argument swig_types[72]
-#define SWIGTYPE_p_std__istringstream swig_types[73]
-#define SWIGTYPE_p_std__listTtstring_t swig_types[74]
-#define SWIGTYPE_p_std__ofstream swig_types[75]
-#define SWIGTYPE_p_std__ostream swig_types[76]
-#define SWIGTYPE_p_std__ostringstream swig_types[77]
-#define SWIGTYPE_p_std__string swig_types[78]
-#define SWIGTYPE_p_std__stringstream swig_types[79]
-#define SWIGTYPE_p_std__type_info swig_types[80]
-#define SWIGTYPE_p_std__vectorTPiavca__AvatarTargetStruct_std__allocatorTPiavca__AvatarTargetStruct_t_t swig_types[81]
-#define SWIGTYPE_p_std__vectorTPiavca__Motion_p_std__allocatorTPiavca__Motion_p_t_t swig_types[82]
-#define SWIGTYPE_p_std__vectorTPiavca__ObjectTargetStruct_std__allocatorTPiavca__ObjectTargetStruct_t_t swig_types[83]
-#define SWIGTYPE_p_std__vectorTint_std__allocatorTint_t_t swig_types[84]
-#define SWIGTYPE_p_std__vectorTint_std__allocatorTint_t_t__allocator_type swig_types[85]
-#define SWIGTYPE_p_std__vectorTstd__pairTint_Piavca__Quat_t_std__allocatorTstd__pairTint_Piavca__Quat_t_t_t swig_types[86]
-#define SWIGTYPE_p_std__vectorTstd__pairTtstring_int_t_std__allocatorTstd__pairTstd__string_int_t_t_t swig_types[87]
-#define SWIGTYPE_p_std__vectorTstd__string_std__allocatorTstd__string_t_t swig_types[88]
-#define SWIGTYPE_p_std__vectorTstd__string_std__allocatorTstd__string_t_t__allocator_type swig_types[89]
-#define SWIGTYPE_p_std__vectorTtstring_std__allocatorTstd__string_t_t swig_types[90]
-#define SWIGTYPE_p_std__wstring swig_types[91]
-#define SWIGTYPE_p_swig__PySwigIterator swig_types[92]
-#define SWIGTYPE_p_tostringstream swig_types[93]
-#define SWIGTYPE_p_value_type swig_types[94]
-#define SWIGTYPE_p_vectorTfloat_std__allocatorTfloat_t_t swig_types[95]
-static swig_type_info *swig_types[97];
-static swig_module_info swig_module = {swig_types, 96, 0, 0, 0, 0};
+#define SWIGTYPE_p_Piavca__Bound swig_types[7]
+#define SWIGTYPE_p_Piavca__ChoiceLoopMotion swig_types[8]
+#define SWIGTYPE_p_Piavca__ChoiceMotion swig_types[9]
+#define SWIGTYPE_p_Piavca__Core swig_types[10]
+#define SWIGTYPE_p_Piavca__CurrentValueMotion swig_types[11]
+#define SWIGTYPE_p_Piavca__DiadicGazeMotion swig_types[12]
+#define SWIGTYPE_p_Piavca__KeyframeMotion swig_types[13]
+#define SWIGTYPE_p_Piavca__LinearTransition swig_types[14]
+#define SWIGTYPE_p_Piavca__LookAtMotion swig_types[15]
+#define SWIGTYPE_p_Piavca__LookAtToFacial swig_types[16]
+#define SWIGTYPE_p_Piavca__LoopMotion swig_types[17]
+#define SWIGTYPE_p_Piavca__MaskedMotion swig_types[18]
+#define SWIGTYPE_p_Piavca__Motion swig_types[19]
+#define SWIGTYPE_p_Piavca__MotionAdder swig_types[20]
+#define SWIGTYPE_p_Piavca__MotionFilter swig_types[21]
+#define SWIGTYPE_p_Piavca__MotionImp swig_types[22]
+#define SWIGTYPE_p_Piavca__MotionMask swig_types[23]
+#define SWIGTYPE_p_Piavca__MotionParser swig_types[24]
+#define SWIGTYPE_p_Piavca__MotionPosture swig_types[25]
+#define SWIGTYPE_p_Piavca__MotionSaver swig_types[26]
+#define SWIGTYPE_p_Piavca__MotionTransition swig_types[27]
+#define SWIGTYPE_p_Piavca__MultiMotionCombiner swig_types[28]
+#define SWIGTYPE_p_Piavca__Object swig_types[29]
+#define SWIGTYPE_p_Piavca__ObjectTargetStruct swig_types[30]
+#define SWIGTYPE_p_Piavca__PostureBlend swig_types[31]
+#define SWIGTYPE_p_Piavca__ProxemicsLoop swig_types[32]
+#define SWIGTYPE_p_Piavca__Quat swig_types[33]
+#define SWIGTYPE_p_Piavca__RandomAdd swig_types[34]
+#define SWIGTYPE_p_Piavca__RandomAddLoop swig_types[35]
+#define SWIGTYPE_p_Piavca__RandomBlend swig_types[36]
+#define SWIGTYPE_p_Piavca__RandomBlendLoop swig_types[37]
+#define SWIGTYPE_p_Piavca__RandomChoiceMotion swig_types[38]
+#define SWIGTYPE_p_Piavca__RandomGazeMotion swig_types[39]
+#define SWIGTYPE_p_Piavca__RandomLoopMotion swig_types[40]
+#define SWIGTYPE_p_Piavca__RandomTimingsLoop swig_types[41]
+#define SWIGTYPE_p_Piavca__Reposition swig_types[42]
+#define SWIGTYPE_p_Piavca__ScaleMotion swig_types[43]
+#define SWIGTYPE_p_Piavca__ScaleMotionRoot swig_types[44]
+#define SWIGTYPE_p_Piavca__ScaleMotionSpeed swig_types[45]
+#define SWIGTYPE_p_Piavca__Sequence swig_types[46]
+#define SWIGTYPE_p_Piavca__SmoothSequence swig_types[47]
+#define SWIGTYPE_p_Piavca__SmoothTransition swig_types[48]
+#define SWIGTYPE_p_Piavca__SubMotion swig_types[49]
+#define SWIGTYPE_p_Piavca__Subtract swig_types[50]
+#define SWIGTYPE_p_Piavca__TimeCallback swig_types[51]
+#define SWIGTYPE_p_Piavca__TimeOffset swig_types[52]
+#define SWIGTYPE_p_Piavca__TimeRangeMotion swig_types[53]
+#define SWIGTYPE_p_Piavca__TimeWarp swig_types[54]
+#define SWIGTYPE_p_Piavca__TransitionFunction swig_types[55]
+#define SWIGTYPE_p_Piavca__TurnMotion swig_types[56]
+#define SWIGTYPE_p_Piavca__TwoMotionCombiner swig_types[57]
+#define SWIGTYPE_p_Piavca__Vec swig_types[58]
+#define SWIGTYPE_p_Piavca__ZeroMotion swig_types[59]
+#define SWIGTYPE_p_Piavca__flagStruct swig_types[60]
+#define SWIGTYPE_p_Piavca__queueElement swig_types[61]
+#define SWIGTYPE_p_StringVector swig_types[62]
+#define SWIGTYPE_p_allocator_type swig_types[63]
+#define SWIGTYPE_p_char swig_types[64]
+#define SWIGTYPE_p_difference_type swig_types[65]
+#define SWIGTYPE_p_float swig_types[66]
+#define SWIGTYPE_p_int swig_types[67]
+#define SWIGTYPE_p_p_Piavca__MotionParser swig_types[68]
+#define SWIGTYPE_p_p_PyObject swig_types[69]
+#define SWIGTYPE_p_size_type swig_types[70]
+#define SWIGTYPE_p_std__fstream swig_types[71]
+#define SWIGTYPE_p_std__ifstream swig_types[72]
+#define SWIGTYPE_p_std__invalid_argument swig_types[73]
+#define SWIGTYPE_p_std__istringstream swig_types[74]
+#define SWIGTYPE_p_std__listTtstring_t swig_types[75]
+#define SWIGTYPE_p_std__ofstream swig_types[76]
+#define SWIGTYPE_p_std__ostream swig_types[77]
+#define SWIGTYPE_p_std__ostringstream swig_types[78]
+#define SWIGTYPE_p_std__string swig_types[79]
+#define SWIGTYPE_p_std__stringstream swig_types[80]
+#define SWIGTYPE_p_std__type_info swig_types[81]
+#define SWIGTYPE_p_std__vectorTPiavca__AvatarTargetStruct_std__allocatorTPiavca__AvatarTargetStruct_t_t swig_types[82]
+#define SWIGTYPE_p_std__vectorTPiavca__Motion_p_std__allocatorTPiavca__Motion_p_t_t swig_types[83]
+#define SWIGTYPE_p_std__vectorTPiavca__ObjectTargetStruct_std__allocatorTPiavca__ObjectTargetStruct_t_t swig_types[84]
+#define SWIGTYPE_p_std__vectorTint_std__allocatorTint_t_t swig_types[85]
+#define SWIGTYPE_p_std__vectorTint_std__allocatorTint_t_t__allocator_type swig_types[86]
+#define SWIGTYPE_p_std__vectorTstd__pairTint_Piavca__Quat_t_std__allocatorTstd__pairTint_Piavca__Quat_t_t_t swig_types[87]
+#define SWIGTYPE_p_std__vectorTstd__pairTtstring_int_t_std__allocatorTstd__pairTstd__string_int_t_t_t swig_types[88]
+#define SWIGTYPE_p_std__vectorTstd__string_std__allocatorTstd__string_t_t swig_types[89]
+#define SWIGTYPE_p_std__vectorTstd__string_std__allocatorTstd__string_t_t__allocator_type swig_types[90]
+#define SWIGTYPE_p_std__vectorTtstring_std__allocatorTstd__string_t_t swig_types[91]
+#define SWIGTYPE_p_std__wstring swig_types[92]
+#define SWIGTYPE_p_swig__PySwigIterator swig_types[93]
+#define SWIGTYPE_p_tostringstream swig_types[94]
+#define SWIGTYPE_p_value_type swig_types[95]
+#define SWIGTYPE_p_vectorTfloat_std__allocatorTfloat_t_t swig_types[96]
+static swig_type_info *swig_types[98];
+static swig_module_info swig_module = {swig_types, 97, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3188,6 +3189,16 @@ Vec PyVec_AsVec(PyObject *obj)
 {
 	Vec retVal, *res;
 	if ((SWIG_ConvertPtr(obj,(void **) &res, SWIGTYPE_p_Piavca__Vec, 1 | 0 )) != -1)
+	{
+		retVal =  *res;
+	}
+	return retVal;
+}
+
+Bound PyBound_AsBound(PyObject *obj)
+{
+	Bound retVal, *res;
+	if ((SWIG_ConvertPtr(obj,(void **) &res, SWIGTYPE_p_Piavca__Bound, 1 | 0 )) != -1)
 	{
 		retVal =  *res;
 	}
@@ -34584,7 +34595,7 @@ SWIGINTERN PyObject *Vec_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *
   return SWIG_Py_Void();
 }
 
-SWIGINTERN PyObject *_wrap_checkNaN(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_checkNaN__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Piavca::Vec *arg1 = 0 ;
   bool result;
@@ -36736,6 +36747,677 @@ SWIGINTERN PyObject *_wrap_slerp(PyObject *SWIGUNUSEDPARM(self), PyObject *args)
   resultobj = SWIG_NewPointerObj((new Piavca::Quat(static_cast< const Piavca::Quat& >(result))), SWIGTYPE_p_Piavca__Quat, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Bound_min_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Bound *arg1 = (Piavca::Bound *) 0 ;
+  Piavca::Vec *arg2 = (Piavca::Vec *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Bound_min_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Bound, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Bound_min_set" "', argument " "1"" of type '" "Piavca::Bound *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Bound * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_Piavca__Vec, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Bound_min_set" "', argument " "2"" of type '" "Piavca::Vec *""'"); 
+  }
+  arg2 = reinterpret_cast< Piavca::Vec * >(argp2);
+  if (arg1) (arg1)->min = *arg2;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Bound_min_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Bound *arg1 = (Piavca::Bound *) 0 ;
+  Piavca::Vec *result = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Bound_min_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Bound, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Bound_min_get" "', argument " "1"" of type '" "Piavca::Bound *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Bound * >(argp1);
+  result = (Piavca::Vec *)& ((arg1)->min);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__Vec, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Bound_max_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Bound *arg1 = (Piavca::Bound *) 0 ;
+  Piavca::Vec *arg2 = (Piavca::Vec *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Bound_max_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Bound, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Bound_max_set" "', argument " "1"" of type '" "Piavca::Bound *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Bound * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_Piavca__Vec, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Bound_max_set" "', argument " "2"" of type '" "Piavca::Vec *""'"); 
+  }
+  arg2 = reinterpret_cast< Piavca::Vec * >(argp2);
+  if (arg1) (arg1)->max = *arg2;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Bound_max_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Bound *arg1 = (Piavca::Bound *) 0 ;
+  Piavca::Vec *result = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Bound_max_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Bound, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Bound_max_get" "', argument " "1"" of type '" "Piavca::Bound *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Bound * >(argp1);
+  result = (Piavca::Vec *)& ((arg1)->max);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__Vec, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_Bound__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Bound *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)":new_Bound")) SWIG_fail;
+  {
+    try {
+      result = (Piavca::Bound *)new Piavca::Bound(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__Bound, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_Bound__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  float arg1 ;
+  float arg2 ;
+  float arg3 ;
+  float arg4 ;
+  float arg5 ;
+  float arg6 ;
+  Piavca::Bound *result = 0 ;
+  float val1 ;
+  int ecode1 = 0 ;
+  float val2 ;
+  int ecode2 = 0 ;
+  float val3 ;
+  int ecode3 = 0 ;
+  float val4 ;
+  int ecode4 = 0 ;
+  float val5 ;
+  int ecode5 = 0 ;
+  float val6 ;
+  int ecode6 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOOOO:new_Bound",&obj0,&obj1,&obj2,&obj3,&obj4,&obj5)) SWIG_fail;
+  ecode1 = SWIG_AsVal_float(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_Bound" "', argument " "1"" of type '" "float""'");
+  } 
+  arg1 = static_cast< float >(val1);
+  ecode2 = SWIG_AsVal_float(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_Bound" "', argument " "2"" of type '" "float""'");
+  } 
+  arg2 = static_cast< float >(val2);
+  ecode3 = SWIG_AsVal_float(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_Bound" "', argument " "3"" of type '" "float""'");
+  } 
+  arg3 = static_cast< float >(val3);
+  ecode4 = SWIG_AsVal_float(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_Bound" "', argument " "4"" of type '" "float""'");
+  } 
+  arg4 = static_cast< float >(val4);
+  ecode5 = SWIG_AsVal_float(obj4, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_Bound" "', argument " "5"" of type '" "float""'");
+  } 
+  arg5 = static_cast< float >(val5);
+  ecode6 = SWIG_AsVal_float(obj5, &val6);
+  if (!SWIG_IsOK(ecode6)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "new_Bound" "', argument " "6"" of type '" "float""'");
+  } 
+  arg6 = static_cast< float >(val6);
+  {
+    try {
+      result = (Piavca::Bound *)new Piavca::Bound(arg1,arg2,arg3,arg4,arg5,arg6); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__Bound, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_Bound__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  float *arg1 ;
+  float *arg2 ;
+  Piavca::Bound *result = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_Bound",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_float, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_Bound" "', argument " "1"" of type '" "float const [3]""'"); 
+  } 
+  arg1 = reinterpret_cast< float * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_float, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_Bound" "', argument " "2"" of type '" "float const [3]""'"); 
+  } 
+  arg2 = reinterpret_cast< float * >(argp2);
+  {
+    try {
+      result = (Piavca::Bound *)new Piavca::Bound((float const (*))arg1,(float const (*))arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__Bound, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_Bound__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Bound *arg1 = 0 ;
+  Piavca::Bound *result = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_Bound",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_Piavca__Bound,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_Bound" "', argument " "1"" of type '" "Piavca::Bound const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_Bound" "', argument " "1"" of type '" "Piavca::Bound const &""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Bound * >(argp1);
+  {
+    try {
+      result = (Piavca::Bound *)new Piavca::Bound((Piavca::Bound const &)*arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__Bound, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_Bound(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[7];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = PyObject_Length(args);
+  for (ii = 0; (ii < argc) && (ii < 6); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 0) {
+    return _wrap_new_Bound__SWIG_0(self, args);
+  }
+  if (argc == 1) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_Piavca__Bound, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_Bound__SWIG_3(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_float, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_float, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_new_Bound__SWIG_2(self, args);
+      }
+    }
+  }
+  if (argc == 6) {
+    int _v;
+    {
+      int res = SWIG_AsVal_float(argv[0], NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (_v) {
+      {
+        int res = SWIG_AsVal_float(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_float(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_float(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            {
+              int res = SWIG_AsVal_float(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              {
+                int res = SWIG_AsVal_float(argv[5], NULL);
+                _v = SWIG_CheckState(res);
+              }
+              if (_v) {
+                return _wrap_new_Bound__SWIG_1(self, args);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'new_Bound'.\n  Possible C/C++ prototypes are:\n    Piavca::Bound()\n    Piavca::Bound(float,float,float,float,float,float)\n    Piavca::Bound(float const [3],float const [3])\n    Piavca::Bound(Piavca::Bound const &)\n");
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_Bound(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Bound *arg1 = (Piavca::Bound *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_Bound",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Bound, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Bound" "', argument " "1"" of type '" "Piavca::Bound *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Bound * >(argp1);
+  {
+    try {
+      delete arg1;
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Bound___add__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Bound *arg1 = (Piavca::Bound *) 0 ;
+  Piavca::Bound *arg2 = 0 ;
+  Piavca::Bound result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Bound___add__",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Bound, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Bound___add__" "', argument " "1"" of type '" "Piavca::Bound const *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Bound * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_Piavca__Bound,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Bound___add__" "', argument " "2"" of type '" "Piavca::Bound const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Bound___add__" "', argument " "2"" of type '" "Piavca::Bound const &""'"); 
+  }
+  arg2 = reinterpret_cast< Piavca::Bound * >(argp2);
+  {
+    try {
+      result = ((Piavca::Bound const *)arg1)->operator +((Piavca::Bound const &)*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Piavca::Bound(static_cast< const Piavca::Bound& >(result))), SWIGTYPE_p_Piavca__Bound, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Bound___iadd__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Bound *arg1 = (Piavca::Bound *) 0 ;
+  Piavca::Bound *arg2 = 0 ;
+  Piavca::Bound *result = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Bound___iadd__",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Bound, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Bound___iadd__" "', argument " "1"" of type '" "Piavca::Bound *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Bound * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_Piavca__Bound,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Bound___iadd__" "', argument " "2"" of type '" "Piavca::Bound const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Bound___iadd__" "', argument " "2"" of type '" "Piavca::Bound const &""'"); 
+  }
+  arg2 = reinterpret_cast< Piavca::Bound * >(argp2);
+  {
+    try {
+      {
+        Piavca::Bound const &_result_ref = (arg1)->operator +=((Piavca::Bound const &)*arg2);
+        result = (Piavca::Bound *) &_result_ref;
+      } 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__Bound, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Bound___eq__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Bound *arg1 = (Piavca::Bound *) 0 ;
+  Piavca::Bound *arg2 = 0 ;
+  bool result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Bound___eq__",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Bound, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Bound___eq__" "', argument " "1"" of type '" "Piavca::Bound const *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Bound * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_Piavca__Bound,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Bound___eq__" "', argument " "2"" of type '" "Piavca::Bound const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Bound___eq__" "', argument " "2"" of type '" "Piavca::Bound const &""'"); 
+  }
+  arg2 = reinterpret_cast< Piavca::Bound * >(argp2);
+  {
+    try {
+      result = (bool)((Piavca::Bound const *)arg1)->operator ==((Piavca::Bound const &)*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Bound___ne__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Bound *arg1 = (Piavca::Bound *) 0 ;
+  Piavca::Bound *arg2 = 0 ;
+  bool result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Bound___ne__",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Bound, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Bound___ne__" "', argument " "1"" of type '" "Piavca::Bound const *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Bound * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_Piavca__Bound,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Bound___ne__" "', argument " "2"" of type '" "Piavca::Bound const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Bound___ne__" "', argument " "2"" of type '" "Piavca::Bound const &""'"); 
+  }
+  arg2 = reinterpret_cast< Piavca::Bound * >(argp2);
+  {
+    try {
+      result = (bool)((Piavca::Bound const *)arg1)->operator !=((Piavca::Bound const &)*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *Bound_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char*)"O|swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_Piavca__Bound, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_checkNaN__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Bound *arg1 = 0 ;
+  bool result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:checkNaN",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_Piavca__Bound,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "checkNaN" "', argument " "1"" of type '" "Piavca::Bound &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "checkNaN" "', argument " "1"" of type '" "Piavca::Bound &""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Bound * >(argp1);
+  {
+    try {
+      result = (bool)Piavca::checkNaN(*arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_checkNaN(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[2];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = PyObject_Length(args);
+  for (ii = 0; (ii < argc) && (ii < 1); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__Vec, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_checkNaN__SWIG_0(self, args);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__Bound, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_checkNaN__SWIG_1(self, args);
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'checkNaN'.\n  Possible C/C++ prototypes are:\n    Piavca::checkNaN(Piavca::Vec &)\n    Piavca::checkNaN(Piavca::Bound &)\n");
   return NULL;
 }
 
@@ -48733,6 +49415,40 @@ SWIGINTERN PyObject *_wrap_Avatar_scaleJoint(PyObject *SWIGUNUSEDPARM(self), PyO
     }
   }
   resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Avatar_getBoundBox(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Avatar *arg1 = (Piavca::Avatar *) 0 ;
+  Piavca::Bound result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Avatar_getBoundBox",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Avatar, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Avatar_getBoundBox" "', argument " "1"" of type '" "Piavca::Avatar *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Avatar * >(argp1);
+  {
+    try {
+      result = (arg1)->getBoundBox(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Piavca::Bound(static_cast< const Piavca::Bound& >(result))), SWIGTYPE_p_Piavca__Bound, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -90123,7 +90839,6 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Vec___setitem__", _wrap_Vec___setitem__, METH_VARARGS, NULL},
 	 { (char *)"Vec___repr__", _wrap_Vec___repr__, METH_VARARGS, NULL},
 	 { (char *)"Vec_swigregister", Vec_swigregister, METH_VARARGS, NULL},
-	 { (char *)"checkNaN", _wrap_checkNaN, METH_VARARGS, NULL},
 	 { (char *)"new_Quat", _wrap_new_Quat, METH_VARARGS, NULL},
 	 { (char *)"delete_Quat", _wrap_delete_Quat, METH_VARARGS, NULL},
 	 { (char *)"Quat_S", _wrap_Quat_S, METH_VARARGS, NULL},
@@ -90159,6 +90874,18 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Quat___repr__", _wrap_Quat___repr__, METH_VARARGS, NULL},
 	 { (char *)"Quat_swigregister", Quat_swigregister, METH_VARARGS, NULL},
 	 { (char *)"slerp", _wrap_slerp, METH_VARARGS, NULL},
+	 { (char *)"Bound_min_set", _wrap_Bound_min_set, METH_VARARGS, NULL},
+	 { (char *)"Bound_min_get", _wrap_Bound_min_get, METH_VARARGS, NULL},
+	 { (char *)"Bound_max_set", _wrap_Bound_max_set, METH_VARARGS, NULL},
+	 { (char *)"Bound_max_get", _wrap_Bound_max_get, METH_VARARGS, NULL},
+	 { (char *)"new_Bound", _wrap_new_Bound, METH_VARARGS, NULL},
+	 { (char *)"delete_Bound", _wrap_delete_Bound, METH_VARARGS, NULL},
+	 { (char *)"Bound___add__", _wrap_Bound___add__, METH_VARARGS, NULL},
+	 { (char *)"Bound___iadd__", _wrap_Bound___iadd__, METH_VARARGS, NULL},
+	 { (char *)"Bound___eq__", _wrap_Bound___eq__, METH_VARARGS, NULL},
+	 { (char *)"Bound___ne__", _wrap_Bound___ne__, METH_VARARGS, NULL},
+	 { (char *)"Bound_swigregister", Bound_swigregister, METH_VARARGS, NULL},
+	 { (char *)"checkNaN", _wrap_checkNaN, METH_VARARGS, NULL},
 	 { (char *)"new_TimeCallback", _wrap_new_TimeCallback, METH_VARARGS, NULL},
 	 { (char *)"delete_TimeCallback", _wrap_delete_TimeCallback, METH_VARARGS, NULL},
 	 { (char *)"TimeCallback_getName", _wrap_TimeCallback_getName, METH_VARARGS, NULL},
@@ -90347,6 +91074,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Avatar_setJointPosition", _wrap_Avatar_setJointPosition, METH_VARARGS, NULL},
 	 { (char *)"Avatar_scaleRoot", _wrap_Avatar_scaleRoot, METH_VARARGS, NULL},
 	 { (char *)"Avatar_scaleJoint", _wrap_Avatar_scaleJoint, METH_VARARGS, NULL},
+	 { (char *)"Avatar_getBoundBox", _wrap_Avatar_getBoundBox, METH_VARARGS, NULL},
 	 { (char *)"Avatar_timeStep", _wrap_Avatar_timeStep, METH_VARARGS, NULL},
 	 { (char *)"Avatar_loadMotion", _wrap_Avatar_loadMotion, METH_VARARGS, NULL},
 	 { (char *)"Avatar_unloadMotion", _wrap_Avatar_unloadMotion, METH_VARARGS, NULL},
@@ -91363,6 +92091,7 @@ static swig_type_info _swigt__p_Piavca__AvatarPostureBlend = {"_p_Piavca__Avatar
 static swig_type_info _swigt__p_Piavca__AvatarTargetStruct = {"_p_Piavca__AvatarTargetStruct", "Piavca::AvatarTargetStruct *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__AvatarTimeCallback = {"_p_Piavca__AvatarTimeCallback", "Piavca::AvatarTimeCallback *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__BlendBetween = {"_p_Piavca__BlendBetween", "Piavca::BlendBetween *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_Piavca__Bound = {"_p_Piavca__Bound", "Piavca::Bound *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__ChoiceLoopMotion = {"_p_Piavca__ChoiceLoopMotion", "Piavca::ChoiceLoopMotion *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__ChoiceMotion = {"_p_Piavca__ChoiceMotion", "Piavca::ChoiceMotion *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__Core = {"_p_Piavca__Core", "Piavca::Core *", 0, 0, (void*)0, 0};
@@ -91461,6 +92190,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_Piavca__AvatarTargetStruct,
   &_swigt__p_Piavca__AvatarTimeCallback,
   &_swigt__p_Piavca__BlendBetween,
+  &_swigt__p_Piavca__Bound,
   &_swigt__p_Piavca__ChoiceLoopMotion,
   &_swigt__p_Piavca__ChoiceMotion,
   &_swigt__p_Piavca__Core,
@@ -91559,6 +92289,7 @@ static swig_cast_info _swigc__p_Piavca__AvatarPostureBlend[] = {  {&_swigt__p_Pi
 static swig_cast_info _swigc__p_Piavca__AvatarTargetStruct[] = {  {&_swigt__p_Piavca__AvatarTargetStruct, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__AvatarTimeCallback[] = {  {&_swigt__p_Piavca__AvatarMotionQueue, _p_Piavca__AvatarMotionQueueTo_p_Piavca__AvatarTimeCallback, 0, 0},  {&_swigt__p_Piavca__AvatarTimeCallback, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__BlendBetween[] = {  {&_swigt__p_Piavca__BlendBetween, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Piavca__Bound[] = {  {&_swigt__p_Piavca__Bound, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__ChoiceLoopMotion[] = {  {&_swigt__p_Piavca__ChoiceLoopMotion, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__ChoiceMotion[] = {  {&_swigt__p_Piavca__ChoiceMotion, 0, 0, 0},  {&_swigt__p_Piavca__RandomChoiceMotion, _p_Piavca__RandomChoiceMotionTo_p_Piavca__ChoiceMotion, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__Core[] = {  {&_swigt__p_Piavca__Core, 0, 0, 0},{0, 0, 0, 0}};
@@ -91657,6 +92388,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_Piavca__AvatarTargetStruct,
   _swigc__p_Piavca__AvatarTimeCallback,
   _swigc__p_Piavca__BlendBetween,
+  _swigc__p_Piavca__Bound,
   _swigc__p_Piavca__ChoiceLoopMotion,
   _swigc__p_Piavca__ChoiceMotion,
   _swigc__p_Piavca__Core,

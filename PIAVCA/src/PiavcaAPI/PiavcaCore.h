@@ -44,6 +44,7 @@
 
 #include "Vec.h"
 #include "Quat.h"
+#include "Bound.h"
 
 //#include <fstream>
 #include <sstream>

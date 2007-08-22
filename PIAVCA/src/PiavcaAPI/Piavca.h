@@ -91,6 +91,7 @@
 #include "TwoMotionCombiner.h"
 #include "ZeroMotion.h"
 #include "Vec.h"
+#include "Bound.h"
 #include "MotionSaver.h"
 #include "MotionParser.h"
 #include "SubMotion.h"

@@ -1235,3 +1235,52 @@ void	AvatarCal3DImp::render ()
   }
 
 };
+
+#include <float.h>
+
+Bound Piavca::AvatarCal3DImp::getBoundBox(void)
+{
+	// get the number of meshes
+	Bound b;
+	CalRenderer *pCalRenderer = cal_model->getRenderer();
+	int meshCount = pCalRenderer->getMeshCount();
+	b.min[0] = FLT_MAX/2;
+	b.min[1] = FLT_MAX/2;
+	b.min[2] = FLT_MAX/2;
+	b.max[0] = -FLT_MAX/2;
+	b.max[1] = -FLT_MAX/2;
+	b.max[2] = -FLT_MAX/2;
+
+	// render all meshes of the model
+	for(int meshId = 0; meshId < meshCount; meshId++)
+	{
+		// check if the mesh is supposed to be hidden
+		if (meshes[meshId].second)
+			continue;
+
+		// get the number of submeshes
+		int submeshCount = pCalRenderer->getSubmeshCount(meshId);
+
+		// render all submeshes of the mesh
+		for(int submeshId = 0; submeshId < submeshCount; submeshId++)
+		{
+			// select mesh and submesh for further data access
+			if(pCalRenderer->selectMeshSubmesh(meshId, submeshId))
+			{
+				static float meshVertices[30000][3];
+				int vertexCount = pCalRenderer->getVertices(&meshVertices[0][0]);
+				for (int vertexID=0;vertexID<vertexCount;vertexID++)
+				{
+					if (meshVertices[vertexID][0] > b.max[0]) b.max[0] = meshVertices[vertexID][0];
+					if (meshVertices[vertexID][1] > b.max[1]) b.max[1] = meshVertices[vertexID][1];
+					if (meshVertices[vertexID][2] > b.max[2]) b.max[2] = meshVertices[vertexID][2];
+					if (meshVertices[vertexID][0] < b.min[0]) b.min[0] = meshVertices[vertexID][0];
+					if (meshVertices[vertexID][1] < b.min[1]) b.min[1] = meshVertices[vertexID][1];
+					if (meshVertices[vertexID][2] < b.min[2]) b.min[2] = meshVertices[vertexID][2];
+				}
+			}
+		}
+	}
+	std::cout << "Bound " << b << std::endl;
+	return b;
+}

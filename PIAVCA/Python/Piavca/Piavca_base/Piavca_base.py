@@ -225,7 +225,6 @@ Vec_XAxis = _Piavca_base.Vec_XAxis
 Vec_YAxis = _Piavca_base.Vec_YAxis
 Vec_ZAxis = _Piavca_base.Vec_ZAxis
 
-checkNaN = _Piavca_base.checkNaN
 class Quat(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, Quat, name, value)
@@ -276,6 +275,31 @@ Quat_spherical_distance = _Piavca_base.Quat_spherical_distance
 Quat_expMap = _Piavca_base.Quat_expMap
 
 slerp = _Piavca_base.slerp
+class Bound(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, Bound, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, Bound, name)
+    __repr__ = _swig_repr
+    __swig_setmethods__["min"] = _Piavca_base.Bound_min_set
+    __swig_getmethods__["min"] = _Piavca_base.Bound_min_get
+    if _newclass:min = _swig_property(_Piavca_base.Bound_min_get, _Piavca_base.Bound_min_set)
+    __swig_setmethods__["max"] = _Piavca_base.Bound_max_set
+    __swig_getmethods__["max"] = _Piavca_base.Bound_max_get
+    if _newclass:max = _swig_property(_Piavca_base.Bound_max_get, _Piavca_base.Bound_max_set)
+    def __init__(self, *args): 
+        this = _Piavca_base.new_Bound(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _Piavca_base.delete_Bound
+    __del__ = lambda self : None;
+    def __add__(*args): return _Piavca_base.Bound___add__(*args)
+    def __iadd__(*args): return _Piavca_base.Bound___iadd__(*args)
+    def __eq__(*args): return _Piavca_base.Bound___eq__(*args)
+    def __ne__(*args): return _Piavca_base.Bound___ne__(*args)
+Bound_swigregister = _Piavca_base.Bound_swigregister
+Bound_swigregister(Bound)
+
 class TimeCallback(_object):
     """
     A callback that is called by the API every frame, the user writes code by creating a subclass of the callback.     
@@ -340,6 +364,7 @@ class TimeCallback(_object):
         return weakref_proxy(self)
 TimeCallback_swigregister = _Piavca_base.TimeCallback_swigregister
 TimeCallback_swigregister(TimeCallback)
+checkNaN = _Piavca_base.checkNaN
 
 class AvatarTimeCallback(_object):
     """
@@ -1883,6 +1908,7 @@ class Avatar(_object):
         """
         return _Piavca_base.Avatar_scaleJoint(*args)
 
+    def getBoundBox(*args): return _Piavca_base.Avatar_getBoundBox(*args)
     def timeStep(*args):
         """
         void Avatar::timeStep(float time)

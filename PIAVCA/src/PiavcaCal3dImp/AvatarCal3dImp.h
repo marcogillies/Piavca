@@ -79,7 +79,7 @@ struct FacialExpressionHolder
  *	interface class forwards all method calls to an object of this type.
  *	(via a UCLAvatarImp pointer).
  */
-class PIAVCA_DECL AvatarCal3DImp : public AvatarImp{
+class PIAVCA_DECL AvatarCal3DImp : public AvatarImp {
 public:
 	CalModel *cal_model;
 	// a look up table to map between Piavca joint id's and Cal3D joint indexes
@@ -280,6 +280,9 @@ public:
 
 	//! does a GL Render of the character
 	virtual void render();
+
+	//! get a bounding box in local coordinates
+	virtual Bound getBoundBox();
 
 	friend class PiavcaCal3DCore;
 };

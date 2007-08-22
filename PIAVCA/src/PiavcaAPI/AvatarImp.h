@@ -47,6 +47,8 @@ using std::vector;
 //#include "Motion.h"
 //#include "TimeCallback.h"
 
+#include "Bound.h"
+
 namespace Piavca
 {
 	class PIAVCA_DECL Avatar;
@@ -192,6 +194,9 @@ public:
 	virtual void   scaleRoot (Vec scale)=0;
 	//! scales a joint by a non-uniform scale vector
 	virtual void   scaleJoint (int jointId, Vec scale)=0;
+
+	//! get a bounding box in local coordinates
+	virtual Bound getBoundBox(void)=0;
 
 	friend class Avatar;
 	friend class Core;

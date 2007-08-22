@@ -209,6 +209,9 @@
 				RelativePath=".\BlendBetween.cpp">
 			</File>
 			<File
+				RelativePath=".\Bound.cpp">
+			</File>
+			<File
 				RelativePath="Hermite.cpp">
 			</File>
 			<File
@@ -307,6 +310,9 @@
 			</File>
 			<File
 				RelativePath=".\BodyToFacial.h">
+			</File>
+			<File
+				RelativePath=".\Bound.h">
 			</File>
 			<File
 				RelativePath=".\ChangeMotionLength.h">

@@ -56,7 +56,7 @@ namespace Piavca
 			if(mot)
 				tmot = new KeyframeMotion(mot->isFacial());
 			else
-				tmot == NULL;
+				tmot = NULL;
 		};
 		MotionSaver(const MotionSaver &to):MotionFilter(to), tmot(to.tmot){};
 	

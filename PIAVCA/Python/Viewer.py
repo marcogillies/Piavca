@@ -49,7 +49,7 @@ try:
 except IOError:
 	print "could not open Expressions file Expressions.txt, will probably work anyway"
 
-avatar = Piavca.Avatar(filename)
+avatar = Piavca.Avatar(str(filename))
 
 if len(sys.argv) > 2:
 	motion_name = sys.argv[2]
@@ -60,7 +60,7 @@ else:
 	motion_name = dialog_return.selection.encode("latin-1")
 
 #motion_name = "biped_mocap_final"
-mot = Piavca.Core.getCore().getMotion(motion_name)
+mot = Piavca.Core.getCore().getMotion(str(motion_name))
 if mot != None:
 	mot.Reference()
 	avatar.play_motion(Piavca.LoopMotion(mot))	

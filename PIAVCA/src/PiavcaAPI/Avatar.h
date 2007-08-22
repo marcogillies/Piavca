@@ -416,6 +416,13 @@ public:
 		imp->scaleJoint(jointId, scale);
 	};
 
+
+	//! get a bounding box in local coordinates
+	Bound getBoundBox()
+	{
+		return imp->getBoundBox();
+	};
+
 	//! set the current time
 	/*!
 	*	This is used for animation, it sets the time within the current piece of motion 
