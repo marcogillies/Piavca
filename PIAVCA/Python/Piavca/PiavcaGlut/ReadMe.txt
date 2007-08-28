@@ -1,22 +1,21 @@
 ========================================================================
-    STATIC LIBRARY : PiavcaGlut Project Overview
+    Piavca_base Project Overview
 ========================================================================
 
-AppWizard has created this PiavcaGlut library project for you. 
+This is a subsidiary Python project that creates and manages a Glut rendering window.
 
-No source files were created as part of your project.
+It uses SWIG (www.swig.org) to do the python wrapping. By default the swig files are 
+not rebuilt, so that you don't need swig to build Piavca. Its unlikely that you'll need to change 
+this project but if you make any changes to the PiavcaGlut.h header file you will need to 
+rebuild the swig wrappers:
 
+To rebuild you need to do the following:
 
-PiavcaGlut.vcproj
-    This is the main project file for VC++ projects generated using an Application Wizard. 
-    It contains information about the version of Visual C++ that generated the file, and 
-    information about the platforms, configurations, and project features selected with the
-    Application Wizard.
+1) right click on PiavcaGlut.i and choose properties->General->Exclude From Build and choose No
 
-/////////////////////////////////////////////////////////////////////////////
-Other notes:
+2) right click on PiavcaGlut.i and choose compile (or compile it however you want).
 
-AppWizard uses "TODO:" comments to indicate parts of the source code you
-should add to or customize.
+3) Rebuild the project
 
-/////////////////////////////////////////////////////////////////////////////
+4) if you are resubmitting changes to the repository, turn Exclude From Build on again.
+

@@ -1,22 +1,25 @@
 ========================================================================
-    STATIC LIBRARY : Piavca_base Project Overview
+    Piavca_base Project Overview
 ========================================================================
 
-AppWizard has created this Piavca_base library project for you. 
+Piavca_base is the main binary for the Python Interface of Piavca. It wraps
+the main API for use from Python.
 
-No source files were created as part of your project.
+It uses SWIG (www.swig.org) to do the python wrapping. By default the swig files are 
+not rebuilt, so that you don't need swig to build Piavca. However, if you make any changes
+to the Piavca API and want them reflected in Python then you will need to rebuild the 
+bindings.
 
+To rebuild you need to do the following:
 
-Piavca_base.vcproj
-    This is the main project file for VC++ projects generated using an Application Wizard. 
-    It contains information about the version of Visual C++ that generated the file, and 
-    information about the platforms, configurations, and project features selected with the
-    Application Wizard.
+1) If you have added a new header file import it in PiavcaAPI/Piavca.h and then add an import
+statement to the end of Piavca.i
 
-/////////////////////////////////////////////////////////////////////////////
-Other notes:
+2) right click on Piavca.i and choose properties->General->Exclude From Build and choose No
 
-AppWizard uses "TODO:" comments to indicate parts of the source code you
-should add to or customize.
+3) right click on Piavca.i and choose compile (or compile it however you want).
 
-/////////////////////////////////////////////////////////////////////////////
+4) Rebuild the project
+
+5) if you are resubmitting changes to the repository, turn Exclude From Build on again.
+

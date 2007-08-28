@@ -1,21 +1,7 @@
 ========================================================================
-    STATIC LIBRARY : UCL Avatar Project Overview
+    PiavcaAPI Project Overview
 ========================================================================
 
-AppWizard has created this UCL Avatar library project for you. 
-No source files were created as part of your project.
-
-
-UCL Avatar.vcproj
-    This is the main project file for VC++ projects generated using an Application Wizard. 
-    It contains information about the version of Visual C++ that generated the file, and 
-    information about the platforms, configurations, and project features selected with the
-    Application Wizard.
-
-/////////////////////////////////////////////////////////////////////////////
-Other notes:
-
-AppWizard uses "TODO:" comments to indicate parts of the source code you
-should add to or customize.
-
-/////////////////////////////////////////////////////////////////////////////
+This is the main API for Piavca. It aims to be completely platform independent and
+doesn't rely on any libraries such as Cal3d. It can be ported to a different low
+level library without any problems.
