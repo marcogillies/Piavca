@@ -2,9 +2,97 @@
 PIAVCA - The Platform Independent API for Virtual Characters and Avatars
 
 This file gives installation instructions for Piavca. For full documentation
-see the Doc directory or visit http://piavca.sourceforge.net
+see the Doc directory or visit http://piavca.sourceforge.net.
 
-UNIX
+If you are thinking of doing any development on Piavca please look at the 
+acompanying readme file and the readmes in the subdirectories which give
+some basic information.
+
+This file will give instructions of how to install Piavca on Windows and UNIX. It 
+also gives some instructions of how to run example applications. But first a note 
+on dependencies:
+
+/////////////////////////
+///  Dependencies
+////////////////////////
+
+Piavca has a number of dependencies. They are listed in order of how much the are needed. In theory you could use 
+Piavca without any of them, running C++ and porting to your own animations engine. In practice you will almost certainly 
+need Cal3d and I would recommend Python. The others are only required for development.
+
+
+
+////// Cal3D: 
+
+this is a lower level character animation library. You will need version 0.10 or later. You can get it from:
+
+https://gna.org/projects/cal3d/
+
+Fo unix if you install it in the standard place (/usr/install/local) configure will find it. Many linux distros now have cal3d packages
+
+On windows you will need to download it and compile it in release mode (see below). Once compiled you need to make sure that cal3d.dll is in your path, e.g. by putting it in c:\WINDOWS\System32
+
+
+////// OpenGL and glut: 
+
+fairly standard, you can get them from http://www.xmission.com/~nate/glut.html then just follow the installation instructions
+
+
+/////// Python: 
+
+if you want to use the python bindings you need to have python installed, if its installed somewhere standard it should just work. Comes as standard on most unices and there are easy installers for windows from www.python.org. At the moment I haven't upgraded Piavca to work with Python 2.5, but it should come soon.
+
+/////////  Automake, Autoconf, aclocal, autoheader, libtools: 
+
+only needed if you want to regenerated the configure file under unix. Again these are UNIX standards and should exist as standard packages if they
+aren't installed already
+
+//////// Swig: 
+
+a tool for generating bindings between C++ libraries and python (and almost any other scripting language you can think of).
+You don't need swig just to compile Piavca, but if you want to make a change to an interface you will need to do so. You should be able to find a swig package on most Linux distros but if you can't or under windows try:
+
+www.swig.org
+
+To regenerate the python binding under windows you will need to go to the Piavca_base Project and right click on the Piavca.i file and go to its properties. It is currently excluded from build under properties, you need to set Exclude from Build to "No". Piavca.i is the file containnig the info that Swig needs to generate the wrappers, see the swig docs for more details. 
+
+////////// Yacc and Lex (Bison and Flex): 
+
+are standard on almost all unices, some (e.g. Ubuntu) don't 
+install them as standard but you can just install the bison and flex packages. Piavca should compile without 
+them but they are needed if you want to change the bvh loader (very unlikely).
+
+On windows you will then need to un-exclude bvhparser.lpp and bvhParser.ypp from the build (see the swig section above). 
+
+
+
+
+///////////////////////
+//// WINDOWS
+///////////////////////
+
+A set of Visual Studio .Net project files are in the VStudio directory (at time of writing, 2006,
+a free (beer) version of VS can be downloaded from the microsoft site). The project comes with solution files for Visual studio 2003 (Piavca.sln) and 2005 (Piavca_vc2005.sln). You should be able to just compile them with the provisos below. If you don't want to use VS, you could try compiling using the unix makefiles under cygwin but I have never tried this so no guarantees. 
+
+///// Compiling with Dependencies
+
+The Piavca solution file will do its best to find the various dependencies. 
+
+It assumes that GL and glut are in the standard include/lib path (they should be if you followed the installation instructions). 
+
+For Cal3d and Python it will look in the directories that they are likely to be in. For Python this is the standard installation directory (c:\Python2[345]) for cal3d it assumes it is in the same directory as Piavca (i.e. the parent directory of the piavca directory). If if doesn't find them you can set the environment variables PYTHONDIR and CAL3DDIR to the root directories of each (e.g. PYTHONDIR="d:\libraries\Python24" and CAL3DDIR="c:\cal3d.0.10.0"). Piavca will find newer versions of python before older ones so if you have more than one installed and want to use the older one you need to use PYTHONDIR.
+
+Swig, bison and flex are assumed to be in your path, if you use them.
+
+/////  A note on the Debug build. 
+
+Visual studio has a number of different versions of its standard library and linking together two bits of code that use different versions tends to break everything. In particular there are different debug and release versions. To build a debug version of Piavca in theory you would need a debug version of Python. This would be a major pain as it involves recompiling Python and a lot of python modules. For this reason the debug version of piavca does not link to the debug standard library and links to the standard release versions of Python and Cal3d. I find this more convenient as maintaining a debug version of Python can be painful and you rarely get much useful information from debugging the internal of Python and the standard library. It is sometimes useful to be able to debug Cal3d, so I include debug info in my release dll of Cal3d (you will need to change the project properties and recompile). If you really want a full debug version you can change the settings to link to the debug version of the CRT and compile a debug version of Python. This is only recommended if you know what you are doing.
+
+
+
+/////////////////////////
+/// UNIX
+/////////////////////////
 
 Piavca has a standard automake installation procedure:
 
@@ -19,72 +107,35 @@ if you need to regenerate the configure file you can run
 
 sh ./autogen.sh
 
-Piavca has a number of dependencies:
+There is an Eclipse project if you want to do development. 
 
-Yacc and Lex (Bison and Flex): are standard on almost all unices, some (e.g. Ubuntu) don't 
-install them as standard but you can just install the bison and flex packages. Piavca should compile without 
-them but they are needed if you want to change the bvh loader.
+/////////////////////////
+//// Running Piavca
+////////////////////////
 
-Automake, Autoconf, aclocal, autoheader, libtools: only needed if you want to regenerated the
-configure file. Again these are UNIX standards and should exist as standard packages if they
-aren't installed already
+Piavca is a library so you can't really run it but there are a bunch of example applications
+you can try. In the installation there is a directory called Bill that contains an example 
+avatar model and some data files that you can try out.
 
-Python: if you want to use the python bindings you need to have python installed, if its installed somewhere standard it should just work. At the moment I haven't upgraded Piavca to work with Python 2.5, but it should come soon.
+////// PiavcaCal3dApp
 
-Swig: a tool for generating bindings between C++ libraries and python (and almost any other scripting language you can think of).
-You don't need swig just to compile Piavca, but if you want to make a change to an interface you will need to do so. You should be able to find a swig package on most Linux distros but if you can't try:
+This is a pure C++ application. Run it from the command line and pass in the name of a cal3d
+character configuration file (.cfg, see Cal3d docs for more details). e.g.:
 
-www.swig.org
+PiavcaCal3dApp Bill/Bill.cfg
 
-Cal3D: this is a lower level character animation library. You will need version 0.10 or later. You can get it from:
+It will display the character and you can press the number keys to play different animations.
 
-https://gna.org/projects/cal3d/
+////// Viewer.py and wxViewer.py
 
-If you install it in the standard place (/usr/install/local) configure will find it. Many linux distros now have cal3d packages
+Similar to the above, two simple viewer applications written in Python. Viewer.py uses the PiavcaGlut
+C++ binding and wxViewer is pure python. When you run them they prompt you to choose a .cfg file 
+and then to choose an animation to play on the character.
 
-WINDOWS
+////// PiavcaScriptEngine.py
 
-A set of Visual Studio .Net project files are in the VStudio directory (at time of writing, 2006,
-a free (beer) version of VS can be downloaded from the microsoft site). The project comes with solution files for Visual studio 2003 (Piavca.sln) and 2005 (Piavca_vc2005.sln). You should be able to just compile them with the provisos below. If you don't want to use VS, you could try compiling using the unix makefiles under cygwin but I have never tried this so no guarantees. 
+this is a more complex viewer. It runs the Piavca Embodied Conversational Agent Engine. See here for more
+details:
 
-* Getting the dependencies
+http://www.cs.ucl.ac.uk/staff/m.gillies/piavca/PiavcaECAManual.html
 
-Piavca has some required and optional dependencies here is how to get them:
-
-OpenGL and glut: fairly standard, you can get them from http://www.xmission.com/~nate/glut.html then just follow the installation instructions
-
-Python: High level programming language. Download from www.python.org, there are windows installers. A time of writing version 2.5 has only just been released and Piavca hasn't yet been properly tested with it. It should be very soon, but if you have problems revert to 2.4 which is available from the same site.
-
-Cal3d: A lower level character animation language on which paivca is based. You can get it here https://gna.org/projects/cal3d/. You will need to download it and compile it in release mode (see below). Once compiled you need to make sure that cal3d.dll is in your path, e.g. by putting it in c:\WINDOWS\System32
-
-SWIG: this is a tool used to generate bindings between the C++ and Python versions of Piavca. You don't need it by default but if you are making changes to the Piavca API itself you will need it. You can get it from www.swig.org. Once compiled and installed in your path you will need to go to the PiavcaPythonInterfaces Project and right click on the Piavca.i file and go to its properties. It is currently excluded from build under properties, you need to set Exclude from Build to "No". Piavca.i is the file containnig the info that Swig needs to generate the wrappers, see the swig docs for more details. 
-
-Yacc and Lex: These were used to create the bvh file parser. It is very unlikely that you will ever need to change it. But if you do download Bison and Flex (or other Yacc/lex variant) and install them. You will then need to un-exclude bvhparser.lpp and bvhParser.ypp from the build (see the swig section above). 
-
-* Including/Linking with the dependencies
-
-The Piavca solution file will do its best to find the various dependencies. 
-
-It assumes that GL and glut are in the standard include/lib path (they should be if you followed the installation instructions). 
-
-For Cal3d and Python it will look in the directories that they are likely to be in. For Python this is the standard installation directory (c:\Python2[345]) for cal3d it assumes it is in the same directory as Piavca (i.e. the parent directory of the piavca directory). If if doesn't find them you can set the environment variables PYTHONDIR and CAL3DDIR to the root directories of each (e.g. PYTHONDIR="d:\libraries\Python24" and CAL3DDIR="c:\cal3d.0.10.0"). Piavca will find newer versions of python before older ones so if you have more than one installed and want to use the older one you need to use PYTHONDIR.
-
-Swig, bison and flex are assumed to be in your path, if you use them.
-
-* A note on the Debug build. 
-
-Visual studio has a number of different versions of its standard library and linking together two bits of code that use different versions tends to break everything. In particular there are different debug and release versions. To build a debug version of Piavca in theory you would need a debug version of Python. This would be a major pain as it involves recompiling Python and a lot of python modules. For this reason the debug version of piavca does not link to the debug standard library and links to the standard release versions of Python and Cal3d. I find this more convenient as maintaining a debug version of Python can be painful and you rarely get much useful information from debugging the internal of Python and the standard library. It is sometimes useful to be able to debug Cal3d, so I include debug info in my release dll of Cal3d (you will need to change the project properties and recompile). If you really want a full debug version you can change the settings to link to the debug version of the CRT and compile a debug version of Python. This is only recommended if you know what you are doing.
-
-Example App:
-
-PiavcaCal3dApp is an example application. It has to run in the path containing ???.cfg. 
-In the unix version you can pass this directory (which should be PIAVCAPATH/???, where PIAVCAPATH
-is the root of your piavca distribution) as an argument. In VStudio you can do 
-
-PiavcaCal3dApp->Properties->Debugging->Working Directory = the path
-
-The intall contains a directory called cally that you can try running from.
-
-If you haven't got python you can grep the file PiavcaCal3dApp.cpp and remove the 3 lines that 
-contain references to python. There is a comment just below one of them of some lines that 
-you can uncomment, to get it to do anything without python.

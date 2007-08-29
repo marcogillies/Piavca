@@ -4,3 +4,83 @@ The Piavca character animation library.
 see the install file for instructions on compiling and installing 
 
 see http://piavca.sourceforge.net for full documentation.
+
+The following is a brief introduction to the sub projects, for those who are interested in 
+doing development on piavca.
+
+With the Piavca distribution there are project files for VC2005, VC2003 (I try to support it but may be a bit 
+more out of date) and eclipse/CDT/PyDev
+
+There are two main directories to the Source tree. src contains pure C++ code, this is the core of Piavca,
+and Python contains python code and Python modules. I will list the various sub modules and give brief descriptions
+but first an important note:
+ 
+NB if you make any changes to the Piavca API (basically the header files in the PiavcaAPI folder) and you want 
+them to be reflected in Python you will need to regenerate the Python bindings. See the readme file in 
+Piavca/Python/Piavac/Piavca_base for instructions on how to do this. You will need SWIG (www.swig.org) see the 
+install file for more details of how to get it.
+
+=== src ===
+
+This contains a number of projects of c++ code (see readme files in individual directories for more details)
+
+= Piavca API =
+
+The core API. Is platform independent and doesn't depend on anything (but you need an implementation
+like the PiavcaCal3DImp to use it). If you make any changes you need to regenerate the Python wrappers
+(see above)
+
+= StdMotionImp = 
+
+An animation implemenation based on bvh files. This is part of the core of piavca and required to use it.
+
+= PiavcaCal3dImp = 
+
+An implemenation of Piavca using Cal3d. This is probably what more people will use, but you don't have to 
+you can port piavca to another animation engine. This project is a libarary that can then be used by
+applications or the python bindings
+
+= PiavcaPythonInterface = 
+
+Some bindings to help run python scripts from within a C++ application. 
+
+= PiavcaCal3dApp = 
+
+An example application using only C++ (and glut)
+
+= PiavcaWindowsSetup = 
+
+A windows installer for Piavca
+
+= XVR2Piavca = 
+
+Bindings to use Piavca with the XVR graphics engine
+
+= SpeechToTextInterface = 
+
+Python bindings for the microsoft Speech to Text API
+
+
+
+
+== Python ===
+
+This directory contains a few scripts that launch simple Piavca applications (Viewer.py is the simplest).
+
+Inside the directory is the Piavca directory, which is a python Package. Just do 
+
+import Piavca
+
+and you have access to the full Piavca functionality. The code consists of some pure python code, including a
+gui based engine for controlling character (requries wxPython) and a few extra Motion types (e.g. PCA and MotionGraphs,
+both require scipy). There are also some python wrappers for C++ code (they all use SWIG (www.swig.org) to do the 
+wrapping, you will need this if you make changes). In the following directories
+
+= Piavca_base = 
+
+This is the wrapper around the main PiavcaAPI
+
+= PiavcaGlut = 
+
+code to bring up a glut window and display Piavca characters.
+
