@@ -1,11 +1,12 @@
 #print "before wx import"
 import wx
+from wx.lib.dialogs import *
 #print "after wx import"
 
 import pickle
 import time
 
-import MotionTracks
+import MotionTracks, DataStream
 
 # ids of various widgets
 ID_ABOUT=001
@@ -21,6 +22,7 @@ ID_DISTANCE_MEASURE=016
 ID_MOTION_GRAPH=017
 ID_SAVE_MOTION_GRAPH=020
 ID_LOAD_MOTION_GRAPH=021
+ID_LOAD_DATA_STREAM=022
 ID_LIST=100
 ID_PLAY=101
 ID_STOP=110
@@ -99,6 +101,9 @@ class AnimationInterface(wx.Frame):
 		self.sliders = None
 		# buttons to select independent components
 		self.ICButtons = None
+		
+		# display a data stream 
+		self.dataStream = None
 
 		# mouse click events
 		wx.EVT_LEFT_DOWN ( self.tracks, self.OnLeftClick)
@@ -124,6 +129,7 @@ class AnimationInterface(wx.Frame):
 		filemenu.Append(ID_MOTION_GRAPH, "&MotionGraph"," Creates a motion graph from the motion")
 		filemenu.Append(ID_SAVE_MOTION_GRAPH, "&SaveMotionGraph"," Saves the current motion graph")
 		filemenu.Append(ID_LOAD_MOTION_GRAPH, "&LoadMotionGraph"," Load a motion graph from file")
+		filemenu.Append(ID_LOAD_DATA_STREAM, "&LoadDataStream"," Load and display a data stream from file")
 		
 		filemenu.Append(ID_EXIT,"E&xit"," Terminate the program")
 		
@@ -146,6 +152,7 @@ class AnimationInterface(wx.Frame):
 		wx.EVT_MENU(self, ID_MOTION_GRAPH, self.tracks.MotionGraph) 
 		wx.EVT_MENU(self, ID_SAVE_MOTION_GRAPH, self.tracks.SaveMotionGraph) 
 		wx.EVT_MENU(self, ID_LOAD_MOTION_GRAPH, self.tracks.LoadMotionGraph) 
+		wx.EVT_MENU(self, ID_LOAD_DATA_STREAM, self.loadDataStream) 
 		wx.EVT_MENU(self, ID_EXIT, self.OnExit)   
 
 		# show the window
@@ -236,6 +243,16 @@ class AnimationInterface(wx.Frame):
 		self.tracks.SlowSubspace()
 		if self.sliders == None:
 			self.SetUpComponentSliders()
+			
+	def loadDataStream(self, e):
+		dialog_return = openFileDialog(wildcard="*.csv")
+		path = dialog_return.paths[0]
+		if path == "":
+			return
+		self.dataStream = DataStream.SequenceDisplay(self, path)
+		self.sizer2.Add(self.dataStream)
+		self.sizer2.Fit(self)
+		
 		
 	# save the current motion
 	def OnSave(self, e):
@@ -281,6 +298,9 @@ class AnimationInterface(wx.Frame):
 		self.tracks.AdvanceTime()
 		self.tracks.Refresh()
 		self.tracks.Update()
+		
+		if self.dataStream:
+			self.dataStream.setTimeNormalized(self.tracks.GetTimeInSplit())
 
 	def OnFrameEvent(self,e):
 		if time.time() - self.lasttime > 0.04 :

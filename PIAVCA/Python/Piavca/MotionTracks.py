@@ -15,6 +15,8 @@ from wx import *
 from wx.lib.dialogs import *
 #import MotionGraph
 
+default_tracks={"Arms": ["LShoulder", "LUpperArm", "LForeArm", "LHand", "RShoulder", "RUpperArm", "RForeArm", "RHand"], "Legs":["LThigh", "LCalf", "LFoot", "RThigh", "RCalf", "RFoot"], "Head": ["Head", "Neck"] }
+
 # A display of a motion divided into sub tracks which display
 # different tracks
 class MotionTracks(wx.VListBox):
@@ -77,17 +79,24 @@ class MotionTracks(wx.VListBox):
 	# convert beween a position in the window and a time
 	def PositionToTime(self, pos):
 		return pos*self.frames_per_second
+	
+	def GetMotionLength(self):
+		return self.PositionToTime(self.GetLength())
 
 	# read in a specification of which tracks to use from file
 	def ReadTracks(self, tracksFile):
 		self.tracks = []
-		file = open(tracksFile, 'r')
-		# each line contains a name for the track 
-		# followed by a list of joint names
 		self.tracks.append(Track.Track(self.motion, "All", None))
-		for line in file.readlines():
-			joints = line.split()
-			self.tracks.append(Track.Track(self.motion, joints[0], joints[1:]))
+		try:
+			file = open(tracksFile, 'r')
+			# each line contains a name for the track 
+			# followed by a list of joint names
+			for line in file.readlines():
+				joints = line.split()
+				self.tracks.append(Track.Track(self.motion, joints[0], joints[1:]))
+		except IOError:
+			for trackname in default_tracks.keys():
+				self.tracks.append(Track.Track(self.motion, trackname, default_tracks[trackname]))
 		self.SetItemCount(len(self.tracks))
 
 	# the height of an individual track (they are all the same height)
@@ -171,6 +180,30 @@ class MotionTracks(wx.VListBox):
 				if diff.mag() > 0.1:
 					print "left foot moving"
 				self.prev_left = new_left
+				
+	def GetTime(self):
+		return self.time
+	
+	def GetTimeInSplit(self):
+		if self.selectedTrack == None:
+			print "no selected track"
+			return float(self.GetTime())/self.motion.getMotionLength()
+		splits = self.tracks[self.selectedTrack].GetSplits()
+		if len(splits) == 0:
+			print "no splits"
+			return float(self.GetTime())/self.motion.getMotionLength()
+		t = self.GetTime()
+		for split in splits:
+			print split.GetStart(), split.GetEnd()
+		if t < splits[0].GetStart():
+			print "before start"
+			return 0
+		for i in range(len(splits)-1):
+			if t >= splits[i].GetStart() and t < splits[i+1].GetStart() :
+				print "in internal split"
+				return float(t - splits[i].GetStart())/(splits[i].GetEnd() - splits[i].GetStart())
+		return float(t - splits[-1].GetStart())/(splits[-1].GetEnd() - splits[-1].GetStart())
+		
 
 	# start playing the motion
 	def Play(self):

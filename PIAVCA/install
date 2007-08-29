@@ -22,15 +22,17 @@ sh ./autogen.sh
 Piavca has a number of dependencies:
 
 Yacc and Lex (Bison and Flex): are standard on almost all unices, some (e.g. Ubuntu) don't 
-install them as standard but you can just install the bison and flex packages
+install them as standard but you can just install the bison and flex packages. Piavca should compile without 
+them but they are needed if you want to change the bvh loader.
 
 Automake, Autoconf, aclocal, autoheader, libtools: only needed if you want to regenerated the
 configure file. Again these are UNIX standards and should exist as standard packages if they
 aren't installed already
 
-Python: if you want to use the python bindings you need to have python installed, if its installed somewhere standard it should just work
+Python: if you want to use the python bindings you need to have python installed, if its installed somewhere standard it should just work. At the moment I haven't upgraded Piavca to work with Python 2.5, but it should come soon.
 
-Swig: a tool for generating bindings between C++ libraries and python (and almost any other scripting language you can think of). You should be able to find a swig package on most Linux distros but if you can't try:
+Swig: a tool for generating bindings between C++ libraries and python (and almost any other scripting language you can think of).
+You don't need swig just to compile Piavca, but if you want to make a change to an interface you will need to do so. You should be able to find a swig package on most Linux distros but if you can't try:
 
 www.swig.org
 

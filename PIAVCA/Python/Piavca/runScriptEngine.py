@@ -20,7 +20,7 @@ class PauseCallback(Piavca.TimeCallback):
 	def timeStep(self, core, t):
 		time.sleep(0.02)
 
-def run(path=None):
+def run(path=None): 
 	if path == None:
 		try:
 			import wx

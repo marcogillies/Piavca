@@ -12,7 +12,7 @@ INCLUDES= -I$(srcdir)/.. -I$(srcdir)/../../../src $(all_includes)
 BUILT_SOURCES = Piavca_wrap.cpp 
 SWIG_SOURCES = Piavca.i 
 
-pkgpython_PYTHON = $(srcdir)/Piavca_base.py $(srcdir)/../__init__.py $(srcdir)/../AnimationTrack.py $(srcdir)/../ConversationInterface.py $(srcdir)/../EigenAnalysis.py $(srcdir)/../EigenMotion.py $(srcdir)/../ExpMap.py  $(srcdir)/../FootPlantOnSpot.py  $(srcdir)/../GraphSearch.py  $(srcdir)/../JointNames.py $(srcdir)/../MotionFile.py $(srcdir)/../MotionGraph.py $(srcdir)/../MotionTracks.py $(srcdir)/../PCA.py $(srcdir)/../redirect.py $(srcdir)/../runScriptEngine.py $(srcdir)/../ScriptEngine.py $(srcdir)/../SoundEngine.py $(srcdir)/../SpeechToText.py $(srcdir)/../Split.py $(srcdir)/../StrongConnectivity.py $(srcdir)/../Track.py $(srcdir)/../XMLMotionFile.py
+pkgpython_PYTHON = $(srcdir)/Piavca_base.py $(srcdir)/../__init__.py $(srcdir)/../AnimationTrack.py $(srcdir)/../ConversationInterface.py  $(srcdir)/../DataStream.py $(srcdir)/../EigenAnalysis.py $(srcdir)/../EigenMotion.py $(srcdir)/../ExpMap.py  $(srcdir)/../FootPlantOnSpot.py  $(srcdir)/../GraphSearch.py  $(srcdir)/../JointNames.py $(srcdir)/../MotionFile.py $(srcdir)/../MotionGraph.py $(srcdir)/../MotionTracks.py $(srcdir)/../PCA.py $(srcdir)/../redirect.py $(srcdir)/../runScriptEngine.py $(srcdir)/../ScriptEngine.py $(srcdir)/../SoundEngine.py $(srcdir)/../SpeechToText.py $(srcdir)/../Split.py $(srcdir)/../StrongConnectivity.py $(srcdir)/../Track.py $(srcdir)/../XMLMotionFile.py
 
 bin_SCRIPTS = $(srcdir)/../../Viewer.py $(srcdir)/../../PiavcaScriptEngine.py $(srcdir)/../../MotionEditor.py
 

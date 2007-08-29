@@ -192,6 +192,11 @@ def readMotions(motions):
 						mots.append((mot, str(motion.nodeName), unknownAttrs))
 						#print "mots", mots
 						
+			elif motion.nodeName == "File":
+				name = str(motion.getAttribute("name"))
+				filename = str(motion.getAttribute("filename"))
+				Paivca.Core.getCore().loadMotion(name, filename)
+						
 			elif motion.nodeName == "Keyframes":
 				for i in range(motion.attributes.length):
 					#print motion.attributes.item(i).name, motion.attributes.item(i).nodeValue
@@ -378,9 +383,33 @@ def saveMotions(filename, motions, element = None, doc = None):
 	file = open(filename, "w")
 	doc.writexml(file, "", "\t", "\n")
 	file.close()
-		
+	
+def writeOutMotionTypes(filename):
+	file = open(filename, "w")
+	for key in Piavca.__dict__.keys():
+		#print "****", key, Piavca.__dict__[key]
+		if type(Piavca.__dict__[key]) == types.TypeType and issubclass(Piavca.__dict__[key], Piavca.Motion):
+			print >> file, key, ":", 
+			motiontype = Piavca.__dict__[key]
+			if hasattr(motiontype, "addMotion"):
+				print >> file, "Many Child Motions"
+			elif hasattr(motiontype, "setMotion"):
+				print >> file, "1 Child Motion"
+			elif hasattr(motiontype, "setMotion1"):
+				print >> file, "2 Child Motions"
+			else:
+				print >> file, "Procedural Motion"
+			for k in motiontype.__dict__.keys():
+				if k[:3] == "set":
+					param = k[3:]
+					if param == "Motion" or param == "Motion1" or param == "Motion2":
+						continue
+					print >> file, "    ", param
+			#print >> file, "\n"
+				
 def parse(filename):
 	dom = minidom.parse(filename) 
 	for topLevel in dom.childNodes:
 		readMotions(topLevel.childNodes)
 	dom.unlink
+	

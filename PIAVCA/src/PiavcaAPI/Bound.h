@@ -13,7 +13,7 @@
  *
  * The Original Code is Bound.h.
  *
- * The Initial Developer of the Original Code is Marco (Mark) Gillies.
+ * The Initial Developer of the Original Code is Anthony Steed.
  * Portions created by the Initial Developer are Copyright (C) BT plc. 2004
  * All Rights Reserved.
  *
