@@ -45,6 +45,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_135C82C31F814B02B836406B2DEB69EF"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_191AEBE8F33142D7A3F2965223CA68AB"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -605,6 +611,26 @@
             "TargetName" = "8:Piavca_base.py"
             "Tag" = "8:"
             "Folder" = "8:_0C606D47F8BD4B13BFF33C3B7D2B9C27"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_135C82C31F814B02B836406B2DEB69EF"
+            {
+            "SourcePath" = "8:..\\..\\Python\\gltb.py"
+            "TargetName" = "8:gltb.py"
+            "Tag" = "8:"
+            "Folder" = "8:_C32D0F42EC2B427E89BDD8C0DE5EC464"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1975,7 +2001,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Piavca"
         "ProductCode" = "8:{7E07296C-3595-4CA8-9B56-76D102408F36}"
-        "PackageCode" = "8:{414D6B21-8FD7-4E34-B1E7-E128E98F01DB}"
+        "PackageCode" = "8:{AD527B01-2CBF-4535-9CB9-CB080A1793C8}"
         "UpgradeCode" = "8:{FE7F39C9-C64C-4F24-BF33-C6B39EF15407}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
