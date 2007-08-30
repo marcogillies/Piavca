@@ -66,7 +66,7 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="$(SolutionDir)\Python\Piavca"
+			OutputDirectory="."
 			IntermediateDirectory="Release"
 			ConfigurationType="2"
 			CharacterSet="2">
@@ -76,7 +76,7 @@
 				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="1"
 				OmitFramePointers="TRUE"
-				AdditionalIncludeDirectories="..\;$(PYTHONDIR)\include;c:\Python25\include;c:\Python24\include;c:\Python23\include;$(CAL3DDIR)\src\;..\..\..\cal3d-0.11.0\src;..\..\..\cal3d-0.10.0\src\"
+				AdditionalIncludeDirectories="..\..\..\src;$(PYTHONDIR)\include;c:\Python25\include;c:\Python24\include;c:\Python23\include;$(CAL3DDIR)\src\;..\..\..\..\cal3d-0.11.0\src;..\..\..\..\cal3d-0.10.0\src\"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOW;_USRDLL;UCLAVATARPYTHONINTERFACE_EXPORTS;CONSOLE_PRESENT"
 				StringPooling="TRUE"
 				RuntimeLibrary="2"
@@ -90,7 +90,9 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="glut32.lib glu32.lib opengl32.lib odbc32.lib odbccp32.lib"/>
+				AdditionalDependencies="glut32.lib glu32.lib opengl32.lib odbc32.lib odbccp32.lib"
+				OutputFile="$(OutDir)/_$(ProjectName).pyd"
+				AdditionalLibraryDirectories="&quot;$(CAL3DDIR)\bin\release&quot;;&quot;..\..\..\cal3d-0.11.0\bin\Release&quot;;&quot;..\..\..\cal3d-0.10.0\bin\Release&quot;;&quot;$(PYTHONDIR)\libs&quot;;c:\Python25\libs;c:\Python24\libs;c:\Python23\libs"/>
 			<Tool
 				Name="VCMIDLTool"/>
 			<Tool
@@ -114,14 +116,14 @@
 		</Configuration>
 		<Configuration
 			Name="C Only Debug|Win32"
-			OutputDirectory="$(SolutionDir)\Python\Piavca"
+			OutputDirectory="."
 			IntermediateDirectory="C Only Debug"
 			ConfigurationType="2"
 			CharacterSet="2">
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\;$(PYTHONDIR)\include;c:\Python25\include;c:\Python24\include;c:\Python23\include;$(CAL3DDIR)\src\;..\..\..\cal3d-0.11.0\src;..\..\..\cal3d-0.10.0\src\"
+				AdditionalIncludeDirectories="..\..\..\src;$(PYTHONDIR)\include;c:\Python25\include;c:\Python24\include;c:\Python23\include;$(CAL3DDIR)\src\;..\..\..\..\cal3d-0.11.0\src;..\..\..\..\cal3d-0.10.0\src\"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;UCLAVATARPYTHONINTERFACE_EXPORTS"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
@@ -135,7 +137,8 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="glut32.lib glu32.lib opengl32.lib odbc32.lib odbccp32.lib"/>
+				AdditionalDependencies="glut32.lib glu32.lib opengl32.lib odbc32.lib odbccp32.lib"
+				OutputFile="$(OutDir)/_$(ProjectName).pyd"/>
 			<Tool
 				Name="VCMIDLTool"/>
 			<Tool
@@ -159,7 +162,7 @@
 		</Configuration>
 		<Configuration
 			Name="Dive Debug|Win32"
-			OutputDirectory="$(SolutionDir)\Python\Piavca"
+			OutputDirectory="."
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="2"
 			CharacterSet="2">
@@ -167,7 +170,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories="..\;$(PYTHONDIR)\include;c:\Python25\include;c:\Python24\include;c:\Python23\include;$(CAL3DDIR)\src\;..\..\..\cal3d-0.11.0\src;..\..\..\cal3d-0.10.0\src\"
+				AdditionalIncludeDirectories="..\..\..\src;$(PYTHONDIR)\include;c:\Python25\include;c:\Python24\include;c:\Python23\include;$(CAL3DDIR)\src\;..\..\..\..\cal3d-0.11.0\src;..\..\..\..\cal3d-0.10.0\src\"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;UCLAVATARPYTHONINTERFACE_EXPORTS;NO_DEMEANOUR;CONSOLE_PRESENT"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
@@ -181,7 +184,8 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="glut32.lib glu32.lib opengl32.lib odbc32.lib odbccp32.lib"/>
+				AdditionalDependencies="glut32.lib glu32.lib opengl32.lib odbc32.lib odbccp32.lib"
+				OutputFile="$(OutDir)/_$(ProjectName).pyd"/>
 			<Tool
 				Name="VCMIDLTool"/>
 			<Tool
@@ -242,17 +246,16 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Running Swig"
-					CommandLine="swig -c++ -python -shadow -I&quot;$(ProjectDir)/..&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; -outdir &quot;$(SolutionDir)\Python\Piavca&quot; &quot;$(InputPath)&quot;
-"
+					CommandLine="swig -c++ -python -shadow -I&quot;$(SolutionDir)/src&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; &quot;$(InputPath)&quot;"
 					Outputs=" $(ProjectDir)$(InputName)_wrap.cpp"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="Release|Win32">
+				Name="Release|Win32"
+				ExcludedFromBuild="TRUE">
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Running Swig"
-					CommandLine="swig -c++ -python -shadow -I&quot;$(ProjectDir)/..&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; -outdir &quot;$(SolutionDir)\Python\Piavca&quot; &quot;$(InputPath)&quot;
-"
+					CommandLine="swig -c++ -python -shadow -I&quot;$(SolutionDir)/src&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; &quot;$(InputPath)&quot;"
 					Outputs=" $(ProjectDir)$(InputName)_wrap.cpp"/>
 			</FileConfiguration>
 			<FileConfiguration
@@ -260,8 +263,7 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Running Swig"
-					CommandLine="swig -c++ -python -shadow -I&quot;$(ProjectDir)/..&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; -outdir &quot;$(SolutionDir)\Python\Piavca&quot; &quot;$(InputPath)&quot;
-"
+					CommandLine="swig -c++ -python -shadow -I&quot;$(SolutionDir)/src&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; &quot;$(InputPath)&quot;"
 					Outputs=" $(ProjectDir)$(InputName)_wrap.cpp"/>
 			</FileConfiguration>
 			<FileConfiguration
@@ -269,8 +271,7 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Running Swig"
-					CommandLine="swig -c++ -python -shadow -I&quot;$(ProjectDir)/..&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; -outdir &quot;$(SolutionDir)\Python\Piavca&quot; &quot;$(InputPath)&quot;
-"
+					CommandLine="swig -c++ -python -shadow -I&quot;$(SolutionDir)/src&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; &quot;$(InputPath)&quot;"
 					Outputs=" $(ProjectDir)$(InputName)_wrap.cpp"/>
 			</FileConfiguration>
 		</File>

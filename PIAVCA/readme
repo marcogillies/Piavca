@@ -56,10 +56,6 @@ A windows installer for Piavca
 
 Bindings to use Piavca with the XVR graphics engine
 
-= SpeechToTextInterface = 
-
-Python bindings for the microsoft Speech to Text API
-
 
 
 
@@ -83,4 +79,10 @@ This is the wrapper around the main PiavcaAPI
 = PiavcaGlut = 
 
 code to bring up a glut window and display Piavca characters.
+
+= SpeechToTextInterface = 
+
+Python bindings for the microsoft Speech to Text API. NB this requires the microsoft speech API and won't compile without it. 
+However, it isn't required to use Piavca.
+
 

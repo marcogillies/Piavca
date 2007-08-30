@@ -4,6 +4,7 @@
 	Version="8.00"
 	Name="XVR2Piavca"
 	ProjectGUID="{009DF2D1-CCA3-466D-8D2E-DFECF5D50D76}"
+	RootNamespace="XVR2Piavca"
 	Keyword="Win32Proj"
 	>
 	<Platforms>
@@ -123,7 +124,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\;..\..\..\cal3d-0.10.0\src\;c:\Python24\PC\"
+				AdditionalIncludeDirectories="..\;$(PYTHONDIR)\include;c:\Python25\include;c:\Python24\include;c:\Python23\include;$(CAL3DDIR)\src;..\..\..\cal3d-0.11.0\src\;..\..\..\cal3d-0.10.0\src\"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;XVR2PIAVCA_EXPORTS;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_DEPRECATE"
 				RuntimeLibrary="2"
 				RuntimeTypeInfo="true"
@@ -147,7 +148,7 @@
 				AdditionalDependencies="cal3d.lib"
 				OutputFile="$(OutDir)/XVR2Piavca.dll"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="$(CAL3DDIR)\bin\release;..\..\..\cal3d-0.10.0\bin\Release;$(PYTHONDIR)\libs;c:\Python25\libs;c:\Python24\libs;c:\Python23\libs"
+				AdditionalLibraryDirectories="$(CAL3DDIR)\bin\release;..\..\..\cal3d-0.11.0\bin\Release;..\..\..\cal3d-0.10.0\bin\Release;$(PYTHONDIR)\libs;c:\Python25\libs;c:\Python24\libs;c:\Python23\libs"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/XVR2Piavca.pdb"
 				SubSystem="2"

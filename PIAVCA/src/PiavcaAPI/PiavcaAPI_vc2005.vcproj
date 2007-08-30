@@ -4,6 +4,7 @@
 	Version="8.00"
 	Name="PiavcaAPI"
 	ProjectGUID="{7E061BC4-F08C-40F0-8A91-8CAFD582054D}"
+	RootNamespace="PiavcaAPI"
 	Keyword="Win32Proj"
 	>
 	<Platforms>
@@ -310,6 +311,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Bound.cpp"
+				>
+			</File>
+			<File
 				RelativePath="Hermite.cpp"
 				>
 			</File>
@@ -440,6 +445,10 @@
 			</File>
 			<File
 				RelativePath=".\BodyToFacial.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Bound.h"
 				>
 			</File>
 			<File

@@ -15,10 +15,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PiavcaPythonInterface", "sr
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SpeechToText", "src\SpeechToTextInterface\SpeechToTextInterface_2003.vcproj", "{19EC167E-A8EC-45F7-A201-6118D272963B}"
-	ProjectSection(ProjectDependencies) = postProject
-	EndProjectSection
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Standard Motion Implementation", "src\StdMotionImp\StdMotionImp_2003.vcproj", "{E2404604-543C-4863-BF9D-BE3E995DF4E4}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
@@ -32,6 +28,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Piavca_base", "Python\Piavc
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PiavcaGlut", "Python\Piavca\PiavcaGlut\PiavcaGlut_2003.vcproj", "{5FD4CBC2-A029-4660-BAF7-FC537E3B4754}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SpeechToText", "Python\Piavca\SpeechToTextInterface\SpeechToTextInterface_2003.vcproj", "{19EC167E-A8EC-45F7-A201-6118D272963B}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
@@ -75,14 +75,6 @@ Global
 		{9BE2E296-9B8C-4972-B627-06F7A635204C}.Dive Debug.Build.0 = Dive Debug|Win32
 		{9BE2E296-9B8C-4972-B627-06F7A635204C}.Release.ActiveCfg = Release|Win32
 		{9BE2E296-9B8C-4972-B627-06F7A635204C}.Release.Build.0 = Release|Win32
-		{19EC167E-A8EC-45F7-A201-6118D272963B}.C Only Debug.ActiveCfg = Debug|Win32
-		{19EC167E-A8EC-45F7-A201-6118D272963B}.C Only Debug.Build.0 = Debug|Win32
-		{19EC167E-A8EC-45F7-A201-6118D272963B}.Debug.ActiveCfg = Debug|Win32
-		{19EC167E-A8EC-45F7-A201-6118D272963B}.Debug.Build.0 = Debug|Win32
-		{19EC167E-A8EC-45F7-A201-6118D272963B}.Dive Debug.ActiveCfg = Debug|Win32
-		{19EC167E-A8EC-45F7-A201-6118D272963B}.Dive Debug.Build.0 = Debug|Win32
-		{19EC167E-A8EC-45F7-A201-6118D272963B}.Release.ActiveCfg = Release|Win32
-		{19EC167E-A8EC-45F7-A201-6118D272963B}.Release.Build.0 = Release|Win32
 		{E2404604-543C-4863-BF9D-BE3E995DF4E4}.C Only Debug.ActiveCfg = C Only Debug|Win32
 		{E2404604-543C-4863-BF9D-BE3E995DF4E4}.C Only Debug.Build.0 = C Only Debug|Win32
 		{E2404604-543C-4863-BF9D-BE3E995DF4E4}.Debug.ActiveCfg = Debug|Win32
@@ -115,6 +107,14 @@ Global
 		{5FD4CBC2-A029-4660-BAF7-FC537E3B4754}.Dive Debug.Build.0 = Dive Debug|Win32
 		{5FD4CBC2-A029-4660-BAF7-FC537E3B4754}.Release.ActiveCfg = Release|Win32
 		{5FD4CBC2-A029-4660-BAF7-FC537E3B4754}.Release.Build.0 = Release|Win32
+		{19EC167E-A8EC-45F7-A201-6118D272963B}.C Only Debug.ActiveCfg = Debug|Win32
+		{19EC167E-A8EC-45F7-A201-6118D272963B}.C Only Debug.Build.0 = Debug|Win32
+		{19EC167E-A8EC-45F7-A201-6118D272963B}.Debug.ActiveCfg = Debug|Win32
+		{19EC167E-A8EC-45F7-A201-6118D272963B}.Debug.Build.0 = Debug|Win32
+		{19EC167E-A8EC-45F7-A201-6118D272963B}.Dive Debug.ActiveCfg = Debug|Win32
+		{19EC167E-A8EC-45F7-A201-6118D272963B}.Dive Debug.Build.0 = Debug|Win32
+		{19EC167E-A8EC-45F7-A201-6118D272963B}.Release.ActiveCfg = Release|Win32
+		{19EC167E-A8EC-45F7-A201-6118D272963B}.Release.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection

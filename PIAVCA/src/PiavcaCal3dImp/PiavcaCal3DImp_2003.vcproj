@@ -35,9 +35,8 @@
 			<Tool
 				Name="VCLibrarianTool"
 				AdditionalOptions="/wd4006"
-				AdditionalDependencies="cal3d_d.lib"
 				OutputFile="$(OutDir)/PiavcaCal3DImp.lib"
-				AdditionalLibraryDirectories="&quot;$(CAL3DDIR)\bin\debug&quot;;&quot;..\..\..\cal3d-0.11.0\bin\debug&quot;"/>
+				AdditionalLibraryDirectories="&quot;$(CAL3DDIR)\bin\release&quot;;&quot;..\..\..\cal3d-0.11.0\bin\release&quot;"/>
 			<Tool
 				Name="VCMIDLTool"/>
 			<Tool
@@ -81,7 +80,7 @@
 			<Tool
 				Name="VCLibrarianTool"
 				OutputFile="$(OutDir)/PiavcaCal3DImp.lib"
-				AdditionalLibraryDirectories="$(CAL3DDIR)\bin\release;..\..\..\cal3d-0.11.0\bin\release;..\..\..\cal3d-0.10.0\bin\release"/>
+				AdditionalLibraryDirectories="&quot;$(CAL3DDIR)\bin\release&quot;;&quot;..\..\..\cal3d-0.11.0\bin\release&quot;"/>
 			<Tool
 				Name="VCMIDLTool"/>
 			<Tool

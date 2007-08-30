@@ -99,7 +99,7 @@
 			OutputDirectory="."
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="2"
-			CharacterSet="1"
+			CharacterSet="2"
 			WholeProgramOptimization="1"
 			>
 			<Tool
@@ -119,7 +119,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\;$(PYTHONDIR)\include;c:\Python25\include;c:\Python24\include;c:\Python23\include"
+				AdditionalIncludeDirectories="..\..\..\src;..\;$(CAL3DDIR)\src;..\..\..\..\cal3d-0.11.0\src\;..\..\..\..\cal3d-0.10.0\src\;$(PYTHONDIR)\include;c:\Python25\include;c:\Python24\include;c:\Python23\include"
 				PreprocessorDefinitions="WIN32;NDEBUG;_LIB"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
@@ -138,6 +138,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				OutputFile="$(OutDir)\_$(ProjectName).pyd"
+				AdditionalLibraryDirectories="$(PYTHONDIR)\libs;c:\Python25\libs;c:\Python24\libs;c:\Python23\libs"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				OptimizeReferences="2"
@@ -212,22 +214,22 @@
 			>
 			<FileConfiguration
 				Name="Debug|Win32"
-				ExcludedFromBuild="true"
 				>
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Running Swig"
-					CommandLine="swig -c++ -python -shadow -I&quot;$(ProjectDir)/..&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot;  &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					CommandLine="swig -c++ -python -shadow -I&quot;$(ProjectDir)/..&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot;  &quot;$(InputPath)&quot;"
 					Outputs=" $(ProjectDir)$(InputName)_wrap.cpp"
 				/>
 			</FileConfiguration>
 			<FileConfiguration
 				Name="Release|Win32"
+				ExcludedFromBuild="true"
 				>
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Running Swig"
-					CommandLine="swig -c++ -python -shadow -I&quot;$(ProjectDir)/..&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; -outdir &quot;$(SolutionDir)\Python\Piavca&quot; &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					CommandLine="swig -c++ -python -shadow -I&quot;$(ProjectDir)/..&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot;  &quot;$(InputPath)&quot;"
 					Outputs=" $(ProjectDir)$(InputName)_wrap.cpp"
 				/>
 			</FileConfiguration>

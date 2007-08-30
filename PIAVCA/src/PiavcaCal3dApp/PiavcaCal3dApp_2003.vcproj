@@ -22,7 +22,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\;$(CAL3DDIR)\src\;..\..\..\cal3d-0.11.0\src;..\..\..\cal3d-0.10.0\src\"
+				AdditionalIncludeDirectories=".\;..\;$(CAL3DDIR)\src\;..\..\..\cal3d-0.11.0\src;..\..\..\cal3d-0.10.0\src\"
 				PreprocessorDefinitions="WIN32;_CONSOLE"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="2"
@@ -40,7 +40,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="glut32.lib glu32.lib opengl32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="glut32.lib glu32.lib opengl32.lib odbc32.lib odbccp32.lib cal3d.lib"
 				OutputFile="$(OutDir)\PiavcaCal3dApp.exe"
 				LinkIncremental="2"
 				SuppressStartupBanner="TRUE"
@@ -88,7 +88,7 @@
 				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="2"
 				OmitFramePointers="TRUE"
-				AdditionalIncludeDirectories="..\;$(CAL3DDIR)\src\;..\..\..\cal3d-0.11.0\src\;..\..\..\cal3d-0.10.0\src\"
+				AdditionalIncludeDirectories=".\;..\;$(CAL3DDIR)\src\;..\..\..\cal3d-0.11.0\src;..\..\..\cal3d-0.10.0\src\"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
 				StringPooling="TRUE"
 				RuntimeLibrary="2"

@@ -40,7 +40,20 @@ fairly standard, you can get them from http://www.xmission.com/~nate/glut.html t
 
 /////// Python: 
 
-if you want to use the python bindings you need to have python installed, if its installed somewhere standard it should just work. Comes as standard on most unices and there are easy installers for windows from www.python.org. At the moment I haven't upgraded Piavca to work with Python 2.5, but it should come soon.
+if you want to use the python bindings you need to have python installed, if its installed somewhere standard it 
+should just work. Comes as standard on most unices and there are easy installers for windows from www.python.org. 
+At the moment I haven't upgraded Piavca to work with Python 2.5, but it should come soon.
+
+The Python code uses a bunch of libraries to do various things, though it should be possible to run without them, but 
+the relevant features will be disabled:
+
+wxPython - for the GUI
+
+scipy - numerical code used in some bits of Piavca like the MotionGraph and PCA
+
+pymedia - for audio output
+
+pyTTS - for text to speech interaction
 
 /////////  Automake, Autoconf, aclocal, autoheader, libtools: 
 
@@ -64,7 +77,10 @@ them but they are needed if you want to change the bvh loader (very unlikely).
 
 On windows you will then need to un-exclude bvhparser.lpp and bvhParser.ypp from the build (see the swig section above). 
 
+/////////// Microsoft Speech API
 
+Piavca contains some Python wrappers for the Microsoft Speech API to enable speech interaction with characters. If you don't want speech
+interaction it should work fine without it.
 
 
 ///////////////////////
@@ -72,7 +88,12 @@ On windows you will then need to un-exclude bvhparser.lpp and bvhParser.ypp from
 ///////////////////////
 
 A set of Visual Studio .Net project files are in the VStudio directory (at time of writing, 2006,
-a free (beer) version of VS can be downloaded from the microsoft site). The project comes with solution files for Visual studio 2003 (Piavca.sln) and 2005 (Piavca_vc2005.sln). You should be able to just compile them with the provisos below. If you don't want to use VS, you could try compiling using the unix makefiles under cygwin but I have never tried this so no guarantees. 
+a free (beer) version of VS can be downloaded from the microsoft site). 
+The project comes with solution files for Visual studio 2003 (Piavca.sln) and 2005 (Piavca_vc2005.sln). 
+You should be able to just compile them with the provisos below. If you don't want to use VS, 
+you could try compiling using the unix makefiles under cygwin but I have never tried this so no guarantees. 
+NB a project called SpeechToText will fail to compile if you don't have the microsoft speech api, don't worry this 
+isn't required for using piavca unless you need a speech interface.
 
 ///// Compiling with Dependencies
 

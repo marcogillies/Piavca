@@ -38,9 +38,9 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="glut32.lib glu32.lib opengl32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="glut32.lib glu32.lib opengl32.lib odbc32.lib odbccp32.lib cal3d.lib"
 				OutputFile="$(OutDir)/_$(ProjectName).pyd"
-				AdditionalLibraryDirectories="&quot;$(CAL3DDIR)\bin\release&quot;;&quot;..\..\..\cal3d-0.11.0\bin\Release&quot;;&quot;..\..\..\cal3d-0.10.0\bin\Release&quot;;&quot;$(PYTHONDIR)\libs&quot;;c:\Python25\libs;c:\Python24\libs;c:\Python23\libs"
+				AdditionalLibraryDirectories="&quot;$(CAL3DDIR)\bin\release&quot;;&quot;..\..\..\..\cal3d-0.11.0\bin\Release&quot;;&quot;..\..\..\..\cal3d-0.10.0\bin\Release&quot;;&quot;$(PYTHONDIR)\libs&quot;;c:\Python25\libs;c:\Python24\libs;c:\Python23\libs"
 				GenerateDebugInformation="TRUE"/>
 			<Tool
 				Name="VCMIDLTool"/>
@@ -65,7 +65,7 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="$(SolutionDir)\Python"
+			OutputDirectory="."
 			IntermediateDirectory="Release"
 			ConfigurationType="2"
 			CharacterSet="2">
@@ -75,7 +75,7 @@
 				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="1"
 				OmitFramePointers="TRUE"
-				AdditionalIncludeDirectories="..\..\..\src;$(PYTHONDIR)\include;c:\Python25\include;c:\Python24\include;c:\Python23\include;$(CAL3DDIR)\src\;..\..\..\cal3d-0.11.0\src;..\..\..\cal3d-0.10.0\src\"
+				AdditionalIncludeDirectories="..\..\..\src;$(PYTHONDIR)\include;c:\Python25\include;c:\Python24\include;c:\Python23\include;$(CAL3DDIR)\src\;..\..\..\..\cal3d-0.11.0\src;..\..\..\..\cal3d-0.10.0\src\"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOW;_USRDLL;UCLAVATARPYTHONINTERFACE_EXPORTS;CONSOLE_PRESENT"
 				StringPooling="TRUE"
 				RuntimeLibrary="2"
@@ -89,8 +89,9 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="glut32.lib glu32.lib opengl32.lib odbc32.lib odbccp32.lib"
-				OutputFile="$(OutDir)/$(ProjectName).pyd"/>
+				AdditionalDependencies="glut32.lib glu32.lib opengl32.lib odbc32.lib odbccp32.lib cal3d.lib"
+				OutputFile="$(OutDir)/_$(ProjectName).pyd"
+				AdditionalLibraryDirectories="&quot;$(CAL3DDIR)\bin\release&quot;;&quot;..\..\..\..\cal3d-0.11.0\bin\Release&quot;;&quot;..\..\..\..\cal3d-0.10.0\bin\Release&quot;;&quot;$(PYTHONDIR)\libs&quot;;c:\Python25\libs;c:\Python24\libs;c:\Python23\libs"/>
 			<Tool
 				Name="VCMIDLTool"/>
 			<Tool
@@ -136,7 +137,8 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="glut32.lib glu32.lib opengl32.lib odbc32.lib odbccp32.lib"
-				OutputFile="$(OutDir)/$(ProjectName).pyd"/>
+				OutputFile="$(OutDir)/_$(ProjectName).pyd"
+				AdditionalLibraryDirectories="&quot;$(CAL3DDIR)\bin\release&quot;;&quot;..\..\..\..\cal3d-0.11.0\bin\Release&quot;;&quot;..\..\..\..\cal3d-0.10.0\bin\Release&quot;;&quot;$(PYTHONDIR)\libs&quot;;c:\Python25\libs;c:\Python24\libs;c:\Python23\libs"/>
 			<Tool
 				Name="VCMIDLTool"/>
 			<Tool
@@ -183,7 +185,8 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="glut32.lib glu32.lib opengl32.lib odbc32.lib odbccp32.lib"
-				OutputFile="$(OutDir)/$(ProjectName).pyd"/>
+				OutputFile="$(OutDir)/_$(ProjectName).pyd"
+				AdditionalLibraryDirectories="&quot;$(CAL3DDIR)\bin\release&quot;;&quot;..\..\..\..\cal3d-0.11.0\bin\Release&quot;;&quot;..\..\..\..\cal3d-0.10.0\bin\Release&quot;;&quot;$(PYTHONDIR)\libs&quot;;c:\Python25\libs;c:\Python24\libs;c:\Python23\libs"/>
 			<Tool
 				Name="VCMIDLTool"/>
 			<Tool
@@ -246,8 +249,7 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Running Swig"
-					CommandLine="swig -c++ -python -shadow -I&quot;$(ProjectDir)/../../../src&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; -outdir &quot;$(SolutionDir)\Python\Piavca\Piavca_base&quot; &quot;$(InputPath)&quot;
-"
+					CommandLine="swig -c++ -python -shadow -I&quot;$(SolutionDir)/src&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; &quot;$(InputPath)&quot;"
 					Outputs=" $(ProjectDir)$(InputName)_wrap.cpp"/>
 			</FileConfiguration>
 			<FileConfiguration
@@ -256,8 +258,7 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="running swig"
-					CommandLine="swig -c++ -python -shadow -I&quot;$(ProjectDir)/..&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; -outdir &quot;$(SolutionDir)\Python\Piavca&quot; &quot;$(InputPath)&quot;
-"
+					CommandLine="swig -c++ -python -shadow -I&quot;$(SolutionDir)/src&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; &quot;$(InputPath)&quot;"
 					Outputs=" $(ProjectDir)$(InputName)_wrap.cpp"/>
 			</FileConfiguration>
 			<FileConfiguration
@@ -266,8 +267,7 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Running Swig"
-					CommandLine="&quot;c:\Program Files\swig\swig&quot; -c++ -python -shadow -I&quot;$(ProjectDir)/..&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; &quot;$(InputPath)&quot;
-"
+					CommandLine="swig -c++ -python -shadow -I&quot;$(SolutionDir)/src&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; &quot;$(InputPath)&quot;"
 					Outputs=" $(ProjectDir)$(InputName)_wrap.cpp"/>
 			</FileConfiguration>
 			<FileConfiguration
@@ -276,8 +276,7 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Running Swig"
-					CommandLine="swig -c++ -python -shadow -I&quot;$(ProjectDir)/..&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; &quot;$(InputPath)&quot;
-"
+					CommandLine="swig -c++ -python -shadow -I&quot;$(SolutionDir)/src&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; &quot;$(InputPath)&quot;"
 					Outputs=" $(ProjectDir)$(InputName)_wrap.cpp"/>
 			</FileConfiguration>
 		</File>
