@@ -142,7 +142,7 @@ class DistanceMeasure:
 			if mot1[2][joint] != mot2[2][joint]:
 					Piavca.PiavcaError("trying to take the distance between tracks of different types")
 			
-			if joint > 1:
+			if joint != Piavca.Core.nullId:
 				f1 = mot1[0][joint][t1]
 				f2 = mot2[0][joint][t2]
 				
@@ -293,6 +293,8 @@ class MotionGraph (Piavca.LoopMotion):
 	
 	# create the graph
 	def create(self, avatar = None):
+		if self.jointsWeightsFile != "":
+			self.measure.readJointWeightsFile(self.jointsWeightsFile)
 		if self.filename != "":
 			self.loadGraph(self.filename)
 			print "loaded graph"
@@ -360,6 +362,8 @@ class MotionGraph (Piavca.LoopMotion):
 						# if we've found a minimum we need to test if the distance value is below a threshold
 						# if so add the new transition
 						#print distancematrix[1][j]
+						#if condition :
+						#print (i,j+startframe2), distancematrix[1][j]
 						if condition and distancematrix[1][j] < threshold :
 							if motindex1 != motindex2 or abs(i-(j+startframe2)) > 3*int(self.window*self.fps) :
 								print (i,j+startframe2), distancematrix[1][j]
