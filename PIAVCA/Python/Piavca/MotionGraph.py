@@ -687,6 +687,7 @@ class MotionGraph (Piavca.LoopMotion):
 	# (part of the LoopMotion interface) and 
 	# is used to choose the next clip
 	def reblend(self, time):
+		print "motion graph reblend"
 		# get the next motion and play it
 		motion = self.chooseNextMotion()
 		try:
