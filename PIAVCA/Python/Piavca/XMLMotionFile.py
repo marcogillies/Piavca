@@ -219,7 +219,8 @@ def readMotions(motions):
 					else:
 						key_joint = Piavca.Core.getCore().getJointId(key_joint)
 					if key_joint == Piavca.Core.getCore().nullId :
-						raise ValueError("Unknown Joint Id " + str(child.getAttribute("joint")))
+						#raise ValueError("Unknown Joint Id " + str(child.getAttribute("joint")))
+						Piavca.Core.getCore().addJointNameSet([key_joint])
 					if key_type == "FLOAT" or key_type == "Float" or key_type == "float":
 						if mot.isNull(key_joint):
 							mot.addFloatTrack(key_joint, 0.0)

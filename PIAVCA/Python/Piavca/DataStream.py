@@ -92,8 +92,8 @@ class DataSequence:
         for t, d in self.seq[1:]:
             #print d, min, max
             for i in range(len(d)):
-                mean[i] += d[i]
-		mean = [m/(len(self.seq)-1) for m in mean]
+                mean[i] += d[i]/(len(self.seq)-1)
+		#mean = [m-1) for m in mean]
         return mean
 	
     def getMinMax(self):

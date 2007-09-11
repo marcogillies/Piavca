@@ -687,21 +687,22 @@ class MotionGraph (Piavca.LoopMotion):
 	# (part of the LoopMotion interface) and 
 	# is used to choose the next clip
 	def reblend(self, time):
-		print "motion graph reblend"
+		#print "motion graph reblend"
 		# get the next motion and play it
 		motion = self.chooseNextMotion()
+		#print "motion", motion
 		try:
 			footplant_spec = motion.footplant_spec
 		except AttributeError:
-			print "got attribute error"
+			#print "got attribute error"
 			footplant_spec = None
 		self.setAccumulateRoot(1)
 		avatar = self.getAvatar()
 		if avatar:
 			avatar.showMotionAtTime(time)
 			pos = avatar.getRootPosition()
-			print "avatar position", pos, "time", time
-			print "motion position", self.getVecValueAtTime(Piavca.root_position_id, time)
+			#print "avatar position", pos, "time", time
+			#print "motion position", self.getVecValueAtTime(Piavca.root_position_id, time)
 		if footplant_spec:
 			self.setAccumulateRoot(0)
 			if avatar != None:
@@ -724,7 +725,7 @@ class MotionGraph (Piavca.LoopMotion):
 				#print "motion is footplant", footplant_spec
 				motion = Piavca.FootPlantOnSpot(motion, footplant_spec)
 		else:
-			print "############# next node"
+			pass#print "############# next node"
 		Piavca.LoopMotion.reblend(self,time)
 		#print "motion", motion
 		self.setMotion(motion)
