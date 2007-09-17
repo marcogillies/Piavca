@@ -394,7 +394,8 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %feature("director") Motion;   
 %feature("director") KeyframeMotion;   
 %feature("director") MotionFilter;  
-%feature("director") TwoMotionCombiner;    
+%feature("director") TwoMotionCombiner;
+%feature("director") MultiMotionCombiner;    
 //%feature("director") SelfBlend;           
 %feature("director") PostureBlend;        
 //%feature("director") SequentialBlend;     
@@ -412,7 +413,8 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %feature("director") MotionAdder;     
 %feature("director") Subtract;        
 %feature("director") MaskedMotion;      
-%feature("director") ChoiceLoopMotion;    
+%feature("director") ChoiceLoopMotion;   
+%feature("director") ChoiceMotion;    
 %feature("director") RandomLoopMotion;   
 %feature("director") RandomBlendLoop;   
 %feature("director") RandomAddLoop;   
@@ -424,6 +426,7 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %feature("director") TimeRangeMotion;    
 %feature("director") TimeWarp;     
 %feature("director") RandomTimingsLoop;   
+%feature("director") RandomTimingsMotion;   
 %feature("director") DiadicGazeMotion;
 %feature("director") TimeCallback;    
 %feature("director") AvatarTimeCallback;    
@@ -462,6 +465,7 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 //%include "PiavcaAPI/SelfBlend.h"
 %include "PiavcaAPI/LoopMotion.h"
 %include "PiavcaAPI/RandomTimingsLoop.h"
+%include "PiavcaAPI/RandomTimingsMotion.h"
 %include "PiavcaAPI/AvatarPostureBlend.h"
 %include "PiavcaAPI/BlendBetween.h"
 %include "PiavcaAPI/MotionAdder.h"

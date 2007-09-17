@@ -155,6 +155,21 @@ namespace Piavca
 		{
 			if(filterMot)filterMot->reset();
 		};
+		
+
+		//! send a message to sub motions that an "event" happened
+		virtual void event(tstring ev)
+		{
+			Motion::event(ev);
+			//std::cout << "event in motion filter " << getName() << std::endl;
+			if(filterMot)filterMot->event(ev);
+		};
+
+		virtual void cleanRecursionState()
+		{
+			Motion::cleanRecursionState();
+			if(filterMot)filterMot->cleanRecursionState();
+		};
 	    
 		void setMotion(Motion *mot)
 		{

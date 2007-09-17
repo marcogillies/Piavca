@@ -1281,6 +1281,6 @@ Bound Piavca::AvatarCal3DImp::getBoundBox(void)
 			}
 		}
 	}
-	std::cout << "Bound " << b << std::endl;
+	//std::cout << "Bound " << b << std::endl;
 	return b;
 }

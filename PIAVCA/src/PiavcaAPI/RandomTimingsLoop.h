@@ -106,13 +106,13 @@ public:
 	//! sets the motion to be looped
 	virtual void setMotion(Motion *m)
 	{
-	//	std::cout << "setting motion for scale speed\n";
+		//	std::cout << "setting motion for scale speed\n";
 		scaleSpeed->setMotion(m);
-	///	std::cout << "setting motion for loop\n";
-	//	const type_info &scaleSpeedtype = typeid(&scaleSpeed);
-	//	std::cout << "random timings: Motion 1 " << scaleSpeed->getName() << " " << scaleSpeedtype.name() << " " << scaleSpeed << std::endl;
+		///	std::cout << "setting motion for loop\n";
+		//	const type_info &scaleSpeedtype = typeid(&scaleSpeed);
+		//	std::cout << "random timings: Motion 1 " << scaleSpeed->getName() << " " << scaleSpeedtype.name() << " " << scaleSpeed << std::endl;
 		LoopMotion::setMotion(scaleSpeed);
-	//	std::cout << "end of set motion\n";
+		//	std::cout << "end of set motion\n";
 	}
 };
 };

@@ -105,6 +105,8 @@ class PIAVCA_DECL Motion
 	//bool bTemp;
 	int refCount;
 	bool ownedByCore;
+	// if the motion has been visited in an event recursion
+	bool visited;
 protected:
 	Avatar *m_avatar;
 	float startTime;
@@ -126,10 +128,10 @@ protected:
 	//float keyframeGranularity;
 public:
 	//! default constructor
-	Motion():m_avatar(NULL), startTime(0), pausedTime(-1), offsetTime(0), refCount(0), ownedByCore(false), name(_T("")) 
+	Motion():m_avatar(NULL), startTime(0), pausedTime(-1), offsetTime(0), refCount(0), ownedByCore(false), name(_T("")), visited(false) 
 	{
 	};
-	Motion(const Motion &mot):m_avatar(NULL), startTime(mot.startTime), pausedTime(-1), offsetTime(0), refCount(0), ownedByCore(false), name(mot.name) 
+	Motion(const Motion &mot):m_avatar(NULL), startTime(mot.startTime), pausedTime(-1), offsetTime(0), refCount(0), ownedByCore(false), name(mot.name), visited(false)
 	{
 	};
 	
@@ -176,6 +178,29 @@ public:
 
 	//! does any resetting needed 
 	virtual void reset(){};
+
+	virtual void event(tstring ev)
+	{
+		//std::cout << "event in motion " << getName() << std::endl;
+		visited = true;
+	};
+
+	virtual void cleanRecursionState()
+	{
+		visited = false;
+	};
+
+	bool wasVisited()
+	{
+		return visited;
+	};
+
+	//! send a message to sub motions that an "event" happened
+	void sendEvent(tstring ev)
+	{
+		event(ev);
+		cleanRecursionState();
+	}
 
 	//! registers an owner for a motion, the motion will not be deleted until disposed is called.
 	/*!

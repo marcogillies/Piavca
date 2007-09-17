@@ -58,6 +58,7 @@
 #include "MotionFilter.h"
 #include "Quat.h"
 #include "RandomTimingsLoop.h"
+#include "RandomTimingsMotion.h"
 #include "MultiMotionCombiner.h"
 #include "ChoiceMotion.h"
 #include "ChoiceLoopMotion.h"

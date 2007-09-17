@@ -100,6 +100,7 @@ public:
 	//adds a new motion
 	virtual void addMotion(Motion *mot)
 	{
+		std::cout << "in Mutlimotioncombiner::addMotion\n";
 		if(mot)
 		{
 			mots.push_back(mot);
@@ -188,6 +189,27 @@ public:
 			if (av) return av;
 		}
 		return NULL;
+	}
+
+	
+	//! send a message to sub motions that an "event" happened
+	virtual void event(tstring ev)
+	{
+		MotionFilter::event(ev);
+		//std::cout << "event in motion combiner " << getName() << std::endl;
+		for(MotionVec::size_type i = 0; i < mots.size(); i++)
+		{
+			mots[i]->event(ev);
+		}
+	}
+
+	virtual void cleanRecursionState()
+	{
+		MotionFilter::cleanRecursionState();
+		for(MotionVec::size_type i = 0; i < mots.size(); i++)
+		{
+			mots[i]->cleanRecursionState();
+		}
 	}
 
 	

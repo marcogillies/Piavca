@@ -54,6 +54,7 @@ class Proxemics : public MultiMotionCombiner
 protected:
 	vector<Avatar *> otherAvatars;
 	float desiredDistance, threshold, anglethreshold;
+	Vec otherPosition;
 	bool distanceOff;
 public:
 	/*! 
@@ -110,6 +111,27 @@ public:
 	//! turns off maintaining distance
 	void turnOff(bool b){distanceOff = b;};
 
+	//! assign a function to a particular motion
+	void setMotionFunction(int index, tstring function)
+	{
+		if(function ==_T("forward"))
+			stepForward = getMotionByIndex(index);
+		if(function ==_T("backward"))
+			stepBackward = getMotionByIndex(index);
+		if(function ==_T("left"))
+			turnLeft = getMotionByIndex(index);
+		if(function ==_T("right"))
+			turnRight = getMotionByIndex(index);
+		if(function ==_T("rest"))
+			rest = getMotionByIndex(index);
+	}
+
+	//! sets the position of the other person (if its not accessed as an avatar pointer)
+	void setOtherPosition(const Vec &v)
+	{
+		otherPosition = v;
+	}
+
 	//! adds an avatar to perform proxemics behaviour to
 	void addAvatar(Avatar *av)
 	{
@@ -153,8 +175,9 @@ public:
 		};
 		// if there are no other characters
 		if(number < 0.01)
-			return;
-		averagePos /= number;
+			averagePos = otherPosition;
+		else
+			averagePos /= number;
 
 		// subtract your own position and work out distance
 		Vec displacement = averagePos - m_avatar->getRootPosition();

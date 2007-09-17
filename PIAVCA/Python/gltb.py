@@ -12,7 +12,9 @@ gltb_upaxis = (0.0, 1.0, 0.0)
 gltb_rightaxis = (1.0, 0.0, 0.0)
 gltb_orientmodel = (1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0,0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0)
 gltb_rotateaxis = (0.0, 0.0, 0.0)
+gltb_translation = (0.0, 0.0, 0.0)
 gltb_transform = (1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0)
+gltb_camera_pos = [0.0, 1.0, 0.0]
 gltb_width = 0
 gltb_height = 0
 gltb_tracking = GL_FALSE
@@ -44,6 +46,7 @@ def _gltbAnimate():
 
 def _gltbStartMotion(x, y, time):
     global gltb_tracking, gltb_lasttime, gltb_width, gltb_height, gltb_lastposition
+    #print "start motion"
     gltb_tracking = GL_TRUE
     gltb_lasttime = time
     gltb_lastposition = _gltbPointToVector(x, y, gltb_width, gltb_height)
@@ -89,18 +92,32 @@ def gltbConfigRight( x, y, z ):
     gltb_rightaxis = (x,y,z)
     _gltbOrientModel()
 
-def gltbMatrix():
-    global gltb_transform, gltb_angle, gltb_rotateaxis, gltb_lastposition, gltb_orientmodel
-
+def gltbMatrix(scalefactor):
+    global gltb_transform, gltb_angle, gltb_rotateaxis, gltb_lastposition, gltb_orientmodel, gltb_camera_pos
+	
+    #print gltb_camera_pos
+	
     glPushMatrix()
     glLoadIdentity()
     glRotatef(gltb_angle, gltb_rotateaxis[0], gltb_rotateaxis[1], gltb_rotateaxis[2])
+    glTranslatef(scalefactor*gltb_translation[0], scalefactor*gltb_translation[2], scalefactor*gltb_translation[1])
     glMultMatrixf(gltb_transform)
     gltb_transform = glGetFloatv(GL_MODELVIEW_MATRIX)
     glPopMatrix()
     glMultMatrixf(gltb_transform)
     glMultMatrixf(gltb_orientmodel)
 
+    #gltb_camera_pos = [0.0, 0.0, 0.0, 1]
+    modelview = glGetFloatv(GL_MODELVIEW_MATRIX)
+    #print modelview
+    # the inverse translation
+    #x = [-modelview[3][0], -modelview[3*4+1], -modelview[3*4+2]]
+    x = -modelview[3][:3]    
+	# multiply by the inverse rotation/scale
+    gltb_camera_pos[0] = x[0]*modelview[0][0] + x[1]*modelview[0][1] + x[2]*modelview[0][2]
+    gltb_camera_pos[1] = x[0]*modelview[1][0] + x[1]*modelview[1][1] + x[2]*modelview[1][2]
+    gltb_camera_pos[2] = x[0]*modelview[2][0] + x[1]*modelview[2][1] + x[2]*modelview[2][2]
+    #print x, gltb_camera_pos
 
 def gltbReshape(width, height):
     global gltb_width, gltb_height
@@ -108,6 +125,7 @@ def gltbReshape(width, height):
     gltb_height = height
 
 def gltbMouseDown(x, y):
+    #print "mouse down"
     _gltbStartMotion(x, y, glutGet(GLUT_ELAPSED_TIME))
 
 def gltbMouseUp():
@@ -130,6 +148,27 @@ def gltbMotion(x, y):
 
     #calculate the axis of rotation (cross product) 
     gltb_rotateaxis = (gltb_lastposition[1] * current_position[2] - gltb_lastposition[2] * current_position[1], gltb_lastposition[2] * current_position[0] - gltb_lastposition[0] * current_position[2], 0)
+
+    #reset for next time
+    gltb_lasttime = glutGet(GLUT_ELAPSED_TIME)
+    gltb_lastposition = current_position
+
+def gltbInOutMotion(x, y):
+    global gltb_rotateaxis, gltb_width, gltb_height, gltb_lastposition, gltb_lasttime, gltb_angle, gltb_translation
+
+    if gltb_tracking == GL_FALSE:
+        return
+
+    current_position = _gltbPointToVector(x, y, gltb_width, gltb_height)
+
+    # calculate the angle to rotate by (directly proportional to the
+    #length of the mouse movement) 
+    dx = current_position[0] - gltb_lastposition[0]
+    dy = current_position[1] - gltb_lastposition[1]
+    dz = current_position[2] - gltb_lastposition[2]
+    
+    gltb_translation = (0, dy, 0)
+    #print gltb_translation
 
     #reset for next time
     gltb_lasttime = glutGet(GLUT_ELAPSED_TIME)

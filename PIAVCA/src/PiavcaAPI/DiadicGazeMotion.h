@@ -49,6 +49,7 @@ public:
 	enum talkingstate {talking, listening, neither};
 protected:
 	Avatar *otherAvatar;
+	Vec otherPosition;
 	DiadicGazeMotion *otherDiadicGaze;
 	int joint;
 	//bool talking;
@@ -61,6 +62,7 @@ protected:
 	vector<tstring> gazeFollowTargets;
 	tstring currentGazeFollowTarget;
 	talkingstate isTalking;
+	bool followPosition;
 public:
 
 	DiadicGazeMotion(Avatar *other = NULL, float endTime = -1.0, float interval = 0.01)
@@ -69,8 +71,10 @@ public:
 		talkingLookAt(1.8f), talkingLookAway(2.1f),
 		listeningLookAt(2.5f), listeningLookAway(1.6f),
 		neitherLookAt(1.2f), neitherLookAway(2.5f),
-		gazeFollow(0), otherDiadicGaze(NULL), currentGazeFollowTarget(_T(""))
+		gazeFollow(0), otherDiadicGaze(NULL), currentGazeFollowTarget(_T("")),
+		followPosition(false)
 	{
+		std::cout << "In diadic gaze constructor\n";
 		joint = Core::getCore()->getJointId(_T("Head"));
 		clearDirectionTable();
 		addDirection(Vec( 1.0,  0.0, 0.0), 15.5f);
@@ -94,7 +98,8 @@ public:
 		listeningLookAt(dg.listeningLookAt), listeningLookAway(dg.listeningLookAway),
 		neitherLookAt(dg.neitherLookAt), neitherLookAway(dg.neitherLookAway),
 		otherDiadicGaze(dg.otherDiadicGaze), gazeFollow(dg.gazeFollow),
-		gazeFollowTargets(dg.gazeFollowTargets), currentGazeFollowTarget(dg.currentGazeFollowTarget)
+		gazeFollowTargets(dg.gazeFollowTargets), currentGazeFollowTarget(dg.currentGazeFollowTarget),
+		followPosition(false)
 		{}
 	~DiadicGazeMotion(){};
 	virtual Motion *clone(){return new DiadicGazeMotion(*this);};
@@ -117,6 +122,16 @@ public:
 	void setNeitherLookAway(float f)  {neitherLookAway = f;};
 	void setGazeFollow(float f)  {gazeFollow = f;};
 
+	virtual void event(tstring ev)
+	{
+		if (ev == _T("talking")) 
+			setTalking(talking);
+		if (ev == _T("listening")) 
+			setTalking(listening);
+		if (ev == _T("neither")) 
+			setTalking(neither);
+	}
+
 	void setOther(Avatar *other)      
 	{
 		otherAvatar = other;
@@ -124,6 +139,21 @@ public:
 			otherDiadicGaze = dynamic_cast<DiadicGazeMotion *>(otherAvatar->getMotion()->findSubByType(typeid(DiadicGazeMotion)));
 	};
 	Avatar *getOther()				  {return otherAvatar;};
+	
+
+	//! sets the position of the other person (if its not accessed as an avatar pointer)
+	void setOtherPosition(const Vec &v)
+	{
+		//std::cout << "setting other position" << v << std::endl;
+		otherPosition = v;
+		if (lookingAt && !otherAvatar)
+		{
+			std::cout << otherPosition << std::endl;
+			mot->setTarget(otherPosition);
+			//mot->setTarget(otherPosition, true);
+			//mot->setTarget(Vec(0.0, 100.0, 0.0), true);
+		}
+	}
 
 	void addGazeFollowTarget(tstring name){gazeFollowTargets.push_back(name);};
 	void notifyChange(tstring target)
@@ -146,7 +176,7 @@ public:
 			Core::getCore()->log() << Core::getCore()->getTime();
 			Core::getCore()->log() << " gaze_look_at\n";
 			float time = Core::getCore()->getTime();
-			std::cout << "looking at\n";
+			std::cout << "lookAt\n";
 			mot->reblend(time);
 			lookingAt = true;
 			mot->setTarget(otherAvatar, joint);
@@ -159,6 +189,7 @@ public:
 			case neither: meanGaze = neitherLookAt;break;
 			}
 			float endTime = meanGaze*(static_cast<float>(rand()%1000)/1000.0f + 0.5f);
+			std::cout << "look at timings " << time << " " << endTime << " " << endTime + time <<  std::endl;
 			mot->setEndTime(endTime+time);	
 			if(otherDiadicGaze) otherDiadicGaze->notifyChange(mot->getTargetName());
 			return true;
@@ -175,8 +206,10 @@ public:
 
 	virtual void reblend(float time)
 	{
-		if(!otherAvatar || lookingAt)
+		followPosition = false;
+		if(/*!otherAvatar ||*/ lookingAt)
 		{
+			std::cout << "looking away\n";
 			Core::getCore()->log() << Core::getCore()->getTime();
 			Core::getCore()->log() << " gaze_look_away\n";
 			lookingAt = false;
@@ -193,7 +226,13 @@ public:
 			Core::getCore()->log() << " gaze_look_at\n";
 			mot->reblend(time);
 			lookingAt = true;
-			mot->setTarget(otherAvatar, joint);
+			if( !otherAvatar)
+			{
+				mot->setTarget(otherPosition);
+				followPosition = true;
+			}
+			else
+				mot->setTarget(otherAvatar, joint);
 			
 			float meanGaze; 
 			switch(isTalking)
@@ -203,6 +242,7 @@ public:
 			case neither: meanGaze = neitherLookAt;break;
 			}
 			float endTime = meanGaze*(static_cast<float>(rand()%1000)/1000.0f + 0.5f);
+			std::cout << "look at timings " << time << " " << endTime << " " << endTime + time <<  std::endl;
 			mot->setEndTime(endTime+time);
 		}
 		if(otherDiadicGaze) otherDiadicGaze->notifyChange(mot->getTargetName());

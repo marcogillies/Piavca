@@ -3,6 +3,9 @@ import PiavcaGlut
 from MotionFile import readMotionFile
 from ScriptEngine import ScriptEngine 
 from FootPlantOnSpot import FootPlantOnSpot
+from FSM import FSM
+from ParameterMotion import ParameterMotion
+from PositionHandler import PositionHandler	
 try:
 	from EigenMotion import *
 	from MotionGraph import *

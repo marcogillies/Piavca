@@ -52,23 +52,31 @@ void LookAtMotion::init()
 	leyeId = Core::getCore()->getJointId("left_eye");
 	oldLeyeVal = Quat();
 	headId = Core::getCore()->getJointId("head");
+	if (headId  == Piavca::Core::getCore()->nullId )
+		Piavca::Error(_T("Look At Motion: could not find the head joint"));
 	oldHeadVal = Quat();
 	bodyId = Core::getCore()->getJointId("body");
 	oldBodyVal = Quat();
 	headActive = false;
 	bodyActive = false;
-	if(reyeId < 0 && leyeId < 0)
+	if(reyeId == Piavca::Core::getCore()->nullId && leyeId  == Piavca::Core::getCore()->nullId )
 	{
 		lookLeftId = Core::getCore()->getExpressionId("look_left");
-		if(lookLeftId >= 0) oldLookLeftVal = 0.0;
+		if(lookLeftId != Piavca::Core::getCore()->nullId) 
+			oldLookLeftVal = 0.0;
 		lookRightId = Core::getCore()->getExpressionId("look_right");
-		if(lookRightId >= 0) oldLookRightVal = 0.0;
+		if(lookRightId != Piavca::Core::getCore()->nullId) 
+			oldLookRightVal = 0.0;
 		lookUpId = Core::getCore()->getExpressionId("look_up");
-		if(lookUpId >= 0) oldLookUpVal = 0.0;
+		if(lookUpId != Piavca::Core::getCore()->nullId) 
+			oldLookUpVal = 0.0;
 		lookDownId = Core::getCore()->getExpressionId("look_down");
-		if(lookDownId >= 0) oldLookDownVal = 0.0;
-		if(lookLeftId < 0 && lookUpId < 0
-			&& lookRightId < 0 && lookDownId < 0)
+		if(lookDownId != Piavca::Core::getCore()->nullId) 
+			oldLookDownVal = 0.0;
+		if(lookLeftId == Piavca::Core::getCore()->nullId 
+			&& lookUpId == Piavca::Core::getCore()->nullId
+			&& lookRightId == Piavca::Core::getCore()->nullId 
+			&& lookDownId == Piavca::Core::getCore()->nullId)
 			headActive = true;
 	}
 	
@@ -79,15 +87,23 @@ void LookAtMotion::init()
 void LookAtMotion::reblend(float time)
 {
 	//std::cout << "lookat reblend: ";
-	if(reyeId >= 0) oldReyeVal = getQuatValueAtTime(reyeId, time);
-	if(leyeId >= 0) oldLeyeVal = getQuatValueAtTime(leyeId, time);
-	if(headId >= 0) oldHeadVal = getQuatValueAtTime(headId, time);
-	if(bodyId >= 0) oldBodyVal = getQuatValueAtTime(bodyId, time);
+	if(reyeId != Piavca::Core::getCore()->nullId) 
+		oldReyeVal = getQuatValueAtTime(reyeId, time);
+	if(leyeId != Piavca::Core::getCore()->nullId) 
+		oldLeyeVal = getQuatValueAtTime(leyeId, time);
+	if(headId != Piavca::Core::getCore()->nullId) 
+		oldHeadVal = getQuatValueAtTime(headId, time);
+	if(bodyId != Piavca::Core::getCore()->nullId) 
+		oldBodyVal = getQuatValueAtTime(bodyId, time);
 	
-	if(lookLeftId >= 0)  oldLookLeftVal  = getFloatValueAtTime(lookLeftId, time);
-	if(lookRightId >= 0) oldLookRightVal = getFloatValueAtTime(lookRightId, time);
-	if(lookUpId >= 0)    oldLookUpVal    = getFloatValueAtTime(lookUpId, time);
-	if(lookDownId >= 0)  oldLookDownVal  = getFloatValueAtTime(lookDownId, time);
+	if(lookLeftId != Piavca::Core::getCore()->nullId)  
+		oldLookLeftVal  = getFloatValueAtTime(lookLeftId, time);
+	if(lookRightId != Piavca::Core::getCore()->nullId) 
+		oldLookRightVal = getFloatValueAtTime(lookRightId, time);
+	if(lookUpId != Piavca::Core::getCore()->nullId)    
+		oldLookUpVal    = getFloatValueAtTime(lookUpId, time);
+	if(lookDownId != Piavca::Core::getCore()->nullId)
+		oldLookDownVal  = getFloatValueAtTime(lookDownId, time);
 
 	blendStartTime = time;
 	blendEndTime = time + interval;
@@ -168,13 +184,13 @@ float LookAtMotion::getFloatValueAtTimeInternal(int trackId, float time)
 		Quat jointOri = m_avatar->getJointOrientation(headId);
 		int parentId = m_avatar->getParent(headId);
 		Vec parentPos;
-		if(parentId >= 0)
+		if(parentId != Piavca::Core::getCore()->nullId)
 			parentPos = m_avatar->getJointBasePosition(parentId);
 		Quat parentOri;
-		if(parentId >= 0)
+		if(parentId != Piavca::Core::getCore()->nullId)
 			parentOri = m_avatar->getJointOrientation(parentId, LOCAL_COORD);
 		Quat parentOriUntransed;
-		if(parentId >= 0)
+		if(parentId != Piavca::Core::getCore()->nullId)
 			parentOriUntransed = m_avatar->getJointOrientation(parentId);
 		
 		jointPos -= parentPos;
@@ -203,8 +219,10 @@ float LookAtMotion::getFloatValueAtTimeInternal(int trackId, float time)
 			if(angle > eyesLimit)
 			{
 				LookAtMotion *nonConstThis = const_cast<LookAtMotion *>(this);
-				if(headId >= 0 && !headActive) nonConstThis->headActive = true;
-				else if(bodyId >= 0 && !bodyActive) nonConstThis->bodyActive = true;
+				if(headId != Piavca::Core::getCore()->nullId && !headActive) 
+					nonConstThis->headActive = true;
+				else if(bodyId != Piavca::Core::getCore()->nullId && !bodyActive) 
+					nonConstThis->bodyActive = true;
 				angle = eyesLimit;
 			}
 			float val = angle/eyesMorphAngle;
@@ -221,8 +239,10 @@ float LookAtMotion::getFloatValueAtTimeInternal(int trackId, float time)
 			if(angle > eyesLimit)
 			{
 				LookAtMotion *nonConstThis = const_cast<LookAtMotion *>(this);
-				if(headId >= 0 && !headActive) nonConstThis->headActive = true;
-				else if(bodyId >= 0 && !bodyActive) nonConstThis->bodyActive = true;
+				if(headId != Piavca::Core::getCore()->nullId && !headActive) 
+					nonConstThis->headActive = true;
+				else if(bodyId != Piavca::Core::getCore()->nullId && !bodyActive) 
+					nonConstThis->bodyActive = true;
 				angle = eyesLimit;
 			}
 			float val = angle/eyesMorphAngle;
@@ -252,8 +272,10 @@ float LookAtMotion::getFloatValueAtTimeInternal(int trackId, float time)
 			if(angle > eyesLimit)
 			{
 				LookAtMotion *nonConstThis = const_cast<LookAtMotion *>(this);
-				if(headId >= 0 && !headActive) nonConstThis->headActive = true;
-				else if(bodyId >= 0 && !bodyActive) nonConstThis->bodyActive = true;
+				if(headId != Piavca::Core::getCore()->nullId && !headActive) 
+					nonConstThis->headActive = true;
+				else if(bodyId != Piavca::Core::getCore()->nullId && !bodyActive) 
+					nonConstThis->bodyActive = true;
 				angle = eyesLimit;
 			}
 			float val = angle/eyesMorphAngle;
@@ -270,8 +292,10 @@ float LookAtMotion::getFloatValueAtTimeInternal(int trackId, float time)
 			if(angle > eyesLimit)
 			{
 				LookAtMotion *nonConstThis = const_cast<LookAtMotion *>(this);
-				if(headId >= 0 && !headActive) nonConstThis->headActive = true;
-				else if(bodyId >= 0 && !bodyActive) nonConstThis->bodyActive = true;
+				if(headId != Piavca::Core::getCore()->nullId && !headActive) 
+					nonConstThis->headActive = true;
+				else if(bodyId != Piavca::Core::getCore()->nullId && !bodyActive) 
+					nonConstThis->bodyActive = true;
 				angle = eyesLimit;
 			}
 			float val = angle/eyesMorphAngle;
@@ -292,10 +316,11 @@ Vec LookAtMotion::getVecValueAtTimeInternal(int trackId, float time)
 {
 	Piavca::Error(_T("Trying to get a Vec value from a Quat track"));
 	return Vec();
-};
+}
 
 Quat LookAtMotion::getQuatValueAtTimeInternal(int trackId, float time)
 {
+	std::cout << "look at motion\n";
 	if(trackId == bodyId) return Quat();
 
 	//std::cout << "Look at Motion\n";
@@ -331,13 +356,13 @@ Quat LookAtMotion::getQuatValueAtTimeInternal(int trackId, float time)
 			subjectVec = LocationTarget;
 		}
 	
-		if(trackId == headId 
+		if(false && trackId == headId 
 			&& ((subjectVec - oldTargetPos_head).mag() < 0.05
 				&& (m_avatar->getRootPosition() - oldRootPos_head).mag() < 0.05))
 		{
 				finalOri = oldHeadOri;
 		}
-		else if (trackId == bodyId
+		else if (false && trackId == bodyId
 			&& ((subjectVec - oldTargetPos_body).mag() < 0.05
 				&& (m_avatar->getRootPosition() - oldRootPos_body).mag() < 0.05))
 		{
@@ -347,9 +372,11 @@ Quat LookAtMotion::getQuatValueAtTimeInternal(int trackId, float time)
 		{
 
 			Vec zvec = m_avatar->getForwardDirection();
+			std::cout << "forward " << zvec << std::endl;
 
 			// transfrom into local space of avatar
 			Vec localPos = subjectVec;
+			std::cout << "pos " << localPos << std::endl;
 			
 			if(AvatarTarget || ObjectTarget || !local)
 			{
@@ -357,18 +384,18 @@ Quat LookAtMotion::getQuatValueAtTimeInternal(int trackId, float time)
 				m_avatar->getRootOrientation().inverse().transformInPlace(localPos);
 				// express relative to the joint we are turning
 				int pointtojoint = trackId;
-				if(trackId == bodyId && headId >= 0)
+				if(trackId == bodyId && headId != Piavca::Core::getCore()->nullId)
 					pointtojoint = headId;
 				Vec jointPos = m_avatar->getJointBasePosition(pointtojoint);
 				int parentId = m_avatar->getParent(pointtojoint);
 				Vec parentPos;
-				if(parentId >= 0)
+				if(parentId != Piavca::Core::getCore()->nullId)
 					parentPos = m_avatar->getJointBasePosition(parentId);
 				Quat parentOri;
-				if(parentId >= 0)
+				if(parentId != Piavca::Core::getCore()->nullId)
 					parentOri = m_avatar->getJointOrientation(parentId, LOCAL_COORD);
 				Quat parentOriUntransed;
-				if(parentId >= 0)
+				if(parentId != Piavca::Core::getCore()->nullId)
 					parentOriUntransed = m_avatar->getJointOrientation(parentId);
 				
 				jointPos -= parentPos;
@@ -387,12 +414,15 @@ Quat LookAtMotion::getQuatValueAtTimeInternal(int trackId, float time)
 
 			// split the rotation into a vertical (xz) and horizontal(y) rotation
 			Quat xzOri, yOri;
-			yOri.pointAt(zvec, Vec(localPos[0], 0, localPos[2]));
-			if(trackId != bodyId || turnBodyVertical)
-			{
-				float horixMag = Vec(localPos[0], 0, localPos[2]).mag();
-				xzOri.pointAt(zvec, Vec(0, localPos[1], horixMag));
-			}
+			yOri.pointAt(zvec, localPos);
+			//yOri.setAngleAxis(degToRad(90), 0, 0, 1);
+			Vec result = yOri.transform(zvec);
+			//yOri.pointAt(zvec, Vec(localPos[0], 0, localPos[2]));
+			//if(trackId != bodyId || turnBodyVertical)
+			//{
+			//	float horixMag = Vec(localPos[0], 0, localPos[2]).mag();
+			//	xzOri.pointAt(zvec, Vec(0, localPos[1], horixMag));
+			//}
 
 			//finalOri.pointAt(zvec, localPos);
 
@@ -420,7 +450,7 @@ Quat LookAtMotion::getQuatValueAtTimeInternal(int trackId, float time)
 					if(trackId == headId)
 					{
 						LookAtMotion *nonConstThis = const_cast<LookAtMotion *>(this);
-						if(bodyId >= 0 && !bodyActive)
+						if(bodyId != Piavca::Core::getCore()->nullId && !bodyActive)
 						{
 							nonConstThis->bodyActive = true;
 							angle = angle > 0 ? angle - limit : angle+limit;
@@ -432,17 +462,19 @@ Quat LookAtMotion::getQuatValueAtTimeInternal(int trackId, float time)
 					else
 					{
 						LookAtMotion *nonConstThis = const_cast<LookAtMotion *>(this);
-						if(headId >= 0 && !headActive) nonConstThis->headActive = true;
-						else if(bodyId >= 0 && !bodyActive) nonConstThis->bodyActive = true;
+						if(headId != Piavca::Core::getCore()->nullId && !headActive) 
+							nonConstThis->headActive = true;
+						else if(bodyId != Piavca::Core::getCore()->nullId && !bodyActive) 
+							nonConstThis->bodyActive = true;
 						angle = angle > 0 ? limit : -limit;
 						ori->setAngleAxis(angle, axis);
 					}
 				}
-				if(trackId == headId)
-					std::cout << "head: ";
-				if(trackId == bodyId)
-					std::cout << "body: ";
-				std::cout << angle << std::endl;
+				//if(trackId == headId)
+				//	std::cout << "head: ";
+				//if(trackId == bodyId)
+				//	std::cout << "body: ";
+				//std::cout << angle << std::endl;
 			}
 			// combine the two rotation axes
 			finalOri = xzOri*yOri;
@@ -478,8 +510,8 @@ Quat LookAtMotion::getQuatValueAtTimeInternal(int trackId, float time)
 		if(trackId == bodyId) oldOrientation = oldBodyVal;
 
 		float blendTime = (time - blendStartTime)/(blendEndTime - blendStartTime);
-		std::cout << "Lookat motion blending: " << oldOrientation << " "
-			<< finalOri << " " << blendTime << std::endl;
+		//std::cout << "Lookat motion blending: " << oldOrientation << " "
+		//	<< finalOri << " " << blendTime << std::endl;
 		return Piavca::slerp(oldOrientation, finalOri, blendTime);
 	}
 };

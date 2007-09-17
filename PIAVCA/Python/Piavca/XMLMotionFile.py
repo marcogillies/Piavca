@@ -67,6 +67,90 @@ def ValueListToQuat(valuelist):
 	quat = [float(x) for x in valuelist]
 	quat = Piavca.Quat(Piavca.degToRad(quat[0]), Piavca.Vec(quat[1], quat[2], quat[3]))
 	return quat
+
+# take an attribute in textural form and parse it into the possible types it can take
+def parseAttribute(attrValue):
+	
+	value = str(attrValue).strip()
+	valuelist = stringToValueList(attrValue)
+	
+	possible_values = []
+	
+	# maybe its a quaternion
+	if len(valuelist) == 4:
+		try:
+			quat = ValueListToQuat(valuelist)
+			possible_values.append(quat)
+		# didn't work so try next option
+		except ValueError:
+			pass
+			
+	# maybe its a Vec
+	if len(valuelist) == 3:
+		try:
+			vec = ValueListToVec(valuelist)
+			possible_values.append(vec)
+		# didn't work so try next option
+		except ValueError:
+			pass
+			
+	# might be just a single value
+	if len(valuelist) == 1:
+		try:
+			f = float(value)
+			possible_values.append(f)
+		except ValueError:
+			pass
+	
+	# maybe its a list of numbers
+	try:
+		vec = [float(x) for x in valuelist]
+		possible_values.append(vec)
+	# didn't work so try next option
+	except ValueError:
+		pass
+	# maybe its a list of motion names
+	try:
+		motions = []
+		for name in valuelist:
+			mot = Piavca.Core.getCore().getMotion(name)
+			if mot == None:
+				raise ValueError
+			motions.append(mot)
+		possible_values.append(motions)
+	# didn't work so try next option
+	except ValueError:
+		pass
+	# maybe its a list of avatar names
+	try:
+		avatars = []
+		for name in valuelist:
+			av = Piavca.Core.getCore().getAvatar(name)
+			if av == None:
+				raise ValueError
+			avatars.append(av)
+		possible_values.append(avatars)
+	# didn't work so try next option
+	except ValueError:
+		pass
+	# maybe its just a list of strings
+	try:
+		valuelist = [v.strip(" '\"") for v in valuelist]
+		print valuelist
+		possible_values.append(valuelist)
+	# didn't work so try next option
+	except ValueError:
+		pass
+		
+	# if all else fails, treat it as a string
+	try:
+		possible_values.append(value)
+	except ValueError:
+		pass
+		
+	return possible_values
+
+# add method
 	
 def setAttribute(mot, attrName, attrValue, firstArg = None):
 	attrName = str(attrName)
@@ -79,96 +163,59 @@ def setAttribute(mot, attrName, attrValue, firstArg = None):
 	else:
 		method = lambda x : meth(firstArg, x)
 	
-	value = str(attrValue).strip()
-	valuelist = stringToValueList(attrValue)
-	
-	# maybe its a quaternion
-	if len(valuelist) == 4:
+	possible_values = parseAttribute(attrValue)
+	for value in possible_values:
 		try:
-			quat = ValueListToQuat(valuelist)
-			method(quat)
+			method(value)
 			return 1
-		# didn't work so try next option
 		except ValueError:
 			pass
-			
-	# maybe its a Vec
-	if len(valuelist) == 3:
-		try:
-			vec = ValueListToVec(valuelist)
-			method(vec)
-			return 1
-		# didn't work so try next option
-		except ValueError:
-			pass
-			
-	if len(valuelist) > 1:
-		# maybe its a list of numbers
-		try:
-			vec = [float(x) for x in valuelist]
-			method(vec)
-			return 1
-		# didn't work so try next option
-		except ValueError:
-			pass
-		# maybe its a list of motion names
-		try:
-			motions = []
-			for name in valuelist:
-				mot = Piavca.Core.getCore().getMotion(name)
-				if mot == None:
-					raise ValueError
-				motions.append(mot)
-			method(motions)
-			return 1
-		# didn't work so try next option
-		except ValueError:
-			pass
-		# maybe its a list of avatar names
-		try:
-			avatars = []
-			for name in valuelist:
-				av = Piavca.Core.getCore().getAvatar(name)
-				if av == None:
-					raise ValueError
-				avatars.append(av)
-			method(avatars)
-			return 1
-		# didn't work so try next option
-		except ValueError:
-			pass
-		# maybe its just a list of strings
-		try:
-			valuelist = [v.strip(" '\"") for v in valuelist]
-			print valuelist
-			method(valuelist)
-			return 1
-		# didn't work so try next option
-		except ValueError:
-			pass
-	
-	# OK, if we get here it seems to be just a single value
-	# could be a number
-	try:
-		method(float(value))
-		return 1
-	except ValueError:
-		pass
-		
-	# or a string
-	try:
-		method(value)
-		return 1
-	except ValueError:
-		pass
 	
 	# if we've got here, nothing works!
 	raise ValueError("Invalid value"+value+"for attribute"+"attrName")
 	return 0
-			
+		
+def addElement(mot, eleName, arglist):
+	eleName = str(eleName)
+	if not hasattr(mot, "add" + string.upper(eleName[0]) + eleName[1:]):
+		print "could not find attribute", attrName
+		return 0
+	method = getattr(mot, "add" + string.upper(eleName[0]) + eleName[1:])
+	
+	# create a dictionary for each possible combination of argument value types
+	args = [{}]
+	for name, value in arglist:
+		print "element attrs", name, value
+		possible_values = parseAttribute(value)
+		temp_args = []
+		for arg in args:
+			print arg
+			for value in possible_values:
+				new_arg = dict(arg)
+				new_arg[str(name)] = value
+				temp_args.append(new_arg)
+		args = temp_args
+	
+	print args
+	# call the method by keyword args, trying each dictionary in turn
+	for arg in args:
+		print arg
+		try:
+			method(**arg)
+			return 1
+		except ValueError:
+			pass
+		except TypeError:
+			pass
+	
+	# if we've got here, nothing works!
+	raise ValueError("Invalid value"+value+"for attribute"+"attrName")
+	return 0
+	
 	
 def readMotions(motions):
 	mots = []
+	element_list = []
 	for motion in motions:
 		if motion.nodeType == minidom.Node.ELEMENT_NODE:
 		
@@ -259,7 +306,7 @@ def readMotions(motions):
 							#print attrName, attrValue
 							if not setAttribute(mot, attrName, attrValue):
 								unknownAttrs.append((attrName, attrValue))
-						children = readMotions(motion.childNodes)
+						children, elements = readMotions(motion.childNodes)
 						added = 0
 						if len(children) == 1:
 							if hasattr(mot, "addMotion"):
@@ -300,20 +347,38 @@ def readMotions(motions):
 						if not added:
 							if hasattr(mot, "addMotion"):
 								method = getattr(mot, "addMotion")
+								print "XML Motion File add motion"
 								for i, child in enumerate(children):
-									method(child[0])
+									#method(child[0])
+									mot.addMotion(child[0])
 									for attrName, attrValue in child[2]:
 										attrName = "Motion" + string.upper(attrName[0]) + attrName[1:]
 										if not setAttribute(mot, attrName, attrValue, i):
 											print child[1], "unknown attribute", attrName
+											
+						for elementName, attrList in elements:
+							print "element", elementName, attrList
+							if not addElement(mot, elementName, attrList):
+								print "couldn't find motion type", elementName
 						
 						mot.create()
 						mots.append((mot, str(motion.nodeName), unknownAttrs))
 					else:
 						print motion.nodeName, "is not a motion", motion
+						# add to a "add list" instead, parse attributes into a dictionary
 				except AttributeError:
-					print "couldn't find motion type", motion
-	return mots
+					
+					elementName = motion.nodeName
+					attrList = []	
+					for i in range(motion.attributes.length):
+						
+						attrName = motion.attributes.item(i).name
+						attrValue = motion.attributes.item(i).nodeValue
+						attrList.append((attrName, attrValue))
+					element_list.append((elementName, attrList))
+					print "element list", element_list
+					
+	return mots, element_list
 
 def saveMotions(filename, motions, element = None, doc = None):
 	writeout = 0
@@ -405,7 +470,7 @@ def writeOutMotionTypes(filename):
 					param = k[3:]
 					if param == "Motion" or param == "Motion1" or param == "Motion2":
 						continue
-					print >> file, "    ", param
+					print >> file, "	", param
 			#print >> file, "\n"
 				
 def parse(filename):

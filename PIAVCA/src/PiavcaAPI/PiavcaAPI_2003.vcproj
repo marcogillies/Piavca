@@ -327,6 +327,9 @@
 				RelativePath=".\ChoiceMotion.h">
 			</File>
 			<File
+				RelativePath=".\CurrentValueMotion.h">
+			</File>
+			<File
 				RelativePath=".\DiadicGazeMotion.h">
 			</File>
 			<File
@@ -436,6 +439,9 @@
 			</File>
 			<File
 				RelativePath=".\RandomTimingsLoop.h">
+			</File>
+			<File
+				RelativePath=".\RandomTimingsMotion.h">
 			</File>
 			<File
 				RelativePath=".\Reposition.h">

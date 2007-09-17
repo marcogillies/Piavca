@@ -79,6 +79,10 @@ namespace Piavca
 
 		//! does any resetting needed 
 		void reset();
+		
+		virtual void event(tstring ev);
+
+		virtual void cleanRecursionState();
 	    
 		//! gets the length of the combined motion (by default the length of the longer of the two)
 		float getMotionLength() const;

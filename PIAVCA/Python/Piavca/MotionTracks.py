@@ -484,33 +484,33 @@ class MotionTracks(wx.VListBox):
 		print "creating graph"
 		self.motiongraph = Piavca.MotionGraph(motions)
 		
-		val = None
-		dialog = wxTextEntryDialog ( None, message="enter same motion threshold" )
-		dialog.SetValue("4")
+		val = 4.0#None
+		#dialog = wxTextEntryDialog ( None, message="enter same motion threshold" )
+		#dialog.SetValue("4")
 		# The user pressed the "OK" button in the dialog
-		if dialog.ShowModal() == wxID_OK:
-			print 'Position of selection:', dialog.GetValue()
-			val = float(dialog.GetValue())
-			print val
-		else:
-			path = None
-			print 'You did not select anything.'
-		dialog.Destroy()
+		#if dialog.ShowModal() == wxID_OK:
+		#	print 'Position of selection:', dialog.GetValue()
+		#	val = float(dialog.GetValue())
+		#	print val
+		#else:
+		#	path = None
+		#	print 'You did not select anything.'
+		#dialog.Destroy()
 		if val != None:
 			self.motiongraph.setThresholdSame(val)
 		
-		val = None
-		dialog = wxTextEntryDialog ( None, message="enter different motion threshold" )
-		dialog.SetValue("4")
+		val = 4.0#None
+		#dialog = wxTextEntryDialog ( None, message="enter different motion threshold" )
+		#dialog.SetValue("4")
 		# The user pressed the "OK" button in the dialog
-		if dialog.ShowModal() == wxID_OK:
-			print 'Position of selection:', dialog.GetValue()
-			val = float(dialog.GetValue())
-			print val
-		else:
-			path = None
-			print 'You did not select anything.'
-		dialog.Destroy()
+		#if dialog.ShowModal() == wxID_OK:
+		#	print 'Position of selection:', dialog.GetValue()
+		#	val = float(dialog.GetValue())
+		#	print val
+		#else:
+		#	path = None
+		#	print 'You did not select anything.'
+		#dialog.Destroy()
 		if val != None:
 			self.motiongraph.setThresholdDiff(val)
 		
@@ -525,15 +525,18 @@ class MotionTracks(wx.VListBox):
 		Piavca.Core.getCore().setCurrentTime(self.time)
 	
 	def SaveMotionGraph(self,e):
-		dialog = wxFileDialog ( None, style = wxSAVE )
-		# The user pressed the "OK" button in the dialog
-		if dialog.ShowModal() == wxID_OK:
-			print 'Position of selection:', dialog.GetPath()
-			path = dialog.GetPath()
-		else:
-			path = None
-			print 'You did not select anything.'
-		dialog.Destroy()
+		try:
+			dialog = wxFileDialog ( None, style = wxSAVE )
+			# The user pressed the "OK" button in the dialog
+			if dialog.ShowModal() == wxID_OK:
+				print 'Position of selection:', dialog.GetPath()
+				path = dialog.GetPath()
+			else:
+				path = None
+				print 'You did not select anything.'
+			dialog.Destroy()
+		except:
+			path = "motiongraph.pik"
 		
 		if path != None:
 			self.motiongraph.saveGraph(path)

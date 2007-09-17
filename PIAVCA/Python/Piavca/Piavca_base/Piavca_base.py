@@ -1216,6 +1216,10 @@ class Motion(_object):
         """
         return _Piavca_base.Motion_reset(*args)
 
+    def event(*args): return _Piavca_base.Motion_event(*args)
+    def cleanRecursionState(*args): return _Piavca_base.Motion_cleanRecursionState(*args)
+    def wasVisited(*args): return _Piavca_base.Motion_wasVisited(*args)
+    def sendEvent(*args): return _Piavca_base.Motion_sendEvent(*args)
     def Reference(*args):
         """
         void Piavca::Motion::Reference()
@@ -2949,6 +2953,8 @@ class MotionFilter(Motion):
         """
         return _Piavca_base.MotionFilter_reset(*args)
 
+    def event(*args): return _Piavca_base.MotionFilter_event(*args)
+    def cleanRecursionState(*args): return _Piavca_base.MotionFilter_cleanRecursionState(*args)
     def setMotion(*args):
         """
         void Piavca::MotionFilter::setMotion(Motion *mot)
@@ -3168,6 +3174,8 @@ class TwoMotionCombiner(Motion):
         """
         return _Piavca_base.TwoMotionCombiner_reset(*args)
 
+    def event(*args): return _Piavca_base.TwoMotionCombiner_event(*args)
+    def cleanRecursionState(*args): return _Piavca_base.TwoMotionCombiner_cleanRecursionState(*args)
     def getMotionLength(*args):
         """
         float TwoMotionCombiner::getMotionLength() const 
@@ -4402,6 +4410,54 @@ class RandomTimingsLoop(LoopMotion):
 RandomTimingsLoop_swigregister = _Piavca_base.RandomTimingsLoop_swigregister
 RandomTimingsLoop_swigregister(RandomTimingsLoop)
 
+class RandomTimingsMotion(ScaleMotionSpeed):
+    __swig_setmethods__ = {}
+    for _s in [ScaleMotionSpeed]: __swig_setmethods__.update(_s.__swig_setmethods__)
+    __setattr__ = lambda self, name, value: _swig_setattr(self, RandomTimingsMotion, name, value)
+    __swig_getmethods__ = {}
+    for _s in [ScaleMotionSpeed]: __swig_getmethods__.update(_s.__swig_getmethods__)
+    __getattr__ = lambda self, name: _swig_getattr(self, RandomTimingsMotion, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        if self.__class__ == RandomTimingsMotion:
+            args = (None,) + args
+        else:
+            args = (self,) + args
+        this = _Piavca_base.new_RandomTimingsMotion(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _Piavca_base.delete_RandomTimingsMotion
+    __del__ = lambda self : None;
+    def clone(*args):
+        """
+        virtual Motion* Piavca::ScaleMotionSpeed::clone()
+                 
+        creates a copy of the motion         
+                 
+                
+        """
+        return _Piavca_base.RandomTimingsMotion_clone(*args)
+
+    def setTimingParams(*args): return _Piavca_base.RandomTimingsMotion_setTimingParams(*args)
+    def setMinTimeScale(*args): return _Piavca_base.RandomTimingsMotion_setMinTimeScale(*args)
+    def setMaxTimeScale(*args): return _Piavca_base.RandomTimingsMotion_setMaxTimeScale(*args)
+    def reset(*args):
+        """
+        void Piavca::MotionFilter::reset()
+                 
+        does any resetting needed         
+                 
+                
+        """
+        return _Piavca_base.RandomTimingsMotion_reset(*args)
+
+    def __disown__(self):
+        self.this.disown()
+        _Piavca_base.disown_RandomTimingsMotion(self)
+        return weakref_proxy(self)
+RandomTimingsMotion_swigregister = _Piavca_base.RandomTimingsMotion_swigregister
+RandomTimingsMotion_swigregister(RandomTimingsMotion)
+
 class AvatarPostureBlend(Sequence):
     """
     A motion blend operator that blends a motion into the current position of an avatar.     
@@ -4875,6 +4931,10 @@ class MultiMotionCombiner(MotionFilter):
     __getattr__ = lambda self, name: _swig_getattr(self, MultiMotionCombiner, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
+        if self.__class__ == MultiMotionCombiner:
+            args = (None,) + args
+        else:
+            args = (self,) + args
         this = _Piavca_base.new_MultiMotionCombiner(*args)
         try: self.this.append(this)
         except: self.this = this
@@ -4955,6 +5015,12 @@ class MultiMotionCombiner(MotionFilter):
         return _Piavca_base.MultiMotionCombiner_loaded(*args)
 
     def getAvatar(*args): return _Piavca_base.MultiMotionCombiner_getAvatar(*args)
+    def event(*args): return _Piavca_base.MultiMotionCombiner_event(*args)
+    def cleanRecursionState(*args): return _Piavca_base.MultiMotionCombiner_cleanRecursionState(*args)
+    def __disown__(self):
+        self.this.disown()
+        _Piavca_base.disown_MultiMotionCombiner(self)
+        return weakref_proxy(self)
 MultiMotionCombiner_swigregister = _Piavca_base.MultiMotionCombiner_swigregister
 MultiMotionCombiner_swigregister(MultiMotionCombiner)
 
@@ -4967,6 +5033,10 @@ class ChoiceMotion(MultiMotionCombiner):
     __getattr__ = lambda self, name: _swig_getattr(self, ChoiceMotion, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
+        if self.__class__ == ChoiceMotion:
+            args = (None,) + args
+        else:
+            args = (self,) + args
         this = _Piavca_base.new_ChoiceMotion(*args)
         try: self.this.append(this)
         except: self.this = this
@@ -4993,6 +5063,10 @@ class ChoiceMotion(MultiMotionCombiner):
         """
         return _Piavca_base.ChoiceMotion_reset(*args)
 
+    def __disown__(self):
+        self.this.disown()
+        _Piavca_base.disown_ChoiceMotion(self)
+        return weakref_proxy(self)
 ChoiceMotion_swigregister = _Piavca_base.ChoiceMotion_swigregister
 ChoiceMotion_swigregister(ChoiceMotion)
 
@@ -6967,6 +7041,7 @@ class DiadicGazeMotion(RandomGazeMotion):
         """
         return _Piavca_base.DiadicGazeMotion_getOther(*args)
 
+    def setOtherPosition(*args): return _Piavca_base.DiadicGazeMotion_setOtherPosition(*args)
     def addGazeFollowTarget(*args):
         """
         void Piavca::DiadicGazeMotion::addGazeFollowTarget(tstring name)

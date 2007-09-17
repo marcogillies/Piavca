@@ -149,6 +149,21 @@ void TwoMotionCombiner::reset()
 	if(mot2)mot2->reset();
 };
 
+void TwoMotionCombiner::event(tstring ev)
+{
+	Motion::event(ev);
+	//std::cout << "event in motion " << getName() << std::endl;
+	if(mot1)mot1->event(ev);
+	if(mot2)mot2->event(ev);
+};
+
+void TwoMotionCombiner::cleanRecursionState()
+{
+	Motion::cleanRecursionState();
+	if(mot1)mot1->cleanRecursionState();
+	if(mot2)mot2->cleanRecursionState();
+};
+
 
 void TwoMotionCombiner::preFrame(float time)
 {

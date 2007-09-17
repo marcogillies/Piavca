@@ -112,6 +112,14 @@ class sayCallback(scriptCallback):
 		self.soundengine = soundengine
 	def __call__(self, avatar):
 		self.soundengine.say(self.text)
+        
+class eventCallback(scriptCallback):
+	def __init__(self, time, args):
+		scriptCallback.__init__(self, time, args)
+		self.event = args[0]
+	def __call__(self, avatar):
+		mot = avatar.getMotion()
+		mot.sendEvent(self.event)
 		
 class ScriptEngine(Piavca.TimeCallback):
 	def __init__(self, name, filename):
@@ -246,6 +254,8 @@ class ScriptEngine(Piavca.TimeCallback):
 				return None
 		if callbackname == "say":
 			return sayCallback(time, args, self.soundEngine)
+		if callbackname == "event":
+			return eventCallback(time, args)
 		if callbackname == "expression":
 			retVal = None
 			if self.faceMotion == None :

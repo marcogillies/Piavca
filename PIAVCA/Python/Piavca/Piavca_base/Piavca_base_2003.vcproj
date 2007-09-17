@@ -32,7 +32,7 @@
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="TRUE"
 				DebugInformationFormat="3"
-				DisableSpecificWarnings="4251 /wd4312 /wd4244 /wd4311 /wd4800"
+				DisableSpecificWarnings="4251 /wd4312 /wd4244 /wd4311 /wd4800 /wd4101"
 				UndefinePreprocessorDefinitions="_DEBUG"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
@@ -245,11 +245,13 @@
 		<File
 			RelativePath="Piavca.i">
 			<FileConfiguration
-				Name="Debug|Win32">
+				Name="Debug|Win32"
+				ExcludedFromBuild="TRUE">
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Running Swig"
-					CommandLine="swig -c++ -python -shadow -I&quot;$(SolutionDir)/src&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; &quot;$(InputPath)&quot;"
+					CommandLine="swig -c++ -python -shadow -I&quot;$(SolutionDir)/src&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; &quot;$(InputPath)&quot;
+"
 					Outputs=" $(ProjectDir)$(InputName)_wrap.cpp"/>
 			</FileConfiguration>
 			<FileConfiguration
@@ -258,7 +260,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="running swig"
-					CommandLine="swig -c++ -python -shadow -I&quot;$(SolutionDir)/src&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; &quot;$(InputPath)&quot;"
+					CommandLine="swig -c++ -python -shadow -I&quot;$(SolutionDir)/src&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; &quot;$(InputPath)&quot;
+"
 					Outputs=" $(ProjectDir)$(InputName)_wrap.cpp"/>
 			</FileConfiguration>
 			<FileConfiguration
@@ -267,7 +270,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Running Swig"
-					CommandLine="swig -c++ -python -shadow -I&quot;$(SolutionDir)/src&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; &quot;$(InputPath)&quot;"
+					CommandLine="swig -c++ -python -shadow -I&quot;$(SolutionDir)/src&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; &quot;$(InputPath)&quot;
+"
 					Outputs=" $(ProjectDir)$(InputName)_wrap.cpp"/>
 			</FileConfiguration>
 			<FileConfiguration
@@ -276,7 +280,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Running Swig"
-					CommandLine="swig -c++ -python -shadow -I&quot;$(SolutionDir)/src&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; &quot;$(InputPath)&quot;"
+					CommandLine="swig -c++ -python -shadow -I&quot;$(SolutionDir)/src&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; &quot;$(InputPath)&quot;
+"
 					Outputs=" $(ProjectDir)$(InputName)_wrap.cpp"/>
 			</FileConfiguration>
 		</File>
