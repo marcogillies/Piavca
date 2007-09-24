@@ -67,6 +67,7 @@ class EigenAnalysis :
 		# the cluster means for vector quantization
 		self.quants = None
 		self.precentageToKeep = 0.99
+		self.use_vels=0
 		
 	def clone(self):
 		newEA = EigenAnalysis()
@@ -86,6 +87,9 @@ class EigenAnalysis :
 	# this has to be calculated by the sub types
 	def get_matrix (self, data):
 		pass
+		
+	def setUseVels(self, u):
+		self.use_vels=u
 		
 	def setPercentageToKeep(self, percent):
 		self.precentageToKeep = percent
@@ -192,7 +196,10 @@ class EigenAnalysis :
 		# each is of mappedvals*3 data items (each mapped val corresponds to a
 		# joint rotation mapped to a 3 vector)
 		self.no_vals = len(mappedvals)
-		self.no_vals = 3*self.no_vals
+		if self.use_vels:
+			self.no_vals = 6*self.no_vals
+		else:
+			self.no_vals = 3*self.no_vals
 		
 		#print length, no_vals
 		#print "size of input ", len(mappedvals)
@@ -203,14 +210,18 @@ class EigenAnalysis :
 		# fill it with the data we have just created
 		# (the log-mapped joint rotations)
 		i = 0
-		for mappedval in mappedvals :
+		for mv in range(len(mappedvals[1:])) :
 			#print length, len(mappedval)
 			j = 0
-			for v in mappedval:
+			for v, v0 in zip(mappedvals[mv], mappedvals[mv-1]):
 				#print j, i
 				data[j][3*i] = v[0]
 				data[j][3*i+1] = v[1]
 				data[j][3*i+2] = v[2]
+				if self.use_vels:
+					data[j][3*i+3] = v[0]-v0[0]
+					data[j][3*i+4] = v[1]-v0[1]
+					data[j][3*i+5] = v[2]-v0[2]
 				j+=1
 			i+=1
 		
@@ -421,6 +432,7 @@ class EigenAnalysis :
 		return weights
 	
 	def projectMotion (self, motion, frames_per_second = 20.0):
+		print "project motion"
 		projections = []
 		for t in range(int(motion.getMotionLength()*frames_per_second)):
 			time = float(t)/frames_per_second
@@ -442,14 +454,27 @@ class EigenAnalysis :
 				mappedvals.append(self.expmaps[i].logMap(q))
 				i += 1
 				
-		vals = scipy.zeros((len(mappedvals)*3,),'d')
+		if self.use_vels:
+			increment=6
+		else:
+			increment=3
+		vals = scipy.zeros((len(mappedvals)*increment,),'d')
 		j = 0
 		for vecs in mappedvals:
 			vals[j]   = vecs[0]
 			vals[j+1] = vecs[1]
 			vals[j+2] = vecs[2]
-			j += 3
+			j += increment
+		
+		if self.use_vels:
+			j = 3
+			for vecs0, vecs1 in zip(mappedvals[:-1], mappedvals[1:]):
+				vals[j]   = vecs1[0] - vecs0[0]
+				vals[j+1] = vecs1[1] - vecs0[1]
+				vals[j+2] = vecs1[2] - vecs0[2]
+				j += increment
 		#print vals
+		#return vals
 		return self.projectBack(vals)
 		
 	def getTrackValue(self, trackid, time):
