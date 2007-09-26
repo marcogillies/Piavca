@@ -175,13 +175,16 @@ class Node:
 		self.children = []
 		self.nextNode = None
 		self.transitions = {}
+		self.transitionCosts = {}
 	def copy(self):
 		newNode = Node(self.frame, self.time, self.motion)
 		newNode.children = list(self.children)
-		newMode.nextNode = self.nextNode
-	def addChild(self, child):
+		newNode.nextNode = self.nextNode
+		return newNode
+	def addChild(self, child, cost):
 		if not (child in self.children):
 			self.children.append(child)
+			self.transitionCosts[child] = cost
 	def addTransition(self, child, mot):
 		self.transitions[child] = mot
 	def getTransition(self, child):
@@ -231,10 +234,13 @@ class MotionGraph (Piavca.LoopMotion):
 			for key in self.nodes.keys():
 				newMot.nodes[key] = self.nodes[key].copy()
 			newMot._createTransitionMots()
-			newMot.nextnode = newMot.nodes[(self.nextnode.motion, self.nextnode.time)]
+			print self.nextnode
+			print self.nodes[(self.nextnode.motion, self.nextnode.frame)]
+			newMot.nextnode = newMot.nodes[(self.nextnode.motion, self.nextnode.frame)]
 			newMot.reblend(Piavca.Core.getCore().getTime())
 		except AttributeError:
 			pass
+		print "finished MotionGraph.clone"
 		
 	def addMotion(self, mot):
 		self.motions.append(mot)
@@ -286,6 +292,8 @@ class MotionGraph (Piavca.LoopMotion):
 		return self.minClipLength
 		
 	def setFilename(self, filename):
+		if type(filename) != type(""):
+			raise TypeError, "filename has to be a string"
 		self.filename = filename
 		
 	def getFilename(self):
@@ -439,7 +447,7 @@ class MotionGraph (Piavca.LoopMotion):
 			if not self.nodes.has_key((transition[3], transition[2])):
 				self.nodes[(transition[3], transition[2])] = Node(transition[2], float(transition[2])/self.fps, transition[3])
 			# add the edge
-			self.nodes[(transition[1], transition[0])].addChild((transition[3], transition[2]))
+			self.nodes[(transition[1], transition[0])].addChild((transition[3], transition[2]), transition[4])
 
 		# add a continuation  edge between each node and the next node along the motion
 		#print self.nodes.keys()
@@ -467,7 +475,7 @@ class MotionGraph (Piavca.LoopMotion):
 		for n in keys:
 			self.nodes[n].nextNode = self.nodes[n].tempNext
 			if self.nodes[n].nextNode != None:
-				self.nodes[n].addChild(self.nodes[n].nextNode)
+				self.nodes[n].addChild(self.nodes[n].nextNode, 0.0)
 			del self.nodes[n].tempNext
 				
 		print "new next nodes", [(n, self.nodes[n].nextNode) for n in keys]
@@ -494,7 +502,7 @@ class MotionGraph (Piavca.LoopMotion):
 			ccnodes[n].nextNode = None
 			# only use children that are in the largest component
 			for child in maxcc[n]:
-				ccnodes[n].addChild(child)
+				ccnodes[n].addChild(child, self.nodes[n].transitionCosts[child])
 				if child == self.nodes[n].nextNode :
 					ccnodes[n].nextNode = child
 			#print ccnodes[n].children
@@ -519,7 +527,7 @@ class MotionGraph (Piavca.LoopMotion):
 					self.nodes[n1].tempNext = self.nodes[self.nodes[n1].tempNext].nextNode
 				self.nodes[n1].nextNode = self.nodes[n1].tempNext
 				if self.nodes[n1].nextNode != None:
-					self.nodes[n1].addChild(self.nodes[n1].nextNode)
+					self.nodes[n1].addChild(self.nodes[n1].nextNode, 0)
 				del self.nodes[n1].tempNext
 		
 		# initialise the transitions motions
@@ -579,6 +587,10 @@ class MotionGraph (Piavca.LoopMotion):
 					endtime = self.nodes[child].time
 					#print "start time end time", starttime, endtime
 					#print "motion number ", self.nodes[n].motion, len(self.motions)
+					print n
+					print self.nodes[n]
+					print self.nodes[n].motion
+					print self.motions[self.nodes[n].motion]
 					edgeMot = Piavca.SubMotion(self.motions[self.nodes[n].motion].clone(), starttime, endtime)
 				# if it is a transition edge, we need to create a transition
 				else:   

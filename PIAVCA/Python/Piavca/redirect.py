@@ -39,6 +39,8 @@ class outputRedirection:
 		if not wxpresent:
 			self.write("WX Python was not found so graphical output is not available")
 	def write(self, s):
+		if wxpresent:
+			self.txt.AppendText(s)
 		if self.filename != None:
 			try:
 				outputfile = open(self.filename, "a")
@@ -50,8 +52,6 @@ class outputRedirection:
 			self.outputFunc(s)
 		#if self.outputfile:
 			#self.outputfile.write(s)
-		if wxpresent:
-			self.txt.AppendText(s)
 	def writeline(self, s):
 		self.write(s)
 		self.write("\n")
@@ -64,7 +64,7 @@ def redirect(filename="python_output.txt"):
 
 	import Piavca
 		
-	outputer.setOutputFunc(Piavca.PiavcaGlut.outputMessage)
+	#outputer.setOutputFunc(Piavca.PiavcaGlut.outputMessage)
 
 	outputer.write("output redirection\n")
 

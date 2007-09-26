@@ -432,8 +432,8 @@ void Avatar::showMotionAtTime	(float time, Motion *motion, bool detectChanges)
 			int type = motion->getTrackType(joint);
 			if (type & QUAT_TYPE)
 				setJointOrientation(joint, motion->getQuatValueAtTime(joint, time));
-			if (type & VEC_TYPE)
-				setJointPosition(joint, motion->getVecValueAtTime(joint, time));
+			//if (type & VEC_TYPE)
+			//	setJointPosition(joint, motion->getVecValueAtTime(joint, time));
 			//std::cout << mot->getQuatValueAtTime(joint, time) << std::endl;
 		}
 		//else

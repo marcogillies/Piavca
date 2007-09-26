@@ -66,13 +66,14 @@ class PositionHandler:
 		
 	def setPosition(self, p):
 		#print "setting position ", p
-		oldPos = self.cvm.getVecValueAtTime(self.jointId, 0)
+		oldPos = Piavca.Vec()#self.cvm.getVecValueAtTime(self.jointId, 0)
 		diff = p - oldPos
-		if abs(diff.mag()) > 0.2:
+		if abs(diff.mag()) > 0.01:
 			if not self.alreadyShifted:
 				self.alreadyShifted = True
 				for m in self.shiftMotions:
-					m.shift()
+					print m
+					m.reset()
 		else:
 			self.alreadyShifted = False
 		self.cvm.setVecValue(self.jointId, p)

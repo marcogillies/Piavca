@@ -405,7 +405,8 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %feature("director") Reposition;       
 %feature("director") LoopMotion;           
 %feature("director") ScaleMotion;           
-%feature("director") ScaleMotionSpeed;           
+%feature("director") ScaleMotionSpeed;      
+%feature("director") ChangeMotionLength;           
 %feature("director") ScaleMotionRoot;            
 %feature("director") TimeOffset;            
 %feature("director") TurnMotion;            
@@ -452,6 +453,7 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %include "PiavcaAPI/MaskedMotion.h"
 %include "PiavcaAPI/ScaleMotion.h"
 %include "PiavcaAPI/ScaleMotionSpeed.h"
+%include "PiavcaAPI/ChangeMotionLength.h"
 %include "PiavcaAPI/ScaleMotionRoot.h"
 %include "PiavcaAPI/TimeOffset.h"
 %include "PiavcaAPI/TurnMotion.h"

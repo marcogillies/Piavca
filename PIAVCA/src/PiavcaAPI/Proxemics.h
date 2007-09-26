@@ -50,8 +50,9 @@ namespace Piavca
  */
 class Proxemics : public MultiMotionCombiner
 {
-	enum {Step_forward, Step_backward, Rest, Turn_left, Turn_right};
+	//enum {Step_forward, Step_backward, Rest, Turn_left, Turn_right};
 protected:
+	int Step_forward, Step_backward, Rest, Turn_left, Turn_right;
 	vector<Avatar *> otherAvatars;
 	float desiredDistance, threshold, anglethreshold;
 	Vec otherPosition;
@@ -71,26 +72,47 @@ public:
 		:MultiMotionCombiner(vector<Motion *>()), 
 		desiredDistance(distance), threshold(0.2f), anglethreshold(Piavca::Pi/8.0f), distanceOff(false)
 	{
+		int currentMot = 0;
 		if(!stepForward)
 			stepForward = Piavca::Core::getCore()->getMotion(_T("stepForward"));
-		if(!stepForward) Piavca::Warning(_T("Proxemics: No step forward motion"));
-		addMotion(stepForward);
+		if(stepForward) //Piavca::Warning(_T("Proxemics: No step forward motion"));
+		{
+			addMotion(stepForward);
+			Step_forward = currentMot;
+			currentMot++;
+		}
 		if(!stepBackward)
 			stepBackward = Piavca::Core::getCore()->getMotion(_T("stepBackward"));
-		if(!stepBackward) Piavca::Warning(_T("Proxemics: No step backward motion"));
-		addMotion(stepBackward);
+		if(stepBackward) //Piavca::Warning(_T("Proxemics: No step backward motion"));
+		{
+			addMotion(stepBackward);
+			Step_backward = currentMot;
+			currentMot++;
+		} 
 		if(!rest)
 			rest = Piavca::Core::getCore()->getMotion(_T("rest"));
-		if(!rest) Piavca::Warning(_T("Proxemics: No rest motion"));
-		addMotion(rest);
+		if(rest) //Piavca::Warning(_T("Proxemics: No rest motion"));
+		{
+			addMotion(rest);
+			Rest = currentMot;
+			currentMot++;
+		} 
 		if(!turnLeft)
 			turnLeft = Piavca::Core::getCore()->getMotion(_T("turnLeft"));
-		if(!turnLeft) Piavca::Warning(_T("Proxemics: No turn left motion"));
-		addMotion(turnLeft);
+		if(turnLeft) //Piavca::Warning(_T("Proxemics: No turn left motion"));
+		{
+			addMotion(turnLeft);
+			Turn_left = currentMot;
+			currentMot++;
+		} 
 		if(!turnRight)
 			turnRight = Piavca::Core::getCore()->getMotion(_T("turnRight"));
-		if(!turnRight) Piavca::Warning(_T("Proxemics: No turn right motion"));
-		addMotion(turnRight);
+		if(turnRight) //Piavca::Warning(_T("Proxemics: No turn right motion"));
+		{
+			addMotion(turnRight);
+			Turn_right = currentMot;
+			currentMot++;
+		} 
 		
 		if(mots.size() > 0 && mots[Rest])setMotion(mots[Rest]);
 	};
@@ -112,19 +134,21 @@ public:
 	void turnOff(bool b){distanceOff = b;};
 
 	//! assign a function to a particular motion
+	
 	void setMotionFunction(int index, tstring function)
 	{
 		if(function ==_T("forward"))
-			stepForward = getMotionByIndex(index);
+			Step_forward = index;
 		if(function ==_T("backward"))
-			stepBackward = getMotionByIndex(index);
+			Step_backward = index;
 		if(function ==_T("left"))
-			turnLeft = getMotionByIndex(index);
+			Turn_left = index;
 		if(function ==_T("right"))
-			turnRight = getMotionByIndex(index);
+			Turn_right = index;
 		if(function ==_T("rest"))
-			rest = getMotionByIndex(index);
+			Rest = index;
 	}
+	
 
 	//! sets the position of the other person (if its not accessed as an avatar pointer)
 	void setOtherPosition(const Vec &v)

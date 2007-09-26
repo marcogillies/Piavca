@@ -620,6 +620,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\RandomTimingsMotion.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Reposition.h"
 				>
 			</File>

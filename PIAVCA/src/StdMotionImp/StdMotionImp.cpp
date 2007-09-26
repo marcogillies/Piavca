@@ -208,7 +208,7 @@ StandardMotionImp::StandardMotionImp(const StandardMotionImp &mot)
 	tracks.assign(mot.tracks.size(), vector<BaseMotionTrack *>());
 	for (std::vector< BaseMotionTrack * >::size_type  i = 0; i < mot.tracks.size(); i++)
 	{
-		for(int j = 0; j < (int)mot.tracks.size(); j++)
+		for(int j = 0; j < (int)mot.tracks[i].size(); j++)
 			tracks[i].push_back(mot.tracks[i][j]->clone());
 		//if(mot.tracks[i])
 		//	tracks.push_back(mot.tracks[i]->clone());
@@ -219,7 +219,7 @@ StandardMotionImp::StandardMotionImp(const StandardMotionImp &mot)
 	facial_tracks.assign(mot.facial_tracks.size(), vector<BaseMotionTrack *>());
 	for (std::vector< BaseMotionTrack * >::size_type  i = 0; i < mot.facial_tracks.size(); i++)
 	{
-		for(int j = 0; j < (int)mot.facial_tracks.size(); j++)
+		for(int j = 0; j < (int)mot.facial_tracks[i].size(); j++)
 			facial_tracks[i].push_back(mot.facial_tracks[i][j]->clone());
 		//if(mot.facial_tracks[i])
 		//	facial_tracks.push_back(mot.facial_tracks[i]->clone());

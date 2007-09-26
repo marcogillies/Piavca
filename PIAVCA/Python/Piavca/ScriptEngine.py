@@ -292,6 +292,8 @@ class ScriptEngine(Piavca.TimeCallback):
 			if self.currentscript[avatar] :
 				for item in self.currentscript[avatar]:
 					if (not item.done) and item.getTime() < (time - self.starttimes[avatar]):
+						print avatar
+						print Piavca.Core.getCore().getAvatar(avatar)
 						item(Piavca.Core.getCore().getAvatar(avatar))
 						item.done = 1
 			
