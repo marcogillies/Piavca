@@ -60,7 +60,7 @@ SubMotion::SubMotion(Motion *m, float _start, float _end)
 {
 	if(filterMot)
 	{
-		std::cout << "Submotion constructor: start " << start << " end " << end << std::endl;
+		//std::cout << "Submotion constructor: start " << start << " end " << end << std::endl;
 		if (filterMot->getMotionLength() < start)
 		{
 			std::cout << "length is wrong\n";

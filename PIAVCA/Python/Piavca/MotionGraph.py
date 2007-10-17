@@ -90,7 +90,7 @@ class DistanceMeasure:
 			#	self.jointWeights = [(i, 1.0) for i in range(Piavca.Core.getCore().getMaxExpressionId())]
 		else:
 			self.jointWeights = jointWeights
-		print "joint weights", self.jointWeights
+		#print "joint weights", self.jointWeights
 		self.expmap = ExpMap.TangentSpace([Piavca.Quat()])
 		self.time = 0
 		self.logtime = 0
@@ -108,7 +108,7 @@ class DistanceMeasure:
 				weight = float(joint[1])
 				joint = joint[0]
 				jointid = Piavca.Core.getCore().getJointId(joint)
-				print joint, jointid, weight
+				#print joint, jointid, weight
 				self.jointWeights.append((jointid, float(1.0)))
 		file.close()
 		
@@ -587,10 +587,10 @@ class MotionGraph (Piavca.LoopMotion):
 					endtime = self.nodes[child].time
 					#print "start time end time", starttime, endtime
 					#print "motion number ", self.nodes[n].motion, len(self.motions)
-					print n
-					print self.nodes[n]
-					print self.nodes[n].motion
-					print self.motions[self.nodes[n].motion]
+					#print n
+					#print self.nodes[n]
+					#print self.nodes[n].motion
+					#print self.motions[self.nodes[n].motion]
 					edgeMot = Piavca.SubMotion(self.motions[self.nodes[n].motion].clone(), starttime, endtime)
 				# if it is a transition edge, we need to create a transition
 				else:   
