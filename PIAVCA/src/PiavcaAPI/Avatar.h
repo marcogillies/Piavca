@@ -132,7 +132,7 @@ protected:
 	//! the name of the character
 	tstring name;
 	//! initialise a Avatar in a platform dependent way using the core
-	void initAvatar(tstring avatarId, bool bailOnMissedJoints, const Vec &Position, const Quat &Orientation);
+	void initAvatar(tstring avatarId, tstring strFilename, bool bailOnMissedJoints, const Vec &Position, const Quat &Orientation);
 
 	/*! This is a function that does platform specific per-frame stuff
 	 *  Called by timeStep
@@ -172,11 +172,16 @@ public:
 	 *  in an invalid avatar (this can be tested with the isValid method).
 	 */
 	Avatar(tstring avatarId, 
-		   bool bailOnMissedJoints = false, 
-		   const Vec &Position = Vec(0.0, 0.0, 0.0), 
-		   const Quat &Orientation = Quat(1.0, 0.0, 0.0, 0.0),
-		   const Vec &forwardDir = Vec(0.0, 0.0, 1.0));
-
+		tstring strFilename,
+		bool bailOnMissedJoints = false, 
+		const Vec &Position = Vec(0.0, 0.0, 0.0), 
+		const Quat &Orientation = Quat(1.0, 0.0, 0.0, 0.0),
+		const Vec &forwardDir = Vec(0.0, 0.0, 1.0));
+	Avatar(tstring avatarId, 
+			bool bailOnMissedJoints = false, 
+			const Vec &Position = Vec(0.0, 0.0, 0.0), 
+			const Quat &Orientation = Quat(1.0, 0.0, 0.0, 0.0),
+			const Vec &forwardDir = Vec(0.0, 0.0, 1.0));
 
 	bool isValid(){return imp != NULL;};
 

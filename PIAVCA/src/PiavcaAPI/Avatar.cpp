@@ -45,10 +45,12 @@
 #include "PiavcaError.h"
 #include "PiavcaCore.h"
 #include "Avatar.h"
+#include "AvatarMotionQueue.h"
 
 using namespace Piavca;
 	
 Avatar::Avatar(tstring avatarId, 
+		   tstring strFilename,
 		   bool bailOnMissedJoints,
 		   const Vec &Position,
 		   const Quat &Orientation,
@@ -62,9 +64,24 @@ Avatar::Avatar(tstring avatarId,
 	dotpos = name.find_first_of(".", dotpos);
 	if(dotpos != name.npos)
 		name = name.substr(0, dotpos);
-	initAvatar(avatarId, bailOnMissedJoints, Position, Orientation);
+	initAvatar(avatarId, strFilename, bailOnMissedJoints, Position, Orientation);
 };
-
+Avatar::Avatar(tstring avatarId, 
+			   bool bailOnMissedJoints,
+			   const Vec &Position,
+			   const Quat &Orientation,
+			   const Vec &forwardDir)
+			   : name(avatarId), active(true), changed(false), rootChanged (false), 
+			   beingEdited(false), forwardDirection(forwardDir), //amq(NULL), 
+			   mot(NULL), scaleMot(NULL), facialMot(NULL)
+			   //motionOwned(true), facialMotionOwned(true), scaleMotionOwned(true)
+{
+	std::string::size_type dotpos = 0;
+	dotpos = name.find_first_of(".", dotpos);
+	if(dotpos != name.npos)
+		name = name.substr(0, dotpos);
+	initAvatar(avatarId, avatarId, bailOnMissedJoints, Position, Orientation);
+};
 
 Avatar::~Avatar() 
 {
@@ -577,11 +594,12 @@ void Avatar::playFacialMotion(Motion *m)
 // create a UCLAvatarImp from the factory
 void Avatar::initAvatar(	
 			tstring avatarId, 
+			tstring strFilename,
 			bool bailOnMissedJoints,
 			const Vec &Position, 
 			const Quat &Orientation)
 {
-	Core::getCore()->initAvatar(this, avatarId, bailOnMissedJoints, Position, Orientation);
+	Core::getCore()->initAvatar(this, strFilename, bailOnMissedJoints, Position, Orientation);
 	if(imp)
 	  {
 	    imp->frontEnd = this;
