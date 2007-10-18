@@ -43,7 +43,7 @@ namespace Piavca
 {
 
 //! a set of masks specifying which joints should be played in a masked motion
-class MotionMask
+class PIAVCA_DECL MotionMask
 {
 	std::vector<bool> m_body;
 	std::vector<bool> m_facial;
@@ -63,7 +63,7 @@ public:
 /*!
  *	It uses a mask to tell which motion to play on which joint.
  */
-class MaskedMotion : public MotionFilter
+class PIAVCA_DECL MaskedMotion : public MotionFilter
 {
 	MotionMask mask;
 public:
