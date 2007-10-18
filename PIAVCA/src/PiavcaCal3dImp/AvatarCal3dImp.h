@@ -135,6 +135,7 @@ public:
 	 *  Called by timeStep
 	 */
 	virtual void	platformSpecific_timeStep (float time);
+	Bound bb;
 public:
 
 	//! destructor

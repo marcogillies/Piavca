@@ -72,6 +72,8 @@ AvatarCal3DImp *AvatarCal3DImp::getAvatarImp(Avatar *avatar)
 	}
 };
 
+std::string strPath;
+
 AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler, bool bailOnMissedJoints, const Vec &Position, const Quat &Orientation)
   : cal_model(NULL), previous_time(0), renderBuffer(0), 
     updateBuffer(0), textureHandler(_textureHandler) 
@@ -98,8 +100,7 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 	CalCoreModel *cal_core_model = new CalCoreModel("dummy");
 
 	// initialize the data path
-	std::string strPath = "./";
-
+	strPath = strFilename.substr(0, strFilename.find_last_of("\\/") + 1);
 
 	int lastMeshId = -1;
 	// parse all lines from the model configuration file
@@ -186,7 +187,7 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 						jointNames.push_back(_T("Root Orientation"));
 					}
 					jointNames.push_back(StringToTString(bones[i]->getName()));
-					std::cout << "Adding Joint "<< bones[i]->getName() << std::endl;
+					std::cout << "Adding Joint "<< i << ": " << bones[i]->getName() << std::endl;
 					Piavca::Core::getCore()->addJointNameSet(jointNames);
 				}	
 			}
@@ -195,9 +196,10 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 		else if(strKey == "mesh")
 		{
 			// load core mesh
-			std::cout << "Loading mesh '" << strData << "'..." << std::endl;
-			lastMeshId = cal_core_model->loadCoreMesh(strPath + strData);
-			std::cout << "Finished Loading mesh '" << strData << "'..." << std::endl;
+			std::string strFilename = strPath + strData;
+			std::cout << "Loading mesh '" << strFilename << "'..." << std::endl;
+			lastMeshId = cal_core_model->loadCoreMesh(strFilename);
+			std::cout << "Finished Loading mesh '" << strFilename << "'..." << std::endl;
 			if(lastMeshId == -1)
 			{
 				CalError::printLastError();
@@ -213,8 +215,9 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 		else if(strKey == "material")
 		{
 			// load core material
-			std::cout << "Loading material '" << strData << "'..." << std::endl;
-			if(cal_core_model->loadCoreMaterial(strPath + strData) == -1)
+			std::string strFilename = strPath + strData;
+			std::cout << "Loading material '" << strFilename << "'..." << std::endl;
+			if(cal_core_model->loadCoreMaterial(strFilename) == -1)
 			{
 				CalError::printLastError();
 				Piavca::Error(_T("Error loading material"));
@@ -222,8 +225,9 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 		}
 		else if(strKey == "morphtarget")
 		{
-			std::cout << "Loading mesh as morph target '" << strData << "'..." << std::endl;
-			CalCoreMeshPtr pCoreMesh = CalLoader::loadCoreMesh(strPath + strData);
+			std::string strFilename = strPath + strData;
+			std::cout << "Loading mesh as morph target '" << strFilename << "'..." << std::endl;
+			CalCoreMeshPtr pCoreMesh = CalLoader::loadCoreMesh(strFilename);
 			if(pCoreMesh == 0 || lastMeshId < 0) 
 			{
 				CalError::printLastError();
@@ -262,13 +266,14 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 		}
 		else if(strKey == "animation")
 		{
-			std::cout << "Loading animation '" << strData << "'..." << std::endl;
+			std::string strFilename = strPath + strData;
+			std::cout << "Loading animation '" << strFilename << "'..." << std::endl;
 			// extract the animation name
  			std::string::size_type pos = 0;
 			pos = strData.find_first_of(".", pos);
 			std::string strName = strData.substr(0, pos);
 			// load an animation
-			MotionImp *imp = new MotionCal3DImp(strData, cal_core_model->getCoreSkeleton());
+			MotionImp *imp = new MotionCal3DImp(strFilename, cal_core_model->getCoreSkeleton());
 			Motion *tmot = new KeyframeMotion(imp);
 			Piavca::Core::getCore()->loadMotion(StringToTString(strName), tmot); 
 		}
@@ -328,7 +333,7 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 		int cal3Did = skel->getCoreSkeleton()->getCoreBoneId(TStringToString(jointAssociations[i].first));
 		if(cal3Did > 0)
 		{
-			std::cout << "found joint " << jointAssociations[i].first << std::endl;
+			std::cout << "found joint " << "[" << cal3Did << "] " << jointAssociations[i].first << std::endl;
 			joints[jointAssociations[i].second].cal3dId = cal3Did;
 			joints[jointAssociations[i].second].name = jointAssociations[i].first;
 		}
@@ -496,7 +501,7 @@ void AvatarCal3DImp::showBodyPart(tstring partname)
 void AvatarCal3DImp::loadTextures()
 {
 	// initialize the data path
-	std::string strPath = "./";
+	//std::string strPath = "./";
 	// load all textures and store the opengl texture id in the corresponding map in the material
 	// NB this bit is GL specific!!!
 	CalCoreModel *cal_core_model = cal_model->getCoreModel();
@@ -1028,6 +1033,13 @@ void   AvatarCal3DImp::scaleJoint (int jointId, Vec scale)
 	Piavca::Warning(_T("Scaling unimplemented under Cal3D"));
 };
 
+#ifndef min
+#	define min(a,b) (((a) < (b)) ? (a) : (b))
+#endif
+#ifndef max
+#	define max(a,b) (((a) > (b)) ? (a) : (b))
+#endif
+
 void	AvatarCal3DImp::platformSpecific_timeStep (float time)
 {
 	// calculate the amount of elapsed seconds
@@ -1045,8 +1057,16 @@ void	AvatarCal3DImp::platformSpecific_timeStep (float time)
 	
 	CalRenderer* renderer = new CalRenderer(cal_model->getRenderer());
 
+	// resets bounding box
+	bb.min[0] = FLT_MAX/2;
+	bb.min[1] = FLT_MAX/2;
+	bb.min[2] = FLT_MAX/2;
+	bb.max[0] = -FLT_MAX/2;
+	bb.max[1] = -FLT_MAX/2;
+	bb.max[2] = -FLT_MAX/2;
+
 	//Get the mesh data for all meshes and submeshes
-	 int meshCount = renderer->getMeshCount() ;
+	int meshCount = renderer->getMeshCount() ;
 
 	// get all meshes of the model
 	int meshId;
@@ -1065,7 +1085,8 @@ void	AvatarCal3DImp::platformSpecific_timeStep (float time)
          {
 
             // get the transformed vertices of the submesh
-            renderer->getVertices( mVertices[renderBuffer][meshId][submeshId] );
+			float *vertexArray = mVertices[renderBuffer][meshId][submeshId];
+            int vertexCount = renderer->getVertices(vertexArray);
 
             // get the transformed normals of the submesh
             renderer->getNormals( mNormals[renderBuffer][meshId][submeshId] ) ;
@@ -1075,7 +1096,20 @@ void	AvatarCal3DImp::platformSpecific_timeStep (float time)
 
             // get the faces of the submesh
             //mFaceCounts[renderBuffer][meshId][submeshId] = renderer->getFaces( mFaces[renderBuffer][meshId][submeshId] ) ;
-         }
+ 
+			// bounding box
+			for (int vertexID=0;vertexID<vertexCount;vertexID++)
+			{
+				bb.max[0] = max(bb.max[0], vertexArray[vertexID*3+0]);
+				bb.max[1] = max(bb.max[1], vertexArray[vertexID*3+1]);
+				bb.max[2] = max(bb.max[2], vertexArray[vertexID*3+2]);
+				
+				bb.min[0] = min(bb.min[0], vertexArray[vertexID*3+0]);
+				bb.min[1] = min(bb.min[1], vertexArray[vertexID*3+1]);
+				bb.min[2] = min(bb.min[2], vertexArray[vertexID*3+2]);
+			}
+		 
+		 }
          else
          {
 			 Piavca::Error(_T("AvatarCal3DImp: Attempting to update for an invalid submesh (this is bad)"));
@@ -1148,6 +1182,7 @@ void	AvatarCal3DImp::render ()
 				continue;
           materialColor[0] = meshColor[0] / 255.0f;  materialColor[1] = meshColor[1] / 255.0f; materialColor[2] = meshColor[2] / 255.0f; materialColor[3] = meshColor[3] / 255.0f;
           glMaterialfv(GL_FRONT, GL_DIFFUSE, materialColor);
+		  glColor3fv(materialColor);
 
           // set the material specular color
           pCalRenderer->getSpecularColor(&meshColor[0]);
@@ -1241,46 +1276,50 @@ void	AvatarCal3DImp::render ()
 Bound Piavca::AvatarCal3DImp::getBoundBox(void)
 {
 	// get the number of meshes
-	Bound b;
-	CalRenderer *pCalRenderer = cal_model->getRenderer();
-	int meshCount = pCalRenderer->getMeshCount();
-	b.min[0] = FLT_MAX/2;
-	b.min[1] = FLT_MAX/2;
-	b.min[2] = FLT_MAX/2;
-	b.max[0] = -FLT_MAX/2;
-	b.max[1] = -FLT_MAX/2;
-	b.max[2] = -FLT_MAX/2;
+	//Bound b;
+	//CalRenderer *pCalRenderer = cal_model->getRenderer();
+	//int meshCount = pCalRenderer->getMeshCount();
+	//b.min[0] = FLT_MAX/2;
+	//b.min[1] = FLT_MAX/2;
+	//b.min[2] = FLT_MAX/2;
+	//b.max[0] = -FLT_MAX/2;
+	//b.max[1] = -FLT_MAX/2;
+	//b.max[2] = -FLT_MAX/2;
 
-	// render all meshes of the model
-	for(int meshId = 0; meshId < meshCount; meshId++)
-	{
-		// check if the mesh is supposed to be hidden
-		if (meshes[meshId].second)
-			continue;
+	//// render all meshes of the model
+	//for(int meshId = 0; meshId < meshCount; meshId++)
+	//{
+	//	// check if the mesh is supposed to be hidden
+	//	if (meshes[meshId].second)
+	//		continue;
 
-		// get the number of submeshes
-		int submeshCount = pCalRenderer->getSubmeshCount(meshId);
+	//	// get the number of submeshes
+	//	int submeshCount = pCalRenderer->getSubmeshCount(meshId);
 
-		// render all submeshes of the mesh
-		for(int submeshId = 0; submeshId < submeshCount; submeshId++)
-		{
-			// select mesh and submesh for further data access
-			if(pCalRenderer->selectMeshSubmesh(meshId, submeshId))
-			{
-				static float meshVertices[30000][3];
-				int vertexCount = pCalRenderer->getVertices(&meshVertices[0][0]);
-				for (int vertexID=0;vertexID<vertexCount;vertexID++)
-				{
-					if (meshVertices[vertexID][0] > b.max[0]) b.max[0] = meshVertices[vertexID][0];
-					if (meshVertices[vertexID][1] > b.max[1]) b.max[1] = meshVertices[vertexID][1];
-					if (meshVertices[vertexID][2] > b.max[2]) b.max[2] = meshVertices[vertexID][2];
-					if (meshVertices[vertexID][0] < b.min[0]) b.min[0] = meshVertices[vertexID][0];
-					if (meshVertices[vertexID][1] < b.min[1]) b.min[1] = meshVertices[vertexID][1];
-					if (meshVertices[vertexID][2] < b.min[2]) b.min[2] = meshVertices[vertexID][2];
-				}
-			}
-		}
-	}
+	//	// render all submeshes of the mesh
+	//	long t1 = timeGetTime();
+	//	for(int submeshId = 0; submeshId < submeshCount; submeshId++)
+	//	{
+	//		// select mesh and submesh for further data access
+	//		if(pCalRenderer->selectMeshSubmesh(meshId, submeshId))
+	//		{
+	//			static float meshVertices[30000][3];
+	//			int vertexCount = pCalRenderer->getVertices(&meshVertices[0][0]);
+
+	//			for (int vertexID=0;vertexID<vertexCount;vertexID++)
+	//			{
+	//				if (meshVertices[vertexID][0] > b.max[0]) b.max[0] = meshVertices[vertexID][0];
+	//				if (meshVertices[vertexID][1] > b.max[1]) b.max[1] = meshVertices[vertexID][1];
+	//				if (meshVertices[vertexID][2] > b.max[2]) b.max[2] = meshVertices[vertexID][2];
+	//				if (meshVertices[vertexID][0] < b.min[0]) b.min[0] = meshVertices[vertexID][0];
+	//				if (meshVertices[vertexID][1] < b.min[1]) b.min[1] = meshVertices[vertexID][1];
+	//				if (meshVertices[vertexID][2] < b.min[2]) b.min[2] = meshVertices[vertexID][2];
+	//			}
+	//		}
+	//	}
+	//	long t2 = timeGetTime();
+	//	std::cout << "JUST MEMORY: " << (t2 - t1) << std::endl;
+	//}
 	//std::cout << "Bound " << b << std::endl;
-	return b;
+	return bb;
 }
