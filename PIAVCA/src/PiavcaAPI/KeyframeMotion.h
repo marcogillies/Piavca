@@ -294,7 +294,7 @@ namespace Piavca
 	};
 
 //! creates a Track Motion that is a copy of the given motion at a given time
-KeyframeMotion *copyMotionPosture(Motion *mot, float time);
+PIAVCA_DECL KeyframeMotion *copyMotionPosture(Motion *mot, float time);
 
 };
 

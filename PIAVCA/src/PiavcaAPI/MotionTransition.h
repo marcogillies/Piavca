@@ -39,21 +39,21 @@
 namespace Piavca
 {
 	
-	class TransitionFunction
+	class PIAVCA_DECL TransitionFunction
 	{
 	public:
 		TransitionFunction(){};
 		virtual float eval(float t)=0;
 	};
 
-	class LinearTransition : public TransitionFunction
+	class PIAVCA_DECL LinearTransition : public TransitionFunction
 	{
 	public:
 		LinearTransition():TransitionFunction(){};
 		virtual float eval(float t);
 	};
 
-	class SmoothTransition : public TransitionFunction
+	class PIAVCA_DECL SmoothTransition : public TransitionFunction
 	{
 	public:
 		SmoothTransition():TransitionFunction(){};

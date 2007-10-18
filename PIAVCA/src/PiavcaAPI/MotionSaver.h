@@ -47,7 +47,7 @@ namespace Piavca
 	 *  unchanged between the two, but it also saves the data as keyframes.
 	 *  Call save to save it to file in the Piavca (.pia) format
 	 */
-	class MotionSaver : public MotionFilter
+	class PIAVCA_DECL MotionSaver : public MotionFilter
 	{
 		KeyframeMotion *tmot;
 	public:

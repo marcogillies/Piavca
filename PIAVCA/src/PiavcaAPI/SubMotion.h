@@ -41,7 +41,7 @@
 namespace Piavca
 {
 
-	class SubMotion : public MotionFilter
+	class PIAVCA_DECL SubMotion : public MotionFilter
 	{
 		float start, end;
 

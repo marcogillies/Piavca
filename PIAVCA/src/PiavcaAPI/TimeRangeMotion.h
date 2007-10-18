@@ -41,7 +41,7 @@
 namespace Piavca
 {
 
-	class TimeRangeMotion : public MotionFilter
+	class PIAVCA_DECL TimeRangeMotion : public MotionFilter
 	{
 		float start, end;
 	public:
