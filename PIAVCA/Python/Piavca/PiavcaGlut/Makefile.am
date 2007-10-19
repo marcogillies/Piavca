@@ -17,8 +17,8 @@ SWIG_SOURCES = PiavcaGlut.i
 pkgpython_PYTHON = $(srcdir)/PiavcaGlut.py
 pkgpyexec_LTLIBRARIES = _PiavcaGlut.so.la
 #_your_extension_la_SOURCES = $(srcdir)/swig_wrap.cpp $(SWIG_SOURCES)
-_PiavcaGlut_so_la_CPPFLAGS = $(PYTHON_CPPFLAGS) $(SWIG_PYTHON_CPPFLAGS)
-_PiavcaGlut_so_la_LDFLAGS = -module -shared $(PYTHON_LDFLAGS)  -lglut -lcal3d $(all_libraries)
+_PiavcaGlut_so_la_CPPFLAGS = $(PYTHON_CPPFLAGS) $(SWIG_PYTHON_CPPFLAGS) $(GLUT_LIB)
+_PiavcaGlut_so_la_LDFLAGS = -module $(SHARED_LIB) $(PYTHON_LDFLAGS)  $(GLUT_LIB) -lcal3d $(all_libraries)
 #_your_extension_la_LIBADD = ../src/libproject.la
 
 $(srcdir)/PiavcaGlut_wrap.cpp : $(SWIG_SOURCES)

@@ -27,18 +27,15 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 
 //#include "PiavcaNVCLib/Piavca.h"
-
-#ifdef _WIN32
-#include <windows.h>
-#include <direct.h>
+#if defined(__APPLE__)
+	#include <OpenGL/gl.h>>
+	#include <OpenGL/glu.h>
+	#include <GLUT/glut.h>
+#else
+	#include <GL/gl.h>
+	#include <GL/glu.h>
+	#include <GL/glut.h>
 #endif
-
-#include <iostream>
-#include <string>
-#include <vector>
-#include <GL/gl.h>
-#include <GL/glu.h>
-#include <GL/glut.h>
 
 #include "PiavcaGlut.h"
 
@@ -73,9 +70,10 @@ void timeStep()
 	static int i =0;
 	static float lastTime = Piavca::Core::getCore()->getTime();
 	//std::cout << "frame " << i << std::endl;
-	//std::cout.flush();
+	std::cout.flush();
 	i++;
 	float time = Piavca::Core::getCore()->getTime();
+	//std::cout << "time " << time << std::endl;
 	if(time - lastTime > 1.0)
 	{
 		//std::cout << time << " " << lastTime << std::endl;
@@ -122,6 +120,7 @@ int render()
 void displayFunc()
 {
   //std::cout << "start of displayfunc\n";
+  //return ;
   //std::cout << "core pointer " << ((int)g_Params.core) << std::endl;
   //std::cout << "core pointer " << Piavca::Core::getCore() << std::endl;
   static float prevTime = Piavca::Core::getCore()->getTime();
@@ -391,6 +390,7 @@ int init(int core)
 int start()
 {
   // run the GLUT message loop
+  std::cout << "about to start the glut main loop\n";
   glutMainLoop();
   return 0;
 }

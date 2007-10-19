@@ -1,10 +1,14 @@
 #piavca_SOURCES = piavca.cpp
 
 # set the include path found by configure
-INCLUDES= -I$(srcdir)/.. $(all_includes)
+INCLUDES= -I$(srcdir)/.. $(all_includes) 
 
 pyintincludedir = $(includedir)/Piavca/PiavcaPythonInterface
 pyintinclude_HEADERS = PiavcaPythonApp.h
+
+
+
+lib_LTLIBRARIES = libPiavcaPythonInterface.la
 
 
 #pkgpython_PYTHON = your_extension.py
@@ -13,7 +17,5 @@ pyintinclude_HEADERS = PiavcaPythonApp.h
 libPiavcaPythonInterface_la_CPPFLAGS = $(PYTHON_CPPFLAGS) $(SWIG_PYTHON_CPPFLAGS)
 #_your_extension_la_LDFLAGS = -module
 #_your_extension_la_LIBADD = ../src/libproject.la
-
-lib_LTLIBRARIES = libPiavcaPythonInterface.la
 
 libPiavcaPythonInterface_la_SOURCES = PiavcaPythonApp.cpp 

@@ -25,7 +25,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include <string.h>
 
 #include "PiavcaAPI/PiavcaError.h"
-#include <GL/gl.h>
 
 using namespace Piavca;
 

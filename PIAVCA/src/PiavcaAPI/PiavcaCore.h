@@ -205,7 +205,7 @@ namespace Piavca
 		 */
 		//!@{
 		//! a const representing an invalid joint id
-		static const int nullId = 100000;
+		static const int nullId;
 		//! get an id corresponding to a joint name
 		int getJointId(tstring name);
 		//! gets the maximum joint id

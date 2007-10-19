@@ -45,7 +45,11 @@ using namespace Piavca;
 #include <windows.h>
 #endif
 
-#include <GL/gl.h>
+#if defined(__APPLE__)
+	#include <OpenGL/gl.h>
+#else
+	#include <GL/gl.h>
+#endif
 
 Core *Core::init()
 {
@@ -85,7 +89,7 @@ ObjectImp *PiavcaCal3DCore::createObjectImp(tstring objectId, const Vec &Positio
 #include <windows.h>
 #endif
 
-#ifdef __linux__
+#if defined(__linux__) || defined(__APPLE__)
 #include <sys/time.h>
 #endif
 
@@ -97,7 +101,7 @@ double PiavcaCal3DCore::getTimeInternal(bool print)
 	return tick/1000.0 - start_time;
 #endif
 
-#ifdef __linux__
+#if defined(__linux__) || defined(__APPLE__)
   struct timeval now;
   gettimeofday(&now, 0);
   if(print)

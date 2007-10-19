@@ -11,6 +11,6 @@ stdmotincludedir = $(includedir)/Piavca/StdMotionImp
 
 stdmotinclude_HEADERS = StdMotionImp.h StdMotionCore.h
 
-noinst_LTLIBRARIES = libStdMotionImp.la
+lib_LTLIBRARIES = libStdMotionImp.la
 
 libStdMotionImp_la_SOURCES = StdMotionImp.cpp StdMotionCore.cpp bvhParser.ypp bvhLexer.lpp 

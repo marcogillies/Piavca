@@ -52,6 +52,7 @@ using namespace Piavca;
 
 Piavca::Core *Piavca::Core::core = NULL;
 
+const int Piavca::Core::nullId = 10000;
 
 
 Core::Core()

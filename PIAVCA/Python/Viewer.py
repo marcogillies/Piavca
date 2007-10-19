@@ -65,5 +65,6 @@ if mot != None:
 	mot.Reference()
 	avatar.play_motion(Piavca.LoopMotion(mot))	
 		
+print "before starting glut"
 Piavca.PiavcaGlut.start()
 	

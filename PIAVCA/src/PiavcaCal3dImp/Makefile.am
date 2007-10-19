@@ -11,5 +11,5 @@ lib_LTLIBRARIES = libPiavcaCal3dImp.la
 
 libPiavcaCal3dImp_la_SOURCES = AvatarCal3dImp.cpp MotionCal3dImp.cpp PiavcaCal3dCore.cpp TextureHandler.cpp tga.cpp
 
-#libPiavcaCal3dImp_la_LIBADD = ../PiavcaAPI/libPiavcaAPI.la ../StdMotionImp/libStdMotionImp.la
+#libPiavcaCal3dImp_la_LIBADD =  ../StdMotionImp/libStdMotionImp.la ../PiavcaAPI/libPiavcaAPI.la
 

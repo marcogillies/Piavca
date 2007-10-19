@@ -1,3 +1,5 @@
+
+
 AC_INIT(configure.in)
 
 AM_CONFIG_HEADER(config.h)
@@ -5,10 +7,15 @@ AM_INIT_AUTOMAKE(Piavca, 0.0.99)
 
 #lt_cv_objdir=.
 
+if ! test $all_libraries; then 
+	all_libraries=""
+	AC_SUBST(all_libraries)
+fi
+
 AC_LANG_CPLUSPLUS
 AC_PROG_CXX
 AM_PROG_LIBTOOL
-AC_PROG_LEX
+AM_PROG_LEX
 AC_PROG_YACC
 AC_PYTHON_DEVEL(>= '2.3')
 #AC_PYTHON_DEVEL(== '2.4.4')
@@ -17,6 +24,23 @@ SWIG_ENABLE_CXX
 SWIG_MULTI_MODULE_SUPPORT
 SWIG_PYTHON
 AM_PATH_PYTHON
+
+
+GLUT_LIB=-lglut
+GL_LIB=
+SHARED_LIB=-shared
+echo "HOST OPERATING SYSTEM: $host_os"
+case $host_os in
+  darwin*)
+    echo "This is a mac"
+	GLUT_LIB="-framework Glut"
+	GL_LIB="-framework OpenGL"
+	SHARED_LIB="-bundle"
+    ;;
+esac
+AC_SUBST(GLUT_LIB)
+AC_SUBST(GL_LIB)
+AC_SUBST(SHARED_LIB)
 
 
 AC_OUTPUT(Makefile src/Makefile src/PiavcaAPI/Makefile src/StdMotionImp/Makefile src/PiavcaPythonInterface/Makefile src/PiavcaCal3dImp/Makefile Python/Makefile Python/Piavca/Makefile Python/Piavca/Piavca_base/Makefile Python/Piavca/PiavcaGlut/Makefile)

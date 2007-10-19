@@ -111,10 +111,18 @@ variable to configure. See ``configure --help'' for reference.
 	#
 	AC_MSG_CHECKING([for Python library path])
 	if test -z "$PYTHON_LDFLAGS"; then
-		PYTHON_LDFLAGS=`$PYTHON -c "from distutils.sysconfig import *; \
+		## check if this is a mac and we are using frameworks
+		PYTHON_FRAMEWORK=`$PYTHON -c "from distutils.sysconfig import *; \
 			from string import join; \
-			print '-L' + get_python_lib(0,1), \
-		      	'-lpython' + join(get_config_vars('VERSION'));"`
+			print join(get_config_vars('PYTHONFRAMEWORKDIR'));"`
+		if test "$PYTHON_FRAMEWORK" == "Python.framework"; then
+			PYTHON_LDFLAGS='-framework Python'
+		else
+			PYTHON_LDFLAGS=`$PYTHON -c "from distutils.sysconfig import *; \
+				from string import join; \
+				print '-L' + get_python_lib(0,1), \
+			      	'-lpython' + join(get_config_vars('VERSION'));"`
+		fi
 	fi
 	AC_MSG_RESULT([$PYTHON_LDFLAGS])
 	AC_SUBST([PYTHON_LDFLAGS])
