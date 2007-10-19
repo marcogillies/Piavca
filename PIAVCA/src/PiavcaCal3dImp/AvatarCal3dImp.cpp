@@ -1062,14 +1062,6 @@ void	AvatarCal3DImp::platformSpecific_timeStep (float time)
 	
 	CalRenderer* renderer = new CalRenderer(cal_model->getRenderer());
 
-	// resets bounding box
-	bb.min[0] = FLT_MAX/2;
-	bb.min[1] = FLT_MAX/2;
-	bb.min[2] = FLT_MAX/2;
-	bb.max[0] = -FLT_MAX/2;
-	bb.max[1] = -FLT_MAX/2;
-	bb.max[2] = -FLT_MAX/2;
-
 	//Get the mesh data for all meshes and submeshes
 	int meshCount = renderer->getMeshCount() ;
 
@@ -1100,20 +1092,7 @@ void	AvatarCal3DImp::platformSpecific_timeStep (float time)
             //mTextureCoordCounts[renderBuffer][meshId][submeshId] = renderer->getTextureCoordinates(0, mTextureCoords[renderBuffer][meshId][submeshId] ) ;
 
             // get the faces of the submesh
-            //mFaceCounts[renderBuffer][meshId][submeshId] = renderer->getFaces( mFaces[renderBuffer][meshId][submeshId] ) ;
- 
-			// bounding box
-			for (int vertexID=0;vertexID<vertexCount;vertexID++)
-			{
-				bb.max[0] = max(bb.max[0], vertexArray[vertexID*3+0]);
-				bb.max[1] = max(bb.max[1], vertexArray[vertexID*3+1]);
-				bb.max[2] = max(bb.max[2], vertexArray[vertexID*3+2]);
-				
-				bb.min[0] = min(bb.min[0], vertexArray[vertexID*3+0]);
-				bb.min[1] = min(bb.min[1], vertexArray[vertexID*3+1]);
-				bb.min[2] = min(bb.min[2], vertexArray[vertexID*3+2]);
-			}
-		 
+            //mFaceCounts[renderBuffer][meshId][submeshId] = renderer->getFaces( mFaces[renderBuffer][meshId][submeshId] ) ;	 
 		 }
          else
          {
@@ -1281,50 +1260,48 @@ void	AvatarCal3DImp::render ()
 Bound Piavca::AvatarCal3DImp::getBoundBox(void)
 {
 	// get the number of meshes
-	//Bound b;
-	//CalRenderer *pCalRenderer = cal_model->getRenderer();
-	//int meshCount = pCalRenderer->getMeshCount();
-	//b.min[0] = FLT_MAX/2;
-	//b.min[1] = FLT_MAX/2;
-	//b.min[2] = FLT_MAX/2;
-	//b.max[0] = -FLT_MAX/2;
-	//b.max[1] = -FLT_MAX/2;
-	//b.max[2] = -FLT_MAX/2;
+	CalRenderer *pCalRenderer = cal_model->getRenderer();
+	int meshCount = pCalRenderer->getMeshCount();
 
-	//// render all meshes of the model
-	//for(int meshId = 0; meshId < meshCount; meshId++)
-	//{
-	//	// check if the mesh is supposed to be hidden
-	//	if (meshes[meshId].second)
-	//		continue;
+	// resets bounding box
+	bb.min[0] = FLT_MAX/2;
+	bb.min[1] = FLT_MAX/2;
+	bb.min[2] = FLT_MAX/2;
+	bb.max[0] = -FLT_MAX/2;
+	bb.max[1] = -FLT_MAX/2;
+	bb.max[2] = -FLT_MAX/2;
 
-	//	// get the number of submeshes
-	//	int submeshCount = pCalRenderer->getSubmeshCount(meshId);
+	// render all meshes of the model
+	for(int meshId = 0; meshId < meshCount; meshId++)
+	{
+		// check if the mesh is supposed to be hidden
+		if (meshes[meshId].second) continue;
 
-	//	// render all submeshes of the mesh
-	//	long t1 = timeGetTime();
-	//	for(int submeshId = 0; submeshId < submeshCount; submeshId++)
-	//	{
-	//		// select mesh and submesh for further data access
-	//		if(pCalRenderer->selectMeshSubmesh(meshId, submeshId))
-	//		{
-	//			static float meshVertices[30000][3];
-	//			int vertexCount = pCalRenderer->getVertices(&meshVertices[0][0]);
+		// get the number of submeshes
+		int submeshCount = pCalRenderer->getSubmeshCount(meshId);
 
-	//			for (int vertexID=0;vertexID<vertexCount;vertexID++)
-	//			{
-	//				if (meshVertices[vertexID][0] > b.max[0]) b.max[0] = meshVertices[vertexID][0];
-	//				if (meshVertices[vertexID][1] > b.max[1]) b.max[1] = meshVertices[vertexID][1];
-	//				if (meshVertices[vertexID][2] > b.max[2]) b.max[2] = meshVertices[vertexID][2];
-	//				if (meshVertices[vertexID][0] < b.min[0]) b.min[0] = meshVertices[vertexID][0];
-	//				if (meshVertices[vertexID][1] < b.min[1]) b.min[1] = meshVertices[vertexID][1];
-	//				if (meshVertices[vertexID][2] < b.min[2]) b.min[2] = meshVertices[vertexID][2];
-	//			}
-	//		}
-	//	}
-	//	long t2 = timeGetTime();
-	//	std::cout << "JUST MEMORY: " << (t2 - t1) << std::endl;
-	//}
-	//std::cout << "Bound " << b << std::endl;
+		// render all submeshes of the mesh
+		for(int submeshId = 0; submeshId < submeshCount; submeshId++)
+		{
+			// select mesh and submesh for further data access
+			if(pCalRenderer->selectMeshSubmesh(meshId, submeshId))
+			{
+				float *vertexArray = mVertices[renderBuffer][meshId][submeshId];
+				int vertexCount = pCalRenderer->getVertexCount();
+
+				for (int vertexID=0;vertexID<vertexCount;vertexID++)
+				{
+					bb.max[0] = max(bb.max[0], vertexArray[vertexID*3+0]);
+					bb.max[1] = max(bb.max[1], vertexArray[vertexID*3+1]);
+					bb.max[2] = max(bb.max[2], vertexArray[vertexID*3+2]);
+
+					bb.min[0] = min(bb.min[0], vertexArray[vertexID*3+0]);
+					bb.min[1] = min(bb.min[1], vertexArray[vertexID*3+1]);
+					bb.min[2] = min(bb.min[2], vertexArray[vertexID*3+2]);
+				}
+			}
+		}
+	}
+
 	return bb;
 }
