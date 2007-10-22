@@ -233,18 +233,14 @@ class MyCanvasBase(glcanvas.GLCanvas):
 		self.drawFloor()
 		
 		#timestep
-		print "before timestep"
 		Piavca.Core.getCore().timeStep();
 	
-		print "after timestep"
 		#updates mesh
 		Piavca.Core.getCore().prerender();
 		
-		print "after prerender"
 		# render the model
 		Piavca.Core.getCore().render();
-		print "after render"
-	
+
 		self.drawAxes()
 		self.popCameraFocus()
 		self.SwapBuffers()
@@ -271,7 +267,7 @@ class MyApp(wx.App):
 		frame.Show(True)
 		return True
 
-app = wx.PySimpleApp()
+app = MyApp()
 
 if len(sys.argv) > 1:
 	path = sys.argv[1]
@@ -279,23 +275,11 @@ else:
 	dialog_return = openFileDialog ()
 	path = dialog_return.paths[0]
 
-print path
-pathend = path.rfind("\\")
-if pathend <= -1:
-	pathend = path.rfind("/")
-print pathend
-if pathend <= -1:
-	filename = path
-else:
-	filename = path[pathend+1:]
-	path = path[:pathend+1]
-	if path != "":
-		os.chdir(path)
-print filename, path
-if filename[-4:] == ".cfg":
-	filename = filename[:-4]
-print filename
-	
+dirname = os.path.dirname(path)
+os.chdir(dirname)
+(splitext, ext) = os.path.splitext(path)
+basename = os.path.basename(splitext)
+
 try:
 	Piavca.JointNames.importJointNames("Joints.txt")
 except IOError:
@@ -305,11 +289,8 @@ try:
 except IOError:
 	print "could not open Expressions file Expressions.txt, will probably work anyway"
 
-print "File name ", filename
 
-avatar = Piavca.Avatar(str(filename))
-
-print "loaded avatar"
+avatar = Piavca.Avatar(str(basename))
 
 if len(sys.argv) > 2:
 	motion_name = sys.argv[2]
@@ -324,12 +305,5 @@ if mot != None:
 	mot.Reference()
 	avatar.play_motion(Piavca.LoopMotion(mot))	
 
-print "loaded motion"
-
-app = MyApp()
-
-print "created app"
-
 app.MainLoop()
 
-print "started app"
