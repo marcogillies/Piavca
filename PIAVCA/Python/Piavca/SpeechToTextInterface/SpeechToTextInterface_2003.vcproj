@@ -19,6 +19,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
+				AdditionalIncludeDirectories="..\;$(PYTHONDIR)\include;c:\Python25\include;c:\Python24\include;c:\Python23\include"
 				PreprocessorDefinitions="WIN32;_WINDOWS;_USRDLL;SPEECHTOTEXTINTERFACE_EXPORTS"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
@@ -145,7 +146,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Running Swig"
-					CommandLine="swig -c++ -python -shadow -I&quot;$(SolutionDir)/src&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; -outdir &quot;$(SolutionDir)\Python\Piavca&quot; &quot;$(InputPath)&quot;"
+					CommandLine="swig -c++ -python -shadow -I&quot;$(SolutionDir)/src&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; -outdir &quot;$(SolutionDir)\Python\Piavca&quot; &quot;$(InputPath)&quot;
+"
 					Outputs="$(ProjectDir)$(InputName)_wrap.cpp"/>
 			</FileConfiguration>
 			<FileConfiguration
@@ -154,7 +156,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Running Swig"
-					CommandLine="swig -c++ -python -shadow -I&quot;$(SolutionDir)/src&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; -outdir &quot;$(SolutionDir)\Python\Piavca&quot; &quot;$(InputPath)&quot;"
+					CommandLine="swig -c++ -python -shadow -I&quot;$(SolutionDir)/src&quot; -o &quot;$(ProjectDir)$(InputName)_wrap.cpp&quot; -outdir &quot;$(SolutionDir)\Python\Piavca&quot; &quot;$(InputPath)&quot;
+"
 					Outputs="$(ProjectDir)$(InputName)_wrap.cpp"/>
 			</FileConfiguration>
 		</File>

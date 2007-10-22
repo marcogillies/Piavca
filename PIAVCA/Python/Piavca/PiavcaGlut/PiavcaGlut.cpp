@@ -32,8 +32,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 	#include <OpenGL/glu.h>
 	#include <GLUT/glut.h>
 #else
-	#include <GL/gl.h>
-	#include <GL/glu.h>
 	#include <GL/glut.h>
 #endif
 

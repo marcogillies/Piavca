@@ -116,7 +116,7 @@ class MyCanvasBase(glcanvas.GLCanvas):
 		maxDim = max(max(halfWidths[0],halfWidths[1]), halfWidths[2]) 
 	
 		glTranslatef(0.0, 0.0, -3.0)
-		gltbMatrix()
+		gltbMatrix(1.0)
 		glPushMatrix()
 		glScalef(self.scaleBias/maxDim, self.scaleBias/maxDim, self.scaleBias/maxDim)
 		glPushMatrix()
