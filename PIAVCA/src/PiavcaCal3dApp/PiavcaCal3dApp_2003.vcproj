@@ -22,7 +22,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories=".\;..\;$(CAL3DDIR)\src\;..\..\..\cal3d-0.11.0\src;..\..\..\cal3d-0.10.0\src\"
+				AdditionalIncludeDirectories=".\;..\;&quot;$(CAL3DDIR)\src\&quot;;&quot;..\..\..\cal3d-0.11.0\src&quot;;&quot;..\..\..\cal3d-0.10.0\src\&quot;"
 				PreprocessorDefinitions="WIN32;_CONSOLE"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="2"
@@ -44,7 +44,7 @@
 				OutputFile="$(OutDir)\PiavcaCal3dApp.exe"
 				LinkIncremental="2"
 				SuppressStartupBanner="TRUE"
-				AdditionalLibraryDirectories="$(CAL3DDIR)\bin\release;..\..\..\cal3d-0.11.0\bin\Release;..\..\..\cal3d-0.10.0\bin\Release;$(PYTHONDIR)\libs;c:\Python25\libs;c:\Python24\lib\;c:\Python23\libs"
+				AdditionalLibraryDirectories="&quot;$(CAL3DDIR)\bin\release&quot;;&quot;..\..\..\cal3d-0.11.0\bin\Release&quot;;&quot;..\..\..\cal3d-0.10.0\bin\Release&quot;;&quot;$(PYTHONDIR)\libs&quot;;c:\Python25\libs;c:\Python24\libs;c:\Python23\libs"
 				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile="$(OutDir)\PiavcaCal3dApp.pdb"
 				SubSystem="1"
