@@ -78,12 +78,24 @@ public:
 	MaskedMotion(Motion *_mot, const MotionMask &_mask) ;
 	MaskedMotion(const MaskedMotion &mm);
 	
+	//! given an iterator tests whether it actually points to anything or if its null
+	virtual bool isNull(int trackId)const 
+	{
+		if(filterMot)
+			return filterMot->isNull(trackId) || !(mask.getMask(trackId));
+		else
+			return true;
+	};
+
 	virtual Motion *clone(){return new MaskedMotion(*this);};
 
 	void setMask(const MotionMask &_mask){mask = _mask;};
 
 	void addToMask(int trackId){mask.setMask(trackId, true);};
 	void removeFromMask(int trackId){mask.setMask(trackId, false);};
+
+	void addAllToMask();
+	void removeAllFromMask();
 
 	void setMotionMask(std::vector<std::string>  v);
 	StringVector getMotionMask();

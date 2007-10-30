@@ -111,6 +111,27 @@ MaskedMotion::MaskedMotion(const MaskedMotion &mm)
 	:MotionFilter(mm),  mask(mm.mask)
 	{};
 
+
+void MaskedMotion::addAllToMask()
+{
+	int maxTrack = Core::getCore()->getMaxTrackId();
+	int minTrack = Core::getCore()->getMinTrackId();
+	for(int i = minTrack; i < maxTrack; i++)
+	{
+		addToMask(i);
+	}
+}
+void MaskedMotion::removeAllFromMask()
+{
+	int maxTrack = Core::getCore()->getMaxTrackId();
+	int minTrack = Core::getCore()->getMinTrackId();
+	for(int i = minTrack; i < maxTrack; i++)
+	{
+		removeFromMask(i);
+	}
+}
+
+
 void MaskedMotion::setMotionMask(std::vector<std::string> v)
 {
 	mask.clearMask();
