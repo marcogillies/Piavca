@@ -67,7 +67,7 @@ void MotionMask::setMask(int track, bool val)
 	if(track > 0)
 	{
 		if(track >= (int)m_body.size())
-			for(int i = (int)m_body.size(); i < maxTrack; i++)
+			for(int i = (int)m_body.size(); i <= maxTrack; i++)
 				m_body.push_back(false);
 		m_body[track] = val;
 	}
@@ -75,11 +75,22 @@ void MotionMask::setMask(int track, bool val)
 	{
 		track = - track;
 		if (track >= (int)m_facial.size())
-			for(int i = (int)m_facial.size(); i < -minTrack; i++)
+			for(int i = (int)m_facial.size(); i <= -minTrack; i++)
 				m_facial.push_back(false);
 		m_facial[track] = val;
 	}
 };
+
+void MotionMask::setAllMask(bool val)
+{
+	int maxTrack = Core::getCore()->getMaxTrackId();
+	int minTrack = Core::getCore()->getMinTrackId();
+
+	for(int i = minTrack; i < maxTrack; i++)
+	{
+		setMask(i, val);
+	}
+}
 bool MotionMask::getMask(int track) const
 {
 	if(track > 0 && track < (int)m_body.size())
@@ -114,21 +125,11 @@ MaskedMotion::MaskedMotion(const MaskedMotion &mm)
 
 void MaskedMotion::addAllToMask()
 {
-	int maxTrack = Core::getCore()->getMaxTrackId();
-	int minTrack = Core::getCore()->getMinTrackId();
-	for(int i = minTrack; i < maxTrack; i++)
-	{
-		addToMask(i);
-	}
+	mask.setAllMask(true);
 }
 void MaskedMotion::removeAllFromMask()
 {
-	int maxTrack = Core::getCore()->getMaxTrackId();
-	int minTrack = Core::getCore()->getMinTrackId();
-	for(int i = minTrack; i < maxTrack; i++)
-	{
-		removeFromMask(i);
-	}
+	mask.setAllMask(false);
 }
 
 

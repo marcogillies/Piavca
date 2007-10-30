@@ -53,6 +53,8 @@ public:
 	const MotionMask &operator=(const MotionMask &mm);
 	//! sets whether a given track should be played
 	void setMask(int track, bool val = true);
+	//! sets a mask value for all tracks
+	void setAllMask(bool val);
 	//! gets the mask value for a track
 	bool getMask(int track) const;
 	//! clears all values in the mask
