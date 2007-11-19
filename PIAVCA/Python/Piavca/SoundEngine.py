@@ -35,13 +35,18 @@
 # ***** END LICENSE BLOCK *****
 
 try:
-	import pymedia.audio.sound as sound
-	import pymedia.audio.acodec as acodec
-	import pymedia.muxer as muxer
-	pymediapresent = 1
+	import pyaudio
+	pyaudiopresent = 1
 except ImportError:
-	print "pymedia unavailable, please install pymedia to enable sound playback"
-	pymediapresent = 0
+	pyaudiopresent = 0
+	try:
+		import pymedia.audio.sound as sound
+		import pymedia.audio.acodec as acodec
+		import pymedia.muxer as muxer
+		pymediapresent = 1
+	except ImportError:
+		print "pymedia unavailable, please install pymedia to enable sound playback"
+		pymediapresent = 0
 
 import wave
 from copy import copy
@@ -62,21 +67,36 @@ class SoundEngine:
 		self.samplerate = samplerate
 		self.channels = channels
 		self.format = format
+		self.output = None
 		
-		if pymediapresent :
-			if format < 0:
-				format = sound.AFMT_S16_LE
-			# create an audio output device
-			self.output = sound.Output(samplerate, channels, format )
+		
 
 		self.sounds = {}
 		
 		if ttsAvailable:
 			self.tts = pyTTS.Create()
+			
+	def openPlayer(self, wavfile):
+		if pyaudiopresent:
+			p = pyaudio.PyAudio()
+			self.output = p.open(format =
+                p.get_format_from_width(wavfile.getsampwidth()),
+                channels = wavfile.getnchannels(),
+                rate = wavfile.getframerate(),
+                output = True)
+			self.bytes_per_second = wavfile.getsampwidth()*wavfile.getframerate()*wavfile.getnchannels()
+		elif pymediapresent :
+			if format < 0:
+				format = sound.AFMT_S16_LE
+			# create an audio output device
+			self.output = sound.Output(samplerate, channels, format )
 		
 	def addSound(self, name, filename):
 		print "adding", name, filename
 		input_file= wave.open( filename, 'rb' )
+		
+		if self.output == None:
+			self.openPlayer(input_file)
 			
 		s = input_file.readframes(500000000)
 		frames = s
@@ -108,8 +128,12 @@ class SoundEngine:
 		print name, len(self.sounds[name])
 		#self.output.stop()
 		#s = copy(self.sounds[name])
-		self.output.play(self.sounds[name])
-		left = self.output.getLeft()
+		if pyaudiopresent:
+			self.output.write(self.sounds[name])
+			left = self.bytes_per_second*len(self.sounds[name])
+		elif pymediapresent :
+			self.output.play(self.sounds[name])
+			left = self.output.getLeft()
 		print "time left", left
 		time.sleep(left + 1)
 			

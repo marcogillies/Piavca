@@ -11,7 +11,7 @@ except:
 import Track
 #import ComponentAnalysis
 
-from wx import *
+#from wx import *
 from wx.lib.dialogs import *
 #import MotionGraph
 

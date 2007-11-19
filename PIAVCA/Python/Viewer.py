@@ -1,4 +1,4 @@
-#!/usr/bin/python2.4
+#!/usr/local/bin/python
 
 import sys
 import os
