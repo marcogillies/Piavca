@@ -481,7 +481,14 @@ void *Piavca::ImportModule(tstring fileName)
 	
 	if(PyErr_Occurred())
 	{
-		std::cout << "python bailed during module import\n";
+		std::cout << "python bailed during module import, module name: " << fileName << "\n";
+		std::cout << "This could be because the module could not be found" << std::endl;
+		std::cout << "Alternatively, if the module that could not be loaded is initXVRPiavca look at the" << std::endl;
+		std::cout << "output file PiavcaError.txt, otherwise at the file piavca_output.txt or the python output window." << std::endl;
+		std::cout << "If neither output file gives any information, check the dates, if they are both old then" << std::endl;
+		std::cout << "maybe they couldn't be opened (check permissions on the directory with your script in." << std::endl;
+		std::cout << "If none of these help maybe your python distribution is broken" << std::endl;
+		/*
 		PyErr_Print();
 		PyObject *ErrorType, *ErrorValue, *ErrorTraceback, *ErrorString;
 		PyErr_Fetch(&ErrorType, &ErrorValue, &ErrorTraceback);
@@ -497,9 +504,9 @@ void *Piavca::ImportModule(tstring fileName)
 		std::cout << PyString_AsString(ErrorString) << std::endl;
 		fflush(stdout);
 		fflush(stderr);
-
+		*/
 		//EndPiavcaPython(core);
-		Piavca::Error(_T("Error running script: ") + error_string);
+		Piavca::Error(_T("Error running script: ") + fileName);
 		return module;
 		//exit(0);
 	}

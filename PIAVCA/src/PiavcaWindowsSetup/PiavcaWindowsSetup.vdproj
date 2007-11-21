@@ -81,12 +81,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_2C9EE82B976D46D597DE0842B74727AA"
-        "OwnerKey" = "8:_7EC19E4BA52E4464A3CE3FC70F35D5B5"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_2CB4C9992956463C8CEE1EC8B9BA14B2"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -219,24 +213,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_7EC19E4BA52E4464A3CE3FC70F35D5B5"
-        "OwnerKey" = "8:_0EDB427873744218ACBF6199C4916A0F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7EC19E4BA52E4464A3CE3FC70F35D5B5"
-        "OwnerKey" = "8:_E9BF3BD172E74BC1ACDE5669C3B94371"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7EC19E4BA52E4464A3CE3FC70F35D5B5"
-        "OwnerKey" = "8:_7FFBA5A50D144A49A4D665B523A35DF3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_7FFBA5A50D144A49A4D665B523A35DF3"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -315,6 +291,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_A25CDEA0F00941B2971D11F7FEDE10CD"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_A26F2FB1B68A492EA7B9AC4084A110BF"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -334,12 +316,6 @@
         "Entry"
         {
         "MsmKey" = "8:_B27DF344E0084534B4600FFFFF59ACA6"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B70D511FA4DA4C6CB892CDE0761423D1"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -411,6 +387,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_E29C467F836B4C689A708B424E01D169"
+        "OwnerKey" = "8:_F406B805A75D4515A0C07CC949B2BBAA"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_E3BE2F24BC124A54B1A53827299ED0DE"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -443,6 +425,24 @@
         {
         "MsmKey" = "8:_F2F121B0A7044C6CA153F7492FBAD595"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F406B805A75D4515A0C07CC949B2BBAA"
+        "OwnerKey" = "8:_0EDB427873744218ACBF6199C4916A0F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F406B805A75D4515A0C07CC949B2BBAA"
+        "OwnerKey" = "8:_E9BF3BD172E74BC1ACDE5669C3B94371"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F406B805A75D4515A0C07CC949B2BBAA"
+        "OwnerKey" = "8:_7FFBA5A50D144A49A4D665B523A35DF3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1325,6 +1325,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A25CDEA0F00941B2971D11F7FEDE10CD"
+            {
+            "SourcePath" = "8:..\\..\\Python\\initXVRPiavca.py"
+            "TargetName" = "8:initXVRPiavca.py"
+            "Tag" = "8:"
+            "Folder" = "8:_F15ED618EE8E4C81A0E40FF057660174"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A26F2FB1B68A492EA7B9AC4084A110BF"
             {
             "SourcePath" = "8:..\\..\\Python\\Piavca\\GraphSearch.py"
@@ -1391,26 +1411,6 @@
             "TargetName" = "8:PiavcaGlut.py"
             "Tag" = "8:"
             "Folder" = "8:_C311C00B4060407F8C51CD66C8EF17E6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B70D511FA4DA4C6CB892CDE0761423D1"
-            {
-            "SourcePath" = "8:..\\..\\Python\\initXVRPiavca.py"
-            "TargetName" = "8:initXVRPiavca.py"
-            "Tag" = "8:"
-            "Folder" = "8:_F15ED618EE8E4C81A0E40FF057660174"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1967,7 +1967,7 @@
             }
             "{994432C3-9487-495D-8656-3E829A8DBDDE}:_F15ED618EE8E4C81A0E40FF057660174"
             {
-            "DefaultLocation" = "8:[PYTHON_DIR]\\Lib\\site-packages\\Piavca"
+            "DefaultLocation" = "8:[PYTHON_DIR]\\Lib\\site-packages\\"
             "Name" = "8:site-packages"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
@@ -2001,7 +2001,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Piavca"
         "ProductCode" = "8:{7E07296C-3595-4CA8-9B56-76D102408F36}"
-        "PackageCode" = "8:{AD527B01-2CBF-4535-9CB9-CB080A1793C8}"
+        "PackageCode" = "8:{DC1837A2-1485-4D1B-967B-F8F58D91A112}"
         "UpgradeCode" = "8:{FE7F39C9-C64C-4F24-BF33-C6B39EF15407}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
@@ -2572,7 +2572,7 @@
         }
         "MergeModule"
         {
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_2C9EE82B976D46D597DE0842B74727AA"
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_E29C467F836B4C689A708B424E01D169"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:TRUE"
@@ -2586,7 +2586,7 @@
             "Feature" = "8:"
             "IsolateTo" = "8:"
             }
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_7EC19E4BA52E4464A3CE3FC70F35D5B5"
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_F406B805A75D4515A0C07CC949B2BBAA"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:TRUE"
