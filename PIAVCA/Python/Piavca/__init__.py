@@ -24,7 +24,7 @@ except ImportError:
 Core.init()
 
 def render ():
-	core = Piavca.Core.getCore()
+	core = Core.getCore()
 	core.timeStep()
 	core.prerender()
 	core.render()

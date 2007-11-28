@@ -12,6 +12,7 @@ import thread, time
 class outputRedirection:
 	def __init__(self, filename=None):
 		self.frame = None
+		self.outputFunc = None
 		if wxpresent:
 			self.frame = wx.Frame(None)
 			bs = wx.BoxSizer(wx.VERTICAL)
@@ -29,7 +30,6 @@ class outputRedirection:
 				self.txt.SetValue("could not open output file "+filename+"\n")
 		if not wxpresent:
 			self.write("WX Python was not found so graphical output is not available")
-		self.outputFunc = None
 	def Show(self):
 		if wxpresent:
 			self.frame.Show(True)
