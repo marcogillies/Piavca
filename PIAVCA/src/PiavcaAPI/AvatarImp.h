@@ -198,6 +198,9 @@ public:
 	//! get a bounding box in local coordinates
 	virtual Bound getBoundBox(void)=0;
 
+	//! get a bounding box in local coordinates
+	virtual Bound getBaseBoundBox(void)=0;
+
 	friend class Avatar;
 	friend class Core;
 };

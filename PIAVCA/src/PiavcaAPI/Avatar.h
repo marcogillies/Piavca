@@ -427,6 +427,11 @@ public:
 	{
 		return imp->getBoundBox();
 	};
+	//! get the bounding box of the avatar in its base pose
+	Bound getBaseBoundBox()
+	{
+		return imp->getBaseBoundBox();
+	};
 
 	//! set the current time
 	/*!

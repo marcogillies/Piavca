@@ -33,7 +33,7 @@
 # the terms of any one of the MPL, the GPL or the LGPL.
 #
 # ***** END LICENSE BLOCK *****
-
+pymediapresent = 0
 try:
 	import pyaudio
 	pyaudiopresent = 1
@@ -86,10 +86,10 @@ class SoundEngine:
                 output = True)
 			self.bytes_per_second = wavfile.getsampwidth()*wavfile.getframerate()*wavfile.getnchannels()
 		elif pymediapresent :
-			if format < 0:
-				format = sound.AFMT_S16_LE
+			if self.format < 0:
+				self.format = sound.AFMT_S16_LE
 			# create an audio output device
-			self.output = sound.Output(samplerate, channels, format )
+			self.output = sound.Output(self.samplerate, self.channels, self.format )
 		
 	def addSound(self, name, filename):
 		print "adding", name, filename

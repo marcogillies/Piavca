@@ -81,7 +81,7 @@ std::string strPath;
 
 AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler, bool bailOnMissedJoints, const Vec &Position, const Quat &Orientation)
   : cal_model(NULL), previous_time(0), renderBuffer(0), 
-    updateBuffer(0), textureHandler(_textureHandler) 
+    updateBuffer(0), textureHandler(_textureHandler), bb_dirty_flag(true) 
 {
 	if(doubleBuffer) 
 	{
@@ -477,6 +477,8 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
   
    delete renderer;
 
+   platformSpecific_timeStep (Piavca::Core::getCore()->getTime());
+   base_bb = getBoundBox();
 };
 
 
@@ -729,6 +731,7 @@ void AvatarCal3DImp::clearChange(int jointId)
 
 void	AvatarCal3DImp::setRootPosition (const Vec &Position)
 {
+	bb_dirty_flag = true;
   if(!cal_model)
    {
        Piavca::Error("setJointOrientation called on empty avatar");
@@ -776,6 +779,7 @@ Vec		AvatarCal3DImp::getRootPosition ()
 }
 void	AvatarCal3DImp::setRootOrientation	(const Quat &Orientation)
 {
+   bb_dirty_flag = true;
    cal_model->getSkeleton()->calculateState();
    if(!cal_model)
    {
@@ -826,6 +830,7 @@ Quat	AvatarCal3DImp::getRootOrientation ()
 
 void AvatarCal3DImp::setJointOrientation(int jointId, const Quat &Orientation, jointCoord worldCoord)
 {
+   bb_dirty_flag = true;
    if(jointId < 0)
    {
        Piavca::Error("Null joint Id passed in to setJointOrientation");
@@ -935,6 +940,7 @@ Quat AvatarCal3DImp::getJointOrientation	(int jointId, jointCoord worldCoord)
 
 void AvatarCal3DImp::setJointPosition(int jointId, const Vec &Position, jointCoord worldCoord)
 {
+   bb_dirty_flag = true;
    if(jointId < 0)
    {
        Piavca::Error("Null joint Id passed in to setJointOrientation");
@@ -1259,45 +1265,50 @@ void	AvatarCal3DImp::render ()
 
 Bound Piavca::AvatarCal3DImp::getBoundBox(void)
 {
-	// get the number of meshes
-	CalRenderer *pCalRenderer = cal_model->getRenderer();
-	int meshCount = pCalRenderer->getMeshCount();
-
-	// resets bounding box
-	bb.min[0] = FLT_MAX/2;
-	bb.min[1] = FLT_MAX/2;
-	bb.min[2] = FLT_MAX/2;
-	bb.max[0] = -FLT_MAX/2;
-	bb.max[1] = -FLT_MAX/2;
-	bb.max[2] = -FLT_MAX/2;
-
-	// render all meshes of the model
-	for(int meshId = 0; meshId < meshCount; meshId++)
+	if (bb_dirty_flag)
 	{
-		// check if the mesh is supposed to be hidden
-		if (meshes[meshId].second) continue;
+		//std::cout << "recalculating bb\n";
+		bb_dirty_flag = false;
+		// get the number of meshes
+		CalRenderer *pCalRenderer = cal_model->getRenderer();
+		int meshCount = pCalRenderer->getMeshCount();
 
-		// get the number of submeshes
-		int submeshCount = pCalRenderer->getSubmeshCount(meshId);
+		// resets bounding box
+		bb.min[0] = FLT_MAX/2;
+		bb.min[1] = FLT_MAX/2;
+		bb.min[2] = FLT_MAX/2;
+		bb.max[0] = -FLT_MAX/2;
+		bb.max[1] = -FLT_MAX/2;
+		bb.max[2] = -FLT_MAX/2;
 
-		// render all submeshes of the mesh
-		for(int submeshId = 0; submeshId < submeshCount; submeshId++)
+		// render all meshes of the model
+		for(int meshId = 0; meshId < meshCount; meshId++)
 		{
-			// select mesh and submesh for further data access
-			if(pCalRenderer->selectMeshSubmesh(meshId, submeshId))
+			// check if the mesh is supposed to be hidden
+			if (meshes[meshId].second) continue;
+
+			// get the number of submeshes
+			int submeshCount = pCalRenderer->getSubmeshCount(meshId);
+
+			// render all submeshes of the mesh
+			for(int submeshId = 0; submeshId < submeshCount; submeshId++)
 			{
-				float *vertexArray = mVertices[renderBuffer][meshId][submeshId];
-				int vertexCount = pCalRenderer->getVertexCount();
-
-				for (int vertexID=0;vertexID<vertexCount;vertexID++)
+				// select mesh and submesh for further data access
+				if(pCalRenderer->selectMeshSubmesh(meshId, submeshId))
 				{
-					bb.max[0] = max(bb.max[0], vertexArray[vertexID*3+0]);
-					bb.max[1] = max(bb.max[1], vertexArray[vertexID*3+1]);
-					bb.max[2] = max(bb.max[2], vertexArray[vertexID*3+2]);
+					float *vertexArray = mVertices[renderBuffer][meshId][submeshId];
+					int vertexCount = pCalRenderer->getVertexCount();
 
-					bb.min[0] = min(bb.min[0], vertexArray[vertexID*3+0]);
-					bb.min[1] = min(bb.min[1], vertexArray[vertexID*3+1]);
-					bb.min[2] = min(bb.min[2], vertexArray[vertexID*3+2]);
+					for (int vertexID=0;vertexID<vertexCount;vertexID++)
+					{
+						bb.max[0] = max(bb.max[0], vertexArray[vertexID*3+0]);
+						bb.max[1] = max(bb.max[1], vertexArray[vertexID*3+1]);
+						bb.max[2] = max(bb.max[2], vertexArray[vertexID*3+2]);
+
+						bb.min[0] = min(bb.min[0], vertexArray[vertexID*3+0]);
+						bb.min[1] = min(bb.min[1], vertexArray[vertexID*3+1]);
+						bb.min[2] = min(bb.min[2], vertexArray[vertexID*3+2]);
+					}
 				}
 			}
 		}
@@ -1305,3 +1316,8 @@ Bound Piavca::AvatarCal3DImp::getBoundBox(void)
 
 	return bb;
 }
+
+Bound Piavca::AvatarCal3DImp::getBaseBoundBox(void)
+{
+	return base_bb;	
+};

@@ -135,7 +135,8 @@ public:
 	 *  Called by timeStep
 	 */
 	virtual void	platformSpecific_timeStep (float time);
-	Bound bb;
+	Bound bb, base_bb;
+	bool bb_dirty_flag;
 public:
 
 	//! destructor
@@ -284,6 +285,9 @@ public:
 
 	//! get a bounding box in local coordinates
 	virtual Bound getBoundBox();
+
+	//! get a bounding box of the avatar in its base pose in local coordinates
+	virtual Bound getBaseBoundBox();
 
 	friend class PiavcaCal3DCore;
 };

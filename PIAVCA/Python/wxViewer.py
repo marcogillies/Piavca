@@ -102,11 +102,11 @@ class MyCanvasBase(glcanvas.GLCanvas):
 
 	def updateCameraFocus(self):
 		avatar = Piavca.Core.getCore().getAvatar(0)
-		self.initialAvatarBound = avatar.getBoundBox()
+		self.initialAvatarBound = avatar.getBaseBoundBox()
 		self.initialAvatarRoot = avatar.getRootPosition()
 
 		self.focusRoot = avatar.getRootPosition()
-		self.focusBound = avatar.getBoundBox();
+		self.focusBound = avatar.getBaseBoundBox();
 		self.focusBound.min = self.initialAvatarBound.min+self.focusRoot-self.initialAvatarRoot;
 		self.focusBound.max = self.initialAvatarBound.max+self.focusRoot-self.initialAvatarRoot;
 
@@ -131,7 +131,7 @@ class MyCanvasBase(glcanvas.GLCanvas):
 		
 	def initCameraFocus(self):
 		avatar = Piavca.Core.getCore().getAvatar(0)
-		self.initialAvatarBound = avatar.getBoundBox()
+		self.initialAvatarBound = avatar.getBaseBoundBox()
 		self.initialAvatarRoot = avatar.getRootPosition()
 		self.updateCameraFocus()
 		
@@ -267,7 +267,7 @@ class MyApp(wx.App):
 		frame.Show(True)
 		return True
 
-app = MyApp()
+app = wx.PySimpleApp()
 
 if len(sys.argv) > 1:
 	path = sys.argv[1]
@@ -305,5 +305,6 @@ if mot != None:
 	mot.Reference()
 	avatar.play_motion(Piavca.LoopMotion(mot))	
 
+app = MyApp()
 app.MainLoop()
 

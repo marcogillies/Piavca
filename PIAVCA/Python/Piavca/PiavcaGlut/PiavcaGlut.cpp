@@ -26,14 +26,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 //----------------------------------------------------------------------------//
 
 
-//#include "PiavcaNVCLib/Piavca.h"
-#if defined(__APPLE__)
-	#include <OpenGL/gl.h>>
-	#include <OpenGL/glu.h>
-	#include <GLUT/glut.h>
-#else
-	#include <GL/glut.h>
-#endif
+
 
 #include "PiavcaGlut.h"
 
@@ -48,6 +41,17 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 
 #include "PiavcaCal3dImp/PiavcaCal3dCore.h"
+
+
+
+//#include "PiavcaNVCLib/Piavca.h"
+#if defined(__APPLE__)
+	#include <OpenGL/gl.h>>
+	#include <OpenGL/glu.h>
+	#include <GLUT/glut.h>
+#else
+	#include <GL/glut.h>
+#endif
 
 // a structure holding various parameters of the display
 
