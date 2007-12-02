@@ -1,4 +1,4 @@
-#!/usr/bin/python2.4
+#!/usr/local/bin/python
 
 import sys
 
@@ -13,4 +13,5 @@ else:
 	path = None
 script_engine = runScriptEngine.run(path)
 	
+print "about to start glut"
 Piavca.PiavcaGlut.start()

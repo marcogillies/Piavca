@@ -86,7 +86,9 @@ void timeStep()
 	//CalError::printLastError();
 	try
 	{
+		//std::cout << "Piavca.Timestep\n";
 	    Piavca::Core::getCore()->timeStep();
+		//std::cout << "finished Piavca.Timestep\n";
 	}
 	catch (Piavca::Exception &e)
 	{
@@ -111,11 +113,11 @@ int render()
 	//updates piavca's state
 	timeStep();
 	//updates mesh
+
 	Piavca::Core::getCore()->prerender();
 	
 	// render the model
 	Piavca::Core::getCore()->render();
-
 	return 0;
 }
 
@@ -139,7 +141,9 @@ void displayFunc()
   glutPostRedisplay();	
   float time2 = Piavca::Core::getCore()->getTime();
   updateTime += time2 - time1;
-	 
+
+
+  //std::cout << "Piavca.render\n";
   Piavca::Core::getCore()->prerender();
   float time3 = Piavca::Core::getCore()->getTime();
   prerenderTime += time3 - time2;
@@ -210,7 +214,9 @@ void displayFunc()
 		renderTime = 0.0;
 		prevTime = time;
 	}
-  
+
+	//std::cout << "finished Piavca.render\n";
+
 }
 
 void exitFunc()

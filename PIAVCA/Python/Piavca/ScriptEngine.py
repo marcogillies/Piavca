@@ -102,6 +102,7 @@ class soundCallback(scriptCallback):
 		if not self.soundengine.hasSound(self.soundname):
 			self.soundengine.addSound(self.soundname, self.soundname+".wav")
 	def __call__(self, avatar):
+		print "playing sound", self.soundname
 		thread.start_new_thread(self.soundengine.play, (self.soundname,))
 		
 		
@@ -122,8 +123,10 @@ class eventCallback(scriptCallback):
 		mot.sendEvent(self.event)
 		
 class ScriptEngine(Piavca.TimeCallback):
-	def __init__(self, name, filename):
+	def __init__(self, name, filename, app = None):
 		Piavca.TimeCallback.__init__(self, name)
+		self.app = app
+		self.frame = None
 	
 		loadDefaults()
 		
@@ -131,7 +134,7 @@ class ScriptEngine(Piavca.TimeCallback):
 		self.currentscript = {}
 		self.starttimes = {}
 		
-		if pymediapresent:
+		if pymediapresent or pyaudiopresent:
 			self.soundEngine = SoundEngine()
 		else:
 			self.soundEngine = None
@@ -157,7 +160,7 @@ class ScriptEngine(Piavca.TimeCallback):
 				if self.soundEngine != None:
 					self.soundEngine.loadSounds(spackname)
 				else:
-					print "could not load sound packs as audio playback is not supported, please install pymedia"
+					print "could not load sound packs as audio playback is not supported, please install pyaudio or pymedia"
 			elif line[0] == "expressions":
 				importExpressionNames(line[1])
 			elif line[0] == "joints":
@@ -250,7 +253,7 @@ class ScriptEngine(Piavca.TimeCallback):
 			if self.soundEngine != None:
 				return soundCallback(time, args, self.soundEngine)
 			else:
-				print "could not load sounds as audio playback is not supported, please install pymedia"
+				print "could not load sounds as audio playback is not supported, please install pyaudio or  pymedia"
 				return None
 		if callbackname == "say":
 			return sayCallback(time, args, self.soundEngine)
@@ -286,31 +289,38 @@ class ScriptEngine(Piavca.TimeCallback):
 	def init(self, core):
 		pass
 		
-	def timeStep(self, core, time):
+	def timeStep(self, core, t):
+		self.soundEngine.updateAudio()
+		#print "in script engine timestep"
 		for avatar in self.currentscript.keys():
 			#print avatar
 			if self.currentscript[avatar] :
 				for item in self.currentscript[avatar]:
-					if (not item.done) and item.getTime() < (time - self.starttimes[avatar]):
+					if (not item.done) and item.getTime() < (t - self.starttimes[avatar]):
 						print avatar
 						print Piavca.Core.getCore().getAvatar(avatar)
+						print item
 						item(Piavca.Core.getCore().getAvatar(avatar))
 						item.done = 1
+		if self.frame != None:
+			time.sleep(0.01)
+		#print "finished script engine timestep"
 			
 	def GUI(self, avatarName):
 		if not wxAvailable:
 			print "can't instantiate GUI, wx python not present"
 
-		app = wx.PySimpleApp()
+		if self.app == None:
+			self.app = wx.PySimpleApp()
 
-		frame=wx.Frame(None,-1)
+		self.frame=wx.Frame(None,-1)
 		sizer1=wx.BoxSizer(wx.HORIZONTAL)
 		sizer2=wx.BoxSizer(wx.VERTICAL)
 
 		id_counter = 0
 		for scriptname in self.scripts.keys():
-			button=wx.Button(frame, id_counter, label=scriptname)
-			wx.EVT_BUTTON (frame, id_counter, lambda e, s = self, n=scriptname : s.playScript(avatarName, n))
+			button=wx.Button(self.frame, id_counter, label=scriptname)
+			wx.EVT_BUTTON (self.frame, id_counter, lambda e, s = self, n=scriptname : s.playScript(avatarName, n))
 			sizer1.Add(button,1 )
 			id_counter+=1
 			if id_counter % 6 == 0:
@@ -319,14 +329,15 @@ class ScriptEngine(Piavca.TimeCallback):
 				
 		sizer2.Add(sizer1,0)
 			
-		frame.SetSizer(sizer2)
-		frame.SetAutoLayout(1)
-		sizer2.Fit(frame)
+		self.frame.SetSizer(sizer2)
+		self.frame.SetAutoLayout(1)
+		sizer2.Fit(self.frame)
 
-		frame.Show(True)
-		frame.Layout()
+		self.frame.Show(True)
+		self.frame.Layout()
 
-		thread.start_new_thread(app.MainLoop, ())
+		#print "starting gui"
+		thread.start_new_thread(self.app.MainLoop, ())
 		
 
 		

@@ -21,6 +21,7 @@ class PauseCallback(Piavca.TimeCallback):
 		time.sleep(0.02)
 
 def run(path=None): 
+	app = None
 	if path == None:
 		try:
 			import wx
@@ -52,7 +53,7 @@ def run(path=None):
 		filename = filename[:-4]
 	print filename
 
-	script_engine = ScriptEngine("character controller", filename)	
+	script_engine = ScriptEngine("character controller", filename, app)	
 	return script_engine
 	#script_engine.GUI("nancy")
 

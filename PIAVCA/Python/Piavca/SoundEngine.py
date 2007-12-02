@@ -63,12 +63,13 @@ except ImportError:
 	ttsAvailable = 0
 	
 class SoundEngine:
-	def __init__(self, samplerate = 44100, channels = 2, format = -1):
+	def __init__(self, samplerate = 44100, channels = 2, format = -1, sample_width=-1):
 		self.samplerate = samplerate
 		self.channels = channels
 		self.format = format
+		self.samplewidth = sample_width
 		self.output = None
-		
+		self.currentAudio = None
 		
 
 		self.sounds = {}
@@ -79,6 +80,7 @@ class SoundEngine:
 	def openPlayer(self, wavfile):
 		if pyaudiopresent:
 			p = pyaudio.PyAudio()
+			self.samplewidth = wavfile.getsampwidth()
 			self.output = p.open(format =
                 p.get_format_from_width(wavfile.getsampwidth()),
                 channels = wavfile.getnchannels(),
@@ -88,6 +90,7 @@ class SoundEngine:
 		elif pymediapresent :
 			if self.format < 0:
 				self.format = sound.AFMT_S16_LE
+				self.samplewidth = 2
 			# create an audio output device
 			self.output = sound.Output(self.samplerate, self.channels, self.format )
 		
@@ -124,13 +127,29 @@ class SoundEngine:
 		except:
 			return 0
 		
+	def updateAudio(self):
+		if self.currentAudio == None or not pyaudiopresent:
+			return
+		space = self.output.get_write_available()
+		space = int(space *self.channels * self.samplewidth)
+		#print space, len(self.currentAudio), self.samplewidth
+		if space >= len(self.currentAudio):
+			towrite = self.currentAudio
+			self.currentAudio = None
+		else:
+			towrite = self.currentAudio[:space]
+			self.currentAudio = self.currentAudio[space:]
+		self.output.write(towrite)
+		#self.currentAudio = None
+		
 	def play(self, name):
 		print name, len(self.sounds[name])
 		#self.output.stop()
 		#s = copy(self.sounds[name])
 		if pyaudiopresent:
-			self.output.write(self.sounds[name])
-			left = self.bytes_per_second*len(self.sounds[name])
+			self.currentAudio = self.sounds[name]
+			self.updateAudio()
+			left = len(self.sounds[name])/self.bytes_per_second
 		elif pymediapresent :
 			self.output.play(self.sounds[name])
 			left = self.output.getLeft()
