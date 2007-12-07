@@ -105,6 +105,11 @@ For Cal3d and Python it will look in the directories that they are likely to be 
 
 Swig, bison and flex are assumed to be in your path, if you use them.
 
+If you want to compile new versions of the installer, you need to use the appropriate installer project depending on the version 
+of Python you are using, there is one for 2.4 and one for 2.5. There are VC build configurations specific for each version
+(Release_Py24, Debug_Py24, Release_Py25, Debug_Py25). Please compile using the right configuration for your python version and 
+then build the installer project for that version (otherwise it won't install in the right place).
+
 /////  A note on the Debug build. 
 
 Visual studio has a number of different versions of its standard library and linking together two bits of code that use different versions tends to break everything. In particular there are different debug and release versions. To build a debug version of Piavca in theory you would need a debug version of Python. This would be a major pain as it involves recompiling Python and a lot of python modules. For this reason the debug version of piavca does not link to the debug standard library and links to the standard release versions of Python and Cal3d. I find this more convenient as maintaining a debug version of Python can be painful and you rarely get much useful information from debugging the internal of Python and the standard library. It is sometimes useful to be able to debug Cal3d, so I include debug info in my release dll of Cal3d (you will need to change the project properties and recompile). If you really want a full debug version you can change the settings to link to the debug version of the CRT and compile a debug version of Python. This is only recommended if you know what you are doing.

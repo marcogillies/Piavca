@@ -4,6 +4,7 @@
 	Version="8.00"
 	Name="Standard Motion Implementation"
 	ProjectGUID="{E2404604-543C-4863-BF9D-BE3E995DF4E4}"
+	RootNamespace="Standard Motion Implementation"
 	Keyword="Win32Proj"
 	>
 	<Platforms>
@@ -281,6 +282,276 @@
 				Name="VCPostBuildEventTool"
 			/>
 		</Configuration>
+		<Configuration
+			Name="Release_Py24|Win32"
+			OutputDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="4"
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="2"
+				InlineFunctionExpansion="1"
+				OmitFramePointers="true"
+				AdditionalIncludeDirectories="..\"
+				PreprocessorDefinitions="WIN32;NDEBUG;_LIB;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_DEPRECATE"
+				StringPooling="true"
+				RuntimeLibrary="2"
+				EnableFunctionLevelLinking="true"
+				RuntimeTypeInfo="true"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				Detect64BitPortabilityProblems="true"
+				DebugInformationFormat="3"
+				DisableSpecificWarnings="4251 /wd4267 /wd4244 /wd4065 /wd4102 /wd4996"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLibrarianTool"
+				OutputFile="$(OutDir)/Standard Motion Implementation.lib"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Debug_Py24|Win32"
+			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="4"
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				AdditionalIncludeDirectories="..\;.\dummy"
+				PreprocessorDefinitions="WIN32;_LIB"
+				MinimalRebuild="true"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="2"
+				RuntimeTypeInfo="true"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				Detect64BitPortabilityProblems="true"
+				DebugInformationFormat="4"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLibrarianTool"
+				OutputFile="$(OutDir)/StdMotionImp.lib"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Release_Py25|Win32"
+			OutputDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="4"
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="2"
+				InlineFunctionExpansion="1"
+				OmitFramePointers="true"
+				AdditionalIncludeDirectories="..\"
+				PreprocessorDefinitions="WIN32;NDEBUG;_LIB;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_DEPRECATE"
+				StringPooling="true"
+				RuntimeLibrary="2"
+				EnableFunctionLevelLinking="true"
+				RuntimeTypeInfo="true"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				Detect64BitPortabilityProblems="true"
+				DebugInformationFormat="3"
+				DisableSpecificWarnings="4251 /wd4267 /wd4244 /wd4065 /wd4102 /wd4996"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLibrarianTool"
+				OutputFile="$(OutDir)/Standard Motion Implementation.lib"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Debug_Py25|Win32"
+			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="4"
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				AdditionalIncludeDirectories="..\;.\dummy"
+				PreprocessorDefinitions="WIN32;_LIB"
+				MinimalRebuild="true"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="2"
+				RuntimeTypeInfo="true"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				Detect64BitPortabilityProblems="true"
+				DebugInformationFormat="4"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLibrarianTool"
+				OutputFile="$(OutDir)/StdMotionImp.lib"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
 	</Configurations>
 	<References>
 	</References>
@@ -383,6 +654,50 @@
 					Outputs=" $(ProjectDir)bvhLexer.cpp"
 				/>
 			</FileConfiguration>
+			<FileConfiguration
+				Name="Release_Py24|Win32"
+				ExcludedFromBuild="true"
+				>
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="running flex"
+					CommandLine="flex.exe -Pbvh -obvhLexer.cpp &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					Outputs=" $(ProjectDir)bvhLexer.cpp"
+				/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Debug_Py24|Win32"
+				ExcludedFromBuild="true"
+				>
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="running flex"
+					CommandLine="flex.exe -Pbvh -obvhLexer.cpp &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					Outputs=" $(ProjectDir)bvhLexer.cpp"
+				/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Release_Py25|Win32"
+				ExcludedFromBuild="true"
+				>
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="running flex"
+					CommandLine="flex.exe -Pbvh -obvhLexer.cpp &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					Outputs=" $(ProjectDir)bvhLexer.cpp"
+				/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Debug_Py25|Win32"
+				ExcludedFromBuild="true"
+				>
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="running flex"
+					CommandLine="flex.exe -Pbvh -obvhLexer.cpp &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					Outputs=" $(ProjectDir)bvhLexer.cpp"
+				/>
+			</FileConfiguration>
 		</File>
 		<File
 			RelativePath="bvhParser.ypp"
@@ -429,6 +744,50 @@
 					Description="running bison"
 					CommandLine="&quot;$(ProjectDir)runYacc.bat&quot;&#x0D;&#x0A;"
 					Outputs="&quot;$(ProjectDir)bvhParser_tab.cpp&quot;;&quot;$(ProjectDir)bvhParser_tab.h&quot;"
+				/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Release_Py24|Win32"
+				ExcludedFromBuild="true"
+				>
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="running bison"
+					CommandLine="bison -p bvh -d &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					Outputs="&quot;$(ProjectDir)bvhParser.tab.cpp&quot;;&quot;$(ProjectDir)bvhParser.tab.hpp&quot;"
+				/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Debug_Py24|Win32"
+				ExcludedFromBuild="true"
+				>
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="running bison"
+					CommandLine="bison -p bvh -d &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					Outputs="&quot;$(ProjectDir)bvhParser.tab.cpp&quot;;&quot;$(ProjectDir)bvhParser.tab.hpp&quot;"
+				/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Release_Py25|Win32"
+				ExcludedFromBuild="true"
+				>
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="running bison"
+					CommandLine="bison -p bvh -d &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					Outputs="&quot;$(ProjectDir)bvhParser.tab.cpp&quot;;&quot;$(ProjectDir)bvhParser.tab.hpp&quot;"
+				/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Debug_Py25|Win32"
+				ExcludedFromBuild="true"
+				>
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="running bison"
+					CommandLine="bison -p bvh -d &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					Outputs="&quot;$(ProjectDir)bvhParser.tab.cpp&quot;;&quot;$(ProjectDir)bvhParser.tab.hpp&quot;"
 				/>
 			</FileConfiguration>
 		</File>
