@@ -65,6 +65,7 @@ Avatar::Avatar(tstring avatarId,
 	if(dotpos != name.npos)
 		name = name.substr(0, dotpos);
 	initAvatar(avatarId, strFilename, bailOnMissedJoints, Position, Orientation);
+	std::cout << "end of avatar constructor" << std::endl;
 };
 Avatar::Avatar(tstring avatarId, 
 			   bool bailOnMissedJoints,
@@ -81,6 +82,7 @@ Avatar::Avatar(tstring avatarId,
 	if(dotpos != name.npos)
 		name = name.substr(0, dotpos);
 	initAvatar(avatarId, avatarId, bailOnMissedJoints, Position, Orientation);
+	std::cout << "end of avatar constructor" << std::endl;
 };
 
 Avatar::~Avatar() 
@@ -600,11 +602,15 @@ void Avatar::initAvatar(
 			const Quat &Orientation)
 {
 	Core::getCore()->initAvatar(this, strFilename, bailOnMissedJoints, Position, Orientation);
+	std::cout << "end of init Avatar" << std::endl;
+	std::cout.flush();
 	if(imp)
 	  {
 	    imp->frontEnd = this;
 	    loadMotion(new KeyframeMotion());
 	  }
+	std::cout << "real end of init avatar " << std::endl;
+	std::cout.flush();
 };
 
 int Avatar::end ()  

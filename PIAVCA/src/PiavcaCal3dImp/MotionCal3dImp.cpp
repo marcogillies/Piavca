@@ -31,6 +31,7 @@ using namespace Piavca;
 MotionCal3DImp::MotionCal3DImp(tstring motionFilename, CalCoreSkeleton *skel)
 	:cal3DSkel(skel)
 {
+	std::cout << "in motion constructor" << std::endl;
 	// load the animation from file
 	cal3DAnim = CalLoader::loadCoreAnimation(motionFilename, skel);
 

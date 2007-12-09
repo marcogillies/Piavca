@@ -511,11 +511,13 @@ void Core::initAvatar(
 			const Quat &Orientation)
 {
 	avatar->imp = createAvatarImp(avatarId, bailOnMissedJoints, Position, Orientation);
+	std::cout << "after create avatar imp" << std::endl;
 	if(avatar->imp)
 		{
 		//avatar->setCore(this);
 		avatars.push_back(avatar);
 		}
+	std::cout << "end of core init avatar" << std::endl;
 };
 
 

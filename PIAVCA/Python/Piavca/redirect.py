@@ -3,7 +3,7 @@ import sys
 try:
 	import wx
 	wxpresent = 1
-	app = wx.PySimpleApp()
+	
 except ImportError:
 	wxpresent = 0
 import thread, time
@@ -56,7 +56,9 @@ class outputRedirection:
 		self.write(s)
 		self.write("\n")
 		
-def redirect(filename="python_output.txt"):
+def redirect(filename="python_output.txt", app = None):
+	if wxpresent and app == None:
+		app = Piavca.getWXApp() #wx.PySimpleApp()
 	outputer = outputRedirection(filename)
 	outputer.Show()
 

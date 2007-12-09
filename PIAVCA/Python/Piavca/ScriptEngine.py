@@ -12,11 +12,11 @@
 # for the specific language governing rights and limitations under the
 # License.
 #
-# The Original Code is __________________________________________.
+# The Original Code is ScriptEngine.py
 #
 # The Initial Developer of the Original Code is
-# ____________________________________________.
-# Portions created by the Initial Developer are Copyright (C) 2___
+# Marco (Mark) Gillies.
+# Portions created by the Initial Developer are Copyright (C) 2007
 # the Initial Developer. All Rights Reserved.
 #
 # Contributor(s):
@@ -70,7 +70,8 @@ class motionCallback(scriptCallback):
 			self.motionName = args[0]
 	def __call__(self, avatar):
 		if self.motion == None:
-			self.motion = Piavca.Core.getCore().getMotion(self.motionName)
+			#print "script engine core", Piavca.Core.getCore()
+			self.motion = Piavca.getMotion(self.motionName)
 			if self.motion == None:
 				print "Could not find motion", self.motionName
 				return
@@ -84,7 +85,7 @@ class backgroundMotionCallback(scriptCallback):
 		scriptCallback.__init__(self, time, args)
 		self.motionName = args[0]
 	def __call__(self, avatar):
-		avatar.add_background_motion(Piavca.Core.getCore().getMotion(self.motionName))
+		avatar.add_background_motion(Piavca.getMotion(self.motionName))
 		
 class stopMotionCallback(scriptCallback):
 	def __init__(self, time, args):
@@ -123,10 +124,15 @@ class eventCallback(scriptCallback):
 		mot.sendEvent(self.event)
 		
 class ScriptEngine(Piavca.TimeCallback):
-	def __init__(self, name, filename, app = None):
+	def __init__(self, name, filename, app = None, gui_thread=False):
 		Piavca.TimeCallback.__init__(self, name)
 		self.app = app
+		self.gui_thread = gui_thread
 		self.frame = None
+	
+		self.camera_pos = Piavca.Vec()
+		self.camera_pitch = 0.0
+		self.camera_yaw = 0.0
 	
 		loadDefaults()
 		
@@ -167,7 +173,9 @@ class ScriptEngine(Piavca.TimeCallback):
 				importJointNames(line[1])
 			elif line[0] == "avatar":
 				print "avatar", line[1]
+				print "start loading avatar"
 				avatar = Piavca.Avatar(line[1])
+				print "finished loading avatar"
 				i = 2
 				while i < len(line):
 					if line[i] == "position" or line[i] == "pos":
@@ -192,10 +200,22 @@ class ScriptEngine(Piavca.TimeCallback):
 					spackname = line[1]
 				else:
 					spackname = line[2]
+				print "script pack", spackname
 				self.loadScripts(spackname)
+			elif line[0] == "camera":
+				if line[1] == "position":
+					self.camera_pos = Piavca.Vec(float(line[2]), float(line[3]), float(line[4]))
+				elif line[1] == "vert_angle":
+					self.camera_pitch = float(line[2])
+				elif line[1] == "horiz_angle":
+					self.camera_yaw = float(line[2])
+				#elif line[1] == "rotation":
+				#       s            	self.camera_ori = Piavca.Quat(float(line[2]), Piavca.Vec(float(line[3], float(line[4], lfloat(ine[5]))
 			elif line[0] == "GUI":
+				print "gui"
 				gui_list.append(line[1])
 			elif line[0] == "gui":
+				print "gui"
 				gui_list.append(line[1])
 				
 		for gui_name in gui_list:
@@ -203,6 +223,15 @@ class ScriptEngine(Piavca.TimeCallback):
 				
 		self.thisown = 0
 		Piavca.Core.getCore().registerCallback(self)
+		
+	def getCameraPosition(self):
+		return self.camera_pos
+		
+	def getCameraPitch(self):
+		return self.camera_pitch
+		
+	def getCameraYaw(self):
+		return self.camera_yaw
 				
 	def loadScripts(self, scriptfile):
 		print "load scripts", scriptfile
@@ -310,8 +339,10 @@ class ScriptEngine(Piavca.TimeCallback):
 		if not wxAvailable:
 			print "can't instantiate GUI, wx python not present"
 
+		print "app", self.app
 		if self.app == None:
-			self.app = wx.PySimpleApp()
+			print "getting app"
+			self.app = Piavca.getWXApp() #wx.PySimpleApp()
 
 		self.frame=wx.Frame(None,-1)
 		sizer1=wx.BoxSizer(wx.HORIZONTAL)
@@ -337,7 +368,8 @@ class ScriptEngine(Piavca.TimeCallback):
 		self.frame.Layout()
 
 		#print "starting gui"
-		thread.start_new_thread(self.app.MainLoop, ())
+		if self.gui_thread:
+			thread.start_new_thread(self.app.MainLoop, ())
 		
 
 		

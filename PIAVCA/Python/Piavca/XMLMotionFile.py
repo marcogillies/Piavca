@@ -12,11 +12,11 @@
 # for the specific language governing rights and limitations under the
 # License.
 #
-# The Original Code is __________________________________________.
+# The Original Code is XMLMotionFile.py
 #
 # The Initial Developer of the Original Code is
-# ____________________________________________.
-# Portions created by the Initial Developer are Copyright (C) 2___
+# Marco (Mark) Gillies
+# Portions created by the Initial Developer are Copyright (C) 2007
 # the Initial Developer. All Rights Reserved.
 #
 # Contributor(s):
@@ -114,7 +114,7 @@ def parseAttribute(attrValue):
 		motions = []
 		for name in valuelist:
 			print "seeing if attribute is a motion", name
-			mot = Piavca.Core.getCore().getMotion(name)
+			mot = Piavca.getMotion(name)
 			if mot == None:
 				raise ValueError
 			motions.append(mot)
@@ -236,7 +236,7 @@ def readMotions(motions):
 					print "Motion statement without a name"
 				else:
 					#print "*"+name+"*"
-					mot = Piavca.Core.getCore().getMotion(name)
+					mot = Piavca.getMotion(name)
 					#print mot
 					if mot == None:
 						print "could not find motion", name
@@ -247,7 +247,7 @@ def readMotions(motions):
 			elif motion.nodeName == "File":
 				name = str(motion.getAttribute("name"))
 				filename = str(motion.getAttribute("filename"))
-				Paivca.Core.getCore().loadMotion(name, filename)
+				Paivca.loadMotion(name, filename)
 						
 			elif motion.nodeName == "Keyframes":
 				for i in range(motion.attributes.length):
@@ -291,7 +291,7 @@ def readMotions(motions):
 						valuelist = stringToValueList(key_value)
 						key_value = ValueListToQuat(valuelist)
 						mot.setQuatKeyframe(key_joint, float(key_time), key_value)
-				Piavca.Core.getCore().loadMotion(name, mot)
+				Piavca.loadMotion(name, mot)
 							
 			else:
 				try:
@@ -306,7 +306,7 @@ def readMotions(motions):
 						for i in range(motion.attributes.length):
 							if str(motion.attributes.item(i).name) == "name" or str(motion.attributes.item(i).name) == "Name":
 								name = str(motion.attributes.item(i).nodeValue)
-								Piavca.Core.getCore().loadMotion(name, mot)
+								Piavca.loadMotion(name, mot)
 								continue
 							attrName = motion.attributes.item(i).name
 							attrValue = motion.attributes.item(i).nodeValue

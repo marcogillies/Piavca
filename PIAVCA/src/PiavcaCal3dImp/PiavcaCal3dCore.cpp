@@ -67,7 +67,10 @@ TextureHandler *PiavcaCal3DCore::createTextureHandler()
 
 AvatarCal3DImp *PiavcaCal3DCore::createAvatarImp(tstring avatarId, TextureHandler *th, bool bailOnMissedJoints, const Vec &Position, const Quat &Orientation)
 {
-	return new AvatarCal3DImp(avatarId, th, bailOnMissedJoints, Position, Orientation);
+	std::cout << "start of create Avatar Imp" << std::endl;
+	AvatarCal3DImp *a = new AvatarCal3DImp(avatarId, th, bailOnMissedJoints, Position, Orientation);
+	std::cout << "end of create Avatar Imp" << std::endl;
+	return a;
 }
 		
 
@@ -76,6 +79,7 @@ AvatarImp *PiavcaCal3DCore::createAvatarImp(tstring avatarId, bool bailOnMissedJ
   TextureHandler *th = createTextureHandler();
   AvatarCal3DImp *avatarImp = createAvatarImp(avatarId, th, bailOnMissedJoints, Position, Orientation);
   avatarImp->loadTextures();
+  std::cout << "end of create Avatar Imp" << std::endl;
   return avatarImp;
 }
 

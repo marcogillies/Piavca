@@ -52498,25 +52498,35 @@ SWIGINTERN PyObject *_wrap_new_Avatar__SWIG_9(PyObject *SWIGUNUSEDPARM(self), Py
   Piavca::tstring arg1 ;
   Piavca::Avatar *result = 0 ;
   PyObject * obj0 = 0 ;
-  
+
+  std::cout << "avatar constructor 9" << std::endl;
+
   if (!PyArg_ParseTuple(args,(char *)"O:new_Avatar",&obj0)) SWIG_fail;
   {
     arg1 = PyString_AsString(obj0);
   }
   {
     try {
-      result = (Piavca::Avatar *)new Piavca::Avatar(arg1); 
+      result = (Piavca::Avatar *)new Piavca::Avatar(arg1);
+      std::cout << "after constructor\n";
+      std::cout.flush();
     }
     catch (Swig::DirectorException &e) {
+      std::cout << "got director exception\n";
+      std::cout.flush();
       SWIG_fail; 
     }
     catch (Piavca::Exception &e) 
     {
       std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      std::cout.flush();
       SWIG_fail; 
     }
   }
+  std::cout << "just called constructor\n";
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__Avatar, SWIG_POINTER_NEW |  0 );
+  std::cout << "End of swig avatar constructor" << std::endl;
+  std::cout.flush();
   return resultobj;
 fail:
   return NULL;
@@ -52528,6 +52538,8 @@ SWIGINTERN PyObject *_wrap_new_Avatar(PyObject *self, PyObject *args) {
   PyObject *argv[7];
   int ii;
   
+  std::cout << "in avatar constructor" << std::endl;
+
   if (!PyTuple_Check(args)) SWIG_fail;
   argc = PyObject_Length(args);
   for (ii = 0; (ii < argc) && (ii < 6); ii++) {
@@ -52549,6 +52561,7 @@ SWIGINTERN PyObject *_wrap_new_Avatar(PyObject *self, PyObject *args) {
       int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
+	std::cout << "avatar constructor 4";
         return _wrap_new_Avatar__SWIG_4(self, args);
       }
     }
@@ -52563,6 +52576,7 @@ SWIGINTERN PyObject *_wrap_new_Avatar(PyObject *self, PyObject *args) {
         _v = SWIG_CheckState(res);
       }
       if (_v) {
+	std::cout << "avatar constructor 8" << std::endl;
         return _wrap_new_Avatar__SWIG_8(self, args);
       }
     }

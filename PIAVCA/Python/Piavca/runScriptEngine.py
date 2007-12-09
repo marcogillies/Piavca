@@ -20,14 +20,14 @@ class PauseCallback(Piavca.TimeCallback):
 	def timeStep(self, core, t):
 		time.sleep(0.02)
 
-def run(path=None): 
+def run(path=None, gui_thread=False): 
 	app = None
 	if path == None:
 		try:
 			import wx
 			from wx.lib.dialogs import *
 			
-			app = wx.PySimpleApp()
+			app = Piavca.getWXApp() #wx.PySimpleApp()
 			dialog_return = openFileDialog ()
 			path = dialog_return.paths[0]
 		except ImportError:

@@ -83,6 +83,8 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
   : cal_model(NULL), previous_time(0), renderBuffer(0), 
     updateBuffer(0), textureHandler(_textureHandler), bb_dirty_flag(true) 
 {
+	std::cout << "start of the AvatarCal3dimp constructor\n";
+
 	if(doubleBuffer) 
 	{
 		renderBuffer = 0;
@@ -170,7 +172,7 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 		else if(strKey == "skeleton")
 		{
 			// load core skeleton
-			std::cout << "Loading skeleton '" << strData << "'..." << std::endl;
+			std::cout << "Loading skeleton lala  '" << strData << "'..." << std::endl;
 			if(!cal_core_model->loadCoreSkeleton(strPath + strData))
 			{
 				CalError::printLastError();
@@ -329,6 +331,7 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 	// set the material set of the whole model
 	cal_model->setMaterialSet(0);
 
+	std::cout << "looking for joints\n";
 	int i,j;
 	// load the joint map
 	CalSkeleton *skel = cal_model->getSkeleton();
@@ -479,6 +482,7 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 
    platformSpecific_timeStep (Piavca::Core::getCore()->getTime());
    base_bb = getBoundBox();
+   std::cout << "at end of Cal3dAvatar constructor\n";
 };
 
 
@@ -511,6 +515,7 @@ void AvatarCal3DImp::loadTextures()
 	//std::string strPath = "./";
 	// load all textures and store the opengl texture id in the corresponding map in the material
 	// NB this bit is GL specific!!!
+	std::cout << "loading textures" << std::endl;
 	CalCoreModel *cal_core_model = cal_model->getCoreModel();
 	int materialId;
 	for(materialId = 0; materialId < cal_core_model->getCoreMaterialCount(); materialId++)
@@ -529,12 +534,15 @@ void AvatarCal3DImp::loadTextures()
 
 			// load the texture from the file
 			GLuint textureId;
+			std::cout << "loading texture" << strFilename << std::endl;
 			textureId = textureHandler->loadTexture(strPath + strFilename);
+			std::cout << "finished loading texture" << std::endl;
 
 			// store the opengl texture id in the user data of the map
 			pCoreMaterial->setMapUserData(mapId, (Cal::UserData)textureId);
 		}
 	}
+	std::cout << "finished loading textures" << std::endl;
 
 }
 

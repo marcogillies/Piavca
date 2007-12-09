@@ -4,6 +4,7 @@ from OpenGL.GLUT import *
 
 from math import *
 
+
 GLTB_TIME_EPSILON = 10
 gltb_lasttime = 0
 gltb_lastposition =(0.0, 0.0, 0.0)
@@ -92,7 +93,7 @@ def gltbConfigRight( x, y, z ):
     gltb_rightaxis = (x,y,z)
     _gltbOrientModel()
 
-def gltbMatrix(scalefactor):
+def gltbMatrix():
     global gltb_transform, gltb_angle, gltb_rotateaxis, gltb_lastposition, gltb_orientmodel, gltb_camera_pos
 	
     #print gltb_camera_pos
@@ -100,24 +101,13 @@ def gltbMatrix(scalefactor):
     glPushMatrix()
     glLoadIdentity()
     glRotatef(gltb_angle, gltb_rotateaxis[0], gltb_rotateaxis[1], gltb_rotateaxis[2])
-    glTranslatef(scalefactor*gltb_translation[0], scalefactor*gltb_translation[2], scalefactor*gltb_translation[1])
+    glTranslatef(gltb_translation[0], gltb_translation[2], gltb_translation[1])
     glMultMatrixf(gltb_transform)
     gltb_transform = glGetFloatv(GL_MODELVIEW_MATRIX)
     glPopMatrix()
     glMultMatrixf(gltb_transform)
     glMultMatrixf(gltb_orientmodel)
 
-    #gltb_camera_pos = [0.0, 0.0, 0.0, 1]
-    modelview = glGetFloatv(GL_MODELVIEW_MATRIX)
-    #print modelview
-    # the inverse translation
-    #x = [-modelview[3][0], -modelview[3*4+1], -modelview[3*4+2]]
-    x = -modelview[3][:3]    
-	# multiply by the inverse rotation/scale
-    gltb_camera_pos[0] = x[0]*modelview[0][0] + x[1]*modelview[0][1] + x[2]*modelview[0][2]
-    gltb_camera_pos[1] = x[0]*modelview[1][0] + x[1]*modelview[1][1] + x[2]*modelview[1][2]
-    gltb_camera_pos[2] = x[0]*modelview[2][0] + x[1]*modelview[2][1] + x[2]*modelview[2][2]
-    #print x, gltb_camera_pos
 
 def gltbReshape(width, height):
     global gltb_width, gltb_height
@@ -131,7 +121,7 @@ def gltbMouseDown(x, y):
 def gltbMouseUp():
     _gltbStopMotion(glutGet(GLUT_ELAPSED_TIME))
 
-def gltbMotion(x, y):
+def gltbMotionRotateAboutFocus(x, y):
     global gltb_rotateaxis, gltb_width, gltb_height, gltb_lastposition, gltb_lasttime, gltb_angle
 
     if gltb_tracking == GL_FALSE:

@@ -231,7 +231,7 @@ INCLUDES = -I$(srcdir)/.. -I$(srcdir)/../../../src $(all_includes)
 BUILT_SOURCES = Piavca_wrap.cpp 
 SWIG_SOURCES = Piavca.i 
 pkgpython_PYTHON = $(srcdir)/Piavca_base.py $(srcdir)/../__init__.py $(srcdir)/../AnimationTrack.py $(srcdir)/../ConversationInterface.py  $(srcdir)/../DataStream.py $(srcdir)/../EigenAnalysis.py $(srcdir)/../EigenMotion.py $(srcdir)/../ExpMap.py  $(srcdir)/../FootPlantOnSpot.py $(srcdir)/../FSM.py  $(srcdir)/../GraphSearch.py  $(srcdir)/../JointNames.py $(srcdir)/../MotionFile.py $(srcdir)/../MotionGraph.py $(srcdir)/../MotionTracks.py $(srcdir)/../PCA.py $(srcdir)/../ParameterMotion.py $(srcdir)/../PositionHandler.py $(srcdir)/../redirect.py $(srcdir)/../runScriptEngine.py $(srcdir)/../ScriptEngine.py $(srcdir)/../SoundEngine.py $(srcdir)/../SpeechToText.py $(srcdir)/../Split.py $(srcdir)/../StrongConnectivity.py $(srcdir)/../Track.py $(srcdir)/../XMLMotionFile.py
-bin_SCRIPTS = $(srcdir)/../../Viewer.py $(srcdir)/../../wxViewer.py $(srcdir)/../../gltb.py $(srcdir)/../../PiavcaScriptEngine.py $(srcdir)/../../MotionEditor.py
+bin_SCRIPTS = $(srcdir)/../../Viewer.py $(srcdir)/../../wxViewer.py $(srcdir)/../gltb.py $(srcdir)/../../PiavcaScriptEngine.py $(srcdir)/../../MotionEditor.py
 pkgpyexec_LTLIBRARIES = _Piavca_base.so.la
 #	$(SWIG) $(SWIG_PYTHON_OPT) -I$(srcdir)/.. -o $@ -outdir $(srcdir)/../../Python/Piavca $<
 #lib_LTLIBRARIES = libPiavcaPythonInterface.la
