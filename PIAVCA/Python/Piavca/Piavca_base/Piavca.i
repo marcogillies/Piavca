@@ -482,6 +482,7 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %include "PiavcaAPI/RandomAdd.h"
 %include "PiavcaAPI/RandomBlendLoop.h"
 %include "PiavcaAPI/RandomAddLoop.h"
+%include "PiavcaAPI/Proxemics.h"
 %include "PiavcaAPI/ProxemicsLoop.h"
 %include "PiavcaAPI/LookAtMotion.h"
 %include "PiavcaAPI/RandomGazeMotion.h"

@@ -79,6 +79,19 @@ public:
 			}
 		Piavca::Error(tstring(_T("Unknown choice ")) + name);
 	};
+	
+	//! handles an event (plays the motion with the same name as the event)
+	void event(tstring ev)
+	{
+		for(int i = 0; i < int(mots.size()); i++)
+			if (mots[i]->getName() == ev)
+			{
+				currentChoice = i;
+				reset();
+				break;
+			}
+		MultiMotionCombiner::event(ev);
+	}
 
 	//! called each time around the loop
 	/*!

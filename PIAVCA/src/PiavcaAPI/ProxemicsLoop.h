@@ -85,6 +85,12 @@ public:
 	//! turns off maintaining distance
 	void turnOff(bool b){proxemics->turnOff(b);};
 
+	//! sets the position of the other person (if its not accessed as an avatar pointer)
+	void setOtherPosition(const Vec &v)
+	{
+		proxemics->setOtherPosition(v);
+	}
+	
 	//! adds an avatar to perform proxemics behaviour to
 	void addAvatar(Avatar *av)
 	{

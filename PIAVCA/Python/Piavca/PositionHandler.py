@@ -46,11 +46,17 @@ class PositionHandler(Piavca.MotionFilter):
 		#self.Motion = None
 	
 	def load(self, avatar):
+		print "about to load position handler"
 		Piavca.MotionFilter.load(self, avatar)
+		print "getting app"
 		app = Piavca.getWXApp()
+		print "getting canvas"
 		canvas = app.getCanvas()
+		print "canvas"
 		if hasattr(canvas, "loadPositionCallback"):
+			print "has position callback"
 			canvas.loadPositionCallback(lambda pos, rot : self.setPosition(pos))
+		print "print finished loading position handler"
 		
 	#def addShiftMotion(self, m):
 	#	if self.Motion == None:
@@ -65,7 +71,7 @@ class PositionHandler(Piavca.MotionFilter):
 	#def getMotion(self):
 	#	return self.Motion
 	
-def PositionResponse(PositionHandler):
+class PositionResponse(PositionHandler):
 	def __init__(self):
 		PositionHandler.__init__(self)
 		Piavca.Core.getCore().addJointNameSet(["OtherPosition"])
@@ -73,32 +79,62 @@ def PositionResponse(PositionHandler):
 		self.jointId = Piavca.Core.getCore().getJointId("OtherPosition")
 		self.cvm.setVecValue(self.jointId, Piavca.Vec())
 		
+	def clone(self):
+		new_mot = PositionResponse()
+		
+		new_mot.cvm = self.cvm.clone()
+		if self.pm:
+			new_mot.setMotion(self.pm.getMotion().clone())
+		
 	def setMotion(self, m):
-		pm = Piavca.ParameterMotion(m, self.cvm)
-		PositionHandler.setMotion(pm)
+		#print "position response set Motion"
+		self.pm = Piavca.ParameterMotion(m, self.cvm)
+		Piavca.MotionFilter.setMotion(self, self.pm)
+		#print self
+		#print "PositionResponse.pm", self.pm
+		#print "PositionResponse.getMotion()", self.getMotion()
 		
 	def setPosition(self, p):
+		#print "position response, setting position", p
 		self.cvm.setVecValue(self.jointId, p)
 		
-def PositionShiftResponse(PositionHandler):
+	#def preFrame(self, t):
+	#	print "in Position Response:: preframe"
+	#	print self.getMotion()
+	#	print self
+	#	PositionHandler.preFrame(self, t)
+		
+class PositionShiftResponse(PositionHandler):
 	def __init__(self):
 		PositionHandler.__init__(self)
-		self.alreadyShifted = False
-		self.oldPos = None
+		#self.alreadyShifted = False
+		#self.oldPos = None
+		self.interShiftTime = 2.0
+		
+	def clone(self):
+		new_mot = PositionShiftResponse()
+		new_mot.interShiftTime = self.interShiftTime
+		
+	def setInterShiftTime(self, t):
+		self.interShiftTime = t
 		
 	def setPosition(self, p):
-		#print "setting position ", p
+		print "setting position ", p
 		#oldPos = Piavca.Vec()#self.cvm.getVecValueAtTime(self.jointId, 0)
-		if self.oldPos != None:
-			diff = p - oldPos
+		if not hasattr(self, "lastShiftTime"):
+			self.lastShiftTime = 0.0
+		if hasattr(self, "oldPos"):
+			diff = p - self.oldPos
+			print diff.mag()
 			if abs(diff.mag()) > 0.01:
-				if not self.alreadyShifted:
-					self.alreadyShifted = True
-					for m in self.shiftMotions:
-						print m
-						m.reset()
-			else:
-				self.alreadyShifted = False
+				#if not self.alreadyShifted:
+				if (Piavca.getTime() - self.lastShiftTime) > self.interShiftTime:
+					#self.alreadyShifted = True
+					self.getMotion().reset()
+					#self.shiftedlast == False
+					self.lastShiftTime = Piavca.getTime()
+			#else:
+			#	self.alreadyShifted = False
 		self.oldPos = p
 		
 		

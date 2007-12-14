@@ -47,6 +47,9 @@ class ParameterMotion (Piavca.MotionFilter):
 		self.fMot = filterMot
 		self.setParameterMot(parameterMot)
 		
+	def clone(self):
+		new_mot = ParameterMotion(self, self.fMot, self.parameterMot)
+		
 	def setMotion(self, mot):
 		self.parameterLookup = []
 		MotionFilter.setMotion(self, mot)
@@ -75,16 +78,21 @@ class ParameterMotion (Piavca.MotionFilter):
 					print key
 					jointId = Piavca.Core.getCore().getJointId(key[3:])
 					if not self.parameterMot.isNull(jointId):
-						print key	
+						print key[3:]	
 						method = getattr(self.fMot, key)
 						self.parameterLookup.append((jointId, key, method))
 						
+		print self.parameterLookup
+						
 	def preFrame(self, t):
+		#print "parameter motion preframe"
 		for jointId, name, method in self.parameterLookup:
+			#print "setting attribute", jointId, name, method
 			type = self.parameterMot.getTrackType(jointId)
 			#print "motion type", type
 			if type & Piavca.FLOAT_TYPE:
 				try:
+					#print "setting float attribute", jointId, name, method
 					value = self.parameterMot.getFloatValueAtTime(jointId, t)
 					method(value)
 					continue
@@ -92,6 +100,7 @@ class ParameterMotion (Piavca.MotionFilter):
 					pass
 			if type & Piavca.VEC_TYPE:
 				try:
+					#print "setting vec attribute", jointId, name, method
 					value = self.parameterMot.getVecValueAtTime(jointId, t)
 					method(value)
 					continue
@@ -99,6 +108,7 @@ class ParameterMotion (Piavca.MotionFilter):
 					pass
 			if type & Piavca.QUAT_TYPE:
 				try:
+					#print "setting quat attribute", jointId, name, method
 					value = self.parameterMot.getQuatValueAtTime(jointId, t)
 					method(value)
 					continue

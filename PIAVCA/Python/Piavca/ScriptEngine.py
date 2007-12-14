@@ -85,7 +85,10 @@ class backgroundMotionCallback(scriptCallback):
 		scriptCallback.__init__(self, time, args)
 		self.motionName = args[0]
 	def __call__(self, avatar):
-		avatar.add_background_motion(Piavca.getMotion(self.motionName))
+		mot = Piavca.getMotion(self.motionName)
+		if mot == None:
+			raise "could not find motion " + self.motionName
+		avatar.add_background_motion(mot)
 		
 class stopMotionCallback(scriptCallback):
 	def __init__(self, time, args):
@@ -206,9 +209,9 @@ class ScriptEngine(Piavca.TimeCallback):
 				if line[1] == "position":
 					self.camera_pos = Piavca.Vec(float(line[2]), float(line[3]), float(line[4]))
 				elif line[1] == "vert_angle":
-					self.camera_pitch = float(line[2])
+					self.camera_pitch = Piavca.degToRad(float(line[2]))
 				elif line[1] == "horiz_angle":
-					self.camera_yaw = float(line[2])
+					self.camera_yaw = Piavca.degToRad(float(line[2]))
 				#elif line[1] == "rotation":
 				#       s            	self.camera_ori = Piavca.Quat(float(line[2]), Piavca.Vec(float(line[3], float(line[4], lfloat(ine[5]))
 			elif line[0] == "GUI":

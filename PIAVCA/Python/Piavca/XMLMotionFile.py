@@ -300,7 +300,7 @@ def readMotions(motions):
 						#print "found motion type", motion
 						mot = cl()
 						if mot == None:
-							print "could not find motion", name
+							raise "could not create motion " + name
 							continue
 						unknownAttrs=[]
 						for i in range(motion.attributes.length):
@@ -386,7 +386,7 @@ def readMotions(motions):
 						mot.create()
 						mots.append((mot, str(motion.nodeName), unknownAttrs))
 					else:
-						print motion.nodeName, "is not a motion", motion
+						raise str(motion.nodeName) + " is not a motion type, its type is: " + str(type(cl))
 						# add to a "add list" instead, parse attributes into a dictionary
 				except AttributeError, e:
 					print "Attribute Error:", e

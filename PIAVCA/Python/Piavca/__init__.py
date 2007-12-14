@@ -38,8 +38,8 @@
 
 from Piavca_base import * 
 import PiavcaGlut
-from MotionFile import readMotionFile
-from ScriptEngine import ScriptEngine 
+
+
 from FootPlantOnSpot import FootPlantOnSpot
 from FSM import FSM
 from ParameterMotion import ParameterMotion
@@ -49,6 +49,9 @@ try:
 	from MotionGraph import *
 except ImportError:
 	print "scipy not available, please install scipy to use EigenMotion and Motion Graph"
+
+from MotionFile import readMotionFile
+from ScriptEngine import ScriptEngine 
 from ConversationInterface import ConversationInterface
 try :
 	from SpeechToText import SpeechToText

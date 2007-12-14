@@ -6,6 +6,8 @@ import os
 import time
 
 import Piavca
+import Piavca.JointNames
+Piavca.JointNames.loadDefaults()
 from Piavca import ScriptEngine
 
 import thread, time

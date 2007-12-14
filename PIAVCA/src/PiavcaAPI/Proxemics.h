@@ -72,6 +72,7 @@ public:
 		:MultiMotionCombiner(vector<Motion *>()), 
 		desiredDistance(distance), threshold(0.2f), anglethreshold(Piavca::Pi/8.0f), distanceOff(false)
 	{
+		Step_forward =  Step_backward =  Rest = Turn_left = Turn_right = -1;
 		int currentMot = 0;
 		if(!stepForward)
 			stepForward = Piavca::Core::getCore()->getMotion(_T("stepForward"));
@@ -114,15 +115,33 @@ public:
 			currentMot++;
 		} 
 		
-		if(mots.size() > 0 && mots[Rest])setMotion(mots[Rest]);
+		if(mots.size() > 0 && Rest >=0)
+			setMotion(mots[Rest]);
+		else
+			Piavca::Error(_T("Could not find rest motion"));
 	};
 	Proxemics(const Proxemics &rl)
 		:MultiMotionCombiner(rl), 
 		desiredDistance(rl.desiredDistance), 
 		threshold(rl.threshold), anglethreshold(rl.anglethreshold),  distanceOff(rl.distanceOff),
-		otherAvatars(rl.otherAvatars) {};
+		otherAvatars(rl.otherAvatars),
+		Step_forward(rl.Step_forward), Step_backward(rl.Step_backward), Rest(rl.Rest), Turn_left(rl.Turn_left), Turn_right(rl.Turn_right)
+		{
+			if(mots.size() > 0 && Rest >=0)
+				setMotion(mots[Rest]);
+			else
+				Piavca::Error(_T("Could not find rest motion"));
+		
+		};
 	~Proxemics(){};
 	virtual Motion *clone(){return new Proxemics(*this);};
+	
+	//! called when the motion is loaded into an avatar
+	virtual void load(Avatar *av)
+	{
+		MultiMotionCombiner::load(av);
+		reset();
+	};
 
 	//! sets the desired distance to another avatar
 	void setDistance (float d){desiredDistance = d;};
@@ -153,6 +172,7 @@ public:
 	//! sets the position of the other person (if its not accessed as an avatar pointer)
 	void setOtherPosition(const Vec &v)
 	{
+		//std::cout << "Proxemics Setting other position " << v << std::endl;
 		otherPosition = v;
 	}
 
@@ -174,10 +194,11 @@ public:
 	void removeAllAvatars(){otherAvatars.clear();};
 
 	//! called each time through the loop
-	virtual void reblend(float time)
+	virtual void reset()
 	{
-		
+		std:: cout << "Proxemics reblend" << std::endl;
 		if(distanceOff) return;
+		std:: cout << "Proxemics reblend, we're in" << std::endl;
 		// work out the average position of the other characters
 		Vec averagePos;
 		float number = 0.0f;
