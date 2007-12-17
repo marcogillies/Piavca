@@ -176,7 +176,7 @@
 		</Configuration>
 		<Configuration
 			Name="Release_Py24|Win32"
-			OutputDirectory="$(ConfigurationName)"
+			OutputDirectory="."
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="2"
 			CharacterSet="2"
@@ -255,7 +255,7 @@
 		</Configuration>
 		<Configuration
 			Name="Debug_Py24|Win32"
-			OutputDirectory="$(ConfigurationName)"
+			OutputDirectory="."
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="2"
 			CharacterSet="2"
@@ -335,7 +335,7 @@
 		</Configuration>
 		<Configuration
 			Name="Release_Py25|Win32"
-			OutputDirectory="$(ConfigurationName)"
+			OutputDirectory="."
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="2"
 			CharacterSet="2"
@@ -414,7 +414,7 @@
 		</Configuration>
 		<Configuration
 			Name="Debug_Py25|Win32"
-			OutputDirectory="$(ConfigurationName)"
+			OutputDirectory="."
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="2"
 			CharacterSet="2"
@@ -575,7 +575,6 @@
 			</FileConfiguration>
 			<FileConfiguration
 				Name="Release_Py25|Win32"
-				ExcludedFromBuild="true"
 				>
 				<Tool
 					Name="VCCustomBuildTool"

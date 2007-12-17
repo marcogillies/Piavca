@@ -198,6 +198,7 @@ public:
 	{
 		std:: cout << "Proxemics reblend" << std::endl;
 		if(distanceOff) return;
+		if(!m_avatar) return;
 		std:: cout << "Proxemics reblend, we're in" << std::endl;
 		// work out the average position of the other characters
 		Vec averagePos;
