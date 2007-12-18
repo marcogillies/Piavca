@@ -66,8 +66,12 @@ class MotionTracks(wx.VListBox):
 
 		# start without any Principal Components
 		#self.pcs = ComponentAnalysis.ComponentAnalysis()
-		self.pcs = Piavca.PCAMotion()
-
+		self.pcs = None
+		try:
+			self.pcs = Piavca.PCAMotion()
+		except:
+			pass
+			
 	# the physical length (in pixels) of the tracks
 	def GetLength(self):
 		return self.name_length + self.track_length
@@ -317,6 +321,8 @@ class MotionTracks(wx.VListBox):
 	
 	# perform a PCA on the current Track
 	def PCA (self):
+		if self.pcs == None:
+			print "CANNOT DO PCA, scipy isn't loaded"
 		print "doing pca"
 		motion = self.tracks[self.selectedTrack].GetMotion()
 		splits = self.tracks[self.selectedTrack].GetSplits()
@@ -336,14 +342,20 @@ class MotionTracks(wx.VListBox):
 		Piavca.Core.getCore().setCurrentTime(self.time)
 		
 	def setPCWeight(self, i, v):
+		if self.pcs == None:
+			print "CANNOT DO PCA, scipy isn't loaded"
 		self.pcs.setWeight(i,v)
 		
 	def ProjectMotion(self):
+		if self.pcs == None:
+			print "CANNOT DO PCA, scipy isn't loaded"
 		#self.pcs.projectMotion(self.tracks[self.selectedTrack].GetMotion())
 		motion = self.tracks[self.selectedTrack].GetMotion()
 		self.pcs.setMotion(motion)
 		
 	def ProjectSubtract(self):
+		if self.pcs == None:
+			print "CANNOT DO PCA, scipy isn't loaded"
 		#self.pcs.projectMotion(self.tracks[self.selectedTrack].GetMotion())
 		motion = self.tracks[self.selectedTrack].GetMotion()
 		self.pcs.setMotion(motion)
@@ -354,6 +366,8 @@ class MotionTracks(wx.VListBox):
 		Piavca.Core.getCore().setCurrentTime(self.time)
 		
 	def AddPCSToMotion(self):
+		if self.pcs == None:
+			print "CANNOT DO PCA, scipy isn't loaded"
 		motion = self.tracks[self.selectedTrack].GetMotion()
 		newpcs = self.pcs.clone()
 		newpcs.setMotion(motion)
@@ -368,6 +382,8 @@ class MotionTracks(wx.VListBox):
 
 	# perform a PCA on the current Track
 	def LoadPCA (self, filename):
+		if self.pcs == None:
+			print "CANNOT DO PCA, scipy isn't loaded"
 		self.pcs.setFilename(filename)
 		self.pcs.create()
 		#self.pcs.Load(filename)
@@ -380,6 +396,8 @@ class MotionTracks(wx.VListBox):
 			
 	# pefrom a slow subspace analysis on the current track
 	def SlowSubspace (self):
+		if self.pcs == None:
+			print "CANNOT DO PCA, scipy isn't loaded"
 		print "doing slow subspace"
 		motion = self.tracks[self.selectedTrack].GetMotion()
 		splits = self.tracks[self.selectedTrack].GetSplits()
