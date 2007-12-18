@@ -69,7 +69,7 @@ void Reposition::calculateRootOffsets()
 		oriOffset = oriOffset/otherOri;
 	}
 	//oriOffset = Quat(oriOffset.Zangle(), Vec::ZAxis());
-	oriOffset = Quat();
+	//oriOffset = Quat();
 	//oriOffset = Quat(1.57, Vec::ZAxis());
 };
 

@@ -119,13 +119,13 @@ class PositionShiftResponse(PositionHandler):
 		self.interShiftTime = t
 		
 	def setPosition(self, p):
-		print "setting position ", p
+		#print "setting position ", p
 		#oldPos = Piavca.Vec()#self.cvm.getVecValueAtTime(self.jointId, 0)
 		if not hasattr(self, "lastShiftTime"):
 			self.lastShiftTime = 0.0
 		if hasattr(self, "oldPos"):
 			diff = p - self.oldPos
-			print diff.mag()
+			#print diff.mag()
 			if abs(diff.mag()) > 0.01:
 				#if not self.alreadyShifted:
 				if (Piavca.getTime() - self.lastShiftTime) > self.interShiftTime:

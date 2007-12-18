@@ -126,7 +126,7 @@ namespace Piavca
 				&& (reblend_flag
 				|| ((endTime < 0 || time < endTime)
 				&& (!mot2 ||
-				(mot2->getMotionLength() > 0 && time > mot2->getEndTime())))))
+				(/*mot2->getMotionLength() > 0 &&*/ time > mot2->getEndTime())))))
 			{
 				//std::cout << "Loop Motion Time " << time << " ";
 				//std::cout << mot2->getEndTime() << " ";

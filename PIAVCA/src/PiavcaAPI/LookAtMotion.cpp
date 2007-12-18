@@ -320,7 +320,7 @@ Vec LookAtMotion::getVecValueAtTimeInternal(int trackId, float time)
 
 Quat LookAtMotion::getQuatValueAtTimeInternal(int trackId, float time)
 {
-	std::cout << "look at motion\n";
+	//std::cout << "look at motion\n";
 	if(trackId == bodyId) return Quat();
 
 	//std::cout << "Look at Motion\n";
@@ -372,7 +372,7 @@ Quat LookAtMotion::getQuatValueAtTimeInternal(int trackId, float time)
 		{
 
 			Vec zvec = m_avatar->getForwardDirection();
-			std::cout << "forward " << zvec << std::endl;
+			std::cout << "Look at motion: forward " << zvec << std::endl;
 
 			// transfrom into local space of avatar
 			Vec localPos = subjectVec;

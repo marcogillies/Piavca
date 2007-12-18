@@ -148,7 +148,7 @@ public:
 		otherPosition = v;
 		if (lookingAt && !otherAvatar)
 		{
-			std::cout << otherPosition << std::endl;
+			std::cout << "Diadic Gaze: setting other position " << otherPosition << std::endl;
 			mot->setTarget(otherPosition);
 			//mot->setTarget(otherPosition, true);
 			//mot->setTarget(Vec(0.0, 100.0, 0.0), true);
@@ -229,11 +229,14 @@ public:
 			if( !otherAvatar)
 			{
 				mot->setTarget(otherPosition);
+				mot->setHeadActive(true);
 				followPosition = true;
 			}
 			else
+			{
 				mot->setTarget(otherAvatar, joint);
-			
+				mot->setHeadActive(true);
+			}
 			float meanGaze; 
 			switch(isTalking)
 			{
