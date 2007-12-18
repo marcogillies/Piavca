@@ -288,7 +288,11 @@ class ScriptEngine(Piavca.TimeCallback):
 				print "could not load sounds as audio playback is not supported, please install pyaudio or  pymedia"
 				return None
 		if callbackname == "say":
-			return sayCallback(time, args, self.soundEngine)
+			if self.soundEngine != None:
+				return sayCallback(time, args, self.soundEngine)
+			else:
+				print "could not load sounds as audio playback is not supported, please install pyaudio or  pymedia"
+				return None
 		if callbackname == "event":
 			return eventCallback(time, args)
 		if callbackname == "expression":
@@ -313,7 +317,8 @@ class ScriptEngine(Piavca.TimeCallback):
 		expr = re.compile("<[^>]*>")
 		scripts = expr.findall(utterance)
 		text = expr.sub("", utterance)
-		self.soundEngine.say(text)
+		if self.soundEngine != None:
+			self.soundEngine.say(text)
 		for script in scripts:
 			self.playScript(avatarname, script.strip("<> "))
 	
@@ -322,7 +327,8 @@ class ScriptEngine(Piavca.TimeCallback):
 		pass
 		
 	def timeStep(self, core, t):
-		self.soundEngine.updateAudio()
+		if self.soundEngine != None:
+			self.soundEngine.updateAudio()
 		#print "in script engine timestep"
 		for avatar in self.currentscript.keys():
 			#print avatar
