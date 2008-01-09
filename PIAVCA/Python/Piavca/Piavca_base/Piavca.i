@@ -493,4 +493,6 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %include "PiavcaAPI/TimeRangeMotion.h"
 %include "PiavcaAPI/TimeWarp.h"
 %include "PiavcaAPI/DiadicGazeMotion.h"
+%include "PiavcaAPI/OverrideMotion.h"
+
 

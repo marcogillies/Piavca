@@ -7237,5 +7237,62 @@ class DiadicGazeMotion(RandomGazeMotion):
 DiadicGazeMotion_swigregister = _Piavca_base.DiadicGazeMotion_swigregister
 DiadicGazeMotion_swigregister(DiadicGazeMotion)
 
+class OverrideMotion(TwoMotionCombiner):
+    __swig_setmethods__ = {}
+    for _s in [TwoMotionCombiner]: __swig_setmethods__.update(_s.__swig_setmethods__)
+    __setattr__ = lambda self, name, value: _swig_setattr(self, OverrideMotion, name, value)
+    __swig_getmethods__ = {}
+    for _s in [TwoMotionCombiner]: __swig_getmethods__.update(_s.__swig_getmethods__)
+    __getattr__ = lambda self, name: _swig_getattr(self, OverrideMotion, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _Piavca_base.new_OverrideMotion(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    def clone(*args):
+        """
+        virtual Motion* Piavca::Motion::clone()=0
+                 
+        creates a copy of the motion         
+                 
+                
+        """
+        return _Piavca_base.OverrideMotion_clone(*args)
+
+    def getFloatValueAtTimeInternal(*args):
+        """
+        virtual float Piavca::Motion::getFloatValueAtTimeInternal(int trackId, float time)=0
+                 
+        internal version of getFloatValueAtTime, to be overridden         
+                 
+                
+        """
+        return _Piavca_base.OverrideMotion_getFloatValueAtTimeInternal(*args)
+
+    def getVecValueAtTimeInternal(*args):
+        """
+        virtual Vec Piavca::Motion::getVecValueAtTimeInternal(int trackId, float time)=0
+                 
+        internal version of getVecValueAtTime, to be overridden         
+                 
+                
+        """
+        return _Piavca_base.OverrideMotion_getVecValueAtTimeInternal(*args)
+
+    def getQuatValueAtTimeInternal(*args):
+        """
+        virtual Quat Piavca::Motion::getQuatValueAtTimeInternal(int trackId, float time)=0
+                 
+        internal version of getQuatValueAtTime, to be overridden         
+                 
+                
+        """
+        return _Piavca_base.OverrideMotion_getQuatValueAtTimeInternal(*args)
+
+    __swig_destroy__ = _Piavca_base.delete_OverrideMotion
+    __del__ = lambda self : None;
+OverrideMotion_swigregister = _Piavca_base.OverrideMotion_swigregister
+OverrideMotion_swigregister(OverrideMotion)
+
 
 

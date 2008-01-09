@@ -98,5 +98,6 @@
 #include "SubMotion.h"
 #include "TimeRangeMotion.h"
 #include "TimeWarp.h"
+#include "OverrideMotion.h"
 
 

@@ -245,6 +245,9 @@
 				RelativePath=".\Object.cpp">
 			</File>
 			<File
+				RelativePath=".\OverrideMotion.cpp">
+			</File>
+			<File
 				RelativePath=".\PIAVCACore.cpp">
 			</File>
 			<File
@@ -388,6 +391,9 @@
 			</File>
 			<File
 				RelativePath=".\OnTheSpot.h">
+			</File>
+			<File
+				RelativePath=".\OverrideMotion.h">
 			</File>
 			<File
 				RelativePath=".\Piavca.h">
