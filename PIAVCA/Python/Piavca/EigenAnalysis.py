@@ -262,7 +262,10 @@ class EigenAnalysis :
 	# save to file
 	def Save (self, filename):
 		f = open(filename, 'w')
+		self.Save_FileObject(f)
 		
+	def Save_FileObject(self, f):
+		#print "saving pcs..."
 		f.write("Num Pcs: " + repr(self.num_pcs) + "\n")
 		#f.write("Using Splits: " + repr(self.using_splits) + "\n")
 
@@ -316,10 +319,14 @@ class EigenAnalysis :
 	
 	def Load(self, filename):
 		f = open (filename, "r")
+		self.load_FileObject(f)
 		
+		
+	def load_FileObject(self, f):
 		lines = f.readlines()
 		data_portion = 0
 		i = 0
+		pcs = None
 		for line in lines :
 			if not data_portion :
 				contents = string.split(line, ":")
@@ -380,7 +387,7 @@ class EigenAnalysis :
 					#print self.quants
 					self.quants = scipy.array(self.quants)
 				if contents[0] == "length":
-					self.pcs = scipy.zeros((int(contents[1]), self.num_pcs),'d')
+					pcs = scipy.zeros((int(contents[1]), self.num_pcs),'d')
 				if(contents[0] == "data"):
 					data_portion = 1
 			else:
@@ -389,9 +396,13 @@ class EigenAnalysis :
 					continue
 				#print len(numbers)
 				for j in range(len(numbers)):
-					self.pcs[j][i] = float(numbers[j])
+					pcs[j][i] = float(numbers[j])
 				i += 1
 			#print self.pcs
+		if pcs == None:
+			return
+		else:
+			self.pcs = pcs
 		self.weights = scipy.zeros((self.num_pcs,),'d')
 		self.generateMotion()
 		
