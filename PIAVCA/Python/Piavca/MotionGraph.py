@@ -645,7 +645,7 @@ class MotionGraph (Piavca.LoopMotion):
 	# pick which motion to play
 	# this function should be overridden in subtypes to produce different functionalities
 	# this version just picks a child of the current node at random
-	def chooseNextMotion(self):
+	def chooseNextMotion(self, time):
 		if len(self.nextmotions) == 0:
 			candidates = self.nextnode.children
 			#print candidates
@@ -701,7 +701,7 @@ class MotionGraph (Piavca.LoopMotion):
 	def reblend(self, time):
 		#print "motion graph reblend"
 		# get the next motion and play it
-		motion = self.chooseNextMotion()
+		motion = self.chooseNextMotion(time)
 		#print "motion", motion
 		try:
 			footplant_spec = motion.footplant_spec

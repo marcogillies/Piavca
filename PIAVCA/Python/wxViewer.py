@@ -14,7 +14,7 @@ import Piavca.ViewerCanvas
 
 import wx
 from wx.lib.dialogs import *
-from wx import glcanvas
+#from wx import glcanvas
 
 #import thread
 #

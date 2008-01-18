@@ -23,6 +23,10 @@ import PiavcaWXCanvas
 class ViewerCanvas(PiavcaWXCanvas.PiavcaWXCanvasBase):
 	def __init__(self, parent):
 		PiavcaWXCanvas.PiavcaWXCanvasBase.__init__(self, parent)
+		self.floorFlag = False
+		self.prevY = None
+		self.verticalMove = 0.0
+		self.zoom = -3
 
 	def custom_init(self):
 		gltbInit()
@@ -37,10 +41,27 @@ class ViewerCanvas(PiavcaWXCanvas.PiavcaWXCanvasBase):
 
 	def mouseUp(self):
 		gltbMouseUp()
+		self.prevX = None
 		
 	def leftMove(self, x, y):
 		gltbMotionRotateAboutFocus(x, y)
+		
+	def rightDown(self, x, y):
+		self.prevY = y
 
+	def rightMove(self, x, y):
+		if self.prevY != None:
+			print "mouse move"
+			print y - self.prevY, y, self.prevY
+			self.verticalMove += -(y-self.prevY)*0.2
+		self.prevY = y
+
+	def middleMove(self, x, y):
+		if self.prevY != None:
+			print "mouse move"
+			print y - self.prevY, y, self.prevY
+			self.zoom += -(y-self.prevY)*0.2
+		self.prevY = y
 
 	def updateCameraPosition(self):
 		avatar = Piavca.Core.getCore().getAvatar(0)
@@ -57,7 +78,7 @@ class ViewerCanvas(PiavcaWXCanvas.PiavcaWXCanvasBase):
 		halfWidths = self.focusBound.max - centre
 		maxDim = max(max(halfWidths[0],halfWidths[1]), halfWidths[2]) 
 	
-		glTranslatef(0.0, 0.0, -3.0)
+		glTranslatef(0.0, self.verticalMove, self.zoom)
 		gltbMatrix()
 		glPushMatrix()
 		glScalef(self.scaleBias/maxDim, self.scaleBias/maxDim, self.scaleBias/maxDim)
@@ -77,6 +98,11 @@ class ViewerCanvas(PiavcaWXCanvas.PiavcaWXCanvasBase):
 		self.initialAvatarRoot = avatar.getRootPosition()
 		self.updateCameraPosition()
 
+	def floorOn(self):
+		self.floorFlag = True
+
+	def floorOff(self):
+		self.floorFlag = True
 
 	def drawFloor(self):
 		floorScale = 50.0
@@ -116,4 +142,5 @@ class ViewerCanvas(PiavcaWXCanvas.PiavcaWXCanvasBase):
 		
 
 	def drawCustomElements(self):
-		self.drawFloor()
+		if self.floorFlag:
+			self.drawFloor()

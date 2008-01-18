@@ -40,6 +40,13 @@ class PiavcaWXCanvasBase(glcanvas.GLCanvas):
 		self.tracking = 1
 		
 		self.dragging = False
+		
+		self.axisFlag = False
+		
+		self.clear_colour = (0,0,0)
+		
+	def setClearColour(self, r, g, b):
+		self.clear_colour = (r,g,b)
 
 	def OnEraseBackground(self, event):
 		pass # Do nothing, to avoid flashing.
@@ -162,6 +169,12 @@ class PiavcaWXCanvasBase(glcanvas.GLCanvas):
 	def initCameraPosition(self):
 		pass
 		
+	def axisOn(self):
+		self.axisFlag = True
+		
+	def axisOff(self):
+		self.axisFlag = False	
+	
 	def drawAxes(void):
 		glScalef(50,50,50)
 		glDisable(GL_LIGHTING)
@@ -219,6 +232,7 @@ class PiavcaWXCanvasBase(glcanvas.GLCanvas):
 			self.updateCameraPosition()
 
 		# clear color and depth buffers
+		glClearColor(self.clear_colour[0], self.clear_colour[1], self.clear_colour[2], 1)
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 		glMatrixMode(GL_MODELVIEW)
 		glLoadIdentity()
@@ -235,6 +249,7 @@ class PiavcaWXCanvasBase(glcanvas.GLCanvas):
 		# render the model
 		Piavca.Core.getCore().render();
 
-		self.drawAxes()
+		if self.axisFlag:
+			self.drawAxes()
 		self.popCameraPosition()
 		self.SwapBuffers()
