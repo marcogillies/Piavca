@@ -392,7 +392,6 @@ class MotionTracks(wx.VListBox):
 		Piavca.Core.getCore().setCurrentTime(self.time)
 
 	# perform a PCA on the current Track
-<<<<<<< .mine
 	def LoadPCA (self):#, filename):
 		if self.pcs == None:
 			print "CANNOT DO PCA, scipy isn't loaded"
