@@ -41,6 +41,9 @@ using namespace Piavca;
 #include <algorithm>
 
 
+#include <time.h>
+
+
 #ifdef _WIN32
 #include <windows.h>
 #endif
@@ -67,10 +70,7 @@ TextureHandler *PiavcaCal3DCore::createTextureHandler()
 
 AvatarCal3DImp *PiavcaCal3DCore::createAvatarImp(tstring avatarId, TextureHandler *th, bool bailOnMissedJoints, const Vec &Position, const Quat &Orientation)
 {
-	std::cout << "start of create Avatar Imp" << std::endl;
-	AvatarCal3DImp *a = new AvatarCal3DImp(avatarId, th, bailOnMissedJoints, Position, Orientation);
-	std::cout << "end of create Avatar Imp" << std::endl;
-	return a;
+	return new AvatarCal3DImp(avatarId, th, bailOnMissedJoints, Position, Orientation);
 }
 		
 
@@ -79,7 +79,6 @@ AvatarImp *PiavcaCal3DCore::createAvatarImp(tstring avatarId, bool bailOnMissedJ
   TextureHandler *th = createTextureHandler();
   AvatarCal3DImp *avatarImp = createAvatarImp(avatarId, th, bailOnMissedJoints, Position, Orientation);
   avatarImp->loadTextures();
-  std::cout << "end of create Avatar Imp" << std::endl;
   return avatarImp;
 }
 
@@ -101,8 +100,9 @@ ObjectImp *PiavcaCal3DCore::createObjectImp(tstring objectId, const Vec &Positio
 double PiavcaCal3DCore::getTimeInternal(bool print)
 {
 #ifdef _WIN32
-	float tick = (float) GetTickCount();
-	return tick/1000.0 - start_time;
+	float tick = (float) clock();//GetTickCount();
+	tick = tick/((float)CLOCKS_PER_SEC);
+	return tick - start_time;
 #endif
 
 #if defined(__linux__) || defined(__APPLE__)
