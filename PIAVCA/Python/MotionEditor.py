@@ -7,7 +7,7 @@ import time
 
 import Piavca
 #Piavca.PiavcaGlut.init()
-Piavca.PiavcaGlut.init(Piavca.Core.getCorePointerAsLong())
+#Piavca.PiavcaGlut.init(Piavca.Core.getCorePointerAsLong())
 import Piavca.JointNames
 Piavca.JointNames.loadDefaults()
 import wx
@@ -15,7 +15,11 @@ from wx.lib.dialogs import *
 
 import thread
 
-app = wx.PySimpleApp()
+app = Piavca.getWXApp()
+#app = wx.PySimpleApp()
+
+import Piavca.FreeCameraCanvas
+canvas = app.showWindows(canvastype = Piavca.FreeCameraCanvas.FreeCameraCanvas)	
 	
 if len(sys.argv) > 1:
 	path = sys.argv[1]
@@ -52,6 +56,8 @@ print "creating avatar"
 
 avatar = Piavca.Avatar(filename)
 
+print "loaded avatar"
+
 if len(sys.argv) > 2:
 	motion_name = sys.argv[2]
 else:
@@ -81,8 +87,9 @@ cb.thisown = 0
 Piavca.Core.getCore().registerCallback(cb)
 
 
-thread.start_new_thread(app.MainLoop, ())
+app.MainLoop()
+#thread.start_new_thread(app.MainLoop, ())
 		
 		
-Piavca.PiavcaGlut.start()
+#Piavca.PiavcaGlut.start()
 	

@@ -10,6 +10,7 @@ import Piavca.JointNames
 Piavca.JointNames.loadDefaults()
 
 import Piavca.ViewerCanvas
+app.showWindows(canvastype = Piavca.ViewerCanvas.ViewerCanvas)
 
 
 import wx
@@ -320,7 +321,6 @@ if mot != None:
 print "loaded motion"
 
 #app = MyApp()
-app.showWindows(canvastype = Piavca.ViewerCanvas.ViewerCanvas)
 
 #import Piavca.redirect
 #Piavca.redirect.redirect()

@@ -1,4 +1,3 @@
-#print "before wx import"
 import wx
 from wx.lib.dialogs import *
 #print "after wx import"
@@ -23,12 +22,14 @@ ID_MOTION_GRAPH=017
 ID_SAVE_MOTION_GRAPH=020
 ID_LOAD_MOTION_GRAPH=021
 ID_LOAD_DATA_STREAM=022
+ID_LOAD_INT_DATA_STREAM=023
 ID_LIST=100
 ID_PLAY=101
 ID_STOP=110
 ID_PCA =112
 ID_SS =113
 ID_UNDO =114
+ID_VQ =115
 ID_EXIT=111
 
 # a GUI for animation editing
@@ -47,13 +48,6 @@ class AnimationInterface(wx.Frame):
 		# create the motion tracks
 		self.tracks = MotionTracks.MotionTracks(avatar, motion, motion_name, "Tracks.txt", self.scroll, ID_LIST)
 		
-		# set up a bunch of size parameters
-		windowheight = self.tracks.GetHeight() + 100
-		windowlength = self.tracks.GetLength()
-		if windowlength > 600:
-			windowlength = 600
-		print "Height", windowheight, "Length", windowlength
-		self.SetSize(wx.Size(windowheight, windowlength))
 
 		# scroll around the animation trakcs
 		dx = 10
@@ -66,6 +60,7 @@ class AnimationInterface(wx.Frame):
 		self.stop = wx.Button(self, ID_STOP, label="!!")
 		# perform a PCA on the current motion
 		self.pca = wx.Button(self, ID_PCA, label="PCA")
+		self.vq = wx.Button(self, ID_VQ, label="VQ")
 		# perform a slow subspace analysis on the current motion
 		# undo adding a split
 		self.undo = wx.Button(self, ID_UNDO, label="Undo")
@@ -73,13 +68,24 @@ class AnimationInterface(wx.Frame):
 		wx.EVT_BUTTON (self, ID_PLAY, self.Play)
 		wx.EVT_BUTTON (self, ID_STOP, self.Stop)
 		wx.EVT_BUTTON (self, ID_PCA, self.PCA)
+		wx.EVT_BUTTON (self, ID_VQ, self.VQ)
 		wx.EVT_BUTTON (self, ID_UNDO, self.Undo)
+
+		
+		# set up a bunch of size parameters
+		windowheight = self.tracks.GetHeight() #+ self.play.GetHeight() #100
+		windowlength = self.tracks.GetLength()
+		if windowlength > 600:
+			windowlength = 400
+		print "Height", windowheight, "Length", windowlength
+		#self.SetSize(wx.Size(windowheight, windowlength))
 
 		# Use some sizers to see layout options
 		self.sizer1=wx.BoxSizer(wx.HORIZONTAL)
 		self.sizer1.Add(self.play,1 )
 		self.sizer1.Add(self.stop,1)
 		self.sizer1.Add(self.pca,1)
+		self.sizer1.Add(self.vq,1)
 		
 		if MotionTracks.SlowSubspaceAvailable:
 			self.slow = wx.Button(self, ID_SS, label="Slow Subspace")	
@@ -99,6 +105,7 @@ class AnimationInterface(wx.Frame):
 
 		# sliders to edit principal component weights
 		self.sliders = None
+		self.buttons = None
 		# buttons to select independent components
 		self.ICButtons = None
 		
@@ -130,6 +137,7 @@ class AnimationInterface(wx.Frame):
 		filemenu.Append(ID_SAVE_MOTION_GRAPH, "&SaveMotionGraph"," Saves the current motion graph")
 		filemenu.Append(ID_LOAD_MOTION_GRAPH, "&LoadMotionGraph"," Load a motion graph from file")
 		filemenu.Append(ID_LOAD_DATA_STREAM, "&LoadDataStream"," Load and display a data stream from file")
+		filemenu.Append(ID_LOAD_INT_DATA_STREAM, "&LoadInDataStream"," Load and display an integer data stream from file")
 		
 		filemenu.Append(ID_EXIT,"E&xit"," Terminate the program")
 		
@@ -153,6 +161,7 @@ class AnimationInterface(wx.Frame):
 		wx.EVT_MENU(self, ID_SAVE_MOTION_GRAPH, self.tracks.SaveMotionGraph) 
 		wx.EVT_MENU(self, ID_LOAD_MOTION_GRAPH, self.tracks.LoadMotionGraph) 
 		wx.EVT_MENU(self, ID_LOAD_DATA_STREAM, self.loadDataStream) 
+		wx.EVT_MENU(self, ID_LOAD_INT_DATA_STREAM, self.loadIntDataStream) 
 		wx.EVT_MENU(self, ID_EXIT, self.OnExit)   
 
 		# show the window
@@ -232,11 +241,30 @@ class AnimationInterface(wx.Frame):
 		self.sizer2.Add(self.sizer3)
 		self.sizer2.Fit(self)
 
+	# set up some sliders used to set PC weights
+	def SetUpQuantumButtons (self):
+		id = 400
+		self.buttons = []
+		
+		self.sizer4=wx.BoxSizer(wx.HORIZONTAL)
+		# add a slider to each PC
+		for i in range (self.tracks.pcs.numQuants()) :
+			self.buttons.append(wx.Button(self, id + i, label=str(i) ))
+			wx.EVT_BUTTON (self, id + i, lambda e, ind = i : self.tracks.setPCQuant(ind))
+			self.sizer4.Add(self.buttons[i],1)
+		self.sizer2.Add(self.sizer4)
+		self.sizer2.Fit(self)
+
 	# peform a PC
 	def PCA (self, e):
 		self.tracks.PCA()
 		if self.sliders == None:
 			self.SetUpComponentSliders()
+			
+	def VQ(self, e):
+		self.tracks.VQ()
+		if self.buttons == None:
+			self.SetUpQuantumButtons()
 
 	# peform a slow subspace analysis
 	def SlowSubspace (self, e):
@@ -250,9 +278,18 @@ class AnimationInterface(wx.Frame):
 		if path == "":
 			return
 		self.dataStream = DataStream.SequenceDisplay(self, path)
-		self.sizer2.Add(self.dataStream)
-		self.sizer2.Fit(self)
+		#self.sizer2.Add(self.dataStream)
+		#self.sizer2.Fit(self)
 		
+			
+	def loadIntDataStream(self, e):
+		dialog_return = openFileDialog(wildcard="*.csv")
+		path = dialog_return.paths[0]
+		if path == "":
+			return
+		self.dataStream = DataStream.IntSequenceDisplay(self, path)
+		#self.sizer2.Add(self.dataStream)
+		#self.sizer2.Fit(self)
 		
 	# save the current motion
 	def OnSave(self, e):
@@ -275,9 +312,11 @@ class AnimationInterface(wx.Frame):
 		
 	# save splits from file
 	def OnLoadPCA(self, e):
-		self.tracks.LoadPCA("pcs.txt")
+		self.tracks.LoadPCA()#"pcs.txt")
 		if self.sliders == None:
 			self.SetUpComponentSliders()
+		if self.tracks.pcs.numQuants() > 0 and self.buttons == None:
+			self.SetUpQuantumButtons()
 			
 	# project the current motion back onto the PCs
 	def OnProjectMotion(self, e):

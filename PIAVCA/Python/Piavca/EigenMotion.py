@@ -95,6 +95,9 @@ class EigenMotion(Piavca.MotionFilter):
 			self.analysis.do_analysis(motions, self.frames_per_second)
 		self.num_pcs = self.analysis.num_pcs
 		
+	def numQuants(self):
+		return self.analysis.numQuants()
+		
 	# set the value of a PC weight 
 	def setWeight (self, pc, w):
 		print "setting weight", pc, w
@@ -103,6 +106,11 @@ class EigenMotion(Piavca.MotionFilter):
 	# set the value of a PC weight 
 	def setWeights (self, w):
 		self.analysis.setWeights(w)
+		
+	def showQuant(self, quant):
+		# need to take only the first num_pcs weights from quant as 
+		# the cluster centres also contain velocity information
+		self.setWeights(self.analysis.quants[quant][:self.num_pcs])
 		
 	def Save(self, filename):
 		self.analysis.Save(filename)
@@ -116,7 +124,11 @@ class EigenMotion(Piavca.MotionFilter):
 	
 	# whether a joint is valid (to implement Piavca.Motion)
 	def isNull (self, trackid):
-		return self.analysis.jointmap[trackid] == None
+		#print len(self.analysis.jointmap), trackid
+		if trackid > 0 and trackid < len(self.analysis.jointmap):
+			return self.analysis.jointmap[trackid] == None
+		else:
+			return True
 
 	# length of a motion (to implement Piavca.Motion)
 	def getMotionLength (self):

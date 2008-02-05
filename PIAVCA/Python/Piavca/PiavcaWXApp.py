@@ -10,7 +10,7 @@ if wxPresent:
 	class PiavcaWXFrame(wx.Frame):
 		def __init__(
 				self, parent, ID, title, pos=wx.DefaultPosition,
-				size=(640, 480), style=wx.DEFAULT_FRAME_STYLE,
+				size=(1280, 960), style=wx.DEFAULT_FRAME_STYLE,
 				canvastype=None
 				):
 	
@@ -19,6 +19,7 @@ if wxPresent:
 				canvastype = PiavcaWXCanvasBase
 			self.canvas = canvastype(self)
 			self.Bind(wx.EVT_CLOSE, self.OnCloseWindow)
+			self.Bind(wx.EVT_SIZE, self.canvas.OnSize)
 	
 		def OnCloseWindow(self, event):
 			self.Destroy()

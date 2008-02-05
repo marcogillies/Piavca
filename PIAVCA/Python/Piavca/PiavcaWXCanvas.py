@@ -44,6 +44,9 @@ class PiavcaWXCanvasBase(glcanvas.GLCanvas):
 		self.axisFlag = False
 		
 		self.clear_colour = (0,0,0)
+		if self.GetContext():
+			self.SetCurrent()
+			glViewport(0, 0, 640, 480)
 		
 	def setClearColour(self, r, g, b):
 		self.clear_colour = (r,g,b)

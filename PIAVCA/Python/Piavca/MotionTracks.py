@@ -63,6 +63,7 @@ class MotionTracks(wx.VListBox):
 		windowheight = self.GetHeight()
 		self.SetSize(wx.Size(windowlength, windowheight))
 		print "end of list constructor"
+		print "item count", self.GetItemCount()
 
 		# start without any Principal Components
 		#self.pcs = ComponentAnalysis.ComponentAnalysis()
@@ -98,9 +99,11 @@ class MotionTracks(wx.VListBox):
 			for line in file.readlines():
 				joints = line.split()
 				self.tracks.append(Track.Track(self.motion, joints[0], joints[1:]))
+			print "tracks from file"
 		except IOError:
 			for trackname in default_tracks.keys():
 				self.tracks.append(Track.Track(self.motion, trackname, default_tracks[trackname]))
+		print "tracks used", self.tracks
 		self.SetItemCount(len(self.tracks))
 
 	# the height of an individual track (they are all the same height)
@@ -109,7 +112,7 @@ class MotionTracks(wx.VListBox):
 
 	# the background is drawn in white
 	def OnDrawBackground(self, dc, rect, item):
-		#print "drawing"
+		#print "drawing background", item
 		if item == self.selectedTrack :
 			dc.SetBrush(wx.Brush("orange"))
 		else:
@@ -341,10 +344,18 @@ class MotionTracks(wx.VListBox):
 		self.avatar.playMotionDirect(self.pcs)
 		Piavca.Core.getCore().setCurrentTime(self.time)
 		
+	def VQ(self):
+		pass
+		#if self.pcs != None:
+		#	self.pcs.
+		
 	def setPCWeight(self, i, v):
 		if self.pcs == None:
 			print "CANNOT DO PCA, scipy isn't loaded"
 		self.pcs.setWeight(i,v)
+		
+	def setPCQuant(self, i):
+		self.pcs.showQuant(i)
 		
 	def ProjectMotion(self):
 		if self.pcs == None:
@@ -381,10 +392,17 @@ class MotionTracks(wx.VListBox):
 		Piavca.Core.getCore().setCurrentTime(self.time)
 
 	# perform a PCA on the current Track
-	def LoadPCA (self, filename):
+<<<<<<< .mine
+	def LoadPCA (self):#, filename):
 		if self.pcs == None:
 			print "CANNOT DO PCA, scipy isn't loaded"
-		self.pcs.setFilename(filename)
+
+		dialog_return = openFileDialog()
+		path = dialog_return.paths[0]
+		if path == "":
+			path = "pcs.txt"
+
+		self.pcs.setFilename(path)
 		self.pcs.create()
 		#self.pcs.Load(filename)
 		

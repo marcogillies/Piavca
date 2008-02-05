@@ -760,7 +760,30 @@ void	AvatarCal3DImp::setRootPosition (const Vec &Position)
        Piavca::Error("setJointOrientation called on joint that does not exist in avatar");
 	   return;
    }
+
+   
+   //Quat q1_p(0.707, 0.0, 0.0, 0.707);
+   //CalQuaternion q1_c = QuatToCalQuat(q1_p);
+   //CalQuaternion q2_c(0.0, 0.0, 0.707, 0.707);
+   //std::cout << "q1_p " << q1_p << std::endl;
+   //std::cout << "q1_c " << q1_c.w << " " << q1_c.x << " " <<q1_c.y << " " << q1_c.z << " " << std::endl;
+   //std::cout << "q2_c " << q2_c.w << " " << q2_c.x << " " <<q2_c.y << " " << q2_c.z << " " << std::endl;
+   
+   //std::cout << "Position " << Position << std::endl;
+   //std::cout << "Position " << q1_p.transform(Position) << std::endl;
+   //std::cout << "q1_p.inverse*Orientation " << q1_p.inverse().transform(Position) << std::endl;
+   
+   //CalVector calv_copy(calv); 
+   
+   //std::cout << "calv_copy " << 	 calv_copy.x << " " << calv_copy.y << " " << calv_copy.z << " " << std::endl;
+   
+   //calv_copy *= q2_c;
+   
+   //std::cout << "calv_copy*q2_c "  << calv_copy.x << " " << calv_copy.y << " " << calv_copy.z << " " << std::endl;
+   
    //calv += bone->getCoreBone()->getTranslation();
+   //CalQuaternion q(0.707, 0.0, 0.707, 0.0);
+   //calv *= q;
    bone->setTranslation(calv);
 }
 Vec		AvatarCal3DImp::getRootPosition ()
@@ -810,6 +833,7 @@ void	AvatarCal3DImp::setRootOrientation	(const Quat &Orientation)
 	   return;
    }
    //calq *= bone->getCoreBone()->getRotation();
+   //calq *= q;
    bone->setRotation(calq);
 };
 
@@ -869,7 +893,8 @@ void AvatarCal3DImp::setJointOrientation(int jointId, const Quat &Orientation, j
        Piavca::Error("setJointOrientation called on joint that does not exist in avatar");
 	   return;
    }
-   calq = bone->getCoreBone()->getRotation()*calq;
+   //calq = bone->getCoreBone()->getRotation()*calq;
+   calq = calq*bone->getCoreBone()->getRotation();
    bone->setRotation(calq);
    //bone->setTranslation(bone->getCoreBone()->getTranslation());
 };

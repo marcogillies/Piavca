@@ -38,9 +38,10 @@ inline CalVector VecToCalVec(const Vec &v) {
 };
 
 inline Quat CalQuatToQuat(const CalQuaternion &cq) {
-  return Quat(cq.w, cq.x, cq.y, cq.z);
+  return Quat(cq.w, cq.x, cq.y, cq.z).inverse();
 };
 
 inline CalQuaternion QuatToCalQuat(const Quat &q) {
-  return CalQuaternion(q.I(), q.J(), q.K(), q.S());
+  Quat q1 = q.inverse();
+  return CalQuaternion(q1.I(), q1.J(), q1.K(), q1.S());
 };

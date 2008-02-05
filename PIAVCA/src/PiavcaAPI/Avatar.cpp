@@ -407,7 +407,7 @@ void Avatar::showMotionAtTime	(float time, Motion *motion, bool detectChanges)
 
 	motion->preFrame(time);
 
-	//Quat offset = Quat(1.57, Vec(0.0, 0.0, 1.0));
+	Quat offset = Quat(1.57, Vec(0.0, 0.0, 1.0));
 
 	// set the root position and orientation
 	if(!motion->isNull(root_position_id))
@@ -425,6 +425,7 @@ void Avatar::showMotionAtTime	(float time, Motion *motion, bool detectChanges)
 		}
 		//std::cout << "root orientation in avatar" << v << std::endl;
 		//v = Vec(v[0], v[2], v[1]);
+		//v = offset.inverse().transform(v);
 		//v = offset.transform(v);
 		setRootPosition(v);
 		//std::cout << "root " << mot->getVecValueAtTime(root_position_id, time) << std::endl;
@@ -436,7 +437,8 @@ void Avatar::showMotionAtTime	(float time, Motion *motion, bool detectChanges)
 		Quat q = motion->getQuatValueAtTime(root_orientation_id, time);
 		//std::cout << "root orientation in avatar" << q << std::endl;
 		//q = Quat(q.S(), q.I(), q.K(), q.J());
-		//q = offset * q;
+		//q = q*offset;
+		//q = offset*q;
 		setRootOrientation(q);
 		//std::cout << "root " << mot->getQuatValueAtTime(root_orientation_id, time) << std::endl;
 	}

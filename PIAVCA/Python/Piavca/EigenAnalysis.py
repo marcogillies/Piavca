@@ -258,6 +258,12 @@ class EigenAnalysis :
 		qs, dist = scipy.cluster.vq.vq(x, self.quants)
 		#print "vq returned"
 		return qs
+	
+	def numQuants(self):
+		try:
+			return len(self.quants)
+		except AttributeError:
+			return 0
 		
 	# save to file
 	def Save (self, filename):
@@ -268,6 +274,8 @@ class EigenAnalysis :
 		#print "saving pcs..."
 		f.write("Num Pcs: " + repr(self.num_pcs) + "\n")
 		#f.write("Using Splits: " + repr(self.using_splits) + "\n")
+		
+		f.write("Use Vels: " + repr(self.use_vels) + "\n")
 
 		f.write("Exp Maps: ")
 		for expMap in self.expmaps :
@@ -292,7 +300,8 @@ class EigenAnalysis :
 				f.write("; ")
 			f.write("\n")
 		
-		f.write("length: " + repr(len(self.vecs)) + "\n")
+		f.write("length: " + repr(self.pcs.shape[0]) + "\n")
+		#f.write("length: " + repr(len(self.vecs)) + "\n")
 		
 		f.write("data:\n")
 		for j in range(len(self.pcs[0])):
@@ -334,6 +343,9 @@ class EigenAnalysis :
 				if contents[0] == "Num Pcs":
 					self.num_pcs = int(contents[1])
 					print self.num_pcs
+				if contents[0] == "Use Vels":
+					self.use_vels = bool(contents[1])
+					print self.use_vels
 				#if contents[0] == "Using Splits":
 				#	self.using_splits = int(contents[1])
 				#	print self.using_splits

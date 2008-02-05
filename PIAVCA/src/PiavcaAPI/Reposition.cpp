@@ -56,17 +56,21 @@ void Reposition::calculateRootOffsets()
 	oriOffset = start_orientation;
 	//oriOffset = Quat(start_orientation.Zangle(), Vec::ZAxis());
 	float startTime=0;
-	if(filterMot && !filterMot->isNull(root_position_id))
-	{
-		startTime = filterMot->getStartTime();
-		originalStart = filterMot->getVecValueAtTime(root_position_id, filterMot->getStartTime());
-	}
 
+	if (filterMot)
+		startTime = filterMot->getStartTime();
+	
 	if(filterMot && !filterMot->isNull(root_orientation_id))
 	{
 		Quat otherOri = filterMot->getQuatValueAtTime(root_orientation_id, filterMot->getStartTime());
 		//otherOri = Quat(otherOri.Zangle(), Vec::ZAxis());
 		oriOffset = oriOffset/otherOri;
+	}
+
+	if(filterMot && !filterMot->isNull(root_position_id))
+	{
+		originalStart = filterMot->getVecValueAtTime(root_position_id, filterMot->getStartTime());
+		originalStart = oriOffset.transform(originalStart);
 	}
 	//oriOffset = Quat(oriOffset.Zangle(), Vec::ZAxis());
 	//oriOffset = Quat();
@@ -134,7 +138,8 @@ Vec Reposition::getVecValueAtTimeInternal(int trackId, float time)
 			return start_position;
 		Vec OriginalValue = filterMot->getVecValueAtTime(trackId, time);
 		//return OriginalValue;
-		Vec subtractedVec = oriOffset.transform(OriginalValue - originalStart) + posOffset;
+		//Vec subtractedVec = oriOffset.transform(OriginalValue - originalStart) + posOffset;
+		Vec subtractedVec = oriOffset.transform(OriginalValue) - originalStart + posOffset;
 		//return oriOffset.transform(OriginalValue);
 		//Vec subtractedVec = OriginalValue - originalStart;
 		//return OriginalValue;

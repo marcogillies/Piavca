@@ -6,8 +6,9 @@ import Piavca
 
 import Split
 
-frames_per_second = 24.0
-pixels_per_frame = 5.0
+#frames_per_second = 24.0
+frames_per_second = 12.0
+pixels_per_frame = 1.0#5.0
 
 # convert between times in seconds and positions on the time sliders
 def TimeToPosition(pos):

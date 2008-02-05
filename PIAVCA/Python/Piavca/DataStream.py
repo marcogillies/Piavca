@@ -44,6 +44,9 @@ class DataSequence:
         self.seq = []
         if file != None:
             self.readCSV(file)
+            
+    def stringToValue(self, str):
+    	return float(str.strip())
         
     def readCSV(self, filename, separator=" "):
         f = open(filename)
@@ -54,10 +57,16 @@ class DataSequence:
                 line = line.strip()
                 if line == "":
                     continue
+                print line
+                line = line.replace(","," ")
+                line = line.replace(";"," ")
+                print line
                 data = line.split()
-                data = [float(d.strip()) for d in data]
+                print data
+                t = float(data[0].strip())
+                data = [self.stringToValue(d) for d in data[1:]]
                 #print data
-                self.addElement(data[0], data[1:])
+                self.addElement(t, data)
             except ValueError, IndexError:
                 pass
         
@@ -92,11 +101,12 @@ class DataSequence:
         for t, d in self.seq[1:]:
             #print d, min, max
             for i in range(len(d)):
-                mean[i] += d[i]/(len(self.seq)-1)
+                mean[i] += float(d[i])/(len(self.seq)-1)
 		#mean = [m-1) for m in mean]
         return mean
 	
     def getMinMax(self):
+    	print len(self.seq)
         if len(self.seq) == 0:
             return None
         min = list(self.seq[0][1])
@@ -117,15 +127,35 @@ class DataSequence:
     def getEndTime(self):
         return self.seq[-1][0]
         
+class IntegerDataSequence(DataSequence):
+    def __init__(self, file = None):
+     	DataSequence.__init__(self, file)
     
+    def stringToValue(self, str):
+    	return int(str.strip())
+		
+    def getDataAtTime(self, t):
+        # find the keyframe after the requested time 
+        index = bisect.bisect(self.seq, (t, []))
+        # if its before or at the start return the first item
+        if index == 0:
+            return self.seq[0][1]
+        # if it's after or at the end erturn the last item
+        if index >= len(self.seq):
+            return self.seq[-1][1]
+        
+        return self.seq[index][1]
+     
 class SequenceDisplay(wx.Frame):
     def __init__(self, parent = None, file = None):
         wx.Frame.__init__(self, parent)
         self.seq = DataSequence(file)
+        print "length of sequence", self.seq.seq
         if file != None:
             self.create()
         
     def create(self):
+        print "length of sequence", self.seq.seq
         self.sizer=wx.BoxSizer(wx.VERTICAL)
         
         min, max = self.seq.getMinMax()
@@ -154,6 +184,35 @@ class SequenceDisplay(wx.Frame):
         start = self.seq.getStartTime()
         end = self.seq.getEndTime()
         self.setTime(t*(end-start)+start)
+
+
+     
+class IntSequenceDisplay(wx.Frame):
+    def __init__(self, parent = None, file = None):
+        wx.Frame.__init__(self, parent)
+        self.seq = IntegerDataSequence(file)
+        if file != None:
+            self.create()
+        
+    def create(self):
+    	min, max = self.seq.getMinMax()
+    	items = [str(i) for i in range(min[0], max[0])]
+    	self.radiobox = wx.RadioBox(self, -1, "data stream", (10, 10), wx.DefaultSize, items, 3, wx.RA_SPECIFY_COLS)
+        
+        self.Show(True)
+        self.Layout()
+    
+    def setTime(self, t):
+    	print "set time", t
+        d = self.seq.getDataAtTime(t)
+        print "current data", d
+        self.radiobox.SetStringSelection(str(d[0]))
+    
+    def setTimeNormalized(self, t):
+        start = self.seq.getStartTime()
+        end = self.seq.getEndTime()
+        self.setTime(t*(end-start)+start)
+
     
 if __name__ == "__main__":
     #seq = DataSequence()

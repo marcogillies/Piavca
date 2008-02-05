@@ -58,6 +58,7 @@ canvas = app.showWindows(canvastype = Piavca.FreeCameraCanvas.FreeCameraCanvas)
 #canvas.setPitch(Piavca.degToRad(-90.0))
 
 script_engine = runScriptEngine.run(path)
+
 print "camera position", script_engine.getCameraPosition()
 canvas.setPosition(script_engine.getCameraPosition())
 canvas.setPitch(script_engine.getCameraPitch())
