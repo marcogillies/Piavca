@@ -45,7 +45,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_135C82C31F814B02B836406B2DEB69EF"
+        "MsmKey" = "8:_18902D77387F40B6826E4049BBE14F83"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -81,7 +81,19 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_2C395891ECC0417A83390DA32EE60D8C"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_2CB4C9992956463C8CEE1EC8B9BA14B2"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_2D71BF0DE1CE4BCC885D29ED3E1C6DC8"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -195,14 +207,26 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_6A779387264C4580B5D4B99472B16806"
-        "OwnerKey" = "8:_EA2B3B5408764E29BA9F6135F473E11A"
+        "MsmKey" = "8:_6C9B48778DB24E77BB81147BDCF997AD"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_6C9B48778DB24E77BB81147BDCF997AD"
-        "OwnerKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_6D3C2F03BCAB4536891293F8F94ED9B2"
+        "OwnerKey" = "8:_0EDB427873744218ACBF6199C4916A0F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6D3C2F03BCAB4536891293F8F94ED9B2"
+        "OwnerKey" = "8:_E9BF3BD172E74BC1ACDE5669C3B94371"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6D3C2F03BCAB4536891293F8F94ED9B2"
+        "OwnerKey" = "8:_7FFBA5A50D144A49A4D665B523A35DF3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -214,6 +238,12 @@
         "Entry"
         {
         "MsmKey" = "8:_6FB19C43417A427AA69300B84FB3FCB0"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_738431ECC46B42A6A1BB03504F9D02A4"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -345,6 +375,24 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_B2F2DDB7ABB74B89A4A166EB6AFD92E3"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B780941333D249A481A6A0A4979C1A26"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B8EF49A3714D456C9902B7A46346799F"
+        "OwnerKey" = "8:_6D3C2F03BCAB4536891293F8F94ED9B2"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_BC33772C9C7D4B99959F44A7C1F85648"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -411,7 +459,19 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_E211149BA70748FFB6E9864A060EBDCB"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_E3BE2F24BC124A54B1A53827299ED0DE"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E8C8085158B0487FAD40B13CBA172879"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -419,24 +479,6 @@
         {
         "MsmKey" = "8:_E9BF3BD172E74BC1ACDE5669C3B94371"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_EA2B3B5408764E29BA9F6135F473E11A"
-        "OwnerKey" = "8:_0EDB427873744218ACBF6199C4916A0F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_EA2B3B5408764E29BA9F6135F473E11A"
-        "OwnerKey" = "8:_E9BF3BD172E74BC1ACDE5669C3B94371"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_EA2B3B5408764E29BA9F6135F473E11A"
-        "OwnerKey" = "8:_7FFBA5A50D144A49A4D665B523A35DF3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -761,12 +803,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_135C82C31F814B02B836406B2DEB69EF"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_18902D77387F40B6826E4049BBE14F83"
             {
-            "SourcePath" = "8:..\\..\\Python\\gltb.py"
-            "TargetName" = "8:gltb.py"
+            "SourcePath" = "8:..\\..\\Python\\Piavca\\CoreProxy.py"
+            "TargetName" = "8:CoreProxy.py"
             "Tag" = "8:"
-            "Folder" = "8:_C32D0F42EC2B427E89BDD8C0DE5EC464"
+            "Folder" = "8:_030136928E1A4CF9B5AF2948FB4B2634"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -881,12 +923,52 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2C395891ECC0417A83390DA32EE60D8C"
+            {
+            "SourcePath" = "8:..\\..\\Python\\Piavca\\FreeCameraCanvas.py"
+            "TargetName" = "8:FreeCameraCanvas.py"
+            "Tag" = "8:"
+            "Folder" = "8:_030136928E1A4CF9B5AF2948FB4B2634"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2CB4C9992956463C8CEE1EC8B9BA14B2"
             {
             "SourcePath" = "8:..\\..\\Bill\\Bill_newmaterial.xmf"
             "TargetName" = "8:Bill_newmaterial.xmf"
             "Tag" = "8:"
             "Folder" = "8:_45D7633C579B4668A5FC68D3F3EFBF33"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2D71BF0DE1CE4BCC885D29ED3E1C6DC8"
+            {
+            "SourcePath" = "8:..\\..\\Python\\FirstPersonEngine.py"
+            "TargetName" = "8:FirstPersonEngine.py"
+            "Tag" = "8:"
+            "Folder" = "8:_C32D0F42EC2B427E89BDD8C0DE5EC464"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1281,6 +1363,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_738431ECC46B42A6A1BB03504F9D02A4"
+            {
+            "SourcePath" = "8:..\\..\\Python\\Piavca\\PiavcaWXApp.py"
+            "TargetName" = "8:PiavcaWXApp.py"
+            "Tag" = "8:"
+            "Folder" = "8:_030136928E1A4CF9B5AF2948FB4B2634"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_76227FC36BA8425BA737D5EBC6695946"
             {
             "SourcePath" = "8:..\\..\\Python\\Piavca\\AnimationTrack.py"
@@ -1621,6 +1723,46 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B2F2DDB7ABB74B89A4A166EB6AFD92E3"
+            {
+            "SourcePath" = "8:..\\..\\Python\\Piavca\\PiavcaWXCanvas.py"
+            "TargetName" = "8:PiavcaWXCanvas.py"
+            "Tag" = "8:"
+            "Folder" = "8:_030136928E1A4CF9B5AF2948FB4B2634"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B780941333D249A481A6A0A4979C1A26"
+            {
+            "SourcePath" = "8:..\\..\\Python\\Piavca\\gltb.py"
+            "TargetName" = "8:gltb.py"
+            "Tag" = "8:"
+            "Folder" = "8:_030136928E1A4CF9B5AF2948FB4B2634"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BC33772C9C7D4B99959F44A7C1F85648"
             {
             "SourcePath" = "8:..\\..\\Python\\PiavcaScriptEngine.py"
@@ -1841,12 +1983,52 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E211149BA70748FFB6E9864A060EBDCB"
+            {
+            "SourcePath" = "8:..\\..\\Python\\Piavca\\ViewerCanvas.py"
+            "TargetName" = "8:ViewerCanvas.py"
+            "Tag" = "8:"
+            "Folder" = "8:_030136928E1A4CF9B5AF2948FB4B2634"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E3BE2F24BC124A54B1A53827299ED0DE"
             {
             "SourcePath" = "8:..\\..\\Bill\\Walking.act"
             "TargetName" = "8:Walking.act"
             "Tag" = "8:"
             "Folder" = "8:_45D7633C579B4668A5FC68D3F3EFBF33"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E8C8085158B0487FAD40B13CBA172879"
+            {
+            "SourcePath" = "8:..\\..\\Python\\FreeCameraViewer.py"
+            "TargetName" = "8:FreeCameraViewer.py"
+            "Tag" = "8:"
+            "Folder" = "8:_C32D0F42EC2B427E89BDD8C0DE5EC464"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2768,11 +2950,11 @@
         }
         "MergeModule"
         {
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_6A779387264C4580B5D4B99472B16806"
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_6D3C2F03BCAB4536891293F8F94ED9B2"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:TRUE"
-            "SourcePath" = "8:policy_8_0_microsoft_vc80_crt_x86.msm"
+            "SourcePath" = "8:Microsoft_VC80_CRT_x86.msm"
                 "Properties"
                 {
                 }
@@ -2782,11 +2964,11 @@
             "Feature" = "8:"
             "IsolateTo" = "8:"
             }
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_EA2B3B5408764E29BA9F6135F473E11A"
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_B8EF49A3714D456C9902B7A46346799F"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:TRUE"
-            "SourcePath" = "8:Microsoft_VC80_CRT_x86.msm"
+            "SourcePath" = "8:policy_8_0_microsoft_vc80_crt_x86.msm"
                 "Properties"
                 {
                 }
@@ -2801,7 +2983,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_0EDB427873744218ACBF6199C4916A0F"
             {
-            "SourcePath" = "8:..\\XVR2Piavca\\Release_Py25\\XVR2Piavca.dll"
+            "SourcePath" = "8:..\\XVR2Piavca\\Release_Py24\\XVR2Piavca.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_2C01534358BC499DB5A587789363CFB1"
@@ -2913,7 +3095,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_7FFBA5A50D144A49A4D665B523A35DF3"
             {
-            "SourcePath" = "8:..\\..\\Python\\Piavca\\Piavca_base\\Release_Py25\\_Piavca_base.pyd"
+            "SourcePath" = "8:..\\..\\Python\\Piavca\\Piavca_base\\_Piavca_base.pyd"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_0C606D47F8BD4B13BFF33C3B7D2B9C27"
@@ -3025,7 +3207,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_E9BF3BD172E74BC1ACDE5669C3B94371"
             {
-            "SourcePath" = "8:..\\..\\Python\\Piavca\\PiavcaGlut\\Release_Py25\\_PiavcaGlut.pyd"
+            "SourcePath" = "8:..\\..\\Python\\Piavca\\PiavcaGlut\\_PiavcaGlut.pyd"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C311C00B4060407F8C51CD66C8EF17E6"
