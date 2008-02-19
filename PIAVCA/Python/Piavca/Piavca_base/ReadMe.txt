@@ -12,6 +12,9 @@ bindings.
 
 To rebuild you need to do the following:
 
+
+NB DO NOT DO THIS UNLESS YOU HAVE CHANGED THE INTERFACE TO PIAVCA AND HAVE SWIG INSTALLED
+
 1) If you have added a new header file import it in PiavcaAPI/Piavca.h and then add an import
 statement to the end of Piavca.i
 

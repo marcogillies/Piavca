@@ -11,6 +11,8 @@ rebuild the swig wrappers:
 
 To rebuild you need to do the following:
 
+NB DO NOT DO THIS UNLESS YOU HAVE CHANGED THE INTERFACE TO PiavcaGlut AND HAVE SWIG INSTALLED
+
 1) right click on PiavcaGlut.i and choose properties->General->Exclude From Build and choose No
 
 2) right click on PiavcaGlut.i and choose compile (or compile it however you want).
