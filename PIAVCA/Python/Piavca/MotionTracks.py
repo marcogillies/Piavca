@@ -193,21 +193,21 @@ class MotionTracks(wx.VListBox):
 	
 	def GetTimeInSplit(self):
 		if self.selectedTrack == None:
-			print "no selected track"
+			#print "no selected track"
 			return float(self.GetTime())/self.motion.getMotionLength()
 		splits = self.tracks[self.selectedTrack].GetSplits()
 		if len(splits) == 0:
-			print "no splits"
+			#print "no splits"
 			return float(self.GetTime())/self.motion.getMotionLength()
 		t = self.GetTime()
-		for split in splits:
-			print split.GetStart(), split.GetEnd()
+		#for split in splits:
+			#print split.GetStart(), split.GetEnd()
 		if t < splits[0].GetStart():
-			print "before start"
+			#print "before start"
 			return 0
 		for i in range(len(splits)-1):
 			if t >= splits[i].GetStart() and t < splits[i+1].GetStart() :
-				print "in internal split"
+				#print "in internal split"
 				return float(t - splits[i].GetStart())/(splits[i].GetEnd() - splits[i].GetStart())
 		return float(t - splits[-1].GetStart())/(splits[-1].GetEnd() - splits[-1].GetStart())
 		

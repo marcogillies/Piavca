@@ -12,6 +12,6 @@ lib_LTLIBRARIES = libPiavcaAPI.la
 libPiavcaAPI_la_SOURCES = Avatar.cpp AvatarImp.cpp AvatarMotionQueue.cpp AvatarPosture.cpp AvatarPostureBlend.cpp \ 	PiavcaCore.cpp\
 	Hermite.cpp Motion.cpp Object.cpp Quat.cpp Vec.cpp SequentialBlend.cpp \
 	LookAtMotion.cpp MaskedMotion.cpp MotionParser.cpp MotionSaver.cpp MotionPosture.cpp MotionTransition.cpp PostureBlend.cpp \
-	Reposition.cpp BlendBetween.cpp MotionAdder.cpp PiavcaError.cpp \
+	Reposition.cpp BlendBetween.cpp MotionAdder.cpp PiavcaError.cpp OverrideMotion.cpp\
 	Sequence.cpp SmoothSequence.cpp SubMotion.cpp Subtract.cpp TimeRangeMotion.cpp\
 	TwoMotionCombiner.cpp KeyframeMotion.cpp Bound.cpp

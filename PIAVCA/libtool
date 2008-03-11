@@ -44,7 +44,7 @@ available_tags=" CXX F77"
 
 # ### BEGIN LIBTOOL CONFIG
 
-# Libtool was configured on host marco-gillies-computer.local:
+# Libtool was configured on host Macintosh.lan:
 
 # Shell to use when invoking shell scripts.
 SHELL="/bin/sh"
@@ -66,16 +66,16 @@ fast_install=needless
 
 # The host system.
 host_alias=
-host=i386-apple-darwin8.11.1
-host_os=darwin8.11.1
+host=i386-apple-darwin9.1.0
+host_os=darwin9.1.0
 
 # The build system.
 build_alias=
-build=i386-apple-darwin8.11.1
-build_os=darwin8.11.1
+build=i386-apple-darwin9.1.0
+build_os=darwin9.1.0
 
 # An echo program that does not interpret backslashes.
-echo="echo"
+echo="/bin/echo"
 
 # The archiver.
 AR="ar"
@@ -97,7 +97,7 @@ with_gcc=yes
 EGREP="/usr/bin/grep -E"
 
 # The linker used to build libraries.
-LD="/usr/bin/ld"
+LD="/usr/libexec/gcc/i686-apple-darwin9/4.0.1/ld"
 
 # Whether we need hard or soft links.
 LN_S="ln -s"
@@ -322,7 +322,7 @@ variables_saved_for_relink="PATH DYLD_LIBRARY_PATH  GCC_EXEC_PREFIX COMPILER_PAT
 link_all_deplibs=yes
 
 # Compile-time system search path for libraries
-sys_lib_search_path_spec="/usr/lib/gcc/i686-apple-darwin8/4.0.1 /usr/lib /usr/local/lib"
+sys_lib_search_path_spec="/usr/lib/i686-apple-darwin9/4.0.1 /usr/lib /usr/lib/gcc/i686-apple-darwin9/4.0.1 /usr/local/lib"
 
 # Run-time system search path for libraries
 sys_lib_dlsearch_path_spec="/usr/local/lib /lib /usr/lib"
@@ -6692,7 +6692,7 @@ build_old_libs=`case $build_libtool_libs in yes) $echo no;; *) $echo yes;; esac`
 # End:
 # ### BEGIN LIBTOOL TAG CONFIG: CXX
 
-# Libtool was configured on host marco-gillies-computer.local:
+# Libtool was configured on host Macintosh.lan:
 
 # Shell to use when invoking shell scripts.
 SHELL="/bin/sh"
@@ -6714,16 +6714,16 @@ fast_install=needless
 
 # The host system.
 host_alias=
-host=i386-apple-darwin8.11.1
-host_os=darwin8.11.1
+host=i386-apple-darwin9.1.0
+host_os=darwin9.1.0
 
 # The build system.
 build_alias=
-build=i386-apple-darwin8.11.1
-build_os=darwin8.11.1
+build=i386-apple-darwin9.1.0
+build_os=darwin9.1.0
 
 # An echo program that does not interpret backslashes.
-echo="echo"
+echo="/bin/echo"
 
 # The archiver.
 AR="ar"
@@ -6745,7 +6745,7 @@ with_gcc=yes
 EGREP="/usr/bin/grep -E"
 
 # The linker used to build libraries.
-LD="/usr/bin/ld"
+LD="/usr/libexec/gcc/i686-apple-darwin9/4.0.1/ld"
 
 # Whether we need hard or soft links.
 LN_S="ln -s"
@@ -6970,7 +6970,7 @@ variables_saved_for_relink="PATH DYLD_LIBRARY_PATH  GCC_EXEC_PREFIX COMPILER_PAT
 link_all_deplibs=yes
 
 # Compile-time system search path for libraries
-sys_lib_search_path_spec="/usr/lib/gcc/i686-apple-darwin8/4.0.1 /usr/lib /usr/local/lib"
+sys_lib_search_path_spec="/usr/lib/i686-apple-darwin9/4.0.1 /usr/lib /usr/lib/gcc/i686-apple-darwin9/4.0.1 /usr/local/lib"
 
 # Run-time system search path for libraries
 sys_lib_dlsearch_path_spec="/usr/local/lib /lib /usr/lib"
@@ -6997,7 +6997,7 @@ include_expsyms=""
 
 # ### BEGIN LIBTOOL TAG CONFIG: F77
 
-# Libtool was configured on host marco-gillies-computer.local:
+# Libtool was configured on host Macintosh.lan:
 
 # Shell to use when invoking shell scripts.
 SHELL="/bin/sh"
@@ -7019,16 +7019,16 @@ fast_install=needless
 
 # The host system.
 host_alias=
-host=i386-apple-darwin8.11.1
-host_os=darwin8.11.1
+host=i386-apple-darwin9.1.0
+host_os=darwin9.1.0
 
 # The build system.
 build_alias=
-build=i386-apple-darwin8.11.1
-build_os=darwin8.11.1
+build=i386-apple-darwin9.1.0
+build_os=darwin9.1.0
 
 # An echo program that does not interpret backslashes.
-echo="echo"
+echo="/bin/echo"
 
 # The archiver.
 AR="ar"
@@ -7050,7 +7050,7 @@ with_gcc=yes
 EGREP="/usr/bin/grep -E"
 
 # The linker used to build libraries.
-LD="/usr/bin/ld"
+LD="/usr/libexec/gcc/i686-apple-darwin9/4.0.1/ld"
 
 # Whether we need hard or soft links.
 LN_S="ln -s"
@@ -7275,7 +7275,7 @@ variables_saved_for_relink="PATH DYLD_LIBRARY_PATH  GCC_EXEC_PREFIX COMPILER_PAT
 link_all_deplibs=yes
 
 # Compile-time system search path for libraries
-sys_lib_search_path_spec="/usr/lib/gcc/i686-apple-darwin8/4.0.1 /usr/lib /usr/local/lib"
+sys_lib_search_path_spec="/usr/lib/i686-apple-darwin9/4.0.1 /usr/lib /usr/lib/gcc/i686-apple-darwin9/4.0.1 /usr/local/lib"
 
 # Run-time system search path for libraries
 sys_lib_dlsearch_path_spec="/usr/local/lib /lib /usr/lib"

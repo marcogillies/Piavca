@@ -57,18 +57,27 @@ class DataSequence:
                 line = line.strip()
                 if line == "":
                     continue
-                print line
+                #print line
                 line = line.replace(","," ")
                 line = line.replace(";"," ")
-                print line
+                #print line
                 data = line.split()
-                print data
+                #print data
                 t = float(data[0].strip())
                 data = [self.stringToValue(d) for d in data[1:]]
                 #print data
                 self.addElement(t, data)
             except ValueError, IndexError:
                 pass
+               
+    def saveCSV(self, filename):
+    	f = open(filename, "w")
+    	for t,data in self.seq:
+    		f.write(str(t)+", ")
+    		for d in data:
+    			f.write(str(d)+", ")
+    		f.write("\n")
+    	f.close()
         
     def addElement(self, t, data):
         bisect.insort(self.seq, (t, data))
@@ -132,7 +141,7 @@ class IntegerDataSequence(DataSequence):
      	DataSequence.__init__(self, file)
     
     def stringToValue(self, str):
-    	return int(str.strip())
+    	return int(float(str.strip()))
 		
     def getDataAtTime(self, t):
         # find the keyframe after the requested time 
@@ -158,10 +167,10 @@ class SequenceDisplay(wx.Frame):
         print "length of sequence", self.seq.seq
         self.sizer=wx.BoxSizer(wx.VERTICAL)
         
-        min, max = self.seq.getMinMax()
+        self.min, self.max = self.seq.getMinMax()
         self.sliders = []
-        for a,b in zip(min, max):
-            self.sizer.Add(self.addSlider(a, b), 1)
+        for a,b in zip(self.min, self.max):
+            self.sizer.Add(self.addSlider(0, 60), 1)
 
         self.SetSizer(self.sizer)
         self.SetAutoLayout(1)
@@ -177,8 +186,16 @@ class SequenceDisplay(wx.Frame):
     
     def setTime(self, t):
         d = self.seq.getDataAtTime(t)
+        #print d
         for i in range(len(d)):
-            self.sliders[i].SetValue(d[i])
+        	val = d[i] - self.min[i]
+        	#print val,
+        	val *= 60.0
+        	#print val,
+        	val /= (self.max[i] - self.min[i])
+        	#print val,
+        	self.sliders[i].SetValue(int(val))
+        	#print ""
     
     def setTimeNormalized(self, t):
         start = self.seq.getStartTime()
@@ -196,9 +213,17 @@ class IntSequenceDisplay(wx.Frame):
         
     def create(self):
     	min, max = self.seq.getMinMax()
-    	items = [str(i) for i in range(min[0], max[0])]
-    	self.radiobox = wx.RadioBox(self, -1, "data stream", (10, 10), wx.DefaultSize, items, 3, wx.RA_SPECIFY_COLS)
+    	print min, max
+    	self.radioboxes = []
+        self.sizer=wx.BoxSizer(wx.HORIZONTAL)
+    	for a,b in zip(min, max):
+            items = [str(i) for i in range(a, b+1)]
+            self.radioboxes.append(wx.RadioBox(self, -1, "data stream", (10, 10), wx.DefaultSize, items, 5, wx.RA_SPECIFY_COLS))
+            self.sizer.Add(self.radioboxes[-1], 1)
         
+        self.SetSizer(self.sizer)
+        self.SetAutoLayout(1)
+        self.sizer.Fit(self)
         self.Show(True)
         self.Layout()
     
@@ -206,7 +231,8 @@ class IntSequenceDisplay(wx.Frame):
     	print "set time", t
         d = self.seq.getDataAtTime(t)
         print "current data", d
-        self.radiobox.SetStringSelection(str(d[0]))
+        for data, radiobox in zip(d, self.radioboxes):
+			radiobox.SetStringSelection(str(data))
     
     def setTimeNormalized(self, t):
         start = self.seq.getStartTime()

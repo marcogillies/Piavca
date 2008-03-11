@@ -37,7 +37,7 @@
 
 import Piavca
 import random
-import pickle
+import cPickle as pickle
 import copy
 from StrongConnectivity import StronglyConnectedComponents
 import Piavca.ExpMap as ExpMap
@@ -300,7 +300,44 @@ class MotionGraph (Piavca.LoopMotion):
 		return self.filename
 	
 	# create the graph
-	def create(self, avatar = None):
+	def create(self, avatar = None):		
+		transitions = self.findTransitions(avatar)
+			
+		# cull the transitions
+		transitions.sort()
+		# split the transitions up by starting point
+		split_trans = []
+		sub_trans = []
+		for trans in transitions:
+			if len(sub_trans) > 0 and (trans[0] != sub_trans[-1][0] or trans[1] != sub_trans[-1][1]):
+				split_trans.append(sub_trans)
+				sub_trans = []
+			sub_trans.append(trans)
+			
+		# dump the transitions out to file, in case we want to recalculate later
+		file = open("transition_back.txt", "w")
+		pickle.dump(transitions, file)
+		file.close()
+		newtrans = []
+		outfile = open("SelectTransitions.out", "w")
+		
+		# new set of transitions with bad ones weeded out
+		for trans_set in split_trans:
+			outfile.write(str(trans_set) + "\n")
+			trans, vals = self.selectTransitions(trans_set, self.fps)#, outfile)
+			outfile.write(str(vals) + "\n")
+			outfile.write(str(trans) + "\n")
+			if len (trans) > 0:
+					newtrans = newtrans + trans
+		outfile.close()
+		transitions = newtrans
+		
+		
+		# now that we've found the transitions we need to create the graph
+		self.init_nodes(transitions, avatar)
+		self.reblend(Piavca.Core.getCore().getTime())
+		
+	def findTransitions(self, avatar=None):
 		if self.jointsWeightsFile != "":
 			self.measure.readJointWeightsFile(self.jointsWeightsFile)
 		if self.filename != "":
@@ -403,38 +440,8 @@ class MotionGraph (Piavca.LoopMotion):
 			motion, framearray, numframes = m
 			self.motions[i] = motion
 			
-		# cull the transitions
-		transitions.sort()
-		# split the transitions up by starting point
-		split_trans = []
-		sub_trans = []
-		for trans in transitions:
-			if len(sub_trans) > 0 and (trans[0] != sub_trans[-1][0] or trans[1] != sub_trans[-1][1]):
-				split_trans.append(sub_trans)
-				sub_trans = []
-			sub_trans.append(trans)
-			
-		# dump the transitions out to file, in case we want to recalculate later
-		file = open("transition_back.txt", "w")
-		pickle.dump(transitions, file)
-		file.close()
-		newtrans = []
-		outfile = open("SelectTransitions.out", "w")
+		return transitions	
 		
-		# new set of transitions with bad ones weeded out
-		for trans_set in split_trans:
-			outfile.write(str(trans_set) + "\n")
-			trans, vals = self.selectTransitions(trans_set, self.fps)#, outfile)
-			outfile.write(str(vals) + "\n")
-			outfile.write(str(trans) + "\n")
-			if len (trans) > 0:
-					newtrans = newtrans + trans
-		outfile.close()
-		transitions = newtrans
-		
-		# now that we've found the transitions we need to create the graph
-		self.init_nodes(transitions, avatar)
-		self.reblend(Piavca.Core.getCore().getTime())
 		
 	# this function creates the graph
 	def init_nodes(self, transitions, avatar=None):
@@ -591,6 +598,9 @@ class MotionGraph (Piavca.LoopMotion):
 					#print self.nodes[n]
 					#print self.nodes[n].motion
 					#print self.motions[self.nodes[n].motion]
+					if starttime > endtime:
+						print "zero length", starttime, endtime
+						endtime = starttime
 					edgeMot = Piavca.SubMotion(self.motions[self.nodes[n].motion].clone(), starttime, endtime)
 				# if it is a transition edge, we need to create a transition
 				else:   

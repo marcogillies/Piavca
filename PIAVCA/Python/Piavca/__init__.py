@@ -47,6 +47,7 @@ from PositionHandler import PositionResponse, PositionShiftResponse
 try:
 	from EigenMotion import *
 	from MotionGraph import *
+	from ClusterMotionGraph import *
 except ImportError:
 	print "scipy not available, please install scipy to use EigenMotion and Motion Graph"
 

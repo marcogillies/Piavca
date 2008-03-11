@@ -259,6 +259,15 @@ class EigenAnalysis :
 		#print "vq returned"
 		return qs
 	
+	# vector quantise some data
+	def VectorQuantizeWithDistance(self, x):
+		#print "cluster centres"
+		#print self.quants
+		#print x
+		qs, dist = scipy.cluster.vq.vq(x, self.quants)
+		#print "vq returned"
+		return qs, dist
+	
 	def numQuants(self):
 		try:
 			return len(self.quants)
@@ -454,12 +463,18 @@ class EigenAnalysis :
 		weights =  scipy.dot(vals,self.pcs)
 		return weights
 	
-	def projectMotion (self, motion, frames_per_second = 20.0):
-		print "project motion"
+	def projectMotion (self, motion, frames_per_second = 20.0):#, file_extension=""):
+		#print "project motion"
 		projections = []
+		
+		#self.file = open("pca_output_" + file_extension + ".csv", "w")
+		
 		for t in range(int(motion.getMotionLength()*frames_per_second)):
 			time = float(t)/frames_per_second
 			projections.append((time, self.projectMotionAtTime(motion, time)))
+			
+		#self.file.close()
+		
 		return projections
 		
 	
@@ -473,9 +488,15 @@ class EigenAnalysis :
 				# if there are no splits we are acting directly on the postures
 				
 				# take a bunch of samples of postures
+				#print joint,
 				q = motion.getQuatValueAtTime(joint, float(time))
+				#print >> self.file, q[0], ",",  q[1], ",",  q[2], ",",  q[3], ", ,", 
 				mappedvals.append(self.expmaps[i].logMap(q))
+				#print >> self.file, mappedvals[-1][0], ",",  mappedvals[-1][1], ",",  mappedvals[-1][2], ", ,", 
 				i += 1
+				
+		#print ""
+		#print >> self.file, ""
 				
 		if self.use_vels:
 			increment=6
