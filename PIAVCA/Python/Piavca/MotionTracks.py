@@ -49,7 +49,7 @@ class MotionTracks(wx.VListBox):
 		self.track_height = 20
 		self.name_length = 60
 		self.track_length = Track.TimeToPosition(motion.getMotionLength())
-		print "track length", self.track_length
+		print "track length", self.track_length, "motionlength", motion.getMotionLength()
 		self.selectedTrack = None
 		# read in a specification of which tracks to use
 		self.ReadTracks(tracksFile)

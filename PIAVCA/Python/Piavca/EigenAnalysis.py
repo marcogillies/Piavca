@@ -463,6 +463,19 @@ class EigenAnalysis :
 		weights =  scipy.dot(vals,self.pcs)
 		return weights
 	
+	def getExpMaps(self, motion, frames_per_second = 20.0):
+		mappedvals = []
+		for t in range(int(motion.getMotionLength()*frames_per_second)):
+			mappedvals.append([])
+			i = 0
+			time = float(t)/frames_per_second
+			for joint in range(1, motion.end()) :
+				if( not motion.isNull(joint)):
+					q = motion.getQuatValueAtTime(joint, float(time))
+					mappedvals[-1].append(self.expmaps[i].logMap(q))
+					i += 1
+		return mappedvals
+	
 	def projectMotion (self, motion, frames_per_second = 20.0):#, file_extension=""):
 		#print "project motion"
 		projections = []

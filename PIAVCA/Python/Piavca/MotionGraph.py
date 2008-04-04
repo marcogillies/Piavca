@@ -615,6 +615,7 @@ class MotionGraph (Piavca.LoopMotion):
 					#print "start time end time", t1, t2
 					
 					#edgeMot = Piavca.MotionTransition(mot1.clone(), None, t1, t2, self.window)
+					#print "transition window:", self.window
 					edgeMot = Piavca.MotionTransition(mot1.clone(), mot2.clone(), t1, t2, self.window)
 					if avatar != None:
 						edgeMot.footplant_spec = [[1,1],[1,1]]

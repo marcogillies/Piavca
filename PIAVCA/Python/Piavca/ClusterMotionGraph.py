@@ -70,6 +70,35 @@ class ClusterMotionGraph(Piavca.MotionGraph):
 		dist = math.sqrt(dist)
 		return dist
 	
+	def calcVelocityDotProd(self, expmaps, frame1, frame2, outfile=None):
+		
+		if outfile != None:
+			print >> outfile, frame1, ",", frame2,
+		dots = []
+		for p0, p1, p2 in zip(expmaps[frame1[0]][frame1[1]],expmaps[frame1[0]][frame1[1]+1],expmaps[frame2[0]][frame2[1]]):
+			v1 = p1 - p0
+			v2 = p2 - p0
+			dots.append(v1.dot(v2))
+			if outfile != None:
+				print >> outfile, dots[-1], ",",
+		if outfile != None:
+			print >> outfile, ""
+		return dots
+	
+	def NegativeDotProdCount(self, expmaps, frame1, frame2, outfile=None):
+		
+		if outfile != None:
+			print >> outfile, frame1, ",", frame2, ",",
+		dots = self.calcVelocityDotProd(expmaps, frame1, frame2)
+		count = 0 
+		for d in dots:
+			if d < 0:
+				count += 1
+		
+		if outfile != None:
+			print >> outfile, count, ",", len(dots)
+		return count
+	
 	def findTransitions(self, avatar=None):
 		
 		if self.pcs == None:
@@ -84,17 +113,24 @@ class ClusterMotionGraph(Piavca.MotionGraph):
 		
 		self.fps = 20.0
 		projectedMotions = []
+		expmaps = []
 		# project all the motions onto the pcs
 		for motion in self.motions:
 			print "motion", motion, motion.getStart(), motion.getEnd()
 			projectedMotions.append([pw[1] for pw in self.pcs.projectMotion(motion, frames_per_second=self.fps)])#, file_extension="weights_out_"+ str(motion.getStart()))])
-			
+			expmaps.append(self.pcs.getExpMaps(motion, frames_per_second=self.fps))
 			f = open("weights_out_"+ str(motion.getStart()) +".csv", "w")
 			for weightset in projectedMotions[-1]:
 				for w in weightset:
 					print >> f, w, ",",
 				print >> f, ""
 			f.close()
+			#f = open("expmaps_out_"+ str(motion.getStart()) +".csv", "w")
+			#for e in expmaps[-1]:
+			#	for w in e:
+			#		print >> f, w, ",",
+			#	print >> f, ""
+			#f.close()
 			
 				
 		if self.pcs.quants == None:
@@ -173,13 +209,17 @@ class ClusterMotionGraph(Piavca.MotionGraph):
 		for i, s in enumerate(minima):
 			print i, len(s), cluster_counts[i]
 		print "ClusterMotionGraph: setting up transitions"
+		f = open("expmaps_out.csv", "w")
 		transitions = []
 		for hub in minima:
 			for motNum1, frame1 in hub:
 				for motNum2, frame2 in hub:
 					dist = self.calcDistance(projectedMotions[motNum1][frame1], projectedMotions[motNum2][frame2])
+					#if self.NegativeDotProdCount(expmaps, (motNum1, frame1), (motNum2, frame2), f) < 6:
 					transitions.append((frame1, motNum1, frame2, motNum2, dist))
 					
+		f.close()
+		
 		self.quants = quants
 		return transitions
 	
