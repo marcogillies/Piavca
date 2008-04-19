@@ -49,7 +49,7 @@ class DataSequence:
     	return float(str.strip())
         
     def readCSV(self, filename, separator=" "):
-        f = open(filename)
+        f = open(filename, "rU")
         lines = f.readlines()
         f.close()
         for line in lines:
@@ -69,6 +69,7 @@ class DataSequence:
                 self.addElement(t, data)
             except ValueError, IndexError:
                 pass
+        #print self.seq
                
     def saveCSV(self, filename):
     	f = open(filename, "w")

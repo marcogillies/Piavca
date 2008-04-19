@@ -201,6 +201,8 @@ class Node:
 
 # A motion graph is a transitioning construct so we inherit from LoopMotion
 class MotionGraph (Piavca.LoopMotion):
+	footplant = None
+	
 	def __init__(self, motions=[], window = 1.0):
 		Piavca.LoopMotion.__init__(self)
 		self.setAccumulateRoot(0)
@@ -298,6 +300,9 @@ class MotionGraph (Piavca.LoopMotion):
 		
 	def getFilename(self):
 		return self.filename
+	
+	def addFootPlant(self, fp):
+		self.footplant = fp
 	
 	# create the graph
 	def create(self, avatar = None):		
@@ -584,6 +589,7 @@ class MotionGraph (Piavca.LoopMotion):
 	
 	# create the motions that transitions between nodes
 	def _createTransitionMots(self, avatar = None):
+		#print "creating transitions"
 		# go through all the nodes, creating motions for all outgoing edges
 		for n in self.nodes.keys():
 			#print "node", n, self.nodes[n].nextNode, self.nodes[n].children
@@ -617,7 +623,10 @@ class MotionGraph (Piavca.LoopMotion):
 					#edgeMot = Piavca.MotionTransition(mot1.clone(), None, t1, t2, self.window)
 					#print "transition window:", self.window
 					edgeMot = Piavca.MotionTransition(mot1.clone(), mot2.clone(), t1, t2, self.window)
+					
+					#print "about to set up footplant"
 					if avatar != None:
+						#print "has avatar"
 						edgeMot.footplant_spec = [[1,1],[1,1]]
 						for i, m in enumerate([(t1, mot1), (t2, mot2)]):
 							time, mot = m
@@ -729,7 +738,7 @@ class MotionGraph (Piavca.LoopMotion):
 		if footplant_spec:
 			self.setAccumulateRoot(0)
 			if avatar != None:
-				print "footplants", footplant_spec
+				#print "footplants", footplant_spec
 				plantedfeet = 0
 				if footplant_spec[0][0] != None :
 					plantedfeet += 1
@@ -746,9 +755,20 @@ class MotionGraph (Piavca.LoopMotion):
 				if plantedfeet == 0:
 					print "****************** neither planted ************************"
 				#print "motion is footplant", footplant_spec
-				motion = Piavca.FootPlantOnSpot(motion, footplant_spec)
+				
+				if self.footplant:
+					self.footplant.setFootPlants(footplant_spec)
+				#motion = Piavca.FootPlantOnSpot(motion, footplant_spec)
 		else:
+			if self.footplant:
+				self.footplant.setFootPlants([[None, None], [None, None]] )
 			pass#print "############# next node"
+		#print "reblending"
 		Piavca.LoopMotion.reblend(self,time)
+		#print "finished reblending"
 		#print "motion", motion
 		self.setMotion(motion)
+		#print "set motion done"
+		#filename = "motionoutput_" + str(Piavca.getTime()) + ".txt"
+		#Piavca.XMLMotionFile.saveMotions(filename, [self.getMotion1(), self.getMotion2()])
+		

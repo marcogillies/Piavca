@@ -159,6 +159,7 @@ class ClusterMotionGraph(Piavca.MotionGraph):
 		minima = [[] for i in range(self.num_quants)]
 		cluster_counts = [0 for i in range(self.num_quants)]
 		
+		f = open("minima_out.csv", "w")
 		for motNum, (motQuants, motDists) in enumerate(quants):
 			print "ClusterMotionGraph, finding minima in motion", motNum, "length", len(motQuants)
 			currentQuant = None
@@ -166,6 +167,7 @@ class ClusterMotionGraph(Piavca.MotionGraph):
 			currentMinimumVal = 1000000.0
 			added = False
 			for i in range(1, len(motQuants)-1):
+				print >> f, motQuants[i], ",", motDists[i]
 				cluster_counts[motQuants[i]] += 1
 				if motQuants[i] != currentQuant:
 					if currentQuant != None and not added:
@@ -185,7 +187,7 @@ class ClusterMotionGraph(Piavca.MotionGraph):
 		
 			if currentQuant != None and not added:
 				minima[currentQuant].append((motNum, currentMinimum))
-						
+		f.close()				
 		
 #		for motNum, (motQuants, motDists) in enumerate(quants):
 #			print "ClusterMotionGraph, finding minima in motion", motNum

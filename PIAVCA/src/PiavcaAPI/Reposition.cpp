@@ -58,8 +58,11 @@ void Reposition::calculateRootOffsets()
 	float startTime=0;
 
 	if (filterMot)
+	{
 		startTime = filterMot->getStartTime();
-	
+		filterMot->preFrame(filterMot->getStartTime());
+	}
+		
 	if(filterMot && !filterMot->isNull(root_orientation_id))
 	{
 		Quat otherOri = filterMot->getQuatValueAtTime(root_orientation_id, filterMot->getStartTime());
@@ -93,7 +96,7 @@ void Reposition::setStartFromMotion(Motion *m, float time)
 		setStartOrientation(m->getQuatValueAtTime(root_orientation_id, time));	
 	else
 		setStartOrientation(Quat());
-	std::cout << "Repositioner, time" << time << " start Position: " << start_position << std::endl;
+	//std::cout << "Repositioner, time" << time << " start Position: " << start_position << std::endl;
 
 };
 

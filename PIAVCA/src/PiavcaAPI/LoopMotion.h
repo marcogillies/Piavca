@@ -64,6 +64,26 @@ namespace Piavca
 		};
 
 		void setEndTime(float t){endTime = t;};
+		
+
+		
+		virtual void preFrame(float time)
+		{
+			//std::cout << "loop motion.preframe\n";
+			if (!lock 
+				&& (reblend_flag
+				|| ((endTime < 0 || time < endTime)
+				&& (!mot2 ||
+				(mot2->getMotionLength() > 0 && time > mot2->getEndTime())))))
+				{
+				    LoopMotion *nonConstThis = const_cast<LoopMotion *>(this);
+					nonConstThis->lock = true;
+					nonConstThis->reblend(time);
+					nonConstThis->lock = false;
+					reblend_flag = false;
+				}
+			PostureBlend::preFrame(time);
+		}
 
 	    //! calculates the values of a keyframe
 	    /*!  if the end has been reached it reblends to start again at the beginning
@@ -73,7 +93,8 @@ namespace Piavca
 			// if we've reached the end of the motion we have to reblend to start it again
 			// as reblend calls this function again we have to check whether its being
 			// called recursively and not do the reblend
-			if(!lock 
+			/*
+	    	if(!lock 
 				&& (reblend_flag
 				|| ((endTime < 0 || time < endTime)
 				&& (!mot2 ||
@@ -85,6 +106,7 @@ namespace Piavca
 				nonConstThis->lock = false;
 				reblend_flag = false;
 			}
+			*/
 			//std::cout << "loop motion " << time << " " << blendStart << std::endl;
 			return PostureBlend::getFloatValueAtTimeInternal(trackId, time);
 		};
@@ -97,6 +119,7 @@ namespace Piavca
 			// if we've reached the end of the motion we have to reblend to start it again
 			// as reblend calls this function again we have to check whether its being
 			// called recursively and not do the reblend
+	    	/*
 			if(!lock 
 				&& (reblend_flag
 				|| ((endTime < 0 || time < endTime)
@@ -109,6 +132,7 @@ namespace Piavca
 				nonConstThis->lock = false;
 				reblend_flag = false;
 			}
+			*/
 			Vec v = PostureBlend::getVecValueAtTimeInternal(trackId, time);
 			//std::cout << "loop motion: " << v << std::endl;
 			return v;
@@ -122,11 +146,12 @@ namespace Piavca
 			// if we've reached the end of the motion we have to reblend to start it again
 			// as reblend calls this function again we have to check whether its being
 			// called recursively and not do the reblend
+	    	/*
 			if(!lock 
 				&& (reblend_flag
 				|| ((endTime < 0 || time < endTime)
 				&& (!mot2 ||
-				(/*mot2->getMotionLength() > 0 &&*/ time > mot2->getEndTime())))))
+				(/*mot2->getMotionLength() > 0 &&* / time > mot2->getEndTime())))))
 			{
 				//std::cout << "Loop Motion Time " << time << " ";
 				//std::cout << mot2->getEndTime() << " ";
@@ -138,6 +163,7 @@ namespace Piavca
 				nonConstThis->lock = false;
 				reblend_flag = false;
 			}
+			*/
 			return PostureBlend::getQuatValueAtTimeInternal(trackId, time);
 		};
 	};

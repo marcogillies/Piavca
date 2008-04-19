@@ -20,6 +20,7 @@ app = Piavca.getWXApp()
 
 import Piavca.FreeCameraCanvas
 canvas = app.showWindows(canvastype = Piavca.FreeCameraCanvas.FreeCameraCanvas)	
+app.getCanvas().setClearColour(1, 1, 1)
 	
 if len(sys.argv) > 1:
 	path = sys.argv[1]

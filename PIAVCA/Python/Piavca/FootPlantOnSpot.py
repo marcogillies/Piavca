@@ -45,7 +45,9 @@ class FootPlantOnSpot(Piavca.MotionFilter):
 		else:
 			Piavca.MotionFilter.__init__(self)
 		self.__disown__()
+		self.noChanges = False
 		self.setFootPlants(footplants)
+		self.rootPos = Piavca.Vec()
 		#print "plantedFoot", self.plantedFoot
 		#print "liftedKnee", self.liftedKnee
 		#print "pos, ori", self.plantPos, self.plantOri
@@ -59,6 +61,10 @@ class FootPlantOnSpot(Piavca.MotionFilter):
 		
 		self.plantedFoot = None
 		self.liftedKnee = None
+		
+		# null footplants mean we don't do anything
+		if self.footplants == None:
+			return 
 		
 		# if neither are planted we don't need to do anything
 		if None == self.footplants[0][0] and None == self.footplants[0][1]:
@@ -128,20 +134,28 @@ class FootPlantOnSpot(Piavca.MotionFilter):
 			self.preFrame(Piavca.Core.getCore().getTime())
 	
 	def preFrame(self, time):
+		if self.noChanges:
+			return 
 		#print "Footplants, preFrame"
 		Piavca.MotionFilter.preFrame(self, time)
 		#print "Footplants, preFrame"
 		if self.plantedFoot == None:
+			#print "no planted foot"
 			return
 		av = self.getAvatar()
 		ori = av.getRootOrientation()
 		pos = av.getRootPosition()
 		#print "old ori", ori, "old pos", pos
 		pos = av.getJointBasePosition(self.plantedFoot, Piavca.WORLD_COORD)
-		#print "old foot pos", pos
-		av.showMotionAtTime(time, self.getMotion(),0)
+		#print time, "old foot pos", pos, self.plantPos, self
+		self.noChanges = True
+		#print "no changes", self.noChanges
+		#print "self", self
+		av.showMotionAtTime(time, None,0)
+		#av.showMotionAtTime(time, self.getMotion(),0)
 		ori = av.getJointOrientation(self.plantedFoot, Piavca.WORLD_COORD)
 		pos = av.getJointBasePosition(self.plantedFoot, Piavca.WORLD_COORD)
+		self.noChanges = False
 		#print "rootpos", av.getRootPosition()
 		#print "current pos, ori", pos, ori
 		#print "jointlocal", av.getJointOrientation(self.plantedFoot, Piavca.JOINTLOCAL_COORD), av.getJointOrientation(self.plantedFoot, Piavca.JOINTLOCAL_COORD)
@@ -155,6 +169,7 @@ class FootPlantOnSpot(Piavca.MotionFilter):
 		#print "plant pos", self.plantPos, " current pos ", self.rootOri.transform(pos)
 		#self.rootPos = self.plantPos - self.rootOri.transform(pos)
 		self.rootPos = self.plantPos - pos
+		#print time, "end of footplant.preframe"
 		#print "root pos in preframe", self.rootPos
 		#print "root ori in preframe", self.rootOri
 		#print "new plant ori", self.rootOri*ori
@@ -163,19 +178,20 @@ class FootPlantOnSpot(Piavca.MotionFilter):
 	def getVecValueAtTimeInternal(self, trackId, time):
 		#print "Footplant.vecvalue"
 		#print "planted foot", self.plantedFoot
-		if self.plantedFoot != None:
+		if (not self.noChanges) :#and self.plantedFoot != None:
 			if trackId == Piavca.root_position_id :
+				#print self.noChanges, self.plantedFoot, self
 				#print "root pos", self.rootPos,
 				v = Piavca.MotionFilter.getVecValueAtTimeInternal(self, trackId, time)
-				#print v
+				#print v,
 				v = v+self.rootPos
-				#print v
+				#print v, self
 				return v
 		return Piavca.MotionFilter.getVecValueAtTimeInternal(self, trackId, time)
 		
 	def getQuatValueAtTimeInternal(self, trackId, time):
 		#print "Footplant.quatvalue"
-		if self.plantedFoot != None:
+		if (not self.noChanges) and self.plantedFoot != None:
 			if trackId == Piavca.root_orientation_id :
 				#print "root ori", self.rootOri,
 				q = self.rootOri*Piavca.MotionFilter.getQuatValueAtTimeInternal(self, trackId, time)
@@ -187,7 +203,7 @@ class FootPlantOnSpot(Piavca.MotionFilter):
 				q = self.getMotion().getQuatValueAtTimeInternal(trackId, time)
 				angle = q.getAngle()
 				addon = t*(1 - t)
-				angle = angle + 1.5*addon
+				angle = angle + 3*addon#1.5*addon
 				q.setAngleAxis(angle, q.getAxis())
 				#print q
 				return q
