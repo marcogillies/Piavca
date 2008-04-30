@@ -215,6 +215,13 @@ def addElement(mot, eleName, arglist):
 	raise ValueError("Invalid value "+arglist+" for attribute "+eleName)
 	return 0
 	
+def getMotionTypeNames():
+	motionTypeNames = []
+	for key in Piavca.__dict__.keys():
+		#print "****", key, Piavca.__dict__[key]
+		if type(Piavca.__dict__[key]) == types.TypeType and issubclass(Piavca.__dict__[key], Piavca.Motion):
+			motionTypeNames.append(key)
+	return motionTypeNames
 	
 def readMotions(motions):
 	mots = []

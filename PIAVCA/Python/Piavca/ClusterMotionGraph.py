@@ -216,6 +216,8 @@ class ClusterMotionGraph(Piavca.MotionGraph):
 		for hub in minima:
 			for motNum1, frame1 in hub:
 				for motNum2, frame2 in hub:
+					if (motNum1, frame1) == (motNum2, frame2):
+						continue
 					dist = self.calcDistance(projectedMotions[motNum1][frame1], projectedMotions[motNum2][frame2])
 					#if self.NegativeDotProdCount(expmaps, (motNum1, frame1), (motNum2, frame2), f) < 6:
 					transitions.append((frame1, motNum1, frame2, motNum2, dist))

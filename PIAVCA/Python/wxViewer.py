@@ -10,7 +10,6 @@ import Piavca.JointNames
 Piavca.JointNames.loadDefaults()
 
 import Piavca.ViewerCanvas
-app.showWindows(canvastype = Piavca.ViewerCanvas.ViewerCanvas)
 
 
 import wx
@@ -279,6 +278,7 @@ from wx.lib.dialogs import *
 #app = wx.PySimpleApp()
 #app = Piavca.PiavcaWXApp.PiavcaWXApp()
 app = Piavca.getWXApp()
+app.showWindows(canvastype = Piavca.ViewerCanvas.ViewerCanvas)
 
 if len(sys.argv) > 1:
 	path = sys.argv[1]

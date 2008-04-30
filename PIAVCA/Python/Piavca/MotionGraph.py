@@ -487,7 +487,12 @@ class MotionGraph (Piavca.LoopMotion):
 		for n in keys:
 			self.nodes[n].nextNode = self.nodes[n].tempNext
 			if self.nodes[n].nextNode != None:
-				self.nodes[n].addChild(self.nodes[n].nextNode, 0.0)
+				if self.nodes[n].nextNode in self.nodes[n].children:
+					self.nodes[n].transitionCosts[self.nodes[n].nextNode] = 0.0
+				else:
+					self.nodes[n].addChild(self.nodes[n].nextNode, 0.0)
+			#else:
+			#	self.nodes[n].transitionCosts[self.nodes[n].nextNode] = 0.0
 			del self.nodes[n].tempNext
 				
 		print "new next nodes", [(n, self.nodes[n].nextNode) for n in keys]
