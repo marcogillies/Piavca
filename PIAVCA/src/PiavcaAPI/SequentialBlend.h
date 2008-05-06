@@ -94,6 +94,12 @@ namespace Piavca
 	
 		virtual Motion *clone(){return new SequentialBlend(*this);};
 
+		//! returns the name of the type
+		Piavca::tstring getClassName(){return "SequentialBlend";};
+
+		//! casts a motion to this type
+		static SequentialBlend *castToThisType(Motion *m){return dynamic_cast<SequentialBlend *>(m);};
+
 		virtual void setMaintainY(bool b){maintainY = b;};
 		virtual void setAccumulateRoot(bool b){m_accumulateRoot = b;};
 		virtual void setStartTime(float time)

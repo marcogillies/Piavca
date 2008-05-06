@@ -139,6 +139,12 @@ namespace Piavca
 			return new KeyframeMotion(*this);
 		};
 
+		//! returns the name of the type
+		Piavca::tstring getClassName(){return "KeyframeMotion";};
+
+		//! casts a motion to this type
+		static KeyframeMotion *castToThisType(Motion *m){return dynamic_cast<KeyframeMotion *>(m);};
+
 
 		//! gets the time of the last keyframe of the motion
 		float getMotionLength() const 

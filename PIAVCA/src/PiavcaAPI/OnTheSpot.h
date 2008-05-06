@@ -54,6 +54,12 @@ namespace Piavca
 		OnTheSpot(const OnTheSpot &sm) :MotionFilter(sm){};
 	
 		virtual Motion *clone(){return new OnTheSpot(*this);};
+
+		//! returns the name of the type
+		Piavca::tstring getClassName(){return "OnTheSpot";};
+
+		//! casts a motion to this type
+		static OnTheSpot *castToThisType(Motion *m){return dynamic_cast<OnTheSpot *>(m);};
 	    
 	    //! calculates the values of a keyframe
 	    PIAVCA_EXPORT virtual float  getFloatValueAtTimeInternal (int trackId, float time)

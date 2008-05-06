@@ -140,6 +140,12 @@ public:
 	//! creates a copy of the motion
 	virtual Motion *clone()=0;
 
+	//! returns the name of the type
+	virtual Piavca::tstring getClassName(){return "Motion";};
+
+	//! casts a motion to this type
+	static Motion *castToThisType(Motion *m){return m;};
+	
 	//! initializes the motion
 	virtual void create();
 

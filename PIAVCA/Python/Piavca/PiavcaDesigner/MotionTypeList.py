@@ -1,12 +1,13 @@
 
 import wx
 
-from GenericList import GenericList
+from MotionsList import MotionList
 
 
-class MotionTypeList(GenericList):
-	def __init__(self, backend, parent=None, id=-1, pos=wx.DefaultPosition, size=wx.DefaultSize, style=0, name="ListBoxController"):
-		GenericList.__init__(self, backend, parent, id, pos, size, style, name)
+class MotionTypeList(MotionList):
 			
 	def getItems(self):
 		return self.backend.getMotionTypeNames()
+	
+	def getText(self, item):
+		return "__Type__::" + self.list.GetItemText(item)

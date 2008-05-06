@@ -515,7 +515,7 @@ void AvatarCal3DImp::loadTextures()
 	//std::string strPath = "./";
 	// load all textures and store the opengl texture id in the corresponding map in the material
 	// NB this bit is GL specific!!!
-	std::cout << "loading textures" << std::endl;
+	std::cout << "loading textures: If OpenGL isn't initialised now it will crash" << std::endl;
 	CalCoreModel *cal_core_model = cal_model->getCoreModel();
 	int materialId;
 	for(materialId = 0; materialId < cal_core_model->getCoreMaterialCount(); materialId++)

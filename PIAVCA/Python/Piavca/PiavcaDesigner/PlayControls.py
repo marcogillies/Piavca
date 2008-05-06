@@ -20,7 +20,7 @@ class PlayControls(wx.Panel):
 		self.Bind(wx.EVT_BUTTON, self.ToEnd, self.toEndButton)
 		
 		self.children = []
-		size = self.GetClientSize()
+		#size = self.GetClientSize()
 		self.timeline=TimeLine(self.backend, self)#, size=(size.width-3*self.buttonwidth, size.height))
 		self.children.append(self.timeline)
 		

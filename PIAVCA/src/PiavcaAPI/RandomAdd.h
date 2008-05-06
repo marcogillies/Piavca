@@ -60,7 +60,14 @@ public:
 	RandomAdd(const RandomAdd &rbl)
 		:MultiMotionCombiner(rbl) {};
 	~RandomAdd(){};
+	
 	virtual Motion *clone(){return new RandomAdd(*this);};
+
+	//! returns the name of the type
+	Piavca::tstring getClassName(){return "RandomAdd";};
+
+	//! casts a motion to this type
+	static RandomAdd *castToThisType(Motion *m){return dynamic_cast<RandomAdd *>(m);};
 
 	virtual void shift()
 	{

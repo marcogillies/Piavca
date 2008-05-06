@@ -58,6 +58,12 @@ namespace Piavca
 
 		virtual Motion *clone(){return new TurnMotion(*this);};
 
+		//! returns the name of the type
+		Piavca::tstring getClassName(){return "TurnMotion";};
+
+		//! casts a motion to this type
+		static TurnMotion *castToThisType(Motion *m){return dynamic_cast<TurnMotion *>(m);};
+
 	    //! calculates the values of a keyframe
 	    PIAVCA_EXPORT virtual float getFloatValueAtTimeInternal (int trackId, float time)
 		{

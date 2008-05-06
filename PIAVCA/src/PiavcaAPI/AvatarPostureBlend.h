@@ -76,6 +76,13 @@ namespace Piavca
 
 		virtual Motion *clone(){return new AvatarPostureBlend(*this);};
 
+		//! returns the name of the type
+		Piavca::tstring getClassName(){return "AvatarPostureBlend";};
+
+		//! casts a motion to this type
+		static AvatarPostureBlend *castToThisType(Motion *m){return dynamic_cast<AvatarPostureBlend *>(m);};
+
+
 		//! called when the motion is loaded into an avatar
 		void load(Avatar *av);
 

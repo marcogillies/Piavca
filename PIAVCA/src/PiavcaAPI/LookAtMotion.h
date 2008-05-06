@@ -157,6 +157,12 @@ namespace Piavca
 	
 		//! creates a copy of the motion
 		virtual Motion *clone(){return new LookAtMotion(*this);};
+
+		//! returns the name of the type
+		Piavca::tstring getClassName(){return "LookAtMotion";};
+
+		//! casts a motion to this type
+		static LookAtMotion *castToThisType(Motion *m){return dynamic_cast<LookAtMotion *>(m);};
 		
 		virtual bool isFacial(){return false;};
 

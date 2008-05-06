@@ -51,6 +51,12 @@ namespace Piavca
 	
 		virtual Motion *clone();
 
+		//! returns the name of the type
+		Piavca::tstring getClassName(){return "TimeRangeMotion";};
+
+		//! casts a motion to this type
+		static TimeRangeMotion *castToThisType(Motion *m){return dynamic_cast<TimeRangeMotion *>(m);};
+
 		//! Sets the start of the range to be played
 		void setStart(float s);
 		//! Sets the end of the range to be played

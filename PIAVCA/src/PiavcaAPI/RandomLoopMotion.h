@@ -69,7 +69,15 @@ public:
 		randomchoicemotion = dynamic_cast<RandomChoiceMotion *>(rl.randomchoicemotion->clone());
 	};
 	~RandomLoopMotion(){};
+	
 	virtual Motion *clone(){return new RandomLoopMotion(*this);};
+
+	//! returns the name of the type
+	Piavca::tstring getClassName(){return "RandomLoopMotion";};
+
+	//! casts a motion to this type
+	static RandomLoopMotion *castToThisType(Motion *m){return dynamic_cast<RandomLoopMotion *>(m);};
+	
 
 	static RandomLoopMotion *convertTo(Motion *m)
 	{

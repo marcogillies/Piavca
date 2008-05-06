@@ -63,9 +63,17 @@ if glPresent:
 
 		def OnSize(self, event):
 			size = self.size = self.GetClientSize()
+			if size.width >=0 :
+				width = size.width
+			else:
+				width = 0
+			if size.height >=0 :
+				height = size.height
+			else:
+				height = 0
 			if self.GetContext():
 				self.SetCurrent()
-				glViewport(0, 0, size.width, size.height)
+				glViewport(0, 0, width, height)
 			event.Skip()
 
 		def resize(self, size):

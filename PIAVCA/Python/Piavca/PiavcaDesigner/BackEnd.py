@@ -1,19 +1,23 @@
 
-import time
+
+from wx.lib.dialogs import *
+
+import time, types
 
 import Piavca
 import Piavca.XMLMotionFile
 
+from MotionProxy import MotionProxy
+
 class BackEnd:
 	avatar = None
 	motion = None
+	submotion = None
 	selectedSubMotion = None
 	playing = False
 	
-	def __init__(self, frontend, filename=None):
+	def __init__(self, frontend):
 		self.frontend = frontend
-		if filename != None:
-			self.readfile(filename)
 		Piavca.Core.getCore().setAutoTimeOff()
 			
 	def readfile(self, filename):
@@ -21,14 +25,23 @@ class BackEnd:
 			self.avatar = Piavca.Avatar(filename[:-4])
 		else:
 			Piavca.XMLMotionFile.parse(filename)
+		if self.avatar == None:
+			print self.getAvatarNames()
+			print self.getMotionNames()
+			if len(self.getAvatarNames()) > 0:
+				self.setAvatar(self.getAvatarNames()[0])
+		self.frontend.update()
+		
+	def update(self):
+		self.frontend.update()
 			
 	def setAvatar(self, avatarname):
-		avatar = Piavca.Core.getCore().getAvatar(avatarname)
+		avatar = Piavca.Core.getCore().getAvatar(str(avatarname.encode("latin-1")))
 		if avatar == None:
-			raise ValueError("no avatar named" + str(avatarname))
+			raise ValueError("no avatar named" + str(avatarname.encode("latin-1")))
 		else:
 			self.avatar = avatar
-			self.frontend.update()
+			self.update()
 			
 			
 	def getAvatar(self):
@@ -40,16 +53,65 @@ class BackEnd:
 			
 	def setMotion(self, motionname):
 		print "motion name", motionname, type(motionname)
-		motion = Piavca.Core.getCore().getMotion(str(motionname.encode("latin-1")))
+		motion = self.getMotionByName(motionname)
+		print "motion", motion
 		if motion == None:
-			raise ValueError("no motion named" + str(avatarname))
+			raise ValueError("no motion named" + str(motionname))
 		else:
+			print "motion", motion, "ownership", motion.thisown
+			if motion.getName() == "":
+				dialog_return = textEntryDialog (message="Please enter a name for this motion")
+				motion_name = dialog_return.text.encode("latin-1")
+				Piavca.loadMotion(motion_name, motion)
 			self.motion = motion
-			self.avatar.playMotionDirect(self.motion)
-			self.frontend.update()
+			self.submotion = motion
+			print "avatar", self.avatar
+			if self.avatar:
+				print "playing", self.avatar, self.motion
+				self.avatar.playMotionDirect(self.motion)
+			self.update()
+			
+	def setSubMotion(self, motion):
+		self.submotion = motion
+		self.update()
 			
 	def getMotion(self):
 		return self.motion		
+	
+	def getMotionByName(self, name):
+		if name[:10] == "__Type__::":
+			typename = name[10:]
+			cl = getattr(Piavca, typename)
+			if type(cl) == types.TypeType and issubclass(cl, Piavca.Motion):
+				motion =  cl()
+				motion.thisown = False
+				motion.Reference()
+				return motion
+			else:
+				ValueError(typename+" is not a motion class")
+		else:
+			print "motion name", name, type(name)
+			motion = Piavca.getMotion(str(name.encode("latin-1")))
+			if motion == None:
+				raise ValueError("no motion named" + str(name))
+			else:
+				return motion
+	
+	def getMotionProxy(self, motion):
+		if type(motion) == "":
+			motion = Piavca.getMotion(str(motion))
+		if motion == None:
+			return None
+		else:
+			return MotionProxy(motion, self)
+
+	def getCurrentMotionProxy(self):
+		print "getting proxy for", self.motion
+		return self.getMotionProxy(self.motion)
+
+	def getCurrentSubMotionProxy(self):
+		print "getting proxy for", self.submotion
+		return self.getMotionProxy(self.submotion)
 			
 	def getMotionNames(self):
 		core = Piavca.Core.getCore()
@@ -86,7 +148,10 @@ class BackEnd:
 	def getTimeFraction(self):
 		if self.motion:
 			t = self.getTime()
-			t = t/self.motion.getMotionLength()
+			if self.motion.getMotionLength() > 0.00001:
+				t = t/self.motion.getMotionLength()
+			else:
+				t = 0.0
 			return t
 		else:
 			return 0

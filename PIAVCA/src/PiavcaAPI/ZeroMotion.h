@@ -57,6 +57,12 @@ namespace Piavca
 	
 		//! creates a copy of the motion
 		virtual Motion *clone(){return new ZeroMotion(*this);};
+
+		//! returns the name of the type
+		Piavca::tstring getClassName(){return "ZeroMotion";};
+
+		//! casts a motion to this type
+		static ZeroMotion *castToThisType(Motion *m){return dynamic_cast<ZeroMotion *>(m);};
 		
 		virtual bool isFacial(){return facial;};
 

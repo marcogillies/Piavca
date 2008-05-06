@@ -72,7 +72,14 @@ public:
 		setMotion(randomblend);
 	};
 	~RandomBlendLoop(){};
+	
 	virtual Motion *clone(){return new RandomBlendLoop(*this);};
+
+	//! returns the name of the type
+	Piavca::tstring getClassName(){return "RandomBlendLoop";};
+
+	//! casts a motion to this type
+	static RandomBlendLoop *castToThisType(Motion *m){return dynamic_cast<RandomBlendLoop *>(m);};
 
 	virtual void addMotion(Motion *mot)
 	{

@@ -63,6 +63,12 @@ namespace Piavca
 		virtual ~ScaleMotionRoot(){};
 	
 		virtual Motion *clone(){return new ScaleMotionRoot(*this);};
+
+		//! returns the name of the type
+		Piavca::tstring getClassName(){return "ScaleMotionRoot";};
+
+		//! casts a motion to this type
+		static ScaleMotionRoot *castToThisType(Motion *m){return dynamic_cast<ScaleMotionRoot *>(m);};
 	    
 	    //! calculates the values of a keyframe
 	    PIAVCA_EXPORT virtual float  getFloatValueAtTimeInternal (int trackId, float time)

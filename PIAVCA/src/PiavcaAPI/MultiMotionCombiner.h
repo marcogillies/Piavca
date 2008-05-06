@@ -88,6 +88,12 @@ public:
 	}
 	virtual Motion *clone(){return new MultiMotionCombiner(*this);};
 
+	//! returns the name of the type
+	Piavca::tstring getClassName(){return "MultiMotionCombiner";};
+
+	//! casts a motion to this type
+	static MultiMotionCombiner *castToThisType(Motion *m){return dynamic_cast<MultiMotionCombiner *>(m);};
+
 	void printInfo()
 	{
 		Motion::printInfo();

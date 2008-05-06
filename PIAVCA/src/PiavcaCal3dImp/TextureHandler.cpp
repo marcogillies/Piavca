@@ -97,11 +97,13 @@ GLuint TextureHandler::loadTexture(const std::string& strFilename)
   {
 	  CTga *Tga;
 	  Tga = new CTga();
+	  std::cout << "reading texture file" << strFilename << std::endl;
 	  if(Tga->ReadFile(strFilename.c_str())==0)
 	  {
 		  Tga->Release();
 		  return 0;
 	  }
+	  std::cout << "finished reading texture file" << strFilename << std::endl;
 
 	  if(Tga->Bpp()!=32)
 	  {

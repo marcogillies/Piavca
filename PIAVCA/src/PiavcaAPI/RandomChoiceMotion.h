@@ -77,7 +77,14 @@ public:
 	RandomChoiceMotion(const RandomChoiceMotion &rl)
 		:ChoiceMotion(rl), weights(rl.weights){};
 	~RandomChoiceMotion(){};
+	
 	virtual Motion *clone(){return new RandomChoiceMotion(*this);};
+
+	//! returns the name of the type
+	Piavca::tstring getClassName(){return "RandomChoiceMotion";};
+
+	//! casts a motion to this type
+	static RandomChoiceMotion *castToThisType(Motion *m){return dynamic_cast<RandomChoiceMotion *>(m);};
 
 	static RandomChoiceMotion *convertTo(Motion *m)
 	{

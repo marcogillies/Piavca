@@ -60,6 +60,13 @@ namespace Piavca
 			return new BlendBetween(*this);
 		}
 
+		//! returns the name of the type
+		Piavca::tstring getClassName(){return "BlendBetween";};
+
+		//! casts a motion to this type
+		static BlendBetween *castToThisType(Motion *m){return dynamic_cast<BlendBetween *>(m);};
+
+
 	    //! calculates the values of a keyframe.
 		/*!	The result is the linear interpolation of the values of the two motions
 		 *  or if the track does not exist in the one motion, the value of the other

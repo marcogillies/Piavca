@@ -72,6 +72,12 @@ namespace Piavca
 	
 		virtual Motion *clone(){return new PostureBlend(*this);};
 
+		//! returns the name of the type
+		Piavca::tstring getClassName(){return "PostureBlend";};
+
+		//! casts a motion to this type
+		static PostureBlend *castToThisType(Motion *m){return dynamic_cast<PostureBlend *>(m);};
+
 		void setBlendInterval(float i){interval = i;};
 		void setAccumulateRoot(bool b)
 		{

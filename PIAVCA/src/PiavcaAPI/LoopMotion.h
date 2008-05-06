@@ -56,6 +56,12 @@ namespace Piavca
 
 		virtual Motion *clone(){return new LoopMotion(*this);};
 
+		//! returns the name of the type
+		Piavca::tstring getClassName(){return "LoopMotion";};
+
+		//! casts a motion to this type
+		static LoopMotion *castToThisType(Motion *m){return dynamic_cast<LoopMotion *>(m);};
+
 		virtual float getMotionLength()const
 		{
 			//if(endTime < 0)

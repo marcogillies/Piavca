@@ -64,6 +64,12 @@ namespace Piavca
 	
 		virtual Motion *clone(){return new CurrentValueMotion(*this);};
 
+		//! returns the name of the type
+		Piavca::tstring getClassName(){return "CurrentValueMotion";};
+
+		//! casts a motion to this type
+		static CurrentValueMotion *castToThisType(Motion *m){return dynamic_cast<CurrentValueMotion *>(m);};
+
 		//! Sets a value for a float track
 	    void setFloatValue(int trackId, float val)
 		{

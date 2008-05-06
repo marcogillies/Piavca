@@ -58,6 +58,12 @@ namespace Piavca
 	
 		virtual Motion *clone(){return new TimeWarp(*this);};
 
+		//! returns the name of the type
+		Piavca::tstring getClassName(){return "TimeWarp";};
+
+		//! casts a motion to this type
+		static TimeWarp *castToThisType(Motion *m){return dynamic_cast<TimeWarp *>(m);};
+
 		//! gets the length of the motion in seconds
 		virtual float getMotionLength() const
 		{

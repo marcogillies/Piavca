@@ -57,6 +57,12 @@ namespace Piavca
 		SelfBlend(const SelfBlend &sb):SequentialBlend(sb){};
 	
 		virtual Motion *clone(){return new SelfBlend(*this);};
+
+		//! returns the name of the type
+		Piavca::tstring getClassName(){return "SelfBlend";};
+
+		//! casts a motion to this type
+		static SelfBlend *castToThisType(Motion *m){return dynamic_cast<SelfBlend *>(m);};
 	    
 		virtual void reset();
 

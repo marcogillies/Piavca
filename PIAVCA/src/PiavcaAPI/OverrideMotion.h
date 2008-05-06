@@ -50,6 +50,12 @@ namespace Piavca
 			:TwoMotionCombiner(om){};
 
 		virtual Motion *clone(){return new OverrideMotion(*this);};
+
+		//! returns the name of the type
+		Piavca::tstring getClassName(){return "OverrideMotion";};
+
+		//! casts a motion to this type
+		static OverrideMotion *castToThisType(Motion *m){return dynamic_cast<OverrideMotion *>(m);};
 	    
 		//! calculates the values of a keyframe
 	    virtual float getFloatValueAtTimeInternal (int trackId, float time);

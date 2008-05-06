@@ -71,7 +71,14 @@ public:
 		randomadd = dynamic_cast<RandomAdd *>(rbl.randomadd->clone());
 	};
 	~RandomAddLoop(){};
+	
 	virtual Motion *clone(){return new RandomAddLoop(*this);};
+
+	//! returns the name of the type
+	Piavca::tstring getClassName(){return "RandomAddLoop";};
+
+	//! casts a motion to this type
+	static RandomAddLoop *castToThisType(Motion *m){return dynamic_cast<RandomAddLoop *>(m);};
 
 	virtual void addMotion(Motion *mot)
 	{

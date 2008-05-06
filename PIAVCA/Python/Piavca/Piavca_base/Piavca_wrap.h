@@ -18,7 +18,7 @@
 class SwigDirector_TimeCallback : public Piavca::TimeCallback, public Swig::Director {
 
 public:
-    SwigDirector_TimeCallback(PyObject *self, tstring _name);
+    SwigDirector_TimeCallback(PyObject *self, Piavca::tstring _name);
     virtual ~SwigDirector_TimeCallback();
     virtual void init(Piavca::Core *core);
     virtual void timeStep(Piavca::Core *core, float time);
@@ -64,7 +64,7 @@ private:
 class SwigDirector_AvatarTimeCallback : public Piavca::AvatarTimeCallback, public Swig::Director {
 
 public:
-    SwigDirector_AvatarTimeCallback(PyObject *self, tstring _name);
+    SwigDirector_AvatarTimeCallback(PyObject *self, Piavca::tstring _name);
     virtual ~SwigDirector_AvatarTimeCallback();
     virtual void init(Piavca::Avatar *avatar);
     virtual void timeStep(Piavca::Avatar *avatar, float time);
@@ -114,6 +114,7 @@ public:
     SwigDirector_Motion(PyObject *self, Piavca::Motion const &mot);
     virtual ~SwigDirector_Motion();
     virtual Piavca::Motion *clone();
+    virtual Piavca::tstring getClassName();
     virtual void create();
     virtual void printInfo();
     virtual void load(Piavca::Avatar *av);
@@ -168,7 +169,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[22];
+    mutable swig::PyObject_var vtable[23];
 #endif
 
 };
@@ -184,6 +185,7 @@ public:
     SwigDirector_KeyframeMotion(PyObject *self, Piavca::Motion &mot);
     virtual ~SwigDirector_KeyframeMotion();
     virtual Piavca::Motion *clone();
+    virtual Piavca::tstring getClassName();
     virtual void create();
     virtual void printInfo();
     virtual void load(Piavca::Avatar *av);
@@ -239,7 +241,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[23];
+    mutable swig::PyObject_var vtable[24];
 #endif
 
 };
@@ -253,6 +255,7 @@ public:
     SwigDirector_MotionFilter(PyObject *self, Piavca::MotionFilter const &mf);
     virtual ~SwigDirector_MotionFilter();
     virtual Piavca::Motion *clone();
+    virtual Piavca::tstring getClassName();
     virtual void create();
     virtual void printInfo();
     virtual void load(Piavca::Avatar *av);
@@ -307,7 +310,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[22];
+    mutable swig::PyObject_var vtable[23];
 #endif
 
 };
@@ -321,6 +324,7 @@ public:
     SwigDirector_TwoMotionCombiner(PyObject *self, Piavca::TwoMotionCombiner const &tmc);
     virtual ~SwigDirector_TwoMotionCombiner();
     virtual Piavca::Motion *clone();
+    virtual Piavca::tstring getClassName();
     virtual void create();
     virtual void printInfo();
     virtual void load(Piavca::Avatar *av);
@@ -375,7 +379,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[22];
+    mutable swig::PyObject_var vtable[23];
 #endif
 
 };
@@ -389,6 +393,7 @@ public:
     SwigDirector_MaskedMotion(PyObject *self, Piavca::MaskedMotion const &mm);
     virtual ~SwigDirector_MaskedMotion();
     virtual Piavca::Motion *clone();
+    virtual Piavca::tstring getClassName();
     virtual void create();
     virtual void printInfo();
     virtual void load(Piavca::Avatar *av);
@@ -443,7 +448,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[22];
+    mutable swig::PyObject_var vtable[23];
 #endif
 
 };
@@ -456,6 +461,7 @@ public:
     SwigDirector_ScaleMotion(PyObject *self, Piavca::ScaleMotion const &sm);
     virtual ~SwigDirector_ScaleMotion();
     virtual Piavca::Motion *clone();
+    virtual Piavca::tstring getClassName();
     virtual void create();
     virtual void printInfo();
     virtual void load(Piavca::Avatar *av);
@@ -510,7 +516,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[22];
+    mutable swig::PyObject_var vtable[23];
 #endif
 
 };
@@ -523,6 +529,7 @@ public:
     SwigDirector_ScaleMotionSpeed(PyObject *self, Piavca::ScaleMotionSpeed const &sm);
     virtual ~SwigDirector_ScaleMotionSpeed();
     virtual Piavca::Motion *clone();
+    virtual Piavca::tstring getClassName();
     virtual void create();
     virtual void printInfo();
     virtual void load(Piavca::Avatar *av);
@@ -577,7 +584,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[22];
+    mutable swig::PyObject_var vtable[23];
 #endif
 
 };
@@ -590,6 +597,7 @@ public:
     SwigDirector_ChangeMotionLength(PyObject *self, Piavca::ChangeMotionLength const &cml);
     virtual ~SwigDirector_ChangeMotionLength();
     virtual Piavca::Motion *clone();
+    virtual Piavca::tstring getClassName();
     virtual void create();
     virtual void printInfo();
     virtual void load(Piavca::Avatar *av);
@@ -645,7 +653,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[23];
+    mutable swig::PyObject_var vtable[24];
 #endif
 
 };
@@ -658,6 +666,7 @@ public:
     SwigDirector_ScaleMotionRoot(PyObject *self, Piavca::ScaleMotionRoot const &sm);
     virtual ~SwigDirector_ScaleMotionRoot();
     virtual Piavca::Motion *clone();
+    virtual Piavca::tstring getClassName();
     virtual void create();
     virtual void printInfo();
     virtual void load(Piavca::Avatar *av);
@@ -712,7 +721,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[22];
+    mutable swig::PyObject_var vtable[23];
 #endif
 
 };
@@ -725,6 +734,7 @@ public:
     SwigDirector_TimeOffset(PyObject *self, Piavca::TimeOffset const &to);
     virtual ~SwigDirector_TimeOffset();
     virtual Piavca::Motion *clone();
+    virtual Piavca::tstring getClassName();
     virtual void create();
     virtual void printInfo();
     virtual void load(Piavca::Avatar *av);
@@ -779,7 +789,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[22];
+    mutable swig::PyObject_var vtable[23];
 #endif
 
 };
@@ -792,6 +802,7 @@ public:
     SwigDirector_TurnMotion(PyObject *self, Piavca::TurnMotion const &tm);
     virtual ~SwigDirector_TurnMotion();
     virtual Piavca::Motion *clone();
+    virtual Piavca::tstring getClassName();
     virtual void create();
     virtual void printInfo();
     virtual void load(Piavca::Avatar *av);
@@ -846,7 +857,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[22];
+    mutable swig::PyObject_var vtable[23];
 #endif
 
 };
@@ -859,6 +870,7 @@ public:
     SwigDirector_Sequence(PyObject *self, Piavca::Sequence const &sb);
     virtual ~SwigDirector_Sequence();
     virtual Piavca::Motion *clone();
+    virtual Piavca::tstring getClassName();
     virtual void create();
     virtual void printInfo();
     virtual void load(Piavca::Avatar *av);
@@ -913,7 +925,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[22];
+    mutable swig::PyObject_var vtable[23];
 #endif
 
 };
@@ -926,6 +938,7 @@ public:
     SwigDirector_MotionPosture(PyObject *self, Piavca::MotionPosture const &m);
     virtual ~SwigDirector_MotionPosture();
     virtual Piavca::Motion *clone();
+    virtual Piavca::tstring getClassName();
     virtual void create();
     virtual void printInfo();
     virtual void load(Piavca::Avatar *av);
@@ -981,7 +994,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[23];
+    mutable swig::PyObject_var vtable[24];
 #endif
 
 };
@@ -994,6 +1007,7 @@ public:
     SwigDirector_AvatarPosture(PyObject *self, Piavca::AvatarPosture const &m);
     virtual ~SwigDirector_AvatarPosture();
     virtual Piavca::Motion *clone();
+    virtual Piavca::tstring getClassName();
     virtual void create();
     virtual void printInfo();
     virtual void load(Piavca::Avatar *av);
@@ -1049,7 +1063,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[23];
+    mutable swig::PyObject_var vtable[24];
 #endif
 
 };
@@ -1062,6 +1076,7 @@ public:
     SwigDirector_PostureBlend(PyObject *self, Piavca::PostureBlend const &pb);
     virtual ~SwigDirector_PostureBlend();
     virtual Piavca::Motion *clone();
+    virtual Piavca::tstring getClassName();
     virtual void create();
     virtual void printInfo();
     virtual void load(Piavca::Avatar *av);
@@ -1119,7 +1134,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[25];
+    mutable swig::PyObject_var vtable[26];
 #endif
 
 };
@@ -1132,6 +1147,7 @@ public:
     SwigDirector_Reposition(PyObject *self, Piavca::Reposition const &r);
     virtual ~SwigDirector_Reposition();
     virtual Piavca::Motion *clone();
+    virtual Piavca::tstring getClassName();
     virtual void create();
     virtual void printInfo();
     virtual void load(Piavca::Avatar *av);
@@ -1187,7 +1203,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[23];
+    mutable swig::PyObject_var vtable[24];
 #endif
 
 };
@@ -1200,6 +1216,7 @@ public:
     SwigDirector_LoopMotion(PyObject *self, Piavca::LoopMotion const &l);
     virtual ~SwigDirector_LoopMotion();
     virtual Piavca::Motion *clone();
+    virtual Piavca::tstring getClassName();
     virtual void create();
     virtual void printInfo();
     virtual void load(Piavca::Avatar *av);
@@ -1257,7 +1274,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[25];
+    mutable swig::PyObject_var vtable[26];
 #endif
 
 };
@@ -1270,6 +1287,7 @@ public:
     SwigDirector_RandomTimingsLoop(PyObject *self, Piavca::RandomTimingsLoop const &rtl);
     virtual ~SwigDirector_RandomTimingsLoop();
     virtual Piavca::Motion *clone();
+    virtual Piavca::tstring getClassName();
     virtual void create();
     virtual void printInfo();
     virtual void load(Piavca::Avatar *av);
@@ -1328,7 +1346,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[26];
+    mutable swig::PyObject_var vtable[27];
 #endif
 
 };
@@ -1341,6 +1359,7 @@ public:
     SwigDirector_RandomTimingsMotion(PyObject *self, Piavca::RandomTimingsMotion const &rtm);
     virtual ~SwigDirector_RandomTimingsMotion();
     virtual Piavca::Motion *clone();
+    virtual Piavca::tstring getClassName();
     virtual void create();
     virtual void printInfo();
     virtual void load(Piavca::Avatar *av);
@@ -1396,7 +1415,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[23];
+    mutable swig::PyObject_var vtable[24];
 #endif
 
 };
@@ -1409,6 +1428,7 @@ public:
     SwigDirector_BlendBetween(PyObject *self, Piavca::BlendBetween const &b);
     virtual ~SwigDirector_BlendBetween();
     virtual Piavca::Motion *clone();
+    virtual Piavca::tstring getClassName();
     virtual void create();
     virtual void printInfo();
     virtual void load(Piavca::Avatar *av);
@@ -1463,7 +1483,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[22];
+    mutable swig::PyObject_var vtable[23];
 #endif
 
 };
@@ -1476,6 +1496,7 @@ public:
     SwigDirector_MotionAdder(PyObject *self, Piavca::MotionAdder const &ma);
     virtual ~SwigDirector_MotionAdder();
     virtual Piavca::Motion *clone();
+    virtual Piavca::tstring getClassName();
     virtual void create();
     virtual void printInfo();
     virtual void load(Piavca::Avatar *av);
@@ -1530,7 +1551,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[22];
+    mutable swig::PyObject_var vtable[23];
 #endif
 
 };
@@ -1543,6 +1564,7 @@ public:
     SwigDirector_Subtract(PyObject *self, Piavca::Subtract const &su);
     virtual ~SwigDirector_Subtract();
     virtual Piavca::Motion *clone();
+    virtual Piavca::tstring getClassName();
     virtual void create();
     virtual void printInfo();
     virtual void load(Piavca::Avatar *av);
@@ -1597,7 +1619,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[22];
+    mutable swig::PyObject_var vtable[23];
 #endif
 
 };
@@ -1611,6 +1633,7 @@ public:
     SwigDirector_MultiMotionCombiner(PyObject *self, Piavca::MultiMotionCombiner const &rl);
     virtual ~SwigDirector_MultiMotionCombiner();
     virtual Piavca::Motion *clone();
+    virtual Piavca::tstring getClassName();
     virtual void create();
     virtual void printInfo();
     virtual void load(Piavca::Avatar *av);
@@ -1667,7 +1690,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[24];
+    mutable swig::PyObject_var vtable[25];
 #endif
 
 };
@@ -1681,6 +1704,7 @@ public:
     SwigDirector_ChoiceMotion(PyObject *self, Piavca::ChoiceMotion const &cl);
     virtual ~SwigDirector_ChoiceMotion();
     virtual Piavca::Motion *clone();
+    virtual Piavca::tstring getClassName();
     virtual void create();
     virtual void printInfo();
     virtual void load(Piavca::Avatar *av);
@@ -1737,7 +1761,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[24];
+    mutable swig::PyObject_var vtable[25];
 #endif
 
 };
@@ -1751,6 +1775,7 @@ public:
     SwigDirector_ChoiceLoopMotion(PyObject *self, Piavca::ChoiceLoopMotion const &cl);
     virtual ~SwigDirector_ChoiceLoopMotion();
     virtual Piavca::Motion *clone();
+    virtual Piavca::tstring getClassName();
     virtual void create();
     virtual void printInfo();
     virtual void load(Piavca::Avatar *av);
@@ -1810,7 +1835,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[27];
+    mutable swig::PyObject_var vtable[28];
 #endif
 
 };
@@ -1824,6 +1849,7 @@ public:
     SwigDirector_RandomLoopMotion(PyObject *self, Piavca::RandomLoopMotion const &rl);
     virtual ~SwigDirector_RandomLoopMotion();
     virtual Piavca::Motion *clone();
+    virtual Piavca::tstring getClassName();
     virtual void create();
     virtual void printInfo();
     virtual void load(Piavca::Avatar *av);
@@ -1884,7 +1910,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[29];
+    mutable swig::PyObject_var vtable[30];
 #endif
 
 };
@@ -1898,6 +1924,7 @@ public:
     SwigDirector_RandomBlendLoop(PyObject *self, Piavca::RandomBlendLoop const &rbl);
     virtual ~SwigDirector_RandomBlendLoop();
     virtual Piavca::Motion *clone();
+    virtual Piavca::tstring getClassName();
     virtual void create();
     virtual void printInfo();
     virtual void load(Piavca::Avatar *av);
@@ -1959,7 +1986,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[29];
+    mutable swig::PyObject_var vtable[30];
 #endif
 
 };
@@ -1973,6 +2000,7 @@ public:
     SwigDirector_RandomAddLoop(PyObject *self, Piavca::RandomAddLoop const &rbl);
     virtual ~SwigDirector_RandomAddLoop();
     virtual Piavca::Motion *clone();
+    virtual Piavca::tstring getClassName();
     virtual void create();
     virtual void printInfo();
     virtual void load(Piavca::Avatar *av);
@@ -2033,7 +2061,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[28];
+    mutable swig::PyObject_var vtable[29];
 #endif
 
 };
@@ -2049,6 +2077,7 @@ public:
     SwigDirector_LookAtMotion(PyObject *self, Piavca::LookAtMotion const &lam);
     virtual ~SwigDirector_LookAtMotion();
     virtual Piavca::Motion *clone();
+    virtual Piavca::tstring getClassName();
     virtual void create();
     virtual void printInfo();
     virtual void load(Piavca::Avatar *av);
@@ -2103,7 +2132,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[22];
+    mutable swig::PyObject_var vtable[23];
 #endif
 
 };
@@ -2116,6 +2145,7 @@ public:
     SwigDirector_RandomGazeMotion(PyObject *self, Piavca::RandomGazeMotion const &rg);
     virtual ~SwigDirector_RandomGazeMotion();
     virtual Piavca::Motion *clone();
+    virtual Piavca::tstring getClassName();
     virtual void create();
     virtual void printInfo();
     virtual void load(Piavca::Avatar *av);
@@ -2174,7 +2204,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[27];
+    mutable swig::PyObject_var vtable[28];
 #endif
 
 };
@@ -2187,6 +2217,7 @@ public:
     SwigDirector_ZeroMotion(PyObject *self, Piavca::ZeroMotion const &zm);
     virtual ~SwigDirector_ZeroMotion();
     virtual Piavca::Motion *clone();
+    virtual Piavca::tstring getClassName();
     virtual void create();
     virtual void printInfo();
     virtual void load(Piavca::Avatar *av);
@@ -2241,7 +2272,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[22];
+    mutable swig::PyObject_var vtable[23];
 #endif
 
 };
@@ -2254,6 +2285,7 @@ public:
     SwigDirector_MotionSaver(PyObject *self, Piavca::MotionSaver const &to);
     virtual ~SwigDirector_MotionSaver();
     virtual Piavca::Motion *clone();
+    virtual Piavca::tstring getClassName();
     virtual void create();
     virtual void printInfo();
     virtual void load(Piavca::Avatar *av);
@@ -2308,7 +2340,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[22];
+    mutable swig::PyObject_var vtable[23];
 #endif
 
 };
@@ -2322,6 +2354,7 @@ public:
     SwigDirector_SubMotion(PyObject *self, Piavca::SubMotion const &sm);
     virtual ~SwigDirector_SubMotion();
     virtual Piavca::Motion *clone();
+    virtual Piavca::tstring getClassName();
     virtual void create();
     virtual void printInfo();
     virtual void load(Piavca::Avatar *av);
@@ -2376,7 +2409,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[22];
+    mutable swig::PyObject_var vtable[23];
 #endif
 
 };
@@ -2390,6 +2423,7 @@ public:
     SwigDirector_TimeRangeMotion(PyObject *self, Piavca::TimeRangeMotion const &sm);
     virtual ~SwigDirector_TimeRangeMotion();
     virtual Piavca::Motion *clone();
+    virtual Piavca::tstring getClassName();
     virtual void create();
     virtual void printInfo();
     virtual void load(Piavca::Avatar *av);
@@ -2444,7 +2478,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[22];
+    mutable swig::PyObject_var vtable[23];
 #endif
 
 };
@@ -2457,6 +2491,7 @@ public:
     SwigDirector_TimeWarp(PyObject *self, Piavca::TimeWarp const &tw);
     virtual ~SwigDirector_TimeWarp();
     virtual Piavca::Motion *clone();
+    virtual Piavca::tstring getClassName();
     virtual void create();
     virtual void printInfo();
     virtual void load(Piavca::Avatar *av);
@@ -2511,7 +2546,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[22];
+    mutable swig::PyObject_var vtable[23];
 #endif
 
 };
@@ -2524,6 +2559,7 @@ public:
     SwigDirector_DiadicGazeMotion(PyObject *self, Piavca::DiadicGazeMotion const &dg);
     virtual ~SwigDirector_DiadicGazeMotion();
     virtual Piavca::Motion *clone();
+    virtual Piavca::tstring getClassName();
     virtual void create();
     virtual void printInfo();
     virtual void load(Piavca::Avatar *av);
@@ -2582,7 +2618,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[27];
+    mutable swig::PyObject_var vtable[28];
 #endif
 
 };

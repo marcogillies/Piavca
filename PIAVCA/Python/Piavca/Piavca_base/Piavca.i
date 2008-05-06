@@ -183,6 +183,8 @@ class type_info;
  //   //$1 = static_cast<AvatarTimeCallback *>($input);
 //}
 
+
+
 %typemap(in) Piavca::MotionList
 {
 	PyObject *keys = PyDict_Keys($input);
@@ -435,10 +437,10 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 
 %include "piavca_doc.i"
 
-%include "PiavcaAPI/TimeCallback.h"
-%include "PiavcaCore.i"
 %include "PiavcaAPI/PiavcaDefs.h"
+%include "PiavcaAPI/TimeCallback.h"
 %include "PiavcaAPI/Motion.h"
+%include "PiavcaCore.i"
 %include "PiavcaAPI/KeyframeMotion.h"
 %include "Avatar.i"
 %include "PiavcaAPI/AvatarMotionQueue.h"

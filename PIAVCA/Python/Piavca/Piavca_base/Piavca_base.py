@@ -300,6 +300,15 @@ class Bound(_object):
 Bound_swigregister = _Piavca_base.Bound_swigregister
 Bound_swigregister(Bound)
 
+StringToWString = _Piavca_base.StringToWString
+WStringToString = _Piavca_base.WStringToString
+LOCAL_COORD = _Piavca_base.LOCAL_COORD
+JOINTLOCAL_COORD = _Piavca_base.JOINTLOCAL_COORD
+BASE_COORD = _Piavca_base.BASE_COORD
+INCLUDINGBASE_COORD = _Piavca_base.INCLUDINGBASE_COORD
+WORLD_COORD = _Piavca_base.WORLD_COORD
+root_position_id = _Piavca_base.root_position_id
+root_orientation_id = _Piavca_base.root_orientation_id
 class TimeCallback(_object):
     """
     A callback that is called by the API every frame, the user writes code by creating a subclass of the callback.     
@@ -430,6 +439,390 @@ class AvatarTimeCallback(_object):
         return weakref_proxy(self)
 AvatarTimeCallback_swigregister = _Piavca_base.AvatarTimeCallback_swigregister
 AvatarTimeCallback_swigregister(AvatarTimeCallback)
+
+NULL_TYPE = _Piavca_base.NULL_TYPE
+FLOAT_TYPE = _Piavca_base.FLOAT_TYPE
+VEC_TYPE = _Piavca_base.VEC_TYPE
+QUAT_TYPE = _Piavca_base.QUAT_TYPE
+TRANS_NONE = _Piavca_base.TRANS_NONE
+TRANS_SWAP_XZ = _Piavca_base.TRANS_SWAP_XZ
+TRANS_SWAP_XY = _Piavca_base.TRANS_SWAP_XY
+TRANS_SWAP_YZ = _Piavca_base.TRANS_SWAP_YZ
+TRANS_CYCLE_YZX = _Piavca_base.TRANS_CYCLE_YZX
+TRANS_CYCLE_ZXY = _Piavca_base.TRANS_CYCLE_ZXY
+TRANS_NEG_X = _Piavca_base.TRANS_NEG_X
+TRANS_NEG_Y = _Piavca_base.TRANS_NEG_Y
+TRANS_NEG_Z = _Piavca_base.TRANS_NEG_Z
+TRANS_ARM_UP = _Piavca_base.TRANS_ARM_UP
+TRANS_ARM_DOWN = _Piavca_base.TRANS_ARM_DOWN
+TRANS_REVERSE_ORDER = _Piavca_base.TRANS_REVERSE_ORDER
+TRANS_SKIP_FIRST_FRAME = _Piavca_base.TRANS_SKIP_FIRST_FRAME
+TRANS_NO_ROOT_POS_CORRECTION = _Piavca_base.TRANS_NO_ROOT_POS_CORRECTION
+class Motion(_object):
+    """
+    An abstract interface to represent motion.     
+           
+    This is an abstract interface that represents all types of animation in a way that is independent of individual Avatars. It can be used to represent keyframe animation, motion combination, procedural animatio or real time animation streams. The key abstraction is that motion consists of a number of tracks, each normally corresponding to a joint of the avatar. The track is a continuous, time varying stream of data value (either of float, Vec or Quat type). The fundamental operation on a track is to query it for its value at a given time. Like joints tracks are represented by integer IDs, the IDs of a corresponding track and joint are the same so testing for equivelence is easy. Tracks are accessed by passing the appropriate ID to a method of the motion object.      see also: Motion.h
+    """
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, Motion, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, Motion, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        """
+        Piavca::Motion::Motion(const Motion &mot)
+                 
+                
+                 
+                
+        """
+        if self.__class__ == Motion:
+            args = (None,) + args
+        else:
+            args = (self,) + args
+        this = _Piavca_base.new_Motion(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _Piavca_base.delete_Motion
+    __del__ = lambda self : None;
+    def clone(*args):
+        """
+        virtual Motion* Piavca::Motion::clone()=0
+                 
+        creates a copy of the motion         
+                 
+                
+        """
+        return _Piavca_base.Motion_clone(*args)
+
+    def getClassName(*args): return _Piavca_base.Motion_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.Motion_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.Motion_castToThisType)
+    def create(*args): return _Piavca_base.Motion_create(*args)
+    def printInfo(*args):
+        """
+        void Motion::printInfo()
+                 
+        prints out info about the motion heirarchy         
+                 
+                
+        """
+        return _Piavca_base.Motion_printInfo(*args)
+
+    def load(*args):
+        """
+        virtual void Piavca::Motion::load(Avatar *av)
+                 
+        called when the motion is loaded into an avatar         
+                 
+                
+        """
+        return _Piavca_base.Motion_load(*args)
+
+    def unload(*args):
+        """
+        virtual void Piavca::Motion::unload()
+                 
+        called when the motion is unloaded from an avatar         
+                 
+                
+        """
+        return _Piavca_base.Motion_unload(*args)
+
+    def loaded(*args):
+        """
+        virtual bool Piavca::Motion::loaded()
+                 
+        checks if the motion has been loaded into an avatar         
+                 
+                
+        """
+        return _Piavca_base.Motion_loaded(*args)
+
+    def getAvatar(*args): return _Piavca_base.Motion_getAvatar(*args)
+    def setStartTime(*args):
+        """
+        virtual void Piavca::Motion::setStartTime(float t)
+                 
+        sets the start time of the motion. Called when its loaded into an avatar.         
+                 
+                
+        """
+        return _Piavca_base.Motion_setStartTime(*args)
+
+    def getStartTime(*args):
+        """
+        float Piavca::Motion::getStartTime()
+                 
+        return the start time of the motion         
+                 
+                
+        """
+        return _Piavca_base.Motion_getStartTime(*args)
+
+    def getEndTime(*args):
+        """
+        float Piavca::Motion::getEndTime()
+                 
+        returns the end time of the motion         
+                 
+                
+        """
+        return _Piavca_base.Motion_getEndTime(*args)
+
+    def reset(*args):
+        """
+        virtual void Piavca::Motion::reset()
+                 
+        does any resetting needed         
+                 
+                
+        """
+        return _Piavca_base.Motion_reset(*args)
+
+    def event(*args): return _Piavca_base.Motion_event(*args)
+    def cleanRecursionState(*args): return _Piavca_base.Motion_cleanRecursionState(*args)
+    def wasVisited(*args): return _Piavca_base.Motion_wasVisited(*args)
+    def sendEvent(*args): return _Piavca_base.Motion_sendEvent(*args)
+    def Reference(*args):
+        """
+        void Piavca::Motion::Reference()
+                 
+        registers an owner for a motion, the motion will not be deleted until disposed is called.         
+                 
+        Internally this increments the reference count.         
+        """
+        return _Piavca_base.Motion_Reference(*args)
+
+    def Dispose(*args):
+        """
+        void Motion::Dispose()
+                 
+        decrements the references count and deletes the motion if it reaches zero         
+                 
+                
+        """
+        return _Piavca_base.Motion_Dispose(*args)
+
+    def makeTemp(*args):
+        """
+        void Piavca::Motion::makeTemp()
+                 
+        makes a motion temporary so that it is removed when all avatars have finished with it         
+                 
+                
+        """
+        return _Piavca_base.Motion_makeTemp(*args)
+
+    def setName(*args):
+        """
+        void Piavca::Motion::setName(tstring nm)
+                 
+        gives a name to the motion         
+                 
+                
+        """
+        return _Piavca_base.Motion_setName(*args)
+
+    def getName(*args):
+        """
+        tstring Piavca::Motion::getName()
+                 
+        returns the name of the motion         
+                 
+                
+        """
+        return _Piavca_base.Motion_getName(*args)
+
+    def findSub(*args):
+        """
+        virtual Motion* Piavca::Motion::findSub(tstring nm)
+                 
+        finds the first submotion with a given name         
+                 
+                
+        """
+        return _Piavca_base.Motion_findSub(*args)
+
+    def findSubByType(*args):
+        """
+        virtual Motion* Piavca::Motion::findSubByType(const type_info &ty)
+                 
+        finds the first submotion with a given type         
+                 
+                
+        """
+        return _Piavca_base.Motion_findSubByType(*args)
+
+    def getMotionLength(*args):
+        """
+        virtual float Piavca::Motion::getMotionLength() const =0
+                 
+        gets the time of the end of the motion         
+                 
+        Though time is represented in floating point, keyframes can only be set as integers to avoid problems with rounding errors. The granularity is the conversion factor between the two.         
+        """
+        return _Piavca_base.Motion_getMotionLength(*args)
+
+    def isFacial(*args):
+        """
+        virtual bool Piavca::Motion::isFacial()
+                 
+        whether it is a face or body motion         
+                 
+                
+        """
+        return _Piavca_base.Motion_isFacial(*args)
+
+    def isRandomAccess(*args):
+        """
+        virtual bool Piavca::Motion::isRandomAccess()
+                 
+        whether you can access a motions value at frames other than the current one         
+                 
+                
+        """
+        return _Piavca_base.Motion_isRandomAccess(*args)
+
+    def begin(*args):
+        """
+        int Piavca::Motion::begin() const 
+                 
+        the ID of the first track that is present in the motion (the ordering is arbitrary)         
+                 
+                
+        """
+        return _Piavca_base.Motion_begin(*args)
+
+    def end(*args):
+        """
+        int Motion::end() const 
+                 
+        the last track + 1         
+                 
+                
+        """
+        return _Piavca_base.Motion_end(*args)
+
+    def next(*args):
+        """
+        int Motion::next(int &trackId) const 
+                 
+        given a track ID get the next valid ID         
+                 
+                
+        """
+        return _Piavca_base.Motion_next(*args)
+
+    def isNull(*args):
+        """
+        virtual bool Piavca::Motion::isNull(int trackId) const =0
+                 
+        given a track ID tests whether it actually points to anything or if its null         
+                 
+                
+        """
+        return _Piavca_base.Motion_isNull(*args)
+
+    def getTrackType(*args):
+        """
+        virtual trackType Piavca::Motion::getTrackType(int trackId) const =0
+                 
+        get the type of the track corresponding to an ID         
+                 
+                
+        """
+        return _Piavca_base.Motion_getTrackType(*args)
+
+    def pause(*args):
+        """
+        void Motion::pause()
+                 
+        pause the motion so that it can be restarted from the current point         
+                 
+                
+        """
+        return _Piavca_base.Motion_pause(*args)
+
+    def unpause(*args):
+        """
+        void Motion::unpause()
+                 
+                
+                 
+                
+        """
+        return _Piavca_base.Motion_unpause(*args)
+
+    def preFrame(*args): return _Piavca_base.Motion_preFrame(*args)
+    def getFloatValueAtTime(*args):
+        """
+        float Piavca::Motion::getFloatValueAtTime(int trackId, float time)
+                 
+        get the value of a track at a given time (only works for floats)         
+                 
+                
+        """
+        return _Piavca_base.Motion_getFloatValueAtTime(*args)
+
+    def getVecValueAtTime(*args):
+        """
+        Vec Piavca::Motion::getVecValueAtTime(int trackId, float time)
+                 
+        get the value of a track at a given time (only works for Vecs)         
+                 
+                
+        """
+        return _Piavca_base.Motion_getVecValueAtTime(*args)
+
+    def getQuatValueAtTime(*args):
+        """
+        Quat Piavca::Motion::getQuatValueAtTime(int trackId, float time)
+                 
+        get the value of a track at a given time (only works for Quats)         
+                 
+                
+        """
+        return _Piavca_base.Motion_getQuatValueAtTime(*args)
+
+    def getFloatValueAtTimeInternal(*args):
+        """
+        virtual float Piavca::Motion::getFloatValueAtTimeInternal(int trackId, float time)=0
+                 
+        internal version of getFloatValueAtTime, to be overridden         
+                 
+                
+        """
+        return _Piavca_base.Motion_getFloatValueAtTimeInternal(*args)
+
+    def getVecValueAtTimeInternal(*args):
+        """
+        virtual Vec Piavca::Motion::getVecValueAtTimeInternal(int trackId, float time)=0
+                 
+        internal version of getVecValueAtTime, to be overridden         
+                 
+                
+        """
+        return _Piavca_base.Motion_getVecValueAtTimeInternal(*args)
+
+    def getQuatValueAtTimeInternal(*args):
+        """
+        virtual Quat Piavca::Motion::getQuatValueAtTimeInternal(int trackId, float time)=0
+                 
+        internal version of getQuatValueAtTime, to be overridden         
+                 
+                
+        """
+        return _Piavca_base.Motion_getQuatValueAtTimeInternal(*args)
+
+    def __disown__(self):
+        self.this.disown()
+        _Piavca_base.disown_Motion(self)
+        return weakref_proxy(self)
+Motion_swigregister = _Piavca_base.Motion_swigregister
+Motion_swigregister(Motion)
+Motion_castToThisType = _Piavca_base.Motion_castToThisType
 
 class Core(_object):
     """
@@ -1072,395 +1465,6 @@ Core_getCorePointerAsLong = _Piavca_base.Core_getCorePointerAsLong
 cvar = _Piavca_base.cvar
 Core.nullId = _Piavca_base.cvar.Core_nullId
 
-StringToWString = _Piavca_base.StringToWString
-WStringToString = _Piavca_base.WStringToString
-LOCAL_COORD = _Piavca_base.LOCAL_COORD
-JOINTLOCAL_COORD = _Piavca_base.JOINTLOCAL_COORD
-BASE_COORD = _Piavca_base.BASE_COORD
-INCLUDINGBASE_COORD = _Piavca_base.INCLUDINGBASE_COORD
-WORLD_COORD = _Piavca_base.WORLD_COORD
-root_position_id = _Piavca_base.root_position_id
-root_orientation_id = _Piavca_base.root_orientation_id
-NULL_TYPE = _Piavca_base.NULL_TYPE
-FLOAT_TYPE = _Piavca_base.FLOAT_TYPE
-VEC_TYPE = _Piavca_base.VEC_TYPE
-QUAT_TYPE = _Piavca_base.QUAT_TYPE
-TRANS_NONE = _Piavca_base.TRANS_NONE
-TRANS_SWAP_XZ = _Piavca_base.TRANS_SWAP_XZ
-TRANS_SWAP_XY = _Piavca_base.TRANS_SWAP_XY
-TRANS_SWAP_YZ = _Piavca_base.TRANS_SWAP_YZ
-TRANS_CYCLE_YZX = _Piavca_base.TRANS_CYCLE_YZX
-TRANS_CYCLE_ZXY = _Piavca_base.TRANS_CYCLE_ZXY
-TRANS_NEG_X = _Piavca_base.TRANS_NEG_X
-TRANS_NEG_Y = _Piavca_base.TRANS_NEG_Y
-TRANS_NEG_Z = _Piavca_base.TRANS_NEG_Z
-TRANS_ARM_UP = _Piavca_base.TRANS_ARM_UP
-TRANS_ARM_DOWN = _Piavca_base.TRANS_ARM_DOWN
-TRANS_REVERSE_ORDER = _Piavca_base.TRANS_REVERSE_ORDER
-TRANS_SKIP_FIRST_FRAME = _Piavca_base.TRANS_SKIP_FIRST_FRAME
-TRANS_NO_ROOT_POS_CORRECTION = _Piavca_base.TRANS_NO_ROOT_POS_CORRECTION
-class Motion(_object):
-    """
-    An abstract interface to represent motion.     
-           
-    This is an abstract interface that represents all types of animation in a way that is independent of individual Avatars. It can be used to represent keyframe animation, motion combination, procedural animatio or real time animation streams. The key abstraction is that motion consists of a number of tracks, each normally corresponding to a joint of the avatar. The track is a continuous, time varying stream of data value (either of float, Vec or Quat type). The fundamental operation on a track is to query it for its value at a given time. Like joints tracks are represented by integer IDs, the IDs of a corresponding track and joint are the same so testing for equivelence is easy. Tracks are accessed by passing the appropriate ID to a method of the motion object.      see also: Motion.h
-    """
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, Motion, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, Motion, name)
-    __repr__ = _swig_repr
-    def __init__(self, *args): 
-        """
-        Piavca::Motion::Motion(const Motion &mot)
-                 
-                
-                 
-                
-        """
-        if self.__class__ == Motion:
-            args = (None,) + args
-        else:
-            args = (self,) + args
-        this = _Piavca_base.new_Motion(*args)
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _Piavca_base.delete_Motion
-    __del__ = lambda self : None;
-    def clone(*args):
-        """
-        virtual Motion* Piavca::Motion::clone()=0
-                 
-        creates a copy of the motion         
-                 
-                
-        """
-        return _Piavca_base.Motion_clone(*args)
-
-    def create(*args): return _Piavca_base.Motion_create(*args)
-    def printInfo(*args):
-        """
-        void Motion::printInfo()
-                 
-        prints out info about the motion heirarchy         
-                 
-                
-        """
-        return _Piavca_base.Motion_printInfo(*args)
-
-    def load(*args):
-        """
-        virtual void Piavca::Motion::load(Avatar *av)
-                 
-        called when the motion is loaded into an avatar         
-                 
-                
-        """
-        return _Piavca_base.Motion_load(*args)
-
-    def unload(*args):
-        """
-        virtual void Piavca::Motion::unload()
-                 
-        called when the motion is unloaded from an avatar         
-                 
-                
-        """
-        return _Piavca_base.Motion_unload(*args)
-
-    def loaded(*args):
-        """
-        virtual bool Piavca::Motion::loaded()
-                 
-        checks if the motion has been loaded into an avatar         
-                 
-                
-        """
-        return _Piavca_base.Motion_loaded(*args)
-
-    def getAvatar(*args): return _Piavca_base.Motion_getAvatar(*args)
-    def setStartTime(*args):
-        """
-        virtual void Piavca::Motion::setStartTime(float t)
-                 
-        sets the start time of the motion. Called when its loaded into an avatar.         
-                 
-                
-        """
-        return _Piavca_base.Motion_setStartTime(*args)
-
-    def getStartTime(*args):
-        """
-        float Piavca::Motion::getStartTime()
-                 
-        return the start time of the motion         
-                 
-                
-        """
-        return _Piavca_base.Motion_getStartTime(*args)
-
-    def getEndTime(*args):
-        """
-        float Piavca::Motion::getEndTime()
-                 
-        returns the end time of the motion         
-                 
-                
-        """
-        return _Piavca_base.Motion_getEndTime(*args)
-
-    def reset(*args):
-        """
-        virtual void Piavca::Motion::reset()
-                 
-        does any resetting needed         
-                 
-                
-        """
-        return _Piavca_base.Motion_reset(*args)
-
-    def event(*args): return _Piavca_base.Motion_event(*args)
-    def cleanRecursionState(*args): return _Piavca_base.Motion_cleanRecursionState(*args)
-    def wasVisited(*args): return _Piavca_base.Motion_wasVisited(*args)
-    def sendEvent(*args): return _Piavca_base.Motion_sendEvent(*args)
-    def Reference(*args):
-        """
-        void Piavca::Motion::Reference()
-                 
-        registers an owner for a motion, the motion will not be deleted until disposed is called.         
-                 
-        Internally this increments the reference count.         
-        """
-        return _Piavca_base.Motion_Reference(*args)
-
-    def Dispose(*args):
-        """
-        void Motion::Dispose()
-                 
-        decrements the references count and deletes the motion if it reaches zero         
-                 
-                
-        """
-        return _Piavca_base.Motion_Dispose(*args)
-
-    def makeTemp(*args):
-        """
-        void Piavca::Motion::makeTemp()
-                 
-        makes a motion temporary so that it is removed when all avatars have finished with it         
-                 
-                
-        """
-        return _Piavca_base.Motion_makeTemp(*args)
-
-    def setName(*args):
-        """
-        void Piavca::Motion::setName(tstring nm)
-                 
-        gives a name to the motion         
-                 
-                
-        """
-        return _Piavca_base.Motion_setName(*args)
-
-    def getName(*args):
-        """
-        tstring Piavca::Motion::getName()
-                 
-        returns the name of the motion         
-                 
-                
-        """
-        return _Piavca_base.Motion_getName(*args)
-
-    def findSub(*args):
-        """
-        virtual Motion* Piavca::Motion::findSub(tstring nm)
-                 
-        finds the first submotion with a given name         
-                 
-                
-        """
-        return _Piavca_base.Motion_findSub(*args)
-
-    def findSubByType(*args):
-        """
-        virtual Motion* Piavca::Motion::findSubByType(const type_info &ty)
-                 
-        finds the first submotion with a given type         
-                 
-                
-        """
-        return _Piavca_base.Motion_findSubByType(*args)
-
-    def getMotionLength(*args):
-        """
-        virtual float Piavca::Motion::getMotionLength() const =0
-                 
-        gets the time of the end of the motion         
-                 
-        Though time is represented in floating point, keyframes can only be set as integers to avoid problems with rounding errors. The granularity is the conversion factor between the two.         
-        """
-        return _Piavca_base.Motion_getMotionLength(*args)
-
-    def isFacial(*args):
-        """
-        virtual bool Piavca::Motion::isFacial()
-                 
-        whether it is a face or body motion         
-                 
-                
-        """
-        return _Piavca_base.Motion_isFacial(*args)
-
-    def isRandomAccess(*args):
-        """
-        virtual bool Piavca::Motion::isRandomAccess()
-                 
-        whether you can access a motions value at frames other than the current one         
-                 
-                
-        """
-        return _Piavca_base.Motion_isRandomAccess(*args)
-
-    def begin(*args):
-        """
-        int Piavca::Motion::begin() const 
-                 
-        the ID of the first track that is present in the motion (the ordering is arbitrary)         
-                 
-                
-        """
-        return _Piavca_base.Motion_begin(*args)
-
-    def end(*args):
-        """
-        int Motion::end() const 
-                 
-        the last track + 1         
-                 
-                
-        """
-        return _Piavca_base.Motion_end(*args)
-
-    def next(*args):
-        """
-        int Motion::next(int &trackId) const 
-                 
-        given a track ID get the next valid ID         
-                 
-                
-        """
-        return _Piavca_base.Motion_next(*args)
-
-    def isNull(*args):
-        """
-        virtual bool Piavca::Motion::isNull(int trackId) const =0
-                 
-        given a track ID tests whether it actually points to anything or if its null         
-                 
-                
-        """
-        return _Piavca_base.Motion_isNull(*args)
-
-    def getTrackType(*args):
-        """
-        virtual trackType Piavca::Motion::getTrackType(int trackId) const =0
-                 
-        get the type of the track corresponding to an ID         
-                 
-                
-        """
-        return _Piavca_base.Motion_getTrackType(*args)
-
-    def pause(*args):
-        """
-        void Motion::pause()
-                 
-        pause the motion so that it can be restarted from the current point         
-                 
-                
-        """
-        return _Piavca_base.Motion_pause(*args)
-
-    def unpause(*args):
-        """
-        void Motion::unpause()
-                 
-                
-                 
-                
-        """
-        return _Piavca_base.Motion_unpause(*args)
-
-    def preFrame(*args): return _Piavca_base.Motion_preFrame(*args)
-    def getFloatValueAtTime(*args):
-        """
-        float Piavca::Motion::getFloatValueAtTime(int trackId, float time)
-                 
-        get the value of a track at a given time (only works for floats)         
-                 
-                
-        """
-        return _Piavca_base.Motion_getFloatValueAtTime(*args)
-
-    def getVecValueAtTime(*args):
-        """
-        Vec Piavca::Motion::getVecValueAtTime(int trackId, float time)
-                 
-        get the value of a track at a given time (only works for Vecs)         
-                 
-                
-        """
-        return _Piavca_base.Motion_getVecValueAtTime(*args)
-
-    def getQuatValueAtTime(*args):
-        """
-        Quat Piavca::Motion::getQuatValueAtTime(int trackId, float time)
-                 
-        get the value of a track at a given time (only works for Quats)         
-                 
-                
-        """
-        return _Piavca_base.Motion_getQuatValueAtTime(*args)
-
-    def getFloatValueAtTimeInternal(*args):
-        """
-        virtual float Piavca::Motion::getFloatValueAtTimeInternal(int trackId, float time)=0
-                 
-        internal version of getFloatValueAtTime, to be overridden         
-                 
-                
-        """
-        return _Piavca_base.Motion_getFloatValueAtTimeInternal(*args)
-
-    def getVecValueAtTimeInternal(*args):
-        """
-        virtual Vec Piavca::Motion::getVecValueAtTimeInternal(int trackId, float time)=0
-                 
-        internal version of getVecValueAtTime, to be overridden         
-                 
-                
-        """
-        return _Piavca_base.Motion_getVecValueAtTimeInternal(*args)
-
-    def getQuatValueAtTimeInternal(*args):
-        """
-        virtual Quat Piavca::Motion::getQuatValueAtTimeInternal(int trackId, float time)=0
-                 
-        internal version of getQuatValueAtTime, to be overridden         
-                 
-                
-        """
-        return _Piavca_base.Motion_getQuatValueAtTimeInternal(*args)
-
-    def __disown__(self):
-        self.this.disown()
-        _Piavca_base.disown_Motion(self)
-        return weakref_proxy(self)
-Motion_swigregister = _Piavca_base.Motion_swigregister
-Motion_swigregister(Motion)
-
 class KeyframeMotion(Motion):
     __swig_setmethods__ = {}
     for _s in [Motion]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
@@ -1489,6 +1493,9 @@ class KeyframeMotion(Motion):
         """
         return _Piavca_base.KeyframeMotion_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.KeyframeMotion_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.KeyframeMotion_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.KeyframeMotion_castToThisType)
     def getMotionLength(*args):
         """
         virtual float Piavca::Motion::getMotionLength() const =0
@@ -1587,6 +1594,7 @@ class KeyframeMotion(Motion):
         return weakref_proxy(self)
 KeyframeMotion_swigregister = _Piavca_base.KeyframeMotion_swigregister
 KeyframeMotion_swigregister(KeyframeMotion)
+KeyframeMotion_castToThisType = _Piavca_base.KeyframeMotion_castToThisType
 
 
 def copyMotionPosture(*args):
@@ -2825,6 +2833,9 @@ class CurrentValueMotion(KeyframeMotion):
         """
         return _Piavca_base.CurrentValueMotion_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.CurrentValueMotion_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.CurrentValueMotion_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.CurrentValueMotion_castToThisType)
     def setFloatValue(*args): return _Piavca_base.CurrentValueMotion_setFloatValue(*args)
     def setVecValue(*args): return _Piavca_base.CurrentValueMotion_setVecValue(*args)
     def setQuatValue(*args): return _Piavca_base.CurrentValueMotion_setQuatValue(*args)
@@ -2833,6 +2844,7 @@ class CurrentValueMotion(KeyframeMotion):
 CurrentValueMotion_swigregister = _Piavca_base.CurrentValueMotion_swigregister
 CurrentValueMotion_swigregister(CurrentValueMotion)
 Pi = cvar.Pi
+CurrentValueMotion_castToThisType = _Piavca_base.CurrentValueMotion_castToThisType
 
 class MotionFilter(Motion):
     """
@@ -2874,6 +2886,9 @@ class MotionFilter(Motion):
         """
         return _Piavca_base.MotionFilter_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.MotionFilter_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.MotionFilter_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.MotionFilter_castToThisType)
     def printInfo(*args):
         """
         void Piavca::MotionFilter::printInfo()
@@ -3055,6 +3070,7 @@ class MotionFilter(Motion):
         return weakref_proxy(self)
 MotionFilter_swigregister = _Piavca_base.MotionFilter_swigregister
 MotionFilter_swigregister(MotionFilter)
+MotionFilter_castToThisType = _Piavca_base.MotionFilter_castToThisType
 
 class TwoMotionCombiner(Motion):
     """
@@ -3096,6 +3112,9 @@ class TwoMotionCombiner(Motion):
         """
         return _Piavca_base.TwoMotionCombiner_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.TwoMotionCombiner_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.TwoMotionCombiner_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.TwoMotionCombiner_castToThisType)
     def printInfo(*args):
         """
         void TwoMotionCombiner::printInfo()
@@ -3276,6 +3295,7 @@ class TwoMotionCombiner(Motion):
         return weakref_proxy(self)
 TwoMotionCombiner_swigregister = _Piavca_base.TwoMotionCombiner_swigregister
 TwoMotionCombiner_swigregister(TwoMotionCombiner)
+TwoMotionCombiner_castToThisType = _Piavca_base.TwoMotionCombiner_castToThisType
 
 class MotionMask(_object):
     """
@@ -3374,6 +3394,9 @@ class MaskedMotion(MotionFilter):
         """
         return _Piavca_base.MaskedMotion_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.MaskedMotion_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.MaskedMotion_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.MaskedMotion_castToThisType)
     def setMask(*args): return _Piavca_base.MaskedMotion_setMask(*args)
     def addToMask(*args): return _Piavca_base.MaskedMotion_addToMask(*args)
     def removeFromMask(*args): return _Piavca_base.MaskedMotion_removeFromMask(*args)
@@ -3419,6 +3442,7 @@ class MaskedMotion(MotionFilter):
         return weakref_proxy(self)
 MaskedMotion_swigregister = _Piavca_base.MaskedMotion_swigregister
 MaskedMotion_swigregister(MaskedMotion)
+MaskedMotion_castToThisType = _Piavca_base.MaskedMotion_castToThisType
 
 class ScaleMotion(MotionFilter):
     """
@@ -3458,6 +3482,9 @@ class ScaleMotion(MotionFilter):
         """
         return _Piavca_base.ScaleMotion_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.ScaleMotion_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.ScaleMotion_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.ScaleMotion_castToThisType)
     def getFloatValueAtTimeInternal(*args):
         """
         virtual PIAVCA_EXPORT float Piavca::ScaleMotion::getFloatValueAtTimeInternal(int trackId, float time)
@@ -3506,6 +3533,7 @@ class ScaleMotion(MotionFilter):
         return weakref_proxy(self)
 ScaleMotion_swigregister = _Piavca_base.ScaleMotion_swigregister
 ScaleMotion_swigregister(ScaleMotion)
+ScaleMotion_castToThisType = _Piavca_base.ScaleMotion_castToThisType
 
 class ScaleMotionSpeed(MotionFilter):
     """
@@ -3545,6 +3573,9 @@ class ScaleMotionSpeed(MotionFilter):
         """
         return _Piavca_base.ScaleMotionSpeed_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.ScaleMotionSpeed_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.ScaleMotionSpeed_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.ScaleMotionSpeed_castToThisType)
     def getMotionLength(*args):
         """
         virtual float Piavca::ScaleMotionSpeed::getMotionLength() const 
@@ -3603,6 +3634,7 @@ class ScaleMotionSpeed(MotionFilter):
         return weakref_proxy(self)
 ScaleMotionSpeed_swigregister = _Piavca_base.ScaleMotionSpeed_swigregister
 ScaleMotionSpeed_swigregister(ScaleMotionSpeed)
+ScaleMotionSpeed_castToThisType = _Piavca_base.ScaleMotionSpeed_castToThisType
 
 class ChangeMotionLength(ScaleMotionSpeed):
     """
@@ -3640,6 +3672,9 @@ class ChangeMotionLength(ScaleMotionSpeed):
         """
         return _Piavca_base.ChangeMotionLength_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.ChangeMotionLength_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.ChangeMotionLength_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.ChangeMotionLength_castToThisType)
     def setMotionLength(*args):
         """
         void Piavca::ChangeMotionLength::setMotionLength(float len)
@@ -3678,6 +3713,7 @@ class ChangeMotionLength(ScaleMotionSpeed):
         return weakref_proxy(self)
 ChangeMotionLength_swigregister = _Piavca_base.ChangeMotionLength_swigregister
 ChangeMotionLength_swigregister(ChangeMotionLength)
+ChangeMotionLength_castToThisType = _Piavca_base.ChangeMotionLength_castToThisType
 
 class ScaleMotionRoot(MotionFilter):
     """
@@ -3719,6 +3755,9 @@ class ScaleMotionRoot(MotionFilter):
         """
         return _Piavca_base.ScaleMotionRoot_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.ScaleMotionRoot_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.ScaleMotionRoot_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.ScaleMotionRoot_castToThisType)
     def getFloatValueAtTimeInternal(*args):
         """
         virtual PIAVCA_EXPORT float Piavca::ScaleMotionRoot::getFloatValueAtTimeInternal(int trackId, float time)
@@ -3765,6 +3804,7 @@ class ScaleMotionRoot(MotionFilter):
         return weakref_proxy(self)
 ScaleMotionRoot_swigregister = _Piavca_base.ScaleMotionRoot_swigregister
 ScaleMotionRoot_swigregister(ScaleMotionRoot)
+ScaleMotionRoot_castToThisType = _Piavca_base.ScaleMotionRoot_castToThisType
 
 class TimeOffset(MotionFilter):
     """
@@ -3804,6 +3844,9 @@ class TimeOffset(MotionFilter):
         """
         return _Piavca_base.TimeOffset_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.TimeOffset_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.TimeOffset_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.TimeOffset_castToThisType)
     def setStartTime(*args):
         """
         virtual void Piavca::TimeOffset::setStartTime(float time)
@@ -3862,6 +3905,7 @@ class TimeOffset(MotionFilter):
         return weakref_proxy(self)
 TimeOffset_swigregister = _Piavca_base.TimeOffset_swigregister
 TimeOffset_swigregister(TimeOffset)
+TimeOffset_castToThisType = _Piavca_base.TimeOffset_castToThisType
 
 class TurnMotion(MotionFilter):
     """
@@ -3901,6 +3945,9 @@ class TurnMotion(MotionFilter):
         """
         return _Piavca_base.TurnMotion_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.TurnMotion_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.TurnMotion_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.TurnMotion_castToThisType)
     def getFloatValueAtTimeInternal(*args):
         """
         virtual PIAVCA_EXPORT float Piavca::TurnMotion::getFloatValueAtTimeInternal(int trackId, float time)
@@ -3949,6 +3996,7 @@ class TurnMotion(MotionFilter):
         return weakref_proxy(self)
 TurnMotion_swigregister = _Piavca_base.TurnMotion_swigregister
 TurnMotion_swigregister(TurnMotion)
+TurnMotion_castToThisType = _Piavca_base.TurnMotion_castToThisType
 
 class Sequence(TwoMotionCombiner):
     __swig_setmethods__ = {}
@@ -3976,6 +4024,9 @@ class Sequence(TwoMotionCombiner):
         """
         return _Piavca_base.Sequence_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.Sequence_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.Sequence_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.Sequence_castToThisType)
     def setStartTime(*args):
         """
         void TwoMotionCombiner::setStartTime(float time)
@@ -4034,6 +4085,7 @@ class Sequence(TwoMotionCombiner):
         return weakref_proxy(self)
 Sequence_swigregister = _Piavca_base.Sequence_swigregister
 Sequence_swigregister(Sequence)
+Sequence_castToThisType = _Piavca_base.Sequence_castToThisType
 
 class SmoothSequence(Sequence):
     __swig_setmethods__ = {}
@@ -4057,6 +4109,9 @@ class SmoothSequence(Sequence):
         """
         return _Piavca_base.SmoothSequence_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.SmoothSequence_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.SmoothSequence_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.SmoothSequence_castToThisType)
     def create(*args): return _Piavca_base.SmoothSequence_create(*args)
     def setMaintainY(*args): return _Piavca_base.SmoothSequence_setMaintainY(*args)
     def setAccumulateRoot(*args): return _Piavca_base.SmoothSequence_setAccumulateRoot(*args)
@@ -4088,6 +4143,7 @@ class SmoothSequence(Sequence):
     __del__ = lambda self : None;
 SmoothSequence_swigregister = _Piavca_base.SmoothSequence_swigregister
 SmoothSequence_swigregister(SmoothSequence)
+SmoothSequence_castToThisType = _Piavca_base.SmoothSequence_castToThisType
 
 class MotionPosture(KeyframeMotion):
     __swig_setmethods__ = {}
@@ -4115,6 +4171,9 @@ class MotionPosture(KeyframeMotion):
         """
         return _Piavca_base.MotionPosture_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.MotionPosture_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.MotionPosture_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.MotionPosture_castToThisType)
     def getPostureFromMotion(*args): return _Piavca_base.MotionPosture_getPostureFromMotion(*args)
     __swig_destroy__ = _Piavca_base.delete_MotionPosture
     __del__ = lambda self : None;
@@ -4124,6 +4183,7 @@ class MotionPosture(KeyframeMotion):
         return weakref_proxy(self)
 MotionPosture_swigregister = _Piavca_base.MotionPosture_swigregister
 MotionPosture_swigregister(MotionPosture)
+MotionPosture_castToThisType = _Piavca_base.MotionPosture_castToThisType
 
 class AvatarPosture(KeyframeMotion):
     __swig_setmethods__ = {}
@@ -4151,6 +4211,9 @@ class AvatarPosture(KeyframeMotion):
         """
         return _Piavca_base.AvatarPosture_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.AvatarPosture_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.AvatarPosture_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.AvatarPosture_castToThisType)
     def load(*args):
         """
         virtual void Piavca::Motion::load(Avatar *av)
@@ -4170,6 +4233,7 @@ class AvatarPosture(KeyframeMotion):
         return weakref_proxy(self)
 AvatarPosture_swigregister = _Piavca_base.AvatarPosture_swigregister
 AvatarPosture_swigregister(AvatarPosture)
+AvatarPosture_castToThisType = _Piavca_base.AvatarPosture_castToThisType
 
 class PostureBlend(Sequence):
     __swig_setmethods__ = {}
@@ -4197,6 +4261,9 @@ class PostureBlend(Sequence):
         """
         return _Piavca_base.PostureBlend_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.PostureBlend_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.PostureBlend_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.PostureBlend_castToThisType)
     def setBlendInterval(*args): return _Piavca_base.PostureBlend_setBlendInterval(*args)
     def setAccumulateRoot(*args): return _Piavca_base.PostureBlend_setAccumulateRoot(*args)
     def reset(*args):
@@ -4220,6 +4287,7 @@ class PostureBlend(Sequence):
         return weakref_proxy(self)
 PostureBlend_swigregister = _Piavca_base.PostureBlend_swigregister
 PostureBlend_swigregister(PostureBlend)
+PostureBlend_castToThisType = _Piavca_base.PostureBlend_castToThisType
 
 class Reposition(MotionFilter):
     __swig_setmethods__ = {}
@@ -4247,6 +4315,9 @@ class Reposition(MotionFilter):
         """
         return _Piavca_base.Reposition_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.Reposition_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.Reposition_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.Reposition_castToThisType)
     def setStartPosition(*args): return _Piavca_base.Reposition_setStartPosition(*args)
     def setStartOrientation(*args): return _Piavca_base.Reposition_setStartOrientation(*args)
     def setPosOffset(*args): return _Piavca_base.Reposition_setPosOffset(*args)
@@ -4323,6 +4394,7 @@ class Reposition(MotionFilter):
         return weakref_proxy(self)
 Reposition_swigregister = _Piavca_base.Reposition_swigregister
 Reposition_swigregister(Reposition)
+Reposition_castToThisType = _Piavca_base.Reposition_castToThisType
 
 class LoopMotion(PostureBlend):
     """
@@ -4362,6 +4434,9 @@ class LoopMotion(PostureBlend):
         """
         return _Piavca_base.LoopMotion_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.LoopMotion_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.LoopMotion_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.LoopMotion_castToThisType)
     def getMotionLength(*args):
         """
         virtual float Piavca::LoopMotion::getMotionLength() const 
@@ -4421,6 +4496,7 @@ class LoopMotion(PostureBlend):
         return weakref_proxy(self)
 LoopMotion_swigregister = _Piavca_base.LoopMotion_swigregister
 LoopMotion_swigregister(LoopMotion)
+LoopMotion_castToThisType = _Piavca_base.LoopMotion_castToThisType
 
 class RandomTimingsLoop(LoopMotion):
     """
@@ -4462,6 +4538,9 @@ class RandomTimingsLoop(LoopMotion):
         """
         return _Piavca_base.RandomTimingsLoop_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.RandomTimingsLoop_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.RandomTimingsLoop_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.RandomTimingsLoop_castToThisType)
     def setTimingParams(*args):
         """
         virtual void Piavca::RandomTimingsLoop::setTimingParams(float minTimeScale, float maxTimeScale)
@@ -4501,6 +4580,7 @@ class RandomTimingsLoop(LoopMotion):
         return weakref_proxy(self)
 RandomTimingsLoop_swigregister = _Piavca_base.RandomTimingsLoop_swigregister
 RandomTimingsLoop_swigregister(RandomTimingsLoop)
+RandomTimingsLoop_castToThisType = _Piavca_base.RandomTimingsLoop_castToThisType
 
 class RandomTimingsMotion(ScaleMotionSpeed):
     __swig_setmethods__ = {}
@@ -4530,6 +4610,9 @@ class RandomTimingsMotion(ScaleMotionSpeed):
         """
         return _Piavca_base.RandomTimingsMotion_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.RandomTimingsMotion_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.RandomTimingsMotion_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.RandomTimingsMotion_castToThisType)
     def setTimingParams(*args): return _Piavca_base.RandomTimingsMotion_setTimingParams(*args)
     def setMinTimeScale(*args): return _Piavca_base.RandomTimingsMotion_setMinTimeScale(*args)
     def setMaxTimeScale(*args): return _Piavca_base.RandomTimingsMotion_setMaxTimeScale(*args)
@@ -4549,6 +4632,7 @@ class RandomTimingsMotion(ScaleMotionSpeed):
         return weakref_proxy(self)
 RandomTimingsMotion_swigregister = _Piavca_base.RandomTimingsMotion_swigregister
 RandomTimingsMotion_swigregister(RandomTimingsMotion)
+RandomTimingsMotion_castToThisType = _Piavca_base.RandomTimingsMotion_castToThisType
 
 class AvatarPostureBlend(Sequence):
     """
@@ -4584,6 +4668,9 @@ class AvatarPostureBlend(Sequence):
         """
         return _Piavca_base.AvatarPostureBlend_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.AvatarPostureBlend_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.AvatarPostureBlend_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.AvatarPostureBlend_castToThisType)
     def load(*args):
         """
         void AvatarPostureBlend::load(Avatar *av)
@@ -4632,6 +4719,7 @@ class AvatarPostureBlend(Sequence):
     __del__ = lambda self : None;
 AvatarPostureBlend_swigregister = _Piavca_base.AvatarPostureBlend_swigregister
 AvatarPostureBlend_swigregister(AvatarPostureBlend)
+AvatarPostureBlend_castToThisType = _Piavca_base.AvatarPostureBlend_castToThisType
 
 class BlendBetween(TwoMotionCombiner):
     """
@@ -4671,6 +4759,9 @@ class BlendBetween(TwoMotionCombiner):
         """
         return _Piavca_base.BlendBetween_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.BlendBetween_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.BlendBetween_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.BlendBetween_castToThisType)
     def getFloatValueAtTimeInternal(*args):
         """
         float BlendBetween::getFloatValueAtTimeInternal(int trackId, float time)
@@ -4719,6 +4810,7 @@ class BlendBetween(TwoMotionCombiner):
         return weakref_proxy(self)
 BlendBetween_swigregister = _Piavca_base.BlendBetween_swigregister
 BlendBetween_swigregister(BlendBetween)
+BlendBetween_castToThisType = _Piavca_base.BlendBetween_castToThisType
 
 class MotionAdder(TwoMotionCombiner):
     """
@@ -4758,6 +4850,9 @@ class MotionAdder(TwoMotionCombiner):
         """
         return _Piavca_base.MotionAdder_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.MotionAdder_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.MotionAdder_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.MotionAdder_castToThisType)
     def setScaleSecond(*args):
         """
         void Piavca::MotionAdder::setScaleSecond(float s)
@@ -4806,6 +4901,7 @@ class MotionAdder(TwoMotionCombiner):
         return weakref_proxy(self)
 MotionAdder_swigregister = _Piavca_base.MotionAdder_swigregister
 MotionAdder_swigregister(MotionAdder)
+MotionAdder_castToThisType = _Piavca_base.MotionAdder_castToThisType
 
 class Subtract(TwoMotionCombiner):
     __swig_setmethods__ = {}
@@ -4833,6 +4929,9 @@ class Subtract(TwoMotionCombiner):
         """
         return _Piavca_base.Subtract_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.Subtract_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.Subtract_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.Subtract_castToThisType)
     def getFloatValueAtTimeInternal(*args):
         """
         virtual float Piavca::Motion::getFloatValueAtTimeInternal(int trackId, float time)=0
@@ -4871,6 +4970,7 @@ class Subtract(TwoMotionCombiner):
         return weakref_proxy(self)
 Subtract_swigregister = _Piavca_base.Subtract_swigregister
 Subtract_swigregister(Subtract)
+Subtract_castToThisType = _Piavca_base.Subtract_castToThisType
 
 class TransitionFunction(_object):
     __swig_setmethods__ = {}
@@ -4943,6 +5043,9 @@ class MotionTransition(TwoMotionCombiner):
         """
         return _Piavca_base.MotionTransition_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.MotionTransition_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.MotionTransition_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.MotionTransition_castToThisType)
     MotionStart = _Piavca_base.MotionTransition_MotionStart
     MotionEnd = _Piavca_base.MotionTransition_MotionEnd
     def setTransitionFunction(*args): return _Piavca_base.MotionTransition_setTransitionFunction(*args)
@@ -5013,6 +5116,7 @@ class MotionTransition(TwoMotionCombiner):
     __del__ = lambda self : None;
 MotionTransition_swigregister = _Piavca_base.MotionTransition_swigregister
 MotionTransition_swigregister(MotionTransition)
+MotionTransition_castToThisType = _Piavca_base.MotionTransition_castToThisType
 
 class MultiMotionCombiner(MotionFilter):
     __swig_setmethods__ = {}
@@ -5042,6 +5146,9 @@ class MultiMotionCombiner(MotionFilter):
         """
         return _Piavca_base.MultiMotionCombiner_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.MultiMotionCombiner_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.MultiMotionCombiner_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.MultiMotionCombiner_castToThisType)
     def printInfo(*args):
         """
         void Piavca::MotionFilter::printInfo()
@@ -5115,6 +5222,7 @@ class MultiMotionCombiner(MotionFilter):
         return weakref_proxy(self)
 MultiMotionCombiner_swigregister = _Piavca_base.MultiMotionCombiner_swigregister
 MultiMotionCombiner_swigregister(MultiMotionCombiner)
+MultiMotionCombiner_castToThisType = _Piavca_base.MultiMotionCombiner_castToThisType
 
 class ChoiceMotion(MultiMotionCombiner):
     __swig_setmethods__ = {}
@@ -5144,6 +5252,9 @@ class ChoiceMotion(MultiMotionCombiner):
         """
         return _Piavca_base.ChoiceMotion_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.ChoiceMotion_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.ChoiceMotion_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.ChoiceMotion_castToThisType)
     def setCurrentChoice(*args): return _Piavca_base.ChoiceMotion_setCurrentChoice(*args)
     def event(*args): return _Piavca_base.ChoiceMotion_event(*args)
     def reset(*args):
@@ -5162,6 +5273,7 @@ class ChoiceMotion(MultiMotionCombiner):
         return weakref_proxy(self)
 ChoiceMotion_swigregister = _Piavca_base.ChoiceMotion_swigregister
 ChoiceMotion_swigregister(ChoiceMotion)
+ChoiceMotion_castToThisType = _Piavca_base.ChoiceMotion_castToThisType
 
 class RandomChoiceMotion(ChoiceMotion):
     __swig_setmethods__ = {}
@@ -5187,6 +5299,9 @@ class RandomChoiceMotion(ChoiceMotion):
         """
         return _Piavca_base.RandomChoiceMotion_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.RandomChoiceMotion_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.RandomChoiceMotion_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.RandomChoiceMotion_castToThisType)
     __swig_getmethods__["convertTo"] = lambda x: _Piavca_base.RandomChoiceMotion_convertTo
     if _newclass:convertTo = staticmethod(_Piavca_base.RandomChoiceMotion_convertTo)
     def addMotion(*args): return _Piavca_base.RandomChoiceMotion_addMotion(*args)
@@ -5205,6 +5320,7 @@ class RandomChoiceMotion(ChoiceMotion):
 
 RandomChoiceMotion_swigregister = _Piavca_base.RandomChoiceMotion_swigregister
 RandomChoiceMotion_swigregister(RandomChoiceMotion)
+RandomChoiceMotion_castToThisType = _Piavca_base.RandomChoiceMotion_castToThisType
 RandomChoiceMotion_convertTo = _Piavca_base.RandomChoiceMotion_convertTo
 
 class ChoiceLoopMotion(RandomTimingsLoop):
@@ -5247,6 +5363,9 @@ class ChoiceLoopMotion(RandomTimingsLoop):
         """
         return _Piavca_base.ChoiceLoopMotion_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.ChoiceLoopMotion_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.ChoiceLoopMotion_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.ChoiceLoopMotion_castToThisType)
     def setCurrentChoice(*args):
         """
         void Piavca::ChoiceLoopMotion::setCurrentChoice(tstring name)
@@ -5264,6 +5383,7 @@ class ChoiceLoopMotion(RandomTimingsLoop):
         return weakref_proxy(self)
 ChoiceLoopMotion_swigregister = _Piavca_base.ChoiceLoopMotion_swigregister
 ChoiceLoopMotion_swigregister(ChoiceLoopMotion)
+ChoiceLoopMotion_castToThisType = _Piavca_base.ChoiceLoopMotion_castToThisType
 
 class RandomLoopMotion(RandomTimingsLoop):
     """
@@ -5305,6 +5425,9 @@ class RandomLoopMotion(RandomTimingsLoop):
         """
         return _Piavca_base.RandomLoopMotion_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.RandomLoopMotion_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.RandomLoopMotion_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.RandomLoopMotion_castToThisType)
     def convertTo(*args):
         """
         static RandomLoopMotion* Piavca::RandomLoopMotion::convertTo(Motion *m)
@@ -5355,6 +5478,7 @@ class RandomLoopMotion(RandomTimingsLoop):
         return weakref_proxy(self)
 RandomLoopMotion_swigregister = _Piavca_base.RandomLoopMotion_swigregister
 RandomLoopMotion_swigregister(RandomLoopMotion)
+RandomLoopMotion_castToThisType = _Piavca_base.RandomLoopMotion_castToThisType
 
 def RandomLoopMotion_convertTo(*args):
   """
@@ -5390,6 +5514,9 @@ class RandomBlend(MultiMotionCombiner):
         """
         return _Piavca_base.RandomBlend_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.RandomBlend_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.RandomBlend_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.RandomBlend_castToThisType)
     def addMotion(*args): return _Piavca_base.RandomBlend_addMotion(*args)
     def shift(*args): return _Piavca_base.RandomBlend_shift(*args)
     def reset(*args):
@@ -5404,6 +5531,7 @@ class RandomBlend(MultiMotionCombiner):
 
 RandomBlend_swigregister = _Piavca_base.RandomBlend_swigregister
 RandomBlend_swigregister(RandomBlend)
+RandomBlend_castToThisType = _Piavca_base.RandomBlend_castToThisType
 
 class RandomAdd(MultiMotionCombiner):
     __swig_setmethods__ = {}
@@ -5429,6 +5557,9 @@ class RandomAdd(MultiMotionCombiner):
         """
         return _Piavca_base.RandomAdd_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.RandomAdd_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.RandomAdd_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.RandomAdd_castToThisType)
     def shift(*args): return _Piavca_base.RandomAdd_shift(*args)
     def reset(*args):
         """
@@ -5442,6 +5573,7 @@ class RandomAdd(MultiMotionCombiner):
 
 RandomAdd_swigregister = _Piavca_base.RandomAdd_swigregister
 RandomAdd_swigregister(RandomAdd)
+RandomAdd_castToThisType = _Piavca_base.RandomAdd_castToThisType
 
 class RandomBlendLoop(RandomTimingsLoop):
     """
@@ -5483,6 +5615,9 @@ class RandomBlendLoop(RandomTimingsLoop):
         """
         return _Piavca_base.RandomBlendLoop_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.RandomBlendLoop_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.RandomBlendLoop_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.RandomBlendLoop_castToThisType)
     def addMotion(*args):
         """
         virtual void Piavca::RandomBlendLoop::addMotion(Motion *mot, float weight)
@@ -5519,6 +5654,7 @@ class RandomBlendLoop(RandomTimingsLoop):
         return weakref_proxy(self)
 RandomBlendLoop_swigregister = _Piavca_base.RandomBlendLoop_swigregister
 RandomBlendLoop_swigregister(RandomBlendLoop)
+RandomBlendLoop_castToThisType = _Piavca_base.RandomBlendLoop_castToThisType
 
 class RandomAddLoop(RandomTimingsLoop):
     """
@@ -5560,6 +5696,9 @@ class RandomAddLoop(RandomTimingsLoop):
         """
         return _Piavca_base.RandomAddLoop_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.RandomAddLoop_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.RandomAddLoop_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.RandomAddLoop_castToThisType)
     def addMotion(*args): return _Piavca_base.RandomAddLoop_addMotion(*args)
     def shift(*args):
         """
@@ -5587,6 +5726,7 @@ class RandomAddLoop(RandomTimingsLoop):
         return weakref_proxy(self)
 RandomAddLoop_swigregister = _Piavca_base.RandomAddLoop_swigregister
 RandomAddLoop_swigregister(RandomAddLoop)
+RandomAddLoop_castToThisType = _Piavca_base.RandomAddLoop_castToThisType
 
 class Proxemics(MultiMotionCombiner):
     __swig_setmethods__ = {}
@@ -5612,6 +5752,9 @@ class Proxemics(MultiMotionCombiner):
         """
         return _Piavca_base.Proxemics_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.Proxemics_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.Proxemics_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.Proxemics_castToThisType)
     def load(*args):
         """
         virtual void Piavca::MotionFilter::load(Avatar *av)
@@ -5643,6 +5786,7 @@ class Proxemics(MultiMotionCombiner):
 
 Proxemics_swigregister = _Piavca_base.Proxemics_swigregister
 Proxemics_swigregister(Proxemics)
+Proxemics_castToThisType = _Piavca_base.Proxemics_castToThisType
 
 class ProxemicsLoop(RandomTimingsLoop):
     """
@@ -5680,6 +5824,9 @@ class ProxemicsLoop(RandomTimingsLoop):
         """
         return _Piavca_base.ProxemicsLoop_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.ProxemicsLoop_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.ProxemicsLoop_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.ProxemicsLoop_castToThisType)
     def setDistance(*args):
         """
         void Piavca::ProxemicsLoop::setDistance(float d)
@@ -5753,6 +5900,7 @@ class ProxemicsLoop(RandomTimingsLoop):
 
 ProxemicsLoop_swigregister = _Piavca_base.ProxemicsLoop_swigregister
 ProxemicsLoop_swigregister(ProxemicsLoop)
+ProxemicsLoop_castToThisType = _Piavca_base.ProxemicsLoop_castToThisType
 
 class LookAtMotion(Motion):
     """
@@ -5790,6 +5938,9 @@ class LookAtMotion(Motion):
         """
         return _Piavca_base.LookAtMotion_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.LookAtMotion_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.LookAtMotion_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.LookAtMotion_castToThisType)
     def isFacial(*args):
         """
         virtual bool Piavca::LookAtMotion::isFacial()
@@ -6028,6 +6179,7 @@ class LookAtMotion(Motion):
         return weakref_proxy(self)
 LookAtMotion_swigregister = _Piavca_base.LookAtMotion_swigregister
 LookAtMotion_swigregister(LookAtMotion)
+LookAtMotion_castToThisType = _Piavca_base.LookAtMotion_castToThisType
 
 class LookAtToFacial(MotionFilter):
     """
@@ -6241,6 +6393,9 @@ class RandomGazeMotion(LoopMotion):
         """
         return _Piavca_base.RandomGazeMotion_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.RandomGazeMotion_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.RandomGazeMotion_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.RandomGazeMotion_castToThisType)
     def clearDirectionTable(*args):
         """
         void Piavca::RandomGazeMotion::clearDirectionTable()
@@ -6397,6 +6552,7 @@ class RandomGazeMotion(LoopMotion):
         return weakref_proxy(self)
 RandomGazeMotion_swigregister = _Piavca_base.RandomGazeMotion_swigregister
 RandomGazeMotion_swigregister(RandomGazeMotion)
+RandomGazeMotion_castToThisType = _Piavca_base.RandomGazeMotion_castToThisType
 
 class ZeroMotion(Motion):
     """
@@ -6434,6 +6590,9 @@ class ZeroMotion(Motion):
         """
         return _Piavca_base.ZeroMotion_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.ZeroMotion_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.ZeroMotion_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.ZeroMotion_castToThisType)
     def isFacial(*args):
         """
         virtual bool Piavca::ZeroMotion::isFacial()
@@ -6522,6 +6681,7 @@ class ZeroMotion(Motion):
         return weakref_proxy(self)
 ZeroMotion_swigregister = _Piavca_base.ZeroMotion_swigregister
 ZeroMotion_swigregister(ZeroMotion)
+ZeroMotion_castToThisType = _Piavca_base.ZeroMotion_castToThisType
 
 class MotionSaver(MotionFilter):
     """
@@ -6559,6 +6719,9 @@ class MotionSaver(MotionFilter):
         """
         return _Piavca_base.MotionSaver_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.MotionSaver_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.MotionSaver_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.MotionSaver_castToThisType)
     def setMotion(*args):
         """
         void Piavca::MotionFilter::setMotion(Motion *mot)
@@ -6627,6 +6790,7 @@ class MotionSaver(MotionFilter):
         return weakref_proxy(self)
 MotionSaver_swigregister = _Piavca_base.MotionSaver_swigregister
 MotionSaver_swigregister(MotionSaver)
+MotionSaver_castToThisType = _Piavca_base.MotionSaver_castToThisType
 
 class MotionParser(_object):
     """
@@ -6787,6 +6951,9 @@ class SubMotion(MotionFilter):
         """
         return _Piavca_base.SubMotion_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.SubMotion_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.SubMotion_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.SubMotion_castToThisType)
     def getMotionLength(*args):
         """
         float SubMotion::getMotionLength() const 
@@ -6857,6 +7024,7 @@ class SubMotion(MotionFilter):
         return weakref_proxy(self)
 SubMotion_swigregister = _Piavca_base.SubMotion_swigregister
 SubMotion_swigregister(SubMotion)
+SubMotion_castToThisType = _Piavca_base.SubMotion_castToThisType
 
 class TimeRangeMotion(MotionFilter):
     """
@@ -6894,6 +7062,9 @@ class TimeRangeMotion(MotionFilter):
         """
         return _Piavca_base.TimeRangeMotion_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.TimeRangeMotion_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.TimeRangeMotion_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.TimeRangeMotion_castToThisType)
     def setStart(*args):
         """
         void TimeRangeMotion::setStart(float s)
@@ -6952,6 +7123,7 @@ class TimeRangeMotion(MotionFilter):
         return weakref_proxy(self)
 TimeRangeMotion_swigregister = _Piavca_base.TimeRangeMotion_swigregister
 TimeRangeMotion_swigregister(TimeRangeMotion)
+TimeRangeMotion_castToThisType = _Piavca_base.TimeRangeMotion_castToThisType
 
 class TimeWarp(MotionFilter):
     """
@@ -6991,6 +7163,9 @@ class TimeWarp(MotionFilter):
         """
         return _Piavca_base.TimeWarp_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.TimeWarp_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.TimeWarp_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.TimeWarp_castToThisType)
     def getMotionLength(*args):
         """
         virtual float Piavca::TimeWarp::getMotionLength() const 
@@ -7049,6 +7224,7 @@ class TimeWarp(MotionFilter):
         return weakref_proxy(self)
 TimeWarp_swigregister = _Piavca_base.TimeWarp_swigregister
 TimeWarp_swigregister(TimeWarp)
+TimeWarp_castToThisType = _Piavca_base.TimeWarp_castToThisType
 
 class DiadicGazeMotion(RandomGazeMotion):
     """
@@ -7091,6 +7267,9 @@ class DiadicGazeMotion(RandomGazeMotion):
         """
         return _Piavca_base.DiadicGazeMotion_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.DiadicGazeMotion_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.DiadicGazeMotion_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.DiadicGazeMotion_castToThisType)
     def setTalking(*args):
         """
         void Piavca::DiadicGazeMotion::setTalking(talkingstate t)
@@ -7239,6 +7418,7 @@ class DiadicGazeMotion(RandomGazeMotion):
         return weakref_proxy(self)
 DiadicGazeMotion_swigregister = _Piavca_base.DiadicGazeMotion_swigregister
 DiadicGazeMotion_swigregister(DiadicGazeMotion)
+DiadicGazeMotion_castToThisType = _Piavca_base.DiadicGazeMotion_castToThisType
 
 class OverrideMotion(TwoMotionCombiner):
     __swig_setmethods__ = {}
@@ -7262,6 +7442,9 @@ class OverrideMotion(TwoMotionCombiner):
         """
         return _Piavca_base.OverrideMotion_clone(*args)
 
+    def getClassName(*args): return _Piavca_base.OverrideMotion_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.OverrideMotion_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.OverrideMotion_castToThisType)
     def getFloatValueAtTimeInternal(*args):
         """
         virtual float Piavca::Motion::getFloatValueAtTimeInternal(int trackId, float time)=0
@@ -7296,6 +7479,7 @@ class OverrideMotion(TwoMotionCombiner):
     __del__ = lambda self : None;
 OverrideMotion_swigregister = _Piavca_base.OverrideMotion_swigregister
 OverrideMotion_swigregister(OverrideMotion)
+OverrideMotion_castToThisType = _Piavca_base.OverrideMotion_castToThisType
 
 
 

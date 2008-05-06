@@ -36,6 +36,7 @@
 
 #include "PiavcaDefs.h"
 //#include "TimeCallback.h"
+//#include "Motion.h"
 
 #include <vector>
 #include <map>
@@ -274,7 +275,7 @@ namespace Piavca
 		 *  must delete it (of course ownership can be given to an avatar
 		 *  by loading it)
 		 */
-		Motion *getMotion(tstring motionName);
+		Piavca::Motion *getMotion(tstring motionName);
 
         //! get motion names
         PIAVCA_EXPORT std::vector<std::string> getMotionNames(int number = 0);
@@ -297,8 +298,8 @@ namespace Piavca
 		};
 
 		//! get a named avatar
-		Avatar *getAvatar(tstring avatarName);
-		std::vector<tstring> getAvatarNames();
+		Avatar *getAvatar(Piavca::tstring avatarName);
+		std::vector<Piavca::tstring> getAvatarNames();
 
 		//! get the number of avatars 
 		int numAvatars () 

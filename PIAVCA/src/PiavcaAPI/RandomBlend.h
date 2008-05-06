@@ -61,7 +61,14 @@ public:
 	RandomBlend(const RandomBlend &rbl)
 		:MultiMotionCombiner(rbl), weights(rbl.weights) {};
 	~RandomBlend(){};
+	
 	virtual Motion *clone(){return new RandomBlend(*this);};
+
+	//! returns the name of the type
+	Piavca::tstring getClassName(){return "RandomBlend";};
+
+	//! casts a motion to this type
+	static RandomBlend *castToThisType(Motion *m){return dynamic_cast<RandomBlend *>(m);};
 
 	virtual void addMotion(Motion *mot)
 	{

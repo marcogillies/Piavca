@@ -91,6 +91,12 @@ public:
 
 	virtual Motion *clone(){return new MaskedMotion(*this);};
 
+	//! returns the name of the type
+	Piavca::tstring getClassName(){return "MaskedMotion";};
+
+	//! casts a motion to this type
+	static MaskedMotion *castToThisType(Motion *m){return dynamic_cast<MaskedMotion *>(m);};
+
 	void setMask(const MotionMask &_mask){mask = _mask;};
 
 	void addToMask(int trackId){mask.setMask(trackId, true);};

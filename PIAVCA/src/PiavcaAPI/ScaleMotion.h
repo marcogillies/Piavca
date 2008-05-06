@@ -58,6 +58,12 @@ namespace Piavca
 			:MotionFilter(sm), scaleFactor(sm.scaleFactor){};
 	
 		virtual Motion *clone(){return new ScaleMotion(*this);};
+
+		//! returns the name of the type
+		Piavca::tstring getClassName(){return "ScaleMotion";};
+
+		//! casts a motion to this type
+		static ScaleMotion *castToThisType(Motion *m){return dynamic_cast<ScaleMotion *>(m);};
 	    
 	    //! calculates the values of a keyframe
 	    PIAVCA_EXPORT virtual float  getFloatValueAtTimeInternal (int trackId, float time)

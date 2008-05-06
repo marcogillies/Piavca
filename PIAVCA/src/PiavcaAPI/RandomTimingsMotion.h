@@ -69,7 +69,15 @@ public:
 		};
 	
 	~RandomTimingsMotion(){};
+	
 	virtual Motion *clone(){return new RandomTimingsMotion(*this);};
+
+	//! returns the name of the type
+	Piavca::tstring getClassName(){return "RandomTimingsMotion";};
+
+	//! casts a motion to this type
+	static RandomTimingsMotion *castToThisType(Motion *m){return dynamic_cast<RandomTimingsMotion *>(m);};
+	
 	
 	//! sets the minimum and maximum times that can be generated
 	virtual void setTimingParams(float minTimeScale, float maxTimeScale)

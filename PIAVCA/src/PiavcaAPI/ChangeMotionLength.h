@@ -65,6 +65,12 @@ namespace Piavca
 	
 		virtual Motion *clone(){return new ChangeMotionLength(*this);};
 
+		//! returns the name of the type
+		Piavca::tstring getClassName(){return "ChangeMotionLength";};
+
+		//! casts a motion to this type
+		static ChangeMotionLength *castToThisType(Motion *m){return dynamic_cast<ChangeMotionLength *>(m);};
+
 		void setMotionLength(float len)
 		{
 			length = len;

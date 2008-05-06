@@ -23,8 +23,8 @@ class TimeLine(wx.Panel):
 		self.buffer = wx.EmptyBitmap(size.width, size.height)
 		dc = wx.BufferedDC(None, self.buffer)
 		dc.SetBackground(wx.Brush("white"))
-		#dc.CLear()
-		dc.DrawRectangle(0, 0, size.width, size.height)
+		dc.Clear()
+		#dc.DrawRectangle(0, 0, size.width, size.height)
 		self.drawTime(dc)
 		
 	def drawTime(self,dc):

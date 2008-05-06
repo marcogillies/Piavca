@@ -102,7 +102,14 @@ public:
 		followPosition(false)
 		{}
 	~DiadicGazeMotion(){};
+	
 	virtual Motion *clone(){return new DiadicGazeMotion(*this);};
+
+	//! returns the name of the type
+	Piavca::tstring getClassName(){return "DiadicGazeMotion";};
+
+	//! casts a motion to this type
+	static DiadicGazeMotion *castToThisType(Motion *m){return dynamic_cast<DiadicGazeMotion *>(m);};
 	
 	void setTalking(talkingstate t)           
 	{

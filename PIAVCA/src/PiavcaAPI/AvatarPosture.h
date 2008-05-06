@@ -56,6 +56,12 @@ namespace Piavca
 	
 		virtual Motion *clone(){return new AvatarPosture(*this);};
 
+		//! returns the name of the type
+		Piavca::tstring getClassName(){return "AvatarPosture";};
+
+		//! casts a motion to this type
+		static AvatarPosture *castToThisType(Motion *m){return dynamic_cast<AvatarPosture *>(m);};
+
 		virtual void load(Avatar *av);
 
 		void getPostureFromAvatar(Avatar *av);

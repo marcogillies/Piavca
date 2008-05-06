@@ -57,6 +57,12 @@ namespace Piavca
 	
 		virtual Motion *clone(){return new Sequence(*this);};
 
+		//! returns the name of the type
+		Piavca::tstring getClassName(){return "Sequence";};
+
+		//! casts a motion to this type
+		static Sequence *castToThisType(Motion *m){return dynamic_cast<Sequence *>(m);};
+
 		virtual void setStartTime(float time);
 
 		//! gets the motion length (length of first motion + length of second motion)

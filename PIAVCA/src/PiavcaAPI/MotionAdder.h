@@ -56,6 +56,12 @@ namespace Piavca
 
 		virtual Motion *clone(){return new MotionAdder(*this);};
 
+		//! returns the name of the type
+		Piavca::tstring getClassName(){return "MotionAdder";};
+
+		//! casts a motion to this type
+		static MotionAdder *castToThisType(Motion *m){return dynamic_cast<MotionAdder *>(m);};
+
 		//! this is a scale factor applied to the second motion
 		void setScaleSecond(float s){scaleSecond = s;};
 	    

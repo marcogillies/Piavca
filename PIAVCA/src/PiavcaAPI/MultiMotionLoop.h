@@ -87,7 +87,15 @@ public:
 		for(MotionVec::size_type i = 0; i < mots.size(); i++)
 			mots[i]->Dispose();
 	}
+	
 	virtual Motion *clone(){return new MultiMotionLoop(*this);};
+
+	//! returns the name of the type
+	Piavca::tstring getClassName(){return "MultiMotionLoop";};
+
+	//! casts a motion to this type
+	static MultiMotionLoop *castToThisType(Motion *m){return dynamic_cast<MultiMotionLoop *>(m);};
+
 
 	void printInfo()
 	{

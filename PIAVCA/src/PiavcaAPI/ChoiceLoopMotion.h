@@ -66,7 +66,14 @@ public:
 		choicemotion = dynamic_cast<ChoiceMotion *>(getMotion());
 	};
 	~ChoiceLoopMotion(){};
+	
 	virtual Motion *clone(){return new ChoiceLoopMotion(*this);};
+
+	//! returns the name of the type
+	Piavca::tstring getClassName(){return "ChoiceLoopMotion";};
+
+	//! casts a motion to this type
+	static ChoiceLoopMotion *castToThisType(Motion *m){return dynamic_cast<ChoiceLoopMotion *>(m);};
 
 
 	//! sets which motion is currently being played

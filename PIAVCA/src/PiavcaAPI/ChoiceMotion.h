@@ -57,7 +57,14 @@ public:
 	ChoiceMotion(const ChoiceMotion &cl)
 		:MultiMotionCombiner(cl), currentChoice(cl.currentChoice){};
 	~ChoiceMotion(){};
+	
 	virtual Motion *clone(){return new ChoiceMotion(*this);};
+
+	//! returns the name of the type
+	Piavca::tstring getClassName(){return "ChoiceMotion";};
+
+	//! casts a motion to this type
+	static ChoiceMotion *castToThisType(Motion *m){return dynamic_cast<ChoiceMotion *>(m);};
 
 
 	//! sets which motion is currently being played

@@ -62,6 +62,12 @@ namespace Piavca
 	
 		virtual Motion *clone(){return new MotionSaver(*this);};
 
+		//! returns the name of the type
+		Piavca::tstring getClassName(){return "MotionSaver";};
+
+		//! casts a motion to this type
+		static MotionSaver *castToThisType(Motion *m){return dynamic_cast<MotionSaver *>(m);};
+
 		void setMotion(Motion *mot);
 	
 	    //! calculates the values of the filter motion on and saves them to a KeyframeMotion

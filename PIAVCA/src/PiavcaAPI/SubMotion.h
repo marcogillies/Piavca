@@ -53,6 +53,12 @@ namespace Piavca
 	
 		virtual Motion *clone();
 
+		//! returns the name of the type
+		Piavca::tstring getClassName(){return "SubMotion";};
+
+		//! casts a motion to this type
+		static SubMotion *castToThisType(Motion *m){return dynamic_cast<SubMotion *>(m);};
+
 		//! gets the length of the motion in seconds
 		virtual float getMotionLength() const;
 

@@ -82,6 +82,13 @@ namespace Piavca
 			return new MotionTransition(*this);
 		}
 
+		//! returns the name of the type
+		Piavca::tstring getClassName(){return "MotionTransition";};
+
+		//! casts a motion to this type
+		static MotionTransition *castToThisType(Motion *m){return dynamic_cast<MotionTransition *>(m);};
+
+
 		static const int MotionStart = -1;
 		static const int MotionEnd = -1;
 

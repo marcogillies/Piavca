@@ -56,6 +56,12 @@ namespace Piavca
 			:TwoMotionCombiner(su){};
 
 		virtual Motion *clone(){return new Subtract(*this);};
+
+		//! returns the name of the type
+		Piavca::tstring getClassName(){return "Subtract";};
+
+		//! casts a motion to this type
+		static Subtract *castToThisType(Motion *m){return dynamic_cast<Subtract *>(m);};
 	    
 		//! calculates the values of a keyframe
 		/*!  The results is  mot1 - mot2

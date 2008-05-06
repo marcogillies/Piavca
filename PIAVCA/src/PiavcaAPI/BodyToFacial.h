@@ -56,6 +56,12 @@ namespace Piavca
 			:MotionFilter(sm), facial(sm.facial){};
 	
 		virtual Motion *clone(){return new BodyToFacial(*this);};
+
+		//! returns the name of the type
+		Piavca::tstring getClassName(){return "BodyToFacial";};
+
+		//! casts a motion to this type
+		static BodyToFacial *castToThisType(Motion *m){return dynamic_cast<BodyToFacial *>(m);};
 	    
 		virtual bool isFacial(){return facial;};
 

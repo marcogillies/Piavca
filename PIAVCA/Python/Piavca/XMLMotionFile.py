@@ -229,7 +229,40 @@ def readMotions(motions):
 	for motion in motions:
 		if motion.nodeType == minidom.Node.ELEMENT_NODE:
 			print "current node", motion.nodeName
-			if motion.nodeName == "Motion":
+			if motion.nodeName == "Avatar":
+				name = str(motion.getAttribute("name"))
+				if name == "":
+					name = str(motion.getAttribute("Name"))
+				if name == "":
+					print "Avatar statement without a name"
+					
+				position = str(motion.getAttribute("position"))
+				if position == "":
+					position = str(motion.getAttribute("Position"))
+				if position != "":
+					position = str(position).strip()
+					position = stringToValueList(position)
+					position = ValueListToVec(position)
+				else:
+					position = Piavca.Vec()
+					
+				rotation = str(motion.getAttribute("rotation"))
+				if rotation == "":
+					rotation = str(motion.getAttribute("Rotation"))
+				if rotation != "":
+					rotation = str(rotation).strip()
+					rotation = stringToValueList(rotation)
+					rotation = ValueListToQuat(rotation)
+				else:
+					rotation = Piavca.Quat()
+					
+				avatar = Piavca.Avatar(name)
+				print "loaded avatar", name, position, rotation
+				avatar.setRootPosition(position)
+				avatar.setRootOrientation(rotation)
+				
+				
+			elif motion.nodeName == "Motion":
 				#print "found a motion statement", motion
 				for i in range(motion.attributes.length):
 					#print motion.attributes.item(i).name, motion.attributes.item(i).nodeValue
@@ -460,12 +493,20 @@ def saveMotions(filename, motions, element = None, doc = None):
 		if hasattr(motion, "getNumMotions"):
 			n = motion.getNumMotions()
 			for i in range(n):
-				motionlist.append(motion.getMotionByIndex(i))
+				m = motion.getMotionByIndex(i)
+				m = Piavca.getRealMotionType(m)
+				motionlist.append(m)
 		elif hasattr(motion, "getMotion1"):
-			motionlist.append(motion.getMotion1())
-			motionlist.append(motion.getMotion2())
+			m = motion.getMotion1()
+			m = Piavca.getRealMotionType(m)
+			motionlist.append(MotionProxy(m))
+			m = motion.getMotion2()
+			m = Piavca.getRealMotionType(m)
+			motionlist.append(MotionProxy(m))
 		elif hasattr(motion, "getMotion"):
-			motionlist.append(motion.getMotion())
+			m = motion.getMotion()
+			m = Piavca.getRealMotionType(m)
+			motionlist.append(MotionProxy(m))
 				
 		for m in motionlist:
 			if m.getName() != "":

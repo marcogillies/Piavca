@@ -79,6 +79,12 @@ namespace Piavca
 	
 		virtual Motion *clone(){return new Reposition(*this);};
 
+		//! returns the name of the type
+		Piavca::tstring getClassName(){return "Reposition";};
+
+		//! casts a motion to this type
+		static Reposition *castToThisType(Motion *m){return dynamic_cast<Reposition *>(m);};
+
 		//! Sets the new starting position of the motion
 	    void setStartPosition(Vec pos)
 		{

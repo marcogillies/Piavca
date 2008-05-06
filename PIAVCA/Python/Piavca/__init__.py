@@ -67,7 +67,7 @@ from PiavcaWXApp import getWXApp, setWXApp
 	
 Core.init()
 
-from CoreProxy import getTime, loadMotion, getMotion
+from CoreProxy import getTime, loadMotion, getMotion, getRealMotionType
 
 def render ():
 	core = Core.getCore()

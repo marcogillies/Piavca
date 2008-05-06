@@ -59,6 +59,12 @@ namespace Piavca
 	
 		virtual Motion *clone(){return new ScaleMotionSpeed(*this);};
 
+		//! returns the name of the type
+		Piavca::tstring getClassName(){return "ScaleMotionSpeed";};
+
+		//! casts a motion to this type
+		static ScaleMotionSpeed *castToThisType(Motion *m){return dynamic_cast<ScaleMotionSpeed *>(m);};
+
 		//! gets the length of the motion in seconds
 		virtual float getMotionLength() const
 		{

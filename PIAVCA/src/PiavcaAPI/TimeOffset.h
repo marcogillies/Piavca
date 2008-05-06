@@ -51,6 +51,12 @@ namespace Piavca
 	
 		virtual Motion *clone(){return new TimeOffset(*this);};
 
+		//! returns the name of the type
+		Piavca::tstring getClassName(){return "TimeOffset";};
+
+		//! casts a motion to this type
+		static TimeOffset *castToThisType(Motion *m){return dynamic_cast<TimeOffset *>(m);};
+
 		virtual void setStartTime(float time)
 		{
 			Motion::setStartTime(time);

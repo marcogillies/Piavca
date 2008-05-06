@@ -74,7 +74,14 @@ public:
 		proxemics = dynamic_cast<Proxemics *>(getMotion());
 	};
 	~ProxemicsLoop(){};
+	
 	virtual Motion *clone(){return new ProxemicsLoop(*this);};
+
+	//! returns the name of the type
+	Piavca::tstring getClassName(){return "ProxemicsLoop";};
+
+	//! casts a motion to this type
+	static ProxemicsLoop *castToThisType(Motion *m){return dynamic_cast<ProxemicsLoop *>(m);};
 
 	//! sets the desired distance to another avatar
 	void setDistance (float d){proxemics->setDistance(d);};

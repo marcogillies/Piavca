@@ -142,7 +142,14 @@ public:
 		setMotion(mot);
 	}
 	~RandomGazeMotion(){};
+	
 	virtual Motion *clone(){return new RandomGazeMotion(*this);};
+
+	//! returns the name of the type
+	Piavca::tstring getClassName(){return "RandomGazeMotion";};
+
+	//! casts a motion to this type
+	static RandomGazeMotion *castToThisType(Motion *m){return dynamic_cast<RandomGazeMotion *>(m);};
 
 	void clearDirectionTable() { directionTable.clear(); };
 	void addDirection(const Vec &dir, float prob) { directionTable.push_back(std::make_pair(dir, prob)); };

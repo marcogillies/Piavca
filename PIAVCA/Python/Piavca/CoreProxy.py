@@ -36,7 +36,10 @@
 # ***** END LICENSE BLOCK *****
 
 #import Piavca
-from Piavca_base import Core
+import Piavca_base
+from Piavca_base import Core, Motion
+
+import types
 
 def getTime():
 	return Core.getCore().getTime()
@@ -49,12 +52,26 @@ def loadMotion(name, motion):
 	#print "proxy core", Core.getCore()
 	Core.getCore().loadMotion(name, motion)
 	
+def getRealMotionType(motion):
+	if motion != None and type(motion) == Motion:
+		typeName = motion.getClassName()
+		print "typename", typeName
+		motionType = getattr(Piavca_base, typeName)
+		print motionType
+		if type(motionType) == types.TypeType and issubclass(motionType, Motion):
+				return motionType.castToThisType(motion)
+	return motion
+	
 def getMotion(name):
+	print "getMotion"
 	print _motionLookup.keys()
 	print name
 	if _motionLookup.has_key(name):
 		print "core proxy: found motion,", name
 		return _motionLookup[name]
 	else:
-		return Core.getCore().getMotion(name)
+		motion = Core.getCore().getMotion(name)
+		motion.Reference()
+		motion.thisown = False
+		return getRealMotionType(motion)
 		

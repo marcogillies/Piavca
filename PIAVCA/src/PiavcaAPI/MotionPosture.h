@@ -56,6 +56,12 @@ namespace Piavca
 	
 		virtual Motion *clone(){return new MotionPosture(*this);};
 
+		//! returns the name of the type
+		Piavca::tstring getClassName(){return "MotionPosture";};
+
+		//! casts a motion to this type
+		static MotionPosture *castToThisType(Motion *m){return dynamic_cast<MotionPosture *>(m);};
+
 		void getPostureFromMotion(Motion *mot, float time);
 	};
 

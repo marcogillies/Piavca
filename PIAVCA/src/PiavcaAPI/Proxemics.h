@@ -134,7 +134,14 @@ public:
 		
 		};
 	~Proxemics(){};
+	
 	virtual Motion *clone(){return new Proxemics(*this);};
+
+	//! returns the name of the type
+	Piavca::tstring getClassName(){return "Proxemics";};
+
+	//! casts a motion to this type
+	static Proxemics *castToThisType(Motion *m){return dynamic_cast<Proxemics *>(m);};
 	
 	//! called when the motion is loaded into an avatar
 	virtual void load(Avatar *av)

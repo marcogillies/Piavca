@@ -60,6 +60,12 @@ namespace Piavca
 		virtual ~TwoMotionCombiner();
 	
 		virtual Motion *clone(){return new TwoMotionCombiner(*this);};
+
+		//! returns the name of the type
+		Piavca::tstring getClassName(){return "TwoMotionCombiner";};
+
+		//! casts a motion to this type
+		static TwoMotionCombiner *castToThisType(Motion *m){return dynamic_cast<TwoMotionCombiner *>(m);};
 	
 		void printInfo();
 

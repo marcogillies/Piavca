@@ -25,15 +25,22 @@ class PiavcaDesigner(wx.Frame):
 	listwidth=300
 	
 	
-	def __init__(self, filename, parent=None, id=-1, size=(1000, 600)):
+	def __init__(self, parent=None, id=-1, size=(1000, 600)):
 		
-		self.backend = BackEnd(self, filename)
+		self.backend = BackEnd(self)
 		
 		wx.Frame.__init__(self, parent, id, "Piavca Designer")
 		self.statusbar = self.CreateStatusBar()
+		
+		
 		menubar = wx.MenuBar()
 		menu1 = wx.Menu()
-		menu1.Append(wx.NewId(), "Open", "")
+		
+		open = menu1.Append(wx.NewId(), "Open", "")
+		self.Bind(wx.EVT_MENU, self.Open, open)
+		quit = menu1.Append(wx.NewId(), "Quit", "")
+		self.Bind(wx.EVT_MENU, self.Quit, quit)
+		
 		menubar.Append(menu1, "&File")
 		self.SetMenuBar(menubar)
 		
@@ -80,14 +87,42 @@ class PiavcaDesigner(wx.Frame):
 		self.splitter2.SetSashPosition(self.viewerwidth)
 		#self.SendSizeEvent((1000,500))
 		
+		
 		self.update()
+		
+	def Open(self, event):
+		dialog_return = openFileDialog (wildcard="XML Motion files (*.xml)|*.xml|Cal3d Character files files (*.cfg)|*.cfg")
+		path = dialog_return.paths[0].encode("latin-1")
+	
+		print path
+		pathend = path.rfind("\\")
+		if pathend < 0:
+			pathend = path.rfind("/")
+		if pathend < 0:
+			filename = path
+		else:
+			filename = path[pathend+1:]
+			path = path[:pathend+1]
+			if path != "":
+				os.chdir(path)
+		print filename, path
+		self.backend.readfile(filename)
+		
+	def Quit(self,event):
+		self.Close()
 		
 	def update(self):
 		for child in self.children:
 			child.update()
+		# this line is a bit of a hack, its the only way I could get the 
+		# heirarchy view to update its layout properly
+		self.splitter2.SetSashPosition(self.splitter2.GetSashPosition())
+		print "finished update"
 		
 	def OnIdle(self, event):
 		self.backend.timeStep()
+		#self.Layout()
+		#self.Refresh()
 
 if __name__ == "__main__":
 	app = Piavca.getWXApp()
@@ -96,24 +131,24 @@ if __name__ == "__main__":
 	#pd.Show()
 	
 		
-	if len(sys.argv) > 1:
-		path = sys.argv[1]
-	else:
-		dialog_return = openFileDialog (wildcard="*.cfg")
-		path = dialog_return.paths[0].encode("latin-1")
-	
-	print path
-	pathend = path.rfind("\\")
-	if pathend < 0:
-		pathend = path.rfind("/")
-	if pathend < 0:
-		filename = path
-	else:
-		filename = path[pathend+1:]
-		path = path[:pathend+1]
-		if path != "":
-			os.chdir(path)
-	print filename, path
+#	if len(sys.argv) > 1:
+#		path = sys.argv[1]
+#	else:
+#		dialog_return = openFileDialog (wildcard="Cal3d Character files files (*.cfg)|*.cfg|XML Motion files (*.xml)|*.xml")
+#		path = dialog_return.paths[0].encode("latin-1")
+#	
+#	print path
+#	pathend = path.rfind("\\")
+#	if pathend < 0:
+#		pathend = path.rfind("/")
+#	if pathend < 0:
+#		filename = path
+#	else:
+#		filename = path[pathend+1:]
+#		path = path[:pathend+1]
+#		if path != "":
+#			os.chdir(path)
+#	print filename, path
 #	if filename[-4:] == ".cfg":
 #		filename = filename[:-4]
 #	print filename
@@ -148,6 +183,6 @@ if __name__ == "__main__":
 #	
 #	avatar.playMotionDirect(mot)
 
-	pd = PiavcaDesigner(filename)
+	pd = PiavcaDesigner()
 	
 	app.MainLoop()

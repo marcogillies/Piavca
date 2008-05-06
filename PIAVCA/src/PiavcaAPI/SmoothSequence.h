@@ -83,6 +83,12 @@ namespace Piavca
 	
 		virtual Motion *clone(){return new SmoothSequence(*this);};
 
+		//! returns the name of the type
+		Piavca::tstring getClassName(){return "SmoothSequence";};
+
+		//! casts a motion to this type
+		static SmoothSequence *castToThisType(Motion *m){return dynamic_cast<SmoothSequence *>(m);};
+
 		void create();
 
 		virtual void setMaintainY(bool b){maintainY = b;};
