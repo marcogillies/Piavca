@@ -134,6 +134,33 @@ public:
 			Piavca::Error(_T("invalid index"));
 		return mots[index];
 	}
+	
+	Motion *getMotion(int index)
+	{
+		getMotionByIndex(index);
+	}
+	
+	Motion *getMotion(tstring motionName)
+	{
+		int i = getMotionIndex(motionName);
+		if (i < 0)
+			return NULL;
+		else
+			return getMotionByIndex(i);
+	}
+	
+	void removeMotionByIndex(int index)
+	{
+		mots[index]->Dispose();
+		mots.erase(mots.begin() + index);
+	}
+	
+	void clear()
+	{
+		for (int i = 0; i < mots.size(); i++)
+			mots[i]->Dispose();
+		mots.clear();
+	}
 
 	//! finds the first submotion with a given name
 	virtual Motion *findSub(tstring nm)

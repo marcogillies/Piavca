@@ -55,7 +55,7 @@ def stringToValueList(s):
 		valuelist = valuestripped.split(";")
 		if len(valuelist) <= 1:
 			valuelist = valuestripped.split()
-	valuelist = [v.strip() for v in valuelist]
+	valuelist = [v.strip().strip("[]()") for v in valuelist]
 	return valuelist
 	
 def ValueListToVec(valuelist):
@@ -260,10 +260,18 @@ def readMotions(motions):
 				print "loaded avatar", name, position, rotation
 				avatar.setRootPosition(position)
 				avatar.setRootOrientation(rotation)
-				
+			
+			
+			elif motion.nodeName == "Event":
+				name = str(motion.getAttribute("name"))
+				if name == "":
+					name = str(motion.getAttribute("Name"))
+				if name == "":
+					print "Event statement without a name"
+				Piavca.addEvent(name)
 				
 			elif motion.nodeName == "Motion":
-				#print "found a motion statement", motion
+				print "found a motion statement", motion
 				for i in range(motion.attributes.length):
 					#print motion.attributes.item(i).name, motion.attributes.item(i).nodeValue
 					unknownAttrs=[]
@@ -335,22 +343,24 @@ def readMotions(motions):
 							
 			else:
 				try:
+					print "other motion types", motion.nodeName
 					cl = getattr(Piavca, motion.nodeName)
 					if type(cl) == types.TypeType and issubclass(cl, Piavca.Motion):
-						#print "found motion type", motion
+						print "found motion type", motion.nodeName
 						mot = cl()
 						if mot == None:
-							raise "could not create motion " + name
+							raise "could not create motion " + motion.nodeName
 							continue
 						unknownAttrs=[]
 						for i in range(motion.attributes.length):
 							if str(motion.attributes.item(i).name) == "name" or str(motion.attributes.item(i).name) == "Name":
 								name = str(motion.attributes.item(i).nodeValue)
+								print "========================motion name", name
 								Piavca.loadMotion(name, mot)
 								continue
 							attrName = motion.attributes.item(i).name
 							attrValue = motion.attributes.item(i).nodeValue
-							#print attrName, attrValue
+							print attrName, attrValue
 							if not setAttribute(mot, attrName, attrValue):
 								unknownAttrs.append((attrName, attrValue))
 						children, elements = readMotions(motion.childNodes)
@@ -444,7 +454,7 @@ def readMotions(motions):
 	print [mot[0].getName() for mot in mots]
 	return mots, element_list
 
-def saveMotions(filename, motions, element = None, doc = None):
+def saveMotions(filename, motions, element = None, doc = None, avatars=[], events=[]):
 	writeout = 0
 	if element == None:
 		impl = minidom.getDOMImplementation()
@@ -457,6 +467,22 @@ def saveMotions(filename, motions, element = None, doc = None):
 	
 	members_to_ignore = ["getQuatValueAtTime", "getVecValueAtTime", "getFloatValueAtTime", "getQuatValueAtTimeInternal", 
 						"getVecValueAtTimeInternal", "getFloatValueAtTimeInternal", "getMotionLength"]
+	
+	for avatar in avatars:
+		el = doc.createElement("Avatar")
+		el.setAttribute("name", avatar.getName())
+		el.setAttribute("position", str(avatar.getRootPosition()))
+		q = avatar.getRootOrientation()
+		angle = q.getAngle()
+		axis = q.getAxis()
+		el.setAttribute("rotation", str(angle) + " " + str(axis))
+		element.appendChild(el)
+		
+	
+	for event in events:
+		el = doc.createElement("Event")
+		el.setAttribute("name", event)
+		element.appendChild(el)
 	
 	for motion in motions:
 		motiontype = None
@@ -471,6 +497,9 @@ def saveMotions(filename, motions, element = None, doc = None):
 		#print name, "is a", motiontypename
 		if motiontype == None:
 			print "Motion is of unknown type"
+			continue
+		if motiontype == Piavca.KeyframeMotion:
+			print "don't save keyframe motions"
 			continue
 		print motion.getName(), motiontypename
 		el = doc.createElement(motiontypename)
@@ -494,19 +523,24 @@ def saveMotions(filename, motions, element = None, doc = None):
 			n = motion.getNumMotions()
 			for i in range(n):
 				m = motion.getMotionByIndex(i)
+				if m == None:
+					continue
 				m = Piavca.getRealMotionType(m)
 				motionlist.append(m)
 		elif hasattr(motion, "getMotion1"):
 			m = motion.getMotion1()
-			m = Piavca.getRealMotionType(m)
-			motionlist.append(MotionProxy(m))
+			if m != None:
+				m = Piavca.getRealMotionType(m)
+				motionlist.append(m)
 			m = motion.getMotion2()
-			m = Piavca.getRealMotionType(m)
-			motionlist.append(MotionProxy(m))
+			if m != None:
+				m = Piavca.getRealMotionType(m)
+				motionlist.append(m)
 		elif hasattr(motion, "getMotion"):
 			m = motion.getMotion()
-			m = Piavca.getRealMotionType(m)
-			motionlist.append(MotionProxy(m))
+			if m != None:
+				m = Piavca.getRealMotionType(m)
+				motionlist.append(m)
 				
 		for m in motionlist:
 			if m.getName() != "":
@@ -521,6 +555,20 @@ def saveMotions(filename, motions, element = None, doc = None):
 	file = open(filename, "w")
 	doc.writexml(file, "", "\t", "\n")
 	file.close()
+	
+def saveAll(filename):
+	core = Piavca.Core.getCore()
+	motions = core.getMotionNames()
+	print motions
+	motions = [Piavca.getMotion(motion) for motion in motions]
+	
+	avatars = core.getAvatarNames()
+	print avatars
+	avatars = [core.getAvatar(avatar) for avatar in avatars]
+	
+	events = Piavca.getEvents()
+	
+	saveMotions(filename, motions=motions, avatars=avatars, events=events)
 	
 def writeOutMotionTypes(filename):
 	file = open(filename, "w")

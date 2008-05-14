@@ -87,6 +87,7 @@ class SoundEngine:
                 rate = wavfile.getframerate(),
                 output = True)
 			self.bytes_per_second = wavfile.getsampwidth()*wavfile.getframerate()*wavfile.getnchannels()
+			self.sample_size = wavfile.getsampwidth()*wavfile.getnchannels()
 		elif pymediapresent :
 			if self.format < 0:
 				self.format = sound.AFMT_S16_LE
@@ -127,6 +128,12 @@ class SoundEngine:
 		except:
 			return 0
 		
+	def getClipLength(self, name):
+		try:
+			return float(len(self.sounds[name]))/self.bytes_per_second
+		except:
+			return 0
+		
 	def updateAudio(self):
 		if self.currentAudio == None or not pyaudiopresent:
 			return
@@ -155,6 +162,48 @@ class SoundEngine:
 			left = self.output.getLeft()
 		print "time left", left
 		time.sleep(left + 1)
+		
+	def updateRandomAccess(self, time):
+		if pyaudiopresent:
+			if time < 0.000001:
+				return 
+			space = self.output.get_write_available()
+			space = int(space *self.channels * self.samplewidth)
+			if space > self.bytes_per_second:
+				space = self.bytes_per_second
+			diff = self.currentTime - time
+			if diff > 2.0:
+				self.currentTime = time
+			if diff > 0.5:
+				return 
+			if diff < -0.5:
+				self.currentTime = time
+			#if abs(time - self.currentTime) > 1.01:
+			#	self.currentTime = time
+			currentTimeInBytes = int(self.currentTime*self.bytes_per_second)
+			currentTimeInBytes -= currentTimeInBytes%self.sample_size
+			if space >= len(self.currentRandomAccessAudio[currentTimeInBytes:]):
+				towrite = self.currentRandomAccessAudio[currentTimeInBytes:]
+			else:
+				towrite = self.currentRandomAccessAudio[currentTimeInBytes:currentTimeInBytes+space]
+			print "audio update", space, self.bytes_per_second, currentTimeInBytes, self.currentTime, time, len(towrite)
+			self.output.write(towrite)
+			self.currentTime += float(space)/self.bytes_per_second
+		
+	def playRandomAccess(self, name):
+		print name, len(self.sounds[name])
+		#self.output.stop()
+		#s = copy(self.sounds[name])
+		if pyaudiopresent:
+			self.currentRandomAccessAudio = self.sounds[name]
+			self.currentTime = 0
+			#self.updateAudio()
+			left = len(self.sounds[name])/self.bytes_per_second
+		elif pymediapresent :
+			self.output.play(self.sounds[name])
+			left = self.output.getLeft()
+		print "time left", left
+		time.sleep(left + 1)
 			
 	def say(self, text):
 		if ttsAvailable:
@@ -163,6 +212,14 @@ class SoundEngine:
 			print "no Text-To-Speech available"
 			print text
 
+_soundEngine = None
+
+def getSoundEngine(samplerate = 44100, channels = 2, format = -1, sample_width=-1):
+	global _soundEngine
+	if _soundEngine == None:
+		_soundEngine = SoundEngine(samplerate, channels, format, sample_width)
+	return _soundEngine
+		
 		
 import time
 if __name__ == "__main__":

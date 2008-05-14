@@ -35,7 +35,7 @@
 #ifndef MOTION_ADDER_H
 #define MOTION_ADDER_H
 
-#include "TwoMotionCombiner.h"
+#include "MultiMotionCombiner.h"
 
 
 namespace Piavca
@@ -46,13 +46,16 @@ namespace Piavca
 	 *	the effect is similar to vector addition. An optional parameter can 
 	 *	scale the effect of the second motion.
 	 */
-    class PIAVCA_DECL MotionAdder : public TwoMotionCombiner
+    class PIAVCA_DECL MotionAdder : public MultiMotionCombiner 
+    // TwoMotionCombiner
 	{
-		float scaleSecond;
+		//float scaleSecond;
 	public:
-		MotionAdder(Motion *m1=NULL, Motion *m2=NULL, float _scaleSecond = 1.0) :TwoMotionCombiner(m1,m2), scaleSecond(_scaleSecond){};
+		MotionAdder():MultiMotionCombiner(){};
+		MotionAdder(const MotionVec &mv) :MultiMotionCombiner(mv){};
+		//MotionAdder(Motion *m1=NULL, Motion *m2=NULL/*, float _scaleSecond = 1.0*/) :TwoMotionCombiner(m1,m2){};//, scaleSecond(_scaleSecond){};
 		MotionAdder(const MotionAdder &ma)
-			:TwoMotionCombiner(ma), scaleSecond(ma.scaleSecond){};
+			:MultiMotionCombiner(ma){};//, scaleSecond(ma.scaleSecond){};
 
 		virtual Motion *clone(){return new MotionAdder(*this);};
 
@@ -63,7 +66,7 @@ namespace Piavca
 		static MotionAdder *castToThisType(Motion *m){return dynamic_cast<MotionAdder *>(m);};
 
 		//! this is a scale factor applied to the second motion
-		void setScaleSecond(float s){scaleSecond = s;};
+		//void setScaleSecond(float s){scaleSecond = s;};
 	    
 		//! calculates the values of a keyframe
 		/*!  The results is the sum of the two motions.

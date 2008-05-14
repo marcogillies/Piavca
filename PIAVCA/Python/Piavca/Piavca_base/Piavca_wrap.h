@@ -124,6 +124,7 @@ public:
     virtual void setStartTime(float t);
     virtual void reset();
     virtual void event(Piavca::tstring ev);
+    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
@@ -169,7 +170,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[23];
+    mutable swig::PyObject_var vtable[24];
 #endif
 
 };
@@ -195,6 +196,7 @@ public:
     virtual void setStartTime(float t);
     virtual void reset();
     virtual void event(Piavca::tstring ev);
+    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
@@ -241,7 +243,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[24];
+    mutable swig::PyObject_var vtable[25];
 #endif
 
 };
@@ -265,6 +267,7 @@ public:
     virtual void setStartTime(float time);
     virtual void reset();
     virtual void event(Piavca::tstring ev);
+    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
@@ -310,7 +313,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[23];
+    mutable swig::PyObject_var vtable[24];
 #endif
 
 };
@@ -334,6 +337,7 @@ public:
     virtual void setStartTime(float time);
     virtual void reset();
     virtual void event(Piavca::tstring ev);
+    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
@@ -379,7 +383,79 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[23];
+    mutable swig::PyObject_var vtable[24];
+#endif
+
+};
+
+
+class SwigDirector_MultiMotionCombiner : public Piavca::MultiMotionCombiner, public Swig::Director {
+
+public:
+    SwigDirector_MultiMotionCombiner(PyObject *self, Piavca::MotionVec const &mv);
+    SwigDirector_MultiMotionCombiner(PyObject *self);
+    SwigDirector_MultiMotionCombiner(PyObject *self, Piavca::MultiMotionCombiner const &rl);
+    virtual ~SwigDirector_MultiMotionCombiner();
+    virtual Piavca::Motion *clone();
+    virtual Piavca::tstring getClassName();
+    virtual void create();
+    virtual void printInfo();
+    virtual void load(Piavca::Avatar *av);
+    virtual void unload();
+    virtual bool loaded();
+    virtual Piavca::Avatar *getAvatar();
+    virtual void setStartTime(float time);
+    virtual void reset();
+    virtual void event(Piavca::tstring ev);
+    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
+    virtual void cleanRecursionState();
+    virtual Piavca::Motion *findSub(Piavca::tstring nm);
+    virtual Piavca::Motion *findSubByType(type_info const &ty);
+    virtual float getMotionLength() const;
+    virtual bool isFacial();
+    virtual bool isRandomAccess();
+    virtual bool isNull(int trackId) const;
+    virtual int getTrackType(int trackId) const;
+    virtual void preFrame(float time);
+    virtual float getFloatValueAtTimeInternal(int trackId, float time);
+    virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
+    virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
+    virtual void addMotion(Piavca::Motion *mot);
+    virtual bool loaded(Piavca::Avatar *av);
+
+
+/* Internal Director utilities */
+public:
+    bool swig_get_inner(const char* name) const {
+      std::map<std::string, bool>::const_iterator iv = inner.find(name);
+      return (iv != inner.end() ? iv->second : false);
+    }
+
+    void swig_set_inner(const char* name, bool val) const
+    { inner[name] = val;}
+
+private:
+    mutable std::map<std::string, bool> inner;
+
+
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+/* VTable implementation */
+    PyObject *swig_get_method(size_t method_index, const char *method_name) const {
+      PyObject *method = vtable[method_index];
+      if (!method) {
+        swig::PyObject_var name = PyString_FromString(method_name);
+        method = PyObject_GetAttr(swig_get_self(), name);
+        if (method == NULL) {
+          std::string msg = "Method in class MultiMotionCombiner doesn't exist, undefined ";
+          msg += method_name;
+          Swig::DirectorMethodException::raise(msg.c_str());
+        }
+        vtable[method_index] = method;
+      };
+      return method;
+    }
+private:
+    mutable swig::PyObject_var vtable[26];
 #endif
 
 };
@@ -403,6 +479,7 @@ public:
     virtual void setStartTime(float time);
     virtual void reset();
     virtual void event(Piavca::tstring ev);
+    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
@@ -448,7 +525,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[23];
+    mutable swig::PyObject_var vtable[24];
 #endif
 
 };
@@ -471,6 +548,7 @@ public:
     virtual void setStartTime(float time);
     virtual void reset();
     virtual void event(Piavca::tstring ev);
+    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
@@ -516,7 +594,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[23];
+    mutable swig::PyObject_var vtable[24];
 #endif
 
 };
@@ -539,6 +617,7 @@ public:
     virtual void setStartTime(float time);
     virtual void reset();
     virtual void event(Piavca::tstring ev);
+    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
@@ -584,7 +663,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[23];
+    mutable swig::PyObject_var vtable[24];
 #endif
 
 };
@@ -607,6 +686,7 @@ public:
     virtual void setStartTime(float time);
     virtual void reset();
     virtual void event(Piavca::tstring ev);
+    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
@@ -653,7 +733,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[24];
+    mutable swig::PyObject_var vtable[25];
 #endif
 
 };
@@ -676,6 +756,7 @@ public:
     virtual void setStartTime(float time);
     virtual void reset();
     virtual void event(Piavca::tstring ev);
+    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
@@ -721,7 +802,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[23];
+    mutable swig::PyObject_var vtable[24];
 #endif
 
 };
@@ -744,6 +825,7 @@ public:
     virtual void setStartTime(float time);
     virtual void reset();
     virtual void event(Piavca::tstring ev);
+    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
@@ -789,7 +871,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[23];
+    mutable swig::PyObject_var vtable[24];
 #endif
 
 };
@@ -812,6 +894,7 @@ public:
     virtual void setStartTime(float time);
     virtual void reset();
     virtual void event(Piavca::tstring ev);
+    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
@@ -857,7 +940,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[23];
+    mutable swig::PyObject_var vtable[24];
 #endif
 
 };
@@ -880,6 +963,7 @@ public:
     virtual void setStartTime(float time);
     virtual void reset();
     virtual void event(Piavca::tstring ev);
+    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
@@ -925,7 +1009,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[23];
+    mutable swig::PyObject_var vtable[24];
 #endif
 
 };
@@ -948,6 +1032,7 @@ public:
     virtual void setStartTime(float t);
     virtual void reset();
     virtual void event(Piavca::tstring ev);
+    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
@@ -994,7 +1079,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[24];
+    mutable swig::PyObject_var vtable[25];
 #endif
 
 };
@@ -1017,6 +1102,7 @@ public:
     virtual void setStartTime(float t);
     virtual void reset();
     virtual void event(Piavca::tstring ev);
+    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
@@ -1063,7 +1149,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[24];
+    mutable swig::PyObject_var vtable[25];
 #endif
 
 };
@@ -1086,6 +1172,7 @@ public:
     virtual void setStartTime(float time);
     virtual void reset();
     virtual void event(Piavca::tstring ev);
+    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
@@ -1134,7 +1221,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[26];
+    mutable swig::PyObject_var vtable[27];
 #endif
 
 };
@@ -1157,6 +1244,7 @@ public:
     virtual void setStartTime(float time);
     virtual void reset();
     virtual void event(Piavca::tstring ev);
+    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
@@ -1203,7 +1291,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[24];
+    mutable swig::PyObject_var vtable[25];
 #endif
 
 };
@@ -1226,6 +1314,7 @@ public:
     virtual void setStartTime(float time);
     virtual void reset();
     virtual void event(Piavca::tstring ev);
+    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
@@ -1274,7 +1363,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[26];
+    mutable swig::PyObject_var vtable[27];
 #endif
 
 };
@@ -1297,6 +1386,7 @@ public:
     virtual void setStartTime(float time);
     virtual void reset();
     virtual void event(Piavca::tstring ev);
+    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
@@ -1346,7 +1436,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[27];
+    mutable swig::PyObject_var vtable[28];
 #endif
 
 };
@@ -1369,6 +1459,7 @@ public:
     virtual void setStartTime(float time);
     virtual void reset();
     virtual void event(Piavca::tstring ev);
+    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
@@ -1415,7 +1506,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[24];
+    mutable swig::PyObject_var vtable[25];
 #endif
 
 };
@@ -1438,6 +1529,7 @@ public:
     virtual void setStartTime(float time);
     virtual void reset();
     virtual void event(Piavca::tstring ev);
+    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
@@ -1483,7 +1575,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[23];
+    mutable swig::PyObject_var vtable[24];
 #endif
 
 };
@@ -1492,7 +1584,8 @@ private:
 class SwigDirector_MotionAdder : public Piavca::MotionAdder, public Swig::Director {
 
 public:
-    SwigDirector_MotionAdder(PyObject *self, Piavca::Motion *m1 = NULL, Piavca::Motion *m2 = NULL, float _scaleSecond = 1.0);
+    SwigDirector_MotionAdder(PyObject *self);
+    SwigDirector_MotionAdder(PyObject *self, Piavca::MotionVec const &mv);
     SwigDirector_MotionAdder(PyObject *self, Piavca::MotionAdder const &ma);
     virtual ~SwigDirector_MotionAdder();
     virtual Piavca::Motion *clone();
@@ -1506,6 +1599,7 @@ public:
     virtual void setStartTime(float time);
     virtual void reset();
     virtual void event(Piavca::tstring ev);
+    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
@@ -1518,6 +1612,8 @@ public:
     virtual float getFloatValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
+    virtual void addMotion(Piavca::Motion *mot);
+    virtual bool loaded(Piavca::Avatar *av);
 
 
 /* Internal Director utilities */
@@ -1551,7 +1647,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[23];
+    mutable swig::PyObject_var vtable[26];
 #endif
 
 };
@@ -1574,6 +1670,7 @@ public:
     virtual void setStartTime(float time);
     virtual void reset();
     virtual void event(Piavca::tstring ev);
+    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
@@ -1619,78 +1716,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[23];
-#endif
-
-};
-
-
-class SwigDirector_MultiMotionCombiner : public Piavca::MultiMotionCombiner, public Swig::Director {
-
-public:
-    SwigDirector_MultiMotionCombiner(PyObject *self, Piavca::MotionVec const &mv);
-    SwigDirector_MultiMotionCombiner(PyObject *self);
-    SwigDirector_MultiMotionCombiner(PyObject *self, Piavca::MultiMotionCombiner const &rl);
-    virtual ~SwigDirector_MultiMotionCombiner();
-    virtual Piavca::Motion *clone();
-    virtual Piavca::tstring getClassName();
-    virtual void create();
-    virtual void printInfo();
-    virtual void load(Piavca::Avatar *av);
-    virtual void unload();
-    virtual bool loaded();
-    virtual Piavca::Avatar *getAvatar();
-    virtual void setStartTime(float time);
-    virtual void reset();
-    virtual void event(Piavca::tstring ev);
-    virtual void cleanRecursionState();
-    virtual Piavca::Motion *findSub(Piavca::tstring nm);
-    virtual Piavca::Motion *findSubByType(type_info const &ty);
-    virtual float getMotionLength() const;
-    virtual bool isFacial();
-    virtual bool isRandomAccess();
-    virtual bool isNull(int trackId) const;
-    virtual int getTrackType(int trackId) const;
-    virtual void preFrame(float time);
-    virtual float getFloatValueAtTimeInternal(int trackId, float time);
-    virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
-    virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
-    virtual void addMotion(Piavca::Motion *mot);
-    virtual bool loaded(Piavca::Avatar *av);
-
-
-/* Internal Director utilities */
-public:
-    bool swig_get_inner(const char* name) const {
-      std::map<std::string, bool>::const_iterator iv = inner.find(name);
-      return (iv != inner.end() ? iv->second : false);
-    }
-
-    void swig_set_inner(const char* name, bool val) const
-    { inner[name] = val;}
-
-private:
-    mutable std::map<std::string, bool> inner;
-
-
-#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-/* VTable implementation */
-    PyObject *swig_get_method(size_t method_index, const char *method_name) const {
-      PyObject *method = vtable[method_index];
-      if (!method) {
-        swig::PyObject_var name = PyString_FromString(method_name);
-        method = PyObject_GetAttr(swig_get_self(), name);
-        if (method == NULL) {
-          std::string msg = "Method in class MultiMotionCombiner doesn't exist, undefined ";
-          msg += method_name;
-          Swig::DirectorMethodException::raise(msg.c_str());
-        }
-        vtable[method_index] = method;
-      };
-      return method;
-    }
-private:
-    mutable swig::PyObject_var vtable[25];
+    mutable swig::PyObject_var vtable[24];
 #endif
 
 };
@@ -1714,6 +1740,7 @@ public:
     virtual void setStartTime(float time);
     virtual void reset();
     virtual void event(Piavca::tstring ev);
+    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
@@ -1761,7 +1788,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[25];
+    mutable swig::PyObject_var vtable[26];
 #endif
 
 };
@@ -1785,6 +1812,7 @@ public:
     virtual void setStartTime(float time);
     virtual void reset();
     virtual void event(Piavca::tstring ev);
+    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
@@ -1835,7 +1863,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[28];
+    mutable swig::PyObject_var vtable[29];
 #endif
 
 };
@@ -1859,6 +1887,7 @@ public:
     virtual void setStartTime(float time);
     virtual void reset();
     virtual void event(Piavca::tstring ev);
+    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
@@ -1910,7 +1939,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[30];
+    mutable swig::PyObject_var vtable[31];
 #endif
 
 };
@@ -1934,6 +1963,7 @@ public:
     virtual void setStartTime(float time);
     virtual void reset();
     virtual void event(Piavca::tstring ev);
+    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
@@ -1986,7 +2016,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[30];
+    mutable swig::PyObject_var vtable[31];
 #endif
 
 };
@@ -2010,6 +2040,7 @@ public:
     virtual void setStartTime(float time);
     virtual void reset();
     virtual void event(Piavca::tstring ev);
+    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
@@ -2061,7 +2092,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[29];
+    mutable swig::PyObject_var vtable[30];
 #endif
 
 };
@@ -2087,6 +2118,7 @@ public:
     virtual void setStartTime(float t);
     virtual void reset();
     virtual void event(Piavca::tstring ev);
+    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
@@ -2132,7 +2164,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[23];
+    mutable swig::PyObject_var vtable[24];
 #endif
 
 };
@@ -2155,6 +2187,7 @@ public:
     virtual void setStartTime(float time);
     virtual void reset();
     virtual void event(Piavca::tstring ev);
+    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
@@ -2204,7 +2237,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[28];
+    mutable swig::PyObject_var vtable[29];
 #endif
 
 };
@@ -2227,6 +2260,7 @@ public:
     virtual void setStartTime(float t);
     virtual void reset();
     virtual void event(Piavca::tstring ev);
+    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
@@ -2272,7 +2306,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[23];
+    mutable swig::PyObject_var vtable[24];
 #endif
 
 };
@@ -2295,6 +2329,7 @@ public:
     virtual void setStartTime(float time);
     virtual void reset();
     virtual void event(Piavca::tstring ev);
+    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
@@ -2340,7 +2375,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[23];
+    mutable swig::PyObject_var vtable[24];
 #endif
 
 };
@@ -2364,6 +2399,7 @@ public:
     virtual void setStartTime(float time);
     virtual void reset();
     virtual void event(Piavca::tstring ev);
+    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
@@ -2409,7 +2445,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[23];
+    mutable swig::PyObject_var vtable[24];
 #endif
 
 };
@@ -2433,6 +2469,7 @@ public:
     virtual void setStartTime(float time);
     virtual void reset();
     virtual void event(Piavca::tstring ev);
+    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
@@ -2478,7 +2515,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[23];
+    mutable swig::PyObject_var vtable[24];
 #endif
 
 };
@@ -2501,6 +2538,7 @@ public:
     virtual void setStartTime(float time);
     virtual void reset();
     virtual void event(Piavca::tstring ev);
+    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
@@ -2546,7 +2584,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[23];
+    mutable swig::PyObject_var vtable[24];
 #endif
 
 };
@@ -2569,6 +2607,7 @@ public:
     virtual void setStartTime(float time);
     virtual void reset();
     virtual void event(Piavca::tstring ev);
+    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
     virtual Piavca::Motion *findSubByType(type_info const &ty);
@@ -2618,7 +2657,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[28];
+    mutable swig::PyObject_var vtable[29];
 #endif
 
 };

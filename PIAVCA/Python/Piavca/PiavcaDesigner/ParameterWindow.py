@@ -1,6 +1,7 @@
 
 
 import wx
+from wx.lib.dialogs import *
 
 import Piavca
 
@@ -27,12 +28,27 @@ class ParamEntry(wx.Panel):
 		val = self.getValue()
 		if val != None:
 			self.motionproxy.setParameterVal(self.param_name, val)
+			self.motionproxy.backend.timeUpdate()
 		
-	def SetValue(self, val):
+	def setValue(self, val):
 		pass
 		
-	def GetValue(self, val):
+	def getValue(self, val):
 		pass
+	
+	
+class ButtonParamEntry(ParamEntry):
+	
+	def initSubtype(self):	
+		self.button = wx.Button(self, -1, self.param_name)
+		self.Bind(wx.EVT_BUTTON, self.OnButton, self.button)
+		self.sizer.Add(self.button, 1, wx.EXPAND)
+	
+	def OnButton(self, evt):
+		meth = getattr(self.motionproxy, self.param_name)
+		meth()
+		self.motionproxy.backend.timeUpdate()
+	
 		
 class ScalarParamEntry(ParamEntry):
 	
@@ -48,6 +64,20 @@ class StringParamEntry(ScalarParamEntry):
 	
 	def getValue(self):
 		return self.text.GetValue()
+	
+class FilenameParamEntry(StringParamEntry):
+	
+	def initSubtype(self):	
+		StringParamEntry.initSubtype(self)
+		self.button = wx.Button(self, -1, "Browse")
+		self.Bind(wx.EVT_BUTTON, self.BrowseFile, self.button)
+		self.sizer.Add(self.button, 1, wx.EXPAND)
+		
+	def BrowseFile(self, evt):
+		dialog_return = openFileDialog ()
+		filename = dialog_return.paths[0].encode("latin-1")
+		self.setValue(filename)
+		self.OnTextEntry(evt)
 		
 class IntParamEntry(ScalarParamEntry):
 	
@@ -122,6 +152,11 @@ class ParameterWindow(wx.Panel):
 		
 		self.children = []
 		
+	def addChildControl(self, name, ctrl):
+		self.children.append((wx.StaticText(self, -1, name), ctrl))
+		self.parametersSizer.Add(self.children[-1][0], 0, wx.ALIGN_LEFT)
+		self.parametersSizer.Add(self.children[-1][1], 1, wx.EXPAND)
+		
 	def update(self):
 		# get rid of existing controls
 		for label, ctrl in self.children:
@@ -144,7 +179,10 @@ class ParameterWindow(wx.Panel):
 			for param_name in parameters.keys():
 				valtype = type(parameters[param_name])
 				if valtype == str:
-					ctrl = StringParamEntry(param_name, motionproxy, self)
+					if param_name == "Filename":
+						ctrl = FilenameParamEntry(param_name, motionproxy, self)
+					else:
+						ctrl = StringParamEntry(param_name, motionproxy, self)
 				if valtype == int:
 					ctrl = IntParamEntry(param_name, motionproxy, self)
 				if valtype == float:
@@ -154,9 +192,14 @@ class ParameterWindow(wx.Panel):
 				if valtype == Piavca.Quat:
 					ctrl = QuatParamEntry(param_name, motionproxy, self)
 				
-				self.children.append((wx.StaticText(self, -1, param_name), ctrl))
-				self.parametersSizer.Add(self.children[-1][0], 0, wx.ALIGN_LEFT)
-				self.parametersSizer.Add(self.children[-1][1], 1, wx.EXPAND)
+				self.addChildControl(param_name, ctrl)
+				
+				
+			if "Start" in parameters.keys() and "End" in parameters.keys():
+				ctrl = ButtonParamEntry("setRange", motionproxy, self)
+				self.addChildControl("", ctrl)
+				ctrl = ButtonParamEntry("resetRange", motionproxy, self)
+				self.addChildControl("", ctrl)
 			
 		self.parametersSizer.Layout()
 		self.mainSizer.Layout()

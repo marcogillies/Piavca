@@ -681,3 +681,10 @@ AvatarTimeCallback *Avatar::getCallback(int i)
 	return callbacks[i];
 };
 	
+
+void Avatar::event(tstring event)
+{
+	Motion *mot = getMotion();
+	if (mot)
+		mot->event(event);
+}

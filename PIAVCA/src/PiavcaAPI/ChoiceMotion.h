@@ -100,6 +100,18 @@ public:
 		MultiMotionCombiner::event(ev);
 	}
 
+	//! gets the names of all events
+	virtual std::vector<Piavca::tstring> getEventNames()
+	{
+		std::vector<Piavca::tstring> names;
+		for(int i = 0; i < int(mots.size()); i++)
+			if (mots[i]->getName() != _T(""))
+			{
+				names.push_back(mots[i]->getName());
+			}
+		return names;
+	}
+	
 	//! called each time around the loop
 	/*!
 	 * It can be called by the client to interrupt the current motion.

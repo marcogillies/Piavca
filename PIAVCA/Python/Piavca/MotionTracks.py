@@ -2,6 +2,8 @@
 import wx
 
 import Piavca
+
+import SlowSubSpace
 try:
 	import SlowSubSpace
 	SlowSubspaceAvailable = 1
@@ -100,9 +102,11 @@ class MotionTracks(wx.VListBox):
 				joints = line.split()
 				self.tracks.append(Track.Track(self.motion, joints[0], joints[1:]))
 			print "tracks from file"
+			print "self.motion", self.motion
 		except IOError:
 			for trackname in default_tracks.keys():
 				self.tracks.append(Track.Track(self.motion, trackname, default_tracks[trackname]))
+			print "self.motion", self.motion
 		print "tracks used", self.tracks
 		self.SetItemCount(len(self.tracks))
 
@@ -329,7 +333,10 @@ class MotionTracks(wx.VListBox):
 		print "doing pca"
 		motion = self.tracks[self.selectedTrack].GetMotion()
 		splits = self.tracks[self.selectedTrack].GetSplits()
-		motions = [Piavca.SubMotion(motion, split.GetStart(), split.GetEnd()) for split in splits]
+		if len(splits) > 0:
+			motions = [Piavca.SubMotion(motion, split.GetStart(), split.GetEnd()) for split in splits]
+		else:
+			motions = [motion]
 		splits = [(0, split.GetStart(), split.GetEnd()) for split in splits]
 		length = Track.PositionToTime(self.track_length)*Track.frames_per_second
 		#self.pcs.do_pca([motion], splits, length, Track.frames_per_second)
@@ -418,43 +425,50 @@ class MotionTracks(wx.VListBox):
 		print "doing slow subspace"
 		motion = self.tracks[self.selectedTrack].GetMotion()
 		splits = self.tracks[self.selectedTrack].GetSplits()
-		motions = [Piavca.SubMotion(motion, split.GetStart(), split.GetEnd()) for split in splits]
+		if len(splits) > 0:
+			motions = [Piavca.SubMotion(motion, split.GetStart(), split.GetEnd()) for split in splits]
+		else:
+			motions = [motion]
 		splits = [(0, split.GetStart(), split.GetEnd()) for split in splits]
 		length = Track.PositionToTime(self.track_length)*Track.frames_per_second
 		
 		#self.pcs.do_pca([motion], splits, length, Track.frames_per_second)
 		self.pcs.addMotions(motions)
+		print "doing sub space on motions", motions
 		self.pcs.setFramesPerSecond(Track.frames_per_second)
 		
 		ssa = SlowSubSpace.SlowSubSpace()
 		
 		val = None
-		dialog = wxTextEntryDialog ( None, message="enter slow subspace trade off (alpha)" )
-		dialog.SetValue("0.2")
+		dialog_return  = textEntryDialog ( None, message="enter slow subspace trade off (alpha)", defaultText="0.2" )
+		val = float(dialog_return.text.encode("latin-1"))
+		#dialog.SetValue("0.2")
 		# The user pressed the "OK" button in the dialog
-		if dialog.ShowModal() == wxID_OK:
-			print 'Position of selection:', dialog.GetValue()
-			val = float(dialog.GetValue())
-			print val
-		else:
-			path = None
-			print 'You did not select anything.'
-		dialog.Destroy()
+		#if dialog.ShowModal() == wxID_OK:
+		#	print 'Position of selection:', dialog.GetValue()
+		#	val = float(dialog.GetValue())
+		#	print val
+		#else:
+		#	path = None
+		#	print 'You did not select anything.'
+		#dialog.Destroy()
 		if val != None:
 			ssa.setAlpha(val)
 			
 		val = None
-		dialog = wxTextEntryDialog ( None, message="enter percentage to keep" )
-		dialog.SetValue("0.99")
+		dialog_return  = textEntryDialog ( None, message="enter percentage to keep", defaultText="0.99" )
+		val = float(dialog_return.text.encode("latin-1"))
+		#dialog = wxTextEntryDialog ( None, message="enter percentage to keep" )
+		#dialog.SetValue("0.99")
 		# The user pressed the "OK" button in the dialog
-		if dialog.ShowModal() == wxID_OK:
-			print 'Position of selection:', dialog.GetValue()
-			val = float(dialog.GetValue())
-			print val
-		else:
-			path = None
-			print 'You did not select anything.'
-		dialog.Destroy()
+		#if dialog.ShowModal() == wxID_OK:
+		#	print 'Position of selection:', dialog.GetValue()
+		#	val = float(dialog.GetValue())
+		#	print val
+		#else:
+		#	path = None
+		#	print 'You did not select anything.'
+		#dialog.Destroy()
 		if val != None:
 			ssa.setPercentageToKeep(val)
 			

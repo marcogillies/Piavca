@@ -17,6 +17,13 @@ class MotionView(buttons.GenButton):
 		self.SetLabel(self.motionproxy.getName())
 		self.Bind(wx.EVT_BUTTON, self.OnClick, self)
 		
+		self.popup = wx.Menu()
+		item = self.popup.Append(-1,"Publish Events")
+		self.Bind(wx.EVT_MENU, self.PublishEvents, item)
+		item = self.popup.Append(-1,"Delete")
+		self.Bind(wx.EVT_MENU, self.Delete, item)
+		self.Bind(wx.EVT_CONTEXT_MENU, self.OnShowPopUp)
+		
 		dt = MotionDropTarget(self)
 		self.SetDropTarget(dt)
 
@@ -26,6 +33,19 @@ class MotionView(buttons.GenButton):
 	def receiveText(self, data):
 		print "dropped", data
 		self.motionproxy.addChild(data)
+		
+	def OnShowPopUp(self, event):
+		#print "pop up"
+		pos = event.GetPosition()
+		pos = self.ScreenToClient(pos)
+		self.PopupMenu(self.popup, pos)
+		
+	def PublishEvents(self, event):
+		print "Publish Events"
+		self.motionproxy.PublishEvents()
+		
+	def Delete(self, event):
+		print "Delete"
 		
 		
 		

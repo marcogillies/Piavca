@@ -15,10 +15,12 @@ class BackEnd:
 	submotion = None
 	selectedSubMotion = None
 	playing = False
+	defaultLength = 100.0
 	
 	def __init__(self, frontend):
 		self.frontend = frontend
 		Piavca.Core.getCore().setAutoTimeOff()
+		self.setRange(0.0,0.0)
 			
 	def readfile(self, filename):
 		if filename[-4:] == ".cfg":
@@ -32,8 +34,16 @@ class BackEnd:
 				self.setAvatar(self.getAvatarNames()[0])
 		self.frontend.update()
 		
+	def save(self, filename):
+		Piavca.XMLMotionFile.saveAll(filename)
+		
 	def update(self):
+		self.resetRange()
 		self.frontend.update()
+		
+	def timeUpdate(self):
+		if abs(self.lastMotionLength - self.motion.getMotionLength()) > 0.0001:
+			self.resetRange()
 			
 	def setAvatar(self, avatarname):
 		avatar = Piavca.Core.getCore().getAvatar(str(avatarname.encode("latin-1")))
@@ -50,6 +60,13 @@ class BackEnd:
 	def getAvatarNames(self):
 		core = Piavca.Core.getCore()
 		return core.getAvatarNames()
+	
+	def getEvents(self):
+		return Piavca.getEvents()
+	
+	def triggerEvent(self, event):
+		if self.avatar:
+			self.avatar.event(event)
 			
 	def setMotion(self, motionname):
 		print "motion name", motionname, type(motionname)
@@ -69,11 +86,37 @@ class BackEnd:
 			if self.avatar:
 				print "playing", self.avatar, self.motion
 				self.avatar.playMotionDirect(self.motion)
+			self.resetRange()
 			self.update()
 			
 	def setSubMotion(self, motion):
 		self.submotion = motion
 		self.update()
+		
+	def resetRange(self):
+		if self.motion:
+			length = self.motion.getMotionLength()
+			if length < 0:
+				length = self.defaultLength
+			self.setRange(0.0, length)
+		else:
+			self.setRange(0.0,0.0)
+		
+	def setRange(self, start, end):
+		self.range = (start, end)
+		if self.motion:
+			self.lastMotionLength = self.motion.getMotionLength()
+		else:
+			self.lastMotionLength = None
+		
+	def getRange(self):
+		return self.range
+			
+	def getRangeFraction(self):
+		return (self.getTimeFraction(self.range[0]), self.getTimeFraction(self.range[1]))
+	
+	def setRangeFraction(self, start, end):
+		self.setRange(self.getTimeFromFraction(start), self.getTimeFromFraction(end))
 			
 	def getMotion(self):
 		return self.motion		
@@ -139,30 +182,48 @@ class BackEnd:
 		
 	def setTimeFraction(self, t):
 		if self.motion:
-			t = t*self.motion.getMotionLength()
-			self.setTime(t)
+			self.setTime(self.getTimeFromFraction(t))
 		
 	def getTime(self):
 		return Piavca.getTime()
 		
-	def getTimeFraction(self):
+	def getTimeFraction(self, t = None):
 		if self.motion:
-			t = self.getTime()
+			if t == None:
+				t = self.getTime()
 			if self.motion.getMotionLength() > 0.00001:
 				t = t/self.motion.getMotionLength()
+			elif self.motion.getMotionLength() < 0:
+				t = t/self.defaultLength
 			else:
 				t = 0.0
 			return t
 		else:
 			return 0
 		
+	def getTimeFromFraction(self, t):
+		if self.motion:
+			length = self.motion.getMotionLength()
+			if length < 0:
+				length = self.defaultLength
+			return t*length
+		else:
+			return t
+		
+		
 	def timeStep(self):
 		if self.playing  and self.motion:
+			if self.range[1] - self.range[0] <= 0.0:
+				self.setTime(0.0+self.range[0])
 			newtime = self.getTime()
 			newtime += Piavca.Core.getCore().getSystemTime() - self.lastTime
+			#print "time step", newtime
 			self.lastTime = Piavca.Core.getCore().getSystemTime()
-			while newtime > self.motion.getMotionLength() :
-				newtime -= self.motion.getMotionLength()
+			#while newtime > self.motion.getMotionLength() :
+			#	newtime -= self.motion.getMotionLength()
+			while newtime > self.range[1] :
+				newtime -= self.range[1]
+				newtime += self.range[0]
 			self.setTime(newtime)
 		
 	

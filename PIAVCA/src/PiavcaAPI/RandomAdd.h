@@ -49,17 +49,27 @@ namespace Piavca
  *	The Motions to blend are chosen at random, as are the number of motions.
  *  Each of the motions is scaled by a random ammount before being added.
  */
-class RandomAdd : public MultiMotionCombiner
+class RandomAdd : public MotionAdder
 {
 public:
-	RandomAdd():MultiMotionCombiner(){};
+	RandomAdd():MotionAdder(){};
 	//! pass in a vector of motions to be used.
 	RandomAdd(const MotionVec &mv)
-		:MultiMotionCombiner(mv)
-	{};
+		:MotionAdder()
+	{
+		for (int i = 0; i < (int)mv.size(); i++)
+		{
+			addMotion(mv[i]);
+		}
+	};
 	RandomAdd(const RandomAdd &rbl)
-		:MultiMotionCombiner(rbl) {};
+		:MotionAdder(rbl) {};
 	~RandomAdd(){};
+	
+	virtual void addMotion(Motion *mot)
+	{
+		MultiMotionCombiner::addMotion(new ScaleMotion(mot));
+	}
 	
 	virtual Motion *clone(){return new RandomAdd(*this);};
 
@@ -77,12 +87,13 @@ public:
 		Motion *totalMot = NULL;
 		for (MotionVec::size_type i = 0; i < numChosen; i++)
 		{
-			Motion *chosenmot = mots[rand()%mots.size()];
+			ScaleMotion *chosenmot = dynamic_cast<ScaleMotion *>(mots[rand()%mots.size()]);
 			float weight = ((float)(rand()%1000))/1000.0f;
-			if(totalMot)
-				totalMot = new MotionAdder(totalMot, chosenmot, weight);
-			else
-				totalMot = new ScaleMotion(chosenmot, weight);
+			chosenmot->setScaleFactor(weight);
+			//if(totalMot)
+			//	totalMot = new MotionAdder(totalMot, new ScaleMotion(chosenmot, weight));
+			//else
+			//	totalMot = new ScaleMotion(chosenmot, weight);
 		}
 		setMotion(totalMot);
 	}

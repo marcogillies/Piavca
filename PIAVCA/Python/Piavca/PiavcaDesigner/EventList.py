@@ -8,4 +8,9 @@ class EventList(GenericList):
 		GenericList.__init__(self, backend, parent, id, pos, size, style, name)
 			
 	def getItems(self):
-		return ["item %02d"% x for x in range(20,30)]
+		return self.backend.getEvents()
+			
+	def OnItemActivated(self, evt):
+		text = self.getText(evt.GetIndex())
+		print "triggering event", text
+		self.backend.triggerEvent(text)

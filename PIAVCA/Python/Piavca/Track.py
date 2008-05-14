@@ -31,9 +31,12 @@ class Track :
 		# last place clicked
 		self.latestPoint = None
 
+		print "Adding track for motion", motion
+
 		if joints == None:
 			self.motion = motion
 			self.masked = 0
+			print "self.motion", self.motion
 			return
 		
 		self.masked = 1
@@ -49,6 +52,7 @@ class Track :
 			jointid = Piavca.Core.getCore().getJointId(joint)
 			print joint, jointid
 			maskedMotion.addToMask(jointid)
+		print "IIself.motion", self.motion
 
 	def GetName(self):
 		return self.name
@@ -56,6 +60,7 @@ class Track :
 	# gets a motion that plays only the specified tracks of 
 	# the original motion
 	def GetMotion(self):
+		print "getting motion", self.motion
 		return self.motion
 
 	# the splits (subranges) of the motion

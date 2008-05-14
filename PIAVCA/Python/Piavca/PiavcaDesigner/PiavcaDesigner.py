@@ -29,6 +29,8 @@ class PiavcaDesigner(wx.Frame):
 		
 		self.backend = BackEnd(self)
 		
+		self.filename = None
+		
 		wx.Frame.__init__(self, parent, id, "Piavca Designer")
 		self.statusbar = self.CreateStatusBar()
 		
@@ -38,6 +40,10 @@ class PiavcaDesigner(wx.Frame):
 		
 		open = menu1.Append(wx.NewId(), "Open", "")
 		self.Bind(wx.EVT_MENU, self.Open, open)
+		save = menu1.Append(wx.NewId(), "&Save", "")
+		self.Bind(wx.EVT_MENU, self.Save, save)
+		saveas = menu1.Append(wx.NewId(), "SaveAs", "")
+		self.Bind(wx.EVT_MENU, self.SaveAs, saveas)
 		quit = menu1.Append(wx.NewId(), "Quit", "")
 		self.Bind(wx.EVT_MENU, self.Quit, quit)
 		
@@ -87,7 +93,6 @@ class PiavcaDesigner(wx.Frame):
 		self.splitter2.SetSashPosition(self.viewerwidth)
 		#self.SendSizeEvent((1000,500))
 		
-		
 		self.update()
 		
 	def Open(self, event):
@@ -107,6 +112,36 @@ class PiavcaDesigner(wx.Frame):
 				os.chdir(path)
 		print filename, path
 		self.backend.readfile(filename)
+		
+	def getSaveName(self):
+		dialog_return = saveFileDialog (wildcard="*.xml", filename=".xml") #"XML Motion files (*.xml)|*.xml")
+		path = dialog_return.paths[0].encode("latin-1")
+	
+		print path
+		pathend = path.rfind("\\")
+		if pathend < 0:
+			pathend = path.rfind("/")
+		if pathend < 0:
+			filename = path
+		else:
+			filename = path[pathend+1:]
+			path = path[:pathend+1]
+			if path != "":
+				os.chdir(path)
+		print filename, path
+		return filename
+	
+	def _save(self, filename=None):
+		if filename == None:
+			filename = self.getSaveName()
+		self.filename = filename
+		self.backend.save(filename)
+		
+	def SaveAs(self, evt):
+		self._save()
+		
+	def Save(self, evt):
+		self._save(self.filename)
 		
 	def Quit(self,event):
 		self.Close()

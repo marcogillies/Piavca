@@ -39,16 +39,18 @@
 from Piavca_base import * 
 import PiavcaGlut
 
+from ImportException import PiavcaImportException
 
 from FootPlantOnSpot import FootPlantOnSpot
 from FSM import FSM
 from ParameterMotion import ParameterMotion
 from PositionHandler import PositionResponse, PositionShiftResponse	
+from AudioMotion import AudioMotion
 try:
 	from EigenMotion import *
 	from MotionGraph import *
 	from ClusterMotionGraph import *
-except ImportError:
+except PiavcaImportException:
 	print "scipy not available, please install scipy to use EigenMotion and Motion Graph"
 
 from MotionFile import readMotionFile
@@ -56,18 +58,21 @@ from ScriptEngine import ScriptEngine
 from ConversationInterface import ConversationInterface
 try :
 	from SpeechToText import SpeechToText
-except ImportError:
+except PiavcaImportException:
 	SpeechToText = None 
 try:
 	from AnimationTrack import AnimationInterface, AnimationInterfaceCallback
-except ImportError:
+	from PiavcaWXApp import getWXApp, setWXApp
+except PiavcaImportException:
+	raise
 	print "wxPython unavailable, please install wxPython for GUI functions"
-from PiavcaWXApp import getWXApp, setWXApp
+
 
 	
 Core.init()
 
 from CoreProxy import getTime, loadMotion, getMotion, getRealMotionType
+from CoreProxy import addEvents, addEvent, getEvents, removeEvent
 
 def render ():
 	core = Core.getCore()

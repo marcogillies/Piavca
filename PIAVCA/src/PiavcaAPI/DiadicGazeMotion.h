@@ -139,6 +139,16 @@ public:
 			setTalking(neither);
 	}
 
+
+	//! gets the names of all events
+	virtual std::vector<Piavca::tstring> getEventNames()
+	{
+		std::vector<Piavca::tstring> names;
+		names.push_back(_T("talking"));
+		names.push_back(_T("listening"));
+		names.push_back(_T("neither"));
+		return names;
+	}
 	void setOther(Avatar *other)      
 	{
 		otherAvatar = other;

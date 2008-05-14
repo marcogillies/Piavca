@@ -438,7 +438,8 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 	}
 	delete renderer;
 
-  
+
+	/*
   // create a rest pose motion for the avatar
   KeyframeMotion *tmot = new KeyframeMotion(false);
   //std::cout << getRootPosition() << std::endl;
@@ -452,7 +453,8 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 		tmot->addQuatTrack(track, getJointOrientation(track));
 	  }
   Core::getCore()->loadMotion(avatarId + _T("_rest"), tmot);
-  
+  */
+	
   platformSpecific_timeStep(Piavca::Core::getCore()->getTime());
   
   renderer = cal_model->getRenderer();

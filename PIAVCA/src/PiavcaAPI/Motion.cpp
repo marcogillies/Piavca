@@ -115,4 +115,5 @@ void Motion::unpause()
 
 void Motion::preFrame(float time)
 {
+	//std::cout << "Motion.preFrame\n";
 }

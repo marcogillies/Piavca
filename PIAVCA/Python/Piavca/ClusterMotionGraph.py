@@ -36,7 +36,15 @@
 # ***** END LICENSE BLOCK *****
 
 import Piavca
-from scipy import array
+
+
+from ImportException import PiavcaImportException
+try:
+	from scipy import array
+except ImportError:
+	raise PiavcaImportException("scipy text missing")
+
+
 import math
 
 class ClusterMotionGraph(Piavca.MotionGraph):

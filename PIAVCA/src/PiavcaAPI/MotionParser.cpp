@@ -600,7 +600,9 @@ template<> Piavca::Motion *MotionParserTyped<MotionAdder>::parseMotion(istringst
 	if(Piavca::Core::getCore()->errorsPresent()) return NULL;
 	Piavca::Motion *m2 = MotionParser::parseMotion(is, currentWord, scaleFactor, &mp);
 	if(Piavca::Core::getCore()->errorsPresent()) return NULL;
-	return new MotionAdder(m1, m2);
+	MotionAdder *mot =  new MotionAdder();
+	mot->addMotion(m1);
+	mot->addMotion(m2);
 };
 
 template<> void MotionParserTyped<MotionAdder>::editMotionInternal(MotionAdder *mot, istringstream &is)
@@ -608,6 +610,7 @@ template<> void MotionParserTyped<MotionAdder>::editMotionInternal(MotionAdder *
 	string currentWord;
 	while(is >> currentWord)
 	{
+		/*
 		if(currentWord == "scale_second")
 		{
 			float scaleFactor;
@@ -620,13 +623,14 @@ template<> void MotionParserTyped<MotionAdder>::editMotionInternal(MotionAdder *
 			if(!(is >> currentWord)) break;
 			continue;
 		}
+		*/
 		if(currentWord == "mot1")
 		{
 			float scaleFactor = 1.0;
 			MotionParser *mp = NULL;
 			Piavca::Motion *m1 = MotionParser::parseMotion(is, "", scaleFactor, &mp);
 			if(Piavca::Core::getCore()->errorsPresent()) return;
-			mot->setMotion1(m1);
+			mot->addMotion(m1);
 			continue;
 		}
 		if(currentWord == "mot2")
@@ -635,7 +639,7 @@ template<> void MotionParserTyped<MotionAdder>::editMotionInternal(MotionAdder *
 			MotionParser *mp = NULL;
 			Piavca::Motion *m2 = MotionParser::parseMotion(is, "", scaleFactor, &mp);
 			if(Piavca::Core::getCore()->errorsPresent()) return;
-			mot->setMotion2(m2);
+			mot->addMotion(m2);
 			continue;
 		}
 		Piavca::Error(_T("unknown option ") + StringToTString(currentWord));

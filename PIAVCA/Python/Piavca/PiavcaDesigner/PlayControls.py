@@ -19,6 +19,9 @@ class PlayControls(wx.Panel):
 		self.toEndButton = wx.Button(self, -1, ">|")
 		self.Bind(wx.EVT_BUTTON, self.ToEnd, self.toEndButton)
 		
+		self.resetRangeButton = wx.Button(self, -1, "<>")
+		self.Bind(wx.EVT_BUTTON, self.ResetRange, self.resetRangeButton)
+		
 		self.children = []
 		#size = self.GetClientSize()
 		self.timeline=TimeLine(self.backend, self)#, size=(size.width-3*self.buttonwidth, size.height))
@@ -29,6 +32,7 @@ class PlayControls(wx.Panel):
 		sizer.Add(self.playButton, 0, wx.EXPAND)
 		sizer.Add(self.toEndButton, 0, wx.EXPAND)
 		sizer.Add(self.timeline, 1, wx.EXPAND)
+		sizer.Add(self.resetRangeButton, 0, wx.EXPAND)
 		self.SetSizer(sizer)
 		sizer.Fit(self)
 		
@@ -44,6 +48,9 @@ class PlayControls(wx.Panel):
 			
 	def ToEnd(self, evt):
 		self.backend.setTimeFraction(1.0)
+		
+	def ResetRange(self, evt):
+		self.backend.resetRange()
 		
 	def update(self):
 		for child in self.children:

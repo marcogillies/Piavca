@@ -38,6 +38,17 @@ using namespace Piavca;
 
 float MotionAdder::getFloatValueAtTimeInternal (int trackId, float time)
 {
+	// add together all the existing tracks in all the motions
+	float retVal;
+	for (int i = 0; i < getNumMotions(); i++)
+	{
+		Motion *mot = getMotionByIndex(i);
+		if (not mot->isNull(trackId))
+		{
+			retVal = retVal+mot->getFloatValueAtTime(trackId, time);
+		}
+	}
+	/*
 	// if this track doesn't exist in mot2 use mot1 otherwise interpolated between them
 	if(!mot1 || mot1->isNull(trackId))
 	{
@@ -45,13 +56,14 @@ float MotionAdder::getFloatValueAtTimeInternal (int trackId, float time)
 		{
 			Piavca::Error(_T("trying to blend two invalid tracks"));
 		}
-		return mot2->getFloatValueAtTime(trackId, time)*scaleSecond;
+		return mot2->getFloatValueAtTime(trackId, time);//*scaleSecond;
 	}
 	if(!mot2 || mot2->isNull(trackId))
 		return mot1->getFloatValueAtTime(trackId, time);
 		else
 	return mot1->getFloatValueAtTime(trackId, time)
-		+  mot2->getFloatValueAtTime(trackId, time)*scaleSecond;
+		+  mot2->getFloatValueAtTime(trackId, time);//*scaleSecond;
+	*/
 };
 
 //! calculates the values of a keyframe
@@ -59,6 +71,17 @@ float MotionAdder::getFloatValueAtTimeInternal (int trackId, float time)
 	*/
 Vec   MotionAdder::getVecValueAtTimeInternal   (int trackId, float time)
 {
+	// add together all the existing tracks in all the motions
+	Vec retVal;
+	for (int i = 0; i < getNumMotions(); i++)
+	{
+		Motion *mot = getMotionByIndex(i);
+		if (not mot->isNull(trackId))
+		{
+			retVal = retVal+mot->getVecValueAtTime(trackId, time);
+		}
+	}
+	/*
 	// if this track doesn't exist in mot2 use mot1 otherwise interpolated between them
 	if(!mot1 || mot1->isNull(trackId))
 	{
@@ -66,13 +89,14 @@ Vec   MotionAdder::getVecValueAtTimeInternal   (int trackId, float time)
 		{
 			Piavca::Error(_T("trying to blend two invalid tracks"));
 		}
-		return mot2->getVecValueAtTime(trackId, time)*scaleSecond;
+		return mot2->getVecValueAtTime(trackId, time);//*scaleSecond;
 	}
 	if(!mot2 || mot2->isNull(trackId))
 		return mot1->getVecValueAtTime(trackId, time);
 	else
 		return mot1->getVecValueAtTime(trackId, time)
-			+  mot2->getVecValueAtTime(trackId, time)*scaleSecond;
+			+  mot2->getVecValueAtTime(trackId, time);//*scaleSecond;
+	*/
 };
 
 //! calculates the values of a keyframe
@@ -81,8 +105,20 @@ Vec   MotionAdder::getVecValueAtTimeInternal   (int trackId, float time)
 	*/
 Quat  MotionAdder::getQuatValueAtTimeInternal  (int trackId, float time)
 {
-	// if this track doesn't exist in mot2 use mot1 otherwise interpolated between them
+	// multiply together all the existing tracks in all the motions
 	Quat retVal;
+	for (int i = 0; i < getNumMotions(); i++)
+	{
+		Motion *mot = getMotionByIndex(i);
+		if (not mot->isNull(trackId))
+		{
+			retVal = retVal*mot->getQuatValueAtTime(trackId, time);
+		}
+	}
+	
+	return retVal;
+	/*
+	// if this track doesn't exist in mot2 use mot1 otherwise interpolated between them
 	if(!mot1 || mot1->isNull(trackId))
 	{
 		if(!mot2 || mot2->isNull(trackId))
@@ -90,7 +126,7 @@ Quat  MotionAdder::getQuatValueAtTimeInternal  (int trackId, float time)
 			Piavca::Error(_T("trying to blend two invalid tracks"));
 		}
 		retVal = mot2->getQuatValueAtTime(trackId, time);
-		retVal.Scale(scaleSecond);
+		//retVal.Scale(scaleSecond);
 	}
 	else
 	{
@@ -101,10 +137,11 @@ Quat  MotionAdder::getQuatValueAtTimeInternal  (int trackId, float time)
 		else
 		{
 			retVal = mot2->getQuatValueAtTime(trackId, time);
-			retVal.Scale(scaleSecond);
+			//retVal.Scale(scaleSecond);
 			// this multiplication does mot1 then mot2
 			retVal = retVal * mot1->getQuatValueAtTime(trackId, time);
 		}
 	}
 	return retVal;
+	*/
 };

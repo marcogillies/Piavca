@@ -22,10 +22,17 @@ class TimeLine(wx.Panel):
 		size = self.GetClientSize()
 		self.buffer = wx.EmptyBitmap(size.width, size.height)
 		dc = wx.BufferedDC(None, self.buffer)
-		dc.SetBackground(wx.Brush("white"))
+		dc.SetBackground(wx.Brush("light gray"))
 		dc.Clear()
-		#dc.DrawRectangle(0, 0, size.width, size.height)
+		
+		self.drawRange(dc)
 		self.drawTime(dc)
+		
+	def drawRange(self, dc):
+		size = self.GetClientSize()
+		range = self.backend.getRangeFraction()
+		dc.DrawRectangle(size.width*range[0], 0, size.width*(range[1]-range[0]), size.height)
+		
 		
 	def drawTime(self,dc):
 		size = self.GetClientSize()
@@ -47,10 +54,22 @@ class TimeLine(wx.Panel):
 		t = float(pos[0])/float(size.width)
 		self.backend.setTimeFraction(t)
 		
+	def SetRange(self, event):
+		size = self.GetClientSize()
+		pos = event.GetPositionTuple()
+		t = float(pos[0])/float(size.width)
+		self.backend.setRangeFraction(self.backend.getTimeFraction(), t)
+		
 	def OnMouseMove(self, event):
 		if event.Dragging() and event.LeftIsDown():
-			self.UpdateTime(event)
+			# if shift is down we are selecting a range so we don't want the
+			# time to be updated
+			if not event.ShiftDown():
+				self.UpdateTime(event)
 		
 	def OnMouseUp(self, event):
-		self.UpdateTime(event)
+		if event.ShiftDown():
+			self.SetRange(event)
+		else:
+			self.UpdateTime(event)
 		

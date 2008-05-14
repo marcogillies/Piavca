@@ -12,9 +12,6 @@ class MotionList(GenericList):
 			
 	def getItems(self):
 		return self.backend.getMotionNames()
-	
-	def getText(self, item):
-		return self.list.GetItemText(item)
 			
 	def OnItemActivated(self, evt):
 		text = self.getText(evt.GetIndex())

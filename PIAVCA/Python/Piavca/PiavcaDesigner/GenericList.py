@@ -21,6 +21,9 @@ class GenericList(wx.Panel):
 		self.list.ClearAll()
 		for i, x in enumerate(self.getItems()):
 			self.list.InsertStringItem(i, str(x))
+	
+	def getText(self, item):
+		return self.list.GetItemText(item)
 		
 			
 	def getItems(self):

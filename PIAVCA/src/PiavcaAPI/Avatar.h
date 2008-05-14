@@ -618,6 +618,9 @@ public:
 	//! get a callback based on its index (the indeces are arbitrary this is just useful for finding a callback)
 	AvatarTimeCallback *getCallback(int i);
 	//@}
+	
+	//! triggers a named event
+	void event(tstring event);
 
 	friend class AvatarImp;
 	friend class Core;

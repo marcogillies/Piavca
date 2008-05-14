@@ -582,6 +582,7 @@ class Motion(_object):
         return _Piavca_base.Motion_reset(*args)
 
     def event(*args): return _Piavca_base.Motion_event(*args)
+    def getEventNames(*args): return _Piavca_base.Motion_getEventNames(*args)
     def cleanRecursionState(*args): return _Piavca_base.Motion_cleanRecursionState(*args)
     def wasVisited(*args): return _Piavca_base.Motion_wasVisited(*args)
     def sendEvent(*args): return _Piavca_base.Motion_sendEvent(*args)
@@ -2283,6 +2284,7 @@ class Avatar(_object):
         """
         return _Piavca_base.Avatar_getCallback(*args)
 
+    def event(*args): return _Piavca_base.Avatar_event(*args)
     def setFacialExpressionWeight(*args):
         """
         bool Piavca::Avatar::setFacialExpressionWeight(int id, float weight, float timeInterval=0.5)
@@ -3297,6 +3299,115 @@ TwoMotionCombiner_swigregister = _Piavca_base.TwoMotionCombiner_swigregister
 TwoMotionCombiner_swigregister(TwoMotionCombiner)
 TwoMotionCombiner_castToThisType = _Piavca_base.TwoMotionCombiner_castToThisType
 
+class MultiMotionCombiner(MotionFilter):
+    __swig_setmethods__ = {}
+    for _s in [MotionFilter]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MultiMotionCombiner, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MotionFilter]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MultiMotionCombiner, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        if self.__class__ == MultiMotionCombiner:
+            args = (None,) + args
+        else:
+            args = (self,) + args
+        this = _Piavca_base.new_MultiMotionCombiner(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _Piavca_base.delete_MultiMotionCombiner
+    __del__ = lambda self : None;
+    def clone(*args):
+        """
+        virtual Motion* Piavca::Motion::clone()=0
+                 
+        creates a copy of the motion         
+                 
+                
+        """
+        return _Piavca_base.MultiMotionCombiner_clone(*args)
+
+    def getClassName(*args): return _Piavca_base.MultiMotionCombiner_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.MultiMotionCombiner_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.MultiMotionCombiner_castToThisType)
+    def printInfo(*args):
+        """
+        void Piavca::MotionFilter::printInfo()
+                 
+        prints out info about the motion heirarchy         
+                 
+                
+        """
+        return _Piavca_base.MultiMotionCombiner_printInfo(*args)
+
+    def addMotion(*args): return _Piavca_base.MultiMotionCombiner_addMotion(*args)
+    def getMotionIndex(*args): return _Piavca_base.MultiMotionCombiner_getMotionIndex(*args)
+    def getNumMotions(*args): return _Piavca_base.MultiMotionCombiner_getNumMotions(*args)
+    def getMotionByIndex(*args): return _Piavca_base.MultiMotionCombiner_getMotionByIndex(*args)
+    def getMotion(*args): return _Piavca_base.MultiMotionCombiner_getMotion(*args)
+    def removeMotionByIndex(*args): return _Piavca_base.MultiMotionCombiner_removeMotionByIndex(*args)
+    def clear(*args): return _Piavca_base.MultiMotionCombiner_clear(*args)
+    def findSub(*args):
+        """
+        virtual Motion* Piavca::MotionFilter::findSub(tstring nm)
+                 
+        finds the first submotion with a given name         
+                 
+                
+        """
+        return _Piavca_base.MultiMotionCombiner_findSub(*args)
+
+    def findSubByType(*args):
+        """
+        virtual Motion* Piavca::MotionFilter::findSubByType(const type_info &ty)
+                 
+        finds the first submotion with a given type         
+                 
+                
+        """
+        return _Piavca_base.MultiMotionCombiner_findSubByType(*args)
+
+    def load(*args):
+        """
+        virtual void Piavca::MotionFilter::load(Avatar *av)
+                 
+        called when the motion is loaded into an avatar         
+                 
+                
+        """
+        return _Piavca_base.MultiMotionCombiner_load(*args)
+
+    def unload(*args):
+        """
+        virtual void Piavca::MotionFilter::unload()
+                 
+        called when the motion is unloaded from an avatar         
+                 
+                
+        """
+        return _Piavca_base.MultiMotionCombiner_unload(*args)
+
+    def loaded(*args):
+        """
+        virtual bool Piavca::MotionFilter::loaded()
+                 
+        checks if the motion has been loaded into an avatar         
+                 
+                
+        """
+        return _Piavca_base.MultiMotionCombiner_loaded(*args)
+
+    def getAvatar(*args): return _Piavca_base.MultiMotionCombiner_getAvatar(*args)
+    def event(*args): return _Piavca_base.MultiMotionCombiner_event(*args)
+    def cleanRecursionState(*args): return _Piavca_base.MultiMotionCombiner_cleanRecursionState(*args)
+    def __disown__(self):
+        self.this.disown()
+        _Piavca_base.disown_MultiMotionCombiner(self)
+        return weakref_proxy(self)
+MultiMotionCombiner_swigregister = _Piavca_base.MultiMotionCombiner_swigregister
+MultiMotionCombiner_swigregister(MultiMotionCombiner)
+MultiMotionCombiner_castToThisType = _Piavca_base.MultiMotionCombiner_castToThisType
+
 class MotionMask(_object):
     """
     a set of masks specifying which joints should be played in a masked motion     
@@ -3525,6 +3636,7 @@ class ScaleMotion(MotionFilter):
         """
         return _Piavca_base.ScaleMotion_setScaleFactor(*args)
 
+    def getScaleFactor(*args): return _Piavca_base.ScaleMotion_getScaleFactor(*args)
     __swig_destroy__ = _Piavca_base.delete_ScaleMotion
     __del__ = lambda self : None;
     def __disown__(self):
@@ -4812,17 +4924,17 @@ BlendBetween_swigregister = _Piavca_base.BlendBetween_swigregister
 BlendBetween_swigregister(BlendBetween)
 BlendBetween_castToThisType = _Piavca_base.BlendBetween_castToThisType
 
-class MotionAdder(TwoMotionCombiner):
+class MotionAdder(MultiMotionCombiner):
     """
     Adds the result of two motions, performing them simultaneously.     
            
     The results is the sum of the effects of both motions (in fact with rotations this is achieved with quaternion multiplication but the effect is similar to vector addition. An optional parameter can scale the effect of the second motion.      see also: MotionAdder.h
     """
     __swig_setmethods__ = {}
-    for _s in [TwoMotionCombiner]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    for _s in [MultiMotionCombiner]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, MotionAdder, name, value)
     __swig_getmethods__ = {}
-    for _s in [TwoMotionCombiner]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    for _s in [MultiMotionCombiner]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
     __getattr__ = lambda self, name: _swig_getattr(self, MotionAdder, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
@@ -4853,16 +4965,6 @@ class MotionAdder(TwoMotionCombiner):
     def getClassName(*args): return _Piavca_base.MotionAdder_getClassName(*args)
     __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.MotionAdder_castToThisType
     if _newclass:castToThisType = staticmethod(_Piavca_base.MotionAdder_castToThisType)
-    def setScaleSecond(*args):
-        """
-        void Piavca::MotionAdder::setScaleSecond(float s)
-                 
-        this is a scale factor applied to the second motion         
-                 
-                
-        """
-        return _Piavca_base.MotionAdder_setScaleSecond(*args)
-
     def getFloatValueAtTimeInternal(*args):
         """
         float MotionAdder::getFloatValueAtTimeInternal(int trackId, float time)
@@ -5118,112 +5220,6 @@ MotionTransition_swigregister = _Piavca_base.MotionTransition_swigregister
 MotionTransition_swigregister(MotionTransition)
 MotionTransition_castToThisType = _Piavca_base.MotionTransition_castToThisType
 
-class MultiMotionCombiner(MotionFilter):
-    __swig_setmethods__ = {}
-    for _s in [MotionFilter]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
-    __setattr__ = lambda self, name, value: _swig_setattr(self, MultiMotionCombiner, name, value)
-    __swig_getmethods__ = {}
-    for _s in [MotionFilter]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
-    __getattr__ = lambda self, name: _swig_getattr(self, MultiMotionCombiner, name)
-    __repr__ = _swig_repr
-    def __init__(self, *args): 
-        if self.__class__ == MultiMotionCombiner:
-            args = (None,) + args
-        else:
-            args = (self,) + args
-        this = _Piavca_base.new_MultiMotionCombiner(*args)
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _Piavca_base.delete_MultiMotionCombiner
-    __del__ = lambda self : None;
-    def clone(*args):
-        """
-        virtual Motion* Piavca::Motion::clone()=0
-                 
-        creates a copy of the motion         
-                 
-                
-        """
-        return _Piavca_base.MultiMotionCombiner_clone(*args)
-
-    def getClassName(*args): return _Piavca_base.MultiMotionCombiner_getClassName(*args)
-    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.MultiMotionCombiner_castToThisType
-    if _newclass:castToThisType = staticmethod(_Piavca_base.MultiMotionCombiner_castToThisType)
-    def printInfo(*args):
-        """
-        void Piavca::MotionFilter::printInfo()
-                 
-        prints out info about the motion heirarchy         
-                 
-                
-        """
-        return _Piavca_base.MultiMotionCombiner_printInfo(*args)
-
-    def addMotion(*args): return _Piavca_base.MultiMotionCombiner_addMotion(*args)
-    def getMotionIndex(*args): return _Piavca_base.MultiMotionCombiner_getMotionIndex(*args)
-    def getNumMotions(*args): return _Piavca_base.MultiMotionCombiner_getNumMotions(*args)
-    def getMotionByIndex(*args): return _Piavca_base.MultiMotionCombiner_getMotionByIndex(*args)
-    def findSub(*args):
-        """
-        virtual Motion* Piavca::MotionFilter::findSub(tstring nm)
-                 
-        finds the first submotion with a given name         
-                 
-                
-        """
-        return _Piavca_base.MultiMotionCombiner_findSub(*args)
-
-    def findSubByType(*args):
-        """
-        virtual Motion* Piavca::MotionFilter::findSubByType(const type_info &ty)
-                 
-        finds the first submotion with a given type         
-                 
-                
-        """
-        return _Piavca_base.MultiMotionCombiner_findSubByType(*args)
-
-    def load(*args):
-        """
-        virtual void Piavca::MotionFilter::load(Avatar *av)
-                 
-        called when the motion is loaded into an avatar         
-                 
-                
-        """
-        return _Piavca_base.MultiMotionCombiner_load(*args)
-
-    def unload(*args):
-        """
-        virtual void Piavca::MotionFilter::unload()
-                 
-        called when the motion is unloaded from an avatar         
-                 
-                
-        """
-        return _Piavca_base.MultiMotionCombiner_unload(*args)
-
-    def loaded(*args):
-        """
-        virtual bool Piavca::MotionFilter::loaded()
-                 
-        checks if the motion has been loaded into an avatar         
-                 
-                
-        """
-        return _Piavca_base.MultiMotionCombiner_loaded(*args)
-
-    def getAvatar(*args): return _Piavca_base.MultiMotionCombiner_getAvatar(*args)
-    def event(*args): return _Piavca_base.MultiMotionCombiner_event(*args)
-    def cleanRecursionState(*args): return _Piavca_base.MultiMotionCombiner_cleanRecursionState(*args)
-    def __disown__(self):
-        self.this.disown()
-        _Piavca_base.disown_MultiMotionCombiner(self)
-        return weakref_proxy(self)
-MultiMotionCombiner_swigregister = _Piavca_base.MultiMotionCombiner_swigregister
-MultiMotionCombiner_swigregister(MultiMotionCombiner)
-MultiMotionCombiner_castToThisType = _Piavca_base.MultiMotionCombiner_castToThisType
-
 class ChoiceMotion(MultiMotionCombiner):
     __swig_setmethods__ = {}
     for _s in [MultiMotionCombiner]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
@@ -5257,6 +5253,7 @@ class ChoiceMotion(MultiMotionCombiner):
     if _newclass:castToThisType = staticmethod(_Piavca_base.ChoiceMotion_castToThisType)
     def setCurrentChoice(*args): return _Piavca_base.ChoiceMotion_setCurrentChoice(*args)
     def event(*args): return _Piavca_base.ChoiceMotion_event(*args)
+    def getEventNames(*args): return _Piavca_base.ChoiceMotion_getEventNames(*args)
     def reset(*args):
         """
         void Piavca::MotionFilter::reset()
@@ -5308,16 +5305,7 @@ class RandomChoiceMotion(ChoiceMotion):
     def setProbability(*args): return _Piavca_base.RandomChoiceMotion_setProbability(*args)
     def setMotionProb(*args): return _Piavca_base.RandomChoiceMotion_setMotionProb(*args)
     def shift(*args): return _Piavca_base.RandomChoiceMotion_shift(*args)
-    def reset(*args):
-        """
-        void Piavca::MotionFilter::reset()
-                 
-        does any resetting needed         
-                 
-                
-        """
-        return _Piavca_base.RandomChoiceMotion_reset(*args)
-
+    def reset(*args): return _Piavca_base.RandomChoiceMotion_reset(*args)
 RandomChoiceMotion_swigregister = _Piavca_base.RandomChoiceMotion_swigregister
 RandomChoiceMotion_swigregister(RandomChoiceMotion)
 RandomChoiceMotion_castToThisType = _Piavca_base.RandomChoiceMotion_castToThisType
@@ -5533,12 +5521,12 @@ RandomBlend_swigregister = _Piavca_base.RandomBlend_swigregister
 RandomBlend_swigregister(RandomBlend)
 RandomBlend_castToThisType = _Piavca_base.RandomBlend_castToThisType
 
-class RandomAdd(MultiMotionCombiner):
+class RandomAdd(MotionAdder):
     __swig_setmethods__ = {}
-    for _s in [MultiMotionCombiner]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    for _s in [MotionAdder]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, RandomAdd, name, value)
     __swig_getmethods__ = {}
-    for _s in [MultiMotionCombiner]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    for _s in [MotionAdder]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
     __getattr__ = lambda self, name: _swig_getattr(self, RandomAdd, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
@@ -5547,9 +5535,10 @@ class RandomAdd(MultiMotionCombiner):
         except: self.this = this
     __swig_destroy__ = _Piavca_base.delete_RandomAdd
     __del__ = lambda self : None;
+    def addMotion(*args): return _Piavca_base.RandomAdd_addMotion(*args)
     def clone(*args):
         """
-        virtual Motion* Piavca::Motion::clone()=0
+        virtual Motion* Piavca::MotionAdder::clone()
                  
         creates a copy of the motion         
                  
@@ -7351,6 +7340,7 @@ class DiadicGazeMotion(RandomGazeMotion):
         return _Piavca_base.DiadicGazeMotion_setGazeFollow(*args)
 
     def event(*args): return _Piavca_base.DiadicGazeMotion_event(*args)
+    def getEventNames(*args): return _Piavca_base.DiadicGazeMotion_getEventNames(*args)
     def setOther(*args):
         """
         void Piavca::DiadicGazeMotion::setOther(Avatar *other)

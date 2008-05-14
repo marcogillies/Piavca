@@ -95,7 +95,9 @@ void AvatarMotionQueue::init(Avatar *avatar)
     selfBlend = new PostureBlend(motion, 0.6f);
 	currentMotion = motion;
 	//selfBlend->setBlendInterval(0.0);
-	adder = new MotionAdder(NULL, selfBlend);
+	adder = new MotionAdder();//(NULL, selfBlend);
+	adder->addMotion(selfBlend);
+	
 	avatarBlend = new AvatarPostureBlend(new ScaleMotionRoot(adder, scaleFactor), //avatar, 
 		/*interval=*/0.2f, /*tracksFromAvatar=*/true);
 	//avatarBlend->setBlendInterval(0.0);	
@@ -141,10 +143,19 @@ void AvatarMotionQueue::timeStep(Avatar *avatar, float time)
 				//std::cout << selfBlend->getMotionLength() << std::endl;
 				if(background)
 				{
-					if(adder)
-						adder->setMotion1(new MotionAdder(adder->getMotion1(), new PostureBlend(new TimeOffset(motion, (time-motionStartTime)))));
-					else
-						adder = new MotionAdder(new PostureBlend(new TimeOffset(motion, (time-motionStartTime))), selfBlend);
+					if(!adder)
+					{
+						adder = new MotionAdder();
+						adder->addMotion(selfBlend);
+					}
+					adder->addMotion(new PostureBlend(new TimeOffset(motion, (time-motionStartTime))));
+						//adder->setMotion1(new MotionAdder(adder->getMotion1(), new PostureBlend(new TimeOffset(motion, (time-motionStartTime)))));
+					//}
+					//else
+					//{
+						
+					//	adder = new MotionAdder(new PostureBlend(new TimeOffset(motion, (time-motionStartTime))), selfBlend);
+					//}
 					// we've handed ownership over to the adder so we give up ownership
 					//delete motion;
 					motion->Dispose();
@@ -178,21 +189,21 @@ void AvatarMotionQueue::timeStep(Avatar *avatar, float time)
 		}
     }
 
-	for (std::list < MotionAdder * >::iterator i = removeList.begin();
-		i != removeList.end(); )
-	{
-		MotionAdder *child = dynamic_cast<MotionAdder *>((*i)->getMotion1());
-		if(child)
-		{
-			if(child->getMotion2()->getEndTime() < Core::getCore()->getTime())
-			{
-				(*i)->setMotion1(child->getMotion1());
-				i = removeList.erase(i);
-				continue;
-			}
-		}
-		i++;
-	}
+	//for (std::list < MotionAdder * >::iterator i = removeList.begin();
+	//	i != removeList.end(); )
+	//{
+	//	MotionAdder *child = dynamic_cast<MotionAdder *>((*i)->getMotion1());
+	//	if(child)
+	//	{
+	//		if(child->getMotion2()->getEndTime() < Core::getCore()->getTime())
+	//		{
+	//			(*i)->setMotion1(child->getMotion1());
+	//			i = removeList.erase(i);
+	//			continue;
+	//		}
+	//	}
+	//	i++;
+	//}
 };
 
 void AvatarMotionQueue::enqueueMotion(std::string name, Motion* motion, float atTime)
@@ -318,11 +329,24 @@ void AvatarMotionQueue::enqueueRandomMotions(int num)
  
   void AvatarMotionQueue::clearAllBackgroundMotions()
   {	
-	  adder->setMotion2(selfBlend);
-	  adder->setMotion1(NULL);
+	  adder->clear();
+	  adder->addMotion(selfBlend);
+	  //adder->setMotion2(selfBlend);
+	  //adder->setMotion1(NULL);
   };
   void AvatarMotionQueue::clearFinishedBackgroundMotions()
   {
+	  // iterate in reverse order so that we don't invalidate our indeces
+	  for (int i = adder->getNumMotions()-1; i >= 0; i--)
+	  {
+		  if (adder->getMotionByIndex(i)->getEndTime() < Core::getCore()->getTime())
+		  {
+			  adder->getMotionByIndex(i)->reset();
+			  dynamic_cast<PostureBlend *>(adder->getMotionByIndex(i))->setMotion(new ZeroMotion(adder->getMotionByIndex(i)->isFacial()));
+		  }
+	  }
+	  
+	  /*
 	  MotionAdder *temp_adder_parent = adder;
 	  MotionAdder *temp_adder_child = dynamic_cast<MotionAdder *>(adder->getMotion1());
 	  while (temp_adder_parent && temp_adder_child)
@@ -355,6 +379,7 @@ void AvatarMotionQueue::enqueueRandomMotions(int num)
 		  //}
 		  temp_adder_child = dynamic_cast<MotionAdder *>(temp_adder_parent->getMotion1());
 	  };
+	  */
   };
 
   
@@ -383,6 +408,13 @@ void AvatarMotionQueue::enqueueRandomMotions(int num)
   
   void AvatarMotionQueue::removeBackgroundMotion(tstring name)
   {
+	  int i = adder->getMotionIndex(name);
+	  if (i < 0)
+		  return;
+	  adder->getMotionByIndex(i)->reset();
+	  dynamic_cast<PostureBlend *>(adder->getMotionByIndex(i))->setMotion(new ZeroMotion(adder->getMotionByIndex(i)->isFacial()));
+	  
+	  /*
 	  MotionAdder *temp_adder_parent = adder;
 	  MotionAdder *temp_adder_child = dynamic_cast<MotionAdder *>(adder->getMotion1());
 	  while (temp_adder_parent && temp_adder_child)
@@ -425,10 +457,15 @@ void AvatarMotionQueue::enqueueRandomMotions(int num)
 		  //}
 		  temp_adder_child = dynamic_cast<MotionAdder *>(temp_adder_parent->getMotion1());
 	  };
+	  */
   };
   
   void AvatarMotionQueue::pauseBackgroundMotion(tstring name)
   {
+	  Motion *mot = adder->getMotion(name);
+	  if (mot)
+		  mot->pause();
+	  /*
 	  MotionAdder *temp_adder_parent = adder;
 	  MotionAdder *temp_adder_child = dynamic_cast<MotionAdder *>(adder->getMotion1());
 	  while (temp_adder_parent && temp_adder_child)
@@ -440,10 +477,15 @@ void AvatarMotionQueue::enqueueRandomMotions(int num)
 		  temp_adder_parent = temp_adder_child;
 		  temp_adder_child = dynamic_cast<MotionAdder *>(temp_adder_parent->getMotion1());
 	  };
+	  */
   };
 
   void AvatarMotionQueue::unpauseBackgroundMotion(tstring name)
   {
+	  Motion *mot = adder->getMotion(name);
+	  if (mot)
+		  mot->pause();
+	  /*
 	  MotionAdder *temp_adder_parent = adder;
 	  MotionAdder *temp_adder_child = dynamic_cast<MotionAdder *>(adder->getMotion1());
 	  while (temp_adder_parent && temp_adder_child)
@@ -455,10 +497,22 @@ void AvatarMotionQueue::enqueueRandomMotions(int num)
 		  temp_adder_parent = temp_adder_child;
 		  temp_adder_child = dynamic_cast<MotionAdder *>(temp_adder_parent->getMotion1());
 	  };
+	  */
   };
 
   void AvatarMotionQueue::removeBackgroundMotionByType(const type_info &ty)
   {
+	  // iterate in reverse order so that we don't invalidate our indeces
+	  for (int i = adder->getNumMotions()-1; i >= 0; i--)
+	  {
+		  if (typeid(adder->getMotionByIndex(i)) == ty)
+		  {
+			  adder->getMotionByIndex(i)->reset();
+			  dynamic_cast<PostureBlend *>(adder->getMotionByIndex(i))->setMotion(new ZeroMotion(adder->getMotionByIndex(i)->isFacial()));
+		  }
+	  }
+	  
+	  /*
 	  MotionAdder *temp_adder_parent = adder;
 	  MotionAdder *temp_adder_child = dynamic_cast<MotionAdder *>(adder->getMotion1());
 	  while (temp_adder_parent && temp_adder_child)
@@ -492,6 +546,7 @@ void AvatarMotionQueue::enqueueRandomMotions(int num)
 		  //}
 		  temp_adder_child = dynamic_cast<MotionAdder *>(temp_adder_parent->getMotion1());
 	  };
+	  */
   };
   
   /*void AvatarMotionQueue::clearBackgroundMotion(Motion *mot)

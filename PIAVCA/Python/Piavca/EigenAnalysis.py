@@ -41,8 +41,14 @@ import string
 import re
 import math
 
-#import mdp
-import scipy
+
+from ImportException import PiavcaImportException
+try:
+	import scipy
+	import scipy.linalg
+except ImportError:
+	raise PiavcaImportException("scipy text missing")
+
 
 import sys
 import time

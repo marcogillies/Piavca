@@ -190,6 +190,11 @@ public:
 		//std::cout << "event in motion " << getName() << std::endl;
 		visited = true;
 	};
+	
+	virtual std::vector<Piavca::tstring> getEventNames()
+	{
+		return std::vector<Piavca::tstring>();
+	}
 
 	virtual void cleanRecursionState()
 	{

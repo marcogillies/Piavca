@@ -47,6 +47,7 @@ def getTime():
 _motionLookup = {}
 
 def loadMotion(name, motion):
+	global _motionLookup
 	if type(motion) != type(""):
 		_motionLookup[name] = motion
 	#print "proxy core", Core.getCore()
@@ -63,6 +64,7 @@ def getRealMotionType(motion):
 	return motion
 	
 def getMotion(name):
+	global _motionLookup
 	print "getMotion"
 	print _motionLookup.keys()
 	print name
@@ -71,7 +73,29 @@ def getMotion(name):
 		return _motionLookup[name]
 	else:
 		motion = Core.getCore().getMotion(name)
-		motion.Reference()
-		motion.thisown = False
+		if motion != None:
+			motion.Reference()
+			motion.thisown = False
 		return getRealMotionType(motion)
+	
+_events = []
+
+def addEvents(events):
+	global _events
+	_events = _events+events
+	
+def addEvent(event):
+	global _events
+	_events.append(event)
+	
+def getEvents():
+	global _events
+	return list(_events)
+
+def removeEvent(eventname):
+	global _events
+	try:
+		_events.remove(eventname)
+	except ValueError:
+		print "no such event", eventname
 		

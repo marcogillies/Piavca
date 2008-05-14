@@ -2,7 +2,12 @@
 # Don't modify this file, modify the SWIG interface instead.
 # This file is compatible with both classic and new-style classes.
 
-import _SpeechToText
+from Piavca.ImportException import PiavcaImportException
+try:
+	import _SpeechToText
+except ImportError:
+	raise PiavcaImportException("speech to text missing")
+
 import new
 new_instancemethod = new.instancemethod
 try:

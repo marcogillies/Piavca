@@ -1,5 +1,9 @@
-import wx
-from wx.lib.dialogs import *
+from ImportException import PiavcaImportException
+try:
+	import wx
+	from wx.lib.dialogs import *
+except ImportError:
+	raise PiavcaImportException("wx python missing")
 #print "after wx import"
 
 import pickle

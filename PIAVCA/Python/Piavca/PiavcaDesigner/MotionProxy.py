@@ -54,16 +54,18 @@ class MotionProxy:
 	
 	def addChild(self, name):
 		print "adding child", name
+		newmotion = self.backend.getMotionByName(name)
+		print newmotion
 		if hasattr(self.motion, "addMotion"):
-			newmotion = self.backend.getMotionByName(name)
-			print newmotion
 			self.motion.addMotion(newmotion)
 		elif hasattr(self.motion, "setMotion"):
-			newmotion = self.backend.getMotionByName(name)
-			print newmotion
 			self.motion.setMotion(newmotion)
 		elif hasattr(self.motion, "setMotion1"):
-			raise NotImplementedError("don't know what to do with adding to two motion combiners")
+			if self.motion.getMotion1():
+				self.motion.setMotion2(newmotion)
+			else:
+				self.motion.setMotion1(newmotion)
+			#raise NotImplementedError("don't know what to do with adding to two motion combiners")
 		#self.backend.update()
 	
 	def getParameters(self):
@@ -94,6 +96,25 @@ class MotionProxy:
 		print "setting ", name, "=", val, type(val)
 		method = getattr(self.motion, "set" + name)
 		return method(val)
+	
+	def setRange(self):
+		start, end = self.backend.getRange()
+		start += self.motion.getStart()
+		end += self.motion.getStart()
+		self.motion.setStart(start)
+		self.motion.setEnd(end)
+		self.backend.resetRange()
+		self.backend.update()
+	
+	def resetRange(self):
+		self.motion.setStart(0)
+		self.motion.setEnd(-1)
+		self.backend.resetRange()
+		self.backend.update()
 		
-					
+	def PublishEvents(self):
+		print self.motion.getEventNames()
+		Piavca.addEvents(self.motion.getEventNames())
+		print Piavca.getEvents()
+		self.backend.update()
 					

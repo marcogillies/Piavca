@@ -3,11 +3,12 @@ try:
 	aimlAvailable = True
 except ImportError:
 	aimlAvailable = False
-	
+
+from ImportException import PiavcaImportException	
 try:
 	import SpeechToText
 	speechToTextAvailable = True
-except ImportError:
+except PiavcaImportException:
 	speechToTextAvailable = False
 	
 
