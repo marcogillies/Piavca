@@ -51,6 +51,8 @@ if glPresent:
 			self.axisFlag = False
 			
 			self.clear_colour = (0,0,0)
+			
+		def setCurrent(self):
 			if self.GetContext():
 				self.SetCurrent()
 				glViewport(0, 0, 640, 480)

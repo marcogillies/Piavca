@@ -37,6 +37,8 @@ if wxPresent:
 			self.frame = PiavcaWXFrame(None, -1, "Piavca Viewer", size=(400,400), canvastype=canvastype)
 			self.SetTopWindow(self.frame)
 			self.frame.Show(True)
+			self.frame.canvas.setCurrent()
+			
 			return self.frame.canvas
 		def getCanvas(self):
 			return self.frame.canvas
