@@ -64,9 +64,12 @@ try:
 	from AnimationTrack import AnimationInterface, AnimationInterfaceCallback
 	from PiavcaWXApp import getWXApp, setWXApp
 except PiavcaImportException:
-	raise
 	print "wxPython unavailable, please install wxPython for GUI functions"
 
+try:
+	from EventsGUI import setUpEventsGUI
+except PiavcaImportException:
+	print "wxPython unavailable, please install wxPython for GUI functions"
 
 	
 Core.init()

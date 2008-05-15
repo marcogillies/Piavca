@@ -260,16 +260,19 @@ def readMotions(motions):
 				print "loaded avatar", name, position, rotation
 				avatar.setRootPosition(position)
 				avatar.setRootOrientation(rotation)
-			
-			
-			elif motion.nodeName == "Event":
-				name = str(motion.getAttribute("name"))
-				if name == "":
-					name = str(motion.getAttribute("Name"))
-				if name == "":
-					print "Event statement without a name"
-				Piavca.addEvent(name)
-				
+				for child in motion.childNodes:
+					if child.nodeType != minidom.Node.ELEMENT_NODE:
+						continue
+					if child.nodeName != "Event":
+						print "expected a Event statement as a child of an avatar but got", child.nodeName
+						continue
+					name = str(child.getAttribute("name"))
+					if name == "":
+						name = str(child.getAttribute("Name"))
+					if name == "":
+						print "Event statement without a name"
+					Piavca.addEvent(avatar, name)
+					
 			elif motion.nodeName == "Motion":
 				print "found a motion statement", motion
 				for i in range(motion.attributes.length):
@@ -454,7 +457,7 @@ def readMotions(motions):
 	print [mot[0].getName() for mot in mots]
 	return mots, element_list
 
-def saveMotions(filename, motions, element = None, doc = None, avatars=[], events=[]):
+def saveMotions(filename, motions, element = None, doc = None, avatars=[]):
 	writeout = 0
 	if element == None:
 		impl = minidom.getDOMImplementation()
@@ -469,20 +472,21 @@ def saveMotions(filename, motions, element = None, doc = None, avatars=[], event
 						"getVecValueAtTimeInternal", "getFloatValueAtTimeInternal", "getMotionLength"]
 	
 	for avatar in avatars:
-		el = doc.createElement("Avatar")
-		el.setAttribute("name", avatar.getName())
-		el.setAttribute("position", str(avatar.getRootPosition()))
+		avatar_el = doc.createElement("Avatar")
+		avatar_el.setAttribute("name", avatar.getName())
+		avatar_el.setAttribute("position", str(avatar.getRootPosition()))
 		q = avatar.getRootOrientation()
 		angle = q.getAngle()
 		axis = q.getAxis()
-		el.setAttribute("rotation", str(angle) + " " + str(axis))
-		element.appendChild(el)
+		avatar_el.setAttribute("rotation", str(angle) + " " + str(axis))
 		
-	
-	for event in events:
-		el = doc.createElement("Event")
-		el.setAttribute("name", event)
-		element.appendChild(el)
+		events = Piavca.getEvents(avatar)
+		for event in events:
+			el = doc.createElement("Event")
+			el.setAttribute("name", event)
+			avatar_el.appendChild(el)
+			
+		element.appendChild(avatar_el)
 	
 	for motion in motions:
 		motiontype = None
@@ -566,9 +570,8 @@ def saveAll(filename):
 	print avatars
 	avatars = [core.getAvatar(avatar) for avatar in avatars]
 	
-	events = Piavca.getEvents()
 	
-	saveMotions(filename, motions=motions, avatars=avatars, events=events)
+	saveMotions(filename, motions=motions, avatars=avatars)
 	
 def writeOutMotionTypes(filename):
 	file = open(filename, "w")

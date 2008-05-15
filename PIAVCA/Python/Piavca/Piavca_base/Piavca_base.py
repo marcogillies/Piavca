@@ -510,6 +510,9 @@ class Motion(_object):
         """
         return _Piavca_base.Motion_printInfo(*args)
 
+    def getId(*args): return _Piavca_base.Motion_getId(*args)
+    def __eq__(*args): return _Piavca_base.Motion___eq__(*args)
+    def __ne__(*args): return _Piavca_base.Motion___ne__(*args)
     def load(*args):
         """
         virtual void Piavca::Motion::load(Avatar *av)

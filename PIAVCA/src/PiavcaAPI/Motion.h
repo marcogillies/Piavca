@@ -151,6 +151,16 @@ public:
 
 	//! prints out info about the motion heirarchy
 	virtual void printInfo();
+	
+	int getId() const
+	{
+		return (int) (this);
+	};
+
+	bool operator==(const Motion *m)const {return m != NULL and (*this) == (*m);};
+	bool operator==(const Motion &m)const {return getId() == m.getId();};
+	bool operator!=(const Motion *m)const {return !((*this) == m);};
+	bool operator!=(const Motion &m)const {return !((*this) == m);};
 
 	//! called when the motion is loaded into an avatar
 	virtual void load(Avatar *av)

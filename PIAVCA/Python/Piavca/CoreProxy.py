@@ -78,24 +78,32 @@ def getMotion(name):
 			motion.thisown = False
 		return getRealMotionType(motion)
 	
-_events = []
+_events = {}
 
-def addEvents(events):
+def addEvents(avatar, events):
 	global _events
-	_events = _events+events
+	if not _events.has_key(avatar.getName()):
+		_events[avatar.getName()] = []
+	_events[avatar.getName()] = _events[avatar.getName()] + events
 	
-def addEvent(event):
+def addEvent(avatar, event):
 	global _events
-	_events.append(event)
+	if not _events.has_key(avatar.getName()):
+		_events[avatar.getName()] = []
+	_events[avatar.getName()].append(event)
 	
-def getEvents():
+def getEvents(avatar):
 	global _events
-	return list(_events)
+	if _events.has_key(avatar.getName()):
+		return list(_events[avatar.getName()])
+	else:
+		return []
 
-def removeEvent(eventname):
+def removeEvent(avatareventname):
 	global _events
 	try:
-		_events.remove(eventname)
+		if _events.has_key(avatar.getName()):
+			_events[avatar.getName()].remove(eventname)
 	except ValueError:
 		print "no such event", eventname
 		

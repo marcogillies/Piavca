@@ -28,7 +28,9 @@ class MotionView(buttons.GenButton):
 		self.SetDropTarget(dt)
 
 	def OnClick(self, event):
+		print "starting motionview.OnClick"
 		self.motionproxy.select()
+		print "ending motionview.OnClick"
 		
 	def receiveText(self, data):
 		print "dropped", data
@@ -46,6 +48,7 @@ class MotionView(buttons.GenButton):
 		
 	def Delete(self, event):
 		print "Delete"
+		self.motionproxy.delete()
 		
 		
 		

@@ -16,6 +16,7 @@ class BackEnd:
 	selectedSubMotion = None
 	playing = False
 	defaultLength = 100.0
+	updateflag = False
 	
 	def __init__(self, frontend):
 		self.frontend = frontend
@@ -38,11 +39,12 @@ class BackEnd:
 		Piavca.XMLMotionFile.saveAll(filename)
 		
 	def update(self):
-		self.resetRange()
-		self.frontend.update()
+		self.updateflag = True
+		#self.resetRange()
+		#self.frontend.update()
 		
 	def timeUpdate(self):
-		if abs(self.lastMotionLength - self.motion.getMotionLength()) > 0.0001:
+		if abs(self.lastMotionLength - self.motion.getMotion().getMotionLength()) > 0.0001:
 			self.resetRange()
 			
 	def setAvatar(self, avatarname):
@@ -62,11 +64,18 @@ class BackEnd:
 		return core.getAvatarNames()
 	
 	def getEvents(self):
-		return Piavca.getEvents()
+		if self.avatar:
+			return Piavca.getEvents(self.avatar)
+		else:
+			return []
 	
 	def triggerEvent(self, event):
 		if self.avatar:
 			self.avatar.event(event)
+	
+	def PublishEvents(self, evt=None):
+		if self.getCurrentSubMotionProxy():
+			self.getCurrentSubMotionProxy().PublishEvents()
 			
 	def setMotion(self, motionname):
 		print "motion name", motionname, type(motionname)
@@ -80,22 +89,22 @@ class BackEnd:
 				dialog_return = textEntryDialog (message="Please enter a name for this motion")
 				motion_name = dialog_return.text.encode("latin-1")
 				Piavca.loadMotion(motion_name, motion)
-			self.motion = motion
-			self.submotion = motion
+			self.motion = MotionProxy(motion, self)#motion
+			self.submotion = self.motion
 			print "avatar", self.avatar
 			if self.avatar:
 				print "playing", self.avatar, self.motion
-				self.avatar.playMotionDirect(self.motion)
+				self.avatar.playMotionDirect(self.motion.getMotion())
 			self.resetRange()
 			self.update()
 			
-	def setSubMotion(self, motion):
-		self.submotion = motion
+	def setSubMotion(self, motionproxy):
+		self.submotion = motionproxy
 		self.update()
 		
 	def resetRange(self):
 		if self.motion:
-			length = self.motion.getMotionLength()
+			length = self.motion.getMotion().getMotionLength()
 			if length < 0:
 				length = self.defaultLength
 			self.setRange(0.0, length)
@@ -105,7 +114,7 @@ class BackEnd:
 	def setRange(self, start, end):
 		self.range = (start, end)
 		if self.motion:
-			self.lastMotionLength = self.motion.getMotionLength()
+			self.lastMotionLength = self.motion.getMotion().getMotionLength()
 		else:
 			self.lastMotionLength = None
 		
@@ -119,7 +128,7 @@ class BackEnd:
 		self.setRange(self.getTimeFromFraction(start), self.getTimeFromFraction(end))
 			
 	def getMotion(self):
-		return self.motion		
+		return self.motion.getMotion()		
 	
 	def getMotionByName(self, name):
 		if name[:10] == "__Type__::":
@@ -150,11 +159,11 @@ class BackEnd:
 
 	def getCurrentMotionProxy(self):
 		print "getting proxy for", self.motion
-		return self.getMotionProxy(self.motion)
+		return self.motion
 
 	def getCurrentSubMotionProxy(self):
 		print "getting proxy for", self.submotion
-		return self.getMotionProxy(self.submotion)
+		return self.submotion
 			
 	def getMotionNames(self):
 		core = Piavca.Core.getCore()
@@ -169,6 +178,11 @@ class BackEnd:
 	
 	def addSubMotionByType(self, motiontypename):
 		pass
+
+	def Delete(self, evt=None):
+		
+		if self.getCurrentSubMotionProxy():
+			self.getCurrentSubMotionProxy().delete()
 	
 	def playpause(self):
 		self.playing = not self.playing
@@ -191,9 +205,9 @@ class BackEnd:
 		if self.motion:
 			if t == None:
 				t = self.getTime()
-			if self.motion.getMotionLength() > 0.00001:
-				t = t/self.motion.getMotionLength()
-			elif self.motion.getMotionLength() < 0:
+			if self.motion.getMotion().getMotionLength() > 0.00001:
+				t = t/self.motion.getMotion().getMotionLength()
+			elif self.motion.getMotion().getMotionLength() < 0:
 				t = t/self.defaultLength
 			else:
 				t = 0.0
@@ -203,7 +217,7 @@ class BackEnd:
 		
 	def getTimeFromFraction(self, t):
 		if self.motion:
-			length = self.motion.getMotionLength()
+			length = self.motion.getMotion().getMotionLength()
 			if length < 0:
 				length = self.defaultLength
 			return t*length
@@ -212,6 +226,11 @@ class BackEnd:
 		
 		
 	def timeStep(self):
+		if self.updateflag:
+			self.updateflag = False
+			self.resetRange()
+			self.frontend.update()
+			
 		if self.playing  and self.motion:
 			if self.range[1] - self.range[0] <= 0.0:
 				self.setTime(0.0+self.range[0])

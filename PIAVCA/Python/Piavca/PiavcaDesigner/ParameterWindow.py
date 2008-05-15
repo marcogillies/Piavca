@@ -22,13 +22,17 @@ class ParamEntry(wx.Panel):
 		self.Fit()
 	
 	def update(self):
+		print "paramentry:update"
 		self.setValue(self.motionproxy.getParameterVal(self.param_name))
+		print "paramentry:update:end"
 		
 	def OnTextEntry(self, event):
+		print "paramentry:OnTextEntry"
 		val = self.getValue()
 		if val != None:
 			self.motionproxy.setParameterVal(self.param_name, val)
 			self.motionproxy.backend.timeUpdate()
+		print "paramentry:OnTextEntry:end"
 		
 	def setValue(self, val):
 		pass
@@ -45,9 +49,11 @@ class ButtonParamEntry(ParamEntry):
 		self.sizer.Add(self.button, 1, wx.EXPAND)
 	
 	def OnButton(self, evt):
+		print "paramentry:OnButton"
 		meth = getattr(self.motionproxy, self.param_name)
 		meth()
 		self.motionproxy.backend.timeUpdate()
+		print "paramentry:OnButton:end"
 	
 		
 class ScalarParamEntry(ParamEntry):
@@ -58,7 +64,9 @@ class ScalarParamEntry(ParamEntry):
 		self.sizer.Add(self.text, 1, wx.EXPAND)
 		
 	def setValue(self, val):
+		print "paramentry:setValue"
 		self.text.SetValue(str(val))
+		print "paramentry:setValue:end"
 		
 class StringParamEntry(ScalarParamEntry):
 	
@@ -108,8 +116,10 @@ class MultiParamEntry(ParamEntry):
 			self.sizer.Add(self.texts[-1], 1, wx.EXPAND)
 		
 	def setValue(self, val):
+		print "paramentry:setValue"
 		for i in range(self.dim):
 			self.texts[i].SetValue(str(val[i]))
+		print "paramentry:setValue:end"
 		
 class VecParamEntry(ScalarParamEntry):
 	dim = 3 

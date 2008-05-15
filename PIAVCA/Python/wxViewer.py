@@ -288,8 +288,6 @@ else:
 
 dirname = os.path.dirname(path)
 os.chdir(dirname)
-(splitext, ext) = os.path.splitext(path)
-basename = os.path.basename(splitext)
 
 try:
 	Piavca.JointNames.importJointNames("Joints.txt")
@@ -301,7 +299,17 @@ except IOError:
 	print "could not open Expressions file Expressions.txt, will probably work anyway"
 
 
-avatar = Piavca.Avatar(str(basename))
+(splitext, ext) = os.path.splitext(path)
+print "filename", splitext, "extention", ext
+if ext == ".cfg":
+	basename = os.path.basename(splitext)
+	avatar = Piavca.Avatar(str(basename))
+else:
+	import Piavca.XMLMotionFile
+	basename = os.path.basename(path)
+	Piavca.XMLMotionFile.parse(basename)
+	avatar = Piavca.Core.getCore().getAvatar(0)
+	Piavca.setUpEventsGUI()
 
 print "loaded avatar"
 

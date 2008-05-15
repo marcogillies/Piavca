@@ -36,18 +36,25 @@ class PiavcaDesigner(wx.Frame):
 		
 		
 		menubar = wx.MenuBar()
-		menu1 = wx.Menu()
 		
-		open = menu1.Append(wx.NewId(), "Open", "")
+		filemenu = wx.Menu()
+		open = filemenu.Append(wx.NewId(), "Open", "")
 		self.Bind(wx.EVT_MENU, self.Open, open)
-		save = menu1.Append(wx.NewId(), "&Save", "")
+		save = filemenu.Append(wx.NewId(), "&Save\tCtrl+s", "")
 		self.Bind(wx.EVT_MENU, self.Save, save)
-		saveas = menu1.Append(wx.NewId(), "SaveAs", "")
+		saveas = filemenu.Append(wx.NewId(), "SaveAs", "")
 		self.Bind(wx.EVT_MENU, self.SaveAs, saveas)
-		quit = menu1.Append(wx.NewId(), "Quit", "")
+		quit = filemenu.Append(wx.NewId(), "Quit", "")
 		self.Bind(wx.EVT_MENU, self.Quit, quit)
 		
-		menubar.Append(menu1, "&File")
+		editmenu = wx.Menu()
+		delete = editmenu.Append(wx.NewId(), "Delete\tdel", "")
+		self.Bind(wx.EVT_MENU, self.backend.Delete, delete)
+		publishevents = editmenu.Append(wx.NewId(), "Publish Events", "")
+		self.Bind(wx.EVT_MENU, self.backend.PublishEvents, publishevents)
+	
+		menubar.Append(filemenu, "&File")
+		menubar.Append(editmenu, "&Edit")
 		self.SetMenuBar(menubar)
 		
 		self.totalheight = self.mainHeight+self.timelineHeight

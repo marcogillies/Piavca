@@ -4,11 +4,12 @@ import Piavca
 
 
 class MotionProxy:
-	def __init__(self, motion, backend):
+	def __init__(self, motion, backend, parent=None):
 		self.motion = motion
 		self.motion.Reference()
 		self.motion.thisown = False
 		self.backend = backend
+		self.parent = parent
 		
 #		motiontype = None
 #		motiontypes = []
@@ -24,8 +25,11 @@ class MotionProxy:
 		print "motion", self.motion, self.motion.thisown
 		return type(self.motion).__name__ + "  " + self.motion.getName()
 	
+	def getMotion(self):
+		return self.motion
+	
 	def select(self):
-		self.backend.setSubMotion(self.motion)
+		self.backend.setSubMotion(self)
 	
 	def getChildren(self):
 		motion = self.motion
@@ -35,21 +39,21 @@ class MotionProxy:
 			for i in range(n):
 				m = motion.getMotionByIndex(i)
 				m = Piavca.getRealMotionType(m)
-				motionlist.append(MotionProxy(m, self.backend))
+				motionlist.append(MotionProxy(m, self.backend, self))
 		elif hasattr(motion, "getMotion1"):
 			m = motion.getMotion1()
 			m = Piavca.getRealMotionType(m)
 			if m != None:
-				motionlist.append(MotionProxy(m, self.backend))
+				motionlist.append(MotionProxy(m, self.backend, self))
 			m = motion.getMotion2()
 			m = Piavca.getRealMotionType(m)
 			if m != None:
-				motionlist.append(MotionProxy(m, self.backend))
+				motionlist.append(MotionProxy(m, self.backend, self))
 		elif hasattr(motion, "getMotion"):
 			m = motion.getMotion()
 			m = Piavca.getRealMotionType(m)
 			if m != None:
-				motionlist.append(MotionProxy(m, self.backend))
+				motionlist.append(MotionProxy(m, self.backend, self))
 		return motionlist
 	
 	def addChild(self, name):
@@ -113,8 +117,49 @@ class MotionProxy:
 		self.backend.update()
 		
 	def PublishEvents(self):
-		print self.motion.getEventNames()
-		Piavca.addEvents(self.motion.getEventNames())
-		print Piavca.getEvents()
-		self.backend.update()
+		if self.backend.getAvatar():
+			Piavca.addEvents(self.backend.getAvatar(), self.motion.getEventNames())
+			self.backend.update()
+		
+	def delete(self):
+		print self.parent
+		if not self.parent:
+			print "no parent"
+			return
+		done = False
+		parentMot = self.parent.getMotion()
+		if hasattr(parentMot, "removeMotionByIndex"):
+			print "is multimotion"
+			ind = parentMot.getMotionIndex(self.motion.getName())
+			print self.motion.getName(), ind
+			if ind < 0:
+				for i in range(parentMot.getNumMotions()):
+					if self.motion == parentMot.getMotion(i):
+						ind = i
+						break
+			print ind
+			if ind >= 0:
+				parentMot.removeMotionByIndex(ind)
+				done = True
+		if not done and hasattr(parentMot, "setMotion1"):
+			print "is two motion"
+			print self.motion, parentMot.getMotion1(), parentMot.getMotion2()
+			if parentMot.getMotion1() == self.motion:
+				print "is motion1"
+				parentMot.setMotion1(None)
+				done = True
+			elif parentMot.getMotion2() == self.motion:
+				print "is motion2"
+				parentMot.setMotion2(None)
+				done = True
+		if not done and hasattr(parentMot, "setMotion"):
+			print "is motion filter"
+			print self.motion, parentMot.getMotion()
+			if parentMot.getMotion() == self.motion:
+				print "is motion"
+				parentMot.setMotion(None)
+				done = True
+		if done:
+			self.backend.update()
+				
 					
