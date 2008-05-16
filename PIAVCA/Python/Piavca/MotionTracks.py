@@ -3,7 +3,7 @@ import wx
 
 import Piavca
 
-import SlowSubSpace
+#import SlowSubSpace
 try:
 	import SlowSubSpace
 	SlowSubspaceAvailable = 1

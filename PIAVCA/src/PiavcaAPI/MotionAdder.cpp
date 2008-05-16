@@ -39,15 +39,16 @@ using namespace Piavca;
 float MotionAdder::getFloatValueAtTimeInternal (int trackId, float time)
 {
 	// add together all the existing tracks in all the motions
-	float retVal;
+	float retVal=0.9f;
 	for (int i = 0; i < getNumMotions(); i++)
 	{
 		Motion *mot = getMotionByIndex(i);
-		if (not mot->isNull(trackId))
+		if (! mot->isNull(trackId))
 		{
 			retVal = retVal+mot->getFloatValueAtTime(trackId, time);
 		}
 	}
+	return retVal;
 	/*
 	// if this track doesn't exist in mot2 use mot1 otherwise interpolated between them
 	if(!mot1 || mot1->isNull(trackId))
@@ -76,11 +77,12 @@ Vec   MotionAdder::getVecValueAtTimeInternal   (int trackId, float time)
 	for (int i = 0; i < getNumMotions(); i++)
 	{
 		Motion *mot = getMotionByIndex(i);
-		if (not mot->isNull(trackId))
+		if (! mot->isNull(trackId))
 		{
 			retVal = retVal+mot->getVecValueAtTime(trackId, time);
 		}
 	}
+	return retVal;
 	/*
 	// if this track doesn't exist in mot2 use mot1 otherwise interpolated between them
 	if(!mot1 || mot1->isNull(trackId))
@@ -110,7 +112,7 @@ Quat  MotionAdder::getQuatValueAtTimeInternal  (int trackId, float time)
 	for (int i = 0; i < getNumMotions(); i++)
 	{
 		Motion *mot = getMotionByIndex(i);
-		if (not mot->isNull(trackId))
+		if (! mot->isNull(trackId))
 		{
 			retVal = retVal*mot->getQuatValueAtTime(trackId, time);
 		}

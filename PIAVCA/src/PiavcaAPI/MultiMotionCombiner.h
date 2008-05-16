@@ -137,7 +137,7 @@ public:
 	
 	Motion *getMotion(int index)
 	{
-		getMotionByIndex(index);
+		return getMotionByIndex(index);
 	}
 	
 	Motion *getMotion(tstring motionName)

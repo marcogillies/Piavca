@@ -157,7 +157,7 @@ public:
 		return (int) (this);
 	};
 
-	bool operator==(const Motion *m)const {return m != NULL and (*this) == (*m);};
+	bool operator==(const Motion *m)const {return m != NULL && (*this) == (*m);};
 	bool operator==(const Motion &m)const {return getId() == m.getId();};
 	bool operator!=(const Motion *m)const {return !((*this) == m);};
 	bool operator!=(const Motion &m)const {return !((*this) == m);};
