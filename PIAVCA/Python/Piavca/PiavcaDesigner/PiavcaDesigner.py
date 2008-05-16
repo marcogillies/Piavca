@@ -14,6 +14,7 @@ import Piavca.JointNames
 Piavca.JointNames.loadDefaults()
 
 import Piavca.FreeCameraCanvas
+import Piavca.ViewerCanvas
 
 from BackEnd import BackEnd
 
@@ -40,6 +41,8 @@ class PiavcaDesigner(wx.Frame):
 		filemenu = wx.Menu()
 		open = filemenu.Append(wx.NewId(), "Open", "")
 		self.Bind(wx.EVT_MENU, self.Open, open)
+		imp = filemenu.Append(wx.NewId(), "Import", "")
+		self.Bind(wx.EVT_MENU, self.Import, imp)
 		save = filemenu.Append(wx.NewId(), "&Save\tCtrl+s", "")
 		self.Bind(wx.EVT_MENU, self.Save, save)
 		saveas = filemenu.Append(wx.NewId(), "SaveAs", "")
@@ -66,8 +69,9 @@ class PiavcaDesigner(wx.Frame):
 		
 		
 		#p1 = wx.Panel(self.splitter2, style=wx.SUNKEN_BORDER)
-		self.viewer = Piavca.FreeCameraCanvas.FreeCameraCanvas(self.splitter2)
-		self.heirarchy = HeirarchyView.HeirarchyView(self.backend, self.splitter2, style=wx.SUNKEN_BORDER)
+		#self.viewer = Piavca.FreeCameraCanvas.FreeCameraCanvas(self.splitter2)
+		self.viewer = Piavca.ViewerCanvas.ViewerCanvas(self.splitter2)
+		self.heirarchy = HeirarchyView.HeirarchyView(self.backend, self.splitter2)#, style=wx.SUNKEN_BORDER)
 		self.listboxes = ListBoxController.ListBoxController(self.backend, self.splitter1, style=wx.SUNKEN_BORDER)
 		
 		self.children = []
@@ -103,6 +107,10 @@ class PiavcaDesigner(wx.Frame):
 		self.update()
 		
 	def Open(self, event):
+		Piavca.clear()
+		self.Import(event)
+		
+	def Import(self, event):
 		dialog_return = openFileDialog (wildcard="XML Motion files (*.xml)|*.xml|Cal3d Character files files (*.cfg)|*.cfg")
 		path = dialog_return.paths[0].encode("latin-1")
 	
@@ -156,6 +164,9 @@ class PiavcaDesigner(wx.Frame):
 	def update(self):
 		for child in self.children:
 			child.update()
+			
+		self.viewer.setAvatar(self.backend.getAvatar())
+		self.viewer.initCameraPosition()
 		# this line is a bit of a hack, its the only way I could get the 
 		# heirarchy view to update its layout properly
 		self.splitter2.SetSashPosition(self.splitter2.GetSashPosition())

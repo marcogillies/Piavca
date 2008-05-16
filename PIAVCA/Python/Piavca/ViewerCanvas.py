@@ -25,8 +25,18 @@ class ViewerCanvas(PiavcaWXCanvas.PiavcaWXCanvasBase):
 		PiavcaWXCanvas.PiavcaWXCanvasBase.__init__(self, parent)
 		self.floorFlag = False
 		self.prevY = None
+		self.prevX = None
 		self.verticalMove = 0.0
+		self.horizontalMove = 0.0
 		self.zoom = -3
+		self.transSensitivity = 0.1
+		if Piavca.Core.getCore().numAvatars() > 0:
+			self.setAvatar(Piavca.Core.getCore().getAvatar(0))
+		else:
+			self.setAvatar(None)
+
+	def setAvatar(self, avatar):
+		self.avatar = avatar
 
 	def custom_init(self):
 		gltbInit()
@@ -42,46 +52,71 @@ class ViewerCanvas(PiavcaWXCanvas.PiavcaWXCanvasBase):
 	def mouseUp(self):
 		gltbMouseUp()
 		self.prevX = None
+		self.prevY = None
 		
 	def leftMove(self, x, y):
 		gltbMotionRotateAboutFocus(x, y)
 		
 	def rightDown(self, x, y):
 		self.prevY = y
-
-	def rightMove(self, x, y):
-		if self.prevY != None:
-			print "mouse move"
-			print y - self.prevY, y, self.prevY
-			self.verticalMove += -(y-self.prevY)*0.2
+		self.prevX = x
+		
+	def middleDown(self, x, y):
 		self.prevY = y
+		self.prevX = x
 
 	def middleMove(self, x, y):
 		if self.prevY != None:
-			print "mouse move"
-			print y - self.prevY, y, self.prevY
-			self.zoom += -(y-self.prevY)*0.2
+			#print "mouse move"
+			#print y - self.prevY, y, self.prevY
+			self.verticalMove += -self.transSensitivity*(y-self.prevY)*0.2
+			self.horizontalMove += self.transSensitivity*(x-self.prevX)*0.2
+		self.prevY = y
+		self.prevX = x
+
+	def rightMove(self, x, y):
+		if self.prevY != None:
+			#print "mouse move"
+			#print y - self.prevY, y, self.prevY
+			self.zoom += -self.transSensitivity*(y-self.prevY)*0.2
 		self.prevY = y
 
 	def updateCameraPosition(self):
-		avatar = Piavca.Core.getCore().getAvatar(0)
-		self.initialAvatarBound = avatar.getBaseBoundBox()
-		self.initialAvatarRoot = avatar.getRootPosition()
-
-		self.focusRoot = avatar.getRootPosition()
-		self.focusBound = avatar.getBaseBoundBox();
+		avatar = self.avatar # Piavca.Core.getCore().getAvatar(0)
+		if avatar:
+			#self.initialAvatarBound = avatar.getBaseBoundBox()
+			#self.initialAvatarRoot = avatar.getRootPosition()
+	
+			self.focusRoot = avatar.getRootPosition()
+			self.focusBound = avatar.getBaseBoundBox();
+		else:
+			#self.initialAvatarBound = Piavca.Bound()
+			#self.initialAvatarRoot = Piavca.Vec()
+	
+			self.focusRoot = Piavca.Vec()
+			self.focusBound = Piavca.Bound()
+			
+#		print "initialAvatarRoot", self.initialAvatarRoot
+#		print "initialAvatarBound", self.initialAvatarBound
+#		print "focusRoot", self.focusRoot
+#		print "focusBound", self.focusBound
 		self.focusBound.min = self.initialAvatarBound.min+self.focusRoot-self.initialAvatarRoot;
 		self.focusBound.max = self.initialAvatarBound.max+self.focusRoot-self.initialAvatarRoot;
+#		print "focusBound", self.focusBound
 
 	def pushCameraPosition(self):
 	   	centre = (self.focusBound.min+self.focusBound.max)/2.0
 		halfWidths = self.focusBound.max - centre
 		maxDim = max(max(halfWidths[0],halfWidths[1]), halfWidths[2]) 
+#		print "centre", centre
+#		print "maxDim", maxDim
 	
-		glTranslatef(0.0, self.verticalMove, self.zoom)
+		glTranslatef(self.horizontalMove, self.verticalMove, self.zoom)
+		#glTranslatef(0.0, 0.0, self.zoom)
 		gltbMatrix()
 		glPushMatrix()
-		glScalef(self.scaleBias/maxDim, self.scaleBias/maxDim, self.scaleBias/maxDim)
+		if maxDim > 0.00000001:
+			glScalef(self.scaleBias/maxDim, self.scaleBias/maxDim, self.scaleBias/maxDim)
 		glPushMatrix()
 		glTranslatef(-centre[0],-centre[1],-centre[2])
 		
@@ -93,9 +128,14 @@ class ViewerCanvas(PiavcaWXCanvas.PiavcaWXCanvasBase):
 		self.scaleBias = 1.0
 		
 	def initCameraPosition(self):
-		avatar = Piavca.Core.getCore().getAvatar(0)
-		self.initialAvatarBound = avatar.getBaseBoundBox()
-		self.initialAvatarRoot = avatar.getRootPosition()
+		avatar = self.avatar # Piavca.Core.getCore().getAvatar(0)
+		if avatar:
+			self.initialAvatarBound = avatar.getBoundBox()#avatar.getBaseBoundBox()
+			self.initialAvatarRoot = avatar.getRootPosition()
+		else:
+			self.initialAvatarBound = Piavca.Bound()
+			self.initialAvatarRoot = Piavca.Vec()
+			
 		self.updateCameraPosition()
 
 	def floorOn(self):

@@ -74,7 +74,7 @@ except PiavcaImportException:
 	
 Core.init()
 
-from CoreProxy import getTime, loadMotion, getMotion, getRealMotionType
+from CoreProxy import getTime, loadMotion, getMotion, getRealMotionType, clear
 from CoreProxy import addEvents, addEvent, getEvents, removeEvent
 
 def render ():

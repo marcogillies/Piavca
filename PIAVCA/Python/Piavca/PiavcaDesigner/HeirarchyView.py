@@ -3,9 +3,10 @@ import wx
 
 from MotionGroup import MotionGroup
 
-class HeirarchyView(wx.Panel):
-	def __init__(self, backend, parent=None, id=-1, pos=wx.DefaultPosition, size=wx.DefaultSize, style=0, name="HeirarchyView"):
-		wx.Panel.__init__(self, parent, id, pos, size, style, name)
+class HeirarchyView(wx.ScrolledWindow):
+	def __init__(self, backend, parent=None, id=-1, pos=wx.DefaultPosition, size=wx.DefaultSize, name="HeirarchyView"):
+		wx.ScrolledWindow.__init__(self, parent, id, pos, size, name=name)
+		self.SetScrollRate(1,1)
 		self.SetBackgroundColour("white")
 		self.backend = backend
 		

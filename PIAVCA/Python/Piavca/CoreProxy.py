@@ -107,3 +107,9 @@ def removeEvent(avatareventname):
 	except ValueError:
 		print "no such event", eventname
 		
+def clear():
+	_motionLookup = {}
+	_events = {}
+	Core.getCore().reset()
+	
+		

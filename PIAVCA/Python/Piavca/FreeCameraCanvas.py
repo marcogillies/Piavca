@@ -79,7 +79,7 @@ class FreeCameraCanvas(PiavcaWXCanvas.PiavcaWXCanvasBase):
 	def rightMove(self, x, y):
 		#print "right butting dragging", x, y, self.prevX, self.prevY
 		if hasattr(self, "prevX"):
-			trans = Piavca.Vec(x-self.prevX, 0.0, (y-self.prevY))
+			trans = Piavca.Vec(0.0, 0.0, (y-self.prevY))
 			trans = trans*self.trans_sensitivity
 			trans = self.cameraRot.inverse().transform(trans)
 			self.cameraPos = self.cameraPos + trans
@@ -90,7 +90,7 @@ class FreeCameraCanvas(PiavcaWXCanvas.PiavcaWXCanvasBase):
 	def middleMove(self, x, y):
 		#print "right butting dragging", x, y, self.prevX, self.prevY
 		if hasattr(self, "prevX"):
-			trans = Piavca.Vec(0.0, (y-self.prevY), 0.0)
+			trans = Piavca.Vec((x-self.prevX), -(y-self.prevY), 0.0)
 			trans = trans*self.trans_sensitivity
 			trans = self.cameraRot.inverse().transform(trans)
 			self.cameraPos = self.cameraPos + trans
