@@ -136,6 +136,8 @@ class ViewerCanvas(PiavcaWXCanvas.PiavcaWXCanvasBase):
 			self.initialAvatarBound = Piavca.Bound()
 			self.initialAvatarRoot = Piavca.Vec()
 			
+		print "updating camera position, avatar root:", self.initialAvatarRoot
+			
 		self.updateCameraPosition()
 
 	def floorOn(self):

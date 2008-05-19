@@ -12,6 +12,7 @@ class TimeLine(wx.Panel):
 		self.Bind(wx.EVT_SIZE, self.OnResize)
 		#self.Bind(wx.EVT_LEFT_DOWN, self.OnMouseDown)
 		self.Bind(wx.EVT_LEFT_UP, self.OnMouseUp)
+		self.Bind(wx.EVT_LEFT_DOWN, self.OnMouseDown)
 		self.Bind(wx.EVT_MOTION, self.OnMouseMove)
 		
 	def OnIdle(self, event):
@@ -55,21 +56,33 @@ class TimeLine(wx.Panel):
 		self.backend.setTimeFraction(t)
 		
 	def SetRange(self, event):
-		size = self.GetClientSize()
-		pos = event.GetPositionTuple()
-		t = float(pos[0])/float(size.width)
-		self.backend.setRangeFraction(self.backend.getTimeFraction(), t)
+		#size = self.GetClientSize()
+		#pos = event.GetPositionTuple()
+		#t = float(pos[0])/float(size.width)
+		self.backend.setRangeFraction(self.rangeStart, self.backend.getTimeFraction())
 		
 	def OnMouseMove(self, event):
 		if event.Dragging() and event.LeftIsDown():
 			# if shift is down we are selecting a range so we don't want the
 			# time to be updated
-			if not event.ShiftDown():
-				self.UpdateTime(event)
+			self.UpdateTime(event)
+			if event.ShiftDown():
+				if self.rangeStart == None:
+					self.rangeStart = self.backend.getTimeFraction()
+				self.SetRange(event)
+				
 		
 	def OnMouseUp(self, event):
+		self.UpdateTime(event)
 		if event.ShiftDown():
+			if self.rangeStart == None:
+				self.rangeStart = self.backend.getTimeFraction()
 			self.SetRange(event)
-		else:
+			
+		self.rangeStart = None
+		
+	def OnMouseDown(self, event):
+		if event.ShiftDown():
 			self.UpdateTime(event)
+			self.rangeStart = self.backend.getTimeFraction()
 		

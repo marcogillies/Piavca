@@ -78,6 +78,7 @@ class BackEnd:
 			self.getCurrentSubMotionProxy().PublishEvents()
 			
 	def setMotion(self, motionname):
+		self.setTimeFraction(0.0)
 		print "motion name", motionname, type(motionname)
 		motion = self.getMotionByName(motionname)
 		print "motion", motion
