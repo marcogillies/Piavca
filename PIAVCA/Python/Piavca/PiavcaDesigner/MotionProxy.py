@@ -60,6 +60,9 @@ class MotionProxy:
 		print "adding child", name
 		newmotion = self.backend.getMotionByName(name)
 		print newmotion
+		if newmotion == self.motion:
+			print "can't add a motion to itself"
+			return 
 		if hasattr(self.motion, "addMotion"):
 			self.motion.addMotion(newmotion)
 		elif hasattr(self.motion, "setMotion"):

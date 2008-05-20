@@ -326,8 +326,12 @@ if mot != None:
 	mot.Reference()
 	avatar.play_motion(Piavca.LoopMotion(mot))	
 
+
+avatar.showMotionAtTime(Piavca.getTime())
+	
 print "loaded motion"
 
+app.getCanvas().setAvatar(avatar)
 app.getCanvas().initCameraPosition()
 
 #app = MyApp()
