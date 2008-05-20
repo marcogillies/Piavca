@@ -35,6 +35,15 @@ class BackEnd:
 				self.setAvatar(self.getAvatarNames()[0])
 		self.frontend.update()
 		
+	def clear(self):
+		self.avatar = None
+		motion = None
+		submotion = None
+		selectedSubMotion = None
+		playing = False
+		Piavca.clear()
+		self.update()
+		
 	def save(self, filename):
 		Piavca.XMLMotionFile.saveAll(filename)
 		

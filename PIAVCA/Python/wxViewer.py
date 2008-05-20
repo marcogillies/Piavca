@@ -328,6 +328,8 @@ if mot != None:
 
 print "loaded motion"
 
+app.getCanvas().initCameraPosition()
+
 #app = MyApp()
 
 #import Piavca.redirect

@@ -107,7 +107,7 @@ class PiavcaDesigner(wx.Frame):
 		self.update()
 		
 	def Open(self, event):
-		Piavca.clear()
+		self.backend.clear()
 		self.Import(event)
 		
 	def Import(self, event):
