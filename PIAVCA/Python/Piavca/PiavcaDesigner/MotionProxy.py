@@ -36,6 +36,7 @@ class MotionProxy:
 		motionlist = []
 		if hasattr(motion, "getNumMotions"):
 			n = motion.getNumMotions()
+			print "number of children", n
 			for i in range(n):
 				m = motion.getMotionByIndex(i)
 				m = Piavca.getRealMotionType(m)
@@ -84,6 +85,8 @@ class MotionProxy:
 				print key
 				if hasattr(self.motion, "set" + key[3:]):
 					print key
+					if key[3:len("Motion")+3] == "Motion":
+						continue
 					method = getattr(self.motion, key)
 					value = method()
 					print key[3:], value

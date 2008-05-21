@@ -167,8 +167,8 @@ Piavca::Motion *MotionParserTyped<LoopMotion>::parseMotion(istringstream &is, st
 		MotionParser *mp = NULL;
 		Motion *mot = MotionParser::parseMotion(is, currentWord, scaleFactor, &mp);
 		if(Piavca::Core::getCore()->errorsPresent()) return NULL;
-		LoopMotion *loop = new LoopMotion(mot, endTime, interval);
-		loop->setAccumulateRoot(accumulateRoot);
+		LoopMotion *loop = new LoopMotion(mot, endTime);
+		//loop->setAccumulateRoot(accumulateRoot);
 		return loop;
 };
 
@@ -196,11 +196,11 @@ void MotionParserTyped<LoopMotion>::editMotionInternal(LoopMotion *mot, istrings
 					Piavca::Error(_T("no value given for interval"));
 					return;
 				}
-				mot->setBlendInterval(interval);
+				//mot->setBlendInterval(interval);
 			}
 			else if(currentWord == "forget_root_transform")
 			{
-				mot->setAccumulateRoot(false);
+				//mot->setAccumulateRoot(false);
 				if(!(is >> currentWord)) break;
 			}
 			Piavca::Error(_T("unknown option ") + StringToTString(currentWord));
@@ -2085,7 +2085,7 @@ template<> void MotionParserTyped<RandomAddLoop>::editMotionInternal(RandomAddLo
 			//} 
 			else if(currentWord == "shift")
 			{
-				mot->LoopMotion::reblend();
+				mot->LoopMotion::reset();
 				mot->shift();
 				if(!(is >> currentWord)) break;
 			}

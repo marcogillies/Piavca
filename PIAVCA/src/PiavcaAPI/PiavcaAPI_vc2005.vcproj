@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="8.00"
+	Version="9.00"
 	Name="PiavcaAPI"
 	ProjectGUID="{7E061BC4-F08C-40F0-8A91-8CAFD582054D}"
 	RootNamespace="PiavcaAPI"
 	Keyword="Win32Proj"
+	TargetFrameworkVersion="131072"
 	>
 	<Platforms>
 		<Platform
@@ -583,6 +584,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\ChoiceMotion.cpp"
+				>
+			</File>
+			<File
 				RelativePath="Hermite.cpp"
 				>
 			</File>
@@ -729,6 +734,10 @@
 			</File>
 			<File
 				RelativePath=".\ChangeMotionProp.h"
+				>
+			</File>
+			<File
+				RelativePath=".\ChoiceBase.h"
 				>
 			</File>
 			<File
@@ -925,6 +934,10 @@
 			</File>
 			<File
 				RelativePath=".\SequentialBlend.h"
+				>
+			</File>
+			<File
+				RelativePath=".\SmoothLoop.h"
 				>
 			</File>
 			<File

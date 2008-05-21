@@ -37,7 +37,7 @@
 #ifndef RANDOM_TIMINGS_LOOP_H
 #define RANDOM_TIMINGS_LOOP_H
 
-#include "PiavcaAPI/LoopMotion.h"
+#include "PiavcaAPI/SmoothLoop.h"
 #include "ScaleMotionSpeed.h"
 
 namespace Piavca
@@ -46,7 +46,7 @@ namespace Piavca
 typedef std::vector< Motion * > MotionVec;
 
 //! A loop motion where the speed is altered randomly on each time round.
-class RandomTimingsLoop : public LoopMotion
+class RandomTimingsLoop : public SmoothLoop
 {
 protected:
 	float minScale, maxScale;
@@ -59,7 +59,7 @@ public:
 	 */
 	RandomTimingsLoop(Motion *mot=NULL, float endTime = -1.0, float interval = 0.01,
 		float min = 1.0, float max = 1.0)
-		:LoopMotion(mot, endTime, interval), 
+		:SmoothLoop(mot, endTime, interval), 
 		minScale(min), maxScale(max)//,
 		//scaleSpeed(NULL, 1.0)
 		{
@@ -67,7 +67,7 @@ public:
 			setMotion(mot);
 		};
 	RandomTimingsLoop(const RandomTimingsLoop &rtl)
-		:LoopMotion(rtl), 
+		:SmoothLoop(rtl), 
 		minScale(rtl.minScale), maxScale(rtl.maxScale)
 		{
 			scaleSpeed = new ScaleMotionSpeed(*rtl.scaleSpeed);
@@ -103,7 +103,7 @@ public:
 	//! This is called each time around the loop
 	virtual void reblend(float time)
 	{
-		LoopMotion::reblend(time);
+		LoopMotion::reset();
 		float tscale = ((float)(rand()%1000));
 		tscale *= (maxScale - minScale)/1000.0f;
 		tscale += minScale;

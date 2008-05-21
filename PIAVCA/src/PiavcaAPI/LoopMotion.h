@@ -34,12 +34,12 @@
 #ifndef LOOP_MOTION_H
 #define LOOP_MOTION_H
 
-#include "PostureBlend.h"
+#include "MotionFilter.h"
 
 namespace Piavca
 {
     //! a motion filter that makes a motion loop continuously
-	class PIAVCA_DECL LoopMotion : public PostureBlend
+	class PIAVCA_DECL LoopMotion : public MotionFilter
 	{
 		bool lock;
 		float endTime;
@@ -49,10 +49,10 @@ namespace Piavca
 		//! pass in the motion to loop and an optional blend interval, 
 		/*!  (How long it takes to blend from the end back to the beginning)
 		 */
-		LoopMotion(Motion *mot = NULL, float _endTime = -1, float interval = 0.01)
-			:PostureBlend(mot, interval), lock(false), reblend_flag(false), endTime(_endTime) {} ;
+		LoopMotion(Motion *mot = NULL, float _endTime = -1)
+			:MotionFilter(mot), lock(false), reblend_flag(false), endTime(_endTime) {} ;
 		LoopMotion(const LoopMotion &l)
-			:PostureBlend(l), lock(false), reblend_flag(false), endTime(l.endTime){};
+			:MotionFilter(l), lock(false), reblend_flag(false), endTime(l.endTime){};
 
 		virtual Motion *clone(){return new LoopMotion(*this);};
 
@@ -64,114 +64,41 @@ namespace Piavca
 
 		virtual float getMotionLength()const
 		{
-			//if(endTime < 0)
-			//	std::cout << "returning negative time\n";
-			return endTime;
+			if (endTime > 0)
+				return endTime;
+			else
+				return Motion::getMotionLength();
 		};
 
 		void setEndTime(float t){endTime = t;};
-		
-
-		
+				
 		virtual void preFrame(float time)
 		{
 			//std::cout << "loop motion.preframe\n";
 			if (!lock 
 				&& (reblend_flag
 				|| ((endTime < 0 || time < endTime)
-				&& (!mot2 ||
-				(mot2->getMotionLength() > 0 && time > mot2->getEndTime())))))
+				&& (!filterMot ||
+				(filterMot->getMotionLength() > 0 && time > filterMot->getEndTime())))))
 				{
 				    LoopMotion *nonConstThis = const_cast<LoopMotion *>(this);
 					nonConstThis->lock = true;
-					nonConstThis->reblend(time);
+					nonConstThis->reset();
 					nonConstThis->lock = false;
 					reblend_flag = false;
 				}
-			PostureBlend::preFrame(time);
+			MotionFilter::preFrame(time);
 		}
 
-	    //! calculates the values of a keyframe
-	    /*!  if the end has been reached it reblends to start again at the beginning
+		//! called each time around the loop
+		/*!
+		 * It can be called by the client to interrupt the current motion.
 		 */
-	    virtual float getFloatValueAtTimeInternal (int trackId, float time)
+		virtual void reset()
 		{
-			// if we've reached the end of the motion we have to reblend to start it again
-			// as reblend calls this function again we have to check whether its being
-			// called recursively and not do the reblend
-			/*
-	    	if(!lock 
-				&& (reblend_flag
-				|| ((endTime < 0 || time < endTime)
-				&& (!mot2 ||
-				(mot2->getMotionLength() > 0 && time > mot2->getEndTime())))))
-			{
-			    LoopMotion *nonConstThis = const_cast<LoopMotion *>(this);
-				nonConstThis->lock = true;
-				nonConstThis->reblend(time);
-				nonConstThis->lock = false;
-				reblend_flag = false;
-			}
-			*/
-			//std::cout << "loop motion " << time << " " << blendStart << std::endl;
-			return PostureBlend::getFloatValueAtTimeInternal(trackId, time);
+			setStartTime(Piavca::Core::getCore()->getTime());	
 		};
 	    
-	     //! calculates the values of a keyframe
-	    /*!  if the end has been reached it reblends to start again at the beginning
-		 */
-	    virtual Vec   getVecValueAtTimeInternal   (int trackId, float time)
-		{
-			// if we've reached the end of the motion we have to reblend to start it again
-			// as reblend calls this function again we have to check whether its being
-			// called recursively and not do the reblend
-	    	/*
-			if(!lock 
-				&& (reblend_flag
-				|| ((endTime < 0 || time < endTime)
-				&& (!mot2 ||
-				(mot2->getMotionLength() > 0 && time > mot2->getEndTime())))))
-			{
-				LoopMotion *nonConstThis = const_cast<LoopMotion *>(this);
-				nonConstThis->lock = true;
-				nonConstThis->reblend(time);
-				nonConstThis->lock = false;
-				reblend_flag = false;
-			}
-			*/
-			Vec v = PostureBlend::getVecValueAtTimeInternal(trackId, time);
-			//std::cout << "loop motion: " << v << std::endl;
-			return v;
-		};
-	    
-	    //! calculates the values of a keyframe
-	    /*!  if the end has been reached it reblends to start again at the beginning
-		 */
-	    virtual Quat  getQuatValueAtTimeInternal  (int trackId, float time)
-		{
-			// if we've reached the end of the motion we have to reblend to start it again
-			// as reblend calls this function again we have to check whether its being
-			// called recursively and not do the reblend
-	    	/*
-			if(!lock 
-				&& (reblend_flag
-				|| ((endTime < 0 || time < endTime)
-				&& (!mot2 ||
-				(/*mot2->getMotionLength() > 0 &&* / time > mot2->getEndTime())))))
-			{
-				//std::cout << "Loop Motion Time " << time << " ";
-				//std::cout << mot2->getEndTime() << " ";
-				//std::cout << mot2->getStartTime() << " ";
-				//std::cout << mot2->getMotionLength() << std::endl;
-				LoopMotion *nonConstThis = const_cast<LoopMotion *>(this);
-				nonConstThis->lock = true;
-				nonConstThis->reblend(time);
-				nonConstThis->lock = false;
-				reblend_flag = false;
-			}
-			*/
-			return PostureBlend::getQuatValueAtTimeInternal(trackId, time);
-		};
 	};
 };
 

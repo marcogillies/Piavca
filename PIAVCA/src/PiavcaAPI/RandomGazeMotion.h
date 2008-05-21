@@ -92,7 +92,7 @@ struct ObjectTargetStruct
 
 typedef std::vector < ObjectTargetStruct > ObjectTargetVec;
 
-class RandomGazeMotion : public LoopMotion
+class RandomGazeMotion : public SmoothLoop
 {
 protected:
 	LookAtMotion *mot;
@@ -122,7 +122,7 @@ protected:
 	}
 public:
 	RandomGazeMotion(float endTime = -1.0, float interval = 0.01)
-		:LoopMotion(NULL, endTime, interval), 
+		:SmoothLoop(NULL, endTime, interval), 
 		lookAtLocationProb(0.5)
 	{
 		init();
@@ -132,7 +132,7 @@ public:
 		setMotion(mot);
 	};
 	RandomGazeMotion(const RandomGazeMotion &rg)
-		:LoopMotion(rg), mot(rg.mot), 
+		:SmoothLoop(rg), mot(rg.mot), 
 		avatarTargets(rg.avatarTargets), objectTargets(rg.objectTargets),
 		directionTable(rg.directionTable), lookAtLocationProb(rg.lookAtLocationProb),
 		meanGazeLength(rg.meanGazeLength), 
@@ -286,7 +286,7 @@ public:
 	
 	virtual void reblend(float time)
 	{
-		if(mot2 != mot)
+		if(filterMot != mot)
 			setMotion(mot);
 		mot->reblend(time);
 		mot->setHeadActive(false);

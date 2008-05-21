@@ -37,27 +37,33 @@
 #ifndef CHOICE_MOTION_H
 #define CHOICE_MOTION_H
 
-#include "MultiMotionCombiner.h"
-#include "ScaleMotionSpeed.h"
+#include "ChoiceBase.h"
 
 namespace Piavca
 {
 
-//! a MultiMotionCombiner where the client can choose which motion is played
-class ChoiceMotion : public MultiMotionCombiner
+typedef std::vector< Motion * > MotionVec;
+
+//! a motion where the client can choose which of a set of child motions to play
+class ChoiceMotion : public ChoiceBase
 {
 	int currentChoice;
+
+	bool smooth;
+	bool resetTime;
+	float windowLength;
+	bool resetOnEvent;
+	bool accumulateRoot;
+protected:
+	MotionVec mots;
 public:
-	ChoiceMotion():currentChoice(0){};
+	ChoiceMotion()
+		:currentChoice(0), smooth(true), resetTime(true), windowLength(0.5f), resetOnEvent(true), accumulateRoot(true){};
 	//! pass in a vector of motions to be used.
-	ChoiceMotion(const MotionVec &mpv)
-		:MultiMotionCombiner(mpv), currentChoice(0)
-	{
-	};
-	ChoiceMotion(const ChoiceMotion &cl)
-		:MultiMotionCombiner(cl), currentChoice(cl.currentChoice){};
-	~ChoiceMotion(){};
-	
+	ChoiceMotion(const MotionVec &mpv);
+	ChoiceMotion(const ChoiceMotion &cl);
+	~ChoiceMotion();
+
 	virtual Motion *clone(){return new ChoiceMotion(*this);};
 
 	//! returns the name of the type
@@ -65,62 +71,115 @@ public:
 
 	//! casts a motion to this type
 	static ChoiceMotion *castToThisType(Motion *m){return dynamic_cast<ChoiceMotion *>(m);};
+	
+	
+	
+	void setSmooth(bool s)
+	{
+		smooth = s;	
+	};
+	bool getSmooth()
+	{
+		return smooth;	
+	};
+
+	void setResetTime(bool r)
+	{
+		resetTime = r;	
+	};
+	bool getResetTime()
+	{
+		return resetTime;	
+	};
+
+	void setWindowLength(float w)
+	{
+		windowLength = w;	
+	};
+	bool getWindowLength()
+	{
+		return windowLength;	
+	};
+
+	void setResetOnEvent(bool r)
+	{
+		resetOnEvent = r;	
+	};
+	bool getResetOnEvent()
+	{
+		return resetOnEvent;	
+	};
+
+	void setAccumulateRoot(bool a)
+	{
+		accumulateRoot = a;	
+	};
+	bool getAccumulateRoott()
+	{
+		return accumulateRoot;	
+	};
+
+	void printInfo();
+
+	
+	//! gets the length of the motion in seconds
+	virtual float getMotionLength() const;
+
+
+	//adds a new child motion
+	virtual void addMotion(Motion *mot);
+
+	//! gets the index of a child motion give its name
+	int getMotionIndex(tstring motionName);
+
+	
+	//! gets the number of child motions
+	int getNumMotions();
+
+	
+	//! gets a child motion by index
+	Motion *getMotionByIndex(int index);
+
+	//! gets the currently playing motion
+	Motion *getMotion();
+	
+	//! gets a child motion by index
+	Motion *getMotion(int index);
+	
+	//! gets a child motion by name
+	Motion *getMotion(tstring motionName);
+	
+	//! removes the ith child motion
+	void removeMotionByIndex(int index);
+	
+	//! removes all child motions
+	void clear();
+
+	//! finds the first submotion with a given name
+	virtual Motion *findSub(tstring nm);
+
+	//! finds the first submotion with a given type
+	virtual Motion *findSubByType(const type_info &ty);
+
+	virtual void cleanRecursionState();
 
 
 	//! sets which motion is currently being played
-	void setCurrentChoice(int i)
-	{
-		if(i < 0 || i >= static_cast<int>(mots.size()))
-			Piavca::Error(_T("Illegal motion choice"));
-		currentChoice = i;
-	};
+	void setCurrentChoice(int i);
 	//! sets which motion is currently being played (by name)
-	void setCurrentChoice(tstring name)
-	{
-		for(MotionVec::size_type i=0; i < mots.size(); i++)
-			if(mots[i]->findSub(name)) 
-			{
-				currentChoice = static_cast<int>(i);
-				//reblend(Piavca::Core::getCore()->getTime());
-				return;
-			}
-		Piavca::Error(tstring(_T("Unknown choice ")) + name);
-	};
+	void setCurrentChoice(tstring name);
 	
 	//! handles an event (plays the motion with the same name as the event)
-	void event(tstring ev)
-	{
-		for(int i = 0; i < int(mots.size()); i++)
-			if (mots[i]->getName() == ev)
-			{
-				currentChoice = i;
-				reset();
-				break;
-			}
-		MultiMotionCombiner::event(ev);
-	}
+	void event(tstring ev);
 
 	//! gets the names of all events
-	virtual std::vector<Piavca::tstring> getEventNames()
-	{
-		std::vector<Piavca::tstring> names;
-		for(int i = 0; i < int(mots.size()); i++)
-			if (mots[i]->getName() != _T(""))
-			{
-				names.push_back(mots[i]->getName());
-			}
-		return names;
-	}
+	virtual std::vector<Piavca::tstring> getEventNames();
 	
-	//! called each time around the loop
+	//! resets the motion, updating to a new current motion
 	/*!
 	 * It can be called by the client to interrupt the current motion.
 	 */
-	virtual void reset()
-	{
-		if(mots.size() > 0)
-			setMotion(mots[currentChoice]);
-	};
+	virtual void reset();
 };
 
 };
