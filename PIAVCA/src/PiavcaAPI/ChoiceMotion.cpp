@@ -35,7 +35,7 @@
 
 #include "ChoiceMotion.h"
 #include "Sequence.h"
-#include "MotionTransition.h"
+#include "SavedFramesTransition.h"
 #include "SubMotion.h"
 #include "Reposition.h"
 
@@ -263,15 +263,16 @@ void ChoiceMotion::reset()
 			mot = repositioner;
 		}
 
-		Motion *oldmot = getMotion();
-		float t1 = Piavca::Core::getCore()->getTime() - oldmot->getStartTime();
+		//Motion *oldmot = getMotion();
+		float t1 = Piavca::Core::getCore()->getTime();
 		float t2 = 0.0f;
-		MotionTransition *trans = new MotionTransition(oldmot, mot, t1, t2, windowLength);
+		MotionTransition *trans = new SavedFramesTransition(this, mot, t1, t2, windowLength);
 		SubMotion *remainder = new SubMotion();
 		remainder->setMotion(mot);
 		remainder->setStart(windowLength);
 		//remainder->setEnd(mot->getMotionLength() - windowLength);
-		mot = new Sequence(trans, remainder);
+		//mot = new Sequence(trans, remainder);
+		mot = trans;
 	};
 	
 	setMotion(mot);

@@ -96,7 +96,7 @@ public:
 	{
 		windowLength = w;	
 	};
-	bool getWindowLength()
+	float getWindowLength()
 	{
 		return windowLength;	
 	};

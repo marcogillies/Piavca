@@ -81,6 +81,24 @@ void MotionTransition::setStartTime(float time)
 	if(mot2) 
 		mot2->setStartTime(time-transitionTime2+window);
 }
+void MotionTransition::setTransitionTime1(float t1)
+{
+	transitionTime1 = t1;
+	if (mot1 && transitionTime1 < 0)
+	{
+		transitionTime1 = mot1->getEndTime() - window;
+		if( transitionTime1 < 0)
+			transitionTime1 = 0.0;
+	}
+};
+void MotionTransition::setTransitionTime2(float t2)
+{
+	transitionTime2 = t2;
+	if (transitionTime2 < 0)
+	{
+		transitionTime2 = window;
+	}
+};
 
 
 float MotionTransition::getFloatValueAtTimeInternal (int trackId, float time)

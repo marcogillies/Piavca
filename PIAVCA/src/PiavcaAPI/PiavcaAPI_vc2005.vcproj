@@ -656,6 +656,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\SavedFramesTransition.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\SelfBlend.cpp"
 				>
 			</File>
@@ -910,6 +914,10 @@
 			</File>
 			<File
 				RelativePath=".\Reposition.h"
+				>
+			</File>
+			<File
+				RelativePath=".\SavedFramesTransition.h"
 				>
 			</File>
 			<File

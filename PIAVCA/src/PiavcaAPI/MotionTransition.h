@@ -69,6 +69,7 @@ namespace Piavca
 	 */
     class PIAVCA_DECL MotionTransition : public TwoMotionCombiner
 	{
+	protected:
 	    float transitionTime1, transitionTime2, window;
 		TransitionFunction *transfunc;
 	    
@@ -93,25 +94,9 @@ namespace Piavca
 		static const int MotionEnd = -1;
 
 		void setTransitionFunction(TransitionFunction *tf){transfunc = tf;};
-		void setTransitionTime1(float t1=MotionEnd)
-		{
-			transitionTime1 = t1;
-			if (mot1 && transitionTime1 < 0)
-			{
-				transitionTime1 = mot1->getEndTime() - window;
-				if( transitionTime1 < 0)
-					transitionTime1 = 0.0;
-			}
+		virtual void setTransitionTime1(float t1=MotionEnd);
+		virtual void setTransitionTime2(float t2=MotionStart);
 
-		};
-		void setTransitionTime2(float t2=MotionStart)
-		{
-			transitionTime2 = t2;
-			if (transitionTime2 < 0)
-			{
-				transitionTime2 = window;
-			}
-		};
 		void setWindow(float w){window = w;};
 		void setMotion1(Motion *mot)
 		{

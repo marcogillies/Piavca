@@ -87047,7 +87047,7 @@ fail:
 SWIGINTERN PyObject *_wrap_ChoiceMotion_getWindowLength(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Piavca::ChoiceMotion *arg1 = (Piavca::ChoiceMotion *) 0 ;
-  bool result;
+  float result;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
@@ -87060,7 +87060,7 @@ SWIGINTERN PyObject *_wrap_ChoiceMotion_getWindowLength(PyObject *SWIGUNUSEDPARM
   arg1 = reinterpret_cast< Piavca::ChoiceMotion * >(argp1);
   {
     try {
-      result = (bool)(arg1)->getWindowLength(); 
+      result = (float)(arg1)->getWindowLength(); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -87071,7 +87071,7 @@ SWIGINTERN PyObject *_wrap_ChoiceMotion_getWindowLength(PyObject *SWIGUNUSEDPARM
       SWIG_fail; 
     }
   }
-  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  resultobj = SWIG_From_float(static_cast< float >(result));
   return resultobj;
 fail:
   return NULL;

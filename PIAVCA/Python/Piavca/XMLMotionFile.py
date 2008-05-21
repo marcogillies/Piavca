@@ -175,7 +175,7 @@ def setAttribute(mot, attrName, attrValue, firstArg = None):
 			pass
 	
 	# if we've got here, nothing works!
-	raise ValueError("Invalid value"+value+"for attribute"+"attrName")
+	raise ValueError("Invalid value "+value+" for attribute "+attrName)
 	return 0
 		
 def addElement(mot, eleName, arglist):
