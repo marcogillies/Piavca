@@ -261,6 +261,7 @@ class EigenAnalysis :
 		#print "cluster centres"
 		#print self.quants
 		#print x
+		print x.shape, self.quants.shape
 		qs, dist = scipy.cluster.vq.vq(x, self.quants)
 		#print "vq returned"
 		return qs

@@ -325,10 +325,14 @@ mot = Piavca.Core.getCore().getMotion(str(motion_name))
 if mot != None:
 	mot.Reference()
 	avatar.play_motion(Piavca.LoopMotion(mot))	
-
-
-avatar.showMotionAtTime(Piavca.getTime())
+	avatar.play_motion(mot)	
 	
+avatar.showMotionAtTime(Piavca.getTime())
+
+app.getCanvas().initCameraPosition()
+app.getCanvas().tracking = True
+
+
 print "loaded motion"
 
 app.getCanvas().setAvatar(avatar)

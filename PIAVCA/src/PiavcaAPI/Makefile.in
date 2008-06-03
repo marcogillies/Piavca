@@ -63,9 +63,10 @@ am_libPiavcaAPI_la_OBJECTS = Avatar.lo AvatarImp.lo \
 	MotionParser.lo MotionSaver.lo MotionPosture.lo \
 	MotionTransition.lo PostureBlend.lo Reposition.lo \
 	BlendBetween.lo MotionAdder.lo PiavcaError.lo \
-	OverrideMotion.lo Sequence.lo SmoothSequence.lo SubMotion.lo \
-	Subtract.lo TimeRangeMotion.lo TwoMotionCombiner.lo \
-	KeyframeMotion.lo Bound.lo
+	OverrideMotion.lo SavedFramesTransition.lo Sequence.lo \
+	SmoothSequence.lo SubMotion.lo Subtract.lo TimeRangeMotion.lo \
+	ChoiceMotion.lo TwoMotionCombiner.lo KeyframeMotion.lo \
+	Bound.lo
 libPiavcaAPI_la_OBJECTS = $(am_libPiavcaAPI_la_OBJECTS)
 DEFAULT_INCLUDES = -I. -I$(top_builddir)@am__isrc@
 depcomp = $(SHELL) $(top_srcdir)/depcomp
@@ -228,8 +229,8 @@ lib_LTLIBRARIES = libPiavcaAPI.la
 libPiavcaAPI_la_SOURCES = Avatar.cpp AvatarImp.cpp AvatarMotionQueue.cpp AvatarPosture.cpp AvatarPostureBlend.cpp \ 	PiavcaCore.cpp\
 	Hermite.cpp Motion.cpp Object.cpp Quat.cpp Vec.cpp SequentialBlend.cpp \
 	LookAtMotion.cpp MaskedMotion.cpp MotionParser.cpp MotionSaver.cpp MotionPosture.cpp MotionTransition.cpp PostureBlend.cpp \
-	Reposition.cpp BlendBetween.cpp MotionAdder.cpp PiavcaError.cpp OverrideMotion.cpp\
-	Sequence.cpp SmoothSequence.cpp SubMotion.cpp Subtract.cpp TimeRangeMotion.cpp\
+	Reposition.cpp BlendBetween.cpp MotionAdder.cpp PiavcaError.cpp OverrideMotion.cpp SavedFramesTransition.cpp \
+	Sequence.cpp SmoothSequence.cpp SubMotion.cpp Subtract.cpp TimeRangeMotion.cpp ChoiceMotion.cpp \
 	TwoMotionCombiner.cpp KeyframeMotion.cpp Bound.cpp
 
 all: all-am
@@ -308,6 +309,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/AvatarPostureBlend.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BlendBetween.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Bound.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ChoiceMotion.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Hermite.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/KeyframeMotion.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/LookAtMotion.Plo@am__quote@
@@ -325,6 +327,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PostureBlend.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Quat.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Reposition.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SavedFramesTransition.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Sequence.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SequentialBlend.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SmoothSequence.Plo@am__quote@

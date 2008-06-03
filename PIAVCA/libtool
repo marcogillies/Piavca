@@ -44,7 +44,7 @@ available_tags=" CXX F77"
 
 # ### BEGIN LIBTOOL CONFIG
 
-# Libtool was configured on host Macintosh.lan:
+# Libtool was configured on host Macintosh.home:
 
 # Shell to use when invoking shell scripts.
 SHELL="/bin/sh"
@@ -66,13 +66,13 @@ fast_install=needless
 
 # The host system.
 host_alias=
-host=i386-apple-darwin9.1.0
-host_os=darwin9.1.0
+host=i386-apple-darwin9.2.2
+host_os=darwin9.2.2
 
 # The build system.
 build_alias=
-build=i386-apple-darwin9.1.0
-build_os=darwin9.1.0
+build=i386-apple-darwin9.2.2
+build_os=darwin9.2.2
 
 # An echo program that does not interpret backslashes.
 echo="/bin/echo"
@@ -6692,7 +6692,7 @@ build_old_libs=`case $build_libtool_libs in yes) $echo no;; *) $echo yes;; esac`
 # End:
 # ### BEGIN LIBTOOL TAG CONFIG: CXX
 
-# Libtool was configured on host Macintosh.lan:
+# Libtool was configured on host Macintosh.home:
 
 # Shell to use when invoking shell scripts.
 SHELL="/bin/sh"
@@ -6714,13 +6714,13 @@ fast_install=needless
 
 # The host system.
 host_alias=
-host=i386-apple-darwin9.1.0
-host_os=darwin9.1.0
+host=i386-apple-darwin9.2.2
+host_os=darwin9.2.2
 
 # The build system.
 build_alias=
-build=i386-apple-darwin9.1.0
-build_os=darwin9.1.0
+build=i386-apple-darwin9.2.2
+build_os=darwin9.2.2
 
 # An echo program that does not interpret backslashes.
 echo="/bin/echo"
@@ -6997,7 +6997,7 @@ include_expsyms=""
 
 # ### BEGIN LIBTOOL TAG CONFIG: F77
 
-# Libtool was configured on host Macintosh.lan:
+# Libtool was configured on host Macintosh.home:
 
 # Shell to use when invoking shell scripts.
 SHELL="/bin/sh"
@@ -7019,13 +7019,13 @@ fast_install=needless
 
 # The host system.
 host_alias=
-host=i386-apple-darwin9.1.0
-host_os=darwin9.1.0
+host=i386-apple-darwin9.2.2
+host_os=darwin9.2.2
 
 # The build system.
 build_alias=
-build=i386-apple-darwin9.1.0
-build_os=darwin9.1.0
+build=i386-apple-darwin9.2.2
+build_os=darwin9.2.2
 
 # An echo program that does not interpret backslashes.
 echo="/bin/echo"
