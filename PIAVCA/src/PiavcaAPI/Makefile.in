@@ -61,8 +61,8 @@ am_libPiavcaAPI_la_OBJECTS = Avatar.lo AvatarImp.lo \
 	PiavcaCore.lo Hermite.lo Motion.lo Object.lo Quat.lo Vec.lo \
 	SequentialBlend.lo LookAtMotion.lo MaskedMotion.lo \
 	MotionParser.lo MotionSaver.lo MotionPosture.lo \
-	MotionTransition.lo PostureBlend.lo Reposition.lo \
-	BlendBetween.lo MotionAdder.lo PiavcaError.lo \
+	MotionTransition.lo OverrideMotion.lo PostureBlend.lo \
+	Reposition.lo BlendBetween.lo MotionAdder.lo PiavcaError.lo \
 	OverrideMotion.lo SavedFramesTransition.lo Sequence.lo \
 	SmoothSequence.lo SubMotion.lo Subtract.lo TimeRangeMotion.lo \
 	ChoiceMotion.lo TwoMotionCombiner.lo KeyframeMotion.lo \
@@ -228,7 +228,7 @@ apiinclude_HEADERS = Avatar.h AvatarImp.h AvatarMotionQueue.h AvatarPosture.h Av
 lib_LTLIBRARIES = libPiavcaAPI.la
 libPiavcaAPI_la_SOURCES = Avatar.cpp AvatarImp.cpp AvatarMotionQueue.cpp AvatarPosture.cpp AvatarPostureBlend.cpp \ 	PiavcaCore.cpp\
 	Hermite.cpp Motion.cpp Object.cpp Quat.cpp Vec.cpp SequentialBlend.cpp \
-	LookAtMotion.cpp MaskedMotion.cpp MotionParser.cpp MotionSaver.cpp MotionPosture.cpp MotionTransition.cpp PostureBlend.cpp \
+	LookAtMotion.cpp MaskedMotion.cpp MotionParser.cpp MotionSaver.cpp MotionPosture.cpp MotionTransition.cpp OverrideMotion.cpp PostureBlend.cpp \
 	Reposition.cpp BlendBetween.cpp MotionAdder.cpp PiavcaError.cpp OverrideMotion.cpp SavedFramesTransition.cpp \
 	Sequence.cpp SmoothSequence.cpp SubMotion.cpp Subtract.cpp TimeRangeMotion.cpp ChoiceMotion.cpp \
 	TwoMotionCombiner.cpp KeyframeMotion.cpp Bound.cpp

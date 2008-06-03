@@ -1,4 +1,6 @@
+#! /usr/bin/env python
 
+print "PiavcaDesigner"
 
 import Piavca
 import Piavca.JointNames

@@ -1,0 +1,56 @@
+
+import distutils.sysconfig, os
+from glob import glob
+
+env = Environment(SWIGFLAGS=['-c++', '-noruntime', '-python', '-I./src/'],
+				  CPPPATH=["./src/", distutils.sysconfig.get_python_inc()],
+				  SHLIBPREFIX="")
+conf = Configure(env)	
+
+external_libs = ["cal3d"]
+
+if ( 'darwin' == env['PLATFORM'] ): 
+	env.Append(FRAMEWORKS=["OpenGL", "Python"])
+else:
+	external_libs = external_libs = ["python", "opengl32"]
+
+# Checks for libraries, header files, etc. go here!    
+#if not conf.CheckCHeader('GL/glut.h'):
+#	print 'GL/glut.h must be installed!'
+#	Exit(1)  
+if not conf.CheckCHeader('Python.h'):
+	print 'Python.h must be installed!'
+	Exit(1)
+env = conf.Finish()
+
+PiavcaAPI = env.Library('src/PiavcaAPI/PiavcaAPI', glob('src/PiavcaAPI/*.cpp'))
+StdMotionImp = env.Library('src/StdMotionImp/StdMotionImp', glob('src/StdMotionImp/*.cpp'))
+PiavcaCal3dImp = env.Library('src/PiavcaCal3dImp/PiavcaCal3dImp', glob('src/PiavcaCal3dImp/*.cpp'))
+PiavcaPythonInterface = env.Library('src/PiavcaPythonInterface/PiavcaPythonInterface', glob('src/PiavcaPythonInterface/*.cpp'))
+#Program('src/PiavcaCal3dApp/PiavcaCal3dApp', PiavcaAPI + StdMotionImp + PiavcaCal3dImp  + glob('src/PiavcaCal3dApp/*.cpp'), CXXFLAGS="-I./src/")
+
+Piavca_base = env.SharedLibrary('Python/Piavca/Piavca_base/_Piavca_base.so', ['Python/Piavca/Piavca_base/Piavca.i'], LIBS=PiavcaAPI + StdMotionImp + PiavcaCal3dImp + external_libs)
+
+path1 = os.path.join(distutils.sysconfig.get_python_lib(), "Piavca")
+path2 = os.path.join(path1, "Piavca_base")
+path3 = os.path.join(path1, "PiavcaDesigner")
+
+env.Install(path1, glob("Python/Piavca/*.py"))
+env.Install(path2, glob("Python/Piavca/Piavca_base/*.py")+Piavca_base)
+env.Install(path3, glob("Python/Piavca/PiavcaDesigner/*.py"))
+
+binpath = distutils.sysconfig.get_config_vars("BINDIR")[0]
+#print binpath
+scripts = glob("Python/*.py")
+for script in scripts:
+	(name, ext) = os.path.splitext(script)
+	name = os.path.basename(name)
+	#print os.path.join(binpath, name), name, script
+	env.InstallAs(os.path.join(binpath, name), script)
+destinations = [os.path.join(binpath, x[:-3]) for x in scripts]
+#print destinations
+#env.InstallAs(destinations, scripts)
+
+env.Alias('install', [path1, path2, path3, binpath])	
+
+

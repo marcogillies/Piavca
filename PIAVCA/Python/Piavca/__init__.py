@@ -37,7 +37,7 @@
 
 
 from Piavca_base import * 
-import PiavcaGlut
+#import PiavcaGlut
 
 from ImportException import PiavcaImportException
 

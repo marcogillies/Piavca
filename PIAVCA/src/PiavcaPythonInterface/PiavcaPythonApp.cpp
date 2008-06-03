@@ -77,7 +77,7 @@ extern "C"
 #include "PiavcaAPI/Avatar.h"
 #include "PiavcaAPI/TimeCallback.h"
 #include "PiavcaAPI/PiavcaError.h"
-#include "PyTimeCallback.h"
+//#include "PyTimeCallback.h"
 //#include "PlatformDefs.h"
 
 #include <iostream>
