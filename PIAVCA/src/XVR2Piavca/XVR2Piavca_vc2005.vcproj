@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="9.00"
+	Version="8.00"
 	Name="XVR2Piavca"
 	ProjectGUID="{009DF2D1-CCA3-466D-8D2E-DFECF5D50D76}"
 	RootNamespace="XVR2Piavca"
 	Keyword="Win32Proj"
-	TargetFrameworkVersion="131072"
 	>
 	<Platforms>
 		<Platform
@@ -71,8 +70,6 @@
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/XVR2Piavca.pdb"
 				SubSystem="2"
-				RandomizedBaseAddress="1"
-				DataExecutionPrevention="0"
 				ImportLibrary="$(OutDir)/XVR2Piavca.lib"
 				TargetMachine="1"
 			/>
@@ -93,6 +90,9 @@
 			/>
 			<Tool
 				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCWebDeploymentTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
@@ -154,8 +154,6 @@
 				SubSystem="2"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
-				RandomizedBaseAddress="1"
-				DataExecutionPrevention="0"
 				ImportLibrary="$(OutDir)/XVR2Piavca.lib"
 				TargetMachine="1"
 			/>
@@ -176,6 +174,9 @@
 			/>
 			<Tool
 				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCWebDeploymentTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
@@ -237,8 +238,6 @@
 				SubSystem="2"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
-				RandomizedBaseAddress="1"
-				DataExecutionPrevention="0"
 				ImportLibrary="$(OutDir)/XVR2Piavca.lib"
 				TargetMachine="1"
 			/>
@@ -259,6 +258,9 @@
 			/>
 			<Tool
 				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCWebDeploymentTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
@@ -319,8 +321,6 @@
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/XVR2Piavca.pdb"
 				SubSystem="2"
-				RandomizedBaseAddress="1"
-				DataExecutionPrevention="0"
 				ImportLibrary="$(OutDir)/XVR2Piavca.lib"
 				TargetMachine="1"
 			/>
@@ -341,6 +341,9 @@
 			/>
 			<Tool
 				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCWebDeploymentTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
@@ -402,8 +405,6 @@
 				SubSystem="2"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
-				RandomizedBaseAddress="1"
-				DataExecutionPrevention="0"
 				ImportLibrary="$(OutDir)/XVR2Piavca.lib"
 				TargetMachine="1"
 			/>
@@ -424,6 +425,9 @@
 			/>
 			<Tool
 				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCWebDeploymentTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
@@ -484,8 +488,6 @@
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/XVR2Piavca.pdb"
 				SubSystem="2"
-				RandomizedBaseAddress="1"
-				DataExecutionPrevention="0"
 				ImportLibrary="$(OutDir)/XVR2Piavca.lib"
 				TargetMachine="1"
 			/>
@@ -508,6 +510,9 @@
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
+				Name="VCWebDeploymentTool"
+			/>
+			<Tool
 				Name="VCPostBuildEventTool"
 			/>
 		</Configuration>
@@ -515,9 +520,11 @@
 	<References>
 		<ProjectReference
 			ReferencedProjectIdentifier="{97813F74-80B5-4861-8CEE-99328B65173C}"
+			RelativePathToProject=".\src\PiavcaCal3dImp\PiavcaCal3DImp_vc2005.vcproj"
 		/>
 		<ProjectReference
 			ReferencedProjectIdentifier="{9BE2E296-9B8C-4972-B627-06F7A635204C}"
+			RelativePathToProject=".\src\PiavcaPythonInterface\PiavcaPythonInterface_vc2005.vcproj"
 		/>
 	</References>
 	<Files>

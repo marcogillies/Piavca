@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="9.00"
+	Version="8.00"
 	Name="PiavcaCal3DImp"
 	ProjectGUID="{97813F74-80B5-4861-8CEE-99328B65173C}"
 	RootNamespace="PiavcaCal3DImp"
 	Keyword="Win32Proj"
-	TargetFrameworkVersion="131072"
 	>
 	<Platforms>
 		<Platform
@@ -422,12 +421,14 @@
 	<References>
 		<ProjectReference
 			ReferencedProjectIdentifier="{7E061BC4-F08C-40F0-8A91-8CAFD582054D}"
+			RelativePathToProject=".\src\PiavcaAPI\PiavcaAPI_vc2005.vcproj"
 		/>
 		<ProjectReference
 			ReferencedProjectIdentifier="{2BE89BA3-3998-4AEC-9426-C6EFB71E0C9E}"
 		/>
 		<ProjectReference
 			ReferencedProjectIdentifier="{E2404604-543C-4863-BF9D-BE3E995DF4E4}"
+			RelativePathToProject=".\src\StdMotionImp\StdMotionImp_vc2005.vcproj"
 		/>
 	</References>
 	<Files>
