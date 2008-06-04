@@ -23,7 +23,7 @@
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
 			CharacterSet="2"
 			>
-			<Tool
+			<Tool 
 				Name="VCPreBuildEventTool"
 			/>
 			<Tool
