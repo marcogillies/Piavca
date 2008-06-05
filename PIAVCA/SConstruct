@@ -1,36 +1,93 @@
 
+
+# ***** BEGIN LICENSE BLOCK *****
+# Version: MPL 1.1/GPL 2.0/LGPL 2.1
+#
+# The contents of this file are subject to the Mozilla Public License Version
+# 1.1 (the "License"); you may not use this file except in compliance with
+# the License. You may obtain a copy of the License at
+# http://www.mozilla.org/MPL/
+#
+# Software distributed under the License is distributed on an "AS IS" basis,
+# WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+# for the specific language governing rights and limitations under the
+# License.
+#
+# The Original Code is SConstruct
+#
+# The Initial Developer of the Original Code is
+# Marco (Mark) Gillies.
+# Portions created by the Initial Developer are Copyright (C) 2008
+# the Initial Developer. All Rights Reserved.
+#
+# Contributor(s): Kristopher Blom
+#
+# Alternatively, the contents of this file may be used under the terms of
+# either the GNU General Public License Version 2 or later (the "GPL"), or
+# the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+# in which case the provisions of the GPL or the LGPL are applicable instead
+# of those above. If you wish to allow use of your version of this file only
+# under the terms of either the GPL or the LGPL, and not to allow others to
+# use your version of this file under the terms of the MPL, indicate your
+# decision by deleting the provisions above and replace them with the notice
+# and other provisions required by the GPL or the LGPL. If you do not delete
+# the provisions above, a recipient may use your version of this file under
+# the terms of any one of the MPL, the GPL or the LGPL.
+#
+# ***** END LICENSE BLOCK *****
+
 import distutils.sysconfig, os
 from glob import glob
 
+# build environment needs to work with swig and python
+# also set up the local include paths
 env = Environment(SWIGFLAGS=['-c++', '-noruntime', '-python', '-I./src/'],
 				  CPPPATH=["./src/", distutils.sysconfig.get_python_inc()],
 				  SHLIBPREFIX="")
 conf = Configure(env)	
 
+
 external_libs = ["cal3d"]
 
+# sort out special mac framework stuff
 if ( 'darwin' == env['PLATFORM'] ): 
 	env.Append(FRAMEWORKS=["OpenGL", "Python"])
-else:
+elif ( 'win32' == env['PLATFORM'] ):
 	external_libs = external_libs = ["python", "opengl32"]
+else:
+	(ina, outstd, outerr) = os.popen3("python -V")
+ 	pyver = outerr.readline()
+ 	if ( "5" == pyver[9] ):
+         	external_libs = external_libs = ["python2.5", "GL"]
+ 	elif ( "4" == pyver[9] ):
+        	external_libs = external_libs = ["python2.4", "GL"]
+ 	elif ( '3' == pyver[9] ):
+	       	external_libs = external_libs = ["python2.3", "GL"]
+ 	else:
+ 	     print 'Could not determine python version!'
+	     Exit(1)
+	
 
 # Checks for libraries, header files, etc. go here!    
-#if not conf.CheckCHeader('GL/glut.h'):
-#	print 'GL/glut.h must be installed!'
-#	Exit(1)  
+
 if not conf.CheckCHeader('Python.h'):
 	print 'Python.h must be installed!'
 	Exit(1)
 env = conf.Finish()
 
+
+# c++ libraries
 PiavcaAPI = env.Library('src/PiavcaAPI/PiavcaAPI', glob('src/PiavcaAPI/*.cpp'))
 StdMotionImp = env.Library('src/StdMotionImp/StdMotionImp', glob('src/StdMotionImp/*.cpp'))
 PiavcaCal3dImp = env.Library('src/PiavcaCal3dImp/PiavcaCal3dImp', glob('src/PiavcaCal3dImp/*.cpp'))
 PiavcaPythonInterface = env.Library('src/PiavcaPythonInterface/PiavcaPythonInterface', glob('src/PiavcaPythonInterface/*.cpp'))
 #Program('src/PiavcaCal3dApp/PiavcaCal3dApp', PiavcaAPI + StdMotionImp + PiavcaCal3dImp  + glob('src/PiavcaCal3dApp/*.cpp'), CXXFLAGS="-I./src/")
 
+# base python module
 Piavca_base = env.SharedLibrary('Python/Piavca/Piavca_base/_Piavca_base.so', ['Python/Piavca/Piavca_base/Piavca.i'], LIBS=PiavcaAPI + StdMotionImp + PiavcaCal3dImp + external_libs)
 
+
+# install path for python modules
 path1 = os.path.join(distutils.sysconfig.get_python_lib(), "Piavca")
 path2 = os.path.join(path1, "Piavca_base")
 path3 = os.path.join(path1, "PiavcaDesigner")
@@ -39,8 +96,9 @@ env.Install(path1, glob("Python/Piavca/*.py"))
 env.Install(path2, glob("Python/Piavca/Piavca_base/*.py")+Piavca_base)
 env.Install(path3, glob("Python/Piavca/PiavcaDesigner/*.py"))
 
+
+# install the scripts, renaming them to get rid of the .py suffix
 binpath = distutils.sysconfig.get_config_vars("BINDIR")[0]
-#print binpath
 scripts = glob("Python/*.py")
 for script in scripts:
 	(name, ext) = os.path.splitext(script)
@@ -48,8 +106,6 @@ for script in scripts:
 	#print os.path.join(binpath, name), name, script
 	env.InstallAs(os.path.join(binpath, name), script)
 destinations = [os.path.join(binpath, x[:-3]) for x in scripts]
-#print destinations
-#env.InstallAs(destinations, scripts)
 
 env.Alias('install', [path1, path2, path3, binpath])	
 
