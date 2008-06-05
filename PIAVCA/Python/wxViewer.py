@@ -301,42 +301,43 @@ except IOError:
 
 (splitext, ext) = os.path.splitext(path)
 print "filename", splitext, "extention", ext
-if ext == ".cfg":
-	basename = os.path.basename(splitext)
-	avatar = Piavca.Avatar(str(basename))
+if ext == ".conf":
+	script_engine = ScriptEngine("character controller", filename, app)
 else:
-	import Piavca.XMLMotionFile
-	basename = os.path.basename(path)
-	Piavca.XMLMotionFile.parse(basename)
-	avatar = Piavca.Core.getCore().getAvatar(0)
-	Piavca.setUpEventsGUI()
+	if ext == ".cfg":
+		basename = os.path.basename(splitext)
+		avatar = Piavca.Avatar(str(basename))
+	else:
+		import Piavca.XMLMotionFile
+		basename = os.path.basename(path)
+		Piavca.XMLMotionFile.parse(basename)
+		avatar = Piavca.Core.getCore().getAvatar(0)
+		Piavca.setUpEventsGUI()
 
-print "loaded avatar"
+	print "loaded avatar"
 
-if len(sys.argv) > 2:
-	motion_name = sys.argv[2]
-else:
-	motnames = Piavca.Core.getCore().getMotionNames()
-	print motnames
-	dialog_return = singleChoiceDialog (lst=["None"]+motnames)
-	motion_name = dialog_return.selection
+	if len(sys.argv) > 2:
+		motion_name = sys.argv[2]
+	else:
+		motnames = Piavca.Core.getCore().getMotionNames()
+		print motnames
+		dialog_return = singleChoiceDialog (lst=["None"]+motnames)
+		motion_name = dialog_return.selection
 
-mot = Piavca.Core.getCore().getMotion(str(motion_name))
-if mot != None:
-	mot.Reference()
-	avatar.play_motion(Piavca.LoopMotion(mot))	
+	mot = Piavca.Core.getCore().getMotion(str(motion_name))
+	if mot != None:
+		mot.Reference()
+		avatar.play_motion(Piavca.LoopMotion(mot))	
 	avatar.play_motion(mot)	
-	
-avatar.showMotionAtTime(Piavca.getTime())
+	ss
+	ss
 
-app.getCanvas().initCameraPosition()
-app.getCanvas().tracking = True
+	avatar.showMotionAtTime(Piavca.getTime())
+		
+	print "loaded motion"
 
-
-print "loaded motion"
-
-app.getCanvas().setAvatar(avatar)
-app.getCanvas().initCameraPosition()
+	app.getCanvas().setAvatar(avatar)
+	app.getCanvas().initCameraPosition()
 
 #app = MyApp()
 

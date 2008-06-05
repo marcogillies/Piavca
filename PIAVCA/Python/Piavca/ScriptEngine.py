@@ -345,6 +345,7 @@ class ScriptEngine(Piavca.TimeCallback):
 		#print "finished script engine timestep"
 			
 	def GUI(self, avatarName):
+		print "GUI", avatarName
 		if not wxAvailable:
 			print "can't instantiate GUI, wx python not present"
 
