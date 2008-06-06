@@ -1750,6 +1750,7 @@ public:
     virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
     virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
     virtual void addMotion(Piavca::Motion *mot);
+    virtual int makeChoice();
 
 
 /* Internal Director utilities */
@@ -1783,7 +1784,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[25];
+    mutable swig::PyObject_var vtable[26];
 #endif
 
 };
@@ -1898,7 +1899,6 @@ public:
     virtual void reblend(float time);
     virtual void setMotion(Piavca::Motion *m);
     virtual void addMotion(Piavca::Motion *mot, float weight = 1.0f);
-    virtual void shift();
 
 
 /* Internal Director utilities */
@@ -1932,7 +1932,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[30];
+    mutable swig::PyObject_var vtable[29];
 #endif
 
 };

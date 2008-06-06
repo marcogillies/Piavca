@@ -5248,27 +5248,12 @@ MotionTransition_swigregister = _Piavca_base.MotionTransition_swigregister
 MotionTransition_swigregister(MotionTransition)
 MotionTransition_castToThisType = _Piavca_base.MotionTransition_castToThisType
 
-class ChoiceBase(MotionFilter):
+class ChoiceMotion(MotionFilter):
     __swig_setmethods__ = {}
     for _s in [MotionFilter]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
-    __setattr__ = lambda self, name, value: _swig_setattr(self, ChoiceBase, name, value)
-    __swig_getmethods__ = {}
-    for _s in [MotionFilter]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
-    __getattr__ = lambda self, name: _swig_getattr(self, ChoiceBase, name)
-    def __init__(self): raise AttributeError, "No constructor defined"
-    __repr__ = _swig_repr
-    __swig_destroy__ = _Piavca_base.delete_ChoiceBase
-    __del__ = lambda self : None;
-    def reset(*args): return _Piavca_base.ChoiceBase_reset(*args)
-ChoiceBase_swigregister = _Piavca_base.ChoiceBase_swigregister
-ChoiceBase_swigregister(ChoiceBase)
-
-class ChoiceMotion(ChoiceBase):
-    __swig_setmethods__ = {}
-    for _s in [ChoiceBase]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, ChoiceMotion, name, value)
     __swig_getmethods__ = {}
-    for _s in [ChoiceBase]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    for _s in [MotionFilter]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
     __getattr__ = lambda self, name: _swig_getattr(self, ChoiceMotion, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
@@ -5328,6 +5313,7 @@ class ChoiceMotion(ChoiceBase):
     def getMotionIndex(*args): return _Piavca_base.ChoiceMotion_getMotionIndex(*args)
     def getNumMotions(*args): return _Piavca_base.ChoiceMotion_getNumMotions(*args)
     def getMotionByIndex(*args): return _Piavca_base.ChoiceMotion_getMotionByIndex(*args)
+    def getLeafMotion(*args): return _Piavca_base.ChoiceMotion_getLeafMotion(*args)
     def getMotion(*args): return _Piavca_base.ChoiceMotion_getMotion(*args)
     def removeMotionByIndex(*args): return _Piavca_base.ChoiceMotion_removeMotionByIndex(*args)
     def clear(*args): return _Piavca_base.ChoiceMotion_clear(*args)
@@ -5353,6 +5339,8 @@ class ChoiceMotion(ChoiceBase):
 
     def cleanRecursionState(*args): return _Piavca_base.ChoiceMotion_cleanRecursionState(*args)
     def setCurrentChoice(*args): return _Piavca_base.ChoiceMotion_setCurrentChoice(*args)
+    def getCurrentChoice(*args): return _Piavca_base.ChoiceMotion_getCurrentChoice(*args)
+    def makeChoice(*args): return _Piavca_base.ChoiceMotion_makeChoice(*args)
     def event(*args): return _Piavca_base.ChoiceMotion_event(*args)
     def getEventNames(*args): return _Piavca_base.ChoiceMotion_getEventNames(*args)
     def reset(*args): return _Piavca_base.ChoiceMotion_reset(*args)
@@ -5363,6 +5351,24 @@ class ChoiceMotion(ChoiceBase):
 ChoiceMotion_swigregister = _Piavca_base.ChoiceMotion_swigregister
 ChoiceMotion_swigregister(ChoiceMotion)
 ChoiceMotion_castToThisType = _Piavca_base.ChoiceMotion_castToThisType
+
+class SequentialChoiceMotion(ChoiceMotion):
+    __swig_setmethods__ = {}
+    for _s in [ChoiceMotion]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, SequentialChoiceMotion, name, value)
+    __swig_getmethods__ = {}
+    for _s in [ChoiceMotion]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, SequentialChoiceMotion, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _Piavca_base.new_SequentialChoiceMotion(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _Piavca_base.delete_SequentialChoiceMotion
+    __del__ = lambda self : None;
+    def makeChoice(*args): return _Piavca_base.SequentialChoiceMotion_makeChoice(*args)
+SequentialChoiceMotion_swigregister = _Piavca_base.SequentialChoiceMotion_swigregister
+SequentialChoiceMotion_swigregister(SequentialChoiceMotion)
 
 class RandomChoiceMotion(ChoiceMotion):
     __swig_setmethods__ = {}
@@ -5396,8 +5402,7 @@ class RandomChoiceMotion(ChoiceMotion):
     def addMotion(*args): return _Piavca_base.RandomChoiceMotion_addMotion(*args)
     def setProbability(*args): return _Piavca_base.RandomChoiceMotion_setProbability(*args)
     def setMotionProb(*args): return _Piavca_base.RandomChoiceMotion_setMotionProb(*args)
-    def shift(*args): return _Piavca_base.RandomChoiceMotion_shift(*args)
-    def reset(*args): return _Piavca_base.RandomChoiceMotion_reset(*args)
+    def makeChoice(*args): return _Piavca_base.RandomChoiceMotion_makeChoice(*args)
 RandomChoiceMotion_swigregister = _Piavca_base.RandomChoiceMotion_swigregister
 RandomChoiceMotion_swigregister(RandomChoiceMotion)
 RandomChoiceMotion_castToThisType = _Piavca_base.RandomChoiceMotion_castToThisType
@@ -5541,7 +5546,6 @@ class RandomLoopMotion(RandomTimingsLoop):
         return _Piavca_base.RandomLoopMotion_setProbability(*args)
 
     def setMotionProb(*args): return _Piavca_base.RandomLoopMotion_setMotionProb(*args)
-    def shift(*args): return _Piavca_base.RandomLoopMotion_shift(*args)
     def reblend(*args):
         """
         virtual void Piavca::RandomLoopMotion::reblend(float time)

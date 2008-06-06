@@ -38,6 +38,7 @@
 #define RANDOM_CHOICE_MOTION_H
 
 #include "ChoiceMotion.h"
+#include <vector>
 
 namespace Piavca
 {
@@ -46,36 +47,18 @@ namespace Piavca
 class RandomChoiceMotion : public ChoiceMotion
 {
 protected:
-	vector<float> weights;
+	std::vector<float> probs;
+	bool probsUnnormalised;
+	void normaliseProbs();
 public:
-	RandomChoiceMotion(){};
+	RandomChoiceMotion():probsUnnormalised(true){};
 	//! pass in a vector of motions to be used, and a vector with a weight for each motion.
 	/*!
 	 *	The weights determine the probability of playing each motio
 	 */
-	RandomChoiceMotion(const MotionVec &mv, vector<float> ws)
-		:ChoiceMotion(mv), weights(ws)
-	{
-		if(mots.size() != weights.size())
-			Piavca::Error(_T("Trying to create a random loop motion with different numbers of motions and weights"));
-		float sum = 0.0;
-		vector<float>::size_type i;
-		for(i = 0; i < weights.size(); i++)
-		{
-			sum += weights[i];
-		}
-		for(i = 0; i < weights.size(); i++)
-		{
-			weights[i] = weights[i]/sum;
-		}
-		do
-		{
-			i = rand()%weights.size();
-		}while(((float)(rand()%100))/100 > weights[i]);
-		setMotion(mots[i]);
-	};
+	RandomChoiceMotion(const MotionVec &mv, std::vector<float> ws);
 	RandomChoiceMotion(const RandomChoiceMotion &rl)
-		:ChoiceMotion(rl), weights(rl.weights){};
+		:ChoiceMotion(rl), probs(rl.probs), probsUnnormalised(true){};
 	~RandomChoiceMotion(){};
 	
 	virtual Motion *clone(){return new RandomChoiceMotion(*this);};
@@ -91,65 +74,37 @@ public:
 		return dynamic_cast<RandomChoiceMotion *>(m);
 	};
 
-	virtual void addMotion(Motion *mot, float weight = 1.0f)
-	{
-		ChoiceMotion::addMotion(mot);
-		if(mot)
-		{
-			weights.push_back(weight);
-		}
-	};
+	virtual void addMotion(Motion *mot, float prob = 1.0f);
 
-	void setProbability(int index, float prob)
-	{
-		if(index >= 0 && index < (int)weights.size())
-			weights[index] = prob;
-		
-		float sum = 0.0;
-		vector<float>::size_type i;
-		for(i = 0; i < weights.size(); i++)
-		{
-			sum += weights[i];
-		}
-		for(i = 0; i < weights.size(); i++)
-		{
-			weights[i] = weights[i]/sum;
-		}
-	}
+	void setProbability(int index, float prob);
 
-	void setMotionProb(int index, float prob)
-	{
-		setProbability(index, prob);
-	}
+	void setMotionProb(int index, float prob);
 
-	void setMotionProb(tstring motName, float prob)
-	{
-		int index = getMotionIndex(motName);
-		if (index >= 0)
-			setProbability(index, prob);
-	}
+	void setMotionProb(tstring motName, float prob);
+	
+	virtual int makeChoice();
 
-	virtual void shift()
-	{
-		if (mots.size() <= 0)
-			return;
-		vector<float>::size_type i;
-		do
-		{
-			i = rand()%weights.size();
-		}while(((float)(rand()%100))/100 > weights[i]);
-		setCurrentChoice(static_cast<int>(i));
-		ChoiceMotion::reset();
-	}
+	//virtual void shift()
+	//{
+	//	if (mots.size() <= 0)
+	//		return;
+	//	vector<float>::size_type i;
+	//	do
+	//	{
+	//		i = rand()%weights.size();
+	//	}while(((float)(rand()%100))/100 > weights[i]);
+	//	setCurrentChoice(static_cast<int>(i));
+	//	ChoiceMotion::reset();
+	//}
 
 	//! called each time around the loop
 	/*!
 	 * It can be called by the client to interrupt the current motion.
 	 */
-	virtual void reset()
-	{
-		shift();
-	};
+	//virtual void reset()
+	//{
+	//	shift();
+	//};
 };
 
 };

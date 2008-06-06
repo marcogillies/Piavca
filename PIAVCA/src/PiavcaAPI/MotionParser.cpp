@@ -1301,7 +1301,7 @@ template<> void MotionParserTyped<RandomChoiceMotion >::editMotionInternal(Rando
 		{
 			if(currentWord == "shift")
 			{
-				mot->shift();
+				mot->reset();
 			}
 		}
 		else

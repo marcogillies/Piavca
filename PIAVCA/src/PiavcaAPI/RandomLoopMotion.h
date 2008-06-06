@@ -104,14 +104,14 @@ public:
 		randomchoicemotion->setMotionProb(motName, prob);
 	}
 
-	virtual void shift()
-	{
-		randomchoicemotion->shift();
-	};
+	//virtual void shift()
+	//{
+	//	randomchoicemotion->shift();
+	//};
 
 	virtual void reblend(float time)
 	{
-		shift();
+		randomchoicemotion->reset();
 		RandomTimingsLoop::reblend(time);
 	}
 };

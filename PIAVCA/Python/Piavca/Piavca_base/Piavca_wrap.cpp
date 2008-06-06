@@ -2971,49 +2971,49 @@ namespace Swig {
 #define SWIGTYPE_p_Piavca__BlendBetween swig_types[6]
 #define SWIGTYPE_p_Piavca__Bound swig_types[7]
 #define SWIGTYPE_p_Piavca__ChangeMotionLength swig_types[8]
-#define SWIGTYPE_p_Piavca__ChoiceBase swig_types[9]
-#define SWIGTYPE_p_Piavca__ChoiceLoopMotion swig_types[10]
-#define SWIGTYPE_p_Piavca__ChoiceMotion swig_types[11]
-#define SWIGTYPE_p_Piavca__Core swig_types[12]
-#define SWIGTYPE_p_Piavca__CurrentValueMotion swig_types[13]
-#define SWIGTYPE_p_Piavca__DiadicGazeMotion swig_types[14]
-#define SWIGTYPE_p_Piavca__KeyframeMotion swig_types[15]
-#define SWIGTYPE_p_Piavca__LinearTransition swig_types[16]
-#define SWIGTYPE_p_Piavca__LookAtMotion swig_types[17]
-#define SWIGTYPE_p_Piavca__LookAtToFacial swig_types[18]
-#define SWIGTYPE_p_Piavca__LoopMotion swig_types[19]
-#define SWIGTYPE_p_Piavca__MaskedMotion swig_types[20]
-#define SWIGTYPE_p_Piavca__Motion swig_types[21]
-#define SWIGTYPE_p_Piavca__MotionAdder swig_types[22]
-#define SWIGTYPE_p_Piavca__MotionFilter swig_types[23]
-#define SWIGTYPE_p_Piavca__MotionImp swig_types[24]
-#define SWIGTYPE_p_Piavca__MotionMask swig_types[25]
-#define SWIGTYPE_p_Piavca__MotionParser swig_types[26]
-#define SWIGTYPE_p_Piavca__MotionPosture swig_types[27]
-#define SWIGTYPE_p_Piavca__MotionSaver swig_types[28]
-#define SWIGTYPE_p_Piavca__MotionTransition swig_types[29]
-#define SWIGTYPE_p_Piavca__MultiMotionCombiner swig_types[30]
-#define SWIGTYPE_p_Piavca__Object swig_types[31]
-#define SWIGTYPE_p_Piavca__ObjectTargetStruct swig_types[32]
-#define SWIGTYPE_p_Piavca__OverrideMotion swig_types[33]
-#define SWIGTYPE_p_Piavca__PostureBlend swig_types[34]
-#define SWIGTYPE_p_Piavca__Proxemics swig_types[35]
-#define SWIGTYPE_p_Piavca__ProxemicsLoop swig_types[36]
-#define SWIGTYPE_p_Piavca__Quat swig_types[37]
-#define SWIGTYPE_p_Piavca__RandomAdd swig_types[38]
-#define SWIGTYPE_p_Piavca__RandomAddLoop swig_types[39]
-#define SWIGTYPE_p_Piavca__RandomBlend swig_types[40]
-#define SWIGTYPE_p_Piavca__RandomBlendLoop swig_types[41]
-#define SWIGTYPE_p_Piavca__RandomChoiceMotion swig_types[42]
-#define SWIGTYPE_p_Piavca__RandomGazeMotion swig_types[43]
-#define SWIGTYPE_p_Piavca__RandomLoopMotion swig_types[44]
-#define SWIGTYPE_p_Piavca__RandomTimingsLoop swig_types[45]
-#define SWIGTYPE_p_Piavca__RandomTimingsMotion swig_types[46]
-#define SWIGTYPE_p_Piavca__Reposition swig_types[47]
-#define SWIGTYPE_p_Piavca__ScaleMotion swig_types[48]
-#define SWIGTYPE_p_Piavca__ScaleMotionRoot swig_types[49]
-#define SWIGTYPE_p_Piavca__ScaleMotionSpeed swig_types[50]
-#define SWIGTYPE_p_Piavca__Sequence swig_types[51]
+#define SWIGTYPE_p_Piavca__ChoiceLoopMotion swig_types[9]
+#define SWIGTYPE_p_Piavca__ChoiceMotion swig_types[10]
+#define SWIGTYPE_p_Piavca__Core swig_types[11]
+#define SWIGTYPE_p_Piavca__CurrentValueMotion swig_types[12]
+#define SWIGTYPE_p_Piavca__DiadicGazeMotion swig_types[13]
+#define SWIGTYPE_p_Piavca__KeyframeMotion swig_types[14]
+#define SWIGTYPE_p_Piavca__LinearTransition swig_types[15]
+#define SWIGTYPE_p_Piavca__LookAtMotion swig_types[16]
+#define SWIGTYPE_p_Piavca__LookAtToFacial swig_types[17]
+#define SWIGTYPE_p_Piavca__LoopMotion swig_types[18]
+#define SWIGTYPE_p_Piavca__MaskedMotion swig_types[19]
+#define SWIGTYPE_p_Piavca__Motion swig_types[20]
+#define SWIGTYPE_p_Piavca__MotionAdder swig_types[21]
+#define SWIGTYPE_p_Piavca__MotionFilter swig_types[22]
+#define SWIGTYPE_p_Piavca__MotionImp swig_types[23]
+#define SWIGTYPE_p_Piavca__MotionMask swig_types[24]
+#define SWIGTYPE_p_Piavca__MotionParser swig_types[25]
+#define SWIGTYPE_p_Piavca__MotionPosture swig_types[26]
+#define SWIGTYPE_p_Piavca__MotionSaver swig_types[27]
+#define SWIGTYPE_p_Piavca__MotionTransition swig_types[28]
+#define SWIGTYPE_p_Piavca__MultiMotionCombiner swig_types[29]
+#define SWIGTYPE_p_Piavca__Object swig_types[30]
+#define SWIGTYPE_p_Piavca__ObjectTargetStruct swig_types[31]
+#define SWIGTYPE_p_Piavca__OverrideMotion swig_types[32]
+#define SWIGTYPE_p_Piavca__PostureBlend swig_types[33]
+#define SWIGTYPE_p_Piavca__Proxemics swig_types[34]
+#define SWIGTYPE_p_Piavca__ProxemicsLoop swig_types[35]
+#define SWIGTYPE_p_Piavca__Quat swig_types[36]
+#define SWIGTYPE_p_Piavca__RandomAdd swig_types[37]
+#define SWIGTYPE_p_Piavca__RandomAddLoop swig_types[38]
+#define SWIGTYPE_p_Piavca__RandomBlend swig_types[39]
+#define SWIGTYPE_p_Piavca__RandomBlendLoop swig_types[40]
+#define SWIGTYPE_p_Piavca__RandomChoiceMotion swig_types[41]
+#define SWIGTYPE_p_Piavca__RandomGazeMotion swig_types[42]
+#define SWIGTYPE_p_Piavca__RandomLoopMotion swig_types[43]
+#define SWIGTYPE_p_Piavca__RandomTimingsLoop swig_types[44]
+#define SWIGTYPE_p_Piavca__RandomTimingsMotion swig_types[45]
+#define SWIGTYPE_p_Piavca__Reposition swig_types[46]
+#define SWIGTYPE_p_Piavca__ScaleMotion swig_types[47]
+#define SWIGTYPE_p_Piavca__ScaleMotionRoot swig_types[48]
+#define SWIGTYPE_p_Piavca__ScaleMotionSpeed swig_types[49]
+#define SWIGTYPE_p_Piavca__Sequence swig_types[50]
+#define SWIGTYPE_p_Piavca__SequentialChoiceMotion swig_types[51]
 #define SWIGTYPE_p_Piavca__SmoothLoop swig_types[52]
 #define SWIGTYPE_p_Piavca__SmoothSequence swig_types[53]
 #define SWIGTYPE_p_Piavca__SmoothTransition swig_types[54]
@@ -24688,6 +24688,39 @@ void SwigDirector_ChoiceMotion::addMotion(Piavca::Motion *mot) {
 }
 
 
+int SwigDirector_ChoiceMotion::makeChoice() {
+  int c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call ChoiceMotion.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 25;
+  const char * const swig_method_name = "makeChoice";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "makeChoice", NULL);
+#endif
+  if (result == NULL) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        //std::cout << "got a director exception" << std::endl;
+        PyErr_Print();
+        Piavca::Error("error when calling a python director method");
+      }
+    }
+  }
+  int swig_val;
+  int swig_res = SWIG_AsVal_int(result, &swig_val);
+  if (!SWIG_IsOK(swig_res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(swig_res)), "in output value of type '""int""'");
+  }
+  c_result = static_cast< int >(swig_val);
+  return (int) c_result;
+}
+
+
 SwigDirector_ChoiceLoopMotion::SwigDirector_ChoiceLoopMotion(PyObject *self): Piavca::ChoiceLoopMotion(), Swig::Director(self) {
   SWIG_DIRECTOR_RGTR((Piavca::ChoiceLoopMotion *)this, this); 
 }
@@ -26488,31 +26521,6 @@ void SwigDirector_RandomLoopMotion::addMotion(Piavca::Motion *mot, float weight)
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
 #else
   swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"addMotion", (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
-#endif
-  if (result == NULL) {
-    PyObject *error = PyErr_Occurred();
-    {
-      if (error != NULL) {
-        //std::cout << "got a director exception" << std::endl;
-        PyErr_Print();
-        Piavca::Error("error when calling a python director method");
-      }
-    }
-  }
-}
-
-
-void SwigDirector_RandomLoopMotion::shift() {
-  if (!swig_get_self()) {
-    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call RandomLoopMotion.__init__.");
-  }
-#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 29;
-  const char * const swig_method_name = "shift";
-  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
-  swig::PyObject_var result = PyObject_CallFunction(method, NULL, NULL);
-#else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *) "shift", NULL);
 #endif
   if (result == NULL) {
     PyObject *error = PyErr_Occurred();
@@ -86414,79 +86422,6 @@ SWIGINTERN PyObject *MotionTransition_swigregister(PyObject *SWIGUNUSEDPARM(self
   return SWIG_Py_Void();
 }
 
-SWIGINTERN PyObject *_wrap_delete_ChoiceBase(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  Piavca::ChoiceBase *arg1 = (Piavca::ChoiceBase *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:delete_ChoiceBase",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__ChoiceBase, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_ChoiceBase" "', argument " "1"" of type '" "Piavca::ChoiceBase *""'"); 
-  }
-  arg1 = reinterpret_cast< Piavca::ChoiceBase * >(argp1);
-  {
-    try {
-      arg1->Dispose();
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }
-    catch (Piavca::Exception &e) 
-    {
-      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
-      SWIG_fail; 
-    }
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_ChoiceBase_reset(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  Piavca::ChoiceBase *arg1 = (Piavca::ChoiceBase *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:ChoiceBase_reset",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__ChoiceBase, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ChoiceBase_reset" "', argument " "1"" of type '" "Piavca::ChoiceBase *""'"); 
-  }
-  arg1 = reinterpret_cast< Piavca::ChoiceBase * >(argp1);
-  {
-    try {
-      (arg1)->reset(); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }
-    catch (Piavca::Exception &e) 
-    {
-      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
-      SWIG_fail; 
-    }
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *ChoiceBase_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *obj;
-  if (!PyArg_ParseTuple(args,(char*)"O|swigregister", &obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_Piavca__ChoiceBase, SWIG_NewClientData(obj));
-  return SWIG_Py_Void();
-}
-
 SWIGINTERN PyObject *_wrap_new_ChoiceMotion__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   PyObject *arg1 = (PyObject *) 0 ;
@@ -87525,6 +87460,47 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_ChoiceMotion_getLeafMotion(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::ChoiceMotion *arg1 = (Piavca::ChoiceMotion *) 0 ;
+  Piavca::Motion *result = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  Swig::Director *director = 0;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ChoiceMotion_getLeafMotion",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__ChoiceMotion, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ChoiceMotion_getLeafMotion" "', argument " "1"" of type '" "Piavca::ChoiceMotion *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::ChoiceMotion * >(argp1);
+  {
+    try {
+      result = (Piavca::Motion *)(arg1)->getLeafMotion(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  director = SWIG_DIRECTOR_CAST(result);
+  if (director) {
+    resultobj = director->swig_get_self();
+    Py_INCREF(resultobj);
+  } else {
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__Motion, 0 |  0 );
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_ChoiceMotion_getMotion__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Piavca::ChoiceMotion *arg1 = (Piavca::ChoiceMotion *) 0 ;
@@ -88047,6 +88023,86 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_ChoiceMotion_getCurrentChoice(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::ChoiceMotion *arg1 = (Piavca::ChoiceMotion *) 0 ;
+  int result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ChoiceMotion_getCurrentChoice",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__ChoiceMotion, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ChoiceMotion_getCurrentChoice" "', argument " "1"" of type '" "Piavca::ChoiceMotion *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::ChoiceMotion * >(argp1);
+  {
+    try {
+      result = (int)(arg1)->getCurrentChoice(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ChoiceMotion_makeChoice(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::ChoiceMotion *arg1 = (Piavca::ChoiceMotion *) 0 ;
+  int result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  Swig::Director *director = 0;
+  bool upcall = false;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ChoiceMotion_makeChoice",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__ChoiceMotion, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ChoiceMotion_makeChoice" "', argument " "1"" of type '" "Piavca::ChoiceMotion *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::ChoiceMotion * >(argp1);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  upcall = (director && (director->swig_get_self()==obj0));
+  try {
+    {
+      try {
+        if (upcall) {
+          result = (int)(arg1)->Piavca::ChoiceMotion::makeChoice();
+        } else {
+          result = (int)(arg1)->makeChoice();
+        } 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }
+      catch (Piavca::Exception &e) 
+      {
+        std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+        SWIG_fail; 
+      }
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_ChoiceMotion_event(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Piavca::ChoiceMotion *arg1 = (Piavca::ChoiceMotion *) 0 ;
@@ -88225,6 +88281,218 @@ SWIGINTERN PyObject *ChoiceMotion_swigregister(PyObject *SWIGUNUSEDPARM(self), P
   PyObject *obj;
   if (!PyArg_ParseTuple(args,(char*)"O|swigregister", &obj)) return NULL;
   SWIG_TypeNewClientData(SWIGTYPE_p_Piavca__ChoiceMotion, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_SequentialChoiceMotion__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::SequentialChoiceMotion *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)":new_SequentialChoiceMotion")) SWIG_fail;
+  {
+    try {
+      result = (Piavca::SequentialChoiceMotion *)new Piavca::SequentialChoiceMotion(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__SequentialChoiceMotion, SWIG_POINTER_NEW |  0 );
+  result->Reference();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_SequentialChoiceMotion__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::MotionVec *arg1 = 0 ;
+  Piavca::SequentialChoiceMotion *result = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_SequentialChoiceMotion",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_std__vectorTPiavca__Motion_p_std__allocatorTPiavca__Motion_p_t_t,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SequentialChoiceMotion" "', argument " "1"" of type '" "Piavca::MotionVec const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SequentialChoiceMotion" "', argument " "1"" of type '" "Piavca::MotionVec const &""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::MotionVec * >(argp1);
+  {
+    try {
+      result = (Piavca::SequentialChoiceMotion *)new Piavca::SequentialChoiceMotion((Piavca::MotionVec const &)*arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__SequentialChoiceMotion, SWIG_POINTER_NEW |  0 );
+  result->Reference();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_SequentialChoiceMotion__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::SequentialChoiceMotion *arg1 = 0 ;
+  Piavca::SequentialChoiceMotion *result = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_SequentialChoiceMotion",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_Piavca__SequentialChoiceMotion,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SequentialChoiceMotion" "', argument " "1"" of type '" "Piavca::SequentialChoiceMotion const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SequentialChoiceMotion" "', argument " "1"" of type '" "Piavca::SequentialChoiceMotion const &""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::SequentialChoiceMotion * >(argp1);
+  {
+    try {
+      result = (Piavca::SequentialChoiceMotion *)new Piavca::SequentialChoiceMotion((Piavca::SequentialChoiceMotion const &)*arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Piavca__SequentialChoiceMotion, SWIG_POINTER_NEW |  0 );
+  result->Reference();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_SequentialChoiceMotion(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[2];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = PyObject_Length(args);
+  for (ii = 0; (ii < argc) && (ii < 1); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 0) {
+    return _wrap_new_SequentialChoiceMotion__SWIG_0(self, args);
+  }
+  if (argc == 1) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_std__vectorTPiavca__Motion_p_std__allocatorTPiavca__Motion_p_t_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_SequentialChoiceMotion__SWIG_1(self, args);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_Piavca__SequentialChoiceMotion, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_SequentialChoiceMotion__SWIG_2(self, args);
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'new_SequentialChoiceMotion'.\n  Possible C/C++ prototypes are:\n    Piavca::SequentialChoiceMotion()\n    Piavca::SequentialChoiceMotion(Piavca::MotionVec const &)\n    Piavca::SequentialChoiceMotion(Piavca::SequentialChoiceMotion const &)\n");
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_SequentialChoiceMotion(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::SequentialChoiceMotion *arg1 = (Piavca::SequentialChoiceMotion *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_SequentialChoiceMotion",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__SequentialChoiceMotion, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_SequentialChoiceMotion" "', argument " "1"" of type '" "Piavca::SequentialChoiceMotion *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::SequentialChoiceMotion * >(argp1);
+  {
+    try {
+      arg1->Dispose();
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SequentialChoiceMotion_makeChoice(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::SequentialChoiceMotion *arg1 = (Piavca::SequentialChoiceMotion *) 0 ;
+  int result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:SequentialChoiceMotion_makeChoice",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__SequentialChoiceMotion, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SequentialChoiceMotion_makeChoice" "', argument " "1"" of type '" "Piavca::SequentialChoiceMotion *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::SequentialChoiceMotion * >(argp1);
+  {
+    try {
+      result = (int)(arg1)->makeChoice(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *SequentialChoiceMotion_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char*)"O|swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_Piavca__SequentialChoiceMotion, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
@@ -88915,22 +89183,23 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_RandomChoiceMotion_shift(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_RandomChoiceMotion_makeChoice(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Piavca::RandomChoiceMotion *arg1 = (Piavca::RandomChoiceMotion *) 0 ;
+  int result;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:RandomChoiceMotion_shift",&obj0)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:RandomChoiceMotion_makeChoice",&obj0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__RandomChoiceMotion, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RandomChoiceMotion_shift" "', argument " "1"" of type '" "Piavca::RandomChoiceMotion *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RandomChoiceMotion_makeChoice" "', argument " "1"" of type '" "Piavca::RandomChoiceMotion *""'"); 
   }
   arg1 = reinterpret_cast< Piavca::RandomChoiceMotion * >(argp1);
   {
     try {
-      (arg1)->shift(); 
+      result = (int)(arg1)->makeChoice(); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -88941,40 +89210,7 @@ SWIGINTERN PyObject *_wrap_RandomChoiceMotion_shift(PyObject *SWIGUNUSEDPARM(sel
       SWIG_fail; 
     }
   }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_RandomChoiceMotion_reset(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  Piavca::RandomChoiceMotion *arg1 = (Piavca::RandomChoiceMotion *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:RandomChoiceMotion_reset",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__RandomChoiceMotion, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RandomChoiceMotion_reset" "', argument " "1"" of type '" "Piavca::RandomChoiceMotion *""'"); 
-  }
-  arg1 = reinterpret_cast< Piavca::RandomChoiceMotion * >(argp1);
-  {
-    try {
-      (arg1)->reset(); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }
-    catch (Piavca::Exception &e) 
-    {
-      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
-      SWIG_fail; 
-    }
-  }
-  resultobj = SWIG_Py_Void();
+  resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
   return NULL;
@@ -90689,51 +90925,6 @@ SWIGINTERN PyObject *_wrap_RandomLoopMotion_setMotionProb(PyObject *self, PyObje
   
 fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'RandomLoopMotion_setMotionProb'.\n  Possible C/C++ prototypes are:\n    setMotionProb(int,float)\n    setMotionProb(Piavca::tstring,float)\n");
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_RandomLoopMotion_shift(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  Piavca::RandomLoopMotion *arg1 = (Piavca::RandomLoopMotion *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  Swig::Director *director = 0;
-  bool upcall = false;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:RandomLoopMotion_shift",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__RandomLoopMotion, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RandomLoopMotion_shift" "', argument " "1"" of type '" "Piavca::RandomLoopMotion *""'"); 
-  }
-  arg1 = reinterpret_cast< Piavca::RandomLoopMotion * >(argp1);
-  director = SWIG_DIRECTOR_CAST(arg1);
-  upcall = (director && (director->swig_get_self()==obj0));
-  try {
-    {
-      try {
-        if (upcall) {
-          (arg1)->Piavca::RandomLoopMotion::shift();
-        } else {
-          (arg1)->shift();
-        } 
-      }
-      catch (Swig::DirectorException &e) {
-        SWIG_fail; 
-      }
-      catch (Piavca::Exception &e) 
-      {
-        std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
-        SWIG_fail; 
-      }
-    }
-  } catch (Swig::DirectorException&) {
-    SWIG_fail;
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
   return NULL;
 }
 
@@ -108697,9 +108888,6 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"MotionTransition_getQuatValueAtTimeInternal", _wrap_MotionTransition_getQuatValueAtTimeInternal, METH_VARARGS, NULL},
 	 { (char *)"delete_MotionTransition", _wrap_delete_MotionTransition, METH_VARARGS, NULL},
 	 { (char *)"MotionTransition_swigregister", MotionTransition_swigregister, METH_VARARGS, NULL},
-	 { (char *)"delete_ChoiceBase", _wrap_delete_ChoiceBase, METH_VARARGS, NULL},
-	 { (char *)"ChoiceBase_reset", _wrap_ChoiceBase_reset, METH_VARARGS, NULL},
-	 { (char *)"ChoiceBase_swigregister", ChoiceBase_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_ChoiceMotion", _wrap_new_ChoiceMotion, METH_VARARGS, NULL},
 	 { (char *)"delete_ChoiceMotion", _wrap_delete_ChoiceMotion, METH_VARARGS, NULL},
 	 { (char *)"ChoiceMotion_clone", _wrap_ChoiceMotion_clone, METH_VARARGS, NULL},
@@ -108721,6 +108909,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"ChoiceMotion_getMotionIndex", _wrap_ChoiceMotion_getMotionIndex, METH_VARARGS, NULL},
 	 { (char *)"ChoiceMotion_getNumMotions", _wrap_ChoiceMotion_getNumMotions, METH_VARARGS, NULL},
 	 { (char *)"ChoiceMotion_getMotionByIndex", _wrap_ChoiceMotion_getMotionByIndex, METH_VARARGS, NULL},
+	 { (char *)"ChoiceMotion_getLeafMotion", _wrap_ChoiceMotion_getLeafMotion, METH_VARARGS, NULL},
 	 { (char *)"ChoiceMotion_getMotion", _wrap_ChoiceMotion_getMotion, METH_VARARGS, NULL},
 	 { (char *)"ChoiceMotion_removeMotionByIndex", _wrap_ChoiceMotion_removeMotionByIndex, METH_VARARGS, NULL},
 	 { (char *)"ChoiceMotion_clear", _wrap_ChoiceMotion_clear, METH_VARARGS, NULL},
@@ -108728,11 +108917,17 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"ChoiceMotion_findSubByType", _wrap_ChoiceMotion_findSubByType, METH_VARARGS, NULL},
 	 { (char *)"ChoiceMotion_cleanRecursionState", _wrap_ChoiceMotion_cleanRecursionState, METH_VARARGS, NULL},
 	 { (char *)"ChoiceMotion_setCurrentChoice", _wrap_ChoiceMotion_setCurrentChoice, METH_VARARGS, NULL},
+	 { (char *)"ChoiceMotion_getCurrentChoice", _wrap_ChoiceMotion_getCurrentChoice, METH_VARARGS, NULL},
+	 { (char *)"ChoiceMotion_makeChoice", _wrap_ChoiceMotion_makeChoice, METH_VARARGS, NULL},
 	 { (char *)"ChoiceMotion_event", _wrap_ChoiceMotion_event, METH_VARARGS, NULL},
 	 { (char *)"ChoiceMotion_getEventNames", _wrap_ChoiceMotion_getEventNames, METH_VARARGS, NULL},
 	 { (char *)"ChoiceMotion_reset", _wrap_ChoiceMotion_reset, METH_VARARGS, NULL},
 	 { (char *)"disown_ChoiceMotion", _wrap_disown_ChoiceMotion, METH_VARARGS, NULL},
 	 { (char *)"ChoiceMotion_swigregister", ChoiceMotion_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_SequentialChoiceMotion", _wrap_new_SequentialChoiceMotion, METH_VARARGS, NULL},
+	 { (char *)"delete_SequentialChoiceMotion", _wrap_delete_SequentialChoiceMotion, METH_VARARGS, NULL},
+	 { (char *)"SequentialChoiceMotion_makeChoice", _wrap_SequentialChoiceMotion_makeChoice, METH_VARARGS, NULL},
+	 { (char *)"SequentialChoiceMotion_swigregister", SequentialChoiceMotion_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_RandomChoiceMotion", _wrap_new_RandomChoiceMotion, METH_VARARGS, NULL},
 	 { (char *)"delete_RandomChoiceMotion", _wrap_delete_RandomChoiceMotion, METH_VARARGS, NULL},
 	 { (char *)"RandomChoiceMotion_clone", _wrap_RandomChoiceMotion_clone, METH_VARARGS, NULL},
@@ -108742,8 +108937,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"RandomChoiceMotion_addMotion", _wrap_RandomChoiceMotion_addMotion, METH_VARARGS, NULL},
 	 { (char *)"RandomChoiceMotion_setProbability", _wrap_RandomChoiceMotion_setProbability, METH_VARARGS, NULL},
 	 { (char *)"RandomChoiceMotion_setMotionProb", _wrap_RandomChoiceMotion_setMotionProb, METH_VARARGS, NULL},
-	 { (char *)"RandomChoiceMotion_shift", _wrap_RandomChoiceMotion_shift, METH_VARARGS, NULL},
-	 { (char *)"RandomChoiceMotion_reset", _wrap_RandomChoiceMotion_reset, METH_VARARGS, NULL},
+	 { (char *)"RandomChoiceMotion_makeChoice", _wrap_RandomChoiceMotion_makeChoice, METH_VARARGS, NULL},
 	 { (char *)"RandomChoiceMotion_swigregister", RandomChoiceMotion_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_ChoiceLoopMotion", _wrap_new_ChoiceLoopMotion, METH_VARARGS, NULL},
 	 { (char *)"delete_ChoiceLoopMotion", _wrap_delete_ChoiceLoopMotion, METH_VARARGS, NULL},
@@ -108763,7 +108957,6 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"RandomLoopMotion_addMotion", _wrap_RandomLoopMotion_addMotion, METH_VARARGS, NULL},
 	 { (char *)"RandomLoopMotion_setProbability", _wrap_RandomLoopMotion_setProbability, METH_VARARGS, NULL},
 	 { (char *)"RandomLoopMotion_setMotionProb", _wrap_RandomLoopMotion_setMotionProb, METH_VARARGS, NULL},
-	 { (char *)"RandomLoopMotion_shift", _wrap_RandomLoopMotion_shift, METH_VARARGS, NULL},
 	 { (char *)"RandomLoopMotion_reblend", _wrap_RandomLoopMotion_reblend, METH_VARARGS, NULL},
 	 { (char *)"disown_RandomLoopMotion", _wrap_disown_RandomLoopMotion, METH_VARARGS, NULL},
 	 { (char *)"RandomLoopMotion_swigregister", RandomLoopMotion_swigregister, METH_VARARGS, NULL},
@@ -109081,10 +109274,13 @@ static void *_p_Piavca__ScaleMotionTo_p_Piavca__MotionFilter(void *x) {
     return (void *)((Piavca::MotionFilter *)  ((Piavca::ScaleMotion *) x));
 }
 static void *_p_Piavca__ChoiceMotionTo_p_Piavca__MotionFilter(void *x) {
-    return (void *)((Piavca::MotionFilter *) (Piavca::ChoiceBase *) ((Piavca::ChoiceMotion *) x));
+    return (void *)((Piavca::MotionFilter *)  ((Piavca::ChoiceMotion *) x));
+}
+static void *_p_Piavca__SequentialChoiceMotionTo_p_Piavca__MotionFilter(void *x) {
+    return (void *)((Piavca::MotionFilter *) (Piavca::ChoiceMotion *) ((Piavca::SequentialChoiceMotion *) x));
 }
 static void *_p_Piavca__RandomChoiceMotionTo_p_Piavca__MotionFilter(void *x) {
-    return (void *)((Piavca::MotionFilter *) (Piavca::ChoiceBase *)(Piavca::ChoiceMotion *) ((Piavca::RandomChoiceMotion *) x));
+    return (void *)((Piavca::MotionFilter *) (Piavca::ChoiceMotion *) ((Piavca::RandomChoiceMotion *) x));
 }
 static void *_p_Piavca__RandomGazeMotionTo_p_Piavca__MotionFilter(void *x) {
     return (void *)((Piavca::MotionFilter *) (Piavca::LoopMotion *)(Piavca::SmoothLoop *) ((Piavca::RandomGazeMotion *) x));
@@ -109137,9 +109333,6 @@ static void *_p_Piavca__ScaleMotionRootTo_p_Piavca__MotionFilter(void *x) {
 static void *_p_Piavca__RepositionTo_p_Piavca__MotionFilter(void *x) {
     return (void *)((Piavca::MotionFilter *)  ((Piavca::Reposition *) x));
 }
-static void *_p_Piavca__ChoiceBaseTo_p_Piavca__MotionFilter(void *x) {
-    return (void *)((Piavca::MotionFilter *)  ((Piavca::ChoiceBase *) x));
-}
 static void *_p_Piavca__RandomBlendLoopTo_p_Piavca__MotionFilter(void *x) {
     return (void *)((Piavca::MotionFilter *) (Piavca::LoopMotion *)(Piavca::SmoothLoop *)(Piavca::RandomTimingsLoop *) ((Piavca::RandomBlendLoop *) x));
 }
@@ -109163,6 +109356,9 @@ static void *_p_Piavca__LookAtToFacialTo_p_Piavca__MotionFilter(void *x) {
 }
 static void *_p_Piavca__DiadicGazeMotionTo_p_Piavca__RandomGazeMotion(void *x) {
     return (void *)((Piavca::RandomGazeMotion *)  ((Piavca::DiadicGazeMotion *) x));
+}
+static void *_p_Piavca__SequentialChoiceMotionTo_p_Piavca__ChoiceMotion(void *x) {
+    return (void *)((Piavca::ChoiceMotion *)  ((Piavca::SequentialChoiceMotion *) x));
 }
 static void *_p_Piavca__RandomChoiceMotionTo_p_Piavca__ChoiceMotion(void *x) {
     return (void *)((Piavca::ChoiceMotion *)  ((Piavca::RandomChoiceMotion *) x));
@@ -109336,10 +109532,13 @@ static void *_p_Piavca__ScaleMotionRootTo_p_Piavca__Motion(void *x) {
     return (void *)((Piavca::Motion *) (Piavca::MotionFilter *) ((Piavca::ScaleMotionRoot *) x));
 }
 static void *_p_Piavca__RandomChoiceMotionTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *) (Piavca::MotionFilter *)(Piavca::ChoiceBase *)(Piavca::ChoiceMotion *) ((Piavca::RandomChoiceMotion *) x));
+    return (void *)((Piavca::Motion *) (Piavca::MotionFilter *)(Piavca::ChoiceMotion *) ((Piavca::RandomChoiceMotion *) x));
+}
+static void *_p_Piavca__SequentialChoiceMotionTo_p_Piavca__Motion(void *x) {
+    return (void *)((Piavca::Motion *) (Piavca::MotionFilter *)(Piavca::ChoiceMotion *) ((Piavca::SequentialChoiceMotion *) x));
 }
 static void *_p_Piavca__ChoiceMotionTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *) (Piavca::MotionFilter *)(Piavca::ChoiceBase *) ((Piavca::ChoiceMotion *) x));
+    return (void *)((Piavca::Motion *) (Piavca::MotionFilter *) ((Piavca::ChoiceMotion *) x));
 }
 static void *_p_Piavca__RandomTimingsMotionTo_p_Piavca__Motion(void *x) {
     return (void *)((Piavca::Motion *) (Piavca::MotionFilter *)(Piavca::ScaleMotionSpeed *) ((Piavca::RandomTimingsMotion *) x));
@@ -109373,9 +109572,6 @@ static void *_p_Piavca__DiadicGazeMotionTo_p_Piavca__Motion(void *x) {
 }
 static void *_p_Piavca__OverrideMotionTo_p_Piavca__Motion(void *x) {
     return (void *)((Piavca::Motion *) (Piavca::TwoMotionCombiner *) ((Piavca::OverrideMotion *) x));
-}
-static void *_p_Piavca__ChoiceBaseTo_p_Piavca__Motion(void *x) {
-    return (void *)((Piavca::Motion *) (Piavca::MotionFilter *) ((Piavca::ChoiceBase *) x));
 }
 static void *_p_Piavca__AvatarPostureTo_p_Piavca__Motion(void *x) {
     return (void *)((Piavca::Motion *) (Piavca::KeyframeMotion *) ((Piavca::AvatarPosture *) x));
@@ -109425,12 +109621,6 @@ static void *_p_Piavca__RepositionTo_p_Piavca__Motion(void *x) {
 static void *_p_Piavca__TimeOffsetTo_p_Piavca__Motion(void *x) {
     return (void *)((Piavca::Motion *) (Piavca::MotionFilter *) ((Piavca::TimeOffset *) x));
 }
-static void *_p_Piavca__ChoiceMotionTo_p_Piavca__ChoiceBase(void *x) {
-    return (void *)((Piavca::ChoiceBase *)  ((Piavca::ChoiceMotion *) x));
-}
-static void *_p_Piavca__RandomChoiceMotionTo_p_Piavca__ChoiceBase(void *x) {
-    return (void *)((Piavca::ChoiceBase *) (Piavca::ChoiceMotion *) ((Piavca::RandomChoiceMotion *) x));
-}
 static swig_type_info _swigt__p_Piavca__Avatar = {"_p_Piavca__Avatar", "Piavca::Avatar *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__AvatarMotionQueue = {"_p_Piavca__AvatarMotionQueue", "Piavca::AvatarMotionQueue *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__AvatarPosture = {"_p_Piavca__AvatarPosture", "Piavca::AvatarPosture *", 0, 0, (void*)0, 0};
@@ -109440,7 +109630,6 @@ static swig_type_info _swigt__p_Piavca__AvatarTimeCallback = {"_p_Piavca__Avatar
 static swig_type_info _swigt__p_Piavca__BlendBetween = {"_p_Piavca__BlendBetween", "Piavca::BlendBetween *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__Bound = {"_p_Piavca__Bound", "Piavca::Bound *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__ChangeMotionLength = {"_p_Piavca__ChangeMotionLength", "Piavca::ChangeMotionLength *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_Piavca__ChoiceBase = {"_p_Piavca__ChoiceBase", "Piavca::ChoiceBase *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__ChoiceLoopMotion = {"_p_Piavca__ChoiceLoopMotion", "Piavca::ChoiceLoopMotion *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__ChoiceMotion = {"_p_Piavca__ChoiceMotion", "Piavca::ChoiceMotion *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__Core = {"_p_Piavca__Core", "Piavca::Core *", 0, 0, (void*)0, 0};
@@ -109483,6 +109672,7 @@ static swig_type_info _swigt__p_Piavca__ScaleMotion = {"_p_Piavca__ScaleMotion",
 static swig_type_info _swigt__p_Piavca__ScaleMotionRoot = {"_p_Piavca__ScaleMotionRoot", "Piavca::ScaleMotionRoot *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__ScaleMotionSpeed = {"_p_Piavca__ScaleMotionSpeed", "Piavca::ScaleMotionSpeed *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__Sequence = {"_p_Piavca__Sequence", "Piavca::Sequence *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_Piavca__SequentialChoiceMotion = {"_p_Piavca__SequentialChoiceMotion", "Piavca::SequentialChoiceMotion *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__SmoothLoop = {"_p_Piavca__SmoothLoop", "Piavca::SmoothLoop *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__SmoothSequence = {"_p_Piavca__SmoothSequence", "Piavca::SmoothSequence *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Piavca__SmoothTransition = {"_p_Piavca__SmoothTransition", "Piavca::SmoothTransition *", 0, 0, (void*)0, 0};
@@ -109542,7 +109732,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_Piavca__BlendBetween,
   &_swigt__p_Piavca__Bound,
   &_swigt__p_Piavca__ChangeMotionLength,
-  &_swigt__p_Piavca__ChoiceBase,
   &_swigt__p_Piavca__ChoiceLoopMotion,
   &_swigt__p_Piavca__ChoiceMotion,
   &_swigt__p_Piavca__Core,
@@ -109585,6 +109774,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_Piavca__ScaleMotionRoot,
   &_swigt__p_Piavca__ScaleMotionSpeed,
   &_swigt__p_Piavca__Sequence,
+  &_swigt__p_Piavca__SequentialChoiceMotion,
   &_swigt__p_Piavca__SmoothLoop,
   &_swigt__p_Piavca__SmoothSequence,
   &_swigt__p_Piavca__SmoothTransition,
@@ -109644,9 +109834,8 @@ static swig_cast_info _swigc__p_Piavca__AvatarTimeCallback[] = {  {&_swigt__p_Pi
 static swig_cast_info _swigc__p_Piavca__BlendBetween[] = {  {&_swigt__p_Piavca__BlendBetween, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__Bound[] = {  {&_swigt__p_Piavca__Bound, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__ChangeMotionLength[] = {  {&_swigt__p_Piavca__ChangeMotionLength, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_Piavca__ChoiceBase[] = {  {&_swigt__p_Piavca__ChoiceMotion, _p_Piavca__ChoiceMotionTo_p_Piavca__ChoiceBase, 0, 0},  {&_swigt__p_Piavca__RandomChoiceMotion, _p_Piavca__RandomChoiceMotionTo_p_Piavca__ChoiceBase, 0, 0},  {&_swigt__p_Piavca__ChoiceBase, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__ChoiceLoopMotion[] = {  {&_swigt__p_Piavca__ChoiceLoopMotion, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_Piavca__ChoiceMotion[] = {  {&_swigt__p_Piavca__ChoiceMotion, 0, 0, 0},  {&_swigt__p_Piavca__RandomChoiceMotion, _p_Piavca__RandomChoiceMotionTo_p_Piavca__ChoiceMotion, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Piavca__ChoiceMotion[] = {  {&_swigt__p_Piavca__ChoiceMotion, 0, 0, 0},  {&_swigt__p_Piavca__SequentialChoiceMotion, _p_Piavca__SequentialChoiceMotionTo_p_Piavca__ChoiceMotion, 0, 0},  {&_swigt__p_Piavca__RandomChoiceMotion, _p_Piavca__RandomChoiceMotionTo_p_Piavca__ChoiceMotion, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__Core[] = {  {&_swigt__p_Piavca__Core, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__CurrentValueMotion[] = {  {&_swigt__p_Piavca__CurrentValueMotion, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__DiadicGazeMotion[] = {  {&_swigt__p_Piavca__DiadicGazeMotion, 0, 0, 0},{0, 0, 0, 0}};
@@ -109656,9 +109845,9 @@ static swig_cast_info _swigc__p_Piavca__LookAtMotion[] = {  {&_swigt__p_Piavca__
 static swig_cast_info _swigc__p_Piavca__LookAtToFacial[] = {  {&_swigt__p_Piavca__LookAtToFacial, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__LoopMotion[] = {  {&_swigt__p_Piavca__RandomGazeMotion, _p_Piavca__RandomGazeMotionTo_p_Piavca__LoopMotion, 0, 0},  {&_swigt__p_Piavca__DiadicGazeMotion, _p_Piavca__DiadicGazeMotionTo_p_Piavca__LoopMotion, 0, 0},  {&_swigt__p_Piavca__SmoothLoop, _p_Piavca__SmoothLoopTo_p_Piavca__LoopMotion, 0, 0},  {&_swigt__p_Piavca__RandomBlendLoop, _p_Piavca__RandomBlendLoopTo_p_Piavca__LoopMotion, 0, 0},  {&_swigt__p_Piavca__RandomAddLoop, _p_Piavca__RandomAddLoopTo_p_Piavca__LoopMotion, 0, 0},  {&_swigt__p_Piavca__ProxemicsLoop, _p_Piavca__ProxemicsLoopTo_p_Piavca__LoopMotion, 0, 0},  {&_swigt__p_Piavca__LoopMotion, 0, 0, 0},  {&_swigt__p_Piavca__RandomTimingsLoop, _p_Piavca__RandomTimingsLoopTo_p_Piavca__LoopMotion, 0, 0},  {&_swigt__p_Piavca__ChoiceLoopMotion, _p_Piavca__ChoiceLoopMotionTo_p_Piavca__LoopMotion, 0, 0},  {&_swigt__p_Piavca__RandomLoopMotion, _p_Piavca__RandomLoopMotionTo_p_Piavca__LoopMotion, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__MaskedMotion[] = {  {&_swigt__p_Piavca__MaskedMotion, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_Piavca__Motion[] = {  {&_swigt__p_Piavca__BlendBetween, _p_Piavca__BlendBetweenTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__Sequence, _p_Piavca__SequenceTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__SmoothSequence, _p_Piavca__SmoothSequenceTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__RandomBlendLoop, _p_Piavca__RandomBlendLoopTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__MotionSaver, _p_Piavca__MotionSaverTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__SubMotion, _p_Piavca__SubMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__LookAtMotion, _p_Piavca__LookAtMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__TurnMotion, _p_Piavca__TurnMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__MaskedMotion, _p_Piavca__MaskedMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__RandomLoopMotion, _p_Piavca__RandomLoopMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ChoiceLoopMotion, _p_Piavca__ChoiceLoopMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__LoopMotion, _p_Piavca__LoopMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__PostureBlend, _p_Piavca__PostureBlendTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__AvatarPostureBlend, _p_Piavca__AvatarPostureBlendTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__RandomBlend, _p_Piavca__RandomBlendTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__MotionTransition, _p_Piavca__MotionTransitionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__RandomAdd, _p_Piavca__RandomAddTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ScaleMotionRoot, _p_Piavca__ScaleMotionRootTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__LookAtToFacial, _p_Piavca__LookAtToFacialTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__TimeWarp, _p_Piavca__TimeWarpTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__KeyframeMotion, _p_Piavca__KeyframeMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__CurrentValueMotion, _p_Piavca__CurrentValueMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ScaleMotion, _p_Piavca__ScaleMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ZeroMotion, _p_Piavca__ZeroMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__TimeRangeMotion, _p_Piavca__TimeRangeMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__OverrideMotion, _p_Piavca__OverrideMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__Motion, 0, 0, 0},  {&_swigt__p_Piavca__RandomGazeMotion, _p_Piavca__RandomGazeMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__DiadicGazeMotion, _p_Piavca__DiadicGazeMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__RandomTimingsMotion, _p_Piavca__RandomTimingsMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ChoiceMotion, _p_Piavca__ChoiceMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__RandomChoiceMotion, _p_Piavca__RandomChoiceMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ProxemicsLoop, _p_Piavca__ProxemicsLoopTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__MotionPosture, _p_Piavca__MotionPostureTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__AvatarPosture, _p_Piavca__AvatarPostureTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ChoiceBase, _p_Piavca__ChoiceBaseTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__TwoMotionCombiner, _p_Piavca__TwoMotionCombinerTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__MultiMotionCombiner, _p_Piavca__MultiMotionCombinerTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__Proxemics, _p_Piavca__ProxemicsTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ScaleMotionSpeed, _p_Piavca__ScaleMotionSpeedTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__RandomAddLoop, _p_Piavca__RandomAddLoopTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ChangeMotionLength, _p_Piavca__ChangeMotionLengthTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__Subtract, _p_Piavca__SubtractTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__MotionAdder, _p_Piavca__MotionAdderTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__SmoothLoop, _p_Piavca__SmoothLoopTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__MotionFilter, _p_Piavca__MotionFilterTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__RandomTimingsLoop, _p_Piavca__RandomTimingsLoopTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__Reposition, _p_Piavca__RepositionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__TimeOffset, _p_Piavca__TimeOffsetTo_p_Piavca__Motion, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Piavca__Motion[] = {  {&_swigt__p_Piavca__BlendBetween, _p_Piavca__BlendBetweenTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__Sequence, _p_Piavca__SequenceTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__SmoothSequence, _p_Piavca__SmoothSequenceTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__RandomBlendLoop, _p_Piavca__RandomBlendLoopTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__MotionSaver, _p_Piavca__MotionSaverTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__SubMotion, _p_Piavca__SubMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__LookAtMotion, _p_Piavca__LookAtMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__TurnMotion, _p_Piavca__TurnMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__MaskedMotion, _p_Piavca__MaskedMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__RandomLoopMotion, _p_Piavca__RandomLoopMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ChoiceLoopMotion, _p_Piavca__ChoiceLoopMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__LoopMotion, _p_Piavca__LoopMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__PostureBlend, _p_Piavca__PostureBlendTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__AvatarPostureBlend, _p_Piavca__AvatarPostureBlendTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__RandomBlend, _p_Piavca__RandomBlendTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__MotionTransition, _p_Piavca__MotionTransitionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__RandomAdd, _p_Piavca__RandomAddTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ScaleMotionRoot, _p_Piavca__ScaleMotionRootTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__LookAtToFacial, _p_Piavca__LookAtToFacialTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__TimeWarp, _p_Piavca__TimeWarpTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__KeyframeMotion, _p_Piavca__KeyframeMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__CurrentValueMotion, _p_Piavca__CurrentValueMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ScaleMotion, _p_Piavca__ScaleMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ZeroMotion, _p_Piavca__ZeroMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__TimeRangeMotion, _p_Piavca__TimeRangeMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__OverrideMotion, _p_Piavca__OverrideMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__Motion, 0, 0, 0},  {&_swigt__p_Piavca__RandomGazeMotion, _p_Piavca__RandomGazeMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__DiadicGazeMotion, _p_Piavca__DiadicGazeMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__RandomTimingsMotion, _p_Piavca__RandomTimingsMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ChoiceMotion, _p_Piavca__ChoiceMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__SequentialChoiceMotion, _p_Piavca__SequentialChoiceMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__RandomChoiceMotion, _p_Piavca__RandomChoiceMotionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ProxemicsLoop, _p_Piavca__ProxemicsLoopTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__MotionPosture, _p_Piavca__MotionPostureTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__AvatarPosture, _p_Piavca__AvatarPostureTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__TwoMotionCombiner, _p_Piavca__TwoMotionCombinerTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__MultiMotionCombiner, _p_Piavca__MultiMotionCombinerTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__Proxemics, _p_Piavca__ProxemicsTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ScaleMotionSpeed, _p_Piavca__ScaleMotionSpeedTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__RandomAddLoop, _p_Piavca__RandomAddLoopTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__ChangeMotionLength, _p_Piavca__ChangeMotionLengthTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__Subtract, _p_Piavca__SubtractTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__MotionAdder, _p_Piavca__MotionAdderTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__SmoothLoop, _p_Piavca__SmoothLoopTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__MotionFilter, _p_Piavca__MotionFilterTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__RandomTimingsLoop, _p_Piavca__RandomTimingsLoopTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__Reposition, _p_Piavca__RepositionTo_p_Piavca__Motion, 0, 0},  {&_swigt__p_Piavca__TimeOffset, _p_Piavca__TimeOffsetTo_p_Piavca__Motion, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__MotionAdder[] = {  {&_swigt__p_Piavca__MotionAdder, 0, 0, 0},  {&_swigt__p_Piavca__RandomAdd, _p_Piavca__RandomAddTo_p_Piavca__MotionAdder, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_Piavca__MotionFilter[] = {  {&_swigt__p_Piavca__MultiMotionCombiner, _p_Piavca__MultiMotionCombinerTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__SmoothLoop, _p_Piavca__SmoothLoopTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__MotionAdder, _p_Piavca__MotionAdderTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__DiadicGazeMotion, _p_Piavca__DiadicGazeMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__RandomGazeMotion, _p_Piavca__RandomGazeMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__TimeRangeMotion, _p_Piavca__TimeRangeMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__RandomChoiceMotion, _p_Piavca__RandomChoiceMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__ChoiceMotion, _p_Piavca__ChoiceMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__ScaleMotion, _p_Piavca__ScaleMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__RandomTimingsMotion, _p_Piavca__RandomTimingsMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__Proxemics, _p_Piavca__ProxemicsTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__ChangeMotionLength, _p_Piavca__ChangeMotionLengthTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__ProxemicsLoop, _p_Piavca__ProxemicsLoopTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__RandomAddLoop, _p_Piavca__RandomAddLoopTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__ChoiceLoopMotion, _p_Piavca__ChoiceLoopMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__RandomBlend, _p_Piavca__RandomBlendTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__RandomLoopMotion, _p_Piavca__RandomLoopMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__LoopMotion, _p_Piavca__LoopMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__TurnMotion, _p_Piavca__TurnMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__MaskedMotion, _p_Piavca__MaskedMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__TimeOffset, _p_Piavca__TimeOffsetTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__SubMotion, _p_Piavca__SubMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__ScaleMotionRoot, _p_Piavca__ScaleMotionRootTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__Reposition, _p_Piavca__RepositionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__ChoiceBase, _p_Piavca__ChoiceBaseTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__RandomBlendLoop, _p_Piavca__RandomBlendLoopTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__TimeWarp, _p_Piavca__TimeWarpTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__RandomTimingsLoop, _p_Piavca__RandomTimingsLoopTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__MotionSaver, _p_Piavca__MotionSaverTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__RandomAdd, _p_Piavca__RandomAddTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__MotionFilter, 0, 0, 0},  {&_swigt__p_Piavca__ScaleMotionSpeed, _p_Piavca__ScaleMotionSpeedTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__LookAtToFacial, _p_Piavca__LookAtToFacialTo_p_Piavca__MotionFilter, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Piavca__MotionFilter[] = {  {&_swigt__p_Piavca__MultiMotionCombiner, _p_Piavca__MultiMotionCombinerTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__SmoothLoop, _p_Piavca__SmoothLoopTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__MotionAdder, _p_Piavca__MotionAdderTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__DiadicGazeMotion, _p_Piavca__DiadicGazeMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__RandomGazeMotion, _p_Piavca__RandomGazeMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__TimeRangeMotion, _p_Piavca__TimeRangeMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__RandomChoiceMotion, _p_Piavca__RandomChoiceMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__SequentialChoiceMotion, _p_Piavca__SequentialChoiceMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__ChoiceMotion, _p_Piavca__ChoiceMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__ScaleMotion, _p_Piavca__ScaleMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__RandomTimingsMotion, _p_Piavca__RandomTimingsMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__Proxemics, _p_Piavca__ProxemicsTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__ChangeMotionLength, _p_Piavca__ChangeMotionLengthTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__ProxemicsLoop, _p_Piavca__ProxemicsLoopTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__RandomAddLoop, _p_Piavca__RandomAddLoopTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__ChoiceLoopMotion, _p_Piavca__ChoiceLoopMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__RandomBlend, _p_Piavca__RandomBlendTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__RandomLoopMotion, _p_Piavca__RandomLoopMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__LoopMotion, _p_Piavca__LoopMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__TurnMotion, _p_Piavca__TurnMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__MaskedMotion, _p_Piavca__MaskedMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__TimeOffset, _p_Piavca__TimeOffsetTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__SubMotion, _p_Piavca__SubMotionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__ScaleMotionRoot, _p_Piavca__ScaleMotionRootTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__Reposition, _p_Piavca__RepositionTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__RandomBlendLoop, _p_Piavca__RandomBlendLoopTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__TimeWarp, _p_Piavca__TimeWarpTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__RandomTimingsLoop, _p_Piavca__RandomTimingsLoopTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__MotionSaver, _p_Piavca__MotionSaverTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__RandomAdd, _p_Piavca__RandomAddTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__MotionFilter, 0, 0, 0},  {&_swigt__p_Piavca__ScaleMotionSpeed, _p_Piavca__ScaleMotionSpeedTo_p_Piavca__MotionFilter, 0, 0},  {&_swigt__p_Piavca__LookAtToFacial, _p_Piavca__LookAtToFacialTo_p_Piavca__MotionFilter, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__MotionImp[] = {  {&_swigt__p_Piavca__MotionImp, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__MotionMask[] = {  {&_swigt__p_Piavca__MotionMask, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__MotionParser[] = {  {&_swigt__p_Piavca__MotionParser, 0, 0, 0},{0, 0, 0, 0}};
@@ -109687,6 +109876,7 @@ static swig_cast_info _swigc__p_Piavca__ScaleMotion[] = {  {&_swigt__p_Piavca__S
 static swig_cast_info _swigc__p_Piavca__ScaleMotionRoot[] = {  {&_swigt__p_Piavca__ScaleMotionRoot, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__ScaleMotionSpeed[] = {  {&_swigt__p_Piavca__RandomTimingsMotion, _p_Piavca__RandomTimingsMotionTo_p_Piavca__ScaleMotionSpeed, 0, 0},  {&_swigt__p_Piavca__ScaleMotionSpeed, 0, 0, 0},  {&_swigt__p_Piavca__ChangeMotionLength, _p_Piavca__ChangeMotionLengthTo_p_Piavca__ScaleMotionSpeed, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__Sequence[] = {  {&_swigt__p_Piavca__Sequence, 0, 0, 0},  {&_swigt__p_Piavca__SmoothSequence, _p_Piavca__SmoothSequenceTo_p_Piavca__Sequence, 0, 0},  {&_swigt__p_Piavca__PostureBlend, _p_Piavca__PostureBlendTo_p_Piavca__Sequence, 0, 0},  {&_swigt__p_Piavca__AvatarPostureBlend, _p_Piavca__AvatarPostureBlendTo_p_Piavca__Sequence, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Piavca__SequentialChoiceMotion[] = {  {&_swigt__p_Piavca__SequentialChoiceMotion, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__SmoothLoop[] = {  {&_swigt__p_Piavca__RandomGazeMotion, _p_Piavca__RandomGazeMotionTo_p_Piavca__SmoothLoop, 0, 0},  {&_swigt__p_Piavca__DiadicGazeMotion, _p_Piavca__DiadicGazeMotionTo_p_Piavca__SmoothLoop, 0, 0},  {&_swigt__p_Piavca__SmoothLoop, 0, 0, 0},  {&_swigt__p_Piavca__RandomBlendLoop, _p_Piavca__RandomBlendLoopTo_p_Piavca__SmoothLoop, 0, 0},  {&_swigt__p_Piavca__RandomAddLoop, _p_Piavca__RandomAddLoopTo_p_Piavca__SmoothLoop, 0, 0},  {&_swigt__p_Piavca__ProxemicsLoop, _p_Piavca__ProxemicsLoopTo_p_Piavca__SmoothLoop, 0, 0},  {&_swigt__p_Piavca__RandomTimingsLoop, _p_Piavca__RandomTimingsLoopTo_p_Piavca__SmoothLoop, 0, 0},  {&_swigt__p_Piavca__ChoiceLoopMotion, _p_Piavca__ChoiceLoopMotionTo_p_Piavca__SmoothLoop, 0, 0},  {&_swigt__p_Piavca__RandomLoopMotion, _p_Piavca__RandomLoopMotionTo_p_Piavca__SmoothLoop, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__SmoothSequence[] = {  {&_swigt__p_Piavca__SmoothSequence, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Piavca__SmoothTransition[] = {  {&_swigt__p_Piavca__SmoothTransition, 0, 0, 0},{0, 0, 0, 0}};
@@ -109746,7 +109936,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_Piavca__BlendBetween,
   _swigc__p_Piavca__Bound,
   _swigc__p_Piavca__ChangeMotionLength,
-  _swigc__p_Piavca__ChoiceBase,
   _swigc__p_Piavca__ChoiceLoopMotion,
   _swigc__p_Piavca__ChoiceMotion,
   _swigc__p_Piavca__Core,
@@ -109789,6 +109978,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_Piavca__ScaleMotionRoot,
   _swigc__p_Piavca__ScaleMotionSpeed,
   _swigc__p_Piavca__Sequence,
+  _swigc__p_Piavca__SequentialChoiceMotion,
   _swigc__p_Piavca__SmoothLoop,
   _swigc__p_Piavca__SmoothSequence,
   _swigc__p_Piavca__SmoothTransition,

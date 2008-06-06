@@ -43,7 +43,8 @@ from glob import glob
 # also set up the local include paths
 env = Environment(SWIGFLAGS=['-c++', '-noruntime', '-python', '-I./src/'],
 				  CPPPATH=["./src/", distutils.sysconfig.get_python_inc()],
-				  SHLIBPREFIX="")
+				  SHLIBPREFIX="",
+				  CXXFILESUFFIX=".cpp")
 conf = Configure(env)	
 
 
@@ -79,13 +80,15 @@ env = conf.Finish()
 # c++ libraries
 PiavcaAPI = env.Library('src/PiavcaAPI/PiavcaAPI', glob('src/PiavcaAPI/*.cpp'))
 StdMotionImp = env.Library('src/StdMotionImp/StdMotionImp', glob('src/StdMotionImp/*.cpp'))
+Depends(StdMotionImp, PiavcaAPI)
 PiavcaCal3dImp = env.Library('src/PiavcaCal3dImp/PiavcaCal3dImp', glob('src/PiavcaCal3dImp/*.cpp'))
+Depends(PiavcaCal3dImp, PiavcaAPI)
 PiavcaPythonInterface = env.Library('src/PiavcaPythonInterface/PiavcaPythonInterface', glob('src/PiavcaPythonInterface/*.cpp'))
 #Program('src/PiavcaCal3dApp/PiavcaCal3dApp', PiavcaAPI + StdMotionImp + PiavcaCal3dImp  + glob('src/PiavcaCal3dApp/*.cpp'), CXXFLAGS="-I./src/")
 
 # base python module
 Piavca_base = env.SharedLibrary('Python/Piavca/Piavca_base/_Piavca_base.so', ['Python/Piavca/Piavca_base/Piavca.i'], LIBS=PiavcaAPI + StdMotionImp + PiavcaCal3dImp + external_libs)
-
+Depends(Piavca_base, PiavcaCal3dImp)
 
 # install path for python modules
 path1 = os.path.join(distutils.sysconfig.get_python_lib(), "Piavca")

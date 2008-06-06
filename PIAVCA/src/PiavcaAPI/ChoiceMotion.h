@@ -37,7 +37,7 @@
 #ifndef CHOICE_MOTION_H
 #define CHOICE_MOTION_H
 
-#include "ChoiceBase.h"
+#include "MotionFilter.h"
 
 namespace Piavca
 {
@@ -45,7 +45,7 @@ namespace Piavca
 typedef std::vector< Motion * > MotionVec;
 
 //! a motion where the client can choose which of a set of child motions to play
-class ChoiceMotion : public ChoiceBase
+class ChoiceMotion : public MotionFilter
 {
 	int currentChoice;
 
@@ -143,6 +143,9 @@ public:
 	//! gets the currently playing motion
 	Motion *getMotion();
 	
+	//! In a heirarchy of Choice motions, get the actual leaf motion that is currently playing
+	Motion *getLeafMotion();
+	
 	//! gets a child motion by index
 	Motion *getMotion(int index);
 	
@@ -168,6 +171,16 @@ public:
 	void setCurrentChoice(int i);
 	//! sets which motion is currently being played (by name)
 	void setCurrentChoice(tstring name);
+	//! gets the current choice 
+	int getCurrentChoice()
+	{
+		return currentChoice;
+	}
+	
+	/*! chooses the next motion to play
+	 * In the base class it just chooses the current one again but it can be overridden in subclasses.
+	 */
+	virtual int makeChoice();
 	
 	//! handles an event (plays the motion with the same name as the event)
 	void event(tstring ev);

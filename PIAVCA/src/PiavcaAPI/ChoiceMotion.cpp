@@ -42,7 +42,7 @@
 using namespace Piavca;
 
 ChoiceMotion::ChoiceMotion(const MotionVec &mpv)
-		:ChoiceBase(), mots(mpv), currentChoice(0),
+		:MotionFilter(), mots(mpv), currentChoice(0),
 		smooth(true), resetTime(true), windowLength(0.5f), resetOnEvent(true), accumulateRoot(true)
 {
 	MotionVec::size_type i;
@@ -52,7 +52,7 @@ ChoiceMotion::ChoiceMotion(const MotionVec &mpv)
 	}
 };
 ChoiceMotion::ChoiceMotion(const ChoiceMotion &cl)
-	:ChoiceBase(cl), mots(cl.mots), currentChoice(cl.currentChoice),
+	:MotionFilter(cl), mots(cl.mots), currentChoice(cl.currentChoice),
 	smooth(cl.smooth), resetTime(cl.resetTime), windowLength(cl.windowLength), resetOnEvent(cl.resetOnEvent), accumulateRoot(cl.accumulateRoot)
 {
 	for(MotionVec::size_type i = 0; i < mots.size(); i++)
@@ -79,7 +79,7 @@ void ChoiceMotion::printInfo()
 
 float ChoiceMotion::getMotionLength() const
 {
-	float len = ChoiceBase::getMotionLength();
+	float len = MotionFilter::getMotionLength();
 	if (smooth)
 		len -= windowLength;
 	return len;
@@ -127,6 +127,16 @@ Motion *ChoiceMotion::getMotionByIndex(int index)
 Motion *ChoiceMotion::getMotion()
 {
 	return MotionFilter::getMotion();
+}
+
+Motion *ChoiceMotion::getLeafMotion()
+{
+	Motion *m = getMotion();
+	ChoiceMotion *cm = dynamic_cast<ChoiceMotion *>(m);
+	if (cm)
+		return cm->getMotion();
+	else
+		return m;
 }
 
 //! gets a child motion by index
@@ -189,7 +199,7 @@ Motion *ChoiceMotion::findSubByType(const type_info &ty)
 
 void ChoiceMotion::cleanRecursionState()
 {
-	ChoiceBase::cleanRecursionState();
+	MotionFilter::cleanRecursionState();
 	for(MotionVec::size_type i = 0; i < mots.size(); i++)
 	{
 		mots[i]->cleanRecursionState();
@@ -217,6 +227,12 @@ void ChoiceMotion::setCurrentChoice(tstring name)
 	Piavca::Error(tstring(_T("Unknown choice ")) + name);
 };
 
+
+int ChoiceMotion::makeChoice()
+{
+	return getCurrentChoice();
+}
+
 //! handles an event (plays the motion with the same name as the event)
 void ChoiceMotion::event(tstring ev)
 {
@@ -228,7 +244,7 @@ void ChoiceMotion::event(tstring ev)
 				reset();
 			break;
 		}
-	ChoiceBase::event(ev);
+	MotionFilter::event(ev);
 }
 
 //! gets the names of all events
@@ -251,7 +267,11 @@ void ChoiceMotion::reset()
 {
 	if(mots.size() <= 0)
 		return;
+	int choice = makeChoice();
+	setCurrentChoice(choice);
 	Motion *mot = mots[currentChoice];
+	
+	mot->reset();
 	
 	if (smooth)
 	{
