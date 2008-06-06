@@ -117,7 +117,8 @@ class BackEnd:
 			length = self.motion.getMotion().getMotionLength()
 			if length < 0:
 				length = self.defaultLength
-			self.setRange(0.0, length)
+			start = self.motion.getMotion().getStartTime()
+			self.setRange(start, length)
 		else:
 			self.setRange(0.0,0.0)
 		

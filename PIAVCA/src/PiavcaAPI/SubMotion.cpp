@@ -50,7 +50,7 @@ float SubMotion::getAdjustedTime(float time)
 }
 
 SubMotion::SubMotion()
-	:MotionFilter(), start(-1), end(-1)
+	:MotionFilter(), start(0), end(-1)
 {
 
 };
