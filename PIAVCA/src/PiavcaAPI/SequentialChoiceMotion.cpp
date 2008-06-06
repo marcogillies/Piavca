@@ -33,15 +33,26 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
+
 #include "SequentialChoiceMotion.h"
 
+#include <iostream>
+
 using namespace Piavca;
+
 
 int SequentialChoiceMotion::makeChoice()
 {
 	int current = getCurrentChoice();
+	std::cout << "SequentialChoiceMotion::makeChoice() " << current << std::endl;
 	if (current+1 < getNumMotions())
+	{
+		std::cout << "increment " << current+1 << std::endl;
 		return current +1;
+	}
 	else
+	{
+		std::cout << "same " << std::endl;
 		return current;
+	}
 }

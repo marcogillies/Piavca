@@ -101,6 +101,11 @@ def parseAttribute(attrValue):
 			possible_values.append(f)
 		except ValueError:
 			pass
+		
+		if value == "True" or value == "true":
+			possible_values.append(True)
+		if value == "False" or value == "false":
+			possible_values.append(True)
 	
 	# maybe its a list of numbers
 	try:
@@ -170,6 +175,8 @@ def setAttribute(mot, attrName, attrValue, firstArg = None):
 			method(value)
 			return 1
 		except ValueError:
+			pass
+		except NotImplementedError:
 			pass
 		except TypeError:
 			pass

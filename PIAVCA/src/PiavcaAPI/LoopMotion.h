@@ -97,6 +97,7 @@ namespace Piavca
 		virtual void reset()
 		{
 			setStartTime(Piavca::Core::getCore()->getTime());	
+			MotionFilter::reset();
 		};
 	    
 	};

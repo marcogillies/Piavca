@@ -230,6 +230,8 @@ void ChoiceMotion::setCurrentChoice(tstring name)
 
 int ChoiceMotion::makeChoice()
 {
+
+	std::cout << "ChoiceMotion makeChoice: " << std::endl;
 	return getCurrentChoice();
 }
 
@@ -267,7 +269,9 @@ void ChoiceMotion::reset()
 {
 	if(mots.size() <= 0)
 		return;
+	std::cout << "ChoiceMotion reset, about to make choice: " << std::endl;
 	int choice = makeChoice();
+	std::cout << "ChoiceMotion reset, choice: " << choice << std::endl;
 	setCurrentChoice(choice);
 	Motion *mot = mots[currentChoice];
 	
