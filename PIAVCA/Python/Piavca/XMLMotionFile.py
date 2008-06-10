@@ -350,7 +350,8 @@ def readMotions(motions):
 						valuelist = stringToValueList(key_value)
 						key_value = ValueListToQuat(valuelist)
 						mot.setQuatKeyframe(key_joint, float(key_time), key_value)
-				Piavca.loadMotion(name, mot)
+				if name != "":
+					Piavca.loadMotion(name, mot)
 							
 			else:
 				try:
@@ -359,6 +360,9 @@ def readMotions(motions):
 					if type(cl) == types.TypeType and issubclass(cl, Piavca.Motion):
 						print "found motion type", motion.nodeName
 						mot = cl()
+						
+						storedMotName = mot.getName()
+						storedMotStr = str(mot)
 						if mot == None:
 							raise "could not create motion " + motion.nodeName
 							continue
@@ -368,7 +372,8 @@ def readMotions(motions):
 							if str(motion.attributes.item(i).name) == "name" or str(motion.attributes.item(i).name) == "Name":
 								name = str(motion.attributes.item(i).nodeValue)
 								print "========================motion name", name
-								Piavca.loadMotion(name, mot)
+								if name != "":
+									Piavca.loadMotion(name, mot)
 								continue
 							attrName = motion.attributes.item(i).name
 							attrValue = motion.attributes.item(i).nodeValue
@@ -429,7 +434,8 @@ def readMotions(motions):
 							
 							if hasattr(mot, "addMotion"):
 								method = getattr(mot, "addMotion")
-								print "XML Motion File add motion"
+								print "should be", motion.nodeName, storedMotName, storedMotStr
+								print "XML Motion File add motion", mot.getName(), mot
 								print len(children)
 								for i, child in enumerate(children):
 									#method(child[0])
@@ -532,8 +538,10 @@ def saveMotions(filename, motions, element = None, doc = None, avatars=[]):
 						print key
 						method = getattr(motion, key)
 						value = str(method())
-						print key[3:], value
-						el.setAttribute(key[3:], value)
+						# don't save empty names, it screws things up
+						if key[3:] != "Name" or value != "":
+							print key[3:], value
+							el.setAttribute(key[3:], value)
 		motionlist = []
 		if hasattr(motion, "getNumMotions"):
 			n = motion.getNumMotions()
