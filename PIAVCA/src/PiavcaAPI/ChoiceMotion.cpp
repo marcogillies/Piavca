@@ -88,7 +88,6 @@ float ChoiceMotion::getMotionLength() const
 //adds a new child motion
 void ChoiceMotion::addMotion(Motion *mot)
 {
-	std::cout << "in Mutlimotioncombiner::addMotion\n";
 	if(mot)
 	{
 		mots.push_back(mot);
@@ -208,14 +207,14 @@ void ChoiceMotion::cleanRecursionState()
 
 
 //! sets which motion is currently being played
-void ChoiceMotion::setCurrentChoice(int i)
+void ChoiceMotion::setChoice(int i)
 {
 	if(i < 0 || i >= static_cast<int>(mots.size()))
 		Piavca::Error(_T("Illegal motion choice"));
 	currentChoice = i;
 };
 //! sets which motion is currently being played (by name)
-void ChoiceMotion::setCurrentChoice(tstring name)
+void ChoiceMotion::setChoice(tstring name)
 {
 	for(MotionVec::size_type i=0; i < mots.size(); i++)
 		if(mots[i]->findSub(name)) 
@@ -272,7 +271,7 @@ void ChoiceMotion::reset()
 	std::cout << "ChoiceMotion reset, about to make choice: " << std::endl;
 	int choice = makeChoice();
 	std::cout << "ChoiceMotion reset, choice: " << choice << std::endl;
-	setCurrentChoice(choice);
+	setChoice(choice);
 	Motion *mot = mots[currentChoice];
 	
 	mot->reset();

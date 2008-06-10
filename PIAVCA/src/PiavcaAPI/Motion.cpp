@@ -78,7 +78,7 @@ int Motion::end() const
 {
 	return Core::getCore()->getMaxTrackId()+1;
 };
-int Motion::next(int &trackId)const 
+int Motion::next(int trackId)const 
 {
 	int maxTrack = Core::getCore()->getMaxTrackId();
 	while(isNull(++trackId)&&trackId<=maxTrack);

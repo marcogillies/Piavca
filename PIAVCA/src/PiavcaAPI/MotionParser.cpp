@@ -1506,7 +1506,7 @@ template<> void MotionParserTyped<ChoiceMotion>::editMotionInternal(ChoiceMotion
 					Piavca::Error(_T("no value given for choice\n"));
 					return;
 				}
-				mot->setCurrentChoice(currentWord);
+				mot->setChoice(currentWord);
 				if(!(is >> currentWord)) break;
 			} 
 			else
@@ -1650,7 +1650,7 @@ template<> void MotionParserTyped<ChoiceLoopMotion>::editMotionInternal(ChoiceLo
 					Piavca::Error(_T("no value given for choice\n"));
 					return;
 				}
-				mot->setCurrentChoice(currentWord);
+				mot->setChoice(currentWord);
 				if(!(is >> currentWord)) break;
 			} 
 			else

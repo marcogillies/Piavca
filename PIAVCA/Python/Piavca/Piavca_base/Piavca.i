@@ -478,6 +478,7 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %include "PiavcaAPI/Subtract.h"
 %include "PiavcaAPI/MotionTransition.h"
 %include "PiavcaAPI/ChoiceMotion.h"
+%include "PiavcaAPI/ChoiceMotionWithDefault.h"
 %include "PiavcaAPI/SequentialChoiceMotion.h"
 %include "PiavcaAPI/RandomChoiceMotion.h"
 %include "PiavcaAPI/ChoiceLoopMotion.h"

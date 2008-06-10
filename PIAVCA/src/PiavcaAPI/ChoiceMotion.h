@@ -168,9 +168,9 @@ public:
 
 
 	//! sets which motion is currently being played
-	void setCurrentChoice(int i);
+	void setChoice(int i);
 	//! sets which motion is currently being played (by name)
-	void setCurrentChoice(tstring name);
+	void setChoice(tstring name);
 	//! gets the current choice 
 	int getCurrentChoice()
 	{

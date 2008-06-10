@@ -288,7 +288,7 @@ public:
 	//! the last track + 1
 	int end() const;
 	//! given a track ID get the next valid ID
-	int next(int &trackId)const ;
+	int next(int trackId)const ;
 	//! given a track ID tests whether it actually points to anything or if its null
 	virtual bool isNull(int trackId) const =0;
 	// ! get the name of the track corresponding to an ID

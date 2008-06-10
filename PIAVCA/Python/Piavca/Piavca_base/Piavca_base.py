@@ -5338,7 +5338,7 @@ class ChoiceMotion(MotionFilter):
         return _Piavca_base.ChoiceMotion_findSubByType(*args)
 
     def cleanRecursionState(*args): return _Piavca_base.ChoiceMotion_cleanRecursionState(*args)
-    def setCurrentChoice(*args): return _Piavca_base.ChoiceMotion_setCurrentChoice(*args)
+    def setChoice(*args): return _Piavca_base.ChoiceMotion_setChoice(*args)
     def getCurrentChoice(*args): return _Piavca_base.ChoiceMotion_getCurrentChoice(*args)
     def makeChoice(*args): return _Piavca_base.ChoiceMotion_makeChoice(*args)
     def event(*args): return _Piavca_base.ChoiceMotion_event(*args)
@@ -5351,6 +5351,24 @@ class ChoiceMotion(MotionFilter):
 ChoiceMotion_swigregister = _Piavca_base.ChoiceMotion_swigregister
 ChoiceMotion_swigregister(ChoiceMotion)
 ChoiceMotion_castToThisType = _Piavca_base.ChoiceMotion_castToThisType
+
+class ChoiceMotionWithDefault(ChoiceMotion):
+    __swig_setmethods__ = {}
+    for _s in [ChoiceMotion]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, ChoiceMotionWithDefault, name, value)
+    __swig_getmethods__ = {}
+    for _s in [ChoiceMotion]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, ChoiceMotionWithDefault, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _Piavca_base.new_ChoiceMotionWithDefault(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _Piavca_base.delete_ChoiceMotionWithDefault
+    __del__ = lambda self : None;
+    def reset(*args): return _Piavca_base.ChoiceMotionWithDefault_reset(*args)
+ChoiceMotionWithDefault_swigregister = _Piavca_base.ChoiceMotionWithDefault_swigregister
+ChoiceMotionWithDefault_swigregister(ChoiceMotionWithDefault)
 
 class SequentialChoiceMotion(ChoiceMotion):
     __swig_setmethods__ = {}
@@ -5451,16 +5469,7 @@ class ChoiceLoopMotion(RandomTimingsLoop):
     def getClassName(*args): return _Piavca_base.ChoiceLoopMotion_getClassName(*args)
     __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.ChoiceLoopMotion_castToThisType
     if _newclass:castToThisType = staticmethod(_Piavca_base.ChoiceLoopMotion_castToThisType)
-    def setCurrentChoice(*args):
-        """
-        void Piavca::ChoiceLoopMotion::setCurrentChoice(tstring name)
-                 
-        sets which motion is currently being played (by name)         
-                 
-                
-        """
-        return _Piavca_base.ChoiceLoopMotion_setCurrentChoice(*args)
-
+    def setChoice(*args): return _Piavca_base.ChoiceLoopMotion_setChoice(*args)
     def addMotion(*args): return _Piavca_base.ChoiceLoopMotion_addMotion(*args)
     def __disown__(self):
         self.this.disown()

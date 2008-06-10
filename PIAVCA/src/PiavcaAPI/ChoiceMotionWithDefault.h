@@ -11,10 +11,10 @@
  * for the specific language governing rights and limitations under the
  * License.
  *
- * The Original Code is ChoiceLoopMotion.h.
+ * The Original Code is ChoiceMotionWithDefault.h.
  *
  * The Initial Developer of the Original Code is Marco (Mark) Gillies.
- * Portions created by the Initial Developer are Copyright (C) 2005
+ * Portions created by the Initial Developer are Copyright (C) 2008
  * the Initial Developer. All Rights Reserved.
  *
  * Contributor(s):
@@ -34,65 +34,27 @@
  * ***** END LICENSE BLOCK ***** */
 
 
-#ifndef CHOICE_LOOP_MOTION_H
-#define CHOICE_LOOP_MOTION_H
+#ifndef CHOICE_MOTION_WITH_DEFAULT_H
+#define CHOICE_MOTION_WITH_DEFAULT_H
 
-#include "MultiMotionLoop.h"
-#include "ScaleMotionSpeed.h"
+#include "ChoiceMotion.h"
 
 namespace Piavca
 {
 
-//! a MultiMotionLoop where the client can choose which motion is played
-class ChoiceLoopMotion : public RandomTimingsLoop
+//! a MultiMotionCombiner where the client can choose which motion is played
+class ChoiceMotionWithDefault : public ChoiceMotion
 {
-	ChoiceMotion *choicemotion;
 public:
-	ChoiceLoopMotion():RandomTimingsLoop()
-	{
-		choicemotion = new ChoiceMotion();
-		setMotion(choicemotion);
-	};
-	//! pass in a vector of motions to be used.
-	ChoiceLoopMotion(const MotionVec &mpv, float endTime = -1.0, float interval = 0.01)
-		:RandomTimingsLoop(NULL, endTime, interval)
-	{
-		choicemotion = new ChoiceMotion(mpv);
-		setMotion(choicemotion);
-	};
-	ChoiceLoopMotion(const ChoiceLoopMotion &cl)
-		:RandomTimingsLoop(cl)
-	{
-		choicemotion = dynamic_cast<ChoiceMotion *>(getMotion());
-	};
-	~ChoiceLoopMotion(){};
+	ChoiceMotionWithDefault():ChoiceMotion() {};
+	ChoiceMotionWithDefault(const MotionVec &mpv):ChoiceMotion(mpv){};
+	ChoiceMotionWithDefault(const ChoiceMotionWithDefault &c):ChoiceMotion(c){};
+	~ChoiceMotionWithDefault(){};
+
 	
-	virtual Motion *clone(){return new ChoiceLoopMotion(*this);};
-
-	//! returns the name of the type
-	Piavca::tstring getClassName(){return "ChoiceLoopMotion";};
-
-	//! casts a motion to this type
-	static ChoiceLoopMotion *castToThisType(Motion *m){return dynamic_cast<ChoiceLoopMotion *>(m);};
-
-
-	//! sets which motion is currently being played
-	void setChoice(int i)
-	{
-		choicemotion->setChoice(i);
-	};
-	//! sets which motion is currently being played (by name)
-	void setChoice(tstring name)
-	{
-		choicemotion->setChoice(name);
-	};
-
-	virtual void addMotion(Motion *mot)
-	{
-		choicemotion->addMotion(mot);
-	};
+	virtual void reset();
 };
 
 };
 
-#endif //CHOICE_LOOP_MOTION_H
+#endif //CHOICE_MOTION_WITH_DEFAULT_H

@@ -315,6 +315,7 @@ def readMotions(motions):
 						unknownAttrs.append((motion.attributes.item(i).name, motion.attributes.item(i).nodeValue))
 				name = str(motion.getAttribute("name"))
 				mot = Piavca.KeyframeMotion()
+				mot.thisown = False
 				for child in motion.childNodes:
 					if child.nodeType != minidom.Node.ELEMENT_NODE:
 						continue
@@ -361,6 +362,7 @@ def readMotions(motions):
 						if mot == None:
 							raise "could not create motion " + motion.nodeName
 							continue
+						mot.thisown = False
 						unknownAttrs=[]
 						for i in range(motion.attributes.length):
 							if str(motion.attributes.item(i).name) == "name" or str(motion.attributes.item(i).name) == "Name":
@@ -461,7 +463,10 @@ def readMotions(motions):
 					element_list.append((elementName, attrList))
 					print "element list", element_list
 					
-	print [mot[0].getName() for mot in mots]
+	print mots
+	print len(mots)
+	print [mot[0] for mot in mots]
+	#print "finished reading motions", [mot[0].getName() for mot in mots]
 	return mots, element_list
 
 def saveMotions(filename, motions, element = None, doc = None, avatars=[]):
@@ -608,4 +613,5 @@ def parse(filename):
 	for topLevel in dom.childNodes:
 		readMotions(topLevel.childNodes)
 	dom.unlink
+	print "finished parsing all motions"
 	

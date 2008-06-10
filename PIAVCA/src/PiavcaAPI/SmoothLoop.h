@@ -73,7 +73,7 @@ namespace Piavca
 			choiceMot->clear();
 			choiceMot->addMotion(originalMot);
 			if (choiceMot->getNumMotions() > 0)
-				choiceMot->setCurrentChoice(0);
+				choiceMot->setChoice(0);
 			else
 				choiceMot->setMotion(NULL);
 			choiceMot->reset();

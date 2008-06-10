@@ -112,4 +112,20 @@ def clear():
 	_events = {}
 	Core.getCore().reset()
 	
+def joints(o):
+	j = o.begin()
+	while (True):
+		if j == o.end():
+			break
+		yield j
+		j = o.next(j)
+		
+def getValAtTime(mot, joint, t, joint_type):
+	if joint_type == Piavca_base.FLOAT_TYPE: 
+		return mot.getFloatValueAtTime(joint, t)
+	if joint_type == Piavca_base.VEC_TYPE: 
+		return mot.getVecValueAtTime(joint, t)
+	if joint_type == Piavca_base.QUAT_TYPE: 
+		return mot.getQuatValueAtTime(joint, t)
+	
 		

@@ -329,8 +329,6 @@ else:
 		mot.Reference()
 		avatar.play_motion(Piavca.LoopMotion(mot))	
 	avatar.play_motion(mot)	
-	ss
-	ss
 
 	avatar.showMotionAtTime(Piavca.getTime())
 		

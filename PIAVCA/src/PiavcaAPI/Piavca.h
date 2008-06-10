@@ -62,6 +62,7 @@
 #include "RandomTimingsMotion.h"
 #include "MultiMotionCombiner.h"
 #include "ChoiceMotion.h"
+#include "ChoiceMotionWithDefault.h"
 #include "ChoiceLoopMotion.h"
 #include "SequentialChoiceMotion.h"
 #include "RandomChoiceMotion.h"
