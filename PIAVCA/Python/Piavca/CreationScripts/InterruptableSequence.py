@@ -6,6 +6,9 @@ import Piavca
 def calculateDistance(mot, t, expmaps):
 	sum = 0.0
 	for j in Piavca.joints(mot):
+		# don't take the root into account as we reposition the motion
+		if j == Piavca.root_orientation_id or j == Piavca.root_position_id :
+			continue
 		joint_type = mot.getTrackType(j)
 		if joint_type & Piavca.FLOAT_TYPE:
 			sum += abs(mot.getFloatValueAtTime(j, t) - expmaps[(j,Piavca.FLOAT_TYPE)])
@@ -18,7 +21,7 @@ def calculateDistance(mot, t, expmaps):
 
 # create a motion from seq that can be smoothly interrupted
 # by any of the motions in interruptions
-def InterruptableSequence(seq, interruptions, fps = 20):
+def InterruptableSequence(seq, interruptions, fps = 20, threshold=6.5):
 	expmaps = {}
 	
 	# create a set of exponential maps 
@@ -28,6 +31,9 @@ def InterruptableSequence(seq, interruptions, fps = 20):
 	# its easy to calculate the distance of a new quaternion to
 	# them
 	for j in Piavca.joints(seq):
+		# don't take the root into account as we reposition the motion
+		if j == Piavca.root_orientation_id or j == Piavca.root_position_id :
+			continue
 		joint_type = seq.getTrackType(j)
 		# the joint orientations of 
 		# this joint at the start and end 
@@ -58,34 +64,53 @@ def InterruptableSequence(seq, interruptions, fps = 20):
 	d = None
 	d_plus = None
 				
+	# find local minima of the distance function 
+	# if its lower than a threshold then we add it to the set of
+	# of possible transition points
 	minima = []
+	values = []
 	for i in range(int(seq.getStartTime()*fps), int(seq.getEndTime()*fps)-1):
 		d_plus = calculateDistance(seq, float(i+1)/fps, expmaps)
 		if d :
 			if d < d_plus:
 				if d_minus == None or d < d_minus:
-					minima.append(float(i)/fps)
+					if d < threshold:
+						values.append(d)
+						minima.append(float(i)/fps)
 		d_minus = d
 		d = d_plus
-		
-	print minima	
 	
+	values.sort(reverse=False)	
+	print values
+	print minima	
+	numMinima = len(minima)
+	
+	
+	# create the motions
+	# a submotion for each transition point
+	# a sequential choice motion that plays the original motion
+	# a choice motion with default that allows us to interrupt
+	# and finally loop in all
 	submots = [Piavca.SubMotion(seq, start, end) for start, end in zip(minima[:-1], minima[1:])]
-	choice1 = Piavca.ChoiceMotion()
+	choice1 = Piavca.SequentialChoiceMotion()
+	choice1.setSmooth(False)
+	choice1.setAccumulateRoot(False)
 	for mot in submots:
 		choice1.addMotion(mot)
 	choice2 = Piavca.ChoiceMotionWithDefault()
 	choice2.addMotion(choice1)
 	for mot in interruptions:
 		choice2.addMotion(mot)
-	return choice2
+	loop = Piavca.LoopMotion(choice2)
+	return loop, numMinima
 										
 if __name__ == "__main__":
 	import os
 	os.chdir("../../../../../Data/performing_presence/scenario2008/bill/")
 	import Piavca.XMLMotionFile
-	Piavca.XMLMotionFile.parse("submotsTemp.xml")
-	m = InterruptableSequence(Piavca.getMotion("second_projections2_fully_labelled_megan"), [Piavca.getMotion(m) for m in ["submot1", "submot2"]])
+	Piavca.XMLMotionFile.parse("Interruptions.xml")
+	m, numMinima = InterruptableSequence(Piavca.getMotion("second_projections2_fully_labelled_megan"), [Piavca.getMotion(m) for m in ["Interruption" + str(i) for i in range(1,5)]])
 	Piavca.loadMotion("interrupSeq", m)
 	Piavca.XMLMotionFile.saveAll("InterrupSeq_output.xml")
+	print "num splits", numMinima
 			

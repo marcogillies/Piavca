@@ -56,20 +56,20 @@ def loadMotion(name, motion):
 def getRealMotionType(motion):
 	if motion != None and type(motion) == Motion:
 		typeName = motion.getClassName()
-		print "typename", typeName
+		#print "typename", typeName
 		motionType = getattr(Piavca_base, typeName)
-		print motionType
+		#print motionType
 		if type(motionType) == types.TypeType and issubclass(motionType, Motion):
 				return motionType.castToThisType(motion)
 	return motion
 	
 def getMotion(name):
 	global _motionLookup
-	print "getMotion"
-	print _motionLookup.keys()
-	print name
+	#print _motionLookup.keys()
+	#print name
+	#print "getMotion"
 	if _motionLookup.has_key(name):
-		print "core proxy: found motion,", name
+		#print "core proxy: found motion,", name
 		return _motionLookup[name]
 	else:
 		motion = Core.getCore().getMotion(name)

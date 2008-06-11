@@ -142,7 +142,7 @@ def parseAttribute(attrValue):
 	# maybe its just a list of strings
 	try:
 		valuelist = [v.strip(" '\"") for v in valuelist]
-		print valuelist
+		#print valuelist
 		possible_values.append(valuelist)
 	# didn't work so try next option
 	except ValueError:
@@ -195,21 +195,21 @@ def addElement(mot, eleName, arglist):
 	# create a dictionary for each possible combination of argument value types
 	args = [{}]
 	for name, value in arglist:
-		print "element attrs", name, value
+		#print "element attrs", name, value
 		possible_values = parseAttribute(value)
 		temp_args = []
 		for arg in args:
-			print arg
+			#print arg
 			for value in possible_values:
 				new_arg = dict(arg)
 				new_arg[str(name)] = value
 				temp_args.append(new_arg)
 		args = temp_args
 	
-	print args
+	#print args
 	# call the method by keyword args, trying each dictionary in turn
 	for arg in args:
-		print arg
+		#print arg
 		try:
 			method(**arg)
 			return 1
@@ -235,7 +235,7 @@ def readMotions(motions):
 	element_list = []
 	for motion in motions:
 		if motion.nodeType == minidom.Node.ELEMENT_NODE:
-			print "current node", motion.nodeName
+			#print "current node", motion.nodeName
 			if motion.nodeName == "Avatar":
 				name = str(motion.getAttribute("name"))
 				if name == "":
@@ -264,14 +264,14 @@ def readMotions(motions):
 					rotation = Piavca.Quat()
 					
 				avatar = Piavca.Avatar(name)
-				print "loaded avatar", name, position, rotation
+				#print "loaded avatar", name, position, rotation
 				avatar.setRootPosition(position)
 				avatar.setRootOrientation(rotation)
 				for child in motion.childNodes:
 					if child.nodeType != minidom.Node.ELEMENT_NODE:
 						continue
 					if child.nodeName != "Event":
-						print "expected a Event statement as a child of an avatar but got", child.nodeName
+						#print "expected a Event statement as a child of an avatar but got", child.nodeName
 						continue
 					name = str(child.getAttribute("name"))
 					if name == "":
@@ -281,7 +281,7 @@ def readMotions(motions):
 					Piavca.addEvent(avatar, name)
 					
 			elif motion.nodeName == "Motion":
-				print "found a motion statement", motion
+				#print "found a motion statement", motion
 				for i in range(motion.attributes.length):
 					#print motion.attributes.item(i).name, motion.attributes.item(i).nodeValue
 					unknownAttrs=[]
@@ -355,10 +355,10 @@ def readMotions(motions):
 							
 			else:
 				try:
-					print "other motion types", motion.nodeName
+					#print "other motion types", motion.nodeName
 					cl = getattr(Piavca, motion.nodeName)
 					if type(cl) == types.TypeType and issubclass(cl, Piavca.Motion):
-						print "found motion type", motion.nodeName
+						#print "found motion type", motion.nodeName
 						mot = cl()
 						
 						storedMotName = mot.getName()
@@ -371,13 +371,13 @@ def readMotions(motions):
 						for i in range(motion.attributes.length):
 							if str(motion.attributes.item(i).name) == "name" or str(motion.attributes.item(i).name) == "Name":
 								name = str(motion.attributes.item(i).nodeValue)
-								print "========================motion name", name
+								#print "========================motion name", name
 								if name != "":
 									Piavca.loadMotion(name, mot)
 								continue
 							attrName = motion.attributes.item(i).name
 							attrValue = motion.attributes.item(i).nodeValue
-							print attrName, attrValue
+							#print attrName, attrValue
 							if not setAttribute(mot, attrName, attrValue):
 								unknownAttrs.append((attrName, attrValue))
 						children, elements = readMotions(motion.childNodes)
@@ -434,20 +434,20 @@ def readMotions(motions):
 							
 							if hasattr(mot, "addMotion"):
 								method = getattr(mot, "addMotion")
-								print "should be", motion.nodeName, storedMotName, storedMotStr
-								print "XML Motion File add motion", mot.getName(), mot
-								print len(children)
+								#print "should be", motion.nodeName, storedMotName, storedMotStr
+								#print "XML Motion File add motion", mot.getName(), mot
+								#print len(children)
 								for i, child in enumerate(children):
 									#method(child[0])
 									mot.addMotion(child[0])
-									print "added motion", i , child[1]
+									#print "added motion", i , child[1]
 									for attrName, attrValue in child[2]:
 										attrName = "Motion" + string.upper(attrName[0]) + attrName[1:]
 										if not setAttribute(mot, attrName, attrValue, i):
 											print child[1], "unknown attribute", attrName
 											
 						for elementName, attrList in elements:
-							print "element", elementName, attrList
+							#print "element", elementName, attrList
 							if not addElement(mot, elementName, attrList):
 								print "couldn't find motion type", elementName
 						
@@ -467,11 +467,11 @@ def readMotions(motions):
 						attrValue = motion.attributes.item(i).nodeValue
 						attrList.append((attrName, attrValue))
 					element_list.append((elementName, attrList))
-					print "element list", element_list
+					#print "element list", element_list
 					
-	print mots
-	print len(mots)
-	print [mot[0] for mot in mots]
+	#print mots
+	#print len(mots)
+	#print [mot[0] for mot in mots]
 	#print "finished reading motions", [mot[0].getName() for mot in mots]
 	return mots, element_list
 
@@ -523,7 +523,7 @@ def saveMotions(filename, motions, element = None, doc = None, avatars=[]):
 		if motiontype == Piavca.KeyframeMotion:
 			print "don't save keyframe motions"
 			continue
-		print motion.getName(), motiontypename
+		#print motion.getName(), motiontypename
 		el = doc.createElement(motiontypename)
 		#el.setAttribute("name", name)
 		#print motion.__dict__
@@ -531,16 +531,16 @@ def saveMotions(filename, motions, element = None, doc = None, avatars=[]):
 		for mtype in motiontypes:
 			for key in mtype.__dict__.keys():
 				if key[:3] == "get":
-					print key
+					#print key
 					if key in ignorelist:
 						continue
 					if hasattr(motion, "set" + key[3:]):
-						print key
+						#print key
 						method = getattr(motion, key)
 						value = str(method())
 						# don't save empty names, it screws things up
 						if key[3:] != "Name" or value != "":
-							print key[3:], value
+							#print key[3:], value
 							el.setAttribute(key[3:], value)
 		motionlist = []
 		if hasattr(motion, "getNumMotions"):
@@ -583,11 +583,11 @@ def saveMotions(filename, motions, element = None, doc = None, avatars=[]):
 def saveAll(filename):
 	core = Piavca.Core.getCore()
 	motions = core.getMotionNames()
-	print motions
+	#print motions
 	motions = [Piavca.getMotion(motion) for motion in motions]
 	
 	avatars = core.getAvatarNames()
-	print avatars
+	#print avatars
 	avatars = [core.getAvatar(avatar) for avatar in avatars]
 	
 	
