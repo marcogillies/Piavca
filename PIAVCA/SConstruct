@@ -87,7 +87,10 @@ PiavcaPythonInterface = env.Library('src/PiavcaPythonInterface/PiavcaPythonInter
 #Program('src/PiavcaCal3dApp/PiavcaCal3dApp', PiavcaAPI + StdMotionImp + PiavcaCal3dImp  + glob('src/PiavcaCal3dApp/*.cpp'), CXXFLAGS="-I./src/")
 
 # base python module
-Piavca_base = env.SharedLibrary('Python/Piavca/Piavca_base/_Piavca_base.so', ['Python/Piavca/Piavca_base/Piavca.i'], LIBS=PiavcaAPI + StdMotionImp + PiavcaCal3dImp + external_libs)
+if env.WhereIs('swig') is None:
+	Piavca_base = env.SharedLibrary('Python/Piavca/Piavca_base/_Piavca_base.so', ['Python/Piavca/Piavca_base/Piavca.cpp'], LIBS=PiavcaAPI + StdMotionImp + PiavcaCal3dImp + external_libs)
+else:
+	Piavca_base = env.SharedLibrary('Python/Piavca/Piavca_base/_Piavca_base.so', ['Python/Piavca/Piavca_base/Piavca.i'], LIBS=PiavcaAPI + StdMotionImp + PiavcaCal3dImp + external_libs)
 Depends(Piavca_base, PiavcaCal3dImp)
 
 # install path for python modules
