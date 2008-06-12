@@ -19,9 +19,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PiavcaCal3dApp", "src\Piavc
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Piavca_base", "Python\Piavca\Piavca_base\Piavca_base.vcproj", "{CB1D5D51-F927-4C9A-B704-CAF34FDAA506}"
 	ProjectSection(ProjectDependencies) = postProject
-		{E2404604-543C-4863-BF9D-BE3E995DF4E4} = {E2404604-543C-4863-BF9D-BE3E995DF4E4}
-		{97813F74-80B5-4861-8CEE-99328B65173C} = {97813F74-80B5-4861-8CEE-99328B65173C}
 		{7E061BC4-F08C-40F0-8A91-8CAFD582054D} = {7E061BC4-F08C-40F0-8A91-8CAFD582054D}
+		{97813F74-80B5-4861-8CEE-99328B65173C} = {97813F74-80B5-4861-8CEE-99328B65173C}
+		{E2404604-543C-4863-BF9D-BE3E995DF4E4} = {E2404604-543C-4863-BF9D-BE3E995DF4E4}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PiavcaGlut", "Python\Piavca\PiavcaGlut\PiavcaGlut.vcproj", "{7F966FC6-2A00-4955-A173-CEF366A2496D}"
@@ -32,6 +32,11 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SpeechToTextInterface", "Python\Piavca\SpeechToTextInterface\SpeechToTextInterface_vc2005.vcproj", "{8CC8040D-8DB6-41A7-BA0A-E4331E4D5B2F}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "PiavcaWindowsSetup_Py25", "src\PiavcaWindowsSetup_Py25\PiavcaWindowsSetup_Py25.vdproj", "{07FB6081-0BBB-42A6-8C88-8C1FB430052F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PiavcaOpenSGImp", "src\PiavcaOpenSGImp\PiavcaOpenSGImp.vcproj", "{AE8A4754-D646-4383-9931-AEEFB90C114D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{97813F74-80B5-4861-8CEE-99328B65173C} = {97813F74-80B5-4861-8CEE-99328B65173C}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -205,6 +210,22 @@ Global
 		{07FB6081-0BBB-42A6-8C88-8C1FB430052F}.Release_Py24|Win32.ActiveCfg = Release
 		{07FB6081-0BBB-42A6-8C88-8C1FB430052F}.Release_Py25|Win32.ActiveCfg = Release
 		{07FB6081-0BBB-42A6-8C88-8C1FB430052F}.Release|Win32.ActiveCfg = Release
+		{AE8A4754-D646-4383-9931-AEEFB90C114D}.C Only Debug|Win32.ActiveCfg = Debug|Win32
+		{AE8A4754-D646-4383-9931-AEEFB90C114D}.C Only Debug|Win32.Build.0 = Debug|Win32
+		{AE8A4754-D646-4383-9931-AEEFB90C114D}.Debug_Py24|Win32.ActiveCfg = Debug|Win32
+		{AE8A4754-D646-4383-9931-AEEFB90C114D}.Debug_Py24|Win32.Build.0 = Debug|Win32
+		{AE8A4754-D646-4383-9931-AEEFB90C114D}.Debug_Py25|Win32.ActiveCfg = Debug|Win32
+		{AE8A4754-D646-4383-9931-AEEFB90C114D}.Debug_Py25|Win32.Build.0 = Debug|Win32
+		{AE8A4754-D646-4383-9931-AEEFB90C114D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{AE8A4754-D646-4383-9931-AEEFB90C114D}.Debug|Win32.Build.0 = Debug|Win32
+		{AE8A4754-D646-4383-9931-AEEFB90C114D}.Dive Debug|Win32.ActiveCfg = Debug|Win32
+		{AE8A4754-D646-4383-9931-AEEFB90C114D}.Dive Debug|Win32.Build.0 = Debug|Win32
+		{AE8A4754-D646-4383-9931-AEEFB90C114D}.Release_Py24|Win32.ActiveCfg = Release|Win32
+		{AE8A4754-D646-4383-9931-AEEFB90C114D}.Release_Py24|Win32.Build.0 = Release|Win32
+		{AE8A4754-D646-4383-9931-AEEFB90C114D}.Release_Py25|Win32.ActiveCfg = Release|Win32
+		{AE8A4754-D646-4383-9931-AEEFB90C114D}.Release_Py25|Win32.Build.0 = Release|Win32
+		{AE8A4754-D646-4383-9931-AEEFB90C114D}.Release|Win32.ActiveCfg = Release|Win32
+		{AE8A4754-D646-4383-9931-AEEFB90C114D}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

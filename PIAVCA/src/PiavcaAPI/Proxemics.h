@@ -243,7 +243,7 @@ public:
 		if(mots[Turn_left])
 		{
 			// get the direction you are pointing to
-			Vec forward = m_avatar->getForwardDirection();
+			Vec forward = Vec::ZAxis();//m_avatar->getForwardDirection();
 			m_avatar->getRootOrientation().transformInPlace(forward);
 			forward[1] = 0.0; // we aren't intereseted in up down distance
 			forward.normalize();

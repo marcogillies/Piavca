@@ -520,6 +520,11 @@ void Core::initAvatar(
 	std::cout << "end of core init avatar" << std::endl;
 };
 
+void Core::loadAvatar(Avatar *avatar)
+{
+	avatars.push_back(avatar);
+};
+
 
 Object *Core::getObject(tstring objectName)
 {

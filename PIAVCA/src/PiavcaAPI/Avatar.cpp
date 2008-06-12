@@ -53,10 +53,11 @@ Avatar::Avatar(tstring avatarId,
 		   tstring strFilename,
 		   bool bailOnMissedJoints,
 		   const Vec &Position,
-		   const Quat &Orientation,
-		   const Vec &forwardDir)
+		   const Quat &Orientation
+		   //const Vec &forwardDir
+		   )
 		: name(avatarId), active(true), changed(false), rootChanged (false), 
-		beingEdited(false), forwardDirection(forwardDir), //amq(NULL), 
+		beingEdited(false), //forwardDirection(forwardDir), //amq(NULL), 
 		mot(NULL), scaleMot(NULL), facialMot(NULL)
 		//motionOwned(true), facialMotionOwned(true), scaleMotionOwned(true)
 {
@@ -70,10 +71,11 @@ Avatar::Avatar(tstring avatarId,
 Avatar::Avatar(tstring avatarId, 
 			   bool bailOnMissedJoints,
 			   const Vec &Position,
-			   const Quat &Orientation,
-			   const Vec &forwardDir)
+			   const Quat &Orientation
+			   //const Vec &forwardDir
+			   )
 			   : name(avatarId), active(true), changed(false), rootChanged (false), 
-			   beingEdited(false), forwardDirection(forwardDir), //amq(NULL), 
+			   beingEdited(false), //forwardDirection(forwardDir), //amq(NULL), 
 			   mot(NULL), scaleMot(NULL), facialMot(NULL)
 			   //motionOwned(true), facialMotionOwned(true), scaleMotionOwned(true)
 {
@@ -84,6 +86,15 @@ Avatar::Avatar(tstring avatarId,
 	initAvatar(avatarId, avatarId, bailOnMissedJoints, Position, Orientation);
 	std::cout << "end of avatar constructor" << std::endl;
 };
+
+
+Avatar::Avatar(tstring _name, AvatarImp *_imp)
+:name(_name), imp(_imp), active(true), changed(false), rootChanged (false), 
+			   beingEdited(false), mot(NULL), scaleMot(NULL), facialMot(NULL)
+{
+
+}
+
 
 Avatar::~Avatar() 
 {

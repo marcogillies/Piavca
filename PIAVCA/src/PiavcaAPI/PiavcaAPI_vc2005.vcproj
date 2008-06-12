@@ -17,13 +17,13 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="$(SolutionDir)\bin"
+			OutputDirectory="$(SolutionDir)\bin\$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="4"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
 			CharacterSet="2"
 			>
-			<Tool 
+			<Tool
 				Name="VCPreBuildEventTool"
 			/>
 			<Tool
@@ -83,7 +83,7 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="Release"
+			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="Release"
 			ConfigurationType="4"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
@@ -583,6 +583,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\ChoiceMotionWithDefault.cpp"
+				>
+			</File>
+			<File
 				RelativePath="Hermite.cpp"
 				>
 			</File>
@@ -647,6 +651,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\RandomChoiceMotion.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Reposition.cpp"
 				>
 			</File>
@@ -664,6 +672,10 @@
 			</File>
 			<File
 				RelativePath=".\SequentialBlend.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\SequentialChoiceMotion.cpp"
 				>
 			</File>
 			<File
@@ -941,6 +953,10 @@
 			</File>
 			<File
 				RelativePath=".\SequentialBlend.h"
+				>
+			</File>
+			<File
+				RelativePath=".\SequentialChoiceMotion.h"
 				>
 			</File>
 			<File

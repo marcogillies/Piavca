@@ -117,7 +117,7 @@ protected:
 	std::vector<AvatarTimeCallback *> callbacks;
 
 	//! a vector for the direction that the avatar points forwards towards in its rest position
-	Vec forwardDirection;
+	//Vec forwardDirection;
 
 	//! a flag that is used to turn off updates of an avatar
 	bool active;
@@ -175,13 +175,16 @@ public:
 		tstring strFilename,
 		bool bailOnMissedJoints = false, 
 		const Vec &Position = Vec(0.0, 0.0, 0.0), 
-		const Quat &Orientation = Quat(1.0, 0.0, 0.0, 0.0),
-		const Vec &forwardDir = Vec(0.0, 0.0, 1.0));
+		const Quat &Orientation = Quat(1.0, 0.0, 0.0, 0.0)
+		//const Vec &forwardDir = Vec(0.0, 0.0, 1.0)
+		);
 	Avatar(tstring avatarId, 
 			bool bailOnMissedJoints = false, 
 			const Vec &Position = Vec(0.0, 0.0, 0.0), 
-			const Quat &Orientation = Quat(1.0, 0.0, 0.0, 0.0),
-			const Vec &forwardDir = Vec(0.0, 0.0, 1.0));
+			const Quat &Orientation = Quat(1.0, 0.0, 0.0, 0.0)
+			//const Vec &forwardDir = Vec(0.0, 0.0, 1.0)
+			);
+	Avatar(tstring name, AvatarImp *imp);
 
 	bool isValid(){return imp != NULL;};
 
@@ -203,15 +206,15 @@ public:
 	};
 
 	//! returns the local direction at which the avatar points forward
-	const Vec &getForwardDirection()
-	{
-		return forwardDirection;
-	};
+	//const Vec &getForwardDirection()
+	//{
+	//	return forwardDirection;
+	//};
 	//! sets the local direction at which the avatar points forward
-	void setForwardDirection(const Vec &dir)
-	{
-		forwardDirection = dir;
-	};
+	//void setForwardDirection(const Vec &dir)
+	//{
+	//	forwardDirection = dir;
+	//};
 
 	
 	//! hides a part of the avatars body so it is not rendered

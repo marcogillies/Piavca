@@ -127,7 +127,7 @@ void LookAtMotion::load(Avatar *av)
 bool LookAtMotion::canLookAt(Vec location)
 {
 		if(!m_avatar) return true;
-		Vec zvec = m_avatar->getForwardDirection();
+		Vec zvec = Vec::ZAxis();//m_avatar->getForwardDirection();
 
 		// transfrom into local space of avatar
 		Vec localPos = location;
@@ -170,7 +170,7 @@ float LookAtMotion::getFloatValueAtTimeInternal(int trackId, float time)
 		subjectVec = LocationTarget;
 	}
 
-	Vec zvec = m_avatar->getForwardDirection();
+	Vec zvec = Vec::ZAxis();//m_avatar->getForwardDirection();
 
 	// transfrom into local space of avatar
 	Vec localPos = subjectVec;
@@ -371,7 +371,7 @@ Quat LookAtMotion::getQuatValueAtTimeInternal(int trackId, float time)
 		else
 		{
 
-			Vec zvec = m_avatar->getForwardDirection();
+			Vec zvec = Vec::ZAxis();//m_avatar->getForwardDirection();
 			std::cout << "Look at motion: forward " << zvec << std::endl;
 
 			// transfrom into local space of avatar

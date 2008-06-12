@@ -56,7 +56,10 @@ using namespace Piavca;
 
 Core *Core::init()
 {
-	return new PiavcaCal3DCore();
+	if (Core::getCore())
+		return Core::getCore();
+	else
+		return new PiavcaCal3DCore();
 };
 
 PiavcaCal3DCore::PiavcaCal3DCore():start_time(0.0) {

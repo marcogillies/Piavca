@@ -70,7 +70,7 @@ struct FacialExpressionHolder
   //int subMeshId;
   int morphtargetId;
   FacialExpressionHolder()
-	  :name(""), meshId(-1), /*subMeshId(-1),*/ morphtargetId(-1) {};
+	  :name(_T("")), meshId(-1), /*subMeshId(-1),*/ morphtargetId(-1) {};
 };
 //! the implemenataion class for the Avatars on the Tara platform
 /*!

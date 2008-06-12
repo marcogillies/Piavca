@@ -39,6 +39,7 @@
 
 #include "Vec.h"
 #include "Quat.h"
+#include "PiavcaError.h"
 
 //#include "PiavcaException.h"
 //#include "PlatformDefs.h"
@@ -140,7 +141,7 @@ namespace Piavca
 		};
 
 		//! returns the name of the type
-		Piavca::tstring getClassName(){return "KeyframeMotion";};
+		Piavca::tstring getClassName(){return _T("KeyframeMotion");};
 
 		//! casts a motion to this type
 		static KeyframeMotion *castToThisType(Motion *m){return dynamic_cast<KeyframeMotion *>(m);};
@@ -160,6 +161,8 @@ namespace Piavca
 
 		virtual void setFacial(bool _facial)
 		{
+			std::cout << this << std::endl;
+			Piavca::Error(_T("Set Facial"));
 			imp->facial = _facial;
 		}
 

@@ -297,6 +297,9 @@ namespace Piavca
 			return motions[i].second; 
 		};
 
+		//! load a new avatar 
+		void loadAvatar(Avatar *avatar);
+
 		//! get a named avatar
 		Avatar *getAvatar(Piavca::tstring avatarName);
 		std::vector<Piavca::tstring> getAvatarNames();
