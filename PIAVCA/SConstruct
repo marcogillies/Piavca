@@ -88,7 +88,7 @@ PiavcaPythonInterface = env.Library('src/PiavcaPythonInterface/PiavcaPythonInter
 
 # base python module
 if env.WhereIs('swig') is None:
-	Piavca_base = env.SharedLibrary('Python/Piavca/Piavca_base/_Piavca_base.so', ['Python/Piavca/Piavca_base/Piavca.cpp'], LIBS=PiavcaAPI + StdMotionImp + PiavcaCal3dImp + external_libs)
+	Piavca_base = env.SharedLibrary('Python/Piavca/Piavca_base/_Piavca_base.so', ['Python/Piavca/Piavca_base/Piavca_wrap.cpp'], LIBS=PiavcaAPI + StdMotionImp + PiavcaCal3dImp + external_libs)
 else:
 	Piavca_base = env.SharedLibrary('Python/Piavca/Piavca_base/_Piavca_base.so', ['Python/Piavca/Piavca_base/Piavca.i'], LIBS=PiavcaAPI + StdMotionImp + PiavcaCal3dImp + external_libs)
 Depends(Piavca_base, PiavcaCal3dImp)
