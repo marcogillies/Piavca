@@ -120,6 +120,7 @@ void CharacterModel::changed(BitVector whichField, UInt32 origin)
             endEditCP(cp, NumAnimationsFieldMask);
         }
     }
+
 }
 
 void CharacterModel::dump(      UInt32    , 
@@ -218,33 +219,31 @@ CalCoreModel *CharacterModel::loadConfig(std::string filename)
                 CalError::printLastError();
                 return false;
             }
-            
-            CharacterModelPtr cp(this);
-            
-            CalCoreSkeleton *skel = model->getCoreSkeleton();
+                        
+            // **************** Load Bone Names *****************
+    				CharacterModelPtr cp(this);
+    				CalCoreSkeleton *skel = model->getCoreSkeleton();
 						std::vector<CalCoreBone *>& bones = skel->getVectorCoreBone();
+				
 						for(int i = 0; i < (int) bones.size(); i++) {
-    					std::string name = bones[i]->getName();
-    					beginEditCP(cp, BoneNamesFieldMask);
-    						//populate BoneNames field
+		    				std::string name = bones[i]->getName();
     						getBoneNames().push_back(name);
     						std::cout << "Added BoneName " << i << ": " << name << std::endl;
-    					endEditCP(cp, BoneNamesFieldMask);
     				}
 						
 						if(!getBoneNames().empty()) {
-            	std::cout << "Printing BoneNames Field:" << std::endl;
-            	for(int i = 0; i < (int) bones.size(); i++) {
-            	  std::cout << "boneNames [" << i << "]: " << getBoneNames()[i].c_str() << std::endl;
-            	}
-            }
+        				std::cout << "Printing BoneNames Field:" << std::endl;
+		            for(int i = 0; i < (int) bones.size(); i++) {
+	            			std::cout << "boneNames [" << i << "]: " << getBoneNames()[i].c_str() << std::endl;
+            		}
+						}
             
         		if(getBoneNames().empty()) {
-        			std::cout << "Warning:  BoneNames Field Empty!" << std::endl;
+		        		std::cout << "Warning:  BoneNames Field Empty!" << std::endl;
         		}
-        		
-        }
-        
+        		// ************** End Load Bone Names ***************
+    		}
+     
         else if(strKey == "animation")
         {
             pfile = ph.findFile(strData.c_str());

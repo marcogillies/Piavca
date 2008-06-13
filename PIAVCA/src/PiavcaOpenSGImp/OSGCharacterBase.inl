@@ -152,13 +152,44 @@ SFDynamicVolume *CharacterBase::getSFModelVolume(void)
     return &_sfModelVolume;
 }
 
-//! Get the Character::_mfBoneQuats field.
+
+// ************************************ boneQuatsRel *****************************************
+
+//! Get the Character::_mfBoneQuatsRel field.
 inline
-MFQuaternion *CharacterBase::getMFBoneQuats(void)
+MFQuaternion *CharacterBase::getMFBoneQuatsRel(void)
 {
-    return &_mfBoneQuats;
+    return &_mfBoneQuatsRel;
 }
 
+
+// ************************************ boneQuatsAbs *****************************************
+
+//! Get the Character::_mfBoneQuatsAbs field.
+inline
+MFQuaternion *CharacterBase::getMFBoneQuatsAbs(void)
+{
+    return &_mfBoneQuatsAbs;
+}
+
+
+// ************************************** bonePosRel *****************************************
+
+//! Get the Character::_mfBonePosRel field.
+inline
+MFVec3f *CharacterBase::getMFBonePosRel(void)
+{
+    return &_mfBonePosRel;
+}
+
+// ************************************** bonePosAbs *****************************************
+
+//! Get the Character::_mfBonePosAbs field.
+inline
+MFVec3f *CharacterBase::getMFBonePosAbs(void)
+{
+    return &_mfBonePosAbs;
+}
 
 //! Get the value of the Character::_sfModel field.
 inline
@@ -173,6 +204,7 @@ const CharacterModelPtr &CharacterBase::getModel(void) const
 {
     return _sfModel.getValue();
 }
+
 
 //! Set the value of the Character::_sfModel field.
 inline
@@ -329,34 +361,109 @@ void CharacterBase::setModelVolume(const DynamicVolume &value)
 }
 
 
-//! Get the value of the \a index element the Character::_mfBoneQuats field.
+// ************************************ boneQuatsRel *****************************************
+
+//! Get the value of the \a index element the Character::_mfBoneQuatsRel field.
 inline
-Quaternion &CharacterBase::getBoneQuats(const UInt32 index)
+Quaternion &CharacterBase::getBoneQuatsRel(const UInt32 index)
 {
-    return _mfBoneQuats[index];
+    return _mfBoneQuatsRel[index];
 }
 
-//! Get the Character::_mfBoneQuats field.
+//! Get the Character::_mfBoneQuatsRel field.
 inline
-MFQuaternion &CharacterBase::getBoneQuats(void)
+MFQuaternion &CharacterBase::getBoneQuatsRel(void)
 {
-    return _mfBoneQuats;
+    return _mfBoneQuatsRel;
 }
 
-//! Get the Character::_mfBoneQuats field.
+//! Get the Character::_mfBoneQuatsRel field.
 inline
-const MFQuaternion &CharacterBase::getBoneQuats(void) const
+const MFQuaternion &CharacterBase::getBoneQuatsRel(void) const
 {
-    return _mfBoneQuats;
+    return _mfBoneQuatsRel;
 }
+
 
 //! Set the value of the Character::_sfModelVolume field.
 inline
-void CharacterBase::setBoneQuat      ( const Quaternion &value,  UInt32 index )
+void CharacterBase::setBoneQuatRel      ( const Quaternion &value,  UInt32 index )
 {
-    _mfBoneQuats.setValue(value, index);
+    _mfBoneQuatsRel.setValue(value, index);
 }
 
+
+
+// ************************************ boneQuatsAbs *****************************************
+
+//! Get the value of the \a index element the Character::_mfBoneQuatsAbs field.
+inline
+Quaternion &CharacterBase::getBoneQuatsAbs(const UInt32 index)
+{
+    return _mfBoneQuatsAbs[index];
+}
+
+//! Get the Character::_mfBoneQuatsAbs field.
+inline
+MFQuaternion &CharacterBase::getBoneQuatsAbs(void)
+{
+    return _mfBoneQuatsAbs;
+}
+
+//! Get the Character::_mfBoneQuatsAbs field.
+inline
+const MFQuaternion &CharacterBase::getBoneQuatsAbs(void) const
+{
+    return _mfBoneQuatsAbs;
+}
+
+
+// ************************************** bonePosRel *****************************************
+
+//! Get the value of the \a index element the Character::_mfBonePosRel field.
+inline
+Vec3f &CharacterBase::getBonePosRel(const UInt32 index)
+{
+    return _mfBonePosRel[index];
+}
+
+//! Get the Character::_mfBonePosRel field.
+inline
+MFVec3f &CharacterBase::getBonePosRel(void)
+{
+    return _mfBonePosRel;
+}
+
+//! Get the Character::_mfBonePosRel field.
+inline
+const MFVec3f &CharacterBase::getBonePosRel(void) const
+{
+    return _mfBonePosRel;
+}
+
+
+// ************************************** bonePosAbs *****************************************
+
+//! Get the value of the \a index element the Character::_mfBonePosAbs field.
+inline
+Vec3f &CharacterBase::getBonePosAbs(const UInt32 index)
+{
+    return _mfBonePosAbs[index];
+}
+
+//! Get the Character::_mfBonePosAbs field.
+inline
+MFVec3f &CharacterBase::getBonePosAbs(void)
+{
+    return _mfBonePosAbs;
+}
+
+//! Get the Character::_mfBonePosAbs field.
+inline
+const MFVec3f &CharacterBase::getBonePosAbs(void) const
+{
+    return _mfBonePosAbs;
+}
 
 
 OSG_END_NAMESPACE

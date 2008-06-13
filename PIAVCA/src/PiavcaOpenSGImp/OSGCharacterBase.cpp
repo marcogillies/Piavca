@@ -97,8 +97,17 @@ const OSG::BitVector  CharacterBase::UseShaderForGeometryFieldMask =
 const OSG::BitVector  CharacterBase::ModelVolumeFieldMask = 
     (TypeTraits<BitVector>::One << CharacterBase::ModelVolumeFieldId);
 
-const OSG::BitVector  CharacterBase::BoneQuatsFieldMask = 
-    (TypeTraits<BitVector>::One << CharacterBase::BoneQuatsFieldId);
+const OSG::BitVector  CharacterBase::BoneQuatsRelFieldMask = 
+    (TypeTraits<BitVector>::One << CharacterBase::BoneQuatsRelFieldId);
+
+const OSG::BitVector  CharacterBase::BoneQuatsAbsFieldMask = 
+    (TypeTraits<BitVector>::One << CharacterBase::BoneQuatsAbsFieldId);
+
+const OSG::BitVector  CharacterBase::BonePosRelFieldMask = 
+    (TypeTraits<BitVector>::One << CharacterBase::BonePosRelFieldId);
+
+const OSG::BitVector  CharacterBase::BonePosAbsFieldMask = 
+    (TypeTraits<BitVector>::One << CharacterBase::BonePosAbsFieldId);
 
 const OSG::BitVector CharacterBase::MTInfluenceMask = 
     (Inherited::MTInfluenceMask) | 
@@ -131,9 +140,19 @@ const OSG::BitVector CharacterBase::MTInfluenceMask =
 /*! \var DynamicVolume   CharacterBase::_sfModelVolume
     The bounding volume of the character.
 */
-/*! \var Quaternion      CharacterBase::_sfBoneQuats
-    Bone positions and rotations. Multi-quat relative to boneNames.
+/*! \var Quaternion      CharacterBase::_mfBoneQuatsRel
+    Relative Bone rotations. Multi-quat with index relative to boneNames.
 */
+/*! \var Quaternion      CharacterBase::_mfBoneQuatsAbs
+    Absolute Bone rotations. Multi-quat with index relative to boneNames.
+*/
+/*! \var Vec3f           CharacterBase::_mfBonePosRel
+    Relative Bone positions. Multi-vec3f with index relative to boneNames.
+*/
+/*! \var Vec3f           CharacterBase::_mfBonePosAbs
+    Absolute Bone positions. Multi-vec3f with index relative to boneNames.
+*/
+
 
 //! Character description
 
@@ -180,10 +199,25 @@ FieldDescription *CharacterBase::_desc[] =
                      true,
                      (FieldAccessMethod) &CharacterBase::getSFModelVolume),
     new FieldDescription(MFQuaternion::getClassType(), 
-                     "boneQuats", 
-                     BoneQuatsFieldId, BoneQuatsFieldMask,
+                     "boneQuatsRel", 
+                     BoneQuatsRelFieldId, BoneQuatsRelFieldMask,
                      false,
-                     (FieldAccessMethod) &CharacterBase::getMFBoneQuats)
+                     (FieldAccessMethod) &CharacterBase::getMFBoneQuatsRel),
+    new FieldDescription(MFQuaternion::getClassType(), 
+                     "boneQuatsAbs", 
+                     BoneQuatsAbsFieldId, BoneQuatsAbsFieldMask,
+                     false,
+                     (FieldAccessMethod) &CharacterBase::getMFBoneQuatsAbs),
+    new FieldDescription(MFVec3f::getClassType(), 
+                     "bonePosRel", 
+                     BonePosRelFieldId, BonePosRelFieldMask,
+                     false,
+                     (FieldAccessMethod) &CharacterBase::getMFBonePosRel),
+    new FieldDescription(MFVec3f::getClassType(), 
+                     "bonePosAbs", 
+                     BonePosAbsFieldId, BonePosAbsFieldMask,
+                     false,
+                     (FieldAccessMethod) &CharacterBase::getMFBonePosAbs)
 };
 
 
@@ -267,7 +301,10 @@ CharacterBase::CharacterBase(void) :
     _sfDrawSkeleton           (bool(false)), 
     _sfUseShaderForGeometry   (), 
     _sfModelVolume            (), 
-    _mfBoneQuats              (),
+    _mfBoneQuatsRel           (),
+    _mfBoneQuatsAbs           (),
+    _mfBonePosRel             (),
+    _mfBonePosAbs             (),
     Inherited() 
 {
 }
@@ -285,7 +322,10 @@ CharacterBase::CharacterBase(const CharacterBase &source) :
     _sfDrawSkeleton           (source._sfDrawSkeleton           ), 
     _sfUseShaderForGeometry   (source._sfUseShaderForGeometry   ), 
     _sfModelVolume            (source._sfModelVolume            ), 
-    _mfBoneQuats              (source._mfBoneQuats              ), 
+    _mfBoneQuatsRel           (source._mfBoneQuatsRel           ), 
+    _mfBoneQuatsAbs           (source._mfBoneQuatsAbs           ), 
+    _mfBonePosRel             (source._mfBonePosRel             ), 
+    _mfBonePosAbs             (source._mfBonePosAbs             ), 
     Inherited                 (source)
 {
 }
@@ -342,9 +382,24 @@ UInt32 CharacterBase::getBinSize(const BitVector &whichField)
         returnValue += _sfModelVolume.getBinSize();
     }
 
-    if(FieldBits::NoField != (BoneQuatsFieldMask & whichField))
+    if(FieldBits::NoField != (BoneQuatsRelFieldMask & whichField))
     {
-        returnValue += _mfBoneQuats.getBinSize();
+        returnValue += _mfBoneQuatsRel.getBinSize();
+    }
+
+    if(FieldBits::NoField != (BoneQuatsAbsFieldMask & whichField))
+    {
+        returnValue += _mfBoneQuatsAbs.getBinSize();
+    }
+
+    if(FieldBits::NoField != (BonePosRelFieldMask & whichField))
+    {
+        returnValue += _mfBonePosRel.getBinSize();
+    }
+
+    if(FieldBits::NoField != (BonePosAbsFieldMask & whichField))
+    {
+        returnValue += _mfBonePosAbs.getBinSize();
     }
 
     return returnValue;
@@ -395,9 +450,24 @@ void CharacterBase::copyToBin(      BinaryDataHandler &pMem,
         _sfModelVolume.copyToBin(pMem);
     }
 
-    if(FieldBits::NoField != (BoneQuatsFieldMask & whichField))
+    if(FieldBits::NoField != (BoneQuatsRelFieldMask & whichField))
     {
-        _mfBoneQuats.copyToBin(pMem);
+        _mfBoneQuatsRel.copyToBin(pMem);
+    }
+
+    if(FieldBits::NoField != (BoneQuatsAbsFieldMask & whichField))
+    {
+        _mfBoneQuatsAbs.copyToBin(pMem);
+    }
+    
+    if(FieldBits::NoField != (BonePosRelFieldMask & whichField))
+    {
+        _mfBonePosRel.copyToBin(pMem);
+    }
+    
+    if(FieldBits::NoField != (BonePosAbsFieldMask & whichField))
+    {
+        _mfBonePosAbs.copyToBin(pMem);
     }
 
 }
@@ -447,9 +517,24 @@ void CharacterBase::copyFromBin(      BinaryDataHandler &pMem,
         _sfModelVolume.copyFromBin(pMem);
     }
 
-    if(FieldBits::NoField != (BoneQuatsFieldMask & whichField))
+    if(FieldBits::NoField != (BoneQuatsRelFieldMask & whichField))
     {
-        _mfBoneQuats.copyFromBin(pMem);
+        _mfBoneQuatsRel.copyFromBin(pMem);
+    }
+
+    if(FieldBits::NoField != (BoneQuatsAbsFieldMask & whichField))
+    {
+        _mfBoneQuatsAbs.copyFromBin(pMem);
+    }
+
+    if(FieldBits::NoField != (BonePosRelFieldMask & whichField))
+    {
+        _mfBonePosRel.copyFromBin(pMem);
+    }
+
+    if(FieldBits::NoField != (BonePosAbsFieldMask & whichField))
+    {
+        _mfBonePosAbs.copyFromBin(pMem);
     }
 
 }
@@ -485,8 +570,17 @@ void CharacterBase::executeSyncImpl(      CharacterBase *pOther,
     if(FieldBits::NoField != (ModelVolumeFieldMask & whichField))
         _sfModelVolume.syncWith(pOther->_sfModelVolume);
 
-    if(FieldBits::NoField != (BoneQuatsFieldMask & whichField))
-        _mfBoneQuats.syncWith(pOther->_mfBoneQuats);
+    if(FieldBits::NoField != (BoneQuatsRelFieldMask & whichField))
+        _mfBoneQuatsRel.syncWith(pOther->_mfBoneQuatsRel);
+
+    if(FieldBits::NoField != (BoneQuatsAbsFieldMask & whichField))
+        _mfBoneQuatsAbs.syncWith(pOther->_mfBoneQuatsAbs);
+        
+    if(FieldBits::NoField != (BonePosRelFieldMask & whichField))
+        _mfBonePosRel.syncWith(pOther->_mfBonePosRel);
+
+    if(FieldBits::NoField != (BonePosAbsFieldMask & whichField))
+        _mfBonePosAbs.syncWith(pOther->_mfBonePosAbs);
 
 }
 #else
@@ -521,8 +615,17 @@ void CharacterBase::executeSyncImpl(      CharacterBase *pOther,
     if(FieldBits::NoField != (ModelVolumeFieldMask & whichField))
         _sfModelVolume.syncWith(pOther->_sfModelVolume);
 
-    if(FieldBits::NoField != (BoneQuatsFieldMask & whichField))
-        _mfBoneQuats.syncWith(pOther->_mfBoneQuats);
+    if(FieldBits::NoField != (BoneQuatsRelFieldMask & whichField))
+        _mfBoneQuatsRel.syncWith(pOther->_mfBoneQuatsRel);
+        
+    if(FieldBits::NoField != (BoneQuatsAbsFieldMask & whichField))
+        _mfBoneQuatsAbs.syncWith(pOther->_mfBoneQuatsAbs);
+        
+    if(FieldBits::NoField != (BonePosRelFieldMask & whichField))
+        _mfBonePosRel.syncWith(pOther->_mfBonePosRel);
+
+    if(FieldBits::NoField != (BonePosAbsFieldMask & whichField))
+        _mfBonePosAbs.syncWith(pOther->_mfBonePosAbs);
 
 }
 

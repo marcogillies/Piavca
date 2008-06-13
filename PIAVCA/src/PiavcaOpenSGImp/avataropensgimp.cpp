@@ -355,13 +355,13 @@ void	AvatarOpenSGImp::setRootOrientation	(const Quat &Orientation)
        Piavca::Error(_T("setRootOrientation called on empty avatar"));
 	   return;
    }
-   beginEditCP(charac, osg::Character::BoneQuatsFieldMask);
-		osg::MFQuaternion bone_quats = charac->getBoneQuats();
+   //beginEditCP(charac, osg::Character::BoneQuatsRelFieldMask);
+		osg::MFQuaternion bone_quats = charac->getBoneQuatsRel();
 		//bone_quats[.setValueAsQuat(Orientation.I(), Orientation.J(), Orientation.K(), Orientation.S());
 		osg::Quaternion q;
 		q.setValueAsQuat(Orientation.I(), Orientation.J(), Orientation.K(), Orientation.S());
-		charac->setBoneQuat(q, 0);
-   endEditCP(charac, osg::Character::BoneQuatsFieldMask);
+		charac->setBoneQuatRel(q, 0);
+   //endEditCP(charac, osg::Character::BoneQuatsRelFieldMask);
 };
 
 Quat	AvatarOpenSGImp::getRootOrientation ()
@@ -371,7 +371,7 @@ Quat	AvatarOpenSGImp::getRootOrientation ()
        Piavca::Error(_T("setJointOrientation called on empty avatar"));
 	   return Quat();
    }   
-   osg::MFQuaternion bone_quats = charac->getBoneQuats();
+   osg::MFQuaternion bone_quats = charac->getBoneQuatsRel();
    if(bone_quats.size() <= 0)
    {
        Piavca::Error(_T("getRootOrientation called on an avatar with no joints"));
@@ -402,7 +402,7 @@ void AvatarOpenSGImp::setJointOrientation(int jointId, const Quat &Orientation, 
        Piavca::Error(_T("setJointOrientation called on empty avatar"));
 	   return;
    }
-   osg::MFQuaternion bone_quats = charac->getBoneQuats();
+   osg::MFQuaternion bone_quats = charac->getBoneQuatsRel();
    if(bone_quats.size() <= 0)
    {
        Piavca::Error(_T("setJointOrientation called on an avatar with no joints"));
@@ -411,7 +411,7 @@ void AvatarOpenSGImp::setJointOrientation(int jointId, const Quat &Orientation, 
    		//bone_quats[.setValueAsQuat(Orientation.I(), Orientation.J(), Orientation.K(), Orientation.S());
 		osg::Quaternion q;
 		q.setValueAsQuat(Orientation.I(), Orientation.J(), Orientation.K(), Orientation.S());
-		charac->setBoneQuat(q, joints[jointId].cal3dId);
+		charac->setBoneQuatRel(q, joints[jointId].cal3dId);
    //charac->getBoneQuats()[joints[jointId].cal3dId].setValueAsQuat(Orientation.I(), Orientation.J(), Orientation.K(), Orientation.S());
    
 };
@@ -434,7 +434,7 @@ Quat AvatarOpenSGImp::getJointOrientation	(int jointId, jointCoord worldCoord)
        Piavca::Error(_T("getJointOrientation called on empty avatar"));
 	   return Quat();
    }
-   osg::MFQuaternion bone_quats = charac->getBoneQuats();
+   osg::MFQuaternion bone_quats = charac->getBoneQuatsRel();
    if(bone_quats.size() <= 0)
    {
        Piavca::Error(_T("getJointOrientation called on an avatar with no joints"));
@@ -447,7 +447,7 @@ Quat AvatarOpenSGImp::getJointOrientation	(int jointId, jointCoord worldCoord)
       {
       case JOINTLOCAL_COORD:	
 		  {
-			osg::Quaternion q = charac->getBoneQuats()[joints[jointId].cal3dId];
+			osg::Quaternion q = charac->getBoneQuatsRel()[joints[jointId].cal3dId];
 			return Quat(q.w(), q.x(), q.y(), q.z());
 			//q = q * CalQuatToQuat(bone->getCoreBone()->getRotation()).inverse();
 			//return q;
@@ -580,8 +580,8 @@ void   AvatarOpenSGImp::scaleJoint (int jointId, Vec scale)
 
 void	AvatarOpenSGImp::platformSpecific_timeStep (float time)
 {
-	beginEditCP(charac, osg::Character::BoneQuatsFieldMask);
-    endEditCP(charac, osg::Character::BoneQuatsFieldMask);
+	beginEditCP(charac, osg::Character::BoneQuatsRelFieldMask);
+    endEditCP(charac, osg::Character::BoneQuatsRelFieldMask);
 };
 
 void	AvatarOpenSGImp::render ()

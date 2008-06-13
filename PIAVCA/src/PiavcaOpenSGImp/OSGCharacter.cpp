@@ -42,7 +42,6 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <sstream> //for float to string conversion
 
 
 #include <cal3d/cal3d.h>
@@ -186,10 +185,14 @@ void Character::changed(BitVector whichField, UInt32 origin)
                         getCurrentAnimation(), 1.0f, getBlendTime());
             }
         }
-        
+               
         //_calModel->update(0.);
         
-      	// Update the volume
+        _calModel->getSkeleton()->calculateState();
+    		_calModel->getPhysique()->update();
+				_calModel->getSpringSystem()->update(0.25);
+        
+        // Update the volume
         DynamicVolume vol;
         vol.setEmpty();
 			
@@ -239,6 +242,12 @@ void Character::changed(BitVector whichField, UInt32 origin)
         cp->setModelVolume(vol);
         endEditCP(cp, ModelVolumeFieldMask);
         
+        beginEditCP(cp, BoneQuatsRelFieldMask);
+        endEditCP(cp, BoneQuatsRelFieldMask);
+        
+        beginEditCP(cp, BonePosRelFieldMask);
+        endEditCP(cp, BonePosRelFieldMask);
+        
         _drawWrappers.clear();
     }
     
@@ -277,77 +286,237 @@ void Character::changed(BitVector whichField, UInt32 origin)
         }
     }
     
-    //******************************************* boneQuats manager ************************************************
-    if(whichField & BoneQuatsFieldMask) {
-    		
-    		std::cout << "debug 1 " << std::endl;
+    // *************************************** Bone Rotation manager ************************************************
+    //boneQuatsRel is manipulated using setBoneRotation()
+    //opensg field absolute rotation is 'read only' and is updated
+    //from the changes made using getBoneRotationAbsolute()
+    
+    
+    if(whichField & BoneQuatsRelFieldMask) {
     		
     		//get all bones in cal3d model (used for loading and manipulation
     		CalSkeleton *skel = _calModel->getSkeleton();
 				std::vector<CalBone *>& allCalBones = skel->getVectorBone();
     	
-    		//if we haven't populated the boneQuats field yet...
-    		if (getBoneQuats().empty()) {
+    		//if we haven't populated the boneQuatsRel and bonQuatsAbs field yet (i.e. on load)...
+    		if (getBoneQuatsRel().empty()) {
     		
-    				std::cout << "Populating boneQuats field..." << std::endl;
+    				std::cout << "Initialising Bone Rotation (boneQuatsRel and boneQuatsAbs) fields ..." << std::endl;
     			
 	    			//for all bones
 						for(int i = 0; i < (int) allCalBones.size(); i++) {
  				
- 								//get one bone
+ 								//get a bone
 	 							CalBone *currentBone = allCalBones[i];
   						
-	  						//get currentBone quaternion (cal3d quaternion type)
-	  						CalQuaternion cal3dBoneQuat = currentBone->getRotation();
+	  						// ************ get currentBone rel quaternion as cal3d quaternion type
+	  						CalQuaternion cal3dBoneQuatRel = currentBone->getRotation();
 	  		
-	  	 					//convert cal3dBoneQuat to OpenSG Quaternion type
-    						Quaternion openSGBoneQuat;
-		    				openSGBoneQuat.setValueAsQuat(cal3dBoneQuat.x, cal3dBoneQuat.y, cal3dBoneQuat.z, cal3dBoneQuat.w);
+	  	 					//convert CalQuaternion to OpenSG Quaternion
+    						Quaternion openSGBoneQuatRel;
+		    				openSGBoneQuatRel.setValueAsQuat(cal3dBoneQuatRel.x, cal3dBoneQuatRel.y, cal3dBoneQuatRel.z, cal3dBoneQuatRel.w);
 
-	   						//add current bone (openSGBoneQuat) to boneQuats field vector
-				   			getBoneQuats().push_back(openSGBoneQuat);
-			   			
-				   			std::cout << "Stored BoneQuat[" << i << "] = " << getBoneQuats()[i] << " *** Source: _calModel bone[" << i << "] = " << cal3dBoneQuat.x << ", " << cal3dBoneQuat.y << ", " << cal3dBoneQuat.z << ", " << cal3dBoneQuat.w << std::endl;
+	   						//add current bone (openSGBoneQuat) to boneQuatsRel field vector
+	   						getBoneQuatsRel().push_back(openSGBoneQuatRel);
+        					   									   			
+				   			// ************ get currentBone abs quaternion as cal3d quaternion type
+	  						CalQuaternion cal3dBoneQuatAbs = currentBone->getRotationAbsolute();
+	  		
+	  	 					//convert CalQuaternion to OpenSG Quaternion
+    						Quaternion openSGBoneQuatAbs;
+    						openSGBoneQuatAbs.setValueAsQuat(cal3dBoneQuatAbs.x, cal3dBoneQuatAbs.y, cal3dBoneQuatAbs.z, cal3dBoneQuatAbs.w);
+
+	   						//add current bone (openSGBoneQuat) to boneQuatsAbs field vector
+				   			getBoneQuatsAbs().push_back(openSGBoneQuatAbs);
+        								   						   				
+			   				// ************ output updated fields
+				   			std::cout << "Stored BoneQuatsRel[" << i << "] = " << getBoneQuatsRel()[i] << std::endl;
+				   			std::cout << "Stored BoneQuatsAbs[" << i << "] = " << getBoneQuatsAbs()[i] << std::endl;
     				};
+    				std::cout << "Done populating boneQuatsRel and boneQuatsAbs fields." << std::endl;
   			};
  				
-		  	//if boneQuats field is populated, this function is called for bone manipulation...
-		  	if(!getBoneQuats().empty()) {
+		  	//if boneQuatsRel and boneQuatsAbs fields are populated then we can manipulate...
+		  	if(!getBoneQuatsRel().empty()) {
 
 			     	for(int i = 0; i < (int) allCalBones.size(); i++) {
 
 								CalBone *currentBone = allCalBones[i];
 
-								//get currentBone quaternion (cal3d quaternion type)
-	  						CalQuaternion cal3dBoneQuat = currentBone->getRotation();
+								//get currentBone rel quaternion (cal3d quaternion type)
+	  						CalQuaternion cal3dBoneQuatRel = currentBone->getRotation();
 						
-								//convert cal3d quaternion type into OpenSG Quaternion
-								Quaternion openSGQuatfromCal3d;
-   							openSGQuatfromCal3d.setValueAsQuat(cal3dBoneQuat.x, cal3dBoneQuat.y, cal3dBoneQuat.z, cal3dBoneQuat.w);
+								//convert CalQuaternion to OpenSG Quaternion
+								Quaternion openSGBoneQuatRel;
+   							openSGBoneQuatRel.setValueAsQuat(cal3dBoneQuatRel.x, cal3dBoneQuatRel.y, cal3dBoneQuatRel.z, cal3dBoneQuatRel.w);
+								
+								//if openSG boneQuatsRel field has been updated, we need to update the cal3d object and then the openSG boneQuatsAbs field
+								if (openSGBoneQuatRel != getBoneQuatsRel()[i]) {
+										
+										//get updated rotation components
+										float calXRel = getBoneQuatsRel()[i][0];
+										float calYRel = getBoneQuatsRel()[i][1];
+										float calZRel = getBoneQuatsRel()[i][2];
+										float calWRel = getBoneQuatsRel()[i][3];
 
-								if (openSGQuatfromCal3d != getBoneQuats()[i]) {
+										//populate update rotation
+										CalQuaternion updateCal3dQuatRel(calXRel, calYRel, calZRel, calWRel);
 										
-										std::cout << "Updating cal3d character from boneQuats field..." << std::endl;
-																				
-										float calx = getBoneQuats()[i][0];
-										float caly = getBoneQuats()[i][1];
-										float calz = getBoneQuats()[i][2];
-										float calw = getBoneQuats()[i][3];
-										
-										CalQuaternion copyQuat(calx, caly, calz, calw);
-										
-										//set cal3d object rotation
+										//set cal3d object relative rotation (obviously this updates the abs rotation too, so we need to update the OpenSG boneQuatsAbs field
   									CalBone *boneMod = skel->getBone(i);
-  									boneMod->setRotation(copyQuat);
+  									boneMod->setRotation(updateCal3dQuatRel);
 
-	  								CalQuaternion finalQuat = boneMod->getRotation();
-	 									std::cout << "Modified Cal3d character boneQuat[" << i << "]: " << finalQuat.x << ", " << finalQuat.y  << ", " << finalQuat.z << ", " << finalQuat.w << std::endl;
+										//update boneQuatsAbs field
+										//get currentBone abs quaternion as cal3d quaternion type
+	  								CalQuaternion cal3dBoneQuatAbs;
+	  								cal3dBoneQuatAbs = currentBone->getRotationAbsolute();
+	  		
+	  	 							//convert CalQuaternion to OpenSG Quaternion
+    								Quaternion openSGBoneQuatAbs;
+    								openSGBoneQuatAbs.setValueAsQuat(cal3dBoneQuatAbs.x, cal3dBoneQuatAbs.y, cal3dBoneQuatAbs.z, cal3dBoneQuatAbs.w);
+
+	   								//update boneQuatsAbs openSG field
+				   					getBoneQuatsAbs()[i] = openSGBoneQuatAbs;
+										
+										std::cout << "boneQuatsRel field modified by client." << std::endl <<
+										"Updated and synchronised (cal3d/openSG) the following:" << std::endl;
+											
+										//all synchronised
+										//now just a debug check from cal3d model and opensg fields
+	  								CalQuaternion checkQuatRel = boneMod->getRotation();
+	  								CalQuaternion checkQuatAbs = boneMod->getRotationAbsolute();
+	 									std::cout << "Cal3d  Rel ROT[" << i << "]: " << checkQuatRel.x << ", " << checkQuatRel.y  << ", " << checkQuatRel.z << ", " << checkQuatRel.w << std::endl;
+	 									std::cout << "OpenSG Rel ROT[" << i << "]: " << getBoneQuatsRel()[i] << std::endl;
+	 									std::cout << "Cal3d  Abs ROT[" << i << "]: " << checkQuatAbs.x << ", " << checkQuatAbs.y  << ", " << checkQuatAbs.z << ", " << checkQuatAbs.w << std::endl;
+	 									std::cout << "OpenSG Abs ROT[" << i << "]: " << getBoneQuatsAbs()[i] << std::endl;
 		  					};
   					};
     		};
+    		
     };
-		//******************************************* end of boneQuats manager ********************************************
-		
+		// ************************************ end of Bone Rotation manager ********************************************
+
+		// *************************************** Bone Position manager ************************************************
+    //bonePosRel is manipulated using setBoneTranslation()
+    //opensg field absolute position is 'read only' and is updated
+    //from the changes made using getBoneTranslationAbsolute()
+        
+    if(whichField & BonePosRelFieldMask) {
+    		
+    		//get all bones in cal3d model (used for loading and manipulation
+    		CalSkeleton *skel = _calModel->getSkeleton();
+				std::vector<CalBone *>& allCalBones = skel->getVectorBone();
+    	
+    		//if we haven't populated the bonePosRel and bonPosAbs field yet (i.e. on load)...
+    		if (getBonePosRel().empty()) {
+    		
+    				std::cout << "Initialising Bone Position (bonePosRel and bonePosAbs) fields ..." << std::endl;
+    			
+	    			//for all bones
+						for(int i = 0; i < (int) allCalBones.size(); i++) {
+ 				
+ 								//get a bone
+	 							CalBone *currentBone = allCalBones[i];
+  						
+	  						//get currentBone ***REL*** vector as cal3d vector type
+	  						CalVector cal3dBonePosRel = currentBone->getTranslation();
+	  		
+	  	 					//convert CalVector to OpenSG Vec3f
+    						Vec3f openSGBonePosRel;
+		    				openSGBonePosRel[0] = cal3dBonePosRel[0];
+		    				openSGBonePosRel[1] = cal3dBonePosRel[1];
+		    				openSGBonePosRel[2] = cal3dBonePosRel[2];
+		    				
+		    				//add current bone (openSGBonePos) to bonePosRel field vector
+	   						getBonePosRel().push_back(openSGBonePosRel);
+        					   									   			
+				   			//get currentBone ***ABS*** vector as cal3d vector type
+	  						CalVector cal3dBonePosAbs = currentBone->getTranslationAbsolute();
+	  		
+	  	 					//convert CalVector to OpenSG vector
+    						Vec3f openSGBonePosAbs;
+    						openSGBonePosAbs[0] = cal3dBonePosAbs[0];
+		    				openSGBonePosAbs[1] = cal3dBonePosAbs[1];
+		    				openSGBonePosAbs[2] = cal3dBonePosAbs[2];
+
+	   						//add current bone (openSGBoneQuat) to boneQuatsAbs field vector
+				   			getBonePosAbs().push_back(openSGBonePosAbs);
+        								   						   				
+			   				// ************ output updated fields
+				   			std::cout << "Stored BonePosRel[" << i << "] = " << getBonePosRel()[i] << std::endl;
+				   			std::cout << "Stored BonePosAbs[" << i << "] = " << getBonePosAbs()[i] << std::endl;
+    				};
+    				std::cout << "Done populating bonePosRel and bonePosAbs fields." << std::endl;
+  			};
+ 				
+		  	//if bonePosRel and bonePosAbs fields are populated then we can manipulate...
+		  	if(!getBonePosRel().empty()) {
+
+			     	for(int i = 0; i < (int) allCalBones.size(); i++) {
+
+								CalBone *currentBone = allCalBones[i];
+
+								//get currentBone rel position (cal3d quaternion type)
+	  						CalVector cal3dBonePosRel = currentBone->getTranslation();
+						
+								//convert CalVector to OpenSG Vector3f
+								Vec3f openSGBonePosRel;
+   							openSGBonePosRel[0] = cal3dBonePosRel[0];
+		    				openSGBonePosRel[1] = cal3dBonePosRel[1];
+		    				openSGBonePosRel[2] = cal3dBonePosRel[2];
+								
+								//if openSG bonePosRel field has been updated, we need to update the cal3d object and then the openSG bonePosAbs field
+								if (openSGBonePosRel != getBonePosRel()[i]) {
+										
+										//get updated translation components
+										float calXRel = getBonePosRel()[i][0];
+										float calYRel = getBonePosRel()[i][1];
+										float calZRel = getBonePosRel()[i][2];
+										
+										//populate vector for updating position
+										CalVector updateCal3dPosRel;
+										updateCal3dPosRel[0] = calXRel;
+										updateCal3dPosRel[1] = calYRel;
+										updateCal3dPosRel[2] = calZRel;
+																				
+										//set cal3d object relative position (obviously this updates the abs position too, so we need to update the OpenSG bonePosAbs field
+  									CalBone *boneMod = skel->getBone(i);
+  									boneMod->setTranslation(updateCal3dPosRel);
+
+										//update bonePosAbs field
+										//get currentBone abs vector as cal3d vector type
+	  								CalVector cal3dBonePosAbs;
+	  								cal3dBonePosAbs = currentBone->getTranslationAbsolute();
+	  		
+	  	 							//convert CalVector to OpenSG vector
+    								Vec3f openSGBonePosAbs;
+    								openSGBonePosAbs[0] = cal3dBonePosAbs[0];
+		    						openSGBonePosAbs[1] = cal3dBonePosAbs[1];
+		    						openSGBonePosAbs[2] = cal3dBonePosAbs[2];
+    								
+    								//update bonePosAbs openSG field
+				   					getBonePosAbs()[i][0] = openSGBonePosAbs[0];
+				   					getBonePosAbs()[i][1] = openSGBonePosAbs[1];
+				   					getBonePosAbs()[i][2] = openSGBonePosAbs[2];
+																			
+										std::cout << "bonePosRel field modified by client." << std::endl <<
+										"Updated and synchronised (cal3d/openSG) the following:" << std::endl;
+											
+										//all synchronised
+										//now just a debug check from cal3d model and opensg fields
+	  								CalVector checkPosRel = boneMod->getTranslation();
+	  								CalVector checkPosAbs = boneMod->getTranslationAbsolute();
+	 									std::cout << "Cal3d  Rel POS[" << i << "]: " << checkPosRel[0] << ", " << checkPosRel[1] << ", " << checkPosRel[2] << std::endl;
+	 									std::cout << "OpenSG Rel POS[" << i << "]: " << getBonePosRel()[i] << std::endl;
+	 									std::cout << "Cal3d  Abs POS[" << i << "]: " << checkPosAbs[0] << ", " << checkPosAbs[1]  << ", " << checkPosAbs[2] << std::endl;
+	 									std::cout << "OpenSG Abs POS[" << i << "]: " << getBonePosAbs()[i] << std::endl;
+		  					};
+  					};
+    		};
+    		
+    };
+		// ******************************************* end of Bone Position manager ********************************************
+
 };
     
 

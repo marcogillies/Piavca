@@ -75,7 +75,8 @@
 #include <OSGBoolFields.h> // DrawSkeleton type
 #include <OSGBoolFields.h> // UseShaderForGeometry type
 #include <OSGDynamicVolumeFields.h> // ModelVolume type
-#include <OSGQuaternionFields.h> // BoneQuats type
+#include <OSGQuaternionFields.h> // BoneQuatRel/Abs type
+#include <OSGVec3fFields.h> // BonePosRel/Abs type
 
 #include "OSGCharacterFields.h"
 
@@ -83,7 +84,6 @@ OSG_BEGIN_NAMESPACE
 
 class Character;
 class BinaryDataHandler;
-
 
 //! \brief Character Base Class.
 
@@ -108,8 +108,11 @@ class /*OSG_CONTRIBLIB_DLLMAPPING*/ CharacterBase : public Drawable
         DrawSkeletonFieldId         = TimeScaleFieldId            + 1,
         UseShaderForGeometryFieldId = DrawSkeletonFieldId         + 1,
         ModelVolumeFieldId          = UseShaderForGeometryFieldId + 1,
-        BoneQuatsFieldId            = ModelVolumeFieldId          + 1,
-        NextFieldId                 = BoneQuatsFieldId            + 1
+        BoneQuatsRelFieldId         = ModelVolumeFieldId          + 1,
+        BoneQuatsAbsFieldId         = BoneQuatsRelFieldId         + 1,
+        BonePosRelFieldId           = BoneQuatsAbsFieldId         + 1,
+        BonePosAbsFieldId           = BonePosRelFieldId           + 1,
+        NextFieldId                 = BonePosAbsFieldId           + 1
     };
 
     static const OSG::BitVector ModelFieldMask;
@@ -120,7 +123,10 @@ class /*OSG_CONTRIBLIB_DLLMAPPING*/ CharacterBase : public Drawable
     static const OSG::BitVector DrawSkeletonFieldMask;
     static const OSG::BitVector UseShaderForGeometryFieldMask;
     static const OSG::BitVector ModelVolumeFieldMask;
-    static const OSG::BitVector BoneQuatsFieldMask;
+    static const OSG::BitVector BoneQuatsRelFieldMask;
+    static const OSG::BitVector BoneQuatsAbsFieldMask;
+    static const OSG::BitVector BonePosRelFieldMask;
+    static const OSG::BitVector BonePosAbsFieldMask;
 
     static const OSG::BitVector MTInfluenceMask;
 
@@ -146,15 +152,18 @@ class /*OSG_CONTRIBLIB_DLLMAPPING*/ CharacterBase : public Drawable
     /*! \name                    Field Get                                 */
     /*! \{                                                                 */
 
-           SFCharacterModelPtr *getSFModel          (void);
-           SFUInt32            *getSFCurrentAnimation(void);
-           SFReal32            *getSFBlendTime      (void);
-           SFReal32            *getSFDelta          (void);
-           SFReal32            *getSFTimeScale      (void);
-           SFBool              *getSFDrawSkeleton   (void);
-           SFBool              *getSFUseShaderForGeometry(void);
-           SFDynamicVolume     *getSFModelVolume    (void);
-           MFQuaternion        *getMFBoneQuats      (void);
+           SFCharacterModelPtr *getSFModel                (void);
+           SFUInt32            *getSFCurrentAnimation     (void);
+           SFReal32            *getSFBlendTime            (void);
+           SFReal32            *getSFDelta                (void);
+           SFReal32            *getSFTimeScale            (void);
+           SFBool              *getSFDrawSkeleton         (void);
+           SFBool              *getSFUseShaderForGeometry (void);
+           SFDynamicVolume     *getSFModelVolume          (void);
+           MFQuaternion        *getMFBoneQuatsRel         (void);
+           MFQuaternion        *getMFBoneQuatsAbs         (void);
+           MFVec3f             *getMFBonePosRel           (void);
+           MFVec3f             *getMFBonePosAbs           (void);
 
            CharacterModelPtr   &getModel          (void);
      const CharacterModelPtr   &getModel          (void) const;
@@ -172,9 +181,18 @@ class /*OSG_CONTRIBLIB_DLLMAPPING*/ CharacterBase : public Drawable
      const bool                &getUseShaderForGeometry(void) const;
            DynamicVolume       &getModelVolume    (void);
      const DynamicVolume       &getModelVolume    (void) const;
-           Quaternion          &getBoneQuats      (const UInt32 index);
-     	     MFQuaternion        &getBoneQuats      (void);
-     const MFQuaternion        &getBoneQuats      (void) const;
+           Quaternion          &getBoneQuatsRel   (const UInt32 index);
+     	     MFQuaternion        &getBoneQuatsRel   (void);
+     const MFQuaternion        &getBoneQuatsRel   (void) const;
+           Quaternion          &getBoneQuatsAbs   (const UInt32 index);
+     	     MFQuaternion        &getBoneQuatsAbs   (void);
+     const MFQuaternion        &getBoneQuatsAbs   (void) const;
+           Vec3f               &getBonePosRel     (const UInt32 index);
+           MFVec3f             &getBonePosRel     (void);
+     const MFVec3f             &getBonePosRel     (void) const;
+           Vec3f               &getBonePosAbs     (const UInt32 index);
+           MFVec3f             &getBonePosAbs     (void);
+     const MFVec3f             &getBonePosAbs     (void) const;
 
 
     /*! \}                                                                 */
@@ -190,8 +208,10 @@ class /*OSG_CONTRIBLIB_DLLMAPPING*/ CharacterBase : public Drawable
      void setDrawSkeleton   ( const bool &value );
      void setUseShaderForGeometry( const bool &value );
      void setModelVolume    ( const DynamicVolume &value );
-     void setBoneQuat       ( const Quaternion &value,  UInt32 index );
+     void setBoneQuatRel       ( const Quaternion &value,  UInt32 index );
 
+     
+     
     /*! \}                                                                 */
     /*---------------------------------------------------------------------*/
     /*! \name                       Sync                                   */
@@ -241,7 +261,11 @@ class /*OSG_CONTRIBLIB_DLLMAPPING*/ CharacterBase : public Drawable
     SFBool              _sfDrawSkeleton;
     SFBool              _sfUseShaderForGeometry;
     SFDynamicVolume     _sfModelVolume;
-    MFQuaternion        _mfBoneQuats;
+    MFQuaternion        _mfBoneQuatsRel;
+    MFQuaternion        _mfBoneQuatsAbs;
+    MFVec3f             _mfBonePosRel;
+    MFVec3f             _mfBonePosAbs;
+
 
     /*! \}                                                                 */
     /*---------------------------------------------------------------------*/
