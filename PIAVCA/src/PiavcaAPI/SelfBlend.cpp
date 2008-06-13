@@ -57,7 +57,7 @@ SelfBlend::SelfBlend(Motion *mot, float interval)
 	KeyframeMotion *tmot = new KeyframeMotion(mot->isFacial());
 	setMotion1(tmot);
 
-	for (int track = mot2->begin(); track < mot2->end(); mot2->next(track))
+	for (int track = mot2->begin(); track < mot2->end(); track = mot2->next(track))
 	{
 		int type = mot2->getTrackType(track);
 		if (type & FLOAT_TYPE)
@@ -109,7 +109,7 @@ void SelfBlend::setMotion(Motion *mot)
 	if(!tmot)
 		Piavca::Error(_T("Motion blending from a non writable motion"));
 
-	for (int track = mot2->begin(); track < mot2->end(); mot2->next(track))
+	for (int track = mot2->begin(); track < mot2->end(); track = mot2->next(track))
 	{
 		int type = mot2->getTrackType(track);
 		if (type & FLOAT_TYPE)
@@ -151,7 +151,7 @@ void SelfBlend::reblend(float time)
 	if(!tmot)
 		Piavca::Error(_T("Motion blending from a non writable motion"));
 	
-	for(int track = tmot->begin(); track < tmot->end(); tmot->next(track))
+	for(int track = tmot->begin(); track < tmot->end(); track = tmot->next(track))
 	{
 		int type = mot2->getTrackType(track);
 		if (type & FLOAT_TYPE)

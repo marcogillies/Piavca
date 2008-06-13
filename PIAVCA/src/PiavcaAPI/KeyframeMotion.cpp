@@ -58,7 +58,7 @@ const KeyframeMotion &KeyframeMotion::operator=(Motion &mot)
 	float keyframeSpacing = 0.1f;
 	int maxKeyframe = static_cast<int>(motionLength/keyframeSpacing) + 1;
 	int i;
-	for(int track = mot.begin(); track < mot.end(); mot.next(track))
+	for(int track = mot.begin(); track < mot.end(); track = mot.next(track))
 	{
 		int type = mot.getTrackType(track);
 		if (type & FLOAT_TYPE)
@@ -87,7 +87,7 @@ KeyframeMotion *Piavca::copyMotionPosture(Motion *mot, float time)
 {
 	KeyframeMotion *tmot = new KeyframeMotion(mot->isFacial());
 
-	for (int track = mot->begin(); track < mot->end(); mot->next(track))
+	for (int track = mot->begin(); track < mot->end(); track = mot->next(track))
 	{
 		int type = tmot->getTrackType(track);
 		if (type & FLOAT_TYPE)

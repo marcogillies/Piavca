@@ -355,7 +355,7 @@ void Avatar::validateMotions()
 			Piavca::Error(_T("Trying to load a motion with a non-quaternion root orientation"));
 			unloadMotion();
 		};
-		for (int joint = begin(); joint != Core::nullId; next(joint))
+		for (int joint = begin(); joint != Core::nullId; joint = next(joint))
 		{
 			if(mot && !mot->isNull(joint)
 				&& !(mot->getTrackType(joint) & QUAT_TYPE))
@@ -391,7 +391,7 @@ void Avatar::validateMotions()
 	}
 	if(scaleMot)
 	{
-		for (int joint = begin(); joint != Core::nullId; next(joint))
+		for (int joint = begin(); joint != Core::nullId; joint = next(joint))
 		{
 			if(!scaleMot->isNull(joint)
 				&& !(scaleMot->getTrackType(joint) & FLOAT_TYPE)
@@ -457,7 +457,7 @@ void Avatar::showMotionAtTime	(float time, Motion *motion, bool detectChanges)
 	 //   std::cout << "could not find root pos track" << std::endl;
 	
 	// go through all the joints setting those for which there is a track
-	for (int joint = begin(); joint != Core::nullId; next(joint))
+	for (int joint = begin(); joint != Core::nullId; joint = next(joint))
 	{
 		if(!motion->isNull(joint))
 		{
@@ -507,7 +507,7 @@ void Avatar::showScaleMotionAtTime	(float time)
 	}
 	
 	// go through all the joints scaling those for which there is a track
-	for (int joint = begin(); joint != Core::nullId; next(joint))
+	for (int joint = begin(); joint != Core::nullId; joint = next(joint))
 	{
 		if(!scaleMot->isNull(joint))
 		{
@@ -631,7 +631,7 @@ int Avatar::end ()
 	return Core::nullId;
 	//return Core::getCore()->getMaxJointId()+1;
 }
-int Avatar::next(int &jointId) 
+int Avatar::next(int jointId) 
 {
 	int maxJoint = Core::getCore()->getMaxJointId();
 	while(isNull(++jointId) && jointId <= maxJoint); 

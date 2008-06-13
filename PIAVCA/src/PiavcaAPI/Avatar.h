@@ -314,13 +314,13 @@ public:
 	{
 		int i=0; 
 		if(isNull(i))
-			next(i);
+			i = next(i);
 		return i;
 	};
 	//! the last joint + 1
 	int end () ;
 	//! given a joint ID this returns the next joint ID that is present in the avatar
-	int next(int &jointId);
+	int next(int jointId);
 	//! returns the ID of the parent of the joint in the joint heirarchy (or a negative value if it doesn't exist
 	int getParent(int jointId)const
 	{

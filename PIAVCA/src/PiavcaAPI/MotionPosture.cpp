@@ -44,7 +44,7 @@ void MotionPosture::getPostureFromMotion(Motion *mot, float time)
 		return;
 	if (time < 0)
 		time = mot->getStartTime();
-	for (int track = mot->begin(); track < mot->end(); mot->next(track))
+	for (int track = mot->begin(); track < mot->end(); track = mot->next(track))
 	{
 		int type = mot->getTrackType(track);
 		if (type & FLOAT_TYPE)

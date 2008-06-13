@@ -53,7 +53,7 @@ SavedFramesTransition::SavedFramesTransition(const SavedFramesTransition &mt)
 void SavedFramesTransition::saveMotion()
 {
 	KeyframeMotion *kf = new KeyframeMotion;
-	for (int track = originalMotion1->begin(); track < originalMotion1->end(); originalMotion1->next(track))
+	for (int track = originalMotion1->begin(); track < originalMotion1->end(); track = originalMotion1->next(track))
 	{
 		int type = originalMotion1->getTrackType(track);
 		if (type & FLOAT_TYPE)
@@ -72,7 +72,7 @@ void SavedFramesTransition::saveMotion()
 	float fps = 20.0f;
 	for (float t = 0.0f; t < window; t+= 1.0f/fps)
 	{
-		for (int track = originalMotion1->begin(); track < originalMotion1->end(); originalMotion1->next(track))
+		for (int track = originalMotion1->begin(); track < originalMotion1->end(); track = originalMotion1->next(track))
 		{
 			int type = originalMotion1->getTrackType(track);
 			if (type & FLOAT_TYPE)

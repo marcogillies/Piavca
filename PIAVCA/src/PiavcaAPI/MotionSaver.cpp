@@ -107,7 +107,7 @@ PIAVCA_EXPORT void MotionSaver::save(tstring filename)
 		of << "facial\n";
 	else
 		of << "body\n";
-	for (int track = tmot->begin(); track < tmot->end(); tmot->next(track))
+	for (int track = tmot->begin(); track < tmot->end(); track = tmot->next(track))
 	{
 		if(tmot->isFacial())
 			of << Core::getCore()->getExpressionName(track) << " ";

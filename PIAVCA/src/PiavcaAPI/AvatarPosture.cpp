@@ -70,7 +70,7 @@ void AvatarPosture::getPostureFromAvatar(Avatar *av)
 		else
 			setQuatKeyframe(root_orientation_id, 0, av->getRootOrientation());
 
-		for(int joint = av->begin(); joint != Core::nullId; av->next(joint))
+		for(int joint = av->begin(); joint != Core::nullId; joint = av->next(joint))
 			if (isNull(joint) || !(getTrackType(joint) & QUAT_TYPE))
 				addQuatTrack(joint, av->getJointOrientation(joint));
 			else

@@ -764,6 +764,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\ChoiceMotionWithDefault.h"
+				>
+			</File>
+			<File
 				RelativePath=".\CurrentValueMotion.h"
 				>
 			</File>

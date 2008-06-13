@@ -35,6 +35,7 @@
 #define LOOP_MOTION_H
 
 #include "MotionFilter.h"
+#include "PiavcaCore.h"
 
 namespace Piavca
 {
