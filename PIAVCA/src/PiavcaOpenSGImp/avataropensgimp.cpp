@@ -355,13 +355,9 @@ void	AvatarOpenSGImp::setRootOrientation	(const Quat &Orientation)
        Piavca::Error(_T("setRootOrientation called on empty avatar"));
 	   return;
    }
-   //beginEditCP(charac, osg::Character::BoneQuatsRelFieldMask);
-		osg::MFQuaternion bone_quats = charac->getBoneQuatsRel();
-		//bone_quats[.setValueAsQuat(Orientation.I(), Orientation.J(), Orientation.K(), Orientation.S());
-		osg::Quaternion q;
-		q.setValueAsQuat(Orientation.I(), Orientation.J(), Orientation.K(), Orientation.S());
-		charac->setBoneQuatRel(q, 0);
-   //endEditCP(charac, osg::Character::BoneQuatsRelFieldMask);
+   osg::Quaternion q;
+   q.setValueAsQuat(Orientation.I(), Orientation.J(), Orientation.K(), Orientation.S());
+   charac->setBoneQuatRel(q, 0);
 };
 
 Quat	AvatarOpenSGImp::getRootOrientation ()
@@ -377,8 +373,6 @@ Quat	AvatarOpenSGImp::getRootOrientation ()
        Piavca::Error(_T("getRootOrientation called on an avatar with no joints"));
 	   return Quat();
    }   
-  
-   //osg::Quaternion q = charac->getAbsoluteBoneQuats()[0];
    osg::Quaternion q = bone_quats[0];
    return Quat(q.w(), q.x(), q.y(), q.z());
 };
@@ -407,13 +401,9 @@ void AvatarOpenSGImp::setJointOrientation(int jointId, const Quat &Orientation, 
    {
        Piavca::Error(_T("setJointOrientation called on an avatar with no joints"));
    }   
-	
-   		//bone_quats[.setValueAsQuat(Orientation.I(), Orientation.J(), Orientation.K(), Orientation.S());
-		osg::Quaternion q;
-		q.setValueAsQuat(Orientation.I(), Orientation.J(), Orientation.K(), Orientation.S());
-		charac->setBoneQuatRel(q, joints[jointId].cal3dId);
-   //charac->getBoneQuats()[joints[jointId].cal3dId].setValueAsQuat(Orientation.I(), Orientation.J(), Orientation.K(), Orientation.S());
-   
+   osg::Quaternion q;
+   q.setValueAsQuat(Orientation.I(), Orientation.J(), Orientation.K(), Orientation.S());
+   charac->setBoneQuatRel(q, joints[jointId].cal3dId);
 };
 	
 Quat AvatarOpenSGImp::getJointOrientation	(int jointId, jointCoord worldCoord)
@@ -443,26 +433,24 @@ Quat AvatarOpenSGImp::getJointOrientation	(int jointId, jointCoord worldCoord)
    
 
 
-  switch (worldCoord)	
+   switch (worldCoord)	
       {
       case JOINTLOCAL_COORD:	
 		  {
 			osg::Quaternion q = charac->getBoneQuatsRel()[joints[jointId].cal3dId];
 			return Quat(q.w(), q.x(), q.y(), q.z());
-			//q = q * CalQuatToQuat(bone->getCoreBone()->getRotation()).inverse();
-			//return q;
 		  }
 	  break;
       case WORLD_COORD:	
-			//osg::Quaternion q = charac->getAbsoluteBoneQuats()[joints[jointId].cal3dId];
-			//Quat q(q.w(), q.x(), q.y(), q.z());
-			return Quat();
+		  {
+			osg::Quaternion q = charac->getBoneQuatsAbs()[joints[jointId].cal3dId];
+			return Quat(q.w(), q.x(), q.y(), q.z());
+		  }
 	  break;
       case LOCAL_COORD:
 		  {	
-			//osg::Quaternion q = charac->getAbsoluteBoneQuats()[joints[jointId].cal3dId];
-			//Quat q(q.w(), q.x(), q.y(), q.z());
-			Quat _q;
+			osg::Quaternion q = charac->getBoneQuatsAbs()[joints[jointId].cal3dId];
+			Quat _q(q.w(), q.x(), q.y(), q.z());
 			_q = getRootOrientation().inverse()*_q;
 			return _q;
 		  }

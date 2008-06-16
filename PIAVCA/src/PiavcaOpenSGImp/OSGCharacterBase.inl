@@ -441,6 +441,14 @@ const MFVec3f &CharacterBase::getBonePosRel(void) const
     return _mfBonePosRel;
 }
 
+//! Set the value of the Character::_sfModelVolume field.
+inline
+void CharacterBase::setBonePosRel      ( const Vec3f &value,  UInt32 index )
+{
+    _mfBonePosRel.setValue(value, index);
+}
+
+
 
 // ************************************** bonePosAbs *****************************************
 

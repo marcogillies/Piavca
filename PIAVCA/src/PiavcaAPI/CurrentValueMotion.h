@@ -80,7 +80,7 @@ namespace Piavca
 		};
 
 		//! Sets a value for a vec track
-	    void setVecValue(int trackId, Vec &val)
+	    void setVecValue(int trackId, const Vec &val)
 		{
 			if(isNull(trackId) || !(getTrackType(trackId) & VEC_TYPE))
 				addVecTrack(trackId, val);
@@ -89,7 +89,7 @@ namespace Piavca
 		};
 
 		//! Sets a value for a Quat track
-	    void setQuatValue(int trackId, Quat &val)
+	    void setQuatValue(int trackId, const Quat &val)
 		{
 			if(isNull(trackId) || !(getTrackType(trackId) & QUAT_TYPE))
 				addQuatTrack(trackId, val);

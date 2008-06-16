@@ -121,8 +121,16 @@ class NodeFinder{
 						osg::CharacterModelPtr model = charac->getModel();
 						name = model->getConfigFile();
 						std::cout << "character model file " << name << std::endl;
+						std::string::size_type slashpos = name.size()-1;
+						slashpos = name.find_last_of("/");
+						if(slashpos != name.npos)
+							name = name.substr(slashpos+1);
+						slashpos = name.size()-1;
+						slashpos = name.find_last_of("\\");
+						if(slashpos != name.npos)
+							name = name.substr(slashpos+1);
 						std::string::size_type dotpos = 0;
-						dotpos = name.find_first_of(".", dotpos);
+						dotpos = name.find_last_of(".");
 						if(dotpos != name.npos)
 							name = name.substr(0, dotpos);
 					}

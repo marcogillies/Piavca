@@ -643,6 +643,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\PointAt.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\PostureBlend.cpp"
 				>
 			</File>
@@ -873,6 +877,10 @@
 			</File>
 			<File
 				RelativePath="PiavcaException.h"
+				>
+			</File>
+			<File
+				RelativePath=".\PointAt.h"
 				>
 			</File>
 			<File

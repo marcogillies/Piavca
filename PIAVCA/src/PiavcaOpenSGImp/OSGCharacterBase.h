@@ -209,6 +209,7 @@ class /*OSG_CONTRIBLIB_DLLMAPPING*/ CharacterBase : public Drawable
      void setUseShaderForGeometry( const bool &value );
      void setModelVolume    ( const DynamicVolume &value );
      void setBoneQuatRel       ( const Quaternion &value,  UInt32 index );
+     void setBonePosRel       ( const Vec3f &value,  UInt32 index );
 
      
      
