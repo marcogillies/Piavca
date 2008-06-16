@@ -42,11 +42,11 @@
  
 #include <string>
 #include <vector>
-#ifdef WIN32
-#include "bvhParser.tab.hpp"
-#else
+//#ifdef WIN32
+//#include "bvhParser.tab.hpp"
+//#else
 #include "bvhParser.h"
-#endif
+//#endif
 
 extern int linenum;
 //extern FILE *g_file;

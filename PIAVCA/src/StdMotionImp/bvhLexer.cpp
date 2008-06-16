@@ -41,9 +41,7 @@
 #ifdef __cplusplus
 
 #include <stdlib.h>
-#ifndef _WIN32
 #include <unistd.h>
-#endif
 
 /* Use prototypes in function declarations. */
 #define YY_USE_PROTOS
@@ -477,7 +475,7 @@ static char *yy_last_accepting_cpos;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 1 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 #define INITIAL 0
 /* ***** BEGIN LICENSE BLOCK *****
  * Version: MPL 1.1
@@ -514,18 +512,18 @@ char *yytext;
  *
  * ***** END LICENSE BLOCK ***** */
 #define YY_NEVER_INTERACTIVE 1
-#line 39 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 39 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 /*
  *  a lexer test
  */
  
 #include <string>
 #include <vector>
-#ifdef WIN32
-#include "bvhParser.tab.hpp"
-#else
+//#ifdef WIN32
+//#include "bvhParser.tab.hpp"
+//#else
 #include "bvhParser.h"
-#endif
+//#endif
 
 extern int linenum;
 //extern FILE *g_file;
@@ -682,7 +680,7 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 57 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 57 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 
 
 
@@ -771,132 +769,132 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 60 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 60 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {/*fprintf(g_file, " %s ", yytext);*/ return(HIERARCHY);}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 62 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 62 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {/*fprintf(g_file, " %s ", yytext);*/ return(ROOT);}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 64 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 64 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {/*fprintf(g_file, " %s ", yytext);*/ return(OFFSET);}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 66 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 66 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {BEGIN INTEGER; /*fprintf(g_file, " %s ", yytext);*/ return(CHANNELS);}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 68 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 68 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {/*fprintf(g_file, " %s ", yytext);*/ return(JOINT);}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 70 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 70 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {/*fprintf(g_file, " %s ", yytext);*/ return(END_SITE);}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 72 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 72 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {/*fprintf(g_file, " %s ", yytext);*/ return(MOTION);}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 74 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 74 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {BEGIN INTEGER; /*fprintf(g_file, " %s ", yytext);*/ return(FRAMES);}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 76 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 76 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {/*fprintf(g_file, " %s ", yytext);*/ return(FRAME_TIME);}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 78 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 78 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {/*fprintf(g_file, " %s ", yytext);*/ return (L_BRACK);}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 80 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 80 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {/*fprintf(g_file, " %s ", yytext);*/ return (R_BRACK);}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 82 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 82 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {bvhlval.intVal = 0; /*fprintf(g_file, " %s ", yytext);*/ return(DOF_NAME);}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 84 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 84 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {bvhlval.intVal = 1; /*fprintf(g_file, " %s ", yytext);*/ return(DOF_NAME);}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 86 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 86 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {bvhlval.intVal = 2; /*fprintf(g_file, " %s ", yytext);*/ return(DOF_NAME);}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 88 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 88 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {bvhlval.intVal = 3; /*fprintf(g_file, " %s ", yytext);*/ return(DOF_NAME);}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 90 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 90 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {bvhlval.intVal = 4; /*fprintf(g_file, " %s ", yytext);*/ return(DOF_NAME);}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 92 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 92 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {bvhlval.intVal = 5; /*fprintf(g_file, " %s ", yytext);*/ return(DOF_NAME);}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 94 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 94 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {bvhlval.intVal = 6; /*fprintf(g_file, " %s ", yytext);*/ return(DOF_NAME);}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 96 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 96 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {bvhlval.intVal = 7; /*fprintf(g_file, " %s ", yytext);*/ return(DOF_NAME);}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 98 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 98 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {bvhlval.intVal = 8; /*fprintf(g_file, " %s ", yytext);*/ return(DOF_NAME);}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 100 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 100 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {BEGIN 0; bvhlval.intVal = atoi(yytext); /*fprintf(g_file, " %s ", yytext);*/ return NUMBER_INT;}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 102 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 102 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {bvhlval.floatVal = static_cast<float>(atof(yytext)); /*fprintf(g_file, " %s ", yytext);*/ return (NUMBER);}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 104 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 104 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {bvhlval.name = yytext; /*fprintf(g_file, " <name> %s ", yytext);*/ return (NAME);}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 106 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 106 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 {linenum++;};
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 108 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 108 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 /* ignore whitespace*/;
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 110 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 110 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 ECHO;
 	YY_BREAK
 #line 901 "bvhLexer.cpp"
@@ -1786,7 +1784,7 @@ int main()
 	return 0;
 	}
 #endif
-#line 110 "f:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
+#line 110 "d:\\code\\Piavca\\src\\StdMotionImp\\bvhLexer.lpp"
 
 
 int yywrap()

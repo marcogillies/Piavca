@@ -565,7 +565,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\bvhParser.tab.cpp"
+				RelativePath=".\bvhParser.cpp"
 				>
 			</File>
 			<File
@@ -583,10 +583,6 @@
 			>
 			<File
 				RelativePath="bvhParser.h"
-				>
-			</File>
-			<File
-				RelativePath=".\bvhParser.tab.hpp"
 				>
 			</File>
 			<File
