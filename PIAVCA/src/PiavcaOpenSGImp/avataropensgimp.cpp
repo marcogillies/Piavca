@@ -313,6 +313,15 @@ void AvatarOpenSGImp::clearChange(int jointId)
 
 void	AvatarOpenSGImp::setRootPosition (const Vec &Position)
 {
+   bb_dirty_flag = true;
+   if(!charac)
+   {
+       Piavca::Error(_T("setRootOrientation called on empty avatar"));
+	   return;
+   }
+   osg::Vec3f v(Position.X(), Position.Y(), Position.Z());
+   //q.setValueAsQuat(Orientation.I(), Orientation.J(), Orientation.K(), Orientation.S());
+   charac->setBonePosRel(v, 0);
    /*
 	bb_dirty_flag = true;
    if(!charac)
@@ -326,26 +335,19 @@ void	AvatarOpenSGImp::setRootPosition (const Vec &Position)
 }
 Vec		AvatarOpenSGImp::getRootPosition ()
 {
-   /*
    if(!charac)
    {
-       Piavca::Error("setJointOrientation called on empty avatar");
-	   return Quat();
+       Piavca::Error(_T("setJointOrientation called on empty avatar"));
+	   return Vec();
    }   
-   if(charac->getBoneQuats().size() <= 0)
+   osg::MFVec3f bone_vecs = charac->getBonePosRel();
+   if(bone_vecs.size() <= 0)
    {
-       Piavca::Error("setJointOrientation called on an avatar with no joints");
-	   return Quat();
+       Piavca::Error(_T("getRootOrientation called on an avatar with no joints"));
+	   return Vec();
    }   
-  
-
-   charac->getBoneQuats()[joints[jointId].cal3dId].setValueAsQuat(q.I(), q.J(), q.K(), q.S());
-   //osg::Quaternion q = charac->getAbsoluteBoneQuats()[0];
-   osg::Quaternion q = charac->getBoneQuats()[0];
-   return Quat(q.w(), q.x(), q.y(), q.z());
-   */
-
-   return Vec();
+   osg::Vec3f v = bone_vecs[0];
+   return Vec(v.x(), v.y(), v.z());
 }
 void	AvatarOpenSGImp::setRootOrientation	(const Quat &Orientation)
 {
@@ -475,85 +477,95 @@ Quat AvatarOpenSGImp::getJointOrientation	(int jointId, jointCoord worldCoord)
 
 void AvatarOpenSGImp::setJointPosition(int jointId, const Vec &Position, jointCoord worldCoord)
 {
-   /*
-	bb_dirty_flag = true;
+   bb_dirty_flag = true;
    if(jointId < 0)
    {
-       Piavca::Error("Null joint Id passed in to setJointOrientation");
+       Piavca::Error(_T("Null joint Id passed in to setJointPosition"));
 	   return;
    }
    if(joints[jointId].cal3dId < 0)
    {
-       Piavca::Error("setJointOrientation called on joint missing in avatar");
+       Piavca::Error(_T("setJointPosition called on joint missing in avatar"));
 	   return;
    }
    if(!charac)
    {
-       Piavca::Error("setJointOrientation called on empty avatar");
+       Piavca::Error(_T("setJointPosition called on empty avatar"));
 	   return;
    }
-
-   charac->getBoneQuats()[joints[jointId].cal3dId].setValueAsQuat(Orientation.I(), Orientation.J(), Orientation.K(), Orientation.S());
-  */ 
+   osg::MFVec3f bone_pos = charac->getBonePosRel();
+   if(bone_pos.size() <= 0)
+   {
+       Piavca::Error(_T("setJointPosition called on an avatar with no joints"));
+   }   
+   osg::Vec3f v(Position.X(), Position.Y(), Position.Z());
+   charac->setBonePosRel(v, joints[jointId].cal3dId);
 };
 
 
 Vec AvatarOpenSGImp::getJointBasePosition (int jointId, jointCoord worldCoord)
 {
-
-  /*if(jointId < 0)
+	 if(jointId < 0)
   {
-      Piavca::Error("Null joint Id passed in to getJointBasePosition");
+      Piavca::Error(_T("Null joint Id passed in to getJointBasePosition"));
 	  return Vec();
   }
   if(joints[jointId].cal3dId < 0)
   {
-      Piavca::Error("getJointBasePosition called on joint missing in avatar");
+      Piavca::Error(_T("getJointBasePosition called on joint missing in avatar"));
 	  return Vec();
   }
-   if(!cal_model)
+   if(!charac)
    {
-       Piavca::Error("getJointBasePosition called on empty avatar");
+       Piavca::Error(_T("getJointBasePosition called on empty avatar"));
 	   return Vec();
    }
-
-   CalVector calv;
+   osg::MFVec3f bone_pos = charac->getBonePosRel();
+   if(bone_pos.size() <= 0)
+   {
+       Piavca::Error(_T("getJointBasePosition called on an avatar with no joints"));
+	   return Vec();
+   }   
    
-   CalSkeleton *skel = cal_model->getSkeleton();
-   if(!skel)
-   {
-       Piavca::Error("getJointBasePosition called on avatar with no skeleton");
-	   return Vec();
-   }
-   CalBone *bone = skel->getBone(joints[jointId].cal3dId);
-   if(!bone)
-   {
-       Piavca::Error("getJointBasePosition called on joint that does not exist in avatar");
-	   return Vec();
-   }
 
-  switch (worldCoord)	
+
+   switch (worldCoord)	
       {
       case JOINTLOCAL_COORD:	
-			calv = bone->getTranslation();
-			return CalVecToVec(calv);
-	  break;
-      case WORLD_COORD:
-			calv = bone->getTranslationAbsolute();
-			return CalVecToVec(calv);
-	  break;
-      case LOCAL_COORD:
 		  {
-			calv = bone->getTranslationAbsolute();
-			Vec v = CalVecToVec(calv);
-			v -= getRootPosition();
-			return v;
+			osg::Vec3f v = charac->getBonePosRel()[joints[jointId].cal3dId];
+			return Vec(v.x(), v.y(), v.z());
 		  }
 	  break;
+      case WORLD_COORD:	
+		  {
+			osg::Vec3f v = charac->getBonePosAbs()[joints[jointId].cal3dId];
+			return Vec(v.x(), v.y(), v.z());
+		  }
+	  break;
+      case LOCAL_COORD:
+		  {	
+			osg::Vec3f v = charac->getBonePosAbs()[joints[jointId].cal3dId];
+			Vec _v(v.x(), v.y(), v.z());
+			_v = _v-getRootPosition();
+			return _v;
+		  }
+	  break;
+      /*
+	  case BASE_COORD:
+		  {
+			calq = bone->getCoreBone()->getRotation();
+			return CalQuatToQuat(calq);
+		  }
+	  break;
+      case INCLUDINGBASE_COORD:	
+			calq = bone->getRotation();
+			return CalQuatToQuat(calq);
+	  break;
+	  */
       default:	assert(0);
       }
-	  */
-  return Vec(); 
+  return Vec();
 };
 
 void AvatarOpenSGImp::scaleRoot(Vec scale)
@@ -570,6 +582,8 @@ void	AvatarOpenSGImp::platformSpecific_timeStep (float time)
 {
 	beginEditCP(charac, osg::Character::BoneQuatsRelFieldMask);
     endEditCP(charac, osg::Character::BoneQuatsRelFieldMask);
+	beginEditCP(charac, osg::Character::BonePosRelFieldMask);
+    endEditCP(charac, osg::Character::BonePosRelFieldMask);
 };
 
 void	AvatarOpenSGImp::render ()
