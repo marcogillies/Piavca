@@ -46,6 +46,8 @@
 
 #include "OSGCharacterModelBase.h"
 
+#include "AvatarOpenSGImp.h"
+
 #include <cal3d/cal3d.h>
 
 OSG_BEGIN_NAMESPACE
@@ -104,6 +106,10 @@ class /*OSG_CONTRIBLIB_DLLMAPPING*/ CharacterModel : public CharacterModelBase
     /*! \{                                                                 */
 
     CalCoreModel *loadConfig(std::string filename);
+	CalCoreModel *getCalCoreModel()
+	{
+		return _coreModel;
+	};
     void convertMaterials(std::string configfile);
 
     void activateShader(void);
@@ -127,6 +133,8 @@ class /*OSG_CONTRIBLIB_DLLMAPPING*/ CharacterModel : public CharacterModelBase
     // prohibit default functions (move to 'public' if you need one)
 
     void operator =(const CharacterModel &source);
+
+	friend class Piavca::AvatarOpenSGImp;
 };
 
 typedef CharacterModel *CharacterModelP;

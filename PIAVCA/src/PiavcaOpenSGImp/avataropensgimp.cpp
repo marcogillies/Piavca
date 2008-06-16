@@ -121,10 +121,12 @@ AvatarOpenSGImp::AvatarOpenSGImp(osg::CharacterPtr character, osg::NodeRefPtr no
 
 	
 	// find the parents of each joint
-	/*for(i = 0; i < (int) joints.size(); i++)
+	CalCoreModel *calModel = model->getCalCoreModel();
+	CalCoreSkeleton *skel = calModel->getCoreSkeleton();
+	for(i = 0; i < (int) joints.size(); i++)
 	{	  
 		if(joints[i].cal3dId < 0) continue;
-		CalCoreBone *corebone = skel->getBone(joints[i].cal3dId)->getCoreBone();
+		CalCoreBone *corebone = skel->getCoreBone(joints[i].cal3dId);
 		int parentId = corebone->getParentId();
 		for(int j = 0; j < (int) joints.size(); j++)
 			if(joints[j].cal3dId == parentId)
@@ -133,7 +135,6 @@ AvatarOpenSGImp::AvatarOpenSGImp(osg::CharacterPtr character, osg::NodeRefPtr no
 				break;
 			}
 	}
-	*/
 
    //platformSpecific_timeStep (Piavca::Core::getCore()->getTime());
    base_bb = getBoundBox();
