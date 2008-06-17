@@ -49,7 +49,16 @@ public:
 	ChoiceMotionWithDefault():ChoiceMotion() {};
 	ChoiceMotionWithDefault(const MotionVec &mpv):ChoiceMotion(mpv){};
 	ChoiceMotionWithDefault(const ChoiceMotionWithDefault &c):ChoiceMotion(c){};
+	
 	~ChoiceMotionWithDefault(){};
+
+	virtual Motion *clone(){return new ChoiceMotionWithDefault(*this);};
+
+	//! returns the name of the type
+	Piavca::tstring getClassName(){return "ChoiceMotionWithDefault";};
+
+	//! casts a motion to this type
+	static ChoiceMotionWithDefault *castToThisType(Motion *m){return dynamic_cast<ChoiceMotionWithDefault *>(m);};
 
 	
 	virtual void reset();

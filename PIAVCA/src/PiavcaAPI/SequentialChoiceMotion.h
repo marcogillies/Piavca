@@ -49,7 +49,16 @@ public:
 	SequentialChoiceMotion():ChoiceMotion() {};
 	SequentialChoiceMotion(const MotionVec &mpv):ChoiceMotion(mpv){};
 	SequentialChoiceMotion(const SequentialChoiceMotion &c):ChoiceMotion(c){};
+	
 	~SequentialChoiceMotion(){};
+
+	virtual Motion *clone(){return new SequentialChoiceMotion(*this);};
+
+	//! returns the name of the type
+	Piavca::tstring getClassName(){return "SequentialChoiceMotion";};
+
+	//! casts a motion to this type
+	static SequentialChoiceMotion *castToThisType(Motion *m){return dynamic_cast<SequentialChoiceMotion *>(m);};
 
 	
 	virtual int makeChoice();
