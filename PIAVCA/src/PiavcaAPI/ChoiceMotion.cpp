@@ -33,7 +33,7 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-#include "ChoiceMotion.h"
+#include "ChoiceMotion.h" 
 #include "Sequence.h"
 #include "SavedFramesTransition.h"
 #include "SubMotion.h"

@@ -21,7 +21,7 @@ def calculateDistance(mot, t, expmaps):
 
 # create a motion from seq that can be smoothly interrupted
 # by any of the motions in interruptions
-def InterruptableSequence(seq, interruptions, fps = 20, threshold=6.5):
+def InterruptableSequence(seq, interruptions, fps = 20, threshold=6.5, window=0.2):
 	expmaps = {}
 	
 	# create a set of exponential maps 
@@ -75,8 +75,9 @@ def InterruptableSequence(seq, interruptions, fps = 20, threshold=6.5):
 			if d < d_plus:
 				if d_minus == None or d < d_minus:
 					if d < threshold:
-						values.append(d)
-						minima.append(float(i)/fps)
+						if len(minima) == 0 or float(i)/fps - minima[-1] > 2.0*window:
+							values.append(d)
+							minima.append(float(i)/fps)
 		d_minus = d
 		d = d_plus
 	
@@ -95,6 +96,7 @@ def InterruptableSequence(seq, interruptions, fps = 20, threshold=6.5):
 	choice1 = Piavca.SequentialChoiceMotion()
 	choice1.setSmooth(False)
 	choice1.setAccumulateRoot(False)
+	choice1.setWindowLength(window)
 	for mot in submots:
 		choice1.addMotion(mot)
 	choice2 = Piavca.ChoiceMotionWithDefault()

@@ -22,7 +22,7 @@ class MotionProxy:
 #					motiontypename = key
 		
 	def getName(self):
-		print "motion", self.motion, self.motion.thisown
+		#print "motion", self.motion, self.motion.thisown
 		return type(self.motion).__name__ + "  " + self.motion.getName()
 	
 	def getMotion(self):

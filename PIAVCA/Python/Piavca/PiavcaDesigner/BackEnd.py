@@ -88,20 +88,20 @@ class BackEnd:
 			
 	def setMotion(self, motionname):
 		self.setTimeFraction(0.0)
-		print "motion name", motionname, type(motionname)
+		#print "motion name", motionname, type(motionname)
 		motion = self.getMotionByName(motionname)
-		print "motion", motion
+		#print "motion", motion
 		if motion == None:
 			raise ValueError("no motion named" + str(motionname))
 		else:
-			print "motion", motion, "ownership", motion.thisown
+			#print "motion", motion, "ownership", motion.thisown
 			if motion.getName() == "":
 				dialog_return = textEntryDialog (message="Please enter a name for this motion")
 				motion_name = dialog_return.text.encode("latin-1")
 				Piavca.loadMotion(motion_name, motion)
 			self.motion = MotionProxy(motion, self)#motion
 			self.submotion = self.motion
-			print "avatar", self.avatar
+			#print "avatar", self.avatar
 			if self.avatar:
 				print "playing", self.avatar, self.motion
 				self.avatar.playMotionDirect(self.motion.getMotion())
