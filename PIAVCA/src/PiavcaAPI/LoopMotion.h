@@ -75,12 +75,17 @@ namespace Piavca
 				
 		virtual void preFrame(float time)
 		{
-			//std::cout << "loop motion.preframe\n";
+			std::cout << "loop motion.preframe\n";
+			if (filterMot)
+			{
+				std::cout << filterMot->getMotionLength()  << std::endl;
+				std::cout << filterMot->getEndTime()  << std::endl;
+			}
 			if (!lock 
 				&& (reblend_flag
 				|| ((endTime < 0 || time < endTime)
 				&& (!filterMot ||
-				(filterMot->getMotionLength() > 0 && time > filterMot->getEndTime())))))
+				(filterMot->getMotionLength() >= 0 && time > filterMot->getEndTime())))))
 				{
 				    LoopMotion *nonConstThis = const_cast<LoopMotion *>(this);
 					nonConstThis->lock = true;

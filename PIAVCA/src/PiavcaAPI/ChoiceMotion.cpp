@@ -293,9 +293,9 @@ void ChoiceMotion::reset()
 		SubMotion *remainder = new SubMotion();
 		remainder->setMotion(mot);
 		remainder->setStart(windowLength);
-		//remainder->setEnd(mot->getMotionLength() - windowLength);
-		//mot = new Sequence(trans, remainder);
-		mot = trans;
+		remainder->setEnd(mot->getMotionLength() - windowLength);
+		mot = new Sequence(trans, remainder);
+		//mot = trans;
 	};
 	
 	setMotion(mot);

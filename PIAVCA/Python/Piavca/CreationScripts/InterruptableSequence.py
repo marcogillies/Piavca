@@ -9,6 +9,8 @@ def calculateDistance(mot, t, expmaps):
 		# don't take the root into account as we reposition the motion
 		if j == Piavca.root_orientation_id or j == Piavca.root_position_id :
 			continue
+		if mot.isNull(j):
+			continue
 		joint_type = mot.getTrackType(j)
 		if joint_type & Piavca.FLOAT_TYPE:
 			sum += abs(mot.getFloatValueAtTime(j, t) - expmaps[(j,Piavca.FLOAT_TYPE)])
@@ -34,6 +36,8 @@ def InterruptableSequence(seq, interruptions, fps = 20, threshold=6.5, window=0.
 		# don't take the root into account as we reposition the motion
 		if j == Piavca.root_orientation_id or j == Piavca.root_position_id :
 			continue
+		if seq.isNull(j):
+			continue
 		joint_type = seq.getTrackType(j)
 		# the joint orientations of 
 		# this joint at the start and end 
@@ -43,6 +47,8 @@ def InterruptableSequence(seq, interruptions, fps = 20, threshold=6.5, window=0.
 				continue
 			extremeFrames = []
 			for m in interruptions:
+				if m.isNull(j):
+					continue
 				if not( m.getTrackType(j) & t) :
 					continue
 				start_time = m.getStartTime()
@@ -108,7 +114,7 @@ def InterruptableSequence(seq, interruptions, fps = 20, threshold=6.5, window=0.
 										
 if __name__ == "__main__":
 	import os
-	os.chdir("../../../../../Data/performing_presence/scenario2008/bill/")
+	os.chdir("../../../../Data/performing_presence/scenario2008/bill/")
 	import Piavca.XMLMotionFile
 	Piavca.XMLMotionFile.parse("Interruptions.xml")
 	m, numMinima = InterruptableSequence(Piavca.getMotion("second_projections2_fully_labelled_megan"), [Piavca.getMotion(m) for m in ["Interruption" + str(i) for i in range(1,5)]])

@@ -105,7 +105,7 @@ def parseAttribute(attrValue):
 		if value == "True" or value == "true":
 			possible_values.append(True)
 		if value == "False" or value == "false":
-			possible_values.append(True)
+			possible_values.append(False)
 	
 	# maybe its a list of numbers
 	try:
