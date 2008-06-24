@@ -87,6 +87,12 @@ namespace Piavca
 
 		void setAccumulateRoot(bool b)
 		{
+			choiceMot->setAccumulateRoot(b);
+		};
+
+		bool getAccumulateRoot()
+		{
+			return choiceMot->getAccumulateRoot();
 		};
 
 		void setBlendInterval(float interval)

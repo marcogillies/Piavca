@@ -105,6 +105,9 @@ namespace Piavca
 
 		//! Sets the scale factor for the postion components of the motion.
 	    void setScaleFactor(float scale){scaleFactor = scale;};
+
+		//! Gets the scale factor for the postion components of the motion.
+	    float getScaleFactor(){return scaleFactor;};
 	};
 };
 

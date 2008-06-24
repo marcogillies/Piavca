@@ -114,7 +114,7 @@ public:
 	{
 		accumulateRoot = a;	
 	};
-	bool getAccumulateRoott()
+	bool getAccumulateRoot()
 	{
 		return accumulateRoot;	
 	};

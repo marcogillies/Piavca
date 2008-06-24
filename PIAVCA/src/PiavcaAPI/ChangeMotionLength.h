@@ -71,7 +71,8 @@ namespace Piavca
 		//! casts a motion to this type
 		static ChangeMotionLength *castToThisType(Motion *m){return dynamic_cast<ChangeMotionLength *>(m);};
 
-		void setMotionLength(float len)
+		
+		void setLength(float len)
 		{
 			length = len;
 			if(filterMot)
@@ -86,10 +87,17 @@ namespace Piavca
 			}
 		};
 
+
+		//! gets the length of the motion in seconds
+		float getLength() const
+		{
+			return length;
+		};
+
 		//! gets the length of the motion in seconds
 		virtual float getMotionLength() const
 		{
-			return length;
+			return getLength();
 		};
 
 		virtual void setMotion(Motion *mot)

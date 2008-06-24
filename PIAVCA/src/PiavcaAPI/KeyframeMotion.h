@@ -162,7 +162,6 @@ namespace Piavca
 		virtual void setFacial(bool _facial)
 		{
 			std::cout << this << std::endl;
-			Piavca::Error(_T("Set Facial"));
 			imp->facial = _facial;
 		}
 

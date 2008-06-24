@@ -55,6 +55,20 @@ class ButtonParamEntry(ParamEntry):
 		self.motionproxy.backend.timeUpdate()
 		print "paramentry:OnButton:end"
 	
+	
+class BoolParamEntry(ButtonParamEntry):
+	
+	def initSubtype(self):	
+		self.button = wx.Button(self, -1, self.param_name)
+		self.Bind(wx.EVT_BUTTON, self.OnButton, self.button)
+		self.sizer.Add(self.button, 1, wx.EXPAND)
+	
+	def OnButton(self, evt):
+		print "paramentry:OnButton"
+		val = self.motionproxy.getParameterVal(self.param_name)
+		self.motionproxy.setParameterVal(self.param_name, not val)
+		print "paramentry:OnButton:end"
+	
 		
 class ScalarParamEntry(ParamEntry):
 	
@@ -189,11 +203,14 @@ class ParameterWindow(wx.Panel):
 			self.children = []
 			for param_name in parameters.keys():
 				valtype = type(parameters[param_name])
+				ctrl = None
 				if valtype == str:
 					if param_name == "Filename":
 						ctrl = FilenameParamEntry(param_name, motionproxy, self)
 					else:
 						ctrl = StringParamEntry(param_name, motionproxy, self)
+				if valtype == bool:
+					ctrl = BoolParamEntry(param_name, motionproxy, self)
 				if valtype == int:
 					ctrl = IntParamEntry(param_name, motionproxy, self)
 				if valtype == float:
@@ -203,7 +220,8 @@ class ParameterWindow(wx.Panel):
 				if valtype == Piavca.Quat:
 					ctrl = QuatParamEntry(param_name, motionproxy, self)
 				
-				self.addChildControl(param_name, ctrl)
+				if ctrl:
+					self.addChildControl(param_name, ctrl)
 				
 				
 			if "Start" in parameters.keys() and "End" in parameters.keys():

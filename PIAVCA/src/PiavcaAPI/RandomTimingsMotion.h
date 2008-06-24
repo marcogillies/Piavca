@@ -91,9 +91,19 @@ public:
 		minScale = minTimeScale;
 	}
 
+	float getMinTimeScale()
+	{
+		return minScale;
+	}
+
 	void setMaxTimeScale(float maxTimeScale)
 	{
 		maxScale = maxTimeScale;
+	}
+
+	float getMaxTimeScale()
+	{
+		return maxScale;
 	}
 
 	//! This is called each time around the loop

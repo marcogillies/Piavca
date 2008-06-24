@@ -499,7 +499,7 @@ template<> void MotionParserTyped<ChangeMotionLength>::editMotionInternal(Change
 			Piavca::Error(_T("length is not a number"));
 		}
 		else
-			mot->setMotionLength(len);
+			mot->setLength(len);
 };
 
 

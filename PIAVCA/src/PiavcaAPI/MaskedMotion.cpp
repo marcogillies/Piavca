@@ -93,11 +93,17 @@ void MotionMask::setAllMask(bool val)
 }
 bool MotionMask::getMask(int track) const
 {
-	if(track > 0 && track < (int)m_body.size())
-		return m_body[track];
-	track = -track;
-	if(track < (int)m_facial.size())
-		return m_facial[track];
+	if(track > 0)
+	{
+		if (track < (int)m_body.size())
+			return m_body[track];
+	}
+	else
+	{
+		track = -track;
+		if(track < (int)m_facial.size())
+			return m_facial[track];
+	}
 	return false;
 };
 

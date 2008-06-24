@@ -95,9 +95,18 @@ namespace Piavca
 
 		void setTransitionFunction(TransitionFunction *tf){transfunc = tf;};
 		virtual void setTransitionTime1(float t1=MotionEnd);
+		virtual float getTransitionTime1()
+		{
+			return transitionTime1;
+		};
 		virtual void setTransitionTime2(float t2=MotionStart);
+		virtual float getTransitionTime2()
+		{
+			return transitionTime2;
+		};
 
 		void setWindow(float w){window = w;};
+		float getWindow(){return window;};
 		void setMotion1(Motion *mot)
 		{
 			TwoMotionCombiner::setMotion1(mot);

@@ -86,6 +86,7 @@ namespace Piavca
 	    virtual Quat  getQuatValueAtTimeInternal  (int trackId, float time);
 
 		void setBlendFactor(float _blend){blend = _blend;};
+		float getBlendFactor(){return blend;};
 };
 
 };

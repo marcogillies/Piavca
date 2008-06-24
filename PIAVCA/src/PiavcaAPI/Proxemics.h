@@ -152,10 +152,13 @@ public:
 
 	//! sets the desired distance to another avatar
 	void setDistance (float d){desiredDistance = d;};
+	float getDistance (){return desiredDistance;};
 	//! sets the threshold, the allowable error in distance before moving
 	void setThreshold(float t){threshold = t;};
+	float getThreshold (){return threshold;};
 	//! sets the threshold, the allowable error in distance before moving
 	void setAngleThreshold(float a){anglethreshold = a;};
+	float getAngleThreshold (){return anglethreshold;};
 	//! turns off maintaining distance
 	void turnOff(bool b){distanceOff = b;};
 

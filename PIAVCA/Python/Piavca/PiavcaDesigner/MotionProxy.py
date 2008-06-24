@@ -79,13 +79,15 @@ class MotionProxy:
 	def getParameters(self):
 		parameters = {}
 		
+		print "getting parameters"
 		mtype = type(self.motion)
-		for key in mtype.__dict__.keys():
+		for key in dir(mtype):
 			if key[:3] == "get":
-				print key
+				print key, "set" + key[3:]
 				if hasattr(self.motion, "set" + key[3:]):
 					print key
 					if key[3:len("Motion")+3] == "Motion":
+						print "found Motion in paramname"
 						continue
 					method = getattr(self.motion, key)
 					value = method()

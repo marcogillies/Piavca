@@ -99,6 +99,12 @@ namespace Piavca
 			offset = offs;
 			if(filterMot)filterMot->setStartTime(getStartTime()+offset);
 		};
+
+		//! Sets the scale factor for the postion components of the motion.
+	    float getOffset()
+		{
+			return offset;
+		};
 	};
 }
 #endif //TIME_OFFSET_H

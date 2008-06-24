@@ -72,6 +72,7 @@ namespace Piavca
 		};
 
 		void setEndTime(float t){endTime = t;};
+		float setEndTime(){return endTime;};
 				
 		virtual void preFrame(float time)
 		{

@@ -87,6 +87,7 @@ namespace Piavca
 		void load(Avatar *av);
 
 		void setBlendInterval(float i){interval = i;};
+		float getBlendInterval(){return interval;};
 
 		virtual bool isNull(int trackId)const;
 

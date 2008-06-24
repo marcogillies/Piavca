@@ -78,10 +78,21 @@ namespace Piavca
 		//! casts a motion to this type
 		static PostureBlend *castToThisType(Motion *m){return dynamic_cast<PostureBlend *>(m);};
 
-		void setBlendInterval(float i){interval = i;};
+		void setBlendInterval(float i)
+		{
+			interval = i;
+		};
+		float getBlendInterval()
+		{
+			return interval;
+		};
 		void setAccumulateRoot(bool b)
 		{
 			accumulateRoot = b;
+		};
+		bool getAccumulateRoot()
+		{
+			return accumulateRoot;
 		};
 	    
 		virtual void reset();

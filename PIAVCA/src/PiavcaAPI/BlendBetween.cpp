@@ -49,9 +49,9 @@ BlendBetween::BlendBetween(const BlendBetween &b)
 float BlendBetween::getFloatValueAtTimeInternal (int trackId, float time)
 {
 	// if this track doesn't exist in mot2 use mot1 otherwise interpolated between them
-	if(mot2->isNull(trackId))
+	if(!mot2 || mot2->isNull(trackId))
 	{
-		if(mot1->isNull(trackId))
+		if(!mot1 || mot1->isNull(trackId))
 		{
 			Piavca::Error(_T("trying to blend between two invalid tracks"));
 			return 0.0;
@@ -67,9 +67,9 @@ float BlendBetween::getFloatValueAtTimeInternal (int trackId, float time)
 Vec BlendBetween::getVecValueAtTimeInternal   (int trackId, float time)
 {
 	// if this track doesn't exist in mot2 use mot1 otherwise interpolated between them
-	if(mot2->isNull(trackId))
+	if(!mot2 || mot2->isNull(trackId))
 	{
-		if(mot1->isNull(trackId))
+		if(!mot1 || mot1->isNull(trackId))
 		{
 			Piavca::Error(_T("trying to blend between two invalid tracks"));
 			return Vec();
@@ -85,9 +85,9 @@ Vec BlendBetween::getVecValueAtTimeInternal   (int trackId, float time)
 Quat BlendBetween::getQuatValueAtTimeInternal  (int trackId, float time)
 {
 	// if this track doesn't exist in mot2 use mot1 otherwise interpolated between them
-	if(mot2->isNull(trackId))
+	if(!mot2 || mot2->isNull(trackId))
 	{
-		if(mot1->isNull(trackId))
+		if(!mot1 || mot1->isNull(trackId))
 		{
 			Piavca::Error(_T("trying to blend between two invalid tracks"));
 			return Quat();
