@@ -55,6 +55,7 @@ class MotionProxy:
 			m = Piavca.getRealMotionType(m)
 			if m != None:
 				motionlist.append(MotionProxy(m, self.backend, self))
+		print "got motion list"
 		return motionlist
 	
 	def addChild(self, name):

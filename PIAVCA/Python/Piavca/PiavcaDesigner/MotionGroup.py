@@ -52,16 +52,20 @@ class MotionGroup(wx.Panel):
 		sizer.Add(self.view, 0,  wx.ALIGN_CENTER)
 		
 		children = self.motionproxy.getChildren()
-		if len(children) > 0:
+		#print "got children"
+		#print children
+		if len(children) > 0 and len(children) < 20:
 			childSizer = wx.BoxSizer(wx.HORIZONTAL)
 			self.children = []
-			for child in children:
+			for i, child in enumerate(children):
+				print "child", i, "of", len(children)
 				self.children.append(MotionGroup(child, self))
 				childSizer.Add(self.children[-1])
 			sizer.Add(TreeLines(self.children, self), 0, wx.EXPAND)
 			sizer.Add(childSizer, 1, wx.ALIGN_CENTER)
 			
+		print "creating sizer for", len(children), "children"
 		self.SetSizer(sizer)
 		self.Fit()
-		
+		print "finished creating motion group"
 		

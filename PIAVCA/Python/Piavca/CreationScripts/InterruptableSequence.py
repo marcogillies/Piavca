@@ -23,7 +23,7 @@ def calculateDistance(mot, t, expmaps):
 
 # create a motion from seq that can be smoothly interrupted
 # by any of the motions in interruptions
-def InterruptableSequence(seq, interruptions, fps = 20, threshold=6.5, window=0.2):
+def InterruptableSequence(seq, interruptions, fps = 20, threshold=6.5, window=0.5):
 	expmaps = {}
 	
 	# create a set of exponential maps 
@@ -81,7 +81,7 @@ def InterruptableSequence(seq, interruptions, fps = 20, threshold=6.5, window=0.
 			if d < d_plus:
 				if d_minus == None or d < d_minus:
 					if d < threshold:
-						if len(minima) == 0 or float(i)/fps - minima[-1] > 2.0*window:
+						if len(minima) == 0 or float(i)/fps - minima[-1] > 4.0*window:
 							values.append(d)
 							minima.append(float(i)/fps)
 		d_minus = d
@@ -98,7 +98,9 @@ def InterruptableSequence(seq, interruptions, fps = 20, threshold=6.5, window=0.
 	# a sequential choice motion that plays the original motion
 	# a choice motion with default that allows us to interrupt
 	# and finally loop in all
-	submots = [Piavca.SubMotion(seq, start, end) for start, end in zip(minima[:-1], minima[1:])]
+	# we add "window" to the end time so that it works with 
+	# the smooth transitioning function
+	submots = [Piavca.SubMotion(seq, start, end+window) for start, end in zip(minima[:-1], minima[1:])]
 	choice1 = Piavca.SequentialChoiceMotion()
 	choice1.setSmooth(False)
 	choice1.setAccumulateRoot(False)
@@ -106,6 +108,7 @@ def InterruptableSequence(seq, interruptions, fps = 20, threshold=6.5, window=0.
 	for mot in submots:
 		choice1.addMotion(mot)
 	choice2 = Piavca.ChoiceMotionWithDefault()
+	choice2.setWindowLength(window)
 	choice2.addMotion(choice1)
 	for mot in interruptions:
 		choice2.addMotion(mot)
@@ -114,7 +117,7 @@ def InterruptableSequence(seq, interruptions, fps = 20, threshold=6.5, window=0.
 										
 if __name__ == "__main__":
 	import os
-	os.chdir("../../../../Data/performing_presence/scenario2008/bill/")
+	os.chdir("../../../Data/performing_presence/scenario2008/bill/")
 	import Piavca.XMLMotionFile
 	Piavca.XMLMotionFile.parse("Interruptions.xml")
 	m, numMinima = InterruptableSequence(Piavca.getMotion("second_projections2_fully_labelled_megan"), [Piavca.getMotion(m) for m in ["Interruption" + str(i) for i in range(1,5)]])

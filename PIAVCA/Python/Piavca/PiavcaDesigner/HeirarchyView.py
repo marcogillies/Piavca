@@ -37,6 +37,7 @@ class HeirarchyView(wx.ScrolledWindow):
 		if motionproxy != None:
 			print "creating motion group"
 			self.motionGroup = MotionGroup(motionproxy, self)
+			print "added motion group to heirarchy"
 			self.sizer.Add(self.motionGroup, 1, wx.EXPAND)
 			self.Fit()
 			self.Layout()
