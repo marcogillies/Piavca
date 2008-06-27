@@ -50,6 +50,7 @@
 #include "Hermite.h"
 #include "LoopMotion.h"
 #include "SmoothLoop.h"
+#include "PointAt.h"
 #include "LookAtMotion.h"
 #include "MaskedMotion.h"
 #include "MotionTransition.h"

@@ -23,15 +23,17 @@ class ParamEntry(wx.Panel):
 	
 	def update(self):
 		print "paramentry:update"
-		self.setValue(self.motionproxy.getParameterVal(self.param_name))
+		if self.motionproxy != None:
+			self.setValue(self.motionproxy.getParameterVal(self.param_name))
 		print "paramentry:update:end"
 		
 	def OnTextEntry(self, event):
 		print "paramentry:OnTextEntry"
-		val = self.getValue()
-		if val != None:
-			self.motionproxy.setParameterVal(self.param_name, val)
-			self.motionproxy.backend.timeUpdate()
+		if self.motionproxy != None:
+			val = self.getValue()
+			if val != None:
+				self.motionproxy.setParameterVal(self.param_name, val)
+				self.motionproxy.backend.timeUpdate()
 		print "paramentry:OnTextEntry:end"
 		
 	def setValue(self, val):
@@ -59,15 +61,15 @@ class ButtonParamEntry(ParamEntry):
 class BoolParamEntry(ButtonParamEntry):
 	
 	def initSubtype(self):	
-		self.button = wx.Button(self, -1, self.param_name)
-		self.Bind(wx.EVT_BUTTON, self.OnButton, self.button)
-		self.sizer.Add(self.button, 1, wx.EXPAND)
+		self.checkbox = wx.CheckBox(self, -1, self.param_name)
+		self.Bind(wx.EVT_CHECKBOX, self.OnTextEntry, self.checkbox)
+		self.sizer.Add(self.checkbox, 1, wx.EXPAND)
 	
-	def OnButton(self, evt):
-		print "paramentry:OnButton"
-		val = self.motionproxy.getParameterVal(self.param_name)
-		self.motionproxy.setParameterVal(self.param_name, not val)
-		print "paramentry:OnButton:end"
+	def setValue(self, val):
+		self.checkbox.SetValue(val)
+	
+	def getValue(self):
+		return self.checkbox.GetValue()
 	
 		
 class ScalarParamEntry(ParamEntry):
@@ -135,7 +137,7 @@ class MultiParamEntry(ParamEntry):
 			self.texts[i].SetValue(str(val[i]))
 		print "paramentry:setValue:end"
 		
-class VecParamEntry(ScalarParamEntry):
+class VecParamEntry(MultiParamEntry):
 	dim = 3 
 	def getValue(self):
 		try:
@@ -146,7 +148,7 @@ class VecParamEntry(ScalarParamEntry):
 			return None
 			self.texts[i].SetValue(str(val[i]))
 		
-class QuatParamEntry(ScalarParamEntry):
+class QuatParamEntry(MultiParamEntry):
 	dim = 4
 	def getValue(self):
 		try:
@@ -155,7 +157,86 @@ class QuatParamEntry(ScalarParamEntry):
 			return val
 		except ValueError:
 			return None
+			
+
+class ChoiceParamEntry(ParamEntry):
+	
+	def initSubtype(self):	
+		choicelist = self.getChoiceList()
+		self.choice = wx.Choice(self, -1, choices=choicelist)
+		self.Bind(wx.EVT_CHOICE, self.OnTextEntry, self.choice)
+		self.sizer.Add(self.choice, 1, wx.EXPAND)
 		
+class AvatarParamEntry(ChoiceParamEntry):
+
+	def getChoiceList(self):
+		core = Piavca.Core.getCore()
+		return core.getAvatarNames()
+		
+	def setValue(self, val):
+		name = val.getName()
+		self.choice.SetStringSelection(name)
+		
+	def getValue(self):
+		name = self.choice.GetStringSelection()
+		core = Piavca.Core.getCore()
+		return core.getAvatar(name)
+		
+class JointParamEntry(ChoiceParamEntry):
+
+	def getChoiceList(self):
+		core = Piavca.Core.getCore()
+		joints = [core.getTrackName(i) for i in range(core.getMaxExpressionId()+1, core.getMaxJointId())]
+		return joints
+		
+	def setValue(self, val):
+		core = Piavca.Core.getCore()
+		name = core.getTrackName(val)
+		self.choice.SetStringSelection(name)
+		
+	def getValue(self):
+		name = self.choice.GetStringSelection()
+		core = Piavca.Core.getCore()
+		return core.getTrackId(name)
+		
+		
+
+class SetParamEntry(ParamEntry):
+	
+	def initSubtype(self):	
+		choicelist = self.getChoiceList()
+		self.listbox = wx.CheckListBox(self, -1, choices=choicelist)
+		self.Bind(wx.EVT_CHECKLISTBOX, self.OnTextEntry, self.listbox)
+		self.sizer.Add(self.listbox, 1, wx.EXPAND)
+		
+class JointSetParamEntry(SetParamEntry):
+
+	def getChoiceList(self):
+		core = Piavca.Core.getCore()
+		joints = [core.getTrackName(i) for i in range(core.getMaxExpressionId()+1, core.getMaxJointId())]
+		return joints
+		
+		
+class MaskParamEntry(JointSetParamEntry):
+
+	def setValue(self, val):
+		core = Piavca.Core.getCore()
+		for jointId in range(core.getMaxExpressionId()+1, core.getMaxJointId()):
+			b = val.getMask(jointId)
+			name=core.getTrackName(jointId)
+			index = self.listbox.FindString(name)
+			if index >= 0:
+				self.listbox.Check(index, b)
+		
+	def getValue(self):
+		core = Piavca.Core.getCore()
+		mask = Piavca.MotionMask()
+		for i in range(self.listbox.GetCount()):
+			name = self.listbox.GetString(i)
+			val = self.listbox.IsChecked(i)
+			jointid = core.getTrackId(name)
+			mask.setMask(jointid, val)
+		return mask
 
 class ParameterWindow(wx.Panel):
 	def __init__(self, backend,  parent=None, id=-1, pos=wx.DefaultPosition, size=wx.DefaultSize, style=0, name="ParameterWindow"):
@@ -212,13 +293,18 @@ class ParameterWindow(wx.Panel):
 				if valtype == bool:
 					ctrl = BoolParamEntry(param_name, motionproxy, self)
 				if valtype == int:
-					ctrl = IntParamEntry(param_name, motionproxy, self)
+					if param_name[-len("JointId"):] == "JointId":
+						ctrl = JointParamEntry(param_name, motionproxy, self)
+					else:
+						ctrl = IntParamEntry(param_name, motionproxy, self)
 				if valtype == float:
 					ctrl = FloatParamEntry(param_name, motionproxy, self)
 				if valtype == Piavca.Vec:
 					ctrl = VecParamEntry(param_name, motionproxy, self)
 				if valtype == Piavca.Quat:
 					ctrl = QuatParamEntry(param_name, motionproxy, self)
+				if valtype == Piavca.MotionMask:
+					ctrl = MaskParamEntry(param_name, motionproxy, self)
 				
 				if ctrl:
 					self.addChildControl(param_name, ctrl)

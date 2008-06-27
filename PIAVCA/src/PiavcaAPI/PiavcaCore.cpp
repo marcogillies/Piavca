@@ -205,7 +205,7 @@ public:
 
 tstring Core::getJointName(int jointId)
 {
-	if (jointId > maxJointId)
+	if (jointId >= maxJointId)
 		return "";
 	std::map<tstring, int> ::iterator it = std::find_if(jointMap.begin(), jointMap.end(), findId(jointId));
 	return (*it).first;
@@ -263,7 +263,7 @@ void Core::addExpressionNameSet(Piavca::StringVector names)
 
 tstring Core::getExpressionName(int expressionId)
 {
-	if (expressionId < maxExpressionId)
+	if (expressionId <= maxExpressionId)
 		return "";
 	std::map<tstring, int> ::iterator it = std::find_if(expressionMap.begin(), expressionMap.end(), findId(expressionId));
 	return (*it).first;
@@ -291,14 +291,14 @@ tstring Core::getTrackName(int trackId)
 {
 	if (trackId >= 0)
 	{
-		if (trackId > maxJointId)
+		if (trackId >= maxJointId)
 			return "";
 		std::map<tstring, int> ::iterator it = std::find_if(jointMap.begin(), jointMap.end(), findId(trackId));
 		return (*it).first;
 	}
 	else
 	{
-		if (trackId < maxExpressionId)
+		if (trackId <= maxExpressionId)
 			return "";
 		std::map<tstring, int> ::iterator it = std::find_if(expressionMap.begin(), expressionMap.end(), findId(trackId));
 		return (*it).first;

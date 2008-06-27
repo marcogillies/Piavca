@@ -98,6 +98,7 @@ public:
 	static MaskedMotion *castToThisType(Motion *m){return dynamic_cast<MaskedMotion *>(m);};
 
 	void setMask(const MotionMask &_mask){mask = _mask;};
+	MotionMask getMask(){return mask;};
 
 	void addToMask(int trackId){mask.setMask(trackId, true);};
 	void removeFromMask(int trackId){mask.setMask(trackId, false);};
