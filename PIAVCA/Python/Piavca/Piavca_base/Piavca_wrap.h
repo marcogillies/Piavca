@@ -1665,7 +1665,7 @@ public:
     virtual void unload();
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
-    virtual void setStartTime(float t);
+    virtual void setStartTime(float time);
     virtual void reset();
     virtual void event(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();

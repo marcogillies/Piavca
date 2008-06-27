@@ -5282,12 +5282,12 @@ RandomChoiceMotion_swigregister(RandomChoiceMotion)
 RandomChoiceMotion_castToThisType = _Piavca_base.RandomChoiceMotion_castToThisType
 RandomChoiceMotion_convertTo = _Piavca_base.RandomChoiceMotion_convertTo
 
-class PointAt(Motion):
+class PointAt(MotionFilter):
     __swig_setmethods__ = {}
-    for _s in [Motion]: __swig_setmethods__.update(_s.__swig_setmethods__)
+    for _s in [MotionFilter]: __swig_setmethods__.update(_s.__swig_setmethods__)
     __setattr__ = lambda self, name, value: _swig_setattr(self, PointAt, name, value)
     __swig_getmethods__ = {}
-    for _s in [Motion]: __swig_getmethods__.update(_s.__swig_getmethods__)
+    for _s in [MotionFilter]: __swig_getmethods__.update(_s.__swig_getmethods__)
     __getattr__ = lambda self, name: _swig_getattr(self, PointAt, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
@@ -5313,7 +5313,7 @@ class PointAt(Motion):
     if _newclass:castToThisType = staticmethod(_Piavca_base.PointAt_castToThisType)
     def isRandomAccess(*args):
         """
-        virtual bool Piavca::Motion::isRandomAccess()
+        virtual bool Piavca::MotionFilter::isRandomAccess()
                  
         whether you can access a motions value at frames other than the current one         
                  
@@ -5323,8 +5323,6 @@ class PointAt(Motion):
 
     def setTarget(*args): return _Piavca_base.PointAt_setTarget(*args)
     def getTarget(*args): return _Piavca_base.PointAt_getTarget(*args)
-    def setTargetMotion(*args): return _Piavca_base.PointAt_setTargetMotion(*args)
-    def getTargetMotion(*args): return _Piavca_base.PointAt_getTargetMotion(*args)
     def setLocal(*args): return _Piavca_base.PointAt_setLocal(*args)
     def getLocal(*args): return _Piavca_base.PointAt_getLocal(*args)
     def setJointId(*args): return _Piavca_base.PointAt_setJointId(*args)
@@ -5332,11 +5330,12 @@ class PointAt(Motion):
     def setTargetJointId(*args): return _Piavca_base.PointAt_setTargetJointId(*args)
     def getTargetJointId(*args): return _Piavca_base.PointAt_getTargetJointId(*args)
     def setForwardDirection(*args): return _Piavca_base.PointAt_setForwardDirection(*args)
+    def getForwardDirection(*args): return _Piavca_base.PointAt_getForwardDirection(*args)
     def isNull(*args):
         """
-        virtual bool Piavca::Motion::isNull(int trackId) const =0
+        virtual bool Piavca::MotionFilter::isNull(int trackId) const 
                  
-        given a track ID tests whether it actually points to anything or if its null         
+        given an iterator tests whether it actually points to anything or if its null         
                  
                 
         """
@@ -5344,9 +5343,9 @@ class PointAt(Motion):
 
     def getTrackType(*args):
         """
-        virtual trackType Piavca::Motion::getTrackType(int trackId) const =0
+        trackType Piavca::MotionFilter::getTrackType(int trackId) const 
                  
-        get the type of the track corresponding to an ID         
+        get the type of the track corresponding to an iterator         
                  
                 
         """

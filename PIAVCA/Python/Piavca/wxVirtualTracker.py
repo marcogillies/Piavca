@@ -57,6 +57,7 @@ class wxVirtualTracker (Piavca.CurrentValueMotion):
 		self.setVecValue(Piavca.root_position_id, Piavca.Vec())
 		
 		self.loadToCanvas()
+		self.radius = 10.0
 		
 		self.__disown__()
 		
@@ -77,27 +78,43 @@ class wxVirtualTracker (Piavca.CurrentValueMotion):
 		self.setVecValue(Piavca.root_position_id, self.getVecValueAtTime(Piavca.root_position_id, 0.0))
 		return newMot
 		
+	def setPosition(self, pos):
+		self.setVecValue(Piavca.root_position_id, pos)
+		
+	def getPosition(self):
+		return self.getVecValueAtTime(Piavca.root_position_id, 0.0)
+		
+	def setRadius(self, rad):
+		self.radius = rad
+		
+	def getRadius(self):
+		return self.radius
+		
 	def render(self):
 		v = self.getVecValueAtTime(Piavca.root_position_id, 0.0)
+		glPushMatrix()
 		glTranslatef(v[0], v[1], v[2])
-		gluSphere(self.quad, 0.1, 12, 12)
+		#glBegin()
+		gluSphere(self.quad, self.radius, 12, 12)
+		#glEnd()
+		glPopMatrix()
 		
 	def KeyEvent(self, key):
 		print "Virtual Tracker key event", key
 		v = self.getVecValueAtTime(Piavca.root_position_id, 0.0)
 		print v
 		if key == "d":
-			v += Piavca.Vec.XAxis()*0.02
+			v += Piavca.Vec.XAxis()*0.02*self.radius
 		elif key == "a":
-			v -= Piavca.Vec.XAxis()*0.02
+			v -= Piavca.Vec.XAxis()*0.02*self.radius
 		elif key == "w":
-			v += Piavca.Vec.YAxis()*0.02
+			v += Piavca.Vec.YAxis()*0.02*self.radius
 		elif key == "s":
-			v -= Piavca.Vec.YAxis()*0.02
+			v -= Piavca.Vec.YAxis()*0.02*self.radius
 		elif key == "q":
-			v += Piavca.Vec.ZAxis()*0.02
+			v += Piavca.Vec.ZAxis()*0.02*self.radius
 		elif key == "z":
-			v -= Piavca.Vec.ZAxis()*0.02
+			v -= Piavca.Vec.ZAxis()*0.02*self.radius
 		print v
 		self.setVecValue(Piavca.root_position_id, v)
               

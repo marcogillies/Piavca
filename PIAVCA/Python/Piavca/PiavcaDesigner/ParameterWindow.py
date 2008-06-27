@@ -31,7 +31,7 @@ class ParamEntry(wx.Panel):
 		print "paramentry:OnTextEntry"
 		if self.motionproxy != None:
 			val = self.getValue()
-			if val != None:
+			if val is not None:
 				self.motionproxy.setParameterVal(self.param_name, val)
 				self.motionproxy.backend.timeUpdate()
 		print "paramentry:OnTextEntry:end"
