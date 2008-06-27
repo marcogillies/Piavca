@@ -63,6 +63,7 @@ except PiavcaImportException:
 try:
 	from AnimationTrack import AnimationInterface, AnimationInterfaceCallback
 	from PiavcaWXApp import getWXApp, setWXApp
+	from Piavca.wxVirtualTracker import wxVirtualTracker
 except PiavcaImportException:
 	print "wxPython unavailable, please install wxPython for GUI functions"
 

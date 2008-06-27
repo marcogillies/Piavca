@@ -37,6 +37,8 @@
 
 import Piavca
 
+from Piavca.ImportException import PiavcaImportException
+
 try:
 	import wx
 except ImportError:

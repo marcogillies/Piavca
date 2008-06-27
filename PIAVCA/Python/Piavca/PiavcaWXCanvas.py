@@ -42,6 +42,7 @@ if glPresent:
 			self.Bind(wx.EVT_MIDDLE_DOWN, self.OnMouseDown)
 			self.Bind(wx.EVT_MIDDLE_UP, self.OnMouseUp)
 			self.Bind(wx.EVT_MOTION, self.OnMouseMotion)
+			self.Bind(wx.EVT_CHAR, self.OnKeyboard)
 			self.Bind(wx.EVT_IDLE, self.OnIdle)
 			self.scaleBias = 1.0
 			self.tracking = 1
@@ -51,6 +52,8 @@ if glPresent:
 			self.axisFlag = False
 			
 			self.clear_colour = (0,0,0)
+			
+			self.plugins = []
 			
 		def setCurrent(self):
 			if self.GetContext():
@@ -149,6 +152,19 @@ if glPresent:
 		def mouseUpMove(self, x, y):
 			pass
 
+		def OnKeyboard(self, evt):
+			try:
+				char = chr(evt.KeyCode)
+			except ValueError:
+				print "KeyInput.KeyPressedCB not ASCII"
+				return
+
+			print "KeyInput.KeyPressedCB", char
+			for plugin in self.plugins:
+				if hasattr(plugin, "KeyEvent"):
+					plugin.KeyEvent(char)
+			
+			
 		def OnDraw(self):
 			self.draw()
 
@@ -263,6 +279,8 @@ if glPresent:
 			#timestep
 			Piavca.Core.getCore().timeStep();
 		
+			self.renderPlugins()
+		
 			#updates mesh
 			Piavca.Core.getCore().prerender();
 			
@@ -273,5 +291,14 @@ if glPresent:
 				self.drawAxes()
 			self.popCameraPosition()
 			self.SwapBuffers()
+			
+		# plugins system 
+		def addPlugin(self, plugin):
+			self.plugins.append(plugin)
+			
+		def renderPlugins(self):
+			for plugin in self.plugins:
+				plugin.render()
+				
 else:
 	PiavcaWXCanvasBase = None

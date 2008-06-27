@@ -58,6 +58,7 @@ class outputRedirection:
 		
 def redirect(filename="python_output.txt", app = None):
 	if wxpresent and app == None:
+		print "creating app"
 		app = Piavca.getWXApp() #wx.PySimpleApp()
 	outputer = outputRedirection(filename)
 	outputer.Show()

@@ -32,16 +32,21 @@ if wxPresent:
 		def OnInit(self):
 			return True
 		def showWindows(self, canvastype = None):
+			print "wxApp.showwindows"
 			if PiavcaWXCanvasBase == None:
 				raise ImportError("Can't start a Piavca Viewer window because PyOpenGL is not available on this system")
 			self.frame = PiavcaWXFrame(None, -1, "Piavca Viewer", size=(400,400), canvastype=canvastype)
 			self.SetTopWindow(self.frame)
 			self.frame.Show(True)
 			self.frame.canvas.setCurrent()
+			self.canvas = self.frame.canvas 
+			return self.frame.canvas
 			
-			return self.frame.canvas
+		def setCanvas(self, canvas):	
+			self.canvas = canvas
+		
 		def getCanvas(self):
-			return self.frame.canvas
+			return self.canvas
 	
 _wxApp = None
 

@@ -76,12 +76,12 @@ namespace Piavca
 				
 		virtual void preFrame(float time)
 		{
-			std::cout << "loop motion.preframe\n";
-			if (filterMot)
-			{
-				std::cout << filterMot->getMotionLength()  << std::endl;
-				std::cout << filterMot->getEndTime()  << std::endl;
-			}
+			//std::cout << "loop motion.preframe\n";
+			//if (filterMot)
+			//{
+			//	std::cout << filterMot->getMotionLength()  << std::endl;
+			//	std::cout << filterMot->getEndTime()  << std::endl;
+			//}
 			if (!lock 
 				&& (reblend_flag
 				|| ((endTime < 0 || time < endTime)
