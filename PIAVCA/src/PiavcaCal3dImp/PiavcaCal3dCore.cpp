@@ -62,7 +62,7 @@ Core *Core::init()
 		return new PiavcaCal3DCore();
 };
 
-PiavcaCal3DCore::PiavcaCal3DCore():start_time(0.0) {
+PiavcaCal3DCore::PiavcaCal3DCore():start_time(0.0), hardware(true) {
 	start_time = getTimeInternal(true);
 };
 
@@ -82,6 +82,10 @@ AvatarImp *PiavcaCal3DCore::createAvatarImp(tstring avatarId, bool bailOnMissedJ
   TextureHandler *th = createTextureHandler();
   AvatarCal3DImp *avatarImp = createAvatarImp(avatarId, th, bailOnMissedJoints, Position, Orientation);
   avatarImp->loadTextures();
+  if (hardware)
+  {
+	avatarImp->enableHardware();
+  }
   return avatarImp;
 }
 

@@ -57,6 +57,7 @@ class outputRedirection:
 		self.write("\n")
 		
 def redirect(filename="python_output.txt", app = None):
+	import Piavca
 	if wxpresent and app == None:
 		print "creating app"
 		app = Piavca.getWXApp() #wx.PySimpleApp()
@@ -65,7 +66,6 @@ def redirect(filename="python_output.txt", app = None):
 
 	outputer.write("Piavca\n")
 
-	import Piavca
 		
 	#outputer.setOutputFunc(Piavca.PiavcaGlut.outputMessage)
 

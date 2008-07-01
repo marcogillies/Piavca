@@ -1653,7 +1653,7 @@ class SwigDirector_PointAt : public Piavca::PointAt, public Swig::Director {
 
 public:
     SwigDirector_PointAt(PyObject *self);
-    SwigDirector_PointAt(PyObject *self, int joint, Piavca::Vec const &target, bool _local = true);
+    SwigDirector_PointAt(PyObject *self, int joint, Piavca::Vec const &target, bool _local = false);
     SwigDirector_PointAt(PyObject *self, int joint, Piavca::Motion *target, int target_joint);
     SwigDirector_PointAt(PyObject *self, Piavca::PointAt const &pa);
     virtual ~SwigDirector_PointAt();

@@ -35,6 +35,8 @@ using std::vector;
 #include "PiavcaAPI/Vec.h"
 //#include "JointIteratorTaraImp.h"
 
+#define MAXBONESPERMESH 29
+
 namespace Piavca
 {
 class Motion;
@@ -82,6 +84,7 @@ struct FacialExpressionHolder
 class PIAVCA_DECL AvatarCal3DImp : public AvatarImp {
 public:
 	CalModel *cal_model;
+    CalHardwareModel* m_calHardwareModel;
 	// a look up table to map between Piavca joint id's and Cal3D joint indexes
 	vector <JointHolder> joints;
 	// a look up table to map between Piavca expression id's and Cal3D morph target indexes
@@ -99,6 +102,16 @@ public:
 	// being updated
 	int renderBuffer;
 	int updateBuffer;
+
+	// whether you do skinning in hardware or software
+	bool hardware; 
+	// vertex program id
+	unsigned int m_vertexProgramId;
+	unsigned int m_bufferObject[6];
+
+	//! initialization for hardware skinning
+	bool loadBufferObject();
+	bool loadVertexProgram();
 
 	/* List of all current mesh vertices */
 	std::vector < std::vector < std::vector < float* > > > mVertices;
@@ -137,10 +150,20 @@ public:
 	virtual void	platformSpecific_timeStep (float time);
 	Bound bb, base_bb;
 	bool bb_dirty_flag;
+
+	//! code to call software skinning
+	void software_skinning();
+
+	//! software skinning renderer
+	void render_software();
+
+	//! hardware skinning renderer
+	void render_hardware();
+
 public:
 
 	//! destructor
-	virtual ~AvatarCal3DImp(){};
+	virtual ~AvatarCal3DImp();
 
 	//! given a UCLAvatar object get its implementation 
 	static AvatarCal3DImp *getAvatarImp(Avatar *avatar) ;
@@ -279,6 +302,9 @@ public:
 			}
 		}
 	};
+
+	//! turns on harware skinning
+	void enableHardware();
 
 	//! does a GL Render of the character
 	virtual void render();

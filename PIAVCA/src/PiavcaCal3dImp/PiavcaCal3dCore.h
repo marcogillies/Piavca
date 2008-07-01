@@ -54,6 +54,7 @@ class TextureHandler;
     class PIAVCA_DECL PiavcaCal3DCore : public StdMotionCore
 	{
 		double start_time;
+		bool hardware;
 	protected:
 		//! Creates an avatar implementation (actually creates a UCLAVatarTaraImp object)
 		AvatarImp *createAvatarImp(tstring avatarId, bool bailOnMissedJoints, const Vec &Position, const Quat &Orientation);
@@ -74,6 +75,14 @@ class TextureHandler;
 		double getTimeInternal(bool print);
 	    virtual float getSystemTime() {return (float)getTimeInternal(false);};
 
+		virtual void setHarware(bool b)
+		{
+			hardware = b;
+		}
+		virtual bool getHarware()
+		{
+			return hardware;
+		}
 		// called before rendering
 		virtual void prerender();
 

@@ -42357,6 +42357,82 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Core_setHarware(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Core *arg1 = (Piavca::Core *) 0 ;
+  bool arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Core_setHarware",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Core, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Core_setHarware" "', argument " "1"" of type '" "Piavca::Core *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Core * >(argp1);
+  ecode2 = SWIG_AsVal_bool(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Core_setHarware" "', argument " "2"" of type '" "bool""'");
+  } 
+  arg2 = static_cast< bool >(val2);
+  {
+    try {
+      (arg1)->setHarware(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Core_getHarware(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Core *arg1 = (Piavca::Core *) 0 ;
+  bool result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Core_getHarware",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Core, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Core_getHarware" "', argument " "1"" of type '" "Piavca::Core *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Core * >(argp1);
+  {
+    try {
+      result = (bool)(arg1)->getHarware(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN int Core_nullId_set(PyObject *) {
   SWIG_Error(SWIG_AttributeError,"Variable Core_nullId is read-only.");
   return 1;
@@ -97107,6 +97183,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Core_timeStep", _wrap_Core_timeStep, METH_VARARGS, NULL},
 	 { (char *)"Core_prerender", _wrap_Core_prerender, METH_VARARGS, NULL},
 	 { (char *)"Core_render", _wrap_Core_render, METH_VARARGS, NULL},
+	 { (char *)"Core_setHarware", _wrap_Core_setHarware, METH_VARARGS, NULL},
+	 { (char *)"Core_getHarware", _wrap_Core_getHarware, METH_VARARGS, NULL},
 	 { (char *)"Core_getJointId", _wrap_Core_getJointId, METH_VARARGS, NULL},
 	 { (char *)"Core_getMaxJointId", _wrap_Core_getMaxJointId, METH_VARARGS, NULL},
 	 { (char *)"Core_addJointNameSet", _wrap_Core_addJointNameSet, METH_VARARGS, NULL},

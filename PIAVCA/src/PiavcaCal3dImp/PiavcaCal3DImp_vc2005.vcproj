@@ -242,7 +242,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\;$(CAL3DDIR)\src;..\..\..\cal3d-0.11.0\src\;..\..\..\cal3d-0.10.0\src\"
-				PreprocessorDefinitions="WIN32;_LIB"
+				PreprocessorDefinitions="WIN32;_LIB;GLEW_STATIC"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="2"
@@ -376,7 +376,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\;$(CAL3DDIR)\src;..\..\..\cal3d-0.11.0\src\;..\..\..\cal3d-0.10.0\src\"
-				PreprocessorDefinitions="WIN32;_LIB"
+				PreprocessorDefinitions="WIN32;_LIB;GLEW_STATIC"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="2"
@@ -442,6 +442,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\glew.c"
+				>
+			</File>
+			<File
 				RelativePath=".\MotionCal3DImp.cpp"
 				>
 			</File>
@@ -476,6 +480,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\glew.h"
+				>
+			</File>
+			<File
+				RelativePath=".\glxew.h"
+				>
+			</File>
+			<File
 				RelativePath=".\MotionCal3DImp.h"
 				>
 			</File>
@@ -489,6 +501,10 @@
 			</File>
 			<File
 				RelativePath=".\tga.h"
+				>
+			</File>
+			<File
+				RelativePath=".\wglew.h"
 				>
 			</File>
 		</Filter>
