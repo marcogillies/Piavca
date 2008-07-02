@@ -34,7 +34,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 char vertexProgramStr[]= 
 "!!ARBvp1.0\n"\
 "PARAM constant = { 1, 3, 0, 0 };\n"\
-"PARAM constwhite = { 1.0, 1.0, 1.0, 1.0 };\n"\
+"PARAM ldir = { 1.0, 0.0, 0.0, 1.0 };\n"\
+/*"PARAM constwhite = { 1.0, 1.0, 1.0, 1.0 };\n"\*/
 "TEMP R0, R1, R2, R3, R4, R5;\n"\
 "ADDRESS A0;\n"\
 "ATTRIB texCoord = vertex.attrib[8];\n"\
@@ -70,11 +71,11 @@ char vertexProgramStr[]=
 "DP3 R1.x, lightDir.xyzx, lightDir.xyzx;\n"\
 "RSQ R1.x, R1.x;\n"\
 "MUL R2.xyz, R1.x, lightDir.xyzx;\n"\
-"DP3 R0.x, R0.xyzx, R2.xyzx;\n"\
+"DP3 R0.x, R0.xyzx, ldir.xyzx;\n"\
 "MAX R0.x, R0.x, constant.z;\n"\
 "ADD R0, R0.x, ambient;\n"\
 "MUL result.color.front.primary, R0, diffuse;\n"\
-"MOV result.color.front.primary.w, constwhite.w;\n"\
+"MOV result.color.front.primary.w, ldir.w;\n"\
 "\n"\
 "ARL A0.x, R4.w;\n"\
 "DPH R0.x, position.xyzx, matrix[A0.x];\n"\
