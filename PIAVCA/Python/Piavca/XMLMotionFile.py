@@ -96,6 +96,18 @@ def parseAttribute(attrValue):
 			
 	# might be just a single value
 	if len(valuelist) == 1:
+		
+		if value == "True" or value == "true":
+			possible_values.append(True)
+		if value == "False" or value == "false":
+			possible_values.append(False)
+		
+		try:
+			i = int(value)
+			possible_values.append(i)
+		except ValueError:
+			pass
+			
 		try:
 			f = float(value)
 			possible_values.append(f)
@@ -233,6 +245,7 @@ def getMotionTypeNames():
 def readMotions(motions):
 	mots = []
 	element_list = []
+	child_motion_list = []
 	for motion in motions:
 		if motion.nodeType == minidom.Node.ELEMENT_NODE:
 			#print "current node", motion.nodeName
@@ -380,77 +393,8 @@ def readMotions(motions):
 							#print attrName, attrValue
 							if not setAttribute(mot, attrName, attrValue):
 								unknownAttrs.append((attrName, attrValue))
-						children, elements = readMotions(motion.childNodes)
-						added = 0
-						if len(children) == 1:
-							if hasattr(mot, "addMotion"):
-								getattr(mot, "addMotion")(children[0][0])
-								for attrName, attrValue in children[0][2]:
-									attrName = "Motion" + string.upper(attrName[0]) + attrName[1:]
-									if not setAttribute(mot, attrName, attrValue):
-										print children[0][1], "unknown attribute", attrName
-								added = 1
-							elif hasattr(mot, "setMotion"):
-								getattr(mot, "setMotion")(children[0][0])
-								for attrName, attrValue in children[0][2]:
-									attrName = "Motion" + string.upper(attrName[0]) + attrName[1:]
-									if not setAttribute(mot, attrName, attrValue):
-										print children[0][1], "unknown attribute", attrName
-								added = 1
-							elif hasattr(mot, "setMotion1"):
-								getattr(mot, "setMotion1")(children[0][0])
-								for attrName, attrValue in children[0][2]:
-									attrName = "Motion1" + string.upper(attrName[0]) + attrName[1:]
-									if not setAttribute(mot, attrName, attrValue):
-										print children[0][1], "unknown attribute", attrName
-								added = 1
-						elif len(children) == 2:
-							if hasattr(mot, "addMotion"):
-								getattr(mot, "addMotion")(children[0][0])
-								for attrName, attrValue in children[0][2]:
-									attrName = "Motion" + string.upper(attrName[0]) + attrName[1:]
-									if not setAttribute(mot, attrName, attrValue):
-										print children[0][1], "unknown attribute", attrName
-								getattr(mot, "addMotion")(children[1][0])
-								for attrName, attrValue in children[1][2]:
-									attrName = "Motion" + string.upper(attrName[0]) + attrName[1:]
-									if not setAttribute(mot, attrName, attrValue):
-										print children[0][1], "unknown attribute", attrName
-								added = 1
-							elif hasattr(mot, "setMotion1"):
-								getattr(mot, "setMotion1")(children[0][0])
-								for attrName, attrValue in children[0][2]:
-									attrName = "Motion1" + string.upper(attrName[0]) + attrName[1:]
-									if not setAttribute(mot, attrName, attrValue):
-										print children[0][1], "unknown attribute", attrName
-								if hasattr(mot, "setMotion2"):
-									getattr(mot, "setMotion2")(children[1][0])
-									for attrName, attrValue in children[1][2]:
-										attrName = "Motion2" + string.upper(attrName[0]) + attrName[1:]
-										if not setAttribute(mot, attrName, attrValue):
-											print children[0][1], "unknown attribute", attrName
-									added = 1
-						if not added:
-							
-							if hasattr(mot, "addMotion"):
-								method = getattr(mot, "addMotion")
-								#print "should be", motion.nodeName, storedMotName, storedMotStr
-								#print "XML Motion File add motion", mot.getName(), mot
-								#print len(children)
-								for i, child in enumerate(children):
-									#method(child[0])
-									mot.addMotion(child[0])
-									#print "added motion", i , child[1]
-									for attrName, attrValue in child[2]:
-										attrName = "Motion" + string.upper(attrName[0]) + attrName[1:]
-										if not setAttribute(mot, attrName, attrValue, i):
-											print child[1], "unknown attribute", attrName
-											
-						for elementName, attrList in elements:
-							#print "element", elementName, attrList
-							if not addElement(mot, elementName, attrList):
-								print "couldn't find motion type", elementName
-						
+						child_motion_list.append((mot, motion.childNodes))
+												
 						mot.create()
 						mots.append((mot, str(motion.nodeName), unknownAttrs))
 					else:
@@ -468,6 +412,79 @@ def readMotions(motions):
 						attrList.append((attrName, attrValue))
 					element_list.append((elementName, attrList))
 					#print "element list", element_list
+		
+	for mot, childNodes in child_motion_list:
+		children, elements = readMotions(childNodes)
+		added = 0
+		if len(children) == 1:
+			if hasattr(mot, "addMotion"):
+				getattr(mot, "addMotion")(children[0][0])
+				for attrName, attrValue in children[0][2]:
+					attrName = "Motion" + string.upper(attrName[0]) + attrName[1:]
+					if not setAttribute(mot, attrName, attrValue):
+						print children[0][1], "unknown attribute", attrName
+				added = 1
+			elif hasattr(mot, "setMotion"):
+				getattr(mot, "setMotion")(children[0][0])
+				for attrName, attrValue in children[0][2]:
+					attrName = "Motion" + string.upper(attrName[0]) + attrName[1:]
+					if not setAttribute(mot, attrName, attrValue):
+						print children[0][1], "unknown attribute", attrName
+				added = 1
+			elif hasattr(mot, "setMotion1"):
+				getattr(mot, "setMotion1")(children[0][0])
+				for attrName, attrValue in children[0][2]:
+					attrName = "Motion1" + string.upper(attrName[0]) + attrName[1:]
+					if not setAttribute(mot, attrName, attrValue):
+						print children[0][1], "unknown attribute", attrName
+				added = 1
+		elif len(children) == 2:
+			if hasattr(mot, "addMotion"):
+				getattr(mot, "addMotion")(children[0][0])
+				for attrName, attrValue in children[0][2]:
+					attrName = "Motion" + string.upper(attrName[0]) + attrName[1:]
+					if not setAttribute(mot, attrName, attrValue):
+						print children[0][1], "unknown attribute", attrName
+				getattr(mot, "addMotion")(children[1][0])
+				for attrName, attrValue in children[1][2]:
+					attrName = "Motion" + string.upper(attrName[0]) + attrName[1:]
+					if not setAttribute(mot, attrName, attrValue):
+						print children[0][1], "unknown attribute", attrName
+				added = 1
+			elif hasattr(mot, "setMotion1"):
+				getattr(mot, "setMotion1")(children[0][0])
+				for attrName, attrValue in children[0][2]:
+					attrName = "Motion1" + string.upper(attrName[0]) + attrName[1:]
+					if not setAttribute(mot, attrName, attrValue):
+						print children[0][1], "unknown attribute", attrName
+				if hasattr(mot, "setMotion2"):
+					getattr(mot, "setMotion2")(children[1][0])
+					for attrName, attrValue in children[1][2]:
+						attrName = "Motion2" + string.upper(attrName[0]) + attrName[1:]
+						if not setAttribute(mot, attrName, attrValue):
+							print children[0][1], "unknown attribute", attrName
+					added = 1
+		if not added:
+			
+			if hasattr(mot, "addMotion"):
+				method = getattr(mot, "addMotion")
+				#print "should be", motion.nodeName, storedMotName, storedMotStr
+				#print "XML Motion File add motion", mot.getName(), mot
+				#print len(children)
+				for i, child in enumerate(children):
+					#method(child[0])
+					mot.addMotion(child[0])
+					#print "added motion", i , child[1]
+					for attrName, attrValue in child[2]:
+						attrName = "Motion" + string.upper(attrName[0]) + attrName[1:]
+						if not setAttribute(mot, attrName, attrValue, i):
+							print child[1], "unknown attribute", attrName
+							
+		for elementName, attrList in elements:
+			#print "element", elementName, attrList
+			if not addElement(mot, elementName, attrList):
+				print "couldn't find motion type", elementName
+
 					
 	#print mots
 	#print len(mots)

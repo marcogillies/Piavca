@@ -44,6 +44,36 @@
 
 using namespace Piavca;
 
+
+void PointAt::setMotion(Motion *mot)
+{
+	if (mot == NULL)
+	{
+		if (!currentValueTarget)
+			MotionFilter::setMotion(mot);
+	}
+	else
+	{
+		MotionFilter::setMotion(mot);
+		if (currentValueTarget)
+		{
+			currentValueTarget = NULL;
+		}
+	}
+};
+
+Motion *PointAt::getMotion()
+{
+	if (currentValueTarget)
+	{
+		return NULL;
+	}
+	else
+	{
+		return MotionFilter::getMotion();
+	}
+};
+
 void PointAt::setTarget(const Vec &target)
 {
 	if (!currentValueTarget)
@@ -51,7 +81,7 @@ void PointAt::setTarget(const Vec &target)
 		//targetMotion->Dispose();
 		currentValueTarget = new CurrentValueMotion();
 		currentValueTarget->Reference();
-		setMotion(currentValueTarget);
+		MotionFilter::setMotion(currentValueTarget);
 		targetJointId = 0;
 	}
 	currentValueTarget->setVecValue(targetJointId, target);
@@ -111,7 +141,7 @@ Quat PointAt::getQuatValueAtTimeInternal(int trackId, float time)
 	Vec subjectVec = filterMot->getVecValueAtTime(targetJointId, time);
 	
 	Vec localPos = subjectVec;
-	std::cout << "pos " << localPos << std::endl;
+	//std::cout << "pos " << localPos << std::endl;
 		
 	if(!local)
 	{

@@ -48,7 +48,9 @@ _motionLookup = {}
 
 def loadMotion(name, motion):
 	global _motionLookup
+	print "loading motion", name
 	if type(motion) != type(""):
+		print "loading motion to lookup", name
 		_motionLookup[name] = motion
 	#print "proxy core", Core.getCore()
 	Core.getCore().loadMotion(name, motion)
@@ -66,10 +68,10 @@ def getRealMotionType(motion):
 def getMotion(name):
 	global _motionLookup
 	#print _motionLookup.keys()
-	#print name
+	print "getting motion", name
 	#print "getMotion"
 	if _motionLookup.has_key(name):
-		#print "core proxy: found motion,", name
+		print "core proxy: found motion,", name
 		return _motionLookup[name]
 	else:
 		motion = Core.getCore().getMotion(name)

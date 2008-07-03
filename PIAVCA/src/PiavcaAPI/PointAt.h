@@ -130,6 +130,9 @@ namespace Piavca
 		void setTarget(const Vec &target);
 		Vec getTarget();
 
+		virtual void setMotion(Motion *mot);
+		virtual Motion *getMotion();
+
 		//void setTargetMotion(Motion *target);
 		//Motion *getTargetMotion();
 

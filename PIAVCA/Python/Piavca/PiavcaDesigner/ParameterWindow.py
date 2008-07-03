@@ -75,10 +75,14 @@ class BoolParamEntry(ButtonParamEntry):
 class ScalarParamEntry(ParamEntry):
 	
 	def initSubtype(self):	
-		self.text = wx.TextCtrl(self, -1, "")
-		self.Bind(wx.EVT_TEXT, self.OnTextEntry, self.text)
+		self.text = wx.TextCtrl(self, -1, "", style=wx.TE_PROCESS_ENTER)
+		self.Bind(wx.EVT_TEXT_ENTER, self.OnTextEntry, self.text)
 		self.sizer.Add(self.text, 1, wx.EXPAND)
 		
+	def OnKeyboard(self, evt):
+		print "On Keyboard"
+		print "got an enter key"
+				
 	def setValue(self, val):
 		print "paramentry:setValue"
 		self.text.SetValue(str(val))
@@ -127,8 +131,8 @@ class MultiParamEntry(ParamEntry):
 	def initSubtype(self):	
 		self.texts = []
 		for i in range(self.dim):
-			self.texts.append(wx.TextCtrl(self, -1, ""))
-			self.Bind(wx.EVT_TEXT, self.OnTextEntry, self.texts[-1])
+			self.texts.append(wx.TextCtrl(self, -1, "", style=wx.TE_PROCESS_ENTER))
+			self.Bind(wx.EVT_TEXT_ENTER, self.OnTextEntry, self.texts[-1])
 			self.sizer.Add(self.texts[-1], 1, wx.EXPAND)
 		
 	def setValue(self, val):

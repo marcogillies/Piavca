@@ -177,7 +177,7 @@ namespace Piavca
 			if(filterMot)filterMot->cleanRecursionState();
 		};
 	    
-		void setMotion(Motion *mot)
+		virtual void setMotion(Motion *mot)
 		{
 			if(mot)
 				mot->Reference();
@@ -190,7 +190,7 @@ namespace Piavca
 			setStartTime(startTime);
 		}
 
-		Motion *getMotion()
+		virtual Motion *getMotion()
 		{
 			return filterMot;
 		};

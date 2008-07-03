@@ -703,13 +703,44 @@ void  AvatarCal3DImp::enableHardware()
 
 bool AvatarCal3DImp::loadBufferObject()
 {
+    CalRenderer* renderer = new CalRenderer(cal_model->getRenderer());
 
-  float *pVertexBuffer = (float*)malloc(1000000*3*sizeof(float));
-  float *pWeightBuffer = (float*)malloc(1000000*4*sizeof(float));
-  float *pMatrixIndexBuffer = (float*)malloc(1000000*4*sizeof(float));
-  float *pNormalBuffer = (float*)malloc(1000000*3*sizeof(float));
-  float *pTexCoordBuffer = (float*)malloc(1000000*2*sizeof(float));
-  CalIndex *pIndexBuffer = (CalIndex*)malloc(2000000*3*sizeof(CalIndex));
+	int meshCount = renderer->getMeshCount();
+
+	int i,j;
+	int numVerts=0, numFaces=0;
+	for (i=0; i < meshCount; i++)
+	{
+		int submeshCount = renderer->getSubmeshCount( i );
+
+		int numVerts_=0, numFaces_=0;
+		for (j=0; j < submeshCount; j++)
+		{
+				renderer->selectMeshSubmesh( i, j );
+
+				//Get vertex count (equal numbers of vertices, normals, and texture coords)
+				//if (numVerts < renderer->getVertexCount())
+				numVerts += renderer->getVertexCount();
+
+				//Get face count
+				//if (numFaces < renderer->getFaceCount())
+				numFaces += renderer->getFaceCount();
+		}
+		if (numVerts < numVerts_)
+			numVerts = numVerts_;
+		if (numFaces < numFaces_)
+			numFaces = numFaces_;
+
+	}
+	std::cout << "Verts " << numVerts << " faces " << numFaces << std::endl;
+
+
+  float *pVertexBuffer = (float*)malloc(numVerts*3*sizeof(float));
+  float *pWeightBuffer = (float*)malloc(numVerts*4*sizeof(float));
+  float *pMatrixIndexBuffer = (float*)malloc(numVerts*4*sizeof(float));
+  float *pNormalBuffer = (float*)malloc(numVerts*3*sizeof(float));
+  float *pTexCoordBuffer = (float*)malloc(numVerts*2*sizeof(float));
+  CalIndex *pIndexBuffer = (CalIndex*)malloc(numFaces*3*sizeof(CalIndex));
 
   if(pVertexBuffer==NULL || pWeightBuffer == NULL
 	 || pMatrixIndexBuffer==NULL || pNormalBuffer == NULL
@@ -1711,7 +1742,7 @@ void	AvatarCal3DImp::render_software ()
 
 Bound Piavca::AvatarCal3DImp::getBoundBox(void)
 {
-	if (bb_dirty_flag)
+	if (bb_dirty_flag && !hardware)
 	{
 		//std::cout << "recalculating bb\n";
 		bb_dirty_flag = false;
