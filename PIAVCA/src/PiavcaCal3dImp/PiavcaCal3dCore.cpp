@@ -44,15 +44,15 @@ using namespace Piavca;
 #include <time.h>
 
 
-#ifdef _WIN32
-#include <windows.h>
-#endif
+//#ifdef _WIN32
+//#include <windows.h>
+//#endif
 
-#if defined(__APPLE__)
-	#include <OpenGL/gl.h>
-#else
-	#include <GL/gl.h>
-#endif
+//#if defined(__APPLE__)
+//	#include <OpenGL/gl.h>
+//#else
+//	#include <GL/gl.h>
+//#endif
 
 Core *Core::init()
 {

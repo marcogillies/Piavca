@@ -92,6 +92,7 @@ class wxVirtualTracker (Piavca.CurrentValueMotion):
 		
 	def render(self):
 		v = self.getVecValueAtTime(Piavca.root_position_id, 0.0)
+                print "rendering tracker at", v
 		glPushMatrix()
 		glTranslatef(v[0], v[1], v[2])
 		#glBegin()

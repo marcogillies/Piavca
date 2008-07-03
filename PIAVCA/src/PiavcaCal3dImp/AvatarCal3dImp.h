@@ -26,6 +26,11 @@ using std::map;
 #include <vector>
 using std::vector;
 
+
+#ifdef _WIN32
+#include <windows.h>
+#endif
+
 #if defined(__APPLE__)
 	#include <OpenGL/gl.h>
 #else
