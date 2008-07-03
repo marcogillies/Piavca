@@ -44,8 +44,16 @@ from glob import glob
 env = Environment(SWIGFLAGS=['-c++', '-noruntime', '-python', '-I./src/'],
 				  CPPPATH=["./src/", distutils.sysconfig.get_python_inc()],
 				  SHLIBPREFIX="",
+				  CPPDEFINES = { "GLEW_STATIC" : "1" },
 				  CXXFILESUFFIX=".cpp")
+
+#env.Append(CXXFLAGS = "-DGLEW_STATIC")
+debug = ARGUMENTS.get('debug', 0)
+if int(debug):
+	env.Append(CXXFLAGS = '-g')
+
 conf = Configure(env)	
+
 
 
 external_libs = ["cal3d"]
@@ -81,7 +89,7 @@ env = conf.Finish()
 PiavcaAPI = env.Library('src/PiavcaAPI/PiavcaAPI', glob('src/PiavcaAPI/*.cpp'))
 StdMotionImp = env.Library('src/StdMotionImp/StdMotionImp', glob('src/StdMotionImp/*.cpp'))
 Depends(StdMotionImp, PiavcaAPI)
-PiavcaCal3dImp = env.Library('src/PiavcaCal3dImp/PiavcaCal3dImp', glob('src/PiavcaCal3dImp/*.cpp'))
+PiavcaCal3dImp = env.Library('src/PiavcaCal3dImp/PiavcaCal3dImp', glob('src/PiavcaCal3dImp/*.cpp')+glob('src/PiavcaCal3dImp/*.c'))
 Depends(PiavcaCal3dImp, PiavcaAPI)
 PiavcaPythonInterface = env.Library('src/PiavcaPythonInterface/PiavcaPythonInterface', glob('src/PiavcaPythonInterface/*.cpp'))
 #Program('src/PiavcaCal3dApp/PiavcaCal3dApp', PiavcaAPI + StdMotionImp + PiavcaCal3dImp  + glob('src/PiavcaCal3dApp/*.cpp'), CXXFLAGS="-I./src/")

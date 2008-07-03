@@ -26,6 +26,13 @@ using std::map;
 #include <vector>
 using std::vector;
 
+#if defined(__APPLE__)
+	#include <OpenGL/gl.h>
+#else
+	#include <GL/gl.h>
+#endif
+
+
 #include <cal3d/cal3d.h>
 
 //#include "PlatformDefs.h"
@@ -106,8 +113,8 @@ public:
 	// whether you do skinning in hardware or software
 	bool hardware; 
 	// vertex program id
-	unsigned int m_vertexProgramId;
-	unsigned int m_bufferObject[6];
+	GLuint m_vertexProgramId;
+	GLuint m_bufferObject[6];
 
 	//! initialization for hardware skinning
 	bool loadBufferObject();
