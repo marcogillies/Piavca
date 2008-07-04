@@ -33,8 +33,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 /// GPU skinner, thanks to Cal3d
 char vertexProgramStr[]= 
 "!!ARBvp1.0\n"\
-"PARAM constant = { 1, 3, 0, 0 };\n"\
-"PARAM ldir = { 1.0, 0.0, 0.0, 1.0 };\n"\
+"PARAM constant = { 1, 3, 0, 1 };\n"\
+"PARAM ldir = { 1.5, 0.0, 0.0, 1.0 };\n"\
 /*"PARAM constwhite = { 1.0, 1.0, 1.0, 1.0 };\n"\*/
 "TEMP R0, R1, R2, R3, R4, R5;\n"\
 "ADDRESS A0;\n"\
@@ -71,10 +71,14 @@ char vertexProgramStr[]=
 "DP3 R1.x, lightDir.xyzx, lightDir.xyzx;\n"\
 "RSQ R1.x, R1.x;\n"\
 "MUL R2.xyz, R1.x, lightDir.xyzx;\n"\
-"DP3 R0.x, R0.xyzx, ldir.xyzx;\n"\
+/* to use the hard coded shader uncomment the next line and comment the one after*/
+/*"DP3 R0.x, R0.xyzx, ldir.xyzx;\n"\*/
+"DP3 R0.x, R0.xyzx, R2.xyzx;\n"\
 "MAX R0.x, R0.x, constant.z;\n"\
-"ADD R0, R0.x, ambient;\n"\
-"MUL result.color.front.primary, R0, diffuse;\n"\
+"MUL R0, R0.x, diffuse;\n"\
+/*"MUL diffuse, constant.y, diffuse;\n"\*/
+"ADD result.color.front.primary, R0, ambient;\n"\
+/*"MUL result.color.front.primary.xyz, 1.2, result.color.front.primary.xyzy;\n"\*/
 "MOV result.color.front.primary.w, ldir.w;\n"\
 "\n"\
 "ARL A0.x, R4.w;\n"\
@@ -1465,16 +1469,15 @@ void	AvatarCal3DImp::render ()
 
 void	AvatarCal3DImp::render_hardware ()
 {
-	
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 
 	glBindProgramARB( GL_VERTEX_PROGRAM_ARB, m_vertexProgramId );
 
-	glEnableVertexAttribArrayARB(0);
-	glEnableVertexAttribArrayARB(1);
-    glEnableVertexAttribArrayARB(2);
-	glEnableVertexAttribArrayARB(3);
-    glEnableVertexAttribArrayARB(8);
+	glEnableVertexAttribArray(0);
+	glEnableVertexAttribArray(1);
+    glEnableVertexAttribArray(2);
+	glEnableVertexAttribArray(3);
+    glEnableVertexAttribArray(8);
 	
 	glEnable(GL_TEXTURE_2D);
 	// set global OpenGL states
@@ -1489,23 +1492,23 @@ void	AvatarCal3DImp::render_hardware ()
 	//glBlendFunc (GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
 	
 
-    glBindBufferARB(GL_ARRAY_BUFFER_ARB, m_bufferObject[0]);
-	glVertexAttribPointerARB(0, 3 , GL_FLOAT, false, 0, NULL);
+    glBindBuffer(GL_ARRAY_BUFFER_ARB, m_bufferObject[0]);
+	glVertexAttribPointer(0, 3 , GL_FLOAT, false, 0, NULL);
 
-    glBindBufferARB(GL_ARRAY_BUFFER_ARB, m_bufferObject[1]);
-	glVertexAttribPointerARB(1, 4 , GL_FLOAT, false, 0, NULL);
+    glBindBuffer(GL_ARRAY_BUFFER_ARB, m_bufferObject[1]);
+	glVertexAttribPointer(1, 4 , GL_FLOAT, false, 0, NULL);
 
-	glBindBufferARB(GL_ARRAY_BUFFER_ARB, m_bufferObject[2]);
-    glVertexAttribPointerARB(2, 3 , GL_FLOAT, false, 0, NULL);
+	glBindBuffer(GL_ARRAY_BUFFER_ARB, m_bufferObject[2]);
+    glVertexAttribPointer(2, 3 , GL_FLOAT, false, 0, NULL);
 
-    glBindBufferARB(GL_ARRAY_BUFFER_ARB, m_bufferObject[3]);
+    glBindBuffer(GL_ARRAY_BUFFER_ARB, m_bufferObject[3]);
 
-	glVertexAttribPointerARB(3, 4 , GL_FLOAT, false, 0, NULL);
+	glVertexAttribPointer(3, 4 , GL_FLOAT, false, 0, NULL);
 
-    glBindBufferARB(GL_ARRAY_BUFFER_ARB, m_bufferObject[4]);
-	glVertexAttribPointerARB(8, 2 , GL_FLOAT, false, 0, NULL);
+    glBindBuffer(GL_ARRAY_BUFFER_ARB, m_bufferObject[4]);
+	glVertexAttribPointer(8, 2 , GL_FLOAT, false, 0, NULL);
 
-	glBindBufferARB(GL_ELEMENT_ARRAY_BUFFER_ARB, m_bufferObject[5]);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER_ARB, m_bufferObject[5]);
 	
 		
 	int hardwareMeshId;
@@ -1530,6 +1533,7 @@ void	AvatarCal3DImp::render_hardware ()
 		m_calHardwareModel->getSpecularColor(&meshColor[0]);
 		materialColor[0] = meshColor[0] / 255.0f;  materialColor[1] = meshColor[1] / 255.0f; materialColor[2] = meshColor[2] / 255.0f; materialColor[3] = meshColor[3] / 255.0f;
 		glMaterialfv(GL_FRONT, GL_SPECULAR, materialColor);
+		
 		
 		// set the material shininess factor
 		float shininess;
@@ -1566,7 +1570,7 @@ void	AvatarCal3DImp::render_hardware ()
 		
 
 	}
-
+	
     // clear vertex array state    
 
 	//glDisableVertexAttribArrayARB(0);
