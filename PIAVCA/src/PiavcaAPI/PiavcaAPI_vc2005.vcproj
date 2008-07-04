@@ -651,6 +651,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Proxemics.cpp"
+				>
+			</File>
+			<File
 				RelativePath="Quat.cpp"
 				>
 			</File>

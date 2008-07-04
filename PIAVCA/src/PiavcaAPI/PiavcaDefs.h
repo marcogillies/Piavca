@@ -34,6 +34,7 @@
 #ifndef PIAVCA_DEFS_H
 #define PIAVCA_DEFS_H
 
+#include "MathsUtils.h"
 
 #ifdef WIN32
 

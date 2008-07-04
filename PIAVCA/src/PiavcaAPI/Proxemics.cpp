@@ -1,0 +1,185 @@
+/* ***** BEGIN LICENSE BLOCK *****
+ * Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ *
+ * The contents of this file are subject to the Mozilla Public License Version
+ * 1.1 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.mozilla.org/MPL/
+ *
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+ * for the specific language governing rights and limitations under the
+ * License.
+ *
+ * The Original Code is Proxemics.cpp.
+ *
+ * The Initial Developer of the Original Code is Marco (Mark) Gillies.
+ * Portions created by the Initial Developer are Copyright (C) 2008
+ * the Initial Developer. All Rights Reserved.
+ *
+ * Contributor(s):
+ *
+ * Alternatively, the contents of this file may be used under the terms of
+ * either the GNU General Public License Version 2 or later (the "GPL"), or
+ * the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+ * in which case the provisions of the GPL or the LGPL are applicable instead
+ * of those above. If you wish to allow use of your version of this file only
+ * under the terms of either the GPL or the LGPL, and not to allow others to
+ * use your version of this file under the terms of the MPL, indicate your
+ * decision by deleting the provisions above and replace them with the notice
+ * and other provisions required by the GPL or the LGPL. If you do not delete
+ * the provisions above, a recipient may use your version of this file under
+ * the terms of any one of the MPL, the GPL or the LGPL.
+ *
+ * ***** END LICENSE BLOCK ***** */
+
+#include "Proxemics.h"
+#include "PiavcaCore.h"
+#include "Avatar.h"
+#include "BlendBetween.h"
+
+using namespace Piavca;
+
+void Proxemics::addMotion(Motion *mot)
+{
+	ChoiceMotion::addMotion(mot);
+	refreshMotions();
+}
+
+
+void Proxemics::removeMotionByIndex(int index)
+{
+	ChoiceMotion::removeMotionByIndex(index);
+	refreshMotions();
+}
+
+void Proxemics::setTarget(const Vec &target)
+{
+	if (!currentValueTarget)
+	{
+		//targetMotion->Dispose();
+		currentValueTarget = new CurrentValueMotion();
+		currentValueTarget->Reference();
+		MotionFilter::setMotion(currentValueTarget);
+		targetJointId = 0;
+	}
+	currentValueTarget->setVecValue(targetJointId, target);
+};
+
+Vec Proxemics::getTarget()
+{
+	if (currentValueTarget)
+	{
+		return currentValueTarget->getVecValueAtTime(targetJointId, 0.0);
+	}
+	else
+		return Vec();
+};
+
+void Proxemics::refreshMotions()
+{
+	Step_forward = getMotionIndex(Step_forward_name);
+	Step_backward = getMotionIndex(Step_backward_name);
+	Turn_left = getMotionIndex(Turn_left_name);
+	Turn_right = getMotionIndex(Turn_right_name);
+	Rest = getMotionIndex(Rest_name);
+	Target = getMotionIndex(Target_name);
+	setTargetId(Target);
+}
+
+void Proxemics::setTargetId(int targetId)
+{
+	Motion *mot = NULL;
+	if (targetId > 0)
+		mot = getMotion(targetId);
+	if (mot == NULL)
+	{
+		if (!currentValueTarget)
+			targetMot = mot;
+	}
+	else
+	{
+		targetMot = mot;
+		if (currentValueTarget)
+		{
+			currentValueTarget->Dispose();
+			currentValueTarget = NULL;
+		}
+	}
+}
+
+int Proxemics::makeChoice()
+{
+		//std:: cout << "Proxemics makeChoice" << std::endl;
+		if(distanceOff) return Rest;
+		if(!m_avatar) return Rest;
+		if (targetMot == NULL)
+			return Rest;
+		//std:: cout << "Proxemics makeChoice, we're in" << std::endl;
+		// work out the average position of the other characters
+		
+		Vec targetPos = targetMot->getVecValueAtTime(targetJointId, Piavca::Core::getCore()->getTime());
+
+		// subtract your own position and work out distance
+		Vec displacement = targetPos - m_avatar->getRootPosition();
+		displacement[1] = 0.0; // we aren't interested in up an down distance
+		float distance = fabs(displacement.mag());
+		Vec direction = displacement.normalized();
+		
+		// if we have a turning motion then we try to turn to face the
+		// average position
+		if(Turn_left > 0)
+		{
+			// get the direction you are pointing to
+			Vec forward = forwardDirection;//m_avatar->getForwardDirection();
+			m_avatar->getRootOrientation().transformInPlace(forward);
+			//forward[1] = 0.0; // we aren't intereseted in up down distance
+			//forward.normalize();
+
+			Vec left = Piavca::Quat(Piavca::Pi/2.0f, Vec::YAxis()).transform(forward);
+			float dot = forward.dot(direction);
+			float angle = acos(dot);
+			float angleSign = left.dot(direction);
+			if(fabs(angle) > anglethreshold)
+			{
+				//Core::getCore()->log() << Core::getCore()->getTime();
+				//Core::getCore()->log() << " proxemics_turn_towards\n";
+				int index = angleSign > 0.0 ? Turn_left : Turn_right;
+				Piavca::Motion *m = getMotion(index);
+				BlendBetween *bb = dynamic_cast<BlendBetween *>(m);
+				if (bb)
+				{
+					//std::cout << "angle" << angle << std::endl;
+					float blendfactor = angle/(Piavca::Pi/2.0f);
+					if(blendfactor > 1.0f) blendfactor = 1.0f;
+					bb->setBlendFactor(blendfactor);
+				}
+				//Piavca::BlendBetween *bb = new Piavca::BlendBetween(mots[Rest], m, blendfactor);
+				//MultiMotionCombiner::reset();
+				//setMotion(bb);
+				return index ;
+			}
+		}
+	
+
+		// if we haven't turned we can try moving forward or back
+		// figure out how far away you want to be from the
+		// other characters
+
+		// if you are too far or too near step forward or back
+		if((distance - desiredDistance) > threshold)
+		{
+			//Core::getCore()->log() << Core::getCore()->getTime();
+			//Core::getCore()->log() << " proxemics_step_forward\n";
+			//MultiMotionCombiner::reset();
+			return Step_forward;
+		}		
+		if((distance - desiredDistance) < -threshold)
+		{
+			//Core::getCore()->log() << Core::getCore()->getTime();
+			//Core::getCore()->log() << " proxemics_step_back\n";
+			//MultiMotionCombiner::reset();
+			return Step_backward;
+		}
+		return Rest;
+};

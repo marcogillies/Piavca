@@ -72,7 +72,12 @@ def ValueListToQuat(valuelist):
 def parseAttribute(attrValue):
 	
 	value = str(attrValue).strip()
+	if value == "":
+		return ["", None]
+
 	valuelist = stringToValueList(attrValue)
+	
+	print "attr value", value, valuelist
 	
 	possible_values = []
 	
@@ -127,38 +132,38 @@ def parseAttribute(attrValue):
 	except ValueError:
 		pass
 	# maybe its a list of motion names
-	try:
-		motions = []
-		for name in valuelist:
-			print "seeing if attribute is a motion", name
-			mot = Piavca.getMotion(name)
-			if mot == None:
-				raise ValueError
-			motions.append(mot)
-		possible_values.append(motions)
+	# try:
+		# motions = []
+		# for name in valuelist:
+			##print "seeing if attribute is a motion", name
+			# mot = Piavca.getMotion(name)
+			# if mot == None:
+				# raise ValueError
+			# motions.append(mot)
+		# possible_values.append(motions)
 	# didn't work so try next option
-	except ValueError:
-		pass
+	# except ValueError:
+		# pass
 	# maybe its a list of avatar names
-	try:
-		avatars = []
-		for name in valuelist:
-			av = Piavca.Core.getCore().getAvatar(name)
-			if av == None:
-				raise ValueError
-			avatars.append(av)
-		possible_values.append(avatars)
+	# try:
+		# avatars = []
+		# for name in valuelist:
+			# av = Piavca.Core.getCore().getAvatar(name)
+			# if av == None:
+				# raise ValueError
+			# avatars.append(av)
+		# possible_values.append(avatars)
 	# didn't work so try next option
-	except ValueError:
-		pass
+	# except ValueError:
+		# pass
 	# maybe its just a list of strings
-	try:
-		valuelist = [v.strip(" '\"") for v in valuelist]
-		#print valuelist
-		possible_values.append(valuelist)
-	# didn't work so try next option
-	except ValueError:
-		pass
+	# try:
+		# valuelist = [v.strip(" '\"") for v in valuelist]
+		##print valuelist
+		# possible_values.append(valuelist)
+	##didn't work so try next option
+	# except ValueError:
+		# pass
 		
 	# if all else fails, treat it as a string
 	try:
@@ -182,7 +187,9 @@ def setAttribute(mot, attrName, attrValue, firstArg = None):
 		method = lambda x : meth(firstArg, x)
 	
 	possible_values = parseAttribute(attrValue)
+	print possible_values
 	for value in possible_values:
+		print "trying value", value, type(value)
 		try:
 			method(value)
 			return 1

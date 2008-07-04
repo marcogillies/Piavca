@@ -126,7 +126,7 @@ public:
 	virtual float getMotionLength() const;
 
 
-	//adds a new child motion
+	//! adds a new child motion
 	virtual void addMotion(Motion *mot);
 
 	//! gets the index of a child motion give its name

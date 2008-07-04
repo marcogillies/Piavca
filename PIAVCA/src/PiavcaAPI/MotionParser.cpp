@@ -2097,7 +2097,7 @@ template<> void MotionParserTyped<RandomAddLoop>::editMotionInternal(RandomAddLo
 
 		}
 };
-
+/*
 template<> Piavca::Motion *MotionParserTyped<Proxemics>::parseMotion(istringstream &is, std::string currentWord, float scaleFactor)
 {
 		Motion *forward = NULL, *back = NULL, *left = NULL, *right = NULL, *rest = NULL;
@@ -2569,7 +2569,7 @@ template<> void MotionParserTyped<ProxemicsLoop>::editMotionInternal(ProxemicsLo
 
 		}
 };
-
+*/
 
 std::map<tstring, MotionParser *> MotionParser::commandLookup = std::map<tstring, MotionParser *>();
 
@@ -2625,7 +2625,7 @@ void MotionParser::setUpMotionCommands()
 	addMotionCommand(_T("random_loop"), new MotionParserTyped<RandomLoopMotion>());
 	addMotionCommand(_T("random_blend"), new MotionParserTyped<RandomBlendLoop>());
 	addMotionCommand(_T("random_add"), new MotionParserTyped<RandomAddLoop>());
-	addMotionCommand(_T("proxemics"), new MotionParserTyped<ProxemicsLoop>());
+	//addMotionCommand(_T("proxemics"), new MotionParserTyped<ProxemicsLoop>());
 }
 
 PIAVCA_DECL Piavca::Motion *MotionParser::parseMotion(istringstream &is, std::string currentWord, float scaleFactor, MotionParser **mp)

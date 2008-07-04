@@ -78,7 +78,7 @@ public:
 	virtual Motion *clone(){return new ProxemicsLoop(*this);};
 
 	//! returns the name of the type
-	Piavca::tstring getClassName(){return "ProxemicsLoop";};
+	tstring getClassName(){return "ProxemicsLoop";};
 
 	//! casts a motion to this type
 	static ProxemicsLoop *castToThisType(Motion *m){return dynamic_cast<ProxemicsLoop *>(m);};

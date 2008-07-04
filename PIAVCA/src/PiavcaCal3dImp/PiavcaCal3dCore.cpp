@@ -43,7 +43,7 @@ using namespace Piavca;
 
 #include <time.h>
 
-
+/*
 //#ifdef _WIN32
 //#include <windows.h>
 //#endif
@@ -53,6 +53,7 @@ using namespace Piavca;
 //#else
 //	#include <GL/gl.h>
 //#endif
+*/
 
 Core *Core::init()
 {

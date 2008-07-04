@@ -134,7 +134,6 @@ typedef CalCoreMesh *CalCoreMeshPtr;
 //#include <windows.h>
 //#endif
 
-
 #include <string>
 
 #include "TextureHandler.h"

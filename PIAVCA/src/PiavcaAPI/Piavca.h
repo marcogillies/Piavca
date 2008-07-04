@@ -75,7 +75,7 @@
 #include "RandomGazeMotion.h"
 #include "DiadicGazeMotion.h"
 #include "Proxemics.h"
-#include "ProxemicsLoop.h"
+//#include "ProxemicsLoop.h"
 #include "ScaleMotion.h"
 #include "ScaleMotionSpeed.h"
 #include "ChangeMotionProp.h"
