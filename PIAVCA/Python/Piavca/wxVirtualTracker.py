@@ -58,6 +58,7 @@ class wxVirtualTracker (Piavca.CurrentValueMotion):
 		
 		self.loadToCanvas()
 		self.radius = 10.0
+		self.sensetivity = 1.0
 		
 		self.__disown__()
 		
@@ -90,6 +91,12 @@ class wxVirtualTracker (Piavca.CurrentValueMotion):
 	def getRadius(self):
 		return self.radius
 		
+	def setSensitivity(self, s):
+		self.sensetivity = s
+		
+	def getSensitivity(self):
+		return self.sensetivity
+		
 	def render(self):
 		v = self.getVecValueAtTime(Piavca.root_position_id, 0.0)
         #print "rendering tracker at", v
@@ -105,17 +112,17 @@ class wxVirtualTracker (Piavca.CurrentValueMotion):
 		v = self.getVecValueAtTime(Piavca.root_position_id, 0.0)
 		print v
 		if key == "d":
-			v += Piavca.Vec.XAxis()*0.02*self.radius
+			v += Piavca.Vec.XAxis()*self.sensetivity*self.radius
 		elif key == "a":
-			v -= Piavca.Vec.XAxis()*0.02*self.radius
+			v -= Piavca.Vec.XAxis()*self.sensetivity*self.radius
 		elif key == "w":
-			v += Piavca.Vec.YAxis()*0.02*self.radius
+			v += Piavca.Vec.YAxis()*self.sensetivity*self.radius
 		elif key == "s":
-			v -= Piavca.Vec.YAxis()*0.02*self.radius
+			v -= Piavca.Vec.YAxis()*self.sensetivity*self.radius
 		elif key == "q":
-			v += Piavca.Vec.ZAxis()*0.02*self.radius
+			v += Piavca.Vec.ZAxis()*self.sensetivity*self.radius
 		elif key == "z":
-			v -= Piavca.Vec.ZAxis()*0.02*self.radius
+			v -= Piavca.Vec.ZAxis()*self.sensetivity*self.radius
 		print v
 		self.setVecValue(Piavca.root_position_id, v)
               

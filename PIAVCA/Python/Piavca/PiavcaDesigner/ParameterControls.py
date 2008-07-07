@@ -186,6 +186,19 @@ class AvatarParamEntry(ChoiceParamEntry):
 		core = Piavca.Core.getCore()
 		return core.getAvatar(name)
 		
+class MotionParamEntry(ChoiceParamEntry):
+
+	def getChoiceList(self):
+		return self.backend.getMotionNames()
+		
+	def setValue(self, val):
+		name = val.getName()
+		self.choice.SetStringSelection(name)
+		
+	def getValue(self):
+		name = self.choice.GetStringSelection()
+		return self.backend.getMotion(name)
+		
 class JointParamEntry(ChoiceParamEntry):
 
 	def getChoiceList(self):
@@ -212,6 +225,29 @@ class SetParamEntry(ParamEntry):
 		self.listbox = wx.CheckListBox(self, -1, choices=choicelist)
 		self.Bind(wx.EVT_CHECKLISTBOX, self.OnTextEntry, self.listbox)
 		self.sizer.Add(self.listbox, 1, wx.EXPAND)
+		
+
+		
+class MotionSetParamEntry(SetParamEntry):
+
+	def getChoiceList(self):
+		return self.backend.getMotionNames()
+		
+	def setValue(self, vals):
+		for val in vals:
+			name = val.getName()
+			index = self.listbox.FindString(name)
+			if index >= 0:
+				self.listbox.Check(index, b)
+		
+	def getValue(self):
+		l = []
+		for i in range(self.listbox.GetCount()):
+			name = self.listbox.GetString(i)
+			if self.listbox.IsChecked(i):
+				l.append(self.backend.getMotion(name))
+		return l
+
 		
 class JointSetParamEntry(SetParamEntry):
 
