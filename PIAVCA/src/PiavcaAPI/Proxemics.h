@@ -65,7 +65,7 @@ protected:
 	CurrentValueMotion *currentValueTarget;
 	Motion *targetMot;
 	int targetJointId;
-	Vec forwardDirection;
+	Vec forwardDirection, upDirection;
 
 public:
 	/*! 
@@ -78,14 +78,14 @@ public:
 	 */
 	Proxemics(float distance = 1.0f)
 		:ChoiceMotion(), targetMot(NULL), currentValueTarget(NULL), 
-		targetJointId(root_position_id), forwardDirection(0.0, 0.0, 1.0),
+		targetJointId(root_position_id), forwardDirection(0.0, 0.0, 1.0), upDirection(0.0, 1.0, 0.0),
 		desiredDistance(distance), threshold(0.2f), anglethreshold(Piavca::Pi/8.0f), distanceOff(false)
 	{
 	};
 	Proxemics(const Proxemics &rl)
 		:ChoiceMotion(rl), 
 		desiredDistance(rl.desiredDistance), targetMot(rl.targetMot), currentValueTarget(NULL), 
-		targetJointId(rl.targetJointId), forwardDirection(rl.forwardDirection),
+		targetJointId(rl.targetJointId), forwardDirection(rl.forwardDirection), upDirection(rl.upDirection),
 		threshold(rl.threshold), anglethreshold(rl.anglethreshold),  distanceOff(rl.distanceOff),
 		Step_forward_name(rl.Step_forward_name), Step_backward_name(rl.Step_backward_name), Rest_name(rl.Rest_name), 
 		Turn_left_name(rl.Turn_left_name), Turn_right_name(rl.Turn_right_name), Target_name(rl.Target_name)
@@ -143,6 +143,17 @@ public:
 	{
 		return forwardDirection;
 	}
+		
+	void setUpDirection(const Vec &v)
+	{
+		upDirection = v;
+	};
+
+
+	Vec getUpDirection()
+	{
+		return upDirection;
+	}
 
 	//! the names of all the specific motions
 	//!@{
@@ -195,6 +206,7 @@ public:
 	{
 		Target_name = name;
 		Target = getMotionIndex(name);
+		std::cout << "proxemics: setting target motion name" << Target_name << " " << Target << std::endl;
 		setTargetId(Target);
 	}
 	tstring getTargetMotionName()

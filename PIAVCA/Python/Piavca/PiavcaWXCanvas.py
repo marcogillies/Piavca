@@ -153,8 +153,12 @@ if glPresent:
 			pass
 
 		def OnKeyboard(self, evt):
+			#print evt.KeyCode
 			try:
-				char = chr(evt.KeyCode)
+				if type(evt.KeyCode) == int:
+					char = chr(evt.KeyCode)
+				else:
+					char = chr(evt.KeyCode())
 			except ValueError:
 				print "KeyInput.KeyPressedCB not ASCII"
 				return

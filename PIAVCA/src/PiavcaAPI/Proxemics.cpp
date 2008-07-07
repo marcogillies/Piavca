@@ -42,6 +42,7 @@ using namespace Piavca;
 
 void Proxemics::addMotion(Motion *mot)
 {
+	std::cout << "proxemics: add motion\n";
 	ChoiceMotion::addMotion(mot);
 	refreshMotions();
 }
@@ -78,6 +79,7 @@ Vec Proxemics::getTarget()
 
 void Proxemics::refreshMotions()
 {
+	std::cout << "proxemics: efresh motions\n";
 	Step_forward = getMotionIndex(Step_forward_name);
 	Step_backward = getMotionIndex(Step_backward_name);
 	Turn_left = getMotionIndex(Turn_left_name);
@@ -89,16 +91,21 @@ void Proxemics::refreshMotions()
 
 void Proxemics::setTargetId(int targetId)
 {
+
+	std::cout << "proxemics: setting target id " << targetId << std::endl;
+
 	Motion *mot = NULL;
-	if (targetId > 0)
+	if (targetId >= 0)
 		mot = getMotion(targetId);
 	if (mot == NULL)
 	{
+		std::cout << "proxemics: null motion \n";
 		if (!currentValueTarget)
 			targetMot = mot;
 	}
 	else
 	{
+		std::cout << "proxemics: found motion \n";
 		targetMot = mot;
 		if (currentValueTarget)
 		{
@@ -111,20 +118,47 @@ void Proxemics::setTargetId(int targetId)
 int Proxemics::makeChoice()
 {
 		//std:: cout << "Proxemics makeChoice" << std::endl;
-		if(distanceOff) return Rest;
-		if(!m_avatar) return Rest;
-		if (targetMot == NULL)
+		if(distanceOff) 
+		{
+			std::cout << "proxemics: distance off\n";
 			return Rest;
+		}
+		if(!m_avatar) 
+		{
+			std::cout << "proxemics: no avatar\n";
+			return Rest;
+		}
+		if (targetMot == NULL)
+		{
+			std::cout << "proxemics: no target\n";
+			return Rest;
+		}
 		//std:: cout << "Proxemics makeChoice, we're in" << std::endl;
 		// work out the average position of the other characters
 		
 		Vec targetPos = targetMot->getVecValueAtTime(targetJointId, Piavca::Core::getCore()->getTime());
+		
+		std::cout << "Proxemics: target pos: " << targetPos << std::endl;
 
 		// subtract your own position and work out distance
 		Vec displacement = targetPos - m_avatar->getRootPosition();
-		displacement[1] = 0.0; // we aren't interested in up an down distance
+		
+		std::cout << "Proxemics: displacement: " << displacement << std::endl;
+		
+		// get rid of the component in the up direction
+		//displacement[1] = 0.0; // we aren't interested in up an down distance
+		Vec up = upDirection;
+		m_avatar->getRootOrientation().transformInPlace(up);
+		up = up*displacement.dot(up);
+		displacement = displacement - up;
+		
+		std::cout << "Proxemics: displacement: " << displacement << std::endl;
+		
 		float distance = fabs(displacement.mag());
 		Vec direction = displacement.normalized();
+		
+		std::cout << "Proxemics: distance: " << distance << std::endl;
+		std::cout << "Proxemics: direction: " << direction << std::endl;
 		
 		// if we have a turning motion then we try to turn to face the
 		// average position
@@ -136,12 +170,16 @@ int Proxemics::makeChoice()
 			//forward[1] = 0.0; // we aren't intereseted in up down distance
 			//forward.normalize();
 
-			Vec left = Piavca::Quat(Piavca::Pi/2.0f, Vec::YAxis()).transform(forward);
+			Vec left = Piavca::Quat(Piavca::Pi/2.0f, upDirection).transform(forward);
+			std::cout << "Proxemics: left: " << left << std::endl;
 			float dot = forward.dot(direction);
 			float angle = acos(dot);
 			float angleSign = left.dot(direction);
+			std::cout << "Proxemics: forward: " << forward << std::endl;
+			std::cout << "Proxemics: angle: " << angle << std::endl;
 			if(fabs(angle) > anglethreshold)
 			{
+				std::cout << "proxemics: turn\n";
 				//Core::getCore()->log() << Core::getCore()->getTime();
 				//Core::getCore()->log() << " proxemics_turn_towards\n";
 				int index = angleSign > 0.0 ? Turn_left : Turn_right;
@@ -151,6 +189,7 @@ int Proxemics::makeChoice()
 				{
 					//std::cout << "angle" << angle << std::endl;
 					float blendfactor = angle/(Piavca::Pi/2.0f);
+					std::cout << "Proxemics: blendfactor: " << blendfactor << std::endl;
 					if(blendfactor > 1.0f) blendfactor = 1.0f;
 					bb->setBlendFactor(blendfactor);
 				}
@@ -169,6 +208,7 @@ int Proxemics::makeChoice()
 		// if you are too far or too near step forward or back
 		if((distance - desiredDistance) > threshold)
 		{
+			std::cout << "proxemics: step forward\n";
 			//Core::getCore()->log() << Core::getCore()->getTime();
 			//Core::getCore()->log() << " proxemics_step_forward\n";
 			//MultiMotionCombiner::reset();
@@ -176,6 +216,7 @@ int Proxemics::makeChoice()
 		}		
 		if((distance - desiredDistance) < -threshold)
 		{
+			std::cout << "proxemics: step back\n";
 			//Core::getCore()->log() << Core::getCore()->getTime();
 			//Core::getCore()->log() << " proxemics_step_back\n";
 			//MultiMotionCombiner::reset();
