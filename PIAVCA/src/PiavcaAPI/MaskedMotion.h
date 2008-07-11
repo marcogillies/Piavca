@@ -61,6 +61,8 @@ public:
 	void clearMask();
 };
 
+
+
 //! plays different motions on different joints.
 /*!
  *	It uses a mask to tell which motion to play on which joint.
@@ -98,7 +100,13 @@ public:
 	static MaskedMotion *castToThisType(Motion *m){return dynamic_cast<MaskedMotion *>(m);};
 
 	void setMask(const MotionMask &_mask){mask = _mask;};
-	MotionMask getMask(){return mask;};
+	void setMask(std::vector<std::string>  v);
+	MotionMask getMask()
+	{
+		std::cout << "getMask" << std::endl;
+		return mask;
+	};
+	
 
 	void addToMask(int trackId){mask.setMask(trackId, true);};
 	void removeFromMask(int trackId){mask.setMask(trackId, false);};
@@ -106,12 +114,16 @@ public:
 	void addAllToMask();
 	void removeAllFromMask();
 
-	void setMotionMask(std::vector<std::string>  v);
-	StringVector getMotionMask();
+	//void setMotionMask(std::vector<std::string>  v);
+	//StringVector getMotionMask();
 
 	virtual float getFloatValueAtTimeInternal (int trackId, float time);
 	virtual Vec getVecValueAtTimeInternal (int trackId, float time);	
 	virtual Quat getQuatValueAtTimeInternal (int trackId, float time);
 };
 };
+
+
+PIAVCA_DECL std::ostream &operator<<(std::ostream &os, const Piavca::MotionMask &m);
+
 #endif //MASK_MOTION_H

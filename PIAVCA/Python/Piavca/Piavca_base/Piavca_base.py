@@ -3404,7 +3404,6 @@ class MotionMask(_object):
     __setattr__ = lambda self, name, value: _swig_setattr(self, MotionMask, name, value)
     __swig_getmethods__ = {}
     __getattr__ = lambda self, name: _swig_getattr(self, MotionMask, name)
-    __repr__ = _swig_repr
     def __init__(self, *args): 
         """
         MotionMask::MotionMask(const MotionMask &mm)
@@ -3438,6 +3437,7 @@ class MotionMask(_object):
         return _Piavca_base.MotionMask_getMask(*args)
 
     def clearMask(*args): return _Piavca_base.MotionMask_clearMask(*args)
+    def __repr__(*args): return _Piavca_base.MotionMask___repr__(*args)
     __swig_destroy__ = _Piavca_base.delete_MotionMask
     __del__ = lambda self : None;
 MotionMask_swigregister = _Piavca_base.MotionMask_swigregister
@@ -3500,8 +3500,6 @@ class MaskedMotion(MotionFilter):
     def removeFromMask(*args): return _Piavca_base.MaskedMotion_removeFromMask(*args)
     def addAllToMask(*args): return _Piavca_base.MaskedMotion_addAllToMask(*args)
     def removeAllFromMask(*args): return _Piavca_base.MaskedMotion_removeAllFromMask(*args)
-    def setMotionMask(*args): return _Piavca_base.MaskedMotion_setMotionMask(*args)
-    def getMotionMask(*args): return _Piavca_base.MaskedMotion_getMotionMask(*args)
     def getFloatValueAtTimeInternal(*args):
         """
         float MaskedMotion::getFloatValueAtTimeInternal(int trackId, float time)

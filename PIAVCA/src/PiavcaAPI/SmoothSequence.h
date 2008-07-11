@@ -102,6 +102,7 @@ namespace Piavca
 
 		void setMotion2(Motion *mot)
 		{
+			std::cout << "Smooth Sequence::setMotion2 " << mot << std::endl;
 			originalMotion2 = mot;
 			create();
 		};

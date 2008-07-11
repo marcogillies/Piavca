@@ -34,7 +34,7 @@ class ParameterWindow(wx.Panel):
 	def update(self):
 		# get rid of existing controls
 		for label, ctrl in self.children:
-			print label, ctrl
+			#print label, ctrl
 			self.parametersSizer.Detach(label)
 			self.parametersSizer.Detach(ctrl)
 			label.Destroy()
@@ -47,7 +47,7 @@ class ParameterWindow(wx.Panel):
 			self.typelabel.SetLabel(motionproxy.getName())
 			
 			parameters = motionproxy.getParameters()
-			print parameters
+			#print parameters
 		
 			
 			self.children = []

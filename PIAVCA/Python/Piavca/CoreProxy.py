@@ -86,13 +86,15 @@ def addEvents(avatar, events):
 	global _events
 	if not _events.has_key(avatar.getName()):
 		_events[avatar.getName()] = []
-	_events[avatar.getName()] = _events[avatar.getName()] + events
+	uniqueevents = filter(lambda x: not x in _events[avatar.getName()], events)
+	_events[avatar.getName()] = _events[avatar.getName()] + uniqueevents
 	
 def addEvent(avatar, event):
 	global _events
 	if not _events.has_key(avatar.getName()):
 		_events[avatar.getName()] = []
-	_events[avatar.getName()].append(event)
+	if not event in _events[avatar.getName()]:
+		_events[avatar.getName()].append(event)
 	
 def getEvents(avatar):
 	global _events

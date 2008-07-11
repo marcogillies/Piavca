@@ -72,6 +72,7 @@ class PiavcaDesigner(wx.Frame):
 		#self.viewer = Piavca.FreeCameraCanvas.FreeCameraCanvas(self.splitter2)
 		self.viewer = Piavca.ViewerCanvas.ViewerCanvas(self.splitter2)
 		Piavca.getWXApp().setCanvas(self.viewer)
+		self.viewer.tracking = False
 		self.heirarchy = HeirarchyView.HeirarchyView(self.backend, self.splitter2)#, style=wx.SUNKEN_BORDER)
 		self.listboxes = ListBoxController.ListBoxController(self.backend, self.splitter1, style=wx.SUNKEN_BORDER)
 		
@@ -166,9 +167,11 @@ class PiavcaDesigner(wx.Frame):
 		for child in self.children:
 			child.update()
 			
-		self.viewer.setAvatar(self.backend.getAvatar())
-		self.viewer.initCameraPosition()
-		self.viewer.SetFocus()
+		if self.viewer.avatar != self.backend.getAvatar():
+			self.viewer.setAvatar(self.backend.getAvatar())
+			self.viewer.initCameraPosition()
+			self.viewer.SetFocus()
+
 		# this line is a bit of a hack, its the only way I could get the 
 		# heirarchy view to update its layout properly
 		self.splitter2.SetSashPosition(self.splitter2.GetSashPosition())

@@ -48,8 +48,10 @@ using namespace Piavca;
 
 void SmoothSequence::create()
 {
+	std::cout << "Smooth Sequence::create" << std::endl;
 	if (!originalMotion1)
 	{
+		std::cout << "Smooth Sequence::create: no orgininal motion 1" << std::endl;
 		Sequence::setMotion1(NULL);
 		if (originalMotion2)
 			Sequence::setMotion2(originalMotion2);
@@ -60,6 +62,7 @@ void SmoothSequence::create()
 
 	if (!originalMotion2)
 	{
+		std::cout << "Smooth Sequence::create: no orgininal motion 1" << std::endl;
 		Sequence::setMotion2(NULL);
 		if (originalMotion1)
 			Sequence::setMotion1(originalMotion1);
@@ -67,7 +70,7 @@ void SmoothSequence::create()
 			Sequence::setMotion1(NULL);
 		return;
 	}
-	
+	std::cout << "Smooth Sequence::create: setting motion 1" << std::endl;
 	if (blendStart < 0)
 		Sequence::setMotion1(originalMotion1);
 	else
@@ -75,16 +78,23 @@ void SmoothSequence::create()
 						originalMotion1->getStartTime(),
 						blendStart));
 
+	std::cout << "Smooth Sequence::create: processing motion 2" << std::endl;
 	Motion *m2 = originalMotion2;
 	if(m_accumulateRoot)
 	{
+		std::cout << "Smooth Sequence::create: accumulate root" << std::endl;
 		float endTime = getMotion1()->getEndTime();
 		Vec rootPos = getMotion1()->getVecValueAtTime(root_position_id, endTime);
-		Quat rootOri = getMotion1()->getQuatValueAtTime(root_position_id, endTime);
+		Quat rootOri = getMotion1()->getQuatValueAtTime(root_orientation_id, endTime);
+
+		std::cout << "Smooth Sequence::create: reposition" << std::endl;
 		m2 = new Reposition(m2, rootPos, rootOri);
 	}
 
+
+	std::cout << "Smooth Sequence::create: transition" << std::endl;
 	MotionTransition *trans = new MotionTransition(getMotion1(), m2);
 	trans->setWindow(blendInterval);
+	std::cout << "Smooth Sequence::create: setting motion 2" << std::endl;
 	setMotion2(new Sequence(trans, m2));
 }

@@ -108,6 +108,12 @@ class BackEnd:
 			self.resetRange()
 			self.update()
 			
+	def addMotion(self, motion):
+		dialog_return = textEntryDialog (message="Please enter a name for this motion")
+		motion_name = dialog_return.text.encode("latin-1")
+		Piavca.loadMotion(motion_name, motion)
+		self.update()
+			
 	def setSubMotion(self, motionproxy):
 		self.submotion = motionproxy
 		self.update()
@@ -138,8 +144,12 @@ class BackEnd:
 	def setRangeFraction(self, start, end):
 		self.setRange(self.getTimeFromFraction(start), self.getTimeFromFraction(end))
 			
-	def getMotion(self):
-		return self.motion.getMotion()		
+	def getMotion(self, name=None):
+		print "backend, getMotion, name = ", name
+		if name == None:
+			return self.motion.getMotion()		
+		else:
+			return  Piavca.getMotion(str(name.encode("latin-1")))
 	
 	def getMotionByName(self, name):
 		if name[:10] == "__Type__::":
@@ -251,9 +261,12 @@ class BackEnd:
 			self.lastTime = Piavca.Core.getCore().getSystemTime()
 			#while newtime > self.motion.getMotionLength() :
 			#	newtime -= self.motion.getMotionLength()
-			while newtime > self.range[1] :
-				newtime -= self.range[1]
-				newtime += self.range[0]
+			if newtime > self.range[1]:
+			#while newtime > self.range[1] :
+				#newtime -= self.range[1]
+				#newtime += self.range[0]
+				newtime = self.range[0]
+				self.playing = False
 			self.setTime(newtime)
 		
 	

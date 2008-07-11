@@ -69,7 +69,7 @@ def ValueListToQuat(valuelist):
 	return quat
 
 # take an attribute in textural form and parse it into the possible types it can take
-def parseAttribute(attrValue):
+def parseAttribute(attrValue, type, elementType):
 	
 	value = str(attrValue).strip()
 	if value == "":
@@ -77,12 +77,12 @@ def parseAttribute(attrValue):
 
 	valuelist = stringToValueList(attrValue)
 	
-	print "attr value", value, valuelist
+	print "attr value", value, valuelist, type, elementType
 	
 	possible_values = []
 	
 	# maybe its a quaternion
-	if len(valuelist) == 4:
+	if (type == Piavca.Quat or type == types.NoneType) and len(valuelist) == 4:
 		try:
 			quat = ValueListToQuat(valuelist)
 			possible_values.append(quat)
@@ -91,7 +91,7 @@ def parseAttribute(attrValue):
 			pass
 			
 	# maybe its a Vec
-	if len(valuelist) == 3:
+	if (type == Piavca.Vec or type == types.NoneType) and len(valuelist) == 3:
 		try:
 			vec = ValueListToVec(valuelist)
 			possible_values.append(vec)
@@ -102,35 +102,40 @@ def parseAttribute(attrValue):
 	# might be just a single value
 	if len(valuelist) == 1:
 		
-		if value == "True" or value == "true":
-			possible_values.append(True)
-		if value == "False" or value == "false":
-			possible_values.append(False)
+		if type == bool or type == types.NoneType:
+			if value == "True" or value == "true":
+				possible_values.append(True)
+			if value == "False" or value == "false":
+				possible_values.append(False)
 		
-		try:
-			i = int(value)
-			possible_values.append(i)
-		except ValueError:
-			pass
+		if type == int or type == types.NoneType:
+			try:
+				i = int(value)
+				possible_values.append(i)
+			except ValueError:
+				pass
 			
-		try:
-			f = float(value)
-			possible_values.append(f)
-		except ValueError:
-			pass
+		if type == float or type == types.NoneType:
+			print "found a float value"
+			try:
+				f = float(value)
+				possible_values.append(f)
+			except ValueError:
+				pass
 		
-		if value == "True" or value == "true":
-			possible_values.append(True)
-		if value == "False" or value == "false":
-			possible_values.append(False)
+		#if value == "True" or value == "true":
+		#	possible_values.append(True)
+		#if value == "False" or value == "false":
+		#	possible_values.append(False)
 	
 	# maybe its a list of numbers
-	try:
-		vec = [float(x) for x in valuelist]
-		possible_values.append(vec)
-	# didn't work so try next option
-	except ValueError:
-		pass
+	if type == types.NoneType or (type == list and (elementType == float or elementType == None)):
+		try:
+			vec = [float(x) for x in valuelist]
+			possible_values.append(vec)
+		# didn't work so try next option
+		except ValueError:
+			pass
 	# maybe its a list of motion names
 	# try:
 		# motions = []
@@ -157,19 +162,21 @@ def parseAttribute(attrValue):
 	# except ValueError:
 		# pass
 	# maybe its just a list of strings
-	# try:
-		# valuelist = [v.strip(" '\"") for v in valuelist]
-		##print valuelist
-		# possible_values.append(valuelist)
-	##didn't work so try next option
-	# except ValueError:
-		# pass
+	if type == types.NoneType or type == Piavca.MotionMask or (type == list and (elementType == str or elementType == None)):
+		try:
+			valuelist = [v.strip(" '\"") for v in valuelist]
+			##print valuelist
+			possible_values.append(valuelist)
+		##didn't work so try next option
+		except ValueError:
+			pass
 		
 	# if all else fails, treat it as a string
-	try:
-		possible_values.append(value)
-	except ValueError:
-		pass
+	if type == types.NoneType or type == str:
+		try:
+			possible_values.append(value)
+		except ValueError:
+			pass
 		
 	return possible_values
 
@@ -181,12 +188,24 @@ def setAttribute(mot, attrName, attrValue, firstArg = None):
 		print "could not find attribute", attrName
 		return 0
 	meth = getattr(mot, "set" + string.upper(attrName[0]) + attrName[1:])
+	if not hasattr(mot, "get" + string.upper(attrName[0]) + attrName[1:]):
+		print "could not find attribute", attrName
+		return 0
+	getmeth = getattr(mot, "get" + string.upper(attrName[0]) + attrName[1:])
+	val = getmeth()
+	valtype = type(val)
+	element_type = None
+	if valtype == list and len(val) > 0:
+		element_type = type(val[0])
+	
+	print "attrName", attrValue, val, valtype, element_type
+	
 	if firstArg == None:
 		method = meth
 	else:
 		method = lambda x : meth(firstArg, x)
 	
-	possible_values = parseAttribute(attrValue)
+	possible_values = parseAttribute(attrValue, valtype, element_type)
 	print possible_values
 	for value in possible_values:
 		print "trying value", value, type(value)
@@ -201,7 +220,7 @@ def setAttribute(mot, attrName, attrValue, firstArg = None):
 			pass
 	
 	# if we've got here, nothing works!
-	raise ValueError("Invalid value "+value+" for attribute "+attrName)
+	raise ValueError("Invalid value "+attrValue+" for attribute "+attrName)
 	return 0
 		
 def addElement(mot, eleName, arglist):
@@ -215,7 +234,7 @@ def addElement(mot, eleName, arglist):
 	args = [{}]
 	for name, value in arglist:
 		#print "element attrs", name, value
-		possible_values = parseAttribute(value)
+		possible_values = parseAttribute(value, None, None)
 		temp_args = []
 		for arg in args:
 			#print arg

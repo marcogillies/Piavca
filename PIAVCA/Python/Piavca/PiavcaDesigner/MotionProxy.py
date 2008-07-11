@@ -80,7 +80,7 @@ class MotionProxy:
 	def getParameters(self):
 		parameters = {}
 		
-		print "getting parameters"
+		print "getting parameters"   
 		mtype = type(self.motion)
 		for key in dir(mtype):
 			if key[:3] == "get":
@@ -91,22 +91,25 @@ class MotionProxy:
 						print "found Motion in paramname"
 						continue
 					method = getattr(self.motion, key)
+					print "got method"
 					value = method()
+					print "got value"
 					print key[3:], value
 					parameters[key[3:]] = value
+		print "finished getting parameters"
 		return parameters
 	
 	def getParameterVal(self, name):
 		if hasattr(self.motion, "get" + name):
 			method = getattr(self.motion, "get" + name)
 			val = method()
-			print "getting ", name, "=", val
+			#print "getting ", name, "=", val
 			return val
 		else:
 			return None
 		
 	def setParameterVal(self, name, val):
-		print "setting ", name, "=", val, type(val)
+		#print "setting ", name, "=", val, type(val)
 		method = getattr(self.motion, "set" + name)
 		return method(val)
 	
@@ -138,32 +141,32 @@ class MotionProxy:
 		done = False
 		parentMot = self.parent.getMotion()
 		if hasattr(parentMot, "removeMotionByIndex"):
-			print "is multimotion"
+			#print "is multimotion"
 			ind = parentMot.getMotionIndex(self.motion.getName())
-			print self.motion.getName(), ind
+			#print self.motion.getName(), ind
 			if ind < 0:
 				for i in range(parentMot.getNumMotions()):
 					if self.motion == parentMot.getMotion(i):
 						ind = i
 						break
-			print ind
+			#print ind
 			if ind >= 0:
 				parentMot.removeMotionByIndex(ind)
 				done = True
 		if not done and hasattr(parentMot, "setMotion1"):
-			print "is two motion"
-			print self.motion, parentMot.getMotion1(), parentMot.getMotion2()
+			#print "is two motion"
+			#print self.motion, parentMot.getMotion1(), parentMot.getMotion2()
 			if parentMot.getMotion1() == self.motion:
-				print "is motion1"
+				#print "is motion1"
 				parentMot.setMotion1(None)
 				done = True
 			elif parentMot.getMotion2() == self.motion:
-				print "is motion2"
+				#print "is motion2"
 				parentMot.setMotion2(None)
 				done = True
 		if not done and hasattr(parentMot, "setMotion"):
-			print "is motion filter"
-			print self.motion, parentMot.getMotion()
+			#print "is motion filter"
+			#print self.motion, parentMot.getMotion()
 			if parentMot.getMotion() == self.motion:
 				print "is motion"
 				parentMot.setMotion(None)

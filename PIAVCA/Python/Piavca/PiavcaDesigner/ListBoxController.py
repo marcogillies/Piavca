@@ -6,6 +6,7 @@ from MotionsList import MotionList
 from MotionTypeList import MotionTypeList
 from EventList import EventList
 from ParameterWindow import ParameterWindow
+from AutoCreatorsWindow import AutoCreatorsWindow
 
 class ListBoxController(wx.Panel):
 	def __init__(self, backend, parent=None, id=-1, pos=wx.DefaultPosition, size=wx.DefaultSize, style=0, name="ListBoxController"):
@@ -35,6 +36,10 @@ class ListBoxController(wx.Panel):
 		self.parameter_window = ParameterWindow(self.backend, self.nb)
 		self.nb.AddPage(self.parameter_window, "Parameters")
 		self.children.append(self.parameter_window)
+		
+		self.auto_creators = AutoCreatorsWindow(self.backend, self.nb)
+		self.nb.AddPage(self.auto_creators, "AutoCreators")
+		self.children.append(self.auto_creators)
 		
 		
 		# finally, put the notebook in a sizer for the panel to manage

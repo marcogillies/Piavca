@@ -334,6 +334,7 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 	{
 		std::ostringstream os;
 		os << (*self);
+		std::cout << "Python rep of vec " << (*self) << std::endl;
 		return Py_BuildValue("s", os.str().c_str());
 	}	
 }
@@ -455,6 +456,19 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %include "PiavcaAPI/TwoMotionCombiner.h"
 %include "PiavcaAPI/MultiMotionCombiner.h"
 %include "PiavcaAPI/MaskedMotion.h"
+
+%extend Piavca::MotionMask {
+
+	PyObject *__repr__()
+	{
+		std::ostringstream os;
+		os << (*self);
+		std::cout << "Python rep of motion mask " << (*self) << std::endl;
+		return Py_BuildValue("s", os.str().c_str());
+	}	
+
+}
+
 %include "PiavcaAPI/ScaleMotion.h"
 %include "PiavcaAPI/ScaleMotionSpeed.h"
 %include "PiavcaAPI/ChangeMotionLength.h"

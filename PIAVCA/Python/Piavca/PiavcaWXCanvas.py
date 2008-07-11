@@ -95,16 +95,21 @@ if glPresent:
 		def OnMouseDown(self, evt):
 			self.CaptureMouse()
 			x, y = evt.GetPosition()
-			print "mouse down"
-			if evt.LeftIsDown():
-				print "right down"
-				self.leftDown(x,y)
-			elif evt.RightIsDown():
-				print "right down"
-				self.rightDown(x,y)
-			elif evt.MiddleIsDown():
-				print "niddle Down"
-				self.middleDown(x,y)
+			if evt.AltDown():
+				for plugin in self.plugins:
+					if hasattr(plugin, "MouseDownEvent"):
+						plugin.MouseDownEvent(evt)
+			else:
+				#print "mouse down"
+				if evt.LeftIsDown():
+					#print "right down"
+					self.leftDown(x,y)
+				elif evt.RightIsDown():
+					#print "right down"
+					self.rightDown(x,y)
+				elif evt.MiddleIsDown():
+					#print "niddle Down"
+					self.middleDown(x,y)
 		
 		def leftDown(self, x, y):
 			pass
@@ -118,7 +123,12 @@ if glPresent:
 		def OnMouseUp(self, evt):
 			print "mouse up"
 			self.dragging = False
-			self.mouseUp()
+			if evt.AltDown():
+				for plugin in self.plugins:
+					if hasattr(plugin, "MouseUpEvent"):
+						plugin.MouseUpEvent(evt)
+			else:
+				self.mouseUp()
 			self.ReleaseMouse()
 
 		def mouseUp(self):
@@ -127,17 +137,22 @@ if glPresent:
 		def OnMouseMotion(self, evt):
 			if evt.Dragging():
 				x, y = evt.GetPosition()
-				if evt.LeftIsDown():
-					self.dragging = True
-					self.leftMove(x,y)
-				elif evt.RightIsDown():
-					self.dragging = True
-					self.rightMove(x,y)
-				elif evt.MiddleIsDown():
-					self.dragging = True
-					self.middleMove(x,y)
+				if evt.AltDown():
+					for plugin in self.plugins:
+						if hasattr(plugin, "MouseDragEvent"):
+							plugin.MouseDragEvent(evt)
 				else:
-					self.mouseUpMove(x,y)
+					if evt.LeftIsDown():
+						self.dragging = True
+						self.leftMove(x,y)
+					elif evt.RightIsDown():
+						self.dragging = True
+						self.rightMove(x,y)
+					elif evt.MiddleIsDown():
+						self.dragging = True
+						self.middleMove(x,y)
+					else:
+						self.mouseUpMove(x,y)
 				self.Refresh(False)
 		
 		def leftMove(self, x, y):

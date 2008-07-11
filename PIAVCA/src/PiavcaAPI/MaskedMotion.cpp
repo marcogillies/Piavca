@@ -44,6 +44,11 @@ using namespace Piavca;
 MotionMask::MotionMask(const MotionMask &mm)
 	:m_body(mm.m_body), m_facial(mm.m_facial)
 {
+	std::cout << "Mask: copy constructor" << std::endl;
+	for (int i = Piavca::Core::getCore()->getMinTrackId(); i < Piavca::Core::getCore()->getMaxTrackId()+1; i++)
+	{
+		setMask(i, mm.getMask(i));
+	}
 };
 
 const MotionMask &MotionMask::operator=(const MotionMask &mm)
@@ -116,6 +121,31 @@ void MotionMask::clearMask()
 		m_facial[i] = false;
 };
 
+
+PIAVCA_DECL std::ostream &operator<<(std::ostream &os, const Piavca::MotionMask &m)
+{
+	bool added = false;
+	Piavca::Core *core = Piavca::Core::getCore();
+	//std::cout << "Printing Mask " << std::endl;
+	//os << "[";
+	for (int i = core->getMinTrackId(); i < core->getMaxTrackId()+1; i++)
+	{
+		//std::cout << "track " << i << " " << m.getMask(i) << std::endl;
+		if (m.getMask(i))
+		{
+			if (added)
+				os << ", ";
+			os << core->getTrackName(i);
+			//if (added)
+			//	std::cout << ", ";
+			//std::cout << core->getTrackName(i) << std::endl;
+			added = true;
+		};
+	}
+	//std::cout << "finished printing mask" << std::endl;
+	//os << "]";
+}
+
 MaskedMotion::MaskedMotion()
 	: MotionFilter()
 {
@@ -139,16 +169,22 @@ void MaskedMotion::removeAllFromMask()
 }
 
 
-void MaskedMotion::setMotionMask(std::vector<std::string> v)
+void MaskedMotion::setMask(std::vector<std::string> v)
 {
+	//std::cout << "Masked Motion: set Mask" << std::endl;
 	mask.clearMask();
 	for (int i = 0; i < v.size(); i++)
 	{
 		int trackid = Core::getCore()->getTrackId(StringToTString(v[i]));
-		mask.setMask(trackid, true);
+		//std::cout << "Masked Motion Set Mask: " << v[i] << " " << trackid << std::endl;
+		if (trackid != Piavca::Core::nullId)
+		{
+			//std::cout << "Masked Motion Set Mask: " << v[i] << " " << trackid << std::endl;
+			mask.setMask(trackid, true);
+		};
 	}
 };
-
+/*
 StringVector MaskedMotion::getMotionMask()
 {
 	int maxTrack = Core::getCore()->getMaxTrackId();
@@ -161,7 +197,7 @@ StringVector MaskedMotion::getMotionMask()
 	}
 	return v;
 };
-
+*/
 float MaskedMotion::getFloatValueAtTimeInternal (int trackId, float time)
 {
 	// if motion1 has its mask as true then play it 

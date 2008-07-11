@@ -60,6 +60,9 @@ class wxVirtualTracker (Piavca.CurrentValueMotion):
 		self.radius = 10.0
 		self.sensetivity = 1.0
 		
+		self.prevX = None
+		self.prevY = None
+		
 		self.__disown__()
 		
 	def loadToCanvas(self):
@@ -125,4 +128,25 @@ class wxVirtualTracker (Piavca.CurrentValueMotion):
 			v -= Piavca.Vec.ZAxis()*self.sensetivity*self.radius
 		print v
 		self.setVecValue(Piavca.root_position_id, v)
-              
+		
+	def MouseDownEvent(self, evt):
+		self.lastX, self.lastY = evt.GetPosition()
+		
+	def MouseUpEvent(self, evt):
+		self.lastX = None
+		self.lastY = None
+		
+	def MouseDragEvent(self, evt):
+		print "dragging tracker"
+		x, y = evt.GetPosition()
+		if self.lastX != None or self.lastY != None:
+			v = self.getVecValueAtTime(Piavca.root_position_id, 0.0)
+			print "dragging tracker", v
+			if evt.LeftIsDown():
+				v += Piavca.Vec.XAxis()*self.sensetivity*self.radius*(x - self.lastX)
+				v += Piavca.Vec.YAxis()*self.sensetivity*self.radius*(y - self.lastY)
+			elif evt.RightIsDown():
+				v += Piavca.Vec.ZAxis()*self.sensetivity*self.radius*(y - self.lastY)
+			self.setVecValue(Piavca.root_position_id, v)
+			print "dragging tracker", v
+		self.lastX, self.lastY = x,y

@@ -4907,6 +4907,7 @@ SWIGINTERN PyObject *Piavca_Vec___setitem__(Piavca::Vec *self,PyObject *arg1,PyO
 SWIGINTERN PyObject *Piavca_Vec___repr__(Piavca::Vec *self){
 		std::ostringstream os;
 		os << (*self);
+		std::cout << "Python rep of vec " << (*self) << std::endl;
 		return Py_BuildValue("s", os.str().c_str());
 	}
 SWIGINTERN PyObject *Piavca_Quat___getitem__(Piavca::Quat *self,PyObject *args){	
@@ -5052,6 +5053,12 @@ SWIGINTERN void Piavca_Avatar_reposition_absolute(Piavca::Avatar *self,Piavca::V
 		{
 			self->setRootPosition(pos);
 		}
+	}
+SWIGINTERN PyObject *Piavca_MotionMask___repr__(Piavca::MotionMask *self){
+		std::ostringstream os;
+		os << (*self);
+		std::cout << "Python rep of motion mask " << (*self) << std::endl;
+		return Py_BuildValue("s", os.str().c_str());
 	}
 
 
@@ -64966,6 +64973,40 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_MotionMask___repr__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::MotionMask *arg1 = (Piavca::MotionMask *) 0 ;
+  PyObject *result = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:MotionMask___repr__",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__MotionMask, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MotionMask___repr__" "', argument " "1"" of type '" "Piavca::MotionMask *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::MotionMask * >(argp1);
+  {
+    try {
+      result = (PyObject *)Piavca_MotionMask___repr__(arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = result;
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_delete_MotionMask(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Piavca::MotionMask *arg1 = (Piavca::MotionMask *) 0 ;
@@ -65391,7 +65432,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_MaskedMotion_setMask(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_MaskedMotion_setMask__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Piavca::MaskedMotion *arg1 = (Piavca::MaskedMotion *) 0 ;
   Piavca::MotionMask *arg2 = 0 ;
@@ -65432,6 +65473,93 @@ SWIGINTERN PyObject *_wrap_MaskedMotion_setMask(PyObject *SWIGUNUSEDPARM(self), 
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MaskedMotion_setMask__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::MaskedMotion *arg1 = (Piavca::MaskedMotion *) 0 ;
+  std::vector<std::string,std::allocator<std::string > > arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:MaskedMotion_setMask",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__MaskedMotion, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MaskedMotion_setMask" "', argument " "1"" of type '" "Piavca::MaskedMotion *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::MaskedMotion * >(argp1);
+  {
+    std::vector<std::string,std::allocator<std::string > > *ptr = (std::vector<std::string,std::allocator<std::string > > *)0;
+    int res = swig::asptr(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "MaskedMotion_setMask" "', argument " "2"" of type '" "std::vector<std::string,std::allocator<std::string > >""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    try {
+      (arg1)->setMask(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MaskedMotion_setMask(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = PyObject_Length(args);
+  for (ii = 0; (ii < argc) && (ii < 2); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__MaskedMotion, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_Piavca__MotionMask, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_MaskedMotion_setMask__SWIG_0(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__MaskedMotion, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = swig::asptr(argv[1], (std::vector<std::string,std::allocator<std::string > >**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_MaskedMotion_setMask__SWIG_1(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'MaskedMotion_setMask'.\n  Possible C/C++ prototypes are:\n    setMask(Piavca::MotionMask const &)\n    setMask(std::vector<std::string,std::allocator<std::string > >)\n");
   return NULL;
 }
 
@@ -65614,92 +65742,6 @@ SWIGINTERN PyObject *_wrap_MaskedMotion_removeAllFromMask(PyObject *SWIGUNUSEDPA
     }
   }
   resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_MaskedMotion_setMotionMask(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  Piavca::MaskedMotion *arg1 = (Piavca::MaskedMotion *) 0 ;
-  std::vector<std::string,std::allocator<std::string > > arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OO:MaskedMotion_setMotionMask",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__MaskedMotion, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MaskedMotion_setMotionMask" "', argument " "1"" of type '" "Piavca::MaskedMotion *""'"); 
-  }
-  arg1 = reinterpret_cast< Piavca::MaskedMotion * >(argp1);
-  {
-    std::vector<std::string,std::allocator<std::string > > *ptr = (std::vector<std::string,std::allocator<std::string > > *)0;
-    int res = swig::asptr(obj1, &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "MaskedMotion_setMotionMask" "', argument " "2"" of type '" "std::vector<std::string,std::allocator<std::string > >""'"); 
-    }
-    arg2 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
-  }
-  {
-    try {
-      (arg1)->setMotionMask(arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }
-    catch (Piavca::Exception &e) 
-    {
-      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
-      SWIG_fail; 
-    }
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_MaskedMotion_getMotionMask(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  Piavca::MaskedMotion *arg1 = (Piavca::MaskedMotion *) 0 ;
-  Piavca::StringVector result;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:MaskedMotion_getMotionMask",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__MaskedMotion, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MaskedMotion_getMotionMask" "', argument " "1"" of type '" "Piavca::MaskedMotion *""'"); 
-  }
-  arg1 = reinterpret_cast< Piavca::MaskedMotion * >(argp1);
-  {
-    try {
-      result = (arg1)->getMotionMask(); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }
-    catch (Piavca::Exception &e) 
-    {
-      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
-      SWIG_fail; 
-    }
-  }
-  {
-    int len = (&result)->size();
-    resultobj = PyList_New(0);
-    for (int i = 0; i < len; i++)
-    {
-      PyList_Append(resultobj,  
-        PyString_FromString(TStringToString((*(&(result)))[i]).c_str()));
-    }
-  }
   return resultobj;
 fail:
   return NULL;
@@ -99112,6 +99154,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"MotionMask_setAllMask", _wrap_MotionMask_setAllMask, METH_VARARGS, NULL},
 	 { (char *)"MotionMask_getMask", _wrap_MotionMask_getMask, METH_VARARGS, NULL},
 	 { (char *)"MotionMask_clearMask", _wrap_MotionMask_clearMask, METH_VARARGS, NULL},
+	 { (char *)"MotionMask___repr__", _wrap_MotionMask___repr__, METH_VARARGS, NULL},
 	 { (char *)"delete_MotionMask", _wrap_delete_MotionMask, METH_VARARGS, NULL},
 	 { (char *)"MotionMask_swigregister", MotionMask_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_MaskedMotion", _wrap_new_MaskedMotion, METH_VARARGS, NULL},
@@ -99125,8 +99168,6 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"MaskedMotion_removeFromMask", _wrap_MaskedMotion_removeFromMask, METH_VARARGS, NULL},
 	 { (char *)"MaskedMotion_addAllToMask", _wrap_MaskedMotion_addAllToMask, METH_VARARGS, NULL},
 	 { (char *)"MaskedMotion_removeAllFromMask", _wrap_MaskedMotion_removeAllFromMask, METH_VARARGS, NULL},
-	 { (char *)"MaskedMotion_setMotionMask", _wrap_MaskedMotion_setMotionMask, METH_VARARGS, NULL},
-	 { (char *)"MaskedMotion_getMotionMask", _wrap_MaskedMotion_getMotionMask, METH_VARARGS, NULL},
 	 { (char *)"MaskedMotion_getFloatValueAtTimeInternal", _wrap_MaskedMotion_getFloatValueAtTimeInternal, METH_VARARGS, NULL},
 	 { (char *)"MaskedMotion_getVecValueAtTimeInternal", _wrap_MaskedMotion_getVecValueAtTimeInternal, METH_VARARGS, NULL},
 	 { (char *)"MaskedMotion_getQuatValueAtTimeInternal", _wrap_MaskedMotion_getQuatValueAtTimeInternal, METH_VARARGS, NULL},

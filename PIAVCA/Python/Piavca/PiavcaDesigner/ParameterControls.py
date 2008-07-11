@@ -10,6 +10,7 @@ class ParamEntry(wx.Panel):
 		wx.Panel.__init__(self, parent, id, pos, size, style, name)
 		self.param_name = param_name
 		self.motionproxy = motionproxy
+		self.parent = parent
 		
 		self.sizer = wx.BoxSizer()
 		
@@ -26,6 +27,12 @@ class ParamEntry(wx.Panel):
 		if self.motionproxy != None:
 			self.setValue(self.motionproxy.getParameterVal(self.param_name))
 		print "paramentry:update:end"
+		
+	def getBackend(self):
+		if self.motionproxy != None:
+			return self.motionproxy.backend
+		else:
+			return self.parent.backend	
 		
 	def OnTextEntry(self, event):
 		print "paramentry:OnTextEntry"
@@ -189,7 +196,7 @@ class AvatarParamEntry(ChoiceParamEntry):
 class MotionParamEntry(ChoiceParamEntry):
 
 	def getChoiceList(self):
-		return self.backend.getMotionNames()
+		return self.getBackend().getMotionNames()
 		
 	def setValue(self, val):
 		name = val.getName()
@@ -197,7 +204,7 @@ class MotionParamEntry(ChoiceParamEntry):
 		
 	def getValue(self):
 		name = self.choice.GetStringSelection()
-		return self.backend.getMotion(name)
+		return self.getBackend().getMotion(name)
 		
 class JointParamEntry(ChoiceParamEntry):
 
@@ -231,7 +238,7 @@ class SetParamEntry(ParamEntry):
 class MotionSetParamEntry(SetParamEntry):
 
 	def getChoiceList(self):
-		return self.backend.getMotionNames()
+		return self.getBackend().getMotionNames()
 		
 	def setValue(self, vals):
 		for val in vals:
@@ -245,7 +252,7 @@ class MotionSetParamEntry(SetParamEntry):
 		for i in range(self.listbox.GetCount()):
 			name = self.listbox.GetString(i)
 			if self.listbox.IsChecked(i):
-				l.append(self.backend.getMotion(name))
+				l.append(self.getBackend().getMotion(name))
 		return l
 
 		

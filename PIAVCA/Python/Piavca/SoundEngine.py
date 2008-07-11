@@ -203,7 +203,7 @@ class SoundEngine:
 			self.output.play(self.sounds[name])
 			left = self.output.getLeft()
 		print "time left", left
-		time.sleep(left + 1)
+		#time.sleep(left + 1)
 			
 	def say(self, text):
 		if ttsAvailable:
