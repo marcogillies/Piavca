@@ -139,6 +139,7 @@ typedef CalCoreMesh *CalCoreMeshPtr;
 //#endif
 
 #include <string>
+#include <sstream>
 
 #include "TextureHandler.h"
 
@@ -166,7 +167,7 @@ std::string strPath;
 
 AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler, bool bailOnMissedJoints, const Vec &Position, const Quat &Orientation)
   : cal_model(NULL), previous_time(0), renderBuffer(0), hardware(false), m_calHardwareModel(NULL),
-    updateBuffer(0), textureHandler(_textureHandler), bb_dirty_flag(true) 
+    updateBuffer(0), textureHandler(_textureHandler), bb_dirty_flag(true), scaleFactor(1.0f) 
 {
 	std::cout << "start of the AvatarCal3dimp constructor\n";
 
@@ -197,6 +198,8 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 	int lastMeshId = -1;
 	// parse all lines from the model configuration file
 	int line;
+	
+	float scale = 1.0f;
 	for(line = 1; ; line++)
 	{
 		// read the next model configuration line
@@ -347,6 +350,7 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 			}
 			// facial expression ids are negative, to distinguish then from
 			// joint ids
+			std::cout << "Expression id " << expressionId << std::endl;
 			expressionId = -expressionId;
 			if(expressionId >= expressions.size())
 			{
@@ -371,7 +375,10 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 		}
 		else if(strKey == "scale")
 		{
-			// do nothing, you can scale things in the cal3d miniviewer, but not piavca
+			std::stringstream s;
+			s.str(strData);
+			s >> scale;
+			std::cout << "scaleFactor " << scale << std::endl;
 		}
 		else
 		{
@@ -445,6 +452,8 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 			}
 	}
 
+	setScale(scale); 
+	
 	//Find the amounts of memory we will need for each submesh
 	CalRenderer* renderer = new CalRenderer(cal_model->getRenderer());
 
@@ -539,6 +548,7 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 	  }
   Core::getCore()->loadMotion(avatarId + _T("_rest"), tmot);
   */
+ 
 	
   platformSpecific_timeStep(Piavca::Core::getCore()->getTime());
   
@@ -614,8 +624,60 @@ void AvatarCal3DImp::showBodyPart(tstring partname)
 			return;
 		}
 	std::cout << "could not find body part " << partname << std::endl;
+};
+
+
+void AvatarCal3DImp::setScale(float scale)
+{
+	return;
+	float multiplier = scale/scaleFactor;
+	CalCoreSkeleton *skel = cal_model->getSkeleton()->getCoreSkeleton();
+
+	std::vector<CalCoreBone *> &bones = skel->getVectorCoreBone();
+	
+	int i,j;
+	for (i = 0; i < (int) bones.size(); i++)
+	{
+		int parentId = bones[i]->getParentId();
+		std::cout << "parent id " << parentId << std::endl;
+		CalVector parent_trans;
+		if (parentId >= 0)
+		{
+			CalCoreBone *parent = NULL;
+			parent = skel->getCoreBone(parentId);
+			parent_trans = parent->getTranslation();
+		}
+		CalVector trans = bones[i]->getTranslation();
+		std::cout << "parent trans " << parent_trans[0] <<  " " << parent_trans[1] << " " << parent_trans[2] << std::endl;
+		std::cout << "before scaling avatar " << trans[0] <<  " " << trans[1] << " " << trans[2] << std::endl;
+		trans -= parent_trans;
+		trans *= multiplier;
+		trans += parent_trans;
+		std::cout << trans[0] <<  " " << trans[1] << " " << trans[2] << std::endl;
+		bones[i]->setTranslation(trans);
+	}
+	
+	std::vector<CalMesh *> &meshes = cal_model->getVectorMesh(); 
+	for (i = 0; i < (int) meshes.size(); i++)
+	{
+		std::cout << "Mesh " << i << " of " << meshes.size() << std::endl;
+		int num_meshes = meshes[i]->getSubmeshCount();
+		for (j = 0; j < num_meshes; j++)
+		{
+			std::cout << "Submesh " << j << " of " << num_meshes << std::endl;
+			CalCoreSubmesh *submesh = meshes[i]->getSubmesh(j)->getCoreSubmesh();
+			std::vector<CalCoreSubmesh::Vertex> &verts = submesh->getVectorVertex();
+			for (int v = 0; v < (int)verts.size(); v++)
+			{
+				CalVector pos = verts[v].position;
+				pos *= multiplier;
+				verts[v].position = pos;
+			}
+		}
+	}
+	
+	scaleFactor = scale;
 }
-;
 
 void AvatarCal3DImp::loadTextures()
 {
@@ -869,6 +931,7 @@ int   AvatarCal3DImp::getFacialExpressionId(tstring expressionName)
 
 bool  AvatarCal3DImp::setFacialExpressionWeight(int id, float weight, float timeInterval)
 {
+	std::cout << "Setting facial expression weight " << id << " " << weight << std::endl;
 	if(id == Piavca::Core::nullId)
 	{
 		std::cout << "Null expression id passed to setFacialExpressionWeight" << std::endl;
@@ -907,6 +970,7 @@ bool  AvatarCal3DImp::setFacialExpressionWeight(int id, float weight, float time
 			Piavca::Error("setFacialExpressionWeight called on expression that does not exist");
 			return false;
 		}
+		std::cout << "Setting submesh  expression weight " << id << " " << weight << std::endl;
 		subMesh->setMorphTargetWeight(expressions[id].morphtargetId, weight);
    }
    return true;

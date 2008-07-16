@@ -32,6 +32,10 @@ class TimeLine(wx.Panel):
 	def drawRange(self, dc):
 		size = self.GetClientSize()
 		range = self.backend.getRangeFraction()
+		# get rid of rally big ranges, as they crash DrawRectagle
+		if (range[1] == range[0]) > 30000000:
+			range[1] = 30000000 + range[0]
+		#print range, size.width
 		dc.DrawRectangle(size.width*range[0], 0, size.width*(range[1]-range[0]), size.height)
 		
 		

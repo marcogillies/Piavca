@@ -103,6 +103,8 @@ public:
 	vector <FacialExpressionHolder> expressions;
 
 	vector <std::pair<tstring, bool> > meshes;
+	
+	float scaleFactor;
 
 	// whether the avatar uses 2 different arrays of verteces, one being 
 	// updated and one being rendered.
@@ -189,6 +191,8 @@ public:
 	virtual void hideBodyPart(tstring partname);
 	//! shows a part of the avatars body so it is rendered
 	virtual void showBodyPart(tstring partname);
+	
+	void setScale(float scale);
 
 	//! \name Facial Animation Methods (based on morph target like system)
 	//!@{

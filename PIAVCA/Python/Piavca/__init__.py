@@ -67,6 +67,8 @@ try:
 except PiavcaImportException:
 	print "wxPython unavailable, please install wxPython for GUI functions"
 
+from MaxXAFReader import MaxXAFMotion
+
 try:
 	from EventsGUI import setUpEventsGUI
 except PiavcaImportException:

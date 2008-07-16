@@ -278,12 +278,16 @@ std::vector<std::pair<tstring, int> > Core::getExpressionNameAssociations()
 
 int Core::getTrackId(tstring name)
 {
+	//std::cout << "Get track Id " << name;
 	std::map<tstring, int> ::iterator it = jointMap.find(name);
+	//std::cout << " " <<  (*it).second;
 	if(it == jointMap.end())
 	{
-		std::map<tstring, int> ::iterator it = expressionMap.find(name);
+		it = expressionMap.find(name);
+		//std::cout << " " <<  (*it).second;
 		if(it == expressionMap.end()) return nullId;
 	}
+	//std::cout << " " <<  (*it).second << std::endl;
 	return (*it).second;
 }
 
