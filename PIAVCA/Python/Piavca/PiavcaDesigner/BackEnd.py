@@ -44,6 +44,7 @@ class BackEnd:
 		playing = False
 		Piavca.clear()
 		self.update()
+		self.frontend.update()
 		
 	def save(self, filename):
 		Piavca.XMLMotionFile.saveAll(filename)
