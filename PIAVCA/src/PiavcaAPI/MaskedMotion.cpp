@@ -144,6 +144,7 @@ PIAVCA_DECL std::ostream &operator<<(std::ostream &os, const Piavca::MotionMask 
 	}
 	//std::cout << "finished printing mask" << std::endl;
 	//os << "]";
+	return os;
 }
 
 MaskedMotion::MaskedMotion()

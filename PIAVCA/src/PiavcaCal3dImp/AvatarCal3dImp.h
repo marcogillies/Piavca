@@ -192,7 +192,8 @@ public:
 	//! shows a part of the avatars body so it is rendered
 	virtual void showBodyPart(tstring partname);
 	
-	void setScale(float scale);
+	virtual void setScale(float scale);
+	virtual float getScale();
 
 	//! \name Facial Animation Methods (based on morph target like system)
 	//!@{

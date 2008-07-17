@@ -138,6 +138,9 @@ Quat PointAt::getQuatValueAtTimeInternal(int trackId, float time)
 	if (filterMot == NULL)
 		return Quat();
 
+	if (targetJointId == Piavca::Core::nullId)
+		return Quat();
+
 	Vec subjectVec = filterMot->getVecValueAtTime(targetJointId, time);
 	
 	Vec localPos = subjectVec;
@@ -145,6 +148,7 @@ Quat PointAt::getQuatValueAtTimeInternal(int trackId, float time)
 		
 	if(!local)
 	{
+		localPos = localPos/m_avatar->getScale();
 		localPos -= m_avatar->getRootPosition();
 		m_avatar->getRootOrientation().inverse().transformInPlace(localPos);
 		// express relative to the joint we are turning

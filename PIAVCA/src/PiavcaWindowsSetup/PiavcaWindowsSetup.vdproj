@@ -75,6 +75,24 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_1CEA4059B05B426D8E426CBA4A73C426"
+        "OwnerKey" = "8:_0EDB427873744218ACBF6199C4916A0F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_1CEA4059B05B426D8E426CBA4A73C426"
+        "OwnerKey" = "8:_E9BF3BD172E74BC1ACDE5669C3B94371"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_1CEA4059B05B426D8E426CBA4A73C426"
+        "OwnerKey" = "8:_7FFBA5A50D144A49A4D665B523A35DF3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_1E1444C488934B248DAC188FAD11A59C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -137,6 +155,18 @@
         {
         "MsmKey" = "8:_34D1EB4E572248B99C264516DE3B6BFB"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_37707E01EDE14682A6997DAA3A253D6F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_380B36F0B3D94BBEB6E4066296952984"
+        "OwnerKey" = "8:_1CEA4059B05B426D8E426CBA4A73C426"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -322,6 +352,12 @@
         "Entry"
         {
         "MsmKey" = "8:_768E94DE6D33402790CDC687A70D9FCF"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7ACAA2368C6B454580D631C3392B25E2"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -579,24 +615,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_DEE53371CFC04B9C9B6923344FE45AF4"
-        "OwnerKey" = "8:_0EDB427873744218ACBF6199C4916A0F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_DEE53371CFC04B9C9B6923344FE45AF4"
-        "OwnerKey" = "8:_E9BF3BD172E74BC1ACDE5669C3B94371"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_DEE53371CFC04B9C9B6923344FE45AF4"
-        "OwnerKey" = "8:_7FFBA5A50D144A49A4D665B523A35DF3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_E3BE2F24BC124A54B1A53827299ED0DE"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -617,12 +635,6 @@
         {
         "MsmKey" = "8:_EE56209D86F24DA1963514FF2B2AEA60"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_EFE8F4B9EEB949F581A641008B7EEE27"
-        "OwnerKey" = "8:_DEE53371CFC04B9C9B6923344FE45AF4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1261,6 +1273,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_37707E01EDE14682A6997DAA3A253D6F"
+            {
+            "SourcePath" = "8:..\\..\\Python\\Piavca\\MaxXAFReader.py"
+            "TargetName" = "8:MaxXAFReader.py"
+            "Tag" = "8:"
+            "Folder" = "8:_030136928E1A4CF9B5AF2948FB4B2634"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_38BE54D26DCC4CCD89F949DF7A287623"
             {
             "SourcePath" = "8:..\\..\\Python\\Piavca\\__init__.py"
@@ -1827,6 +1859,26 @@
             "TargetName" = "8:white_7.xrf"
             "Tag" = "8:"
             "Folder" = "8:_45D7633C579B4668A5FC68D3F3EFBF33"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7ACAA2368C6B454580D631C3392B25E2"
+            {
+            "SourcePath" = "8:..\\..\\Python\\Piavca\\CreationScripts\\__init__.py"
+            "TargetName" = "8:__init__.py"
+            "Tag" = "8:"
+            "Folder" = "8:_B769F3BC6A11452EAAA4F51430E34198"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2999,7 +3051,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Piavca"
         "ProductCode" = "8:{7E07296C-3595-4CA8-9B56-76D102408F36}"
-        "PackageCode" = "8:{BAEB6E70-0438-4032-9D12-85042078F55A}"
+        "PackageCode" = "8:{4E9B27FB-38EF-4ADB-A748-035225D9AAB0}"
         "UpgradeCode" = "8:{FE7F39C9-C64C-4F24-BF33-C6B39EF15407}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
@@ -3584,7 +3636,7 @@
         }
         "MergeModule"
         {
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_DEE53371CFC04B9C9B6923344FE45AF4"
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_1CEA4059B05B426D8E426CBA4A73C426"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:TRUE"
@@ -3598,7 +3650,7 @@
             "Feature" = "8:"
             "IsolateTo" = "8:"
             }
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_EFE8F4B9EEB949F581A641008B7EEE27"
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_380B36F0B3D94BBEB6E4066296952984"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:TRUE"
@@ -3617,7 +3669,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_0EDB427873744218ACBF6199C4916A0F"
             {
-            "SourcePath" = "8:..\\..\\debug_py24\\XVR2Piavca.dll"
+            "SourcePath" = "8:..\\..\\debug_py25\\XVR2Piavca.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_2C01534358BC499DB5A587789363CFB1"

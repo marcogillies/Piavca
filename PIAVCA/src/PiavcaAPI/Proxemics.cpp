@@ -140,6 +140,7 @@ int Proxemics::makeChoice()
 		
 		std::cout << "Proxemics: target pos: " << targetPos << std::endl;
 
+		targetPos = targetPos/m_avatar->getScale();
 		// subtract your own position and work out distance
 		Vec displacement = targetPos - m_avatar->getRootPosition();
 		

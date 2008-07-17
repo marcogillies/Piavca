@@ -217,6 +217,16 @@ public:
 	//};
 
 	
+	
+	virtual void setScale(float scale)
+	{
+		imp->setScale(scale);	
+	};
+	virtual float getScale()
+	{
+		return imp->getScale();	
+	};
+	
 	//! hides a part of the avatars body so it is not rendered
 	void hideBodyPart(tstring partname)
 	{

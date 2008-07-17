@@ -629,6 +629,8 @@ void AvatarCal3DImp::showBodyPart(tstring partname)
 
 void AvatarCal3DImp::setScale(float scale)
 {
+	scaleFactor = scale;
+	/*
 	return;
 	float multiplier = scale/scaleFactor;
 	CalCoreSkeleton *skel = cal_model->getSkeleton()->getCoreSkeleton();
@@ -677,7 +679,13 @@ void AvatarCal3DImp::setScale(float scale)
 	}
 	
 	scaleFactor = scale;
+	*/
 }
+
+float AvatarCal3DImp::getScale()
+{
+	return scaleFactor;
+};
 
 void AvatarCal3DImp::loadTextures()
 {
@@ -1534,6 +1542,7 @@ void	AvatarCal3DImp::render ()
 void	AvatarCal3DImp::render_hardware ()
 {
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
+	glPushMatrix();
 
 	glBindProgramARB( GL_VERTEX_PROGRAM_ARB, m_vertexProgramId );
 
@@ -1574,6 +1583,8 @@ void	AvatarCal3DImp::render_hardware ()
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER_ARB, m_bufferObject[5]);
 	
+	
+	glScalef(scaleFactor, scaleFactor, scaleFactor);
 		
 	int hardwareMeshId;
 	
@@ -1654,6 +1665,7 @@ void	AvatarCal3DImp::render_hardware ()
 
 
 	glBindProgramARB( GL_VERTEX_PROGRAM_ARB, 0 );
+	glPopMatrix();
 	glPopAttrib();
 
 }
@@ -1669,6 +1681,7 @@ void	AvatarCal3DImp::render_software ()
   {
     // set global OpenGL states
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
+	glPushMatrix();
 
     glEnable(GL_DEPTH_TEST);
     glShadeModel(GL_SMOOTH);
@@ -1681,6 +1694,8 @@ void	AvatarCal3DImp::render_software ()
     // we will use vertex arrays, so enable them
     glEnableClientState(GL_VERTEX_ARRAY);
     glEnableClientState(GL_NORMAL_ARRAY);
+
+	glScalef(scaleFactor, scaleFactor, scaleFactor);
 
     // get the number of meshes
     int meshCount = pCalRenderer->getMeshCount();
@@ -1788,7 +1803,7 @@ void	AvatarCal3DImp::render_software ()
       }
     }
 
-	
+	glPopMatrix();
 	glPopAttrib();
     // clear vertex array state
     glDisableClientState(GL_NORMAL_ARRAY);
