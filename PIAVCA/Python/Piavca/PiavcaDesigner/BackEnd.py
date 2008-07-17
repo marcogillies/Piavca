@@ -21,6 +21,7 @@ class BackEnd:
 	def __init__(self, frontend):
 		self.frontend = frontend
 		Piavca.Core.getCore().setAutoTimeOff()
+		self.setTime(0.0)
 		self.setRange(0.0,0.0)
 			
 	def readfile(self, filename):
@@ -57,6 +58,7 @@ class BackEnd:
 			self.resetRange()
 			
 	def setAvatar(self, avatarname):
+		self.setTime(0.0)
 		avatar = Piavca.Core.getCore().getAvatar(str(avatarname.encode("latin-1")))
 		if avatar == None:
 			raise ValueError("no avatar named" + str(avatarname.encode("latin-1")))
@@ -87,7 +89,7 @@ class BackEnd:
 			self.getCurrentSubMotionProxy().PublishEvents()
 			
 	def setMotion(self, motionname):
-		self.setTimeFraction(0.0)
+		self.setTime(0.0)
 		#print "motion name", motionname, type(motionname)
 		motion = self.getMotionByName(motionname)
 		#print "motion", motion

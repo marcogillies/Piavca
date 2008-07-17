@@ -188,7 +188,10 @@ public:
 		startTime = t;
 	};
 	//! return the start time of the motion
-	float getStartTime(){return startTime;};
+	float getStartTime()
+	{
+		return startTime;
+	};
 	//! returns the end time of the motion
 	float getEndTime()  {return startTime + getMotionLength();};
 
