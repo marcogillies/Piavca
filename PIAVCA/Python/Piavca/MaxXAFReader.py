@@ -50,6 +50,9 @@ class MaxXAFMotion(Piavca.KeyframeMotion):
 		Piavca.KeyframeMotion.__init__(self)
 		self.__disown__()
 		
+		self.tickrate = 30.0*160.0
+		self.startTick = 0.0
+		
 		self.setFilename(filename)
 		
 	def clone(self):
@@ -73,6 +76,23 @@ class MaxXAFMotion(Piavca.KeyframeMotion):
 		
 		for topLevel in dom.childNodes:
 			for mainelement in topLevel.childNodes:
+				if mainelement.nodeName == "SceneInfo":
+					startTick = mainelement.getAttribute("startTick")
+					try:
+						self.startTick = float(startTick)
+					except ValueError:
+						pass
+					fps = 30.0
+					try:
+						fps = float(mainelement.getAttribute("frameRate"))
+					except ValueError:
+						pass
+					ticksPerFrame = 160.0
+					try:
+						ticksPerFrame = float(mainelement.getAttribute("ticksPerFrame"))
+					except ValueError:
+						pass
+					self.tickrate = fps*ticksPerFrame
 				if mainelement.nodeName == "Node":
 					for nodechild in mainelement.childNodes:
 						#print nodechild.nodeName
@@ -124,8 +144,7 @@ class MaxXAFMotion(Piavca.KeyframeMotion):
 													v = v.strip()
 													v = float(v)
 													v = v/100.0
-													t = t/30.0
-													t = t/160.0
+													t = t/self.tickrate
 													print track, t, v
 													self.setFloatKeyframe(track, t, v)
 											except ValueError:
@@ -135,6 +154,7 @@ class MaxXAFMotion(Piavca.KeyframeMotion):
 												v = Piavca.Vec(float(v[0]), float(v[1]), float(v[2]))
 												self.addVecTrack(track, v)
 												for t, v in keyframes:
+													t = t/self.tickrate
 													v = Piavca.Vec(float(v[0]), float(v[1]), float(v[2]))
 													self.setVecKeyframe(track, t, v)
 											except:
@@ -144,6 +164,7 @@ class MaxXAFMotion(Piavca.KeyframeMotion):
 												v = Piavca.Quat(float(v[0]), float(v[1]), float(v[2]))
 												self.addQuatTrack(track, v)
 												for t, v in keyframes:
+													t = t/self.tickrate
 													v = Piavca.Quat(float(v[3]), float(v[0]), float(v[1]), float(v[2]))
 													self.setQuattKeyframe(track, t, v)
 											except:
