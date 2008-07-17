@@ -201,10 +201,10 @@ namespace Piavca
 		//! On certain platforms this needs to be called to render the avatars
 		virtual void render();
 
-		virtual void setHarware(bool b)
+		virtual void setHardware(bool b)
 		{
 		}
-		virtual bool getHarware()
+		virtual bool getHardware()
 		{
 			return false;
 		}

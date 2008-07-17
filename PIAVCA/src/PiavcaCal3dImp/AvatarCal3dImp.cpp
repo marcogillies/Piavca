@@ -931,7 +931,7 @@ int   AvatarCal3DImp::getFacialExpressionId(tstring expressionName)
 
 bool  AvatarCal3DImp::setFacialExpressionWeight(int id, float weight, float timeInterval)
 {
-	std::cout << "Setting facial expression weight " << id << " " << weight << std::endl;
+	//std::cout << "Setting facial expression weight " << id << " " << weight << std::endl;
 	if(id == Piavca::Core::nullId)
 	{
 		std::cout << "Null expression id passed to setFacialExpressionWeight" << std::endl;
@@ -970,7 +970,7 @@ bool  AvatarCal3DImp::setFacialExpressionWeight(int id, float weight, float time
 			Piavca::Error("setFacialExpressionWeight called on expression that does not exist");
 			return false;
 		}
-		std::cout << "Setting submesh  expression weight " << id << " " << weight << std::endl;
+		//std::cout << "Setting submesh  expression weight " << id << " " << weight << std::endl;
 		subMesh->setMorphTargetWeight(expressions[id].morphtargetId, weight);
    }
    return true;

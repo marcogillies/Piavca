@@ -75,11 +75,11 @@ class TextureHandler;
 		double getTimeInternal(bool print);
 	    virtual float getSystemTime() {return (float)getTimeInternal(false);};
 
-		virtual void setHarware(bool b)
+		virtual void setHardware(bool b)
 		{
 			hardware = b;
 		}
-		virtual bool getHarware()
+		virtual bool getHardware()
 		{
 			return hardware;
 		}

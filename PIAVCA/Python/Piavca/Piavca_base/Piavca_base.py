@@ -913,8 +913,8 @@ class Core(_object):
         """
         return _Piavca_base.Core_render(*args)
 
-    def setHarware(*args): return _Piavca_base.Core_setHarware(*args)
-    def getHarware(*args): return _Piavca_base.Core_getHarware(*args)
+    def setHardware(*args): return _Piavca_base.Core_setHardware(*args)
+    def getHardware(*args): return _Piavca_base.Core_getHardware(*args)
     def getJointId(*args):
         """
         int Core::getJointId(tstring name)

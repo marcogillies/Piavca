@@ -43553,7 +43553,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Core_setHarware(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Core_setHardware(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Piavca::Core *arg1 = (Piavca::Core *) 0 ;
   bool arg2 ;
@@ -43564,20 +43564,20 @@ SWIGINTERN PyObject *_wrap_Core_setHarware(PyObject *SWIGUNUSEDPARM(self), PyObj
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:Core_setHarware",&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:Core_setHardware",&obj0,&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Core, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Core_setHarware" "', argument " "1"" of type '" "Piavca::Core *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Core_setHardware" "', argument " "1"" of type '" "Piavca::Core *""'"); 
   }
   arg1 = reinterpret_cast< Piavca::Core * >(argp1);
   ecode2 = SWIG_AsVal_bool(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Core_setHarware" "', argument " "2"" of type '" "bool""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Core_setHardware" "', argument " "2"" of type '" "bool""'");
   } 
   arg2 = static_cast< bool >(val2);
   {
     try {
-      (arg1)->setHarware(arg2); 
+      (arg1)->setHardware(arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -43595,7 +43595,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Core_getHarware(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Core_getHardware(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Piavca::Core *arg1 = (Piavca::Core *) 0 ;
   bool result;
@@ -43603,15 +43603,15 @@ SWIGINTERN PyObject *_wrap_Core_getHarware(PyObject *SWIGUNUSEDPARM(self), PyObj
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:Core_getHarware",&obj0)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:Core_getHardware",&obj0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Core, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Core_getHarware" "', argument " "1"" of type '" "Piavca::Core *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Core_getHardware" "', argument " "1"" of type '" "Piavca::Core *""'"); 
   }
   arg1 = reinterpret_cast< Piavca::Core * >(argp1);
   {
     try {
-      result = (bool)(arg1)->getHarware(); 
+      result = (bool)(arg1)->getHardware(); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -98827,8 +98827,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Core_timeStep", _wrap_Core_timeStep, METH_VARARGS, NULL},
 	 { (char *)"Core_prerender", _wrap_Core_prerender, METH_VARARGS, NULL},
 	 { (char *)"Core_render", _wrap_Core_render, METH_VARARGS, NULL},
-	 { (char *)"Core_setHarware", _wrap_Core_setHarware, METH_VARARGS, NULL},
-	 { (char *)"Core_getHarware", _wrap_Core_getHarware, METH_VARARGS, NULL},
+	 { (char *)"Core_setHardware", _wrap_Core_setHardware, METH_VARARGS, NULL},
+	 { (char *)"Core_getHardware", _wrap_Core_getHardware, METH_VARARGS, NULL},
 	 { (char *)"Core_getJointId", _wrap_Core_getJointId, METH_VARARGS, NULL},
 	 { (char *)"Core_getMaxJointId", _wrap_Core_getMaxJointId, METH_VARARGS, NULL},
 	 { (char *)"Core_addJointNameSet", _wrap_Core_addJointNameSet, METH_VARARGS, NULL},
