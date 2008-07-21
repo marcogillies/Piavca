@@ -41,6 +41,23 @@
 using namespace Piavca;
 
 
+
+//! handles an event (plays the motion with the same name as the event)
+void SequentialChoiceMotion::event(tstring ev)
+{
+	if(ev == _T("next"))
+		reset();
+}
+
+//! gets the names of all events
+std::vector<Piavca::tstring> SequentialChoiceMotion::getEventNames()
+{
+	std::vector<Piavca::tstring> ret;
+	ret.push_back(_T("next"));
+	return ret;
+}
+
+
 int SequentialChoiceMotion::makeChoice()
 {
 	int current = getCurrentChoice();

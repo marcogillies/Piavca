@@ -43,7 +43,8 @@ using namespace Piavca;
 
 ChoiceMotion::ChoiceMotion(const MotionVec &mpv)
 		:MotionFilter(), mots(mpv), currentChoice(0),
-		smooth(true), resetTime(true), windowLength(0.5f), resetOnEvent(true), accumulateRoot(true)
+		smooth(true), resetTime(true), windowLength(0.5f), resetOnEvent(true), accumulateRoot(true),
+		maintainUp(false), rotateAboutUp(true), upDirection(0.0, 1.0, 0.0)
 {
 	MotionVec::size_type i;
 	for(i = 0; i < mots.size(); i++)
@@ -53,7 +54,9 @@ ChoiceMotion::ChoiceMotion(const MotionVec &mpv)
 };
 ChoiceMotion::ChoiceMotion(const ChoiceMotion &cl)
 	:MotionFilter(cl), mots(cl.mots), currentChoice(cl.currentChoice),
-	smooth(cl.smooth), resetTime(cl.resetTime), windowLength(cl.windowLength), resetOnEvent(cl.resetOnEvent), accumulateRoot(cl.accumulateRoot)
+	smooth(cl.smooth), resetTime(cl.resetTime), windowLength(cl.windowLength), 
+	resetOnEvent(cl.resetOnEvent), accumulateRoot(cl.accumulateRoot),
+	maintainUp(cl.maintainUp), rotateAboutUp(cl.rotateAboutUp), upDirection(cl.upDirection)
 {
 	for(MotionVec::size_type i = 0; i < mots.size(); i++)
 	{
@@ -283,6 +286,9 @@ void ChoiceMotion::reset()
 			Reposition *repositioner = new Reposition(mot);
 			repositioner->setMaintainY(true);
 			repositioner->setStartFromMotion(this, Piavca::Core::getCore()->getTime());
+			repositioner->setUpDirection(upDirection);
+			repositioner->setMaintainUp(maintainUp);
+			repositioner->setRotateAboutUp(rotateAboutUp);
 			mot = repositioner;
 		}
 

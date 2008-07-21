@@ -327,6 +327,39 @@ float Quat::Zangle()
 	}
 };
 
+float Quat::getAngleAboutAxis(Vec axis)
+{
+	// get two directions perpendicular to axis
+	Vec perp1;
+	if (fabs(axis[0]) < 0.00001)
+		perp1 = Vec(0.0, axis[2], -axis[1]);
+	else { if (fabs(axis[1] < 0.00001))
+		perp1 = Vec(axis[2], 0.0, -axis[0]);
+	else
+		perp1 = Vec(axis[1], -axis[0], 0.0);
+	};
+	perp1.normalize();
+	//Vec perp2 = perp1.cross(axis);
+	//perp2.normalize();
+	
+	// rotate perp1 by the quaterion
+	Vec rotated = transform(perp1);
+	
+	// get the components along perp1 and perp2
+	float a = perp1.dot(rotated);
+	//float b = perp2.dot(rotated);
+	
+	// calculate the angle
+	float angle = acos(a);
+	return angle;
+}
+
+void Quat::projectToAxis(Vec axis)
+{
+	axis.normalize();
+	setAngleAxis(getAngleAboutAxis(axis), axis);
+}
+
 void Quat::getEulerAngles(float &X, float &Y, float &Z)
 {
 	X = Xangle();

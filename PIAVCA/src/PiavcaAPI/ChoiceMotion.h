@@ -54,11 +54,21 @@ class ChoiceMotion : public MotionFilter
 	float windowLength;
 	bool resetOnEvent;
 	bool accumulateRoot;
+	
+
+
+	// parameters passed on to the repositioner
+	bool maintainUp;
+	bool rotateAboutUp;
+	Vec upDirection;
+	
 protected:
 	MotionVec mots;
 public:
 	ChoiceMotion()
-		:currentChoice(0), smooth(true), resetTime(true), windowLength(0.5f), resetOnEvent(true), accumulateRoot(true){};
+		:currentChoice(0), smooth(true), resetTime(true), windowLength(0.5f), resetOnEvent(true), accumulateRoot(true),
+		maintainUp(false), rotateAboutUp(true), upDirection(0.0, 1.0, 0.0)
+		{};
 	//! pass in a vector of motions to be used.
 	ChoiceMotion(const MotionVec &mpv);
 	ChoiceMotion(const ChoiceMotion &cl);
@@ -118,7 +128,24 @@ public:
 	{
 		return accumulateRoot;	
 	};
+	
+	//! parameters passed on to the repositioner
+	//!@{
+	void setMaintainUp(bool b){maintainUp = b;};
+	bool getMaintainUp(){return maintainUp;};
 
+	void setRotateAboutUp(bool b){rotateAboutUp = b;};
+	bool getRotateAboutUp(){return rotateAboutUp;};
+
+	void setUpDirection(Vec v)
+	{
+		upDirection = v;
+		upDirection.normalize();
+	};
+	Vec getUpDirection(){return upDirection;};
+	//!@}
+	
+	
 	void printInfo();
 
 	

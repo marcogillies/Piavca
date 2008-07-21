@@ -60,6 +60,11 @@ public:
 	//! casts a motion to this type
 	static SequentialChoiceMotion *castToThisType(Motion *m){return dynamic_cast<SequentialChoiceMotion *>(m);};
 
+	//! handles an event (plays the motion with the same name as the event)
+	virtual void event(tstring ev);
+
+	//! gets the names of all events
+	virtual std::vector<Piavca::tstring> getEventNames();
 	
 	virtual int makeChoice();
 };

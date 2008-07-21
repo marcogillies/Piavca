@@ -146,10 +146,18 @@ Vec Reposition::getVecValueAtTimeInternal(int trackId, float time)
 		//return oriOffset.transform(OriginalValue);
 		//Vec subtractedVec = OriginalValue - originalStart;
 		//return OriginalValue;
-		if(maintainY)
-			return subtractedVec + start_position;
-		else
-			return Vec(subtractedVec[0] + start_position[0], OriginalValue[1], subtractedVec[2] + start_position[2]);
+		Vec addition = start_position;
+		if (!maintainUp)
+		{
+			addition = addition - upDirection*(upDirection.dot(addition));
+		}
+		//if(maintainY)
+		return subtractedVec + start_position;
+		//else
+		//{
+			
+			//return Vec(subtractedVec[0] + start_position[0], OriginalValue[1], subtractedVec[2] + start_position[2]);
+		//};
 	}
 	else
 	{
@@ -169,7 +177,12 @@ Quat Reposition::getQuatValueAtTimeInternal(int trackId, float time)
 		if(!filterMot || filterMot->isNull(trackId))
 			return start_orientation;
 		//return filterMot->getQuatValueAtTime(trackId, time);
-		return oriOffset*filterMot->getQuatValueAtTime(trackId, time);
+		Quat offs = oriOffset;
+		if (rotateAboutUp)
+		{
+			offs.projectToAxis(upDirection);
+		}
+		return offs*filterMot->getQuatValueAtTime(trackId, time);
 	}
 	else
 	{

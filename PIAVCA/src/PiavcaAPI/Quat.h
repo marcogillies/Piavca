@@ -123,6 +123,11 @@ public:
 	//! get the component of the rotation about the Z-axis
 	float Zangle();
 
+	//! get the angle of  component of the rotation about axis
+	float getAngleAboutAxis(Vec axis);
+	//! get the component of the rotation about axis
+	void projectToAxis(Vec axis);
+	
 	//! set the Quat to the quaternion that would rotate original so it points in the direction of desired
 	Quat &pointAt(const Vec &original, const Vec &desired);
 

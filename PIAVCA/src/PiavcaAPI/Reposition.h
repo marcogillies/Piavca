@@ -55,7 +55,12 @@ namespace Piavca
 		// if this is true we keep start a new motion from the previous
 		// y value (as well as x-z) otherwise we reblend to the starting 
 		// y value of the second motion
-		bool maintainY;
+		bool maintainUp;
+		
+		// if this is true, only reorient around the up axis;
+		bool rotateAboutUp;
+		
+		Vec upDirection;
 
 		void calculateRootOffsets();
 	    
@@ -65,7 +70,7 @@ namespace Piavca
 		 */
 	    Reposition(Motion *m=NULL, Vec pos = Vec(), Quat ori = Quat()) 
 			:MotionFilter(m), start_position(pos), start_orientation(ori),
-			maintainY(false)
+			maintainUp(false), rotateAboutUp(true), upDirection(0.0, 1.0, 0.0)
 		{
 			calculateRootOffsets();
 		};
@@ -73,7 +78,7 @@ namespace Piavca
 			:MotionFilter(r), 
 			start_position(r.start_position), 
 			start_orientation(r.start_orientation), posOffset(r.posOffset),
-			maintainY(r.maintainY)
+			maintainUp(r.maintainUp), rotateAboutUp(r.rotateAboutUp), upDirection(r.upDirection)
 		{
 		};
 	
@@ -123,7 +128,20 @@ namespace Piavca
 
 		void setMotion(Motion *m);
 
-		virtual void setMaintainY(bool b){maintainY = b;};
+		virtual void setMaintainY(bool b){setMaintainUp(b);};
+
+		void setMaintainUp(bool b){maintainUp = b;};
+		bool getMaintainUp(){return maintainUp;};
+
+		void setRotateAboutUp(bool b){rotateAboutUp = b;};
+		bool getRotateAboutUp(){return rotateAboutUp;};
+
+		void setUpDirection(Vec v)
+		{
+			upDirection = v;
+			upDirection.normalize();
+		};
+		Vec getUpDirection(){return upDirection;};
 
 		//! given a track ID tests whether it actually points to anything or if its null
 		virtual bool isNull(int trackId)const;
