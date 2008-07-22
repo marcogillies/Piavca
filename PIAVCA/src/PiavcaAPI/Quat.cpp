@@ -333,7 +333,7 @@ float Quat::getAngleAboutAxis(Vec axis)
 	Vec perp1;
 	if (fabs(axis[0]) < 0.00001)
 		perp1 = Vec(0.0, axis[2], -axis[1]);
-	else { if (fabs(axis[1] < 0.00001))
+	else { if (fabs(axis[1]) < 0.00001)
 		perp1 = Vec(axis[2], 0.0, -axis[0]);
 	else
 		perp1 = Vec(axis[1], -axis[0], 0.0);
