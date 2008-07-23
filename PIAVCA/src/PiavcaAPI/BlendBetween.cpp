@@ -58,7 +58,7 @@ float BlendBetween::getFloatValueAtTimeInternal (int trackId, float time)
 		}
 		return mot1->getFloatValueAtTime(trackId, time);
 	}
-	if(mot1->isNull(trackId))
+	if(!mot1 || mot1->isNull(trackId))
 		return mot2->getFloatValueAtTime(trackId, time);
 	return static_cast<float>(mot1->getFloatValueAtTime(trackId, time)*blend
 			+  mot2->getFloatValueAtTime(trackId, time)*(1.0-blend));
@@ -76,7 +76,7 @@ Vec BlendBetween::getVecValueAtTimeInternal   (int trackId, float time)
 		}
 		return mot1->getVecValueAtTime(trackId, time);
 	}
-	if(mot1->isNull(trackId))
+	if(!mot1 || mot1->isNull(trackId))
 		return mot2->getVecValueAtTime(trackId, time);
 	return mot1->getVecValueAtTime(trackId, time)*blend
 			+  mot2->getVecValueAtTime(trackId, time)*(1.0f-blend);
@@ -94,7 +94,7 @@ Quat BlendBetween::getQuatValueAtTimeInternal  (int trackId, float time)
 		}
 		return mot1->getQuatValueAtTime(trackId, time);
 	}
-	if(mot1->isNull(trackId))
+	if(!mot1 || mot1->isNull(trackId))
 		return mot2->getQuatValueAtTime(trackId, time);
 	return slerp(mot1->getQuatValueAtTime(trackId, time),
 				mot2->getQuatValueAtTime(trackId, time), blend);

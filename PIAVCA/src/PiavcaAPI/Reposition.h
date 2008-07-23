@@ -70,7 +70,7 @@ namespace Piavca
 		 */
 	    Reposition(Motion *m=NULL, Vec pos = Vec(), Quat ori = Quat()) 
 			:MotionFilter(m), start_position(pos), start_orientation(ori),
-			maintainUp(false), rotateAboutUp(true), upDirection(0.0, 1.0, 0.0)
+			maintainUp(false), rotateAboutUp(true), upDirection(0.0, 0.0, 1.0)
 		{
 			calculateRootOffsets();
 		};

@@ -55,8 +55,8 @@ except PiavcaImportException:
 
 from MotionFile import readMotionFile
 from ScriptEngine import ScriptEngine 
-from ConversationInterface import ConversationInterface
 try :
+	from ConversationInterface import ConversationInterface
 	from SpeechToText import SpeechToText
 except PiavcaImportException:
 	SpeechToText = None 

@@ -148,7 +148,7 @@ int Proxemics::makeChoice()
 		
 		// get rid of the component in the up direction
 		//displacement[1] = 0.0; // we aren't interested in up an down distance
-		Vec up = upDirection;
+		Vec up = getUpDirection();
 		m_avatar->getRootOrientation().transformInPlace(up);
 		up = up*displacement.dot(up);
 		displacement = displacement - up;
@@ -171,7 +171,7 @@ int Proxemics::makeChoice()
 			//forward[1] = 0.0; // we aren't intereseted in up down distance
 			//forward.normalize();
 
-			Vec left = Piavca::Quat(Piavca::Pi/2.0f, upDirection).transform(forward);
+			Vec left = Piavca::Quat(Piavca::Pi/2.0f, getUpDirection()).transform(forward);
 			std::cout << "Proxemics: left: " << left << std::endl;
 			float dot = forward.dot(direction);
 			float angle = acos(dot);

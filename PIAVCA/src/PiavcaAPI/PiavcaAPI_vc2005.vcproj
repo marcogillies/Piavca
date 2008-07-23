@@ -756,10 +756,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\ChoiceBase.h"
-				>
-			</File>
-			<File
 				RelativePath=".\ChoiceLoopMotion.h"
 				>
 			</File>

@@ -67,7 +67,7 @@ protected:
 public:
 	ChoiceMotion()
 		:currentChoice(0), smooth(true), resetTime(true), windowLength(0.5f), resetOnEvent(true), accumulateRoot(true),
-		maintainUp(false), rotateAboutUp(true), upDirection(0.0, 1.0, 0.0)
+		maintainUp(false), rotateAboutUp(true), upDirection(0.0, 0.0, 1.0)
 		{};
 	//! pass in a vector of motions to be used.
 	ChoiceMotion(const MotionVec &mpv);

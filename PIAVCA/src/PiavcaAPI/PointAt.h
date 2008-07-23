@@ -76,14 +76,14 @@ namespace Piavca
 		PointAt()
 			:MotionFilter(), /*targetMotion(NULL),*/ currentValueTarget(NULL), 
 			targetJointId(Piavca::Core::nullId), jointId(Piavca::Core::nullId),
-			local(false), forwardDirection(Vec::ZAxis())
+			local(false), forwardDirection(Vec::YAxis())
 		{
 		};
 		//! create with an vector target
 		PointAt(int joint, const Piavca::Vec &target, bool _local=false)
 			:MotionFilter(), /*targetMotion(NULL),*/ currentValueTarget(NULL), 
 			targetJointId(0), jointId(joint),
-			local(_local), forwardDirection(Vec::ZAxis())
+			local(_local), forwardDirection(Vec::YAxis())
 		{
 			setTarget(target);
 		};
