@@ -33,6 +33,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #endif
 
 #include <string>
+#include <vector>
 
 namespace Piavca {
 
@@ -43,6 +44,7 @@ namespace Piavca {
  */
 class TextureHandler
 {
+	std::vector <std::pair<std::string, GLuint> > lookup;
 public:
 	TextureHandler(){};
 	virtual ~TextureHandler(){};

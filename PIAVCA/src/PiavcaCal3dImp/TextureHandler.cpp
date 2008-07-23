@@ -31,6 +31,14 @@ using namespace Piavca;
 GLuint TextureHandler::loadTexture(const std::string& strFilename)
 {
   GLuint textureId=0;
+
+  int i; 
+  for (i = 0; i < (int) lookup.size(); i++)
+  {
+	if (lookup[i].first == strFilename)
+		return lookup[i].second;
+  }
+
   std::string::size_type dot_pos = strFilename.rfind('.');
   std::string suff = strFilename.substr(dot_pos+1);
   std::transform(suff.begin(), suff.end(), suff.begin(), tolower);
@@ -131,12 +139,16 @@ GLuint TextureHandler::loadTexture(const std::string& strFilename)
 	 Tga->Release();
 
   }
+  if (textureId > 0)
+  {
+	  lookup.push_back(std::make_pair(strFilename, textureId));
+  }
   return textureId;
 }
 
 // looks pretty stupid as a method, but it can be overloaded
 // and in multi-pipe code it can do clever stuff about getting
-// the right texture for the pipe your in
+// the right texture for the pipe you're in
 GLuint TextureHandler::getTextureId(GLuint i)
 {
 	return i;

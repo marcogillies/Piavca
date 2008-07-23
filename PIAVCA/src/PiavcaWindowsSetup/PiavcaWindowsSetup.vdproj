@@ -117,6 +117,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_27F42B8A4C984A88BB330ABC1A4FA0FC"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_282D70E620AA4B9FAA7AAC41846B435D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -160,6 +166,12 @@
         "Entry"
         {
         "MsmKey" = "8:_37707E01EDE14682A6997DAA3A253D6F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_37E611219AB142FAB9AA1BF5E6012CBC"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -274,6 +286,12 @@
         "Entry"
         {
         "MsmKey" = "8:_5FFE8E33E8A44E72B99736A516DA9FAD"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_62AA03F7DDDF44ACA39F5EBFE7DB102F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -424,12 +442,6 @@
         "Entry"
         {
         "MsmKey" = "8:_8D04DBE6EE998817FD653167BC1EB9AF"
-        "OwnerKey" = "8:_0EDB427873744218ACBF6199C4916A0F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_8D04DBE6EE998817FD653167BC1EB9AF"
         "OwnerKey" = "8:_E9BF3BD172E74BC1ACDE5669C3B94371"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -441,7 +453,19 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_8D04DBE6EE998817FD653167BC1EB9AF"
+        "OwnerKey" = "8:_0EDB427873744218ACBF6199C4916A0F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_90E7230E326946B8B4918A00275E0AB8"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_986779AD3F574AA190824015849E7691"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -604,6 +628,12 @@
         "Entry"
         {
         "MsmKey" = "8:_D44C3318068E4CEB8FB27CB2F5719E08"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D7E5181FFF4147E79484A9EBD9A1813B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -1133,6 +1163,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_27F42B8A4C984A88BB330ABC1A4FA0FC"
+            {
+            "SourcePath" = "8:..\\..\\Python\\Piavca\\PiavcaDesigner\\AutoCreators\\AutoCreator.py"
+            "TargetName" = "8:AutoCreator.py"
+            "Tag" = "8:"
+            "Folder" = "8:_635169BFC8624D8F845016D572D40EB9"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_282D70E620AA4B9FAA7AAC41846B435D"
             {
             "SourcePath" = "8:..\\..\\Python\\wxViewer.py"
@@ -1279,6 +1329,26 @@
             "TargetName" = "8:MaxXAFReader.py"
             "Tag" = "8:"
             "Folder" = "8:_030136928E1A4CF9B5AF2948FB4B2634"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_37E611219AB142FAB9AA1BF5E6012CBC"
+            {
+            "SourcePath" = "8:..\\..\\Python\\Piavca\\PiavcaDesigner\\AutoCreators\\InterruptableSequence.py"
+            "TargetName" = "8:InterruptableSequence.py"
+            "Tag" = "8:"
+            "Folder" = "8:_635169BFC8624D8F845016D572D40EB9"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1599,6 +1669,26 @@
             "TargetName" = "8:Walking.conf"
             "Tag" = "8:"
             "Folder" = "8:_45D7633C579B4668A5FC68D3F3EFBF33"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_62AA03F7DDDF44ACA39F5EBFE7DB102F"
+            {
+            "SourcePath" = "8:..\\..\\Python\\Piavca\\PiavcaDesigner\\AutoCreators\\__init__.py"
+            "TargetName" = "8:__init__.py"
+            "Tag" = "8:"
+            "Folder" = "8:_635169BFC8624D8F845016D572D40EB9"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2099,6 +2189,26 @@
             "TargetName" = "8:gltb.py"
             "Tag" = "8:"
             "Folder" = "8:_030136928E1A4CF9B5AF2948FB4B2634"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_986779AD3F574AA190824015849E7691"
+            {
+            "SourcePath" = "8:..\\..\\Python\\Piavca\\PiavcaDesigner\\ParameterControls.py"
+            "TargetName" = "8:ParameterControls.py"
+            "Tag" = "8:"
+            "Folder" = "8:_240F48167681489AACBF48E0CDE5F730"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2633,6 +2743,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D7E5181FFF4147E79484A9EBD9A1813B"
+            {
+            "SourcePath" = "8:..\\..\\Python\\Piavca\\PiavcaDesigner\\AutoCreatorsWindow.py"
+            "TargetName" = "8:AutoCreatorsWindow.py"
+            "Tag" = "8:"
+            "Folder" = "8:_240F48167681489AACBF48E0CDE5F730"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DB8B17E822C44B40BCEE918C4041295A"
             {
             "SourcePath" = "8:..\\..\\Python\\Piavca\\PiavcaDesigner\\PlayControls.py"
@@ -2922,6 +3052,17 @@
                     "Property" = "8:_A14BD87160F94BDFB1EAE29ADC097681"
                         "Folders"
                         {
+                            "{9EF0B969-E518-4E46-987F-47570745A589}:_635169BFC8624D8F845016D572D40EB9"
+                            {
+                            "Name" = "8:AutoCreators"
+                            "AlwaysCreate" = "11:FALSE"
+                            "Condition" = "8:"
+                            "Transitive" = "11:FALSE"
+                            "Property" = "8:_D41BD1E758D6478FB99E86D3ED76ACF5"
+                                "Folders"
+                                {
+                                }
+                            }
                         }
                     }
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_B769F3BC6A11452EAAA4F51430E34198"
@@ -3051,7 +3192,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Piavca"
         "ProductCode" = "8:{7E07296C-3595-4CA8-9B56-76D102408F36}"
-        "PackageCode" = "8:{4E9B27FB-38EF-4ADB-A748-035225D9AAB0}"
+        "PackageCode" = "8:{05AB451A-FBF7-4143-9E68-81AF4CD28239}"
         "UpgradeCode" = "8:{FE7F39C9-C64C-4F24-BF33-C6B39EF15407}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
@@ -3669,7 +3810,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_0EDB427873744218ACBF6199C4916A0F"
             {
-            "SourcePath" = "8:..\\..\\debug_py25\\XVR2Piavca.dll"
+            "SourcePath" = "8:..\\..\\debug_py24\\XVR2Piavca.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_2C01534358BC499DB5A587789363CFB1"
