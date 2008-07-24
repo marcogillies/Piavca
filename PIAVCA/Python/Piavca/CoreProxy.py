@@ -38,6 +38,7 @@
 #import Piavca
 import Piavca_base
 from Piavca_base import Core, Motion
+import PiavcaWXApp
 
 import types
 
@@ -114,6 +115,7 @@ def removeEvent(avatareventname):
 def clear():
 	_motionLookup = {}
 	_events = {}
+	PiavcaWXApp.getWXApp().clear()
 	Core.getCore().reset()
 	
 def joints(o):

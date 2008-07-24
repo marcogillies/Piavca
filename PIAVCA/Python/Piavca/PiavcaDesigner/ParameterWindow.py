@@ -44,6 +44,7 @@ class ParameterWindow(wx.Panel):
 		if motionproxy == None:
 			self.typelabel.SetLabel("")
 		else:
+			print "parameter window get name"
 			self.typelabel.SetLabel(motionproxy.getName())
 			
 			parameters = motionproxy.getParameters()

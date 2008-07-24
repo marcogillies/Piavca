@@ -319,5 +319,8 @@ if glPresent:
 			for plugin in self.plugins:
 				plugin.render()
 				
+		def clear(self):
+			self.plugins = []
+				
 else:
 	PiavcaWXCanvasBase = None

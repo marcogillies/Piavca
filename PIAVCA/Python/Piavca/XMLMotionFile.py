@@ -122,6 +122,14 @@ def parseAttribute(attrValue, type, elementType):
 				possible_values.append(f)
 			except ValueError:
 				pass
+				
+		if type == "Joint":
+			try:
+				i = int(value)
+				possible_values.append(i)
+			except ValueError:
+				i = Piavca.Core.getCore().getTrackName(value)
+				possible_values.append(i)
 		
 		#if value == "True" or value == "true":
 		#	possible_values.append(True)
@@ -171,6 +179,16 @@ def parseAttribute(attrValue, type, elementType):
 		except ValueError:
 			pass
 		
+	# maybe its  a joint with a space in the name
+	if type == "Joint":
+		try:
+			i = int(value)
+			possible_values.append(i)
+		except ValueError:
+			i = Piavca.Core.getCore().getTrackId(value)
+			print "got joint id"
+			possible_values.append(i)
+		
 	# if all else fails, treat it as a string
 	if type == types.NoneType or type == str:
 		try:
@@ -183,6 +201,9 @@ def parseAttribute(attrValue, type, elementType):
 # add method
 	
 def setAttribute(mot, attrName, attrValue, firstArg = None):
+	# if the attribute is empty don't try to set it
+	if attrValue == "":
+		return
 	attrName = str(attrName)
 	if not hasattr(mot, "set" + string.upper(attrName[0]) + attrName[1:]):
 		print "could not find attribute", attrName
@@ -194,6 +215,9 @@ def setAttribute(mot, attrName, attrValue, firstArg = None):
 	getmeth = getattr(mot, "get" + string.upper(attrName[0]) + attrName[1:])
 	val = getmeth()
 	valtype = type(val)
+	if attrName[-len("JointId"):] == "JointId" or attrName[-len("ExpressionId"):] == "ExpressionId" or attrName[-len("TrackId"):] == "TrackId":
+		print "Found joint attribute"
+		valtype = "Joint"
 	element_type = None
 	if valtype == list and len(val) > 0:
 		element_type = type(val[0])
@@ -581,6 +605,9 @@ def saveMotions(filename, motions, element = None, doc = None, avatars=[]):
 						#print key
 						method = getattr(motion, key)
 						value = str(method())
+						if key[-len("JointId"):] == "JointId" or key[-len("ExpressionId"):] == "ExpressionId" or key[-len("TrackId"):] == "TrackId":
+							value = Piavca.Core.getCore().getTrackName(method())
+							
 						# don't save empty names, it screws things up
 						if key[3:] != "Name" or value != "":
 							#print key[3:], value

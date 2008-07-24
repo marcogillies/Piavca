@@ -38,10 +38,10 @@ class BackEnd:
 		
 	def clear(self):
 		self.avatar = None
-		motion = None
-		submotion = None
-		selectedSubMotion = None
-		playing = False
+		self.motion = None
+		self.submotion = None
+		self.selectedSubMotion = None
+		self.playing = False
 		Piavca.clear()
 		self.update()
 		self.frontend.update()

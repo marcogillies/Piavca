@@ -42,6 +42,10 @@ if wxPresent:
 			self.canvas = self.frame.canvas 
 			return self.frame.canvas
 			
+		def clear(self):
+			if self.canvas:
+				self.canvas.clear()
+			
 		def setCanvas(self, canvas):	
 			self.canvas = canvas
 		
