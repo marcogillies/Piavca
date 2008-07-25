@@ -5242,7 +5242,16 @@ class SequentialChoiceMotion(ChoiceMotion):
         except: self.this = this
     __swig_destroy__ = _Piavca_base.delete_SequentialChoiceMotion
     __del__ = lambda self : None;
-    def clone(*args): return _Piavca_base.SequentialChoiceMotion_clone(*args)
+    def clone(*args):
+        """
+        virtual Motion* Piavca::Motion::clone()=0
+                 
+        creates a copy of the motion         
+                 
+                
+        """
+        return _Piavca_base.SequentialChoiceMotion_clone(*args)
+
     def getClassName(*args): return _Piavca_base.SequentialChoiceMotion_getClassName(*args)
     __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.SequentialChoiceMotion_castToThisType
     if _newclass:castToThisType = staticmethod(_Piavca_base.SequentialChoiceMotion_castToThisType)

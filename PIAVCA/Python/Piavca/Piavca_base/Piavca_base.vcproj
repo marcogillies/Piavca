@@ -575,6 +575,7 @@
 			</FileConfiguration>
 			<FileConfiguration
 				Name="Release_Py25|Win32"
+				ExcludedFromBuild="true"
 				>
 				<Tool
 					Name="VCCustomBuildTool"
