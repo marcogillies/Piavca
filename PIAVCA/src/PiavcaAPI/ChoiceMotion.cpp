@@ -66,8 +66,10 @@ ChoiceMotion::ChoiceMotion(const ChoiceMotion &cl)
 };
 ChoiceMotion::~ChoiceMotion()
 {
+	setMotion(NULL);
 	for(MotionVec::size_type i = 0; i < mots.size(); i++)
 		mots[i]->Dispose();
+	mots.clear();
 };
 
 void ChoiceMotion::printInfo()

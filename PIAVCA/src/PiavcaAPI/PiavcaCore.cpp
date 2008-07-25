@@ -84,7 +84,8 @@ void Core::reset()
 		delete objects[i];
 	objects.clear();
 	for (i = 0; i < motions.size(); i++)
-		delete motions[i].second;
+		motions[i].second->Dispose();
+		//delete motions[i].second;
 	motions.clear();
 };
 
