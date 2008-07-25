@@ -52,16 +52,16 @@ namespace Piavca
 	 */
     class PIAVCA_DECL PiavcaOpenSGCore : public PiavcaCal3DCore
 	{
-		osg::NodeRefPtr graph_root;
+		osg::NodePtr graph_root;
 	protected:
 		//! Creates an avatar implementation (actually creates a AvatarOpenSGImp object)
 		AvatarImp *createAvatarImp(tstring avatarId, bool bailOnMissedJoints, const Vec &Position, const Quat &Orientation);
 		//! a version of createAvatarImp to be subclassed
-		virtual AvatarOpenSGImp *createAvatarImp(osg::CharacterPtr character, osg::NodeRefPtr node, bool bailOnMissedJoints, const Vec &Position, const Quat &Orientation);
+		virtual AvatarOpenSGImp *createAvatarImp(osg::CharacterPtr character, osg::NodePtr node, bool bailOnMissedJoints, const Vec &Position, const Quat &Orientation);
 		
 	public:
 
-		PiavcaOpenSGCore(osg::NodeRefPtr root = osg::NodeRefPtr());
+		PiavcaOpenSGCore(osg::NodePtr root = osg::NodePtr());
 		virtual ~PiavcaOpenSGCore() {};
 
 		void loadAllAvatars();

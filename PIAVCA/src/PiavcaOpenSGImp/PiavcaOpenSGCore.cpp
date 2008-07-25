@@ -59,11 +59,11 @@ using namespace Piavca;
 //	return new PiavcaOpenSGCore();
 //};
 
-PiavcaOpenSGCore::PiavcaOpenSGCore(osg::NodeRefPtr root):graph_root(root)
+PiavcaOpenSGCore::PiavcaOpenSGCore(osg::NodePtr root):graph_root(root)
 {
 };
 
-AvatarOpenSGImp *PiavcaOpenSGCore::createAvatarImp(osg::CharacterPtr character, osg::NodeRefPtr node, bool bailOnMissedJoints, const Vec &Position, const Quat &Orientation)
+AvatarOpenSGImp *PiavcaOpenSGCore::createAvatarImp(osg::CharacterPtr character, osg::NodePtr node, bool bailOnMissedJoints, const Vec &Position, const Quat &Orientation)
 {
 	return new AvatarOpenSGImp(character, node, bailOnMissedJoints, Position, Orientation);
 }
@@ -99,7 +99,7 @@ class NodeFinder{
 
 			AvatarImp *createImp(osg::CharacterPtr charac, osg::NodePtr&node)
 			{
-				return core->createAvatarImp(charac, osg::NodeRefPtr(node), false, Vec(), Quat());
+				return core->createAvatarImp(charac, osg::NodePtr(node), false, Vec(), Quat());
 			}
 
 			virtual osg::Action::ResultE process(osg::NodePtr& node, osg::CharacterPtr charac, std::string name)=0;

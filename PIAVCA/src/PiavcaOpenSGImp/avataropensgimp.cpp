@@ -75,7 +75,7 @@ AvatarOpenSGImp *AvatarOpenSGImp::getAvatarImp(Avatar *avatar)
 	}
 };
 
-AvatarOpenSGImp::AvatarOpenSGImp(osg::CharacterPtr character, osg::NodeRefPtr node, bool bailOnMissedJoints, const Vec &Position, const Quat &Orientation)
+AvatarOpenSGImp::AvatarOpenSGImp(osg::CharacterPtr character, osg::NodePtr node, bool bailOnMissedJoints, const Vec &Position, const Quat &Orientation)
 : AvatarImp(), charac(character), osg_node(node)
 {
 	

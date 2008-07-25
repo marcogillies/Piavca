@@ -49,7 +49,7 @@ namespace Piavca
 class PIAVCA_DECL AvatarOpenSGImp : public AvatarImp {
 protected:
 	osg::CharacterPtr charac;
-	osg::NodeRefPtr osg_node;
+	osg::NodePtr osg_node;
 
 	// a look up table to map between Piavca joint id's and Cal3D joint indexes
 	vector <JointHolder> joints;
@@ -60,7 +60,7 @@ public:
 	/*!
 	 *	Must be created via a TaraAvatarFactory object
 	 */
-	AvatarOpenSGImp(osg::CharacterPtr character, osg::NodeRefPtr node, bool bailOnMissedJoints, const Vec &Position, const Quat &Orientation);
+	AvatarOpenSGImp(osg::CharacterPtr character, osg::NodePtr node, bool bailOnMissedJoints, const Vec &Position, const Quat &Orientation);
 
 	//! loads all textures from file
 	void loadTextures();

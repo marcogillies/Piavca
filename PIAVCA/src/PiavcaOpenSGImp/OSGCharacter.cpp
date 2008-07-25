@@ -71,9 +71,6 @@ An instance of a CharacterModel.
  *                           Class variables                               *
 \***************************************************************************/
 
-const int MAXBONESPERMESH = 29;
-
-
 /*! OpenGL extension indices.
 */
 UInt32 Character::_extMultitexture;
@@ -84,6 +81,8 @@ UInt32 Character::_arbSHL100;
 UInt32 Character::_funcglClientActiveTextureARB;
 UInt32 Character::_funcglGetUniformLocationARB;
 UInt32 Character::_funcglUniformMatrix4fvARB;
+
+//const int MAXBONESPERMESH = 29;
 
 /***************************************************************************\
  *                           Class methods                                 *
@@ -560,7 +559,7 @@ void Character::initializeHWData(void)
     _calHWModel->setTextureCoordBuffer(0,(char*)&_texcoords[0],2*sizeof(float));
     _calHWModel->setIndexBuffer(&_indices[0]);
 
-    _calHWModel->load( 0, 0, MAXBONESPERMESH);
+    _calHWModel->load( 0, 0, 29);
 
     // Check sizes
     if(_calHWModel->getTotalVertexCount() > nvert)
