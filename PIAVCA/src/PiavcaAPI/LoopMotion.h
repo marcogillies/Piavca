@@ -65,10 +65,10 @@ namespace Piavca
 
 		virtual float getMotionLength()const
 		{
-			if (endTime > 0)
-				return endTime;
-			else
-				return Motion::getMotionLength();
+			//if (endTime >= 0)
+			return endTime;
+			//else
+			//	return Motion::getMotionLength();
 		};
 
 		void setEndTime(float t){endTime = t;};
@@ -86,7 +86,7 @@ namespace Piavca
 				&& (reblend_flag
 				|| ((endTime < 0 || time < endTime)
 				&& (!filterMot ||
-				(filterMot->getMotionLength() >= 0 && time > filterMot->getEndTime())))))
+				(/*filterMot->getMotionLength() >= 0 &&*/ time > filterMot->getEndTime())))))
 				{
 				    LoopMotion *nonConstThis = const_cast<LoopMotion *>(this);
 					nonConstThis->lock = true;
@@ -107,9 +107,10 @@ namespace Piavca
 		 */
 		virtual bool reset()
 		{
-			MotionFilter::reset();
-			setStartTime(Piavca::Core::getCore()->getTime());	
-			return true;
+			bool retval = MotionFilter::reset();
+			if (retval)
+				setStartTime(Piavca::Core::getCore()->getTime());	
+			return retval;
 		};
 	    
 	};

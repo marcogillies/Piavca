@@ -28,7 +28,7 @@ this is a lower level character animation library. You will need version 0.10 or
 
 https://gna.org/projects/cal3d/
 
-Fo unix if you install it in the standard place (/usr/install/local) configure will find it. Many linux distros now have cal3d packages
+For unix if you install it in the standard place (/usr/install/local) configure will find it. Many linux distros now have cal3d packages
 
 On windows you will need to download it and compile it in release mode (see below). Once compiled you need to make sure that cal3d.dll is in your path, e.g. by putting it in c:\WINDOWS\System32
 
@@ -49,9 +49,11 @@ the relevant features will be disabled:
 
 wxPython - for the GUI
 
+PyOpenGL - for the python rendering windows
+
 scipy - numerical code used in some bits of Piavca like the MotionGraph and PCA
 
-pymedia - for audio output
+pyaudio - for audio output
 
 pyTTS - for text to speech interaction
 
@@ -112,7 +114,16 @@ then build the installer project for that version (otherwise it won't install in
 
 /////  A note on the Debug build. 
 
-Visual studio has a number of different versions of its standard library and linking together two bits of code that use different versions tends to break everything. In particular there are different debug and release versions. To build a debug version of Piavca in theory you would need a debug version of Python. This would be a major pain as it involves recompiling Python and a lot of python modules. For this reason the debug version of piavca does not link to the debug standard library and links to the standard release versions of Python and Cal3d. I find this more convenient as maintaining a debug version of Python can be painful and you rarely get much useful information from debugging the internal of Python and the standard library. It is sometimes useful to be able to debug Cal3d, so I include debug info in my release dll of Cal3d (you will need to change the project properties and recompile). If you really want a full debug version you can change the settings to link to the debug version of the CRT and compile a debug version of Python. This is only recommended if you know what you are doing.
+Visual studio has a number of different versions of its standard library and linking together two bits of code that 
+use different versions tends to break everything. In particular there are different debug and release versions. 
+To build a debug version of Piavca in theory you would need a debug version of Python. This would be a major pain as 
+it involves recompiling Python and a lot of python modules. For this reason the debug version of piavca does not link 
+to the debug standard library and links to the standard release versions of Python and Cal3d. I find this more convenient 
+as maintaining a debug version of Python can be painful and you rarely get much useful information from debugging the internal 
+of Python and the standard library. It is sometimes useful to be able to debug Cal3d, so I include debug info in my release dll 
+of Cal3d (you will need to change the project properties and recompile). If you really want a full debug version you can 
+change the settings to link to the debug version of the CRT and compile a debug version of Python. This is only 
+recommended if you know what you are doing.
 
 
 
@@ -120,18 +131,12 @@ Visual studio has a number of different versions of its standard library and lin
 /// UNIX
 /////////////////////////
 
-Piavca has a standard automake installation procedure:
 
-cd PIAVCA
-./configure
-make
-make install
+Piavca uses scons to build it, so please download scons (a great build program). Once done you just need to enter the piavca
+directory and do:
 
-you might need to run the last command as root. run ./configure --help to get the available options
-
-if you need to regenerate the configure file you can run 
-
-sh ./autogen.sh
+scons
+sudo scons install
 
 There is an Eclipse project if you want to do development. 
 
@@ -143,25 +148,15 @@ Piavca is a library so you can't really run it but there are a bunch of example 
 you can try. In the installation there is a directory called Bill that contains an example 
 avatar model and some data files that you can try out.
 
-////// PiavcaCal3dApp
+////// PiavcaDesigners
 
-This is a pure C++ application. Run it from the command line and pass in the name of a cal3d
-character configuration file (.cfg, see Cal3d docs for more details). e.g.:
+Helpful for setting up Piavca files. Either run from the program menu or the command line (in the Piavca directory):
 
-PiavcaCal3dApp Bill/Bill.cfg
-
-It will display the character and you can press the number keys to play different animations.
+python Python/PiavcaDesigner
 
 ////// Viewer.py and wxViewer.py
 
 Similar to the above, two simple viewer applications written in Python. Viewer.py uses the PiavcaGlut
 C++ binding and wxViewer is pure python. When you run them they prompt you to choose a .cfg file 
 and then to choose an animation to play on the character.
-
-////// PiavcaScriptEngine.py
-
-this is a more complex viewer. It runs the Piavca Embodied Conversational Agent Engine. See here for more
-details:
-
-http://www.cs.ucl.ac.uk/staff/m.gillies/piavca/PiavcaECAManual.html
 

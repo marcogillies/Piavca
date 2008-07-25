@@ -162,7 +162,7 @@ namespace Piavca
 			if(filterMot)
 				return filterMot->reset();
 			else
-				return false;
+				return true;
 		};
 		
 

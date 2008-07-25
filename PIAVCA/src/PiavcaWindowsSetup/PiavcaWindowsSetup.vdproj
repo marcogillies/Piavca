@@ -33,12 +33,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_075B558B58DD49CCB06C61E65D488470"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_0A0A30A93510469D8D6B3FD96FC213FF"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -75,7 +69,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_191AEBE8F33142D7A3F2965223CA68AB"
+        "MsmKey" = "8:_1B18D152F20942E09CFCF4CCFCE46E2F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -147,19 +141,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_2FCE3DC38520478BB990DCF230EA5C65"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_301BDD77EAB94E8BAE8BF835C69445BD"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_34D1EB4E572248B99C264516DE3B6BFB"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -297,12 +279,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_5FFE8E33E8A44E72B99736A516DA9FAD"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_62AA03F7DDDF44ACA39F5EBFE7DB102F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -369,6 +345,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_6FDE8D0A651346CF917FE4DFBE988042"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_70966DE024A947AAAFE615C4A76A3498"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -388,12 +370,6 @@
         "Entry"
         {
         "MsmKey" = "8:_7ACAA2368C6B454580D631C3392B25E2"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7D658EEB95EE458E8C3F2D2CBB6A7102"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -573,6 +549,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_C31851648B7C43A4985321CE63E7D05B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_C6097ADC67784B91A54C0C6392A5F3ED"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -586,6 +568,12 @@
         "Entry"
         {
         "MsmKey" = "8:_CE5A348F22DF4A2EB5A81A69CB27B956"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_CE5DE536114D4585994E3E2F7FFE3D18"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -639,19 +627,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_E3BE2F24BC124A54B1A53827299ED0DE"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_E9BF3BD172E74BC1ACDE5669C3B94371"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_EBCEC80F585341D8868FF9F7076C671E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -900,6 +876,48 @@
     {
         "CustomAction"
         {
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_12024F060B13479CBB2DEE9972FAE9E1"
+            {
+            "Name" = "8:PyOpenGL-3.0.0b4.win32_p24.exe"
+            "Condition" = "8:"
+            "Object" = "8:_CE5DE536114D4585994E3E2F7FFE3D18"
+            "FileType" = "3:2"
+            "InstallAction" = "3:1"
+            "Arguments" = "8:/Install"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:2"
+            "Identifier" = "8:_EF15623E_B559_4CEF_85C8_108056EEC3C6"
+            "InstallerClass" = "11:FALSE"
+            "CustomActionData" = "8:"
+            }
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_2DB51E8BF11F40879C99E35F67D6FE9E"
+            {
+            "Name" = "8:pyaudio-0.2.0.py24.exe"
+            "Condition" = "8:"
+            "Object" = "8:_105318FBC7C84EDE831447AFE911E83E"
+            "FileType" = "3:2"
+            "InstallAction" = "3:1"
+            "Arguments" = "8:/Install"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_D9E07BB0_87CA_4141_90A1_44A93D8EABD1"
+            "InstallerClass" = "11:FALSE"
+            "CustomActionData" = "8:"
+            }
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_A56E1061443F44D89A850E0E141E65CD"
+            {
+            "Name" = "8:wxPython2.8-win32-unicode-2.8.8.1-py24.exe"
+            "Condition" = "8:"
+            "Object" = "8:_248BD3BE46EF4542822A60B20D71CED7"
+            "FileType" = "3:2"
+            "InstallAction" = "3:1"
+            "Arguments" = "8:/Install"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:3"
+            "Identifier" = "8:_D3E3BF9E_B85F_42CF_AC22_26FAD4DF93FD"
+            "InstallerClass" = "11:FALSE"
+            "CustomActionData" = "8:"
+            }
         }
         "DefaultFeature"
         {
@@ -941,26 +959,6 @@
             "TargetName" = "8:runScriptEngine.py"
             "Tag" = "8:"
             "Folder" = "8:_030136928E1A4CF9B5AF2948FB4B2634"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_075B558B58DD49CCB06C61E65D488470"
-            {
-            "SourcePath" = "8:..\\..\\Bill\\Posture.conf"
-            "TargetName" = "8:Posture.conf"
-            "Tag" = "8:"
-            "Folder" = "8:_45D7633C579B4668A5FC68D3F3EFBF33"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1075,10 +1073,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_191AEBE8F33142D7A3F2965223CA68AB"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1B18D152F20942E09CFCF4CCFCE46E2F"
             {
-            "SourcePath" = "8:..\\..\\Bill\\Posture.act"
-            "TargetName" = "8:Posture.act"
+            "SourcePath" = "8:..\\..\\Bill\\actions.CAF"
+            "TargetName" = "8:actions.CAF"
             "Tag" = "8:"
             "Folder" = "8:_45D7633C579B4668A5FC68D3F3EFBF33"
             "Condition" = "8:"
@@ -1315,52 +1313,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2FCE3DC38520478BB990DCF230EA5C65"
-            {
-            "SourcePath" = "8:..\\..\\Bill\\Walking.xml"
-            "TargetName" = "8:Walking.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_45D7633C579B4668A5FC68D3F3EFBF33"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_301BDD77EAB94E8BAE8BF835C69445BD"
             {
             "SourcePath" = "8:..\\..\\Python\\Piavca\\PiavcaDesigner\\AvatarList.py"
             "TargetName" = "8:AvatarList.py"
             "Tag" = "8:"
             "Folder" = "8:_240F48167681489AACBF48E0CDE5F730"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_34D1EB4E572248B99C264516DE3B6BFB"
-            {
-            "SourcePath" = "8:..\\..\\Bill\\wander1.caf"
-            "TargetName" = "8:wander1.caf"
-            "Tag" = "8:"
-            "Folder" = "8:_45D7633C579B4668A5FC68D3F3EFBF33"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1715,26 +1673,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5FFE8E33E8A44E72B99736A516DA9FAD"
-            {
-            "SourcePath" = "8:..\\..\\Bill\\Walking.conf"
-            "TargetName" = "8:Walking.conf"
-            "Tag" = "8:"
-            "Folder" = "8:_45D7633C579B4668A5FC68D3F3EFBF33"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_62AA03F7DDDF44ACA39F5EBFE7DB102F"
             {
             "SourcePath" = "8:..\\..\\Python\\Piavca\\PiavcaDesigner\\AutoCreators\\__init__.py"
@@ -1955,6 +1893,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6FDE8D0A651346CF917FE4DFBE988042"
+            {
+            "SourcePath" = "8:..\\..\\Bill\\tutorial1.xml"
+            "TargetName" = "8:tutorial1.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_45D7633C579B4668A5FC68D3F3EFBF33"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_70966DE024A947AAAFE615C4A76A3498"
             {
             "SourcePath" = "8:..\\..\\Python\\Piavca\\PiavcaDesigner\\MotionProxy.py"
@@ -2021,26 +1979,6 @@
             "TargetName" = "8:__init__.py"
             "Tag" = "8:"
             "Folder" = "8:_B769F3BC6A11452EAAA4F51430E34198"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7D658EEB95EE458E8C3F2D2CBB6A7102"
-            {
-            "SourcePath" = "8:..\\..\\Bill\\Postures.xml"
-            "TargetName" = "8:Postures.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_45D7633C579B4668A5FC68D3F3EFBF33"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2595,6 +2533,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C31851648B7C43A4985321CE63E7D05B"
+            {
+            "SourcePath" = "8:..\\..\\Bill\\tutorial2.xml"
+            "TargetName" = "8:tutorial2.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_45D7633C579B4668A5FC68D3F3EFBF33"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C6097ADC67784B91A54C0C6392A5F3ED"
             {
             "SourcePath" = "8:..\\..\\Python\\Piavca\\StrongConnectivity.py"
@@ -2641,6 +2599,26 @@
             "TargetName" = "8:EventsGUI.py"
             "Tag" = "8:"
             "Folder" = "8:_030136928E1A4CF9B5AF2948FB4B2634"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CE5DE536114D4585994E3E2F7FFE3D18"
+            {
+            "SourcePath" = "8:C:\\Documents and Settings\\ucacmfg\\Desktop\\PyOpenGL-3.0.0b2\\dist\\PyOpenGL-3.0.0b4.win32_p24.exe"
+            "TargetName" = "8:PyOpenGL-3.0.0b4.win32_p24.exe"
+            "Tag" = "8:"
+            "Folder" = "8:_C32D0F42EC2B427E89BDD8C0DE5EC464"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2801,46 +2779,6 @@
             "TargetName" = "8:PlayControls.py"
             "Tag" = "8:"
             "Folder" = "8:_240F48167681489AACBF48E0CDE5F730"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E3BE2F24BC124A54B1A53827299ED0DE"
-            {
-            "SourcePath" = "8:..\\..\\Bill\\Walking.act"
-            "TargetName" = "8:Walking.act"
-            "Tag" = "8:"
-            "Folder" = "8:_45D7633C579B4668A5FC68D3F3EFBF33"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EBCEC80F585341D8868FF9F7076C671E"
-            {
-            "SourcePath" = "8:..\\..\\Bill\\postures.caf"
-            "TargetName" = "8:postures.caf"
-            "Tag" = "8:"
-            "Folder" = "8:_45D7633C579B4668A5FC68D3F3EFBF33"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"

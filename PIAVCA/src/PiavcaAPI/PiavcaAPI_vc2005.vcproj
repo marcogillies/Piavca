@@ -792,6 +792,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\MultiMotionCombiner.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Object.h"
 				>
 			</File>

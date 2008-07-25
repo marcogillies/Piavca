@@ -70,6 +70,6 @@ int SequentialChoiceMotion::makeChoice()
 	else
 	{
 		std::cout << "same " << std::endl;
-		return current;
+		return -1;
 	}
 }
