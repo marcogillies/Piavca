@@ -109,6 +109,9 @@ const OSG::BitVector  CharacterBase::BonePosRelFieldMask =
 const OSG::BitVector  CharacterBase::BonePosAbsFieldMask = 
     (TypeTraits<BitVector>::One << CharacterBase::BonePosAbsFieldId);
 
+const OSG::BitVector  CharacterBase::SizeScaleFieldMask = 
+    (TypeTraits<BitVector>::One << CharacterBase::SizeScaleFieldId);
+
 const OSG::BitVector CharacterBase::MTInfluenceMask = 
     (Inherited::MTInfluenceMask) | 
     (static_cast<BitVector>(0x0) << Inherited::NextFieldId); 
@@ -217,7 +220,12 @@ FieldDescription *CharacterBase::_desc[] =
                      "bonePosAbs", 
                      BonePosAbsFieldId, BonePosAbsFieldMask,
                      false,
-                     (FieldAccessMethod) &CharacterBase::getMFBonePosAbs)
+                     (FieldAccessMethod) &CharacterBase::getMFBonePosAbs),
+    new FieldDescription(SFReal32::getClassType(), 
+                     "sizeScale", 
+                     SizeScaleFieldId, SizeScaleFieldMask,
+                     false,
+                     (FieldAccessMethod) &CharacterBase::getSFSizeScale)
 };
 
 
@@ -305,6 +313,7 @@ CharacterBase::CharacterBase(void) :
     _mfBoneQuatsAbs           (),
     _mfBonePosRel             (),
     _mfBonePosAbs             (),
+	_sfSizeScale              (Real32(1.f)),
     Inherited() 
 {
 }
@@ -326,6 +335,7 @@ CharacterBase::CharacterBase(const CharacterBase &source) :
     _mfBoneQuatsAbs           (source._mfBoneQuatsAbs           ), 
     _mfBonePosRel             (source._mfBonePosRel             ), 
     _mfBonePosAbs             (source._mfBonePosAbs             ), 
+	_sfSizeScale              (source._sfSizeScale              ), 
     Inherited                 (source)
 {
 }
@@ -402,6 +412,11 @@ UInt32 CharacterBase::getBinSize(const BitVector &whichField)
         returnValue += _mfBonePosAbs.getBinSize();
     }
 
+	if(FieldBits::NoField != (SizeScaleFieldMask & whichField))
+    {
+        returnValue += _sfSizeScale.getBinSize();
+    }
+
     return returnValue;
 }
 
@@ -468,6 +483,11 @@ void CharacterBase::copyToBin(      BinaryDataHandler &pMem,
     if(FieldBits::NoField != (BonePosAbsFieldMask & whichField))
     {
         _mfBonePosAbs.copyToBin(pMem);
+    }
+
+	if(FieldBits::NoField != (SizeScaleFieldMask & whichField))
+    {
+        _sfSizeScale.copyToBin(pMem);
     }
 
 }
@@ -537,6 +557,11 @@ void CharacterBase::copyFromBin(      BinaryDataHandler &pMem,
         _mfBonePosAbs.copyFromBin(pMem);
     }
 
+	if(FieldBits::NoField != (SizeScaleFieldMask & whichField))
+    {
+        _sfSizeScale.copyFromBin(pMem);
+    }
+
 }
 
 #if !defined(OSG_FIXED_MFIELDSYNC)
@@ -582,6 +607,9 @@ void CharacterBase::executeSyncImpl(      CharacterBase *pOther,
     if(FieldBits::NoField != (BonePosAbsFieldMask & whichField))
         _mfBonePosAbs.syncWith(pOther->_mfBonePosAbs);
 
+	if(FieldBits::NoField != (SizeScaleFieldMask & whichField))
+        _sfSizeScale.syncWith(pOther->_sfSizeScale);
+
 }
 #else
 void CharacterBase::executeSyncImpl(      CharacterBase *pOther,
@@ -626,6 +654,9 @@ void CharacterBase::executeSyncImpl(      CharacterBase *pOther,
 
     if(FieldBits::NoField != (BonePosAbsFieldMask & whichField))
         _mfBonePosAbs.syncWith(pOther->_mfBonePosAbs);
+
+	if(FieldBits::NoField != (SizeScaleFieldMask & whichField))
+        _sfSizeScale.syncWith(pOther->_sfSizeScale);
 
 }
 

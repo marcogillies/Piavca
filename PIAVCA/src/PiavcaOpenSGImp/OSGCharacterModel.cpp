@@ -221,28 +221,28 @@ CalCoreModel *CharacterModel::loadConfig(std::string filename)
             }
                         
             // **************** Load Bone Names *****************
-    				CharacterModelPtr cp(this);
-    				CalCoreSkeleton *skel = model->getCoreSkeleton();
-						std::vector<CalCoreBone *>& bones = skel->getVectorCoreBone();
-				
-						for(int i = 0; i < (int) bones.size(); i++) {
-		    				std::string name = bones[i]->getName();
-    						getBoneNames().push_back(name);
-    						std::cout << "Added BoneName " << i << ": " << name << std::endl;
-    				}
-						
-						if(!getBoneNames().empty()) {
-        				std::cout << "Printing BoneNames Field:" << std::endl;
-		            for(int i = 0; i < (int) bones.size(); i++) {
-	            			std::cout << "boneNames [" << i << "]: " << getBoneNames()[i].c_str() << std::endl;
-            		}
-						}
-            
-        		if(getBoneNames().empty()) {
-		        		std::cout << "Warning:  BoneNames Field Empty!" << std::endl;
-        		}
-        		// ************** End Load Bone Names ***************
+    		CharacterModelPtr cp(this);
+    		CalCoreSkeleton *skel = model->getCoreSkeleton();
+			std::vector<CalCoreBone *>& bones = skel->getVectorCoreBone();
+			
+			for(int i = 0; i < (int) bones.size(); i++) {
+		    	std::string name = bones[i]->getName();
+    			getBoneNames().push_back(name);
+    			std::cout << "Added BoneName " << i << ": " << name << std::endl;
     		}
+						
+			if(!getBoneNames().empty()) {
+        		std::cout << "Printing BoneNames Field:" << std::endl;
+		        for(int i = 0; i < (int) bones.size(); i++) {
+	            	std::cout << "boneNames [" << i << "]: " << getBoneNames()[i].c_str() << std::endl;
+            	}
+			}
+            
+        	if(getBoneNames().empty()) {
+		    	std::cout << "Warning:  BoneNames Field Empty!" << std::endl;
+        	}
+        	// ************** End Load Bone Names ***************
+    	}
      
         else if(strKey == "animation")
         {
@@ -281,6 +281,7 @@ CalCoreModel *CharacterModel::loadConfig(std::string filename)
                 return false;
             }
         }
+
         else
         {
             // everything else triggers an error message, but is ignored

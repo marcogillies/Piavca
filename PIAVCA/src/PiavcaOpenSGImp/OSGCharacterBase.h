@@ -77,6 +77,7 @@
 #include <OSGDynamicVolumeFields.h> // ModelVolume type
 #include <OSGQuaternionFields.h> // BoneQuatRel/Abs type
 #include <OSGVec3fFields.h> // BonePosRel/Abs type
+#include <OSGReal32Fields.h> // SizeScale type
 
 #include "OSGCharacterFields.h"
 
@@ -112,7 +113,8 @@ class /*OSG_CONTRIBLIB_DLLMAPPING*/ CharacterBase : public Drawable
         BoneQuatsAbsFieldId         = BoneQuatsRelFieldId         + 1,
         BonePosRelFieldId           = BoneQuatsAbsFieldId         + 1,
         BonePosAbsFieldId           = BonePosRelFieldId           + 1,
-        NextFieldId                 = BonePosAbsFieldId           + 1
+		SizeScaleFieldId            = BonePosAbsFieldId           + 1,
+        NextFieldId                 = SizeScaleFieldId            + 1
     };
 
     static const OSG::BitVector ModelFieldMask;
@@ -127,6 +129,7 @@ class /*OSG_CONTRIBLIB_DLLMAPPING*/ CharacterBase : public Drawable
     static const OSG::BitVector BoneQuatsAbsFieldMask;
     static const OSG::BitVector BonePosRelFieldMask;
     static const OSG::BitVector BonePosAbsFieldMask;
+	static const OSG::BitVector SizeScaleFieldMask;
 
     static const OSG::BitVector MTInfluenceMask;
 
@@ -164,6 +167,8 @@ class /*OSG_CONTRIBLIB_DLLMAPPING*/ CharacterBase : public Drawable
            MFQuaternion        *getMFBoneQuatsAbs         (void);
            MFVec3f             *getMFBonePosRel           (void);
            MFVec3f             *getMFBonePosAbs           (void);
+		   SFReal32            *getSFSizeScale            (void);
+
 
            CharacterModelPtr   &getModel          (void);
      const CharacterModelPtr   &getModel          (void) const;
@@ -193,7 +198,8 @@ class /*OSG_CONTRIBLIB_DLLMAPPING*/ CharacterBase : public Drawable
            Vec3f               &getBonePosAbs     (const UInt32 index);
            MFVec3f             &getBonePosAbs     (void);
      const MFVec3f             &getBonePosAbs     (void) const;
-
+           Real32              &getSizeScale      (void);
+     const Real32              &getSizeScale      (void) const;
 
     /*! \}                                                                 */
     /*---------------------------------------------------------------------*/
@@ -208,8 +214,9 @@ class /*OSG_CONTRIBLIB_DLLMAPPING*/ CharacterBase : public Drawable
      void setDrawSkeleton   ( const bool &value );
      void setUseShaderForGeometry( const bool &value );
      void setModelVolume    ( const DynamicVolume &value );
-     void setBoneQuatRel       ( const Quaternion &value,  UInt32 index );
-     void setBonePosRel       ( const Vec3f &value,  UInt32 index );
+     void setBoneQuatRel    ( const Quaternion &value,  UInt32 index );
+     void setBonePosRel     ( const Vec3f &value,  UInt32 index );
+	 void setSizeScale      ( const Real32 &value );
 
      
      
@@ -266,7 +273,7 @@ class /*OSG_CONTRIBLIB_DLLMAPPING*/ CharacterBase : public Drawable
     MFQuaternion        _mfBoneQuatsAbs;
     MFVec3f             _mfBonePosRel;
     MFVec3f             _mfBonePosAbs;
-
+    SFReal32            _sfSizeScale;
 
     /*! \}                                                                 */
     /*---------------------------------------------------------------------*/

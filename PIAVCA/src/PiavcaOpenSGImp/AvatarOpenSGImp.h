@@ -112,7 +112,7 @@ public:
 	 *	get or set the root position and orientation of the avatar
 	 */
 	virtual void	setRootPosition			(const Vec &Position);
-	virtual Vec	getRootPosition			    ();
+	virtual Vec		getRootPosition			();
 	virtual void	setRootOrientation		(const Quat &Orientation);
 	virtual Quat	getRootOrientation		();
 	//@}
