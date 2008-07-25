@@ -172,7 +172,10 @@ Quat PointAt::getQuatValueAtTimeInternal(int trackId, float time)
 		localPos -= parentPos;
 		parentOri.inverse().transformInPlace(localPos);
 		localPos -= jointPos;
+
 	}
+	
+	localPos += offset;
 		
 	finalOri.pointAt(forwardDirection, localPos);
 	return finalOri;

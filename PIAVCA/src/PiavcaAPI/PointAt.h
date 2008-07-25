@@ -64,6 +64,7 @@ namespace Piavca
 		int jointId;
 		bool local;
 		Vec forwardDirection;
+		Vec offset;
 
 		void init();
 	public:
@@ -76,14 +77,14 @@ namespace Piavca
 		PointAt()
 			:MotionFilter(), /*targetMotion(NULL),*/ currentValueTarget(NULL), 
 			targetJointId(Piavca::Core::nullId), jointId(Piavca::Core::nullId),
-			local(false), forwardDirection(Vec::YAxis())
+			local(false), forwardDirection(Vec::YAxis()), offset(Vec())
 		{
 		};
 		//! create with an vector target
 		PointAt(int joint, const Piavca::Vec &target, bool _local=false)
 			:MotionFilter(), /*targetMotion(NULL),*/ currentValueTarget(NULL), 
 			targetJointId(0), jointId(joint),
-			local(_local), forwardDirection(Vec::YAxis())
+			local(_local), forwardDirection(Vec::YAxis()), offset(Vec())
 		{
 			setTarget(target);
 		};
@@ -93,14 +94,14 @@ namespace Piavca
 		PointAt(int joint, Motion *target, int target_joint)
 			:MotionFilter(target), /*targetMotion(target),*/ currentValueTarget(NULL), 
 			targetJointId(target_joint), jointId(joint),
-			local(false), forwardDirection(Vec::ZAxis())
+			local(false), forwardDirection(Vec::ZAxis()), offset(Vec())
 		{
 		};
 		
 		PointAt(const PointAt &pa)
 			:MotionFilter(pa), /*targetMotion(NULL),*/ currentValueTarget(NULL), 
 			targetJointId(pa.targetJointId), jointId(pa.jointId),
-			local(pa.local), forwardDirection(pa.forwardDirection)
+			local(pa.local), forwardDirection(pa.forwardDirection), offset(pa.offset)
 		{
 			if (pa.currentValueTarget)
 			{
@@ -178,6 +179,18 @@ namespace Piavca
 		Vec getForwardDirection()
 		{
 			return forwardDirection;
+		}
+
+		
+		void setOffset(const Vec &v)
+		{
+			offset = v;
+		};
+
+
+		Vec getOffset()
+		{
+			return offset;
 		}
 
 
