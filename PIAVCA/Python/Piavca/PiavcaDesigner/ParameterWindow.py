@@ -53,6 +53,10 @@ class ParameterWindow(wx.Panel):
 			
 			self.children = []
 			for param_name in parameters.keys():
+				if param_name == "Name":
+					continue
+				if param_name == "StartTime":
+					continue
 				valtype = type(parameters[param_name])
 				ctrl = None
 				if valtype == str:

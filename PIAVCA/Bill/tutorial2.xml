@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<PiavcaMotions>
+	<Avatar name="bill" position="[-0.157112 1.16596 0.0050087]" rotation="0.00345267029479 [0 1 0]">
+		<Event name="nod"/>
+		<Event name="chinstroke"/>
+		<Event name="rest"/>
+	</Avatar>
+	<Reposition MaintainUp="False" Name="repo" PosOffset="[0 0 0]" RotateAboutUp="True" StartOrientation="[1 0 0 0]" StartPosition="[0 60 30]" UpDirection="[0 1 0]">
+		<Motion name="nod"/>
+	</Reposition>
+	<SubMotion End="19.7526893616" Name="nod" Start="16.0">
+		<Motion name="actions"/>
+	</SubMotion>
+	<SubMotion End="25.8452377319" Name="chinstroke" Start="19.6885566711">
+		<Motion name="actions"/>
+	</SubMotion>
+	<ChoiceMotion AccumulateRoot="True" MaintainUp="False" Name="choice1" ResetOnEvent="True" ResetTime="True" RotateAboutUp="True" Smooth="True" UpDirection="[0 1 0]" WindowLength="0.5">
+		<Motion name="nod"/>
+		<Motion name="chinstroke"/>
+	</ChoiceMotion>
+	<LoopMotion EndTime="5.00000013628e+015" Name="loop1">
+		<Motion name="choice1"/>
+	</LoopMotion>
+	<ChoiceMotionWithDefault AccumulateRoot="True" MaintainUp="False" Name="choice2" ResetOnEvent="True" ResetTime="True" RotateAboutUp="True" Smooth="True" UpDirection="[0 0 1]" WindowLength="0.5">
+		<Motion name="rest"/>
+		<Motion name="nod"/>
+		<Motion name="chinstroke"/>
+	</ChoiceMotionWithDefault>
+	<ZeroMotion Name="zero"/>
+	<ChangeMotionLength Length="2.0" Name="rest" ScaleFactor="1.0">
+		<Motion name="zero"/>
+	</ChangeMotionLength>
+	<LoopMotion EndTime="5.00000013628e+015" Name="loop2">
+		<Motion name="choice2"/>
+	</LoopMotion>
+</PiavcaMotions>

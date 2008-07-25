@@ -595,10 +595,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\LookAtMotion.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\MaskedMotion.cpp"
 				>
 			</File>
@@ -611,15 +607,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\MotionParser.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\MotionPosture.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\MotionSaver.cpp"
 				>
 			</File>
 			<File
@@ -668,10 +656,6 @@
 			</File>
 			<File
 				RelativePath=".\SavedFramesTransition.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\SelfBlend.cpp"
 				>
 			</File>
 			<File
@@ -740,23 +724,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\BodyToFacial.h"
-				>
-			</File>
-			<File
 				RelativePath=".\Bound.h"
 				>
 			</File>
 			<File
 				RelativePath=".\ChangeMotionLength.h"
-				>
-			</File>
-			<File
-				RelativePath=".\ChangeMotionProp.h"
-				>
-			</File>
-			<File
-				RelativePath=".\ChoiceLoopMotion.h"
 				>
 			</File>
 			<File
@@ -776,19 +748,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\DiadicGazeMotion.h"
-				>
-			</File>
-			<File
 				RelativePath="Hermite.h"
 				>
 			</File>
 			<File
 				RelativePath=".\KeyframeMotion.h"
-				>
-			</File>
-			<File
-				RelativePath=".\LookAtMotion.h"
 				>
 			</File>
 			<File
@@ -820,27 +784,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\MotionParser.h"
-				>
-			</File>
-			<File
 				RelativePath=".\MotionPosture.h"
 				>
 			</File>
 			<File
-				RelativePath=".\MotionSaver.h"
-				>
-			</File>
-			<File
 				RelativePath=".\MotionTransition.h"
-				>
-			</File>
-			<File
-				RelativePath=".\MultiMotionCombiner.h"
-				>
-			</File>
-			<File
-				RelativePath=".\MultiMotionLoop.h"
 				>
 			</File>
 			<File
@@ -892,43 +840,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\ProxemicsLoop.h"
-				>
-			</File>
-			<File
 				RelativePath="Quat.h"
 				>
 			</File>
 			<File
-				RelativePath=".\RandomAdd.h"
-				>
-			</File>
-			<File
-				RelativePath=".\RandomAddLoop.h"
-				>
-			</File>
-			<File
-				RelativePath=".\RandomBlend.h"
-				>
-			</File>
-			<File
-				RelativePath=".\RandomBlendLoop.h"
-				>
-			</File>
-			<File
 				RelativePath=".\RandomChoiceMotion.h"
-				>
-			</File>
-			<File
-				RelativePath=".\RandomGazeMotion.h"
-				>
-			</File>
-			<File
-				RelativePath=".\RandomLoopMotion.h"
-				>
-			</File>
-			<File
-				RelativePath=".\RandomTimingsLoop.h"
 				>
 			</File>
 			<File
@@ -953,10 +869,6 @@
 			</File>
 			<File
 				RelativePath=".\ScaleMotionSpeed.h"
-				>
-			</File>
-			<File
-				RelativePath=".\SelfBlend.h"
 				>
 			</File>
 			<File

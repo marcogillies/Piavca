@@ -420,19 +420,19 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %feature("director") MaskedMotion;      
 %feature("director") ChoiceLoopMotion;   
 %feature("director") ChoiceMotion;    
-%feature("director") RandomLoopMotion;   
-%feature("director") RandomBlendLoop;   
-%feature("director") RandomAddLoop;   
-%feature("director") LookAtMotion;     
-%feature("director") RandomGazeMotion;     
+//%feature("director") RandomLoopMotion;   
+//%feature("director") RandomBlendLoop;   
+//%feature("director") RandomAddLoop;   
+//%feature("director") LookAtMotion;     
+//%feature("director") RandomGazeMotion;     
 %feature("director") ZeroMotion;     
-%feature("director") MotionSaver;    
+//%feature("director") MotionSaver;    
 %feature("director") SubMotion;    
 %feature("director") TimeRangeMotion;    
 %feature("director") TimeWarp;     
-%feature("director") RandomTimingsLoop;   
+//%feature("director") RandomTimingsLoop;   
 %feature("director") RandomTimingsMotion;   
-%feature("director") DiadicGazeMotion;
+//%feature("director") DiadicGazeMotion;
 %feature("director") TimeCallback;    
 %feature("director") AvatarTimeCallback;    
 
@@ -505,15 +505,15 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %include "PiavcaAPI/PointAt.h"
 %include "PiavcaAPI/Proxemics.h"
 //%include "PiavcaAPI/ProxemicsLoop.h"
-%include "PiavcaAPI/LookAtMotion.h"
-%include "PiavcaAPI/RandomGazeMotion.h"
+//%include "PiavcaAPI/LookAtMotion.h"
+//%include "PiavcaAPI/RandomGazeMotion.h"
 %include "PiavcaAPI/ZeroMotion.h"
-%include "PiavcaAPI/MotionSaver.h"
-%include "PiavcaAPI/MotionParser.h"
+//%include "PiavcaAPI/MotionSaver.h"
+//%include "PiavcaAPI/MotionParser.h"
 %include "PiavcaAPI/SubMotion.h"
 //%include "PiavcaAPI/TimeRangeMotion.h"
 %include "PiavcaAPI/TimeWarp.h"
-%include "PiavcaAPI/DiadicGazeMotion.h"
+//%include "PiavcaAPI/DiadicGazeMotion.h"
 %include "PiavcaAPI/OverrideMotion.h"
 
 

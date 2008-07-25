@@ -157,9 +157,12 @@ namespace Piavca
 		}
 
 		//! does any resetting needed 
-		void reset()
+		bool reset()
 		{
-			if(filterMot)filterMot->reset();
+			if(filterMot)
+				return filterMot->reset();
+			else
+				return false;
 		};
 		
 

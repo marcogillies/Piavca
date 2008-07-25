@@ -219,7 +219,7 @@ public:
 	/*!
 	 * It can be called by the client to interrupt the current motion.
 	 */
-	virtual void reset();
+	virtual bool reset();
 };
 
 };

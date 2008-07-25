@@ -143,10 +143,14 @@ void TwoMotionCombiner::setStartTime(float time)
 	if(mot2)mot2->setStartTime(time);
 }
 
-void TwoMotionCombiner::reset()
+bool TwoMotionCombiner::reset()
 {
-	if(mot1)mot1->reset();
-	if(mot2)mot2->reset();
+	bool retval = true;
+	if(mot1)
+		retval &= mot1->reset();
+	if(mot2)
+		retval &= mot2->reset();
+	return retval;
 };
 
 void TwoMotionCombiner::event(tstring ev)

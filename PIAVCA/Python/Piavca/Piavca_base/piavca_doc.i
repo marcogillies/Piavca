@@ -3390,6 +3390,7 @@ bool MotionMask::getMask(int track) const
 gets the mask value for a track         
          
         ";
+/*        
 %feature("docstring") Piavca::MotionParser " 
 
     
@@ -3546,6 +3547,7 @@ PIAVCA_EXPORT void MotionSaver::save(tstring filename)
         
          
         ";
+*/
 %feature("docstring") Piavca::MotionTrack " 
 
 Concrete Motion track.     

@@ -269,17 +269,20 @@ std::vector<Piavca::tstring> ChoiceMotion::getEventNames()
 /*!
  * It can be called by the client to interrupt the current motion.
  */
-void ChoiceMotion::reset()
+bool ChoiceMotion::reset()
 {
 	if(mots.size() <= 0)
-		return;
+		return true;
 	std::cout << "ChoiceMotion reset, about to make choice: " << std::endl;
 	int choice = makeChoice();
+	if (choice < 0)
+		return false;
 	std::cout << "ChoiceMotion reset, choice: " << choice << std::endl;
 	setChoice(choice);
 	Motion *mot = mots[currentChoice];
 	
-	mot->reset();
+	if (!mot->reset())
+		return false;
 	
 	if (smooth)
 	{
@@ -310,4 +313,5 @@ void ChoiceMotion::reset()
 
 	if (resetTime)
 		setStartTime(Piavca::Core::getCore()->getTime());
+	return true;
 };

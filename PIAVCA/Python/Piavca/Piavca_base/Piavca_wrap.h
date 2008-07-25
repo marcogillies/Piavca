@@ -122,7 +122,7 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float t);
-    virtual void reset();
+    virtual bool reset();
     virtual void event(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -194,7 +194,7 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float t);
-    virtual void reset();
+    virtual bool reset();
     virtual void event(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -265,7 +265,7 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
-    virtual void reset();
+    virtual bool reset();
     virtual void event(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -337,7 +337,7 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
-    virtual void reset();
+    virtual bool reset();
     virtual void event(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -407,7 +407,7 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
-    virtual void reset();
+    virtual bool reset();
     virtual void event(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -481,7 +481,7 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
-    virtual void reset();
+    virtual bool reset();
     virtual void event(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -552,7 +552,7 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
-    virtual void reset();
+    virtual bool reset();
     virtual void event(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -623,7 +623,7 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
-    virtual void reset();
+    virtual bool reset();
     virtual void event(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -694,7 +694,7 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
-    virtual void reset();
+    virtual bool reset();
     virtual void event(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -765,7 +765,7 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
-    virtual void reset();
+    virtual bool reset();
     virtual void event(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -836,7 +836,7 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
-    virtual void reset();
+    virtual bool reset();
     virtual void event(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -907,7 +907,7 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
-    virtual void reset();
+    virtual bool reset();
     virtual void event(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -976,7 +976,7 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float t);
-    virtual void reset();
+    virtual bool reset();
     virtual void event(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -1046,7 +1046,7 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float t);
-    virtual void reset();
+    virtual bool reset();
     virtual void event(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -1116,7 +1116,7 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
-    virtual void reset();
+    virtual bool reset();
     virtual void event(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -1188,7 +1188,7 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
-    virtual void reset();
+    virtual bool reset();
     virtual void event(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -1260,7 +1260,7 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
-    virtual void reset();
+    virtual bool reset();
     virtual void event(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -1331,7 +1331,7 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
-    virtual void reset();
+    virtual bool reset();
     virtual void event(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -1403,7 +1403,7 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
-    virtual void reset();
+    virtual bool reset();
     virtual void event(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -1473,7 +1473,7 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
-    virtual void reset();
+    virtual bool reset();
     virtual void event(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -1546,7 +1546,7 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
-    virtual void reset();
+    virtual bool reset();
     virtual void event(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -1616,7 +1616,7 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
-    virtual void reset();
+    virtual bool reset();
     virtual void event(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -1691,7 +1691,7 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
-    virtual void reset();
+    virtual bool reset();
     virtual void event(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -1747,151 +1747,6 @@ private:
 };
 
 
-class SwigDirector_LookAtMotion : public Piavca::LookAtMotion, public Swig::Director {
-
-public:
-    SwigDirector_LookAtMotion(PyObject *self);
-    SwigDirector_LookAtMotion(PyObject *self, Piavca::Avatar *target, int joint, float _endTime = -1, float _interval = 0.5);
-    SwigDirector_LookAtMotion(PyObject *self, Piavca::Object *target, float _endTime = -1, float _interval = 0.5);
-    SwigDirector_LookAtMotion(PyObject *self, Piavca::Vec const &target, float _endTime = -1, bool _local = false, float _interval = 0.5);
-    SwigDirector_LookAtMotion(PyObject *self, Piavca::LookAtMotion const &lam);
-    virtual ~SwigDirector_LookAtMotion();
-    virtual Piavca::Motion *clone();
-    virtual Piavca::tstring getClassName();
-    virtual void create();
-    virtual void printInfo();
-    virtual void load(Piavca::Avatar *av);
-    virtual void unload();
-    virtual bool loaded();
-    virtual Piavca::Avatar *getAvatar();
-    virtual void setStartTime(float t);
-    virtual void reset();
-    virtual void event(Piavca::tstring ev);
-    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
-    virtual void cleanRecursionState();
-    virtual Piavca::Motion *findSub(Piavca::tstring nm);
-    virtual Piavca::Motion *findSubByType(type_info const &ty);
-    virtual float getMotionLength() const;
-    virtual bool isFacial();
-    virtual bool isRandomAccess();
-    virtual bool isNull(int trackId) const;
-    virtual int getTrackType(int trackId) const;
-    virtual void preFrame(float time);
-    virtual float getFloatValueAtTimeInternal(int trackId, float time);
-    virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
-    virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
-
-
-/* Internal Director utilities */
-public:
-    bool swig_get_inner(const char* name) const {
-      std::map<std::string, bool>::const_iterator iv = inner.find(name);
-      return (iv != inner.end() ? iv->second : false);
-    }
-
-    void swig_set_inner(const char* name, bool val) const
-    { inner[name] = val;}
-
-private:
-    mutable std::map<std::string, bool> inner;
-
-
-#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-/* VTable implementation */
-    PyObject *swig_get_method(size_t method_index, const char *method_name) const {
-      PyObject *method = vtable[method_index];
-      if (!method) {
-        swig::PyObject_var name = PyString_FromString(method_name);
-        method = PyObject_GetAttr(swig_get_self(), name);
-        if (method == NULL) {
-          std::string msg = "Method in class LookAtMotion doesn't exist, undefined ";
-          msg += method_name;
-          Swig::DirectorMethodException::raise(msg.c_str());
-        }
-        vtable[method_index] = method;
-      };
-      return method;
-    }
-private:
-    mutable swig::PyObject_var vtable[24];
-#endif
-
-};
-
-
-class SwigDirector_RandomGazeMotion : public Piavca::RandomGazeMotion, public Swig::Director {
-
-public:
-    SwigDirector_RandomGazeMotion(PyObject *self, float endTime = -1.0, float interval = 0.01);
-    SwigDirector_RandomGazeMotion(PyObject *self, Piavca::RandomGazeMotion const &rg);
-    virtual ~SwigDirector_RandomGazeMotion();
-    virtual Piavca::Motion *clone();
-    virtual Piavca::tstring getClassName();
-    virtual void create();
-    virtual void printInfo();
-    virtual void load(Piavca::Avatar *av);
-    virtual void unload();
-    virtual bool loaded();
-    virtual Piavca::Avatar *getAvatar();
-    virtual void setStartTime(float time);
-    virtual void reset();
-    virtual void event(Piavca::tstring ev);
-    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
-    virtual void cleanRecursionState();
-    virtual Piavca::Motion *findSub(Piavca::tstring nm);
-    virtual Piavca::Motion *findSubByType(type_info const &ty);
-    virtual float getMotionLength() const;
-    virtual bool isFacial();
-    virtual bool isRandomAccess();
-    virtual bool isNull(int trackId) const;
-    virtual int getTrackType(int trackId) const;
-    virtual void preFrame(float time);
-    virtual float getFloatValueAtTimeInternal(int trackId, float time);
-    virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
-    virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
-    virtual void setMotion(Piavca::Motion *mot);
-    virtual Piavca::Motion *getMotion();
-    virtual bool lookAt(Piavca::tstring name, bool force = false);
-    virtual void reblend(float time);
-
-
-/* Internal Director utilities */
-public:
-    bool swig_get_inner(const char* name) const {
-      std::map<std::string, bool>::const_iterator iv = inner.find(name);
-      return (iv != inner.end() ? iv->second : false);
-    }
-
-    void swig_set_inner(const char* name, bool val) const
-    { inner[name] = val;}
-
-private:
-    mutable std::map<std::string, bool> inner;
-
-
-#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-/* VTable implementation */
-    PyObject *swig_get_method(size_t method_index, const char *method_name) const {
-      PyObject *method = vtable[method_index];
-      if (!method) {
-        swig::PyObject_var name = PyString_FromString(method_name);
-        method = PyObject_GetAttr(swig_get_self(), name);
-        if (method == NULL) {
-          std::string msg = "Method in class RandomGazeMotion doesn't exist, undefined ";
-          msg += method_name;
-          Swig::DirectorMethodException::raise(msg.c_str());
-        }
-        vtable[method_index] = method;
-      };
-      return method;
-    }
-private:
-    mutable swig::PyObject_var vtable[29];
-#endif
-
-};
-
-
 class SwigDirector_ZeroMotion : public Piavca::ZeroMotion, public Swig::Director {
 
 public:
@@ -1907,7 +1762,7 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float t);
-    virtual void reset();
+    virtual bool reset();
     virtual void event(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -1961,77 +1816,6 @@ private:
 };
 
 
-class SwigDirector_MotionSaver : public Piavca::MotionSaver, public Swig::Director {
-
-public:
-    SwigDirector_MotionSaver(PyObject *self, Piavca::Motion *mot = NULL);
-    SwigDirector_MotionSaver(PyObject *self, Piavca::MotionSaver const &to);
-    virtual ~SwigDirector_MotionSaver();
-    virtual Piavca::Motion *clone();
-    virtual Piavca::tstring getClassName();
-    virtual void create();
-    virtual void printInfo();
-    virtual void load(Piavca::Avatar *av);
-    virtual void unload();
-    virtual bool loaded();
-    virtual Piavca::Avatar *getAvatar();
-    virtual void setStartTime(float time);
-    virtual void reset();
-    virtual void event(Piavca::tstring ev);
-    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
-    virtual void cleanRecursionState();
-    virtual Piavca::Motion *findSub(Piavca::tstring nm);
-    virtual Piavca::Motion *findSubByType(type_info const &ty);
-    virtual float getMotionLength() const;
-    virtual bool isFacial();
-    virtual bool isRandomAccess();
-    virtual bool isNull(int trackId) const;
-    virtual int getTrackType(int trackId) const;
-    virtual void preFrame(float time);
-    virtual float getFloatValueAtTimeInternal(int trackId, float time);
-    virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
-    virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
-    virtual void setMotion(Piavca::Motion *mot);
-    virtual Piavca::Motion *getMotion();
-
-
-/* Internal Director utilities */
-public:
-    bool swig_get_inner(const char* name) const {
-      std::map<std::string, bool>::const_iterator iv = inner.find(name);
-      return (iv != inner.end() ? iv->second : false);
-    }
-
-    void swig_set_inner(const char* name, bool val) const
-    { inner[name] = val;}
-
-private:
-    mutable std::map<std::string, bool> inner;
-
-
-#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-/* VTable implementation */
-    PyObject *swig_get_method(size_t method_index, const char *method_name) const {
-      PyObject *method = vtable[method_index];
-      if (!method) {
-        swig::PyObject_var name = PyString_FromString(method_name);
-        method = PyObject_GetAttr(swig_get_self(), name);
-        if (method == NULL) {
-          std::string msg = "Method in class MotionSaver doesn't exist, undefined ";
-          msg += method_name;
-          Swig::DirectorMethodException::raise(msg.c_str());
-        }
-        vtable[method_index] = method;
-      };
-      return method;
-    }
-private:
-    mutable swig::PyObject_var vtable[26];
-#endif
-
-};
-
-
 class SwigDirector_SubMotion : public Piavca::SubMotion, public Swig::Director {
 
 public:
@@ -2048,7 +1832,7 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
-    virtual void reset();
+    virtual bool reset();
     virtual void event(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -2119,7 +1903,7 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
-    virtual void reset();
+    virtual bool reset();
     virtual void event(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -2170,79 +1954,6 @@ private:
     }
 private:
     mutable swig::PyObject_var vtable[26];
-#endif
-
-};
-
-
-class SwigDirector_DiadicGazeMotion : public Piavca::DiadicGazeMotion, public Swig::Director {
-
-public:
-    SwigDirector_DiadicGazeMotion(PyObject *self, Piavca::Avatar *other = NULL, float endTime = -1.0, float interval = 0.01);
-    SwigDirector_DiadicGazeMotion(PyObject *self, Piavca::DiadicGazeMotion const &dg);
-    virtual ~SwigDirector_DiadicGazeMotion();
-    virtual Piavca::Motion *clone();
-    virtual Piavca::tstring getClassName();
-    virtual void create();
-    virtual void printInfo();
-    virtual void load(Piavca::Avatar *av);
-    virtual void unload();
-    virtual bool loaded();
-    virtual Piavca::Avatar *getAvatar();
-    virtual void setStartTime(float time);
-    virtual void reset();
-    virtual void event(Piavca::tstring ev);
-    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
-    virtual void cleanRecursionState();
-    virtual Piavca::Motion *findSub(Piavca::tstring nm);
-    virtual Piavca::Motion *findSubByType(type_info const &ty);
-    virtual float getMotionLength() const;
-    virtual bool isFacial();
-    virtual bool isRandomAccess();
-    virtual bool isNull(int trackId) const;
-    virtual int getTrackType(int trackId) const;
-    virtual void preFrame(float time);
-    virtual float getFloatValueAtTimeInternal(int trackId, float time);
-    virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
-    virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
-    virtual void setMotion(Piavca::Motion *mot);
-    virtual Piavca::Motion *getMotion();
-    virtual bool lookAt(Piavca::tstring name, bool force = false);
-    virtual void reblend(float time);
-
-
-/* Internal Director utilities */
-public:
-    bool swig_get_inner(const char* name) const {
-      std::map<std::string, bool>::const_iterator iv = inner.find(name);
-      return (iv != inner.end() ? iv->second : false);
-    }
-
-    void swig_set_inner(const char* name, bool val) const
-    { inner[name] = val;}
-
-private:
-    mutable std::map<std::string, bool> inner;
-
-
-#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-/* VTable implementation */
-    PyObject *swig_get_method(size_t method_index, const char *method_name) const {
-      PyObject *method = vtable[method_index];
-      if (!method) {
-        swig::PyObject_var name = PyString_FromString(method_name);
-        method = PyObject_GetAttr(swig_get_self(), name);
-        if (method == NULL) {
-          std::string msg = "Method in class DiadicGazeMotion doesn't exist, undefined ";
-          msg += method_name;
-          Swig::DirectorMethodException::raise(msg.c_str());
-        }
-        vtable[method_index] = method;
-      };
-      return method;
-    }
-private:
-    mutable swig::PyObject_var vtable[29];
 #endif
 
 };

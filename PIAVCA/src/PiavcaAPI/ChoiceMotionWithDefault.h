@@ -61,7 +61,7 @@ public:
 	static ChoiceMotionWithDefault *castToThisType(Motion *m){return dynamic_cast<ChoiceMotionWithDefault *>(m);};
 
 	
-	virtual void reset();
+	virtual bool reset();
 };
 
 };

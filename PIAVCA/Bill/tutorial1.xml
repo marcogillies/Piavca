@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<PiavcaMotions>
+	<Avatar name="bill" position="[-2.28705 5.19838 39.3819]" rotation="1.41882789135 [-0.0241713 -0.0281743 -0.999311]"/>
+	<Reposition MaintainUp="False" Name="repo" PosOffset="[0 0 0]" RotateAboutUp="True" StartOrientation="[1 0 0 0]" StartPosition="[0 60 30]" UpDirection="[0 1 0]">
+		<Motion name="nod"/>
+	</Reposition>
+	<SubMotion End="19.7526893616" Name="nod" Start="16.0">
+		<Motion name="actions"/>
+	</SubMotion>
+	<SubMotion End="25.8452377319" Name="chinstroke" Start="19.6885566711">
+		<Motion name="actions"/>
+	</SubMotion>
+</PiavcaMotions>

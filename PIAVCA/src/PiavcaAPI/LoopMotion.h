@@ -90,7 +90,11 @@ namespace Piavca
 				{
 				    LoopMotion *nonConstThis = const_cast<LoopMotion *>(this);
 					nonConstThis->lock = true;
-					nonConstThis->reset();
+					// rest the child motion, and if its finished set the end time to now
+					if(nonConstThis->reset() == false)
+					{
+						endTime = Piavca::Core::getCore()->getTime() - getStartTime();
+					}
 					nonConstThis->lock = false;
 					reblend_flag = false;
 				}
@@ -101,10 +105,11 @@ namespace Piavca
 		/*!
 		 * It can be called by the client to interrupt the current motion.
 		 */
-		virtual void reset()
+		virtual bool reset()
 		{
 			MotionFilter::reset();
 			setStartTime(Piavca::Core::getCore()->getTime());	
+			return true;
 		};
 	    
 	};

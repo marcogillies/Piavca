@@ -38,7 +38,7 @@ import Piavca
 import Piavca.XMLMotionFile
 import os
 
-Piavca.MotionParser.setUpMotionCommands()
+#Piavca.MotionParser.setUpMotionCommands()
 
 flaglookup = {}
 
@@ -90,7 +90,7 @@ def readMotionFile (filename):
 			continue
 		if(items[1] == "file"):
 			Piavca.Core.getCore().loadMotion(items[0], items[2], getMotionFlags(items[3:]))
-		else:
-			mot = Piavca.MotionParser.parseMotion(' '.join(items[1:]), 1.0)
-			Piavca.Core.getCore().loadMotion(items[0], mot)
+		#else:
+			#mot = Piavca.MotionParser.parseMotion(' '.join(items[1:]), 1.0)
+			#Piavca.Core.getCore().loadMotion(items[0], mot)
 	os.chdir(prev_dir)

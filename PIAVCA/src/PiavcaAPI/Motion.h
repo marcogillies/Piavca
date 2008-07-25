@@ -196,7 +196,7 @@ public:
 	float getEndTime()  {return startTime + getMotionLength();};
 
 	//! does any resetting needed 
-	virtual void reset(){};
+	virtual bool reset(){return true;};
 
 	virtual void event(tstring ev)
 	{

@@ -41,9 +41,10 @@
 using namespace Piavca;
 
 
-void ChoiceMotionWithDefault::reset()
+bool ChoiceMotionWithDefault::reset()
 {
 	std::cout << "ChoiceMotionWithDefault::reset" << std::endl;
 	ChoiceMotion::reset();
 	setChoice(0);
+	return true;
 }

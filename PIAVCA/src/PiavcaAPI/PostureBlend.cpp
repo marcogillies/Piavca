@@ -83,9 +83,10 @@ void PostureBlend::setMotion(Motion *mot)
 };
 
 
-void PostureBlend::reset()
+bool PostureBlend::reset()
 {
 	reblend();	
+	return true;
 };
 
 void PostureBlend::reblend()

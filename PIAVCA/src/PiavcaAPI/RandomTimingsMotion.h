@@ -107,13 +107,14 @@ public:
 	}
 
 	//! This is called each time around the loop
-	virtual void reset()
+	virtual bool reset()
 	{
 		ScaleMotionSpeed::reset();
 		float tscale = ((float)(rand()%1000));
 		tscale *= (maxScale - minScale)/1000.0f;
 		tscale += minScale;
 		setScaleFactor(tscale);
+		return true;
 	}
 };
 };

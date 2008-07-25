@@ -95,7 +95,7 @@ namespace Piavca
 			return accumulateRoot;
 		};
 	    
-		virtual void reset();
+		virtual bool reset();
 
 		//! saves the current state of the motion and start blending the motion back into that from the start
 	    void reblend();

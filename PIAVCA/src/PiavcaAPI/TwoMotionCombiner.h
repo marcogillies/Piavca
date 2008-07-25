@@ -84,7 +84,7 @@ namespace Piavca
 		virtual void setStartTime(float time);
 
 		//! does any resetting needed 
-		void reset();
+		bool reset();
 		
 		virtual void event(tstring ev);
 
