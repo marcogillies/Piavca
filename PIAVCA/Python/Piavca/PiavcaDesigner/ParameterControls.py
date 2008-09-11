@@ -169,6 +169,12 @@ class QuatParamEntry(MultiParamEntry):
 		except ValueError:
 			return None
 			
+	def setValue(self, val):
+		angle = val.getAngle()
+		axis = val.getAxis()
+		MultiParamEntry.setValue(self, [angle, axis[0], axis[1], axis[2]])
+		
+			
 
 class ChoiceParamEntry(ParamEntry):
 	
