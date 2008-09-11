@@ -39,9 +39,9 @@ using namespace Piavca;
 float OverrideMotion::getFloatValueAtTimeInternal (int trackId, float time)
 {
 	// if this track doesn't exist in mot2 use mot1 otherwise interpolated between them
-	if(!mot1 || mot1->isNull(trackId))
+	if(!mot1 || mot1->isNull(trackId) || !(mot1->getTrackType(trackId) & FLOAT_TYPE))
 	{
-		if(!mot2 || mot2->isNull(trackId))
+		if(!mot2 || mot2->isNull(trackId) || !(mot2->getTrackType(trackId) & FLOAT_TYPE))
 		{
 			Piavca::Error(_T("trying to play two invalid tracks"));
 		}
@@ -54,9 +54,9 @@ float OverrideMotion::getFloatValueAtTimeInternal (int trackId, float time)
 Vec   OverrideMotion::getVecValueAtTimeInternal   (int trackId, float time)
 {
 	// if this track doesn't exist in mot2 use mot1 otherwise interpolated between them
-	if(!mot1 || mot1->isNull(trackId))
+	if(!mot1 || mot1->isNull(trackId) || !(mot1->getTrackType(trackId) & VEC_TYPE))
 	{
-		if(!mot2 || mot2->isNull(trackId))
+		if(!mot2 || mot2->isNull(trackId) || !(mot2->getTrackType(trackId) & VEC_TYPE))
 		{
 			Piavca::Error(_T("trying to play two invalid tracks"));
 		}
@@ -68,9 +68,9 @@ Vec   OverrideMotion::getVecValueAtTimeInternal   (int trackId, float time)
 
 Quat  OverrideMotion::getQuatValueAtTimeInternal  (int trackId, float time)
 {
-	if(!mot1 || mot1->isNull(trackId))
+	if(!mot1 || mot1->isNull(trackId) || !(mot1->getTrackType(trackId) & QUAT_TYPE))
 	{
-		if(!mot2 || mot2->isNull(trackId))
+		if(!mot2 || mot2->isNull(trackId) || !(mot2->getTrackType(trackId) & QUAT_TYPE))
 		{
 			Piavca::Error(_T("trying to play two invalid tracks"));
 		}

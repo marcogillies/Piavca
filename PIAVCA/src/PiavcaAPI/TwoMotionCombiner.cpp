@@ -255,3 +255,69 @@ void TwoMotionCombiner::setMotion2(Motion *mot)
 	// timings of the new motion are updated properly
 	setStartTime(startTime);
 };
+
+float TwoMotionCombiner::getCombinedFloatValue (int trackId, float time) 
+{
+	return 0.0f;	
+};
+
+Vec  TwoMotionCombiner::getCombinedVecValue (int trackId, float time)
+{
+	return Vec();	
+};
+
+Quat TwoMotionCombiner::getCombinedQuatValue (int trackId, float time)
+{
+	return Quat();
+};
+
+float TwoMotionCombiner::getFloatValueAtTimeInternal (int trackId, float time)
+{
+	// if this track doesn't exist in mot2 use mot1 otherwise interpolated between them
+	if(!mot2 || mot2->isNull(trackId) || !(mot2->getTrackType(trackId) & FLOAT_TYPE))
+	{
+		if(!mot1 || mot1->isNull(trackId) || !(mot1->getTrackType(trackId) & FLOAT_TYPE))
+		{
+			Piavca::Error(_T("trying to combine two invalid tracks"));
+			return 0.0;
+		}
+		return mot1->getFloatValueAtTime(trackId, time);
+	}
+	if(!mot1 || mot1->isNull(trackId) || !(mot1->getTrackType(trackId) & FLOAT_TYPE))
+		return mot2->getFloatValueAtTime(trackId, time);
+	return getCombinedFloatValue(trackId, time);
+};
+
+Vec TwoMotionCombiner::getVecValueAtTimeInternal   (int trackId, float time)
+{
+	// if this track doesn't exist in mot2 use mot1 otherwise interpolated between them
+	if(!mot2 || mot2->isNull(trackId) || !(mot2->getTrackType(trackId) & VEC_TYPE))
+	{
+		if(!mot1 || mot1->isNull(trackId) || !(mot1->getTrackType(trackId) & VEC_TYPE))
+		{
+			Piavca::Error(_T("trying to combine two invalid tracks"));
+			return Vec();
+		}
+		return mot1->getVecValueAtTime(trackId, time);
+	}
+	if(!mot1 || mot1->isNull(trackId) || !(mot1->getTrackType(trackId) & VEC_TYPE))
+		return mot2->getVecValueAtTime(trackId, time);
+	return getCombinedVecValue(trackId, time);
+};
+
+Quat TwoMotionCombiner::getQuatValueAtTimeInternal  (int trackId, float time)
+{
+	// if this track doesn't exist in mot2 use mot1 otherwise interpolated between them
+	if(!mot2 || mot2->isNull(trackId) || !(mot2->getTrackType(trackId) & QUAT_TYPE))
+	{
+		if(!mot1 || mot1->isNull(trackId) || !(mot1->getTrackType(trackId) & QUAT_TYPE))
+		{
+			Piavca::Error(_T("trying to combine two invalid tracks"));
+			return Quat();
+		}
+		return mot1->getQuatValueAtTime(trackId, time);
+	}
+	if(!mot1 || mot1->isNull(trackId) || !(mot1->getTrackType(trackId) & QUAT_TYPE))
+		return mot2->getQuatValueAtTime(trackId, time);
+	return getCombinedQuatValue(trackId, time);
+};

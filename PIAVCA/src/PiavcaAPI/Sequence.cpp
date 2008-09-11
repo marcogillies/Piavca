@@ -60,61 +60,27 @@ void Sequence::setStartTime(float time)
 	}
 }
 
-float Sequence::getFloatValueAtTimeInternal(int trackId, float time)
+
+float Sequence::getCombinedFloatValue (int trackId, float time) 
 {
-	if(!mot1 || mot1->isNull(trackId)) 
-	{
-		if(!mot2 || mot2->isNull(trackId)) 
-		{
-			Piavca::Error(_T("trying to sequence two null tracks"));
-			return 0.0;
-		}
-		return mot2->getFloatValueAtTime(trackId, time);
-	}
-	if(!mot2 ||mot2->isNull(trackId)) 
-		return mot1->getFloatValueAtTime(trackId, time);
-    
 	// if its before the start of the blend return the value from the first motion
 	if(time < mot1->getEndTime())
 	    return mot1->getFloatValueAtTime(trackId, time);
 	else
-	    return mot2->getFloatValueAtTime(trackId, time);
+	    return mot2->getFloatValueAtTime(trackId, time);	
 };
-Vec Sequence::getVecValueAtTimeInternal(int trackId, float time)
+
+Vec  Sequence::getCombinedVecValue (int trackId, float time)
 {
-	if(!mot1 || mot1->isNull(trackId)) 
-	{
-		if(!mot2 || mot2->isNull(trackId)) 
-		{
-			Piavca::Error(_T("trying to sequence two null tracks"));
-			return Vec();
-		}
-		return mot2->getVecValueAtTime(trackId, time);
-	}
-	if(!mot2 ||mot2->isNull(trackId)) 
-		return mot1->getVecValueAtTime(trackId, time);
-    
 	// if its before the start of the blend return the value from the first motion
 	if(time < mot1->getEndTime())
 	    return mot1->getVecValueAtTime(trackId, time);
 	else
-	    return mot2->getVecValueAtTime(trackId, time);
+	    return mot2->getVecValueAtTime(trackId, time);	
 };
 
-Quat Sequence::getQuatValueAtTimeInternal(int trackId, float time)
+Quat Sequence::getCombinedQuatValue (int trackId, float time)
 {
-	if(!mot1 || mot1->isNull(trackId)) 
-	{
-		if(!mot2 || mot2->isNull(trackId)) 
-		{
-			Piavca::Error(_T("trying to sequence two null tracks"));
-			return Quat();
-		}
-		return mot2->getQuatValueAtTime(trackId, time);
-	}
-	if(!mot2 ||mot2->isNull(trackId)) 
-		return mot1->getQuatValueAtTime(trackId, time);
-    
 	// if its before the start of the blend return the value from the first motion
 	if(time < mot1->getEndTime())
 	    return mot1->getQuatValueAtTime(trackId, time);

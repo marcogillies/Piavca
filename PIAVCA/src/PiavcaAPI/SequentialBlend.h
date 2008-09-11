@@ -121,14 +121,15 @@ namespace Piavca
 				return (blendStart - startTime) + blendInterval;	
 		};
 
-	    //! calculates the values of a keyframe
-	    virtual float getFloatValueAtTimeInternal (int trackId, float time);
-	    
-	    //! calculates the values of a keyframe
-	    virtual Vec   getVecValueAtTimeInternal   (int trackId, float time);
-	    
-	    //! calculates the values of a keyframe
-	    virtual Quat  getQuatValueAtTimeInternal  (int trackId, float time);
+
+		//! gets a combined value of two float tracks if both are valid
+		virtual float getCombinedFloatValue (int trackId, float time);
+
+		//! gets a combined value of two Vec tracks if both are valid
+		virtual Vec  getCombinedVecValue (int trackId, float time);
+
+		//! gets a combined value of two quaternion tracks if both are valid
+		virtual Quat getCombinedQuatValue (int trackId, float time);
 	    
 		//! set the time at which tbe blend between the motions starts
 		void setBlendStart(float start)

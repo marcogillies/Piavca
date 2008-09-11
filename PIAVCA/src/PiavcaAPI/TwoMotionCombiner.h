@@ -118,6 +118,33 @@ namespace Piavca
 
 		Motion *getMotion1(){return mot1;};
 		Motion *getMotion2(){return mot2;}; 
+
+		//! gets a combined value of two float tracks if both are valid
+		virtual float getCombinedFloatValue (int trackId, float time);
+
+		//! gets a combined value of two Vec tracks if both are valid
+		virtual Vec  getCombinedVecValue (int trackId, float time);
+
+		//! gets a combined value of two quaternion tracks if both are valid
+		virtual Quat getCombinedQuatValue (int trackId, float time);
+
+	    //! calculates the values of a keyframe.
+		/*!	The result is the linear interpolation of the values of the two motions
+		 *  or if the track does not exist in the one motion, the value of the other
+		 */
+	    virtual float getFloatValueAtTimeInternal (int trackId, float time);
+	    
+	    //! calculates the values of a keyframe.
+		/*!	The result is the linear interpolation of the values of the two motions
+		 *  or if the track does not exist in the one motion, the value of the other
+		 */
+	    virtual Vec   getVecValueAtTimeInternal   (int trackId, float time);
+	    
+	    //! calculates the values of a keyframe.
+		/*!	The result is the linear interpolation (slerp) of the values of the two motions
+		 *  or if the track does not exist in the one motion, the value of the other
+		 */
+	    virtual Quat  getQuatValueAtTimeInternal  (int trackId, float time);
 	};
 };
 

@@ -74,21 +74,10 @@ void SequentialBlend::calculateRootOffsets()
 	}
 };
 
-float SequentialBlend::getFloatValueAtTimeInternal(int trackId, float time)
+
+float SequentialBlend::getCombinedFloatValue (int trackId, float time) 
 {
-	if(!mot1 || mot1->isNull(trackId)) 
-	{
-		if(!mot2 || mot2->isNull(trackId)) 
-		{
-			Piavca::Error(_T("trying to blend two null tracks"));
-			return 0.0;
-		}
-		return mot2->getFloatValueAtTime(trackId, time);
-	}
-	if(!mot2 ||mot2->isNull(trackId)) return mot1->getFloatValueAtTime(trackId, time);
-    //float t = time - startTime;
-	// if its before the start of the blend return the value from the first motion
-    if(time < blendStart)
+	if(time < blendStart)
 	    return mot1->getFloatValueAtTime(trackId, time);
 	// if its during the blend interpolate
 	//t -= blendStart;
@@ -102,49 +91,8 @@ float SequentialBlend::getFloatValueAtTimeInternal(int trackId, float time)
     return mot2->getFloatValueAtTime(trackId, time);
 };
 
-Vec SequentialBlend::getTransformedVec(int trackId, float t)const
+Vec  SequentialBlend::getCombinedVecValue (int trackId, float time)
 {
-	/*Vec m1End  = mot1->getVecValueAtTime(trackId, blendStart);
-	//std::cout << "m1 end: " << m1End << std::endl;
-	Vec m2Start = mot2->getVecValueAtTime(trackId, 0.0);
-	
-	Quat oriOffset;
-	if(!mot1->isNull(root_orientation_id)) 
-	{
-		oriOffset = mot1->getQuatValueAtTime(root_orientation_id, blendStart);
-	}
-	if(!mot2->isNull(root_orientation_id))
-	{
-		Quat otherOri = mot2->getQuatValueAtTime(root_orientation_id, 0.0);
-		oriOffset = oriOffset/otherOri;
-	}*/
-	Vec subtractedVec = oriOffset.transform(mot2->getVecValueAtTime(trackId, t) - m2Start);
-	//std::cout << t << " " << mot2->getStartTime() << " ";
-	//std::cout << "sequential blend " << m1End[1] << " " << m2Start[1] << " " << subtractedVec[1] << " " << (subtractedVec + m1End)[1] << std::endl;
-	// we normally only maintian the x-z coordinates of
-	// the previous position, and blend back the y (to 
-	// stop the character flying away)
-	if(true/*maintainY*/)
-		return subtractedVec + m1End;
-	else
-		return Vec(subtractedVec[0] + m1End[0], mot2->getVecValueAtTime(trackId, t)[1], subtractedVec[2] + m1End[2]);
-}
-
-Vec SequentialBlend::getVecValueAtTimeInternal(int trackId, float time)
-{
-	//std::cout << "blendstart " << blendStart << " time " << time << std::endl;
-	if(mot1->isNull(trackId))  
-	{
-		if(mot2->isNull(trackId)) 
-		{
-			Piavca::Error(_T("trying to blend two null tracks"));
-			return Vec();
-		}
-		return mot2->getVecValueAtTime(trackId, time);
-	}
-	if(!mot2 || mot2->isNull(trackId)) return mot1->getVecValueAtTime(trackId, time);
-    //float t = time - startTime;
-	
 	// if its the root we do something special, otherwise just return the above
 	if(trackId == root_position_id && m_accumulateRoot)
 	{
@@ -200,34 +148,9 @@ Vec SequentialBlend::getVecValueAtTimeInternal(int trackId, float time)
 	}
 };
 
-Quat SequentialBlend::getTransformedQuat(int trackId, float t) const
+Quat SequentialBlend::getCombinedQuatValue (int trackId, float time)
 {
-	if(trackId == root_orientation_id)
-	{
-	    return oriOffset * mot2->getQuatValueAtTime(trackId, t);
-	}
-	else
-	{
-		return mot2->getQuatValueAtTime(trackId, t);
-	}
-}
-
-Quat SequentialBlend::getQuatValueAtTimeInternal(int trackId, float time)
-{
-    if(!mot1 || mot1->isNull(trackId))  
-	{
-		if(!mot2 || mot2->isNull(trackId)) 
-		{
-			Piavca::Error(_T("trying to blend two null tracks"));
-			return Quat();
-		}
-		return mot2->getQuatValueAtTime(trackId, time);
-	}
-	if(!mot2 || mot2->isNull(trackId)) 
-	{
-		return mot1->getQuatValueAtTime(trackId, time);
-	}
-    // if its before the start of the blend return the value from the first motion
+	// if its before the start of the blend return the value from the first motion
     if(time < blendStart)
 	{
 		return  mot1->getQuatValueAtTime(trackId, time);
@@ -256,3 +179,46 @@ Quat SequentialBlend::getQuatValueAtTimeInternal(int trackId, float time)
 		return mot2->getQuatValueAtTime(trackId, time);
 	}
 };
+
+
+Vec SequentialBlend::getTransformedVec(int trackId, float t)const
+{
+	/*Vec m1End  = mot1->getVecValueAtTime(trackId, blendStart);
+	//std::cout << "m1 end: " << m1End << std::endl;
+	Vec m2Start = mot2->getVecValueAtTime(trackId, 0.0);
+	
+	Quat oriOffset;
+	if(!mot1->isNull(root_orientation_id)) 
+	{
+		oriOffset = mot1->getQuatValueAtTime(root_orientation_id, blendStart);
+	}
+	if(!mot2->isNull(root_orientation_id))
+	{
+		Quat otherOri = mot2->getQuatValueAtTime(root_orientation_id, 0.0);
+		oriOffset = oriOffset/otherOri;
+	}*/
+	Vec subtractedVec = oriOffset.transform(mot2->getVecValueAtTime(trackId, t) - m2Start);
+	//std::cout << t << " " << mot2->getStartTime() << " ";
+	//std::cout << "sequential blend " << m1End[1] << " " << m2Start[1] << " " << subtractedVec[1] << " " << (subtractedVec + m1End)[1] << std::endl;
+	// we normally only maintian the x-z coordinates of
+	// the previous position, and blend back the y (to 
+	// stop the character flying away)
+	if(true/*maintainY*/)
+		return subtractedVec + m1End;
+	else
+		return Vec(subtractedVec[0] + m1End[0], mot2->getVecValueAtTime(trackId, t)[1], subtractedVec[2] + m1End[2]);
+}
+
+
+
+Quat SequentialBlend::getTransformedQuat(int trackId, float t) const
+{
+	if(trackId == root_orientation_id)
+	{
+	    return oriOffset * mot2->getQuatValueAtTime(trackId, t);
+	}
+	else
+	{
+		return mot2->getQuatValueAtTime(trackId, t);
+	}
+}

@@ -100,23 +100,8 @@ void MotionTransition::setTransitionTime2(float t2)
 	}
 };
 
-
-float MotionTransition::getFloatValueAtTimeInternal (int trackId, float time)
+float MotionTransition::getCombinedFloatValue (int trackId, float time) 
 {
-	// if this track doesn't exist in mot2 use mot1 otherwise interpolated between them
-	if(!mot2 || mot2->isNull(trackId))
-	{
-		if(!mot1 || mot1->isNull(trackId))
-		{
-			Piavca::Error(_T("trying to transition between two invalid tracks"));
-			return 0.0;
-		}
-		return mot1->getFloatValueAtTime(trackId, time);
-	}
-	if(!mot1 || mot1->isNull(trackId))
-		return mot2->getFloatValueAtTime(trackId, time);
-
-
 	float t = time - getStartTime();
 	float f1 = mot1->getFloatValueAtTime(trackId, time);//transitionTime1);//+time);
     float f2 = mot2->getFloatValueAtTime(trackId, time);//transitionTime2);//-window+time);
@@ -126,25 +111,11 @@ float MotionTransition::getFloatValueAtTimeInternal (int trackId, float time)
 		t = t/window;
 	float a = transfunc->eval(t);
 	//return a*f1 + (1-a)*f2;
-    return (1-a)*f1 + a*f2;
+    return (1-a)*f1 + a*f2;	
 };
 
-Vec MotionTransition::getVecValueAtTimeInternal   (int trackId, float time)
+Vec  MotionTransition::getCombinedVecValue (int trackId, float time)
 {
-	// if this track doesn't exist in mot2 use mot1 otherwise interpolated between them
-	if(!mot2 || mot2->isNull(trackId))
-	{
-		if(!mot1 || mot1->isNull(trackId))
-		{
-			Piavca::Error(_T("trying to transition between two invalid tracks"));
-			return Vec();
-		}
-		return mot1->getVecValueAtTime(trackId, time);
-	}
-	if(!mot1 || mot1->isNull(trackId))
-		return mot2->getVecValueAtTime(trackId, time);
-
-	
 	float t = time - getStartTime();
 	Vec v1;
 	if(!mot1->isNull(trackId) && (mot1->getTrackType(trackId) & VEC_TYPE))
@@ -156,25 +127,11 @@ Vec MotionTransition::getVecValueAtTimeInternal   (int trackId, float time)
 		t = t/window;
 	float a = transfunc->eval(t);
     //return v1*a + v2*(1-a);
-    return v1*(1-a) + v2*(a);
+    return v1*(1-a) + v2*(a);	
 };
 
-Quat MotionTransition::getQuatValueAtTimeInternal  (int trackId, float time)
+Quat MotionTransition::getCombinedQuatValue (int trackId, float time)
 {
-	// if this track doesn't exist in mot2 use mot1 otherwise interpolated between them
-	if(!mot2 || mot2->isNull(trackId))
-	{
-		if(!mot1 || mot1->isNull(trackId))
-		{
-			Piavca::Error(_T("trying to transition between two invalid tracks"));
-			return Quat();
-		}
-		return mot1->getQuatValueAtTime(trackId, time);
-	}
-	if(!mot1 || mot1->isNull(trackId))
-		return mot2->getQuatValueAtTime(trackId, time);
-
-
 	float t = time - getStartTime();
 	Quat q1 = mot1->getQuatValueAtTime(trackId, time);//transitionTime1);//+time);
     Quat q2 = mot2->getQuatValueAtTime(trackId, time);//transitionTime2);//-window+time);

@@ -39,16 +39,16 @@ using namespace Piavca;
 float Subtract::getFloatValueAtTimeInternal (int trackId, float time)
 {
 	// if this track doesn't exist in mot2 use mot1 otherwise interpolated between them
-	if(!mot1 || mot1->isNull(trackId))
+	if(!mot1 || mot1->isNull(trackId) || !(mot1->getTrackType(trackId) & FLOAT_TYPE))
 	{
-		if(!mot2 || mot2->isNull(trackId))
+		if(!mot2 || mot2->isNull(trackId) || !(mot2->getTrackType(trackId) & FLOAT_TYPE))
 		{
 			Piavca::Error(_T("trying to subtract two invalid tracks"));
 		}
-		return mot2->getFloatValueAtTime(trackId, time);
+		return -mot2->getFloatValueAtTime(trackId, time);
 	}
-	if(!mot2 || mot2->isNull(trackId))
-		return -mot1->getFloatValueAtTime(trackId, time);
+	if(!mot2 || mot2->isNull(trackId) || !(mot2->getTrackType(trackId) & FLOAT_TYPE))
+		return mot1->getFloatValueAtTime(trackId, time);
 	else
 		return mot1->getFloatValueAtTime(trackId, time)
 			- mot2->getFloatValueAtTime(trackId, time);
@@ -60,15 +60,15 @@ float Subtract::getFloatValueAtTimeInternal (int trackId, float time)
 Vec   Subtract::getVecValueAtTimeInternal   (int trackId, float time)
 {
 	// if this track doesn't exist in mot2 use mot1 otherwise interpolated between them
-	if(!mot1 || mot1->isNull(trackId))
+	if(!mot1 || mot1->isNull(trackId) || !(mot1->getTrackType(trackId) & VEC_TYPE))
 	{
-		if(!mot2 || mot2->isNull(trackId))
+		if(!mot2 || mot2->isNull(trackId) || !(mot2->getTrackType(trackId) & VEC_TYPE))
 		{
 			Piavca::Error(_T("trying to subtract two invalid tracks"));
 		}
 		return -mot2->getVecValueAtTime(trackId, time);
 	}
-	if(!mot2 || mot2->isNull(trackId))
+	if(!mot2 || mot2->isNull(trackId) || !(mot2->getTrackType(trackId) & VEC_TYPE))
 		return mot1->getVecValueAtTime(trackId, time);
 	else
 		return mot1->getVecValueAtTime(trackId, time)
@@ -83,9 +83,9 @@ Quat  Subtract::getQuatValueAtTimeInternal  (int trackId, float time)
 {
 	// if this track doesn't exist in mot2 use mot1 otherwise interpolated between them
 	Quat retVal;
-	if(!mot1 || mot1->isNull(trackId))
+	if(!mot1 || mot1->isNull(trackId) || !(mot1->getTrackType(trackId) & QUAT_TYPE))
 	{
-		if(!mot2 || mot2->isNull(trackId))
+		if(!mot2 || mot2->isNull(trackId) || !(mot2->getTrackType(trackId) & QUAT_TYPE))
 		{
 			Piavca::Error(_T("trying to subtract two invalid tracks"));
 		}
@@ -93,7 +93,7 @@ Quat  Subtract::getQuatValueAtTimeInternal  (int trackId, float time)
 	}
 	else
 	{
-		if(!mot2 || mot2->isNull(trackId))
+		if(!mot2 || mot2->isNull(trackId) || !(mot2->getTrackType(trackId) & QUAT_TYPE))
 		{
 			retVal = mot1->getQuatValueAtTime(trackId, time);
 		}

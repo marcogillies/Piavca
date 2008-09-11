@@ -8,7 +8,7 @@ from ImportException import PiavcaImportException
 try:
 	import SpeechToText
 	speechToTextAvailable = True
-except PiavcaImportException:
+except ImportError:
 	speechToTextAvailable = False
 	
 
