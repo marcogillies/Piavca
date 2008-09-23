@@ -22,7 +22,7 @@ class MotionProxy:
 #					motiontypename = key
 		
 	def getName(self):
-		print "motion proxy get name"
+		# print "motion proxy get name"
 		#print "motion", self.motion, self.motion.thisown
 		return type(self.motion).__name__ + "  " + self.motion.getName()
 	
@@ -37,7 +37,7 @@ class MotionProxy:
 		motionlist = []
 		if hasattr(motion, "getNumMotions"):
 			n = motion.getNumMotions()
-			print "number of children", n
+			# print "number of children", n
 			for i in range(n):
 				m = motion.getMotionByIndex(i)
 				m = Piavca.getRealMotionType(m)
@@ -56,13 +56,13 @@ class MotionProxy:
 			m = Piavca.getRealMotionType(m)
 			if m != None:
 				motionlist.append(MotionProxy(m, self.backend, self))
-		print "got motion list"
+		# print "got motion list"
 		return motionlist
 	
 	def addChild(self, name):
-		print "adding child", name
+		# print "adding child", name
 		newmotion = self.backend.getMotionByName(name)
-		print newmotion
+		# print newmotion
 		if newmotion == self.motion:
 			print "can't add a motion to itself"
 			return 
@@ -81,11 +81,11 @@ class MotionProxy:
 	def getParameters(self):
 		parameters = {}
 		
-		print "getting parameters"   
+		# print "getting parameters"   
 		mtype = type(self.motion)
 		for key in dir(mtype):
 			if key[:3] == "get" or key[:3] == "set":
-				print "parameter: ", key
+				# print "parameter: ", key
 				if parameters.has_key(key[3:]):
 					continue
 				val = self.getParameterVal(key[3:])
@@ -132,16 +132,16 @@ class MotionProxy:
 							# vals[i] = self.motion.getQuattValueAtTime(i,0)
 			
 				# parameters[key[3:]] = zip(names, vals)
-		print "finished getting parameters"
+		# print "finished getting parameters"
 		return parameters
 	
 	def getParameterVal(self, name):
 		if hasattr(self.motion, "get" + name):
-			print name, "set" + name
+			# print name, "set" + name
 			if hasattr(self.motion, "set" + name):
-				print name
+				# print name
 				if name[:len("Motion")] == "Motion":
-					print "found Motion in paramname"
+					# print "found Motion in paramname"
 					return None
 				if name[:len("Weight")] == "Weight":
 					weights = [0 for i in range(self.motion.getNumMotions())]
@@ -151,10 +151,10 @@ class MotionProxy:
 					return weights
 				else:
 					method = getattr(self.motion, "get" + name)
-					print "got method"
+					# print "got method"
 					value = method()
-					print "got value"
-					print name, value
+					# print "got value"
+					# print name, value
 					return value
 		if name == "FloatValue" or name == "QuatValue" or name == "VecValue":
 			core = Piavca.Core.getCore()

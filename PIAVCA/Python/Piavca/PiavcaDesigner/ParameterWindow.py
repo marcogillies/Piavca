@@ -44,7 +44,7 @@ class ParameterWindow(wx.Panel):
 		if motionproxy == None:
 			self.typelabel.SetLabel("")
 		else:
-			print "parameter window get name"
+			# print "parameter window get name"
 			self.typelabel.SetLabel(motionproxy.getName())
 			
 			parameters = motionproxy.getParameters()
@@ -80,8 +80,8 @@ class ParameterWindow(wx.Panel):
 				if valtype == Piavca.MotionMask:
 					ctrl = MaskParamEntry(param_name, motionproxy, self)
 				if valtype == list:
-					print "got a multi-type", param_name
-					print parameters[param_name]
+					# print "got a multi-type", param_name
+					# print parameters[param_name]
 					if len(parameters[param_name]) > 0:
 						print "it has members", len(parameters[param_name]) 
 						innervaltype = type(parameters[param_name][0][2])

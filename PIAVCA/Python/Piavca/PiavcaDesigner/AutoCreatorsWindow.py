@@ -40,7 +40,7 @@ class AutoCreatorsWindow(wx.Panel):
 		
 	def getChoiceList(self):
 		creators = dir(AutoCreators)
-		creators = filter(lambda x : x[0] != "_", creators)
+		creators = filter(lambda x : x[0] != "_" and x != "Piavca", creators)
 		print creators
 		return creators
 	

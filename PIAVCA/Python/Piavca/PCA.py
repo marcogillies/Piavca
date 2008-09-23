@@ -44,9 +44,16 @@ class PCA(EigenAnalysis):
 	def get_matrix (self, data):
 		print "PCA: getting covariance matrix"
 		rows, cols = scipy.shape(data)
-		mean = scipy.sum(data)
+		print rows, cols
+		N = rows
+		mean = scipy.sum(data,0)
+		mean = mean/N
+		print "mean of data", mean
 		temp = scipy.asmatrix(data - mean)
+		print temp
 		cov = temp.T*temp
+		print cov
 		rows, cols = scipy.shape(cov)
-		cov = cov/cols
+		print "num columns", cols
+		cov = cov/N
 		return cov

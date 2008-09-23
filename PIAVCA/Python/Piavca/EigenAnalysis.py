@@ -101,9 +101,11 @@ class EigenAnalysis :
 		self.precentageToKeep = percent
 		
 	def get_eigenvectors (self, mat):
+		print mat
 		vals, vecs = scipy.linalg.eigh(mat)
 		sum = 0.0
 		#for i in range(len(vals)-1, -1, -1):
+		print "Component Values"
 		print vals
 		for i in range(len(vals)-1, -1, -1):
 			print vals[i]
@@ -161,32 +163,44 @@ class EigenAnalysis :
 				print "joint ", joint, " type ", motions[0].getTrackType(joint)
 				self.joint_types.append(motions[0].getTrackType(joint))
 				# if there are no splits we are acting directly on the postures
-				starttime = time.clock()
-				
-				# take a bunch of samples of postures
-				quatlist = []
-				for motion  in motions:
-					length = int ((motion.getMotionLength())*fps)
-					quatlist = quatlist + [motion.getQuatValueAtTime(joint, (float(t)/fps)) for t in range(length)]
-				length = len(quatlist)
+				if self.joint_types[-1] & Piavca.QUAT_TYPE:
+					starttime = time.clock()
+					
+					# take a bunch of samples of postures
+					quatlist = []
+					for motion  in motions:
+						length = int ((motion.getMotionLength())*fps)
+						quatlist = quatlist + [motion.getQuatValueAtTime(joint, (float(t)/fps)) for t in range(length)]
+					length = len(quatlist)
 
-				qtime = time.clock()
-				quatlisttime += qtime - starttime
+					qtime = time.clock()
+					quatlisttime += qtime - starttime
+						
+					# create a tangent space based on the averages of the postures
+					expmap = Piavca.ExpMap.TangentSpace(quatlist)
+						
+					ttime = time.clock()
+					tangentspacetime += ttime - qtime
+					#print "doing log maps"
+						
+					# save the calculated tangent space
+					self.expmaps.append(expmap)
+					# map all of the sampled joint rotations onto the tangent space
+					mappedvals.append([expmap.logMap(q) for q in quatlist])
+						
+					ltime = time.clock()
+					logmaptime += ltime - ttime
+				elif self.joint_types[-1] & Piavca.VEC_TYPE:
+					veclist = []
+					for motion  in motions:
+						length = int ((motion.getMotionLength())*fps)
+						veclist = veclist + [motion.getVecValueAtTime(joint, (float(t)/fps)) for t in range(length)]
+					length = len(veclist)
 					
-				# create a tangent space based on the averages of the postures
-				expmap = Piavca.ExpMap.TangentSpace(quatlist)
-					
-				ttime = time.clock()
-				tangentspacetime += ttime - qtime
-				#print "doing log maps"
-					
-				# save the calculated tangent space
-				self.expmaps.append(expmap)
-				# map all of the sampled joint rotations onto the tangent space
-				mappedvals.append([expmap.logMap(q) for q in quatlist])
-					
-				ltime = time.clock()
-				logmaptime += ltime - ttime
+					# don't need a tangent space for a vec track
+					self.expmaps.append(None)
+					# map all of the sampled joint rotations onto the tangent space
+					mappedvals.append(veclist)
 					
 				# add the current joint to the joint map
 				self.jointmap.append(len(mappedvals)-1)        
@@ -231,6 +245,8 @@ class EigenAnalysis :
 				j+=1
 			i+=1
 		
+		print "input data for eigen analysis"
+		print data
 		return data
 	
 	def do_analysis (self, motions, fps):
@@ -466,6 +482,20 @@ class EigenAnalysis :
 		self.vecs = self.vecs.T
 		self.vecs = scipy.asarray(self.vecs)[0]
 		
+	def getPCMotions(self):
+		mots = []
+		for i in range(self.num_pcs):
+			self.setWeight(i, 1.0)
+			self.generateMotion()
+			mots.append(Piavca.CurrentValueMotion())
+			mots[-1].setName("PC_"+str(i))
+			for trackId, index in enumerate(self.jointmap):
+				if index != None :
+					v = Piavca.Vec(self.vecs[3*index], self.vecs[3*index+1], self.vecs[3*index+2])
+					mots[-1].setVecValue(trackId, v)
+			self.setWeight(i,0.0)
+		return mots
+		
 	def projectBack (self, vals):
 		weights =  scipy.dot(vals,self.pcs)
 		return weights
@@ -540,6 +570,15 @@ class EigenAnalysis :
 		#print vals
 		#return vals
 		return self.projectBack(vals)
+		
+	def getFullExpMapList(self):
+		expmaplist = []
+		for i in range(Piavca.Core.getCore().getMaxJointId()+1):
+			i = self.jointmap[trackid]
+			if i != None :
+				expmaplist.append(self.expmaps[i])
+			else:
+				expmaplist.append(Piavca.TangentSpace)
 		
 	def getTrackValue(self, trackid, time):
 		i = self.jointmap[trackid]
