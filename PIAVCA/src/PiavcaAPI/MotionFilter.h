@@ -87,7 +87,10 @@ namespace Piavca
 		Piavca::tstring getClassName(){return "MotionFilter";};
 
 		//! casts a motion to this type
-		static MotionFilter *castToThisType(Motion *m){return dynamic_cast<MotionFilter *>(m);};
+		static MotionFilter *castToThisType(Motion *m)
+		{
+			return dynamic_cast<MotionFilter *>(m);
+		};
 
 		void printInfo()
 		{

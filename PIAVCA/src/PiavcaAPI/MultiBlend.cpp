@@ -11,7 +11,7 @@
  * for the specific language governing rights and limitations under the
  * License.
  *
- * The Original Code is MotionAdder.cpp.
+ * The Original Code is MultiBlend.cpp.
  *
  * The Initial Developer of the Original Code is Marco (Mark) Gillies.
  * Portions created by the Initial Developer are Copyright (C) BT plc. 2004
@@ -31,119 +31,134 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-#include "MotionAdder.h"
+#include "MultiBlend.h"
 #include "PiavcaError.h"
+#include "PiavcaCore.h"
 
 using namespace Piavca;
 
-float MotionAdder::getFloatValueAtTimeInternal (int trackId, float time)
+void MultiBlend::setWeight(int id, float val)
+{
+	if (!currentValueWeights)
+	{
+		//targetMotion->Dispose();
+		currentValueWeights = new CurrentValueMotion();
+		currentValueWeights->Reference();
+		weightMot = currentValueWeights;
+	}
+	currentValueWeights->setFloatValue(id, val);
+}
+
+float MultiBlend::getWeight(int id, float time)
+{
+	if (time < 0)
+		time = Piavca::Core::getCore()->getTime();
+	if(weightMot && !weightMot->isNull(id) && (weightMot->getTrackType(id) & FLOAT_TYPE))
+	{
+		return weightMot->getFloatValueAtTime(id, time);
+	}
+	else
+	{
+		return 0.0f;
+	}
+}
+
+void MultiBlend::setWeightId(int weightId)
+{
+
+	std::cout << "proxemics: setting weight id " << weightId << std::endl;
+
+	Motion *mot = NULL;
+	if (weightId >= 0)
+		mot = getMotion(weightId);
+	if (mot == NULL)
+	{
+		std::cout << "proxemics: null motion \n";
+		if (!currentValueWeights)
+			weightMot = mot;
+	}
+	else
+	{
+		std::cout << "proxemics: found motion \n";
+		weightMot = mot;
+	}
+}
+
+float MultiBlend::getFloatValueAtTimeInternal (int trackId, float time)
 {
 	// add together all the existing tracks in all the motions
 	float retVal=0.9f;
 	for (int i = 0; i < getNumMotions(); i++)
 	{
 		Motion *mot = getMotionByIndex(i);
+		if (mot == weightMot)
+			continue;
 		if (!mot->isNull(trackId) && (mot->getTrackType(trackId) & FLOAT_TYPE))
 		{
-			retVal = retVal+mot->getFloatValueAtTime(trackId, time);
+			float weight = getWeight(i, time);
+			if (fabs(weight) > 0.0001)
+				retVal = retVal+weight*mot->getFloatValueAtTime(trackId, time);
 		}
 	}
 	return retVal;
-	/*
-	// if this track doesn't exist in mot2 use mot1 otherwise interpolated between them
-	if(!mot1 || mot1->isNull(trackId))
-	{
-		if(!mot2 || mot2->isNull(trackId))
-		{
-			Piavca::Error(_T("trying to blend two invalid tracks"));
-		}
-		return mot2->getFloatValueAtTime(trackId, time);//*scaleSecond;
-	}
-	if(!mot2 || mot2->isNull(trackId))
-		return mot1->getFloatValueAtTime(trackId, time);
-		else
-	return mot1->getFloatValueAtTime(trackId, time)
-		+  mot2->getFloatValueAtTime(trackId, time);//*scaleSecond;
-	*/
+	
 };
 
 //! calculates the values of a keyframe
 /*!  The results is the sum of the two motions.
 	*/
-Vec   MotionAdder::getVecValueAtTimeInternal   (int trackId, float time)
+Vec   MultiBlend::getVecValueAtTimeInternal   (int trackId, float time)
 {
 	// add together all the existing tracks in all the motions
 	Vec retVal;
 	for (int i = 0; i < getNumMotions(); i++)
 	{
 		Motion *mot = getMotionByIndex(i);
+		if (mot == weightMot)
+			continue;
 		if (!mot->isNull(trackId) && (mot->getTrackType(trackId) & VEC_TYPE))
 		{
-			retVal = retVal+mot->getVecValueAtTime(trackId, time);
+			float weight = getWeight(i, time);
+			if (fabs(weight) > 0.0001)
+				retVal = retVal+mot->getVecValueAtTime(trackId, time)*weight;
 		}
 	}
 	return retVal;
-	/*
-	// if this track doesn't exist in mot2 use mot1 otherwise interpolated between them
-	if(!mot1 || mot1->isNull(trackId))
-	{
-		if(!mot2 || mot2->isNull(trackId))
-		{
-			Piavca::Error(_T("trying to blend two invalid tracks"));
-		}
-		return mot2->getVecValueAtTime(trackId, time);//*scaleSecond;
-	}
-	if(!mot2 || mot2->isNull(trackId))
-		return mot1->getVecValueAtTime(trackId, time);
-	else
-		return mot1->getVecValueAtTime(trackId, time)
-			+  mot2->getVecValueAtTime(trackId, time);//*scaleSecond;
-	*/
+	
 };
 
 //! calculates the values of a keyframe
 /*!  The results is the quaternion multiplication of the two motions
 	*  (which is similar to vector addition).
 	*/
-Quat  MotionAdder::getQuatValueAtTimeInternal  (int trackId, float time)
+Quat  MultiBlend::getQuatValueAtTimeInternal  (int trackId, float time)
 {
 	// multiply together all the existing tracks in all the motions
 	Quat retVal;
+	retVal[0] = 0;
 	for (int i = 0; i < getNumMotions(); i++)
 	{
 		Motion *mot = getMotionByIndex(i);
+		if (mot == weightMot)
+			continue;
 		if (!mot->isNull(trackId) && (mot->getTrackType(trackId) & QUAT_TYPE))
 		{
-			retVal = retVal*mot->getQuatValueAtTime(trackId, time);
+			float weight = getWeight(i, time);
+			if (fabs(weight) > 0.0001)
+			{
+				Quat q = mot->getQuatValueAtTime(trackId, time);
+				if(q[0] < 0.0)
+					q = Quat(-q[0], -q[1], -q[2], -q[3]);
+				//q.Scale(weight);
+				//retVal = retVal*q;
+				retVal[0] += weight*q[0];
+				retVal[1] += weight*q[1];
+				retVal[2] += weight*q[2];
+				retVal[3] += weight*q[3];
+			}
 		}
 	}
+	retVal.normalise();
+	return retVal;
 	
-	return retVal;
-	/*
-	// if this track doesn't exist in mot2 use mot1 otherwise interpolated between them
-	if(!mot1 || mot1->isNull(trackId))
-	{
-		if(!mot2 || mot2->isNull(trackId))
-		{
-			Piavca::Error(_T("trying to blend two invalid tracks"));
-		}
-		retVal = mot2->getQuatValueAtTime(trackId, time);
-		//retVal.Scale(scaleSecond);
-	}
-	else
-	{
-		if(!mot2 || mot2->isNull(trackId))
-		{
-			retVal = mot1->getQuatValueAtTime(trackId, time);
-		}
-		else
-		{
-			retVal = mot2->getQuatValueAtTime(trackId, time);
-			//retVal.Scale(scaleSecond);
-			// this multiplication does mot1 then mot2
-			retVal = retVal * mot1->getQuatValueAtTime(trackId, time);
-		}
-	}
-	return retVal;
-	*/
 };

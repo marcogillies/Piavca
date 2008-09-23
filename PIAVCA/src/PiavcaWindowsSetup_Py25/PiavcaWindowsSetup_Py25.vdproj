@@ -45,6 +45,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_0E4184EB5DF04E9CA60D26466104B5E4"
+        "OwnerKey" = "8:_90F24506E82041BABC8C41D2E24586D5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_0EDB427873744218ACBF6199C4916A0F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -63,20 +69,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_1BC709BE9B2D4C75B58206A281AF2B0D"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_1E1444C488934B248DAC188FAD11A59C"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_1F7E6D4CD20843559E8C7A6BE5974182"
-        "OwnerKey" = "8:_F80A3283990C41B7A73C5FDAACE6FA64"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -93,19 +87,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_2BD458E0B00844C699AEBEC06F63205C"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_2C395891ECC0417A83390DA32EE60D8C"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_2C6E016003904AEE8DE53DFAA80CB2BA"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -135,6 +117,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_386CD9EF84584D6AAF49EBFE80B47B81"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_38BE54D26DCC4CCD89F949DF7A287623"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -147,19 +135,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_3CB517E7E4954257A2CD2365376162F2"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_41958EC6BCF84E9CAA62404A684EE5E6"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_43EAC9E293624CE6B4B723D0C039BC50"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -201,26 +177,32 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_53D920A00F2B77DD5F8EA056E9CC5B2D"
+        "MsmKey" = "8:_5455C2A2ADC65C732A6BEC8CF065A57F"
         "OwnerKey" = "8:_0EDB427873744218ACBF6199C4916A0F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_53D920A00F2B77DD5F8EA056E9CC5B2D"
+        "MsmKey" = "8:_5455C2A2ADC65C732A6BEC8CF065A57F"
         "OwnerKey" = "8:_E9BF3BD172E74BC1ACDE5669C3B94371"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_53D920A00F2B77DD5F8EA056E9CC5B2D"
+        "MsmKey" = "8:_5455C2A2ADC65C732A6BEC8CF065A57F"
         "OwnerKey" = "8:_7FFBA5A50D144A49A4D665B523A35DF3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_5611BE5E3CE30E1121FE1DDD6FCA1E66"
-        "OwnerKey" = "8:_E9BF3BD172E74BC1ACDE5669C3B94371"
+        "MsmKey" = "8:_5BC2020DC150290C02C2ADB9925116D0"
+        "OwnerKey" = "8:_0EDB427873744218ACBF6199C4916A0F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5BC2020DC150290C02C2ADB9925116D0"
+        "OwnerKey" = "8:_7FFBA5A50D144A49A4D665B523A35DF3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -249,12 +231,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_694D51F609514BFDA6E92A2C68AF302D"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_698F685E44B64B8EA43819FD3A2EA8A5"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -263,6 +239,12 @@
         {
         "MsmKey" = "8:_6C9B48778DB24E77BB81147BDCF997AD"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6DE875B2B4EC788E4EF4C6796C91B9B8"
+        "OwnerKey" = "8:_E9BF3BD172E74BC1ACDE5669C3B94371"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -292,6 +274,12 @@
         "Entry"
         {
         "MsmKey" = "8:_768E94DE6D33402790CDC687A70D9FCF"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7BEC9B6282FC4FABB1815BCFCA8ED4C6"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -351,6 +339,30 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_8AF2B4CF8F364729BD74C5EA33787413"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_90F24506E82041BABC8C41D2E24586D5"
+        "OwnerKey" = "8:_0EDB427873744218ACBF6199C4916A0F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_90F24506E82041BABC8C41D2E24586D5"
+        "OwnerKey" = "8:_E9BF3BD172E74BC1ACDE5669C3B94371"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_90F24506E82041BABC8C41D2E24586D5"
+        "OwnerKey" = "8:_7FFBA5A50D144A49A4D665B523A35DF3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_9775D02488374C9A88E70299E5DC34ED"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -363,20 +375,14 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_9BFA4A6E48F747F4A9AE90CC36EAC576"
+        "MsmKey" = "8:_9BCAFE6ACF7B42E984EF932CF3B90201"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_9D81CA093EE3632D4124E8507057B432"
-        "OwnerKey" = "8:_0EDB427873744218ACBF6199C4916A0F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_9D81CA093EE3632D4124E8507057B432"
-        "OwnerKey" = "8:_7FFBA5A50D144A49A4D665B523A35DF3"
+        "MsmKey" = "8:_9BFA4A6E48F747F4A9AE90CC36EAC576"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -423,6 +429,24 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_A7B9F4157C20E3893B9F768D81A49B34"
+        "OwnerKey" = "8:_0EDB427873744218ACBF6199C4916A0F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A7B9F4157C20E3893B9F768D81A49B34"
+        "OwnerKey" = "8:_E9BF3BD172E74BC1ACDE5669C3B94371"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A7B9F4157C20E3893B9F768D81A49B34"
+        "OwnerKey" = "8:_7FFBA5A50D144A49A4D665B523A35DF3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_A815580279384E52A1A5A2D6206CAF11"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -453,6 +477,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_B0C3920384A54728AC660025453848E6"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_B27DF344E0084534B4600FFFFF59ACA6"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -466,6 +496,12 @@
         "Entry"
         {
         "MsmKey" = "8:_B53AE7D65C0B4B948BCD39EF5A3A7C24"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B67F651E8176426B878948E34EE67B06"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -621,12 +657,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_F09AF3E87C2240CD94493F70B08301A2"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_F1B1B7F0602A4F86BB1202D6E352BF77"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -651,49 +681,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_F80A3283990C41B7A73C5FDAACE6FA64"
-        "OwnerKey" = "8:_0EDB427873744218ACBF6199C4916A0F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_F80A3283990C41B7A73C5FDAACE6FA64"
-        "OwnerKey" = "8:_E9BF3BD172E74BC1ACDE5669C3B94371"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_F80A3283990C41B7A73C5FDAACE6FA64"
-        "OwnerKey" = "8:_7FFBA5A50D144A49A4D665B523A35DF3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_F8D0E93C347E41A3BA723A6A4E43FCAF"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_FA8DC075FEAA264593F6B3781A3EDCED"
-        "OwnerKey" = "8:_0EDB427873744218ACBF6199C4916A0F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_FA8DC075FEAA264593F6B3781A3EDCED"
-        "OwnerKey" = "8:_E9BF3BD172E74BC1ACDE5669C3B94371"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_FA8DC075FEAA264593F6B3781A3EDCED"
-        "OwnerKey" = "8:_7FFBA5A50D144A49A4D665B523A35DF3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_FCE00EC60D664D64A9494C8A518A7B64"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -882,45 +870,45 @@
     {
         "CustomAction"
         {
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_A5267E8C117945869E67A87B8B5CB6A0"
-            {
-            "Name" = "8:pyaudio-0.2.0.py25.exe"
-            "Condition" = "8:"
-            "Object" = "8:_694D51F609514BFDA6E92A2C68AF302D"
-            "FileType" = "3:2"
-            "InstallAction" = "3:1"
-            "Arguments" = "8:/Install"
-            "EntryPoint" = "8:"
-            "Sequence" = "3:1"
-            "Identifier" = "8:_1B635575_E5FA_4FD5_90C0_582BD5262392"
-            "InstallerClass" = "11:FALSE"
-            "CustomActionData" = "8:"
-            }
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_AC262F1EF67A48AABD75C687A0B71EE4"
-            {
-            "Name" = "8:wxPython2.8-win32-unicode-2.8.8.1-py25.exe"
-            "Condition" = "8:"
-            "Object" = "8:_2BD458E0B00844C699AEBEC06F63205C"
-            "FileType" = "3:2"
-            "InstallAction" = "3:1"
-            "Arguments" = "8:/Install"
-            "EntryPoint" = "8:"
-            "Sequence" = "3:3"
-            "Identifier" = "8:_B839B6D6_A07D_4389_BC33_0C5ADA3F73FD"
-            "InstallerClass" = "11:FALSE"
-            "CustomActionData" = "8:"
-            }
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_DD0F01F8FCD6442BAD60884BD37BE3DA"
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_064C814A972F4F2EBCD32E8E97130CD2"
             {
             "Name" = "8:PyOpenGL-3.0.0b2.win32_py2.5.exe"
             "Condition" = "8:"
-            "Object" = "8:_F09AF3E87C2240CD94493F70B08301A2"
+            "Object" = "8:_386CD9EF84584D6AAF49EBFE80B47B81"
             "FileType" = "3:2"
             "InstallAction" = "3:1"
             "Arguments" = "8:/Install"
             "EntryPoint" = "8:"
             "Sequence" = "3:2"
-            "Identifier" = "8:_DBEBE375_D4AF_4429_9140_7F63D517AAC0"
+            "Identifier" = "8:_8A160CF2_5F82_44C0_BBDB_866C2403E8EB"
+            "InstallerClass" = "11:FALSE"
+            "CustomActionData" = "8:"
+            }
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_237B33E294F745A0B04940667C107142"
+            {
+            "Name" = "8:pyaudio-0.2.0.py25.exe"
+            "Condition" = "8:"
+            "Object" = "8:_8AF2B4CF8F364729BD74C5EA33787413"
+            "FileType" = "3:2"
+            "InstallAction" = "3:1"
+            "Arguments" = "8:/Install"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:3"
+            "Identifier" = "8:_B6CD94FA_A0CC_48F7_85AC_96283AE3D5FF"
+            "InstallerClass" = "11:FALSE"
+            "CustomActionData" = "8:"
+            }
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_4B0E8BC981BC4AAAB95DF48239E1F228"
+            {
+            "Name" = "8:wxPython2.8-win32-unicode-2.8.8.1-py25.exe"
+            "Condition" = "8:"
+            "Object" = "8:_B67F651E8176426B878948E34EE67B06"
+            "FileType" = "3:2"
+            "InstallAction" = "3:1"
+            "Arguments" = "8:/Install"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_0DFE31D8_4CF7_4707_930B_9D7CC5996109"
             "InstallerClass" = "11:FALSE"
             "CustomActionData" = "8:"
             }
@@ -1079,26 +1067,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1BC709BE9B2D4C75B58206A281AF2B0D"
-            {
-            "SourcePath" = "8:C:\\WINNT\\system32\\glu32.dll"
-            "TargetName" = "8:glu32.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_2C01534358BC499DB5A587789363CFB1"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1E1444C488934B248DAC188FAD11A59C"
             {
             "SourcePath" = "8:..\\..\\Python\\Piavca\\JointNames.py"
@@ -1159,52 +1127,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2BD458E0B00844C699AEBEC06F63205C"
-            {
-            "SourcePath" = "8:C:\\Documents and Settings\\ucacmfg\\Desktop\\wxPython2.8-win32-unicode-2.8.8.1-py25.exe"
-            "TargetName" = "8:wxPython2.8-win32-unicode-2.8.8.1-py25.exe"
-            "Tag" = "8:"
-            "Folder" = "8:_C32D0F42EC2B427E89BDD8C0DE5EC464"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2C395891ECC0417A83390DA32EE60D8C"
             {
             "SourcePath" = "8:..\\..\\Python\\Piavca\\FreeCameraCanvas.py"
             "TargetName" = "8:FreeCameraCanvas.py"
             "Tag" = "8:"
             "Folder" = "8:_030136928E1A4CF9B5AF2948FB4B2634"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2C6E016003904AEE8DE53DFAA80CB2BA"
-            {
-            "SourcePath" = "8:C:\\Documents and Settings\\ucacmfg\\Desktop\\PyOpenGL-3.0.0b2\\dist\\PyOpenGL-3.0.0b2-py2.5.egg"
-            "TargetName" = "8:PyOpenGL-3.0.0b2-py2.5.egg"
-            "Tag" = "8:"
-            "Folder" = "8:_C32D0F42EC2B427E89BDD8C0DE5EC464"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1299,6 +1227,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_386CD9EF84584D6AAF49EBFE80B47B81"
+            {
+            "SourcePath" = "8:..\\..\\PyOpenGL-3.0.0b2.win32_py2.5.exe"
+            "TargetName" = "8:PyOpenGL-3.0.0b2.win32_py2.5.exe"
+            "Tag" = "8:"
+            "Folder" = "8:_C32D0F42EC2B427E89BDD8C0DE5EC464"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_38BE54D26DCC4CCD89F949DF7A287623"
             {
             "SourcePath" = "8:..\\..\\Python\\Piavca\\__init__.py"
@@ -1339,52 +1287,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3CB517E7E4954257A2CD2365376162F2"
-            {
-            "SourcePath" = "8:C:\\WINNT\\system32\\cal3d.dll"
-            "TargetName" = "8:cal3d.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_2C01534358BC499DB5A587789363CFB1"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_41958EC6BCF84E9CAA62404A684EE5E6"
             {
             "SourcePath" = "8:..\\..\\Python\\Piavca\\wxVirtualTracker.py"
             "TargetName" = "8:wxVirtualTracker.py"
             "Tag" = "8:"
             "Folder" = "8:_030136928E1A4CF9B5AF2948FB4B2634"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_43EAC9E293624CE6B4B723D0C039BC50"
-            {
-            "SourcePath" = "8:..\\..\\Python\\run.bat"
-            "TargetName" = "8:run.bat"
-            "Tag" = "8:"
-            "Folder" = "8:_C32D0F42EC2B427E89BDD8C0DE5EC464"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1519,12 +1427,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_53D920A00F2B77DD5F8EA056E9CC5B2D"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5455C2A2ADC65C732A6BEC8CF065A57F"
             {
-            "SourcePath" = "8:OPENGL32.dll"
-            "TargetName" = "8:OPENGL32.dll"
+            "SourcePath" = "8:python25.dll"
+            "TargetName" = "8:python25.dll"
             "Tag" = "8:"
-            "Folder" = "8:_030136928E1A4CF9B5AF2948FB4B2634"
+            "Folder" = "8:_2C01534358BC499DB5A587789363CFB1"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1539,10 +1447,10 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5611BE5E3CE30E1121FE1DDD6FCA1E66"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5BC2020DC150290C02C2ADB9925116D0"
             {
-            "SourcePath" = "8:glut32.dll"
-            "TargetName" = "8:glut32.dll"
+            "SourcePath" = "8:cal3d.dll"
+            "TargetName" = "8:cal3d.dll"
             "Tag" = "8:"
             "Folder" = "8:_030136928E1A4CF9B5AF2948FB4B2634"
             "Condition" = "8:"
@@ -1639,26 +1547,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_694D51F609514BFDA6E92A2C68AF302D"
-            {
-            "SourcePath" = "8:C:\\Documents and Settings\\ucacmfg\\Desktop\\pyaudio-0.2.0.py25.exe"
-            "TargetName" = "8:pyaudio-0.2.0.py25.exe"
-            "Tag" = "8:"
-            "Folder" = "8:_C32D0F42EC2B427E89BDD8C0DE5EC464"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_698F685E44B64B8EA43819FD3A2EA8A5"
             {
             "SourcePath" = "8:..\\..\\Python\\Piavca\\MotionTracks.py"
@@ -1697,6 +1585,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6DE875B2B4EC788E4EF4C6796C91B9B8"
+            {
+            "SourcePath" = "8:glut32.dll"
+            "TargetName" = "8:glut32.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_030136928E1A4CF9B5AF2948FB4B2634"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6F882A5BC19F498A812277DF53862775"
@@ -1785,6 +1693,26 @@
             "TargetName" = "8:white_7.xrf"
             "Tag" = "8:"
             "Folder" = "8:_45D7633C579B4668A5FC68D3F3EFBF33"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7BEC9B6282FC4FABB1815BCFCA8ED4C6"
+            {
+            "SourcePath" = "8:..\\..\\PyOpenGL-3.0.0b2-py2.5.egg"
+            "TargetName" = "8:PyOpenGL-3.0.0b2-py2.5.egg"
+            "Tag" = "8:"
+            "Folder" = "8:_C32D0F42EC2B427E89BDD8C0DE5EC464"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1959,6 +1887,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8AF2B4CF8F364729BD74C5EA33787413"
+            {
+            "SourcePath" = "8:..\\..\\pyaudio-0.2.0.py25.exe"
+            "TargetName" = "8:pyaudio-0.2.0.py25.exe"
+            "Tag" = "8:"
+            "Folder" = "8:_C32D0F42EC2B427E89BDD8C0DE5EC464"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9775D02488374C9A88E70299E5DC34ED"
             {
             "SourcePath" = "8:..\\..\\Python\\Piavca\\CreationScripts\\InterruptableSequence.py"
@@ -1999,6 +1947,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9BCAFE6ACF7B42E984EF932CF3B90201"
+            {
+            "SourcePath" = "8:C:\\WINDOWS\\system32\\cal3d.dll"
+            "TargetName" = "8:cal3d.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_2C01534358BC499DB5A587789363CFB1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9BFA4A6E48F747F4A9AE90CC36EAC576"
             {
             "SourcePath" = "8:..\\..\\Python\\Piavca\\PiavcaDesigner\\MotionTypeList.py"
@@ -2017,26 +1985,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9D81CA093EE3632D4124E8507057B432"
-            {
-            "SourcePath" = "8:cal3d.dll"
-            "TargetName" = "8:cal3d.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_030136928E1A4CF9B5AF2948FB4B2634"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9E975B960B324D8283DB3D8780286586"
@@ -2179,6 +2127,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A7B9F4157C20E3893B9F768D81A49B34"
+            {
+            "SourcePath" = "8:OPENGL32.dll"
+            "TargetName" = "8:OPENGL32.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_030136928E1A4CF9B5AF2948FB4B2634"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A815580279384E52A1A5A2D6206CAF11"
             {
             "SourcePath" = "8:..\\..\\Python\\Piavca\\PiavcaDesigner\\ListBoxController.py"
@@ -2279,6 +2247,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B0C3920384A54728AC660025453848E6"
+            {
+            "SourcePath" = "8:C:\\WINDOWS\\system32\\glu32.dll"
+            "TargetName" = "8:glu32.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_2C01534358BC499DB5A587789363CFB1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B27DF344E0084534B4600FFFFF59ACA6"
             {
             "SourcePath" = "8:..\\..\\Python\\Piavca\\PiavcaGlut\\PiavcaGlut.py"
@@ -2325,6 +2313,26 @@
             "TargetName" = "8:__init__.py"
             "Tag" = "8:"
             "Folder" = "8:_A3D283F8CEE34308BF2B7E06DD31B7A8"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B67F651E8176426B878948E34EE67B06"
+            {
+            "SourcePath" = "8:..\\..\\wxPython2.8-win32-unicode-2.8.8.1-py25.exe"
+            "TargetName" = "8:wxPython2.8-win32-unicode-2.8.8.1-py25.exe"
+            "Tag" = "8:"
+            "Folder" = "8:_C32D0F42EC2B427E89BDD8C0DE5EC464"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2819,26 +2827,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F09AF3E87C2240CD94493F70B08301A2"
-            {
-            "SourcePath" = "8:C:\\Documents and Settings\\ucacmfg\\Desktop\\PyOpenGL-3.0.0b2\\dist\\PyOpenGL-3.0.0b2.win32_py2.5.exe"
-            "TargetName" = "8:PyOpenGL-3.0.0b2.win32_py2.5.exe"
-            "Tag" = "8:"
-            "Folder" = "8:_C32D0F42EC2B427E89BDD8C0DE5EC464"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F1B1B7F0602A4F86BB1202D6E352BF77"
             {
             "SourcePath" = "8:..\\..\\Bill\\actions.CAF"
@@ -2939,102 +2927,9 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FA8DC075FEAA264593F6B3781A3EDCED"
-            {
-            "SourcePath" = "8:python25.dll"
-            "TargetName" = "8:python25.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_2C01534358BC499DB5A587789363CFB1"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FCE00EC60D664D64A9494C8A518A7B64"
-            {
-            "SourcePath" = "8:C:\\WINNT\\system32\\glut32.dll"
-            "TargetName" = "8:glut32.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_2C01534358BC499DB5A587789363CFB1"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
         }
         "FileType"
         {
-            "{5EB83D71-FA18-4901-BE56-DE22E13CC478}:_2DABE449EFDC4DB184AD15310F42EB87"
-            {
-            "Name" = "8:Piavca File"
-            "Description" = "8:"
-            "Extensions" = "8:.conf"
-            "MIME" = "8:"
-            "Icon" = "8:"
-            "IconIndex" = "3:0"
-                "Command"
-                {
-                "Command" = "8:_43EAC9E293624CE6B4B723D0C039BC50"
-                }
-                "Verbs"
-                {
-                    "{95C0C507-CBF0-42B8-B119-07219E384A4A}:_E80E68A61D69418F94290B0FD69E53DD"
-                    {
-                    "Command" = "8:&Open"
-                    "Verb" = "8:open"
-                    "Arguments" = "8:\"[TARGETDIR]\\PiavcaScriptEngine.py\" \"%1\""
-                    "Order" = "3:0"
-                    }
-                }
-            }
-            "{5EB83D71-FA18-4901-BE56-DE22E13CC478}:_6369E23543E548E7ABB8582EADDF5334"
-            {
-            "Name" = "8:Cal3d Model"
-            "Description" = "8:"
-            "Extensions" = "8:.cfg"
-            "MIME" = "8:"
-            "Icon" = "8:"
-            "IconIndex" = "3:0"
-                "Command"
-                {
-                "Command" = "8:_43EAC9E293624CE6B4B723D0C039BC50"
-                }
-                "Verbs"
-                {
-                    "{95C0C507-CBF0-42B8-B119-07219E384A4A}:_3A9CD2A811DB4E34AD210876538F82A8"
-                    {
-                    "Command" = "8:&Open"
-                    "Verb" = "8:open"
-                    "Arguments" = "8:\"[TARGETDIR]\\Viewer.py\" \"%1\""
-                    "Order" = "3:0"
-                    }
-                    "{95C0C507-CBF0-42B8-B119-07219E384A4A}:_C14A721387A249C98AAA9C7B32E5E9F6"
-                    {
-                    "Command" = "8:Edit"
-                    "Verb" = "8:edit"
-                    "Arguments" = "8:\"[TARGETDIR]\\MotionEditor.py\" \"%1\""
-                    "Order" = "3:1"
-                    }
-                }
-            }
         }
         "Folder"
         {
@@ -3793,7 +3688,7 @@
         }
         "MergeModule"
         {
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_1F7E6D4CD20843559E8C7A6BE5974182"
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_0E4184EB5DF04E9CA60D26466104B5E4"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:TRUE"
@@ -3807,7 +3702,7 @@
             "Feature" = "8:"
             "IsolateTo" = "8:"
             }
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_F80A3283990C41B7A73C5FDAACE6FA64"
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_90F24506E82041BABC8C41D2E24586D5"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:TRUE"
@@ -3826,7 +3721,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_0EDB427873744218ACBF6199C4916A0F"
             {
-            "SourcePath" = "8:..\\..\\debug_py25\\XVR2Piavca.dll"
+            "SourcePath" = "8:..\\XVR2Piavca\\Release_Py25\\XVR2Piavca.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_2C01534358BC499DB5A587789363CFB1"
@@ -4076,6 +3971,9 @@
                 {
                 }
             }
+        }
+        "VJSharpPlugin"
+        {
         }
     }
 }

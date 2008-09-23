@@ -79,6 +79,19 @@ class ParameterWindow(wx.Panel):
 					ctrl = QuatParamEntry(param_name, motionproxy, self)
 				if valtype == Piavca.MotionMask:
 					ctrl = MaskParamEntry(param_name, motionproxy, self)
+				if valtype == list:
+					print "got a multi-type", param_name
+					print parameters[param_name]
+					if len(parameters[param_name]) > 0:
+						print "it has members", len(parameters[param_name]) 
+						innervaltype = type(parameters[param_name][0][2])
+						print "type of members", innervaltype
+						if innervaltype == float:
+							ctrl = FloatListParamEntry(param_name, motionproxy, self)
+						if innervaltype == Piavca.Vec:
+							ctrl = VecListParamEntry(param_name, motionproxy, self)
+						if innervaltype == Piavca.Quat:
+							ctrl = QuatListParamEntry(param_name, motionproxy, self)
 				
 				if ctrl:
 					self.addChildControl(param_name, ctrl)

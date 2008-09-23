@@ -42,7 +42,7 @@
 namespace Piavca
 {
 
-//! a MultiMotionCombiner where the client can choose which motion is played
+//! a ChoiceMotion where the the choices are played sequentially one after the other
 class SequentialChoiceMotion : public ChoiceMotion
 {
 public:

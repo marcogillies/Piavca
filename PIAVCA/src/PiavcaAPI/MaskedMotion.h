@@ -91,6 +91,9 @@ public:
 			return true;
 	};
 
+	//! get the type of the track corresponding to an iterator
+	int getTrackType(int trackId)const;
+
 	virtual Motion *clone(){return new MaskedMotion(*this);};
 
 	//! returns the name of the type

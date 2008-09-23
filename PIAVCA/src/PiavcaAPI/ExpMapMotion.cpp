@@ -1,5 +1,5 @@
 /* ***** BEGIN LICENSE BLOCK *****
- * Version: MPL 1.1
+ * Version: MPL 1.1/GPL 2.0/LGPL 2.1
  *
  * The contents of this file are subject to the Mozilla Public License Version
  * 1.1 (the "License"); you may not use this file except in compliance with
@@ -11,11 +11,13 @@
  * for the specific language governing rights and limitations under the
  * License.
  *
- * The Original Code is OverrideMotion.h.
+ * The Original Code is ExpMapMotion.cpp.
  *
  * The Initial Developer of the Original Code is Marco (Mark) Gillies.
- * Portions created by the Initial Developer are Copyright (C) BT plc. 2008
- * All Rights Reserved.
+ * Portions created by the Initial Developer are Copyright (C) 2008
+ * the Initial Developer. All Rights Reserved.
+ *
+ * Contributor(s):
  *
  * Alternatively, the contents of this file may be used under the terms of
  * either the GNU General Public License Version 2 or later (the "GPL"), or
@@ -31,43 +33,50 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
+#include "ExpMapMotion.h"
+#include "PiavcaCore.h"
 
-#ifndef OVERRIDE_MOTION_H
-#define OVERRIDE_MOTION_H
+using namespace Piavca;
 
-#include "TwoMotionCombiner.h"
-
-
-namespace Piavca
+ExpMapMotion::ExpMapMotion(Motion *mot)
+:MotionFilter(mot)
 {
-	//! Plays the first motion on all joints for which it is defined, and the second on all others
-    class PIAVCA_DECL OverrideMotion : public TwoMotionCombiner
-	{
-	public:
-		OverrideMotion(Motion *m1=NULL, Motion *m2=NULL) 
-			:TwoMotionCombiner(m1,m2){};
-		OverrideMotion(const OverrideMotion &om)
-			:TwoMotionCombiner(om){};
+	tangentSpaces = std::vector<TangentSpace>(Piavca::Core::getCore()->getMaxJointId()+1, TangentSpace());
+}
 
-		virtual Motion *clone(){return new OverrideMotion(*this);};
-
-		//! returns the name of the type
-		Piavca::tstring getClassName(){return "OverrideMotion";};
-
-		//! casts a motion to this type
-		static OverrideMotion *castToThisType(Motion *m){return dynamic_cast<OverrideMotion *>(m);};
-
-		int getTrackType(int trackId)const ;
-	    
-		//! calculates the values of a keyframe
-	    virtual float getFloatValueAtTimeInternal (int trackId, float time);
-	    
-	    //! calculates the values of a keyframe
-	   virtual Vec   getVecValueAtTimeInternal   (int trackId, float time);
-	    
-	    //! calculates the values of a keyframe
-	    virtual Quat  getQuatValueAtTimeInternal  (int trackId, float time);
-	};
+ExpMapMotion::ExpMapMotion(std::vector<TangentSpace> tangents, Motion *mot)
+:MotionFilter(mot), tangentSpaces(tangents)
+{
+	
 };
 
-#endif //OVERRIDE_MOTION_H
+ExpMapMotion::ExpMapMotion(const ExpMapMotion &em)
+:MotionFilter(em), tangentSpaces(em.tangentSpaces)
+{
+	
+};
+
+int ExpMapMotion::getTrackType(int trackId)const
+{
+	int mottype = MotionFilter::getTrackType(trackId);
+	int newtype = 0;
+	if (mottype & FLOAT_TYPE)
+		newtype |= FLOAT_TYPE;
+	//if (mottype & QUAT_TYPE && mottype & VEC_TYPE)
+	//{
+	//	newtype |= QUAT_TYPE;
+	//	newtype |= VEC_TYPE;
+	//}
+	if (mottype & QUAT_TYPE || mottype & VEC_TYPE)
+		newtype |= QUAT_TYPE;
+	return newtype;
+}
+
+Quat ExpMapMotion::getQuatValueAtTimeInternal (int trackId, float time)
+{
+	int mottype = MotionFilter::getTrackType(trackId);
+	if (mottype & VEC_TYPE)
+		return tangentSpaces[trackId].expMap(MotionFilter::getVecValueAtTimeInternal(trackId, time));
+	else if (mottype & QUAT_TYPE)
+		return MotionFilter::getQuatValueAtTimeInternal(trackId, time);
+}

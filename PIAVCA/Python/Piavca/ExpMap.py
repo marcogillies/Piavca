@@ -181,7 +181,83 @@ class TangentSpace:
 
 	def mean(self):
 		return self.coordAxes[0]
+		
+class TangentSpaceMotion(Piavca.MotionFilter):
+	def __init__(self, mot = None, tangentSpace = None):
+		print "creating TangentSpaceMotion", mot
+		if mot != None:
+			Piavca.MotionFilter.__init__(self, mot)
+		else:
+			Piavca.MotionFilter.__init__(self)
+		self.__disown__()
+		
+		self.setTangentSpace(tangentSpace)
+			
+	def setTangentSpace(self, tangentSpace):
+		if isinstance(tangentSpace, TangentSpace) or type(tangentSpace) == type(None):
+			self.tangentSpace = tangentSpace
+		else:
+			self.tangentSpace = TangentSpace(tangentSpace)
 
+class ExpMapMotion (TangentSpaceMotion):
+	def __init__(self, mot = None, tangentSpace = None):
+		print "creating expmapmotion", mot
+		TangentSpaceMotion.__init__(self, mot, tangentSpace)
+		
+	def clone(self):
+		#return self
+		print "Cloning Exp Map", self.tangentSpace, type(self.tangentSpace)
+		newMot = ExpMapMotion(self.getMotion().clone(), self.tangentSpace)
+		print newMot
+		return newMot
+			
+	def getTrackType(self, trackId):
+		mottype = Piavca.MotionFilter.getTrackType(self, trackId)
+		newtype = 0
+		if mottype & Piavca.FLOAT_TYPE:
+			newtype |= Piavca.FLOAT_TYPE
+		if mottype & Piavca.QUAT_TYPE and mottype & Piavca.VEC_TYPE:
+			newtype |= Piavca.QUAT_TYPE
+			newtype |= Piavca.VEC_TYPE
+		elif mottype & Piavca.QUAT_TYPE or mottype & Piavca.VEC_TYPE:
+			newtype |= Piavca.QUAT_TYPE
+		return newtype
+			
+	def getQuatValueAtTimeInternal(self, trackId, time):
+		mottype = Piavca.MotionFilter.getTrackType(self, trackId)
+		if mottype & Piavca.QUAT_TYPE:
+			return Piavca.MotionFilter.getQuatValueAtTimeInternal(self, trackId, time)
+		elif mottype & Piavca.VEC_TYPE:
+			return self.tangentSpace.expMap(Piavca.MotionFilter.getVecValueAtTimeInternal(self, trackId, time))
 
+class LogMapMotion (TangentSpaceMotion):
+	def __init__(self, mot = None, tangentSpace = None):
+		TangentSpaceMotion.__init__(self, mot, tangentSpace)
+		
+	def clone(self):
+		#return self
+		print self.tangentSpace, type(self.tangentSpace)
+		newMot = LogMapMotion(self.getMotion().clone(), self.tangentSpace)
+		return newMot
+			
+	def getTrackType(self, trackId):
+		mottype = Piavca.MotionFilter.getTrackType(self, trackId)
+		newtype = 0
+		if mottype & Piavca.FLOAT_TYPE:
+			newtype |= Piavca.FLOAT_TYPE
+		if mottype & Piavca.QUAT_TYPE and mottype & Piavca.VEC_TYPE:
+			newtype |= Piavca.QUAT_TYPE
+			newtype |= Piavca.VEC_TYPE
+		elif mottype & Piavca.QUAT_TYPE or mottype & Piavca.VEC_TYPE:
+			newtype |= Piavca.VEC_TYPE
+		return newtype
+			
+	def getVecValueAtTimeInternal(self, trackId, time):
+		mottype = Piavca.MotionFilter.getTrackType(self, trackId)
+		if mottype & Piavca.VEC_TYPE:
+			return Piavca.MotionFilter.getVecValueAtTimeInternal(self, trackId, time)
+		elif mottype & Piavca.QUAT_TYPE:
+			return self.tangentSpace.logMap(Piavca.MotionFilter.getQuatValueAtTimeInternal(self, trackId, time))
+	
 
 	

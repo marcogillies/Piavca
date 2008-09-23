@@ -223,12 +223,40 @@ public:
 		}
 		return NULL;
 	}
+		
+	virtual void preFrame(float time)
+	{
+		for(MotionVec::size_type i = 0; i < mots.size(); i++)
+		{
+			mots[i]->preFrame(time);
+		}
+	}
+
+	virtual void setStartTime(float time)
+	{
+		Motion::setStartTime(time);
+		for(MotionVec::size_type i = 0; i < mots.size(); i++)
+		{
+			mots[i]->setStartTime(time);
+		}
+	}
+
+	//! does any resetting needed 
+	bool reset()
+	{
+		bool retVal = true;
+		for(MotionVec::size_type i = 0; i < mots.size(); i++)
+		{
+			retVal = retVal & mots[i]->reset();
+		}
+		return retVal;
+	};
 
 	
 	//! send a message to sub motions that an "event" happened
 	virtual void event(tstring ev)
 	{
-		MotionFilter::event(ev);
+		Motion::event(ev);
 		//std::cout << "event in motion combiner " << getName() << std::endl;
 		for(MotionVec::size_type i = 0; i < mots.size(); i++)
 		{
@@ -238,14 +266,57 @@ public:
 
 	virtual void cleanRecursionState()
 	{
-		MotionFilter::cleanRecursionState();
+		Motion::cleanRecursionState();
 		for(MotionVec::size_type i = 0; i < mots.size(); i++)
 		{
 			mots[i]->cleanRecursionState();
 		}
 	}
 
-	
+	//! gets the length of the motion in seconds
+	float getMotionLength() const
+	{
+		float max = 0.0;
+		for(MotionVec::size_type i = 0; i < mots.size(); i++)
+		{
+			float val = mots[i]->getMotionLength();
+			if (val > max)
+				max = val;
+		}
+		return max;
+	};
+
+	//! whether it is a face or body motion
+	virtual bool isFacial()
+	{
+		bool retVal = false;
+		for(MotionVec::size_type i = 0; i < mots.size(); i++)
+		{
+			retVal = retVal & mots[i]->isFacial();
+		}
+		return retVal;
+	};	
+
+	//! given an iterator tests whether it actually points to anything or if its null
+	virtual bool isNull(int trackId)const 
+	{
+		bool retVal = true;
+		for(MotionVec::size_type i = 0; i < mots.size(); i++)
+		{
+			retVal = retVal & mots[i]->isNull(trackId);
+		}
+		return retVal;
+	};
+	//! get the type of the track corresponding to an iterator
+	int getTrackType(int trackId)const 
+	{
+		int retVal = 0;
+		for(MotionVec::size_type i = 0; i < mots.size(); i++)
+		{
+			retVal = retVal | mots[i]->getTrackType(trackId);
+		}
+		return retVal;
+	};
 };
 
 };

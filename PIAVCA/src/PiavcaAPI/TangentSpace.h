@@ -11,10 +11,10 @@
  * for the specific language governing rights and limitations under the
  * License.
  *
- * The Original Code is OverrideMotion.h.
+ * The Original Code is TangentSpace.h.
  *
  * The Initial Developer of the Original Code is Marco (Mark) Gillies.
- * Portions created by the Initial Developer are Copyright (C) BT plc. 2008
+ * Portions created by the Initial Developer are Copyright (C) Marco Gillies 2008
  * All Rights Reserved.
  *
  * Alternatively, the contents of this file may be used under the terms of
@@ -32,42 +32,38 @@
  * ***** END LICENSE BLOCK ***** */
 
 
-#ifndef OVERRIDE_MOTION_H
-#define OVERRIDE_MOTION_H
+#ifndef TANGENTSPACE_H
+#define TANGENTSPACE_H
 
-#include "TwoMotionCombiner.h"
-
+#include "Quat.h"
+#include "Motion.h"
 
 namespace Piavca
 {
-	//! Plays the first motion on all joints for which it is defined, and the second on all others
-    class PIAVCA_DECL OverrideMotion : public TwoMotionCombiner
+
+	class PIAVCA_DECL TangentSpace
 	{
+		std::vector <Quat> coordAxes;
+		Quat centre;
+
+		void calcCoordAxes(const Quat &q);
+		float dot(const Quat &q1, const Quat &q2);
+		Quat cross(const Quat &q1, const Quat &q2, const Quat &q3);
+
 	public:
-		OverrideMotion(Motion *m1=NULL, Motion *m2=NULL) 
-			:TwoMotionCombiner(m1,m2){};
-		OverrideMotion(const OverrideMotion &om)
-			:TwoMotionCombiner(om){};
+		TangentSpace(const Quat &q = Quat());
+		TangentSpace(std::vector<Quat> qs);
+		TangentSpace(const TangentSpace &ts);
 
-		virtual Motion *clone(){return new OverrideMotion(*this);};
+		Quat expMap(const Vec  &v);
+		Vec  logMap(const Quat &q);
 
-		//! returns the name of the type
-		Piavca::tstring getClassName(){return "OverrideMotion";};
+		Quat mean();
 
-		//! casts a motion to this type
-		static OverrideMotion *castToThisType(Motion *m){return dynamic_cast<OverrideMotion *>(m);};
-
-		int getTrackType(int trackId)const ;
-	    
-		//! calculates the values of a keyframe
-	    virtual float getFloatValueAtTimeInternal (int trackId, float time);
-	    
-	    //! calculates the values of a keyframe
-	   virtual Vec   getVecValueAtTimeInternal   (int trackId, float time);
-	    
-	    //! calculates the values of a keyframe
-	    virtual Quat  getQuatValueAtTimeInternal  (int trackId, float time);
+		//! current this assumes you only want tangent spaces at body joints
+		static std::vector<TangentSpace> calculateTangentSpacesFromMotionAverages(std::vector<Motion *> motions, float time = 0.0f);
 	};
 };
 
-#endif //OVERRIDE_MOTION_H
+
+#endif //TANGENTSPACE_H

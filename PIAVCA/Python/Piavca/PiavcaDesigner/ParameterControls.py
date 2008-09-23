@@ -41,6 +41,8 @@ class ParamEntry(wx.Panel):
 			if val is not None:
 				self.motionproxy.setParameterVal(self.param_name, val)
 				self.motionproxy.backend.timeUpdate()
+		elif hasattr(self.parent, "OnTextEntry"):
+			self.parent.OnTextEntry(event)
 		print "paramentry:OnTextEntry:end"
 		
 	def setValue(self, val):
@@ -290,3 +292,45 @@ class MaskParamEntry(JointSetParamEntry):
 			jointid = core.getTrackId(name)
 			mask.setMask(jointid, val)
 		return mask
+		
+class ListParamEntry(ParamEntry):
+	
+	def initSubtype(self):	
+		self.choice = wx.Choice(self, -1, choices=[])
+		self.Bind(wx.EVT_CHOICE, self.OnChoice, self.choice)
+		self.sizer.Add(self.choice, 1, wx.EXPAND)
+		self.subWidget = self.getSubWidget()
+		self.sizer.Add(self.subWidget, 1, wx.EXPAND)
+		
+	def getItemId(self):
+		selection = self.choice.GetSelection()
+		return self.indices[selection]
+		
+	def OnChoice(self, e):
+		print "selection ", self.getItemId()
+		self.subWidget.setValue(self.vals[self.getItemId()])
+		
+	def setValue(self, val):
+		print val
+		self.indices = [v[0] for v in val]
+		names = [v[1] for v in val]
+		self.vals = [v[2] for v in val]
+		self.choice.SetItems(names)
+		if len(names) > 0:
+			self.choice.Select(0)
+		
+	def getValue(self):
+		return (self.getItemId(), self.subWidget.getValue())
+		
+class FloatListParamEntry(ListParamEntry):
+	def getSubWidget(self):
+		return FloatParamEntry("", None, self)
+		
+class VecListParamEntry(ListParamEntry):
+	def getSubWidget(self):
+		return VecParamEntry("", None, self)
+		
+class QuatListParamEntry(ListParamEntry):
+	def getSubWidget(self):
+		return QuatParamEntry("", None, self)
+		

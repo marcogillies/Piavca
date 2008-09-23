@@ -56,6 +56,7 @@
 #include "MotionTransition.h"
 #include "MathsUtils.h"
 #include "MotionAdder.h"
+#include "MultiBlend.h"
 #include "Subtract.h"
 #include "MotionFilter.h"
 #include "Quat.h"
@@ -103,5 +104,9 @@
 #include "TimeRangeMotion.h"
 #include "TimeWarp.h"
 #include "OverrideMotion.h"
+#include "TangentSpace.h"
+#include "ExpMapMotion.h"
+#include "LogMapMotion.h"
+
 
 

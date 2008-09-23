@@ -53,6 +53,7 @@ class AutoCreatorsWindow(wx.Panel):
 	def getMotion(self, evt):
 		if self.creator:
 			mot = self.creator.getMotion()
+			print "created motion", mot
 			self.backend.addMotion(mot)
 		
 	def update(self):

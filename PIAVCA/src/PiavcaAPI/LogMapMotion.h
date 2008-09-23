@@ -1,5 +1,5 @@
 /* ***** BEGIN LICENSE BLOCK *****
- * Version: MPL 1.1
+ * Version: MPL 1.1/GPL 2.0/LGPL 2.1
  *
  * The contents of this file are subject to the Mozilla Public License Version
  * 1.1 (the "License"); you may not use this file except in compliance with
@@ -11,11 +11,13 @@
  * for the specific language governing rights and limitations under the
  * License.
  *
- * The Original Code is OverrideMotion.h.
+ * The Original Code is LogMapMotion.h.
  *
  * The Initial Developer of the Original Code is Marco (Mark) Gillies.
- * Portions created by the Initial Developer are Copyright (C) BT plc. 2008
- * All Rights Reserved.
+ * Portions created by the Initial Developer are Copyright (C) 2008
+ * the Initial Developer. All Rights Reserved.
+ *
+ * Contributor(s):
  *
  * Alternatively, the contents of this file may be used under the terms of
  * either the GNU General Public License Version 2 or later (the "GPL"), or
@@ -32,42 +34,38 @@
  * ***** END LICENSE BLOCK ***** */
 
 
-#ifndef OVERRIDE_MOTION_H
-#define OVERRIDE_MOTION_H
+#ifndef LOGMAPMOTION_H
+#define LOGMAPMOTION_H
 
-#include "TwoMotionCombiner.h"
-
+#include "MotionFilter.h"
+#include "TangentSpace.h"
 
 namespace Piavca
 {
-	//! Plays the first motion on all joints for which it is defined, and the second on all others
-    class PIAVCA_DECL OverrideMotion : public TwoMotionCombiner
-	{
-	public:
-		OverrideMotion(Motion *m1=NULL, Motion *m2=NULL) 
-			:TwoMotionCombiner(m1,m2){};
-		OverrideMotion(const OverrideMotion &om)
-			:TwoMotionCombiner(om){};
 
-		virtual Motion *clone(){return new OverrideMotion(*this);};
+//! performs an exponential map on a motion to convert it to a linear space
+class PIAVCA_DECL LogMapMotion : public MotionFilter
+{
+	std::vector<TangentSpace> tangentSpaces;
+public:
+	LogMapMotion(Motion *mot=NULL);
+	LogMapMotion(std::vector<TangentSpace> tangents, Motion *mot=NULL);
+	LogMapMotion(const LogMapMotion &em);
 
-		//! returns the name of the type
-		Piavca::tstring getClassName(){return "OverrideMotion";};
+	virtual Motion *clone(){return new LogMapMotion(*this);};
 
-		//! casts a motion to this type
-		static OverrideMotion *castToThisType(Motion *m){return dynamic_cast<OverrideMotion *>(m);};
+	//! returns the name of the type
+	Piavca::tstring getClassName(){return "LogMapMotion";};
 
-		int getTrackType(int trackId)const ;
-	    
-		//! calculates the values of a keyframe
-	    virtual float getFloatValueAtTimeInternal (int trackId, float time);
-	    
-	    //! calculates the values of a keyframe
-	   virtual Vec   getVecValueAtTimeInternal   (int trackId, float time);
-	    
-	    //! calculates the values of a keyframe
-	    virtual Quat  getQuatValueAtTimeInternal  (int trackId, float time);
-	};
+	//! casts a motion to this type
+	static LogMapMotion *castToThisType(Motion *m){return dynamic_cast<LogMapMotion *>(m);};
+	
+	//! get the type of the track corresponding to an iterator
+	int getTrackType(int trackId)const;
+
+	virtual Vec getVecValueAtTimeInternal (int trackId, float time);
+};
 };
 
-#endif //OVERRIDE_MOTION_H
+
+#endif //LOGMAPMOTION_H

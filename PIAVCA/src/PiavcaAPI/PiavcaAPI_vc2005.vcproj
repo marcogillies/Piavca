@@ -587,11 +587,19 @@
 				>
 			</File>
 			<File
+				RelativePath=".\ExpMapMotion.cpp"
+				>
+			</File>
+			<File
 				RelativePath="Hermite.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\KeyframeMotion.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\LogMapMotion.cpp"
 				>
 			</File>
 			<File
@@ -612,6 +620,10 @@
 			</File>
 			<File
 				RelativePath=".\MotionTransition.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\MultiBlend.cpp"
 				>
 			</File>
 			<File
@@ -683,6 +695,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\TangentSpace.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\TimeRangeMotion.cpp"
 				>
 			</File>
@@ -748,11 +764,19 @@
 				>
 			</File>
 			<File
+				RelativePath=".\ExpMapMotion.h"
+				>
+			</File>
+			<File
 				RelativePath="Hermite.h"
 				>
 			</File>
 			<File
 				RelativePath=".\KeyframeMotion.h"
+				>
+			</File>
+			<File
+				RelativePath=".\LogMapMotion.h"
 				>
 			</File>
 			<File
@@ -789,6 +813,10 @@
 			</File>
 			<File
 				RelativePath=".\MotionTransition.h"
+				>
+			</File>
+			<File
+				RelativePath=".\MultiBlend.h"
 				>
 			</File>
 			<File
@@ -901,6 +929,10 @@
 			</File>
 			<File
 				RelativePath=".\Subtract.h"
+				>
+			</File>
+			<File
+				RelativePath=".\TangentSpace.h"
 				>
 			</File>
 			<File

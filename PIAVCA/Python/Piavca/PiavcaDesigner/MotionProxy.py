@@ -84,35 +84,110 @@ class MotionProxy:
 		print "getting parameters"   
 		mtype = type(self.motion)
 		for key in dir(mtype):
-			if key[:3] == "get":
-				print key, "set" + key[3:]
-				if hasattr(self.motion, "set" + key[3:]):
-					print key
-					if key[3:len("Motion")+3] == "Motion":
-						print "found Motion in paramname"
-						continue
-					method = getattr(self.motion, key)
-					print "got method"
-					value = method()
-					print "got value"
-					print key[3:], value
-					parameters[key[3:]] = value
+			if key[:3] == "get" or key[:3] == "set":
+				print "parameter: ", key
+				if parameters.has_key(key[3:]):
+					continue
+				val = self.getParameterVal(key[3:])
+				if type(val) != type(None):
+					parameters[key[3:]] = val
+			
+			# if key[:3] == "get":
+				# print key, "set" + key[3:]
+				# if hasattr(self.motion, "set" + key[3:]):
+					# print key
+					# if key[3:len("Motion")+3] == "Motion":
+						# print "found Motion in paramname"
+						# continue
+					# if key[3:len("Weight")+3] == "Weight":
+						# weights = [0 for i in range(self.motion.getNumMotions())]
+						# for i in range(self.motion.getNumMotions()):
+							# motName = self.motion.getMotion(i).getName()
+							# weights[i] = (motName, self.motion.getWeight(i))
+						# parameters[key[3:]] = weights
+					# else:
+						# method = getattr(self.motion, key)
+						# print "got method"
+						# value = method()
+						# print "got value"
+						# print key[3:], value
+						# parameters[key[3:]] = value
+			# if key == "setFloatValue" or key == "setQuatValue" or key == "setVecValue":
+				# core = Piavca.Core.getCore()
+				# names = [core.getTrackName(i) for i in range(core.getMinTrackId(), core.getMaxTrackId()+1)]
+				# if key == "setFloatValue":
+					# vals = [0.0 for n in names]
+					# for i, n in enumerate(names):
+						# if (not self.motion.isNull(i)) and self.motion.getTrackType(i) & Piavca.FLOAT_TYPE:
+							# vals[i] = self.motion.getFloatValueAtTime(i,0)
+				# if key == "setVecValue":
+					# vals = [Piavca.Vec() for n in names]
+					# for i, n in enumerate(names):
+						# if (not self.motion.isNull(i)) and self.motion.getTrackType(i) & Piavca.VEC_TYPE:
+							# vals[i] = self.motion.getVecValueAtTime(i,0)
+				# if key == "setQuatValue":
+					# vals = [Piavca.Quat() for n in names]
+					# for i, n in enumerate(names):
+						# if (not self.motion.isNull(i)) and self.motion.getTrackType(i) & Piavca.QUAT_TYPE:
+							# vals[i] = self.motion.getQuattValueAtTime(i,0)
+			
+				# parameters[key[3:]] = zip(names, vals)
 		print "finished getting parameters"
 		return parameters
 	
 	def getParameterVal(self, name):
 		if hasattr(self.motion, "get" + name):
-			method = getattr(self.motion, "get" + name)
-			val = method()
-			#print "getting ", name, "=", val
-			return val
+			print name, "set" + name
+			if hasattr(self.motion, "set" + name):
+				print name
+				if name[:len("Motion")] == "Motion":
+					print "found Motion in paramname"
+					return None
+				if name[:len("Weight")] == "Weight":
+					weights = [0 for i in range(self.motion.getNumMotions())]
+					for i in range(self.motion.getNumMotions()):
+						motName = self.motion.getMotion(i).getName()
+						weights[i] = (i, motName, self.motion.getWeight(i))
+					return weights
+				else:
+					method = getattr(self.motion, "get" + name)
+					print "got method"
+					value = method()
+					print "got value"
+					print name, value
+					return value
+		if name == "FloatValue" or name == "QuatValue" or name == "VecValue":
+			core = Piavca.Core.getCore()
+			indices = [i for i in range(core.getMinTrackId(), core.getMaxTrackId()+1)]
+			names = [core.getTrackName(i) for i in indices]
+			if name == "FloatValue":
+				vals = [0.0 for i in indices]
+				for i, track in enumerate(indices):
+					if (not self.motion.isNull(track)) and self.motion.getTrackType(track) & Piavca.FLOAT_TYPE:
+						vals[i] = self.motion.getFloatValueAtTime(track,0)
+			if name == "VecValue":
+				vals = [Piavca.Vec() for i in indices]
+				for i, track in enumerate(indices):
+					if (not self.motion.isNull(track)) and self.motion.getTrackType(track) & Piavca.VEC_TYPE:
+						vals[i] = self.motion.getVecValueAtTime(track,0)
+			if name == "QuatValue":
+				vals = [Piavca.Quat() for i in indices]
+				for i, track in enumerate(indices):
+					if (not self.motion.isNull(track)) and self.motion.getTrackType(track) & Piavca.QUAT_TYPE:
+						vals[i] = self.motion.getQuattValueAtTime(track,0)
+		
+			return zip(indices, names, vals)
+		
 		else:
 			return None
 		
 	def setParameterVal(self, name, val):
 		#print "setting ", name, "=", val, type(val)
 		method = getattr(self.motion, "set" + name)
-		return method(val)
+		if type(val) == tuple:
+			return method(val[0], val[1])
+		else:
+			return method(val)
 	
 	def setRange(self):
 		start, end = self.backend.getRange()

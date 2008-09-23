@@ -46,6 +46,7 @@ from FSM import FSM
 from ParameterMotion import ParameterMotion
 from PositionHandler import PositionResponse, PositionShiftResponse	
 from AudioMotion import AudioMotion
+# from ExpMap import *
 try:
 	from EigenMotion import *
 	from MotionGraph import *

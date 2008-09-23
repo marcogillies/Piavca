@@ -199,6 +199,16 @@ StringVector MaskedMotion::getMotionMask()
 	return v;
 };
 */
+
+int MaskedMotion::getTrackType(int trackId)const 
+{
+	if(filterMot && !isNull(trackId))
+		return filterMot->getTrackType(trackId);
+	else
+		return NULL_TYPE;
+};
+
+
 float MaskedMotion::getFloatValueAtTimeInternal (int trackId, float time)
 {
 	// if motion1 has its mask as true then play it 

@@ -159,6 +159,8 @@ class type_info;
 %typemap(typecheck) std::string = char *;
 %typemap(typecheck) std::string& = char *;
 
+
+
 %typemap(out) float&
 {
 	$result = PyFloat_FromDouble(*$1);
@@ -228,6 +230,24 @@ class type_info;
 	}
 }
 */
+
+
+%typemap(typecheck,precedence=SWIG_TYPECHECK_LIST) std::vector<Piavca::Motion *> {
+   $1 = PyList_Check($input) ? 1 : 0;
+}
+
+%typemap(in) std::vector<Piavca::Motion *>
+{
+	PyObject *py_mot;
+	$1 = std::vector<Piavca::Motion *>();
+	for(int i = 0; i < PyList_Size($input); i++)
+	{
+		Motion *m;
+		py_mot = PyList_GetItem($input,i);
+		if ((SWIG_ConvertPtr(py_mot,(void **) &(m), SWIGTYPE_p_Piavca__Motion,SWIG_POINTER_EXCEPTION | 0 )) == -1) SWIG_fail;
+		$1.push_back(m);
+	}
+}
 
 %typemap(out) std::vector< std::pair<TString, float> > 
 {
@@ -415,7 +435,8 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %feature("director") TimeOffset;            
 %feature("director") TurnMotion;            
 %feature("director") BlendBetween;      
-%feature("director") MotionAdder;     
+%feature("director") MotionAdder;      
+%feature("director") MultiBlend;     
 %feature("director") Subtract;        
 %feature("director") MaskedMotion;      
 %feature("director") ChoiceLoopMotion;   
@@ -435,6 +456,8 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 //%feature("director") DiadicGazeMotion;
 %feature("director") TimeCallback;    
 %feature("director") AvatarTimeCallback;    
+%feature("director") ExpMapMotion;      
+%feature("director") LogMapMotion;    
 
 
 %include "piavca_doc.i"
@@ -490,6 +513,7 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %include "PiavcaAPI/AvatarPostureBlend.h"
 %include "PiavcaAPI/BlendBetween.h"
 %include "PiavcaAPI/MotionAdder.h"
+%include "PiavcaAPI/MultiBlend.h"
 %include "PiavcaAPI/Subtract.h"
 %include "PiavcaAPI/MotionTransition.h"
 %include "PiavcaAPI/ChoiceMotion.h"
@@ -515,5 +539,8 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %include "PiavcaAPI/TimeWarp.h"
 //%include "PiavcaAPI/DiadicGazeMotion.h"
 %include "PiavcaAPI/OverrideMotion.h"
+%include "PiavcaAPI/TangentSpace.h"
+%include "PiavcaAPI/ExpMapMotion.h"
+%include "PiavcaAPI/LogMapMotion.h"
 
 

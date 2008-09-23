@@ -36,6 +36,17 @@
 
 using namespace Piavca;
 
+int OverrideMotion::getTrackType(int trackId)const 
+{
+	if(mot1 && !mot1->isNull(trackId))
+		return mot1->getTrackType(trackId);
+	else
+		if(mot2 && !mot2->isNull(trackId))
+			return mot2->getTrackType(trackId);
+		else 
+			return NULL_TYPE;
+};
+
 float OverrideMotion::getFloatValueAtTimeInternal (int trackId, float time)
 {
 	// if this track doesn't exist in mot2 use mot1 otherwise interpolated between them

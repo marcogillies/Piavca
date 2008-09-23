@@ -106,7 +106,7 @@ class BackEnd:
 			self.submotion = self.motion
 			#print "avatar", self.avatar
 			if self.avatar:
-				print "playing", self.avatar, self.motion
+				print "playing", self.avatar, self.motion.getMotion()
 				self.avatar.playMotionDirect(self.motion.getMotion())
 			self.resetRange()
 			self.update()

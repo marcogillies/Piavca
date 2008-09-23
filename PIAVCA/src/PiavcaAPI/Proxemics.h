@@ -44,7 +44,7 @@
 namespace Piavca
 {
 
-//! a MultiMotionCombiner that implements proxemics behaviour.
+//! a ChoiceMotion that implements proxemics behaviour.
 /*!
  *	Proxemics consists in maintianing a desired personal distance
  *  to another avatar (or group of avatars) by stepping forwards or
