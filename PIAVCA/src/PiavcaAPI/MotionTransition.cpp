@@ -121,6 +121,9 @@ Vec  MotionTransition::getCombinedVecValue (int trackId, float time)
 	if(!mot1->isNull(trackId) && (mot1->getTrackType(trackId) & VEC_TYPE))
 		v1 = mot1->getVecValueAtTime(trackId, time);//transitionTime1);//+time);
     Vec v2 = mot2->getVecValueAtTime(trackId, time);//transitionTime2);//-window+time);
+
+	//return v2;
+
     if (fabs(window) < 0.0001)
 		t = 0;
 	else
@@ -135,11 +138,15 @@ Quat MotionTransition::getCombinedQuatValue (int trackId, float time)
 	float t = time - getStartTime();
 	Quat q1 = mot1->getQuatValueAtTime(trackId, time);//transitionTime1);//+time);
     Quat q2 = mot2->getQuatValueAtTime(trackId, time);//transitionTime2);//-window+time);
+
+	//return q2;
+
 	//Quat q1 = mot1->getQuatValueAtTime(trackId, transitionTime1+t);//transitionTime1);//+time);
     //Quat q2 = mot2->getQuatValueAtTime(trackId, transitionTime2+t-window);//transitionTime2);//-window+time);
-	//if (trackId == 6)
+	//if (trackId == root_orientation_id)
 	//{
 	//	std::cout << "motion transition " << q1 << " " << q2 << " " << transitionTime2-window+time << " " << t << " ";
+	//	return q2;
 	//}
 	if (fabs(window) < 0.0001)
 		t = 0;

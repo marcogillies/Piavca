@@ -78,6 +78,7 @@ namespace Piavca
 			:MotionFilter(r), 
 			start_position(r.start_position), 
 			start_orientation(r.start_orientation), posOffset(r.posOffset),
+			originalStart(r.originalStart), oriOffset(r.oriOffset),
 			maintainUp(r.maintainUp), rotateAboutUp(r.rotateAboutUp), upDirection(r.upDirection)
 		{
 		};

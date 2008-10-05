@@ -329,7 +329,7 @@ float Quat::Zangle()
 
 float Quat::getAngleAboutAxis(Vec axis)
 {
-	// get two directions perpendicular to axis
+	// a direction perpendicular to axis
 	Vec perp1;
 	if (fabs(axis[0]) < 0.00001)
 		perp1 = Vec(0.0, axis[2], -axis[1]);

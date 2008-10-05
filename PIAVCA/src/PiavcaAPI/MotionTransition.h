@@ -116,10 +116,10 @@ namespace Piavca
 
 		virtual void setStartTime(float time);
 
-		float getMotionLength() const
-		{
-			return window;
-		}
+		//float getMotionLength() const
+		//{
+		//	return window;
+		//}
 
 	    
 

@@ -299,14 +299,14 @@ bool ChoiceMotion::reset()
 
 		//Motion *oldmot = getMotion();
 		float t1 = Piavca::Core::getCore()->getTime();
-		float t2 = 0.0f;
-		MotionTransition *trans = new SavedFramesTransition(this, mot, t1, t2, windowLength);
-		SubMotion *remainder = new SubMotion();
-		remainder->setMotion(mot);
-		remainder->setStart(windowLength);
-		//remainder->setEnd(mot->getMotionLength() - windowLength);
-		mot = new Sequence(trans, remainder);
-		//mot = trans;
+		float t2 = windowLength;
+		MotionTransition *trans = new SavedFramesTransition(this, mot/*->clone()*/, t1, t2, windowLength);
+		//SubMotion *remainder = new SubMotion();
+		//remainder->setMotion(mot);
+		//remainder->setStart(windowLength);
+		// //remainder->setEnd(mot->getMotionLength() - windowLength);
+		//mot = new Sequence(trans, remainder);
+		mot = trans;
 	};
 	
 	setMotion(mot);
