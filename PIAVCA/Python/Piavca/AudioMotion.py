@@ -74,6 +74,7 @@ class AudioMotion(Piavca.Motion):
 	def reset(self):
 		Piavca.Motion.reset(self)
 		self.playing = False
+		return True
 		
 	def isNull(self, trackid):
 		return True
