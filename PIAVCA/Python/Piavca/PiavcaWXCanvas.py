@@ -196,7 +196,8 @@ if glPresent:
 
 			# set viewing projection
 			glMatrixMode(GL_PROJECTION)
-			glFrustum(-0.5, 0.5, -0.5, 0.5, 1.0, 1000.0)
+			# sglFrustum(-0.5, 0.5, -0.5, 0.5, 0.1, 100.0)
+			glFrustum(-0.005, 0.005, -0.005, 0.005, 0.01, 100.0)
 
 			glMatrixMode(GL_MODELVIEW)
 
