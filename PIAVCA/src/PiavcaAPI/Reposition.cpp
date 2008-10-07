@@ -177,7 +177,8 @@ Quat Reposition::getQuatValueAtTimeInternal(int trackId, float time)
 		if(!filterMot || filterMot->isNull(trackId))
 			return start_orientation;
 		//return filterMot->getQuatValueAtTime(trackId, time);
-		Quat offs = oriOffset;
+		Quat offs(oriOffset);
+		offs.normalise();
 		if (rotateAboutUp)
 		{
 			offs.projectToAxis(upDirection);

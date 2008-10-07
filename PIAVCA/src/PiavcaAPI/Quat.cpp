@@ -347,16 +347,42 @@ float Quat::getAngleAboutAxis(Vec axis)
 	
 	// get the components along perp1 and perp2
 	float a = perp1.dot(rotated);
-	//float b = perp2.dot(rotated);
+	Vec crossprod = perp1.cross(rotated);
+		
 	
 	// calculate the angle
 	float angle = acos(a);
+
+	
+	if (crossprod.dot(axis) < 0)
+		angle = - angle;
+
 	return angle;
 }
 
 void Quat::projectToAxis(Vec axis)
 {
 	axis.normalize();
+	std::cout << "axis " << axis << std::endl;
+
+	
+	Vec perp1;
+	if (fabs(axis[0]) < 0.00001)
+		perp1 = Vec(0.0, axis[2], -axis[1]);
+	else { if (fabs(axis[1]) < 0.00001)
+		perp1 = Vec(axis[2], 0.0, -axis[0]);
+	else
+		perp1 = Vec(axis[1], -axis[0], 0.0);
+	};
+	perp1.normalize();
+	//Vec perp2 = perp1.cross(axis);
+	//perp2.normalize();
+	
+	// rotate perp1 by the quaterion
+	Vec rotated = transform(perp1);
+
+	//pointAt(perp1, rotated);
+
 	setAngleAxis(getAngleAboutAxis(axis), axis);
 }
 
