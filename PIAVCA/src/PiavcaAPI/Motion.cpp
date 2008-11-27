@@ -58,6 +58,17 @@ void Motion::create()
 	
 };
 
+
+bool Motion::finished(float time)
+{
+	return time > getEndTime();
+};
+
+bool Motion::finished()
+{
+	return finished(Core::getCore()->getTime());
+}
+
 void Motion::printInfo()
 {
 	for(int i = 0; i < debug_prefix; i++)

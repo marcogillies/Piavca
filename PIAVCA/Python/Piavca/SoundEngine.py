@@ -150,7 +150,7 @@ class SoundEngine:
 		#self.currentAudio = None
 		
 	def play(self, name):
-		print name, len(self.sounds[name])
+		#print name, len(self.sounds[name])
 		#self.output.stop()
 		#s = copy(self.sounds[name])
 		if pyaudiopresent:
@@ -160,7 +160,7 @@ class SoundEngine:
 		elif pymediapresent :
 			self.output.play(self.sounds[name])
 			left = self.output.getLeft()
-		print "time left", left
+		#print "time left", left
 		time.sleep(left + 1)
 		
 	def updateRandomAccess(self, time):
@@ -186,23 +186,23 @@ class SoundEngine:
 				towrite = self.currentRandomAccessAudio[currentTimeInBytes:]
 			else:
 				towrite = self.currentRandomAccessAudio[currentTimeInBytes:currentTimeInBytes+space]
-			print "audio update", space, self.bytes_per_second, currentTimeInBytes, self.currentTime, time, len(towrite)
+			#print "audio update", space, self.bytes_per_second, currentTimeInBytes, self.currentTime, time, len(towrite)
 			self.output.write(towrite)
 			self.currentTime += float(space)/self.bytes_per_second
 		
 	def playRandomAccess(self, name):
-		print name, len(self.sounds[name])
+		#print name, len(self.sounds[name])
 		#self.output.stop()
 		#s = copy(self.sounds[name])
-		print "pyaudio", pyaudiopresent, "pymedia", pymediapresent
+		#print "pyaudio", pyaudiopresent, "pymedia", pymediapresent
 		if pyaudiopresent:
-			print "pyaudio"
+			#print "pyaudio"
 			self.currentRandomAccessAudio = self.sounds[name]
 			self.currentTime = 0
 			#self.updateAudio()
 			left = len(self.sounds[name])/self.bytes_per_second
 		elif pymediapresent :
-			print "pymedia"
+			#print "pymedia"
 			self.output.play(self.sounds[name])
 			left = self.output.getLeft()
 		#print "time left", left

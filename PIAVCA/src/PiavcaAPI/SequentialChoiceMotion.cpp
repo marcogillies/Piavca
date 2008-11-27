@@ -61,6 +61,13 @@ std::vector<Piavca::tstring> SequentialChoiceMotion::getEventNames()
 int SequentialChoiceMotion::makeChoice()
 {
 	int current = getCurrentChoice();
+
+	if(!getMotion()->finished())
+	{
+		getMotion()->reset();
+		return current;
+	}
+
 	std::cout << "SequentialChoiceMotion::makeChoice() " << current << std::endl;
 	if (current+1 < getNumMotions())
 	{

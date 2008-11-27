@@ -195,6 +195,10 @@ public:
 	//! returns the end time of the motion
 	float getEndTime()  {return startTime + getMotionLength();};
 
+	virtual bool finished(float time);
+
+	bool finished();
+
 	//! does any resetting needed 
 	virtual bool reset(){return true;};
 

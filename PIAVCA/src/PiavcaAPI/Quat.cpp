@@ -363,7 +363,7 @@ float Quat::getAngleAboutAxis(Vec axis)
 void Quat::projectToAxis(Vec axis)
 {
 	axis.normalize();
-	std::cout << "axis " << axis << std::endl;
+	//std::cout << "axis " << axis << std::endl;
 
 	
 	Vec perp1;

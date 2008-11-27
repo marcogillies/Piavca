@@ -15,12 +15,6 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_01D9FD9624D24F348F07C5798491632A"
-        "OwnerKey" = "8:_587FC0D152464525A864E8FBD348A29A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_067CE3F0CC7247C3BB3C4D4839417414"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -35,6 +29,24 @@
         {
         "MsmKey" = "8:_0A0A30A93510469D8D6B3FD96FC213FF"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_0C93B4BC49D24B97AE0D3AE8A8C5BD62"
+        "OwnerKey" = "8:_0EDB427873744218ACBF6199C4916A0F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_0C93B4BC49D24B97AE0D3AE8A8C5BD62"
+        "OwnerKey" = "8:_E9BF3BD172E74BC1ACDE5669C3B94371"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_0C93B4BC49D24B97AE0D3AE8A8C5BD62"
+        "OwnerKey" = "8:_7FFBA5A50D144A49A4D665B523A35DF3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -129,6 +141,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_2AF821D64D814E689C81582D59279610"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_2CB4C9992956463C8CEE1EC8B9BA14B2"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -161,6 +179,12 @@
         {
         "MsmKey" = "8:_38BE54D26DCC4CCD89F949DF7A287623"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3A10563138554468A35D0B9701A7268C"
+        "OwnerKey" = "8:_0C93B4BC49D24B97AE0D3AE8A8C5BD62"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -219,43 +243,19 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_53D920A00F2B77DD5F8EA056E9CC5B2D"
+        "MsmKey" = "8:_5455C2A2ADC65C732A6BEC8CF065A57F"
         "OwnerKey" = "8:_0EDB427873744218ACBF6199C4916A0F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_53D920A00F2B77DD5F8EA056E9CC5B2D"
+        "MsmKey" = "8:_5455C2A2ADC65C732A6BEC8CF065A57F"
         "OwnerKey" = "8:_E9BF3BD172E74BC1ACDE5669C3B94371"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_53D920A00F2B77DD5F8EA056E9CC5B2D"
-        "OwnerKey" = "8:_7FFBA5A50D144A49A4D665B523A35DF3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_5611BE5E3CE30E1121FE1DDD6FCA1E66"
-        "OwnerKey" = "8:_E9BF3BD172E74BC1ACDE5669C3B94371"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_587FC0D152464525A864E8FBD348A29A"
-        "OwnerKey" = "8:_0EDB427873744218ACBF6199C4916A0F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_587FC0D152464525A864E8FBD348A29A"
-        "OwnerKey" = "8:_E9BF3BD172E74BC1ACDE5669C3B94371"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_587FC0D152464525A864E8FBD348A29A"
+        "MsmKey" = "8:_5455C2A2ADC65C732A6BEC8CF065A57F"
         "OwnerKey" = "8:_7FFBA5A50D144A49A4D665B523A35DF3"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -269,6 +269,18 @@
         {
         "MsmKey" = "8:_59D181F017E7480998554E0FAAF00B09"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5BC2020DC150290C02C2ADB9925116D0"
+        "OwnerKey" = "8:_0EDB427873744218ACBF6199C4916A0F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5BC2020DC150290C02C2ADB9925116D0"
+        "OwnerKey" = "8:_7FFBA5A50D144A49A4D665B523A35DF3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -323,6 +335,12 @@
         {
         "MsmKey" = "8:_6C9B48778DB24E77BB81147BDCF997AD"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6DE875B2B4EC788E4EF4C6796C91B9B8"
+        "OwnerKey" = "8:_E9BF3BD172E74BC1ACDE5669C3B94371"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -453,18 +471,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_9D81CA093EE3632D4124E8507057B432"
-        "OwnerKey" = "8:_0EDB427873744218ACBF6199C4916A0F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_9D81CA093EE3632D4124E8507057B432"
-        "OwnerKey" = "8:_7FFBA5A50D144A49A4D665B523A35DF3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_A1766AB41A9A44C48E348894986648AE"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -479,6 +485,24 @@
         {
         "MsmKey" = "8:_A26F2FB1B68A492EA7B9AC4084A110BF"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A7B9F4157C20E3893B9F768D81A49B34"
+        "OwnerKey" = "8:_0EDB427873744218ACBF6199C4916A0F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A7B9F4157C20E3893B9F768D81A49B34"
+        "OwnerKey" = "8:_E9BF3BD172E74BC1ACDE5669C3B94371"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A7B9F4157C20E3893B9F768D81A49B34"
+        "OwnerKey" = "8:_7FFBA5A50D144A49A4D665B523A35DF3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -657,6 +681,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_F83C44337600482886F84A3AC975941B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_F8D0E93C347E41A3BA723A6A4E43FCAF"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -665,24 +695,6 @@
         {
         "MsmKey" = "8:_FA18BF6093C14B11BB48FCEE7181E0B3"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_FA8DC075FEAA264593F6B3781A3EDCED"
-        "OwnerKey" = "8:_0EDB427873744218ACBF6199C4916A0F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_FA8DC075FEAA264593F6B3781A3EDCED"
-        "OwnerKey" = "8:_E9BF3BD172E74BC1ACDE5669C3B94371"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_FA8DC075FEAA264593F6B3781A3EDCED"
-        "OwnerKey" = "8:_7FFBA5A50D144A49A4D665B523A35DF3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1015,7 +1027,7 @@
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_105318FBC7C84EDE831447AFE911E83E"
             {
-            "SourcePath" = "8:C:\\Documents and Settings\\ucacmfg\\Desktop\\pyaudio-0.2.0.py24.exe"
+            "SourcePath" = "8:..\\..\\..\\..\\..\\..\\ucacmfg\\Desktop\\pyaudio-0.2.0.py24.exe"
             "TargetName" = "8:pyaudio-0.2.0.py24.exe"
             "Tag" = "8:"
             "Folder" = "8:_C32D0F42EC2B427E89BDD8C0DE5EC464"
@@ -1175,7 +1187,7 @@
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_248BD3BE46EF4542822A60B20D71CED7"
             {
-            "SourcePath" = "8:C:\\Documents and Settings\\ucacmfg\\Desktop\\wxPython2.8-win32-unicode-2.8.8.1-py24.exe"
+            "SourcePath" = "8:..\\..\\..\\..\\..\\..\\ucacmfg\\Desktop\\wxPython2.8-win32-unicode-2.8.8.1-py24.exe"
             "TargetName" = "8:wxPython2.8-win32-unicode-2.8.8.1-py24.exe"
             "Tag" = "8:"
             "Folder" = "8:_C32D0F42EC2B427E89BDD8C0DE5EC464"
@@ -1259,6 +1271,26 @@
             "TargetName" = "8:GenericList.py"
             "Tag" = "8:"
             "Folder" = "8:_240F48167681489AACBF48E0CDE5F730"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2AF821D64D814E689C81582D59279610"
+            {
+            "SourcePath" = "8:..\\..\\Python\\Piavca\\PiavcaDesigner\\AutoCreators\\ExpMapBlend.py"
+            "TargetName" = "8:ExpMapBlend.py"
+            "Tag" = "8:"
+            "Folder" = "8:_635169BFC8624D8F845016D572D40EB9"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1573,32 +1605,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_53D920A00F2B77DD5F8EA056E9CC5B2D"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5455C2A2ADC65C732A6BEC8CF065A57F"
             {
-            "SourcePath" = "8:OPENGL32.dll"
-            "TargetName" = "8:OPENGL32.dll"
+            "SourcePath" = "8:python25.dll"
+            "TargetName" = "8:python25.dll"
             "Tag" = "8:"
             "Folder" = "8:_2C01534358BC499DB5A587789363CFB1"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5611BE5E3CE30E1121FE1DDD6FCA1E66"
-            {
-            "SourcePath" = "8:glut32.dll"
-            "TargetName" = "8:glut32.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_C311C00B4060407F8C51CD66C8EF17E6"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1651,6 +1663,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5BC2020DC150290C02C2ADB9925116D0"
+            {
+            "SourcePath" = "8:cal3d.dll"
+            "TargetName" = "8:cal3d.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_2C01534358BC499DB5A587789363CFB1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5F4829D8890B4705B165D55997999C33"
@@ -1831,6 +1863,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6DE875B2B4EC788E4EF4C6796C91B9B8"
+            {
+            "SourcePath" = "8:glut32.dll"
+            "TargetName" = "8:glut32.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_C311C00B4060407F8C51CD66C8EF17E6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6F882A5BC19F498A812277DF53862775"
@@ -2233,26 +2285,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9D81CA093EE3632D4124E8507057B432"
-            {
-            "SourcePath" = "8:cal3d.dll"
-            "TargetName" = "8:cal3d.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_2C01534358BC499DB5A587789363CFB1"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A1766AB41A9A44C48E348894986648AE"
             {
             "SourcePath" = "8:..\\..\\Python\\Piavca\\DataStream.py"
@@ -2311,6 +2343,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A7B9F4157C20E3893B9F768D81A49B34"
+            {
+            "SourcePath" = "8:OPENGL32.dll"
+            "TargetName" = "8:OPENGL32.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_2C01534358BC499DB5A587789363CFB1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A9FBB5E5F450468BAEC9D6947C644A21"
@@ -2615,7 +2667,7 @@
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CE5DE536114D4585994E3E2F7FFE3D18"
             {
-            "SourcePath" = "8:C:\\Documents and Settings\\ucacmfg\\Desktop\\PyOpenGL-3.0.0b2\\dist\\PyOpenGL-3.0.0b4.win32_p24.exe"
+            "SourcePath" = "8:..\\..\\..\\..\\..\\..\\ucacmfg\\Desktop\\PyOpenGL-3.0.0b2\\dist\\PyOpenGL-3.0.0b4.win32_p24.exe"
             "TargetName" = "8:PyOpenGL-3.0.0b4.win32_p24.exe"
             "Tag" = "8:"
             "Folder" = "8:_C32D0F42EC2B427E89BDD8C0DE5EC464"
@@ -2873,6 +2925,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F83C44337600482886F84A3AC975941B"
+            {
+            "SourcePath" = "8:..\\..\\Python\\Piavca\\PiavcaDesigner\\AutoCreators\\PCAMot.py"
+            "TargetName" = "8:PCAMot.py"
+            "Tag" = "8:"
+            "Folder" = "8:_635169BFC8624D8F845016D572D40EB9"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F8D0E93C347E41A3BA723A6A4E43FCAF"
             {
             "SourcePath" = "8:..\\..\\Bill\\hair_8.xrf"
@@ -2911,26 +2983,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FA8DC075FEAA264593F6B3781A3EDCED"
-            {
-            "SourcePath" = "8:python25.dll"
-            "TargetName" = "8:python25.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_2C01534358BC499DB5A587789363CFB1"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FCE00EC60D664D64A9494C8A518A7B64"
@@ -3767,11 +3819,11 @@
         }
         "MergeModule"
         {
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_01D9FD9624D24F348F07C5798491632A"
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_0C93B4BC49D24B97AE0D3AE8A8C5BD62"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:TRUE"
-            "SourcePath" = "8:policy_8_0_microsoft_vc80_crt_x86.msm"
+            "SourcePath" = "8:Microsoft_VC80_CRT_x86.msm"
                 "Properties"
                 {
                 }
@@ -3781,11 +3833,11 @@
             "Feature" = "8:"
             "IsolateTo" = "8:"
             }
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_587FC0D152464525A864E8FBD348A29A"
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_3A10563138554468A35D0B9701A7268C"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:TRUE"
-            "SourcePath" = "8:Microsoft_VC80_CRT_x86.msm"
+            "SourcePath" = "8:policy_8_0_microsoft_vc80_crt_x86.msm"
                 "Properties"
                 {
                 }
@@ -3800,7 +3852,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_0EDB427873744218ACBF6199C4916A0F"
             {
-            "SourcePath" = "8:..\\..\\debug_py25\\XVR2Piavca.dll"
+            "SourcePath" = "8:..\\XVR2Piavca\\Release_Py25\\XVR2Piavca.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_2C01534358BC499DB5A587789363CFB1"
@@ -4050,6 +4102,9 @@
                 {
                 }
             }
+        }
+        "VJSharpPlugin"
+        {
         }
     }
 }
