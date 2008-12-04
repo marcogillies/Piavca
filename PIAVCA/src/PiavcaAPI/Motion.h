@@ -207,6 +207,11 @@ public:
 		//std::cout << "event in motion " << getName() << std::endl;
 		visited = true;
 	};
+
+	virtual bool canHandleEvent(tstring ev)
+	{
+		return false;
+	};
 	
 	virtual std::vector<Piavca::tstring> getEventNames()
 	{

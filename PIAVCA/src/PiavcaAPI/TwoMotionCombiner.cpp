@@ -161,6 +161,16 @@ void TwoMotionCombiner::event(tstring ev)
 	if(mot2)mot2->event(ev);
 };
 
+bool TwoMotionCombiner::canHandleEvent(tstring ev)
+{
+	bool retval = false;
+	if (mot1)
+		retval |= mot1->canHandleEvent(ev);
+	if (mot2)
+		retval |= mot2->canHandleEvent(ev);
+	return retval;
+};
+
 void TwoMotionCombiner::cleanRecursionState()
 {
 	Motion::cleanRecursionState();

@@ -46,7 +46,18 @@ using namespace Piavca;
 void SequentialChoiceMotion::event(tstring ev)
 {
 	if(ev == _T("next"))
+	{
 		reset();
+	}
+	else
+		MotionFilter::event(ev);
+}
+
+bool SequentialChoiceMotion::canHandleEvent(tstring ev)
+{
+	if(ev == _T("next") && getCurrentChoice()+1 < getNumMotions() )
+		return true;
+	return MotionFilter::canHandleEvent(ev);
 }
 
 //! gets the names of all events
@@ -62,9 +73,9 @@ int SequentialChoiceMotion::makeChoice()
 {
 	int current = getCurrentChoice();
 
-	if(!getMotion()->finished())
+	if(getMotion()->canHandleEvent(_T("next")))
 	{
-		getMotion()->reset();
+		getMotion()->event("next");
 		return current;
 	}
 

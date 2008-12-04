@@ -576,6 +576,7 @@ class Motion(_object):
         """
         return _Piavca_base.Motion_getEndTime(*args)
 
+    def finished(*args): return _Piavca_base.Motion_finished(*args)
     def reset(*args):
         """
         virtual void Piavca::Motion::reset()
@@ -587,6 +588,7 @@ class Motion(_object):
         return _Piavca_base.Motion_reset(*args)
 
     def event(*args): return _Piavca_base.Motion_event(*args)
+    def canHandleEvent(*args): return _Piavca_base.Motion_canHandleEvent(*args)
     def getEventNames(*args): return _Piavca_base.Motion_getEventNames(*args)
     def cleanRecursionState(*args): return _Piavca_base.Motion_cleanRecursionState(*args)
     def wasVisited(*args): return _Piavca_base.Motion_wasVisited(*args)
@@ -2964,6 +2966,7 @@ class MotionFilter(Motion):
         return _Piavca_base.MotionFilter_reset(*args)
 
     def event(*args): return _Piavca_base.MotionFilter_event(*args)
+    def canHandleEvent(*args): return _Piavca_base.MotionFilter_canHandleEvent(*args)
     def cleanRecursionState(*args): return _Piavca_base.MotionFilter_cleanRecursionState(*args)
     def setMotion(*args):
         """
@@ -3189,6 +3192,7 @@ class TwoMotionCombiner(Motion):
         return _Piavca_base.TwoMotionCombiner_reset(*args)
 
     def event(*args): return _Piavca_base.TwoMotionCombiner_event(*args)
+    def canHandleEvent(*args): return _Piavca_base.TwoMotionCombiner_canHandleEvent(*args)
     def cleanRecursionState(*args): return _Piavca_base.TwoMotionCombiner_cleanRecursionState(*args)
     def getMotionLength(*args):
         """
@@ -3443,6 +3447,7 @@ class MultiMotionCombiner(MotionFilter):
         return _Piavca_base.MultiMotionCombiner_reset(*args)
 
     def event(*args): return _Piavca_base.MultiMotionCombiner_event(*args)
+    def canHandleEvent(*args): return _Piavca_base.MultiMotionCombiner_canHandleEvent(*args)
     def cleanRecursionState(*args): return _Piavca_base.MultiMotionCombiner_cleanRecursionState(*args)
     def getMotionLength(*args):
         """
@@ -5148,16 +5153,6 @@ class MotionTransition(TwoMotionCombiner):
         """
         return _Piavca_base.MotionTransition_setStartTime(*args)
 
-    def getMotionLength(*args):
-        """
-        float TwoMotionCombiner::getMotionLength() const 
-                 
-        gets the length of the combined motion (by default the length of the longer of the two)         
-                 
-                
-        """
-        return _Piavca_base.MotionTransition_getMotionLength(*args)
-
     def getCombinedFloatValue(*args): return _Piavca_base.MotionTransition_getCombinedFloatValue(*args)
     def getCombinedVecValue(*args): return _Piavca_base.MotionTransition_getCombinedVecValue(*args)
     def getCombinedQuatValue(*args): return _Piavca_base.MotionTransition_getCombinedQuatValue(*args)
@@ -5267,6 +5262,7 @@ class ChoiceMotion(MotionFilter):
     def getCurrentChoice(*args): return _Piavca_base.ChoiceMotion_getCurrentChoice(*args)
     def makeChoice(*args): return _Piavca_base.ChoiceMotion_makeChoice(*args)
     def event(*args): return _Piavca_base.ChoiceMotion_event(*args)
+    def canHandleEvent(*args): return _Piavca_base.ChoiceMotion_canHandleEvent(*args)
     def getEventNames(*args): return _Piavca_base.ChoiceMotion_getEventNames(*args)
     def reset(*args):
         """
@@ -5355,6 +5351,7 @@ class SequentialChoiceMotion(ChoiceMotion):
     __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.SequentialChoiceMotion_castToThisType
     if _newclass:castToThisType = staticmethod(_Piavca_base.SequentialChoiceMotion_castToThisType)
     def event(*args): return _Piavca_base.SequentialChoiceMotion_event(*args)
+    def canHandleEvent(*args): return _Piavca_base.SequentialChoiceMotion_canHandleEvent(*args)
     def getEventNames(*args): return _Piavca_base.SequentialChoiceMotion_getEventNames(*args)
     def makeChoice(*args): return _Piavca_base.SequentialChoiceMotion_makeChoice(*args)
 SequentialChoiceMotion_swigregister = _Piavca_base.SequentialChoiceMotion_swigregister

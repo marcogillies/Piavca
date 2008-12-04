@@ -263,6 +263,15 @@ public:
 			mots[i]->event(ev);
 		}
 	}
+	virtual bool canHandleEvent(tstring ev)
+	{
+		for(MotionVec::size_type i = 0; i < mots.size(); i++)
+		{
+			if(mots[i]->canHandleEvent(ev))
+				return true;
+		}
+		return false;
+	};
 
 	virtual void cleanRecursionState()
 	{

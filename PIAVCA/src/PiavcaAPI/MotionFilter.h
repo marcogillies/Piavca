@@ -176,6 +176,12 @@ namespace Piavca
 			//std::cout << "event in motion filter " << getName() << std::endl;
 			if(filterMot)filterMot->event(ev);
 		};
+		virtual bool canHandleEvent(tstring ev)
+		{
+			if (filterMot)
+				return filterMot->canHandleEvent(ev);
+			return false;
+		};
 
 		virtual void cleanRecursionState()
 		{

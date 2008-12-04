@@ -122,8 +122,10 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float t);
+    virtual bool finished(float time);
     virtual bool reset();
     virtual void event(Piavca::tstring ev);
+    virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector< Piavca::tstring,std::allocator< Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
@@ -170,7 +172,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[24];
+    mutable swig::PyObject_var vtable[26];
 #endif
 
 };
@@ -194,8 +196,10 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float t);
+    virtual bool finished(float time);
     virtual bool reset();
     virtual void event(Piavca::tstring ev);
+    virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector< Piavca::tstring,std::allocator< Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
@@ -243,7 +247,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[25];
+    mutable swig::PyObject_var vtable[27];
 #endif
 
 };
@@ -265,8 +269,10 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
+    virtual bool finished(float time);
     virtual bool reset();
     virtual void event(Piavca::tstring ev);
+    virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector< Piavca::tstring,std::allocator< Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
@@ -315,7 +321,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[26];
+    mutable swig::PyObject_var vtable[28];
 #endif
 
 };
@@ -337,8 +343,10 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
+    virtual bool finished(float time);
     virtual bool reset();
     virtual void event(Piavca::tstring ev);
+    virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector< Piavca::tstring,std::allocator< Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
@@ -388,7 +396,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[27];
+    mutable swig::PyObject_var vtable[29];
 #endif
 
 };
@@ -410,8 +418,10 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
+    virtual bool finished(float time);
     virtual bool reset();
     virtual void event(Piavca::tstring ev);
+    virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector< Piavca::tstring,std::allocator< Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
@@ -462,7 +472,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[28];
+    mutable swig::PyObject_var vtable[30];
 #endif
 
 };
@@ -484,8 +494,10 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
+    virtual bool finished(float time);
     virtual bool reset();
     virtual void event(Piavca::tstring ev);
+    virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector< Piavca::tstring,std::allocator< Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
@@ -534,7 +546,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[26];
+    mutable swig::PyObject_var vtable[28];
 #endif
 
 };
@@ -555,8 +567,10 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
+    virtual bool finished(float time);
     virtual bool reset();
     virtual void event(Piavca::tstring ev);
+    virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector< Piavca::tstring,std::allocator< Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
@@ -605,7 +619,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[26];
+    mutable swig::PyObject_var vtable[28];
 #endif
 
 };
@@ -626,8 +640,10 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
+    virtual bool finished(float time);
     virtual bool reset();
     virtual void event(Piavca::tstring ev);
+    virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector< Piavca::tstring,std::allocator< Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
@@ -676,7 +692,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[26];
+    mutable swig::PyObject_var vtable[28];
 #endif
 
 };
@@ -697,8 +713,10 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
+    virtual bool finished(float time);
     virtual bool reset();
     virtual void event(Piavca::tstring ev);
+    virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector< Piavca::tstring,std::allocator< Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
@@ -747,7 +765,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[26];
+    mutable swig::PyObject_var vtable[28];
 #endif
 
 };
@@ -768,8 +786,10 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
+    virtual bool finished(float time);
     virtual bool reset();
     virtual void event(Piavca::tstring ev);
+    virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector< Piavca::tstring,std::allocator< Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
@@ -818,7 +838,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[26];
+    mutable swig::PyObject_var vtable[28];
 #endif
 
 };
@@ -839,8 +859,10 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
+    virtual bool finished(float time);
     virtual bool reset();
     virtual void event(Piavca::tstring ev);
+    virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector< Piavca::tstring,std::allocator< Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
@@ -889,7 +911,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[26];
+    mutable swig::PyObject_var vtable[28];
 #endif
 
 };
@@ -910,8 +932,10 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
+    virtual bool finished(float time);
     virtual bool reset();
     virtual void event(Piavca::tstring ev);
+    virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector< Piavca::tstring,std::allocator< Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
@@ -961,7 +985,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[27];
+    mutable swig::PyObject_var vtable[29];
 #endif
 
 };
@@ -982,8 +1006,10 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float t);
+    virtual bool finished(float time);
     virtual bool reset();
     virtual void event(Piavca::tstring ev);
+    virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector< Piavca::tstring,std::allocator< Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
@@ -1031,7 +1057,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[25];
+    mutable swig::PyObject_var vtable[27];
 #endif
 
 };
@@ -1052,8 +1078,10 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float t);
+    virtual bool finished(float time);
     virtual bool reset();
     virtual void event(Piavca::tstring ev);
+    virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector< Piavca::tstring,std::allocator< Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
@@ -1101,7 +1129,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[25];
+    mutable swig::PyObject_var vtable[27];
 #endif
 
 };
@@ -1122,8 +1150,10 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
+    virtual bool finished(float time);
     virtual bool reset();
     virtual void event(Piavca::tstring ev);
+    virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector< Piavca::tstring,std::allocator< Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
@@ -1176,7 +1206,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[30];
+    mutable swig::PyObject_var vtable[32];
 #endif
 
 };
@@ -1197,8 +1227,10 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
+    virtual bool finished(float time);
     virtual bool reset();
     virtual void event(Piavca::tstring ev);
+    virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector< Piavca::tstring,std::allocator< Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
@@ -1248,7 +1280,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[27];
+    mutable swig::PyObject_var vtable[29];
 #endif
 
 };
@@ -1269,8 +1301,10 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
+    virtual bool finished(float time);
     virtual bool reset();
     virtual void event(Piavca::tstring ev);
+    virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector< Piavca::tstring,std::allocator< Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
@@ -1319,7 +1353,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[26];
+    mutable swig::PyObject_var vtable[28];
 #endif
 
 };
@@ -1340,8 +1374,10 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
+    virtual bool finished(float time);
     virtual bool reset();
     virtual void event(Piavca::tstring ev);
+    virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector< Piavca::tstring,std::allocator< Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
@@ -1391,7 +1427,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[27];
+    mutable swig::PyObject_var vtable[29];
 #endif
 
 };
@@ -1412,8 +1448,10 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
+    virtual bool finished(float time);
     virtual bool reset();
     virtual void event(Piavca::tstring ev);
+    virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector< Piavca::tstring,std::allocator< Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
@@ -1463,7 +1501,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[27];
+    mutable swig::PyObject_var vtable[29];
 #endif
 
 };
@@ -1485,8 +1523,10 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
+    virtual bool finished(float time);
     virtual bool reset();
     virtual void event(Piavca::tstring ev);
+    virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector< Piavca::tstring,std::allocator< Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
@@ -1537,7 +1577,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[28];
+    mutable swig::PyObject_var vtable[30];
 #endif
 
 };
@@ -1559,8 +1599,10 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
+    virtual bool finished(float time);
     virtual bool reset();
     virtual void event(Piavca::tstring ev);
+    virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector< Piavca::tstring,std::allocator< Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
@@ -1611,7 +1653,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[28];
+    mutable swig::PyObject_var vtable[30];
 #endif
 
 };
@@ -1632,8 +1674,10 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
+    virtual bool finished(float time);
     virtual bool reset();
     virtual void event(Piavca::tstring ev);
+    virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector< Piavca::tstring,std::allocator< Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
@@ -1683,7 +1727,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[27];
+    mutable swig::PyObject_var vtable[29];
 #endif
 
 };
@@ -1705,8 +1749,10 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
+    virtual bool finished(float time);
     virtual bool reset();
     virtual void event(Piavca::tstring ev);
+    virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector< Piavca::tstring,std::allocator< Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
@@ -1757,7 +1803,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[28];
+    mutable swig::PyObject_var vtable[30];
 #endif
 
 };
@@ -1780,8 +1826,10 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
+    virtual bool finished(float time);
     virtual bool reset();
     virtual void event(Piavca::tstring ev);
+    virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector< Piavca::tstring,std::allocator< Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
@@ -1830,7 +1878,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[26];
+    mutable swig::PyObject_var vtable[28];
 #endif
 
 };
@@ -1851,8 +1899,10 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float t);
+    virtual bool finished(float time);
     virtual bool reset();
     virtual void event(Piavca::tstring ev);
+    virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector< Piavca::tstring,std::allocator< Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
@@ -1899,7 +1949,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[24];
+    mutable swig::PyObject_var vtable[26];
 #endif
 
 };
@@ -1921,8 +1971,10 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
+    virtual bool finished(float time);
     virtual bool reset();
     virtual void event(Piavca::tstring ev);
+    virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector< Piavca::tstring,std::allocator< Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
@@ -1971,7 +2023,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[26];
+    mutable swig::PyObject_var vtable[28];
 #endif
 
 };
@@ -1992,8 +2044,10 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
+    virtual bool finished(float time);
     virtual bool reset();
     virtual void event(Piavca::tstring ev);
+    virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector< Piavca::tstring,std::allocator< Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
@@ -2042,7 +2096,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[26];
+    mutable swig::PyObject_var vtable[28];
 #endif
 
 };
@@ -2064,8 +2118,10 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
+    virtual bool finished(float time);
     virtual bool reset();
     virtual void event(Piavca::tstring ev);
+    virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector< Piavca::tstring,std::allocator< Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
@@ -2114,7 +2170,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[26];
+    mutable swig::PyObject_var vtable[28];
 #endif
 
 };
@@ -2136,8 +2192,10 @@ public:
     virtual bool loaded();
     virtual Piavca::Avatar *getAvatar();
     virtual void setStartTime(float time);
+    virtual bool finished(float time);
     virtual bool reset();
     virtual void event(Piavca::tstring ev);
+    virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector< Piavca::tstring,std::allocator< Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
     virtual Piavca::Motion *findSub(Piavca::tstring nm);
@@ -2186,7 +2244,7 @@ private:
       return method;
     }
 private:
-    mutable swig::PyObject_var vtable[26];
+    mutable swig::PyObject_var vtable[28];
 #endif
 
 };

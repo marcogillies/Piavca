@@ -252,6 +252,15 @@ void ChoiceMotion::event(tstring ev)
 		}
 	MotionFilter::event(ev);
 }
+bool ChoiceMotion::canHandleEvent(tstring ev)
+{
+	for(int i = 0; i < int(mots.size()); i++)
+		if (mots[i]->getName() == ev)
+		{
+			return true;
+		}
+	return MotionFilter::canHandleEvent(ev);
+}
 
 //! gets the names of all events
 std::vector<Piavca::tstring> ChoiceMotion::getEventNames()

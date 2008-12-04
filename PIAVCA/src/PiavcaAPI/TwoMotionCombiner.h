@@ -87,6 +87,7 @@ namespace Piavca
 		bool reset();
 		
 		virtual void event(tstring ev);
+		virtual bool canHandleEvent(tstring ev);
 
 		virtual void cleanRecursionState();
 	    
