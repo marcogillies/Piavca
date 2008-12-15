@@ -40,14 +40,27 @@
 
 using namespace Piavca;
 
-
+//! sets the start time of the motion. Called when its loaded into an avatar.
+void  SequentialChoiceMotion::setStartTime(float t)
+{
+	if (t < startTime)
+		setChoice(0);
+	ChoiceMotion::setStartTime(t);
+}
 
 //! handles an event (plays the motion with the same name as the event)
 void SequentialChoiceMotion::event(tstring ev)
 {
 	if(ev == _T("next"))
 	{
-		reset();
+		if(getMotion()->canHandleEvent(_T("next")))
+		{
+			getMotion()->event("next");
+		}
+		else
+		{
+			reset();
+		}
 	}
 	else
 		MotionFilter::event(ev);
@@ -73,11 +86,11 @@ int SequentialChoiceMotion::makeChoice()
 {
 	int current = getCurrentChoice();
 
-	if(getMotion()->canHandleEvent(_T("next")))
-	{
-		getMotion()->event("next");
-		return current;
-	}
+	//if(getMotion()->canHandleEvent(_T("next")))
+	//{
+	//	getMotion()->event("next");
+	//	return current;
+	//}
 
 	std::cout << "SequentialChoiceMotion::makeChoice() " << current << std::endl;
 	if (current+1 < getNumMotions())

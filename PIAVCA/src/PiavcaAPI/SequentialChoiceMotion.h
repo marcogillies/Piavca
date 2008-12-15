@@ -60,6 +60,9 @@ public:
 	//! casts a motion to this type
 	static SequentialChoiceMotion *castToThisType(Motion *m){return dynamic_cast<SequentialChoiceMotion *>(m);};
 
+	//! sets the start time of the motion. Called when its loaded into an avatar.
+	virtual void  setStartTime(float t);
+
 	//! handles an event (plays the motion with the same name as the event)
 	virtual void event(tstring ev);
 	virtual bool canHandleEvent(tstring ev);
