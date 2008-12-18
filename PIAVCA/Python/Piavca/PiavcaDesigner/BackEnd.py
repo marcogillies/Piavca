@@ -122,13 +122,16 @@ class BackEnd:
 		self.update()
 		
 	def resetRange(self):
+		print "resetting range"
 		if self.motion:
 			length = self.motion.getMotion().getMotionLength()
+			print "motion length", length
 			if length < 0:
 				length = self.defaultLength
 			start = self.motion.getMotion().getStartTime()
 			self.setRange(start, length)
 		else:
+			print "no motion"
 			self.setRange(0.0,0.0)
 		
 	def setRange(self, start, end):

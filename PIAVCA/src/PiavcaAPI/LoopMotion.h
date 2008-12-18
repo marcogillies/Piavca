@@ -65,10 +65,10 @@ namespace Piavca
 
 		virtual float getMotionLength()const
 		{
-			//if (endTime >= 0)
-			return endTime;
-			//else
-			//	return Motion::getMotionLength();
+			if (endTime >= 0)
+				return endTime;
+			else
+				return Motion::getMotionLength();
 		};
 
 		void setEndTime(float t){endTime = t;};
