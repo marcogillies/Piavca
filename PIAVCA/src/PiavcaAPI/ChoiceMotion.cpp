@@ -287,6 +287,8 @@ bool ChoiceMotion::reset()
 	if (choice < 0)
 		return false;
 	std::cout << "ChoiceMotion reset, choice: " << choice << std::endl;
+	if (choice != currentChoice)
+		mots[currentChoice]->event("__chosen__");
 	setChoice(choice);
 	Motion *mot = mots[currentChoice];
 	

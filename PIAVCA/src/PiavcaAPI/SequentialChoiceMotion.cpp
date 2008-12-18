@@ -62,13 +62,17 @@ void SequentialChoiceMotion::event(tstring ev)
 			reset();
 		}
 	}
+	else if (ev == _T("__chosen__"))
+			setChoice(0);
 	else
-		MotionFilter::event(ev);
+			MotionFilter::event(ev);
 }
 
 bool SequentialChoiceMotion::canHandleEvent(tstring ev)
 {
 	if(ev == _T("next") && getCurrentChoice()+1 < getNumMotions() )
+		return true;
+	if(ev == _T("__chosen__") )
 		return true;
 	return MotionFilter::canHandleEvent(ev);
 }
