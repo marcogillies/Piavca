@@ -604,13 +604,18 @@ def saveMotions(filename, motions, element = None, doc = None, avatars=[]):
 					if hasattr(motion, "set" + key[3:]):
 						#print key
 						method = getattr(motion, key)
-						value = str(method())
+						value = method()
+						if type(value) == Piavca.Quat:
+							value = str(Piavca.radToDeg(value.getAngle())) + " " + str(value.getAxis())
+						else:
+							value = str(value)
 						if key[-len("JointId"):] == "JointId" or key[-len("ExpressionId"):] == "ExpressionId" or key[-len("TrackId"):] == "TrackId":
 							value = Piavca.Core.getCore().getTrackName(method())
 							
 						# don't save empty names, it screws things up
 						if key[3:] != "Name" or value != "":
-							#print key[3:], value
+							# check if its  a quaternion
+							
 							el.setAttribute(key[3:], value)
 		motionlist = []
 		if hasattr(motion, "getNumMotions"):
