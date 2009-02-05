@@ -107,6 +107,7 @@
 #include "TangentSpace.h"
 #include "ExpMapMotion.h"
 #include "LogMapMotion.h"
+#include "AvatarMotion.h"
 
 
 

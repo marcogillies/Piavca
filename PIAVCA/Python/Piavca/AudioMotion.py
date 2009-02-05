@@ -94,7 +94,7 @@ class AudioMotion(Piavca.Motion):
 		if self.filename == "":
 			return
 		se = Piavca.SoundEngine.getSoundEngine()
-		if not self.playing:
+		if not self.playing or se.getCurrentlyPlaying() != self.filename:
 			se.playRandomAccess(self.filename)
 			self.playing = True
 		t = t - self.getStartTime()

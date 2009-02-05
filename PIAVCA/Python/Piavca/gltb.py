@@ -45,23 +45,23 @@ def _gltbAnimate():
     pass
 
 
-def _gltbStartMotion(x, y, time):
+def _gltbStartMotion(x, y):#, time):
     global gltb_tracking, gltb_lasttime, gltb_width, gltb_height, gltb_lastposition
     #print "start motion"
     gltb_tracking = GL_TRUE
-    gltb_lasttime = time
+    #gltb_lasttime = time
     gltb_lastposition = _gltbPointToVector(x, y, gltb_width, gltb_height)
 
-def _gltbStopMotion( time):
+def _gltbStopMotion( ):#time):
     global gltb_tracking, gltb_lasttime, gltb_animate, gltb_angle
 
     gltb_tracking = GL_FALSE
 
-    if time - gltb_lasttime < GLTB_TIME_EPSILON and gltb_animate:
+    #if time - gltb_lasttime < GLTB_TIME_EPSILON and gltb_animate:
 #        glutIdleFunc(_gltbAnimate)
-        pass
-    else:
-        gltb_angle = 0
+    #    pass
+    #else:
+    gltb_angle = 0
 
     if gltb_animate:
 #       glutIdleFunc(0)
@@ -115,11 +115,11 @@ def gltbReshape(width, height):
     gltb_height = height
 
 def gltbMouseDown(x, y):
-    #print "mouse down"
-    _gltbStartMotion(x, y, glutGet(GLUT_ELAPSED_TIME))
+    print "mouse down"
+    _gltbStartMotion(x, y)#, glutGet(GLUT_ELAPSED_TIME))
 
 def gltbMouseUp():
-    _gltbStopMotion(glutGet(GLUT_ELAPSED_TIME))
+    _gltbStopMotion()#glutGet(GLUT_ELAPSED_TIME))
 
 def gltbMotionRotateAboutFocus(x, y):
     global gltb_rotateaxis, gltb_width, gltb_height, gltb_lastposition, gltb_lasttime, gltb_angle
@@ -140,7 +140,7 @@ def gltbMotionRotateAboutFocus(x, y):
     gltb_rotateaxis = (gltb_lastposition[1] * current_position[2] - gltb_lastposition[2] * current_position[1], gltb_lastposition[2] * current_position[0] - gltb_lastposition[0] * current_position[2], 0)
 
     #reset for next time
-    gltb_lasttime = glutGet(GLUT_ELAPSED_TIME)
+    #gltb_lasttime = glutGet(GLUT_ELAPSED_TIME)
     gltb_lastposition = current_position
 
 def gltbInOutMotion(x, y):
@@ -161,6 +161,6 @@ def gltbInOutMotion(x, y):
     #print gltb_translation
 
     #reset for next time
-    gltb_lasttime = glutGet(GLUT_ELAPSED_TIME)
+    #gltb_lasttime = glutGet(GLUT_ELAPSED_TIME)
     gltb_lastposition = current_position
 

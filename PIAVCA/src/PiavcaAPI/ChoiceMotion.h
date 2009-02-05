@@ -60,13 +60,14 @@ class ChoiceMotion : public MotionFilter
 	// parameters passed on to the repositioner
 	bool maintainUp;
 	bool rotateAboutUp;
+	bool resetOnPlay;
 	Vec upDirection;
 	
 protected:
-	MotionVec mots;
+	MotionVec mots; 
 public:
 	ChoiceMotion()
-		:currentChoice(0), smooth(true), resetTime(true), windowLength(0.5f), resetOnEvent(true), accumulateRoot(true),
+		:currentChoice(0), smooth(true), resetTime(true), resetOnPlay(false), windowLength(0.5f), resetOnEvent(true), accumulateRoot(true),
 		maintainUp(false), rotateAboutUp(true), upDirection(0.0, 0.0, 1.0)
 		{};
 	//! pass in a vector of motions to be used.

@@ -4553,6 +4553,7 @@ class LoopMotion(MotionFilter):
         return _Piavca_base.LoopMotion_setEndTime(*args)
 
     def preFrame(*args): return _Piavca_base.LoopMotion_preFrame(*args)
+    def event(*args): return _Piavca_base.LoopMotion_event(*args)
     def reset(*args):
         """
         void Piavca::MotionFilter::reset()
@@ -5350,6 +5351,16 @@ class SequentialChoiceMotion(ChoiceMotion):
     def getClassName(*args): return _Piavca_base.SequentialChoiceMotion_getClassName(*args)
     __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.SequentialChoiceMotion_castToThisType
     if _newclass:castToThisType = staticmethod(_Piavca_base.SequentialChoiceMotion_castToThisType)
+    def setStartTime(*args):
+        """
+        virtual void Piavca::MotionFilter::setStartTime(float time)
+                 
+        sets the start time of the motion. Called when its loaded into an avatar.         
+                 
+                
+        """
+        return _Piavca_base.SequentialChoiceMotion_setStartTime(*args)
+
     def event(*args): return _Piavca_base.SequentialChoiceMotion_event(*args)
     def canHandleEvent(*args): return _Piavca_base.SequentialChoiceMotion_canHandleEvent(*args)
     def getEventNames(*args): return _Piavca_base.SequentialChoiceMotion_getEventNames(*args)
@@ -6138,6 +6149,109 @@ class LogMapMotion(MotionFilter):
 LogMapMotion_swigregister = _Piavca_base.LogMapMotion_swigregister
 LogMapMotion_swigregister(LogMapMotion)
 LogMapMotion_castToThisType = _Piavca_base.LogMapMotion_castToThisType
+
+class AvatarMotion(Motion):
+    __swig_setmethods__ = {}
+    for _s in [Motion]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, AvatarMotion, name, value)
+    __swig_getmethods__ = {}
+    for _s in [Motion]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, AvatarMotion, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        if self.__class__ == AvatarMotion:
+            args = (None,) + args
+        else:
+            args = (self,) + args
+        this = _Piavca_base.new_AvatarMotion(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    def clone(*args):
+        """
+        virtual Motion* Piavca::Motion::clone()=0
+                 
+        creates a copy of the motion         
+                 
+                
+        """
+        return _Piavca_base.AvatarMotion_clone(*args)
+
+    def getClassName(*args): return _Piavca_base.AvatarMotion_getClassName(*args)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.AvatarMotion_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.AvatarMotion_castToThisType)
+    def isRandomAccess(*args):
+        """
+        virtual bool Piavca::Motion::isRandomAccess()
+                 
+        whether you can access a motions value at frames other than the current one         
+                 
+                
+        """
+        return _Piavca_base.AvatarMotion_isRandomAccess(*args)
+
+    def setWrappedAvatar(*args): return _Piavca_base.AvatarMotion_setWrappedAvatar(*args)
+    def getWrappedAvatar(*args): return _Piavca_base.AvatarMotion_getWrappedAvatar(*args)
+    def setGlobal(*args): return _Piavca_base.AvatarMotion_setGlobal(*args)
+    def getGlobal(*args): return _Piavca_base.AvatarMotion_getGlobal(*args)
+    def isNull(*args):
+        """
+        virtual bool Piavca::Motion::isNull(int trackId) const =0
+                 
+        given a track ID tests whether it actually points to anything or if its null         
+                 
+                
+        """
+        return _Piavca_base.AvatarMotion_isNull(*args)
+
+    def getTrackType(*args):
+        """
+        virtual trackType Piavca::Motion::getTrackType(int trackId) const =0
+                 
+        get the type of the track corresponding to an ID         
+                 
+                
+        """
+        return _Piavca_base.AvatarMotion_getTrackType(*args)
+
+    def getFloatValueAtTimeInternal(*args):
+        """
+        virtual float Piavca::Motion::getFloatValueAtTimeInternal(int trackId, float time)=0
+                 
+        internal version of getFloatValueAtTime, to be overridden         
+                 
+                
+        """
+        return _Piavca_base.AvatarMotion_getFloatValueAtTimeInternal(*args)
+
+    def getVecValueAtTimeInternal(*args):
+        """
+        virtual Vec Piavca::Motion::getVecValueAtTimeInternal(int trackId, float time)=0
+                 
+        internal version of getVecValueAtTime, to be overridden         
+                 
+                
+        """
+        return _Piavca_base.AvatarMotion_getVecValueAtTimeInternal(*args)
+
+    def getQuatValueAtTimeInternal(*args):
+        """
+        virtual Quat Piavca::Motion::getQuatValueAtTimeInternal(int trackId, float time)=0
+                 
+        internal version of getQuatValueAtTime, to be overridden         
+                 
+                
+        """
+        return _Piavca_base.AvatarMotion_getQuatValueAtTimeInternal(*args)
+
+    __swig_destroy__ = _Piavca_base.delete_AvatarMotion
+    __del__ = lambda self : None;
+    def __disown__(self):
+        self.this.disown()
+        _Piavca_base.disown_AvatarMotion(self)
+        return weakref_proxy(self)
+AvatarMotion_swigregister = _Piavca_base.AvatarMotion_swigregister
+AvatarMotion_swigregister(AvatarMotion)
+AvatarMotion_castToThisType = _Piavca_base.AvatarMotion_castToThisType
 
 
 

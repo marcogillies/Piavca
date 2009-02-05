@@ -44,6 +44,7 @@ namespace Piavca
 	{
 		bool lock;
 		float endTime;
+		float finishTime;
 	protected:
 		bool reblend_flag;
 	public:
@@ -51,9 +52,9 @@ namespace Piavca
 		/*!  (How long it takes to blend from the end back to the beginning)
 		 */
 		LoopMotion(Motion *mot = NULL, float _endTime = -1)
-			:MotionFilter(mot), lock(false), reblend_flag(false), endTime(_endTime) {} ;
+			:MotionFilter(mot), lock(false), reblend_flag(false), endTime(_endTime), finishTime(-1) {} ;
 		LoopMotion(const LoopMotion &l)
-			:MotionFilter(l), lock(false), reblend_flag(false), endTime(l.endTime){};
+			:MotionFilter(l), lock(false), reblend_flag(false), endTime(l.endTime), finishTime(-1){};
 
 		virtual Motion *clone(){return new LoopMotion(*this);};
 
@@ -65,7 +66,9 @@ namespace Piavca
 
 		virtual float getMotionLength()const
 		{
-			if (endTime >= 0)
+			if (finishTime >=0)
+				return finishTime;
+			else if (endTime >= 0)
 				return endTime;
 			else
 				return Motion::getMotionLength();
@@ -79,12 +82,13 @@ namespace Piavca
 			//std::cout << "loop motion.preframe\n";
 			//if (filterMot)
 			//{
-			//	std::cout << filterMot->getMotionLength()  << std::endl;
+			//	std::cout << time << " ";
+			//	std::cout << filterMot->getMotionLength()  << " ";
 			//	std::cout << filterMot->getEndTime()  << std::endl;
 			//}
 			if (!lock 
 				&& (reblend_flag
-				|| ((endTime < 0 || time < endTime)
+				|| (finishTime < 0 && (endTime < 0 || time < endTime)
 				&& (!filterMot ||
 				(/*filterMot->getMotionLength() >= 0 &&*/ time > filterMot->getEndTime())))))
 				{
@@ -93,12 +97,19 @@ namespace Piavca
 					// rest the child motion, and if its finished set the end time to now
 					if(nonConstThis->reset() == false)
 					{
-						endTime = Piavca::Core::getCore()->getTime() - getStartTime();
+						finishTime = Piavca::Core::getCore()->getTime() - getStartTime();
 					}
 					nonConstThis->lock = false;
 					reblend_flag = false;
 				}
 			MotionFilter::preFrame(time);
+		}
+
+		virtual void event(Piavca::tstring ev)
+		{
+			if (ev == "__chosen__")
+				finishTime = -1;
+			MotionFilter::event(ev);
 		}
 
 		//! called each time around the loop

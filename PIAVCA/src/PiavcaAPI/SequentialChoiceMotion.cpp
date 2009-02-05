@@ -44,7 +44,9 @@ using namespace Piavca;
 void  SequentialChoiceMotion::setStartTime(float t)
 {
 	if (t < startTime)
-		setChoice(0);
+	{
+		//setChoice(0);
+	}
 	ChoiceMotion::setStartTime(t);
 }
 
@@ -63,7 +65,10 @@ void SequentialChoiceMotion::event(tstring ev)
 		}
 	}
 	else if (ev == _T("__chosen__"))
-			setChoice(0);
+	{
+			setChoice(-1);
+			reset();
+	}
 	else
 			MotionFilter::event(ev);
 }
@@ -96,7 +101,7 @@ int SequentialChoiceMotion::makeChoice()
 	//	return current;
 	//}
 
-	std::cout << "SequentialChoiceMotion::makeChoice() " << current << std::endl;
+	std::cout << "SequentialChoiceMotion::makeChoice() " << getName() << " "  << current << std::endl;
 	if (current+1 < getNumMotions())
 	{
 		std::cout << "increment " << current+1 << std::endl;

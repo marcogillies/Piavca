@@ -42,26 +42,28 @@
 using namespace Piavca;
 
 ChoiceMotion::ChoiceMotion(const MotionVec &mpv)
-		:MotionFilter(), mots(mpv), currentChoice(0),
+		:MotionFilter(), mots(mpv), currentChoice(0), resetOnPlay(false),
 		smooth(true), resetTime(true), windowLength(0.5f), resetOnEvent(true), accumulateRoot(true),
 		maintainUp(false), rotateAboutUp(true), upDirection(0.0, 1.0, 0.0)
 {
 	MotionVec::size_type i;
-	for(i = 0; i < mots.size(); i++)
+	for(i = 0; i < mpv.size(); i++)
 	{
-		mots[i]->Reference();
+		addMotion(mpv[i]);
+		//mots[i]->Reference();
 	}
 };
 ChoiceMotion::ChoiceMotion(const ChoiceMotion &cl)
-	:MotionFilter(cl), mots(cl.mots), currentChoice(cl.currentChoice),
+:MotionFilter(cl), mots(cl.mots), currentChoice(cl.currentChoice), resetOnPlay(cl.resetOnPlay),
 	smooth(cl.smooth), resetTime(cl.resetTime), windowLength(cl.windowLength), 
 	resetOnEvent(cl.resetOnEvent), accumulateRoot(cl.accumulateRoot),
 	maintainUp(cl.maintainUp), rotateAboutUp(cl.rotateAboutUp), upDirection(cl.upDirection)
 {
-	for(MotionVec::size_type i = 0; i < mots.size(); i++)
+	for(MotionVec::size_type i = 0; i < cl.mots.size(); i++)
 	{
-		mots[i] = mots[i]->clone();
-		mots[i]->Reference();
+		addMotion(cl.mots[i]->clone());
+		//mots[i] = mots[i]->clone();
+		//mots[i]->Reference();
 	}
 };
 ChoiceMotion::~ChoiceMotion()
@@ -97,6 +99,7 @@ void ChoiceMotion::addMotion(Motion *mot)
 	{
 		mots.push_back(mot);
 		mots.back()->Reference();
+		//hasPlayed.push_back(false);
 		if(mots.size() == 1) setMotion(mots.back());
 	}
 }
@@ -214,7 +217,7 @@ void ChoiceMotion::cleanRecursionState()
 //! sets which motion is currently being played
 void ChoiceMotion::setChoice(int i)
 {
-	if(i < 0 || i >= static_cast<int>(mots.size()))
+	if(/*i < 0 ||*/ i >= static_cast<int>(mots.size()))
 		Piavca::Error(_T("Illegal motion choice"));
 	currentChoice = i;
 };
@@ -288,11 +291,15 @@ bool ChoiceMotion::reset()
 		return false;
 	std::cout << "ChoiceMotion reset, choice: " << choice << std::endl;
 	if (choice != currentChoice)
-		mots[currentChoice]->event("__chosen__");
+	{
+		if(currentChoice >= 0 && currentChoice < (int)mots.size())
+			mots[currentChoice]->event("__finished__");
+		mots[choice]->event("__chosen__");
+	}
 	setChoice(choice);
 	Motion *mot = mots[currentChoice];
 	
-	if (!mot->reset())
+	if (resetOnPlay && !mot->reset())
 		return false;
 	
 	if (smooth)

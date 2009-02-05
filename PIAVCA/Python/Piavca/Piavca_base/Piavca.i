@@ -457,7 +457,8 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %feature("director") TimeCallback;    
 %feature("director") AvatarTimeCallback;    
 %feature("director") ExpMapMotion;      
-%feature("director") LogMapMotion;    
+%feature("director") LogMapMotion;      
+%feature("director") AvatarMotion;    
 
 
 %include "piavca_doc.i"
@@ -542,5 +543,7 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %include "PiavcaAPI/TangentSpace.h"
 %include "PiavcaAPI/ExpMapMotion.h"
 %include "PiavcaAPI/LogMapMotion.h"
+%include "PiavcaAPI/AvatarMotion.h"
+
 
 
