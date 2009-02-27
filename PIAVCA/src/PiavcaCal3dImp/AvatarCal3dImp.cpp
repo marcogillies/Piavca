@@ -25,17 +25,32 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 //#endif
 
 
+
+//#ifdef _WIN32
+//#include <windows.h>
+//#include <direct.h>
+//#endif
+
 #include "glew.h"
+
+//#include <GL/gl.h>
+//#include <GL/glu.h>
+//#include <GL/glut.h>
+
+#include <iostream>
+#include <sstream>
+#include <string>
+
 
 /*"MUL result.color.front.primary, R0, diffuse;\n"\ */
 /* "MOV result.color.front.primary, constwhite;\n"\ */
-
+/*
 /// GPU skinner, thanks to Cal3d
 char vertexProgramStr[]= 
 "!!ARBvp1.0\n"\
 "PARAM constant = { 1, 3, 0, 1 };\n"\
 "PARAM ldir = { 1.5, 0.0, 0.0, 1.0 };\n"\
-/*"PARAM constwhite = { 1.0, 1.0, 1.0, 1.0 };\n"\*/
+/ *"PARAM constwhite = { 1.0, 1.0, 1.0, 1.0 };\n"\* /
 "TEMP R0, R1, R2, R3, R4, R5;\n"\
 "ADDRESS A0;\n"\
 "ATTRIB texCoord = vertex.attrib[8];\n"\
@@ -71,14 +86,14 @@ char vertexProgramStr[]=
 "DP3 R1.x, lightDir.xyzx, lightDir.xyzx;\n"\
 "RSQ R1.x, R1.x;\n"\
 "MUL R2.xyz, R1.x, lightDir.xyzx;\n"\
-/* to use the hard coded shader uncomment the next line and comment the one after*/
-/*"DP3 R0.x, R0.xyzx, ldir.xyzx;\n"\*/
+/* to use the hard coded shader uncomment the next line and comment the one after* /
+/*"DP3 R0.x, R0.xyzx, ldir.xyzx;\n"\* /
 "DP3 R0.x, R0.xyzx, R2.xyzx;\n"\
 "MAX R0.x, R0.x, constant.z;\n"\
 "MUL R0, R0.x, diffuse;\n"\
-/*"MUL diffuse, constant.y, diffuse;\n"\*/
+/*"MUL diffuse, constant.y, diffuse;\n"\* /
 "ADD result.color.front.primary, R0, ambient;\n"\
-/*"MUL result.color.front.primary.xyz, 1.2, result.color.front.primary.xyzy;\n"\*/
+/*"MUL result.color.front.primary.xyz, 1.2, result.color.front.primary.xyzy;\n"\* /
 "MOV result.color.front.primary.w, ldir.w;\n"\
 "\n"\
 "ARL A0.x, R4.w;\n"\
@@ -111,6 +126,304 @@ char vertexProgramStr[]=
 "DPH result.position.z, R0.xyzx, worldViewProjMatrix[2];\n"\
 "DPH result.position.w, R0.xyzx, worldViewProjMatrix[3];\n"\
 "END\n";
+*/
+
+// GLSL shader
+const char *vertexProgramStr= 
+"uniform mat4 Transforms[100];\n"\
+"attribute vec4 Weights;\n"\
+"attribute vec4 MatrixIndices;\n"\
+"\n"\
+"void DirectionalLight(in int i,\n"\
+"                      in vec3 normal,\n"\
+"                      inout vec4 ambient,\n"\
+"                      inout vec4 diffuse,\n"\
+"                      inout vec4 specular)\n"\
+"{\n"\
+"     float nDotVP;         // normal . light direction\n"\
+"     float nDotHV;         // normal . light half vector\n"\
+"     float pf;             // power factor\n"\
+"\n"\
+"     nDotVP = max(0.0, dot(normal,\n"\
+"                   normalize(vec3(gl_LightSource[i].position))));\n"\
+"     nDotHV = max(0.0, dot(normal, vec3(gl_LightSource[i].halfVector)));\n"\
+"\n"\
+"     if (nDotVP == 0.0)\n"\
+"         pf = 0.0;\n"\
+"     else\n"\
+"         pf = pow(nDotHV, gl_FrontMaterial.shininess);\n"\
+"\n"\
+"     ambient  += gl_LightSource[i].ambient;\n"\
+"     diffuse  += gl_LightSource[i].diffuse * nDotVP;\n"\
+"     specular += gl_LightSource[i].specular * pf;\n"\
+"}\n"\
+"\n"\
+"\n"\
+"\n"\
+"void PointLight(in int i,\n"\
+"                in vec3 eye,\n"\
+"                in vec3 ecPosition3,\n"\
+"                in vec3 normal,\n"\
+"                inout vec4 ambient,\n"\
+"                inout vec4 diffuse,\n"\
+"                inout vec4 specular)\n"\
+"{\n"\
+"    float nDotVP;         // normal . light direction\n"\
+"    float nDotHV;         // normal . light half vector\n"\
+"    float pf;             // power factor\n"\
+"    float attenuation;    // computed attenuation factor\n"\
+"    float d;              // distance from surface to light source\n"\
+"    vec3  VP;             // direction from surface to light position\n"\
+"    vec3  halfVector;     // direction of maximum highlights\n"\
+"\n"\
+"    // Compute vector from surface to light position\n"\
+"    VP = vec3(gl_LightSource[i].position) - ecPosition3;\n"\
+"\n"\
+"    // Compute distance between surface and light position\n"\
+"    d = length(VP);\n"\
+"\n"\
+"    // Normalize the vector from surface to light position\n"\
+"    VP = normalize(VP);\n"\
+"\n"\
+"    // Compute attenuation\n"\
+"    attenuation = 1.0 / (gl_LightSource[i].constantAttenuation +\n"\
+"                         gl_LightSource[i].linearAttenuation * d +\n"\
+"                         gl_LightSource[i].quadraticAttenuation * d * d);\n"\
+"\n"\
+"    halfVector = normalize(VP + eye);\n"\
+"\n"\
+"    nDotVP = max(0.0, dot(normal, VP));\n"\
+"    nDotHV = max(0.0, dot(normal, halfVector));\n"\
+"\n"\
+"    if (nDotVP == 0.0)\n"\
+"        pf = 0.0;\n"\
+"    else\n"\
+"        pf = pow(nDotHV, gl_FrontMaterial.shininess);\n"\
+"\n"\
+"    ambient += gl_LightSource[i].ambient * attenuation;\n"\
+"    diffuse += gl_LightSource[i].diffuse * nDotVP * attenuation;\n"\
+"    specular += gl_LightSource[i].specular * pf * attenuation;\n"\
+"}\n"\
+"\n"\
+"\n"\
+"void SpotLight(in int i,\n"\
+"               in vec3 eye,\n"\
+"               in vec3 ecPosition3,\n"\
+"               in vec3 normal,\n"\
+"               inout vec4 ambient,\n"\
+"               inout vec4 diffuse,\n"\
+"               inout vec4 specular)\n"\
+"{\n"\
+"    float nDotVP;           // normal . light direction\n"\
+"    float nDotHV;           // normal . light half vector\n"\
+"    float pf;               // power factor\n"\
+"    float spotDot;          // cosine of angle between spotlight\n"\
+"    float spotAttenuation;  // spotlight attenuation factor\n"\
+"    float attenuation;      // computed attenuation factor\n"\
+"    float d;                // distance from surface to light source\n"\
+"    vec3 VP;                // direction from surface to light position\n"\
+"    vec3 halfVector;        // direction of maximum highlights\n"\
+"\n"\
+"    // Compute vector from surface to light position\n"\
+"    VP = vec3(gl_LightSource[i].position) - ecPosition3;\n"\
+"\n"\
+"    // Compute distance between surface and light position\n"\
+"    d = length(VP);\n"\
+"\n"\
+"    // Normalize the vector from surface to light position\n"\
+"    VP = normalize(VP);\n"\
+"\n"\
+"    // Compute attenuation\n"\
+"    attenuation = 1.0 / (gl_LightSource[i].constantAttenuation +\n"\
+"                         gl_LightSource[i].linearAttenuation * d +\n"\
+"                         gl_LightSource[i].quadraticAttenuation * d * d);\n"\
+"\n"\
+"    // See if point on surface is inside cone of illumination\n"\
+"    spotDot = dot(-VP, normalize(gl_LightSource[i].spotDirection));\n"\
+"\n"\
+"    if (spotDot < gl_LightSource[i].spotCosCutoff)\n"\
+"        spotAttenuation = 0.0; // light adds no contribution\n"\
+"    else\n"\
+"        spotAttenuation = pow(spotDot, gl_LightSource[i].spotExponent);\n"\
+"\n"\
+"    // Combine the spotlight and distance attenuation.\n"\
+"    attenuation *= spotAttenuation;\n"\
+"\n"\
+"    halfVector = normalize(VP + eye);\n"\
+"\n"\
+"    nDotVP = max(0.0, dot(normal, VP));\n"\
+"    nDotHV = max(0.0, dot(normal, halfVector));\n"\
+"\n"\
+"    if (nDotVP == 0.0)\n"\
+"        pf = 0.0;\n"\
+"    else\n"\
+"        pf = pow(nDotHV, gl_FrontMaterial.shininess);\n"\
+"\n"\
+"    ambient  += gl_LightSource[i].ambient * attenuation;\n"\
+"    diffuse  += gl_LightSource[i].diffuse * nDotVP * attenuation;\n"\
+"    specular += gl_LightSource[i].specular * pf * attenuation;\n"\
+"}\n"\
+"\n"\
+"	const vec4 AMBIENT_BLACK = vec4(0.0, 0.0, 0.0, 1.0);\n"\
+"	const vec4 DEFAULT_BLACK = vec4(0.0, 0.0, 0.0, 0.0);\n"\
+"	\n"\
+"	bool isLightEnabled(in int i)\n"\
+"	{\n"\
+"	    // A separate variable is used to get\n"\
+"	    // rid of a linker error.\n"\
+"	    bool enabled = true;\n"\
+"\n"\
+"	    // If all the colors of the Light are set\n"\
+"	    // to BLACK then we know we don't need to bother\n"\
+"	    // doing a lighting calculation on it.\n"\
+"	    if ((gl_LightSource[i].ambient  == AMBIENT_BLACK) &&\n"\
+"	        (gl_LightSource[i].diffuse  == DEFAULT_BLACK) &&\n"\
+"	        (gl_LightSource[i].specular == DEFAULT_BLACK))\n"\
+"	        enabled = false;\n"\
+"\n"\
+"	    return(enabled);\n"\
+"	}\n"\
+"\n"\
+"\n"\
+"void lighting(vec3 normal)\n"\
+"{\n"\
+"	vec4 ecPosition;\n"\
+"	vec3 ecPosition3;    // in 3 space\n"\
+"\n"\
+"	// Transform vertex to eye coordinates\n"\
+"	//if (NeedEyePosition)\n"\
+"	//{\n"\
+"		ecPosition  = gl_ModelViewMatrix * gl_Vertex;\n"\
+"		ecPosition3 = (vec3(ecPosition)) / ecPosition.w;\n"\
+"	//}\n"\
+"\n"\
+"	vec3 eye;\n"\
+"	//if (LocalViewer)\n"\
+"	//   eye = -normalize(ecPosition3);\n"\
+"	//else\n"\
+"	   eye = vec3(0.0, 0.0, 1.0);\n"\
+"\n"\
+"	vec4 amb = vec4(0.0);\n"\
+"	vec4 diff = vec4(0.0);\n"\
+"	vec4 spec = vec4(0.0);\n"\
+"\n"\
+"	// Loop through enabled lights, compute contribution from each\n"\
+"	for (int i = 0; i < gl_MaxLights; i++)\n"\
+"	{\n"\
+"		if (!isLightEnabled(i))\n"\
+"			continue;\n"\
+"	    if (gl_LightSource[i].position.w == 0.0)\n"\
+"	        DirectionalLight(i, normal, amb, diff, spec);\n"\
+"	    else if (gl_LightSource[i].spotCutoff == 180.0)\n"\
+"	        PointLight(i, eye, ecPosition3, normal, amb, diff, spec);\n"\
+"	    else\n"\
+"	        SpotLight(i, eye, ecPosition3, normal, amb, diff, spec);\n"\
+"	}\n"\
+"\n"\
+"	vec4 color = gl_FrontLightModelProduct.sceneColor +\n"\
+"            amb * gl_FrontMaterial.ambient +\n"\
+"            diff * gl_FrontMaterial.diffuse +\n"\
+"			 spec * gl_FrontMaterial.specular;\n"\
+"	gl_FrontColor = color;\n"\
+"\n"\
+"}\n"\
+"\n"\
+"void main()\n"\
+"{\n"\
+"   mat4 transform  = Weights[0]*Transforms[int(MatrixIndices[0])];\n"\
+"        transform += Weights[1]*Transforms[int(MatrixIndices[1])];\n"\
+"        transform += Weights[2]*Transforms[int(MatrixIndices[2])];\n"\
+"        transform += Weights[3]*Transforms[int(MatrixIndices[3])];\n"\
+"	gl_Position = transform * gl_Vertex;\n"\
+"\n"\
+"   mat3 normalTransform;\n"\
+"	normalTransform[0] = transform[0].xyz;\n"\
+"	normalTransform[1] = transform[1].xyz;\n"\
+"	normalTransform[2] = transform[2].xyz;\n"\
+"	// Skin the vertex normal, then compute lighting.\n"\
+"    vec3 normal = normalize(normalTransform* gl_Normal);\n"\
+"\n"\
+"	lighting(normal);\n"\
+"\n"\
+"	//if (SecondaryColor)\n"\
+"	//	gl_FrontSecondaryColor = gl_SecondaryColor;\n"\
+"	//gl_FrontColor = gl_FrontMaterial.diffuse;\n"\
+"\n"\
+"	gl_Position = gl_ModelViewProjectionMatrix * gl_Position;\n"\
+"}\n";
+
+
+int printOglError()
+{
+        GLenum  glErr;
+        int     retCode = 0;
+        char    *err;
+
+  //std::cout << "printing GL Errors \n";
+  // returns 1 if an OpenGL error occurred, 0 otherwise.
+  glErr = glGetError();
+  while (glErr != GL_NO_ERROR) {
+    err = (char*)gluErrorString(glErr);
+	std::cout << "glError: " << err << std::endl;
+    retCode = 1;
+    glErr = glGetError();
+  }
+  return retCode;
+}
+
+void printShaderInfoLog(GLuint shader)
+{
+        GLint   infologLength = 0, shaderType;
+        GLint   charsWritten = 0;
+        GLchar  *infoLog;
+
+  printOglError();
+
+  glGetShaderiv(shader,GL_SHADER_TYPE,&shaderType);
+  glGetShaderiv(shader,GL_INFO_LOG_LENGTH,&infologLength);
+
+  printOglError();
+
+  if(infologLength > 0) {
+    if((infoLog = (GLchar *)malloc(infologLength)) == NULL) {
+      fprintf(stderr,"ERROR: Could not allocate InfoLog buffer\n");
+      exit(1);
+    }
+    glGetShaderInfoLog(shader,infologLength,&charsWritten,infoLog);
+    if(charsWritten) {
+      if(shaderType == GL_VERTEX_SHADER)
+		  std::cerr << "Vertex Shader InfoLog:\n" << infoLog << "\n\n";
+      else if(shaderType == GL_FRAGMENT_SHADER)
+		  std::cerr << "Fragment Shader InfoLog:\n" << infoLog << "\n\n";
+      else
+		  std::cerr << "Unknown Shader InfoLog:\n" << infoLog << "\n\n";
+    }
+    free(infoLog);
+  }
+  printOglError();
+}
+
+void printProgramInfoLog(GLuint obj)
+{
+        GLint   infologLength = 0;
+        GLint   charsWritten = 0;
+        GLchar  *infoLog;
+
+  glGetProgramiv(obj,GL_INFO_LOG_LENGTH,&infologLength);
+
+  printOglError();
+
+  if(infologLength > 0) {
+    if((infoLog = (GLchar *)malloc(infologLength)) == NULL) {
+      fprintf(stderr,"ERROR: Could not allocate program infolog buffer\n");
+      exit(1);
+    }
+    glGetProgramInfoLog(obj,infologLength,&charsWritten,infoLog);
+	if(charsWritten) std::cerr << "Progarm InfoLog:\n" << infoLog << std::endl;
+    free(infoLog);
+  }
+  printOglError();
+}
 
 
 
@@ -598,8 +911,8 @@ AvatarCal3DImp::~AvatarCal3DImp()
 	{
 	  delete m_calHardwareModel;
 	  
-	  glDeleteProgramsARB(1, &m_vertexProgramId);
-	  glDeleteBuffersARB(6, m_bufferObject);
+	  glDeleteProgram(m_vertexProgramId);
+	  glDeleteBuffers(6, m_bufferObject);
 	}
 
 };
@@ -747,7 +1060,13 @@ void  AvatarCal3DImp::enableHardware()
 	  return ;
 	}
 
-
+	std::cout << "GL version " << glGetString(GL_VERSION) << std::endl;
+	GLint maxVertAttrs, maxVertUni;
+	glGetIntegerv(GL_MAX_VERTEX_ATTRIBS, &maxVertAttrs);
+	std::cout << "Max number of vertex attrbutes " << maxVertAttrs << std::endl;
+	glGetIntegerv(GL_MAX_VERTEX_UNIFORM_COMPONENTS, &maxVertUni);
+	std::cout << "Max number of vertex uniform components " << maxVertUni << std::endl;
+	
 	if(!loadBufferObject())
 	{
       std::cerr << "Error loading vertex buffer object." << std::endl;
@@ -857,26 +1176,26 @@ bool AvatarCal3DImp::loadBufferObject()
   // We use ARB_vertex_buffer_object extension,
   // it provide better performance
 
-  glGenBuffersARB(6, m_bufferObject);
+  glGenBuffers(6, m_bufferObject);
 
-  glBindBufferARB(GL_ARRAY_BUFFER_ARB, m_bufferObject[0]);
-  glBufferDataARB(GL_ARRAY_BUFFER_ARB, m_calHardwareModel->getTotalVertexCount()*3*sizeof(float),(const void*)pVertexBuffer, GL_STATIC_DRAW_ARB);
+  glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[0]);
+  glBufferData(GL_ARRAY_BUFFER, m_calHardwareModel->getTotalVertexCount()*3*sizeof(float),(const void*)pVertexBuffer, GL_STATIC_DRAW);
 
-  glBindBufferARB(GL_ARRAY_BUFFER_ARB, m_bufferObject[1]);
-  glBufferDataARB(GL_ARRAY_BUFFER_ARB, m_calHardwareModel->getTotalVertexCount()*4*sizeof(float),(const void*)pWeightBuffer, GL_STATIC_DRAW_ARB);
+  glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[1]);
+  glBufferData(GL_ARRAY_BUFFER, m_calHardwareModel->getTotalVertexCount()*4*sizeof(float),(const void*)pWeightBuffer, GL_STATIC_DRAW);
 
-  glBindBufferARB(GL_ARRAY_BUFFER_ARB, m_bufferObject[2]);
-  glBufferDataARB(GL_ARRAY_BUFFER_ARB, m_calHardwareModel->getTotalVertexCount()*3*sizeof(float),(const void*)pNormalBuffer, GL_STATIC_DRAW_ARB);
+  glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[2]);
+  glBufferData(GL_ARRAY_BUFFER, m_calHardwareModel->getTotalVertexCount()*3*sizeof(float),(const void*)pNormalBuffer, GL_STATIC_DRAW);
   
-  glBindBufferARB(GL_ARRAY_BUFFER_ARB, m_bufferObject[3]);
-  glBufferDataARB(GL_ARRAY_BUFFER_ARB, m_calHardwareModel->getTotalVertexCount()*4*sizeof(float),(const void*)pMatrixIndexBuffer, GL_STATIC_DRAW_ARB);
+  glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[3]);
+  glBufferData(GL_ARRAY_BUFFER, m_calHardwareModel->getTotalVertexCount()*4*sizeof(float),(const void*)pMatrixIndexBuffer, GL_STATIC_DRAW);
 
-  glBindBufferARB(GL_ARRAY_BUFFER_ARB, m_bufferObject[4]);
-  glBufferDataARB(GL_ARRAY_BUFFER_ARB, m_calHardwareModel->getTotalVertexCount()*2*sizeof(float),(const void*)pTexCoordBuffer, GL_STATIC_DRAW_ARB);
+  glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[4]);
+  glBufferData(GL_ARRAY_BUFFER, m_calHardwareModel->getTotalVertexCount()*2*sizeof(float),(const void*)pTexCoordBuffer, GL_STATIC_DRAW);
 
-  glBindBufferARB(GL_ELEMENT_ARRAY_BUFFER_ARB, m_bufferObject[5]);
+  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_bufferObject[5]);
 
-  glBufferDataARB(GL_ELEMENT_ARRAY_BUFFER_ARB, m_calHardwareModel->getTotalFaceCount()*3*sizeof(CalIndex),(const void*)pIndexBuffer, GL_STATIC_DRAW_ARB);
+  glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_calHardwareModel->getTotalFaceCount()*3*sizeof(CalIndex),(const void*)pIndexBuffer, GL_STATIC_DRAW);
 
   free(pVertexBuffer);
   free(pWeightBuffer);
@@ -891,6 +1210,7 @@ bool AvatarCal3DImp::loadBufferObject()
 
 bool AvatarCal3DImp::loadVertexProgram()
 {
+	/*
 	glGenProgramsARB( 1, &m_vertexProgramId );
 	
 	glBindProgramARB( GL_VERTEX_PROGRAM_ARB, m_vertexProgramId );
@@ -914,6 +1234,49 @@ bool AvatarCal3DImp::loadVertexProgram()
 	
 	
 	glBindProgramARB( GL_VERTEX_PROGRAM_ARB, 0 );
+	*/
+
+	GLuint shaderId = glCreateShader(GL_VERTEX_SHADER);
+	glShaderSource(shaderId, 1, &vertexProgramStr, NULL);
+
+	glCompileShader(shaderId);
+	printOglError();
+	GLint compile_status = 0;
+	glGetShaderiv(shaderId, GL_COMPILE_STATUS, &compile_status);
+	printShaderInfoLog(shaderId);
+
+	if (!compile_status)
+		Piavca::Error(_T("could not compile the shader"));
+
+	m_vertexProgramId = glCreateProgram();
+	glAttachShader(m_vertexProgramId, shaderId);
+
+	glBindAttribLocation(m_vertexProgramId, 1, "Weights");
+	glBindAttribLocation(m_vertexProgramId, 3, "MatrixIndices");
+
+	glLinkProgram(m_vertexProgramId);
+	
+	printOglError();
+	glGetProgramiv(m_vertexProgramId, GL_LINK_STATUS, &compile_status);
+	printProgramInfoLog(m_vertexProgramId);
+	
+	char nm[1024];
+	int sz;
+	GLenum tp;
+
+	for (int i = 0; i < 1024; i++)
+	{	
+		glGetActiveUniform(m_vertexProgramId, i, 1024, NULL, &sz, &tp, nm);
+		GLenum  glErr = glGetError();
+		if (glErr == GL_NO_ERROR) 
+			std::cout << i << " " << nm << std::endl;
+		else
+			printOglError();
+	}
+
+	if (!compile_status)
+		Piavca::Error(_T("could not link the shader"));
+
 
   return true;
 	
@@ -1544,7 +1907,9 @@ void	AvatarCal3DImp::render_hardware ()
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 	glPushMatrix();
 
-	glBindProgramARB( GL_VERTEX_PROGRAM_ARB, m_vertexProgramId );
+	//glBindProgramARB( GL_VERTEX_PROGRAM_ARB, m_vertexProgramId );
+	glUseProgram(m_vertexProgramId);
+	printOglError();
 
 	glEnableVertexAttribArray(0);
 	glEnableVertexAttribArray(1);
@@ -1565,26 +1930,32 @@ void	AvatarCal3DImp::render_hardware ()
 	//glBlendFunc (GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
 	
 
-    glBindBuffer(GL_ARRAY_BUFFER_ARB, m_bufferObject[0]);
+    glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[0]);
 	glVertexAttribPointer(0, 3 , GL_FLOAT, false, 0, NULL);
+	printOglError();
 
-    glBindBuffer(GL_ARRAY_BUFFER_ARB, m_bufferObject[1]);
+    glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[1]);
 	glVertexAttribPointer(1, 4 , GL_FLOAT, false, 0, NULL);
+	printOglError();
 
-	glBindBuffer(GL_ARRAY_BUFFER_ARB, m_bufferObject[2]);
+	glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[2]);
     glVertexAttribPointer(2, 3 , GL_FLOAT, false, 0, NULL);
+	printOglError();
 
-    glBindBuffer(GL_ARRAY_BUFFER_ARB, m_bufferObject[3]);
-
+    glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[3]);
 	glVertexAttribPointer(3, 4 , GL_FLOAT, false, 0, NULL);
+	printOglError();
 
-    glBindBuffer(GL_ARRAY_BUFFER_ARB, m_bufferObject[4]);
+    glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[4]);
 	glVertexAttribPointer(8, 2 , GL_FLOAT, false, 0, NULL);
+	printOglError();
 
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER_ARB, m_bufferObject[5]);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_bufferObject[5]);
+	printOglError();
 	
 	
 	glScalef(scaleFactor, scaleFactor, scaleFactor);
+	printOglError();
 		
 	int hardwareMeshId;
 	
@@ -1598,16 +1969,19 @@ void	AvatarCal3DImp::render_hardware ()
 		m_calHardwareModel->getAmbientColor(&meshColor[0]);
 		materialColor[0] = meshColor[0] / 255.0f;  materialColor[1] = meshColor[1] / 255.0f; materialColor[2] = meshColor[2] / 255.0f; materialColor[3] = meshColor[3] / 255.0f;
 		glMaterialfv(GL_FRONT, GL_AMBIENT, materialColor);
+		printOglError();
 		
 		// set the material diffuse color
 		m_calHardwareModel->getDiffuseColor(&meshColor[0]);
 		materialColor[0] = meshColor[0] / 255.0f;  materialColor[1] = meshColor[1] / 255.0f; materialColor[2] = meshColor[2] / 255.0f; materialColor[3] = meshColor[3] / 255.0f;
 		glMaterialfv(GL_FRONT, GL_DIFFUSE, materialColor);
+		printOglError();
 		
 		// set the material specular color
 		m_calHardwareModel->getSpecularColor(&meshColor[0]);
 		materialColor[0] = meshColor[0] / 255.0f;  materialColor[1] = meshColor[1] / 255.0f; materialColor[2] = meshColor[2] / 255.0f; materialColor[3] = meshColor[3] / 255.0f;
 		glMaterialfv(GL_FRONT, GL_SPECULAR, materialColor);
+		printOglError();
 		
 		
 		// set the material shininess factor
@@ -1616,6 +1990,7 @@ void	AvatarCal3DImp::render_hardware ()
 		glMaterialfv(GL_FRONT, GL_SHININESS, &shininess);
 
 		int boneId;
+		//float *transformation = new float[16*m_calHardwareModel->getBoneCount()];
 		for(boneId = 0; boneId < m_calHardwareModel->getBoneCount(); boneId++)
 		{
 			CalQuaternion rotationBoneSpace = m_calHardwareModel->getRotationBoneSpace(boneId, cal_model->getSkeleton());
@@ -1623,26 +1998,45 @@ void	AvatarCal3DImp::render_hardware ()
 
 			CalMatrix rotationMatrix = rotationBoneSpace;
 
-			float transformation[12];
+			float transformation[16];
 
 			transformation[0]=rotationMatrix.dxdx;transformation[1]=rotationMatrix.dxdy;transformation[2]=rotationMatrix.dxdz;transformation[3]=translationBoneSpace.x;
 			transformation[4]=rotationMatrix.dydx;transformation[5]=rotationMatrix.dydy;transformation[6]=rotationMatrix.dydz;transformation[7]=translationBoneSpace.y;
 			transformation[8]=rotationMatrix.dzdx;transformation[9]=rotationMatrix.dzdy;transformation[10]=rotationMatrix.dzdz;transformation[11]=translationBoneSpace.z;
+			transformation[12]=0.0f;transformation[13]=0.0f;transformation[14]=0.0f;transformation[15]=1.0f;
 
+			std::ostringstream is;
+			is << "Transforms[" << boneId << "]";
+			//std::cout << is.str();
+			GLint transformArrayId = glGetUniformLocation(m_vertexProgramId, is.str().c_str());	
+			//std::cout  << " " << transformArrayId << std::endl;
+
+			glUniformMatrix4fv(transformArrayId, 1, GL_TRUE, &transformation[0]);
+			printOglError();
 			
-			glProgramLocalParameter4fvARB(GL_VERTEX_PROGRAM_ARB,boneId*3,&transformation[0]);
-			glProgramLocalParameter4fvARB(GL_VERTEX_PROGRAM_ARB,boneId*3+1,&transformation[4]);
-			glProgramLocalParameter4fvARB(GL_VERTEX_PROGRAM_ARB,boneId*3+2,&transformation[8]);			
+			//glProgramLocalParameter4fvARB(GL_VERTEX_PROGRAM_ARB,boneId*3,&transformation[0]);
+			//glProgramLocalParameter4fvARB(GL_VERTEX_PROGRAM_ARB,boneId*3+1,&transformation[4]);
+			//glProgramLocalParameter4fvARB(GL_VERTEX_PROGRAM_ARB,boneId*3+2,&transformation[8]);			
 			
-            // set the texture id we stored in the map user data
-            glBindTexture(GL_TEXTURE_2D, (GLuint)m_calHardwareModel->getMapUserData(0));
 		}
+
+		
+		//GLint transformArrayId = glGetUniformLocation(m_vertexProgramId, "Transforms");
+		//transformArrayId = glGetUniformLocation(m_vertexProgramId, "Transforms[0]");
+		//transformArrayId = glGetUniformLocation(m_vertexProgramId, "Transforms[1]");
+		//glUniformMatrix4fv(transformArrayId, m_calHardwareModel->getBoneCount(), GL_FALSE, &transformation[0]);
+		
+
+        // set the texture id we stored in the map user data
+        glBindTexture(GL_TEXTURE_2D, (GLuint)m_calHardwareModel->getMapUserData(0));
+		printOglError();
 
 		if(sizeof(CalIndex)==2)
 			glDrawElements(GL_TRIANGLES, m_calHardwareModel->getFaceCount() * 3, GL_UNSIGNED_SHORT, (((CalIndex *)NULL)+ m_calHardwareModel->getStartIndex()));
 		else
 			glDrawElements(GL_TRIANGLES, m_calHardwareModel->getFaceCount() * 3, GL_UNSIGNED_INT, (((CalIndex *)NULL)+ m_calHardwareModel->getStartIndex()));
 		
+		printOglError();
 
 	}
 	

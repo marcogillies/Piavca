@@ -21,7 +21,7 @@ try:
 except IOError:
 	print "could not open Expressions file Expressions.txt, will probably work anyway"
 	
-Piavca.Core.getCore().setHardware(False)
+#Piavca.Core.getCore().setHardware(False)
 	
 pd = PiavcaDesigner()
 	
