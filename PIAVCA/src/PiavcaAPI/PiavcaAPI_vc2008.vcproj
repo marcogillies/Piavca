@@ -564,6 +564,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\AvatarMotion.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\AvatarMotionQueue.cpp"
 				>
 			</File>
@@ -722,6 +726,10 @@
 			</File>
 			<File
 				RelativePath="AvatarImp.h"
+				>
+			</File>
+			<File
+				RelativePath=".\AvatarMotion.h"
 				>
 			</File>
 			<File

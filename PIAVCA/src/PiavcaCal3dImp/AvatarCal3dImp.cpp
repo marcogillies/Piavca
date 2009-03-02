@@ -341,7 +341,7 @@ const char *vertexProgramStr=
 "	normalTransform[1] = transform[1].xyz;\n"\
 "	normalTransform[2] = transform[2].xyz;\n"\
 "	// Skin the vertex normal, then compute lighting.\n"\
-"    vec3 normal = normalize(normalTransform* gl_Normal);\n"\
+"   vec3 normal = normalize(normalTransform* gl_Normal);\n"\
 "\n"\
 "	lighting(normal);\n"\
 "\n"\
