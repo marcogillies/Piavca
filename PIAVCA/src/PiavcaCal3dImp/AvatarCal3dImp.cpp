@@ -1260,19 +1260,6 @@ bool AvatarCal3DImp::loadVertexProgram()
 	glGetProgramiv(m_vertexProgramId, GL_LINK_STATUS, &compile_status);
 	printProgramInfoLog(m_vertexProgramId);
 	
-	char nm[1024];
-	int sz;
-	GLenum tp;
-
-	for (int i = 0; i < 1024; i++)
-	{	
-		glGetActiveUniform(m_vertexProgramId, i, 1024, NULL, &sz, &tp, nm);
-		GLenum  glErr = glGetError();
-		if (glErr == GL_NO_ERROR) 
-			std::cout << i << " " << nm << std::endl;
-		else
-			printOglError();
-	}
 
 	if (!compile_status)
 		Piavca::Error(_T("could not link the shader"));

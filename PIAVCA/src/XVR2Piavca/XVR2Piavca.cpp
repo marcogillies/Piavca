@@ -99,7 +99,8 @@ std::wstreambuf *_saved_wcerr = NULL;
 void *initScript = NULL;
 void *userScript = NULL;
 
-boolean g_PythonInitialised = false;
+bool g_PythonInitialised = false:
+
 
 char *get_messages()
 {
@@ -435,11 +436,12 @@ extern "C" __declspec(dllexport) char *onInitial(char* _path, char *script)
     */
 	//////////////////////////////////////////////////Python ///////////////////////////////////////
 	// load in a script
-	if(!g_PythonInitialised)
+	if (!g_PythonInitialised)
 	{
 		Piavca::InitPython();
 		g_PythonInitialised = true;
 	}
+
 	try
 	{
 		initScript = Piavca::ImportModule(_T("initXVRPiavca"));

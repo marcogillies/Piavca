@@ -536,7 +536,7 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 //%include "PiavcaAPI/MotionSaver.h"
 //%include "PiavcaAPI/MotionParser.h"
 %include "PiavcaAPI/SubMotion.h"
-//%include "PiavcaAPI/TimeRangeMotion.h"
+%include "PiavcaAPI/TimeRangeMotion.h"
 %include "PiavcaAPI/TimeWarp.h"
 //%include "PiavcaAPI/DiadicGazeMotion.h"
 %include "PiavcaAPI/OverrideMotion.h"
