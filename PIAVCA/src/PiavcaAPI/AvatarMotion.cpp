@@ -53,7 +53,7 @@ int AvatarMotion::getTrackType(int trackId)const
 	if  (trackId < 0)
 		return FLOAT_TYPE;
 	else
-		return QUAT_TYPE || VEC_TYPE;
+		return QUAT_TYPE | VEC_TYPE;
 };
 
 //! get the value of a track at a given time (only works for floats)
@@ -67,7 +67,12 @@ float AvatarMotion::getFloatValueAtTimeInternal(int trackId, float time)
 Vec AvatarMotion::getVecValueAtTimeInternal(int trackId, float time)
 {
 	if (!(getTrackType(trackId) & VEC_TYPE))
+	{
+		if(isNull(trackId))
+			std::cout << "The track " << trackId << " is null" << std::endl;
+		std::cout << "The track " << trackId << " is of type " << getTrackType(trackId) << std::endl;
 		Piavca::Error("AvatarMotion::Trying to get a vec value from an expression or null joint"); 
+	}
 	if (global)
 		return m_wrapped_avatar->getJointBasePosition(trackId, WORLD_COORD);
 	else

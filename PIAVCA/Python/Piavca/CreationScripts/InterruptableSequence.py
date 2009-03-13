@@ -75,11 +75,14 @@ def InterruptableSequence(seq, interruptions, fps = 20, threshold=6.5, window=0.
 	# of possible transition points
 	minima = []
 	values = []
+	print "start time", seq.getStartTime(), "end time", seq.getEndTime()
 	for i in range(int(seq.getStartTime()*fps), int(seq.getEndTime()*fps)-1):
 		d_plus = calculateDistance(seq, float(i+1)/fps, expmaps)
+		print d, d_plus, threshold
 		if d :
 			if d < d_plus:
 				if d_minus == None or d < d_minus:
+					print d, d_plus, threshold
 					if d < threshold:
 						if len(minima) == 0 or float(i)/fps - minima[-1] > 4.0*window:
 							values.append(d)
@@ -88,8 +91,8 @@ def InterruptableSequence(seq, interruptions, fps = 20, threshold=6.5, window=0.
 		d = d_plus
 	
 	values.sort(reverse=False)	
-	print values
-	print minima	
+	print "values", values
+	print "minima", minima	
 	numMinima = len(minima)
 	
 	
@@ -100,20 +103,24 @@ def InterruptableSequence(seq, interruptions, fps = 20, threshold=6.5, window=0.
 	# and finally loop in all
 	# we add "window" to the end time so that it works with 
 	# the smooth transitioning function
-	submots = [Piavca.SubMotion(seq, start, end+window) for start, end in zip(minima[:-1], minima[1:])]
+	submots = [Piavca.SubMotion(seq, start, end) for start, end in zip(minima[:-1], minima[1:])]
+	print submots
 	choice1 = Piavca.SequentialChoiceMotion()
 	choice1.setSmooth(False)
 	choice1.setAccumulateRoot(False)
 	choice1.setWindowLength(window)
 	for mot in submots:
+		print mot
 		choice1.addMotion(mot)
+	loop1 = Piavca.LoopMotion(choice1)
 	choice2 = Piavca.ChoiceMotionWithDefault()
 	choice2.setWindowLength(window)
-	choice2.addMotion(choice1)
+	choice2.addMotion(loop1)
 	for mot in interruptions:
+		print mot
 		choice2.addMotion(mot)
-	loop = Piavca.LoopMotion(choice2)
-	return loop, numMinima
+	loop2 = Piavca.LoopMotion(choice2)
+	return loop2, numMinima
 										
 if __name__ == "__main__":
 	import os

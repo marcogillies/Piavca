@@ -55,7 +55,7 @@ void SequentialChoiceMotion::event(tstring ev)
 {
 	if(ev == _T("next"))
 	{
-		if(getMotion()->canHandleEvent(_T("next")))
+		if(passEventsToChildren && getMotion()->canHandleEvent(_T("next")))
 		{
 			getMotion()->event("next");
 		}

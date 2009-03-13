@@ -130,7 +130,7 @@ char vertexProgramStr[]=
 
 // GLSL shader
 const char *vertexProgramStr= 
-"uniform mat4 Transforms[100];\n"\
+"uniform mat4 Transforms[24];\n"\
 "attribute vec4 Weights;\n"\
 "attribute vec4 MatrixIndices;\n"\
 "\n"\
@@ -285,6 +285,18 @@ const char *vertexProgramStr=
 "	}\n"\
 "\n"\
 "\n"\
+"//void doLight(in int i, vec3 ecPosition3, vec3 eye, vec3 normal, vec4 amb, vec4 diff, vec4 spec)\n"\
+"//{\n"\
+"//		if (!isLightEnabled(i))\n"\
+"//			return;\n"\
+"//	    if (gl_LightSource[i].position.w == 0.0)\n"\
+"//	        DirectionalLight(i, normal, amb, diff, spec);\n"\
+"//	    else if (gl_LightSource[i].spotCutoff == 180.0)\n"\
+"//	        PointLight(i, eye, ecPosition3, normal, amb, diff, spec);\n"\
+"//	    else\n"\
+"//	        SpotLight(i, eye, ecPosition3, normal, amb, diff, spec);\n"\
+"//}\n"\
+"\n"\
 "void lighting(vec3 normal)\n"\
 "{\n"\
 "	vec4 ecPosition;\n"\
@@ -308,7 +320,11 @@ const char *vertexProgramStr=
 "	vec4 spec = vec4(0.0);\n"\
 "\n"\
 "	// Loop through enabled lights, compute contribution from each\n"\
-"	for (int i = 0; i < gl_MaxLights; i++)\n"\
+"   //doLight(0, ecPosition3, eye, normal, amb, diff, spec);\n"\
+"   //doLight(1, ecPosition3, eye, normal, amb, diff, spec);\n"\
+"   //doLight(2, ecPosition3, eye, normal, amb, diff, spec);\n"\
+"   //doLight(3, ecPosition3, eye, normal, amb, diff, spec);\n"\
+"	for (int i = 0; i < 8; i++)\n"\
 "	{\n"\
 "		if (!isLightEnabled(i))\n"\
 "			continue;\n"\
@@ -330,10 +346,10 @@ const char *vertexProgramStr=
 "\n"\
 "void main()\n"\
 "{\n"\
-"   mat4 transform  = Weights[0]*Transforms[int(MatrixIndices[0])];\n"\
-"        transform += Weights[1]*Transforms[int(MatrixIndices[1])];\n"\
-"        transform += Weights[2]*Transforms[int(MatrixIndices[2])];\n"\
-"        transform += Weights[3]*Transforms[int(MatrixIndices[3])];\n"\
+"   mat4 transform  = Weights.x*Transforms[int(MatrixIndices.x)];\n"\
+"        transform += Weights.y*Transforms[int(MatrixIndices.y)];\n"\
+"        transform += Weights.z*Transforms[int(MatrixIndices.x)];\n"\
+"        transform += Weights.w*Transforms[int(MatrixIndices.w)];\n"\
 "	gl_Position = transform * gl_Vertex;\n"\
 "\n"\
 "   mat3 normalTransform;\n"\
@@ -349,6 +365,7 @@ const char *vertexProgramStr=
 "	//	gl_FrontSecondaryColor = gl_SecondaryColor;\n"\
 "	//gl_FrontColor = gl_FrontMaterial.diffuse;\n"\
 "\n"\
+"	gl_TexCoord[0] = gl_MultiTexCoord0;\n"\
 "	gl_Position = gl_ModelViewProjectionMatrix * gl_Position;\n"\
 "}\n";
 
@@ -2044,8 +2061,9 @@ void	AvatarCal3DImp::render_hardware ()
     //glDisable(GL_DEPTH_TEST);
 	//glDisable(GL_VERTEX_PROGRAM_ARB);
 
-
-	glBindProgramARB( GL_VERTEX_PROGRAM_ARB, 0 );
+	
+	glUseProgram(0);
+	//glBindProgramARB( GL_VERTEX_PROGRAM_ARB, 0 );
 	glPopMatrix();
 	glPopAttrib();
 

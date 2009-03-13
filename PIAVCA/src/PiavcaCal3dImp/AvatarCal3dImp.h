@@ -47,7 +47,7 @@ using std::vector;
 #include "PiavcaAPI/Vec.h"
 //#include "JointIteratorTaraImp.h"
 
-#define MAXBONESPERMESH 29
+#define MAXBONESPERMESH 24
 
 namespace Piavca
 {

@@ -45,10 +45,11 @@ namespace Piavca
 //! a ChoiceMotion where the the choices are played sequentially one after the other
 class SequentialChoiceMotion : public ChoiceMotion
 {
+	bool passEventsToChildren;
 public:
-	SequentialChoiceMotion():ChoiceMotion() {};
-	SequentialChoiceMotion(const MotionVec &mpv):ChoiceMotion(mpv){};
-	SequentialChoiceMotion(const SequentialChoiceMotion &c):ChoiceMotion(c){};
+	SequentialChoiceMotion():ChoiceMotion(), passEventsToChildren(true) {};
+	SequentialChoiceMotion(const MotionVec &mpv):ChoiceMotion(mpv), passEventsToChildren(true){};
+	SequentialChoiceMotion(const SequentialChoiceMotion &c):ChoiceMotion(c), passEventsToChildren(c.passEventsToChildren){};
 	
 	~SequentialChoiceMotion(){};
 
@@ -62,6 +63,16 @@ public:
 
 	//! sets the start time of the motion. Called when its loaded into an avatar.
 	virtual void  setStartTime(float t);
+
+	//! whether next events are passed on to the motions children first or not
+	void setPassEventsToChildren(bool b)
+	{	
+		passEventsToChildren = b;
+	}
+	bool getPassEventsToChildren()
+	{	
+		return passEventsToChildren;
+	}
 
 	//! handles an event (plays the motion with the same name as the event)
 	virtual void event(tstring ev);

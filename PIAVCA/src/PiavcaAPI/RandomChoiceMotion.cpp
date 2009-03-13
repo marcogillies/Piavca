@@ -96,6 +96,8 @@ void RandomChoiceMotion::setMotionProb(tstring motName, float prob)
 
 int RandomChoiceMotion::makeChoice()
 {
+	if (eventHappened)
+		return ChoiceMotion::makeChoice();
 	if (probsUnnormalised)
 		normaliseProbs();
 	int r = rand()%1000;

@@ -70,6 +70,7 @@ class SoundEngine:
 		self.samplewidth = sample_width
 		self.output = None
 		self.currentAudio = None
+		self.currentlyPlaying = None
 		
 
 		self.sounds = {}
@@ -99,8 +100,8 @@ class SoundEngine:
 		print "adding", name, filename
 		input_file= wave.open( filename, 'rb' )
 		
-		if input_file:
-			raise ValueError("Could not open audio file ", filename)
+		if not input_file:
+			raise IOError("Could not open audio file ", filename)
 		
 		if self.output == None:
 			self.openPlayer(input_file)
@@ -160,9 +161,11 @@ class SoundEngine:
 			self.currentAudio = self.sounds[name]
 			self.updateAudio()
 			left = len(self.sounds[name])/self.bytes_per_second
+			self.currentlyPlaying = name
 		elif pymediapresent :
 			self.output.play(self.sounds[name])
 			left = self.output.getLeft()
+			self.currentlyPlaying = name
 		#print "time left", left
 		time.sleep(left + 1)
 		
@@ -204,12 +207,17 @@ class SoundEngine:
 			self.currentTime = 0
 			#self.updateAudio()
 			left = len(self.sounds[name])/self.bytes_per_second
+			self.currentlyPlaying = name
 		elif pymediapresent :
 			#print "pymedia"
 			self.output.play(self.sounds[name])
 			left = self.output.getLeft()
+			self.currentlyPlaying = name
 		#print "time left", left
 		#time.sleep(left + 1)
+		
+	def getCurrentlyPlaying(self):	
+		return self.currentlyPlaying
 			
 	def say(self, text):
 		if ttsAvailable:
@@ -222,7 +230,7 @@ _soundEngine = None
 
 def getSoundEngine(samplerate = 44100, channels = 2, format = -1, sample_width=-1):
 	global _soundEngine
-	print "Sound Engine", _soundEngine
+	#print "Sound Engine", _soundEngine
 	if _soundEngine == None:
 		print "******** No sound engine found: loading a new one ******************"
 		_soundEngine = SoundEngine(samplerate, channels, format, sample_width)

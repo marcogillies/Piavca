@@ -249,6 +249,8 @@ void ChoiceMotion::event(tstring ev)
 		if (mots[i]->getName() == ev)
 		{
 			currentChoice = i;
+			std::cout << "Choice Motion: event " << ev << std::endl;
+			eventHappened = true;
 			if(resetOnEvent)
 				reset();
 			break;
@@ -287,6 +289,7 @@ bool ChoiceMotion::reset()
 		return true;
 	std::cout << "ChoiceMotion reset, about to make choice: " << std::endl;
 	int choice = makeChoice();
+	eventHappened = false;
 	if (choice < 0)
 		return false;
 	std::cout << "ChoiceMotion reset, choice: " << choice << std::endl;
