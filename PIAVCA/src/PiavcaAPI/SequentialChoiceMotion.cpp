@@ -64,6 +64,17 @@ void SequentialChoiceMotion::event(tstring ev)
 			reset();
 		}
 	}
+	
+	if(ev == _T("previous"))
+	{
+		setChoice(getCurrentChoice()-1);
+		reset();
+	}
+	if(ev == _T("first"))
+	{
+		setChoice(-1);
+		reset();
+	}
 	else if (ev == _T("__chosen__"))
 	{
 			setChoice(-1);
@@ -76,6 +87,10 @@ void SequentialChoiceMotion::event(tstring ev)
 bool SequentialChoiceMotion::canHandleEvent(tstring ev)
 {
 	if(ev == _T("next") && getCurrentChoice()+1 < getNumMotions() )
+		return true;
+	if(ev == _T("previous") && getCurrentChoice() > 0 )
+		return true;
+	if(ev == _T("first") )
 		return true;
 	if(ev == _T("__chosen__") )
 		return true;

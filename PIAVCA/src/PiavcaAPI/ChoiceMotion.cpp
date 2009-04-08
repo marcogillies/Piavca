@@ -310,11 +310,11 @@ bool ChoiceMotion::reset()
 		if (accumulateRoot)
 		{
 			Reposition *repositioner = new Reposition(mot);
-			repositioner->setMaintainY(true);
-			repositioner->setStartFromMotion(this, Piavca::Core::getCore()->getTime());
+			//repositioner->setMaintainY(true);
 			repositioner->setUpDirection(upDirection);
 			repositioner->setMaintainUp(maintainUp);
 			repositioner->setRotateAboutUp(rotateAboutUp);
+			repositioner->setStartFromMotion(this, Piavca::Core::getCore()->getTime());
 			mot = repositioner;
 		}
 

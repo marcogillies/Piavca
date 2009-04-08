@@ -72,8 +72,14 @@ void Reposition::calculateRootOffsets()
 
 	if(filterMot && !filterMot->isNull(root_position_id))
 	{
+		Quat offs(oriOffset);
+		offs.normalise();
+		if (rotateAboutUp)
+		{
+			offs.projectToAxis(upDirection);
+		}
 		originalStart = filterMot->getVecValueAtTime(root_position_id, filterMot->getStartTime());
-		originalStart = oriOffset.transform(originalStart);
+		originalStart = offs.transform(originalStart);
 	}
 	//oriOffset = Quat(oriOffset.Zangle(), Vec::ZAxis());
 	//oriOffset = Quat();
@@ -142,7 +148,21 @@ Vec Reposition::getVecValueAtTimeInternal(int trackId, float time)
 		Vec OriginalValue = filterMot->getVecValueAtTime(trackId, time);
 		//return OriginalValue;
 		//Vec subtractedVec = oriOffset.transform(OriginalValue - originalStart) + posOffset;
-		Vec subtractedVec = oriOffset.transform(OriginalValue) - originalStart + posOffset;
+		Vec subtraction = originalStart;
+		
+		if (!maintainUp)
+		{
+			subtraction = subtraction - upDirection*(upDirection.dot(subtraction));
+		}
+		Quat offs(oriOffset);
+		offs.normalise();
+		if (rotateAboutUp)
+		{
+			offs.projectToAxis(upDirection);
+		}
+		Vec rotatedValue = offs.transform(OriginalValue);
+		Vec subtractedVec = rotatedValue - subtraction;
+		subtractedVec += posOffset;
 		//return oriOffset.transform(OriginalValue);
 		//Vec subtractedVec = OriginalValue - originalStart;
 		//return OriginalValue;
@@ -152,7 +172,7 @@ Vec Reposition::getVecValueAtTimeInternal(int trackId, float time)
 			addition = addition - upDirection*(upDirection.dot(addition));
 		}
 		//if(maintainY)
-		return subtractedVec + start_position;
+		return subtractedVec + addition;//+ start_position;
 		//else
 		//{
 			

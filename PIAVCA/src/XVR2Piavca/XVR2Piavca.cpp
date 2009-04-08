@@ -99,7 +99,7 @@ std::wstreambuf *_saved_wcerr = NULL;
 void *initScript = NULL;
 void *userScript = NULL;
 
-bool g_PythonInitialised = false:
+bool g_PythonInitialised = false;
 
 
 char *get_messages()
