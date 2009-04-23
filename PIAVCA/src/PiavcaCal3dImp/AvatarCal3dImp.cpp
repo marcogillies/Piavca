@@ -370,6 +370,249 @@ const char *vertexProgramStr=
 "}\n";
 
 
+
+// GLSL shader
+const char *vertexProgramMorphsStr= 
+"uniform mat4 Transforms[24];\n"\
+"attribute vec4 Weights;\n"\
+"attribute vec4 MatrixIndices;\n"\
+"\n"\
+"void DirectionalLight(in int i,\n"\
+"                      in vec3 normal,\n"\
+"                      inout vec4 ambient,\n"\
+"                      inout vec4 diffuse,\n"\
+"                      inout vec4 specular)\n"\
+"{\n"\
+"     float nDotVP;         // normal . light direction\n"\
+"     float nDotHV;         // normal . light half vector\n"\
+"     float pf;             // power factor\n"\
+"\n"\
+"     nDotVP = max(0.0, dot(normal,\n"\
+"                   normalize(vec3(gl_LightSource[i].position))));\n"\
+"     nDotHV = max(0.0, dot(normal, vec3(gl_LightSource[i].halfVector)));\n"\
+"\n"\
+"     if (nDotVP == 0.0)\n"\
+"         pf = 0.0;\n"\
+"     else\n"\
+"         pf = pow(nDotHV, gl_FrontMaterial.shininess);\n"\
+"\n"\
+"     ambient  += gl_LightSource[i].ambient;\n"\
+"     diffuse  += gl_LightSource[i].diffuse * nDotVP;\n"\
+"     specular += gl_LightSource[i].specular * pf;\n"\
+"}\n"\
+"\n"\
+"\n"\
+"\n"\
+"void PointLight(in int i,\n"\
+"                in vec3 eye,\n"\
+"                in vec3 ecPosition3,\n"\
+"                in vec3 normal,\n"\
+"                inout vec4 ambient,\n"\
+"                inout vec4 diffuse,\n"\
+"                inout vec4 specular)\n"\
+"{\n"\
+"    float nDotVP;         // normal . light direction\n"\
+"    float nDotHV;         // normal . light half vector\n"\
+"    float pf;             // power factor\n"\
+"    float attenuation;    // computed attenuation factor\n"\
+"    float d;              // distance from surface to light source\n"\
+"    vec3  VP;             // direction from surface to light position\n"\
+"    vec3  halfVector;     // direction of maximum highlights\n"\
+"\n"\
+"    // Compute vector from surface to light position\n"\
+"    VP = vec3(gl_LightSource[i].position) - ecPosition3;\n"\
+"\n"\
+"    // Compute distance between surface and light position\n"\
+"    d = length(VP);\n"\
+"\n"\
+"    // Normalize the vector from surface to light position\n"\
+"    VP = normalize(VP);\n"\
+"\n"\
+"    // Compute attenuation\n"\
+"    attenuation = 1.0 / (gl_LightSource[i].constantAttenuation +\n"\
+"                         gl_LightSource[i].linearAttenuation * d +\n"\
+"                         gl_LightSource[i].quadraticAttenuation * d * d);\n"\
+"\n"\
+"    halfVector = normalize(VP + eye);\n"\
+"\n"\
+"    nDotVP = max(0.0, dot(normal, VP));\n"\
+"    nDotHV = max(0.0, dot(normal, halfVector));\n"\
+"\n"\
+"    if (nDotVP == 0.0)\n"\
+"        pf = 0.0;\n"\
+"    else\n"\
+"        pf = pow(nDotHV, gl_FrontMaterial.shininess);\n"\
+"\n"\
+"    ambient += gl_LightSource[i].ambient * attenuation;\n"\
+"    diffuse += gl_LightSource[i].diffuse * nDotVP * attenuation;\n"\
+"    specular += gl_LightSource[i].specular * pf * attenuation;\n"\
+"}\n"\
+"\n"\
+"\n"\
+"void SpotLight(in int i,\n"\
+"               in vec3 eye,\n"\
+"               in vec3 ecPosition3,\n"\
+"               in vec3 normal,\n"\
+"               inout vec4 ambient,\n"\
+"               inout vec4 diffuse,\n"\
+"               inout vec4 specular)\n"\
+"{\n"\
+"    float nDotVP;           // normal . light direction\n"\
+"    float nDotHV;           // normal . light half vector\n"\
+"    float pf;               // power factor\n"\
+"    float spotDot;          // cosine of angle between spotlight\n"\
+"    float spotAttenuation;  // spotlight attenuation factor\n"\
+"    float attenuation;      // computed attenuation factor\n"\
+"    float d;                // distance from surface to light source\n"\
+"    vec3 VP;                // direction from surface to light position\n"\
+"    vec3 halfVector;        // direction of maximum highlights\n"\
+"\n"\
+"    // Compute vector from surface to light position\n"\
+"    VP = vec3(gl_LightSource[i].position) - ecPosition3;\n"\
+"\n"\
+"    // Compute distance between surface and light position\n"\
+"    d = length(VP);\n"\
+"\n"\
+"    // Normalize the vector from surface to light position\n"\
+"    VP = normalize(VP);\n"\
+"\n"\
+"    // Compute attenuation\n"\
+"    attenuation = 1.0 / (gl_LightSource[i].constantAttenuation +\n"\
+"                         gl_LightSource[i].linearAttenuation * d +\n"\
+"                         gl_LightSource[i].quadraticAttenuation * d * d);\n"\
+"\n"\
+"    // See if point on surface is inside cone of illumination\n"\
+"    spotDot = dot(-VP, normalize(gl_LightSource[i].spotDirection));\n"\
+"\n"\
+"    if (spotDot < gl_LightSource[i].spotCosCutoff)\n"\
+"        spotAttenuation = 0.0; // light adds no contribution\n"\
+"    else\n"\
+"        spotAttenuation = pow(spotDot, gl_LightSource[i].spotExponent);\n"\
+"\n"\
+"    // Combine the spotlight and distance attenuation.\n"\
+"    attenuation *= spotAttenuation;\n"\
+"\n"\
+"    halfVector = normalize(VP + eye);\n"\
+"\n"\
+"    nDotVP = max(0.0, dot(normal, VP));\n"\
+"    nDotHV = max(0.0, dot(normal, halfVector));\n"\
+"\n"\
+"    if (nDotVP == 0.0)\n"\
+"        pf = 0.0;\n"\
+"    else\n"\
+"        pf = pow(nDotHV, gl_FrontMaterial.shininess);\n"\
+"\n"\
+"    ambient  += gl_LightSource[i].ambient * attenuation;\n"\
+"    diffuse  += gl_LightSource[i].diffuse * nDotVP * attenuation;\n"\
+"    specular += gl_LightSource[i].specular * pf * attenuation;\n"\
+"}\n"\
+"\n"\
+"	const vec4 AMBIENT_BLACK = vec4(0.0, 0.0, 0.0, 1.0);\n"\
+"	const vec4 DEFAULT_BLACK = vec4(0.0, 0.0, 0.0, 0.0);\n"\
+"	\n"\
+"	bool isLightEnabled(in int i)\n"\
+"	{\n"\
+"	    // A separate variable is used to get\n"\
+"	    // rid of a linker error.\n"\
+"	    bool enabled = true;\n"\
+"\n"\
+"	    // If all the colors of the Light are set\n"\
+"	    // to BLACK then we know we don't need to bother\n"\
+"	    // doing a lighting calculation on it.\n"\
+"	    if ((gl_LightSource[i].ambient  == AMBIENT_BLACK) &&\n"\
+"	        (gl_LightSource[i].diffuse  == DEFAULT_BLACK) &&\n"\
+"	        (gl_LightSource[i].specular == DEFAULT_BLACK))\n"\
+"	        enabled = false;\n"\
+"\n"\
+"	    return(enabled);\n"\
+"	}\n"\
+"\n"\
+"\n"\
+"//void doLight(in int i, vec3 ecPosition3, vec3 eye, vec3 normal, vec4 amb, vec4 diff, vec4 spec)\n"\
+"//{\n"\
+"//		if (!isLightEnabled(i))\n"\
+"//			return;\n"\
+"//	    if (gl_LightSource[i].position.w == 0.0)\n"\
+"//	        DirectionalLight(i, normal, amb, diff, spec);\n"\
+"//	    else if (gl_LightSource[i].spotCutoff == 180.0)\n"\
+"//	        PointLight(i, eye, ecPosition3, normal, amb, diff, spec);\n"\
+"//	    else\n"\
+"//	        SpotLight(i, eye, ecPosition3, normal, amb, diff, spec);\n"\
+"//}\n"\
+"\n"\
+"void lighting(vec3 normal)\n"\
+"{\n"\
+"	vec4 ecPosition;\n"\
+"	vec3 ecPosition3;    // in 3 space\n"\
+"\n"\
+"	// Transform vertex to eye coordinates\n"\
+"	//if (NeedEyePosition)\n"\
+"	//{\n"\
+"		ecPosition  = gl_ModelViewMatrix * gl_Vertex;\n"\
+"		ecPosition3 = (vec3(ecPosition)) / ecPosition.w;\n"\
+"	//}\n"\
+"\n"\
+"	vec3 eye;\n"\
+"	//if (LocalViewer)\n"\
+"	//   eye = -normalize(ecPosition3);\n"\
+"	//else\n"\
+"	   eye = vec3(0.0, 0.0, 1.0);\n"\
+"\n"\
+"	vec4 amb = vec4(0.0);\n"\
+"	vec4 diff = vec4(0.0);\n"\
+"	vec4 spec = vec4(0.0);\n"\
+"\n"\
+"	// Loop through enabled lights, compute contribution from each\n"\
+"   //doLight(0, ecPosition3, eye, normal, amb, diff, spec);\n"\
+"   //doLight(1, ecPosition3, eye, normal, amb, diff, spec);\n"\
+"   //doLight(2, ecPosition3, eye, normal, amb, diff, spec);\n"\
+"   //doLight(3, ecPosition3, eye, normal, amb, diff, spec);\n"\
+"	for (int i = 0; i < 8; i++)\n"\
+"	{\n"\
+"		if (!isLightEnabled(i))\n"\
+"			continue;\n"\
+"	    if (gl_LightSource[i].position.w == 0.0)\n"\
+"	        DirectionalLight(i, normal, amb, diff, spec);\n"\
+"	    else if (gl_LightSource[i].spotCutoff == 180.0)\n"\
+"	        PointLight(i, eye, ecPosition3, normal, amb, diff, spec);\n"\
+"	    else\n"\
+"	        SpotLight(i, eye, ecPosition3, normal, amb, diff, spec);\n"\
+"	}\n"\
+"\n"\
+"	vec4 color = gl_FrontLightModelProduct.sceneColor +\n"\
+"            amb * gl_FrontMaterial.ambient +\n"\
+"            diff * gl_FrontMaterial.diffuse +\n"\
+"			 spec * gl_FrontMaterial.specular;\n"\
+"	gl_FrontColor = color;\n"\
+"\n"\
+"}\n"\
+"\n"\
+"void main()\n"\
+"{\n"\
+"   mat4 transform  = Weights.x*Transforms[int(MatrixIndices.x)];\n"\
+"        transform += Weights.y*Transforms[int(MatrixIndices.y)];\n"\
+"        transform += Weights.z*Transforms[int(MatrixIndices.x)];\n"\
+"        transform += Weights.w*Transforms[int(MatrixIndices.w)];\n"\
+"	gl_Position = transform * gl_Vertex;\n"\
+"\n"\
+"   mat3 normalTransform;\n"\
+"	normalTransform[0] = transform[0].xyz;\n"\
+"	normalTransform[1] = transform[1].xyz;\n"\
+"	normalTransform[2] = transform[2].xyz;\n"\
+"	// Skin the vertex normal, then compute lighting.\n"\
+"   vec3 normal = normalize(normalTransform* gl_Normal);\n"\
+"\n"\
+"	lighting(normal);\n"\
+"\n"\
+"	//if (SecondaryColor)\n"\
+"	//	gl_FrontSecondaryColor = gl_SecondaryColor;\n"\
+"	//gl_FrontColor = gl_FrontMaterial.diffuse;\n"\
+"\n"\
+"	gl_TexCoord[0] = gl_MultiTexCoord0;\n"\
+"	gl_Position = gl_ModelViewProjectionMatrix * gl_Position;\n"\
+"}\n";
+
+
 int printOglError()
 {
         GLenum  glErr;
@@ -1117,10 +1360,11 @@ bool AvatarCal3DImp::loadBufferObject()
 	int meshCount = renderer->getMeshCount();
 
 	int i,j;
-	int numVerts=0, numFaces=0;
+	int numVerts=0, numFaces=0, numMorphVerts = 0, numMorphs = 0;
 	for (i=0; i < meshCount; i++)
 	{
 		int submeshCount = renderer->getSubmeshCount( i );
+		CalMesh *mesh = cal_model->getMesh( i );
 
 		int numVerts_=0, numFaces_=0;
 		for (j=0; j < submeshCount; j++)
@@ -1134,6 +1378,15 @@ bool AvatarCal3DImp::loadBufferObject()
 				//Get face count
 				//if (numFaces < renderer->getFaceCount())
 				numFaces += renderer->getFaceCount();
+
+				CalSubmesh *submesh = mesh->getSubmesh(j);
+				int morphCount = submesh->getMorphTargetWeightCount();
+				if(morphCount > 0)
+				{
+					if (morphCount > numMorphs)
+						numMorphs = morphCount;
+					numMorphVerts += renderer->getVertexCount();
+				}
 		}
 		if (numVerts < numVerts_)
 			numVerts = numVerts_;
@@ -1151,6 +1404,16 @@ bool AvatarCal3DImp::loadBufferObject()
   float *pTexCoordBuffer = (float*)malloc(numVerts*2*sizeof(float));
   CalIndex *pIndexBuffer = (CalIndex*)malloc(numFaces*3*sizeof(CalIndex));
 
+  std::vector<float *> MorphVertexBuffers;
+  std::vector<float *> MorphNormalBuffers;
+  for (size_t i = 0; i < numMorphs; i++)
+  {
+	  MorphVertexBuffers.push_back((float*)malloc(numMorphVerts*3*sizeof(float)));
+	  MorphNormalBuffers.push_back((float*)malloc(numMorphVerts*3*sizeof(float)));
+	  if(MorphVertexBuffers.back() == NULL || MorphNormalBuffers.back() == NULL)
+		  return false;
+  }	
+
   if(pVertexBuffer==NULL || pWeightBuffer == NULL
 	 || pMatrixIndexBuffer==NULL || pNormalBuffer == NULL
 	 || pTexCoordBuffer==NULL || pIndexBuffer == NULL)
@@ -1159,7 +1422,7 @@ bool AvatarCal3DImp::loadBufferObject()
   }	  
 
 
-  m_calHardwareModel = new CalHardwareModel(cal_model->getCoreModel());
+  m_calHardwareModel = new PiavcaHardwareModel(cal_model->getCoreModel());
   m_calHardwareModel->setVertexBuffer((char*)pVertexBuffer,3*sizeof(float));
   m_calHardwareModel->setNormalBuffer((char*)pNormalBuffer,3*sizeof(float));
   m_calHardwareModel->setWeightBuffer((char*)pWeightBuffer,4*sizeof(float));
@@ -1167,6 +1430,11 @@ bool AvatarCal3DImp::loadBufferObject()
   m_calHardwareModel->setTextureCoordNum(1);
   m_calHardwareModel->setTextureCoordBuffer(0,(char*)pTexCoordBuffer,2*sizeof(float));
   m_calHardwareModel->setIndexBuffer(pIndexBuffer);
+
+  for (size_t i = 0; i < numMorphs; i++)
+  {
+	m_calHardwareModel->addMorphBuffer((char*)MorphVertexBuffers[i], (char*)MorphNormalBuffers[i]);
+  }
 
   m_calHardwareModel->load( 0, 0, MAXBONESPERMESH);
 
@@ -1183,9 +1451,18 @@ bool AvatarCal3DImp::loadBufferObject()
 	  int faceId;
 	  for(faceId = 0; faceId < m_calHardwareModel->getFaceCount(); faceId++)
 	  {
-		  pIndexBuffer[faceId*3+ m_calHardwareModel->getStartIndex()]+=m_calHardwareModel->getBaseVertexIndex();
-		  pIndexBuffer[faceId*3+1+ m_calHardwareModel->getStartIndex()]+=m_calHardwareModel->getBaseVertexIndex();
-		  pIndexBuffer[faceId*3+2+ m_calHardwareModel->getStartIndex()]+=m_calHardwareModel->getBaseVertexIndex();
+		  if (m_calHardwareModel->hasMorphTargets())
+		  {
+			  pIndexBuffer[faceId*3+ m_calHardwareModel->getStartIndex()]+=m_calHardwareModel->getBaseMorphVertexIndex();
+			  pIndexBuffer[faceId*3+1+ m_calHardwareModel->getStartIndex()]+=m_calHardwareModel->getBaseMorphVertexIndex();
+			  pIndexBuffer[faceId*3+2+ m_calHardwareModel->getStartIndex()]+=m_calHardwareModel->getBaseMorphVertexIndex();
+		  }
+		  else
+		  {
+			  pIndexBuffer[faceId*3+ m_calHardwareModel->getStartIndex()]+=m_calHardwareModel->getBaseVertexIndex();
+			  pIndexBuffer[faceId*3+1+ m_calHardwareModel->getStartIndex()]+=m_calHardwareModel->getBaseVertexIndex();
+			  pIndexBuffer[faceId*3+2+ m_calHardwareModel->getStartIndex()]+=m_calHardwareModel->getBaseVertexIndex();
+		  }
 	  }
 
   }
@@ -1193,7 +1470,7 @@ bool AvatarCal3DImp::loadBufferObject()
   // We use ARB_vertex_buffer_object extension,
   // it provide better performance
 
-  glGenBuffers(6, m_bufferObject);
+  glGenBuffers(6 + 2*numMorphs, m_bufferObject);
 
   glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[0]);
   glBufferData(GL_ARRAY_BUFFER, m_calHardwareModel->getTotalVertexCount()*3*sizeof(float),(const void*)pVertexBuffer, GL_STATIC_DRAW);
@@ -1214,11 +1491,31 @@ bool AvatarCal3DImp::loadBufferObject()
 
   glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_calHardwareModel->getTotalFaceCount()*3*sizeof(CalIndex),(const void*)pIndexBuffer, GL_STATIC_DRAW);
 
+  
+  
+  for (size_t i = 0; i < numMorphs; i++)
+  {
+	  glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[6+2*i]);
+	  glBufferData(GL_ARRAY_BUFFER, numMorphVerts*3*sizeof(float),(const void*)MorphVertexBuffers[i], GL_STATIC_DRAW);
+
+	  glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[6+2*i+1]);
+	  glBufferData(GL_ARRAY_BUFFER, numMorphVerts*3*sizeof(float),(const void*)MorphNormalBuffers[i], GL_STATIC_DRAW);
+  }
+  
+  
+
+  
   free(pVertexBuffer);
   free(pWeightBuffer);
   free(pNormalBuffer);
   free(pMatrixIndexBuffer);
   free(pIndexBuffer);
+
+  for (size_t i = 0; i < numMorphs; i++)
+  {
+	  free (MorphVertexBuffers[i]);
+	  free (MorphNormalBuffers[i]);
+  }	
 
   return true;
 
@@ -1253,6 +1550,7 @@ bool AvatarCal3DImp::loadVertexProgram()
 	glBindProgramARB( GL_VERTEX_PROGRAM_ARB, 0 );
 	*/
 
+	// load the program without morphs
 	GLuint shaderId = glCreateShader(GL_VERTEX_SHADER);
 	glShaderSource(shaderId, 1, &vertexProgramStr, NULL);
 
@@ -1277,6 +1575,31 @@ bool AvatarCal3DImp::loadVertexProgram()
 	glGetProgramiv(m_vertexProgramId, GL_LINK_STATUS, &compile_status);
 	printProgramInfoLog(m_vertexProgramId);
 	
+	
+	// load the one with morphs
+	GLuint shaderId = glCreateShader(GL_VERTEX_SHADER);
+	glShaderSource(shaderId, 1, &vertexProgramMorphsStr, NULL);
+
+	glCompileShader(shaderId);
+	printOglError();
+	GLint compile_status = 0;
+	glGetShaderiv(shaderId, GL_COMPILE_STATUS, &compile_status);
+	printShaderInfoLog(shaderId);
+
+	if (!compile_status)
+		Piavca::Error(_T("could not compile the shader"));
+
+	m_vertexProgramMorphsId = glCreateProgram();
+	glAttachShader(m_vertexProgramMorphsId, shaderId);
+
+	glBindAttribLocation(m_vertexProgramMorphsId, 1, "Weights");
+	glBindAttribLocation(m_vertexProgramMorphsId, 3, "MatrixIndices");
+
+	glLinkProgram(m_vertexProgramMorphsId);
+	
+	printOglError();
+	glGetProgramiv(m_vertexProgramMorphsId, GL_LINK_STATUS, &compile_status);
+	printProgramInfoLog(m_vertexProgramMorphsId);
 
 	if (!compile_status)
 		Piavca::Error(_T("could not link the shader"));
@@ -1963,9 +2286,12 @@ void	AvatarCal3DImp::render_hardware ()
 		
 	int hardwareMeshId;
 	
+	// first render everthing without morph targets
 	for(hardwareMeshId=0;hardwareMeshId<m_calHardwareModel->getHardwareMeshCount() ; hardwareMeshId++)
 	{
 		m_calHardwareModel->selectHardwareMesh(hardwareMeshId);
+		if (m_calHardwareModel->hasMorphTargets())
+			continue;
 
 		unsigned char meshColor[4];	
 		float materialColor[4];
@@ -2044,6 +2370,128 @@ void	AvatarCal3DImp::render_hardware ()
 
 	}
 	
+	// then render the meshes with morph targets
+	
+
+	//load the morphs enabled vertex program
+	glUseProgram(m_vertexProgramMorphsId);
+	printOglError();
+
+	bool prevHadMorphs = false;
+	for(hardwareMeshId=0;hardwareMeshId<m_calHardwareModel->getHardwareMeshCount() ; hardwareMeshId++)
+	{
+		m_calHardwareModel->selectHardwareMesh(hardwareMeshId);
+		if (!m_calHardwareModel->hasMorphTargets())
+			continue;
+
+		if (!prevHadMorphs)
+		{
+			prevHadMorphs = true;
+			    
+			glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[0]);
+			glVertexAttribPointer(0, 3 , GL_FLOAT, false, 0, (const void *)(3*sizeof(float)*m_calHardwareModel->getBaseVertexIndex()));
+			printOglError();
+
+			glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[1]);
+			glVertexAttribPointer(1, 4 , GL_FLOAT, false, 0, (const void *)(4*sizeof(float)*m_calHardwareModel->getBaseVertexIndex()));
+			printOglError();
+
+			glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[2]);
+			glVertexAttribPointer(2, 3 , GL_FLOAT, false, 0, (const void *)(3*sizeof(float)*m_calHardwareModel->getBaseVertexIndex()));
+			printOglError();
+
+			glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[3]);
+			glVertexAttribPointer(3, 4 , GL_FLOAT, false, 0, (const void *)(4*sizeof(float)*m_calHardwareModel->getBaseVertexIndex()));
+			printOglError();
+
+			glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[4]);
+			glVertexAttribPointer(8, 2 , GL_FLOAT, false, 0, (const void *)(2*sizeof(float)*m_calHardwareModel->getBaseVertexIndex()));
+			printOglError();
+
+			// load morphs
+
+			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_bufferObject[5]);
+			printOglError();
+		}
+
+		unsigned char meshColor[4];	
+		float materialColor[4];
+		// set the material ambient color
+		m_calHardwareModel->getAmbientColor(&meshColor[0]);
+		materialColor[0] = meshColor[0] / 255.0f;  materialColor[1] = meshColor[1] / 255.0f; materialColor[2] = meshColor[2] / 255.0f; materialColor[3] = meshColor[3] / 255.0f;
+		glMaterialfv(GL_FRONT, GL_AMBIENT, materialColor);
+		printOglError();
+		
+		// set the material diffuse color
+		m_calHardwareModel->getDiffuseColor(&meshColor[0]);
+		materialColor[0] = meshColor[0] / 255.0f;  materialColor[1] = meshColor[1] / 255.0f; materialColor[2] = meshColor[2] / 255.0f; materialColor[3] = meshColor[3] / 255.0f;
+		glMaterialfv(GL_FRONT, GL_DIFFUSE, materialColor);
+		printOglError();
+		
+		// set the material specular color
+		m_calHardwareModel->getSpecularColor(&meshColor[0]);
+		materialColor[0] = meshColor[0] / 255.0f;  materialColor[1] = meshColor[1] / 255.0f; materialColor[2] = meshColor[2] / 255.0f; materialColor[3] = meshColor[3] / 255.0f;
+		glMaterialfv(GL_FRONT, GL_SPECULAR, materialColor);
+		printOglError();
+		
+		
+		// set the material shininess factor
+		float shininess;
+		shininess = 50.0f; //m_calHardwareModel->getShininess();
+		glMaterialfv(GL_FRONT, GL_SHININESS, &shininess);
+
+		int boneId;
+		//float *transformation = new float[16*m_calHardwareModel->getBoneCount()];
+		for(boneId = 0; boneId < m_calHardwareModel->getBoneCount(); boneId++)
+		{
+			CalQuaternion rotationBoneSpace = m_calHardwareModel->getRotationBoneSpace(boneId, cal_model->getSkeleton());
+			CalVector translationBoneSpace = m_calHardwareModel->getTranslationBoneSpace(boneId, cal_model->getSkeleton());
+
+			CalMatrix rotationMatrix = rotationBoneSpace;
+
+			float transformation[16];
+
+			transformation[0]=rotationMatrix.dxdx;transformation[1]=rotationMatrix.dxdy;transformation[2]=rotationMatrix.dxdz;transformation[3]=translationBoneSpace.x;
+			transformation[4]=rotationMatrix.dydx;transformation[5]=rotationMatrix.dydy;transformation[6]=rotationMatrix.dydz;transformation[7]=translationBoneSpace.y;
+			transformation[8]=rotationMatrix.dzdx;transformation[9]=rotationMatrix.dzdy;transformation[10]=rotationMatrix.dzdz;transformation[11]=translationBoneSpace.z;
+			transformation[12]=0.0f;transformation[13]=0.0f;transformation[14]=0.0f;transformation[15]=1.0f;
+
+			std::ostringstream is;
+			is << "Transforms[" << boneId << "]";
+			//std::cout << is.str();
+			GLint transformArrayId = glGetUniformLocation(m_vertexProgramId, is.str().c_str());	
+			//std::cout  << " " << transformArrayId << std::endl;
+
+			glUniformMatrix4fv(transformArrayId, 1, GL_TRUE, &transformation[0]);
+			printOglError();
+			
+			//glProgramLocalParameter4fvARB(GL_VERTEX_PROGRAM_ARB,boneId*3,&transformation[0]);
+			//glProgramLocalParameter4fvARB(GL_VERTEX_PROGRAM_ARB,boneId*3+1,&transformation[4]);
+			//glProgramLocalParameter4fvARB(GL_VERTEX_PROGRAM_ARB,boneId*3+2,&transformation[8]);			
+			
+		}
+
+		
+		//GLint transformArrayId = glGetUniformLocation(m_vertexProgramId, "Transforms");
+		//transformArrayId = glGetUniformLocation(m_vertexProgramId, "Transforms[0]");
+		//transformArrayId = glGetUniformLocation(m_vertexProgramId, "Transforms[1]");
+		//glUniformMatrix4fv(transformArrayId, m_calHardwareModel->getBoneCount(), GL_FALSE, &transformation[0]);
+		
+
+        // set the texture id we stored in the map user data
+        glBindTexture(GL_TEXTURE_2D, (GLuint)m_calHardwareModel->getMapUserData(0));
+		printOglError();
+
+		if(sizeof(CalIndex)==2)
+			glDrawElements(GL_TRIANGLES, m_calHardwareModel->getFaceCount() * 3, GL_UNSIGNED_SHORT, (((CalIndex *)NULL)+ m_calHardwareModel->getStartIndex()));
+		else
+			glDrawElements(GL_TRIANGLES, m_calHardwareModel->getFaceCount() * 3, GL_UNSIGNED_INT, (((CalIndex *)NULL)+ m_calHardwareModel->getStartIndex()));
+		
+		printOglError();
+
+	}
+	
+
     // clear vertex array state    
 
 	//glDisableVertexAttribArrayARB(0);

@@ -42,6 +42,8 @@ using std::vector;
 
 //#include "PlatformDefs.h"
 
+#include "hardwaremodel.h"
+
 #include "PiavcaAPI/AvatarImp.h"
 #include "PiavcaAPI/Quat.h"
 #include "PiavcaAPI/Vec.h"
@@ -96,7 +98,7 @@ struct FacialExpressionHolder
 class PIAVCA_DECL AvatarCal3DImp : public AvatarImp {
 public:
 	CalModel *cal_model;
-    CalHardwareModel* m_calHardwareModel;
+    PiavcaHardwareModel* m_calHardwareModel;
 	// a look up table to map between Piavca joint id's and Cal3D joint indexes
 	vector <JointHolder> joints;
 	// a look up table to map between Piavca expression id's and Cal3D morph target indexes
@@ -121,6 +123,7 @@ public:
 	bool hardware; 
 	// vertex program id
 	GLuint m_vertexProgramId;
+	GLuint m_vertexProgramMorphsId;
 	GLuint m_bufferObject[6];
 
 	//! initialization for hardware skinning
