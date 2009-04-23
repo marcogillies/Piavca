@@ -1577,12 +1577,12 @@ bool AvatarCal3DImp::loadVertexProgram()
 	
 	
 	// load the one with morphs
-	GLuint shaderId = glCreateShader(GL_VERTEX_SHADER);
+	shaderId = glCreateShader(GL_VERTEX_SHADER);
 	glShaderSource(shaderId, 1, &vertexProgramMorphsStr, NULL);
 
 	glCompileShader(shaderId);
 	printOglError();
-	GLint compile_status = 0;
+	compile_status = 0;
 	glGetShaderiv(shaderId, GL_COMPILE_STATUS, &compile_status);
 	printShaderInfoLog(shaderId);
 

@@ -56,7 +56,7 @@ const int Piavca::Core::nullId = 10000;
 
 
 Core::Core()
-	:maxJointId(0), maxExpressionId(-1), 
+	:maxJointId(0), maxExpressionId(0), 
 	exceptionFlag(true), log_file("piavca_log.txt"),
 	autoTimeOff(false)
 {
@@ -264,7 +264,7 @@ void Core::addExpressionNameSet(Piavca::StringVector names)
 
 tstring Core::getExpressionName(int expressionId)
 {
-	if (expressionId <= maxExpressionId)
+	if (expressionId < maxExpressionId)
 		return "";
 	std::map<tstring, int> ::iterator it = std::find_if(expressionMap.begin(), expressionMap.end(), findId(expressionId));
 	return (*it).first;
@@ -303,7 +303,8 @@ tstring Core::getTrackName(int trackId)
 	}
 	else
 	{
-		if (trackId <= maxExpressionId)
+		std::cout << "looking for expression name " << trackId << " maxexpression is " << maxExpressionId << std::endl;
+		if (trackId < maxExpressionId)
 			return "";
 		std::map<tstring, int> ::iterator it = std::find_if(expressionMap.begin(), expressionMap.end(), findId(trackId));
 		return (*it).first;
