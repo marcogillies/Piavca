@@ -905,16 +905,22 @@ int PiavcaHardwareModel::addVertex(HardwareMesh &hardwareMesh, int indice, CalCo
 	  {
 		  if (morphIndex < pCoreSubmesh->getCoreSubMorphTargetCount())
 		  {
-			const std::vector<CalCoreSubMorphTarget::BlendVertex> &vectorMorphVertex = pCoreSubmesh->getCoreSubMorphTarget(morphIndex)->getVectorBlendVertex();
+		    CalCoreSubMorphTarget::BlendVertex blendVert;
+			pCoreSubmesh->getCoreSubMorphTarget(morphIndex)->getBlendVertex(indice, blendVert);
+			
 			//const CalCoreSubmesh *morphSubmesh = pCoreSubmesh->getCoreSubMorphTarget(morphIndex)->getCoreSubmesh();
 			//const std::vector<CalCoreSubmesh::Vertex>& vectorMorphVertex = morphSubmesh->getVectorVertex();
-			CalVector position = vectorMorphVertex[indice].position;
+			CalVector position = blendVert.position; //vectorMorphVertex[indice].position;
 			position -= vectorVertex[indice].position;
-			CalVector normal = vectorMorphVertex[indice].normal;
+			CalVector normal = blendVert.normal; //vectorMorphVertex[indice].normal;
 			normal -= vectorVertex[indice].normal;
+			
+			//if( fabs(position[0]) > 0.1 || fabs(position[1]) > 0.1 || fabs(position[2]) > 0.1)
+			//	std::cout << position[0] << " " << position[1] << " "<< position[2] << std::endl;
 
 			memcpy(&m_MorphVertexBuffers[morphIndex][(hardwareMesh.morphBaseVertexIndex+i)*m_vertexStride],&position,sizeof(CalVector));
 			memcpy(&m_MorphNormalBuffers[morphIndex][(hardwareMesh.morphBaseVertexIndex+i)*m_normalStride],&normal,sizeof(CalVector));
+			
 		  }
 		  else
 		  {

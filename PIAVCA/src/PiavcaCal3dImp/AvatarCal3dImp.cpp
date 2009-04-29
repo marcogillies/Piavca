@@ -374,8 +374,17 @@ const char *vertexProgramStr=
 // GLSL shader
 const char *vertexProgramMorphsStr= 
 "uniform mat4 Transforms[24];\n"\
+"uniform vec4 MorphWeights;\n"\
 "attribute vec4 Weights;\n"\
 "attribute vec4 MatrixIndices;\n"\
+"attribute vec3 MorphPosition1;\n"\
+"attribute vec3 MorphNormal1;\n"\
+"attribute vec3 MorphPosition2;\n"\
+"attribute vec3 MorphNormal2;\n"\
+"attribute vec3 MorphPosition3;\n"\
+"attribute vec3 MorphNormal3;\n"\
+"attribute vec3 MorphPosition4;\n"\
+"attribute vec3 MorphNormal4;\n"\
 "\n"\
 "void DirectionalLight(in int i,\n"\
 "                      in vec3 normal,\n"\
@@ -589,18 +598,28 @@ const char *vertexProgramMorphsStr=
 "\n"\
 "void main()\n"\
 "{\n"\
+"	vec4 position = gl_Vertex;\n"\
+"	position.xyz += MorphWeights.x*MorphPosition1.xyz;\n"\
+"	position.xyz += MorphWeights.y*MorphPosition2.xyz;\n"\
+"	position.xyz += MorphWeights.z*MorphPosition3.xyz;\n"\
+"	position.xyz += MorphWeights.w*MorphPosition4.xyz;\n"\
 "   mat4 transform  = Weights.x*Transforms[int(MatrixIndices.x)];\n"\
 "        transform += Weights.y*Transforms[int(MatrixIndices.y)];\n"\
 "        transform += Weights.z*Transforms[int(MatrixIndices.x)];\n"\
 "        transform += Weights.w*Transforms[int(MatrixIndices.w)];\n"\
-"	gl_Position = transform * gl_Vertex;\n"\
+"	gl_Position = transform * position;\n"\
 "\n"\
 "   mat3 normalTransform;\n"\
 "	normalTransform[0] = transform[0].xyz;\n"\
 "	normalTransform[1] = transform[1].xyz;\n"\
 "	normalTransform[2] = transform[2].xyz;\n"\
 "	// Skin the vertex normal, then compute lighting.\n"\
-"   vec3 normal = normalize(normalTransform* gl_Normal);\n"\
+"   vec3 normal = gl_Normal;\n"\
+"	normal += MorphWeights.x*MorphNormal1;\n"\
+"	normal += MorphWeights.y*MorphNormal2;\n"\
+"	normal += MorphWeights.z*MorphNormal3;\n"\
+"	normal += MorphWeights.w*MorphNormal4;\n"\
+"   normal = normalize(normalTransform* normal);\n"\
 "\n"\
 "	lighting(normal);\n"\
 "\n"\
@@ -1433,7 +1452,7 @@ bool AvatarCal3DImp::loadBufferObject()
 
   for (size_t i = 0; i < numMorphs; i++)
   {
-	m_calHardwareModel->addMorphBuffer((char*)MorphVertexBuffers[i], (char*)MorphNormalBuffers[i]);
+	m_calHardwareModel->addMorphBuffer((char*)(MorphVertexBuffers[i]), (char*)(MorphNormalBuffers[i]));
   }
 
   m_calHardwareModel->load( 0, 0, MAXBONESPERMESH);
@@ -1470,6 +1489,8 @@ bool AvatarCal3DImp::loadBufferObject()
   // We use ARB_vertex_buffer_object extension,
   // it provide better performance
 
+  m_bufferObject = new GLuint[6 + 2*numMorphs];
+
   glGenBuffers(6 + 2*numMorphs, m_bufferObject);
 
   glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[0]);
@@ -1493,13 +1514,17 @@ bool AvatarCal3DImp::loadBufferObject()
 
   
   
+  //for (int j = 0; j < numMorphVerts*3; j++)
+	//  std::cout << MorphVertexBuffers[0][j] << " ";
+  //std::cout << std::endl;
+
   for (size_t i = 0; i < numMorphs; i++)
   {
 	  glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[6+2*i]);
-	  glBufferData(GL_ARRAY_BUFFER, numMorphVerts*3*sizeof(float),(const void*)MorphVertexBuffers[i], GL_STATIC_DRAW);
+	  glBufferData(GL_ARRAY_BUFFER, numMorphVerts*3*sizeof(float),(const void*)(MorphVertexBuffers[i]), GL_STATIC_DRAW);
 
 	  glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[6+2*i+1]);
-	  glBufferData(GL_ARRAY_BUFFER, numMorphVerts*3*sizeof(float),(const void*)MorphNormalBuffers[i], GL_STATIC_DRAW);
+	  glBufferData(GL_ARRAY_BUFFER, numMorphVerts*3*sizeof(float),(const void*)(MorphNormalBuffers[i]), GL_STATIC_DRAW);
   }
   
   
@@ -1592,8 +1617,16 @@ bool AvatarCal3DImp::loadVertexProgram()
 	m_vertexProgramMorphsId = glCreateProgram();
 	glAttachShader(m_vertexProgramMorphsId, shaderId);
 
-	glBindAttribLocation(m_vertexProgramMorphsId, 1, "Weights");
-	glBindAttribLocation(m_vertexProgramMorphsId, 3, "MatrixIndices");
+	glBindAttribLocation(m_vertexProgramMorphsId, 1,  "Weights");
+	glBindAttribLocation(m_vertexProgramMorphsId, 3,  "MatrixIndices");
+	glBindAttribLocation(m_vertexProgramMorphsId, 4,  "MorphPosition1");
+	glBindAttribLocation(m_vertexProgramMorphsId, 5,  "MorphNormal1");
+	glBindAttribLocation(m_vertexProgramMorphsId, 6,  "MorphPosition2");
+	glBindAttribLocation(m_vertexProgramMorphsId, 7,  "MorphNormal2");
+	glBindAttribLocation(m_vertexProgramMorphsId, 9,  "MorphPosition3");
+	glBindAttribLocation(m_vertexProgramMorphsId, 10, "MorphNormal3");
+	glBindAttribLocation(m_vertexProgramMorphsId, 11, "MorphPosition4");
+	glBindAttribLocation(m_vertexProgramMorphsId, 12, "MorphNormal4");
 
 	glLinkProgram(m_vertexProgramMorphsId);
 	
@@ -1610,7 +1643,23 @@ bool AvatarCal3DImp::loadVertexProgram()
 	
 }
 
+std::vector <AvatarCal3DImp::morphItem> AvatarCal3DImp::getMorphWeights()
+{
+	std::vector <morphItem> items;
 
+   for (size_t i = 0; i < expressions.size(); i++)
+   {
+		if(expressions[i].meshId >= 0 && expressions[i].morphtargetId >= 0)
+		{
+			items.push_back(morphItem(expressions[i].morphtargetId, getFacialExpressionWeight(-i)));
+		}
+   }
+
+   
+   sort(items.begin(), items.end(), std::greater<morphItem>());
+   
+   return items;
+}
 
 bool  AvatarCal3DImp::setNeutralFacialExpression(tstring expressionName)
 {
@@ -2377,12 +2426,44 @@ void	AvatarCal3DImp::render_hardware ()
 	glUseProgram(m_vertexProgramMorphsId);
 	printOglError();
 
+	std::vector <morphItem> morphWeights = getMorphWeights();
+
+	glEnableVertexAttribArray(0);
+	glEnableVertexAttribArray(1);
+    glEnableVertexAttribArray(2);
+	glEnableVertexAttribArray(3);
+	if(morphWeights.size() > 0)
+	{
+		glEnableVertexAttribArray(4);
+		glEnableVertexAttribArray(5);
+	}
+	if(morphWeights.size() > 1)
+	{
+		glEnableVertexAttribArray(6);
+		glEnableVertexAttribArray(7);
+	}
+    glEnableVertexAttribArray(8);
+	if(morphWeights.size() > 2)
+	{
+		glEnableVertexAttribArray(9);
+		glEnableVertexAttribArray(10);
+	}
+	if(morphWeights.size() > 3)
+	{
+		glEnableVertexAttribArray(11);
+		glEnableVertexAttribArray(12);
+	}
+	
+
 	bool prevHadMorphs = false;
 	for(hardwareMeshId=0;hardwareMeshId<m_calHardwareModel->getHardwareMeshCount() ; hardwareMeshId++)
 	{
 		m_calHardwareModel->selectHardwareMesh(hardwareMeshId);
 		if (!m_calHardwareModel->hasMorphTargets())
+		{
+			prevHadMorphs = false;
 			continue;
+		}
 
 		if (!prevHadMorphs)
 		{
@@ -2404,13 +2485,38 @@ void	AvatarCal3DImp::render_hardware ()
 			glVertexAttribPointer(3, 4 , GL_FLOAT, false, 0, (const void *)(4*sizeof(float)*m_calHardwareModel->getBaseVertexIndex()));
 			printOglError();
 
+			
+
+			// load morphs
+			for (int i = 0; i < 4 && i < morphWeights.size(); i++)
+			{
+				int index = morphWeights[i].index;
+				glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[6+2*index]);
+				std::ostringstream is1;
+
+				std::ostringstream is;
+				is << "MorphPosition" << i+1 ;
+				glVertexAttribPointer(glGetAttribLocation(m_vertexProgramMorphsId, is.str().c_str()), 3 , GL_FLOAT, false, 0, NULL);
+				printOglError();
+				is.str("");
+
+				glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[6+2*index+1]);
+				is << "MorphNormal" << i+1 ;
+				glVertexAttribPointer(glGetAttribLocation(m_vertexProgramMorphsId, is.str().c_str()), 3 , GL_FLOAT, false, 0, NULL);
+				printOglError();
+
+			}
+			
+
+			
+
 			glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[4]);
 			glVertexAttribPointer(8, 2 , GL_FLOAT, false, 0, (const void *)(2*sizeof(float)*m_calHardwareModel->getBaseVertexIndex()));
 			printOglError();
 
-			// load morphs
-
+			
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_bufferObject[5]);
+			
 			printOglError();
 		}
 
@@ -2459,17 +2565,34 @@ void	AvatarCal3DImp::render_hardware ()
 			std::ostringstream is;
 			is << "Transforms[" << boneId << "]";
 			//std::cout << is.str();
-			GLint transformArrayId = glGetUniformLocation(m_vertexProgramId, is.str().c_str());	
+			GLint transformArrayId = glGetUniformLocation(m_vertexProgramMorphsId, is.str().c_str());	
 			//std::cout  << " " << transformArrayId << std::endl;
 
 			glUniformMatrix4fv(transformArrayId, 1, GL_TRUE, &transformation[0]);
 			printOglError();
-			
 			//glProgramLocalParameter4fvARB(GL_VERTEX_PROGRAM_ARB,boneId*3,&transformation[0]);
 			//glProgramLocalParameter4fvARB(GL_VERTEX_PROGRAM_ARB,boneId*3+1,&transformation[4]);
 			//glProgramLocalParameter4fvARB(GL_VERTEX_PROGRAM_ARB,boneId*3+2,&transformation[8]);			
 			
 		}
+
+		
+		GLint morphWeightId = glGetUniformLocation(m_vertexProgramMorphsId, "MorphWeights");
+		
+		float morphWeight1 = 0;
+		if (morphWeights.size() > 0)
+			morphWeight1 = morphWeights[0].weight;
+		float morphWeight2 = 0;
+		if (morphWeights.size() > 1)
+			morphWeight2 = morphWeights[1].weight;
+		float morphWeight3 = 0;
+		if (morphWeights.size() > 2)
+			morphWeight3 = morphWeights[2].weight;
+		float morphWeight4 = 0;
+		if (morphWeights.size() > 3)
+			morphWeight4 = morphWeights[3].weight;
+		glUniform4f(morphWeightId, morphWeight1, morphWeight2, morphWeight3, morphWeight4);
+		printOglError();
 
 		
 		//GLint transformArrayId = glGetUniformLocation(m_vertexProgramId, "Transforms");

@@ -68,6 +68,7 @@ public:
   void getSpecularColor(unsigned char *pColorBuffer) const;
   const CalQuaternion & getRotationBoneSpace(int boneId, CalSkeleton *pSkeleton) const;
   const CalVector & getTranslationBoneSpace(int boneId, CalSkeleton *pSkeleton) const;
+  
   bool hasMorphTargets() const;
 
   float getShininess() const;
@@ -86,6 +87,7 @@ public:
 
   Cal::UserData getMapUserData(int mapId);
   const Cal::UserData getMapUserData(int mapId) const;
+
   
   bool selectHardwareMesh(size_t meshId);
   

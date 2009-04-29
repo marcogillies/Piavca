@@ -96,6 +96,28 @@ struct FacialExpressionHolder
  *	(via a UCLAvatarImp pointer).
  */
 class PIAVCA_DECL AvatarCal3DImp : public AvatarImp {
+	class morphItem
+	{
+	public:
+		int index;
+		float weight;
+	
+		morphItem()
+			:index(-1), weight(-1) {}
+		morphItem(int ind, float w)
+			:index(ind), weight(w) {}
+		morphItem(const morphItem &m)
+			:index(m.index), weight(m.weight) {}
+
+		bool operator < (morphItem m)const 
+		{
+			return weight < m.weight;
+		}
+		bool operator > (morphItem m)const
+		{
+			return weight > m.weight;
+		}
+	};
 public:
 	CalModel *cal_model;
     PiavcaHardwareModel* m_calHardwareModel;
@@ -124,11 +146,12 @@ public:
 	// vertex program id
 	GLuint m_vertexProgramId;
 	GLuint m_vertexProgramMorphsId;
-	GLuint m_bufferObject[6];
+	GLuint *m_bufferObject;
 
 	//! initialization for hardware skinning
 	bool loadBufferObject();
 	bool loadVertexProgram();
+	std::vector <morphItem> getMorphWeights();
 
 	/* List of all current mesh vertices */
 	std::vector < std::vector < std::vector < float* > > > mVertices;
