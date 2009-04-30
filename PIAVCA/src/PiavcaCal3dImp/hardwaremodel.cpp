@@ -906,7 +906,7 @@ int PiavcaHardwareModel::addVertex(HardwareMesh &hardwareMesh, int indice, CalCo
 		  if (morphIndex < pCoreSubmesh->getCoreSubMorphTargetCount())
 		  {
 		    CalCoreSubMorphTarget::BlendVertex blendVert;
-			pCoreSubmesh->getCoreSubMorphTarget(morphIndex)->getBlendVertex(indice, blendVert);
+			blendVert = pCoreSubmesh->getCoreSubMorphTarget(morphIndex)->getVectorBlendVertex()[indice];
 			
 			//const CalCoreSubmesh *morphSubmesh = pCoreSubmesh->getCoreSubMorphTarget(morphIndex)->getCoreSubmesh();
 			//const std::vector<CalCoreSubmesh::Vertex>& vectorMorphVertex = morphSubmesh->getVectorVertex();

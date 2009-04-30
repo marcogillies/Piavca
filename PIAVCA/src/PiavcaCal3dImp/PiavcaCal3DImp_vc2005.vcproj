@@ -446,6 +446,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\hardwaremodel.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\MotionCal3DImp.cpp"
 				>
 			</File>
@@ -485,6 +489,10 @@
 			</File>
 			<File
 				RelativePath=".\glxew.h"
+				>
+			</File>
+			<File
+				RelativePath=".\hardwaremodel.h"
 				>
 			</File>
 			<File
