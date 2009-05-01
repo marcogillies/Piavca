@@ -102,6 +102,8 @@ std::vector<Piavca::tstring> SequentialChoiceMotion::getEventNames()
 {
 	std::vector<Piavca::tstring> ret;
 	ret.push_back(_T("next"));
+	ret.push_back(_T("previous"));
+	ret.push_back(_T("first"));
 	return ret;
 }
 
