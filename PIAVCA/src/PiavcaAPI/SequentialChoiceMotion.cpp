@@ -65,12 +65,12 @@ void SequentialChoiceMotion::event(tstring ev)
 		}
 	}
 	
-	if(ev == _T("previous"))
+	else if(ev == _T("previous"))
 	{
 		setChoice(getCurrentChoice()-1);
 		reset();
 	}
-	if(ev == _T("first"))
+	else if(ev == _T("first"))
 	{
 		setChoice(-1);
 		reset();
