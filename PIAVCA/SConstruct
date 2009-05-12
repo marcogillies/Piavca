@@ -66,7 +66,14 @@ elif ( 'win32' == env['PLATFORM'] ):
 else:
 	(ina, outstd, outerr) = os.popen3("python -V")
  	pyver = outerr.readline()
- 	if ( "5" == pyver[9] ):
+ 	print pyver
+ 	if ( "8" == pyver[9] ):
+         	external_libs = external_libs = ["python2.8", "GL"]
+ 	elif ( "7" == pyver[9] ):
+         	external_libs = external_libs = ["python2.7", "GL"]
+ 	elif ( "6" == pyver[9] ):
+         	external_libs = external_libs = ["python2.6", "GL"]
+ 	elif ( "5" == pyver[9] ):
          	external_libs = external_libs = ["python2.5", "GL"]
  	elif ( "4" == pyver[9] ):
         	external_libs = external_libs = ["python2.4", "GL"]

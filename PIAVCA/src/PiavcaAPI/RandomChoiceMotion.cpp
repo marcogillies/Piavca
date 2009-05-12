@@ -35,6 +35,8 @@
 
 #include "RandomChoiceMotion.h"
 
+#include <stdlib.h>
+
 using namespace Piavca;
 
 RandomChoiceMotion::RandomChoiceMotion(const MotionVec &mv, std::vector<float> ws)

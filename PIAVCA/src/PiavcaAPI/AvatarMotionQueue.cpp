@@ -45,6 +45,8 @@
 #include "TimeOffset.h"
 #include "ZeroMotion.h"
 
+#include <stdlib.h>
+
 using namespace Piavca;
 
 Motion* AvatarMotionQueue::blendMotion(Motion *m, Avatar *av, float scaleFactor)
