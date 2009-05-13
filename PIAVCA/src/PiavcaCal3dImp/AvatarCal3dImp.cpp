@@ -1346,6 +1346,19 @@ void  AvatarCal3DImp::enableHardware()
 	glGetIntegerv(GL_MAX_VERTEX_UNIFORM_COMPONENTS, &maxVertUni);
 	std::cout << "Max number of vertex uniform components " << maxVertUni << std::endl;
 	
+	std::string vers = std::string ((const char *)glGetString(GL_VERSION));
+	size_t dotpos = vers.find('.');
+	int major = atoi(vers.substr(0, dotpos).c_str());
+	int minor = atoi(vers.substr(dotpos+1, dotpos+2).c_str());
+	
+	std::cout << "major " << major << " minor " << minor << std::endl; 
+	
+	if(major < 2 || (major == 2 && minor < 1))
+	{
+		std::cerr << "For hardware skinning the GL version has to be 2.1 or more" << std::endl;	
+		return;
+	}
+	
 	if(!loadBufferObject())
 	{
       std::cerr << "Error loading vertex buffer object." << std::endl;

@@ -62,23 +62,23 @@ external_libs = ["cal3d"]
 if ( 'darwin' == env['PLATFORM'] ): 
 	env.Append(FRAMEWORKS=["OpenGL", "Python"])
 elif ( 'win32' == env['PLATFORM'] ):
-	external_libs = external_libs = ["python", "opengl32"]
+	external_libs = external_libs + ["python", "opengl32"]
 else:
 	(ina, outstd, outerr) = os.popen3("python -V")
  	pyver = outerr.readline()
  	print pyver
  	if ( "8" == pyver[9] ):
-         	external_libs = external_libs = ["python2.8", "GL"]
+         	external_libs = external_libs + ["python2.8", "GL", "GLU"]
  	elif ( "7" == pyver[9] ):
-         	external_libs = external_libs = ["python2.7", "GL"]
+         	external_libs = external_libs + ["python2.7", "GL", "GLU"]
  	elif ( "6" == pyver[9] ):
-         	external_libs = external_libs = ["python2.6", "GL"]
+         	external_libs = external_libs + ["python2.6", "GL", "GLU"]
  	elif ( "5" == pyver[9] ):
-         	external_libs = external_libs = ["python2.5", "GL"]
+         	external_libs = external_libs + ["python2.5", "GL", "GLU"]
  	elif ( "4" == pyver[9] ):
-        	external_libs = external_libs = ["python2.4", "GL"]
+        	external_libs = external_libs + ["python2.4", "GL", "GLU"]
  	elif ( '3' == pyver[9] ):
-	       	external_libs = external_libs = ["python2.3", "GL"]
+	       	external_libs = external_libs + ["python2.3", "GL", "GLU"]
  	else:
  	     print 'Could not determine python version!'
 	     Exit(1)
@@ -105,17 +105,22 @@ PiavcaPythonInterface = env.Library('src/PiavcaPythonInterface/PiavcaPythonInter
 if env.WhereIs('swig') is None:
 	Piavca_base = env.SharedLibrary('Python/Piavca/Piavca_base/_Piavca_base.so', ['Python/Piavca/Piavca_base/Piavca_wrap.cpp'], LIBS=PiavcaAPI + StdMotionImp + PiavcaCal3dImp + external_libs)
 else:
-	Piavca_base = env.SharedLibrary('Python/Piavca/Piavca_base/_Piavca_base.so', ['Python/Piavca/Piavca_base/Piavca.i'], LIBS=PiavcaAPI + StdMotionImp + PiavcaCal3dImp + external_libs)
-Depends(Piavca_base, PiavcaCal3dImp)
+	#Piavca_base = env.SharedLibrary('Python/Piavca/Piavca_base/_Piavca_base.so', ['Python/Piavca/Piavca_base/Piavca.i'], LIBS=PiavcaAPI + StdMotionImp + PiavcaCal3dImp + external_libs)
+	Piavca_base = env.SharedLibrary('Python/Piavca/Piavca_base/_Piavca_base.so', ['Python/Piavca/Piavca_base/Piavca.i']+glob('src/PiavcaAPI/*.cpp')+glob('src/StdMotionImp/*.cpp')+glob('src/PiavcaCal3dImp/*.cpp')+glob('src/PiavcaCal3dImp/*.c'), LIBS=external_libs)
+#Depends(Piavca_base, PiavcaCal3dImp)
 
 # install path for python modules
 path1 = os.path.join(distutils.sysconfig.get_python_lib(), "Piavca")
 path2 = os.path.join(path1, "Piavca_base")
 path3 = os.path.join(path1, "PiavcaDesigner")
+path4 = os.path.join(path1, "PiavcaDesigner/AutoCreators")
+path5 = os.path.join(path1, "CreationScripts")
 
 env.Install(path1, glob("Python/Piavca/*.py"))
 env.Install(path2, glob("Python/Piavca/Piavca_base/*.py")+Piavca_base)
 env.Install(path3, glob("Python/Piavca/PiavcaDesigner/*.py"))
+env.Install(path4, glob("Python/Piavca/PiavcaDesigner/AutoCreators/*.py"))
+env.Install(path5, glob("Python/Piavca/CreationScripts/*.py"))
 
 
 # install the scripts, renaming them to get rid of the .py suffix
@@ -128,6 +133,7 @@ for script in scripts:
 	env.InstallAs(os.path.join(binpath, name), script)
 destinations = [os.path.join(binpath, x[:-3]) for x in scripts]
 
-env.Alias('install', [path1, path2, path3, binpath])	
+env.Alias('install', [path1, path2, path3, path4, path5, binpath])	
 
 
+	
