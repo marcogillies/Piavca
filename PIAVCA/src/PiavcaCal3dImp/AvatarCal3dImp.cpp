@@ -1323,7 +1323,21 @@ void  AvatarCal3DImp::enableHardware()
 	// this disable spring system
 
 
-	std::cout << "Disable internal." << std::endl;
+	//std::cout << "Disable internal." << std::endl;
+
+	
+	std::cout << "GL version " << glGetString(GL_VERSION) << std::endl;
+	
+	std::string vers = std::string ((const char *)glGetString(GL_VERSION));
+	size_t dotpos = vers.find('.');
+	int major = atoi(vers.substr(0, dotpos).c_str());
+	int minor = atoi(vers.substr(dotpos+1, dotpos+2).c_str());
+	
+	if(major < 2 || (major == 2 && minor < 1))
+	{
+		std::cout << "For hardware skinning the GL version has to be 2.1 or more\n";	
+		return;
+	}
 
 	glewInit();
 
@@ -1339,25 +1353,14 @@ void  AvatarCal3DImp::enableHardware()
 	  return ;
 	}
 
-	std::cout << "GL version " << glGetString(GL_VERSION) << std::endl;
+	
+	
 	GLint maxVertAttrs, maxVertUni;
 	glGetIntegerv(GL_MAX_VERTEX_ATTRIBS, &maxVertAttrs);
 	std::cout << "Max number of vertex attrbutes " << maxVertAttrs << std::endl;
 	glGetIntegerv(GL_MAX_VERTEX_UNIFORM_COMPONENTS, &maxVertUni);
 	std::cout << "Max number of vertex uniform components " << maxVertUni << std::endl;
 	
-	std::string vers = std::string ((const char *)glGetString(GL_VERSION));
-	size_t dotpos = vers.find('.');
-	int major = atoi(vers.substr(0, dotpos).c_str());
-	int minor = atoi(vers.substr(dotpos+1, dotpos+2).c_str());
-	
-	std::cout << "major " << major << " minor " << minor << std::endl; 
-	
-	if(major < 2 || (major == 2 && minor < 1))
-	{
-		std::cerr << "For hardware skinning the GL version has to be 2.1 or more" << std::endl;	
-		return;
-	}
 	
 	if(!loadBufferObject())
 	{

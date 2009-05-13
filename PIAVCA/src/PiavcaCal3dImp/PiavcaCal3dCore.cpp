@@ -86,6 +86,7 @@ AvatarImp *PiavcaCal3DCore::createAvatarImp(tstring avatarId, bool bailOnMissedJ
   if (hardware)
   {
 	avatarImp->enableHardware();
+	//std::cout << "enabled hardware\n";
   }
   return avatarImp;
 }
