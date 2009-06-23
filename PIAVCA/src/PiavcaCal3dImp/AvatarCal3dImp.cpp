@@ -130,6 +130,7 @@ char vertexProgramStr[]=
 
 // GLSL shader
 const char *vertexProgramStr= 
+"#version 110\n"\
 "uniform mat4 Transforms[24];\n"\
 "attribute vec4 Weights;\n"\
 "attribute vec4 MatrixIndices;\n"\
@@ -2296,6 +2297,8 @@ void	AvatarCal3DImp::render ()
 
 void	AvatarCal3DImp::render_hardware ()
 {
+	std::cout << "in render hardware" << std::endl;
+	
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 	glPushMatrix();
 
@@ -2349,6 +2352,9 @@ void	AvatarCal3DImp::render_hardware ()
 	glScalef(scaleFactor, scaleFactor, scaleFactor);
 	printOglError();
 		
+
+	std::cout << "rendering non-morph meshes" << std::endl;
+	
 	int hardwareMeshId;
 	
 	// first render everthing without morph targets
@@ -2357,6 +2363,9 @@ void	AvatarCal3DImp::render_hardware ()
 		m_calHardwareModel->selectHardwareMesh(hardwareMeshId);
 		if (m_calHardwareModel->hasMorphTargets())
 			continue;
+		
+
+		std::cout << "setting materials" << std::endl;
 
 		unsigned char meshColor[4];	
 		float materialColor[4];
@@ -2384,6 +2393,9 @@ void	AvatarCal3DImp::render_hardware ()
 		shininess = 50.0f; //m_calHardwareModel->getShininess();
 		glMaterialfv(GL_FRONT, GL_SHININESS, &shininess);
 
+
+		std::cout << "loading bone transforms" << std::endl;
+		
 		int boneId;
 		//float *transformation = new float[16*m_calHardwareModel->getBoneCount()];
 		for(boneId = 0; boneId < m_calHardwareModel->getBoneCount(); boneId++)
@@ -2422,10 +2434,18 @@ void	AvatarCal3DImp::render_hardware ()
 		//glUniformMatrix4fv(transformArrayId, m_calHardwareModel->getBoneCount(), GL_FALSE, &transformation[0]);
 		
 
+
+		std::cout << "getting texture" << std::endl;
+		
         // set the texture id we stored in the map user data
         glBindTexture(GL_TEXTURE_2D, (GLuint)m_calHardwareModel->getMapUserData(0));
 		printOglError();
 
+
+		std::cout << "rendering" << std::endl;
+		
+		std::cout << "index size " << sizeof(CalIndex) << std::endl;
+		
 		if(sizeof(CalIndex)==2)
 			glDrawElements(GL_TRIANGLES, m_calHardwareModel->getFaceCount() * 3, GL_UNSIGNED_SHORT, (((CalIndex *)NULL)+ m_calHardwareModel->getStartIndex()));
 		else
@@ -2436,7 +2456,8 @@ void	AvatarCal3DImp::render_hardware ()
 	}
 	
 	// then render the meshes with morph targets
-	
+
+	std::cout << "rendering non-morph meshes" << std::endl;
 
 	//load the morphs enabled vertex program
 	glUseProgram(m_vertexProgramMorphsId);
@@ -2653,6 +2674,9 @@ void	AvatarCal3DImp::render_hardware ()
 	//glBindProgramARB( GL_VERTEX_PROGRAM_ARB, 0 );
 	glPopMatrix();
 	glPopAttrib();
+	
+
+	std::cout << "finished rendering" << std::endl;
 
 }
 

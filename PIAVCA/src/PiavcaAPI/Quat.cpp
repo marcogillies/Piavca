@@ -102,7 +102,7 @@ void Quat::setAngleAxis(float Angle, float x, float y, float z)
 	
 void Quat::getAngleAxis(float &Angle, Vec &Axis) const
 {
-	Angle = static_cast<float>(acosf(S())*2.0);
+	Angle = getAngle();
 
 	float s = sinf(Angle/2.0f);
 	if(s > 0.01)
@@ -122,7 +122,10 @@ void Quat::getAngleAxis(float &Angle, Vec &Axis) const
 
 float Quat::getAngle()const
 {
-	return static_cast<float>(acosf(S())*2.0);
+	if (S() > 0.99)
+		return 0.0f;
+	else
+		return static_cast<float>(acosf(S())*2.0);
 };
 	
 

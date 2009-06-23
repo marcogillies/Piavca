@@ -69,7 +69,7 @@ namespace Piavca
 		 *	Pass in the motion to be filtered and a scale factor
 		 */
 	    Reposition(Motion *m=NULL, Vec pos = Vec(), Quat ori = Quat()) 
-			:MotionFilter(m), start_position(pos), start_orientation(ori),
+			:MotionFilter(m), start_position(pos), start_orientation(ori), 
 			maintainUp(false), rotateAboutUp(true), upDirection(0.0, 0.0, 1.0)
 		{
 			calculateRootOffsets();

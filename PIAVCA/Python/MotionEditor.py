@@ -52,6 +52,8 @@ try:
 	Piavca.JointNames.importExpressionNames("Expressions.txt")
 except IOError:
 	print "could not open Expressions file Expressions.txt, will probably work anyway"
+
+Piavca.Core.getCore().setHardware(False)
 	
 print "creating avatar"
 
