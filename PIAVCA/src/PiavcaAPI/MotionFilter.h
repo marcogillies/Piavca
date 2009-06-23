@@ -217,13 +217,13 @@ namespace Piavca
 		};
 
 		//! whether it is a face or body motion
-		virtual bool isFacial()
-		{
-			if(filterMot)
-				return filterMot->isFacial();
-			else
-				return false;
-		};
+		//virtual bool isFacial()
+		//{
+		//	if(filterMot)
+		//		return filterMot->isFacial();
+		//	else
+		//		return false;
+		//};
 
 		//! whether you can access a motions value at frames other than the current one
 		virtual bool isRandomAccess()

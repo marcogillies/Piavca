@@ -116,7 +116,7 @@ class PIAVCA_DECL AvatarMotionQueue : public AvatarTimeCallback
   virtual void timeStep(Piavca::Avatar *avatar, float time);
 
   //! whether the queue handles facial or body motions
-  bool isFacial(){return facial;};
+  //bool isFacial(){return facial;};
 
   //! gets the start time of the current motion
   float getCurrentMotionStart()
@@ -229,7 +229,7 @@ class PIAVCA_DECL AvatarMotionQueue : public AvatarTimeCallback
   std::list< queueElement > motionQueue;
   std::list < MotionAdder * > removeList;
   int numToQ, delayFactor;
-  bool facial;
+  //bool facial;
   bool interruptMot;
   Motion *currentMotion;
   Piavca::PostureBlend* selfBlend;

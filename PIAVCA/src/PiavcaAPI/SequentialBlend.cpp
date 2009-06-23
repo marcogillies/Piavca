@@ -46,8 +46,8 @@ using namespace Piavca;
 
 void SequentialBlend::calculateRootOffsets()
 {
-	if(isFacial())
-		return;
+	//if(isFacial())
+	//	return;
 	m1End     = Vec();
 	m2Start   = Vec();
 	oriOffset = Quat();

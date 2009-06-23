@@ -89,9 +89,9 @@ protected:
 	//float motionStartTime;
 
 	//! the motion that controls the characters scale
-	Motion *facialMot;
+	//Motion *facialMot;
 	//! whether the scale motion is currently playing
-	bool facialMotionEnabled;
+	//bool facialMotionEnabled;
 	//! whether the avatar owns the motion (and should therefore delete it)
 	//bool facialMotionOwned;
 	//! when the scale motion starts.
@@ -515,49 +515,49 @@ public:
 	 *	The start time allows the client to specify a time in world time for
 	 *	the motion to start running
 	 */
-	void loadFacialMotion (Motion *motion);
-	void unloadFacialMotion();
+	//void loadFacialMotion (Motion *motion);
+	//void unloadFacialMotion();
 
 	//! get a pointer to the motion so it can be manipulated by the client
-	Motion *getFacialMotion()
-	{
-		return facialMot;
-	};
+	//Motion *getFacialMotion()
+	//{
+	//	return facialMot;
+	//};
 	//! get a const pointer to the motion so it can be seen by the client
-	const Motion *getFacialMotion() const 
-	{
-		return facialMot;
-	};
+	//const Motion *getFacialMotion() const 
+	//{
+	//	return facialMot;
+	//};
 	
 	//! starts playing the motion at the current time
-	void playFacialMotion();
+	//void playFacialMotion();
 	//! starts the motion playing at time
-	void playFacialMotion(float time);
+	//void playFacialMotion(float time);
 	//! starts the motion playing at time
-	void playFacialMotion(Motion *m, float time);
+	//void playFacialMotion(Motion *m, float time);
 	//! starts playing the motion at the current time
-	void playFacialMotion(Motion *m);
+	//void playFacialMotion(Motion *m);
 
 	//! stops the motion playing
-	void stopFacialMotion()
-	{ 
-		facialMotionEnabled = false;
-	};
+	//void stopFacialMotion()
+	//{ 
+	//	facialMotionEnabled = false;
+	//};
 	//! restarts the motion without changing the start time
-	void restartFacialMotion()
-	{ 
-		facialMotionEnabled = true;
-	};
+	//void restartFacialMotion()
+	//{ 
+	//	facialMotionEnabled = true;
+	//};
 	
 	//! changes the start time of the motion
-	void setFacialMotionStartTime(float startTime);
+	//void setFacialMotionStartTime(float startTime);
 	//! get the time when the current motion starts
-	float getFacialMotionStartTime();
+	//float getFacialMotionStartTime();
 	//! get the time when the current motion should end
-	float getFacialMotionEndTime();
+	//float getFacialMotionEndTime();
 
 	//! displays the motion on the avatar at time
-	void showFacialMotionAtTime(float time) ;
+	//void showFacialMotionAtTime(float time) ;
 	// saves the current posture as a frame in the motion
 	//savePostureToMotion(float time, bool createNewTracks=true);
 	//@}

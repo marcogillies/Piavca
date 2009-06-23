@@ -47,8 +47,8 @@ TwoMotionCombiner::TwoMotionCombiner(Motion *m1, Motion *m2)
 	//if(m2) mot2 = m2->clone(); else mot2 = NULL;
 	if(mot1) mot1->Reference();
 	if(mot2) mot2->Reference();
-	if(mot1 && mot2 && (mot1->isFacial() != mot2->isFacial()))
-		Piavca::Error(_T("Trying to combine a facial and a body motion"));
+	//if(mot1 && mot2 && (mot1->isFacial() != mot2->isFacial()))
+	//	Piavca::Error(_T("Trying to combine a facial and a body motion"));
 };
 TwoMotionCombiner::TwoMotionCombiner(const TwoMotionCombiner &tmc)
 	:Motion(tmc) //mot1(tmc.mot1), mot2(tmc.mot2)
@@ -199,12 +199,12 @@ float TwoMotionCombiner::getMotionLength() const
 };
 
 //! whether it is a face or body motion
-bool TwoMotionCombiner::isFacial()
-{
-	if(mot1) return mot1->isFacial();
-	if(mot2) return mot2->isFacial();
-	return false;
-};
+//bool TwoMotionCombiner::isFacial()
+//{
+//	if(mot1) return mot1->isFacial();
+//	if(mot2) return mot2->isFacial();
+//	return false;
+//};
 
 bool TwoMotionCombiner::isRandomAccess()
 {
@@ -246,8 +246,8 @@ void TwoMotionCombiner::setMotion1(Motion *mot)
 	//delete mot1;
 	mot1 = mot;
 	if(m_avatar && mot1)mot1->load(m_avatar);
-	if(mot1 && mot2 && (mot1->isFacial() != mot2->isFacial()))
-		Piavca::Error(_T("Trying to combine a facial and a body motion"));
+	//if(mot1 && mot2 && (mot1->isFacial() != mot2->isFacial()))
+	//	Piavca::Error(_T("Trying to combine a facial and a body motion"));
 	// this isn't as stupid as it looks, it makes sure the
 	// timings of the new motion are updated properly
 	setStartTime(startTime);
@@ -259,8 +259,8 @@ void TwoMotionCombiner::setMotion2(Motion *mot)
 	//delete mot2;
 	mot2= mot;
 	if(m_avatar && mot2)mot2->load(m_avatar);
-	if(mot1 && mot2 && (mot1->isFacial() != mot2->isFacial()))
-		Piavca::Error(_T("Trying to combine a facial and a body motion"));
+	//if(mot1 && mot2 && (mot1->isFacial() != mot2->isFacial()))
+	//	Piavca::Error(_T("Trying to combine a facial and a body motion"));
 	// this isn't as stupid as it looks, it makes sure the
 	// timings of the new motion are updated properly
 	setStartTime(startTime);

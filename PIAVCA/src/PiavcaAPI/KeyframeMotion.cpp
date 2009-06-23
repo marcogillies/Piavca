@@ -85,7 +85,7 @@ const KeyframeMotion &KeyframeMotion::operator=(Motion &mot)
 
 KeyframeMotion *Piavca::copyMotionPosture(Motion *mot, float time)
 {
-	KeyframeMotion *tmot = new KeyframeMotion(mot->isFacial());
+	KeyframeMotion *tmot = new KeyframeMotion();//mot->isFacial());
 
 	for (int track = mot->begin(); track < mot->end(); track = mot->next(track))
 	{

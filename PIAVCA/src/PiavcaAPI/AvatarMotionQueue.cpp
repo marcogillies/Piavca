@@ -67,7 +67,7 @@ AvatarMotionQueue::AvatarMotionQueue(float scale
     //, startTime(start)
     , delayTime(time)
     , delayFactor(factor)
-    , facial(_facial)
+    //, facial(_facial)
     , interruptMot (false) 
 {
 	
@@ -77,9 +77,9 @@ void AvatarMotionQueue::init(Avatar *avatar)
 {    
     // Extract the current avatar motion 
     Motion *motion;
-	if(facial)
-		motion = avatar->getFacialMotion();
-	else
+	//if(facial)
+	//	motion = avatar->getFacialMotion();
+	//else
 		motion = avatar->getMotion();
 
     if (motion) // If a motion already exists for this avatar then queue it
@@ -88,7 +88,7 @@ void AvatarMotionQueue::init(Avatar *avatar)
 	{
 		//enqueueRandomMotions();	
 		// actually don't load an empty motion
-		enqueueMotion("", new KeyframeMotion(facial));
+		enqueueMotion("", new KeyframeMotion());//facial));
 	}
     
     motion = dequeueMotion();
@@ -106,16 +106,16 @@ void AvatarMotionQueue::init(Avatar *avatar)
 	avatarBlend->Reference();
 		
 	motionStartTime = Piavca::Core::getCore()->getTime();
-	if(facial)
-	{
-		avatar->loadFacialMotion(avatarBlend);
-		avatar->playFacialMotion();
-	}
-	else
-	{
+	//if(facial)
+	//{
+	//	avatar->loadFacialMotion(avatarBlend);
+	//	avatar->playFacialMotion();
+	//}
+	//else
+	//{
 		avatar->loadMotion(avatarBlend);
 		avatar->playMotion();
-	}
+	//}
 };
 
 void AvatarMotionQueue::timeStep(Avatar *avatar, float time)
@@ -216,16 +216,16 @@ void AvatarMotionQueue::enqueueMotion(std::string name, Motion* motion, float at
 		Piavca::Error(_T("Trying to put an null motion on the queue"));
 		return;
 	}
-	if(facial && !motion->isFacial())
-	{
-		Piavca::Error(_T("trying to put a body motion onto a facial queue"));
-		return;
-	}
-	if(!facial && motion->isFacial())
-	{
-		Piavca::Error(_T("trying to put a facial motion onto a body queue"));
-		return;
-	}
+	//if(facial && !motion->isFacial())
+	//{
+	//	Piavca::Error(_T("trying to put a body motion onto a facial queue"));
+	//	return;
+	//}
+	//if(!facial && motion->isFacial())
+	//{
+	//	Piavca::Error(_T("trying to put a facial motion onto a body queue"));
+	//	return;
+	//}
 	if(motion)motion->Reference();
 	if(name != _T("")) motion->setName(name);
 	std::cout << "queuing motion " << name << " " << atTime << " " << Core::getCore()->getTime() << std::endl;
@@ -287,7 +287,7 @@ void AvatarMotionQueue::enqueueRandomMotions(int num)
     for (int i = 0; i < num; i++) 
 	{
 		int count = 0;
-        do
+        /*do
 		{
 			x = static_cast<int>(num * rand() / (RAND_MAX + 1.0));
 			m = core->getMotion(motionNames[x]);
@@ -301,7 +301,7 @@ void AvatarMotionQueue::enqueueRandomMotions(int num)
 				return;
 			}
 		}
-		while(m->isFacial() != facial);
+		while(m->isFacial() != facial);*/
 		if(!m)
 			Piavca::Error(_T("some how got a null motion ")
 				+ motionNames[x] + _T("when trying to queue random motions"));
@@ -313,16 +313,16 @@ void AvatarMotionQueue::enqueueRandomMotions(int num)
 
  void AvatarMotionQueue::addBackgroundMotion(tstring name, Piavca::Motion *mot, float atTime)
  {
-	if(facial && !mot->isFacial())
-	{
-		Piavca::Error(_T("trying to put a body motion onto a facial queue"));
-		return;
-	}
-	if(!facial && mot->isFacial())
-	{
-		Piavca::Error(_T("trying to put a facial motion onto a body queue"));
-		return;
-	}
+	//if(facial && !mot->isFacial())
+	//{
+	///	Piavca::Error(_T("trying to put a body motion onto a facial queue"));
+	//	return;
+	//}
+	//if(!facial && mot->isFacial())
+	//{
+	//	Piavca::Error(_T("trying to put a facial motion onto a body queue"));
+	//	return;
+	//}
 	if(mot)mot->Reference();
 	if(name != _T("")) mot->setName(name);
 	motionQueue.push_back(queueElement(name, mot, atTime+Core::getCore()->getTime(), true));
@@ -344,7 +344,7 @@ void AvatarMotionQueue::enqueueRandomMotions(int num)
 		  if (adder->getMotionByIndex(i)->getEndTime() < Core::getCore()->getTime())
 		  {
 			  adder->getMotionByIndex(i)->reset();
-			  dynamic_cast<PostureBlend *>(adder->getMotionByIndex(i))->setMotion(new ZeroMotion(adder->getMotionByIndex(i)->isFacial()));
+			  dynamic_cast<PostureBlend *>(adder->getMotionByIndex(i))->setMotion(new ZeroMotion());//adder->getMotionByIndex(i)->isFacial()));
 		  }
 	  }
 	  
@@ -414,7 +414,7 @@ void AvatarMotionQueue::enqueueRandomMotions(int num)
 	  if (i < 0)
 		  return;
 	  adder->getMotionByIndex(i)->reset();
-	  dynamic_cast<PostureBlend *>(adder->getMotionByIndex(i))->setMotion(new ZeroMotion(adder->getMotionByIndex(i)->isFacial()));
+	  dynamic_cast<PostureBlend *>(adder->getMotionByIndex(i))->setMotion(new ZeroMotion());//adder->getMotionByIndex(i)->isFacial()));
 	  
 	  /*
 	  MotionAdder *temp_adder_parent = adder;
@@ -510,7 +510,7 @@ void AvatarMotionQueue::enqueueRandomMotions(int num)
 		  if (typeid(adder->getMotionByIndex(i)) == ty)
 		  {
 			  adder->getMotionByIndex(i)->reset();
-			  dynamic_cast<PostureBlend *>(adder->getMotionByIndex(i))->setMotion(new ZeroMotion(adder->getMotionByIndex(i)->isFacial()));
+			  dynamic_cast<PostureBlend *>(adder->getMotionByIndex(i))->setMotion(new ZeroMotion());//adder->getMotionByIndex(i)->isFacial()));
 		  }
 	  }
 	  
@@ -578,7 +578,7 @@ AvatarMotionQueue *AvatarMotionQueue::getQueue(Avatar *avatar, bool facial)
 	for (i = 0; i < avatar->getNumCallbacks(); i++)
 	{
 		amq = dynamic_cast<AvatarMotionQueue *>(avatar->getCallback(i));
-		if(amq && amq->isFacial() == facial) break;
+		if(amq /*&& amq->isFacial() == facial*/) break;
 		amq = NULL;
 	}
 
@@ -600,9 +600,9 @@ AvatarMotionQueue *AvatarMotionQueue::getQueue(Avatar *avatar, bool facial)
 	}
 	
 	Motion *avatarMot;
-	if(facial) 
-		avatarMot = avatar->getFacialMotion();
-	else
+	//if(facial) 
+	//	avatarMot = avatar->getFacialMotion();
+	//else
 		avatarMot = avatar->getMotion();
 	if(amq->getMotion() != avatarMot)
 	{
@@ -618,16 +618,16 @@ AvatarMotionQueue *AvatarMotionQueue::getQueue(Avatar *avatar, bool facial)
 			return NULL;
 		}
 
-		if(facial)
-		{
-			avatar->loadFacialMotion(motion);
-			avatar->playFacialMotion();
-		}
-		else
-		{
+		//if(facial)
+		//{
+		//	avatar->loadFacialMotion(motion);
+		//	avatar->playFacialMotion();
+		//}
+		//else
+		//{
 			avatar->loadMotion(motion);
 			avatar->playMotion();
-		}
+		//}
 	}
 	
 	return amq;

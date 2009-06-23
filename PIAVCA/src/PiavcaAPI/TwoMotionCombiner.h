@@ -95,7 +95,7 @@ namespace Piavca
 		float getMotionLength() const;
 
 		//! whether it is a face or body motion
-		virtual bool isFacial();
+		//virtual bool isFacial();
 
 		//! whether you can access a motions value at frames other than the current one
 		virtual bool isRandomAccess();

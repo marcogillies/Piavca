@@ -68,6 +68,7 @@
 //#include "ChoiceLoopMotion.h"
 #include "SequentialChoiceMotion.h"
 #include "RandomChoiceMotion.h"
+#include "MoGraph.h"
 //#include "RandomLoopMotion.h"
 //#include "RandomBlend.h"
 //#include "RandomBlendLoop.h"

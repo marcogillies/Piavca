@@ -290,7 +290,7 @@ public:
 	};
 
 	//! whether it is a face or body motion
-	virtual bool isFacial(){return false;};
+	//virtual bool isFacial(){return false;};
 
 	//! whether you can access a motions value at frames other than the current one
 	virtual bool isRandomAccess(){return false;};

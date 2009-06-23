@@ -47,13 +47,13 @@ namespace Piavca
 	 */
 	class PIAVCA_DECL ZeroMotion : public Motion
 	{
-		bool facial;
+		//bool facial;
 	public:
 		/*! create with an avatar target.
 		 *  Pass in an avatar, and a joint of that avatar to look at
 		 */
-		ZeroMotion(bool _facial = false):Motion(), facial(_facial){};
-		ZeroMotion(const ZeroMotion &zm):Motion(zm), facial(zm.facial){};
+		ZeroMotion(/*bool _facial = false*/):Motion(){};//, facial(_facial){};
+		ZeroMotion(const ZeroMotion &zm):Motion(zm){};//, facial(zm.facial){};
 	
 		//! creates a copy of the motion
 		virtual Motion *clone(){return new ZeroMotion(*this);};
@@ -64,7 +64,7 @@ namespace Piavca
 		//! casts a motion to this type
 		static ZeroMotion *castToThisType(Motion *m){return dynamic_cast<ZeroMotion *>(m);};
 		
-		virtual bool isFacial(){return facial;};
+		//virtual bool isFacial(){return facial;};
 
 		//! whether you can access a motions value at frames other than the current one
 		virtual bool isRandomAccess(){return true;};
@@ -80,7 +80,7 @@ namespace Piavca
 		//! get the type of the track corresponding to an ID
 		virtual int getTrackType(int trackId)const 
 		{ 
-			if(facial) 
+			if(trackId < 0) 
 				return FLOAT_TYPE;
 			else
 			{

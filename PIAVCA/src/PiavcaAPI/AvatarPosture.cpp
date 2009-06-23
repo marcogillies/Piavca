@@ -51,16 +51,16 @@ void AvatarPosture::getPostureFromAvatar(Avatar *av)
 	if (! av)
 		return;
 
-	if(isFacial())
-	{	
+	//if(isFacial())
+	//{	
 		for(int track = av->beginExpression(); track != Core::nullId; av->nextExpression(track))
 			if (isNull(track) || !(getTrackType(track) & FLOAT_TYPE))
 				addFloatTrack(track, av->getFacialExpressionWeight(track));
 			else
 				setFloatKeyframe(track, 0, av->getFacialExpressionWeight(track));
-	}
-	else
-	{
+	//}
+	//else
+	//{
 		if (isNull(root_position_id) || !(getTrackType(root_position_id) & VEC_TYPE))
 			addVecTrack(root_position_id, av->getRootPosition());
 		else
@@ -75,7 +75,7 @@ void AvatarPosture::getPostureFromAvatar(Avatar *av)
 				addQuatTrack(joint, av->getJointOrientation(joint));
 			else
 				setQuatKeyframe(joint, 0, av->getJointOrientation(joint));
-	}
+	//}
 
 	
 };

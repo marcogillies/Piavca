@@ -611,6 +611,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\MoGraph.cpp"
+				>
+			</File>
+			<File
 				RelativePath="Motion.cpp"
 				>
 			</File>
@@ -797,6 +801,10 @@
 			</File>
 			<File
 				RelativePath="MathsUtils.h"
+				>
+			</File>
+			<File
+				RelativePath=".\MoGraph.h"
 				>
 			</File>
 			<File

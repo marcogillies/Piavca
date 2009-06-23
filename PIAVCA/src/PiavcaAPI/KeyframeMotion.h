@@ -154,10 +154,10 @@ namespace Piavca
 		}
 
 		//! whether it is a face or body motion
-		virtual bool isFacial()
-		{
-			return imp->facial;
-		};
+		//virtual bool isFacial()
+		//{
+		//	return imp->facial;
+		//};
 
 		virtual void setFacial(bool _facial)
 		{

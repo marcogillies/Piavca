@@ -58,7 +58,7 @@ Avatar::Avatar(tstring avatarId,
 		   )
 		: name(avatarId), active(true), changed(false), rootChanged (false), 
 		beingEdited(false), //forwardDirection(forwardDir), //amq(NULL), 
-		mot(NULL), scaleMot(NULL), facialMot(NULL)
+		mot(NULL), scaleMot(NULL)//, facialMot(NULL)
 		//motionOwned(true), facialMotionOwned(true), scaleMotionOwned(true)
 {
 	std::string::size_type dotpos = 0;
@@ -76,7 +76,7 @@ Avatar::Avatar(tstring avatarId,
 			   )
 			   : name(avatarId), active(true), changed(false), rootChanged (false), 
 			   beingEdited(false), //forwardDirection(forwardDir), //amq(NULL), 
-			   mot(NULL), scaleMot(NULL), facialMot(NULL)
+			   mot(NULL), scaleMot(NULL)//, facialMot(NULL)
 			   //motionOwned(true), facialMotionOwned(true), scaleMotionOwned(true)
 {
 	std::string::size_type dotpos = 0;
@@ -90,7 +90,7 @@ Avatar::Avatar(tstring avatarId,
 
 Avatar::Avatar(tstring _name, AvatarImp *_imp)
 :name(_name), imp(_imp), active(true), changed(false), rootChanged (false), 
-			   beingEdited(false), mot(NULL), scaleMot(NULL), facialMot(NULL)
+			   beingEdited(false), mot(NULL), scaleMot(NULL)//, facialMot(NULL)
 {
 
 }
@@ -100,7 +100,7 @@ Avatar::~Avatar()
 {
 	delete imp; 
 	if(mot)mot->Dispose();
-	if(facialMot)facialMot->Dispose();
+	//if(facialMot)facialMot->Dispose();
 	if(scaleMot)scaleMot->Dispose();
 	//if(motionOwned) delete mot;
 	//if(facialMotionOwned) delete facialMot;
@@ -132,8 +132,8 @@ Avatar::~Avatar()
 		showScaleMotionAtTime(time);
 	//std::cout << " Avatar.cpp if scale motion enabled check" << std::endl;
 
-	if(facialMotionEnabled)
-		showFacialMotionAtTime(time);
+	//if(facialMotionEnabled)
+	//	showFacialMotionAtTime(time);
 	//std::cout << " Avatar.cpp if show facial motion enabled check" << std::endl;
 
 	imp->updateFacialExpressions();
@@ -158,11 +158,11 @@ void Avatar::setJointOrientation(std::vector< std::pair<int, Quat > > jointOrien
 
 void Avatar::loadMotion				(Motion *motion)
 {
-	if(motion->isFacial())
-	{
-		Piavca::Error(_T("Trying to load facial motion as body motion"));
-		return;
-	}
+	//if(motion->isFacial())
+	//{
+	//	Piavca::Error(_T("Trying to load facial motion as body motion"));
+	//	return;
+	//}
 	// have to Reference of the new motion before
 	// disposing the old one in case they are the same
 	if(motion)
@@ -218,7 +218,7 @@ float Avatar::getMotionEndTime()
 	    return 0;
 };
 
-void Avatar::loadFacialMotion(Motion *motion)
+/*void Avatar::loadFacialMotion(Motion *motion)
 {
 	if(!motion->isFacial())
 	{
@@ -277,14 +277,14 @@ float Avatar::getFacialMotionEndTime()
 	else
 	    return 0;
 };
-
+*/
 void Avatar::loadScaleMotion (Motion *motion)
 {
-	if(motion->isFacial())
-	{
-		Piavca::Error(_T("Trying to load facial motion as body scale motion"));
-		return;
-	}
+	//if(motion->isFacial())
+	//{
+	//	Piavca::Error(_T("Trying to load facial motion as body scale motion"));
+	//	return;
+	//}
 	// have to Reference of the new motion before
 	// disposing the old one in case they are the same
 	if(motion)
@@ -376,6 +376,7 @@ void Avatar::validateMotions()
 			}
 		}
 	}
+	/*
 	if(facialMot)
 	{
 		for (int expr = beginExpression(); expr != Core::nullId; nextExpression(expr))
@@ -389,6 +390,7 @@ void Avatar::validateMotions()
 			}
 		}
 	}
+	*/
 	if(scaleMot)
 	{
 		for (int joint = begin(); joint != Core::nullId; joint = next(joint))
@@ -526,7 +528,7 @@ void Avatar::showScaleMotionAtTime	(float time)
 	}
 };
 
-
+/*
 void Avatar::showFacialMotionAtTime	(float time)
 {
 	if(!facialMot)return;
@@ -543,7 +545,7 @@ void Avatar::showFacialMotionAtTime	(float time)
 		}
 	}
 };
-
+*/
 void Avatar::playMotion()
 {
 	playMotion(Core::getCore()->getTime());
@@ -586,25 +588,25 @@ void Avatar::playScaleMotion(Motion *m)
 	playScaleMotion();
 };
 
-void Avatar::playFacialMotion()
-{
-	playFacialMotion(Core::getCore()->getTime());
-};
-void Avatar::playFacialMotion(float time)
-{
-	facialMotionEnabled = true;
-	facialMot->setStartTime(time);
-};
-void Avatar::playFacialMotion(Motion *m, float time)
-{
-	loadFacialMotion(m);
-	playFacialMotion(time);
-};
-void Avatar::playFacialMotion(Motion *m)
-{
-	loadFacialMotion(m);
-	playFacialMotion();
-};
+//void Avatar::playFacialMotion()
+//{
+//	playFacialMotion(Core::getCore()->getTime());
+//};
+//void Avatar::playFacialMotion(float time)
+//{
+//	facialMotionEnabled = true;
+//	facialMot->setStartTime(time);
+//};
+//void Avatar::playFacialMotion(Motion *m, float time)
+//{
+//	loadFacialMotion(m);
+//	playFacialMotion(time);
+//};
+//void Avatar::playFacialMotion(Motion *m)
+//{
+//	loadFacialMotion(m);
+//	playFacialMotion();
+//};
 
 // create a UCLAvatarImp from the factory
 void Avatar::initAvatar(	

@@ -54,7 +54,7 @@ class ChoiceMotion : public MotionFilter
 	float windowLength;
 	bool resetOnEvent;
 	bool accumulateRoot;
-	
+	bool eventsToAllChildren;
 
 
 	// parameters passed on to the repositioner
@@ -68,7 +68,8 @@ protected:
 	MotionVec mots; 
 public:
 	ChoiceMotion()
-		:currentChoice(0), smooth(true), resetTime(true), resetOnPlay(false), windowLength(0.5f), resetOnEvent(true), accumulateRoot(true),
+		:currentChoice(0), smooth(true), resetTime(true), resetOnPlay(false), 
+		windowLength(0.5f), resetOnEvent(true), accumulateRoot(true), eventsToAllChildren(false),
 		maintainUp(false), rotateAboutUp(true), upDirection(0.0, 0.0, 1.0), eventHappened(false)
 		{};
 	//! pass in a vector of motions to be used.
@@ -120,6 +121,16 @@ public:
 	bool getResetOnEvent()
 	{
 		return resetOnEvent;	
+	};
+
+	
+	void setEventsToAllChildren(bool r)
+	{
+		eventsToAllChildren = r;	
+	};
+	bool getEventsToAllChildren()
+	{
+		return eventsToAllChildren;	
 	};
 
 	void setAccumulateRoot(bool a)

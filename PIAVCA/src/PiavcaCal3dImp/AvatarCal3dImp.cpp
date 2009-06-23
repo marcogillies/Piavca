@@ -913,7 +913,7 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 		else if(strKey == "morphtarget")
 		{
 			std::string strFilename = strPath + strData;
-			std::cout << "Loading mesh as morph target '" << strFilename << "'..." << std::endl;
+			//std::cout << "Loading mesh as morph target '" << strFilename << "'..." << std::endl;
 			CalCoreMeshPtr pCoreMesh = CalLoader::loadCoreMesh(strFilename);
 			if(pCoreMesh == 0 || lastMeshId < 0) 
 			{
@@ -936,13 +936,13 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 			{
 				StringVector exprNames;
 				exprNames.push_back(StringToTString(strName));
-				std::cout << "Adding Joint "<< strName << std::endl;
+				//std::cout << "Adding Joint "<< strName << std::endl;
 				Piavca::Core::getCore()->addExpressionNameSet(exprNames);
 				expressionId = Piavca::Core::getCore()->getExpressionId(StringToTString(strName));
 			}
 			// facial expression ids are negative, to distinguish then from
 			// joint ids
-			std::cout << "Expression id " << expressionId << std::endl;
+			//std::cout << "Expression id " << expressionId << std::endl;
 			expressionId = -expressionId;
 			if(expressionId >= expressions.size())
 			{
@@ -1008,14 +1008,14 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 	int meshId;
 	for(meshId = 0; meshId < cal_core_model->getCoreMeshCount(); meshId++)
 	{
-		std::cout << meshId << " ";
+		//std::cout << meshId << " ";
 		cal_model->attachMesh(meshId);
 	}
 
 	// set the material set of the whole model
 	cal_model->setMaterialSet(0);
 
-	std::cout << "looking for joints\n";
+	//std::cout << "looking for joints\n";
 	int i,j;
 	// load the joint map
 	CalSkeleton *skel = cal_model->getSkeleton();
@@ -1025,7 +1025,7 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 		int cal3Did = skel->getCoreSkeleton()->getCoreBoneId(TStringToString(jointAssociations[i].first));
 		if(cal3Did > 0)
 		{
-			std::cout << "found joint " << "[" << cal3Did << "] " << jointAssociations[i].first << std::endl;
+			//std::cout << "found joint " << "[" << cal3Did << "] " << jointAssociations[i].first << std::endl;
 			joints[jointAssociations[i].second].cal3dId = cal3Did;
 			joints[jointAssociations[i].second].name = jointAssociations[i].first;
 		}
@@ -1304,9 +1304,9 @@ void AvatarCal3DImp::loadTextures()
 
 			// load the texture from the file
 			GLuint textureId;
-			std::cout << "loading texture" << strFilename << std::endl;
+			//std::cout << "loading texture" << strFilename << std::endl;
 			textureId = textureHandler->loadTexture(strPath + strFilename);
-			std::cout << "finished loading texture" << std::endl;
+			//std::cout << "finished loading texture" << std::endl;
 
 			// store the opengl texture id in the user data of the map
 			pCoreMaterial->setMapUserData(mapId, (Cal::UserData)textureId);
@@ -1429,7 +1429,7 @@ bool AvatarCal3DImp::loadBufferObject()
 			numFaces = numFaces_;
 
 	}
-	std::cout << "Verts " << numVerts << " faces " << numFaces << std::endl;
+	//std::cout << "Verts " << numVerts << " faces " << numFaces << std::endl;
 
 
   float *pVertexBuffer = (float*)malloc(numVerts*3*sizeof(float));

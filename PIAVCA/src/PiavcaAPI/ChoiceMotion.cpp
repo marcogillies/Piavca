@@ -43,7 +43,8 @@ using namespace Piavca;
 
 ChoiceMotion::ChoiceMotion(const MotionVec &mpv)
 		:MotionFilter(), mots(mpv), currentChoice(0), resetOnPlay(false),
-		smooth(true), resetTime(true), windowLength(0.5f), resetOnEvent(true), accumulateRoot(true),
+		smooth(true), resetTime(true), windowLength(0.5f), 
+		resetOnEvent(true), accumulateRoot(true), eventsToAllChildren(false),
 		maintainUp(false), rotateAboutUp(true), upDirection(0.0, 1.0, 0.0)
 {
 	MotionVec::size_type i;
@@ -56,7 +57,7 @@ ChoiceMotion::ChoiceMotion(const MotionVec &mpv)
 ChoiceMotion::ChoiceMotion(const ChoiceMotion &cl)
 :MotionFilter(cl), mots(cl.mots), currentChoice(cl.currentChoice), resetOnPlay(cl.resetOnPlay),
 	smooth(cl.smooth), resetTime(cl.resetTime), windowLength(cl.windowLength), 
-	resetOnEvent(cl.resetOnEvent), accumulateRoot(cl.accumulateRoot),
+	resetOnEvent(cl.resetOnEvent), accumulateRoot(cl.accumulateRoot), eventsToAllChildren(cl.eventsToAllChildren),
 	maintainUp(cl.maintainUp), rotateAboutUp(cl.rotateAboutUp), upDirection(cl.upDirection)
 {
 	for(MotionVec::size_type i = 0; i < cl.mots.size(); i++)
@@ -255,7 +256,15 @@ void ChoiceMotion::event(tstring ev)
 				reset();
 			break;
 		}
-	MotionFilter::event(ev);
+	if (eventsToAllChildren)
+	{
+		for(int i = 0; i < int(mots.size()); i++)
+			mots[i]->event(ev);
+	}
+	else
+	{
+		MotionFilter::event(ev);
+	}
 }
 bool ChoiceMotion::canHandleEvent(tstring ev)
 {

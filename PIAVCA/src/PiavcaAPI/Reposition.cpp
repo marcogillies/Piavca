@@ -46,8 +46,8 @@ using namespace Piavca;
 
 void Reposition::calculateRootOffsets()
 {
-	if(isFacial())
-		return;
+	//if(isFacial())
+	//	return;
 	
 	//start_orientation = Quat();
 	//start_position = Vec();
@@ -110,8 +110,8 @@ void Reposition::setStartFromMotion(Motion *m, float time)
 bool Reposition::isNull(int trackId) const
 {
 	Reposition *non_const_this = const_cast<Reposition *>(this);
-	if (!non_const_this->isFacial() 
-		&& (trackId == root_position_id 
+	if (//!non_const_this->isFacial() 
+		/*&&*/ (trackId == root_position_id 
 		|| trackId == root_orientation_id))
 		return false;
 	else

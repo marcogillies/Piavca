@@ -107,10 +107,10 @@ class MaxXAFMotion(Piavca.KeyframeMotion):
 								if track != Piavca.Core.getCore().nullId:
 									break
 							if track != Piavca.Core.getCore().nullId:
-								print "found track", el, track
+								#print "found track", el, track
 								keyframes = []
 								for keyset in nodechild.childNodes:
-									print keyset.nodeName
+									#print keyset.nodeName
 									if keyset.nodeName == "Keys" or keyset.nodeName == "Samples":
 										for key in keyset.childNodes:
 											if key.nodeName == "Key":
@@ -126,26 +126,26 @@ class MaxXAFMotion(Piavca.KeyframeMotion):
 												#except ValueError:
 												#	continue
 												keyframes.append((t,v))
-										print keyframes
+										#print keyframes
 										v = keyframes[0][1]
 										v = str(v)
 										v = v.strip()
 										v = v.split()
-										print v
+										#print v
 										if len(v) == 1:
-											print "scalar", v
+											#print "scalar", v
 											try:
 												v = float(v[0])
-												print "float", v
+												#print "float", v
 												self.addFloatTrack(track, v)
 												for t, v in keyframes:
-													print t, v
+													#print t, v
 													v = str(v)
 													v = v.strip()
 													v = float(v)
 													v = v/100.0
 													t = t/self.tickrate
-													print track, t, v
+													#print track, t, v
 													self.setFloatKeyframe(track, t, v)
 											except ValueError:
 												continue

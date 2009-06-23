@@ -296,15 +296,15 @@ public:
 	};
 
 	//! whether it is a face or body motion
-	virtual bool isFacial()
-	{
-		bool retVal = false;
-		for(MotionVec::size_type i = 0; i < mots.size(); i++)
-		{
-			retVal = retVal & mots[i]->isFacial();
-		}
-		return retVal;
-	};	
+	//virtual bool isFacial()
+	//{
+	//	bool retVal = false;
+	//	for(MotionVec::size_type i = 0; i < mots.size(); i++)
+	//	{
+	//		retVal = retVal & mots[i]->isFacial();
+	//	}
+	//	return retVal;
+	//};	
 
 	//! given an iterator tests whether it actually points to anything or if its null
 	virtual bool isNull(int trackId)const 

@@ -116,7 +116,7 @@ void AvatarPostureBlend::reblend(float time)
 	if(!originalMotion) return;
 	if(!getAvatar()) return;
 	
-	AvatarPosture *posture = new AvatarPosture(originalMotion->isFacial());
+	AvatarPosture *posture = new AvatarPosture();//originalMotion->isFacial());
 	posture->getPostureFromAvatar(getAvatar());
 	MotionTransition *trans = new MotionTransition(posture, mot2);
 	setMotion1(trans);

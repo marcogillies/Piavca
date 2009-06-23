@@ -1,5 +1,5 @@
 /* ***** BEGIN LICENSE BLOCK *****
- * Version: MPL 1.1
+ * Version: MPL 1.1/GPL 2.0/LGPL 2.1
  *
  * The contents of this file are subject to the Mozilla Public License Version
  * 1.1 (the "License"); you may not use this file except in compliance with
@@ -11,11 +11,13 @@
  * for the specific language governing rights and limitations under the
  * License.
  *
- * The Original Code is MotionPosture.h.
+ * The Original Code is MotionGraph.cpp.
  *
  * The Initial Developer of the Original Code is Marco (Mark) Gillies.
- * Portions created by the Initial Developer are Copyright (C) BT plc. 2004
- * All Rights Reserved.
+ * Portions created by the Initial Developer are Copyright (C) 2009
+ * the Initial Developer. All Rights Reserved.
+ *
+ * Contributor(s):
  *
  * Alternatively, the contents of this file may be used under the terms of
  * either the GNU General Public License Version 2 or later (the "GPL"), or
@@ -31,40 +33,39 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-#ifndef MOTION_POSTURE_H
-#define MOTION_POSTURE_H
 
-#include "KeyframeMotion.h"
+#include "MoGraph.h"
 
+using namespace Piavca;
 
-namespace Piavca
+void MotionGraph::event(tstring ev)
 {
-	//! A Motion that saves the posture from another motion
-	class PIAVCA_DECL MotionPosture : public KeyframeMotion
+	NodeLookupTable::iterator pos;
+    pos = nodeLookup.find(ev);
+    if (pos != nodeLookup.end()) {
+		currentEvent = ev;
+	}	
+	else
 	{
-	public:
-		MotionPosture(Motion *m=NULL,bool _facial = false) :KeyframeMotion(_facial)
-		{
-			//if (m)
-			//	setFacial(m->isFacial());
-			getPostureFromMotion(m, 0);
-		};
-		MotionPosture(const MotionPosture &m)
-			:KeyframeMotion(m)
-		{
-		};
-	
-		virtual Motion *clone(){return new MotionPosture(*this);};
-
-		//! returns the name of the type
-		Piavca::tstring getClassName(){return "MotionPosture";};
-
-		//! casts a motion to this type
-		static MotionPosture *castToThisType(Motion *m){return dynamic_cast<MotionPosture *>(m);};
-
-		void getPostureFromMotion(Motion *mot, float time);
-	};
-
+		ChoiceMotion::event(ev);
+	}
 };
 
-#endif //MOTION_POSTURE_H
+bool MotionGraph::canHandleEvent(tstring ev)
+{
+	NodeLookupTable::iterator pos;
+    pos = nodeLookup.find(ev);
+    if (pos != nodeLookup.end()) {
+		return true;
+	}	
+	else
+	{
+		return ChoiceMotion::canHandleEvent(ev);
+	}
+};
+
+int MotionGraph::makeChoice()
+{
+	Motion *lastEdge = dynamic_cast<ChoiceMotion *>(getMotion())->getMotion();
+	return nodeLookup[currentEvent][lastEdge->getName()]; 
+}
