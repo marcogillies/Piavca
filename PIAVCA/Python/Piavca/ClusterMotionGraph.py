@@ -167,6 +167,7 @@ class ClusterMotionGraph(Piavca.MotionGraph):
 		minima = [[] for i in range(self.num_quants)]
 		cluster_counts = [0 for i in range(self.num_quants)]
 		
+		
 		f = open("minima_out.csv", "w")
 		for motNum, (motQuants, motDists) in enumerate(quants):
 			print "ClusterMotionGraph, finding minima in motion", motNum, "length", len(motQuants)
