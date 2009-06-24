@@ -1,24 +1,6 @@
 
 import Piavca
-
-# calculate the distance of a frame from the averange
-# defined by the expmap
-def calculateDistance(mot, t, expmaps):
-	sum = 0.0
-	for j in Piavca.joints(mot):
-		# don't take the root into account as we reposition the motion
-		if j == Piavca.root_orientation_id or j == Piavca.root_position_id :
-			continue
-		if mot.isNull(j):
-			continue
-		joint_type = mot.getTrackType(j)
-		if joint_type & Piavca.FLOAT_TYPE:
-			sum += abs(mot.getFloatValueAtTime(j, t) - expmaps[(j,Piavca.FLOAT_TYPE)])
-		if joint_type & Piavca.VEC_TYPE:
-			sum +=(mot.getVecValueAtTime(j, t) - expmaps[(j,Piavca.VEC_TYPE)]).mag()
-		if joint_type & Piavca.QUAT_TYPE:
-			sum +=expmaps[(j,Piavca.QUAT_TYPE)].logMap(mot.getQuatValueAtTime(j, t)).mag()
-	return sum
+import scipy
 			
 
 # create a motion from seq that can be smoothly interrupted
@@ -26,21 +8,21 @@ def calculateDistance(mot, t, expmaps):
 def MotionGraph(motions, pcFile=None, fps = 20, num_quants=6):
 	
 	
-	if pcFile != None:
-		print "found pc file"
+	if pcFile != None and pcFile != "":
+		print "found pc file", pcFile
 		pcs = Piavca.PCA()
-		pcs.load(self.pcfile)
+		pcs.Load(pcfile)
 	else:
 		pcs = Piavca.PCA()
 		pcs.setUseVels(True)
-		self.pcs.do_analysis(motions, fps)
+		pcs.do_analysis(motions, fps)
 		
 	projectedMotions = []
 	expmaps = []
 	# project all the motions onto the pcs
 	for motion in motions:
-		projectedMotions.append([pw[1] for pw in self.pcs.projectMotion(motion, frames_per_second=self.fps)])#, file_extension="weights_out_"+ str(motion.getStart()))])
-		expmaps.append(self.pcs.getExpMaps(motion, frames_per_second=self.fps))
+		projectedMotions.append([pw[1] for pw in pcs.projectMotion(motion, frames_per_second=fps)])#, file_extension="weights_out_"+ str(motion.getStart()))])
+		expmaps.append(pcs.getExpMaps(motion, frames_per_second=fps))
 		#f = open("weights_out_"+ str(motion.getStart()) +".csv", "w")
 		#for weightset in projectedMotions[-1]:
 		#	for w in weightset:
@@ -49,12 +31,12 @@ def MotionGraph(motions, pcFile=None, fps = 20, num_quants=6):
 		#f.close()
 	
 	
-	if self.pcs.quants == None:
+	if pcs.quants == None:
 		print "calculating cluster centres"
 		weights = []
 		for projmot in projectedMotions:
 			weights = weights + projmot
-		weights = array(weights)
+		weights = scipy.array(weights)
 		quantizedWeights = pcs.KMeans(weights, num_quants)
 	
 	num_quants = pcs.numQuants()
@@ -62,10 +44,10 @@ def MotionGraph(motions, pcFile=None, fps = 20, num_quants=6):
 		
 	quants = []
 	for projmot in projectedMotions:
-		quants.append(pcs.VectorQuantizeWithDistance(array(projmot)))
+		quants.append(pcs.VectorQuantizeWithDistance(scipy.array(projmot)))
 		
 	minima = []
-	cluster_counts = [0 for i in range(self.num_quants)]
+	cluster_counts = [0 for i in range(num_quants)]
 	
 	for motNum, (motQuants, motDists) in enumerate(quants):
 		minima.append([])
@@ -97,7 +79,7 @@ def MotionGraph(motions, pcFile=None, fps = 20, num_quants=6):
 		
 	# create the motions
 	
-	random_choices = [Piavca.RandomChoiceMotion for i in range(num_quants)]
+	random_choices = [Piavca.RandomChoiceMotion() for i in range(num_quants)]
 	transitions = []
 
 	for motNum, mot_minima in enumerate(minima):
@@ -123,14 +105,5 @@ def MotionGraph(motions, pcFile=None, fps = 20, num_quants=6):
 	return loop
 	
 	
-										
-if __name__ == "__main__":
-	import os
-	os.chdir("../../../Data/performing_presence/scenario2008/bill/")
-	import Piavca.XMLMotionFile
-	Piavca.XMLMotionFile.parse("Interruptions.xml")
-	m, numMinima = InterruptableSequence(Piavca.getMotion("second_projections2_fully_labelled_megan"), [Piavca.getMotion(m) for m in ["Interruption" + str(i) for i in range(1,5)]])
-	Piavca.loadMotion("interrupSeq", m)
-	Piavca.XMLMotionFile.saveAll("InterrupSeq_output.xml")
-	print "num splits", numMinima
+
 			

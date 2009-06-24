@@ -49,7 +49,7 @@ from AudioMotion import AudioMotion
 # from ExpMap import *
 try:
 	from EigenMotion import *
-	from MotionGraph import *
+	#from MotionGraph import *
 	from ClusterMotionGraph import *
 except PiavcaImportException:
 	print "scipy not available, please install scipy to use EigenMotion and Motion Graph"
