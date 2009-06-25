@@ -66,6 +66,14 @@ bool MotionGraph::canHandleEvent(tstring ev)
 
 int MotionGraph::makeChoice()
 {
-	Motion *lastEdge = dynamic_cast<ChoiceMotion *>(getMotion())->getMotion();
+	Motion *current = getMotionByIndex(getCurrentChoice());
+	if (!current)
+		current = getMotionByIndex(0);
+	ChoiceMotion *currentChoice = dynamic_cast<ChoiceMotion *>(current);
+	if (!currentChoice)
+		Piavca::Error(_T("MotionGraph: current child motion is not a choice motion"));
+	Motion *lastEdge = currentChoice->getMotion();
+	if (!lastEdge)
+		Piavca::Error(_T("MotionGraph: current child motion does not have a current child"));
 	return nodeLookup[currentEvent][lastEdge->getName()]; 
 }

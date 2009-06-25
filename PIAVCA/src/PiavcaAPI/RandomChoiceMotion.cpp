@@ -68,6 +68,8 @@ void RandomChoiceMotion::addMotion(Motion *mot, float prob)
 	if(mot)
 	{
 		setProbability(getNumMotions()-1,prob);
+		if(getNumMotions() == 1)
+			reset();
 	}
 };
 

@@ -82,14 +82,22 @@ def MotionGraph(motions, pcFile=None, fps = 20, num_quants=6):
 	random_choices = [Piavca.RandomChoiceMotion() for i in range(num_quants)]
 	transitions = []
 
+	print len(minima)
+	print ""
+	
 	for motNum, mot_minima in enumerate(minima):
-		for start, end in zip(minima[:-1], minima[1:]):
+		for start, end in zip(mot_minima[:-1], mot_minima[1:]):
+			print start, end
 			start_node = start[0]
 			end_node = end[0]
-			submot = Piavca.SubMotion(seq, start[1], end[1])
+			submot = Piavca.SubMotion(motions[motNum], start[1], end[1])
 			submot.setName(str(motNum)+"_"+str(start[1])+"_"+str(end[1]))
-			transitions.append(submot.getName(), end_node)
-			random_choices[start_node].addMotion(subMot)
+			transitions.append((submot.getName(), end_node))
+			random_choices[start_node].addMotion(submot)
+			print transitions[-1], random_choices[start_node].getNumMotions()
+			
+	for i, rc in enumerate(random_choices):
+		print "random choice", i, rc.getNumMotions()
 			
 	mo_graph = Piavca.MotionGraph()
 	mo_graph.addEvent("default")
