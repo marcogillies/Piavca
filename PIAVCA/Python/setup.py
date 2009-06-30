@@ -39,12 +39,13 @@
 
 from distutils.core import setup, Extension
 import commands
+import sys
 from glob import glob
 
 swig_sources = ['Python/Piavca/Piavca_base/Piavca.i']
-PiavcaAPI_sources = glob('src/PiavcaAPI/*.cpp')
-StdMotionImp_sources = glob('src/StdMotionImp/*.cpp')
-PiavcaCal3dImp_sources = glob('src/PiavcaCal3dImp/*.cpp') + glob('src/PiavcaCal3dImp/*.c')
+PiavcaAPI_sources = glob('./src/PiavcaAPI/*.cpp')
+StdMotionImp_sources = glob('./src/StdMotionImp/*.cpp')
+PiavcaCal3dImp_sources = glob('./src/PiavcaCal3dImp/*.cpp') + glob('./src/PiavcaCal3dImp/*.c')
 
 sources = swig_sources + PiavcaAPI_sources + StdMotionImp_sources + PiavcaCal3dImp_sources
 
@@ -56,16 +57,25 @@ defines = [('GLEW_STATIC', '1')]
 
 swig_opts = ['-modern', '-c++', '-I./src']
 
+extra_link_args = []
+
+if sys.platform == "darwin":
+	extra_link_args = extra_link_args + ['-framework', 'OpenGL']
+else:
+	external_libs = external_libs + ["GL", "GLU"]
 
 setup(name='Piavca',
       version='1.0',
-      ext_package='Piavca',
-      ext_modules=[Extension('Piavca_base._Piavca_base', sources,
+      package_dir={'':'Python'},
+      packages=['Piavca', 'Piavca.PiavcaDesigner', 'Piavca.CreationScripts', 'Piavca.PiavcaDesigner.AutoCreators'],
+      ext_modules=[Extension('Piavca.Piavca_base._Piavca_base', sources,
                              swig_opts=swig_opts,
                              libraries=external_libs,
                              include_dirs=includes,
+                             extra_link_args=extra_link_args,
                              define_macros=defines)
       					   	],
-      py_modules=['Piavca_base.Piavca_base']
+      py_modules=['Piavca.Piavca_base.Piavca_base'],
+      scripts=['Python/PiavcaDesigner.py', 'Python/wxViewer.py', 'Python/FreeCameraViewer.py']
       )
 
