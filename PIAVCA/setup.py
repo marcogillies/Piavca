@@ -42,7 +42,7 @@ import commands
 import sys
 from glob import glob
 
-swig_sources = ['Python/Piavca/Piavca_base/Piavca.i']
+swig_sources = ['Python/Piavca/Piavca_base/Piavca_wrap.cpp']
 PiavcaAPI_sources = glob('./src/PiavcaAPI/*.cpp')
 StdMotionImp_sources = glob('./src/StdMotionImp/*.cpp')
 PiavcaCal3dImp_sources = glob('./src/PiavcaCal3dImp/*.cpp') + glob('./src/PiavcaCal3dImp/*.c')
