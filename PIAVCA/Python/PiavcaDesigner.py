@@ -2,6 +2,8 @@
 
 print "PiavcaDesigner"
 
+import sys
+
 import Piavca
 import Piavca.JointNames
 Piavca.JointNames.loadDefaults()
@@ -10,6 +12,7 @@ Piavca.JointNames.loadDefaults()
 from Piavca.PiavcaDesigner import PiavcaDesigner
 
 app = Piavca.getWXApp()
+
 
 	
 try:
@@ -23,6 +26,16 @@ except IOError:
 	
 #Piavca.Core.getCore().setHardware(False)
 	
-pd = PiavcaDesigner()
+extra_panel = None
+if len(sys.argv) > 1:
+	print sys.argv[1]
+	module = __import__(sys.argv[1])
+	print module
+	print module.__file__
+	extra_panel = [getattr(module, "create_panel")]
+
+#print 'file', Piavca.PiavcaDesigner.__file__	
+	
+pd = PiavcaDesigner(extra_panels=extra_panel)
 	
 app.MainLoop()

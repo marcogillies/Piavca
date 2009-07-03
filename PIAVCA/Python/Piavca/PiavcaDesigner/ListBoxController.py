@@ -9,7 +9,7 @@ from ParameterWindow import ParameterWindow
 from AutoCreatorsWindow import AutoCreatorsWindow
 
 class ListBoxController(wx.Panel):
-	def __init__(self, backend, parent=None, id=-1, pos=wx.DefaultPosition, size=wx.DefaultSize, style=0, name="ListBoxController"):
+	def __init__(self, backend, parent=None, extra_panels=None, id=-1, pos=wx.DefaultPosition, size=wx.DefaultSize, style=0, name="ListBoxController"):
 		wx.Panel.__init__(self, parent, id, pos, size, style, name)
 		self.backend = backend
 		
@@ -40,6 +40,14 @@ class ListBoxController(wx.Panel):
 		self.auto_creators = AutoCreatorsWindow(self.backend, self.nb)
 		self.nb.AddPage(self.auto_creators, "AutoCreators")
 		self.children.append(self.auto_creators)
+		
+		self.extra_panels = []
+		if extra_panels != None:
+			for panel in extra_panels:
+				self.extra_panels.append(panel(self.backend, self.nb))
+				
+				self.nb.AddPage(self.extra_panels[-1], self.extra_panels[-1].getName())
+				self.children.append(self.extra_panels[-1])
 		
 		
 		# finally, put the notebook in a sizer for the panel to manage

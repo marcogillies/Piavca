@@ -26,8 +26,7 @@ class PiavcaDesigner(wx.Frame):
 	listwidth=300
 	
 	
-	def __init__(self, parent=None, id=-1, size=(1000, 600)):
-		
+	def __init__(self, parent=None, extra_panels=None, id=-1, size=(1000, 600)):
 		self.backend = BackEnd(self)
 		
 		self.filename = None
@@ -74,7 +73,7 @@ class PiavcaDesigner(wx.Frame):
 		Piavca.getWXApp().setCanvas(self.viewer)
 		self.viewer.tracking = False
 		self.heirarchy = HeirarchyView.HeirarchyView(self.backend, self.splitter2)#, style=wx.SUNKEN_BORDER)
-		self.listboxes = ListBoxController.ListBoxController(self.backend, self.splitter1, style=wx.SUNKEN_BORDER)
+		self.listboxes = ListBoxController.ListBoxController(self.backend, self.splitter1, extra_panels=extra_panels, style=wx.SUNKEN_BORDER)
 		
 		self.children = []
 		self.children.append(self.heirarchy)
