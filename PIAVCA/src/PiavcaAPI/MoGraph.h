@@ -51,10 +51,21 @@ protected:
 	NodeLookupTable nodeLookup;
 	tstring currentEvent;
 public:
-	MotionGraph():currentEvent(_T("")){};
-	MotionGraph(const MotionVec &mv):ChoiceMotion(mv),currentEvent(_T("")){};
+	MotionGraph():currentEvent(_T(""))
+	{
+		setResetOnPlay(true);
+	};
+	MotionGraph(const MotionVec &mv):ChoiceMotion(mv),currentEvent(_T(""))
+	{
+		setResetOnPlay(true);
+	};
+
 	MotionGraph(const MotionGraph &mg)
-		:ChoiceMotion(mg), nodeLookup(mg.nodeLookup), currentEvent(mg.currentEvent){};
+		:ChoiceMotion(mg), nodeLookup(mg.nodeLookup), currentEvent(mg.currentEvent)
+	{
+		setResetOnPlay(true);
+	};
+
 	~MotionGraph(){};
 	
 	virtual Motion *clone(){return new MotionGraph(*this);};

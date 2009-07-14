@@ -93,12 +93,12 @@ env = conf.Finish()
 
 
 # c++ libraries
-PiavcaAPI = env.Library('src/PiavcaAPI/PiavcaAPI', glob('src/PiavcaAPI/*.cpp'))
-StdMotionImp = env.Library('src/StdMotionImp/StdMotionImp', glob('src/StdMotionImp/*.cpp'))
-Depends(StdMotionImp, PiavcaAPI)
-PiavcaCal3dImp = env.Library('src/PiavcaCal3dImp/PiavcaCal3dImp', glob('src/PiavcaCal3dImp/*.cpp')+glob('src/PiavcaCal3dImp/*.c'))
-Depends(PiavcaCal3dImp, PiavcaAPI)
-PiavcaPythonInterface = env.Library('src/PiavcaPythonInterface/PiavcaPythonInterface', glob('src/PiavcaPythonInterface/*.cpp'))
+#PiavcaAPI = env.Library('src/PiavcaAPI/PiavcaAPI', glob('src/PiavcaAPI/*.cpp'))
+#StdMotionImp = env.Library('src/StdMotionImp/StdMotionImp', glob('src/StdMotionImp/*.cpp'))
+#Depends(StdMotionImp, PiavcaAPI)
+#PiavcaCal3dImp = env.Library('src/PiavcaCal3dImp/PiavcaCal3dImp', glob('src/PiavcaCal3dImp/*.cpp')+glob('src/PiavcaCal3dImp/*.c'))
+#Depends(PiavcaCal3dImp, PiavcaAPI)
+#PiavcaPythonInterface = env.Library('src/PiavcaPythonInterface/PiavcaPythonInterface', glob('src/PiavcaPythonInterface/*.cpp'))
 #Program('src/PiavcaCal3dApp/PiavcaCal3dApp', PiavcaAPI + StdMotionImp + PiavcaCal3dImp  + glob('src/PiavcaCal3dApp/*.cpp'), CXXFLAGS="-I./src/")
 
 # base python module

@@ -18,6 +18,9 @@ class MotionGraph:
 		self.numNodes = IntParamEntry("NumNodes", None, frame)
 		self.numNodes.setValue(6)
 		controls.append(("NumNodes", self.numNodes))
+		self.threshold = FloatParamEntry("Threshold", None, frame)
+		self.threshold.setValue(1.0)
+		controls.append(("Threshold", self.threshold))
 		
 		return controls
 		
@@ -26,6 +29,7 @@ class MotionGraph:
 		fps = self.fps.getValue()
 		numNodes = self.numNodes.getValue()
 		pcaFile = self.pcaFile.getValue()
+		threshold = self.threshold.getValue()
 		
-		mot = Piavca.CreationScripts.MotionGraph.MotionGraph(motions, pcaFile, fps, numNodes)
+		mot = Piavca.CreationScripts.MotionGraph.MotionGraph(motions, pcaFile, fps, numNodes,threshold)
 		return mot

@@ -123,6 +123,16 @@ public:
 		return resetOnEvent;	
 	};
 
+	void setResetOnPlay(bool r)
+	{
+		resetOnPlay = r;	
+	};
+	bool getResetOnPlay()
+	{
+		return resetOnPlay;	
+	};
+
+
 	
 	void setEventsToAllChildren(bool r)
 	{

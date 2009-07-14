@@ -5,7 +5,7 @@ import scipy
 
 # create a motion from seq that can be smoothly interrupted
 # by any of the motions in interruptions
-def MotionGraph(motions, pcFile=None, fps = 20, num_quants=6):
+def MotionGraph(motions, pcFile=None, fps = 20, num_quants=6, threshold=1.0):
 	
 	
 	if pcFile != None and pcFile != "":
@@ -60,7 +60,8 @@ def MotionGraph(motions, pcFile=None, fps = 20, num_quants=6):
 			cluster_counts[motQuants[i]] += 1
 			if motQuants[i] != currentQuant:
 				if currentQuant != None and not added:
-					minima[motNum].append((currentQuant, currentMinimum))
+					if currentMimimumVal < threshold:
+						minima[motNum].append((currentQuant, currentMinimum))
 				added = False
 				currentQuant = motQuants[i]
 				currentMinimum =float(i)/fps
@@ -71,8 +72,9 @@ def MotionGraph(motions, pcFile=None, fps = 20, num_quants=6):
 					currentMimimumVal = motDists[i]
 			if motQuants[i-1] == motQuants[i] and motQuants[i] == motQuants[i+1]:
 				if motDists[i-1] > motDists[i] and motDists[i] < motDists[i+1]:
-					minima[motNum].append((motQuants[i], float(i)/fps))
-					added = True
+					if motDists[i] < threshold:
+						minima[motNum].append((motQuants[i], float(i)/fps))
+						added = True
 	
 		if currentQuant != None and not added:
 			minima[motNum].append((currentQuant, currentMinimum))
@@ -80,16 +82,21 @@ def MotionGraph(motions, pcFile=None, fps = 20, num_quants=6):
 	# create the motions
 	
 	random_choices = [Piavca.RandomChoiceMotion() for i in range(num_quants)]
+	for i, rc in enumerate(random_choices):
+		rc.setName("Random_choice_"+str(i))
 	transitions = []
 
 	print len(minima)
 	print ""
+	
+	num_transitions = [[0 for i in range(num_quants)] for j in range(num_quants)]
 	
 	for motNum, mot_minima in enumerate(minima):
 		for start, end in zip(mot_minima[:-1], mot_minima[1:]):
 			print start, end
 			start_node = start[0]
 			end_node = end[0]
+			num_transitions[start_node][end_node] += 1
 			submot = Piavca.SubMotion(motions[motNum], start[1], end[1])
 			submot.setName(str(motNum)+"_"+str(start[1])+"_"+str(end[1]))
 			transitions.append((submot.getName(), end_node))
@@ -106,8 +113,15 @@ def MotionGraph(motions, pcFile=None, fps = 20, num_quants=6):
 		mo_graph.addMotion(rc)
 		
 	for motName, node in transitions:
-		mo_graph.addNextNode("default", motName, node)
+		print motName, type(motName), node, type(node)
+		mo_graph.addNextNode("default", motName, int(node))
 		
+	for i in range(num_quants):
+		for j in range(num_quants):
+			print "tranisitions", i, j, num_transitions[i][j]
+		
+	#mo_graph.setSmooth(False)
+	mo_graph.setAccumulateRoot(False)
 	
 	loop = Piavca.LoopMotion(mo_graph)
 	return loop

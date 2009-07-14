@@ -72,8 +72,9 @@ int MotionGraph::makeChoice()
 	ChoiceMotion *currentChoice = dynamic_cast<ChoiceMotion *>(current);
 	if (!currentChoice)
 		Piavca::Error(_T("MotionGraph: current child motion is not a choice motion"));
-	Motion *lastEdge = currentChoice->getMotion();
+	Motion *lastEdge = currentChoice->getMotionByIndex(currentChoice->getCurrentChoice());
 	if (!lastEdge)
 		Piavca::Error(_T("MotionGraph: current child motion does not have a current child"));
+	std::cout << currentEvent << " " << lastEdge->getName() << " " << nodeLookup[currentEvent][lastEdge->getName()] << std::endl;
 	return nodeLookup[currentEvent][lastEdge->getName()]; 
 }
