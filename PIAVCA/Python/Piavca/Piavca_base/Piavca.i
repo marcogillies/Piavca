@@ -440,7 +440,8 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %feature("director") Subtract;        
 %feature("director") MaskedMotion;      
 %feature("director") ChoiceLoopMotion;   
-%feature("director") ChoiceMotion;     
+%feature("director") ChoiceMotion;       
+%feature("director") EventMapChoice;     
 %feature("director") MotionGraph;    
 //%feature("director") RandomLoopMotion;   
 //%feature("director") RandomBlendLoop;   
@@ -520,6 +521,7 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %include "PiavcaAPI/MotionTransition.h"
 %include "PiavcaAPI/ChoiceMotion.h"
 %include "PiavcaAPI/ChoiceMotionWithDefault.h"
+%include "PiavcaAPI/EventMapChoice.h"
 %include "PiavcaAPI/SequentialChoiceMotion.h"
 %include "PiavcaAPI/RandomChoiceMotion.h"
 %include "PiavcaAPI/MoGraph.h"

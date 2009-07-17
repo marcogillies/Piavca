@@ -66,6 +66,9 @@ class ChoiceMotion : public MotionFilter
 protected:
 	bool eventHappened;
 	MotionVec mots; 
+	MotionVec listeners;
+	
+	virtual void updateListeners();
 public:
 	ChoiceMotion()
 		:currentChoice(0), smooth(true), resetTime(true), resetOnPlay(false), 
@@ -170,6 +173,14 @@ public:
 	
 	
 	void printInfo();
+
+
+	//! handle listeners (motions that recieve events from the choice motion
+	//!@{
+	int getNumListeners();
+	void addListener(Motion *listener);
+	Motion *getListener(int i);
+	//!@}
 
 	
 	//! gets the length of the motion in seconds

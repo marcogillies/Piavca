@@ -172,6 +172,7 @@ class EigenAnalysis :
 						length = int ((motion.getMotionLength())*fps)
 						quatlist = quatlist + [motion.getQuatValueAtTime(joint, (float(t)/fps)) for t in range(length)]
 					length = len(quatlist)
+					print length, quatlist
 
 					qtime = time.clock()
 					quatlisttime += qtime - starttime
@@ -187,6 +188,7 @@ class EigenAnalysis :
 					self.expmaps.append(expmap)
 					# map all of the sampled joint rotations onto the tangent space
 					mappedvals.append([expmap.logMap(q) for q in quatlist])
+					print mappedvals
 						
 					ltime = time.clock()
 					logmaptime += ltime - ttime
@@ -229,12 +231,15 @@ class EigenAnalysis :
 		data = scipy.zeros((length, self.no_vals),'d')
 		# fill it with the data we have just created
 		# (the log-mapped joint rotations)
-		i = 0
-		for mv in range(len(mappedvals[1:])) :
+		i = 1
+		#for mv in range(len(mappedvals[1:])) :
+		for mv in mappedvals[1:]:
 			#print length, len(mappedval)
 			j = 0
-			for v, v0 in zip(mappedvals[mv], mappedvals[mv-1]):
+			#for v, v0 in zip(mappedvals[mv], mappedvals[mv-1]):
+			for v, v0 in zip(mv[1:], mv[:-1]):
 				#print j, i
+				print v
 				data[j][3*i] = v[0]
 				data[j][3*i+1] = v[1]
 				data[j][3*i+2] = v[2]

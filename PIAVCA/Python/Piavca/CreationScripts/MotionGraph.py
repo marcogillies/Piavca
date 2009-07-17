@@ -82,8 +82,8 @@ def MotionGraph(motions, pcFile=None, fps = 20, num_quants=6, threshold=1.0):
 	# create the motions
 	
 	random_choices = [Piavca.RandomChoiceMotion() for i in range(num_quants)]
-	for i, rc in enumerate(random_choices):
-		rc.setName("Random_choice_"+str(i))
+	#for i, rc in enumerate(random_choices):
+	#	rc.setName("Random_choice_"+str(i))
 	transitions = []
 
 	print len(minima)
@@ -106,16 +106,39 @@ def MotionGraph(motions, pcFile=None, fps = 20, num_quants=6, threshold=1.0):
 	for i, rc in enumerate(random_choices):
 		print "random choice", i, rc.getNumMotions()
 			
-	mo_graph = Piavca.MotionGraph()
-	mo_graph.addEvent("default")
+	#mo_graph = Piavca.MotionGraph()
+	#mo_graph.addEvent("default")
+
+	#for rc in random_choices:
+	#	mo_graph.addMotion(rc)
+		
+	#for motName, node in transitions:
+	#	print motName, type(motName), node, type(node)
+	#	mo_graph.addNextNode("default", motName, int(node))
 	
+	mo_graph = Piavca.EventMapChoice()
+	mo_graph.setResetOnEvent(False)
+	
+	# set the mo_graph as a listener for all random choices so that it
+	# receieves their events	
 	for rc in random_choices:
-		mo_graph.addMotion(rc)
+		rc.addListener(mo_graph)
+
+	# add the random choices to the motion graph
+	# include an intermediary choice motion which handles
+	# events that change the probabilities at a node
+	for rc in random_choices:
+		eventChoice = Piavca.ChoiceMotion()
+		eventChoice.setResetOnPlay(True)
+		rc.setName("default")
+		eventChoice.addMotion(rc)
+		mo_graph.addMotion(eventChoice)
 		
 	for motName, node in transitions:
 		print motName, type(motName), node, type(node)
-		mo_graph.addNextNode("default", motName, int(node))
+		mo_graph.addMapItem(motName, int(node))
 		
+				
 	for i in range(num_quants):
 		for j in range(num_quants):
 			print "tranisitions", i, j, num_transitions[i][j]

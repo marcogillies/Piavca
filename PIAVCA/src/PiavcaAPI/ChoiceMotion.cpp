@@ -93,6 +93,32 @@ float ChoiceMotion::getMotionLength() const
 	return len;
 };
 
+
+int ChoiceMotion::getNumListeners()
+{
+	return listeners.size();
+};
+
+
+
+void ChoiceMotion::addListener(Motion *listener)
+{
+	if(listener)
+	{
+		listeners.push_back(listener);
+		listeners.back()->Reference();
+	}
+}
+
+
+Motion *ChoiceMotion::getListener(int index)
+{
+	if (index < 0 || index >= listeners.size())
+		return NULL;
+	return listeners[index];
+}
+
+
 //adds a new child motion
 void ChoiceMotion::addMotion(Motion *mot)
 {
@@ -236,6 +262,16 @@ void ChoiceMotion::setChoice(tstring name)
 };
 
 
+void ChoiceMotion::updateListeners()
+{
+	// send the name of the current motion to all listeners
+	tstring name = mots[currentChoice]->getName();
+	if (name == "")
+		return;
+	for (unsigned int i = 0; i < listeners.size(); i++)
+		listeners[i]->event(name);
+}
+
 int ChoiceMotion::makeChoice()
 {
 
@@ -340,6 +376,8 @@ bool ChoiceMotion::reset()
 	};
 	
 	setMotion(mot);
+	
+	updateListeners();
 
 	if (resetTime)
 		setStartTime(Piavca::Core::getCore()->getTime());
