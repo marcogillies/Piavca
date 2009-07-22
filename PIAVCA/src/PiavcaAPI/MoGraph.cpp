@@ -38,7 +38,7 @@
 
 using namespace Piavca;
 
-void MotionGraph::event(tstring ev)
+void MotionGraph::handleEvent(tstring ev)
 {
 	NodeLookupTable::iterator pos;
     pos = nodeLookup.find(ev);
@@ -47,7 +47,7 @@ void MotionGraph::event(tstring ev)
 	}	
 	else
 	{
-		ChoiceMotion::event(ev);
+		ChoiceMotion::handleEvent(ev);
 	}
 };
 

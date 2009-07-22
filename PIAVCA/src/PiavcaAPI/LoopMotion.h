@@ -105,11 +105,11 @@ namespace Piavca
 			MotionFilter::preFrame(time);
 		}
 
-		virtual void event(Piavca::tstring ev)
+		virtual void handleEvent(Piavca::tstring ev)
 		{
 			if (ev == "__chosen__")
 				finishTime = -1;
-			MotionFilter::event(ev);
+			MotionFilter::handleEvent(ev);
 		}
 
 		//! called each time around the loop

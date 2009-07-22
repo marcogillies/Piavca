@@ -153,12 +153,12 @@ bool TwoMotionCombiner::reset()
 	return retval;
 };
 
-void TwoMotionCombiner::event(tstring ev)
+void TwoMotionCombiner::handleEvent(tstring ev)
 {
-	Motion::event(ev);
+	Motion::handleEvent(ev);
 	//std::cout << "event in motion " << getName() << std::endl;
-	if(mot1)mot1->event(ev);
-	if(mot2)mot2->event(ev);
+	if(mot1)mot1->passEvent(ev);
+	if(mot2)mot2->passEvent(ev);
 };
 
 bool TwoMotionCombiner::canHandleEvent(tstring ev)

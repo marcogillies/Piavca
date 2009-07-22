@@ -170,11 +170,11 @@ namespace Piavca
 		
 
 		//! send a message to sub motions that an "event" happened
-		virtual void event(tstring ev)
+		virtual void handleEvent(tstring ev)
 		{
-			Motion::event(ev);
+			Motion::handleEvent(ev);
 			//std::cout << "event in motion filter " << getName() << std::endl;
-			if(filterMot)filterMot->event(ev);
+			if(filterMot)filterMot->passEvent(ev);
 		};
 		virtual bool canHandleEvent(tstring ev)
 		{

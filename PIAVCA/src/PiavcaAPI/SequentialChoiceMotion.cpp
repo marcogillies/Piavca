@@ -51,13 +51,13 @@ void  SequentialChoiceMotion::setStartTime(float t)
 }
 
 //! handles an event (plays the motion with the same name as the event)
-void SequentialChoiceMotion::event(tstring ev)
+void SequentialChoiceMotion::handleEvent(tstring ev)
 {
 	if(ev == _T("next"))
 	{
 		if(passEventsToChildren && getMotion()->canHandleEvent(_T("next")))
 		{
-			getMotion()->event("next");
+			getMotion()->passEvent("next");
 		}
 		else
 		{
@@ -81,7 +81,7 @@ void SequentialChoiceMotion::event(tstring ev)
 			reset();
 	}
 	else
-			MotionFilter::event(ev);
+			MotionFilter::handleEvent(ev);
 }
 
 bool SequentialChoiceMotion::canHandleEvent(tstring ev)

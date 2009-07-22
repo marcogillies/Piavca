@@ -5554,7 +5554,7 @@ bool SwigDirector_Motion::reset() {
 }
 
 
-void SwigDirector_Motion::event(Piavca::tstring ev) {
+void SwigDirector_Motion::handleEvent(Piavca::tstring ev) {
   swig::PyObject_var obj0;
   obj0 = SWIG_From_std_string(static_cast< std::string >(ev));
   if (!swig_get_self()) {
@@ -5562,11 +5562,11 @@ void SwigDirector_Motion::event(Piavca::tstring ev) {
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 11;
-  const char * const swig_method_name = "event";
+  const char * const swig_method_name = "handleEvent";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
 #else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"event", (char *)"(O)" ,(PyObject *)obj0);
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"handleEvent", (char *)"(O)" ,(PyObject *)obj0);
 #endif
   if (result == NULL) {
     PyObject *error = PyErr_Occurred();
@@ -6409,7 +6409,7 @@ bool SwigDirector_KeyframeMotion::reset() {
 }
 
 
-void SwigDirector_KeyframeMotion::event(Piavca::tstring ev) {
+void SwigDirector_KeyframeMotion::handleEvent(Piavca::tstring ev) {
   swig::PyObject_var obj0;
   obj0 = SWIG_From_std_string(static_cast< std::string >(ev));
   if (!swig_get_self()) {
@@ -6417,11 +6417,11 @@ void SwigDirector_KeyframeMotion::event(Piavca::tstring ev) {
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 11;
-  const char * const swig_method_name = "event";
+  const char * const swig_method_name = "handleEvent";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
 #else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"event", (char *)"(O)" ,(PyObject *)obj0);
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"handleEvent", (char *)"(O)" ,(PyObject *)obj0);
 #endif
   if (result == NULL) {
     PyObject *error = PyErr_Occurred();
@@ -7277,7 +7277,7 @@ bool SwigDirector_MotionFilter::reset() {
 }
 
 
-void SwigDirector_MotionFilter::event(Piavca::tstring ev) {
+void SwigDirector_MotionFilter::handleEvent(Piavca::tstring ev) {
   swig::PyObject_var obj0;
   obj0 = SWIG_From_std_string(static_cast< std::string >(ev));
   if (!swig_get_self()) {
@@ -7285,11 +7285,11 @@ void SwigDirector_MotionFilter::event(Piavca::tstring ev) {
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 11;
-  const char * const swig_method_name = "event";
+  const char * const swig_method_name = "handleEvent";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
 #else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"event", (char *)"(O)" ,(PyObject *)obj0);
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"handleEvent", (char *)"(O)" ,(PyObject *)obj0);
 #endif
   if (result == NULL) {
     PyObject *error = PyErr_Occurred();
@@ -8182,7 +8182,7 @@ bool SwigDirector_TwoMotionCombiner::reset() {
 }
 
 
-void SwigDirector_TwoMotionCombiner::event(Piavca::tstring ev) {
+void SwigDirector_TwoMotionCombiner::handleEvent(Piavca::tstring ev) {
   swig::PyObject_var obj0;
   obj0 = SWIG_From_std_string(static_cast< std::string >(ev));
   if (!swig_get_self()) {
@@ -8190,11 +8190,11 @@ void SwigDirector_TwoMotionCombiner::event(Piavca::tstring ev) {
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 11;
-  const char * const swig_method_name = "event";
+  const char * const swig_method_name = "handleEvent";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
 #else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"event", (char *)"(O)" ,(PyObject *)obj0);
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"handleEvent", (char *)"(O)" ,(PyObject *)obj0);
 #endif
   if (result == NULL) {
     PyObject *error = PyErr_Occurred();
@@ -9140,7 +9140,7 @@ bool SwigDirector_MultiMotionCombiner::reset() {
 }
 
 
-void SwigDirector_MultiMotionCombiner::event(Piavca::tstring ev) {
+void SwigDirector_MultiMotionCombiner::handleEvent(Piavca::tstring ev) {
   swig::PyObject_var obj0;
   obj0 = SWIG_From_std_string(static_cast< std::string >(ev));
   if (!swig_get_self()) {
@@ -9148,11 +9148,11 @@ void SwigDirector_MultiMotionCombiner::event(Piavca::tstring ev) {
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 11;
-  const char * const swig_method_name = "event";
+  const char * const swig_method_name = "handleEvent";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
 #else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"event", (char *)"(O)" ,(PyObject *)obj0);
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"handleEvent", (char *)"(O)" ,(PyObject *)obj0);
 #endif
   if (result == NULL) {
     PyObject *error = PyErr_Occurred();
@@ -10107,7 +10107,7 @@ bool SwigDirector_MaskedMotion::reset() {
 }
 
 
-void SwigDirector_MaskedMotion::event(Piavca::tstring ev) {
+void SwigDirector_MaskedMotion::handleEvent(Piavca::tstring ev) {
   swig::PyObject_var obj0;
   obj0 = SWIG_From_std_string(static_cast< std::string >(ev));
   if (!swig_get_self()) {
@@ -10115,11 +10115,11 @@ void SwigDirector_MaskedMotion::event(Piavca::tstring ev) {
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 11;
-  const char * const swig_method_name = "event";
+  const char * const swig_method_name = "handleEvent";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
 #else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"event", (char *)"(O)" ,(PyObject *)obj0);
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"handleEvent", (char *)"(O)" ,(PyObject *)obj0);
 #endif
   if (result == NULL) {
     PyObject *error = PyErr_Occurred();
@@ -11005,7 +11005,7 @@ bool SwigDirector_ScaleMotion::reset() {
 }
 
 
-void SwigDirector_ScaleMotion::event(Piavca::tstring ev) {
+void SwigDirector_ScaleMotion::handleEvent(Piavca::tstring ev) {
   swig::PyObject_var obj0;
   obj0 = SWIG_From_std_string(static_cast< std::string >(ev));
   if (!swig_get_self()) {
@@ -11013,11 +11013,11 @@ void SwigDirector_ScaleMotion::event(Piavca::tstring ev) {
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 11;
-  const char * const swig_method_name = "event";
+  const char * const swig_method_name = "handleEvent";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
 #else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"event", (char *)"(O)" ,(PyObject *)obj0);
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"handleEvent", (char *)"(O)" ,(PyObject *)obj0);
 #endif
   if (result == NULL) {
     PyObject *error = PyErr_Occurred();
@@ -11903,7 +11903,7 @@ bool SwigDirector_ScaleMotionSpeed::reset() {
 }
 
 
-void SwigDirector_ScaleMotionSpeed::event(Piavca::tstring ev) {
+void SwigDirector_ScaleMotionSpeed::handleEvent(Piavca::tstring ev) {
   swig::PyObject_var obj0;
   obj0 = SWIG_From_std_string(static_cast< std::string >(ev));
   if (!swig_get_self()) {
@@ -11911,11 +11911,11 @@ void SwigDirector_ScaleMotionSpeed::event(Piavca::tstring ev) {
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 11;
-  const char * const swig_method_name = "event";
+  const char * const swig_method_name = "handleEvent";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
 #else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"event", (char *)"(O)" ,(PyObject *)obj0);
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"handleEvent", (char *)"(O)" ,(PyObject *)obj0);
 #endif
   if (result == NULL) {
     PyObject *error = PyErr_Occurred();
@@ -12801,7 +12801,7 @@ bool SwigDirector_ChangeMotionLength::reset() {
 }
 
 
-void SwigDirector_ChangeMotionLength::event(Piavca::tstring ev) {
+void SwigDirector_ChangeMotionLength::handleEvent(Piavca::tstring ev) {
   swig::PyObject_var obj0;
   obj0 = SWIG_From_std_string(static_cast< std::string >(ev));
   if (!swig_get_self()) {
@@ -12809,11 +12809,11 @@ void SwigDirector_ChangeMotionLength::event(Piavca::tstring ev) {
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 11;
-  const char * const swig_method_name = "event";
+  const char * const swig_method_name = "handleEvent";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
 #else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"event", (char *)"(O)" ,(PyObject *)obj0);
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"handleEvent", (char *)"(O)" ,(PyObject *)obj0);
 #endif
   if (result == NULL) {
     PyObject *error = PyErr_Occurred();
@@ -13699,7 +13699,7 @@ bool SwigDirector_ScaleMotionRoot::reset() {
 }
 
 
-void SwigDirector_ScaleMotionRoot::event(Piavca::tstring ev) {
+void SwigDirector_ScaleMotionRoot::handleEvent(Piavca::tstring ev) {
   swig::PyObject_var obj0;
   obj0 = SWIG_From_std_string(static_cast< std::string >(ev));
   if (!swig_get_self()) {
@@ -13707,11 +13707,11 @@ void SwigDirector_ScaleMotionRoot::event(Piavca::tstring ev) {
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 11;
-  const char * const swig_method_name = "event";
+  const char * const swig_method_name = "handleEvent";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
 #else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"event", (char *)"(O)" ,(PyObject *)obj0);
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"handleEvent", (char *)"(O)" ,(PyObject *)obj0);
 #endif
   if (result == NULL) {
     PyObject *error = PyErr_Occurred();
@@ -14597,7 +14597,7 @@ bool SwigDirector_TimeOffset::reset() {
 }
 
 
-void SwigDirector_TimeOffset::event(Piavca::tstring ev) {
+void SwigDirector_TimeOffset::handleEvent(Piavca::tstring ev) {
   swig::PyObject_var obj0;
   obj0 = SWIG_From_std_string(static_cast< std::string >(ev));
   if (!swig_get_self()) {
@@ -14605,11 +14605,11 @@ void SwigDirector_TimeOffset::event(Piavca::tstring ev) {
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 11;
-  const char * const swig_method_name = "event";
+  const char * const swig_method_name = "handleEvent";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
 #else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"event", (char *)"(O)" ,(PyObject *)obj0);
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"handleEvent", (char *)"(O)" ,(PyObject *)obj0);
 #endif
   if (result == NULL) {
     PyObject *error = PyErr_Occurred();
@@ -15495,7 +15495,7 @@ bool SwigDirector_Sequence::reset() {
 }
 
 
-void SwigDirector_Sequence::event(Piavca::tstring ev) {
+void SwigDirector_Sequence::handleEvent(Piavca::tstring ev) {
   swig::PyObject_var obj0;
   obj0 = SWIG_From_std_string(static_cast< std::string >(ev));
   if (!swig_get_self()) {
@@ -15503,11 +15503,11 @@ void SwigDirector_Sequence::event(Piavca::tstring ev) {
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 11;
-  const char * const swig_method_name = "event";
+  const char * const swig_method_name = "handleEvent";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
 #else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"event", (char *)"(O)" ,(PyObject *)obj0);
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"handleEvent", (char *)"(O)" ,(PyObject *)obj0);
 #endif
   if (result == NULL) {
     PyObject *error = PyErr_Occurred();
@@ -16446,7 +16446,7 @@ bool SwigDirector_MotionPosture::reset() {
 }
 
 
-void SwigDirector_MotionPosture::event(Piavca::tstring ev) {
+void SwigDirector_MotionPosture::handleEvent(Piavca::tstring ev) {
   swig::PyObject_var obj0;
   obj0 = SWIG_From_std_string(static_cast< std::string >(ev));
   if (!swig_get_self()) {
@@ -16454,11 +16454,11 @@ void SwigDirector_MotionPosture::event(Piavca::tstring ev) {
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 11;
-  const char * const swig_method_name = "event";
+  const char * const swig_method_name = "handleEvent";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
 #else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"event", (char *)"(O)" ,(PyObject *)obj0);
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"handleEvent", (char *)"(O)" ,(PyObject *)obj0);
 #endif
   if (result == NULL) {
     PyObject *error = PyErr_Occurred();
@@ -17307,7 +17307,7 @@ bool SwigDirector_AvatarPosture::reset() {
 }
 
 
-void SwigDirector_AvatarPosture::event(Piavca::tstring ev) {
+void SwigDirector_AvatarPosture::handleEvent(Piavca::tstring ev) {
   swig::PyObject_var obj0;
   obj0 = SWIG_From_std_string(static_cast< std::string >(ev));
   if (!swig_get_self()) {
@@ -17315,11 +17315,11 @@ void SwigDirector_AvatarPosture::event(Piavca::tstring ev) {
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 11;
-  const char * const swig_method_name = "event";
+  const char * const swig_method_name = "handleEvent";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
 #else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"event", (char *)"(O)" ,(PyObject *)obj0);
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"handleEvent", (char *)"(O)" ,(PyObject *)obj0);
 #endif
   if (result == NULL) {
     PyObject *error = PyErr_Occurred();
@@ -18168,7 +18168,7 @@ bool SwigDirector_PostureBlend::reset() {
 }
 
 
-void SwigDirector_PostureBlend::event(Piavca::tstring ev) {
+void SwigDirector_PostureBlend::handleEvent(Piavca::tstring ev) {
   swig::PyObject_var obj0;
   obj0 = SWIG_From_std_string(static_cast< std::string >(ev));
   if (!swig_get_self()) {
@@ -18176,11 +18176,11 @@ void SwigDirector_PostureBlend::event(Piavca::tstring ev) {
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 11;
-  const char * const swig_method_name = "event";
+  const char * const swig_method_name = "handleEvent";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
 #else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"event", (char *)"(O)" ,(PyObject *)obj0);
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"handleEvent", (char *)"(O)" ,(PyObject *)obj0);
 #endif
   if (result == NULL) {
     PyObject *error = PyErr_Occurred();
@@ -19210,7 +19210,7 @@ bool SwigDirector_Reposition::reset() {
 }
 
 
-void SwigDirector_Reposition::event(Piavca::tstring ev) {
+void SwigDirector_Reposition::handleEvent(Piavca::tstring ev) {
   swig::PyObject_var obj0;
   obj0 = SWIG_From_std_string(static_cast< std::string >(ev));
   if (!swig_get_self()) {
@@ -19218,11 +19218,11 @@ void SwigDirector_Reposition::event(Piavca::tstring ev) {
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 11;
-  const char * const swig_method_name = "event";
+  const char * const swig_method_name = "handleEvent";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
 #else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"event", (char *)"(O)" ,(PyObject *)obj0);
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"handleEvent", (char *)"(O)" ,(PyObject *)obj0);
 #endif
   if (result == NULL) {
     PyObject *error = PyErr_Occurred();
@@ -20135,7 +20135,7 @@ bool SwigDirector_LoopMotion::reset() {
 }
 
 
-void SwigDirector_LoopMotion::event(Piavca::tstring ev) {
+void SwigDirector_LoopMotion::handleEvent(Piavca::tstring ev) {
   swig::PyObject_var obj0;
   obj0 = SWIG_From_std_string(static_cast< std::string >(ev));
   if (!swig_get_self()) {
@@ -20143,11 +20143,11 @@ void SwigDirector_LoopMotion::event(Piavca::tstring ev) {
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 11;
-  const char * const swig_method_name = "event";
+  const char * const swig_method_name = "handleEvent";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
 #else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"event", (char *)"(O)" ,(PyObject *)obj0);
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"handleEvent", (char *)"(O)" ,(PyObject *)obj0);
 #endif
   if (result == NULL) {
     PyObject *error = PyErr_Occurred();
@@ -21033,7 +21033,7 @@ bool SwigDirector_RandomTimingsMotion::reset() {
 }
 
 
-void SwigDirector_RandomTimingsMotion::event(Piavca::tstring ev) {
+void SwigDirector_RandomTimingsMotion::handleEvent(Piavca::tstring ev) {
   swig::PyObject_var obj0;
   obj0 = SWIG_From_std_string(static_cast< std::string >(ev));
   if (!swig_get_self()) {
@@ -21041,11 +21041,11 @@ void SwigDirector_RandomTimingsMotion::event(Piavca::tstring ev) {
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 11;
-  const char * const swig_method_name = "event";
+  const char * const swig_method_name = "handleEvent";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
 #else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"event", (char *)"(O)" ,(PyObject *)obj0);
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"handleEvent", (char *)"(O)" ,(PyObject *)obj0);
 #endif
   if (result == NULL) {
     PyObject *error = PyErr_Occurred();
@@ -21960,7 +21960,7 @@ bool SwigDirector_BlendBetween::reset() {
 }
 
 
-void SwigDirector_BlendBetween::event(Piavca::tstring ev) {
+void SwigDirector_BlendBetween::handleEvent(Piavca::tstring ev) {
   swig::PyObject_var obj0;
   obj0 = SWIG_From_std_string(static_cast< std::string >(ev));
   if (!swig_get_self()) {
@@ -21968,11 +21968,11 @@ void SwigDirector_BlendBetween::event(Piavca::tstring ev) {
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 11;
-  const char * const swig_method_name = "event";
+  const char * const swig_method_name = "handleEvent";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
 #else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"event", (char *)"(O)" ,(PyObject *)obj0);
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"handleEvent", (char *)"(O)" ,(PyObject *)obj0);
 #endif
   if (result == NULL) {
     PyObject *error = PyErr_Occurred();
@@ -22918,7 +22918,7 @@ bool SwigDirector_MotionAdder::reset() {
 }
 
 
-void SwigDirector_MotionAdder::event(Piavca::tstring ev) {
+void SwigDirector_MotionAdder::handleEvent(Piavca::tstring ev) {
   swig::PyObject_var obj0;
   obj0 = SWIG_From_std_string(static_cast< std::string >(ev));
   if (!swig_get_self()) {
@@ -22926,11 +22926,11 @@ void SwigDirector_MotionAdder::event(Piavca::tstring ev) {
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 11;
-  const char * const swig_method_name = "event";
+  const char * const swig_method_name = "handleEvent";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
 #else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"event", (char *)"(O)" ,(PyObject *)obj0);
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"handleEvent", (char *)"(O)" ,(PyObject *)obj0);
 #endif
   if (result == NULL) {
     PyObject *error = PyErr_Occurred();
@@ -23885,7 +23885,7 @@ bool SwigDirector_MultiBlend::reset() {
 }
 
 
-void SwigDirector_MultiBlend::event(Piavca::tstring ev) {
+void SwigDirector_MultiBlend::handleEvent(Piavca::tstring ev) {
   swig::PyObject_var obj0;
   obj0 = SWIG_From_std_string(static_cast< std::string >(ev));
   if (!swig_get_self()) {
@@ -23893,11 +23893,11 @@ void SwigDirector_MultiBlend::event(Piavca::tstring ev) {
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 11;
-  const char * const swig_method_name = "event";
+  const char * const swig_method_name = "handleEvent";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
 #else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"event", (char *)"(O)" ,(PyObject *)obj0);
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"handleEvent", (char *)"(O)" ,(PyObject *)obj0);
 #endif
   if (result == NULL) {
     PyObject *error = PyErr_Occurred();
@@ -24845,7 +24845,7 @@ bool SwigDirector_Subtract::reset() {
 }
 
 
-void SwigDirector_Subtract::event(Piavca::tstring ev) {
+void SwigDirector_Subtract::handleEvent(Piavca::tstring ev) {
   swig::PyObject_var obj0;
   obj0 = SWIG_From_std_string(static_cast< std::string >(ev));
   if (!swig_get_self()) {
@@ -24853,11 +24853,11 @@ void SwigDirector_Subtract::event(Piavca::tstring ev) {
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 11;
-  const char * const swig_method_name = "event";
+  const char * const swig_method_name = "handleEvent";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
 #else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"event", (char *)"(O)" ,(PyObject *)obj0);
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"handleEvent", (char *)"(O)" ,(PyObject *)obj0);
 #endif
   if (result == NULL) {
     PyObject *error = PyErr_Occurred();
@@ -25803,7 +25803,7 @@ bool SwigDirector_ChoiceMotion::reset() {
 }
 
 
-void SwigDirector_ChoiceMotion::event(Piavca::tstring ev) {
+void SwigDirector_ChoiceMotion::handleEvent(Piavca::tstring ev) {
   swig::PyObject_var obj0;
   obj0 = SWIG_From_std_string(static_cast< std::string >(ev));
   if (!swig_get_self()) {
@@ -25811,11 +25811,11 @@ void SwigDirector_ChoiceMotion::event(Piavca::tstring ev) {
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 11;
-  const char * const swig_method_name = "event";
+  const char * const swig_method_name = "handleEvent";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
 #else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"event", (char *)"(O)" ,(PyObject *)obj0);
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"handleEvent", (char *)"(O)" ,(PyObject *)obj0);
 #endif
   if (result == NULL) {
     PyObject *error = PyErr_Occurred();
@@ -26795,7 +26795,7 @@ bool SwigDirector_EventMapChoice::reset() {
 }
 
 
-void SwigDirector_EventMapChoice::event(Piavca::tstring ev) {
+void SwigDirector_EventMapChoice::handleEvent(Piavca::tstring ev) {
   swig::PyObject_var obj0;
   obj0 = SWIG_From_std_string(static_cast< std::string >(ev));
   if (!swig_get_self()) {
@@ -26803,11 +26803,11 @@ void SwigDirector_EventMapChoice::event(Piavca::tstring ev) {
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 11;
-  const char * const swig_method_name = "event";
+  const char * const swig_method_name = "handleEvent";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
 #else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"event", (char *)"(O)" ,(PyObject *)obj0);
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"handleEvent", (char *)"(O)" ,(PyObject *)obj0);
 #endif
   if (result == NULL) {
     PyObject *error = PyErr_Occurred();
@@ -27787,7 +27787,7 @@ bool SwigDirector_MotionGraph::reset() {
 }
 
 
-void SwigDirector_MotionGraph::event(Piavca::tstring ev) {
+void SwigDirector_MotionGraph::handleEvent(Piavca::tstring ev) {
   swig::PyObject_var obj0;
   obj0 = SWIG_From_std_string(static_cast< std::string >(ev));
   if (!swig_get_self()) {
@@ -27795,11 +27795,11 @@ void SwigDirector_MotionGraph::event(Piavca::tstring ev) {
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 11;
-  const char * const swig_method_name = "event";
+  const char * const swig_method_name = "handleEvent";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
 #else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"event", (char *)"(O)" ,(PyObject *)obj0);
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"handleEvent", (char *)"(O)" ,(PyObject *)obj0);
 #endif
   if (result == NULL) {
     PyObject *error = PyErr_Occurred();
@@ -28786,7 +28786,7 @@ bool SwigDirector_PointAt::reset() {
 }
 
 
-void SwigDirector_PointAt::event(Piavca::tstring ev) {
+void SwigDirector_PointAt::handleEvent(Piavca::tstring ev) {
   swig::PyObject_var obj0;
   obj0 = SWIG_From_std_string(static_cast< std::string >(ev));
   if (!swig_get_self()) {
@@ -28794,11 +28794,11 @@ void SwigDirector_PointAt::event(Piavca::tstring ev) {
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 11;
-  const char * const swig_method_name = "event";
+  const char * const swig_method_name = "handleEvent";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
 #else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"event", (char *)"(O)" ,(PyObject *)obj0);
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"handleEvent", (char *)"(O)" ,(PyObject *)obj0);
 #endif
   if (result == NULL) {
     PyObject *error = PyErr_Occurred();
@@ -29684,7 +29684,7 @@ bool SwigDirector_ZeroMotion::reset() {
 }
 
 
-void SwigDirector_ZeroMotion::event(Piavca::tstring ev) {
+void SwigDirector_ZeroMotion::handleEvent(Piavca::tstring ev) {
   swig::PyObject_var obj0;
   obj0 = SWIG_From_std_string(static_cast< std::string >(ev));
   if (!swig_get_self()) {
@@ -29692,11 +29692,11 @@ void SwigDirector_ZeroMotion::event(Piavca::tstring ev) {
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 11;
-  const char * const swig_method_name = "event";
+  const char * const swig_method_name = "handleEvent";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
 #else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"event", (char *)"(O)" ,(PyObject *)obj0);
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"handleEvent", (char *)"(O)" ,(PyObject *)obj0);
 #endif
   if (result == NULL) {
     PyObject *error = PyErr_Occurred();
@@ -30525,7 +30525,7 @@ bool SwigDirector_SubMotion::reset() {
 }
 
 
-void SwigDirector_SubMotion::event(Piavca::tstring ev) {
+void SwigDirector_SubMotion::handleEvent(Piavca::tstring ev) {
   swig::PyObject_var obj0;
   obj0 = SWIG_From_std_string(static_cast< std::string >(ev));
   if (!swig_get_self()) {
@@ -30533,11 +30533,11 @@ void SwigDirector_SubMotion::event(Piavca::tstring ev) {
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 11;
-  const char * const swig_method_name = "event";
+  const char * const swig_method_name = "handleEvent";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
 #else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"event", (char *)"(O)" ,(PyObject *)obj0);
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"handleEvent", (char *)"(O)" ,(PyObject *)obj0);
 #endif
   if (result == NULL) {
     PyObject *error = PyErr_Occurred();
@@ -31430,7 +31430,7 @@ bool SwigDirector_TimeRangeMotion::reset() {
 }
 
 
-void SwigDirector_TimeRangeMotion::event(Piavca::tstring ev) {
+void SwigDirector_TimeRangeMotion::handleEvent(Piavca::tstring ev) {
   swig::PyObject_var obj0;
   obj0 = SWIG_From_std_string(static_cast< std::string >(ev));
   if (!swig_get_self()) {
@@ -31438,11 +31438,11 @@ void SwigDirector_TimeRangeMotion::event(Piavca::tstring ev) {
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 11;
-  const char * const swig_method_name = "event";
+  const char * const swig_method_name = "handleEvent";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
 #else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"event", (char *)"(O)" ,(PyObject *)obj0);
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"handleEvent", (char *)"(O)" ,(PyObject *)obj0);
 #endif
   if (result == NULL) {
     PyObject *error = PyErr_Occurred();
@@ -32328,7 +32328,7 @@ bool SwigDirector_TimeWarp::reset() {
 }
 
 
-void SwigDirector_TimeWarp::event(Piavca::tstring ev) {
+void SwigDirector_TimeWarp::handleEvent(Piavca::tstring ev) {
   swig::PyObject_var obj0;
   obj0 = SWIG_From_std_string(static_cast< std::string >(ev));
   if (!swig_get_self()) {
@@ -32336,11 +32336,11 @@ void SwigDirector_TimeWarp::event(Piavca::tstring ev) {
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 11;
-  const char * const swig_method_name = "event";
+  const char * const swig_method_name = "handleEvent";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
 #else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"event", (char *)"(O)" ,(PyObject *)obj0);
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"handleEvent", (char *)"(O)" ,(PyObject *)obj0);
 #endif
   if (result == NULL) {
     PyObject *error = PyErr_Occurred();
@@ -33233,7 +33233,7 @@ bool SwigDirector_ExpMapMotion::reset() {
 }
 
 
-void SwigDirector_ExpMapMotion::event(Piavca::tstring ev) {
+void SwigDirector_ExpMapMotion::handleEvent(Piavca::tstring ev) {
   swig::PyObject_var obj0;
   obj0 = SWIG_From_std_string(static_cast< std::string >(ev));
   if (!swig_get_self()) {
@@ -33241,11 +33241,11 @@ void SwigDirector_ExpMapMotion::event(Piavca::tstring ev) {
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 11;
-  const char * const swig_method_name = "event";
+  const char * const swig_method_name = "handleEvent";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
 #else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"event", (char *)"(O)" ,(PyObject *)obj0);
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"handleEvent", (char *)"(O)" ,(PyObject *)obj0);
 #endif
   if (result == NULL) {
     PyObject *error = PyErr_Occurred();
@@ -34138,7 +34138,7 @@ bool SwigDirector_LogMapMotion::reset() {
 }
 
 
-void SwigDirector_LogMapMotion::event(Piavca::tstring ev) {
+void SwigDirector_LogMapMotion::handleEvent(Piavca::tstring ev) {
   swig::PyObject_var obj0;
   obj0 = SWIG_From_std_string(static_cast< std::string >(ev));
   if (!swig_get_self()) {
@@ -34146,11 +34146,11 @@ void SwigDirector_LogMapMotion::event(Piavca::tstring ev) {
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 11;
-  const char * const swig_method_name = "event";
+  const char * const swig_method_name = "handleEvent";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
 #else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"event", (char *)"(O)" ,(PyObject *)obj0);
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"handleEvent", (char *)"(O)" ,(PyObject *)obj0);
 #endif
   if (result == NULL) {
     PyObject *error = PyErr_Occurred();
@@ -35029,7 +35029,7 @@ bool SwigDirector_AvatarMotion::reset() {
 }
 
 
-void SwigDirector_AvatarMotion::event(Piavca::tstring ev) {
+void SwigDirector_AvatarMotion::handleEvent(Piavca::tstring ev) {
   swig::PyObject_var obj0;
   obj0 = SWIG_From_std_string(static_cast< std::string >(ev));
   if (!swig_get_self()) {
@@ -35037,11 +35037,11 @@ void SwigDirector_AvatarMotion::event(Piavca::tstring ev) {
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
   const size_t swig_method_index = 11;
-  const char * const swig_method_name = "event";
+  const char * const swig_method_name = "handleEvent";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::PyObject_var result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
 #else
-  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"event", (char *)"(O)" ,(PyObject *)obj0);
+  swig::PyObject_var result = PyObject_CallMethod(swig_get_self(), (char *)"handleEvent", (char *)"(O)" ,(PyObject *)obj0);
 #endif
   if (result == NULL) {
     PyObject *error = PyErr_Occurred();
@@ -46731,7 +46731,45 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Motion_event(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Motion_passEvent(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Motion *arg1 = (Piavca::Motion *) 0 ;
+  Piavca::tstring arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Motion_passEvent",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Motion, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Motion_passEvent" "', argument " "1"" of type '" "Piavca::Motion *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Motion * >(argp1);
+  {
+    arg2 = PyString_AsString(obj1);
+  }
+  {
+    try {
+      (arg1)->passEvent(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Motion_handleEvent(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Piavca::Motion *arg1 = (Piavca::Motion *) 0 ;
   Piavca::tstring arg2 ;
@@ -46742,10 +46780,10 @@ SWIGINTERN PyObject *_wrap_Motion_event(PyObject *SWIGUNUSEDPARM(self), PyObject
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:Motion_event",&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:Motion_handleEvent",&obj0,&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Motion, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Motion_event" "', argument " "1"" of type '" "Piavca::Motion *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Motion_handleEvent" "', argument " "1"" of type '" "Piavca::Motion *""'"); 
   }
   arg1 = reinterpret_cast< Piavca::Motion * >(argp1);
   {
@@ -46757,9 +46795,9 @@ SWIGINTERN PyObject *_wrap_Motion_event(PyObject *SWIGUNUSEDPARM(self), PyObject
     {
       try {
         if (upcall) {
-          (arg1)->Piavca::Motion::event(arg2);
+          (arg1)->Piavca::Motion::handleEvent(arg2);
         } else {
-          (arg1)->event(arg2);
+          (arg1)->handleEvent(arg2);
         } 
       }
       catch (Swig::DirectorException &e) {
@@ -65636,7 +65674,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_MotionFilter_event(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_MotionFilter_handleEvent(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Piavca::MotionFilter *arg1 = (Piavca::MotionFilter *) 0 ;
   Piavca::tstring arg2 ;
@@ -65647,10 +65685,10 @@ SWIGINTERN PyObject *_wrap_MotionFilter_event(PyObject *SWIGUNUSEDPARM(self), Py
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:MotionFilter_event",&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:MotionFilter_handleEvent",&obj0,&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__MotionFilter, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MotionFilter_event" "', argument " "1"" of type '" "Piavca::MotionFilter *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MotionFilter_handleEvent" "', argument " "1"" of type '" "Piavca::MotionFilter *""'"); 
   }
   arg1 = reinterpret_cast< Piavca::MotionFilter * >(argp1);
   {
@@ -65662,9 +65700,9 @@ SWIGINTERN PyObject *_wrap_MotionFilter_event(PyObject *SWIGUNUSEDPARM(self), Py
     {
       try {
         if (upcall) {
-          (arg1)->Piavca::MotionFilter::event(arg2);
+          (arg1)->Piavca::MotionFilter::handleEvent(arg2);
         } else {
-          (arg1)->event(arg2);
+          (arg1)->handleEvent(arg2);
         } 
       }
       catch (Swig::DirectorException &e) {
@@ -67144,7 +67182,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TwoMotionCombiner_event(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_TwoMotionCombiner_handleEvent(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Piavca::TwoMotionCombiner *arg1 = (Piavca::TwoMotionCombiner *) 0 ;
   Piavca::tstring arg2 ;
@@ -67155,10 +67193,10 @@ SWIGINTERN PyObject *_wrap_TwoMotionCombiner_event(PyObject *SWIGUNUSEDPARM(self
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:TwoMotionCombiner_event",&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:TwoMotionCombiner_handleEvent",&obj0,&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__TwoMotionCombiner, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TwoMotionCombiner_event" "', argument " "1"" of type '" "Piavca::TwoMotionCombiner *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TwoMotionCombiner_handleEvent" "', argument " "1"" of type '" "Piavca::TwoMotionCombiner *""'"); 
   }
   arg1 = reinterpret_cast< Piavca::TwoMotionCombiner * >(argp1);
   {
@@ -67170,9 +67208,9 @@ SWIGINTERN PyObject *_wrap_TwoMotionCombiner_event(PyObject *SWIGUNUSEDPARM(self
     {
       try {
         if (upcall) {
-          (arg1)->Piavca::TwoMotionCombiner::event(arg2);
+          (arg1)->Piavca::TwoMotionCombiner::handleEvent(arg2);
         } else {
-          (arg1)->event(arg2);
+          (arg1)->handleEvent(arg2);
         } 
       }
       catch (Swig::DirectorException &e) {
@@ -69399,7 +69437,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_MultiMotionCombiner_event(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_MultiMotionCombiner_handleEvent(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Piavca::MultiMotionCombiner *arg1 = (Piavca::MultiMotionCombiner *) 0 ;
   Piavca::tstring arg2 ;
@@ -69410,10 +69448,10 @@ SWIGINTERN PyObject *_wrap_MultiMotionCombiner_event(PyObject *SWIGUNUSEDPARM(se
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:MultiMotionCombiner_event",&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:MultiMotionCombiner_handleEvent",&obj0,&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__MultiMotionCombiner, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MultiMotionCombiner_event" "', argument " "1"" of type '" "Piavca::MultiMotionCombiner *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MultiMotionCombiner_handleEvent" "', argument " "1"" of type '" "Piavca::MultiMotionCombiner *""'"); 
   }
   arg1 = reinterpret_cast< Piavca::MultiMotionCombiner * >(argp1);
   {
@@ -69425,9 +69463,9 @@ SWIGINTERN PyObject *_wrap_MultiMotionCombiner_event(PyObject *SWIGUNUSEDPARM(se
     {
       try {
         if (upcall) {
-          (arg1)->Piavca::MultiMotionCombiner::event(arg2);
+          (arg1)->Piavca::MultiMotionCombiner::handleEvent(arg2);
         } else {
-          (arg1)->event(arg2);
+          (arg1)->handleEvent(arg2);
         } 
       }
       catch (Swig::DirectorException &e) {
@@ -80282,7 +80320,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_LoopMotion_event(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_LoopMotion_handleEvent(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Piavca::LoopMotion *arg1 = (Piavca::LoopMotion *) 0 ;
   Piavca::tstring arg2 ;
@@ -80293,10 +80331,10 @@ SWIGINTERN PyObject *_wrap_LoopMotion_event(PyObject *SWIGUNUSEDPARM(self), PyOb
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:LoopMotion_event",&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:LoopMotion_handleEvent",&obj0,&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__LoopMotion, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LoopMotion_event" "', argument " "1"" of type '" "Piavca::LoopMotion *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LoopMotion_handleEvent" "', argument " "1"" of type '" "Piavca::LoopMotion *""'"); 
   }
   arg1 = reinterpret_cast< Piavca::LoopMotion * >(argp1);
   {
@@ -80308,9 +80346,9 @@ SWIGINTERN PyObject *_wrap_LoopMotion_event(PyObject *SWIGUNUSEDPARM(self), PyOb
     {
       try {
         if (upcall) {
-          (arg1)->Piavca::LoopMotion::event(arg2);
+          (arg1)->Piavca::LoopMotion::handleEvent(arg2);
         } else {
-          (arg1)->event(arg2);
+          (arg1)->handleEvent(arg2);
         } 
       }
       catch (Swig::DirectorException &e) {
@@ -89607,7 +89645,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ChoiceMotion_event(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ChoiceMotion_handleEvent(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Piavca::ChoiceMotion *arg1 = (Piavca::ChoiceMotion *) 0 ;
   Piavca::tstring arg2 ;
@@ -89618,10 +89656,10 @@ SWIGINTERN PyObject *_wrap_ChoiceMotion_event(PyObject *SWIGUNUSEDPARM(self), Py
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:ChoiceMotion_event",&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:ChoiceMotion_handleEvent",&obj0,&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__ChoiceMotion, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ChoiceMotion_event" "', argument " "1"" of type '" "Piavca::ChoiceMotion *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ChoiceMotion_handleEvent" "', argument " "1"" of type '" "Piavca::ChoiceMotion *""'"); 
   }
   arg1 = reinterpret_cast< Piavca::ChoiceMotion * >(argp1);
   {
@@ -89633,9 +89671,9 @@ SWIGINTERN PyObject *_wrap_ChoiceMotion_event(PyObject *SWIGUNUSEDPARM(self), Py
     {
       try {
         if (upcall) {
-          (arg1)->Piavca::ChoiceMotion::event(arg2);
+          (arg1)->Piavca::ChoiceMotion::handleEvent(arg2);
         } else {
-          (arg1)->event(arg2);
+          (arg1)->handleEvent(arg2);
         } 
       }
       catch (Swig::DirectorException &e) {
@@ -90600,7 +90638,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EventMapChoice_event(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_EventMapChoice_handleEvent(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Piavca::EventMapChoice *arg1 = (Piavca::EventMapChoice *) 0 ;
   Piavca::tstring arg2 ;
@@ -90611,10 +90649,10 @@ SWIGINTERN PyObject *_wrap_EventMapChoice_event(PyObject *SWIGUNUSEDPARM(self), 
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:EventMapChoice_event",&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:EventMapChoice_handleEvent",&obj0,&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__EventMapChoice, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EventMapChoice_event" "', argument " "1"" of type '" "Piavca::EventMapChoice *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EventMapChoice_handleEvent" "', argument " "1"" of type '" "Piavca::EventMapChoice *""'"); 
   }
   arg1 = reinterpret_cast< Piavca::EventMapChoice * >(argp1);
   {
@@ -90626,9 +90664,9 @@ SWIGINTERN PyObject *_wrap_EventMapChoice_event(PyObject *SWIGUNUSEDPARM(self), 
     {
       try {
         if (upcall) {
-          (arg1)->Piavca::EventMapChoice::event(arg2);
+          (arg1)->Piavca::EventMapChoice::handleEvent(arg2);
         } else {
-          (arg1)->event(arg2);
+          (arg1)->handleEvent(arg2);
         } 
       }
       catch (Swig::DirectorException &e) {
@@ -91184,7 +91222,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_SequentialChoiceMotion_event(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_SequentialChoiceMotion_handleEvent(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Piavca::SequentialChoiceMotion *arg1 = (Piavca::SequentialChoiceMotion *) 0 ;
   Piavca::tstring arg2 ;
@@ -91193,10 +91231,10 @@ SWIGINTERN PyObject *_wrap_SequentialChoiceMotion_event(PyObject *SWIGUNUSEDPARM
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:SequentialChoiceMotion_event",&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:SequentialChoiceMotion_handleEvent",&obj0,&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__SequentialChoiceMotion, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SequentialChoiceMotion_event" "', argument " "1"" of type '" "Piavca::SequentialChoiceMotion *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SequentialChoiceMotion_handleEvent" "', argument " "1"" of type '" "Piavca::SequentialChoiceMotion *""'"); 
   }
   arg1 = reinterpret_cast< Piavca::SequentialChoiceMotion * >(argp1);
   {
@@ -91204,7 +91242,7 @@ SWIGINTERN PyObject *_wrap_SequentialChoiceMotion_event(PyObject *SWIGUNUSEDPARM
   }
   {
     try {
-      (arg1)->event(arg2); 
+      (arg1)->handleEvent(arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -92552,7 +92590,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_MotionGraph_event(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_MotionGraph_handleEvent(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Piavca::MotionGraph *arg1 = (Piavca::MotionGraph *) 0 ;
   Piavca::tstring arg2 ;
@@ -92563,10 +92601,10 @@ SWIGINTERN PyObject *_wrap_MotionGraph_event(PyObject *SWIGUNUSEDPARM(self), PyO
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:MotionGraph_event",&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:MotionGraph_handleEvent",&obj0,&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__MotionGraph, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MotionGraph_event" "', argument " "1"" of type '" "Piavca::MotionGraph *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MotionGraph_handleEvent" "', argument " "1"" of type '" "Piavca::MotionGraph *""'"); 
   }
   arg1 = reinterpret_cast< Piavca::MotionGraph * >(argp1);
   {
@@ -92578,9 +92616,9 @@ SWIGINTERN PyObject *_wrap_MotionGraph_event(PyObject *SWIGUNUSEDPARM(self), PyO
     {
       try {
         if (upcall) {
-          (arg1)->Piavca::MotionGraph::event(arg2);
+          (arg1)->Piavca::MotionGraph::handleEvent(arg2);
         } else {
-          (arg1)->event(arg2);
+          (arg1)->handleEvent(arg2);
         } 
       }
       catch (Swig::DirectorException &e) {
@@ -102017,7 +102055,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Motion_getEndTime", _wrap_Motion_getEndTime, METH_VARARGS, NULL},
 	 { (char *)"Motion_finished", _wrap_Motion_finished, METH_VARARGS, NULL},
 	 { (char *)"Motion_reset", _wrap_Motion_reset, METH_VARARGS, NULL},
-	 { (char *)"Motion_event", _wrap_Motion_event, METH_VARARGS, NULL},
+	 { (char *)"Motion_passEvent", _wrap_Motion_passEvent, METH_VARARGS, NULL},
+	 { (char *)"Motion_handleEvent", _wrap_Motion_handleEvent, METH_VARARGS, NULL},
 	 { (char *)"Motion_canHandleEvent", _wrap_Motion_canHandleEvent, METH_VARARGS, NULL},
 	 { (char *)"Motion_getEventNames", _wrap_Motion_getEventNames, METH_VARARGS, NULL},
 	 { (char *)"Motion_cleanRecursionState", _wrap_Motion_cleanRecursionState, METH_VARARGS, NULL},
@@ -102307,7 +102346,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"MotionFilter_getAvatar", _wrap_MotionFilter_getAvatar, METH_VARARGS, NULL},
 	 { (char *)"MotionFilter_setStartTime", _wrap_MotionFilter_setStartTime, METH_VARARGS, NULL},
 	 { (char *)"MotionFilter_reset", _wrap_MotionFilter_reset, METH_VARARGS, NULL},
-	 { (char *)"MotionFilter_event", _wrap_MotionFilter_event, METH_VARARGS, NULL},
+	 { (char *)"MotionFilter_handleEvent", _wrap_MotionFilter_handleEvent, METH_VARARGS, NULL},
 	 { (char *)"MotionFilter_canHandleEvent", _wrap_MotionFilter_canHandleEvent, METH_VARARGS, NULL},
 	 { (char *)"MotionFilter_cleanRecursionState", _wrap_MotionFilter_cleanRecursionState, METH_VARARGS, NULL},
 	 { (char *)"MotionFilter_setMotion", _wrap_MotionFilter_setMotion, METH_VARARGS, NULL},
@@ -102335,7 +102374,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"TwoMotionCombiner_getAvatar", _wrap_TwoMotionCombiner_getAvatar, METH_VARARGS, NULL},
 	 { (char *)"TwoMotionCombiner_setStartTime", _wrap_TwoMotionCombiner_setStartTime, METH_VARARGS, NULL},
 	 { (char *)"TwoMotionCombiner_reset", _wrap_TwoMotionCombiner_reset, METH_VARARGS, NULL},
-	 { (char *)"TwoMotionCombiner_event", _wrap_TwoMotionCombiner_event, METH_VARARGS, NULL},
+	 { (char *)"TwoMotionCombiner_handleEvent", _wrap_TwoMotionCombiner_handleEvent, METH_VARARGS, NULL},
 	 { (char *)"TwoMotionCombiner_canHandleEvent", _wrap_TwoMotionCombiner_canHandleEvent, METH_VARARGS, NULL},
 	 { (char *)"TwoMotionCombiner_cleanRecursionState", _wrap_TwoMotionCombiner_cleanRecursionState, METH_VARARGS, NULL},
 	 { (char *)"TwoMotionCombiner_getMotionLength", _wrap_TwoMotionCombiner_getMotionLength, METH_VARARGS, NULL},
@@ -102377,7 +102416,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"MultiMotionCombiner_preFrame", _wrap_MultiMotionCombiner_preFrame, METH_VARARGS, NULL},
 	 { (char *)"MultiMotionCombiner_setStartTime", _wrap_MultiMotionCombiner_setStartTime, METH_VARARGS, NULL},
 	 { (char *)"MultiMotionCombiner_reset", _wrap_MultiMotionCombiner_reset, METH_VARARGS, NULL},
-	 { (char *)"MultiMotionCombiner_event", _wrap_MultiMotionCombiner_event, METH_VARARGS, NULL},
+	 { (char *)"MultiMotionCombiner_handleEvent", _wrap_MultiMotionCombiner_handleEvent, METH_VARARGS, NULL},
 	 { (char *)"MultiMotionCombiner_canHandleEvent", _wrap_MultiMotionCombiner_canHandleEvent, METH_VARARGS, NULL},
 	 { (char *)"MultiMotionCombiner_cleanRecursionState", _wrap_MultiMotionCombiner_cleanRecursionState, METH_VARARGS, NULL},
 	 { (char *)"MultiMotionCombiner_getMotionLength", _wrap_MultiMotionCombiner_getMotionLength, METH_VARARGS, NULL},
@@ -102566,7 +102605,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"LoopMotion_setEndTime", _wrap_LoopMotion_setEndTime, METH_VARARGS, NULL},
 	 { (char *)"LoopMotion_getEndTime", _wrap_LoopMotion_getEndTime, METH_VARARGS, NULL},
 	 { (char *)"LoopMotion_preFrame", _wrap_LoopMotion_preFrame, METH_VARARGS, NULL},
-	 { (char *)"LoopMotion_event", _wrap_LoopMotion_event, METH_VARARGS, NULL},
+	 { (char *)"LoopMotion_handleEvent", _wrap_LoopMotion_handleEvent, METH_VARARGS, NULL},
 	 { (char *)"LoopMotion_reset", _wrap_LoopMotion_reset, METH_VARARGS, NULL},
 	 { (char *)"delete_LoopMotion", _wrap_delete_LoopMotion, METH_VARARGS, NULL},
 	 { (char *)"disown_LoopMotion", _wrap_disown_LoopMotion, METH_VARARGS, NULL},
@@ -102732,7 +102771,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"ChoiceMotion_setChoice", _wrap_ChoiceMotion_setChoice, METH_VARARGS, NULL},
 	 { (char *)"ChoiceMotion_getCurrentChoice", _wrap_ChoiceMotion_getCurrentChoice, METH_VARARGS, NULL},
 	 { (char *)"ChoiceMotion_makeChoice", _wrap_ChoiceMotion_makeChoice, METH_VARARGS, NULL},
-	 { (char *)"ChoiceMotion_event", _wrap_ChoiceMotion_event, METH_VARARGS, NULL},
+	 { (char *)"ChoiceMotion_handleEvent", _wrap_ChoiceMotion_handleEvent, METH_VARARGS, NULL},
 	 { (char *)"ChoiceMotion_canHandleEvent", _wrap_ChoiceMotion_canHandleEvent, METH_VARARGS, NULL},
 	 { (char *)"ChoiceMotion_getEventNames", _wrap_ChoiceMotion_getEventNames, METH_VARARGS, NULL},
 	 { (char *)"ChoiceMotion_reset", _wrap_ChoiceMotion_reset, METH_VARARGS, NULL},
@@ -102752,7 +102791,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"EventMapChoice_castToThisType", _wrap_EventMapChoice_castToThisType, METH_VARARGS, NULL},
 	 { (char *)"EventMapChoice_convertTo", _wrap_EventMapChoice_convertTo, METH_VARARGS, NULL},
 	 { (char *)"EventMapChoice_addMapItem", _wrap_EventMapChoice_addMapItem, METH_VARARGS, NULL},
-	 { (char *)"EventMapChoice_event", _wrap_EventMapChoice_event, METH_VARARGS, NULL},
+	 { (char *)"EventMapChoice_handleEvent", _wrap_EventMapChoice_handleEvent, METH_VARARGS, NULL},
 	 { (char *)"EventMapChoice_canHandleEvent", _wrap_EventMapChoice_canHandleEvent, METH_VARARGS, NULL},
 	 { (char *)"disown_EventMapChoice", _wrap_disown_EventMapChoice, METH_VARARGS, NULL},
 	 { (char *)"EventMapChoice_updateListeners", _wrap_EventMapChoice_updateListeners, METH_VARARGS, NULL},
@@ -102765,7 +102804,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"SequentialChoiceMotion_setStartTime", _wrap_SequentialChoiceMotion_setStartTime, METH_VARARGS, NULL},
 	 { (char *)"SequentialChoiceMotion_setPassEventsToChildren", _wrap_SequentialChoiceMotion_setPassEventsToChildren, METH_VARARGS, NULL},
 	 { (char *)"SequentialChoiceMotion_getPassEventsToChildren", _wrap_SequentialChoiceMotion_getPassEventsToChildren, METH_VARARGS, NULL},
-	 { (char *)"SequentialChoiceMotion_event", _wrap_SequentialChoiceMotion_event, METH_VARARGS, NULL},
+	 { (char *)"SequentialChoiceMotion_handleEvent", _wrap_SequentialChoiceMotion_handleEvent, METH_VARARGS, NULL},
 	 { (char *)"SequentialChoiceMotion_canHandleEvent", _wrap_SequentialChoiceMotion_canHandleEvent, METH_VARARGS, NULL},
 	 { (char *)"SequentialChoiceMotion_getEventNames", _wrap_SequentialChoiceMotion_getEventNames, METH_VARARGS, NULL},
 	 { (char *)"SequentialChoiceMotion_makeChoice", _wrap_SequentialChoiceMotion_makeChoice, METH_VARARGS, NULL},
@@ -102789,7 +102828,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"MotionGraph_convertTo", _wrap_MotionGraph_convertTo, METH_VARARGS, NULL},
 	 { (char *)"MotionGraph_addEvent", _wrap_MotionGraph_addEvent, METH_VARARGS, NULL},
 	 { (char *)"MotionGraph_addNextNode", _wrap_MotionGraph_addNextNode, METH_VARARGS, NULL},
-	 { (char *)"MotionGraph_event", _wrap_MotionGraph_event, METH_VARARGS, NULL},
+	 { (char *)"MotionGraph_handleEvent", _wrap_MotionGraph_handleEvent, METH_VARARGS, NULL},
 	 { (char *)"MotionGraph_canHandleEvent", _wrap_MotionGraph_canHandleEvent, METH_VARARGS, NULL},
 	 { (char *)"MotionGraph_makeChoice", _wrap_MotionGraph_makeChoice, METH_VARARGS, NULL},
 	 { (char *)"disown_MotionGraph", _wrap_disown_MotionGraph, METH_VARARGS, NULL},

@@ -244,7 +244,7 @@ public:
 	virtual int makeChoice();
 	
 	//! handles an event (plays the motion with the same name as the event)
-	void event(tstring ev);
+	void handleEvent(tstring ev);
 	virtual bool canHandleEvent(tstring ev);
 
 	//! gets the names of all events

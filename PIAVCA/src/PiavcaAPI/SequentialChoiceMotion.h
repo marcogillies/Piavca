@@ -75,7 +75,7 @@ public:
 	}
 
 	//! handles an event (plays the motion with the same name as the event)
-	virtual void event(tstring ev);
+	virtual void handleEvent(tstring ev);
 	virtual bool canHandleEvent(tstring ev);
 
 	//! gets the names of all events

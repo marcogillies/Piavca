@@ -254,13 +254,13 @@ public:
 
 	
 	//! send a message to sub motions that an "event" happened
-	virtual void event(tstring ev)
+	virtual void handleEvent(tstring ev)
 	{
-		Motion::event(ev);
+		Motion::handleEvent(ev);
 		//std::cout << "event in motion combiner " << getName() << std::endl;
 		for(MotionVec::size_type i = 0; i < mots.size(); i++)
 		{
-			mots[i]->event(ev);
+			mots[i]->passEvent(ev);
 		}
 	}
 	virtual bool canHandleEvent(tstring ev)

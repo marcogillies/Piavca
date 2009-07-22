@@ -101,14 +101,14 @@ class EigenAnalysis :
 		self.precentageToKeep = percent
 		
 	def get_eigenvectors (self, mat):
-		print mat
+		#print mat
 		vals, vecs = scipy.linalg.eigh(mat)
 		sum = 0.0
 		#for i in range(len(vals)-1, -1, -1):
-		print "Component Values"
-		print vals
+		#print "Component Values"
+		#print vals
 		for i in range(len(vals)-1, -1, -1):
-			print vals[i]
+			#print vals[i]
 			if vals[i] <= 0.0:
 				break
 			sum += vals[i]
@@ -120,14 +120,14 @@ class EigenAnalysis :
 			if vals[i] <= 0.0:
 				break
 			accumulate += vals[i]
-			print i, vals[i], accumulate, sum
+			#print i, vals[i], accumulate, sum
 			#print vecs[i]
 			pcs.append(scipy.transpose(vecs)[i])
 			#if pcs == None:
 			#	pcs = scipy.transpose(vecs)[i]
 			#else:
 			#	pcs = scipy.concatenate((pcs, scipy.transpose(vecs)[i]))
-			print i, vals[i], len(vals), accumulate/sum
+			#print i, vals[i], len(vals), accumulate/sum
 			if accumulate/sum > self.precentageToKeep: 
 				break
 		print "number of pcs ", len(pcs)
@@ -172,7 +172,7 @@ class EigenAnalysis :
 						length = int ((motion.getMotionLength())*fps)
 						quatlist = quatlist + [motion.getQuatValueAtTime(joint, (float(t)/fps)) for t in range(length)]
 					length = len(quatlist)
-					print length, quatlist
+					#print length, quatlist
 
 					qtime = time.clock()
 					quatlisttime += qtime - starttime
@@ -188,7 +188,7 @@ class EigenAnalysis :
 					self.expmaps.append(expmap)
 					# map all of the sampled joint rotations onto the tangent space
 					mappedvals.append([expmap.logMap(q) for q in quatlist])
-					print mappedvals
+					#print mappedvals
 						
 					ltime = time.clock()
 					logmaptime += ltime - ttime
@@ -239,7 +239,7 @@ class EigenAnalysis :
 			#for v, v0 in zip(mappedvals[mv], mappedvals[mv-1]):
 			for v, v0 in zip(mv[1:], mv[:-1]):
 				#print j, i
-				print v
+				#print v
 				data[j][3*i] = v[0]
 				data[j][3*i+1] = v[1]
 				data[j][3*i+2] = v[2]
@@ -250,8 +250,8 @@ class EigenAnalysis :
 				j+=1
 			i+=1
 		
-		print "input data for eigen analysis"
-		print data
+		#print "input data for eigen analysis"
+		#print data
 		return data
 	
 	def do_analysis (self, motions, fps):
@@ -282,7 +282,7 @@ class EigenAnalysis :
 		#print "cluster centres"
 		#print self.quants
 		#print x
-		print x.shape, self.quants.shape
+		#print x.shape, self.quants.shape
 		qs, dist = scipy.cluster.vq.vq(x, self.quants)
 		#print "vq returned"
 		return qs
@@ -537,7 +537,8 @@ class EigenAnalysis :
 	def projectMotionAtTime (self, motion, time):
 		mappedvals = []
 		i = 0
-		for joint in range(1, motion.end()) :
+		#print motion
+		for joint in range(motion.begin(), 0) + range(1, Piavca.Core.getCore().getMaxJointId()) :
 			if( not motion.isNull(joint)):
 				#print "joint ", joint, " type ", motion.getTrackType(joint)
 				# if there are no splits we are acting directly on the postures
@@ -574,6 +575,7 @@ class EigenAnalysis :
 				j += increment
 		#print vals
 		#return vals
+		#print vals.shape
 		return self.projectBack(vals)
 		
 	def getFullExpMapList(self):

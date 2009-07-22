@@ -202,10 +202,18 @@ public:
 	//! does any resetting needed 
 	virtual bool reset(){return true;};
 
-	virtual void event(tstring ev)
+	void passEvent(tstring ev)
 	{
-		//std::cout << "event in motion " << getName() << std::endl;
-		visited = true;
+		if (!wasVisited())
+		{
+			visited = true;
+			handleEvent(ev);
+		}
+	}
+
+	virtual void handleEvent(tstring ev)
+	{
+		
 	};
 
 	virtual bool canHandleEvent(tstring ev)
@@ -231,7 +239,7 @@ public:
 	//! send a message to sub motions that an "event" happened
 	void sendEvent(tstring ev)
 	{
-		event(ev);
+		passEvent(ev);
 		cleanRecursionState();
 	}
 

@@ -38,7 +38,7 @@
 
 using namespace Piavca;
 
-void EventMapChoice::event(tstring ev)
+void EventMapChoice::handleEvent(tstring ev)
 {
 	// if the event is in the lookup, choose that motion
 	// otherwise try the motion filter (ignore the 
@@ -57,11 +57,11 @@ void EventMapChoice::event(tstring ev)
 	if (getEventsToAllChildren())
 	{
 		for(int i = 0; i < int(mots.size()); i++)
-			mots[i]->event(ev);
+			mots[i]->passEvent(ev);
 	}
 	else
 	{
-		MotionFilter::event(ev);
+		MotionFilter::handleEvent(ev);
 	}
 };
 

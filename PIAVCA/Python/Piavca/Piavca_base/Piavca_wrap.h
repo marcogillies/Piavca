@@ -124,7 +124,7 @@ public:
     virtual void setStartTime(float t);
     virtual bool finished(float time);
     virtual bool reset();
-    virtual void event(Piavca::tstring ev);
+    virtual void handleEvent(Piavca::tstring ev);
     virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -197,7 +197,7 @@ public:
     virtual void setStartTime(float t);
     virtual bool finished(float time);
     virtual bool reset();
-    virtual void event(Piavca::tstring ev);
+    virtual void handleEvent(Piavca::tstring ev);
     virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -269,7 +269,7 @@ public:
     virtual void setStartTime(float time);
     virtual bool finished(float time);
     virtual bool reset();
-    virtual void event(Piavca::tstring ev);
+    virtual void handleEvent(Piavca::tstring ev);
     virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -342,7 +342,7 @@ public:
     virtual void setStartTime(float time);
     virtual bool finished(float time);
     virtual bool reset();
-    virtual void event(Piavca::tstring ev);
+    virtual void handleEvent(Piavca::tstring ev);
     virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -416,7 +416,7 @@ public:
     virtual void setStartTime(float time);
     virtual bool finished(float time);
     virtual bool reset();
-    virtual void event(Piavca::tstring ev);
+    virtual void handleEvent(Piavca::tstring ev);
     virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -491,7 +491,7 @@ public:
     virtual void setStartTime(float time);
     virtual bool finished(float time);
     virtual bool reset();
-    virtual void event(Piavca::tstring ev);
+    virtual void handleEvent(Piavca::tstring ev);
     virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -563,7 +563,7 @@ public:
     virtual void setStartTime(float time);
     virtual bool finished(float time);
     virtual bool reset();
-    virtual void event(Piavca::tstring ev);
+    virtual void handleEvent(Piavca::tstring ev);
     virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -635,7 +635,7 @@ public:
     virtual void setStartTime(float time);
     virtual bool finished(float time);
     virtual bool reset();
-    virtual void event(Piavca::tstring ev);
+    virtual void handleEvent(Piavca::tstring ev);
     virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -707,7 +707,7 @@ public:
     virtual void setStartTime(float time);
     virtual bool finished(float time);
     virtual bool reset();
-    virtual void event(Piavca::tstring ev);
+    virtual void handleEvent(Piavca::tstring ev);
     virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -779,7 +779,7 @@ public:
     virtual void setStartTime(float time);
     virtual bool finished(float time);
     virtual bool reset();
-    virtual void event(Piavca::tstring ev);
+    virtual void handleEvent(Piavca::tstring ev);
     virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -851,7 +851,7 @@ public:
     virtual void setStartTime(float time);
     virtual bool finished(float time);
     virtual bool reset();
-    virtual void event(Piavca::tstring ev);
+    virtual void handleEvent(Piavca::tstring ev);
     virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -923,7 +923,7 @@ public:
     virtual void setStartTime(float time);
     virtual bool finished(float time);
     virtual bool reset();
-    virtual void event(Piavca::tstring ev);
+    virtual void handleEvent(Piavca::tstring ev);
     virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -996,7 +996,7 @@ public:
     virtual void setStartTime(float t);
     virtual bool finished(float time);
     virtual bool reset();
-    virtual void event(Piavca::tstring ev);
+    virtual void handleEvent(Piavca::tstring ev);
     virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -1067,7 +1067,7 @@ public:
     virtual void setStartTime(float t);
     virtual bool finished(float time);
     virtual bool reset();
-    virtual void event(Piavca::tstring ev);
+    virtual void handleEvent(Piavca::tstring ev);
     virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -1138,7 +1138,7 @@ public:
     virtual void setStartTime(float time);
     virtual bool finished(float time);
     virtual bool reset();
-    virtual void event(Piavca::tstring ev);
+    virtual void handleEvent(Piavca::tstring ev);
     virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -1214,7 +1214,7 @@ public:
     virtual void setStartTime(float time);
     virtual bool finished(float time);
     virtual bool reset();
-    virtual void event(Piavca::tstring ev);
+    virtual void handleEvent(Piavca::tstring ev);
     virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -1287,7 +1287,7 @@ public:
     virtual void setStartTime(float time);
     virtual bool finished(float time);
     virtual bool reset();
-    virtual void event(Piavca::tstring ev);
+    virtual void handleEvent(Piavca::tstring ev);
     virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -1359,7 +1359,7 @@ public:
     virtual void setStartTime(float time);
     virtual bool finished(float time);
     virtual bool reset();
-    virtual void event(Piavca::tstring ev);
+    virtual void handleEvent(Piavca::tstring ev);
     virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -1432,7 +1432,7 @@ public:
     virtual void setStartTime(float time);
     virtual bool finished(float time);
     virtual bool reset();
-    virtual void event(Piavca::tstring ev);
+    virtual void handleEvent(Piavca::tstring ev);
     virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -1506,7 +1506,7 @@ public:
     virtual void setStartTime(float time);
     virtual bool finished(float time);
     virtual bool reset();
-    virtual void event(Piavca::tstring ev);
+    virtual void handleEvent(Piavca::tstring ev);
     virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -1581,7 +1581,7 @@ public:
     virtual void setStartTime(float time);
     virtual bool finished(float time);
     virtual bool reset();
-    virtual void event(Piavca::tstring ev);
+    virtual void handleEvent(Piavca::tstring ev);
     virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -1655,7 +1655,7 @@ public:
     virtual void setStartTime(float time);
     virtual bool finished(float time);
     virtual bool reset();
-    virtual void event(Piavca::tstring ev);
+    virtual void handleEvent(Piavca::tstring ev);
     virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -1729,7 +1729,7 @@ public:
     virtual void setStartTime(float time);
     virtual bool finished(float time);
     virtual bool reset();
-    virtual void event(Piavca::tstring ev);
+    virtual void handleEvent(Piavca::tstring ev);
     virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -1808,7 +1808,7 @@ public:
     virtual void setStartTime(float time);
     virtual bool finished(float time);
     virtual bool reset();
-    virtual void event(Piavca::tstring ev);
+    virtual void handleEvent(Piavca::tstring ev);
     virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -1887,7 +1887,7 @@ public:
     virtual void setStartTime(float time);
     virtual bool finished(float time);
     virtual bool reset();
-    virtual void event(Piavca::tstring ev);
+    virtual void handleEvent(Piavca::tstring ev);
     virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -1967,7 +1967,7 @@ public:
     virtual void setStartTime(float time);
     virtual bool finished(float time);
     virtual bool reset();
-    virtual void event(Piavca::tstring ev);
+    virtual void handleEvent(Piavca::tstring ev);
     virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -2039,7 +2039,7 @@ public:
     virtual void setStartTime(float t);
     virtual bool finished(float time);
     virtual bool reset();
-    virtual void event(Piavca::tstring ev);
+    virtual void handleEvent(Piavca::tstring ev);
     virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -2110,7 +2110,7 @@ public:
     virtual void setStartTime(float time);
     virtual bool finished(float time);
     virtual bool reset();
-    virtual void event(Piavca::tstring ev);
+    virtual void handleEvent(Piavca::tstring ev);
     virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -2183,7 +2183,7 @@ public:
     virtual void setStartTime(float time);
     virtual bool finished(float time);
     virtual bool reset();
-    virtual void event(Piavca::tstring ev);
+    virtual void handleEvent(Piavca::tstring ev);
     virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -2255,7 +2255,7 @@ public:
     virtual void setStartTime(float time);
     virtual bool finished(float time);
     virtual bool reset();
-    virtual void event(Piavca::tstring ev);
+    virtual void handleEvent(Piavca::tstring ev);
     virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -2328,7 +2328,7 @@ public:
     virtual void setStartTime(float time);
     virtual bool finished(float time);
     virtual bool reset();
-    virtual void event(Piavca::tstring ev);
+    virtual void handleEvent(Piavca::tstring ev);
     virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -2401,7 +2401,7 @@ public:
     virtual void setStartTime(float time);
     virtual bool finished(float time);
     virtual bool reset();
-    virtual void event(Piavca::tstring ev);
+    virtual void handleEvent(Piavca::tstring ev);
     virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();
@@ -2472,7 +2472,7 @@ public:
     virtual void setStartTime(float t);
     virtual bool finished(float time);
     virtual bool reset();
-    virtual void event(Piavca::tstring ev);
+    virtual void handleEvent(Piavca::tstring ev);
     virtual bool canHandleEvent(Piavca::tstring ev);
     virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
     virtual void cleanRecursionState();

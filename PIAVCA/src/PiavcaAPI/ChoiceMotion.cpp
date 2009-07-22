@@ -269,7 +269,7 @@ void ChoiceMotion::updateListeners()
 	if (name == "")
 		return;
 	for (unsigned int i = 0; i < listeners.size(); i++)
-		listeners[i]->event(name);
+		listeners[i]->sendEvent(name);
 }
 
 int ChoiceMotion::makeChoice()
@@ -280,7 +280,7 @@ int ChoiceMotion::makeChoice()
 }
 
 //! handles an event (plays the motion with the same name as the event)
-void ChoiceMotion::event(tstring ev)
+void ChoiceMotion::handleEvent(tstring ev)
 {
 	for(int i = 0; i < int(mots.size()); i++)
 		if (mots[i]->getName() == ev)
@@ -295,11 +295,11 @@ void ChoiceMotion::event(tstring ev)
 	if (eventsToAllChildren)
 	{
 		for(int i = 0; i < int(mots.size()); i++)
-			mots[i]->event(ev);
+			mots[i]->passEvent(ev);
 	}
 	else
 	{
-		MotionFilter::event(ev);
+		MotionFilter::handleEvent(ev);
 	}
 }
 bool ChoiceMotion::canHandleEvent(tstring ev)
@@ -341,8 +341,8 @@ bool ChoiceMotion::reset()
 	if (choice != currentChoice)
 	{
 		if(currentChoice >= 0 && currentChoice < (int)mots.size())
-			mots[currentChoice]->event("__finished__");
-		mots[choice]->event("__chosen__");
+			mots[currentChoice]->passEvent("__finished__");
+		mots[choice]->passEvent("__chosen__");
 	}
 	setChoice(choice);
 	Motion *mot = mots[currentChoice];

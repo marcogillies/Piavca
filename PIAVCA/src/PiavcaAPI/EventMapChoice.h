@@ -84,7 +84,7 @@ public:
 	};
 
 	//! handles an event 
-	void event(tstring ev);
+	void handleEvent(tstring ev);
 	virtual bool canHandleEvent(tstring ev);
 
 };
