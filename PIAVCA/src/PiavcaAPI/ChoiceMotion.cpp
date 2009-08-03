@@ -275,7 +275,7 @@ void ChoiceMotion::updateListeners()
 int ChoiceMotion::makeChoice()
 {
 
-	std::cout << "ChoiceMotion makeChoice: " << std::endl;
+	//std::cout << "ChoiceMotion makeChoice: " << std::endl;
 	return getCurrentChoice();
 }
 
@@ -332,7 +332,7 @@ bool ChoiceMotion::reset()
 {
 	if(mots.size() <= 0)
 		return true;
-	std::cout << "ChoiceMotion reset, about to make choice: " << std::endl;
+	//std::cout << "ChoiceMotion reset, about to make choice: " << std::endl;
 	int choice = makeChoice();
 	eventHappened = false;
 	if (choice < 0)
