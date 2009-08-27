@@ -592,6 +592,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\EventMapChoice.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\ExpMapMotion.cpp"
 				>
 			</File>
@@ -609,6 +613,10 @@
 			</File>
 			<File
 				RelativePath=".\MaskedMotion.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\MoGraph.cpp"
 				>
 			</File>
 			<File
@@ -773,6 +781,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\EventMapChoice.h"
+				>
+			</File>
+			<File
 				RelativePath=".\ExpMapMotion.h"
 				>
 			</File>
@@ -798,6 +810,10 @@
 			</File>
 			<File
 				RelativePath="MathsUtils.h"
+				>
+			</File>
+			<File
+				RelativePath=".\MoGraph.h"
 				>
 			</File>
 			<File
