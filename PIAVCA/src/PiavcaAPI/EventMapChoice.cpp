@@ -44,9 +44,13 @@ void EventMapChoice::handleEvent(tstring ev)
 	// otherwise try the motion filter (ignore the 
 	// choice motion event handler)
 	std::map<tstring, unsigned int>::iterator pos;
+	//for (pos = lookup.begin(); pos != lookup.end(); pos++)
+	//	std::cout << pos->first << " " << pos->second << std::endl;
     pos = lookup.find(ev);
-    if (pos != lookup.end()) 
+    //std::cout << "Event Map Choice Motion: " << getName() << " event " << ev << " looking up choice "  <<  std::endl;
+	if (pos != lookup.end()) 
 	{
+		//std::cout << "Event Map Choice Motion: " << getName() << " event " << ev << " choice " << lookup[ev] << std::endl;
 		setChoice(lookup[ev]);
 		eventHappened = true;
 		if(getResetOnEvent())

@@ -80,6 +80,7 @@ public:
 
 	void addMapItem(tstring name, int index)
 	{
+		//std::cout << "adding map item " << name << " " << index << std::endl;
 		lookup[name] = index;
 	};
 

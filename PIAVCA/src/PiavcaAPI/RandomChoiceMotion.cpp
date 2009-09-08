@@ -67,9 +67,11 @@ void RandomChoiceMotion::addMotion(Motion *mot, float prob)
 	ChoiceMotion::addMotion(mot);
 	if(mot)
 	{
+		//std::cout << "setting probability " << prob << std::endl;
 		setProbability(getNumMotions()-1,prob);
 		if(getNumMotions() == 1)
 			reset();
+		//std::cout << "finished resetting rc\n";
 	}
 };
 
@@ -110,14 +112,20 @@ int RandomChoiceMotion::makeChoice()
 	{
 		cum_sum += int(probs[i]*1000.0f);
 		if (cum_sum > r)
+		{
+			//std::cout << "choice " << i << " of " << getNumMotions() << " prob " << probs[i] << std::endl;
 			return i;
+		}
 	}
 	// if we get to here somethings gone wrong, and we haven't found a choice
 	
 	// maybe its because all probabilities are 0, 
 	// then we just choose one with uniform probability
 	if (cum_sum <= 0)
+	{
+		//std::cout << "cum_sum is 0" << std::endl;
 		return rand()%getNumMotions();
+	}
 	
 	// otherwise assum its an off by one error, return the last choice 
 	// and keep your fingers crossed

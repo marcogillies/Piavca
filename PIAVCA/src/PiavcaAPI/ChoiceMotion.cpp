@@ -244,6 +244,7 @@ void ChoiceMotion::cleanRecursionState()
 //! sets which motion is currently being played
 void ChoiceMotion::setChoice(int i)
 {
+	//std::cout << "setting choice " << i << " num mots " << mots.size() << std::endl;
 	if(/*i < 0 ||*/ i >= static_cast<int>(mots.size()))
 		Piavca::Error(_T("Illegal motion choice"));
 	currentChoice = i;
@@ -286,11 +287,11 @@ void ChoiceMotion::handleEvent(tstring ev)
 		if (mots[i]->getName() == ev)
 		{
 			currentChoice = i;
-			std::cout << "Choice Motion: event " << ev << std::endl;
+			//std::cout << "Choice Motion: " << getName() << " event " << ev << std::endl;
 			eventHappened = true;
 			if(resetOnEvent)
 				reset();
-			break;
+			return;
 		}
 	if (eventsToAllChildren)
 	{
@@ -337,7 +338,7 @@ bool ChoiceMotion::reset()
 	eventHappened = false;
 	if (choice < 0)
 		return false;
-	std::cout << "ChoiceMotion reset, choice: " << choice << std::endl;
+	//std::cout << "ChoiceMotion: " << getName() << " reset, choice: " << choice << " " << mots[choice]->getName() << std::endl;
 	if (choice != currentChoice)
 	{
 		if(currentChoice >= 0 && currentChoice < (int)mots.size())
@@ -345,6 +346,7 @@ bool ChoiceMotion::reset()
 		mots[choice]->passEvent("__chosen__");
 	}
 	setChoice(choice);
+	//std::cout << "set choice\n";
 	Motion *mot = mots[currentChoice];
 	
 	if (resetOnPlay && !mot->reset())
@@ -376,9 +378,11 @@ bool ChoiceMotion::reset()
 	};
 	
 	setMotion(mot);
-	
-	updateListeners();
 
+	//std::cout << "updating listeners\n";
+	updateListeners();
+	//std::cout << "updated listeners\n";
+	
 	if (resetTime)
 		setStartTime(Piavca::Core::getCore()->getTime());
 	return true;

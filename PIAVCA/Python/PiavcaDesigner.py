@@ -28,6 +28,7 @@ except IOError:
 	
 extra_panel = None
 if len(sys.argv) > 1:
+	sys.path.append(".")
 	print sys.argv[1]
 	module = __import__(sys.argv[1])
 	print module
