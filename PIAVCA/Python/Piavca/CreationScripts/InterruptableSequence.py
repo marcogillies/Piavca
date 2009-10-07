@@ -12,11 +12,11 @@ def calculateDistance(mot, t, expmaps):
 		if mot.isNull(j):
 			continue
 		joint_type = mot.getTrackType(j)
-		if joint_type & Piavca.FLOAT_TYPE:
+		if joint_type & Piavca.FLOAT_TYPE and expmaps[(j,Piavca.FLOAT_TYPE)]:
 			sum += abs(mot.getFloatValueAtTime(j, t) - expmaps[(j,Piavca.FLOAT_TYPE)])
-		if joint_type & Piavca.VEC_TYPE:
+		if joint_type & Piavca.VEC_TYPE and expmaps[(j,Piavca.VEC_TYPE)]:
 			sum +=(mot.getVecValueAtTime(j, t) - expmaps[(j,Piavca.VEC_TYPE)]).mag()
-		if joint_type & Piavca.QUAT_TYPE:
+		if joint_type & Piavca.QUAT_TYPE and expmaps[(j,Piavca.QUAT_TYPE)]:
 			sum +=expmaps[(j,Piavca.QUAT_TYPE)].logMap(mot.getQuatValueAtTime(j, t)).mag()
 	return sum
 			
@@ -58,11 +58,12 @@ def InterruptableSequence(seq, interruptions, fps = 20, threshold=6.5, window=0.
 				
 			if len(extremeFrames) == 0:
 				expmaps[(j,t)] = None
-			if t == Piavca.QUAT_TYPE:
+			elif t == Piavca.QUAT_TYPE:
 				expmaps[(j,t)] = Piavca.ExpMap.TangentSpace(extremeFrames)
 			elif t == Piavca.VEC_TYPE:
 				expmaps[(j,t)] = sum(extremeFrames, Piavca.Vec())/float(len(extremeFrames))
 			else:
+				print len(extremeFrames), extremeFrames
 				expmaps[(j,t)] = sum(extremeFrames)/float(len(extremeFrames))
 	
 	
@@ -75,7 +76,7 @@ def InterruptableSequence(seq, interruptions, fps = 20, threshold=6.5, window=0.
 	# of possible transition points
 	minima = []
 	values = []
-	print "start time", seq.getStartTime(), "end time", seq.getEndTime()
+	#print "start time", seq.getStartTime(), "end time", seq.getEndTime()
 	for i in range(int(seq.getStartTime()*fps), int(seq.getEndTime()*fps)-1):
 		d_plus = calculateDistance(seq, float(i+1)/fps, expmaps)
 		print d, d_plus, threshold

@@ -39,28 +39,52 @@
 
 from distutils.core import setup, Extension
 import commands
-import sys
+import sys, os
 from glob import glob
 
-swig_sources = ['Python/Piavca/Piavca_base/Piavca_wrap.cpp']
-PiavcaAPI_sources = glob('./src/PiavcaAPI/*.cpp')
-StdMotionImp_sources = glob('./src/StdMotionImp/*.cpp')
-PiavcaCal3dImp_sources = glob('./src/PiavcaCal3dImp/*.cpp') + glob('./src/PiavcaCal3dImp/*.c')
+swig_sources = [os.path.join('Python','Piavca','Piavca_base','Piavca_wrap.cpp')]
+PiavcaAPI_sources = glob(os.path.join(os.curdir,'src','PiavcaAPI','*.cpp'))
+#print PiavcaAPI_sources
+StdMotionImp_sources = glob(os.path.join(os.curdir,'src','StdMotionImp','*.cpp'))
+PiavcaCal3dImp_sources = glob(os.path.join(os.curdir,'src','PiavcaCal3dImp','*.cpp')) + glob(os.path.join(os.curdir,'src','PiavcaCal3dImp','*.c'))
 
 sources = swig_sources + PiavcaAPI_sources + StdMotionImp_sources + PiavcaCal3dImp_sources
 
 external_libs = ["cal3d"]
 
-includes = ['./src/', "/usr/local/include"]
+includes = [ os.path.join(os.curdir,'src')]
+
+if sys.platform != "win32":
+	includes = includes + ["/usr/local/include"]
+
+if sys.platform == "win32":
+	try:
+		cal3ddir = os.environ["CAL3DDIR"]
+		includes = includes + [os.path.join(cal3ddir,'src')]
+	except KeyError:
+		includes = includes + ['../cal3d-0.11.0/src/', '../cal3d/src/', '../cal3d/cal3d/src/' '../cal3d-0.10.0/src/']
 
 defines = [('GLEW_STATIC', '1')]
+
+if sys.platform == "win32":
+	defines = defines + [('WIN32', 1)]
 
 swig_opts = ['-modern', '-c++', '-I./src']
 
 extra_link_args = []
+library_dirs = []
+
+if sys.platform == "win32":
+	try:
+		cal3ddir = os.environ["CAL3DDIR"]
+		library_dirs = library_dirs + [os.path.join(cal3ddir,'bin','Release')]
+	except KeyError:
+		library_dirs = library_dirs + ['..\\cal3d-0.11.0\\bin\\Release', '..\\cal3d\\bin\\Release', '..\\cal3d\cal3d\\bin\\Release' '..\\cal3d-0.10.0\\bin\\Release']
 
 if sys.platform == "darwin":
 	extra_link_args = extra_link_args + ['-framework', 'OpenGL']
+elif sys.platform == "win32":
+	external_libs = external_libs + ["opengl32", "glu32"]
 else:
 	external_libs = external_libs + ["GL", "GLU"]
 
@@ -73,7 +97,8 @@ setup(name='Piavca',
                              libraries=external_libs,
                              include_dirs=includes,
                              extra_link_args=extra_link_args,
-                             define_macros=defines)
+                             define_macros=defines,
+							 library_dirs=library_dirs)
       					   	],
       py_modules=['Piavca.Piavca_base.Piavca_base'],
       scripts=['Python/PiavcaDesigner.py', 'Python/wxViewer.py', 'Python/FreeCameraViewer.py']

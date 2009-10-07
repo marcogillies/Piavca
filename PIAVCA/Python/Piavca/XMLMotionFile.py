@@ -77,7 +77,7 @@ def parseAttribute(attrValue, type, elementType):
 
 	valuelist = stringToValueList(attrValue)
 	
-	print "attr value", value, valuelist, type, elementType
+	#print "attr value", value, valuelist, type, elementType
 	
 	possible_values = []
 	
@@ -116,7 +116,7 @@ def parseAttribute(attrValue, type, elementType):
 				pass
 			
 		if type == float or type == types.NoneType:
-			print "found a float value"
+			#print "found a float value"
 			try:
 				f = float(value)
 				possible_values.append(f)
@@ -186,7 +186,7 @@ def parseAttribute(attrValue, type, elementType):
 			possible_values.append(i)
 		except ValueError:
 			i = Piavca.Core.getCore().getTrackId(value)
-			print "got joint id"
+			#print "got joint id"
 			possible_values.append(i)
 		
 	# if all else fails, treat it as a string
@@ -216,13 +216,13 @@ def setAttribute(mot, attrName, attrValue, firstArg = None):
 	val = getmeth()
 	valtype = type(val)
 	if attrName[-len("JointId"):] == "JointId" or attrName[-len("ExpressionId"):] == "ExpressionId" or attrName[-len("TrackId"):] == "TrackId":
-		print "Found joint attribute"
+		#print "Found joint attribute"
 		valtype = "Joint"
 	element_type = None
 	if valtype == list and len(val) > 0:
 		element_type = type(val[0])
 	
-	print "attrName", attrValue, val, valtype, element_type
+	#print "attrName", attrValue, val, valtype, element_type
 	
 	if firstArg == None:
 		method = meth
@@ -230,9 +230,9 @@ def setAttribute(mot, attrName, attrValue, firstArg = None):
 		method = lambda x : meth(firstArg, x)
 	
 	possible_values = parseAttribute(attrValue, valtype, element_type)
-	print possible_values
+	#print possible_values
 	for value in possible_values:
-		print "trying value", value, type(value)
+		#print "trying value", value, type(value)
 		try:
 			method(value)
 			return 1
