@@ -41,12 +41,7 @@
 
 namespace Piavca
 {
-	//! Adds the result of two motions, performing them simultaneously.
-	/*!	The results is the sum of the effects of both motions (in fact
-	 *	with rotations this is achieved with quaternion multiplication but
-	 *	the effect is similar to vector addition. An optional parameter can 
-	 *	scale the effect of the second motion.
-	 */
+	//! Does a weighted blend of a number of different motions
     class PIAVCA_DECL MultiBlend : public MultiMotionCombiner 
     // TwoMotionCombiner
 	{
@@ -80,7 +75,7 @@ namespace Piavca
 			return Weight_name;
 		}
 
-		//! sets the position of the other person (if its not accessed as an avatar pointer)
+		//! sets the weight assiged to a particular motion
 		void setWeight(int id, float val);
 		float getWeight(int id, float time = -1);
 		void setWeightId(int weightId);

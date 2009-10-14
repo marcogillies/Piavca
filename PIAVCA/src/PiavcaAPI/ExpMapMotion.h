@@ -43,7 +43,7 @@
 namespace Piavca
 {
 
-//! performs an exponential map on a motion to convert it to a linear space
+//! Performs an exponential map on a motion to convert it back from the logorithmic map space
 class PIAVCA_DECL ExpMapMotion : public MotionFilter
 {
 	std::vector<TangentSpace> tangentSpaces;

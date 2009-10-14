@@ -61,12 +61,7 @@ namespace Piavca
 	};
 
 
-    //! A motion manipulator class that interpolates between two motions.
-	/*!	The resulting motion is an interpolation between the two motion using 
-	 *	slerp for quaternions with a parameter value blend. This class blends 
-	 *	the two motions concurrently rather blending from one to another as 
-	 *	sequential blend does.
-	 */
+    //! Creates a smooth transition between two motions
     class PIAVCA_DECL MotionTransition : public TwoMotionCombiner
 	{
 	protected:
@@ -93,20 +88,27 @@ namespace Piavca
 		static const int MotionStart = -1;
 		static const int MotionEnd = -1;
 
+		//! the function used to do the transition
 		void setTransitionFunction(TransitionFunction *tf){transfunc = tf;};
+		
+		//! the time in the first motion where the transition occurs
 		virtual void setTransitionTime1(float t1=MotionEnd);
 		virtual float getTransitionTime1()
 		{
 			return transitionTime1;
 		};
+		//! the time in the second motion where the transition occurs
 		virtual void setTransitionTime2(float t2=MotionStart);
 		virtual float getTransitionTime2()
 		{
 			return transitionTime2;
 		};
 
+		//! the blending window for smooth transitions
 		void setWindow(float w){window = w;};
 		float getWindow(){return window;};
+		
+		
 		void setMotion1(Motion *mot)
 		{
 			TwoMotionCombiner::setMotion1(mot);

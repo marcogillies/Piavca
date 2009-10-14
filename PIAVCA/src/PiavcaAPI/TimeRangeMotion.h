@@ -40,7 +40,7 @@
 
 namespace Piavca
 {
-
+	//! Plays the entire length of a motion, but only returns anything for a sub time range
 	class PIAVCA_DECL TimeRangeMotion : public MotionFilter
 	{
 		float start, end;

@@ -39,7 +39,7 @@
 
 namespace Piavca
 {
-    //! a motion filter that makes a motion loop continuously
+    //! A version of loop motion that does a smooth transition between the end of the motion, back into the start. 
 	class PIAVCA_DECL SmoothLoop : public LoopMotion
 	{
 		ChoiceMotion *choiceMot;
@@ -85,6 +85,7 @@ namespace Piavca
 			return originalMot;
 		}
 
+		//! whether changes to the root position made by one motion are continued into the next one
 		void setAccumulateRoot(bool b)
 		{
 			choiceMot->setAccumulateRoot(b);
@@ -95,6 +96,7 @@ namespace Piavca
 			return choiceMot->getAccumulateRoot();
 		};
 
+		//! the blending window for smooth transitions
 		void setBlendInterval(float interval)
 		{
 			choiceMot->setWindowLength(interval);

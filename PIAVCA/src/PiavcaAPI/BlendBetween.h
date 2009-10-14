@@ -40,7 +40,7 @@
 
 namespace Piavca
 {
-    //! A motion manipulator class that interpolates between two motions.
+    //! Interpolates between two motions.
 	/*!	The resulting motion is an interpolation between the two motion using 
 	 *	slerp for quaternions with a parameter value blend. This class blends 
 	 *	the two motions concurrently rather blending from one to another as 

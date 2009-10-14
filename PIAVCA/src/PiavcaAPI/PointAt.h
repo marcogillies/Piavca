@@ -52,9 +52,8 @@ namespace Piavca
 {
 	typedef int joint_id;
 
-	/*!	A motion class that makes the avatar look at a target.
-	 *  The avatar will turn to look at the given target with eyes, head, and body.
-	 *  The target can either be an avatar, an object or a vector location.
+	/*!	A motion class that makes the avatar point a joint at a target.
+	 *  For example it can be used to look at a target by pointing head and eyes.
 	 */
 	class PIAVCA_DECL PointAt : public MotionFilter
 	{
@@ -137,6 +136,7 @@ namespace Piavca
 		//void setTargetMotion(Motion *target);
 		//Motion *getTargetMotion();
 
+		//! whether the target is specified in local or global coordinates. 
 		void setLocal(bool l)
 		{
 			local = l;
@@ -147,7 +147,7 @@ namespace Piavca
 			return local;
 		};
 
-
+		//! the id of the joint that will be pointed at
 		void setJointId(int id)
 		{
 			jointId = id;
@@ -158,7 +158,7 @@ namespace Piavca
 			return jointId;
 		};
 
-
+		// the joint on the target that will be pointed at (if it is an avatar)
 		void setTargetJointId(int id)
 		{
 			targetJointId = id;
@@ -169,7 +169,7 @@ namespace Piavca
 			return targetJointId;
 		};
 
-		
+		//! the direction that will be pointing
 		void setForwardDirection(const Vec &v)
 		{
 			forwardDirection = v;

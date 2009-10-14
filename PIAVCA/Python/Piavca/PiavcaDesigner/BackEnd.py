@@ -89,6 +89,9 @@ class BackEnd:
 		if self.getCurrentSubMotionProxy():
 			self.getCurrentSubMotionProxy().PublishEvents()
 			
+	def addEvent(self, eventName):
+		Piavca.addEvents(self.getAvatar(), [eventName])
+			
 	def setMotion(self, motionname):
 		self.setTime(0.0)
 		#print "motion name", motionname, type(motionname)

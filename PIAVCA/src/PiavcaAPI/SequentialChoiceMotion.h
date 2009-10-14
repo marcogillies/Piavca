@@ -42,7 +42,7 @@
 namespace Piavca
 {
 
-//! a ChoiceMotion where the the choices are played sequentially one after the other
+//! A ChoiceMotion where the the choices are played sequentially one after the other
 class SequentialChoiceMotion : public ChoiceMotion
 {
 	bool passEventsToChildren;

@@ -42,17 +42,22 @@ import commands
 import sys, os
 from glob import glob
 
+
+
 swig_sources = [os.path.join('Python','Piavca','Piavca_base','Piavca_wrap.cpp')]
+cal3d_sources = glob(os.path.join(os.curdir,'cal3d','*.cpp'))
 PiavcaAPI_sources = glob(os.path.join(os.curdir,'src','PiavcaAPI','*.cpp'))
 #print PiavcaAPI_sources
 StdMotionImp_sources = glob(os.path.join(os.curdir,'src','StdMotionImp','*.cpp'))
 PiavcaCal3dImp_sources = glob(os.path.join(os.curdir,'src','PiavcaCal3dImp','*.cpp')) + glob(os.path.join(os.curdir,'src','PiavcaCal3dImp','*.c'))
 
-sources = swig_sources + PiavcaAPI_sources + StdMotionImp_sources + PiavcaCal3dImp_sources
 
-external_libs = ["cal3d"]
+sources = swig_sources + PiavcaAPI_sources + StdMotionImp_sources + PiavcaCal3dImp_sources + cal3d_sources
 
-includes = [ os.path.join(os.curdir,'src')]
+external_libs = []#["cal3d"]
+
+
+includes = [ os.path.join(os.curdir,'src'),os.path.join(os.curdir,'cal3d')]
 
 if sys.platform != "win32":
 	includes = includes + ["/usr/local/include"]

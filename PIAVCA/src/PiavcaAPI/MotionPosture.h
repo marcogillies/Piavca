@@ -39,7 +39,10 @@
 
 namespace Piavca
 {
-	//! A Motion that saves the posture from another motion
+	//! Saves the current posture from another motion and replays it. 
+	/*!
+	 *	Mostly used internally to implement other motions.
+	 */
 	class PIAVCA_DECL MotionPosture : public KeyframeMotion
 	{
 	public:

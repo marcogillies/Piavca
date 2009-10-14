@@ -56,7 +56,9 @@ namespace Piavca
 
 //! A specialisation of the Motion Interface to deal with keyframe motion data.
 /*!
- *  Motion data can be read in from a bvh file. The actual underlying representation of the motion is forwarded 
+ *  A representation of motion data e.g. from motion capture data or an animation package. These are mostly read in from file (e.g. Cal3d animation format) though they can also created at run time. 
+ *
+ *  The actual underlying representation of the motion is forwarded 
  *  to an implementation class (MotionImp) so that it can be implemented differently on different platforms if
  *	there are more efficient methods (a default implementatio is provided). Keyframe motion provide the ability to create
  *	tracks and store data to them, if you want to create mtoion data on the fly. You can also cache the values of another

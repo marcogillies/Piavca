@@ -42,7 +42,7 @@
 
 namespace Piavca
 {
-//! a choice motion where a new motion is chosen randomly at each reset
+//! A version of Choice motion where events trigger new motions to be chosen based on a lookup table. 
 class EventMapChoice : public ChoiceMotion
 {
 protected:

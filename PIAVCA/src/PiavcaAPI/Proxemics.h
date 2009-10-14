@@ -44,7 +44,7 @@
 namespace Piavca
 {
 
-//! a ChoiceMotion that implements proxemics behaviour.
+//! A ChoiceMotion that implements proxemics behaviour.
 /*!
  *	Proxemics consists in maintianing a desired personal distance
  *  to another avatar (or group of avatars) by stepping forwards or
@@ -132,7 +132,7 @@ public:
 	void setDistanceOff(bool b){distanceOff = b;};
 	bool getDistanceOff(){return distanceOff;};
 
-		
+	//! the direction vector which is used as forward
 	void setForwardDirection(const Vec &v)
 	{
 		forwardDirection = v;

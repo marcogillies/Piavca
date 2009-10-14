@@ -39,7 +39,7 @@
 
 namespace Piavca
 {
-    //! a motion filter that makes a motion loop continuously
+    //! A motion filter that makes a motion loop continuously
 	class PIAVCA_DECL LoopMotion : public MotionFilter
 	{
 		bool lock;
@@ -74,6 +74,7 @@ namespace Piavca
 				return Motion::getMotionLength();
 		};
 
+		//! sets an end time after which the motion stops looping
 		void setEndTime(float t){endTime = t;};
 		float getEndTime(){return endTime;};
 				

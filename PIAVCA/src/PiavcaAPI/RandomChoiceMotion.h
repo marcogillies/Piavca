@@ -43,7 +43,7 @@
 namespace Piavca
 {
 
-//! a choice motion where a new motion is chosen randomly at each reset
+//! A choice motion where a new motion is chosen randomly at each reset
 class RandomChoiceMotion : public ChoiceMotion
 {
 protected:
@@ -76,6 +76,7 @@ public:
 
 	virtual void addMotion(Motion *mot, float prob = 1.0f);
 
+	//! the probability of choosing a particular motion
 	void setProbability(int index, float prob);
 
 	void setMotionProb(int index, float prob);

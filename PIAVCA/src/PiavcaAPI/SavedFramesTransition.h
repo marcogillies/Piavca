@@ -39,11 +39,6 @@
 namespace Piavca
 {
     //! A version of Motion transitions that saves the relevant frames of the first motion and uses those rather than the motion itself
-	/*!	The resulting motion is an interpolation between the two motion using 
-	 *	slerp for quaternions with a parameter value blend. This class blends 
-	 *	the two motions concurrently rather blending from one to another as 
-	 *	sequential blend does.
-	 */
     class PIAVCA_DECL SavedFramesTransition : public MotionTransition
 	{
 	    float transTimeOriginal;

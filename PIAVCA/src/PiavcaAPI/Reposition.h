@@ -43,7 +43,7 @@
 
 namespace Piavca
 {
-	//! a motion filter that starts a motion from a new position and orientation
+	//! A motion filter that starts a motion from a new position and orientation
     class PIAVCA_DECL Reposition : public MotionFilter
 	{
 	    Vec start_position;

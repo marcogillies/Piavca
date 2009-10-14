@@ -41,7 +41,7 @@
 
 namespace Piavca 
 {
-
+	//! Rescales the duration (length) of a motion. The motion will be speeded up or slowed down to get the new length. Is based on ScaleMotionSpeed.
 	class PIAVCA_DECL ChangeMotionLength : public ScaleMotionSpeed
 	{
 		float length;
@@ -71,7 +71,7 @@ namespace Piavca
 		//! casts a motion to this type
 		static ChangeMotionLength *castToThisType(Motion *m){return dynamic_cast<ChangeMotionLength *>(m);};
 
-		
+		//! the new length of the motion
 		void setLength(float len)
 		{
 			length = len;

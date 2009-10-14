@@ -43,8 +43,7 @@ namespace Piavca
 	//! Adds the result of two motions, performing them simultaneously.
 	/*!	The results is the sum of the effects of both motions (in fact
 	 *	with rotations this is achieved with quaternion multiplication but
-	 *	the effect is similar to vector addition. An optional parameter can 
-	 *	scale the effect of the second motion.
+	 *	the effect is similar to vector addition. 
 	 */
     class PIAVCA_DECL MotionAdder : public MultiMotionCombiner 
     // TwoMotionCombiner
@@ -65,8 +64,6 @@ namespace Piavca
 		//! casts a motion to this type
 		static MotionAdder *castToThisType(Motion *m){return dynamic_cast<MotionAdder *>(m);};
 
-		//! this is a scale factor applied to the second motion
-		//void setScaleSecond(float s){scaleSecond = s;};
 	    
 		//! calculates the values of a keyframe
 		/*!  The results is the sum of the two motions.

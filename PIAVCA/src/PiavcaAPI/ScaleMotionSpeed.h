@@ -42,7 +42,7 @@
 
 namespace Piavca
 {
-	//! a motion filter that scales the motion's speed
+	//! A motion filter that scales the motion's speed
     class PIAVCA_DECL ScaleMotionSpeed : public MotionFilter
 	{
 	    float scaleFactor; 

@@ -42,7 +42,7 @@ namespace Piavca
 {
 	//! Subtracts one motion (motion1) from the other (motion2)
 	/*!	The results is the difference between the effects of both motions (in fact
-	 *	with rotations this is achieved with quaternion multiplication but
+	 *	with rotations this is achieved with quaternion division but
 	 *	the effect is similar to vector subtraction. 
 	 */
     class PIAVCA_DECL Subtract : public TwoMotionCombiner

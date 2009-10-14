@@ -41,7 +41,7 @@
 
 namespace Piavca
 {
-	//! a motion filter that scales the motion's speed
+	//! A motion filter that scales the motion's speed based on the output of another motion (the warp function).
     class PIAVCA_DECL TimeWarp : public MotionFilter
 	{
 	    Motion *warpFunc; 
@@ -116,6 +116,7 @@ namespace Piavca
 
 		//! Sets the scale factor for the postion components of the motion.
 	    void setWarp(Motion *warp){warpFunc = warp;};
+		Motion *getWarp(){return warpFunc;};
 	};
 };
 

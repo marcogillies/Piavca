@@ -63,7 +63,7 @@ public:
 
 
 
-//! plays different motions on different joints.
+//! Only plays a motion on certain joints, not others.
 /*!
  *	It uses a mask to tell which motion to play on which joint.
  */

@@ -41,7 +41,7 @@ namespace Piavca
 {
 	class Avatar;
 
-	//! A Motion that saves the posture from another motion
+	//! A Motion that saves the posture from an avatar
 	class PIAVCA_DECL AvatarPosture : public KeyframeMotion
 	{
 	public:

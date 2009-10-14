@@ -40,13 +40,9 @@
 
 namespace Piavca
 {
-	//! Initially plays one motion up to a given time then blends into another motion
+	//! A version of Sequence that uses MotionTranstions and Reposition to achieve a smooth transition between the two motions. 
 	/*!
-	 *	This can be used to smoothly transition between motions. The seoond motion starts in the ending root position and orientation
-	 *	of the first one rather than its own starting conditions. The transition is controlled by a start time
-	 *	and an interval (length of the transition). The smooth blend is not very sophisticated (just an interpolation)
-	 *	but it will look OK if the start of the second motion is not too different from the end of the first (don't use this
-	 *	to try to transition between lying down and standing up for instance)
+	 *	(SequentialChoice is now preferred)
 	 */
 	class PIAVCA_DECL SmoothSequence : public Sequence
 	{
@@ -91,7 +87,9 @@ namespace Piavca
 
 		void create();
 
+		//! whether vertical root changes are accumulated or not
 		virtual void setMaintainY(bool b){maintainY = b;};
+		//! whether changes to the root position made by one motion are continued into the next one
 		virtual void setAccumulateRoot(bool b){m_accumulateRoot = b;};
 
 		void setMotion1(Motion *mot)

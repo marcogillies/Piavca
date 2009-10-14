@@ -41,7 +41,7 @@
 
 namespace Piavca
 {
-	//! changes the start time of a motion by an offset
+	//! Changes the start time of a motion by an offset
 	class TimeOffset : public MotionFilter
 	{
 		float offset;

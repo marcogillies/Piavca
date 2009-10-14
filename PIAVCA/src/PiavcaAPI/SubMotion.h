@@ -40,7 +40,7 @@
 
 namespace Piavca
 {
-
+	//! Plays only a sub time range of a motion
 	class PIAVCA_DECL SubMotion : public MotionFilter
 	{
 		float start, end;

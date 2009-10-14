@@ -79,6 +79,7 @@ namespace Piavca
 		virtual bool isRandomAccess(){return false;};
 
 
+		//! the avatar whose motion is used
 		void setWrappedAvatar(Avatar *avatar)
 		{
 			m_wrapped_avatar = avatar;
@@ -91,6 +92,7 @@ namespace Piavca
 		//void setTargetMotion(Motion *target);
 		//Motion *getTargetMotion();
 
+		//! whether joint values are returned in global or local coordinates
 		void setGlobal(bool g)
 		{
 			global = g;

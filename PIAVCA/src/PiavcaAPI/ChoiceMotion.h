@@ -44,7 +44,13 @@ namespace Piavca
 
 typedef std::vector< Motion * > MotionVec;
 
-//! a motion where the client can choose which of a set of child motions to play
+//! A motion which has a number of child motions, and which can select one at a time to play
+/*!
+ *	This has a number of child motions depending on how child motion are selected. 
+ *  In the base class a new motion is selected when an event with its name is chosen. 
+ *  Otherwise the last motion is played again. 
+ *  ChoiceMotions need to be put in loop motions in order to continue playing new motions.
+ */
 class ChoiceMotion : public MotionFilter
 {
 	int currentChoice;
@@ -89,7 +95,7 @@ public:
 	static ChoiceMotion *castToThisType(Motion *m){return dynamic_cast<ChoiceMotion *>(m);};
 	
 	
-	
+	//! whether transitions between motions are smoothed
 	void setSmooth(bool s)
 	{
 		smooth = s;	
@@ -99,6 +105,7 @@ public:
 		return smooth;	
 	};
 
+	//! whether the start time is reset each time a new motion is played
 	void setResetTime(bool r)
 	{
 		resetTime = r;	
@@ -108,6 +115,7 @@ public:
 		return resetTime;	
 	};
 
+	//! the blending window for smooth transitions
 	void setWindowLength(float w)
 	{
 		windowLength = w;	
@@ -117,6 +125,7 @@ public:
 		return windowLength;	
 	};
 
+	//! whether a new motion is chosen immediately when an event is received
 	void setResetOnEvent(bool r)
 	{
 		resetOnEvent = r;	
@@ -126,6 +135,7 @@ public:
 		return resetOnEvent;	
 	};
 
+	//! Whether a child motion is resset each time it is played
 	void setResetOnPlay(bool r)
 	{
 		resetOnPlay = r;	
@@ -136,7 +146,7 @@ public:
 	};
 
 
-	
+	//! whether events are propagated down to all children on just the current one 
 	void setEventsToAllChildren(bool r)
 	{
 		eventsToAllChildren = r;	
@@ -146,6 +156,7 @@ public:
 		return eventsToAllChildren;	
 	};
 
+	//! whether changes to the root position made by one motion are continued into the next one
 	void setAccumulateRoot(bool a)
 	{
 		accumulateRoot = a;	
@@ -155,21 +166,23 @@ public:
 		return accumulateRoot;	
 	};
 	
-	//! parameters passed on to the repositioner
-	//!@{
+	//! whether vertical root changes are accumulated or not
 	void setMaintainUp(bool b){maintainUp = b;};
 	bool getMaintainUp(){return maintainUp;};
 
+	
+	//! whether root rotations are accumulated just about the vertical axis, or in all directions
 	void setRotateAboutUp(bool b){rotateAboutUp = b;};
 	bool getRotateAboutUp(){return rotateAboutUp;};
 
+	//! the direction vector that is used as up
 	void setUpDirection(Vec v)
 	{
 		upDirection = v;
 		upDirection.normalize();
 	};
 	Vec getUpDirection(){return upDirection;};
-	//!@}
+
 	
 	
 	void printInfo();
