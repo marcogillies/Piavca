@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Piavca.gltb</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="Piavca-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="Piavca-module.html">Package&nbsp;Piavca</a> ::
+        Module&nbsp;gltb
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="Piavca.gltb-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="Piavca.gltb-module.html">Module Piavca.gltb</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">OpenGL</tt><tt class="py-op">.</tt><tt class="py-name">GL</tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">OpenGL</tt><tt class="py-op">.</tt><tt id="link-0" class="py-name" targets="Variable Piavca.FreeCameraCanvas.GLUT=Piavca.FreeCameraCanvas-module.html#GLUT,Variable Piavca.wxVirtualTracker'.GLUT=Piavca.wxVirtualTracker%27-module.html#GLUT"><a title="Piavca.FreeCameraCanvas.GLUT
+Piavca.wxVirtualTracker'.GLUT" class="py-name" href="#" onclick="return doclink('link-0', 'GLUT', 'link-0');">GLUT</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">math</tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt id="link-1" class="py-name" targets="Variable Piavca.FreeCameraCanvas.GLTB_TIME_EPSILON=Piavca.FreeCameraCanvas-module.html#GLTB_TIME_EPSILON,Variable Piavca.gltb.GLTB_TIME_EPSILON=Piavca.gltb-module.html#GLTB_TIME_EPSILON"><a title="Piavca.FreeCameraCanvas.GLTB_TIME_EPSILON
+Piavca.gltb.GLTB_TIME_EPSILON" class="py-name" href="#" onclick="return doclink('link-1', 'GLTB_TIME_EPSILON', 'link-1');">GLTB_TIME_EPSILON</a></tt> <tt class="py-op">=</tt> <tt class="py-number">10</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt id="link-2" class="py-name" targets="Variable Piavca.FreeCameraCanvas.gltb_lasttime=Piavca.FreeCameraCanvas-module.html#gltb_lasttime,Variable Piavca.gltb.gltb_lasttime=Piavca.gltb-module.html#gltb_lasttime"><a title="Piavca.FreeCameraCanvas.gltb_lasttime
+Piavca.gltb.gltb_lasttime" class="py-name" href="#" onclick="return doclink('link-2', 'gltb_lasttime', 'link-2');">gltb_lasttime</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt id="link-3" class="py-name" targets="Variable Piavca.FreeCameraCanvas.gltb_lastposition=Piavca.FreeCameraCanvas-module.html#gltb_lastposition,Variable Piavca.gltb.gltb_lastposition=Piavca.gltb-module.html#gltb_lastposition"><a title="Piavca.FreeCameraCanvas.gltb_lastposition
+Piavca.gltb.gltb_lastposition" class="py-name" href="#" onclick="return doclink('link-3', 'gltb_lastposition', 'link-3');">gltb_lastposition</a></tt> <tt class="py-op">=</tt><tt class="py-op">(</tt><tt class="py-number">0.0</tt><tt class="py-op">,</tt> <tt class="py-number">0.0</tt><tt class="py-op">,</tt> <tt class="py-number">0.0</tt><tt class="py-op">)</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt id="link-4" class="py-name" targets="Variable Piavca.FreeCameraCanvas.gltb_angle=Piavca.FreeCameraCanvas-module.html#gltb_angle,Variable Piavca.gltb.gltb_angle=Piavca.gltb-module.html#gltb_angle"><a title="Piavca.FreeCameraCanvas.gltb_angle
+Piavca.gltb.gltb_angle" class="py-name" href="#" onclick="return doclink('link-4', 'gltb_angle', 'link-4');">gltb_angle</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0.0</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt id="link-5" class="py-name" targets="Variable Piavca.FreeCameraCanvas.gltb_upaxis=Piavca.FreeCameraCanvas-module.html#gltb_upaxis,Variable Piavca.gltb.gltb_upaxis=Piavca.gltb-module.html#gltb_upaxis"><a title="Piavca.FreeCameraCanvas.gltb_upaxis
+Piavca.gltb.gltb_upaxis" class="py-name" href="#" onclick="return doclink('link-5', 'gltb_upaxis', 'link-5');">gltb_upaxis</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-number">0.0</tt><tt class="py-op">,</tt> <tt class="py-number">1.0</tt><tt class="py-op">,</tt> <tt class="py-number">0.0</tt><tt class="py-op">)</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt id="link-6" class="py-name" targets="Variable Piavca.FreeCameraCanvas.gltb_rightaxis=Piavca.FreeCameraCanvas-module.html#gltb_rightaxis,Variable Piavca.gltb.gltb_rightaxis=Piavca.gltb-module.html#gltb_rightaxis"><a title="Piavca.FreeCameraCanvas.gltb_rightaxis
+Piavca.gltb.gltb_rightaxis" class="py-name" href="#" onclick="return doclink('link-6', 'gltb_rightaxis', 'link-6');">gltb_rightaxis</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-number">1.0</tt><tt class="py-op">,</tt> <tt class="py-number">0.0</tt><tt class="py-op">,</tt> <tt class="py-number">0.0</tt><tt class="py-op">)</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt id="link-7" class="py-name" targets="Variable Piavca.FreeCameraCanvas.gltb_orientmodel=Piavca.FreeCameraCanvas-module.html#gltb_orientmodel,Variable Piavca.gltb.gltb_orientmodel=Piavca.gltb-module.html#gltb_orientmodel"><a title="Piavca.FreeCameraCanvas.gltb_orientmodel
+Piavca.gltb.gltb_orientmodel" class="py-name" href="#" onclick="return doclink('link-7', 'gltb_orientmodel', 'link-7');">gltb_orientmodel</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-number">1.0</tt><tt class="py-op">,</tt> <tt class="py-number">0.0</tt><tt class="py-op">,</tt> <tt class="py-number">0.0</tt><tt class="py-op">,</tt> <tt class="py-number">0.0</tt><tt class="py-op">,</tt> <tt class="py-number">0.0</tt><tt class="py-op">,</tt> <tt class="py-number">1.0</tt><tt class="py-op">,</tt> <tt class="py-number">0.0</tt><tt class="py-op">,</tt> <tt class="py-number">0.0</tt><tt class="py-op">,</tt><tt class="py-number">0.0</tt><tt class="py-op">,</tt> <tt class="py-number">0.0</tt><tt class="py-op">,</tt> <tt class="py-number">1.0</tt><tt class="py-op">,</tt> <tt class="py-number">0.0</tt><tt class="py-op">,</tt> <tt class="py-number">0.0</tt><tt class="py-op">,</tt> <tt class="py-number">0.0</tt><tt class="py-op">,</tt> <tt class="py-number">0.0</tt><tt class="py-op">,</tt> <tt class="py-number">1.0</tt><tt class="py-op">)</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt id="link-8" class="py-name" targets="Variable Piavca.FreeCameraCanvas.gltb_rotateaxis=Piavca.FreeCameraCanvas-module.html#gltb_rotateaxis,Variable Piavca.gltb.gltb_rotateaxis=Piavca.gltb-module.html#gltb_rotateaxis"><a title="Piavca.FreeCameraCanvas.gltb_rotateaxis
+Piavca.gltb.gltb_rotateaxis" class="py-name" href="#" onclick="return doclink('link-8', 'gltb_rotateaxis', 'link-8');">gltb_rotateaxis</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-number">0.0</tt><tt class="py-op">,</tt> <tt class="py-number">0.0</tt><tt class="py-op">,</tt> <tt class="py-number">0.0</tt><tt class="py-op">)</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt id="link-9" class="py-name" targets="Variable Piavca.FreeCameraCanvas.gltb_translation=Piavca.FreeCameraCanvas-module.html#gltb_translation,Variable Piavca.gltb.gltb_translation=Piavca.gltb-module.html#gltb_translation"><a title="Piavca.FreeCameraCanvas.gltb_translation
+Piavca.gltb.gltb_translation" class="py-name" href="#" onclick="return doclink('link-9', 'gltb_translation', 'link-9');">gltb_translation</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-number">0.0</tt><tt class="py-op">,</tt> <tt class="py-number">0.0</tt><tt class="py-op">,</tt> <tt class="py-number">0.0</tt><tt class="py-op">)</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt id="link-10" class="py-name" targets="Variable Piavca.FreeCameraCanvas.gltb_transform=Piavca.FreeCameraCanvas-module.html#gltb_transform,Variable Piavca.gltb.gltb_transform=Piavca.gltb-module.html#gltb_transform"><a title="Piavca.FreeCameraCanvas.gltb_transform
+Piavca.gltb.gltb_transform" class="py-name" href="#" onclick="return doclink('link-10', 'gltb_transform', 'link-10');">gltb_transform</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-number">1.0</tt><tt class="py-op">,</tt> <tt class="py-number">0.0</tt><tt class="py-op">,</tt> <tt class="py-number">0.0</tt><tt class="py-op">,</tt> <tt class="py-number">0.0</tt><tt class="py-op">,</tt> <tt class="py-number">0.0</tt><tt class="py-op">,</tt> <tt class="py-number">1.0</tt><tt class="py-op">,</tt> <tt class="py-number">0.0</tt><tt class="py-op">,</tt> <tt class="py-number">0.0</tt><tt class="py-op">,</tt> <tt class="py-number">0.0</tt><tt class="py-op">,</tt> <tt class="py-number">0.0</tt><tt class="py-op">,</tt> <tt class="py-number">1.0</tt><tt class="py-op">,</tt> <tt class="py-number">0.0</tt><tt class="py-op">,</tt> <tt class="py-number">0.0</tt><tt class="py-op">,</tt> <tt class="py-number">0.0</tt><tt class="py-op">,</tt> <tt class="py-number">0.0</tt><tt class="py-op">,</tt> <tt class="py-number">1.0</tt><tt class="py-op">)</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt id="link-11" class="py-name" targets="Variable Piavca.FreeCameraCanvas.gltb_camera_pos=Piavca.FreeCameraCanvas-module.html#gltb_camera_pos,Variable Piavca.gltb.gltb_camera_pos=Piavca.gltb-module.html#gltb_camera_pos"><a title="Piavca.FreeCameraCanvas.gltb_camera_pos
+Piavca.gltb.gltb_camera_pos" class="py-name" href="#" onclick="return doclink('link-11', 'gltb_camera_pos', 'link-11');">gltb_camera_pos</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-number">0.0</tt><tt class="py-op">,</tt> <tt class="py-number">1.0</tt><tt class="py-op">,</tt> <tt class="py-number">0.0</tt><tt class="py-op">]</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt id="link-12" class="py-name" targets="Variable Piavca.FreeCameraCanvas.gltb_width=Piavca.FreeCameraCanvas-module.html#gltb_width,Variable Piavca.gltb.gltb_width=Piavca.gltb-module.html#gltb_width"><a title="Piavca.FreeCameraCanvas.gltb_width
+Piavca.gltb.gltb_width" class="py-name" href="#" onclick="return doclink('link-12', 'gltb_width', 'link-12');">gltb_width</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt id="link-13" class="py-name" targets="Variable Piavca.FreeCameraCanvas.gltb_height=Piavca.FreeCameraCanvas-module.html#gltb_height,Variable Piavca.gltb.gltb_height=Piavca.gltb-module.html#gltb_height"><a title="Piavca.FreeCameraCanvas.gltb_height
+Piavca.gltb.gltb_height" class="py-name" href="#" onclick="return doclink('link-13', 'gltb_height', 'link-13');">gltb_height</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt id="link-14" class="py-name" targets="Variable Piavca.FreeCameraCanvas.gltb_tracking=Piavca.FreeCameraCanvas-module.html#gltb_tracking,Variable Piavca.gltb.gltb_tracking=Piavca.gltb-module.html#gltb_tracking"><a title="Piavca.FreeCameraCanvas.gltb_tracking
+Piavca.gltb.gltb_tracking" class="py-name" href="#" onclick="return doclink('link-14', 'gltb_tracking', 'link-14');">gltb_tracking</a></tt> <tt class="py-op">=</tt> <tt id="link-15" class="py-name" targets="Variable Piavca.FreeCameraCanvas.GL_FALSE=Piavca.FreeCameraCanvas-module.html#GL_FALSE,Variable Piavca.wxVirtualTracker'.GL_FALSE=Piavca.wxVirtualTracker%27-module.html#GL_FALSE"><a title="Piavca.FreeCameraCanvas.GL_FALSE
+Piavca.wxVirtualTracker'.GL_FALSE" class="py-name" href="#" onclick="return doclink('link-15', 'GL_FALSE', 'link-15');">GL_FALSE</a></tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt id="link-16" class="py-name" targets="Variable Piavca.FreeCameraCanvas.gltb_animate=Piavca.FreeCameraCanvas-module.html#gltb_animate,Variable Piavca.gltb.gltb_animate=Piavca.gltb-module.html#gltb_animate"><a title="Piavca.FreeCameraCanvas.gltb_animate
+Piavca.gltb.gltb_animate" class="py-name" href="#" onclick="return doclink('link-16', 'gltb_animate', 'link-16');">gltb_animate</a></tt> <tt class="py-op">=</tt> <tt id="link-17" class="py-name" targets="Variable Piavca.FreeCameraCanvas.GL_TRUE=Piavca.FreeCameraCanvas-module.html#GL_TRUE,Variable Piavca.wxVirtualTracker'.GL_TRUE=Piavca.wxVirtualTracker%27-module.html#GL_TRUE"><a title="Piavca.FreeCameraCanvas.GL_TRUE
+Piavca.wxVirtualTracker'.GL_TRUE" class="py-name" href="#" onclick="return doclink('link-17', 'GL_TRUE', 'link-17');">GL_TRUE</a></tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"> </tt>
+<a name="gltbInit"></a><div id="gltbInit-def"><a name="L24"></a><tt class="py-lineno"> 24</tt> <a class="py-toggle" href="#" id="gltbInit-toggle" onclick="return toggle('gltbInit');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.gltb-module.html#gltbInit">gltbInit</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="gltbInit-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="gltbInit-expanded"><a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line">    <tt class="py-keyword">global</tt> <tt id="link-18" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_angle
+Piavca.gltb.gltb_angle" class="py-name" href="#" onclick="return doclink('link-18', 'gltb_angle', 'link-4');">gltb_angle</a></tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line">    <tt id="link-19" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_angle
+Piavca.gltb.gltb_angle" class="py-name" href="#" onclick="return doclink('link-19', 'gltb_angle', 'link-4');">gltb_angle</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0.0</tt> </tt>
+</div><a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"> </tt>
+<a name="_gltbPointToVector"></a><div id="_gltbPointToVector-def"><a name="L28"></a><tt class="py-lineno"> 28</tt> <a class="py-toggle" href="#" id="_gltbPointToVector-toggle" onclick="return toggle('_gltbPointToVector');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.gltb-module.html#_gltbPointToVector">_gltbPointToVector</a><tt class="py-op">(</tt><tt class="py-param">x</tt><tt class="py-op">,</tt> <tt class="py-param">y</tt><tt class="py-op">,</tt> <tt class="py-param">width</tt><tt class="py-op">,</tt> <tt class="py-param">height</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="_gltbPointToVector-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="_gltbPointToVector-expanded"><a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">    <tt class="py-comment"># project x, y onto a hemi-sphere centered within width, height.</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">    <tt class="py-name">width</tt> <tt class="py-op">=</tt> <tt class="py-name">max</tt><tt class="py-op">(</tt><tt class="py-name">width</tt><tt class="py-op">,</tt> <tt class="py-number">200</tt><tt class="py-op">)</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">    <tt class="py-name">height</tt> <tt class="py-op">=</tt> <tt class="py-name">max</tt><tt class="py-op">(</tt><tt class="py-name">height</tt><tt class="py-op">,</tt> <tt class="py-number">100</tt><tt class="py-op">)</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line">    <tt class="py-name">i</tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-number">2.0</tt> <tt class="py-op">*</tt> <tt class="py-name">x</tt> <tt class="py-op">-</tt> <tt class="py-name">width</tt><tt class="py-op">)</tt> <tt class="py-op">/</tt> <tt class="py-name">width</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">    <tt class="py-name">j</tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-name">height</tt> <tt class="py-op">-</tt> <tt class="py-number">2.0</tt> <tt class="py-op">*</tt> <tt class="py-name">y</tt><tt class="py-op">)</tt> <tt class="py-op">/</tt> <tt class="py-name">height</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">    <tt class="py-name">d</tt> <tt class="py-op">=</tt> <tt class="py-name">sqrt</tt><tt class="py-op">(</tt><tt class="py-name">i</tt> <tt class="py-op">*</tt> <tt class="py-name">i</tt> <tt class="py-op">+</tt> <tt class="py-name">j</tt> <tt class="py-op">*</tt> <tt class="py-name">j</tt><tt class="py-op">)</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-op">(</tt><tt class="py-name">d</tt><tt class="py-op">&gt;</tt><tt class="py-number">1.0</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">        <tt class="py-name">d</tt> <tt class="py-op">=</tt> <tt class="py-number">1.0</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">    <tt class="py-name">k</tt> <tt class="py-op">=</tt> <tt class="py-name">cos</tt><tt class="py-op">(</tt><tt class="py-op">(</tt><tt class="py-number">3.14159265</tt> <tt class="py-op">/</tt> <tt class="py-number">2.0</tt><tt class="py-op">)</tt> <tt class="py-op">*</tt> <tt class="py-name">d</tt><tt class="py-op">)</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">    <tt class="py-name">a</tt> <tt class="py-op">=</tt> <tt class="py-number">1.0</tt> <tt class="py-op">/</tt> <tt class="py-name">sqrt</tt><tt class="py-op">(</tt><tt class="py-name">i</tt> <tt class="py-op">*</tt> <tt class="py-name">i</tt> <tt class="py-op">+</tt> <tt class="py-name">j</tt> <tt class="py-op">*</tt> <tt class="py-name">j</tt> <tt class="py-op">+</tt> <tt class="py-name">k</tt> <tt class="py-op">*</tt> <tt class="py-name">k</tt><tt class="py-op">)</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">    <tt class="py-name">i</tt> <tt class="py-op">*=</tt> <tt class="py-name">a</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">    <tt class="py-name">j</tt> <tt class="py-op">*=</tt> <tt class="py-name">a</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">    <tt class="py-name">k</tt> <tt class="py-op">*=</tt> <tt class="py-name">a</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-op">(</tt><tt class="py-name">i</tt><tt class="py-op">,</tt><tt class="py-name">j</tt><tt class="py-op">,</tt><tt class="py-name">k</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line"> </tt>
+<a name="_gltbAnimate"></a><div id="_gltbAnimate-def"><a name="L44"></a><tt class="py-lineno"> 44</tt> <a class="py-toggle" href="#" id="_gltbAnimate-toggle" onclick="return toggle('_gltbAnimate');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.gltb-module.html#_gltbAnimate">_gltbAnimate</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="_gltbAnimate-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="_gltbAnimate-expanded"><a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">    <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line"> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line"> </tt>
+<a name="_gltbStartMotion"></a><div id="_gltbStartMotion-def"><a name="L48"></a><tt class="py-lineno"> 48</tt> <a class="py-toggle" href="#" id="_gltbStartMotion-toggle" onclick="return toggle('_gltbStartMotion');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.gltb-module.html#_gltbStartMotion">_gltbStartMotion</a><tt class="py-op">(</tt><tt class="py-param">x</tt><tt class="py-op">,</tt> <tt class="py-param">y</tt><tt class="py-op">)</tt><tt class="py-op">:</tt><tt class="py-comment">#, time):</tt> </tt>
+</div><a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">    <tt class="py-keyword">global</tt> <tt id="link-20" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_tracking
+Piavca.gltb.gltb_tracking" class="py-name" href="#" onclick="return doclink('link-20', 'gltb_tracking', 'link-14');">gltb_tracking</a></tt><tt class="py-op">,</tt> <tt id="link-21" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_lasttime
+Piavca.gltb.gltb_lasttime" class="py-name" href="#" onclick="return doclink('link-21', 'gltb_lasttime', 'link-2');">gltb_lasttime</a></tt><tt class="py-op">,</tt> <tt id="link-22" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_width
+Piavca.gltb.gltb_width" class="py-name" href="#" onclick="return doclink('link-22', 'gltb_width', 'link-12');">gltb_width</a></tt><tt class="py-op">,</tt> <tt id="link-23" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_height
+Piavca.gltb.gltb_height" class="py-name" href="#" onclick="return doclink('link-23', 'gltb_height', 'link-13');">gltb_height</a></tt><tt class="py-op">,</tt> <tt id="link-24" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_lastposition
+Piavca.gltb.gltb_lastposition" class="py-name" href="#" onclick="return doclink('link-24', 'gltb_lastposition', 'link-3');">gltb_lastposition</a></tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">    <tt class="py-comment">#print "start motion"</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">    <tt id="link-25" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_tracking
+Piavca.gltb.gltb_tracking" class="py-name" href="#" onclick="return doclink('link-25', 'gltb_tracking', 'link-14');">gltb_tracking</a></tt> <tt class="py-op">=</tt> <tt id="link-26" class="py-name"><a title="Piavca.FreeCameraCanvas.GL_TRUE
+Piavca.wxVirtualTracker'.GL_TRUE" class="py-name" href="#" onclick="return doclink('link-26', 'GL_TRUE', 'link-17');">GL_TRUE</a></tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">    <tt class="py-comment">#gltb_lasttime = time</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">    <tt id="link-27" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_lastposition
+Piavca.gltb.gltb_lastposition" class="py-name" href="#" onclick="return doclink('link-27', 'gltb_lastposition', 'link-3');">gltb_lastposition</a></tt> <tt class="py-op">=</tt> <tt id="link-28" class="py-name" targets="Function Piavca.gltb._gltbPointToVector()=Piavca.gltb-module.html#_gltbPointToVector"><a title="Piavca.gltb._gltbPointToVector" class="py-name" href="#" onclick="return doclink('link-28', '_gltbPointToVector', 'link-28');">_gltbPointToVector</a></tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">,</tt> <tt class="py-name">y</tt><tt class="py-op">,</tt> <tt id="link-29" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_width
+Piavca.gltb.gltb_width" class="py-name" href="#" onclick="return doclink('link-29', 'gltb_width', 'link-12');">gltb_width</a></tt><tt class="py-op">,</tt> <tt id="link-30" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_height
+Piavca.gltb.gltb_height" class="py-name" href="#" onclick="return doclink('link-30', 'gltb_height', 'link-13');">gltb_height</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"> </tt>
+<a name="_gltbStopMotion"></a><div id="_gltbStopMotion-def"><a name="L55"></a><tt class="py-lineno"> 55</tt> <a class="py-toggle" href="#" id="_gltbStopMotion-toggle" onclick="return toggle('_gltbStopMotion');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.gltb-module.html#_gltbStopMotion">_gltbStopMotion</a><tt class="py-op">(</tt> <tt class="py-op">)</tt><tt class="py-op">:</tt><tt class="py-comment">#time):</tt> </tt>
+</div><a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">    <tt class="py-keyword">global</tt> <tt id="link-31" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_tracking
+Piavca.gltb.gltb_tracking" class="py-name" href="#" onclick="return doclink('link-31', 'gltb_tracking', 'link-14');">gltb_tracking</a></tt><tt class="py-op">,</tt> <tt id="link-32" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_lasttime
+Piavca.gltb.gltb_lasttime" class="py-name" href="#" onclick="return doclink('link-32', 'gltb_lasttime', 'link-2');">gltb_lasttime</a></tt><tt class="py-op">,</tt> <tt id="link-33" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_animate
+Piavca.gltb.gltb_animate" class="py-name" href="#" onclick="return doclink('link-33', 'gltb_animate', 'link-16');">gltb_animate</a></tt><tt class="py-op">,</tt> <tt id="link-34" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_angle
+Piavca.gltb.gltb_angle" class="py-name" href="#" onclick="return doclink('link-34', 'gltb_angle', 'link-4');">gltb_angle</a></tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line"> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">    <tt id="link-35" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_tracking
+Piavca.gltb.gltb_tracking" class="py-name" href="#" onclick="return doclink('link-35', 'gltb_tracking', 'link-14');">gltb_tracking</a></tt> <tt class="py-op">=</tt> <tt id="link-36" class="py-name"><a title="Piavca.FreeCameraCanvas.GL_FALSE
+Piavca.wxVirtualTracker'.GL_FALSE" class="py-name" href="#" onclick="return doclink('link-36', 'GL_FALSE', 'link-15');">GL_FALSE</a></tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line"> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">    <tt class="py-comment">#if time - gltb_lasttime &lt; GLTB_TIME_EPSILON and gltb_animate:</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line"><tt class="py-comment">#        glutIdleFunc(_gltbAnimate)</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">    <tt class="py-comment">#    pass</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">    <tt class="py-comment">#else:</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">    <tt id="link-37" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_angle
+Piavca.gltb.gltb_angle" class="py-name" href="#" onclick="return doclink('link-37', 'gltb_angle', 'link-4');">gltb_angle</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt id="link-38" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_animate
+Piavca.gltb.gltb_animate" class="py-name" href="#" onclick="return doclink('link-38', 'gltb_animate', 'link-16');">gltb_animate</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line"><tt class="py-comment">#       glutIdleFunc(0)</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">        <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line"> </tt>
+<a name="crossProduct"></a><div id="crossProduct-def"><a name="L70"></a><tt class="py-lineno"> 70</tt> <a class="py-toggle" href="#" id="crossProduct-toggle" onclick="return toggle('crossProduct');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.gltb-module.html#crossProduct">crossProduct</a><tt class="py-op">(</tt><tt class="py-param">b</tt><tt class="py-op">,</tt><tt class="py-param">c</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="crossProduct-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="crossProduct-expanded"><a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">    <tt class="py-name">i</tt> <tt class="py-op">=</tt> <tt class="py-name">b</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> <tt class="py-op">*</tt> <tt class="py-name">c</tt><tt class="py-op">[</tt><tt class="py-number">2</tt><tt class="py-op">]</tt> <tt class="py-op">-</tt> <tt class="py-name">c</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> <tt class="py-op">*</tt> <tt class="py-name">b</tt><tt class="py-op">[</tt><tt class="py-number">2</tt><tt class="py-op">]</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">    <tt class="py-name">j</tt> <tt class="py-op">=</tt> <tt class="py-name">b</tt><tt class="py-op">[</tt><tt class="py-number">2</tt><tt class="py-op">]</tt> <tt class="py-op">*</tt> <tt class="py-name">c</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> <tt class="py-op">-</tt> <tt class="py-name">c</tt><tt class="py-op">[</tt><tt class="py-number">2</tt><tt class="py-op">]</tt> <tt class="py-op">*</tt> <tt class="py-name">b</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">    <tt class="py-name">k</tt> <tt class="py-op">=</tt> <tt class="py-name">b</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> <tt class="py-op">*</tt> <tt class="py-name">c</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> <tt class="py-op">-</tt> <tt class="py-name">c</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> <tt class="py-op">*</tt> <tt class="py-name">b</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-op">(</tt><tt class="py-name">i</tt><tt class="py-op">,</tt><tt class="py-name">j</tt><tt class="py-op">,</tt><tt class="py-name">k</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line"> </tt>
+<a name="_gltbOrientModel"></a><div id="_gltbOrientModel-def"><a name="L76"></a><tt class="py-lineno"> 76</tt> <a class="py-toggle" href="#" id="_gltbOrientModel-toggle" onclick="return toggle('_gltbOrientModel');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.gltb-module.html#_gltbOrientModel">_gltbOrientModel</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="_gltbOrientModel-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="_gltbOrientModel-expanded"><a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">    <tt class="py-keyword">global</tt> <tt id="link-39" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_orientmodel
+Piavca.gltb.gltb_orientmodel" class="py-name" href="#" onclick="return doclink('link-39', 'gltb_orientmodel', 'link-7');">gltb_orientmodel</a></tt><tt class="py-op">,</tt> <tt id="link-40" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_rightaxis
+Piavca.gltb.gltb_rightaxis" class="py-name" href="#" onclick="return doclink('link-40', 'gltb_rightaxis', 'link-6');">gltb_rightaxis</a></tt><tt class="py-op">,</tt> <tt id="link-41" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_upaxis
+Piavca.gltb.gltb_upaxis" class="py-name" href="#" onclick="return doclink('link-41', 'gltb_upaxis', 'link-5');">gltb_upaxis</a></tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">    <tt class="py-name">toward</tt> <tt class="py-op">=</tt> <tt id="link-42" class="py-name" targets="Function Piavca.gltb.crossProduct()=Piavca.gltb-module.html#crossProduct"><a title="Piavca.gltb.crossProduct" class="py-name" href="#" onclick="return doclink('link-42', 'crossProduct', 'link-42');">crossProduct</a></tt><tt class="py-op">(</tt><tt id="link-43" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_rightaxis
+Piavca.gltb.gltb_rightaxis" class="py-name" href="#" onclick="return doclink('link-43', 'gltb_rightaxis', 'link-6');">gltb_rightaxis</a></tt><tt class="py-op">,</tt> <tt id="link-44" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_upaxis
+Piavca.gltb.gltb_upaxis" class="py-name" href="#" onclick="return doclink('link-44', 'gltb_upaxis', 'link-5');">gltb_upaxis</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">    <tt class="py-comment">#gltb_orientmodel = (gltb_rightaxis[0], gltb_rightaxis[1], gltb_rightaxis[2], 0, gltb_upaxis[0], gltb_upaxis[1], gltb_upaxis[2], 0, toward[0], toward[1], toward[2], 1)</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">    <tt id="link-45" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_orientmodel
+Piavca.gltb.gltb_orientmodel" class="py-name" href="#" onclick="return doclink('link-45', 'gltb_orientmodel', 'link-7');">gltb_orientmodel</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt id="link-46" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_rightaxis
+Piavca.gltb.gltb_rightaxis" class="py-name" href="#" onclick="return doclink('link-46', 'gltb_rightaxis', 'link-6');">gltb_rightaxis</a></tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt id="link-47" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_upaxis
+Piavca.gltb.gltb_upaxis" class="py-name" href="#" onclick="return doclink('link-47', 'gltb_upaxis', 'link-5');">gltb_upaxis</a></tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-name">toward</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-number">0</tt><tt class="py-op">,</tt> <tt id="link-48" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_rightaxis
+Piavca.gltb.gltb_rightaxis" class="py-name" href="#" onclick="return doclink('link-48', 'gltb_rightaxis', 'link-6');">gltb_rightaxis</a></tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt id="link-49" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_upaxis
+Piavca.gltb.gltb_upaxis" class="py-name" href="#" onclick="return doclink('link-49', 'gltb_upaxis', 'link-5');">gltb_upaxis</a></tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-name">toward</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-number">0</tt><tt class="py-op">,</tt> <tt id="link-50" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_rightaxis
+Piavca.gltb.gltb_rightaxis" class="py-name" href="#" onclick="return doclink('link-50', 'gltb_rightaxis', 'link-6');">gltb_rightaxis</a></tt><tt class="py-op">[</tt><tt class="py-number">2</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt id="link-51" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_upaxis
+Piavca.gltb.gltb_upaxis" class="py-name" href="#" onclick="return doclink('link-51', 'gltb_upaxis', 'link-5');">gltb_upaxis</a></tt><tt class="py-op">[</tt><tt class="py-number">2</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-name">toward</tt><tt class="py-op">[</tt><tt class="py-number">2</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">1</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line"> </tt>
+<a name="gltbAnimate"></a><div id="gltbAnimate-def"><a name="L82"></a><tt class="py-lineno"> 82</tt> <a class="py-toggle" href="#" id="gltbAnimate-toggle" onclick="return toggle('gltbAnimate');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.gltb-module.html#gltbAnimate">gltbAnimate</a><tt class="py-op">(</tt><tt class="py-param">animate</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="gltbAnimate-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="gltbAnimate-expanded"><a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">    <tt class="py-keyword">global</tt> <tt id="link-52" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_animate
+Piavca.gltb.gltb_animate" class="py-name" href="#" onclick="return doclink('link-52', 'gltb_animate', 'link-16');">gltb_animate</a></tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">    <tt id="link-53" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_animate
+Piavca.gltb.gltb_animate" class="py-name" href="#" onclick="return doclink('link-53', 'gltb_animate', 'link-16');">gltb_animate</a></tt> <tt class="py-op">=</tt> <tt class="py-name">animate</tt> </tt>
+</div><a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"> </tt>
+<a name="gltbConfigUp"></a><div id="gltbConfigUp-def"><a name="L86"></a><tt class="py-lineno"> 86</tt> <a class="py-toggle" href="#" id="gltbConfigUp-toggle" onclick="return toggle('gltbConfigUp');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.gltb-module.html#gltbConfigUp">gltbConfigUp</a><tt class="py-op">(</tt> <tt class="py-param">x</tt><tt class="py-op">,</tt> <tt class="py-param">y</tt><tt class="py-op">,</tt> <tt class="py-param">z</tt> <tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="gltbConfigUp-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="gltbConfigUp-expanded"><a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">    <tt class="py-keyword">global</tt> <tt id="link-54" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_upaxis
+Piavca.gltb.gltb_upaxis" class="py-name" href="#" onclick="return doclink('link-54', 'gltb_upaxis', 'link-5');">gltb_upaxis</a></tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">    <tt id="link-55" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_upaxis
+Piavca.gltb.gltb_upaxis" class="py-name" href="#" onclick="return doclink('link-55', 'gltb_upaxis', 'link-5');">gltb_upaxis</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">,</tt><tt class="py-name">y</tt><tt class="py-op">,</tt><tt class="py-name">z</tt><tt class="py-op">)</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">    <tt id="link-56" class="py-name" targets="Function Piavca.gltb._gltbOrientModel()=Piavca.gltb-module.html#_gltbOrientModel"><a title="Piavca.gltb._gltbOrientModel" class="py-name" href="#" onclick="return doclink('link-56', '_gltbOrientModel', 'link-56');">_gltbOrientModel</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line"> </tt>
+<a name="gltbConfigRight"></a><div id="gltbConfigRight-def"><a name="L91"></a><tt class="py-lineno"> 91</tt> <a class="py-toggle" href="#" id="gltbConfigRight-toggle" onclick="return toggle('gltbConfigRight');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.gltb-module.html#gltbConfigRight">gltbConfigRight</a><tt class="py-op">(</tt> <tt class="py-param">x</tt><tt class="py-op">,</tt> <tt class="py-param">y</tt><tt class="py-op">,</tt> <tt class="py-param">z</tt> <tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="gltbConfigRight-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="gltbConfigRight-expanded"><a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">    <tt class="py-keyword">global</tt> <tt id="link-57" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_rightaxis
+Piavca.gltb.gltb_rightaxis" class="py-name" href="#" onclick="return doclink('link-57', 'gltb_rightaxis', 'link-6');">gltb_rightaxis</a></tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">    <tt id="link-58" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_rightaxis
+Piavca.gltb.gltb_rightaxis" class="py-name" href="#" onclick="return doclink('link-58', 'gltb_rightaxis', 'link-6');">gltb_rightaxis</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">,</tt><tt class="py-name">y</tt><tt class="py-op">,</tt><tt class="py-name">z</tt><tt class="py-op">)</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">    <tt id="link-59" class="py-name"><a title="Piavca.gltb._gltbOrientModel" class="py-name" href="#" onclick="return doclink('link-59', '_gltbOrientModel', 'link-56');">_gltbOrientModel</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line"> </tt>
+<a name="gltbMatrix"></a><div id="gltbMatrix-def"><a name="L96"></a><tt class="py-lineno"> 96</tt> <a class="py-toggle" href="#" id="gltbMatrix-toggle" onclick="return toggle('gltbMatrix');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.gltb-module.html#gltbMatrix">gltbMatrix</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="gltbMatrix-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="gltbMatrix-expanded"><a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">    <tt class="py-keyword">global</tt> <tt id="link-60" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_transform
+Piavca.gltb.gltb_transform" class="py-name" href="#" onclick="return doclink('link-60', 'gltb_transform', 'link-10');">gltb_transform</a></tt><tt class="py-op">,</tt> <tt id="link-61" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_angle
+Piavca.gltb.gltb_angle" class="py-name" href="#" onclick="return doclink('link-61', 'gltb_angle', 'link-4');">gltb_angle</a></tt><tt class="py-op">,</tt> <tt id="link-62" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_rotateaxis
+Piavca.gltb.gltb_rotateaxis" class="py-name" href="#" onclick="return doclink('link-62', 'gltb_rotateaxis', 'link-8');">gltb_rotateaxis</a></tt><tt class="py-op">,</tt> <tt id="link-63" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_lastposition
+Piavca.gltb.gltb_lastposition" class="py-name" href="#" onclick="return doclink('link-63', 'gltb_lastposition', 'link-3');">gltb_lastposition</a></tt><tt class="py-op">,</tt> <tt id="link-64" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_orientmodel
+Piavca.gltb.gltb_orientmodel" class="py-name" href="#" onclick="return doclink('link-64', 'gltb_orientmodel', 'link-7');">gltb_orientmodel</a></tt><tt class="py-op">,</tt> <tt id="link-65" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_camera_pos
+Piavca.gltb.gltb_camera_pos" class="py-name" href="#" onclick="return doclink('link-65', 'gltb_camera_pos', 'link-11');">gltb_camera_pos</a></tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">         </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">    <tt class="py-comment">#print gltb_camera_pos</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">         </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">    <tt id="link-66" class="py-name" targets="Variable Piavca.FreeCameraCanvas.glPushMatrix=Piavca.FreeCameraCanvas-module.html#glPushMatrix,Variable Piavca.wxVirtualTracker'.glPushMatrix=Piavca.wxVirtualTracker%27-module.html#glPushMatrix"><a title="Piavca.FreeCameraCanvas.glPushMatrix
+Piavca.wxVirtualTracker'.glPushMatrix" class="py-name" href="#" onclick="return doclink('link-66', 'glPushMatrix', 'link-66');">glPushMatrix</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">    <tt id="link-67" class="py-name" targets="Variable Piavca.FreeCameraCanvas.glLoadIdentity=Piavca.FreeCameraCanvas-module.html#glLoadIdentity,Variable Piavca.wxVirtualTracker'.glLoadIdentity=Piavca.wxVirtualTracker%27-module.html#glLoadIdentity"><a title="Piavca.FreeCameraCanvas.glLoadIdentity
+Piavca.wxVirtualTracker'.glLoadIdentity" class="py-name" href="#" onclick="return doclink('link-67', 'glLoadIdentity', 'link-67');">glLoadIdentity</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">    <tt id="link-68" class="py-name" targets="Variable Piavca.FreeCameraCanvas.glRotatef=Piavca.FreeCameraCanvas-module.html#glRotatef,Variable Piavca.wxVirtualTracker'.glRotatef=Piavca.wxVirtualTracker%27-module.html#glRotatef"><a title="Piavca.FreeCameraCanvas.glRotatef
+Piavca.wxVirtualTracker'.glRotatef" class="py-name" href="#" onclick="return doclink('link-68', 'glRotatef', 'link-68');">glRotatef</a></tt><tt class="py-op">(</tt><tt id="link-69" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_angle
+Piavca.gltb.gltb_angle" class="py-name" href="#" onclick="return doclink('link-69', 'gltb_angle', 'link-4');">gltb_angle</a></tt><tt class="py-op">,</tt> <tt id="link-70" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_rotateaxis
+Piavca.gltb.gltb_rotateaxis" class="py-name" href="#" onclick="return doclink('link-70', 'gltb_rotateaxis', 'link-8');">gltb_rotateaxis</a></tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt id="link-71" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_rotateaxis
+Piavca.gltb.gltb_rotateaxis" class="py-name" href="#" onclick="return doclink('link-71', 'gltb_rotateaxis', 'link-8');">gltb_rotateaxis</a></tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt id="link-72" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_rotateaxis
+Piavca.gltb.gltb_rotateaxis" class="py-name" href="#" onclick="return doclink('link-72', 'gltb_rotateaxis', 'link-8');">gltb_rotateaxis</a></tt><tt class="py-op">[</tt><tt class="py-number">2</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">    <tt id="link-73" class="py-name" targets="Variable Piavca.FreeCameraCanvas.glTranslatef=Piavca.FreeCameraCanvas-module.html#glTranslatef,Variable Piavca.wxVirtualTracker'.glTranslatef=Piavca.wxVirtualTracker%27-module.html#glTranslatef"><a title="Piavca.FreeCameraCanvas.glTranslatef
+Piavca.wxVirtualTracker'.glTranslatef" class="py-name" href="#" onclick="return doclink('link-73', 'glTranslatef', 'link-73');">glTranslatef</a></tt><tt class="py-op">(</tt><tt id="link-74" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_translation
+Piavca.gltb.gltb_translation" class="py-name" href="#" onclick="return doclink('link-74', 'gltb_translation', 'link-9');">gltb_translation</a></tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt id="link-75" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_translation
+Piavca.gltb.gltb_translation" class="py-name" href="#" onclick="return doclink('link-75', 'gltb_translation', 'link-9');">gltb_translation</a></tt><tt class="py-op">[</tt><tt class="py-number">2</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt id="link-76" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_translation
+Piavca.gltb.gltb_translation" class="py-name" href="#" onclick="return doclink('link-76', 'gltb_translation', 'link-9');">gltb_translation</a></tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">    <tt id="link-77" class="py-name" targets="Variable Piavca.FreeCameraCanvas.glMultMatrixf=Piavca.FreeCameraCanvas-module.html#glMultMatrixf,Variable Piavca.wxVirtualTracker'.glMultMatrixf=Piavca.wxVirtualTracker%27-module.html#glMultMatrixf"><a title="Piavca.FreeCameraCanvas.glMultMatrixf
+Piavca.wxVirtualTracker'.glMultMatrixf" class="py-name" href="#" onclick="return doclink('link-77', 'glMultMatrixf', 'link-77');">glMultMatrixf</a></tt><tt class="py-op">(</tt><tt id="link-78" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_transform
+Piavca.gltb.gltb_transform" class="py-name" href="#" onclick="return doclink('link-78', 'gltb_transform', 'link-10');">gltb_transform</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">    <tt id="link-79" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_transform
+Piavca.gltb.gltb_transform" class="py-name" href="#" onclick="return doclink('link-79', 'gltb_transform', 'link-10');">gltb_transform</a></tt> <tt class="py-op">=</tt> <tt id="link-80" class="py-name" targets="Variable Piavca.FreeCameraCanvas.glGetFloatv=Piavca.FreeCameraCanvas-module.html#glGetFloatv,Variable Piavca.wxVirtualTracker'.glGetFloatv=Piavca.wxVirtualTracker%27-module.html#glGetFloatv"><a title="Piavca.FreeCameraCanvas.glGetFloatv
+Piavca.wxVirtualTracker'.glGetFloatv" class="py-name" href="#" onclick="return doclink('link-80', 'glGetFloatv', 'link-80');">glGetFloatv</a></tt><tt class="py-op">(</tt><tt id="link-81" class="py-name" targets="Variable Piavca.FreeCameraCanvas.GL_MODELVIEW_MATRIX=Piavca.FreeCameraCanvas-module.html#GL_MODELVIEW_MATRIX,Variable Piavca.wxVirtualTracker'.GL_MODELVIEW_MATRIX=Piavca.wxVirtualTracker%27-module.html#GL_MODELVIEW_MATRIX"><a title="Piavca.FreeCameraCanvas.GL_MODELVIEW_MATRIX
+Piavca.wxVirtualTracker'.GL_MODELVIEW_MATRIX" class="py-name" href="#" onclick="return doclink('link-81', 'GL_MODELVIEW_MATRIX', 'link-81');">GL_MODELVIEW_MATRIX</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">    <tt id="link-82" class="py-name" targets="Variable Piavca.FreeCameraCanvas.glPopMatrix=Piavca.FreeCameraCanvas-module.html#glPopMatrix,Variable Piavca.wxVirtualTracker'.glPopMatrix=Piavca.wxVirtualTracker%27-module.html#glPopMatrix"><a title="Piavca.FreeCameraCanvas.glPopMatrix
+Piavca.wxVirtualTracker'.glPopMatrix" class="py-name" href="#" onclick="return doclink('link-82', 'glPopMatrix', 'link-82');">glPopMatrix</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">    <tt id="link-83" class="py-name"><a title="Piavca.FreeCameraCanvas.glMultMatrixf
+Piavca.wxVirtualTracker'.glMultMatrixf" class="py-name" href="#" onclick="return doclink('link-83', 'glMultMatrixf', 'link-77');">glMultMatrixf</a></tt><tt class="py-op">(</tt><tt id="link-84" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_transform
+Piavca.gltb.gltb_transform" class="py-name" href="#" onclick="return doclink('link-84', 'gltb_transform', 'link-10');">gltb_transform</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">    <tt id="link-85" class="py-name"><a title="Piavca.FreeCameraCanvas.glMultMatrixf
+Piavca.wxVirtualTracker'.glMultMatrixf" class="py-name" href="#" onclick="return doclink('link-85', 'glMultMatrixf', 'link-77');">glMultMatrixf</a></tt><tt class="py-op">(</tt><tt id="link-86" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_orientmodel
+Piavca.gltb.gltb_orientmodel" class="py-name" href="#" onclick="return doclink('link-86', 'gltb_orientmodel', 'link-7');">gltb_orientmodel</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line"> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line"> </tt>
+<a name="gltbReshape"></a><div id="gltbReshape-def"><a name="L112"></a><tt class="py-lineno">112</tt> <a class="py-toggle" href="#" id="gltbReshape-toggle" onclick="return toggle('gltbReshape');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.gltb-module.html#gltbReshape">gltbReshape</a><tt class="py-op">(</tt><tt class="py-param">width</tt><tt class="py-op">,</tt> <tt class="py-param">height</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="gltbReshape-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="gltbReshape-expanded"><a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">    <tt class="py-keyword">global</tt> <tt id="link-87" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_width
+Piavca.gltb.gltb_width" class="py-name" href="#" onclick="return doclink('link-87', 'gltb_width', 'link-12');">gltb_width</a></tt><tt class="py-op">,</tt> <tt id="link-88" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_height
+Piavca.gltb.gltb_height" class="py-name" href="#" onclick="return doclink('link-88', 'gltb_height', 'link-13');">gltb_height</a></tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">    <tt id="link-89" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_width
+Piavca.gltb.gltb_width" class="py-name" href="#" onclick="return doclink('link-89', 'gltb_width', 'link-12');">gltb_width</a></tt>  <tt class="py-op">=</tt> <tt class="py-name">width</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">    <tt id="link-90" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_height
+Piavca.gltb.gltb_height" class="py-name" href="#" onclick="return doclink('link-90', 'gltb_height', 'link-13');">gltb_height</a></tt> <tt class="py-op">=</tt> <tt class="py-name">height</tt> </tt>
+</div><a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line"> </tt>
+<a name="gltbMouseDown"></a><div id="gltbMouseDown-def"><a name="L117"></a><tt class="py-lineno">117</tt> <a class="py-toggle" href="#" id="gltbMouseDown-toggle" onclick="return toggle('gltbMouseDown');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.gltb-module.html#gltbMouseDown">gltbMouseDown</a><tt class="py-op">(</tt><tt class="py-param">x</tt><tt class="py-op">,</tt> <tt class="py-param">y</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="gltbMouseDown-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="gltbMouseDown-expanded"><a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">"mouse down"</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">    <tt id="link-91" class="py-name" targets="Function Piavca.gltb._gltbStartMotion()=Piavca.gltb-module.html#_gltbStartMotion"><a title="Piavca.gltb._gltbStartMotion" class="py-name" href="#" onclick="return doclink('link-91', '_gltbStartMotion', 'link-91');">_gltbStartMotion</a></tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">,</tt> <tt class="py-name">y</tt><tt class="py-op">)</tt><tt class="py-comment">#, glutGet(GLUT_ELAPSED_TIME))</tt> </tt>
+</div><a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line"> </tt>
+<a name="gltbMouseUp"></a><div id="gltbMouseUp-def"><a name="L121"></a><tt class="py-lineno">121</tt> <a class="py-toggle" href="#" id="gltbMouseUp-toggle" onclick="return toggle('gltbMouseUp');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.gltb-module.html#gltbMouseUp">gltbMouseUp</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="gltbMouseUp-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="gltbMouseUp-expanded"><a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">    <tt id="link-92" class="py-name" targets="Function Piavca.gltb._gltbStopMotion()=Piavca.gltb-module.html#_gltbStopMotion"><a title="Piavca.gltb._gltbStopMotion" class="py-name" href="#" onclick="return doclink('link-92', '_gltbStopMotion', 'link-92');">_gltbStopMotion</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-comment">#glutGet(GLUT_ELAPSED_TIME))</tt> </tt>
+</div><a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line"> </tt>
+<a name="gltbMotionRotateAboutFocus"></a><div id="gltbMotionRotateAboutFocus-def"><a name="L124"></a><tt class="py-lineno">124</tt> <a class="py-toggle" href="#" id="gltbMotionRotateAboutFocus-toggle" onclick="return toggle('gltbMotionRotateAboutFocus');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.gltb-module.html#gltbMotionRotateAboutFocus">gltbMotionRotateAboutFocus</a><tt class="py-op">(</tt><tt class="py-param">x</tt><tt class="py-op">,</tt> <tt class="py-param">y</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="gltbMotionRotateAboutFocus-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="gltbMotionRotateAboutFocus-expanded"><a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">    <tt class="py-keyword">global</tt> <tt id="link-93" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_rotateaxis
+Piavca.gltb.gltb_rotateaxis" class="py-name" href="#" onclick="return doclink('link-93', 'gltb_rotateaxis', 'link-8');">gltb_rotateaxis</a></tt><tt class="py-op">,</tt> <tt id="link-94" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_width
+Piavca.gltb.gltb_width" class="py-name" href="#" onclick="return doclink('link-94', 'gltb_width', 'link-12');">gltb_width</a></tt><tt class="py-op">,</tt> <tt id="link-95" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_height
+Piavca.gltb.gltb_height" class="py-name" href="#" onclick="return doclink('link-95', 'gltb_height', 'link-13');">gltb_height</a></tt><tt class="py-op">,</tt> <tt id="link-96" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_lastposition
+Piavca.gltb.gltb_lastposition" class="py-name" href="#" onclick="return doclink('link-96', 'gltb_lastposition', 'link-3');">gltb_lastposition</a></tt><tt class="py-op">,</tt> <tt id="link-97" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_lasttime
+Piavca.gltb.gltb_lasttime" class="py-name" href="#" onclick="return doclink('link-97', 'gltb_lasttime', 'link-2');">gltb_lasttime</a></tt><tt class="py-op">,</tt> <tt id="link-98" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_angle
+Piavca.gltb.gltb_angle" class="py-name" href="#" onclick="return doclink('link-98', 'gltb_angle', 'link-4');">gltb_angle</a></tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line"> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt id="link-99" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_tracking
+Piavca.gltb.gltb_tracking" class="py-name" href="#" onclick="return doclink('link-99', 'gltb_tracking', 'link-14');">gltb_tracking</a></tt> <tt class="py-op">==</tt> <tt id="link-100" class="py-name"><a title="Piavca.FreeCameraCanvas.GL_FALSE
+Piavca.wxVirtualTracker'.GL_FALSE" class="py-name" href="#" onclick="return doclink('link-100', 'GL_FALSE', 'link-15');">GL_FALSE</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line"> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">    <tt class="py-name">current_position</tt> <tt class="py-op">=</tt> <tt id="link-101" class="py-name"><a title="Piavca.gltb._gltbPointToVector" class="py-name" href="#" onclick="return doclink('link-101', '_gltbPointToVector', 'link-28');">_gltbPointToVector</a></tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">,</tt> <tt class="py-name">y</tt><tt class="py-op">,</tt> <tt id="link-102" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_width
+Piavca.gltb.gltb_width" class="py-name" href="#" onclick="return doclink('link-102', 'gltb_width', 'link-12');">gltb_width</a></tt><tt class="py-op">,</tt> <tt id="link-103" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_height
+Piavca.gltb.gltb_height" class="py-name" href="#" onclick="return doclink('link-103', 'gltb_height', 'link-13');">gltb_height</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line"> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line">    <tt class="py-comment"># calculate the angle to rotate by (directly proportional to the</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">    <tt class="py-comment">#length of the mouse movement) </tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line">    <tt class="py-name">dx</tt> <tt class="py-op">=</tt> <tt class="py-name">current_position</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> <tt class="py-op">-</tt> <tt id="link-104" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_lastposition
+Piavca.gltb.gltb_lastposition" class="py-name" href="#" onclick="return doclink('link-104', 'gltb_lastposition', 'link-3');">gltb_lastposition</a></tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">    <tt class="py-name">dy</tt> <tt class="py-op">=</tt> <tt class="py-name">current_position</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> <tt class="py-op">-</tt> <tt id="link-105" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_lastposition
+Piavca.gltb.gltb_lastposition" class="py-name" href="#" onclick="return doclink('link-105', 'gltb_lastposition', 'link-3');">gltb_lastposition</a></tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">    <tt class="py-name">dz</tt> <tt class="py-op">=</tt> <tt class="py-name">current_position</tt><tt class="py-op">[</tt><tt class="py-number">2</tt><tt class="py-op">]</tt> <tt class="py-op">-</tt> <tt id="link-106" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_lastposition
+Piavca.gltb.gltb_lastposition" class="py-name" href="#" onclick="return doclink('link-106', 'gltb_lastposition', 'link-3');">gltb_lastposition</a></tt><tt class="py-op">[</tt><tt class="py-number">2</tt><tt class="py-op">]</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line">    <tt id="link-107" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_angle
+Piavca.gltb.gltb_angle" class="py-name" href="#" onclick="return doclink('link-107', 'gltb_angle', 'link-4');">gltb_angle</a></tt> <tt class="py-op">=</tt> <tt class="py-number">90.0</tt> <tt class="py-op">*</tt> <tt class="py-name">sqrt</tt><tt class="py-op">(</tt><tt class="py-name">dx</tt> <tt class="py-op">*</tt> <tt class="py-name">dx</tt> <tt class="py-op">+</tt> <tt class="py-name">dy</tt> <tt class="py-op">*</tt> <tt class="py-name">dy</tt> <tt class="py-op">+</tt> <tt class="py-name">dz</tt> <tt class="py-op">*</tt> <tt class="py-name">dz</tt><tt class="py-op">)</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line"> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line">    <tt class="py-comment">#calculate the axis of rotation (cross product) </tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">    <tt id="link-108" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_rotateaxis
+Piavca.gltb.gltb_rotateaxis" class="py-name" href="#" onclick="return doclink('link-108', 'gltb_rotateaxis', 'link-8');">gltb_rotateaxis</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt id="link-109" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_lastposition
+Piavca.gltb.gltb_lastposition" class="py-name" href="#" onclick="return doclink('link-109', 'gltb_lastposition', 'link-3');">gltb_lastposition</a></tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> <tt class="py-op">*</tt> <tt class="py-name">current_position</tt><tt class="py-op">[</tt><tt class="py-number">2</tt><tt class="py-op">]</tt> <tt class="py-op">-</tt> <tt id="link-110" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_lastposition
+Piavca.gltb.gltb_lastposition" class="py-name" href="#" onclick="return doclink('link-110', 'gltb_lastposition', 'link-3');">gltb_lastposition</a></tt><tt class="py-op">[</tt><tt class="py-number">2</tt><tt class="py-op">]</tt> <tt class="py-op">*</tt> <tt class="py-name">current_position</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt id="link-111" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_lastposition
+Piavca.gltb.gltb_lastposition" class="py-name" href="#" onclick="return doclink('link-111', 'gltb_lastposition', 'link-3');">gltb_lastposition</a></tt><tt class="py-op">[</tt><tt class="py-number">2</tt><tt class="py-op">]</tt> <tt class="py-op">*</tt> <tt class="py-name">current_position</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> <tt class="py-op">-</tt> <tt id="link-112" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_lastposition
+Piavca.gltb.gltb_lastposition" class="py-name" href="#" onclick="return doclink('link-112', 'gltb_lastposition', 'link-3');">gltb_lastposition</a></tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> <tt class="py-op">*</tt> <tt class="py-name">current_position</tt><tt class="py-op">[</tt><tt class="py-number">2</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-number">0</tt><tt class="py-op">)</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line"> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">    <tt class="py-comment">#reset for next time</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">    <tt class="py-comment">#gltb_lasttime = glutGet(GLUT_ELAPSED_TIME)</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">    <tt id="link-113" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_lastposition
+Piavca.gltb.gltb_lastposition" class="py-name" href="#" onclick="return doclink('link-113', 'gltb_lastposition', 'link-3');">gltb_lastposition</a></tt> <tt class="py-op">=</tt> <tt class="py-name">current_position</tt> </tt>
+</div><a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line"> </tt>
+<a name="gltbInOutMotion"></a><div id="gltbInOutMotion-def"><a name="L146"></a><tt class="py-lineno">146</tt> <a class="py-toggle" href="#" id="gltbInOutMotion-toggle" onclick="return toggle('gltbInOutMotion');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.gltb-module.html#gltbInOutMotion">gltbInOutMotion</a><tt class="py-op">(</tt><tt class="py-param">x</tt><tt class="py-op">,</tt> <tt class="py-param">y</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="gltbInOutMotion-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="gltbInOutMotion-expanded"><a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line">    <tt class="py-keyword">global</tt> <tt id="link-114" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_rotateaxis
+Piavca.gltb.gltb_rotateaxis" class="py-name" href="#" onclick="return doclink('link-114', 'gltb_rotateaxis', 'link-8');">gltb_rotateaxis</a></tt><tt class="py-op">,</tt> <tt id="link-115" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_width
+Piavca.gltb.gltb_width" class="py-name" href="#" onclick="return doclink('link-115', 'gltb_width', 'link-12');">gltb_width</a></tt><tt class="py-op">,</tt> <tt id="link-116" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_height
+Piavca.gltb.gltb_height" class="py-name" href="#" onclick="return doclink('link-116', 'gltb_height', 'link-13');">gltb_height</a></tt><tt class="py-op">,</tt> <tt id="link-117" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_lastposition
+Piavca.gltb.gltb_lastposition" class="py-name" href="#" onclick="return doclink('link-117', 'gltb_lastposition', 'link-3');">gltb_lastposition</a></tt><tt class="py-op">,</tt> <tt id="link-118" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_lasttime
+Piavca.gltb.gltb_lasttime" class="py-name" href="#" onclick="return doclink('link-118', 'gltb_lasttime', 'link-2');">gltb_lasttime</a></tt><tt class="py-op">,</tt> <tt id="link-119" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_angle
+Piavca.gltb.gltb_angle" class="py-name" href="#" onclick="return doclink('link-119', 'gltb_angle', 'link-4');">gltb_angle</a></tt><tt class="py-op">,</tt> <tt id="link-120" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_translation
+Piavca.gltb.gltb_translation" class="py-name" href="#" onclick="return doclink('link-120', 'gltb_translation', 'link-9');">gltb_translation</a></tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line"> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt id="link-121" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_tracking
+Piavca.gltb.gltb_tracking" class="py-name" href="#" onclick="return doclink('link-121', 'gltb_tracking', 'link-14');">gltb_tracking</a></tt> <tt class="py-op">==</tt> <tt id="link-122" class="py-name"><a title="Piavca.FreeCameraCanvas.GL_FALSE
+Piavca.wxVirtualTracker'.GL_FALSE" class="py-name" href="#" onclick="return doclink('link-122', 'GL_FALSE', 'link-15');">GL_FALSE</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line"> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line">    <tt class="py-name">current_position</tt> <tt class="py-op">=</tt> <tt id="link-123" class="py-name"><a title="Piavca.gltb._gltbPointToVector" class="py-name" href="#" onclick="return doclink('link-123', '_gltbPointToVector', 'link-28');">_gltbPointToVector</a></tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">,</tt> <tt class="py-name">y</tt><tt class="py-op">,</tt> <tt id="link-124" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_width
+Piavca.gltb.gltb_width" class="py-name" href="#" onclick="return doclink('link-124', 'gltb_width', 'link-12');">gltb_width</a></tt><tt class="py-op">,</tt> <tt id="link-125" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_height
+Piavca.gltb.gltb_height" class="py-name" href="#" onclick="return doclink('link-125', 'gltb_height', 'link-13');">gltb_height</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line"> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line">    <tt class="py-comment"># calculate the angle to rotate by (directly proportional to the</tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line">    <tt class="py-comment">#length of the mouse movement) </tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line">    <tt class="py-name">dx</tt> <tt class="py-op">=</tt> <tt class="py-name">current_position</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> <tt class="py-op">-</tt> <tt id="link-126" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_lastposition
+Piavca.gltb.gltb_lastposition" class="py-name" href="#" onclick="return doclink('link-126', 'gltb_lastposition', 'link-3');">gltb_lastposition</a></tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line">    <tt class="py-name">dy</tt> <tt class="py-op">=</tt> <tt class="py-name">current_position</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> <tt class="py-op">-</tt> <tt id="link-127" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_lastposition
+Piavca.gltb.gltb_lastposition" class="py-name" href="#" onclick="return doclink('link-127', 'gltb_lastposition', 'link-3');">gltb_lastposition</a></tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line">    <tt class="py-name">dz</tt> <tt class="py-op">=</tt> <tt class="py-name">current_position</tt><tt class="py-op">[</tt><tt class="py-number">2</tt><tt class="py-op">]</tt> <tt class="py-op">-</tt> <tt id="link-128" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_lastposition
+Piavca.gltb.gltb_lastposition" class="py-name" href="#" onclick="return doclink('link-128', 'gltb_lastposition', 'link-3');">gltb_lastposition</a></tt><tt class="py-op">[</tt><tt class="py-number">2</tt><tt class="py-op">]</tt> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line">     </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line">    <tt id="link-129" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_translation
+Piavca.gltb.gltb_translation" class="py-name" href="#" onclick="return doclink('link-129', 'gltb_translation', 'link-9');">gltb_translation</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-name">dy</tt><tt class="py-op">,</tt> <tt class="py-number">0</tt><tt class="py-op">)</tt> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line">    <tt class="py-comment">#print gltb_translation</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line"> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line">    <tt class="py-comment">#reset for next time</tt> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line">    <tt class="py-comment">#gltb_lasttime = glutGet(GLUT_ELAPSED_TIME)</tt> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line">    <tt id="link-130" class="py-name"><a title="Piavca.FreeCameraCanvas.gltb_lastposition
+Piavca.gltb.gltb_lastposition" class="py-name" href="#" onclick="return doclink('link-130', 'gltb_lastposition', 'link-3');">gltb_lastposition</a></tt> <tt class="py-op">=</tt> <tt class="py-name">current_position</tt> </tt>
+</div><a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="Piavca-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Oct 15 20:02:41 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Piavca</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th bgcolor="#70b0f0" class="navbar-select"
+          >&nbsp;&nbsp;&nbsp;Home&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Package&nbsp;Piavca
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="Piavca-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="Piavca-module.html">Package Piavca</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-comment"># ***** BEGIN LICENSE BLOCK *****</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-comment"># Version: MPL 1.1/GPL 2.0/LGPL 2.1</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-comment"># The contents of this file are subject to the Mozilla Public License Version</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-comment"># 1.1 (the "License"); you may not use this file except in compliance with</tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-comment"># the License. You may obtain a copy of the License at</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-comment"># http://www.mozilla.org/MPL/</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-comment"># Software distributed under the License is distributed on an "AS IS" basis,</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt class="py-comment"># WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License</tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt class="py-comment"># for the specific language governing rights and limitations under the</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt class="py-comment"># License.</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"><tt class="py-comment"># The Original Code is __init__.py</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"><tt class="py-comment"># The Initial Developer of the Original Code is</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"><tt class="py-comment"># Marco Gillies.</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"><tt class="py-comment"># Portions created by the Initial Developer are Copyright (C) 2007</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"><tt class="py-comment"># the Initial Developer. All Rights Reserved.</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"><tt class="py-comment"># Contributor(s):</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"><tt class="py-comment"># Alternatively, the contents of this file may be used under the terms of</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line"><tt class="py-comment"># either the GNU General Public License Version 2 or later (the "GPL"), or</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line"><tt class="py-comment"># the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line"><tt class="py-comment"># in which case the provisions of the GPL or the LGPL are applicable instead</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line"><tt class="py-comment"># of those above. If you wish to allow use of your version of this file only</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"><tt class="py-comment"># under the terms of either the GPL or the LGPL, and not to allow others to</tt> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line"><tt class="py-comment"># use your version of this file under the terms of the MPL, indicate your</tt> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line"><tt class="py-comment"># decision by deleting the provisions above and replace them with the notice</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line"><tt class="py-comment"># and other provisions required by the GPL or the LGPL. If you do not delete</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line"><tt class="py-comment"># the provisions above, a recipient may use your version of this file under</tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line"><tt class="py-comment"># the terms of any one of the MPL, the GPL or the LGPL.</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line"><tt class="py-comment"># ***** END LICENSE BLOCK *****</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line"> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line"> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Module Piavca.Piavca_base.Piavca_base=Piavca.Piavca_base.Piavca_base-module.html"><a title="Piavca.Piavca_base.Piavca_base" class="py-name" href="#" onclick="return doclink('link-0', 'Piavca_base', 'link-0');">Piavca_base</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt>  </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line"><tt class="py-comment">#import PiavcaGlut</tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line"> </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-1" class="py-name" targets="Module Piavca.ImportException=Piavca.ImportException-module.html"><a title="Piavca.ImportException" class="py-name" href="#" onclick="return doclink('link-1', 'ImportException', 'link-1');">ImportException</a></tt> <tt class="py-keyword">import</tt> <tt id="link-2" class="py-name" targets="Class Piavca.ImportException.PiavcaImportException=Piavca.ImportException.PiavcaImportException-class.html"><a title="Piavca.ImportException.PiavcaImportException" class="py-name" href="#" onclick="return doclink('link-2', 'PiavcaImportException', 'link-2');">PiavcaImportException</a></tt> </tt>
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line"> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-3" class="py-name" targets="Class Piavca.FootPlantOnSpot'.FootPlantOnSpot=Piavca.FootPlantOnSpot%27.FootPlantOnSpot-class.html"><a title="Piavca.FootPlantOnSpot'.FootPlantOnSpot" class="py-name" href="#" onclick="return doclink('link-3', 'FootPlantOnSpot', 'link-3');">FootPlantOnSpot</a></tt> <tt class="py-keyword">import</tt> <tt id="link-4" class="py-name"><a title="Piavca.FootPlantOnSpot'.FootPlantOnSpot" class="py-name" href="#" onclick="return doclink('link-4', 'FootPlantOnSpot', 'link-3');">FootPlantOnSpot</a></tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-5" class="py-name" targets="Class Piavca.FSM'.FSM=Piavca.FSM%27.FSM-class.html"><a title="Piavca.FSM'.FSM" class="py-name" href="#" onclick="return doclink('link-5', 'FSM', 'link-5');">FSM</a></tt> <tt class="py-keyword">import</tt> <tt id="link-6" class="py-name"><a title="Piavca.FSM'.FSM" class="py-name" href="#" onclick="return doclink('link-6', 'FSM', 'link-5');">FSM</a></tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-7" class="py-name" targets="Class Piavca.ParameterMotion'.ParameterMotion=Piavca.ParameterMotion%27.ParameterMotion-class.html"><a title="Piavca.ParameterMotion'.ParameterMotion" class="py-name" href="#" onclick="return doclink('link-7', 'ParameterMotion', 'link-7');">ParameterMotion</a></tt> <tt class="py-keyword">import</tt> <tt id="link-8" class="py-name"><a title="Piavca.ParameterMotion'.ParameterMotion" class="py-name" href="#" onclick="return doclink('link-8', 'ParameterMotion', 'link-7');">ParameterMotion</a></tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-9" class="py-name" targets="Module Piavca.PositionHandler=Piavca.PositionHandler-module.html,Class Piavca.PositionHandler.PositionHandler=Piavca.PositionHandler.PositionHandler-class.html"><a title="Piavca.PositionHandler
+Piavca.PositionHandler.PositionHandler" class="py-name" href="#" onclick="return doclink('link-9', 'PositionHandler', 'link-9');">PositionHandler</a></tt> <tt class="py-keyword">import</tt> <tt id="link-10" class="py-name" targets="Class Piavca.PositionHandler.PositionResponse=Piavca.PositionHandler.PositionResponse-class.html"><a title="Piavca.PositionHandler.PositionResponse" class="py-name" href="#" onclick="return doclink('link-10', 'PositionResponse', 'link-10');">PositionResponse</a></tt><tt class="py-op">,</tt> <tt id="link-11" class="py-name" targets="Class Piavca.PositionHandler.PositionShiftResponse=Piavca.PositionHandler.PositionShiftResponse-class.html"><a title="Piavca.PositionHandler.PositionShiftResponse" class="py-name" href="#" onclick="return doclink('link-11', 'PositionShiftResponse', 'link-11');">PositionShiftResponse</a></tt>      </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-12" class="py-name" targets="Class Piavca.AudioMotion'.AudioMotion=Piavca.AudioMotion%27.AudioMotion-class.html"><a title="Piavca.AudioMotion'.AudioMotion" class="py-name" href="#" onclick="return doclink('link-12', 'AudioMotion', 'link-12');">AudioMotion</a></tt> <tt class="py-keyword">import</tt> <tt id="link-13" class="py-name"><a title="Piavca.AudioMotion'.AudioMotion" class="py-name" href="#" onclick="return doclink('link-13', 'AudioMotion', 'link-12');">AudioMotion</a></tt> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line"><tt class="py-comment"># from ExpMap import *</tt> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line"><tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line">        <tt class="py-keyword">from</tt> <tt id="link-14" class="py-name" targets="Class Piavca.EigenMotion'.EigenMotion=Piavca.EigenMotion%27.EigenMotion-class.html"><a title="Piavca.EigenMotion'.EigenMotion" class="py-name" href="#" onclick="return doclink('link-14', 'EigenMotion', 'link-14');">EigenMotion</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line">        <tt class="py-comment">#from MotionGraph import *</tt> </tt>
+<a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line">        <tt class="py-keyword">from</tt> <tt id="link-15" class="py-name" targets="Class Piavca.ClusterMotionGraph'.ClusterMotionGraph=Piavca.ClusterMotionGraph%27.ClusterMotionGraph-class.html"><a title="Piavca.ClusterMotionGraph'.ClusterMotionGraph" class="py-name" href="#" onclick="return doclink('link-15', 'ClusterMotionGraph', 'link-15');">ClusterMotionGraph</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line"><tt class="py-keyword">except</tt> <tt id="link-16" class="py-name"><a title="Piavca.ImportException.PiavcaImportException" class="py-name" href="#" onclick="return doclink('link-16', 'PiavcaImportException', 'link-2');">PiavcaImportException</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">"scipy not available, please install scipy to use EigenMotion and Motion Graph"</tt> </tt>
+<a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line"> </tt>
+<a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-17" class="py-name" targets="Module Piavca.MotionFile=Piavca.MotionFile-module.html"><a title="Piavca.MotionFile" class="py-name" href="#" onclick="return doclink('link-17', 'MotionFile', 'link-17');">MotionFile</a></tt> <tt class="py-keyword">import</tt> <tt id="link-18" class="py-name" targets="Function Piavca.MotionFile.readMotionFile()=Piavca.MotionFile-module.html#readMotionFile"><a title="Piavca.MotionFile.readMotionFile" class="py-name" href="#" onclick="return doclink('link-18', 'readMotionFile', 'link-18');">readMotionFile</a></tt> </tt>
+<a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-19" class="py-name" targets="Class Piavca.ScriptEngine'.ScriptEngine=Piavca.ScriptEngine%27.ScriptEngine-class.html"><a title="Piavca.ScriptEngine'.ScriptEngine" class="py-name" href="#" onclick="return doclink('link-19', 'ScriptEngine', 'link-19');">ScriptEngine</a></tt> <tt class="py-keyword">import</tt> <tt id="link-20" class="py-name"><a title="Piavca.ScriptEngine'.ScriptEngine" class="py-name" href="#" onclick="return doclink('link-20', 'ScriptEngine', 'link-19');">ScriptEngine</a></tt>  </tt>
+<a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line"><tt class="py-keyword">try</tt> <tt class="py-op">:</tt> </tt>
+<a name="L60"></a><tt class="py-lineno">60</tt>  <tt class="py-line">        <tt class="py-keyword">from</tt> <tt id="link-21" class="py-name" targets="Module Piavca.ConversationInterface=Piavca.ConversationInterface-module.html,Class Piavca.ConversationInterface.ConversationInterface=Piavca.ConversationInterface.ConversationInterface-class.html"><a title="Piavca.ConversationInterface
+Piavca.ConversationInterface.ConversationInterface" class="py-name" href="#" onclick="return doclink('link-21', 'ConversationInterface', 'link-21');">ConversationInterface</a></tt> <tt class="py-keyword">import</tt> <tt id="link-22" class="py-name"><a title="Piavca.ConversationInterface
+Piavca.ConversationInterface.ConversationInterface" class="py-name" href="#" onclick="return doclink('link-22', 'ConversationInterface', 'link-21');">ConversationInterface</a></tt> </tt>
+<a name="L61"></a><tt class="py-lineno">61</tt>  <tt class="py-line">        <tt class="py-keyword">from</tt> <tt id="link-23" class="py-name" targets="Variable Piavca.SpeechToText=Piavca-module.html#SpeechToText,Class Piavca.SpeechToText'.SpeechToText=Piavca.SpeechToText%27.SpeechToText-class.html"><a title="Piavca.SpeechToText
+Piavca.SpeechToText'.SpeechToText" class="py-name" href="#" onclick="return doclink('link-23', 'SpeechToText', 'link-23');">SpeechToText</a></tt> <tt class="py-keyword">import</tt> <tt id="link-24" class="py-name"><a title="Piavca.SpeechToText
+Piavca.SpeechToText'.SpeechToText" class="py-name" href="#" onclick="return doclink('link-24', 'SpeechToText', 'link-23');">SpeechToText</a></tt> </tt>
+<a name="L62"></a><tt class="py-lineno">62</tt>  <tt class="py-line"><tt class="py-keyword">except</tt> <tt id="link-25" class="py-name"><a title="Piavca.ImportException.PiavcaImportException" class="py-name" href="#" onclick="return doclink('link-25', 'PiavcaImportException', 'link-2');">PiavcaImportException</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line">        <tt id="link-26" class="py-name"><a title="Piavca.SpeechToText
+Piavca.SpeechToText'.SpeechToText" class="py-name" href="#" onclick="return doclink('link-26', 'SpeechToText', 'link-23');">SpeechToText</a></tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt>  </tt>
+<a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line"><tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L65"></a><tt class="py-lineno">65</tt>  <tt class="py-line">        <tt class="py-keyword">from</tt> <tt id="link-27" class="py-name" targets="Module Piavca.AnimationTrack=Piavca.AnimationTrack-module.html"><a title="Piavca.AnimationTrack" class="py-name" href="#" onclick="return doclink('link-27', 'AnimationTrack', 'link-27');">AnimationTrack</a></tt> <tt class="py-keyword">import</tt> <tt id="link-28" class="py-name" targets="Class Piavca.AnimationTrack.AnimationInterface=Piavca.AnimationTrack.AnimationInterface-class.html"><a title="Piavca.AnimationTrack.AnimationInterface" class="py-name" href="#" onclick="return doclink('link-28', 'AnimationInterface', 'link-28');">AnimationInterface</a></tt><tt class="py-op">,</tt> <tt id="link-29" class="py-name" targets="Class Piavca.AnimationTrack.AnimationInterfaceCallback=Piavca.AnimationTrack.AnimationInterfaceCallback-class.html"><a title="Piavca.AnimationTrack.AnimationInterfaceCallback" class="py-name" href="#" onclick="return doclink('link-29', 'AnimationInterfaceCallback', 'link-29');">AnimationInterfaceCallback</a></tt> </tt>
+<a name="L66"></a><tt class="py-lineno">66</tt>  <tt class="py-line">        <tt class="py-keyword">from</tt> <tt id="link-30" class="py-name" targets="Module Piavca.PiavcaWXApp=Piavca.PiavcaWXApp-module.html,Class Piavca.PiavcaWXApp.PiavcaWXApp=Piavca.PiavcaWXApp.PiavcaWXApp-class.html"><a title="Piavca.PiavcaWXApp
+Piavca.PiavcaWXApp.PiavcaWXApp" class="py-name" href="#" onclick="return doclink('link-30', 'PiavcaWXApp', 'link-30');">PiavcaWXApp</a></tt> <tt class="py-keyword">import</tt> <tt id="link-31" class="py-name" targets="Function Piavca.PiavcaWXApp.getWXApp()=Piavca.PiavcaWXApp-module.html#getWXApp"><a title="Piavca.PiavcaWXApp.getWXApp" class="py-name" href="#" onclick="return doclink('link-31', 'getWXApp', 'link-31');">getWXApp</a></tt><tt class="py-op">,</tt> <tt id="link-32" class="py-name" targets="Function Piavca.PiavcaWXApp.setWXApp()=Piavca.PiavcaWXApp-module.html#setWXApp"><a title="Piavca.PiavcaWXApp.setWXApp" class="py-name" href="#" onclick="return doclink('link-32', 'setWXApp', 'link-32');">setWXApp</a></tt> </tt>
+<a name="L67"></a><tt class="py-lineno">67</tt>  <tt class="py-line">        <tt class="py-keyword">from</tt> <tt id="link-33" class="py-name" targets="Package Piavca=Piavca-module.html"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-33', 'Piavca', 'link-33');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-34" class="py-name" targets="Class Piavca.wxVirtualTracker'.wxVirtualTracker=Piavca.wxVirtualTracker%27.wxVirtualTracker-class.html"><a title="Piavca.wxVirtualTracker'.wxVirtualTracker" class="py-name" href="#" onclick="return doclink('link-34', 'wxVirtualTracker', 'link-34');">wxVirtualTracker</a></tt> <tt class="py-keyword">import</tt> <tt id="link-35" class="py-name"><a title="Piavca.wxVirtualTracker'.wxVirtualTracker" class="py-name" href="#" onclick="return doclink('link-35', 'wxVirtualTracker', 'link-34');">wxVirtualTracker</a></tt> </tt>
+<a name="L68"></a><tt class="py-lineno">68</tt>  <tt class="py-line"><tt class="py-keyword">except</tt> <tt id="link-36" class="py-name"><a title="Piavca.ImportException.PiavcaImportException" class="py-name" href="#" onclick="return doclink('link-36', 'PiavcaImportException', 'link-2');">PiavcaImportException</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L69"></a><tt class="py-lineno">69</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">"wxPython unavailable, please install wxPython for GUI functions"</tt> </tt>
+<a name="L70"></a><tt class="py-lineno">70</tt>  <tt class="py-line"> </tt>
+<a name="L71"></a><tt class="py-lineno">71</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-37" class="py-name" targets="Module Piavca.MaxXAFReader=Piavca.MaxXAFReader-module.html"><a title="Piavca.MaxXAFReader" class="py-name" href="#" onclick="return doclink('link-37', 'MaxXAFReader', 'link-37');">MaxXAFReader</a></tt> <tt class="py-keyword">import</tt> <tt id="link-38" class="py-name" targets="Class Piavca.MaxXAFReader.MaxXAFMotion=Piavca.MaxXAFReader.MaxXAFMotion-class.html"><a title="Piavca.MaxXAFReader.MaxXAFMotion" class="py-name" href="#" onclick="return doclink('link-38', 'MaxXAFMotion', 'link-38');">MaxXAFMotion</a></tt> </tt>
+<a name="L72"></a><tt class="py-lineno">72</tt>  <tt class="py-line"> </tt>
+<a name="L73"></a><tt class="py-lineno">73</tt>  <tt class="py-line"><tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L74"></a><tt class="py-lineno">74</tt>  <tt class="py-line">        <tt class="py-keyword">from</tt> <tt id="link-39" class="py-name" targets="Module Piavca.EventsGUI=Piavca.EventsGUI-module.html"><a title="Piavca.EventsGUI" class="py-name" href="#" onclick="return doclink('link-39', 'EventsGUI', 'link-39');">EventsGUI</a></tt> <tt class="py-keyword">import</tt> <tt id="link-40" class="py-name" targets="Function Piavca.EventsGUI.setUpEventsGUI()=Piavca.EventsGUI-module.html#setUpEventsGUI"><a title="Piavca.EventsGUI.setUpEventsGUI" class="py-name" href="#" onclick="return doclink('link-40', 'setUpEventsGUI', 'link-40');">setUpEventsGUI</a></tt> </tt>
+<a name="L75"></a><tt class="py-lineno">75</tt>  <tt class="py-line"><tt class="py-keyword">except</tt> <tt id="link-41" class="py-name"><a title="Piavca.ImportException.PiavcaImportException" class="py-name" href="#" onclick="return doclink('link-41', 'PiavcaImportException', 'link-2');">PiavcaImportException</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L76"></a><tt class="py-lineno">76</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">"wxPython unavailable, please install wxPython for GUI functions"</tt> </tt>
+<a name="L77"></a><tt class="py-lineno">77</tt>  <tt class="py-line"> </tt>
+<a name="L78"></a><tt class="py-lineno">78</tt>  <tt class="py-line">         </tt>
+<a name="L79"></a><tt class="py-lineno">79</tt>  <tt class="py-line"><tt id="link-42" class="py-name" targets="Class Piavca.Piavca_base.Piavca_base.Core=Piavca.Piavca_base.Piavca_base.Core-class.html"><a title="Piavca.Piavca_base.Piavca_base.Core" class="py-name" href="#" onclick="return doclink('link-42', 'Core', 'link-42');">Core</a></tt><tt class="py-op">.</tt><tt id="link-43" class="py-name" targets="Variable Piavca.PiavcaGlut.PiavcaGlut.init=Piavca.PiavcaGlut.PiavcaGlut-module.html#init,Method Piavca.Piavca_base.Piavca_base.AvatarMotionQueue.init()=Piavca.Piavca_base.Piavca_base.AvatarMotionQueue-class.html#init,Method Piavca.Piavca_base.Piavca_base.AvatarTimeCallback.init()=Piavca.Piavca_base.Piavca_base.AvatarTimeCallback-class.html#init,Method Piavca.Piavca_base.Piavca_base.TimeCallback.init()=Piavca.Piavca_base.Piavca_base.TimeCallback-class.html#init,Method Piavca.ScriptEngine'.ScriptEngine.init()=Piavca.ScriptEngine%27.ScriptEngine-class.html#init,Method Piavca.runScriptEngine.PauseCallback.init()=Piavca.runScriptEngine.PauseCallback-class.html#init"><a title="Piavca.PiavcaGlut.PiavcaGlut.init
+Piavca.Piavca_base.Piavca_base.AvatarMotionQueue.init
+Piavca.Piavca_base.Piavca_base.AvatarTimeCallback.init
+Piavca.Piavca_base.Piavca_base.TimeCallback.init
+Piavca.ScriptEngine'.ScriptEngine.init
+Piavca.runScriptEngine.PauseCallback.init" class="py-name" href="#" onclick="return doclink('link-43', 'init', 'link-43');">init</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L80"></a><tt class="py-lineno">80</tt>  <tt class="py-line"> </tt>
+<a name="L81"></a><tt class="py-lineno">81</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-44" class="py-name" targets="Module Piavca.CoreProxy=Piavca.CoreProxy-module.html"><a title="Piavca.CoreProxy" class="py-name" href="#" onclick="return doclink('link-44', 'CoreProxy', 'link-44');">CoreProxy</a></tt> <tt class="py-keyword">import</tt> <tt id="link-45" class="py-name" targets="Function Piavca.CoreProxy.getTime()=Piavca.CoreProxy-module.html#getTime,Method Piavca.PiavcaDesigner.BackEnd.BackEnd.getTime()=Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#getTime,Method Piavca.Piavca_base.Piavca_base.Core.getTime()=Piavca.Piavca_base.Piavca_base.Core-class.html#getTime,Method Piavca.ScriptEngine'.scriptCallback.getTime()=Piavca.ScriptEngine%27.scriptCallback-class.html#getTime"><a title="Piavca.CoreProxy.getTime
+Piavca.PiavcaDesigner.BackEnd.BackEnd.getTime
+Piavca.Piavca_base.Piavca_base.Core.getTime
+Piavca.ScriptEngine'.scriptCallback.getTime" class="py-name" href="#" onclick="return doclink('link-45', 'getTime', 'link-45');">getTime</a></tt><tt class="py-op">,</tt> <tt id="link-46" class="py-name" targets="Function Piavca.CoreProxy.loadMotion()=Piavca.CoreProxy-module.html#loadMotion,Method Piavca.Piavca_base.Piavca_base.Avatar.loadMotion()=Piavca.Piavca_base.Piavca_base.Avatar-class.html#loadMotion,Method Piavca.Piavca_base.Piavca_base.Core.loadMotion()=Piavca.Piavca_base.Piavca_base.Core-class.html#loadMotion"><a title="Piavca.CoreProxy.loadMotion
+Piavca.Piavca_base.Piavca_base.Avatar.loadMotion
+Piavca.Piavca_base.Piavca_base.Core.loadMotion" class="py-name" href="#" onclick="return doclink('link-46', 'loadMotion', 'link-46');">loadMotion</a></tt><tt class="py-op">,</tt> <tt id="link-47" class="py-name" targets="Method Piavca.ChoiceMotion.getMotion()=Piavca.ChoiceMotion-class.html#getMotion,Function Piavca.CoreProxy.getMotion()=Piavca.CoreProxy-module.html#getMotion,Method Piavca.MotionFilter.getMotion()=Piavca.MotionFilter-class.html#getMotion,Method Piavca.PiavcaDesigner.AutoCreators.ExpMapBlend'.ExpMapBlend.getMotion()=Piavca.PiavcaDesigner.AutoCreators.ExpMapBlend%27.ExpMapBlend-class.html#getMotion,Method Piavca.PiavcaDesigner.AutoCreators.InterruptableSequence'.InterruptableSequence.getMotion()=Piavca.PiavcaDesigner.AutoCreators.InterruptableSequence%27.InterruptableSequence-class.html#getMotion,Method Piavca.PiavcaDesigner.AutoCreators.MotionGraph'.MotionGraph.getMotion()=Piavca.PiavcaDesigner.AutoCreators.MotionGraph%27.MotionGraph-class.html#getMotion,Method Piavca.PiavcaDesigner.AutoCreators.PCAMot'.PCAMot.getMotion()=Piavca.PiavcaDesigner.AutoCreators.PCAMot%27.PCAMot-class.html#getMotion,Method Piavca.PiavcaDesigner.AutoCreatorsWindow.AutoCreatorsWindow.getMotion()=Piavca.PiavcaDesigner.AutoCreatorsWindow.AutoCreatorsWindow-class.html#getMotion,Method Piavca.PiavcaDesigner.BackEnd.BackEnd.getMotion()=Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#getMotion,Method Piavca.PiavcaDesigner.MotionProxy.MotionProxy.getMotion()=Piavca.PiavcaDesigner.MotionProxy.MotionProxy-class.html#getMotion,Method Piavca.Piavca_base.Piavca_base.Avatar.getMotion()=Piavca.Piavca_base.Piavca_base.Avatar-class.html#getMotion,Method Piavca.Piavca_base.Piavca_base.AvatarMotionQueue.getMotion()=Piavca.Piavca_base.Piavca_base.AvatarMotionQueue-class.html#getMotion,Method Piavca.Piavca_base.Piavca_base.AvatarPostureBlend.getMotion()=Piavca.Piavca_base.Piavca_base.AvatarPostureBlend-class.html#getMotion,Method Piavca.Piavca_base.Piavca_base.ChoiceMotion.getMotion()=Piavca.Piavca_base.Piavca_base.ChoiceMotion-class.html#getMotion,Method Piavca.Piavca_base.Piavca_base.Core.getMotion()=Piavca.Piavca_base.Piavca_base.Core-class.html#getMotion,Method Piavca.Piavca_base.Piavca_base.MotionFilter.getMotion()=Piavca.Piavca_base.Piavca_base.MotionFilter-class.html#getMotion,Method Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.getMotion()=Piavca.Piavca_base.Piavca_base.MultiMotionCombiner-class.html#getMotion,Method Piavca.Piavca_base.Piavca_base.PointAt.getMotion()=Piavca.Piavca_base.Piavca_base.PointAt-class.html#getMotion,Method Piavca.Piavca_base.Piavca_base.PostureBlend.getMotion()=Piavca.Piavca_base.Piavca_base.PostureBlend-class.html#getMotion,Method Piavca.Piavca_base.Piavca_base.SmoothLoop.getMotion()=Piavca.Piavca_base.Piavca_base.SmoothLoop-class.html#getMotion"><a title="Piavca.ChoiceMotion.getMotion
+Piavca.CoreProxy.getMotion
+Piavca.MotionFilter.getMotion
+Piavca.PiavcaDesigner.AutoCreators.ExpMapBlend'.ExpMapBlend.getMotion
+Piavca.PiavcaDesigner.AutoCreators.InterruptableSequence'.InterruptableSequence.getMotion
+Piavca.PiavcaDesigner.AutoCreators.MotionGraph'.MotionGraph.getMotion
+Piavca.PiavcaDesigner.AutoCreators.PCAMot'.PCAMot.getMotion
+Piavca.PiavcaDesigner.AutoCreatorsWindow.AutoCreatorsWindow.getMotion
+Piavca.PiavcaDesigner.BackEnd.BackEnd.getMotion
+Piavca.PiavcaDesigner.MotionProxy.MotionProxy.getMotion
+Piavca.Piavca_base.Piavca_base.Avatar.getMotion
+Piavca.Piavca_base.Piavca_base.AvatarMotionQueue.getMotion
+Piavca.Piavca_base.Piavca_base.AvatarPostureBlend.getMotion
+Piavca.Piavca_base.Piavca_base.ChoiceMotion.getMotion
+Piavca.Piavca_base.Piavca_base.Core.getMotion
+Piavca.Piavca_base.Piavca_base.MotionFilter.getMotion
+Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.getMotion
+Piavca.Piavca_base.Piavca_base.PointAt.getMotion
+Piavca.Piavca_base.Piavca_base.PostureBlend.getMotion
+Piavca.Piavca_base.Piavca_base.SmoothLoop.getMotion" class="py-name" href="#" onclick="return doclink('link-47', 'getMotion', 'link-47');">getMotion</a></tt><tt class="py-op">,</tt> <tt id="link-48" class="py-name" targets="Function Piavca.CoreProxy.getRealMotionType()=Piavca.CoreProxy-module.html#getRealMotionType"><a title="Piavca.CoreProxy.getRealMotionType" class="py-name" href="#" onclick="return doclink('link-48', 'getRealMotionType', 'link-48');">getRealMotionType</a></tt><tt class="py-op">,</tt> <tt id="link-49" class="py-name" targets="Method Piavca.ChoiceMotion.clear()=Piavca.ChoiceMotion-class.html#clear,Function Piavca.CoreProxy.clear()=Piavca.CoreProxy-module.html#clear,Method Piavca.PiavcaDesigner.BackEnd.BackEnd.clear()=Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#clear,Method Piavca.PiavcaWXApp.PiavcaWXApp.clear()=Piavca.PiavcaWXApp.PiavcaWXApp-class.html#clear,Method Piavca.PiavcaWXCanvas.PiavcaWXCanvasBase.clear()=Piavca.PiavcaWXCanvas.PiavcaWXCanvasBase-class.html#clear,Method Piavca.Piavca_base.Piavca_base.ChoiceMotion.clear()=Piavca.Piavca_base.Piavca_base.ChoiceMotion-class.html#clear,Method Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.clear()=Piavca.Piavca_base.Piavca_base.MultiMotionCombiner-class.html#clear,Method Piavca.Piavca_base.Piavca_base.vectorI.clear()=Piavca.Piavca_base.Piavca_base.vectorI-class.html#clear,Method Piavca.Piavca_base.Piavca_base.vectorS.clear()=Piavca.Piavca_base.Piavca_base.vectorS-class.html#clear"><a title="Piavca.ChoiceMotion.clear
+Piavca.CoreProxy.clear
+Piavca.PiavcaDesigner.BackEnd.BackEnd.clear
+Piavca.PiavcaWXApp.PiavcaWXApp.clear
+Piavca.PiavcaWXCanvas.PiavcaWXCanvasBase.clear
+Piavca.Piavca_base.Piavca_base.ChoiceMotion.clear
+Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.clear
+Piavca.Piavca_base.Piavca_base.vectorI.clear
+Piavca.Piavca_base.Piavca_base.vectorS.clear" class="py-name" href="#" onclick="return doclink('link-49', 'clear', 'link-49');">clear</a></tt> </tt>
+<a name="L82"></a><tt class="py-lineno">82</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-50" class="py-name"><a title="Piavca.CoreProxy" class="py-name" href="#" onclick="return doclink('link-50', 'CoreProxy', 'link-44');">CoreProxy</a></tt> <tt class="py-keyword">import</tt> <tt id="link-51" class="py-name" targets="Function Piavca.CoreProxy.addEvents()=Piavca.CoreProxy-module.html#addEvents"><a title="Piavca.CoreProxy.addEvents" class="py-name" href="#" onclick="return doclink('link-51', 'addEvents', 'link-51');">addEvents</a></tt><tt class="py-op">,</tt> <tt id="link-52" class="py-name" targets="Function Piavca.CoreProxy.addEvent()=Piavca.CoreProxy-module.html#addEvent,Method Piavca.PiavcaDesigner.BackEnd.BackEnd.addEvent()=Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#addEvent,Method Piavca.Piavca_base.Piavca_base.MotionGraph.addEvent()=Piavca.Piavca_base.Piavca_base.MotionGraph-class.html#addEvent"><a title="Piavca.CoreProxy.addEvent
+Piavca.PiavcaDesigner.BackEnd.BackEnd.addEvent
+Piavca.Piavca_base.Piavca_base.MotionGraph.addEvent" class="py-name" href="#" onclick="return doclink('link-52', 'addEvent', 'link-52');">addEvent</a></tt><tt class="py-op">,</tt> <tt id="link-53" class="py-name" targets="Function Piavca.CoreProxy.getEvents()=Piavca.CoreProxy-module.html#getEvents,Method Piavca.PiavcaDesigner.BackEnd.BackEnd.getEvents()=Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#getEvents"><a title="Piavca.CoreProxy.getEvents
+Piavca.PiavcaDesigner.BackEnd.BackEnd.getEvents" class="py-name" href="#" onclick="return doclink('link-53', 'getEvents', 'link-53');">getEvents</a></tt><tt class="py-op">,</tt> <tt id="link-54" class="py-name" targets="Function Piavca.CoreProxy.removeEvent()=Piavca.CoreProxy-module.html#removeEvent"><a title="Piavca.CoreProxy.removeEvent" class="py-name" href="#" onclick="return doclink('link-54', 'removeEvent', 'link-54');">removeEvent</a></tt><tt class="py-op">,</tt> <tt id="link-55" class="py-name" targets="Function Piavca.CoreProxy.joints()=Piavca.CoreProxy-module.html#joints"><a title="Piavca.CoreProxy.joints" class="py-name" href="#" onclick="return doclink('link-55', 'joints', 'link-55');">joints</a></tt><tt class="py-op">,</tt> <tt id="link-56" class="py-name" targets="Function Piavca.CoreProxy.getValAtTime()=Piavca.CoreProxy-module.html#getValAtTime"><a title="Piavca.CoreProxy.getValAtTime" class="py-name" href="#" onclick="return doclink('link-56', 'getValAtTime', 'link-56');">getValAtTime</a></tt> </tt>
+<a name="L83"></a><tt class="py-lineno">83</tt>  <tt class="py-line"> </tt>
+<a name="render"></a><div id="render-def"><a name="L84"></a><tt class="py-lineno">84</tt> <a class="py-toggle" href="#" id="render-toggle" onclick="return toggle('render');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca-module.html#render">render</a> <tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="render-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="render-expanded"><a name="L85"></a><tt class="py-lineno">85</tt>  <tt class="py-line">        <tt class="py-name">core</tt> <tt class="py-op">=</tt> <tt id="link-57" class="py-name"><a title="Piavca.Piavca_base.Piavca_base.Core" class="py-name" href="#" onclick="return doclink('link-57', 'Core', 'link-42');">Core</a></tt><tt class="py-op">.</tt><tt id="link-58" class="py-name" targets="Method Piavca.Piavca_base.Piavca_base.Core.getCore()=Piavca.Piavca_base.Piavca_base.Core-class.html#getCore"><a title="Piavca.Piavca_base.Piavca_base.Core.getCore" class="py-name" href="#" onclick="return doclink('link-58', 'getCore', 'link-58');">getCore</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L86"></a><tt class="py-lineno">86</tt>  <tt class="py-line">        <tt class="py-name">core</tt><tt class="py-op">.</tt><tt id="link-59" class="py-name" targets="Method Piavca.PiavcaDesigner.BackEnd.BackEnd.timeStep()=Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#timeStep,Variable Piavca.PiavcaGlut.PiavcaGlut.timeStep=Piavca.PiavcaGlut.PiavcaGlut-module.html#timeStep,Method Piavca.Piavca_base.Piavca_base.Avatar.timeStep()=Piavca.Piavca_base.Piavca_base.Avatar-class.html#timeStep,Method Piavca.Piavca_base.Piavca_base.AvatarMotionQueue.timeStep()=Piavca.Piavca_base.Piavca_base.AvatarMotionQueue-class.html#timeStep,Method Piavca.Piavca_base.Piavca_base.AvatarTimeCallback.timeStep()=Piavca.Piavca_base.Piavca_base.AvatarTimeCallback-class.html#timeStep,Method Piavca.Piavca_base.Piavca_base.Core.timeStep()=Piavca.Piavca_base.Piavca_base.Core-class.html#timeStep,Method Piavca.Piavca_base.Piavca_base.TimeCallback.timeStep()=Piavca.Piavca_base.Piavca_base.TimeCallback-class.html#timeStep,Method Piavca.ScriptEngine'.ScriptEngine.timeStep()=Piavca.ScriptEngine%27.ScriptEngine-class.html#timeStep,Method Piavca.runScriptEngine.PauseCallback.timeStep()=Piavca.runScriptEngine.PauseCallback-class.html#timeStep"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.timeStep
+Piavca.PiavcaGlut.PiavcaGlut.timeStep
+Piavca.Piavca_base.Piavca_base.Avatar.timeStep
+Piavca.Piavca_base.Piavca_base.AvatarMotionQueue.timeStep
+Piavca.Piavca_base.Piavca_base.AvatarTimeCallback.timeStep
+Piavca.Piavca_base.Piavca_base.Core.timeStep
+Piavca.Piavca_base.Piavca_base.TimeCallback.timeStep
+Piavca.ScriptEngine'.ScriptEngine.timeStep
+Piavca.runScriptEngine.PauseCallback.timeStep" class="py-name" href="#" onclick="return doclink('link-59', 'timeStep', 'link-59');">timeStep</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L87"></a><tt class="py-lineno">87</tt>  <tt class="py-line">        <tt class="py-name">core</tt><tt class="py-op">.</tt><tt id="link-60" class="py-name" targets="Method Piavca.Piavca_base.Piavca_base.Core.prerender()=Piavca.Piavca_base.Piavca_base.Core-class.html#prerender"><a title="Piavca.Piavca_base.Piavca_base.Core.prerender" class="py-name" href="#" onclick="return doclink('link-60', 'prerender', 'link-60');">prerender</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L88"></a><tt class="py-lineno">88</tt>  <tt class="py-line">        <tt class="py-name">core</tt><tt class="py-op">.</tt><tt id="link-61" class="py-name" targets="Variable Piavca.PiavcaGlut.PiavcaGlut.render=Piavca.PiavcaGlut.PiavcaGlut-module.html#render,Method Piavca.Piavca_base.Piavca_base.Core.render()=Piavca.Piavca_base.Piavca_base.Core-class.html#render,Function Piavca.render()=Piavca-module.html#render,Method Piavca.wxVirtualTracker'.wxVirtualTracker.render()=Piavca.wxVirtualTracker%27.wxVirtualTracker-class.html#render"><a title="Piavca.PiavcaGlut.PiavcaGlut.render
+Piavca.Piavca_base.Piavca_base.Core.render
+Piavca.render
+Piavca.wxVirtualTracker'.wxVirtualTracker.render" class="py-name" href="#" onclick="return doclink('link-61', 'render', 'link-61');">render</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L89"></a><tt class="py-lineno">89</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th bgcolor="#70b0f0" class="navbar-select"
+          >&nbsp;&nbsp;&nbsp;Home&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Oct 15 20:02:36 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

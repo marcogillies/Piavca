@@ -1,0 +1,1662 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Piavca.Piavca_base.Piavca_base.Motion</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="Piavca-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="Piavca-module.html">Package&nbsp;Piavca</a> ::
+        Package&nbsp;Piavca_base ::
+        <a href="Piavca.Piavca_base.Piavca_base-module.html">Module&nbsp;Piavca_base</a> ::
+        Class&nbsp;Motion
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="Piavca.Piavca_base.Piavca_base.Motion-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class Motion</h1><p class="nomargin-top"><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+<a href="Piavca.Piavca_base.Piavca_base._object-class.html" onclick="show_private();">_object</a> --+
+          |
+         <strong class="uidshort">Motion</strong>
+</pre>
+
+<hr />
+<p>An abstract interface to represent motion.</p>
+  <p>This is an abstract interface that represents all types of animation 
+  in a way that is independent of individual Avatars. It can be used to 
+  represent keyframe animation, motion combination, procedural animatio or 
+  real time animation streams. The key abstraction is that motion consists 
+  of a number of tracks, each normally corresponding to a joint of the 
+  avatar. The track is a continuous, time varying stream of data value 
+  (either of float, Vec or Quat type). The fundamental operation on a track
+  is to query it for its value at a given time. Like joints tracks are 
+  represented by integer IDs, the IDs of a corresponding track and joint 
+  are the same so testing for equivelence is easy. Tracks are accessed by 
+  passing the appropriate ID to a method of the motion object.      see 
+  also: Motion.h</p>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__repr__"></a><span class="summary-sig-name">__repr__</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#_swig_repr">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__init__"></a><span class="summary-sig-name">__init__</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">*args</span>)</span><br />
+      Piavca::Motion::Motion(const Motion &amp;mot)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Motion-class.html#clone" class="summary-sig-name">clone</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      virtual Motion* Piavca::Motion::clone()=0</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.clone">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getClassName"></a><span class="summary-sig-name">getClassName</span>(<span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.getClassName">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="create"></a><span class="summary-sig-name">create</span>(<span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.create">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Motion-class.html#printInfo" class="summary-sig-name">printInfo</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Motion::printInfo()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.printInfo">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getId"></a><span class="summary-sig-name">getId</span>(<span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.getId">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__eq__"></a><span class="summary-sig-name">__eq__</span>(<span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.__eq__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__ne__"></a><span class="summary-sig-name">__ne__</span>(<span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.__ne__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Motion-class.html#load" class="summary-sig-name">load</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      virtual void Piavca::Motion::load(Avatar *av)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.load">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Motion-class.html#unload" class="summary-sig-name">unload</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      virtual void Piavca::Motion::unload()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.unload">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Motion-class.html#loaded" class="summary-sig-name">loaded</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      virtual bool Piavca::Motion::loaded()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.loaded">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getAvatar"></a><span class="summary-sig-name">getAvatar</span>(<span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.getAvatar">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Motion-class.html#setStartTime" class="summary-sig-name">setStartTime</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      virtual void Piavca::Motion::setStartTime(float t)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.setStartTime">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Motion-class.html#getStartTime" class="summary-sig-name">getStartTime</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      float Piavca::Motion::getStartTime()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.getStartTime">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Motion-class.html#getEndTime" class="summary-sig-name">getEndTime</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      float Piavca::Motion::getEndTime()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.getEndTime">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="finished"></a><span class="summary-sig-name">finished</span>(<span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.finished">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Motion-class.html#reset" class="summary-sig-name">reset</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      virtual void Piavca::Motion::reset()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.reset">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="passEvent"></a><span class="summary-sig-name">passEvent</span>(<span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.passEvent">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="handleEvent"></a><span class="summary-sig-name">handleEvent</span>(<span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.handleEvent">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="canHandleEvent"></a><span class="summary-sig-name">canHandleEvent</span>(<span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.canHandleEvent">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getEventNames"></a><span class="summary-sig-name">getEventNames</span>(<span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.getEventNames">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="cleanRecursionState"></a><span class="summary-sig-name">cleanRecursionState</span>(<span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.cleanRecursionState">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="wasVisited"></a><span class="summary-sig-name">wasVisited</span>(<span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.wasVisited">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="sendEvent"></a><span class="summary-sig-name">sendEvent</span>(<span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.sendEvent">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Motion-class.html#Reference" class="summary-sig-name">Reference</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Piavca::Motion::Reference()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.Reference">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Motion-class.html#Dispose" class="summary-sig-name">Dispose</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Motion::Dispose()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.Dispose">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Motion-class.html#makeTemp" class="summary-sig-name">makeTemp</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Piavca::Motion::makeTemp()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.makeTemp">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Motion-class.html#setName" class="summary-sig-name">setName</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Piavca::Motion::setName(tstring nm)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.setName">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Motion-class.html#getName" class="summary-sig-name">getName</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      tstring Piavca::Motion::getName()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.getName">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Motion-class.html#findSub" class="summary-sig-name">findSub</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      virtual Motion* Piavca::Motion::findSub(tstring nm)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.findSub">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Motion-class.html#findSubByType" class="summary-sig-name">findSubByType</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      virtual Motion* Piavca::Motion::findSubByType(const type_info 
+      &amp;ty)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.findSubByType">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Motion-class.html#getMotionLength" class="summary-sig-name">getMotionLength</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      virtual float Piavca::Motion::getMotionLength() const =0</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.getMotionLength">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Motion-class.html#isRandomAccess" class="summary-sig-name">isRandomAccess</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      virtual bool Piavca::Motion::isRandomAccess()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.isRandomAccess">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Motion-class.html#begin" class="summary-sig-name">begin</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      int Piavca::Motion::begin() const</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.begin">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Motion-class.html#end" class="summary-sig-name">end</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      int Motion::end() const</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.end">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Motion-class.html#next" class="summary-sig-name">next</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      int Motion::next(int &amp;trackId) const</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.next">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Motion-class.html#isNull" class="summary-sig-name">isNull</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      virtual bool Piavca::Motion::isNull(int trackId) const =0</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.isNull">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Motion-class.html#getTrackType" class="summary-sig-name">getTrackType</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      virtual trackType Piavca::Motion::getTrackType(int trackId) const =0</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.getTrackType">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Motion-class.html#pause" class="summary-sig-name">pause</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Motion::pause()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.pause">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="unpause"></a><span class="summary-sig-name">unpause</span>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Motion::unpause()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.unpause">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="preFrame"></a><span class="summary-sig-name">preFrame</span>(<span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.preFrame">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Motion-class.html#getFloatValueAtTime" class="summary-sig-name">getFloatValueAtTime</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      float Piavca::Motion::getFloatValueAtTime(int trackId, float time)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.getFloatValueAtTime">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Motion-class.html#getVecValueAtTime" class="summary-sig-name">getVecValueAtTime</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      Vec Piavca::Motion::getVecValueAtTime(int trackId, float time)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.getVecValueAtTime">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Motion-class.html#getQuatValueAtTime" class="summary-sig-name">getQuatValueAtTime</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      Quat Piavca::Motion::getQuatValueAtTime(int trackId, float time)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.getQuatValueAtTime">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Motion-class.html#getFloatValueAtTimeInternal" class="summary-sig-name">getFloatValueAtTimeInternal</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      virtual float Piavca::Motion::getFloatValueAtTimeInternal(int 
+      trackId, float time)=0</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.getFloatValueAtTimeInternal">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Motion-class.html#getVecValueAtTimeInternal" class="summary-sig-name">getVecValueAtTimeInternal</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      virtual Vec Piavca::Motion::getVecValueAtTimeInternal(int trackId, 
+      float time)=0</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.getVecValueAtTimeInternal">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Motion-class.html#getQuatValueAtTimeInternal" class="summary-sig-name">getQuatValueAtTimeInternal</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      virtual Quat Piavca::Motion::getQuatValueAtTimeInternal(int trackId, 
+      float time)=0</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.getQuatValueAtTimeInternal">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__disown__"></a><span class="summary-sig-name">__disown__</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.__disown__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__swig_setmethods__"></a><span class="summary-name">__swig_setmethods__</span> = <code title="{}">{}</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__setattr__"></a><span class="summary-name">__setattr__</span> = <code title="lambda self, name, value:">lambda self, name, value:</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__swig_getmethods__"></a><span class="summary-name">__swig_getmethods__</span> = <code title="{}">{}</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__getattr__"></a><span class="summary-name">__getattr__</span> = <code title="lambda self, name:">lambda self, name:</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__swig_destroy__"></a><span class="summary-name">__swig_destroy__</span> = <code title="_Piavca_base.delete_Motion">_Piavca_base.delete_Motion</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__del__"></a><span class="summary-name">__del__</span> = <code title="lambda self:">lambda self:</code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="clone"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">clone</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.clone">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>virtual Motion* Piavca::Motion::clone()=0</p>
+  <p>creates a copy of the motion</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="printInfo"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">printInfo</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.printInfo">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Motion::printInfo()</p>
+  <p>prints out info about the motion heirarchy</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="load"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">load</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.load">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>virtual void Piavca::Motion::load(Avatar *av)</p>
+  <p>called when the motion is loaded into an avatar</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="unload"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">unload</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.unload">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>virtual void Piavca::Motion::unload()</p>
+  <p>called when the motion is unloaded from an avatar</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="loaded"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">loaded</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.loaded">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>virtual bool Piavca::Motion::loaded()</p>
+  <p>checks if the motion has been loaded into an avatar</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="setStartTime"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">setStartTime</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.setStartTime">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>virtual void Piavca::Motion::setStartTime(float t)</p>
+  <p>sets the start time of the motion. Called when its loaded into an 
+  avatar.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getStartTime"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getStartTime</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.getStartTime">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>float Piavca::Motion::getStartTime()</p>
+  <p>return the start time of the motion</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getEndTime"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getEndTime</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.getEndTime">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>float Piavca::Motion::getEndTime()</p>
+  <p>returns the end time of the motion</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="reset"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">reset</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.reset">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>virtual void Piavca::Motion::reset()</p>
+  <p>does any resetting needed</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="Reference"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">Reference</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.Reference">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Piavca::Motion::Reference()</p>
+  <p>registers an owner for a motion, the motion will not be deleted until 
+  disposed is called.</p>
+  <p>Internally this increments the reference count.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="Dispose"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">Dispose</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.Dispose">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Motion::Dispose()</p>
+  <p>decrements the references count and deletes the motion if it reaches 
+  zero</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="makeTemp"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">makeTemp</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.makeTemp">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Piavca::Motion::makeTemp()</p>
+  <p>makes a motion temporary so that it is removed when all avatars have 
+  finished with it</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="setName"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">setName</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.setName">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Piavca::Motion::setName(tstring nm)</p>
+  <p>gives a name to the motion</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getName"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getName</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.getName">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>tstring Piavca::Motion::getName()</p>
+  <p>returns the name of the motion</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="findSub"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">findSub</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.findSub">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>virtual Motion* Piavca::Motion::findSub(tstring nm)</p>
+  <p>finds the first submotion with a given name</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="findSubByType"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">findSubByType</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.findSubByType">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>virtual Motion* Piavca::Motion::findSubByType(const type_info 
+  &amp;ty)</p>
+  <p>finds the first submotion with a given type</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getMotionLength"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getMotionLength</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.getMotionLength">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>virtual float Piavca::Motion::getMotionLength() const =0</p>
+  <p>gets the time of the end of the motion</p>
+  <p>Though time is represented in floating point, keyframes can only be 
+  set as integers to avoid problems with rounding errors. The granularity 
+  is the conversion factor between the two.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="isRandomAccess"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">isRandomAccess</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.isRandomAccess">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>virtual bool Piavca::Motion::isRandomAccess()</p>
+  <p>whether you can access a motions value at frames other than the 
+  current one</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="begin"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">begin</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.begin">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>int Piavca::Motion::begin() const</p>
+  <p>the ID of the first track that is present in the motion (the ordering 
+  is arbitrary)</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="end"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">end</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.end">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>int Motion::end() const</p>
+  <p>the last track + 1</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="next"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">next</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.next">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>int Motion::next(int &amp;trackId) const</p>
+  <p>given a track ID get the next valid ID</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="isNull"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">isNull</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.isNull">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>virtual bool Piavca::Motion::isNull(int trackId) const =0</p>
+  <p>given a track ID tests whether it actually points to anything or if 
+  its null</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getTrackType"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getTrackType</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.getTrackType">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>virtual trackType Piavca::Motion::getTrackType(int trackId) const 
+  =0</p>
+  <p>get the type of the track corresponding to an ID</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="pause"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">pause</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.pause">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Motion::pause()</p>
+  <p>pause the motion so that it can be restarted from the current 
+  point</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getFloatValueAtTime"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getFloatValueAtTime</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.getFloatValueAtTime">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>float Piavca::Motion::getFloatValueAtTime(int trackId, float time)</p>
+  <p>get the value of a track at a given time (only works for floats)</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getVecValueAtTime"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getVecValueAtTime</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.getVecValueAtTime">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Vec Piavca::Motion::getVecValueAtTime(int trackId, float time)</p>
+  <p>get the value of a track at a given time (only works for Vecs)</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getQuatValueAtTime"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getQuatValueAtTime</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.getQuatValueAtTime">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Quat Piavca::Motion::getQuatValueAtTime(int trackId, float time)</p>
+  <p>get the value of a track at a given time (only works for Quats)</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getFloatValueAtTimeInternal"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getFloatValueAtTimeInternal</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.getFloatValueAtTimeInternal">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>virtual float Piavca::Motion::getFloatValueAtTimeInternal(int trackId,
+  float time)=0</p>
+  <p>internal version of getFloatValueAtTime, to be overridden</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getVecValueAtTimeInternal"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getVecValueAtTimeInternal</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.getVecValueAtTimeInternal">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>virtual Vec Piavca::Motion::getVecValueAtTimeInternal(int trackId, 
+  float time)=0</p>
+  <p>internal version of getVecValueAtTime, to be overridden</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getQuatValueAtTimeInternal"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getQuatValueAtTimeInternal</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Motion.getQuatValueAtTimeInternal">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>virtual Quat Piavca::Motion::getQuatValueAtTimeInternal(int trackId, 
+  float time)=0</p>
+  <p>internal version of getQuatValueAtTime, to be overridden</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="Piavca-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Oct 15 20:02:34 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

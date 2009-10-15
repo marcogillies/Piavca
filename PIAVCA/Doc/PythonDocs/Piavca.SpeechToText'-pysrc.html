@@ -1,0 +1,771 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Piavca.SpeechToText'</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="Piavca-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="Piavca-module.html">Package&nbsp;Piavca</a> ::
+        Module&nbsp;SpeechToText'
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="Piavca.SpeechToText%27-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="Piavca.SpeechToText%27-module.html">Module Piavca.SpeechToText'</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment"># This file was created automatically by SWIG 1.3.30.</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-comment"># Don't modify this file, modify the SWIG interface instead.</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-comment"># This file is compatible with both classic and new-style classes.</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Package Piavca=Piavca-module.html"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-0', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Module Piavca.ImportException=Piavca.ImportException-module.html"><a title="Piavca.ImportException" class="py-name" href="#" onclick="return doclink('link-1', 'ImportException', 'link-1');">ImportException</a></tt> <tt class="py-keyword">import</tt> <tt id="link-2" class="py-name" targets="Class Piavca.ImportException.PiavcaImportException=Piavca.ImportException.PiavcaImportException-class.html"><a title="Piavca.ImportException.PiavcaImportException" class="py-name" href="#" onclick="return doclink('link-2', 'PiavcaImportException', 'link-2');">PiavcaImportException</a></tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line">        <tt class="py-keyword">import</tt> <tt class="py-name">_SpeechToText</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-keyword">except</tt> <tt class="py-name">ImportError</tt><tt class="py-op">:</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt id="link-3" class="py-name"><a title="Piavca.ImportException.PiavcaImportException" class="py-name" href="#" onclick="return doclink('link-3', 'PiavcaImportException', 'link-2');">PiavcaImportException</a></tt><tt class="py-op">(</tt><tt class="py-string">"speech to text missing"</tt><tt class="py-op">)</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">new</tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt id="link-4" class="py-name" targets="Variable Piavca.PiavcaGlut.PiavcaGlut.new_instancemethod=Piavca.PiavcaGlut.PiavcaGlut-module.html#new_instancemethod,Variable Piavca.Piavca_base.Piavca_base.new_instancemethod=Piavca.Piavca_base.Piavca_base-module.html#new_instancemethod,Variable Piavca.SpeechToText'.new_instancemethod=Piavca.SpeechToText%27-module.html#new_instancemethod"><a title="Piavca.PiavcaGlut.PiavcaGlut.new_instancemethod
+Piavca.Piavca_base.Piavca_base.new_instancemethod
+Piavca.SpeechToText'.new_instancemethod" class="py-name" href="#" onclick="return doclink('link-4', 'new_instancemethod', 'link-4');">new_instancemethod</a></tt> <tt class="py-op">=</tt> <tt class="py-name">new</tt><tt class="py-op">.</tt><tt class="py-name">instancemethod</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line">    <tt class="py-name">_swig_property</tt> <tt class="py-op">=</tt> <tt id="link-5" class="py-name" targets="Class property=property-class.html"><a title="property" class="py-name" href="#" onclick="return doclink('link-5', 'property', 'link-5');">property</a></tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"><tt class="py-keyword">except</tt> <tt class="py-name">NameError</tt><tt class="py-op">:</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">    <tt class="py-keyword">pass</tt> <tt class="py-comment"># Python &lt; 2.2 doesn't have 'property'.</tt> </tt>
+<a name="_swig_setattr_nondynamic"></a><div id="_swig_setattr_nondynamic-def"><a name="L17"></a><tt class="py-lineno">17</tt> <a class="py-toggle" href="#" id="_swig_setattr_nondynamic-toggle" onclick="return toggle('_swig_setattr_nondynamic');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.SpeechToText'-module.html#_swig_setattr_nondynamic">_swig_setattr_nondynamic</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">class_type</tt><tt class="py-op">,</tt><tt class="py-param">name</tt><tt class="py-op">,</tt><tt class="py-param">value</tt><tt class="py-op">,</tt><tt class="py-param">static</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="_swig_setattr_nondynamic-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="_swig_setattr_nondynamic-expanded"><a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-op">(</tt><tt id="link-6" class="py-name" targets="Variable Piavca.FreeCameraCanvas.name=Piavca.FreeCameraCanvas-module.html#name,Variable Piavca.PiavcaWXCanvas.name=Piavca.PiavcaWXCanvas-module.html#name,Variable Piavca.ViewerCanvas.name=Piavca.ViewerCanvas-module.html#name,Variable Piavca.gltb.name=Piavca.gltb-module.html#name,Variable Piavca.wxVirtualTracker'.name=Piavca.wxVirtualTracker%27-module.html#name"><a title="Piavca.FreeCameraCanvas.name
+Piavca.PiavcaWXCanvas.name
+Piavca.ViewerCanvas.name
+Piavca.gltb.name
+Piavca.wxVirtualTracker'.name" class="py-name" href="#" onclick="return doclink('link-6', 'name', 'link-6');">name</a></tt> <tt class="py-op">==</tt> <tt class="py-string">"thisown"</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">this</tt><tt class="py-op">.</tt><tt class="py-name">own</tt><tt class="py-op">(</tt><tt id="link-7" class="py-name" targets="Method Piavca.Piavca_base.Piavca_base.PySwigIterator.value()=Piavca.Piavca_base.Piavca_base.PySwigIterator-class.html#value"><a title="Piavca.Piavca_base.Piavca_base.PySwigIterator.value" class="py-name" href="#" onclick="return doclink('link-7', 'value', 'link-7');">value</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-op">(</tt><tt id="link-8" class="py-name"><a title="Piavca.FreeCameraCanvas.name
+Piavca.PiavcaWXCanvas.name
+Piavca.ViewerCanvas.name
+Piavca.gltb.name
+Piavca.wxVirtualTracker'.name" class="py-name" href="#" onclick="return doclink('link-8', 'name', 'link-6');">name</a></tt> <tt class="py-op">==</tt> <tt class="py-string">"this"</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">type</tt><tt class="py-op">(</tt><tt id="link-9" class="py-name"><a title="Piavca.Piavca_base.Piavca_base.PySwigIterator.value" class="py-name" href="#" onclick="return doclink('link-9', 'value', 'link-7');">value</a></tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">__name__</tt> <tt class="py-op">==</tt> <tt class="py-string">'PySwigObject'</tt><tt class="py-op">:</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__dict__</tt><tt class="py-op">[</tt><tt id="link-10" class="py-name"><a title="Piavca.FreeCameraCanvas.name
+Piavca.PiavcaWXCanvas.name
+Piavca.ViewerCanvas.name
+Piavca.gltb.name
+Piavca.wxVirtualTracker'.name" class="py-name" href="#" onclick="return doclink('link-10', 'name', 'link-6');">name</a></tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt id="link-11" class="py-name"><a title="Piavca.Piavca_base.Piavca_base.PySwigIterator.value" class="py-name" href="#" onclick="return doclink('link-11', 'value', 'link-7');">value</a></tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">    <tt class="py-name">method</tt> <tt class="py-op">=</tt> <tt class="py-name">class_type</tt><tt class="py-op">.</tt><tt id="link-12" class="py-name" targets="Variable Piavca.Motion.__swig_setmethods__=Piavca.Motion-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.Avatar.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.Avatar-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.AvatarMotion.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.AvatarMotion-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.AvatarMotionQueue.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.AvatarMotionQueue-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.AvatarPosture.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.AvatarPosture-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.AvatarPostureBlend.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.AvatarPostureBlend-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.AvatarTimeCallback.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.AvatarTimeCallback-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.BlendBetween.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.BlendBetween-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.Bound.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.Bound-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.ChangeMotionLength.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.ChangeMotionLength-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.ChoiceMotion.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.ChoiceMotion-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.ChoiceMotionWithDefault.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.ChoiceMotionWithDefault-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.Core.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.Core-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.CurrentValueMotion.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.CurrentValueMotion-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.EventMapChoice.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.EventMapChoice-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.ExpMapMotion.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.ExpMapMotion-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.KeyframeMotion.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.KeyframeMotion-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.LinearTransition.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.LinearTransition-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.LogMapMotion.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.LogMapMotion-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.LoopMotion.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.LoopMotion-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.MaskedMotion.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.MaskedMotion-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.Motion.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.Motion-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.MotionAdder.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.MotionAdder-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.MotionFilter.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.MotionFilter-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.MotionGraph.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.MotionGraph-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.MotionMask.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.MotionMask-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.MotionPosture.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.MotionPosture-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.MotionTransition.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.MotionTransition-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.MultiBlend.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.MultiBlend-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.MultiMotionCombiner-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.Object.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.Object-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.OverrideMotion.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.OverrideMotion-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.PointAt.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.PointAt-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.PostureBlend.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.PostureBlend-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.Proxemics.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.Proxemics-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.PySwigIterator.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.PySwigIterator-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.Quat.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.Quat-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.RandomChoiceMotion.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.RandomChoiceMotion-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.RandomTimingsMotion.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.RandomTimingsMotion-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.Reposition.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.Reposition-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.ScaleMotion.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.ScaleMotion-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.ScaleMotionRoot.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.ScaleMotionRoot-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.ScaleMotionSpeed.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.ScaleMotionSpeed-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.Sequence.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.Sequence-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.SequentialChoiceMotion.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.SequentialChoiceMotion-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.SmoothLoop.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.SmoothLoop-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.SmoothSequence.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.SmoothSequence-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.SmoothTransition.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.SmoothTransition-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.SubMotion.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.SubMotion-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.Subtract.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.Subtract-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.TangentSpace.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.TangentSpace-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.TimeCallback.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.TimeCallback-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.TimeOffset.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.TimeOffset-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.TimeRangeMotion.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.TimeRangeMotion-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.TimeWarp.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.TimeWarp-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.TransitionFunction.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.TransitionFunction-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.TwoMotionCombiner.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.TwoMotionCombiner-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.Vec.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.Vec-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.ZeroMotion.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.ZeroMotion-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.queueElement.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.queueElement-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.vectorI.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.vectorI-class.html#__swig_setmethods__,Variable Piavca.Piavca_base.Piavca_base.vectorS.__swig_setmethods__=Piavca.Piavca_base.Piavca_base.vectorS-class.html#__swig_setmethods__,Variable Piavca.SpeechToText'.SpeechToText.__swig_setmethods__=Piavca.SpeechToText%27.SpeechToText-class.html#__swig_setmethods__"><a title="Piavca.Motion.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.Avatar.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.AvatarMotion.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.AvatarMotionQueue.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.AvatarPosture.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.AvatarPostureBlend.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.AvatarTimeCallback.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.BlendBetween.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.Bound.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.ChangeMotionLength.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.ChoiceMotion.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.ChoiceMotionWithDefault.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.Core.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.CurrentValueMotion.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.EventMapChoice.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.ExpMapMotion.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.KeyframeMotion.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.LinearTransition.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.LogMapMotion.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.LoopMotion.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.MaskedMotion.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.Motion.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.MotionAdder.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.MotionFilter.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.MotionGraph.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.MotionMask.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.MotionPosture.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.MotionTransition.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.MultiBlend.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.Object.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.OverrideMotion.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.PointAt.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.PostureBlend.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.Proxemics.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.PySwigIterator.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.Quat.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.RandomChoiceMotion.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.RandomTimingsMotion.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.Reposition.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.ScaleMotion.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.ScaleMotionRoot.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.ScaleMotionSpeed.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.Sequence.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.SequentialChoiceMotion.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.SmoothLoop.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.SmoothSequence.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.SmoothTransition.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.SubMotion.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.Subtract.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.TangentSpace.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.TimeCallback.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.TimeOffset.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.TimeRangeMotion.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.TimeWarp.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.TransitionFunction.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.TwoMotionCombiner.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.Vec.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.ZeroMotion.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.queueElement.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.vectorI.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.vectorS.__swig_setmethods__
+Piavca.SpeechToText'.SpeechToText.__swig_setmethods__" class="py-name" href="#" onclick="return doclink('link-12', '__swig_setmethods__', 'link-12');">__swig_setmethods__</a></tt><tt class="py-op">.</tt><tt class="py-name">get</tt><tt class="py-op">(</tt><tt id="link-13" class="py-name"><a title="Piavca.FreeCameraCanvas.name
+Piavca.PiavcaWXCanvas.name
+Piavca.ViewerCanvas.name
+Piavca.gltb.name
+Piavca.wxVirtualTracker'.name" class="py-name" href="#" onclick="return doclink('link-13', 'name', 'link-6');">name</a></tt><tt class="py-op">,</tt><tt class="py-name">None</tt><tt class="py-op">)</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">method</tt><tt class="py-op">:</tt> <tt class="py-keyword">return</tt> <tt class="py-name">method</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt><tt id="link-14" class="py-name"><a title="Piavca.Piavca_base.Piavca_base.PySwigIterator.value" class="py-name" href="#" onclick="return doclink('link-14', 'value', 'link-7');">value</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-op">(</tt><tt class="py-keyword">not</tt> <tt class="py-name">static</tt><tt class="py-op">)</tt> <tt class="py-keyword">or</tt> <tt class="py-name">hasattr</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt><tt id="link-15" class="py-name"><a title="Piavca.FreeCameraCanvas.name
+Piavca.PiavcaWXCanvas.name
+Piavca.ViewerCanvas.name
+Piavca.gltb.name
+Piavca.wxVirtualTracker'.name" class="py-name" href="#" onclick="return doclink('link-15', 'name', 'link-6');">name</a></tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__dict__</tt><tt class="py-op">[</tt><tt id="link-16" class="py-name"><a title="Piavca.FreeCameraCanvas.name
+Piavca.PiavcaWXCanvas.name
+Piavca.ViewerCanvas.name
+Piavca.gltb.name
+Piavca.wxVirtualTracker'.name" class="py-name" href="#" onclick="return doclink('link-16', 'name', 'link-6');">name</a></tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt id="link-17" class="py-name"><a title="Piavca.Piavca_base.Piavca_base.PySwigIterator.value" class="py-name" href="#" onclick="return doclink('link-17', 'value', 'link-7');">value</a></tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line">    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">AttributeError</tt><tt class="py-op">(</tt><tt class="py-string">"You cannot add attributes to %s"</tt> <tt class="py-op">%</tt> <tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"> </tt>
+<a name="_swig_setattr"></a><div id="_swig_setattr-def"><a name="L30"></a><tt class="py-lineno">30</tt> <a class="py-toggle" href="#" id="_swig_setattr-toggle" onclick="return toggle('_swig_setattr');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.SpeechToText'-module.html#_swig_setattr">_swig_setattr</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">class_type</tt><tt class="py-op">,</tt><tt class="py-param">name</tt><tt class="py-op">,</tt><tt class="py-param">value</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="_swig_setattr-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="_swig_setattr-expanded"><a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt id="link-18" class="py-name" targets="Function Piavca.PiavcaGlut.PiavcaGlut._swig_setattr_nondynamic()=Piavca.PiavcaGlut.PiavcaGlut-module.html#_swig_setattr_nondynamic,Function Piavca.Piavca_base.Piavca_base._swig_setattr_nondynamic()=Piavca.Piavca_base.Piavca_base-module.html#_swig_setattr_nondynamic,Function Piavca.SpeechToText'._swig_setattr_nondynamic()=Piavca.SpeechToText%27-module.html#_swig_setattr_nondynamic"><a title="Piavca.PiavcaGlut.PiavcaGlut._swig_setattr_nondynamic
+Piavca.Piavca_base.Piavca_base._swig_setattr_nondynamic
+Piavca.SpeechToText'._swig_setattr_nondynamic" class="py-name" href="#" onclick="return doclink('link-18', '_swig_setattr_nondynamic', 'link-18');">_swig_setattr_nondynamic</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt><tt class="py-name">class_type</tt><tt class="py-op">,</tt><tt id="link-19" class="py-name"><a title="Piavca.FreeCameraCanvas.name
+Piavca.PiavcaWXCanvas.name
+Piavca.ViewerCanvas.name
+Piavca.gltb.name
+Piavca.wxVirtualTracker'.name" class="py-name" href="#" onclick="return doclink('link-19', 'name', 'link-6');">name</a></tt><tt class="py-op">,</tt><tt id="link-20" class="py-name"><a title="Piavca.Piavca_base.Piavca_base.PySwigIterator.value" class="py-name" href="#" onclick="return doclink('link-20', 'value', 'link-7');">value</a></tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line"> </tt>
+<a name="_swig_getattr"></a><div id="_swig_getattr-def"><a name="L33"></a><tt class="py-lineno">33</tt> <a class="py-toggle" href="#" id="_swig_getattr-toggle" onclick="return toggle('_swig_getattr');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.SpeechToText'-module.html#_swig_getattr">_swig_getattr</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">class_type</tt><tt class="py-op">,</tt><tt class="py-param">name</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="_swig_getattr-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="_swig_getattr-expanded"><a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-op">(</tt><tt id="link-21" class="py-name"><a title="Piavca.FreeCameraCanvas.name
+Piavca.PiavcaWXCanvas.name
+Piavca.ViewerCanvas.name
+Piavca.gltb.name
+Piavca.wxVirtualTracker'.name" class="py-name" href="#" onclick="return doclink('link-21', 'name', 'link-6');">name</a></tt> <tt class="py-op">==</tt> <tt class="py-string">"thisown"</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">this</tt><tt class="py-op">.</tt><tt class="py-name">own</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">    <tt class="py-name">method</tt> <tt class="py-op">=</tt> <tt class="py-name">class_type</tt><tt class="py-op">.</tt><tt id="link-22" class="py-name" targets="Variable Piavca.ChoiceMotion.__swig_getmethods__=Piavca.ChoiceMotion-class.html#__swig_getmethods__,Variable Piavca.KeyframeMotion.__swig_getmethods__=Piavca.KeyframeMotion-class.html#__swig_getmethods__,Variable Piavca.Motion.__swig_getmethods__=Piavca.Motion-class.html#__swig_getmethods__,Variable Piavca.MotionFilter.__swig_getmethods__=Piavca.MotionFilter-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.Avatar.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.Avatar-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.AvatarMotion.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.AvatarMotion-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.AvatarMotionQueue.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.AvatarMotionQueue-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.AvatarPosture.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.AvatarPosture-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.AvatarPostureBlend.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.AvatarPostureBlend-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.AvatarTimeCallback.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.AvatarTimeCallback-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.BlendBetween.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.BlendBetween-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.Bound.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.Bound-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.ChangeMotionLength.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.ChangeMotionLength-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.ChoiceMotion.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.ChoiceMotion-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.ChoiceMotionWithDefault.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.ChoiceMotionWithDefault-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.Core.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.Core-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.CurrentValueMotion.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.CurrentValueMotion-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.EventMapChoice.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.EventMapChoice-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.ExpMapMotion.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.ExpMapMotion-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.KeyframeMotion.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.KeyframeMotion-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.LinearTransition.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.LinearTransition-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.LogMapMotion.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.LogMapMotion-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.LoopMotion.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.LoopMotion-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.MaskedMotion.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.MaskedMotion-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.Motion.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.Motion-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.MotionAdder.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.MotionAdder-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.MotionFilter.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.MotionFilter-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.MotionGraph.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.MotionGraph-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.MotionMask.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.MotionMask-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.MotionPosture.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.MotionPosture-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.MotionTransition.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.MotionTransition-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.MultiBlend.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.MultiBlend-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.MultiMotionCombiner-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.Object.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.Object-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.OverrideMotion.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.OverrideMotion-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.PointAt.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.PointAt-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.PostureBlend.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.PostureBlend-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.Proxemics.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.Proxemics-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.PySwigIterator.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.PySwigIterator-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.Quat.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.Quat-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.RandomChoiceMotion.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.RandomChoiceMotion-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.RandomTimingsMotion.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.RandomTimingsMotion-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.Reposition.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.Reposition-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.ScaleMotion.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.ScaleMotion-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.ScaleMotionRoot.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.ScaleMotionRoot-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.ScaleMotionSpeed.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.ScaleMotionSpeed-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.Sequence.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.Sequence-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.SequentialChoiceMotion.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.SequentialChoiceMotion-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.SmoothLoop.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.SmoothLoop-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.SmoothSequence.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.SmoothSequence-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.SmoothTransition.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.SmoothTransition-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.SubMotion.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.SubMotion-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.Subtract.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.Subtract-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.TangentSpace.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.TangentSpace-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.TimeCallback.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.TimeCallback-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.TimeOffset.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.TimeOffset-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.TimeRangeMotion.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.TimeRangeMotion-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.TimeWarp.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.TimeWarp-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.TransitionFunction.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.TransitionFunction-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.TwoMotionCombiner.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.TwoMotionCombiner-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.Vec.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.Vec-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.ZeroMotion.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.ZeroMotion-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.queueElement.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.queueElement-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.vectorI.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.vectorI-class.html#__swig_getmethods__,Variable Piavca.Piavca_base.Piavca_base.vectorS.__swig_getmethods__=Piavca.Piavca_base.Piavca_base.vectorS-class.html#__swig_getmethods__,Variable Piavca.SpeechToText'.SpeechToText.__swig_getmethods__=Piavca.SpeechToText%27.SpeechToText-class.html#__swig_getmethods__"><a title="Piavca.ChoiceMotion.__swig_getmethods__
+Piavca.KeyframeMotion.__swig_getmethods__
+Piavca.Motion.__swig_getmethods__
+Piavca.MotionFilter.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.Avatar.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.AvatarMotion.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.AvatarMotionQueue.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.AvatarPosture.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.AvatarPostureBlend.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.AvatarTimeCallback.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.BlendBetween.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.Bound.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.ChangeMotionLength.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.ChoiceMotion.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.ChoiceMotionWithDefault.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.Core.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.CurrentValueMotion.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.EventMapChoice.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.ExpMapMotion.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.KeyframeMotion.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.LinearTransition.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.LogMapMotion.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.LoopMotion.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.MaskedMotion.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.Motion.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.MotionAdder.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.MotionFilter.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.MotionGraph.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.MotionMask.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.MotionPosture.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.MotionTransition.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.MultiBlend.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.Object.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.OverrideMotion.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.PointAt.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.PostureBlend.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.Proxemics.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.PySwigIterator.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.Quat.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.RandomChoiceMotion.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.RandomTimingsMotion.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.Reposition.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.ScaleMotion.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.ScaleMotionRoot.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.ScaleMotionSpeed.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.Sequence.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.SequentialChoiceMotion.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.SmoothLoop.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.SmoothSequence.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.SmoothTransition.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.SubMotion.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.Subtract.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.TangentSpace.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.TimeCallback.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.TimeOffset.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.TimeRangeMotion.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.TimeWarp.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.TransitionFunction.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.TwoMotionCombiner.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.Vec.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.ZeroMotion.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.queueElement.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.vectorI.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.vectorS.__swig_getmethods__
+Piavca.SpeechToText'.SpeechToText.__swig_getmethods__" class="py-name" href="#" onclick="return doclink('link-22', '__swig_getmethods__', 'link-22');">__swig_getmethods__</a></tt><tt class="py-op">.</tt><tt class="py-name">get</tt><tt class="py-op">(</tt><tt id="link-23" class="py-name"><a title="Piavca.FreeCameraCanvas.name
+Piavca.PiavcaWXCanvas.name
+Piavca.ViewerCanvas.name
+Piavca.gltb.name
+Piavca.wxVirtualTracker'.name" class="py-name" href="#" onclick="return doclink('link-23', 'name', 'link-6');">name</a></tt><tt class="py-op">,</tt><tt class="py-name">None</tt><tt class="py-op">)</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">method</tt><tt class="py-op">:</tt> <tt class="py-keyword">return</tt> <tt class="py-name">method</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">    <tt class="py-keyword">raise</tt> <tt class="py-name">AttributeError</tt><tt class="py-op">,</tt><tt id="link-24" class="py-name"><a title="Piavca.FreeCameraCanvas.name
+Piavca.PiavcaWXCanvas.name
+Piavca.ViewerCanvas.name
+Piavca.gltb.name
+Piavca.wxVirtualTracker'.name" class="py-name" href="#" onclick="return doclink('link-24', 'name', 'link-6');">name</a></tt> </tt>
+</div><a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line"> </tt>
+<a name="_swig_repr"></a><div id="_swig_repr-def"><a name="L39"></a><tt class="py-lineno">39</tt> <a class="py-toggle" href="#" id="_swig_repr-toggle" onclick="return toggle('_swig_repr');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.SpeechToText'-module.html#_swig_repr">_swig_repr</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="_swig_repr-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="_swig_repr-expanded"><a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line">    <tt class="py-keyword">try</tt><tt class="py-op">:</tt> <tt class="py-name">strthis</tt> <tt class="py-op">=</tt> <tt class="py-string">"proxy of "</tt> <tt class="py-op">+</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">this</tt><tt class="py-op">.</tt><tt id="link-25" class="py-name" targets="Method Piavca.Motion.__repr__()=Piavca.Motion-class.html#__repr__,Method Piavca.Piavca_base.Piavca_base.MotionMask.__repr__()=Piavca.Piavca_base.Piavca_base.MotionMask-class.html#__repr__,Method Piavca.Piavca_base.Piavca_base.Quat.__repr__()=Piavca.Piavca_base.Piavca_base.Quat-class.html#__repr__,Method Piavca.Piavca_base.Piavca_base.Vec.__repr__()=Piavca.Piavca_base.Piavca_base.Vec-class.html#__repr__"><a title="Piavca.Motion.__repr__
+Piavca.Piavca_base.Piavca_base.MotionMask.__repr__
+Piavca.Piavca_base.Piavca_base.Quat.__repr__
+Piavca.Piavca_base.Piavca_base.Vec.__repr__" class="py-name" href="#" onclick="return doclink('link-25', '__repr__', 'link-25');">__repr__</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">    <tt class="py-keyword">except</tt><tt class="py-op">:</tt> <tt class="py-name">strthis</tt> <tt class="py-op">=</tt> <tt class="py-string">""</tt> </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-string">"&lt;%s.%s; %s &gt;"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__class__</tt><tt class="py-op">.</tt><tt class="py-name">__module__</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__class__</tt><tt class="py-op">.</tt><tt class="py-name">__name__</tt><tt class="py-op">,</tt> <tt class="py-name">strthis</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line"> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">types</tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line"><tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line">    <tt id="link-26" class="py-name" targets="Class Piavca.PiavcaGlut.PiavcaGlut._object=Piavca.PiavcaGlut.PiavcaGlut._object-class.html,Class Piavca.Piavca_base.Piavca_base._object=Piavca.Piavca_base.Piavca_base._object-class.html,Class Piavca.SpeechToText'._object=Piavca.SpeechToText%27._object-class.html"><a title="Piavca.PiavcaGlut.PiavcaGlut._object
+Piavca.Piavca_base.Piavca_base._object
+Piavca.SpeechToText'._object" class="py-name" href="#" onclick="return doclink('link-26', '_object', 'link-26');">_object</a></tt> <tt class="py-op">=</tt> <tt class="py-name">types</tt><tt class="py-op">.</tt><tt class="py-name">ObjectType</tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line">    <tt id="link-27" class="py-name" targets="Variable Piavca.PiavcaGlut.PiavcaGlut._newclass=Piavca.PiavcaGlut.PiavcaGlut-module.html#_newclass,Variable Piavca.Piavca_base.Piavca_base._newclass=Piavca.Piavca_base.Piavca_base-module.html#_newclass,Variable Piavca.SpeechToText'._newclass=Piavca.SpeechToText%27-module.html#_newclass"><a title="Piavca.PiavcaGlut.PiavcaGlut._newclass
+Piavca.Piavca_base.Piavca_base._newclass
+Piavca.SpeechToText'._newclass" class="py-name" href="#" onclick="return doclink('link-27', '_newclass', 'link-27');">_newclass</a></tt> <tt class="py-op">=</tt> <tt class="py-number">1</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line"><tt class="py-keyword">except</tt> <tt class="py-name">AttributeError</tt><tt class="py-op">:</tt> </tt>
+<a name="_object"></a><div id="_object-def"><a name="L49"></a><tt class="py-lineno">49</tt> <a class="py-toggle" href="#" id="_object-toggle" onclick="return toggle('_object');">-</a><tt class="py-line">    <tt class="py-keyword">class</tt> <a class="py-def-name" href="Piavca.SpeechToText'._object-class.html">_object</a> <tt class="py-op">:</tt> <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line">    <tt id="link-28" class="py-name"><a title="Piavca.PiavcaGlut.PiavcaGlut._newclass
+Piavca.Piavca_base.Piavca_base._newclass
+Piavca.SpeechToText'._newclass" class="py-name" href="#" onclick="return doclink('link-28', '_newclass', 'link-27');">_newclass</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line"><tt class="py-keyword">del</tt> <tt class="py-name">types</tt> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line"> </tt>
+<a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line"> </tt>
+<a name="SpeechToText"></a><div id="SpeechToText-def"><a name="L54"></a><tt class="py-lineno">54</tt> <a class="py-toggle" href="#" id="SpeechToText-toggle" onclick="return toggle('SpeechToText');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="Piavca.SpeechToText'.SpeechToText-class.html">SpeechToText</a><tt class="py-op">(</tt><tt class="py-base-class">_object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SpeechToText-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="SpeechToText-expanded"><a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line">    <tt id="link-29" class="py-name"><a title="Piavca.Motion.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.Avatar.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.AvatarMotion.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.AvatarMotionQueue.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.AvatarPosture.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.AvatarPostureBlend.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.AvatarTimeCallback.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.BlendBetween.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.Bound.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.ChangeMotionLength.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.ChoiceMotion.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.ChoiceMotionWithDefault.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.Core.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.CurrentValueMotion.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.EventMapChoice.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.ExpMapMotion.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.KeyframeMotion.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.LinearTransition.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.LogMapMotion.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.LoopMotion.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.MaskedMotion.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.Motion.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.MotionAdder.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.MotionFilter.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.MotionGraph.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.MotionMask.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.MotionPosture.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.MotionTransition.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.MultiBlend.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.Object.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.OverrideMotion.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.PointAt.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.PostureBlend.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.Proxemics.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.PySwigIterator.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.Quat.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.RandomChoiceMotion.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.RandomTimingsMotion.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.Reposition.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.ScaleMotion.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.ScaleMotionRoot.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.ScaleMotionSpeed.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.Sequence.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.SequentialChoiceMotion.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.SmoothLoop.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.SmoothSequence.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.SmoothTransition.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.SubMotion.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.Subtract.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.TangentSpace.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.TimeCallback.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.TimeOffset.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.TimeRangeMotion.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.TimeWarp.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.TransitionFunction.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.TwoMotionCombiner.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.Vec.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.ZeroMotion.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.queueElement.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.vectorI.__swig_setmethods__
+Piavca.Piavca_base.Piavca_base.vectorS.__swig_setmethods__
+Piavca.SpeechToText'.SpeechToText.__swig_setmethods__" class="py-name" href="#" onclick="return doclink('link-29', '__swig_setmethods__', 'link-12');">__swig_setmethods__</a></tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line">    <tt id="link-30" class="py-name" targets="Method Piavca.ChoiceMotion.__setattr__()=Piavca.ChoiceMotion-class.html#__setattr__,Method Piavca.KeyframeMotion.__setattr__()=Piavca.KeyframeMotion-class.html#__setattr__,Method Piavca.Motion.__setattr__()=Piavca.Motion-class.html#__setattr__,Method Piavca.MotionFilter.__setattr__()=Piavca.MotionFilter-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.Avatar.__setattr__=Piavca.Piavca_base.Piavca_base.Avatar-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.AvatarMotion.__setattr__=Piavca.Piavca_base.Piavca_base.AvatarMotion-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.AvatarMotionQueue.__setattr__=Piavca.Piavca_base.Piavca_base.AvatarMotionQueue-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.AvatarPosture.__setattr__=Piavca.Piavca_base.Piavca_base.AvatarPosture-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.AvatarPostureBlend.__setattr__=Piavca.Piavca_base.Piavca_base.AvatarPostureBlend-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.AvatarTimeCallback.__setattr__=Piavca.Piavca_base.Piavca_base.AvatarTimeCallback-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.BlendBetween.__setattr__=Piavca.Piavca_base.Piavca_base.BlendBetween-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.Bound.__setattr__=Piavca.Piavca_base.Piavca_base.Bound-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.ChangeMotionLength.__setattr__=Piavca.Piavca_base.Piavca_base.ChangeMotionLength-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.ChoiceMotion.__setattr__=Piavca.Piavca_base.Piavca_base.ChoiceMotion-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.ChoiceMotionWithDefault.__setattr__=Piavca.Piavca_base.Piavca_base.ChoiceMotionWithDefault-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.Core.__setattr__=Piavca.Piavca_base.Piavca_base.Core-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.CurrentValueMotion.__setattr__=Piavca.Piavca_base.Piavca_base.CurrentValueMotion-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.EventMapChoice.__setattr__=Piavca.Piavca_base.Piavca_base.EventMapChoice-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.ExpMapMotion.__setattr__=Piavca.Piavca_base.Piavca_base.ExpMapMotion-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.KeyframeMotion.__setattr__=Piavca.Piavca_base.Piavca_base.KeyframeMotion-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.LinearTransition.__setattr__=Piavca.Piavca_base.Piavca_base.LinearTransition-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.LogMapMotion.__setattr__=Piavca.Piavca_base.Piavca_base.LogMapMotion-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.LoopMotion.__setattr__=Piavca.Piavca_base.Piavca_base.LoopMotion-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.MaskedMotion.__setattr__=Piavca.Piavca_base.Piavca_base.MaskedMotion-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.Motion.__setattr__=Piavca.Piavca_base.Piavca_base.Motion-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.MotionAdder.__setattr__=Piavca.Piavca_base.Piavca_base.MotionAdder-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.MotionFilter.__setattr__=Piavca.Piavca_base.Piavca_base.MotionFilter-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.MotionGraph.__setattr__=Piavca.Piavca_base.Piavca_base.MotionGraph-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.MotionMask.__setattr__=Piavca.Piavca_base.Piavca_base.MotionMask-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.MotionPosture.__setattr__=Piavca.Piavca_base.Piavca_base.MotionPosture-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.MotionTransition.__setattr__=Piavca.Piavca_base.Piavca_base.MotionTransition-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.MultiBlend.__setattr__=Piavca.Piavca_base.Piavca_base.MultiBlend-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.__setattr__=Piavca.Piavca_base.Piavca_base.MultiMotionCombiner-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.Object.__setattr__=Piavca.Piavca_base.Piavca_base.Object-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.OverrideMotion.__setattr__=Piavca.Piavca_base.Piavca_base.OverrideMotion-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.PointAt.__setattr__=Piavca.Piavca_base.Piavca_base.PointAt-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.PostureBlend.__setattr__=Piavca.Piavca_base.Piavca_base.PostureBlend-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.Proxemics.__setattr__=Piavca.Piavca_base.Piavca_base.Proxemics-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.PySwigIterator.__setattr__=Piavca.Piavca_base.Piavca_base.PySwigIterator-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.Quat.__setattr__=Piavca.Piavca_base.Piavca_base.Quat-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.RandomChoiceMotion.__setattr__=Piavca.Piavca_base.Piavca_base.RandomChoiceMotion-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.RandomTimingsMotion.__setattr__=Piavca.Piavca_base.Piavca_base.RandomTimingsMotion-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.Reposition.__setattr__=Piavca.Piavca_base.Piavca_base.Reposition-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.ScaleMotion.__setattr__=Piavca.Piavca_base.Piavca_base.ScaleMotion-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.ScaleMotionRoot.__setattr__=Piavca.Piavca_base.Piavca_base.ScaleMotionRoot-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.ScaleMotionSpeed.__setattr__=Piavca.Piavca_base.Piavca_base.ScaleMotionSpeed-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.Sequence.__setattr__=Piavca.Piavca_base.Piavca_base.Sequence-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.SequentialChoiceMotion.__setattr__=Piavca.Piavca_base.Piavca_base.SequentialChoiceMotion-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.SmoothLoop.__setattr__=Piavca.Piavca_base.Piavca_base.SmoothLoop-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.SmoothSequence.__setattr__=Piavca.Piavca_base.Piavca_base.SmoothSequence-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.SmoothTransition.__setattr__=Piavca.Piavca_base.Piavca_base.SmoothTransition-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.SubMotion.__setattr__=Piavca.Piavca_base.Piavca_base.SubMotion-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.Subtract.__setattr__=Piavca.Piavca_base.Piavca_base.Subtract-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.TangentSpace.__setattr__=Piavca.Piavca_base.Piavca_base.TangentSpace-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.TimeCallback.__setattr__=Piavca.Piavca_base.Piavca_base.TimeCallback-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.TimeOffset.__setattr__=Piavca.Piavca_base.Piavca_base.TimeOffset-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.TimeRangeMotion.__setattr__=Piavca.Piavca_base.Piavca_base.TimeRangeMotion-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.TimeWarp.__setattr__=Piavca.Piavca_base.Piavca_base.TimeWarp-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.TransitionFunction.__setattr__=Piavca.Piavca_base.Piavca_base.TransitionFunction-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.TwoMotionCombiner.__setattr__=Piavca.Piavca_base.Piavca_base.TwoMotionCombiner-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.Vec.__setattr__=Piavca.Piavca_base.Piavca_base.Vec-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.ZeroMotion.__setattr__=Piavca.Piavca_base.Piavca_base.ZeroMotion-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.queueElement.__setattr__=Piavca.Piavca_base.Piavca_base.queueElement-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.vectorI.__setattr__=Piavca.Piavca_base.Piavca_base.vectorI-class.html#__setattr__,Variable Piavca.Piavca_base.Piavca_base.vectorS.__setattr__=Piavca.Piavca_base.Piavca_base.vectorS-class.html#__setattr__,Variable Piavca.SpeechToText'.SpeechToText.__setattr__=Piavca.SpeechToText%27.SpeechToText-class.html#__setattr__"><a title="Piavca.ChoiceMotion.__setattr__
+Piavca.KeyframeMotion.__setattr__
+Piavca.Motion.__setattr__
+Piavca.MotionFilter.__setattr__
+Piavca.Piavca_base.Piavca_base.Avatar.__setattr__
+Piavca.Piavca_base.Piavca_base.AvatarMotion.__setattr__
+Piavca.Piavca_base.Piavca_base.AvatarMotionQueue.__setattr__
+Piavca.Piavca_base.Piavca_base.AvatarPosture.__setattr__
+Piavca.Piavca_base.Piavca_base.AvatarPostureBlend.__setattr__
+Piavca.Piavca_base.Piavca_base.AvatarTimeCallback.__setattr__
+Piavca.Piavca_base.Piavca_base.BlendBetween.__setattr__
+Piavca.Piavca_base.Piavca_base.Bound.__setattr__
+Piavca.Piavca_base.Piavca_base.ChangeMotionLength.__setattr__
+Piavca.Piavca_base.Piavca_base.ChoiceMotion.__setattr__
+Piavca.Piavca_base.Piavca_base.ChoiceMotionWithDefault.__setattr__
+Piavca.Piavca_base.Piavca_base.Core.__setattr__
+Piavca.Piavca_base.Piavca_base.CurrentValueMotion.__setattr__
+Piavca.Piavca_base.Piavca_base.EventMapChoice.__setattr__
+Piavca.Piavca_base.Piavca_base.ExpMapMotion.__setattr__
+Piavca.Piavca_base.Piavca_base.KeyframeMotion.__setattr__
+Piavca.Piavca_base.Piavca_base.LinearTransition.__setattr__
+Piavca.Piavca_base.Piavca_base.LogMapMotion.__setattr__
+Piavca.Piavca_base.Piavca_base.LoopMotion.__setattr__
+Piavca.Piavca_base.Piavca_base.MaskedMotion.__setattr__
+Piavca.Piavca_base.Piavca_base.Motion.__setattr__
+Piavca.Piavca_base.Piavca_base.MotionAdder.__setattr__
+Piavca.Piavca_base.Piavca_base.MotionFilter.__setattr__
+Piavca.Piavca_base.Piavca_base.MotionGraph.__setattr__
+Piavca.Piavca_base.Piavca_base.MotionMask.__setattr__
+Piavca.Piavca_base.Piavca_base.MotionPosture.__setattr__
+Piavca.Piavca_base.Piavca_base.MotionTransition.__setattr__
+Piavca.Piavca_base.Piavca_base.MultiBlend.__setattr__
+Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.__setattr__
+Piavca.Piavca_base.Piavca_base.Object.__setattr__
+Piavca.Piavca_base.Piavca_base.OverrideMotion.__setattr__
+Piavca.Piavca_base.Piavca_base.PointAt.__setattr__
+Piavca.Piavca_base.Piavca_base.PostureBlend.__setattr__
+Piavca.Piavca_base.Piavca_base.Proxemics.__setattr__
+Piavca.Piavca_base.Piavca_base.PySwigIterator.__setattr__
+Piavca.Piavca_base.Piavca_base.Quat.__setattr__
+Piavca.Piavca_base.Piavca_base.RandomChoiceMotion.__setattr__
+Piavca.Piavca_base.Piavca_base.RandomTimingsMotion.__setattr__
+Piavca.Piavca_base.Piavca_base.Reposition.__setattr__
+Piavca.Piavca_base.Piavca_base.ScaleMotion.__setattr__
+Piavca.Piavca_base.Piavca_base.ScaleMotionRoot.__setattr__
+Piavca.Piavca_base.Piavca_base.ScaleMotionSpeed.__setattr__
+Piavca.Piavca_base.Piavca_base.Sequence.__setattr__
+Piavca.Piavca_base.Piavca_base.SequentialChoiceMotion.__setattr__
+Piavca.Piavca_base.Piavca_base.SmoothLoop.__setattr__
+Piavca.Piavca_base.Piavca_base.SmoothSequence.__setattr__
+Piavca.Piavca_base.Piavca_base.SmoothTransition.__setattr__
+Piavca.Piavca_base.Piavca_base.SubMotion.__setattr__
+Piavca.Piavca_base.Piavca_base.Subtract.__setattr__
+Piavca.Piavca_base.Piavca_base.TangentSpace.__setattr__
+Piavca.Piavca_base.Piavca_base.TimeCallback.__setattr__
+Piavca.Piavca_base.Piavca_base.TimeOffset.__setattr__
+Piavca.Piavca_base.Piavca_base.TimeRangeMotion.__setattr__
+Piavca.Piavca_base.Piavca_base.TimeWarp.__setattr__
+Piavca.Piavca_base.Piavca_base.TransitionFunction.__setattr__
+Piavca.Piavca_base.Piavca_base.TwoMotionCombiner.__setattr__
+Piavca.Piavca_base.Piavca_base.Vec.__setattr__
+Piavca.Piavca_base.Piavca_base.ZeroMotion.__setattr__
+Piavca.Piavca_base.Piavca_base.queueElement.__setattr__
+Piavca.Piavca_base.Piavca_base.vectorI.__setattr__
+Piavca.Piavca_base.Piavca_base.vectorS.__setattr__
+Piavca.SpeechToText'.SpeechToText.__setattr__" class="py-name" href="#" onclick="return doclink('link-30', '__setattr__', 'link-30');">__setattr__</a></tt> <tt class="py-op">=</tt> <tt class="py-keyword">lambda</tt> <tt class="py-name">self</tt><tt class="py-op">,</tt> <tt id="link-31" class="py-name"><a title="Piavca.FreeCameraCanvas.name
+Piavca.PiavcaWXCanvas.name
+Piavca.ViewerCanvas.name
+Piavca.gltb.name
+Piavca.wxVirtualTracker'.name" class="py-name" href="#" onclick="return doclink('link-31', 'name', 'link-6');">name</a></tt><tt class="py-op">,</tt> <tt id="link-32" class="py-name"><a title="Piavca.Piavca_base.Piavca_base.PySwigIterator.value" class="py-name" href="#" onclick="return doclink('link-32', 'value', 'link-7');">value</a></tt><tt class="py-op">:</tt> <tt id="link-33" class="py-name" targets="Function Piavca.PiavcaGlut.PiavcaGlut._swig_setattr()=Piavca.PiavcaGlut.PiavcaGlut-module.html#_swig_setattr,Function Piavca.Piavca_base.Piavca_base._swig_setattr()=Piavca.Piavca_base.Piavca_base-module.html#_swig_setattr,Function Piavca.SpeechToText'._swig_setattr()=Piavca.SpeechToText%27-module.html#_swig_setattr"><a title="Piavca.PiavcaGlut.PiavcaGlut._swig_setattr
+Piavca.Piavca_base.Piavca_base._swig_setattr
+Piavca.SpeechToText'._swig_setattr" class="py-name" href="#" onclick="return doclink('link-33', '_swig_setattr', 'link-33');">_swig_setattr</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt id="link-34" class="py-name" targets="Variable Piavca.SpeechToText=Piavca-module.html#SpeechToText,Class Piavca.SpeechToText'.SpeechToText=Piavca.SpeechToText%27.SpeechToText-class.html"><a title="Piavca.SpeechToText
+Piavca.SpeechToText'.SpeechToText" class="py-name" href="#" onclick="return doclink('link-34', 'SpeechToText', 'link-34');">SpeechToText</a></tt><tt class="py-op">,</tt> <tt id="link-35" class="py-name"><a title="Piavca.FreeCameraCanvas.name
+Piavca.PiavcaWXCanvas.name
+Piavca.ViewerCanvas.name
+Piavca.gltb.name
+Piavca.wxVirtualTracker'.name" class="py-name" href="#" onclick="return doclink('link-35', 'name', 'link-6');">name</a></tt><tt class="py-op">,</tt> <tt id="link-36" class="py-name"><a title="Piavca.Piavca_base.Piavca_base.PySwigIterator.value" class="py-name" href="#" onclick="return doclink('link-36', 'value', 'link-7');">value</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line">    <tt id="link-37" class="py-name"><a title="Piavca.ChoiceMotion.__swig_getmethods__
+Piavca.KeyframeMotion.__swig_getmethods__
+Piavca.Motion.__swig_getmethods__
+Piavca.MotionFilter.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.Avatar.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.AvatarMotion.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.AvatarMotionQueue.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.AvatarPosture.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.AvatarPostureBlend.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.AvatarTimeCallback.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.BlendBetween.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.Bound.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.ChangeMotionLength.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.ChoiceMotion.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.ChoiceMotionWithDefault.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.Core.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.CurrentValueMotion.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.EventMapChoice.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.ExpMapMotion.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.KeyframeMotion.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.LinearTransition.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.LogMapMotion.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.LoopMotion.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.MaskedMotion.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.Motion.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.MotionAdder.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.MotionFilter.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.MotionGraph.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.MotionMask.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.MotionPosture.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.MotionTransition.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.MultiBlend.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.Object.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.OverrideMotion.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.PointAt.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.PostureBlend.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.Proxemics.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.PySwigIterator.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.Quat.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.RandomChoiceMotion.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.RandomTimingsMotion.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.Reposition.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.ScaleMotion.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.ScaleMotionRoot.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.ScaleMotionSpeed.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.Sequence.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.SequentialChoiceMotion.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.SmoothLoop.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.SmoothSequence.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.SmoothTransition.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.SubMotion.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.Subtract.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.TangentSpace.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.TimeCallback.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.TimeOffset.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.TimeRangeMotion.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.TimeWarp.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.TransitionFunction.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.TwoMotionCombiner.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.Vec.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.ZeroMotion.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.queueElement.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.vectorI.__swig_getmethods__
+Piavca.Piavca_base.Piavca_base.vectorS.__swig_getmethods__
+Piavca.SpeechToText'.SpeechToText.__swig_getmethods__" class="py-name" href="#" onclick="return doclink('link-37', '__swig_getmethods__', 'link-22');">__swig_getmethods__</a></tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line">    <tt id="link-38" class="py-name" targets="Method Piavca.ChoiceMotion.__getattr__()=Piavca.ChoiceMotion-class.html#__getattr__,Method Piavca.KeyframeMotion.__getattr__()=Piavca.KeyframeMotion-class.html#__getattr__,Method Piavca.Motion.__getattr__()=Piavca.Motion-class.html#__getattr__,Method Piavca.MotionFilter.__getattr__()=Piavca.MotionFilter-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.Avatar.__getattr__=Piavca.Piavca_base.Piavca_base.Avatar-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.AvatarMotion.__getattr__=Piavca.Piavca_base.Piavca_base.AvatarMotion-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.AvatarMotionQueue.__getattr__=Piavca.Piavca_base.Piavca_base.AvatarMotionQueue-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.AvatarPosture.__getattr__=Piavca.Piavca_base.Piavca_base.AvatarPosture-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.AvatarPostureBlend.__getattr__=Piavca.Piavca_base.Piavca_base.AvatarPostureBlend-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.AvatarTimeCallback.__getattr__=Piavca.Piavca_base.Piavca_base.AvatarTimeCallback-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.BlendBetween.__getattr__=Piavca.Piavca_base.Piavca_base.BlendBetween-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.Bound.__getattr__=Piavca.Piavca_base.Piavca_base.Bound-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.ChangeMotionLength.__getattr__=Piavca.Piavca_base.Piavca_base.ChangeMotionLength-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.ChoiceMotion.__getattr__=Piavca.Piavca_base.Piavca_base.ChoiceMotion-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.ChoiceMotionWithDefault.__getattr__=Piavca.Piavca_base.Piavca_base.ChoiceMotionWithDefault-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.Core.__getattr__=Piavca.Piavca_base.Piavca_base.Core-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.CurrentValueMotion.__getattr__=Piavca.Piavca_base.Piavca_base.CurrentValueMotion-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.EventMapChoice.__getattr__=Piavca.Piavca_base.Piavca_base.EventMapChoice-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.ExpMapMotion.__getattr__=Piavca.Piavca_base.Piavca_base.ExpMapMotion-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.KeyframeMotion.__getattr__=Piavca.Piavca_base.Piavca_base.KeyframeMotion-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.LinearTransition.__getattr__=Piavca.Piavca_base.Piavca_base.LinearTransition-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.LogMapMotion.__getattr__=Piavca.Piavca_base.Piavca_base.LogMapMotion-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.LoopMotion.__getattr__=Piavca.Piavca_base.Piavca_base.LoopMotion-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.MaskedMotion.__getattr__=Piavca.Piavca_base.Piavca_base.MaskedMotion-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.Motion.__getattr__=Piavca.Piavca_base.Piavca_base.Motion-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.MotionAdder.__getattr__=Piavca.Piavca_base.Piavca_base.MotionAdder-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.MotionFilter.__getattr__=Piavca.Piavca_base.Piavca_base.MotionFilter-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.MotionGraph.__getattr__=Piavca.Piavca_base.Piavca_base.MotionGraph-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.MotionMask.__getattr__=Piavca.Piavca_base.Piavca_base.MotionMask-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.MotionPosture.__getattr__=Piavca.Piavca_base.Piavca_base.MotionPosture-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.MotionTransition.__getattr__=Piavca.Piavca_base.Piavca_base.MotionTransition-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.MultiBlend.__getattr__=Piavca.Piavca_base.Piavca_base.MultiBlend-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.__getattr__=Piavca.Piavca_base.Piavca_base.MultiMotionCombiner-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.Object.__getattr__=Piavca.Piavca_base.Piavca_base.Object-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.OverrideMotion.__getattr__=Piavca.Piavca_base.Piavca_base.OverrideMotion-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.PointAt.__getattr__=Piavca.Piavca_base.Piavca_base.PointAt-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.PostureBlend.__getattr__=Piavca.Piavca_base.Piavca_base.PostureBlend-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.Proxemics.__getattr__=Piavca.Piavca_base.Piavca_base.Proxemics-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.PySwigIterator.__getattr__=Piavca.Piavca_base.Piavca_base.PySwigIterator-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.Quat.__getattr__=Piavca.Piavca_base.Piavca_base.Quat-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.RandomChoiceMotion.__getattr__=Piavca.Piavca_base.Piavca_base.RandomChoiceMotion-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.RandomTimingsMotion.__getattr__=Piavca.Piavca_base.Piavca_base.RandomTimingsMotion-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.Reposition.__getattr__=Piavca.Piavca_base.Piavca_base.Reposition-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.ScaleMotion.__getattr__=Piavca.Piavca_base.Piavca_base.ScaleMotion-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.ScaleMotionRoot.__getattr__=Piavca.Piavca_base.Piavca_base.ScaleMotionRoot-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.ScaleMotionSpeed.__getattr__=Piavca.Piavca_base.Piavca_base.ScaleMotionSpeed-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.Sequence.__getattr__=Piavca.Piavca_base.Piavca_base.Sequence-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.SequentialChoiceMotion.__getattr__=Piavca.Piavca_base.Piavca_base.SequentialChoiceMotion-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.SmoothLoop.__getattr__=Piavca.Piavca_base.Piavca_base.SmoothLoop-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.SmoothSequence.__getattr__=Piavca.Piavca_base.Piavca_base.SmoothSequence-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.SmoothTransition.__getattr__=Piavca.Piavca_base.Piavca_base.SmoothTransition-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.SubMotion.__getattr__=Piavca.Piavca_base.Piavca_base.SubMotion-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.Subtract.__getattr__=Piavca.Piavca_base.Piavca_base.Subtract-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.TangentSpace.__getattr__=Piavca.Piavca_base.Piavca_base.TangentSpace-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.TimeCallback.__getattr__=Piavca.Piavca_base.Piavca_base.TimeCallback-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.TimeOffset.__getattr__=Piavca.Piavca_base.Piavca_base.TimeOffset-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.TimeRangeMotion.__getattr__=Piavca.Piavca_base.Piavca_base.TimeRangeMotion-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.TimeWarp.__getattr__=Piavca.Piavca_base.Piavca_base.TimeWarp-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.TransitionFunction.__getattr__=Piavca.Piavca_base.Piavca_base.TransitionFunction-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.TwoMotionCombiner.__getattr__=Piavca.Piavca_base.Piavca_base.TwoMotionCombiner-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.Vec.__getattr__=Piavca.Piavca_base.Piavca_base.Vec-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.ZeroMotion.__getattr__=Piavca.Piavca_base.Piavca_base.ZeroMotion-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.queueElement.__getattr__=Piavca.Piavca_base.Piavca_base.queueElement-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.vectorI.__getattr__=Piavca.Piavca_base.Piavca_base.vectorI-class.html#__getattr__,Variable Piavca.Piavca_base.Piavca_base.vectorS.__getattr__=Piavca.Piavca_base.Piavca_base.vectorS-class.html#__getattr__,Variable Piavca.SpeechToText'.SpeechToText.__getattr__=Piavca.SpeechToText%27.SpeechToText-class.html#__getattr__"><a title="Piavca.ChoiceMotion.__getattr__
+Piavca.KeyframeMotion.__getattr__
+Piavca.Motion.__getattr__
+Piavca.MotionFilter.__getattr__
+Piavca.Piavca_base.Piavca_base.Avatar.__getattr__
+Piavca.Piavca_base.Piavca_base.AvatarMotion.__getattr__
+Piavca.Piavca_base.Piavca_base.AvatarMotionQueue.__getattr__
+Piavca.Piavca_base.Piavca_base.AvatarPosture.__getattr__
+Piavca.Piavca_base.Piavca_base.AvatarPostureBlend.__getattr__
+Piavca.Piavca_base.Piavca_base.AvatarTimeCallback.__getattr__
+Piavca.Piavca_base.Piavca_base.BlendBetween.__getattr__
+Piavca.Piavca_base.Piavca_base.Bound.__getattr__
+Piavca.Piavca_base.Piavca_base.ChangeMotionLength.__getattr__
+Piavca.Piavca_base.Piavca_base.ChoiceMotion.__getattr__
+Piavca.Piavca_base.Piavca_base.ChoiceMotionWithDefault.__getattr__
+Piavca.Piavca_base.Piavca_base.Core.__getattr__
+Piavca.Piavca_base.Piavca_base.CurrentValueMotion.__getattr__
+Piavca.Piavca_base.Piavca_base.EventMapChoice.__getattr__
+Piavca.Piavca_base.Piavca_base.ExpMapMotion.__getattr__
+Piavca.Piavca_base.Piavca_base.KeyframeMotion.__getattr__
+Piavca.Piavca_base.Piavca_base.LinearTransition.__getattr__
+Piavca.Piavca_base.Piavca_base.LogMapMotion.__getattr__
+Piavca.Piavca_base.Piavca_base.LoopMotion.__getattr__
+Piavca.Piavca_base.Piavca_base.MaskedMotion.__getattr__
+Piavca.Piavca_base.Piavca_base.Motion.__getattr__
+Piavca.Piavca_base.Piavca_base.MotionAdder.__getattr__
+Piavca.Piavca_base.Piavca_base.MotionFilter.__getattr__
+Piavca.Piavca_base.Piavca_base.MotionGraph.__getattr__
+Piavca.Piavca_base.Piavca_base.MotionMask.__getattr__
+Piavca.Piavca_base.Piavca_base.MotionPosture.__getattr__
+Piavca.Piavca_base.Piavca_base.MotionTransition.__getattr__
+Piavca.Piavca_base.Piavca_base.MultiBlend.__getattr__
+Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.__getattr__
+Piavca.Piavca_base.Piavca_base.Object.__getattr__
+Piavca.Piavca_base.Piavca_base.OverrideMotion.__getattr__
+Piavca.Piavca_base.Piavca_base.PointAt.__getattr__
+Piavca.Piavca_base.Piavca_base.PostureBlend.__getattr__
+Piavca.Piavca_base.Piavca_base.Proxemics.__getattr__
+Piavca.Piavca_base.Piavca_base.PySwigIterator.__getattr__
+Piavca.Piavca_base.Piavca_base.Quat.__getattr__
+Piavca.Piavca_base.Piavca_base.RandomChoiceMotion.__getattr__
+Piavca.Piavca_base.Piavca_base.RandomTimingsMotion.__getattr__
+Piavca.Piavca_base.Piavca_base.Reposition.__getattr__
+Piavca.Piavca_base.Piavca_base.ScaleMotion.__getattr__
+Piavca.Piavca_base.Piavca_base.ScaleMotionRoot.__getattr__
+Piavca.Piavca_base.Piavca_base.ScaleMotionSpeed.__getattr__
+Piavca.Piavca_base.Piavca_base.Sequence.__getattr__
+Piavca.Piavca_base.Piavca_base.SequentialChoiceMotion.__getattr__
+Piavca.Piavca_base.Piavca_base.SmoothLoop.__getattr__
+Piavca.Piavca_base.Piavca_base.SmoothSequence.__getattr__
+Piavca.Piavca_base.Piavca_base.SmoothTransition.__getattr__
+Piavca.Piavca_base.Piavca_base.SubMotion.__getattr__
+Piavca.Piavca_base.Piavca_base.Subtract.__getattr__
+Piavca.Piavca_base.Piavca_base.TangentSpace.__getattr__
+Piavca.Piavca_base.Piavca_base.TimeCallback.__getattr__
+Piavca.Piavca_base.Piavca_base.TimeOffset.__getattr__
+Piavca.Piavca_base.Piavca_base.TimeRangeMotion.__getattr__
+Piavca.Piavca_base.Piavca_base.TimeWarp.__getattr__
+Piavca.Piavca_base.Piavca_base.TransitionFunction.__getattr__
+Piavca.Piavca_base.Piavca_base.TwoMotionCombiner.__getattr__
+Piavca.Piavca_base.Piavca_base.Vec.__getattr__
+Piavca.Piavca_base.Piavca_base.ZeroMotion.__getattr__
+Piavca.Piavca_base.Piavca_base.queueElement.__getattr__
+Piavca.Piavca_base.Piavca_base.vectorI.__getattr__
+Piavca.Piavca_base.Piavca_base.vectorS.__getattr__
+Piavca.SpeechToText'.SpeechToText.__getattr__" class="py-name" href="#" onclick="return doclink('link-38', '__getattr__', 'link-38');">__getattr__</a></tt> <tt class="py-op">=</tt> <tt class="py-keyword">lambda</tt> <tt class="py-name">self</tt><tt class="py-op">,</tt> <tt id="link-39" class="py-name"><a title="Piavca.FreeCameraCanvas.name
+Piavca.PiavcaWXCanvas.name
+Piavca.ViewerCanvas.name
+Piavca.gltb.name
+Piavca.wxVirtualTracker'.name" class="py-name" href="#" onclick="return doclink('link-39', 'name', 'link-6');">name</a></tt><tt class="py-op">:</tt> <tt id="link-40" class="py-name" targets="Function Piavca.PiavcaGlut.PiavcaGlut._swig_getattr()=Piavca.PiavcaGlut.PiavcaGlut-module.html#_swig_getattr,Function Piavca.Piavca_base.Piavca_base._swig_getattr()=Piavca.Piavca_base.Piavca_base-module.html#_swig_getattr,Function Piavca.SpeechToText'._swig_getattr()=Piavca.SpeechToText%27-module.html#_swig_getattr"><a title="Piavca.PiavcaGlut.PiavcaGlut._swig_getattr
+Piavca.Piavca_base.Piavca_base._swig_getattr
+Piavca.SpeechToText'._swig_getattr" class="py-name" href="#" onclick="return doclink('link-40', '_swig_getattr', 'link-40');">_swig_getattr</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt id="link-41" class="py-name"><a title="Piavca.SpeechToText
+Piavca.SpeechToText'.SpeechToText" class="py-name" href="#" onclick="return doclink('link-41', 'SpeechToText', 'link-34');">SpeechToText</a></tt><tt class="py-op">,</tt> <tt id="link-42" class="py-name"><a title="Piavca.FreeCameraCanvas.name
+Piavca.PiavcaWXCanvas.name
+Piavca.ViewerCanvas.name
+Piavca.gltb.name
+Piavca.wxVirtualTracker'.name" class="py-name" href="#" onclick="return doclink('link-42', 'name', 'link-6');">name</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line">    <tt id="link-43" class="py-name"><a title="Piavca.Motion.__repr__
+Piavca.Piavca_base.Piavca_base.MotionMask.__repr__
+Piavca.Piavca_base.Piavca_base.Quat.__repr__
+Piavca.Piavca_base.Piavca_base.Vec.__repr__" class="py-name" href="#" onclick="return doclink('link-43', '__repr__', 'link-25');">__repr__</a></tt> <tt class="py-op">=</tt> <tt id="link-44" class="py-name" targets="Function Piavca.PiavcaGlut.PiavcaGlut._swig_repr()=Piavca.PiavcaGlut.PiavcaGlut-module.html#_swig_repr,Function Piavca.Piavca_base.Piavca_base._swig_repr()=Piavca.Piavca_base.Piavca_base-module.html#_swig_repr,Function Piavca.SpeechToText'._swig_repr()=Piavca.SpeechToText%27-module.html#_swig_repr"><a title="Piavca.PiavcaGlut.PiavcaGlut._swig_repr
+Piavca.Piavca_base.Piavca_base._swig_repr
+Piavca.SpeechToText'._swig_repr" class="py-name" href="#" onclick="return doclink('link-44', '_swig_repr', 'link-44');">_swig_repr</a></tt> </tt>
+<a name="SpeechToText.getText"></a><div id="SpeechToText.getText-def"><a name="L60"></a><tt class="py-lineno">60</tt> <a class="py-toggle" href="#" id="SpeechToText.getText-toggle" onclick="return toggle('SpeechToText.getText');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.SpeechToText'.SpeechToText-class.html#getText">getText</a><tt class="py-op">(</tt><tt class="py-op">*</tt><tt class="py-param">args</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> <tt class="py-keyword">return</tt> <tt class="py-name">_SpeechToText</tt><tt class="py-op">.</tt><tt class="py-name">SpeechToText_getText</tt><tt class="py-op">(</tt><tt class="py-op">*</tt><tt class="py-name">args</tt><tt class="py-op">)</tt> </tt>
+</div><a name="SpeechToText.__init__"></a><div id="SpeechToText.__init__-def"><a name="L61"></a><tt class="py-lineno">61</tt> <a class="py-toggle" href="#" id="SpeechToText.__init__-toggle" onclick="return toggle('SpeechToText.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.SpeechToText'.SpeechToText-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-op">*</tt><tt class="py-param">args</tt><tt class="py-op">)</tt><tt class="py-op">:</tt>  </tt>
+</div><a name="L62"></a><tt class="py-lineno">62</tt>  <tt class="py-line">        <tt class="py-name">this</tt> <tt class="py-op">=</tt> <tt class="py-name">_SpeechToText</tt><tt class="py-op">.</tt><tt class="py-name">new_SpeechToText</tt><tt class="py-op">(</tt><tt class="py-op">*</tt><tt class="py-name">args</tt><tt class="py-op">)</tt> </tt>
+<a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">this</tt><tt class="py-op">.</tt><tt id="link-45" class="py-name" targets="Method Piavca.Piavca_base.Piavca_base.vectorI.append()=Piavca.Piavca_base.Piavca_base.vectorI-class.html#append,Method Piavca.Piavca_base.Piavca_base.vectorS.append()=Piavca.Piavca_base.Piavca_base.vectorS-class.html#append"><a title="Piavca.Piavca_base.Piavca_base.vectorI.append
+Piavca.Piavca_base.Piavca_base.vectorS.append" class="py-name" href="#" onclick="return doclink('link-45', 'append', 'link-45');">append</a></tt><tt class="py-op">(</tt><tt class="py-name">this</tt><tt class="py-op">)</tt> </tt>
+<a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt><tt class="py-op">:</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">this</tt> <tt class="py-op">=</tt> <tt class="py-name">this</tt> </tt>
+</div><a name="L65"></a><tt class="py-lineno">65</tt>  <tt class="py-line">    <tt id="link-46" class="py-name" targets="Method Piavca.ChoiceMotion.__swig_destroy__()=Piavca.ChoiceMotion-class.html#__swig_destroy__,Method Piavca.KeyframeMotion.__swig_destroy__()=Piavca.KeyframeMotion-class.html#__swig_destroy__,Method Piavca.Motion.__swig_destroy__()=Piavca.Motion-class.html#__swig_destroy__,Method Piavca.MotionFilter.__swig_destroy__()=Piavca.MotionFilter-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.AvatarMotion.__swig_destroy__=Piavca.Piavca_base.Piavca_base.AvatarMotion-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.AvatarMotionQueue.__swig_destroy__=Piavca.Piavca_base.Piavca_base.AvatarMotionQueue-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.AvatarPosture.__swig_destroy__=Piavca.Piavca_base.Piavca_base.AvatarPosture-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.AvatarPostureBlend.__swig_destroy__=Piavca.Piavca_base.Piavca_base.AvatarPostureBlend-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.AvatarTimeCallback.__swig_destroy__=Piavca.Piavca_base.Piavca_base.AvatarTimeCallback-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.BlendBetween.__swig_destroy__=Piavca.Piavca_base.Piavca_base.BlendBetween-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.Bound.__swig_destroy__=Piavca.Piavca_base.Piavca_base.Bound-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.ChangeMotionLength.__swig_destroy__=Piavca.Piavca_base.Piavca_base.ChangeMotionLength-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.ChoiceMotion.__swig_destroy__=Piavca.Piavca_base.Piavca_base.ChoiceMotion-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.ChoiceMotionWithDefault.__swig_destroy__=Piavca.Piavca_base.Piavca_base.ChoiceMotionWithDefault-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.Core.__swig_destroy__=Piavca.Piavca_base.Piavca_base.Core-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.CurrentValueMotion.__swig_destroy__=Piavca.Piavca_base.Piavca_base.CurrentValueMotion-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.EventMapChoice.__swig_destroy__=Piavca.Piavca_base.Piavca_base.EventMapChoice-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.ExpMapMotion.__swig_destroy__=Piavca.Piavca_base.Piavca_base.ExpMapMotion-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.KeyframeMotion.__swig_destroy__=Piavca.Piavca_base.Piavca_base.KeyframeMotion-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.LinearTransition.__swig_destroy__=Piavca.Piavca_base.Piavca_base.LinearTransition-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.LogMapMotion.__swig_destroy__=Piavca.Piavca_base.Piavca_base.LogMapMotion-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.LoopMotion.__swig_destroy__=Piavca.Piavca_base.Piavca_base.LoopMotion-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.MaskedMotion.__swig_destroy__=Piavca.Piavca_base.Piavca_base.MaskedMotion-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.Motion.__swig_destroy__=Piavca.Piavca_base.Piavca_base.Motion-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.MotionAdder.__swig_destroy__=Piavca.Piavca_base.Piavca_base.MotionAdder-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.MotionFilter.__swig_destroy__=Piavca.Piavca_base.Piavca_base.MotionFilter-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.MotionGraph.__swig_destroy__=Piavca.Piavca_base.Piavca_base.MotionGraph-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.MotionMask.__swig_destroy__=Piavca.Piavca_base.Piavca_base.MotionMask-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.MotionPosture.__swig_destroy__=Piavca.Piavca_base.Piavca_base.MotionPosture-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.MotionTransition.__swig_destroy__=Piavca.Piavca_base.Piavca_base.MotionTransition-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.MultiBlend.__swig_destroy__=Piavca.Piavca_base.Piavca_base.MultiBlend-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.__swig_destroy__=Piavca.Piavca_base.Piavca_base.MultiMotionCombiner-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.OverrideMotion.__swig_destroy__=Piavca.Piavca_base.Piavca_base.OverrideMotion-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.PointAt.__swig_destroy__=Piavca.Piavca_base.Piavca_base.PointAt-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.PostureBlend.__swig_destroy__=Piavca.Piavca_base.Piavca_base.PostureBlend-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.Proxemics.__swig_destroy__=Piavca.Piavca_base.Piavca_base.Proxemics-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.PySwigIterator.__swig_destroy__=Piavca.Piavca_base.Piavca_base.PySwigIterator-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.Quat.__swig_destroy__=Piavca.Piavca_base.Piavca_base.Quat-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.RandomChoiceMotion.__swig_destroy__=Piavca.Piavca_base.Piavca_base.RandomChoiceMotion-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.RandomTimingsMotion.__swig_destroy__=Piavca.Piavca_base.Piavca_base.RandomTimingsMotion-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.Reposition.__swig_destroy__=Piavca.Piavca_base.Piavca_base.Reposition-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.ScaleMotion.__swig_destroy__=Piavca.Piavca_base.Piavca_base.ScaleMotion-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.ScaleMotionRoot.__swig_destroy__=Piavca.Piavca_base.Piavca_base.ScaleMotionRoot-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.ScaleMotionSpeed.__swig_destroy__=Piavca.Piavca_base.Piavca_base.ScaleMotionSpeed-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.Sequence.__swig_destroy__=Piavca.Piavca_base.Piavca_base.Sequence-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.SequentialChoiceMotion.__swig_destroy__=Piavca.Piavca_base.Piavca_base.SequentialChoiceMotion-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.SmoothLoop.__swig_destroy__=Piavca.Piavca_base.Piavca_base.SmoothLoop-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.SmoothSequence.__swig_destroy__=Piavca.Piavca_base.Piavca_base.SmoothSequence-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.SmoothTransition.__swig_destroy__=Piavca.Piavca_base.Piavca_base.SmoothTransition-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.SubMotion.__swig_destroy__=Piavca.Piavca_base.Piavca_base.SubMotion-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.Subtract.__swig_destroy__=Piavca.Piavca_base.Piavca_base.Subtract-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.TangentSpace.__swig_destroy__=Piavca.Piavca_base.Piavca_base.TangentSpace-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.TimeCallback.__swig_destroy__=Piavca.Piavca_base.Piavca_base.TimeCallback-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.TimeOffset.__swig_destroy__=Piavca.Piavca_base.Piavca_base.TimeOffset-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.TimeRangeMotion.__swig_destroy__=Piavca.Piavca_base.Piavca_base.TimeRangeMotion-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.TimeWarp.__swig_destroy__=Piavca.Piavca_base.Piavca_base.TimeWarp-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.TransitionFunction.__swig_destroy__=Piavca.Piavca_base.Piavca_base.TransitionFunction-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.TwoMotionCombiner.__swig_destroy__=Piavca.Piavca_base.Piavca_base.TwoMotionCombiner-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.Vec.__swig_destroy__=Piavca.Piavca_base.Piavca_base.Vec-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.ZeroMotion.__swig_destroy__=Piavca.Piavca_base.Piavca_base.ZeroMotion-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.queueElement.__swig_destroy__=Piavca.Piavca_base.Piavca_base.queueElement-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.vectorI.__swig_destroy__=Piavca.Piavca_base.Piavca_base.vectorI-class.html#__swig_destroy__,Variable Piavca.Piavca_base.Piavca_base.vectorS.__swig_destroy__=Piavca.Piavca_base.Piavca_base.vectorS-class.html#__swig_destroy__,Variable Piavca.SpeechToText'.SpeechToText.__swig_destroy__=Piavca.SpeechToText%27.SpeechToText-class.html#__swig_destroy__"><a title="Piavca.ChoiceMotion.__swig_destroy__
+Piavca.KeyframeMotion.__swig_destroy__
+Piavca.Motion.__swig_destroy__
+Piavca.MotionFilter.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.AvatarMotion.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.AvatarMotionQueue.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.AvatarPosture.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.AvatarPostureBlend.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.AvatarTimeCallback.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.BlendBetween.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.Bound.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.ChangeMotionLength.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.ChoiceMotion.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.ChoiceMotionWithDefault.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.Core.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.CurrentValueMotion.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.EventMapChoice.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.ExpMapMotion.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.KeyframeMotion.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.LinearTransition.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.LogMapMotion.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.LoopMotion.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.MaskedMotion.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.Motion.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.MotionAdder.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.MotionFilter.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.MotionGraph.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.MotionMask.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.MotionPosture.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.MotionTransition.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.MultiBlend.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.OverrideMotion.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.PointAt.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.PostureBlend.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.Proxemics.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.PySwigIterator.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.Quat.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.RandomChoiceMotion.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.RandomTimingsMotion.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.Reposition.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.ScaleMotion.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.ScaleMotionRoot.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.ScaleMotionSpeed.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.Sequence.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.SequentialChoiceMotion.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.SmoothLoop.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.SmoothSequence.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.SmoothTransition.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.SubMotion.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.Subtract.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.TangentSpace.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.TimeCallback.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.TimeOffset.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.TimeRangeMotion.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.TimeWarp.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.TransitionFunction.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.TwoMotionCombiner.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.Vec.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.ZeroMotion.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.queueElement.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.vectorI.__swig_destroy__
+Piavca.Piavca_base.Piavca_base.vectorS.__swig_destroy__
+Piavca.SpeechToText'.SpeechToText.__swig_destroy__" class="py-name" href="#" onclick="return doclink('link-46', '__swig_destroy__', 'link-46');">__swig_destroy__</a></tt> <tt class="py-op">=</tt> <tt class="py-name">_SpeechToText</tt><tt class="py-op">.</tt><tt class="py-name">delete_SpeechToText</tt> </tt>
+<a name="L66"></a><tt class="py-lineno">66</tt>  <tt class="py-line">    <tt id="link-47" class="py-name" targets="Method Piavca.ChoiceMotion.__del__()=Piavca.ChoiceMotion-class.html#__del__,Method Piavca.KeyframeMotion.__del__()=Piavca.KeyframeMotion-class.html#__del__,Method Piavca.Motion.__del__()=Piavca.Motion-class.html#__del__,Method Piavca.MotionFilter.__del__()=Piavca.MotionFilter-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.AvatarMotion.__del__=Piavca.Piavca_base.Piavca_base.AvatarMotion-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.AvatarMotionQueue.__del__=Piavca.Piavca_base.Piavca_base.AvatarMotionQueue-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.AvatarPosture.__del__=Piavca.Piavca_base.Piavca_base.AvatarPosture-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.AvatarPostureBlend.__del__=Piavca.Piavca_base.Piavca_base.AvatarPostureBlend-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.AvatarTimeCallback.__del__=Piavca.Piavca_base.Piavca_base.AvatarTimeCallback-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.BlendBetween.__del__=Piavca.Piavca_base.Piavca_base.BlendBetween-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.Bound.__del__=Piavca.Piavca_base.Piavca_base.Bound-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.ChangeMotionLength.__del__=Piavca.Piavca_base.Piavca_base.ChangeMotionLength-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.ChoiceMotion.__del__=Piavca.Piavca_base.Piavca_base.ChoiceMotion-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.ChoiceMotionWithDefault.__del__=Piavca.Piavca_base.Piavca_base.ChoiceMotionWithDefault-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.Core.__del__=Piavca.Piavca_base.Piavca_base.Core-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.CurrentValueMotion.__del__=Piavca.Piavca_base.Piavca_base.CurrentValueMotion-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.EventMapChoice.__del__=Piavca.Piavca_base.Piavca_base.EventMapChoice-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.ExpMapMotion.__del__=Piavca.Piavca_base.Piavca_base.ExpMapMotion-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.KeyframeMotion.__del__=Piavca.Piavca_base.Piavca_base.KeyframeMotion-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.LinearTransition.__del__=Piavca.Piavca_base.Piavca_base.LinearTransition-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.LogMapMotion.__del__=Piavca.Piavca_base.Piavca_base.LogMapMotion-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.LoopMotion.__del__=Piavca.Piavca_base.Piavca_base.LoopMotion-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.MaskedMotion.__del__=Piavca.Piavca_base.Piavca_base.MaskedMotion-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.Motion.__del__=Piavca.Piavca_base.Piavca_base.Motion-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.MotionAdder.__del__=Piavca.Piavca_base.Piavca_base.MotionAdder-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.MotionFilter.__del__=Piavca.Piavca_base.Piavca_base.MotionFilter-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.MotionGraph.__del__=Piavca.Piavca_base.Piavca_base.MotionGraph-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.MotionMask.__del__=Piavca.Piavca_base.Piavca_base.MotionMask-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.MotionPosture.__del__=Piavca.Piavca_base.Piavca_base.MotionPosture-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.MotionTransition.__del__=Piavca.Piavca_base.Piavca_base.MotionTransition-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.MultiBlend.__del__=Piavca.Piavca_base.Piavca_base.MultiBlend-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.__del__=Piavca.Piavca_base.Piavca_base.MultiMotionCombiner-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.OverrideMotion.__del__=Piavca.Piavca_base.Piavca_base.OverrideMotion-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.PointAt.__del__=Piavca.Piavca_base.Piavca_base.PointAt-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.PostureBlend.__del__=Piavca.Piavca_base.Piavca_base.PostureBlend-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.Proxemics.__del__=Piavca.Piavca_base.Piavca_base.Proxemics-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.PySwigIterator.__del__=Piavca.Piavca_base.Piavca_base.PySwigIterator-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.Quat.__del__=Piavca.Piavca_base.Piavca_base.Quat-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.RandomChoiceMotion.__del__=Piavca.Piavca_base.Piavca_base.RandomChoiceMotion-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.RandomTimingsMotion.__del__=Piavca.Piavca_base.Piavca_base.RandomTimingsMotion-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.Reposition.__del__=Piavca.Piavca_base.Piavca_base.Reposition-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.ScaleMotion.__del__=Piavca.Piavca_base.Piavca_base.ScaleMotion-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.ScaleMotionRoot.__del__=Piavca.Piavca_base.Piavca_base.ScaleMotionRoot-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.ScaleMotionSpeed.__del__=Piavca.Piavca_base.Piavca_base.ScaleMotionSpeed-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.Sequence.__del__=Piavca.Piavca_base.Piavca_base.Sequence-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.SequentialChoiceMotion.__del__=Piavca.Piavca_base.Piavca_base.SequentialChoiceMotion-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.SmoothLoop.__del__=Piavca.Piavca_base.Piavca_base.SmoothLoop-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.SmoothSequence.__del__=Piavca.Piavca_base.Piavca_base.SmoothSequence-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.SmoothTransition.__del__=Piavca.Piavca_base.Piavca_base.SmoothTransition-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.SubMotion.__del__=Piavca.Piavca_base.Piavca_base.SubMotion-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.Subtract.__del__=Piavca.Piavca_base.Piavca_base.Subtract-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.TangentSpace.__del__=Piavca.Piavca_base.Piavca_base.TangentSpace-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.TimeCallback.__del__=Piavca.Piavca_base.Piavca_base.TimeCallback-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.TimeOffset.__del__=Piavca.Piavca_base.Piavca_base.TimeOffset-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.TimeRangeMotion.__del__=Piavca.Piavca_base.Piavca_base.TimeRangeMotion-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.TimeWarp.__del__=Piavca.Piavca_base.Piavca_base.TimeWarp-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.TransitionFunction.__del__=Piavca.Piavca_base.Piavca_base.TransitionFunction-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.TwoMotionCombiner.__del__=Piavca.Piavca_base.Piavca_base.TwoMotionCombiner-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.Vec.__del__=Piavca.Piavca_base.Piavca_base.Vec-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.ZeroMotion.__del__=Piavca.Piavca_base.Piavca_base.ZeroMotion-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.queueElement.__del__=Piavca.Piavca_base.Piavca_base.queueElement-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.vectorI.__del__=Piavca.Piavca_base.Piavca_base.vectorI-class.html#__del__,Variable Piavca.Piavca_base.Piavca_base.vectorS.__del__=Piavca.Piavca_base.Piavca_base.vectorS-class.html#__del__,Variable Piavca.SpeechToText'.SpeechToText.__del__=Piavca.SpeechToText%27.SpeechToText-class.html#__del__"><a title="Piavca.ChoiceMotion.__del__
+Piavca.KeyframeMotion.__del__
+Piavca.Motion.__del__
+Piavca.MotionFilter.__del__
+Piavca.Piavca_base.Piavca_base.AvatarMotion.__del__
+Piavca.Piavca_base.Piavca_base.AvatarMotionQueue.__del__
+Piavca.Piavca_base.Piavca_base.AvatarPosture.__del__
+Piavca.Piavca_base.Piavca_base.AvatarPostureBlend.__del__
+Piavca.Piavca_base.Piavca_base.AvatarTimeCallback.__del__
+Piavca.Piavca_base.Piavca_base.BlendBetween.__del__
+Piavca.Piavca_base.Piavca_base.Bound.__del__
+Piavca.Piavca_base.Piavca_base.ChangeMotionLength.__del__
+Piavca.Piavca_base.Piavca_base.ChoiceMotion.__del__
+Piavca.Piavca_base.Piavca_base.ChoiceMotionWithDefault.__del__
+Piavca.Piavca_base.Piavca_base.Core.__del__
+Piavca.Piavca_base.Piavca_base.CurrentValueMotion.__del__
+Piavca.Piavca_base.Piavca_base.EventMapChoice.__del__
+Piavca.Piavca_base.Piavca_base.ExpMapMotion.__del__
+Piavca.Piavca_base.Piavca_base.KeyframeMotion.__del__
+Piavca.Piavca_base.Piavca_base.LinearTransition.__del__
+Piavca.Piavca_base.Piavca_base.LogMapMotion.__del__
+Piavca.Piavca_base.Piavca_base.LoopMotion.__del__
+Piavca.Piavca_base.Piavca_base.MaskedMotion.__del__
+Piavca.Piavca_base.Piavca_base.Motion.__del__
+Piavca.Piavca_base.Piavca_base.MotionAdder.__del__
+Piavca.Piavca_base.Piavca_base.MotionFilter.__del__
+Piavca.Piavca_base.Piavca_base.MotionGraph.__del__
+Piavca.Piavca_base.Piavca_base.MotionMask.__del__
+Piavca.Piavca_base.Piavca_base.MotionPosture.__del__
+Piavca.Piavca_base.Piavca_base.MotionTransition.__del__
+Piavca.Piavca_base.Piavca_base.MultiBlend.__del__
+Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.__del__
+Piavca.Piavca_base.Piavca_base.OverrideMotion.__del__
+Piavca.Piavca_base.Piavca_base.PointAt.__del__
+Piavca.Piavca_base.Piavca_base.PostureBlend.__del__
+Piavca.Piavca_base.Piavca_base.Proxemics.__del__
+Piavca.Piavca_base.Piavca_base.PySwigIterator.__del__
+Piavca.Piavca_base.Piavca_base.Quat.__del__
+Piavca.Piavca_base.Piavca_base.RandomChoiceMotion.__del__
+Piavca.Piavca_base.Piavca_base.RandomTimingsMotion.__del__
+Piavca.Piavca_base.Piavca_base.Reposition.__del__
+Piavca.Piavca_base.Piavca_base.ScaleMotion.__del__
+Piavca.Piavca_base.Piavca_base.ScaleMotionRoot.__del__
+Piavca.Piavca_base.Piavca_base.ScaleMotionSpeed.__del__
+Piavca.Piavca_base.Piavca_base.Sequence.__del__
+Piavca.Piavca_base.Piavca_base.SequentialChoiceMotion.__del__
+Piavca.Piavca_base.Piavca_base.SmoothLoop.__del__
+Piavca.Piavca_base.Piavca_base.SmoothSequence.__del__
+Piavca.Piavca_base.Piavca_base.SmoothTransition.__del__
+Piavca.Piavca_base.Piavca_base.SubMotion.__del__
+Piavca.Piavca_base.Piavca_base.Subtract.__del__
+Piavca.Piavca_base.Piavca_base.TangentSpace.__del__
+Piavca.Piavca_base.Piavca_base.TimeCallback.__del__
+Piavca.Piavca_base.Piavca_base.TimeOffset.__del__
+Piavca.Piavca_base.Piavca_base.TimeRangeMotion.__del__
+Piavca.Piavca_base.Piavca_base.TimeWarp.__del__
+Piavca.Piavca_base.Piavca_base.TransitionFunction.__del__
+Piavca.Piavca_base.Piavca_base.TwoMotionCombiner.__del__
+Piavca.Piavca_base.Piavca_base.Vec.__del__
+Piavca.Piavca_base.Piavca_base.ZeroMotion.__del__
+Piavca.Piavca_base.Piavca_base.queueElement.__del__
+Piavca.Piavca_base.Piavca_base.vectorI.__del__
+Piavca.Piavca_base.Piavca_base.vectorS.__del__
+Piavca.SpeechToText'.SpeechToText.__del__" class="py-name" href="#" onclick="return doclink('link-47', '__del__', 'link-47');">__del__</a></tt> <tt class="py-op">=</tt> <tt class="py-keyword">lambda</tt> <tt class="py-name">self</tt> <tt class="py-op">:</tt> <tt class="py-name">None</tt><tt class="py-op">;</tt> </tt>
+</div><a name="L67"></a><tt class="py-lineno">67</tt>  <tt class="py-line"><tt id="link-48" class="py-name" targets="Variable Piavca.SpeechToText'.SpeechToText_swigregister=Piavca.SpeechToText%27-module.html#SpeechToText_swigregister"><a title="Piavca.SpeechToText'.SpeechToText_swigregister" class="py-name" href="#" onclick="return doclink('link-48', 'SpeechToText_swigregister', 'link-48');">SpeechToText_swigregister</a></tt> <tt class="py-op">=</tt> <tt class="py-name">_SpeechToText</tt><tt class="py-op">.</tt><tt id="link-49" class="py-name"><a title="Piavca.SpeechToText'.SpeechToText_swigregister" class="py-name" href="#" onclick="return doclink('link-49', 'SpeechToText_swigregister', 'link-48');">SpeechToText_swigregister</a></tt> </tt>
+<a name="L68"></a><tt class="py-lineno">68</tt>  <tt class="py-line"><tt id="link-50" class="py-name"><a title="Piavca.SpeechToText'.SpeechToText_swigregister" class="py-name" href="#" onclick="return doclink('link-50', 'SpeechToText_swigregister', 'link-48');">SpeechToText_swigregister</a></tt><tt class="py-op">(</tt><tt id="link-51" class="py-name"><a title="Piavca.SpeechToText
+Piavca.SpeechToText'.SpeechToText" class="py-name" href="#" onclick="return doclink('link-51', 'SpeechToText', 'link-34');">SpeechToText</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L69"></a><tt class="py-lineno">69</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="Piavca-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Oct 15 20:02:41 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

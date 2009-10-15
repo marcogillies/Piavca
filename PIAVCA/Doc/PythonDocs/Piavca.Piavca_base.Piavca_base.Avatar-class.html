@@ -1,0 +1,2558 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Piavca.Piavca_base.Piavca_base.Avatar</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="Piavca-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="Piavca-module.html">Package&nbsp;Piavca</a> ::
+        Package&nbsp;Piavca_base ::
+        <a href="Piavca.Piavca_base.Piavca_base-module.html">Module&nbsp;Piavca_base</a> ::
+        Class&nbsp;Avatar
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class Avatar</h1><p class="nomargin-top"><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+<a href="Piavca.Piavca_base.Piavca_base._object-class.html" onclick="show_private();">_object</a> --+
+          |
+         <strong class="uidshort">Avatar</strong>
+</pre>
+
+<hr />
+<p>The actual avatar class.</p>
+  <p>This class is the main component of the Piavca API and represents a 
+  character for skeletal animation. It has fairly basic simple 
+  functionality, just altering root position and orientation, loading and 
+  playing motion and directly altering joint orientations It is an 
+  interfaces class that forwards all its method calls to an implementation 
+  class which is an platform specific class that does all the work. The 
+  class is structured as a bridge pattern from Design Patterns. An 
+  interface class contains a pointer to an implementation object and 
+  forwards all method calls to it. The implementation object is in fact of 
+  a platform specific sub-type of the implementation class. The joints 
+  themselves are not exposed to the client and are accessed via integer 
+  IDs. These IDs are unique for a given joint across all avatars and 
+  motions. any actions on joints area achieved by passing the ID to an 
+  appropriate method      see also: Avatar.h</p>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__repr__"></a><span class="summary-sig-name">__repr__</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#_swig_repr">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">*args</span>)</span><br />
+      Avatar::Avatar(tstring avatarId, bool bailOnMissedJoints=false, const
+      Vec &amp;Position=Vec(0.0, 0.0, 0.0), const Quat 
+      &amp;Orientation=Quat(1.0, 0.0, 0.0, 0.0), const Vec 
+      &amp;forwardDir=Vec(0.0, 0.0, 1.0))</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#isValid" class="summary-sig-name">isValid</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      bool Piavca::Avatar::isValid()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.isValid">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#activate" class="summary-sig-name">activate</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Avatar::activate()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#deactivate" class="summary-sig-name">deactivate</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Avatar::deactivate()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.deactivate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#getName" class="summary-sig-name">getName</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      tstring Piavca::Avatar::getName()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.getName">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#setName" class="summary-sig-name">setName</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      tstring Piavca::Avatar::setName(tstring newName)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.setName">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="setScale"></a><span class="summary-sig-name">setScale</span>(<span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.setScale">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getScale"></a><span class="summary-sig-name">getScale</span>(<span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.getScale">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="hideBodyPart"></a><span class="summary-sig-name">hideBodyPart</span>(<span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.hideBodyPart">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="showBodyPart"></a><span class="summary-sig-name">showBodyPart</span>(<span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.showBodyPart">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#clearFacialExpressionWeights" class="summary-sig-name">clearFacialExpressionWeights</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Piavca::Avatar::clearFacialExpressionWeights()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.clearFacialExpressionWeights">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#beginExpression" class="summary-sig-name">beginExpression</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      int Piavca::Avatar::beginExpression() const</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.beginExpression">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#endExpression" class="summary-sig-name">endExpression</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      int Avatar::endExpression() const</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.endExpression">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#nextExpression" class="summary-sig-name">nextExpression</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      int Avatar::nextExpression(int &amp;expressionId)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.nextExpression">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#isExpressionNull" class="summary-sig-name">isExpressionNull</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      bool Piavca::Avatar::isExpressionNull(int expressionId) const</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.isExpressionNull">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#setRootPosition" class="summary-sig-name">setRootPosition</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Piavca::Avatar::setRootPosition(const Vec &amp;Position)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.setRootPosition">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getRootPosition"></a><span class="summary-sig-name">getRootPosition</span>(<span class="summary-sig-arg">*args</span>)</span><br />
+      Vec Piavca::Avatar::getRootPosition()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.getRootPosition">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="setRootOrientation"></a><span class="summary-sig-name">setRootOrientation</span>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Piavca::Avatar::setRootOrientation(const Quat &amp;Orientation)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.setRootOrientation">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#setRootAngle" class="summary-sig-name">setRootAngle</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Piavca::Avatar::setRootAngle(float angle)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.setRootAngle">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#setRootAngleDeg" class="summary-sig-name">setRootAngleDeg</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Piavca::Avatar::setRootAngleDeg(float angle)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.setRootAngleDeg">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getRootOrientation"></a><span class="summary-sig-name">getRootOrientation</span>(<span class="summary-sig-arg">*args</span>)</span><br />
+      Quat Piavca::Avatar::getRootOrientation()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.getRootOrientation">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#createJoint" class="summary-sig-name">createJoint</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      bool Piavca::Avatar::createJoint(tstring jointName)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.createJoint">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#begin" class="summary-sig-name">begin</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      int Piavca::Avatar::begin() const</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.begin">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#end" class="summary-sig-name">end</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      int Avatar::end() const</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.end">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#next" class="summary-sig-name">next</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      int Avatar::next(int &amp;jointId)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.next">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#getParent" class="summary-sig-name">getParent</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      int Piavca::Avatar::getParent(int jointId) const</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.getParent">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#getJointName" class="summary-sig-name">getJointName</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      const tstring Piavca::Avatar::getJointName(int jointId)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.getJointName">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#isNull" class="summary-sig-name">isNull</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      bool Piavca::Avatar::isNull(int jointId) const</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.isNull">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#hasChanged" class="summary-sig-name">hasChanged</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      bool Piavca::Avatar::hasChanged(int jointId)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.hasChanged">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#clearChange" class="summary-sig-name">clearChange</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Piavca::Avatar::clearChange(int jointId)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.clearChange">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="setJointPosition"></a><span class="summary-sig-name">setJointPosition</span>(<span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.setJointPosition">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#scaleRoot" class="summary-sig-name">scaleRoot</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Piavca::Avatar::scaleRoot(Vec scale)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.scaleRoot">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#scaleJoint" class="summary-sig-name">scaleJoint</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Piavca::Avatar::scaleJoint(int jointId, Vec scale)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.scaleJoint">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getBoundBox"></a><span class="summary-sig-name">getBoundBox</span>(<span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.getBoundBox">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getBaseBoundBox"></a><span class="summary-sig-name">getBaseBoundBox</span>(<span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.getBaseBoundBox">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#timeStep" class="summary-sig-name">timeStep</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Avatar::timeStep(float time)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.timeStep">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#loadMotion" class="summary-sig-name">loadMotion</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Avatar::loadMotion(Motion *motion)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.loadMotion">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="unloadMotion"></a><span class="summary-sig-name">unloadMotion</span>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Avatar::unloadMotion()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.unloadMotion">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#getMotion" class="summary-sig-name">getMotion</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      const Motion* Piavca::Avatar::getMotion() const</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.getMotion">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="playMotion"></a><span class="summary-sig-name">playMotion</span>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Avatar::playMotion(Motion *m)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.playMotion">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="playMotionDirect"></a><span class="summary-sig-name">playMotionDirect</span>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Avatar::playMotion(Motion *m)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.playMotionDirect">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#stopMotion" class="summary-sig-name">stopMotion</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Piavca::Avatar::stopMotion()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.stopMotion">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#restartMotion" class="summary-sig-name">restartMotion</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Piavca::Avatar::restartMotion()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.restartMotion">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#setMotionStartTime" class="summary-sig-name">setMotionStartTime</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Avatar::setMotionStartTime(float startTime)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.setMotionStartTime">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#getMotionStartTime" class="summary-sig-name">getMotionStartTime</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      float Avatar::getMotionStartTime()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.getMotionStartTime">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#getMotionEndTime" class="summary-sig-name">getMotionEndTime</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      float Avatar::getMotionEndTime()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.getMotionEndTime">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#showMotionAtTime" class="summary-sig-name">showMotionAtTime</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Avatar::showMotionAtTime(float time)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.showMotionAtTime">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#loadScaleMotion" class="summary-sig-name">loadScaleMotion</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Avatar::loadScaleMotion(Motion *motion)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.loadScaleMotion">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="unloadScaleMotion"></a><span class="summary-sig-name">unloadScaleMotion</span>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Avatar::unloadScaleMotion()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.unloadScaleMotion">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#getScaleMotion" class="summary-sig-name">getScaleMotion</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      const Motion* Piavca::Avatar::getScaleMotion() const</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.getScaleMotion">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#playScaleMotion" class="summary-sig-name">playScaleMotion</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Avatar::playScaleMotion(Motion *m)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.playScaleMotion">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#stopScaleMotion" class="summary-sig-name">stopScaleMotion</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Piavca::Avatar::stopScaleMotion()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.stopScaleMotion">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#restartScaleMotion" class="summary-sig-name">restartScaleMotion</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Piavca::Avatar::restartScaleMotion()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.restartScaleMotion">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#setScaleMotionStartTime" class="summary-sig-name">setScaleMotionStartTime</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Avatar::setScaleMotionStartTime(float startTime)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.setScaleMotionStartTime">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#getScaleMotionStartTime" class="summary-sig-name">getScaleMotionStartTime</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      float Avatar::getScaleMotionStartTime()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.getScaleMotionStartTime">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#getScaleMotionEndTime" class="summary-sig-name">getScaleMotionEndTime</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      float Avatar::getScaleMotionEndTime()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.getScaleMotionEndTime">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#showScaleMotionAtTime" class="summary-sig-name">showScaleMotionAtTime</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Avatar::showScaleMotionAtTime(float time)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.showScaleMotionAtTime">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#registerCallback" class="summary-sig-name">registerCallback</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Avatar::registerCallback(AvatarTimeCallback *cb)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.registerCallback">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#removeCallback" class="summary-sig-name">removeCallback</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Avatar::removeCallback(tstring cbName)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.removeCallback">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#getNumCallbacks" class="summary-sig-name">getNumCallbacks</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      int Avatar::getNumCallbacks()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.getNumCallbacks">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#getCallback" class="summary-sig-name">getCallback</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      AvatarTimeCallback * Avatar::getCallback(int i)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.getCallback">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="event"></a><span class="summary-sig-name">event</span>(<span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.event">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#setFacialExpressionWeight" class="summary-sig-name">setFacialExpressionWeight</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      bool Piavca::Avatar::setFacialExpressionWeight(int id, float weight, 
+      float timeInterval=0.5)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.setFacialExpressionWeight">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#getFacialExpressionWeight" class="summary-sig-name">getFacialExpressionWeight</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      float Piavca::Avatar::getFacialExpressionWeight(int id)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.getFacialExpressionWeight">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#setJointOrientation" class="summary-sig-name">setJointOrientation</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Avatar::setJointOrientation(std::vector&lt; std::pair&lt; int, 
+      Quat &gt; &gt; jointOrientation, jointCoord 
+      worldCoord=JOINTLOCAL_COORD)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.setJointOrientation">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#getJointOrientation" class="summary-sig-name">getJointOrientation</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      Quat Piavca::Avatar::getJointOrientation(int jointId, jointCoord 
+      worldCoord=JOINTLOCAL_COORD)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.getJointOrientation">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Avatar-class.html#getJointBasePosition" class="summary-sig-name">getJointBasePosition</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      Vec Piavca::Avatar::getJointBasePosition(int jointId, jointCoord 
+      worldCoord=LOCAL_COORD)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.getJointBasePosition">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="play_motion"></a><span class="summary-sig-name">play_motion</span>(<span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.play_motion">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="add_background_motion"></a><span class="summary-sig-name">add_background_motion</span>(<span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.add_background_motion">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="interrupt_motion"></a><span class="summary-sig-name">interrupt_motion</span>(<span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.interrupt_motion">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="stop_motion"></a><span class="summary-sig-name">stop_motion</span>(<span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.stop_motion">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="reposition_relative"></a><span class="summary-sig-name">reposition_relative</span>(<span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.reposition_relative">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="reposition_absolute"></a><span class="summary-sig-name">reposition_absolute</span>(<span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.reposition_absolute">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__swig_setmethods__"></a><span class="summary-name">__swig_setmethods__</span> = <code title="{}">{}</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__setattr__"></a><span class="summary-name">__setattr__</span> = <code title="lambda self, name, value:">lambda self, name, value:</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__swig_getmethods__"></a><span class="summary-name">__swig_getmethods__</span> = <code title="{}">{}</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__getattr__"></a><span class="summary-name">__getattr__</span> = <code title="lambda self, name:">lambda self, name:</code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">*args</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Avatar::Avatar(tstring avatarId, bool bailOnMissedJoints=false, const 
+  Vec &amp;Position=Vec(0.0, 0.0, 0.0), const Quat 
+  &amp;Orientation=Quat(1.0, 0.0, 0.0, 0.0), const Vec 
+  &amp;forwardDir=Vec(0.0, 0.0, 1.0))</p>
+  <p>create an avatar</p>
+  <p>The avatar needs to be initialised with an implementation. The type of
+  the implementation depends on the platform and so it cannot be created 
+  directly in platform independant code. To get around this it is created 
+  by a static factory method in the which itself uses the Piavca::Core 
+  class and its platform dependent implementation to create the 
+  implementation of the avatar. The constructor needs an identifier string 
+  that it uses to find platform specific data needed to create the avatar, 
+  for example the mesh file. The user can also pass in a position and 
+  orientation for the avatar. If bail on missed joints is true it will fail
+  to create the avatar if not all the needed joints are present in the 
+  model and will result in an invalid avatar (this can be tested with the 
+  isValid method).</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="isValid"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">isValid</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.isValid">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>bool Piavca::Avatar::isValid()</p>
+  <p>set the current piavca core object</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="activate"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">activate</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.activate">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Avatar::activate()</p>
+  <p>turn on updates on the avatar</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="deactivate"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">deactivate</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.deactivate">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Avatar::deactivate()</p>
+  <p>turn off updates on the avatar</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getName"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getName</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.getName">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>tstring Piavca::Avatar::getName()</p>
+  <p>get the name of the avatar</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="setName"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">setName</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.setName">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>tstring Piavca::Avatar::setName(tstring newName)</p>
+  <p>set the name of the avatar</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="clearFacialExpressionWeights"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">clearFacialExpressionWeights</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.clearFacialExpressionWeights">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Piavca::Avatar::clearFacialExpressionWeights()</p>
+  <p>set all expression weights to zero</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="beginExpression"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">beginExpression</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.beginExpression">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>int Piavca::Avatar::beginExpression() const</p>
+  <p>the ID of the first joint that is present in the avatar (the ordering 
+  is arbitrary)</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="endExpression"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">endExpression</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.endExpression">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>int Avatar::endExpression() const</p>
+  <p>the last joint + 1</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="nextExpression"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">nextExpression</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.nextExpression">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>int Avatar::nextExpression(int &amp;expressionId)</p>
+  <p>given a joint ID this returns the next joint ID that is present in the
+  avatar</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="isExpressionNull"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">isExpressionNull</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.isExpressionNull">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>bool Piavca::Avatar::isExpressionNull(int expressionId) const</p>
+  <p>whether the joint is present in the avatar</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="setRootPosition"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">setRootPosition</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.setRootPosition">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Piavca::Avatar::setRootPosition(const Vec &amp;Position)</p>
+  <p>get or set the root position and orientation of the avatar</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="setRootAngle"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">setRootAngle</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.setRootAngle">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Piavca::Avatar::setRootAngle(float angle)</p>
+  <p>set the root orientation from an angle in radians (assumed to be about
+  the verticle)</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="setRootAngleDeg"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">setRootAngleDeg</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.setRootAngleDeg">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Piavca::Avatar::setRootAngleDeg(float angle)</p>
+  <p>set the root orientation from an angle in degrees (assumed to be about
+  the verticle)</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="createJoint"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">createJoint</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.createJoint">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>bool Piavca::Avatar::createJoint(tstring jointName)</p>
+  <p>creates a new joint</p>
+  <p>It will only succeed if there is a piece of geometry corresponding to 
+  the name if not it returns false.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="begin"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">begin</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.begin">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>int Piavca::Avatar::begin() const</p>
+  <p>the ID of the first joint that is present in the avatar (the ordering 
+  is arbitrary)</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="end"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">end</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.end">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>int Avatar::end() const</p>
+  <p>the last joint + 1</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="next"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">next</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.next">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>int Avatar::next(int &amp;jointId)</p>
+  <p>given a joint ID this returns the next joint ID that is present in the
+  avatar</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getParent"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getParent</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.getParent">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>int Piavca::Avatar::getParent(int jointId) const</p>
+  <p>returns the ID of the parent of the joint in the joint heirarchy (or a
+  negative value if it doesn't exist</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getJointName"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getJointName</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.getJointName">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>const tstring Piavca::Avatar::getJointName(int jointId)</p>
+  <p>get the name of the joint corresponding to an ID</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="isNull"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">isNull</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.isNull">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>bool Piavca::Avatar::isNull(int jointId) const</p>
+  <p>whether the joint is present in the avatar</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="hasChanged"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">hasChanged</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.hasChanged">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>bool Piavca::Avatar::hasChanged(int jointId)</p>
+  <p>check whether the joint has been changed by user input</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="clearChange"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">clearChange</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.clearChange">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Piavca::Avatar::clearChange(int jointId)</p>
+  <p>clears the changed flag for the joint</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="scaleRoot"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">scaleRoot</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.scaleRoot">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Piavca::Avatar::scaleRoot(Vec scale)</p>
+  <p>scales the root by a non-uniform scale vector</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="scaleJoint"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">scaleJoint</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.scaleJoint">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Piavca::Avatar::scaleJoint(int jointId, Vec scale)</p>
+  <p>scales a joint by a non-uniform scale vector</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="timeStep"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">timeStep</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.timeStep">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Avatar::timeStep(float time)</p>
+  <p>set the current time</p>
+  <p>This is used for animation, it sets the time within the current piece 
+  of motion and puts the avatar in the correct position for that motion at 
+  that time</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="loadMotion"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">loadMotion</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.loadMotion">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Avatar::loadMotion(Motion *motion)</p>
+  <p>load motion as a motion object</p>
+  <p>The start time allows the client to specify a time in world time for 
+  the motion to start running</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getMotion"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getMotion</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.getMotion">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>const Motion* Piavca::Avatar::getMotion() const</p>
+  <p>get a const pointer to the motion so it can be seen by the client</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="stopMotion"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">stopMotion</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.stopMotion">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Piavca::Avatar::stopMotion()</p>
+  <p>stops the motion playing</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="restartMotion"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">restartMotion</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.restartMotion">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Piavca::Avatar::restartMotion()</p>
+  <p>restarts the motion without changing the start time</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="setMotionStartTime"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">setMotionStartTime</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.setMotionStartTime">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Avatar::setMotionStartTime(float startTime)</p>
+  <p>changes the start time of the motion</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getMotionStartTime"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getMotionStartTime</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.getMotionStartTime">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>float Avatar::getMotionStartTime()</p>
+  <p>get the time when the current motion starts</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getMotionEndTime"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getMotionEndTime</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.getMotionEndTime">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>float Avatar::getMotionEndTime()</p>
+  <p>get the time when the current motion should end</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="showMotionAtTime"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">showMotionAtTime</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.showMotionAtTime">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Avatar::showMotionAtTime(float time)</p>
+  <p>displays the motion on the avatar at time</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="loadScaleMotion"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">loadScaleMotion</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.loadScaleMotion">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Avatar::loadScaleMotion(Motion *motion)</p>
+  <p>load a scale motion as a motion object</p>
+  <p>The start time allows the client to specify a time in world time for 
+  the motion to start running</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getScaleMotion"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getScaleMotion</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.getScaleMotion">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>const Motion* Piavca::Avatar::getScaleMotion() const</p>
+  <p>get a const pointer to the motion so it can be seen by the client</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="playScaleMotion"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">playScaleMotion</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.playScaleMotion">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Avatar::playScaleMotion(Motion *m)</p>
+  <p>starts playing the motion at the current time</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="stopScaleMotion"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">stopScaleMotion</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.stopScaleMotion">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Piavca::Avatar::stopScaleMotion()</p>
+  <p>stops the motion playing</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="restartScaleMotion"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">restartScaleMotion</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.restartScaleMotion">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Piavca::Avatar::restartScaleMotion()</p>
+  <p>restarts the motion without changing the start time</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="setScaleMotionStartTime"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">setScaleMotionStartTime</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.setScaleMotionStartTime">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Avatar::setScaleMotionStartTime(float startTime)</p>
+  <p>changes the start time of the motion</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getScaleMotionStartTime"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getScaleMotionStartTime</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.getScaleMotionStartTime">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>float Avatar::getScaleMotionStartTime()</p>
+  <p>get the time when the current motion starts</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getScaleMotionEndTime"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getScaleMotionEndTime</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.getScaleMotionEndTime">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>float Avatar::getScaleMotionEndTime()</p>
+  <p>get the time when the current motion should end</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="showScaleMotionAtTime"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">showScaleMotionAtTime</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.showScaleMotionAtTime">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Avatar::showScaleMotionAtTime(float time)</p>
+  <p>displays the motion on the avatar at time</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="registerCallback"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">registerCallback</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.registerCallback">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Avatar::registerCallback(AvatarTimeCallback *cb)</p>
+  <p>registers a callback so that it is called on the avatar every 
+  frame</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="removeCallback"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">removeCallback</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.removeCallback">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Avatar::removeCallback(tstring cbName)</p>
+  <p>deletes a callback</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getNumCallbacks"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getNumCallbacks</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.getNumCallbacks">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>int Avatar::getNumCallbacks()</p>
+  <p>gets the number of registered callbacks (for iterating through 
+  them)</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getCallback"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getCallback</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.getCallback">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>AvatarTimeCallback * Avatar::getCallback(int i)</p>
+  <p>get a callback based on its index (the indeces are arbitrary this is 
+  just useful for finding a callback)</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="setFacialExpressionWeight"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">setFacialExpressionWeight</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.setFacialExpressionWeight">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>bool Piavca::Avatar::setFacialExpressionWeight(int id, float weight, 
+  float timeInterval=0.5)</p>
+  <p>set the weight of a facial expression (used in the blend)</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getFacialExpressionWeight"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getFacialExpressionWeight</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.getFacialExpressionWeight">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>float Piavca::Avatar::getFacialExpressionWeight(int id)</p>
+  <p>get the weight of an expression</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="setJointOrientation"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">setJointOrientation</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.setJointOrientation">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Avatar::setJointOrientation(std::vector&lt; std::pair&lt; int, 
+  Quat &gt; &gt; jointOrientation, jointCoord 
+  worldCoord=JOINTLOCAL_COORD)</p>
+  <p>set all the joint orientations from a vector of joint IDs and 
+  values</p>
+  <p>This can be done in various coordinate systems, jointlocal is the 
+  coordante space of the joint (default) local is the space of the avatar 
+  root world is the world coordinates using the second two is likely to be 
+  much less efficient</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getJointOrientation"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getJointOrientation</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.getJointOrientation">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Quat Piavca::Avatar::getJointOrientation(int jointId, jointCoord 
+  worldCoord=JOINTLOCAL_COORD)</p>
+  <p>get the orientation of a joint</p>
+  <p>The joint is specified via an ID. This can be done in various 
+  coordinate systems, jointlocal is the coordante space of the joint 
+  (default) local is the space of the avatar root world is the world 
+  coordinates using the second two is likely to be much less efficient</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getJointBasePosition"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getJointBasePosition</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Avatar.getJointBasePosition">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Vec Piavca::Avatar::getJointBasePosition(int jointId, jointCoord 
+  worldCoord=LOCAL_COORD)</p>
+  <p>get the current position of the start point of the joint</p>
+  <p>calculated from the root position and joint angles by forward 
+  kinematics This can be done in various coordinate systems, jointlocal is 
+  the coordante space of the joint local is the space of the avatar root 
+  (default) world is the world coordinates</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="Piavca-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Oct 15 20:02:34 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

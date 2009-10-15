@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Piavca.Split</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="Piavca-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="Piavca-module.html">Package&nbsp;Piavca</a> ::
+        Module&nbsp;Split
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="Piavca.Split-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="Piavca.Split-module.html">Module Piavca.Split</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-0" class="py-name" targets="Package Piavca=Piavca-module.html"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-0', 'Piavca', 'link-0');">Piavca</a></tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-comment"># a range of from a motion track. </tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-comment"># This specifies a subrange of a motion from a start and end time</tt> </tt>
+<a name="Split"></a><div id="Split-def"><a name="L6"></a><tt class="py-lineno"> 6</tt> <a class="py-toggle" href="#" id="Split-toggle" onclick="return toggle('Split');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="Piavca.Split.Split-class.html">Split</a> <tt class="py-op">:</tt> </tt>
+</div><div id="Split-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="Split-expanded"><a name="Split.__init__"></a><div id="Split.__init__-def"><a name="L7"></a><tt class="py-lineno"> 7</tt> <a class="py-toggle" href="#" id="Split.__init__-toggle" onclick="return toggle('Split.__init__');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.Split.Split-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">mot</tt><tt class="py-op">,</tt> <tt class="py-param">start</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-param">end</tt> <tt class="py-op">=</tt> <tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Split.__init__-collapsed" style="display:none;" pad="++" indent="++++++++++++"></div><div id="Split.__init__-expanded"><a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Variable Piavca.PiavcaGlut.PiavcaGlut.start=Piavca.PiavcaGlut.PiavcaGlut-module.html#start"><a title="Piavca.PiavcaGlut.PiavcaGlut.start" class="py-name" href="#" onclick="return doclink('link-1', 'start', 'link-1');">start</a></tt> <tt class="py-op">=</tt> <tt id="link-2" class="py-name"><a title="Piavca.PiavcaGlut.PiavcaGlut.start" class="py-name" href="#" onclick="return doclink('link-2', 'start', 'link-1');">start</a></tt> <tt class="py-comment"># start time</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-3" class="py-name" targets="Method Piavca.Motion.end()=Piavca.Motion-class.html#end,Method Piavca.Piavca_base.Piavca_base.Avatar.end()=Piavca.Piavca_base.Piavca_base.Avatar-class.html#end,Method Piavca.Piavca_base.Piavca_base.Motion.end()=Piavca.Piavca_base.Piavca_base.Motion-class.html#end,Method Piavca.Piavca_base.Piavca_base.vectorI.end()=Piavca.Piavca_base.Piavca_base.vectorI-class.html#end,Method Piavca.Piavca_base.Piavca_base.vectorS.end()=Piavca.Piavca_base.Piavca_base.vectorS-class.html#end"><a title="Piavca.Motion.end
+Piavca.Piavca_base.Piavca_base.Avatar.end
+Piavca.Piavca_base.Piavca_base.Motion.end
+Piavca.Piavca_base.Piavca_base.vectorI.end
+Piavca.Piavca_base.Piavca_base.vectorS.end" class="py-name" href="#" onclick="return doclink('link-3', 'end', 'link-3');">end</a></tt> <tt class="py-op">=</tt> <tt id="link-4" class="py-name"><a title="Piavca.Motion.end
+Piavca.Piavca_base.Piavca_base.Avatar.end
+Piavca.Piavca_base.Piavca_base.Motion.end
+Piavca.Piavca_base.Piavca_base.vectorI.end
+Piavca.Piavca_base.Piavca_base.vectorS.end" class="py-name" href="#" onclick="return doclink('link-4', 'end', 'link-3');">end</a></tt> <tt class="py-comment"># end time (if -1 it's the end of the motion)</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line">                <tt class="py-comment"># the motion you are taking a range of</tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">originalMotion</tt> <tt class="py-op">=</tt> <tt class="py-name">mot</tt>  </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line">                <tt class="py-comment"># a Piavca.rangeMotion that represents the split</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">rangeMotion</tt> <tt class="py-op">=</tt> <tt id="link-5" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-5', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-6" class="py-name" targets="Class Piavca.Piavca_base.Piavca_base.TimeRangeMotion=Piavca.Piavca_base.Piavca_base.TimeRangeMotion-class.html"><a title="Piavca.Piavca_base.Piavca_base.TimeRangeMotion" class="py-name" href="#" onclick="return doclink('link-6', 'TimeRangeMotion', 'link-6');">TimeRangeMotion</a></tt><tt class="py-op">(</tt><tt class="py-name">mot</tt><tt class="py-op">,</tt> <tt id="link-7" class="py-name"><a title="Piavca.PiavcaGlut.PiavcaGlut.start" class="py-name" href="#" onclick="return doclink('link-7', 'start', 'link-1');">start</a></tt><tt class="py-op">,</tt> <tt id="link-8" class="py-name"><a title="Piavca.Motion.end
+Piavca.Piavca_base.Piavca_base.Avatar.end
+Piavca.Piavca_base.Piavca_base.Motion.end
+Piavca.Piavca_base.Piavca_base.vectorI.end
+Piavca.Piavca_base.Piavca_base.vectorS.end" class="py-name" href="#" onclick="return doclink('link-8', 'end', 'link-3');">end</a></tt><tt class="py-op">)</tt>  </tt>
+</div><a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">        <tt class="py-comment"># return the submotion</tt> </tt>
+<a name="Split.GetMotion"></a><div id="Split.GetMotion-def"><a name="L17"></a><tt class="py-lineno">17</tt> <a class="py-toggle" href="#" id="Split.GetMotion-toggle" onclick="return toggle('Split.GetMotion');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.Split.Split-class.html#GetMotion">GetMotion</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Split.GetMotion-collapsed" style="display:none;" pad="++" indent="++++++++++++"></div><div id="Split.GetMotion-expanded"><a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">rangeMotion</tt> </tt>
+</div><a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line">        <tt class="py-comment"># return the submotion</tt> </tt>
+<a name="Split.GetSubMotion"></a><div id="Split.GetSubMotion-def"><a name="L21"></a><tt class="py-lineno">21</tt> <a class="py-toggle" href="#" id="Split.GetSubMotion-toggle" onclick="return toggle('Split.GetSubMotion');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.Split.Split-class.html#GetSubMotion">GetSubMotion</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Split.GetSubMotion-collapsed" style="display:none;" pad="++" indent="++++++++++++"></div><div id="Split.GetSubMotion-expanded"><a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt id="link-9" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-9', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-10" class="py-name" targets="Class Piavca.Piavca_base.Piavca_base.SubMotion=Piavca.Piavca_base.Piavca_base.SubMotion-class.html"><a title="Piavca.Piavca_base.Piavca_base.SubMotion" class="py-name" href="#" onclick="return doclink('link-10', 'SubMotion', 'link-10');">SubMotion</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">originalMotion</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name"><a title="Piavca.PiavcaGlut.PiavcaGlut.start" class="py-name" href="#" onclick="return doclink('link-11', 'start', 'link-1');">start</a></tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-12" class="py-name"><a title="Piavca.Motion.end
+Piavca.Piavca_base.Piavca_base.Avatar.end
+Piavca.Piavca_base.Piavca_base.Motion.end
+Piavca.Piavca_base.Piavca_base.vectorI.end
+Piavca.Piavca_base.Piavca_base.vectorS.end" class="py-name" href="#" onclick="return doclink('link-12', 'end', 'link-3');">end</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"> </tt>
+<a name="Split.GetStart"></a><div id="Split.GetStart-def"><a name="L24"></a><tt class="py-lineno">24</tt> <a class="py-toggle" href="#" id="Split.GetStart-toggle" onclick="return toggle('Split.GetStart');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.Split.Split-class.html#GetStart">GetStart</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Split.GetStart-collapsed" style="display:none;" pad="++" indent="++++++++++++"></div><div id="Split.GetStart-expanded"><a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name"><a title="Piavca.PiavcaGlut.PiavcaGlut.start" class="py-name" href="#" onclick="return doclink('link-13', 'start', 'link-1');">start</a></tt> </tt>
+</div><a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line"> </tt>
+<a name="Split.GetEnd"></a><div id="Split.GetEnd-def"><a name="L27"></a><tt class="py-lineno">27</tt> <a class="py-toggle" href="#" id="Split.GetEnd-toggle" onclick="return toggle('Split.GetEnd');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.Split.Split-class.html#GetEnd">GetEnd</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Split.GetEnd-collapsed" style="display:none;" pad="++" indent="++++++++++++"></div><div id="Split.GetEnd-expanded"><a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-14" class="py-name"><a title="Piavca.Motion.end
+Piavca.Piavca_base.Piavca_base.Avatar.end
+Piavca.Piavca_base.Piavca_base.Motion.end
+Piavca.Piavca_base.Piavca_base.vectorI.end
+Piavca.Piavca_base.Piavca_base.vectorS.end" class="py-name" href="#" onclick="return doclink('link-14', 'end', 'link-3');">end</a></tt> </tt>
+</div><a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line">         </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line">        <tt class="py-comment"># save the submotion as a piavca motion file</tt> </tt>
+<a name="Split.Save"></a><div id="Split.Save-def"><a name="L31"></a><tt class="py-lineno">31</tt> <a class="py-toggle" href="#" id="Split.Save-toggle" onclick="return toggle('Split.Save');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.Split.Split-class.html#Save">Save</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">filename</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Split.Save-collapsed" style="display:none;" pad="++" indent="++++++++++++"></div><div id="Split.Save-expanded"><a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">                <tt id="link-15" class="py-name"><a title="Piavca.Piavca_base.Piavca_base.SubMotion" class="py-name" href="#" onclick="return doclink('link-15', 'SubMotion', 'link-10');">SubMotion</a></tt> <tt class="py-op">=</tt> <tt id="link-16" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-16', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-17" class="py-name"><a title="Piavca.Piavca_base.Piavca_base.SubMotion" class="py-name" href="#" onclick="return doclink('link-17', 'SubMotion', 'link-10');">SubMotion</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">originalMotion</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name"><a title="Piavca.PiavcaGlut.PiavcaGlut.start" class="py-name" href="#" onclick="return doclink('link-18', 'start', 'link-1');">start</a></tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-19" class="py-name"><a title="Piavca.Motion.end
+Piavca.Piavca_base.Piavca_base.Avatar.end
+Piavca.Piavca_base.Piavca_base.Motion.end
+Piavca.Piavca_base.Piavca_base.vectorI.end
+Piavca.Piavca_base.Piavca_base.vectorS.end" class="py-name" href="#" onclick="return doclink('link-19', 'end', 'link-3');">end</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line">                <tt class="py-name">saver</tt> <tt class="py-op">=</tt> <tt id="link-20" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-20', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt class="py-name">MotionSaver</tt><tt class="py-op">(</tt><tt id="link-21" class="py-name"><a title="Piavca.Piavca_base.Piavca_base.SubMotion" class="py-name" href="#" onclick="return doclink('link-21', 'SubMotion', 'link-10');">SubMotion</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">                <tt class="py-name">saver</tt><tt class="py-op">.</tt><tt class="py-name">collectFrames</tt><tt class="py-op">(</tt><tt class="py-number">0.05</tt><tt class="py-op">)</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">                <tt class="py-name">saver</tt><tt class="py-op">.</tt><tt id="link-22" class="py-name" targets="Method Piavca.PiavcaDesigner.BackEnd.BackEnd.save()=Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#save"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.save" class="py-name" href="#" onclick="return doclink('link-22', 'save', 'link-22');">save</a></tt><tt class="py-op">(</tt><tt class="py-name">filename</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="Piavca-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Oct 15 20:02:40 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

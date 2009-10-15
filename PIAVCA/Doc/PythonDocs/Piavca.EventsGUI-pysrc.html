@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Piavca.EventsGUI</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="Piavca-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="Piavca-module.html">Package&nbsp;Piavca</a> ::
+        Module&nbsp;EventsGUI
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="Piavca.EventsGUI-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="Piavca.EventsGUI-module.html">Module Piavca.EventsGUI</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-comment"># ***** BEGIN LICENSE BLOCK *****</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-comment"># Version: MPL 1.1/GPL 2.0/LGPL 2.1</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-comment"># The contents of this file are subject to the Mozilla Public License Version</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-comment"># 1.1 (the "License"); you may not use this file except in compliance with</tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-comment"># the License. You may obtain a copy of the License at</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-comment"># http://www.mozilla.org/MPL/</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-comment"># Software distributed under the License is distributed on an "AS IS" basis,</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt class="py-comment"># WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License</tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt class="py-comment"># for the specific language governing rights and limitations under the</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt class="py-comment"># License.</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"><tt class="py-comment"># The Original Code is ScriptEngine.py</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"><tt class="py-comment"># The Initial Developer of the Original Code is</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"><tt class="py-comment"># Marco (Mark) Gillies.</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"><tt class="py-comment"># Portions created by the Initial Developer are Copyright (C) 2007</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"><tt class="py-comment"># the Initial Developer. All Rights Reserved.</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"><tt class="py-comment"># Contributor(s):</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"><tt class="py-comment"># Alternatively, the contents of this file may be used under the terms of</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line"><tt class="py-comment"># either the GNU General Public License Version 2 or later (the "GPL"), or</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line"><tt class="py-comment"># the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line"><tt class="py-comment"># in which case the provisions of the GPL or the LGPL are applicable instead</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line"><tt class="py-comment"># of those above. If you wish to allow use of your version of this file only</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"><tt class="py-comment"># under the terms of either the GPL or the LGPL, and not to allow others to</tt> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line"><tt class="py-comment"># use your version of this file under the terms of the MPL, indicate your</tt> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line"><tt class="py-comment"># decision by deleting the provisions above and replace them with the notice</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line"><tt class="py-comment"># and other provisions required by the GPL or the LGPL. If you do not delete</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line"><tt class="py-comment"># the provisions above, a recipient may use your version of this file under</tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line"><tt class="py-comment"># the terms of any one of the MPL, the GPL or the LGPL.</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line"><tt class="py-comment"># ***** END LICENSE BLOCK *****</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line"> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-0" class="py-name" targets="Package Piavca=Piavca-module.html"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-0', 'Piavca', 'link-0');">Piavca</a></tt> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line"> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-1" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-1', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Module Piavca.ImportException=Piavca.ImportException-module.html"><a title="Piavca.ImportException" class="py-name" href="#" onclick="return doclink('link-2', 'ImportException', 'link-2');">ImportException</a></tt> <tt class="py-keyword">import</tt> <tt id="link-3" class="py-name" targets="Class Piavca.ImportException.PiavcaImportException=Piavca.ImportException.PiavcaImportException-class.html"><a title="Piavca.ImportException.PiavcaImportException" class="py-name" href="#" onclick="return doclink('link-3', 'PiavcaImportException', 'link-3');">PiavcaImportException</a></tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line"> </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line"><tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line">        <tt class="py-keyword">import</tt> <tt class="py-name">wx</tt> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line"><tt class="py-keyword">except</tt> <tt class="py-name">ImportError</tt><tt class="py-op">:</tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt id="link-4" class="py-name"><a title="Piavca.ImportException.PiavcaImportException" class="py-name" href="#" onclick="return doclink('link-4', 'PiavcaImportException', 'link-3');">PiavcaImportException</a></tt><tt class="py-op">(</tt><tt class="py-string">"Could not load wxPython so there won't be an events GUI"</tt><tt class="py-op">)</tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line"> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">thread</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line"> </tt>
+<a name="setUpEventsGUI"></a><div id="setUpEventsGUI-def"><a name="L49"></a><tt class="py-lineno">49</tt> <a class="py-toggle" href="#" id="setUpEventsGUI-toggle" onclick="return toggle('setUpEventsGUI');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.EventsGUI-module.html#setUpEventsGUI">setUpEventsGUI</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="setUpEventsGUI-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="setUpEventsGUI-expanded"><a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line">        <tt class="py-name">app</tt> <tt class="py-op">=</tt> <tt id="link-5" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-5', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-6" class="py-name" targets="Function Piavca.PiavcaWXApp.getWXApp()=Piavca.PiavcaWXApp-module.html#getWXApp"><a title="Piavca.PiavcaWXApp.getWXApp" class="py-name" href="#" onclick="return doclink('link-6', 'getWXApp', 'link-6');">getWXApp</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-comment">#wx.PySimpleApp()</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line">         </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">avatarName</tt> <tt class="py-keyword">in</tt> <tt id="link-7" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-7', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-8" class="py-name" targets="Class Piavca.Piavca_base.Piavca_base.Core=Piavca.Piavca_base.Piavca_base.Core-class.html"><a title="Piavca.Piavca_base.Piavca_base.Core" class="py-name" href="#" onclick="return doclink('link-8', 'Core', 'link-8');">Core</a></tt><tt class="py-op">.</tt><tt id="link-9" class="py-name" targets="Method Piavca.Piavca_base.Piavca_base.Core.getCore()=Piavca.Piavca_base.Piavca_base.Core-class.html#getCore"><a title="Piavca.Piavca_base.Piavca_base.Core.getCore" class="py-name" href="#" onclick="return doclink('link-9', 'getCore', 'link-9');">getCore</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name" targets="Method Piavca.PiavcaDesigner.BackEnd.BackEnd.getAvatarNames()=Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#getAvatarNames,Method Piavca.Piavca_base.Piavca_base.Core.getAvatarNames()=Piavca.Piavca_base.Piavca_base.Core-class.html#getAvatarNames"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.getAvatarNames
+Piavca.Piavca_base.Piavca_base.Core.getAvatarNames" class="py-name" href="#" onclick="return doclink('link-10', 'getAvatarNames', 'link-10');">getAvatarNames</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line">                <tt id="link-11" class="py-name" targets="Variable Piavca.PiavcaDesigner.BackEnd.BackEnd.avatar=Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#avatar"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.avatar" class="py-name" href="#" onclick="return doclink('link-11', 'avatar', 'link-11');">avatar</a></tt> <tt class="py-op">=</tt> <tt id="link-12" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-12', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-13" class="py-name"><a title="Piavca.Piavca_base.Piavca_base.Core" class="py-name" href="#" onclick="return doclink('link-13', 'Core', 'link-8');">Core</a></tt><tt class="py-op">.</tt><tt id="link-14" class="py-name"><a title="Piavca.Piavca_base.Piavca_base.Core.getCore" class="py-name" href="#" onclick="return doclink('link-14', 'getCore', 'link-9');">getCore</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-15" class="py-name" targets="Method Piavca.Motion.getAvatar()=Piavca.Motion-class.html#getAvatar,Method Piavca.MotionFilter.getAvatar()=Piavca.MotionFilter-class.html#getAvatar,Method Piavca.PiavcaDesigner.BackEnd.BackEnd.getAvatar()=Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#getAvatar,Method Piavca.Piavca_base.Piavca_base.Core.getAvatar()=Piavca.Piavca_base.Piavca_base.Core-class.html#getAvatar,Method Piavca.Piavca_base.Piavca_base.Motion.getAvatar()=Piavca.Piavca_base.Piavca_base.Motion-class.html#getAvatar,Method Piavca.Piavca_base.Piavca_base.MotionFilter.getAvatar()=Piavca.Piavca_base.Piavca_base.MotionFilter-class.html#getAvatar,Method Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.getAvatar()=Piavca.Piavca_base.Piavca_base.MultiMotionCombiner-class.html#getAvatar,Method Piavca.Piavca_base.Piavca_base.TwoMotionCombiner.getAvatar()=Piavca.Piavca_base.Piavca_base.TwoMotionCombiner-class.html#getAvatar"><a title="Piavca.Motion.getAvatar
+Piavca.MotionFilter.getAvatar
+Piavca.PiavcaDesigner.BackEnd.BackEnd.getAvatar
+Piavca.Piavca_base.Piavca_base.Core.getAvatar
+Piavca.Piavca_base.Piavca_base.Motion.getAvatar
+Piavca.Piavca_base.Piavca_base.MotionFilter.getAvatar
+Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.getAvatar
+Piavca.Piavca_base.Piavca_base.TwoMotionCombiner.getAvatar" class="py-name" href="#" onclick="return doclink('link-15', 'getAvatar', 'link-15');">getAvatar</a></tt><tt class="py-op">(</tt><tt class="py-name">avatarName</tt><tt class="py-op">)</tt> </tt>
+<a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line">                <tt class="py-name">events</tt> <tt class="py-op">=</tt> <tt id="link-16" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-16', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-17" class="py-name" targets="Function Piavca.CoreProxy.getEvents()=Piavca.CoreProxy-module.html#getEvents,Method Piavca.PiavcaDesigner.BackEnd.BackEnd.getEvents()=Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#getEvents"><a title="Piavca.CoreProxy.getEvents
+Piavca.PiavcaDesigner.BackEnd.BackEnd.getEvents" class="py-name" href="#" onclick="return doclink('link-17', 'getEvents', 'link-17');">getEvents</a></tt><tt class="py-op">(</tt><tt id="link-18" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.avatar" class="py-name" href="#" onclick="return doclink('link-18', 'avatar', 'link-11');">avatar</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">events</tt><tt class="py-op">)</tt> <tt class="py-op">&gt;</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line">                        <tt class="py-name">frame</tt><tt class="py-op">=</tt><tt class="py-name">wx</tt><tt class="py-op">.</tt><tt class="py-name">Frame</tt><tt class="py-op">(</tt><tt class="py-name">None</tt><tt class="py-op">,</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">title</tt><tt class="py-op">=</tt><tt class="py-name">avatarName</tt><tt class="py-op">+</tt><tt class="py-string">" Events"</tt><tt class="py-op">)</tt> </tt>
+<a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line">                        <tt class="py-name">sizer1</tt><tt class="py-op">=</tt><tt class="py-name">wx</tt><tt class="py-op">.</tt><tt class="py-name">BoxSizer</tt><tt class="py-op">(</tt><tt class="py-name">wx</tt><tt class="py-op">.</tt><tt class="py-name">HORIZONTAL</tt><tt class="py-op">)</tt> </tt>
+<a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line">                        <tt class="py-name">sizer2</tt><tt class="py-op">=</tt><tt class="py-name">wx</tt><tt class="py-op">.</tt><tt class="py-name">BoxSizer</tt><tt class="py-op">(</tt><tt class="py-name">wx</tt><tt class="py-op">.</tt><tt class="py-name">VERTICAL</tt><tt class="py-op">)</tt> </tt>
+<a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line">         </tt>
+<a name="L60"></a><tt class="py-lineno">60</tt>  <tt class="py-line">                        <tt class="py-name">id_counter</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L61"></a><tt class="py-lineno">61</tt>  <tt class="py-line">                        <tt class="py-keyword">for</tt> <tt id="link-19" class="py-name" targets="Method Piavca.FSM'.FSM.event()=Piavca.FSM%27.FSM-class.html#event,Method Piavca.FSM'.FSMLoop.event()=Piavca.FSM%27.FSMLoop-class.html#event,Method Piavca.Piavca_base.Piavca_base.Avatar.event()=Piavca.Piavca_base.Piavca_base.Avatar-class.html#event"><a title="Piavca.FSM'.FSM.event
+Piavca.FSM'.FSMLoop.event
+Piavca.Piavca_base.Piavca_base.Avatar.event" class="py-name" href="#" onclick="return doclink('link-19', 'event', 'link-19');">event</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name">events</tt><tt class="py-op">:</tt> </tt>
+<a name="L62"></a><tt class="py-lineno">62</tt>  <tt class="py-line">                                <tt class="py-name">button</tt><tt class="py-op">=</tt><tt class="py-name">wx</tt><tt class="py-op">.</tt><tt class="py-name">Button</tt><tt class="py-op">(</tt><tt class="py-name">frame</tt><tt class="py-op">,</tt> <tt class="py-name">id_counter</tt><tt class="py-op">,</tt> <tt class="py-name">label</tt><tt class="py-op">=</tt><tt id="link-20" class="py-name"><a title="Piavca.FSM'.FSM.event
+Piavca.FSM'.FSMLoop.event
+Piavca.Piavca_base.Piavca_base.Avatar.event" class="py-name" href="#" onclick="return doclink('link-20', 'event', 'link-19');">event</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line">                                <tt class="py-name">wx</tt><tt class="py-op">.</tt><tt class="py-name">EVT_BUTTON</tt> <tt class="py-op">(</tt><tt class="py-name">frame</tt><tt class="py-op">,</tt> <tt class="py-name">id_counter</tt><tt class="py-op">,</tt> <tt class="py-keyword">lambda</tt> <tt class="py-name">evt</tt><tt class="py-op">,</tt> <tt class="py-name">a</tt> <tt class="py-op">=</tt> <tt id="link-21" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.avatar" class="py-name" href="#" onclick="return doclink('link-21', 'avatar', 'link-11');">avatar</a></tt><tt class="py-op">,</tt> <tt id="link-22" class="py-name" targets="Variable Piavca.FreeCameraCanvas.e=Piavca.FreeCameraCanvas-module.html#e,Variable Piavca.ViewerCanvas.e=Piavca.ViewerCanvas-module.html#e,Variable Piavca.gltb.e=Piavca.gltb-module.html#e"><a title="Piavca.FreeCameraCanvas.e
+Piavca.ViewerCanvas.e
+Piavca.gltb.e" class="py-name" href="#" onclick="return doclink('link-22', 'e', 'link-22');">e</a></tt><tt class="py-op">=</tt><tt id="link-23" class="py-name"><a title="Piavca.FSM'.FSM.event
+Piavca.FSM'.FSMLoop.event
+Piavca.Piavca_base.Piavca_base.Avatar.event" class="py-name" href="#" onclick="return doclink('link-23', 'event', 'link-19');">event</a></tt> <tt class="py-op">:</tt> <tt class="py-name">a</tt><tt class="py-op">.</tt><tt id="link-24" class="py-name"><a title="Piavca.FSM'.FSM.event
+Piavca.FSM'.FSMLoop.event
+Piavca.Piavca_base.Piavca_base.Avatar.event" class="py-name" href="#" onclick="return doclink('link-24', 'event', 'link-19');">event</a></tt><tt class="py-op">(</tt><tt id="link-25" class="py-name"><a title="Piavca.FreeCameraCanvas.e
+Piavca.ViewerCanvas.e
+Piavca.gltb.e" class="py-name" href="#" onclick="return doclink('link-25', 'e', 'link-22');">e</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line">                                <tt class="py-name">sizer1</tt><tt class="py-op">.</tt><tt class="py-name">Add</tt><tt class="py-op">(</tt><tt class="py-name">button</tt><tt class="py-op">,</tt><tt class="py-number">1</tt> <tt class="py-op">)</tt> </tt>
+<a name="L65"></a><tt class="py-lineno">65</tt>  <tt class="py-line">                                <tt class="py-name">id_counter</tt><tt class="py-op">+=</tt><tt class="py-number">1</tt> </tt>
+<a name="L66"></a><tt class="py-lineno">66</tt>  <tt class="py-line">                                <tt class="py-keyword">if</tt> <tt class="py-name">id_counter</tt> <tt class="py-op">%</tt> <tt class="py-number">6</tt> <tt class="py-op">==</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L67"></a><tt class="py-lineno">67</tt>  <tt class="py-line">                                        <tt class="py-name">sizer2</tt><tt class="py-op">.</tt><tt class="py-name">Add</tt><tt class="py-op">(</tt><tt class="py-name">sizer1</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">)</tt> </tt>
+<a name="L68"></a><tt class="py-lineno">68</tt>  <tt class="py-line">                                        <tt class="py-name">sizer1</tt><tt class="py-op">=</tt><tt class="py-name">wx</tt><tt class="py-op">.</tt><tt class="py-name">BoxSizer</tt><tt class="py-op">(</tt><tt class="py-name">wx</tt><tt class="py-op">.</tt><tt class="py-name">HORIZONTAL</tt><tt class="py-op">)</tt> </tt>
+<a name="L69"></a><tt class="py-lineno">69</tt>  <tt class="py-line">                                         </tt>
+<a name="L70"></a><tt class="py-lineno">70</tt>  <tt class="py-line">                        <tt class="py-name">sizer2</tt><tt class="py-op">.</tt><tt class="py-name">Add</tt><tt class="py-op">(</tt><tt class="py-name">sizer1</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">)</tt> </tt>
+<a name="L71"></a><tt class="py-lineno">71</tt>  <tt class="py-line">                                 </tt>
+<a name="L72"></a><tt class="py-lineno">72</tt>  <tt class="py-line">                        <tt class="py-name">frame</tt><tt class="py-op">.</tt><tt class="py-name">SetSizer</tt><tt class="py-op">(</tt><tt class="py-name">sizer2</tt><tt class="py-op">)</tt> </tt>
+<a name="L73"></a><tt class="py-lineno">73</tt>  <tt class="py-line">                        <tt class="py-name">frame</tt><tt class="py-op">.</tt><tt class="py-name">SetAutoLayout</tt><tt class="py-op">(</tt><tt class="py-number">1</tt><tt class="py-op">)</tt> </tt>
+<a name="L74"></a><tt class="py-lineno">74</tt>  <tt class="py-line">                        <tt class="py-name">sizer2</tt><tt class="py-op">.</tt><tt class="py-name">Fit</tt><tt class="py-op">(</tt><tt class="py-name">frame</tt><tt class="py-op">)</tt> </tt>
+<a name="L75"></a><tt class="py-lineno">75</tt>  <tt class="py-line">         </tt>
+<a name="L76"></a><tt class="py-lineno">76</tt>  <tt class="py-line">                        <tt class="py-name">frame</tt><tt class="py-op">.</tt><tt id="link-26" class="py-name" targets="Method Piavca.redirect.outputRedirection.Show()=Piavca.redirect.outputRedirection-class.html#Show"><a title="Piavca.redirect.outputRedirection.Show" class="py-name" href="#" onclick="return doclink('link-26', 'Show', 'link-26');">Show</a></tt><tt class="py-op">(</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L77"></a><tt class="py-lineno">77</tt>  <tt class="py-line">                        <tt class="py-name">frame</tt><tt class="py-op">.</tt><tt class="py-name">Layout</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L78"></a><tt class="py-lineno">78</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="Piavca-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Oct 15 20:02:40 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

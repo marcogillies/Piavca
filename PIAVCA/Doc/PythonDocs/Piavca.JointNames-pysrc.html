@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Piavca.JointNames</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="Piavca-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="Piavca-module.html">Package&nbsp;Piavca</a> ::
+        Module&nbsp;JointNames
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="Piavca.JointNames-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="Piavca.JointNames-module.html">Module Piavca.JointNames</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment"># ***** BEGIN LICENSE BLOCK *****</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-comment"># Version: MPL 1.1/GPL 2.0/LGPL 2.1</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-comment"># The contents of this file are subject to the Mozilla Public License Version</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-comment"># 1.1 (the "License"); you may not use this file except in compliance with</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-comment"># the License. You may obtain a copy of the License at</tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-comment"># http://www.mozilla.org/MPL/</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-comment"># Software distributed under the License is distributed on an "AS IS" basis,</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-comment"># WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt class="py-comment"># for the specific language governing rights and limitations under the</tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt class="py-comment"># License.</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"><tt class="py-comment"># The Original Code is __________________________________________.</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"><tt class="py-comment"># The Initial Developer of the Original Code is</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"><tt class="py-comment"># ____________________________________________.</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"><tt class="py-comment"># Portions created by the Initial Developer are Copyright (C) 2___</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"><tt class="py-comment"># the Initial Developer. All Rights Reserved.</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"><tt class="py-comment"># Contributor(s):</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"><tt class="py-comment"># Alternatively, the contents of this file may be used under the terms of</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"><tt class="py-comment"># either the GNU General Public License Version 2 or later (the "GPL"), or</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line"><tt class="py-comment"># the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line"><tt class="py-comment"># in which case the provisions of the GPL or the LGPL are applicable instead</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line"><tt class="py-comment"># of those above. If you wish to allow use of your version of this file only</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line"><tt class="py-comment"># under the terms of either the GPL or the LGPL, and not to allow others to</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"><tt class="py-comment"># use your version of this file under the terms of the MPL, indicate your</tt> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line"><tt class="py-comment"># decision by deleting the provisions above and replace them with the notice</tt> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line"><tt class="py-comment"># and other provisions required by the GPL or the LGPL. If you do not delete</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line"><tt class="py-comment"># the provisions above, a recipient may use your version of this file under</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line"><tt class="py-comment"># the terms of any one of the MPL, the GPL or the LGPL.</tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line"><tt class="py-comment"># ***** END LICENSE BLOCK *****</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line"> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-0" class="py-name" targets="Package Piavca=Piavca-module.html"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-0', 'Piavca', 'link-0');">Piavca</a></tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line"> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line"><tt id="link-1" class="py-name" targets="Variable Piavca.JointNames.joint_specs=Piavca.JointNames-module.html#joint_specs,Variable Piavca.ScriptEngine'.joint_specs=Piavca.ScriptEngine%27-module.html#joint_specs"><a title="Piavca.JointNames.joint_specs
+Piavca.ScriptEngine'.joint_specs" class="py-name" href="#" onclick="return doclink('link-1', 'joint_specs', 'link-1');">joint_specs</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-string">"Root Position, rootpos"</tt><tt class="py-op">,</tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line"><tt class="py-string">"Root Orientation, pelvis, HumaniodRoot01, rootori"</tt><tt class="py-op">,</tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line"><tt class="py-string">"HumaniodRoot01 Spine, Cally Spine, Bip01 Pelvis, pelvic"</tt><tt class="py-op">,</tt> </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line"><tt class="py-string">"HumaniodRoot01 Spine1, Cally Spine1, Bip01 Spine1, lower_tbone, hip, hanim_vc7, abdomen, Spine0, body, thorax"</tt><tt class="py-op">,</tt> </tt>
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line"><tt class="py-string">"HumaniodRoot01 Spine2, Bip01 Spine2, Spine1, Chest, chest, tbone"</tt><tt class="py-op">,</tt> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line"><tt class="py-string">"HumaniodRoot01 Neck, Cally Neck, Bip01 Neck, neck, Neck, hanim_vc4"</tt><tt class="py-op">,</tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line"><tt class="py-string">"HumaniodRoot01 Head, Cally Head, Bip01 Head, face, head, Head, hanim_skullbase"</tt><tt class="py-op">,</tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line"><tt class="py-string">"HumaniodRoot01 L Clavicle, Cally L Clavicle, Bip01 L Clavicle, left_shoulder, LShoulder, LClavicle, hanim_l_shoulder, lCollar LeftCollar, lclavicle"</tt><tt class="py-op">,</tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line"><tt class="py-string">"HumaniodRoot01 L UpperArm, Cally L UpperArm, Bip01 L UpperArm, upper_left_arm, LUpperArm, lShldr, LeftShoulder, lhumerus"</tt><tt class="py-op">,</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line"><tt class="py-string">"HumaniodRoot01 L Forearm, Cally L Forearm, Bip01 L Forearm, lower_left_arm, LForeArm, LForearm, lForeArm, left_elbow LeftElbow, lradius, LElbow"</tt><tt class="py-op">,</tt> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line"><tt class="py-string">"HumaniodRoot01 L Hand, Cally L Hand, Bip01 L Hand, left_wrist, LWrist, LHand, lHand, LeftWrist, lhand"</tt><tt class="py-op">,</tt> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line"><tt class="py-string">"HumaniodRoot01 R Clavicle, Cally R Clavicle, Bip01 R Clavicle, right_shoulder, RShoulder, RClavicle, hanim_r_shoulder, rCollar RightCollar, rclavicle"</tt><tt class="py-op">,</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line"><tt class="py-string">"HumaniodRoot01 R UpperArm, Cally R UpperArm, Bip01 R UpperArm, upper_right_arm, RUpperArm, rShldr, RightShoulder, rhumerus"</tt><tt class="py-op">,</tt> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line"><tt class="py-string">"HumaniodRoot01 R Forearm, Cally R Forearm, Bip01 R Forearm, lower_right_arm, RForeArm, RForearm, rForeArm, right_elbow RightElbow, rradius, RElbow, "</tt><tt class="py-op">,</tt> </tt>
+<a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line"><tt class="py-string">"HumaniodRoot01 R Hand, Cally R Hand, Bip01 R Hand, right_wrist, RWrist, RHand, rHand, RightWrist, rhand"</tt><tt class="py-op">,</tt> </tt>
+<a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line"><tt class="py-string">"legs"</tt><tt class="py-op">,</tt> </tt>
+<a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line"><tt class="py-string">"left_hip, lButtock"</tt><tt class="py-op">,</tt> </tt>
+<a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line"><tt class="py-string">"HumaniodRoot01 L Thigh, Cally L Thigh, Bip01 L Thigh, upper_left_leg, LThigh, lThigh, left_hip, LHip, LeftHip, lfemur"</tt><tt class="py-op">,</tt> </tt>
+<a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line"><tt class="py-string">"HumaniodRoot01 L Calf, Cally L Calf, Bip01 L Calf, lower_left_leg, LCalf, lShin, left_knee, LeftKnee, ltibia"</tt><tt class="py-op">,</tt> </tt>
+<a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line"><tt class="py-string">"HumaniodRoot01 L Foot, Cally L Foot, Bip01 L Foot, left_foot, LFoot, lFoot, LeftAnkle, lfoot"</tt><tt class="py-op">,</tt> </tt>
+<a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line"><tt class="py-string">"righthip, rButtock"</tt><tt class="py-op">,</tt> </tt>
+<a name="L60"></a><tt class="py-lineno">60</tt>  <tt class="py-line"><tt class="py-string">"HumaniodRoot01 R Thigh, Cally R Thigh, Bip01 R Thigh, upper_right_leg, RThigh, rThigh, right_hip, RHip, RightHip, rfemur"</tt><tt class="py-op">,</tt> </tt>
+<a name="L61"></a><tt class="py-lineno">61</tt>  <tt class="py-line"><tt class="py-string">"HumaniodRoot01 R Calf, Cally R Calf, Bip01 R Calf, lower_right_leg, RCalf, rShin, right_knee, RightKnee, rtibia"</tt><tt class="py-op">,</tt> </tt>
+<a name="L62"></a><tt class="py-lineno">62</tt>  <tt class="py-line"><tt class="py-string">"HumaniodRoot01 R Foot, Cally R Foot, Bip01 R Foot, right_foot, RFoot, rFoot, RightAnkle, rfoot"</tt><tt class="py-op">,</tt> </tt>
+<a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line"><tt class="py-string">"BODY"</tt><tt class="py-op">,</tt> </tt>
+<a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line"><tt class="py-string">"figureHair"</tt><tt class="py-op">]</tt> </tt>
+<a name="L65"></a><tt class="py-lineno">65</tt>  <tt class="py-line"> </tt>
+<a name="loadNames"></a><div id="loadNames-def"><a name="L66"></a><tt class="py-lineno">66</tt> <a class="py-toggle" href="#" id="loadNames-toggle" onclick="return toggle('loadNames');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.JointNames-module.html#loadNames">loadNames</a><tt class="py-op">(</tt><tt class="py-param">namelist</tt><tt class="py-op">,</tt> <tt class="py-param">joints</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="loadNames-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="loadNames-expanded"><a name="L67"></a><tt class="py-lineno">67</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">line</tt> <tt class="py-keyword">in</tt> <tt class="py-name">namelist</tt><tt class="py-op">:</tt> </tt>
+<a name="L68"></a><tt class="py-lineno">68</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">line</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-string">"#"</tt><tt class="py-op">:</tt> </tt>
+<a name="L69"></a><tt class="py-lineno">69</tt>  <tt class="py-line">                        <tt class="py-keyword">continue</tt> </tt>
+<a name="L70"></a><tt class="py-lineno">70</tt>  <tt class="py-line">                <tt class="py-name">line</tt> <tt class="py-op">=</tt> <tt class="py-name">line</tt><tt class="py-op">.</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-string">","</tt><tt class="py-op">)</tt> </tt>
+<a name="L71"></a><tt class="py-lineno">71</tt>  <tt class="py-line">                <tt class="py-name">line</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-name">l</tt><tt class="py-op">.</tt><tt class="py-name">strip</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-keyword">for</tt> <tt class="py-name">l</tt> <tt class="py-keyword">in</tt> <tt class="py-name">line</tt><tt class="py-op">]</tt> </tt>
+<a name="L72"></a><tt class="py-lineno">72</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">line</tt><tt class="py-op">[</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-string">""</tt><tt class="py-op">:</tt> </tt>
+<a name="L73"></a><tt class="py-lineno">73</tt>  <tt class="py-line">                        <tt class="py-name">line</tt> <tt class="py-op">=</tt> <tt class="py-name">line</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> </tt>
+<a name="L74"></a><tt class="py-lineno">74</tt>  <tt class="py-line">                <tt class="py-keyword">print</tt> <tt class="py-name">line</tt> </tt>
+<a name="L75"></a><tt class="py-lineno">75</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt id="link-2" class="py-name" targets="Function Piavca.CoreProxy.joints()=Piavca.CoreProxy-module.html#joints"><a title="Piavca.CoreProxy.joints" class="py-name" href="#" onclick="return doclink('link-2', 'joints', 'link-2');">joints</a></tt> <tt class="py-op">:</tt> </tt>
+<a name="L76"></a><tt class="py-lineno">76</tt>  <tt class="py-line">                        <tt class="py-comment">#print line</tt> </tt>
+<a name="L77"></a><tt class="py-lineno">77</tt>  <tt class="py-line">                        <tt id="link-3" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-3', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Class Piavca.Piavca_base.Piavca_base.Core=Piavca.Piavca_base.Piavca_base.Core-class.html"><a title="Piavca.Piavca_base.Piavca_base.Core" class="py-name" href="#" onclick="return doclink('link-4', 'Core', 'link-4');">Core</a></tt><tt class="py-op">.</tt><tt id="link-5" class="py-name" targets="Method Piavca.Piavca_base.Piavca_base.Core.getCore()=Piavca.Piavca_base.Piavca_base.Core-class.html#getCore"><a title="Piavca.Piavca_base.Piavca_base.Core.getCore" class="py-name" href="#" onclick="return doclink('link-5', 'getCore', 'link-5');">getCore</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-6" class="py-name" targets="Method Piavca.Piavca_base.Piavca_base.Core.addJointNameSet()=Piavca.Piavca_base.Piavca_base.Core-class.html#addJointNameSet"><a title="Piavca.Piavca_base.Piavca_base.Core.addJointNameSet" class="py-name" href="#" onclick="return doclink('link-6', 'addJointNameSet', 'link-6');">addJointNameSet</a></tt><tt class="py-op">(</tt><tt class="py-name">line</tt><tt class="py-op">)</tt> </tt>
+<a name="L78"></a><tt class="py-lineno">78</tt>  <tt class="py-line">                <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L79"></a><tt class="py-lineno">79</tt>  <tt class="py-line">                        <tt class="py-comment">#print line</tt> </tt>
+<a name="L80"></a><tt class="py-lineno">80</tt>  <tt class="py-line">                        <tt id="link-7" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-7', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-8" class="py-name"><a title="Piavca.Piavca_base.Piavca_base.Core" class="py-name" href="#" onclick="return doclink('link-8', 'Core', 'link-4');">Core</a></tt><tt class="py-op">.</tt><tt id="link-9" class="py-name"><a title="Piavca.Piavca_base.Piavca_base.Core.getCore" class="py-name" href="#" onclick="return doclink('link-9', 'getCore', 'link-5');">getCore</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name" targets="Method Piavca.Piavca_base.Piavca_base.Core.addExpressionNameSet()=Piavca.Piavca_base.Piavca_base.Core-class.html#addExpressionNameSet"><a title="Piavca.Piavca_base.Piavca_base.Core.addExpressionNameSet" class="py-name" href="#" onclick="return doclink('link-10', 'addExpressionNameSet', 'link-10');">addExpressionNameSet</a></tt><tt class="py-op">(</tt><tt class="py-name">line</tt><tt class="py-op">)</tt>                 </tt>
+</div><a name="L81"></a><tt class="py-lineno">81</tt>  <tt class="py-line"> </tt>
+<a name="loadDefaults"></a><div id="loadDefaults-def"><a name="L82"></a><tt class="py-lineno">82</tt> <a class="py-toggle" href="#" id="loadDefaults-toggle" onclick="return toggle('loadDefaults');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.JointNames-module.html#loadDefaults">loadDefaults</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="loadDefaults-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="loadDefaults-expanded"><a name="L83"></a><tt class="py-lineno">83</tt>  <tt class="py-line">        <tt id="link-11" class="py-name" targets="Function Piavca.JointNames.loadNames()=Piavca.JointNames-module.html#loadNames"><a title="Piavca.JointNames.loadNames" class="py-name" href="#" onclick="return doclink('link-11', 'loadNames', 'link-11');">loadNames</a></tt><tt class="py-op">(</tt><tt id="link-12" class="py-name"><a title="Piavca.JointNames.joint_specs
+Piavca.ScriptEngine'.joint_specs" class="py-name" href="#" onclick="return doclink('link-12', 'joint_specs', 'link-1');">joint_specs</a></tt><tt class="py-op">,</tt><tt class="py-number">1</tt><tt class="py-op">)</tt>                         </tt>
+</div><a name="L84"></a><tt class="py-lineno">84</tt>  <tt class="py-line">                         </tt>
+<a name="importNames"></a><div id="importNames-def"><a name="L85"></a><tt class="py-lineno">85</tt> <a class="py-toggle" href="#" id="importNames-toggle" onclick="return toggle('importNames');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.JointNames-module.html#importNames">importNames</a><tt class="py-op">(</tt><tt class="py-param">filename</tt><tt class="py-op">,</tt> <tt class="py-param">joints</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="importNames-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="importNames-expanded"><a name="L86"></a><tt class="py-lineno">86</tt>  <tt class="py-line">        <tt class="py-name">file</tt> <tt class="py-op">=</tt> <tt class="py-name">open</tt><tt class="py-op">(</tt><tt class="py-name">filename</tt><tt class="py-op">,</tt> <tt class="py-string">"r"</tt><tt class="py-op">)</tt> </tt>
+<a name="L87"></a><tt class="py-lineno">87</tt>  <tt class="py-line">        <tt class="py-name">lines</tt> <tt class="py-op">=</tt> <tt class="py-name">file</tt><tt class="py-op">.</tt><tt class="py-name">readlines</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L88"></a><tt class="py-lineno">88</tt>  <tt class="py-line">        <tt class="py-name">file</tt><tt class="py-op">.</tt><tt class="py-name">close</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L89"></a><tt class="py-lineno">89</tt>  <tt class="py-line">        <tt id="link-13" class="py-name"><a title="Piavca.JointNames.loadNames" class="py-name" href="#" onclick="return doclink('link-13', 'loadNames', 'link-11');">loadNames</a></tt><tt class="py-op">(</tt><tt class="py-name">lines</tt><tt class="py-op">,</tt> <tt id="link-14" class="py-name"><a title="Piavca.CoreProxy.joints" class="py-name" href="#" onclick="return doclink('link-14', 'joints', 'link-2');">joints</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L90"></a><tt class="py-lineno">90</tt>  <tt class="py-line">         </tt>
+<a name="L91"></a><tt class="py-lineno">91</tt>  <tt class="py-line">                         </tt>
+<a name="importJointNames"></a><div id="importJointNames-def"><a name="L92"></a><tt class="py-lineno">92</tt> <a class="py-toggle" href="#" id="importJointNames-toggle" onclick="return toggle('importJointNames');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.JointNames-module.html#importJointNames">importJointNames</a><tt class="py-op">(</tt><tt class="py-param">filename</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="importJointNames-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="importJointNames-expanded"><a name="L93"></a><tt class="py-lineno">93</tt>  <tt class="py-line">        <tt id="link-15" class="py-name" targets="Function Piavca.JointNames.importNames()=Piavca.JointNames-module.html#importNames"><a title="Piavca.JointNames.importNames" class="py-name" href="#" onclick="return doclink('link-15', 'importNames', 'link-15');">importNames</a></tt><tt class="py-op">(</tt><tt class="py-name">filename</tt><tt class="py-op">,</tt> <tt class="py-number">1</tt><tt class="py-op">)</tt>         </tt>
+</div><a name="L94"></a><tt class="py-lineno">94</tt>  <tt class="py-line">                         </tt>
+<a name="importExpressionNames"></a><div id="importExpressionNames-def"><a name="L95"></a><tt class="py-lineno">95</tt> <a class="py-toggle" href="#" id="importExpressionNames-toggle" onclick="return toggle('importExpressionNames');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.JointNames-module.html#importExpressionNames">importExpressionNames</a><tt class="py-op">(</tt><tt class="py-param">filename</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="importExpressionNames-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="importExpressionNames-expanded"><a name="L96"></a><tt class="py-lineno">96</tt>  <tt class="py-line">        <tt id="link-16" class="py-name"><a title="Piavca.JointNames.importNames" class="py-name" href="#" onclick="return doclink('link-16', 'importNames', 'link-15');">importNames</a></tt><tt class="py-op">(</tt><tt class="py-name">filename</tt><tt class="py-op">,</tt> <tt class="py-number">0</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L97"></a><tt class="py-lineno">97</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="Piavca-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Oct 15 20:02:40 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

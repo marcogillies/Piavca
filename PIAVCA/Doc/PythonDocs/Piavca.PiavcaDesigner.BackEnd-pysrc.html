@@ -1,0 +1,987 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Piavca.PiavcaDesigner.BackEnd</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="Piavca-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="Piavca-module.html">Package&nbsp;Piavca</a> ::
+        <a href="Piavca.PiavcaDesigner-module.html">Package&nbsp;PiavcaDesigner</a> ::
+        Module&nbsp;BackEnd
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="Piavca.PiavcaDesigner.BackEnd-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="Piavca.PiavcaDesigner.BackEnd-module.html">Module Piavca.PiavcaDesigner.BackEnd</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">wx</tt><tt class="py-op">.</tt><tt class="py-name">lib</tt><tt class="py-op">.</tt><tt class="py-name">dialogs</tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">time</tt><tt class="py-op">,</tt> <tt class="py-name">types</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-0" class="py-name" targets="Package Piavca=Piavca-module.html"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-0', 'Piavca', 'link-0');">Piavca</a></tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-1" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-1', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Module Piavca.XMLMotionFile=Piavca.XMLMotionFile-module.html"><a title="Piavca.XMLMotionFile" class="py-name" href="#" onclick="return doclink('link-2', 'XMLMotionFile', 'link-2');">XMLMotionFile</a></tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-3" class="py-name" targets="Module Piavca.PiavcaDesigner.MotionProxy=Piavca.PiavcaDesigner.MotionProxy-module.html,Class Piavca.PiavcaDesigner.MotionProxy.MotionProxy=Piavca.PiavcaDesigner.MotionProxy.MotionProxy-class.html"><a title="Piavca.PiavcaDesigner.MotionProxy
+Piavca.PiavcaDesigner.MotionProxy.MotionProxy" class="py-name" href="#" onclick="return doclink('link-3', 'MotionProxy', 'link-3');">MotionProxy</a></tt> <tt class="py-keyword">import</tt> <tt id="link-4" class="py-name"><a title="Piavca.PiavcaDesigner.MotionProxy
+Piavca.PiavcaDesigner.MotionProxy.MotionProxy" class="py-name" href="#" onclick="return doclink('link-4', 'MotionProxy', 'link-3');">MotionProxy</a></tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"> </tt>
+<a name="BackEnd"></a><div id="BackEnd-def"><a name="L12"></a><tt class="py-lineno"> 12</tt> <a class="py-toggle" href="#" id="BackEnd-toggle" onclick="return toggle('BackEnd');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html">BackEnd</a><tt class="py-op">:</tt> </tt>
+</div><div id="BackEnd-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="BackEnd-expanded"><a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line">        <tt id="link-5" class="py-name" targets="Variable Piavca.PiavcaDesigner.BackEnd.BackEnd.avatar=Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#avatar"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.avatar" class="py-name" href="#" onclick="return doclink('link-5', 'avatar', 'link-5');">avatar</a></tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line">        <tt id="link-6" class="py-name" targets="Variable Piavca.PiavcaDesigner.BackEnd.BackEnd.motion=Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#motion"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-6', 'motion', 'link-6');">motion</a></tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line">        <tt id="link-7" class="py-name" targets="Variable Piavca.PiavcaDesigner.BackEnd.BackEnd.submotion=Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#submotion"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.submotion" class="py-name" href="#" onclick="return doclink('link-7', 'submotion', 'link-7');">submotion</a></tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line">        <tt id="link-8" class="py-name" targets="Variable Piavca.PiavcaDesigner.BackEnd.BackEnd.selectedSubMotion=Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#selectedSubMotion"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.selectedSubMotion" class="py-name" href="#" onclick="return doclink('link-8', 'selectedSubMotion', 'link-8');">selectedSubMotion</a></tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line">        <tt id="link-9" class="py-name" targets="Variable Piavca.PiavcaDesigner.BackEnd.BackEnd.playing=Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#playing"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.playing" class="py-name" href="#" onclick="return doclink('link-9', 'playing', 'link-9');">playing</a></tt> <tt class="py-op">=</tt> <tt class="py-name">False</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line">        <tt id="link-10" class="py-name" targets="Variable Piavca.PiavcaDesigner.BackEnd.BackEnd.defaultLength=Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#defaultLength"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.defaultLength" class="py-name" href="#" onclick="return doclink('link-10', 'defaultLength', 'link-10');">defaultLength</a></tt> <tt class="py-op">=</tt> <tt class="py-number">100.0</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line">        <tt id="link-11" class="py-name" targets="Variable Piavca.PiavcaDesigner.BackEnd.BackEnd.updateflag=Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#updateflag"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.updateflag" class="py-name" href="#" onclick="return doclink('link-11', 'updateflag', 'link-11');">updateflag</a></tt> <tt class="py-op">=</tt> <tt class="py-name">False</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line">         </tt>
+<a name="BackEnd.__init__"></a><div id="BackEnd.__init__-def"><a name="L21"></a><tt class="py-lineno"> 21</tt> <a class="py-toggle" href="#" id="BackEnd.__init__-toggle" onclick="return toggle('BackEnd.__init__');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">frontend</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BackEnd.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="BackEnd.__init__-expanded"><a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">frontend</tt> <tt class="py-op">=</tt> <tt class="py-name">frontend</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line">                <tt id="link-12" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-12', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-13" class="py-name" targets="Class Piavca.Piavca_base.Piavca_base.Core=Piavca.Piavca_base.Piavca_base.Core-class.html"><a title="Piavca.Piavca_base.Piavca_base.Core" class="py-name" href="#" onclick="return doclink('link-13', 'Core', 'link-13');">Core</a></tt><tt class="py-op">.</tt><tt id="link-14" class="py-name" targets="Method Piavca.Piavca_base.Piavca_base.Core.getCore()=Piavca.Piavca_base.Piavca_base.Core-class.html#getCore"><a title="Piavca.Piavca_base.Piavca_base.Core.getCore" class="py-name" href="#" onclick="return doclink('link-14', 'getCore', 'link-14');">getCore</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-15" class="py-name" targets="Method Piavca.Piavca_base.Piavca_base.Core.setAutoTimeOff()=Piavca.Piavca_base.Piavca_base.Core-class.html#setAutoTimeOff"><a title="Piavca.Piavca_base.Piavca_base.Core.setAutoTimeOff" class="py-name" href="#" onclick="return doclink('link-15', 'setAutoTimeOff', 'link-15');">setAutoTimeOff</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name" targets="Method Piavca.DataStream.IntSequenceDisplay.setTime()=Piavca.DataStream.IntSequenceDisplay-class.html#setTime,Method Piavca.DataStream.SequenceDisplay.setTime()=Piavca.DataStream.SequenceDisplay-class.html#setTime,Method Piavca.PiavcaDesigner.BackEnd.BackEnd.setTime()=Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#setTime,Method Piavca.PiavcaDesigner.PlayControls.PlayControls.setTime()=Piavca.PiavcaDesigner.PlayControls.PlayControls-class.html#setTime"><a title="Piavca.DataStream.IntSequenceDisplay.setTime
+Piavca.DataStream.SequenceDisplay.setTime
+Piavca.PiavcaDesigner.BackEnd.BackEnd.setTime
+Piavca.PiavcaDesigner.PlayControls.PlayControls.setTime" class="py-name" href="#" onclick="return doclink('link-16', 'setTime', 'link-16');">setTime</a></tt><tt class="py-op">(</tt><tt class="py-number">0.0</tt><tt class="py-op">)</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name" targets="Method Piavca.PiavcaDesigner.BackEnd.BackEnd.setRange()=Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#setRange,Method Piavca.PiavcaDesigner.MotionProxy.MotionProxy.setRange()=Piavca.PiavcaDesigner.MotionProxy.MotionProxy-class.html#setRange"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.setRange
+Piavca.PiavcaDesigner.MotionProxy.MotionProxy.setRange" class="py-name" href="#" onclick="return doclink('link-17', 'setRange', 'link-17');">setRange</a></tt><tt class="py-op">(</tt><tt class="py-number">0.0</tt><tt class="py-op">,</tt><tt class="py-number">0.0</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line">                         </tt>
+<a name="BackEnd.readfile"></a><div id="BackEnd.readfile-def"><a name="L27"></a><tt class="py-lineno"> 27</tt> <a class="py-toggle" href="#" id="BackEnd.readfile-toggle" onclick="return toggle('BackEnd.readfile');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#readfile">readfile</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">filename</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BackEnd.readfile-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="BackEnd.readfile-expanded"><a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">filename</tt><tt class="py-op">[</tt><tt class="py-op">-</tt><tt class="py-number">4</tt><tt class="py-op">:</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-string">".cfg"</tt><tt class="py-op">:</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.avatar" class="py-name" href="#" onclick="return doclink('link-18', 'avatar', 'link-5');">avatar</a></tt> <tt class="py-op">=</tt> <tt id="link-19" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-19', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-20" class="py-name" targets="Class Piavca.Piavca_base.Piavca_base.Avatar=Piavca.Piavca_base.Piavca_base.Avatar-class.html"><a title="Piavca.Piavca_base.Piavca_base.Avatar" class="py-name" href="#" onclick="return doclink('link-20', 'Avatar', 'link-20');">Avatar</a></tt><tt class="py-op">(</tt><tt class="py-name">filename</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-op">-</tt><tt class="py-number">4</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">                <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">                        <tt id="link-21" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-21', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-22" class="py-name"><a title="Piavca.XMLMotionFile" class="py-name" href="#" onclick="return doclink('link-22', 'XMLMotionFile', 'link-2');">XMLMotionFile</a></tt><tt class="py-op">.</tt><tt id="link-23" class="py-name" targets="Function Piavca.XMLMotionFile.parse()=Piavca.XMLMotionFile-module.html#parse"><a title="Piavca.XMLMotionFile.parse" class="py-name" href="#" onclick="return doclink('link-23', 'parse', 'link-23');">parse</a></tt><tt class="py-op">(</tt><tt class="py-name">filename</tt><tt class="py-op">)</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-24" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.avatar" class="py-name" href="#" onclick="return doclink('link-24', 'avatar', 'link-5');">avatar</a></tt> <tt class="py-op">==</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">                        <tt class="py-keyword">print</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-25" class="py-name" targets="Method Piavca.PiavcaDesigner.BackEnd.BackEnd.getAvatarNames()=Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#getAvatarNames,Method Piavca.Piavca_base.Piavca_base.Core.getAvatarNames()=Piavca.Piavca_base.Piavca_base.Core-class.html#getAvatarNames"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.getAvatarNames
+Piavca.Piavca_base.Piavca_base.Core.getAvatarNames" class="py-name" href="#" onclick="return doclink('link-25', 'getAvatarNames', 'link-25');">getAvatarNames</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">                        <tt class="py-keyword">print</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-26" class="py-name" targets="Method Piavca.PiavcaDesigner.BackEnd.BackEnd.getMotionNames()=Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#getMotionNames,Method Piavca.Piavca_base.Piavca_base.Core.getMotionNames()=Piavca.Piavca_base.Piavca_base.Core-class.html#getMotionNames"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.getMotionNames
+Piavca.Piavca_base.Piavca_base.Core.getMotionNames" class="py-name" href="#" onclick="return doclink('link-26', 'getMotionNames', 'link-26');">getMotionNames</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">                        <tt class="py-keyword">if</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-27" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.getAvatarNames
+Piavca.Piavca_base.Piavca_base.Core.getAvatarNames" class="py-name" href="#" onclick="return doclink('link-27', 'getAvatarNames', 'link-25');">getAvatarNames</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> <tt class="py-op">&gt;</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">                                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-28" class="py-name" targets="Method Piavca.PiavcaDesigner.BackEnd.BackEnd.setAvatar()=Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#setAvatar,Method Piavca.ViewerCanvas.ViewerCanvas.setAvatar()=Piavca.ViewerCanvas.ViewerCanvas-class.html#setAvatar"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.setAvatar
+Piavca.ViewerCanvas.ViewerCanvas.setAvatar" class="py-name" href="#" onclick="return doclink('link-28', 'setAvatar', 'link-28');">setAvatar</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-29" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.getAvatarNames
+Piavca.Piavca_base.Piavca_base.Core.getAvatarNames" class="py-name" href="#" onclick="return doclink('link-29', 'getAvatarNames', 'link-25');">getAvatarNames</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">frontend</tt><tt class="py-op">.</tt><tt id="link-30" class="py-name" targets="Method Piavca.PiavcaDesigner.AutoCreatorsWindow.AutoCreatorsWindow.update()=Piavca.PiavcaDesigner.AutoCreatorsWindow.AutoCreatorsWindow-class.html#update,Method Piavca.PiavcaDesigner.BackEnd.BackEnd.update()=Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#update,Method Piavca.PiavcaDesigner.GenericList.GenericList.update()=Piavca.PiavcaDesigner.GenericList.GenericList-class.html#update,Method Piavca.PiavcaDesigner.HeirarchyView.HeirarchyView.update()=Piavca.PiavcaDesigner.HeirarchyView.HeirarchyView-class.html#update,Method Piavca.PiavcaDesigner.ListBoxController.ListBoxController.update()=Piavca.PiavcaDesigner.ListBoxController.ListBoxController-class.html#update,Method Piavca.PiavcaDesigner.ParameterControls.ParamEntry.update()=Piavca.PiavcaDesigner.ParameterControls.ParamEntry-class.html#update,Method Piavca.PiavcaDesigner.ParameterWindow.ParameterWindow.update()=Piavca.PiavcaDesigner.ParameterWindow.ParameterWindow-class.html#update,Method Piavca.PiavcaDesigner.PiavcaDesigner'.PiavcaDesigner.update()=Piavca.PiavcaDesigner.PiavcaDesigner%27.PiavcaDesigner-class.html#update,Method Piavca.PiavcaDesigner.PlayControls.PlayControls.update()=Piavca.PiavcaDesigner.PlayControls.PlayControls-class.html#update"><a title="Piavca.PiavcaDesigner.AutoCreatorsWindow.AutoCreatorsWindow.update
+Piavca.PiavcaDesigner.BackEnd.BackEnd.update
+Piavca.PiavcaDesigner.GenericList.GenericList.update
+Piavca.PiavcaDesigner.HeirarchyView.HeirarchyView.update
+Piavca.PiavcaDesigner.ListBoxController.ListBoxController.update
+Piavca.PiavcaDesigner.ParameterControls.ParamEntry.update
+Piavca.PiavcaDesigner.ParameterWindow.ParameterWindow.update
+Piavca.PiavcaDesigner.PiavcaDesigner'.PiavcaDesigner.update
+Piavca.PiavcaDesigner.PlayControls.PlayControls.update" class="py-name" href="#" onclick="return doclink('link-30', 'update', 'link-30');">update</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">                 </tt>
+<a name="BackEnd.clear"></a><div id="BackEnd.clear-def"><a name="L39"></a><tt class="py-lineno"> 39</tt> <a class="py-toggle" href="#" id="BackEnd.clear-toggle" onclick="return toggle('BackEnd.clear');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#clear">clear</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BackEnd.clear-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="BackEnd.clear-expanded"><a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-31" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.avatar" class="py-name" href="#" onclick="return doclink('link-31', 'avatar', 'link-5');">avatar</a></tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-32" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-32', 'motion', 'link-6');">motion</a></tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-33" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.submotion" class="py-name" href="#" onclick="return doclink('link-33', 'submotion', 'link-7');">submotion</a></tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-34" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.selectedSubMotion" class="py-name" href="#" onclick="return doclink('link-34', 'selectedSubMotion', 'link-8');">selectedSubMotion</a></tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-35" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.playing" class="py-name" href="#" onclick="return doclink('link-35', 'playing', 'link-9');">playing</a></tt> <tt class="py-op">=</tt> <tt class="py-name">False</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">                <tt id="link-36" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-36', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-37" class="py-name" targets="Method Piavca.ChoiceMotion.clear()=Piavca.ChoiceMotion-class.html#clear,Function Piavca.CoreProxy.clear()=Piavca.CoreProxy-module.html#clear,Method Piavca.PiavcaDesigner.BackEnd.BackEnd.clear()=Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#clear,Method Piavca.PiavcaWXApp.PiavcaWXApp.clear()=Piavca.PiavcaWXApp.PiavcaWXApp-class.html#clear,Method Piavca.PiavcaWXCanvas.PiavcaWXCanvasBase.clear()=Piavca.PiavcaWXCanvas.PiavcaWXCanvasBase-class.html#clear,Method Piavca.Piavca_base.Piavca_base.ChoiceMotion.clear()=Piavca.Piavca_base.Piavca_base.ChoiceMotion-class.html#clear,Method Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.clear()=Piavca.Piavca_base.Piavca_base.MultiMotionCombiner-class.html#clear,Method Piavca.Piavca_base.Piavca_base.vectorI.clear()=Piavca.Piavca_base.Piavca_base.vectorI-class.html#clear,Method Piavca.Piavca_base.Piavca_base.vectorS.clear()=Piavca.Piavca_base.Piavca_base.vectorS-class.html#clear"><a title="Piavca.ChoiceMotion.clear
+Piavca.CoreProxy.clear
+Piavca.PiavcaDesigner.BackEnd.BackEnd.clear
+Piavca.PiavcaWXApp.PiavcaWXApp.clear
+Piavca.PiavcaWXCanvas.PiavcaWXCanvasBase.clear
+Piavca.Piavca_base.Piavca_base.ChoiceMotion.clear
+Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.clear
+Piavca.Piavca_base.Piavca_base.vectorI.clear
+Piavca.Piavca_base.Piavca_base.vectorS.clear" class="py-name" href="#" onclick="return doclink('link-37', 'clear', 'link-37');">clear</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-38" class="py-name"><a title="Piavca.PiavcaDesigner.AutoCreatorsWindow.AutoCreatorsWindow.update
+Piavca.PiavcaDesigner.BackEnd.BackEnd.update
+Piavca.PiavcaDesigner.GenericList.GenericList.update
+Piavca.PiavcaDesigner.HeirarchyView.HeirarchyView.update
+Piavca.PiavcaDesigner.ListBoxController.ListBoxController.update
+Piavca.PiavcaDesigner.ParameterControls.ParamEntry.update
+Piavca.PiavcaDesigner.ParameterWindow.ParameterWindow.update
+Piavca.PiavcaDesigner.PiavcaDesigner'.PiavcaDesigner.update
+Piavca.PiavcaDesigner.PlayControls.PlayControls.update" class="py-name" href="#" onclick="return doclink('link-38', 'update', 'link-30');">update</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">frontend</tt><tt class="py-op">.</tt><tt id="link-39" class="py-name"><a title="Piavca.PiavcaDesigner.AutoCreatorsWindow.AutoCreatorsWindow.update
+Piavca.PiavcaDesigner.BackEnd.BackEnd.update
+Piavca.PiavcaDesigner.GenericList.GenericList.update
+Piavca.PiavcaDesigner.HeirarchyView.HeirarchyView.update
+Piavca.PiavcaDesigner.ListBoxController.ListBoxController.update
+Piavca.PiavcaDesigner.ParameterControls.ParamEntry.update
+Piavca.PiavcaDesigner.ParameterWindow.ParameterWindow.update
+Piavca.PiavcaDesigner.PiavcaDesigner'.PiavcaDesigner.update
+Piavca.PiavcaDesigner.PlayControls.PlayControls.update" class="py-name" href="#" onclick="return doclink('link-39', 'update', 'link-30');">update</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">                 </tt>
+<a name="BackEnd.save"></a><div id="BackEnd.save-def"><a name="L49"></a><tt class="py-lineno"> 49</tt> <a class="py-toggle" href="#" id="BackEnd.save-toggle" onclick="return toggle('BackEnd.save');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#save">save</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">filename</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BackEnd.save-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="BackEnd.save-expanded"><a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">                <tt id="link-40" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-40', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-41" class="py-name"><a title="Piavca.XMLMotionFile" class="py-name" href="#" onclick="return doclink('link-41', 'XMLMotionFile', 'link-2');">XMLMotionFile</a></tt><tt class="py-op">.</tt><tt id="link-42" class="py-name" targets="Function Piavca.XMLMotionFile.saveAll()=Piavca.XMLMotionFile-module.html#saveAll"><a title="Piavca.XMLMotionFile.saveAll" class="py-name" href="#" onclick="return doclink('link-42', 'saveAll', 'link-42');">saveAll</a></tt><tt class="py-op">(</tt><tt class="py-name">filename</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">                 </tt>
+<a name="BackEnd.update"></a><div id="BackEnd.update-def"><a name="L52"></a><tt class="py-lineno"> 52</tt> <a class="py-toggle" href="#" id="BackEnd.update-toggle" onclick="return toggle('BackEnd.update');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#update">update</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BackEnd.update-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="BackEnd.update-expanded"><a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-43" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.updateflag" class="py-name" href="#" onclick="return doclink('link-43', 'updateflag', 'link-11');">updateflag</a></tt> <tt class="py-op">=</tt> <tt class="py-name">True</tt> </tt>
+</div><a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">                <tt class="py-comment">#self.resetRange()</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">                <tt class="py-comment">#self.frontend.update()</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">                 </tt>
+<a name="BackEnd.timeUpdate"></a><div id="BackEnd.timeUpdate-def"><a name="L57"></a><tt class="py-lineno"> 57</tt> <a class="py-toggle" href="#" id="BackEnd.timeUpdate-toggle" onclick="return toggle('BackEnd.timeUpdate');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#timeUpdate">timeUpdate</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BackEnd.timeUpdate-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="BackEnd.timeUpdate-expanded"><a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">abs</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">lastMotionLength</tt> <tt class="py-op">-</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-44" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-44', 'motion', 'link-6');">motion</a></tt><tt class="py-op">.</tt><tt id="link-45" class="py-name" targets="Method Piavca.ChoiceMotion.getMotion()=Piavca.ChoiceMotion-class.html#getMotion,Function Piavca.CoreProxy.getMotion()=Piavca.CoreProxy-module.html#getMotion,Method Piavca.MotionFilter.getMotion()=Piavca.MotionFilter-class.html#getMotion,Method Piavca.PiavcaDesigner.AutoCreators.ExpMapBlend'.ExpMapBlend.getMotion()=Piavca.PiavcaDesigner.AutoCreators.ExpMapBlend%27.ExpMapBlend-class.html#getMotion,Method Piavca.PiavcaDesigner.AutoCreators.InterruptableSequence'.InterruptableSequence.getMotion()=Piavca.PiavcaDesigner.AutoCreators.InterruptableSequence%27.InterruptableSequence-class.html#getMotion,Method Piavca.PiavcaDesigner.AutoCreators.MotionGraph'.MotionGraph.getMotion()=Piavca.PiavcaDesigner.AutoCreators.MotionGraph%27.MotionGraph-class.html#getMotion,Method Piavca.PiavcaDesigner.AutoCreators.PCAMot'.PCAMot.getMotion()=Piavca.PiavcaDesigner.AutoCreators.PCAMot%27.PCAMot-class.html#getMotion,Method Piavca.PiavcaDesigner.AutoCreatorsWindow.AutoCreatorsWindow.getMotion()=Piavca.PiavcaDesigner.AutoCreatorsWindow.AutoCreatorsWindow-class.html#getMotion,Method Piavca.PiavcaDesigner.BackEnd.BackEnd.getMotion()=Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#getMotion,Method Piavca.PiavcaDesigner.MotionProxy.MotionProxy.getMotion()=Piavca.PiavcaDesigner.MotionProxy.MotionProxy-class.html#getMotion,Method Piavca.Piavca_base.Piavca_base.Avatar.getMotion()=Piavca.Piavca_base.Piavca_base.Avatar-class.html#getMotion,Method Piavca.Piavca_base.Piavca_base.AvatarMotionQueue.getMotion()=Piavca.Piavca_base.Piavca_base.AvatarMotionQueue-class.html#getMotion,Method Piavca.Piavca_base.Piavca_base.AvatarPostureBlend.getMotion()=Piavca.Piavca_base.Piavca_base.AvatarPostureBlend-class.html#getMotion,Method Piavca.Piavca_base.Piavca_base.ChoiceMotion.getMotion()=Piavca.Piavca_base.Piavca_base.ChoiceMotion-class.html#getMotion,Method Piavca.Piavca_base.Piavca_base.Core.getMotion()=Piavca.Piavca_base.Piavca_base.Core-class.html#getMotion,Method Piavca.Piavca_base.Piavca_base.MotionFilter.getMotion()=Piavca.Piavca_base.Piavca_base.MotionFilter-class.html#getMotion,Method Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.getMotion()=Piavca.Piavca_base.Piavca_base.MultiMotionCombiner-class.html#getMotion,Method Piavca.Piavca_base.Piavca_base.PointAt.getMotion()=Piavca.Piavca_base.Piavca_base.PointAt-class.html#getMotion,Method Piavca.Piavca_base.Piavca_base.PostureBlend.getMotion()=Piavca.Piavca_base.Piavca_base.PostureBlend-class.html#getMotion,Method Piavca.Piavca_base.Piavca_base.SmoothLoop.getMotion()=Piavca.Piavca_base.Piavca_base.SmoothLoop-class.html#getMotion"><a title="Piavca.ChoiceMotion.getMotion
+Piavca.CoreProxy.getMotion
+Piavca.MotionFilter.getMotion
+Piavca.PiavcaDesigner.AutoCreators.ExpMapBlend'.ExpMapBlend.getMotion
+Piavca.PiavcaDesigner.AutoCreators.InterruptableSequence'.InterruptableSequence.getMotion
+Piavca.PiavcaDesigner.AutoCreators.MotionGraph'.MotionGraph.getMotion
+Piavca.PiavcaDesigner.AutoCreators.PCAMot'.PCAMot.getMotion
+Piavca.PiavcaDesigner.AutoCreatorsWindow.AutoCreatorsWindow.getMotion
+Piavca.PiavcaDesigner.BackEnd.BackEnd.getMotion
+Piavca.PiavcaDesigner.MotionProxy.MotionProxy.getMotion
+Piavca.Piavca_base.Piavca_base.Avatar.getMotion
+Piavca.Piavca_base.Piavca_base.AvatarMotionQueue.getMotion
+Piavca.Piavca_base.Piavca_base.AvatarPostureBlend.getMotion
+Piavca.Piavca_base.Piavca_base.ChoiceMotion.getMotion
+Piavca.Piavca_base.Piavca_base.Core.getMotion
+Piavca.Piavca_base.Piavca_base.MotionFilter.getMotion
+Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.getMotion
+Piavca.Piavca_base.Piavca_base.PointAt.getMotion
+Piavca.Piavca_base.Piavca_base.PostureBlend.getMotion
+Piavca.Piavca_base.Piavca_base.SmoothLoop.getMotion" class="py-name" href="#" onclick="return doclink('link-45', 'getMotion', 'link-45');">getMotion</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-46" class="py-name" targets="Method Piavca.AudioMotion'.AudioMotion.getMotionLength()=Piavca.AudioMotion%27.AudioMotion-class.html#getMotionLength,Method Piavca.ChoiceMotion.getMotionLength()=Piavca.ChoiceMotion-class.html#getMotionLength,Method Piavca.EigenAnalysis'.EigenAnalysis.getMotionLength()=Piavca.EigenAnalysis%27.EigenAnalysis-class.html#getMotionLength,Method Piavca.EigenMotion'.EigenMotion.getMotionLength()=Piavca.EigenMotion%27.EigenMotion-class.html#getMotionLength,Method Piavca.KeyframeMotion.getMotionLength()=Piavca.KeyframeMotion-class.html#getMotionLength,Method Piavca.Motion.getMotionLength()=Piavca.Motion-class.html#getMotionLength,Method Piavca.MotionFilter.getMotionLength()=Piavca.MotionFilter-class.html#getMotionLength,Method Piavca.Piavca_base.Piavca_base.ChangeMotionLength.getMotionLength()=Piavca.Piavca_base.Piavca_base.ChangeMotionLength-class.html#getMotionLength,Method Piavca.Piavca_base.Piavca_base.ChoiceMotion.getMotionLength()=Piavca.Piavca_base.Piavca_base.ChoiceMotion-class.html#getMotionLength,Method Piavca.Piavca_base.Piavca_base.KeyframeMotion.getMotionLength()=Piavca.Piavca_base.Piavca_base.KeyframeMotion-class.html#getMotionLength,Method Piavca.Piavca_base.Piavca_base.LoopMotion.getMotionLength()=Piavca.Piavca_base.Piavca_base.LoopMotion-class.html#getMotionLength,Method Piavca.Piavca_base.Piavca_base.Motion.getMotionLength()=Piavca.Piavca_base.Piavca_base.Motion-class.html#getMotionLength,Method Piavca.Piavca_base.Piavca_base.MotionFilter.getMotionLength()=Piavca.Piavca_base.Piavca_base.MotionFilter-class.html#getMotionLength,Method Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.getMotionLength()=Piavca.Piavca_base.Piavca_base.MultiMotionCombiner-class.html#getMotionLength,Method Piavca.Piavca_base.Piavca_base.ScaleMotionSpeed.getMotionLength()=Piavca.Piavca_base.Piavca_base.ScaleMotionSpeed-class.html#getMotionLength,Method Piavca.Piavca_base.Piavca_base.Sequence.getMotionLength()=Piavca.Piavca_base.Piavca_base.Sequence-class.html#getMotionLength,Method Piavca.Piavca_base.Piavca_base.SubMotion.getMotionLength()=Piavca.Piavca_base.Piavca_base.SubMotion-class.html#getMotionLength,Method Piavca.Piavca_base.Piavca_base.TimeWarp.getMotionLength()=Piavca.Piavca_base.Piavca_base.TimeWarp-class.html#getMotionLength,Method Piavca.Piavca_base.Piavca_base.TwoMotionCombiner.getMotionLength()=Piavca.Piavca_base.Piavca_base.TwoMotionCombiner-class.html#getMotionLength,Method Piavca.Piavca_base.Piavca_base.ZeroMotion.getMotionLength()=Piavca.Piavca_base.Piavca_base.ZeroMotion-class.html#getMotionLength"><a title="Piavca.AudioMotion'.AudioMotion.getMotionLength
+Piavca.ChoiceMotion.getMotionLength
+Piavca.EigenAnalysis'.EigenAnalysis.getMotionLength
+Piavca.EigenMotion'.EigenMotion.getMotionLength
+Piavca.KeyframeMotion.getMotionLength
+Piavca.Motion.getMotionLength
+Piavca.MotionFilter.getMotionLength
+Piavca.Piavca_base.Piavca_base.ChangeMotionLength.getMotionLength
+Piavca.Piavca_base.Piavca_base.ChoiceMotion.getMotionLength
+Piavca.Piavca_base.Piavca_base.KeyframeMotion.getMotionLength
+Piavca.Piavca_base.Piavca_base.LoopMotion.getMotionLength
+Piavca.Piavca_base.Piavca_base.Motion.getMotionLength
+Piavca.Piavca_base.Piavca_base.MotionFilter.getMotionLength
+Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.getMotionLength
+Piavca.Piavca_base.Piavca_base.ScaleMotionSpeed.getMotionLength
+Piavca.Piavca_base.Piavca_base.Sequence.getMotionLength
+Piavca.Piavca_base.Piavca_base.SubMotion.getMotionLength
+Piavca.Piavca_base.Piavca_base.TimeWarp.getMotionLength
+Piavca.Piavca_base.Piavca_base.TwoMotionCombiner.getMotionLength
+Piavca.Piavca_base.Piavca_base.ZeroMotion.getMotionLength" class="py-name" href="#" onclick="return doclink('link-46', 'getMotionLength', 'link-46');">getMotionLength</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> <tt class="py-op">&gt;</tt> <tt class="py-number">0.0001</tt><tt class="py-op">:</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-47" class="py-name" targets="Method Piavca.PiavcaDesigner.BackEnd.BackEnd.resetRange()=Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#resetRange,Method Piavca.PiavcaDesigner.MotionProxy.MotionProxy.resetRange()=Piavca.PiavcaDesigner.MotionProxy.MotionProxy-class.html#resetRange"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.resetRange
+Piavca.PiavcaDesigner.MotionProxy.MotionProxy.resetRange" class="py-name" href="#" onclick="return doclink('link-47', 'resetRange', 'link-47');">resetRange</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">                         </tt>
+<a name="BackEnd.setAvatar"></a><div id="BackEnd.setAvatar-def"><a name="L61"></a><tt class="py-lineno"> 61</tt> <a class="py-toggle" href="#" id="BackEnd.setAvatar-toggle" onclick="return toggle('BackEnd.setAvatar');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#setAvatar">setAvatar</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">avatarname</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BackEnd.setAvatar-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="BackEnd.setAvatar-expanded"><a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-48" class="py-name"><a title="Piavca.DataStream.IntSequenceDisplay.setTime
+Piavca.DataStream.SequenceDisplay.setTime
+Piavca.PiavcaDesigner.BackEnd.BackEnd.setTime
+Piavca.PiavcaDesigner.PlayControls.PlayControls.setTime" class="py-name" href="#" onclick="return doclink('link-48', 'setTime', 'link-16');">setTime</a></tt><tt class="py-op">(</tt><tt class="py-number">0.0</tt><tt class="py-op">)</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">                <tt id="link-49" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.avatar" class="py-name" href="#" onclick="return doclink('link-49', 'avatar', 'link-5');">avatar</a></tt> <tt class="py-op">=</tt> <tt id="link-50" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-50', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-51" class="py-name"><a title="Piavca.Piavca_base.Piavca_base.Core" class="py-name" href="#" onclick="return doclink('link-51', 'Core', 'link-13');">Core</a></tt><tt class="py-op">.</tt><tt id="link-52" class="py-name"><a title="Piavca.Piavca_base.Piavca_base.Core.getCore" class="py-name" href="#" onclick="return doclink('link-52', 'getCore', 'link-14');">getCore</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-53" class="py-name" targets="Method Piavca.Motion.getAvatar()=Piavca.Motion-class.html#getAvatar,Method Piavca.MotionFilter.getAvatar()=Piavca.MotionFilter-class.html#getAvatar,Method Piavca.PiavcaDesigner.BackEnd.BackEnd.getAvatar()=Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#getAvatar,Method Piavca.Piavca_base.Piavca_base.Core.getAvatar()=Piavca.Piavca_base.Piavca_base.Core-class.html#getAvatar,Method Piavca.Piavca_base.Piavca_base.Motion.getAvatar()=Piavca.Piavca_base.Piavca_base.Motion-class.html#getAvatar,Method Piavca.Piavca_base.Piavca_base.MotionFilter.getAvatar()=Piavca.Piavca_base.Piavca_base.MotionFilter-class.html#getAvatar,Method Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.getAvatar()=Piavca.Piavca_base.Piavca_base.MultiMotionCombiner-class.html#getAvatar,Method Piavca.Piavca_base.Piavca_base.TwoMotionCombiner.getAvatar()=Piavca.Piavca_base.Piavca_base.TwoMotionCombiner-class.html#getAvatar"><a title="Piavca.Motion.getAvatar
+Piavca.MotionFilter.getAvatar
+Piavca.PiavcaDesigner.BackEnd.BackEnd.getAvatar
+Piavca.Piavca_base.Piavca_base.Core.getAvatar
+Piavca.Piavca_base.Piavca_base.Motion.getAvatar
+Piavca.Piavca_base.Piavca_base.MotionFilter.getAvatar
+Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.getAvatar
+Piavca.Piavca_base.Piavca_base.TwoMotionCombiner.getAvatar" class="py-name" href="#" onclick="return doclink('link-53', 'getAvatar', 'link-53');">getAvatar</a></tt><tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">avatarname</tt><tt class="py-op">.</tt><tt class="py-name">encode</tt><tt class="py-op">(</tt><tt class="py-string">"latin-1"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt id="link-54" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.avatar" class="py-name" href="#" onclick="return doclink('link-54', 'avatar', 'link-5');">avatar</a></tt> <tt class="py-op">==</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">                        <tt class="py-keyword">raise</tt> <tt class="py-name">ValueError</tt><tt class="py-op">(</tt><tt class="py-string">"no avatar named"</tt> <tt class="py-op">+</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">avatarname</tt><tt class="py-op">.</tt><tt class="py-name">encode</tt><tt class="py-op">(</tt><tt class="py-string">"latin-1"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">                <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-55" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.avatar" class="py-name" href="#" onclick="return doclink('link-55', 'avatar', 'link-5');">avatar</a></tt> <tt class="py-op">=</tt> <tt id="link-56" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.avatar" class="py-name" href="#" onclick="return doclink('link-56', 'avatar', 'link-5');">avatar</a></tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-57" class="py-name"><a title="Piavca.PiavcaDesigner.AutoCreatorsWindow.AutoCreatorsWindow.update
+Piavca.PiavcaDesigner.BackEnd.BackEnd.update
+Piavca.PiavcaDesigner.GenericList.GenericList.update
+Piavca.PiavcaDesigner.HeirarchyView.HeirarchyView.update
+Piavca.PiavcaDesigner.ListBoxController.ListBoxController.update
+Piavca.PiavcaDesigner.ParameterControls.ParamEntry.update
+Piavca.PiavcaDesigner.ParameterWindow.ParameterWindow.update
+Piavca.PiavcaDesigner.PiavcaDesigner'.PiavcaDesigner.update
+Piavca.PiavcaDesigner.PlayControls.PlayControls.update" class="py-name" href="#" onclick="return doclink('link-57', 'update', 'link-30');">update</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">                         </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">                         </tt>
+<a name="BackEnd.getAvatar"></a><div id="BackEnd.getAvatar-def"><a name="L71"></a><tt class="py-lineno"> 71</tt> <a class="py-toggle" href="#" id="BackEnd.getAvatar-toggle" onclick="return toggle('BackEnd.getAvatar');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#getAvatar">getAvatar</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BackEnd.getAvatar-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="BackEnd.getAvatar-expanded"><a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-58" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.avatar" class="py-name" href="#" onclick="return doclink('link-58', 'avatar', 'link-5');">avatar</a></tt> </tt>
+</div><a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">                         </tt>
+<a name="BackEnd.getAvatarNames"></a><div id="BackEnd.getAvatarNames-def"><a name="L74"></a><tt class="py-lineno"> 74</tt> <a class="py-toggle" href="#" id="BackEnd.getAvatarNames-toggle" onclick="return toggle('BackEnd.getAvatarNames');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#getAvatarNames">getAvatarNames</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BackEnd.getAvatarNames-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="BackEnd.getAvatarNames-expanded"><a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">                <tt class="py-name">core</tt> <tt class="py-op">=</tt> <tt id="link-59" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-59', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-60" class="py-name"><a title="Piavca.Piavca_base.Piavca_base.Core" class="py-name" href="#" onclick="return doclink('link-60', 'Core', 'link-13');">Core</a></tt><tt class="py-op">.</tt><tt id="link-61" class="py-name"><a title="Piavca.Piavca_base.Piavca_base.Core.getCore" class="py-name" href="#" onclick="return doclink('link-61', 'getCore', 'link-14');">getCore</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">core</tt><tt class="py-op">.</tt><tt id="link-62" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.getAvatarNames
+Piavca.Piavca_base.Piavca_base.Core.getAvatarNames" class="py-name" href="#" onclick="return doclink('link-62', 'getAvatarNames', 'link-25');">getAvatarNames</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">         </tt>
+<a name="BackEnd.getEvents"></a><div id="BackEnd.getEvents-def"><a name="L78"></a><tt class="py-lineno"> 78</tt> <a class="py-toggle" href="#" id="BackEnd.getEvents-toggle" onclick="return toggle('BackEnd.getEvents');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#getEvents">getEvents</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BackEnd.getEvents-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="BackEnd.getEvents-expanded"><a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-63" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.avatar" class="py-name" href="#" onclick="return doclink('link-63', 'avatar', 'link-5');">avatar</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">                        <tt class="py-keyword">return</tt> <tt id="link-64" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-64', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-65" class="py-name" targets="Function Piavca.CoreProxy.getEvents()=Piavca.CoreProxy-module.html#getEvents,Method Piavca.PiavcaDesigner.BackEnd.BackEnd.getEvents()=Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#getEvents"><a title="Piavca.CoreProxy.getEvents
+Piavca.PiavcaDesigner.BackEnd.BackEnd.getEvents" class="py-name" href="#" onclick="return doclink('link-65', 'getEvents', 'link-65');">getEvents</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-66" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.avatar" class="py-name" href="#" onclick="return doclink('link-66', 'avatar', 'link-5');">avatar</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">                <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">                        <tt class="py-keyword">return</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+</div><a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">         </tt>
+<a name="BackEnd.triggerEvent"></a><div id="BackEnd.triggerEvent-def"><a name="L84"></a><tt class="py-lineno"> 84</tt> <a class="py-toggle" href="#" id="BackEnd.triggerEvent-toggle" onclick="return toggle('BackEnd.triggerEvent');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#triggerEvent">triggerEvent</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">event</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BackEnd.triggerEvent-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="BackEnd.triggerEvent-expanded"><a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-67" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.avatar" class="py-name" href="#" onclick="return doclink('link-67', 'avatar', 'link-5');">avatar</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-68" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.avatar" class="py-name" href="#" onclick="return doclink('link-68', 'avatar', 'link-5');">avatar</a></tt><tt class="py-op">.</tt><tt id="link-69" class="py-name" targets="Method Piavca.FSM'.FSM.event()=Piavca.FSM%27.FSM-class.html#event,Method Piavca.FSM'.FSMLoop.event()=Piavca.FSM%27.FSMLoop-class.html#event,Method Piavca.Piavca_base.Piavca_base.Avatar.event()=Piavca.Piavca_base.Piavca_base.Avatar-class.html#event"><a title="Piavca.FSM'.FSM.event
+Piavca.FSM'.FSMLoop.event
+Piavca.Piavca_base.Piavca_base.Avatar.event" class="py-name" href="#" onclick="return doclink('link-69', 'event', 'link-69');">event</a></tt><tt class="py-op">(</tt><tt id="link-70" class="py-name"><a title="Piavca.FSM'.FSM.event
+Piavca.FSM'.FSMLoop.event
+Piavca.Piavca_base.Piavca_base.Avatar.event" class="py-name" href="#" onclick="return doclink('link-70', 'event', 'link-69');">event</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">         </tt>
+<a name="BackEnd.PublishEvents"></a><div id="BackEnd.PublishEvents-def"><a name="L88"></a><tt class="py-lineno"> 88</tt> <a class="py-toggle" href="#" id="BackEnd.PublishEvents-toggle" onclick="return toggle('BackEnd.PublishEvents');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#PublishEvents">PublishEvents</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">evt</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BackEnd.PublishEvents-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="BackEnd.PublishEvents-expanded"><a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-71" class="py-name" targets="Method Piavca.PiavcaDesigner.BackEnd.BackEnd.getCurrentSubMotionProxy()=Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#getCurrentSubMotionProxy"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.getCurrentSubMotionProxy" class="py-name" href="#" onclick="return doclink('link-71', 'getCurrentSubMotionProxy', 'link-71');">getCurrentSubMotionProxy</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-72" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.getCurrentSubMotionProxy" class="py-name" href="#" onclick="return doclink('link-72', 'getCurrentSubMotionProxy', 'link-71');">getCurrentSubMotionProxy</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-73" class="py-name" targets="Method Piavca.PiavcaDesigner.BackEnd.BackEnd.PublishEvents()=Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#PublishEvents,Method Piavca.PiavcaDesigner.MotionProxy.MotionProxy.PublishEvents()=Piavca.PiavcaDesigner.MotionProxy.MotionProxy-class.html#PublishEvents,Method Piavca.PiavcaDesigner.MotionView.MotionView.PublishEvents()=Piavca.PiavcaDesigner.MotionView.MotionView-class.html#PublishEvents"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.PublishEvents
+Piavca.PiavcaDesigner.MotionProxy.MotionProxy.PublishEvents
+Piavca.PiavcaDesigner.MotionView.MotionView.PublishEvents" class="py-name" href="#" onclick="return doclink('link-73', 'PublishEvents', 'link-73');">PublishEvents</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">                         </tt>
+<a name="BackEnd.addEvent"></a><div id="BackEnd.addEvent-def"><a name="L92"></a><tt class="py-lineno"> 92</tt> <a class="py-toggle" href="#" id="BackEnd.addEvent-toggle" onclick="return toggle('BackEnd.addEvent');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#addEvent">addEvent</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">eventName</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BackEnd.addEvent-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="BackEnd.addEvent-expanded"><a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">                <tt id="link-74" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-74', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-75" class="py-name" targets="Function Piavca.CoreProxy.addEvents()=Piavca.CoreProxy-module.html#addEvents"><a title="Piavca.CoreProxy.addEvents" class="py-name" href="#" onclick="return doclink('link-75', 'addEvents', 'link-75');">addEvents</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-76" class="py-name"><a title="Piavca.Motion.getAvatar
+Piavca.MotionFilter.getAvatar
+Piavca.PiavcaDesigner.BackEnd.BackEnd.getAvatar
+Piavca.Piavca_base.Piavca_base.Core.getAvatar
+Piavca.Piavca_base.Piavca_base.Motion.getAvatar
+Piavca.Piavca_base.Piavca_base.MotionFilter.getAvatar
+Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.getAvatar
+Piavca.Piavca_base.Piavca_base.TwoMotionCombiner.getAvatar" class="py-name" href="#" onclick="return doclink('link-76', 'getAvatar', 'link-53');">getAvatar</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">eventName</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">                         </tt>
+<a name="BackEnd.setMotion"></a><div id="BackEnd.setMotion-def"><a name="L95"></a><tt class="py-lineno"> 95</tt> <a class="py-toggle" href="#" id="BackEnd.setMotion-toggle" onclick="return toggle('BackEnd.setMotion');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#setMotion">setMotion</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">motionname</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BackEnd.setMotion-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="BackEnd.setMotion-expanded"><a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-77" class="py-name"><a title="Piavca.DataStream.IntSequenceDisplay.setTime
+Piavca.DataStream.SequenceDisplay.setTime
+Piavca.PiavcaDesigner.BackEnd.BackEnd.setTime
+Piavca.PiavcaDesigner.PlayControls.PlayControls.setTime" class="py-name" href="#" onclick="return doclink('link-77', 'setTime', 'link-16');">setTime</a></tt><tt class="py-op">(</tt><tt class="py-number">0.0</tt><tt class="py-op">)</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">                <tt class="py-comment">#print "motion name", motionname, type(motionname)</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">                <tt id="link-78" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-78', 'motion', 'link-6');">motion</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-79" class="py-name" targets="Method Piavca.PiavcaDesigner.BackEnd.BackEnd.getMotionByName()=Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#getMotionByName"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.getMotionByName" class="py-name" href="#" onclick="return doclink('link-79', 'getMotionByName', 'link-79');">getMotionByName</a></tt><tt class="py-op">(</tt><tt class="py-name">motionname</tt><tt class="py-op">)</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">                <tt class="py-comment">#print "motion", motion</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt id="link-80" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-80', 'motion', 'link-6');">motion</a></tt> <tt class="py-op">==</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">                        <tt class="py-keyword">raise</tt> <tt class="py-name">ValueError</tt><tt class="py-op">(</tt><tt class="py-string">"no motion named"</tt> <tt class="py-op">+</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">motionname</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">                <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">                        <tt class="py-comment">#print "motion", motion, "ownership", motion.thisown</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">                        <tt class="py-keyword">if</tt> <tt id="link-81" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-81', 'motion', 'link-6');">motion</a></tt><tt class="py-op">.</tt><tt id="link-82" class="py-name" targets="Method Piavca.Motion.getName()=Piavca.Motion-class.html#getName,Method Piavca.PiavcaDesigner.MotionProxy.MotionProxy.getName()=Piavca.PiavcaDesigner.MotionProxy.MotionProxy-class.html#getName,Method Piavca.Piavca_base.Piavca_base.Avatar.getName()=Piavca.Piavca_base.Piavca_base.Avatar-class.html#getName,Method Piavca.Piavca_base.Piavca_base.AvatarTimeCallback.getName()=Piavca.Piavca_base.Piavca_base.AvatarTimeCallback-class.html#getName,Method Piavca.Piavca_base.Piavca_base.Motion.getName()=Piavca.Piavca_base.Piavca_base.Motion-class.html#getName,Method Piavca.Piavca_base.Piavca_base.Object.getName()=Piavca.Piavca_base.Piavca_base.Object-class.html#getName,Method Piavca.Piavca_base.Piavca_base.TimeCallback.getName()=Piavca.Piavca_base.Piavca_base.TimeCallback-class.html#getName"><a title="Piavca.Motion.getName
+Piavca.PiavcaDesigner.MotionProxy.MotionProxy.getName
+Piavca.Piavca_base.Piavca_base.Avatar.getName
+Piavca.Piavca_base.Piavca_base.AvatarTimeCallback.getName
+Piavca.Piavca_base.Piavca_base.Motion.getName
+Piavca.Piavca_base.Piavca_base.Object.getName
+Piavca.Piavca_base.Piavca_base.TimeCallback.getName" class="py-name" href="#" onclick="return doclink('link-82', 'getName', 'link-82');">getName</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-string">""</tt><tt class="py-op">:</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">                                <tt class="py-name">dialog_return</tt> <tt class="py-op">=</tt> <tt class="py-name">textEntryDialog</tt> <tt class="py-op">(</tt><tt id="link-83" class="py-name" targets="Method Piavca.Piavca_base.Piavca_base.Core.message()=Piavca.Piavca_base.Piavca_base.Core-class.html#message"><a title="Piavca.Piavca_base.Piavca_base.Core.message" class="py-name" href="#" onclick="return doclink('link-83', 'message', 'link-83');">message</a></tt><tt class="py-op">=</tt><tt class="py-string">"Please enter a name for this motion"</tt><tt class="py-op">)</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">                                <tt class="py-name">motion_name</tt> <tt class="py-op">=</tt> <tt class="py-name">dialog_return</tt><tt class="py-op">.</tt><tt class="py-name">text</tt><tt class="py-op">.</tt><tt class="py-name">encode</tt><tt class="py-op">(</tt><tt class="py-string">"latin-1"</tt><tt class="py-op">)</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">                                <tt id="link-84" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-84', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-85" class="py-name" targets="Function Piavca.CoreProxy.loadMotion()=Piavca.CoreProxy-module.html#loadMotion,Method Piavca.Piavca_base.Piavca_base.Avatar.loadMotion()=Piavca.Piavca_base.Piavca_base.Avatar-class.html#loadMotion,Method Piavca.Piavca_base.Piavca_base.Core.loadMotion()=Piavca.Piavca_base.Piavca_base.Core-class.html#loadMotion"><a title="Piavca.CoreProxy.loadMotion
+Piavca.Piavca_base.Piavca_base.Avatar.loadMotion
+Piavca.Piavca_base.Piavca_base.Core.loadMotion" class="py-name" href="#" onclick="return doclink('link-85', 'loadMotion', 'link-85');">loadMotion</a></tt><tt class="py-op">(</tt><tt class="py-name">motion_name</tt><tt class="py-op">,</tt> <tt id="link-86" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-86', 'motion', 'link-6');">motion</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-87" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-87', 'motion', 'link-6');">motion</a></tt> <tt class="py-op">=</tt> <tt id="link-88" class="py-name"><a title="Piavca.PiavcaDesigner.MotionProxy
+Piavca.PiavcaDesigner.MotionProxy.MotionProxy" class="py-name" href="#" onclick="return doclink('link-88', 'MotionProxy', 'link-3');">MotionProxy</a></tt><tt class="py-op">(</tt><tt id="link-89" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-89', 'motion', 'link-6');">motion</a></tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">)</tt><tt class="py-comment">#motion</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-90" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.submotion" class="py-name" href="#" onclick="return doclink('link-90', 'submotion', 'link-7');">submotion</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-91" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-91', 'motion', 'link-6');">motion</a></tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">                        <tt class="py-comment">#print "avatar", self.avatar</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">                        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-92" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.avatar" class="py-name" href="#" onclick="return doclink('link-92', 'avatar', 'link-5');">avatar</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">                                <tt class="py-keyword">print</tt> <tt class="py-string">"playing"</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-93" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.avatar" class="py-name" href="#" onclick="return doclink('link-93', 'avatar', 'link-5');">avatar</a></tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-94" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-94', 'motion', 'link-6');">motion</a></tt><tt class="py-op">.</tt><tt id="link-95" class="py-name"><a title="Piavca.ChoiceMotion.getMotion
+Piavca.CoreProxy.getMotion
+Piavca.MotionFilter.getMotion
+Piavca.PiavcaDesigner.AutoCreators.ExpMapBlend'.ExpMapBlend.getMotion
+Piavca.PiavcaDesigner.AutoCreators.InterruptableSequence'.InterruptableSequence.getMotion
+Piavca.PiavcaDesigner.AutoCreators.MotionGraph'.MotionGraph.getMotion
+Piavca.PiavcaDesigner.AutoCreators.PCAMot'.PCAMot.getMotion
+Piavca.PiavcaDesigner.AutoCreatorsWindow.AutoCreatorsWindow.getMotion
+Piavca.PiavcaDesigner.BackEnd.BackEnd.getMotion
+Piavca.PiavcaDesigner.MotionProxy.MotionProxy.getMotion
+Piavca.Piavca_base.Piavca_base.Avatar.getMotion
+Piavca.Piavca_base.Piavca_base.AvatarMotionQueue.getMotion
+Piavca.Piavca_base.Piavca_base.AvatarPostureBlend.getMotion
+Piavca.Piavca_base.Piavca_base.ChoiceMotion.getMotion
+Piavca.Piavca_base.Piavca_base.Core.getMotion
+Piavca.Piavca_base.Piavca_base.MotionFilter.getMotion
+Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.getMotion
+Piavca.Piavca_base.Piavca_base.PointAt.getMotion
+Piavca.Piavca_base.Piavca_base.PostureBlend.getMotion
+Piavca.Piavca_base.Piavca_base.SmoothLoop.getMotion" class="py-name" href="#" onclick="return doclink('link-95', 'getMotion', 'link-45');">getMotion</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">                                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-96" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.avatar" class="py-name" href="#" onclick="return doclink('link-96', 'avatar', 'link-5');">avatar</a></tt><tt class="py-op">.</tt><tt id="link-97" class="py-name" targets="Method Piavca.Piavca_base.Piavca_base.Avatar.playMotionDirect()=Piavca.Piavca_base.Piavca_base.Avatar-class.html#playMotionDirect"><a title="Piavca.Piavca_base.Piavca_base.Avatar.playMotionDirect" class="py-name" href="#" onclick="return doclink('link-97', 'playMotionDirect', 'link-97');">playMotionDirect</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-98" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-98', 'motion', 'link-6');">motion</a></tt><tt class="py-op">.</tt><tt id="link-99" class="py-name"><a title="Piavca.ChoiceMotion.getMotion
+Piavca.CoreProxy.getMotion
+Piavca.MotionFilter.getMotion
+Piavca.PiavcaDesigner.AutoCreators.ExpMapBlend'.ExpMapBlend.getMotion
+Piavca.PiavcaDesigner.AutoCreators.InterruptableSequence'.InterruptableSequence.getMotion
+Piavca.PiavcaDesigner.AutoCreators.MotionGraph'.MotionGraph.getMotion
+Piavca.PiavcaDesigner.AutoCreators.PCAMot'.PCAMot.getMotion
+Piavca.PiavcaDesigner.AutoCreatorsWindow.AutoCreatorsWindow.getMotion
+Piavca.PiavcaDesigner.BackEnd.BackEnd.getMotion
+Piavca.PiavcaDesigner.MotionProxy.MotionProxy.getMotion
+Piavca.Piavca_base.Piavca_base.Avatar.getMotion
+Piavca.Piavca_base.Piavca_base.AvatarMotionQueue.getMotion
+Piavca.Piavca_base.Piavca_base.AvatarPostureBlend.getMotion
+Piavca.Piavca_base.Piavca_base.ChoiceMotion.getMotion
+Piavca.Piavca_base.Piavca_base.Core.getMotion
+Piavca.Piavca_base.Piavca_base.MotionFilter.getMotion
+Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.getMotion
+Piavca.Piavca_base.Piavca_base.PointAt.getMotion
+Piavca.Piavca_base.Piavca_base.PostureBlend.getMotion
+Piavca.Piavca_base.Piavca_base.SmoothLoop.getMotion" class="py-name" href="#" onclick="return doclink('link-99', 'getMotion', 'link-45');">getMotion</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-100" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.resetRange
+Piavca.PiavcaDesigner.MotionProxy.MotionProxy.resetRange" class="py-name" href="#" onclick="return doclink('link-100', 'resetRange', 'link-47');">resetRange</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-101" class="py-name"><a title="Piavca.PiavcaDesigner.AutoCreatorsWindow.AutoCreatorsWindow.update
+Piavca.PiavcaDesigner.BackEnd.BackEnd.update
+Piavca.PiavcaDesigner.GenericList.GenericList.update
+Piavca.PiavcaDesigner.HeirarchyView.HeirarchyView.update
+Piavca.PiavcaDesigner.ListBoxController.ListBoxController.update
+Piavca.PiavcaDesigner.ParameterControls.ParamEntry.update
+Piavca.PiavcaDesigner.ParameterWindow.ParameterWindow.update
+Piavca.PiavcaDesigner.PiavcaDesigner'.PiavcaDesigner.update
+Piavca.PiavcaDesigner.PlayControls.PlayControls.update" class="py-name" href="#" onclick="return doclink('link-101', 'update', 'link-30');">update</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">                         </tt>
+<a name="BackEnd.addMotion"></a><div id="BackEnd.addMotion-def"><a name="L117"></a><tt class="py-lineno">117</tt> <a class="py-toggle" href="#" id="BackEnd.addMotion-toggle" onclick="return toggle('BackEnd.addMotion');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#addMotion">addMotion</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">motion</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BackEnd.addMotion-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="BackEnd.addMotion-expanded"><a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">                <tt class="py-name">dialog_return</tt> <tt class="py-op">=</tt> <tt class="py-name">textEntryDialog</tt> <tt class="py-op">(</tt><tt id="link-102" class="py-name"><a title="Piavca.Piavca_base.Piavca_base.Core.message" class="py-name" href="#" onclick="return doclink('link-102', 'message', 'link-83');">message</a></tt><tt class="py-op">=</tt><tt class="py-string">"Please enter a name for this motion"</tt><tt class="py-op">)</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">                <tt class="py-name">motion_name</tt> <tt class="py-op">=</tt> <tt class="py-name">dialog_return</tt><tt class="py-op">.</tt><tt class="py-name">text</tt><tt class="py-op">.</tt><tt class="py-name">encode</tt><tt class="py-op">(</tt><tt class="py-string">"latin-1"</tt><tt class="py-op">)</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">                <tt id="link-103" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-103', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-104" class="py-name"><a title="Piavca.CoreProxy.loadMotion
+Piavca.Piavca_base.Piavca_base.Avatar.loadMotion
+Piavca.Piavca_base.Piavca_base.Core.loadMotion" class="py-name" href="#" onclick="return doclink('link-104', 'loadMotion', 'link-85');">loadMotion</a></tt><tt class="py-op">(</tt><tt class="py-name">motion_name</tt><tt class="py-op">,</tt> <tt id="link-105" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-105', 'motion', 'link-6');">motion</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-106" class="py-name"><a title="Piavca.PiavcaDesigner.AutoCreatorsWindow.AutoCreatorsWindow.update
+Piavca.PiavcaDesigner.BackEnd.BackEnd.update
+Piavca.PiavcaDesigner.GenericList.GenericList.update
+Piavca.PiavcaDesigner.HeirarchyView.HeirarchyView.update
+Piavca.PiavcaDesigner.ListBoxController.ListBoxController.update
+Piavca.PiavcaDesigner.ParameterControls.ParamEntry.update
+Piavca.PiavcaDesigner.ParameterWindow.ParameterWindow.update
+Piavca.PiavcaDesigner.PiavcaDesigner'.PiavcaDesigner.update
+Piavca.PiavcaDesigner.PlayControls.PlayControls.update" class="py-name" href="#" onclick="return doclink('link-106', 'update', 'link-30');">update</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">                         </tt>
+<a name="BackEnd.setSubMotion"></a><div id="BackEnd.setSubMotion-def"><a name="L123"></a><tt class="py-lineno">123</tt> <a class="py-toggle" href="#" id="BackEnd.setSubMotion-toggle" onclick="return toggle('BackEnd.setSubMotion');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#setSubMotion">setSubMotion</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">motionproxy</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BackEnd.setSubMotion-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="BackEnd.setSubMotion-expanded"><a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-107" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.submotion" class="py-name" href="#" onclick="return doclink('link-107', 'submotion', 'link-7');">submotion</a></tt> <tt class="py-op">=</tt> <tt class="py-name">motionproxy</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-108" class="py-name"><a title="Piavca.PiavcaDesigner.AutoCreatorsWindow.AutoCreatorsWindow.update
+Piavca.PiavcaDesigner.BackEnd.BackEnd.update
+Piavca.PiavcaDesigner.GenericList.GenericList.update
+Piavca.PiavcaDesigner.HeirarchyView.HeirarchyView.update
+Piavca.PiavcaDesigner.ListBoxController.ListBoxController.update
+Piavca.PiavcaDesigner.ParameterControls.ParamEntry.update
+Piavca.PiavcaDesigner.ParameterWindow.ParameterWindow.update
+Piavca.PiavcaDesigner.PiavcaDesigner'.PiavcaDesigner.update
+Piavca.PiavcaDesigner.PlayControls.PlayControls.update" class="py-name" href="#" onclick="return doclink('link-108', 'update', 'link-30');">update</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">                 </tt>
+<a name="BackEnd.resetRange"></a><div id="BackEnd.resetRange-def"><a name="L127"></a><tt class="py-lineno">127</tt> <a class="py-toggle" href="#" id="BackEnd.resetRange-toggle" onclick="return toggle('BackEnd.resetRange');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#resetRange">resetRange</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BackEnd.resetRange-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="BackEnd.resetRange-expanded"><a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">                <tt class="py-keyword">print</tt> <tt class="py-string">"resetting range"</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-109" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-109', 'motion', 'link-6');">motion</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">                        <tt class="py-name">length</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-110" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-110', 'motion', 'link-6');">motion</a></tt><tt class="py-op">.</tt><tt id="link-111" class="py-name"><a title="Piavca.ChoiceMotion.getMotion
+Piavca.CoreProxy.getMotion
+Piavca.MotionFilter.getMotion
+Piavca.PiavcaDesigner.AutoCreators.ExpMapBlend'.ExpMapBlend.getMotion
+Piavca.PiavcaDesigner.AutoCreators.InterruptableSequence'.InterruptableSequence.getMotion
+Piavca.PiavcaDesigner.AutoCreators.MotionGraph'.MotionGraph.getMotion
+Piavca.PiavcaDesigner.AutoCreators.PCAMot'.PCAMot.getMotion
+Piavca.PiavcaDesigner.AutoCreatorsWindow.AutoCreatorsWindow.getMotion
+Piavca.PiavcaDesigner.BackEnd.BackEnd.getMotion
+Piavca.PiavcaDesigner.MotionProxy.MotionProxy.getMotion
+Piavca.Piavca_base.Piavca_base.Avatar.getMotion
+Piavca.Piavca_base.Piavca_base.AvatarMotionQueue.getMotion
+Piavca.Piavca_base.Piavca_base.AvatarPostureBlend.getMotion
+Piavca.Piavca_base.Piavca_base.ChoiceMotion.getMotion
+Piavca.Piavca_base.Piavca_base.Core.getMotion
+Piavca.Piavca_base.Piavca_base.MotionFilter.getMotion
+Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.getMotion
+Piavca.Piavca_base.Piavca_base.PointAt.getMotion
+Piavca.Piavca_base.Piavca_base.PostureBlend.getMotion
+Piavca.Piavca_base.Piavca_base.SmoothLoop.getMotion" class="py-name" href="#" onclick="return doclink('link-111', 'getMotion', 'link-45');">getMotion</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-112" class="py-name"><a title="Piavca.AudioMotion'.AudioMotion.getMotionLength
+Piavca.ChoiceMotion.getMotionLength
+Piavca.EigenAnalysis'.EigenAnalysis.getMotionLength
+Piavca.EigenMotion'.EigenMotion.getMotionLength
+Piavca.KeyframeMotion.getMotionLength
+Piavca.Motion.getMotionLength
+Piavca.MotionFilter.getMotionLength
+Piavca.Piavca_base.Piavca_base.ChangeMotionLength.getMotionLength
+Piavca.Piavca_base.Piavca_base.ChoiceMotion.getMotionLength
+Piavca.Piavca_base.Piavca_base.KeyframeMotion.getMotionLength
+Piavca.Piavca_base.Piavca_base.LoopMotion.getMotionLength
+Piavca.Piavca_base.Piavca_base.Motion.getMotionLength
+Piavca.Piavca_base.Piavca_base.MotionFilter.getMotionLength
+Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.getMotionLength
+Piavca.Piavca_base.Piavca_base.ScaleMotionSpeed.getMotionLength
+Piavca.Piavca_base.Piavca_base.Sequence.getMotionLength
+Piavca.Piavca_base.Piavca_base.SubMotion.getMotionLength
+Piavca.Piavca_base.Piavca_base.TimeWarp.getMotionLength
+Piavca.Piavca_base.Piavca_base.TwoMotionCombiner.getMotionLength
+Piavca.Piavca_base.Piavca_base.ZeroMotion.getMotionLength" class="py-name" href="#" onclick="return doclink('link-112', 'getMotionLength', 'link-46');">getMotionLength</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">                        <tt class="py-keyword">print</tt> <tt class="py-string">"motion length"</tt><tt class="py-op">,</tt> <tt class="py-name">length</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line">                        <tt class="py-keyword">if</tt> <tt class="py-name">length</tt> <tt class="py-op">&lt;</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">                                <tt class="py-name">length</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-113" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.defaultLength" class="py-name" href="#" onclick="return doclink('link-113', 'defaultLength', 'link-10');">defaultLength</a></tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line">                        <tt id="link-114" class="py-name" targets="Variable Piavca.PiavcaGlut.PiavcaGlut.start=Piavca.PiavcaGlut.PiavcaGlut-module.html#start"><a title="Piavca.PiavcaGlut.PiavcaGlut.start" class="py-name" href="#" onclick="return doclink('link-114', 'start', 'link-114');">start</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-115" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-115', 'motion', 'link-6');">motion</a></tt><tt class="py-op">.</tt><tt id="link-116" class="py-name"><a title="Piavca.ChoiceMotion.getMotion
+Piavca.CoreProxy.getMotion
+Piavca.MotionFilter.getMotion
+Piavca.PiavcaDesigner.AutoCreators.ExpMapBlend'.ExpMapBlend.getMotion
+Piavca.PiavcaDesigner.AutoCreators.InterruptableSequence'.InterruptableSequence.getMotion
+Piavca.PiavcaDesigner.AutoCreators.MotionGraph'.MotionGraph.getMotion
+Piavca.PiavcaDesigner.AutoCreators.PCAMot'.PCAMot.getMotion
+Piavca.PiavcaDesigner.AutoCreatorsWindow.AutoCreatorsWindow.getMotion
+Piavca.PiavcaDesigner.BackEnd.BackEnd.getMotion
+Piavca.PiavcaDesigner.MotionProxy.MotionProxy.getMotion
+Piavca.Piavca_base.Piavca_base.Avatar.getMotion
+Piavca.Piavca_base.Piavca_base.AvatarMotionQueue.getMotion
+Piavca.Piavca_base.Piavca_base.AvatarPostureBlend.getMotion
+Piavca.Piavca_base.Piavca_base.ChoiceMotion.getMotion
+Piavca.Piavca_base.Piavca_base.Core.getMotion
+Piavca.Piavca_base.Piavca_base.MotionFilter.getMotion
+Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.getMotion
+Piavca.Piavca_base.Piavca_base.PointAt.getMotion
+Piavca.Piavca_base.Piavca_base.PostureBlend.getMotion
+Piavca.Piavca_base.Piavca_base.SmoothLoop.getMotion" class="py-name" href="#" onclick="return doclink('link-116', 'getMotion', 'link-45');">getMotion</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-117" class="py-name" targets="Method Piavca.DataStream.DataSequence.getStartTime()=Piavca.DataStream.DataSequence-class.html#getStartTime,Method Piavca.Motion.getStartTime()=Piavca.Motion-class.html#getStartTime,Method Piavca.Piavca_base.Piavca_base.Motion.getStartTime()=Piavca.Piavca_base.Piavca_base.Motion-class.html#getStartTime"><a title="Piavca.DataStream.DataSequence.getStartTime
+Piavca.Motion.getStartTime
+Piavca.Piavca_base.Piavca_base.Motion.getStartTime" class="py-name" href="#" onclick="return doclink('link-117', 'getStartTime', 'link-117');">getStartTime</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-118" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.setRange
+Piavca.PiavcaDesigner.MotionProxy.MotionProxy.setRange" class="py-name" href="#" onclick="return doclink('link-118', 'setRange', 'link-17');">setRange</a></tt><tt class="py-op">(</tt><tt id="link-119" class="py-name"><a title="Piavca.PiavcaGlut.PiavcaGlut.start" class="py-name" href="#" onclick="return doclink('link-119', 'start', 'link-114');">start</a></tt><tt class="py-op">,</tt> <tt class="py-name">length</tt><tt class="py-op">)</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">                <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line">                        <tt class="py-keyword">print</tt> <tt class="py-string">"no motion"</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-120" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.setRange
+Piavca.PiavcaDesigner.MotionProxy.MotionProxy.setRange" class="py-name" href="#" onclick="return doclink('link-120', 'setRange', 'link-17');">setRange</a></tt><tt class="py-op">(</tt><tt class="py-number">0.0</tt><tt class="py-op">,</tt><tt class="py-number">0.0</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line">                 </tt>
+<a name="BackEnd.setRange"></a><div id="BackEnd.setRange-def"><a name="L140"></a><tt class="py-lineno">140</tt> <a class="py-toggle" href="#" id="BackEnd.setRange-toggle" onclick="return toggle('BackEnd.setRange');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#setRange">setRange</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">start</tt><tt class="py-op">,</tt> <tt class="py-param">end</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BackEnd.setRange-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="BackEnd.setRange-expanded"><a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">range</tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt id="link-121" class="py-name"><a title="Piavca.PiavcaGlut.PiavcaGlut.start" class="py-name" href="#" onclick="return doclink('link-121', 'start', 'link-114');">start</a></tt><tt class="py-op">,</tt> <tt id="link-122" class="py-name" targets="Method Piavca.Motion.end()=Piavca.Motion-class.html#end,Method Piavca.Piavca_base.Piavca_base.Avatar.end()=Piavca.Piavca_base.Piavca_base.Avatar-class.html#end,Method Piavca.Piavca_base.Piavca_base.Motion.end()=Piavca.Piavca_base.Piavca_base.Motion-class.html#end,Method Piavca.Piavca_base.Piavca_base.vectorI.end()=Piavca.Piavca_base.Piavca_base.vectorI-class.html#end,Method Piavca.Piavca_base.Piavca_base.vectorS.end()=Piavca.Piavca_base.Piavca_base.vectorS-class.html#end"><a title="Piavca.Motion.end
+Piavca.Piavca_base.Piavca_base.Avatar.end
+Piavca.Piavca_base.Piavca_base.Motion.end
+Piavca.Piavca_base.Piavca_base.vectorI.end
+Piavca.Piavca_base.Piavca_base.vectorS.end" class="py-name" href="#" onclick="return doclink('link-122', 'end', 'link-122');">end</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-123" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-123', 'motion', 'link-6');">motion</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">lastMotionLength</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-124" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-124', 'motion', 'link-6');">motion</a></tt><tt class="py-op">.</tt><tt id="link-125" class="py-name"><a title="Piavca.ChoiceMotion.getMotion
+Piavca.CoreProxy.getMotion
+Piavca.MotionFilter.getMotion
+Piavca.PiavcaDesigner.AutoCreators.ExpMapBlend'.ExpMapBlend.getMotion
+Piavca.PiavcaDesigner.AutoCreators.InterruptableSequence'.InterruptableSequence.getMotion
+Piavca.PiavcaDesigner.AutoCreators.MotionGraph'.MotionGraph.getMotion
+Piavca.PiavcaDesigner.AutoCreators.PCAMot'.PCAMot.getMotion
+Piavca.PiavcaDesigner.AutoCreatorsWindow.AutoCreatorsWindow.getMotion
+Piavca.PiavcaDesigner.BackEnd.BackEnd.getMotion
+Piavca.PiavcaDesigner.MotionProxy.MotionProxy.getMotion
+Piavca.Piavca_base.Piavca_base.Avatar.getMotion
+Piavca.Piavca_base.Piavca_base.AvatarMotionQueue.getMotion
+Piavca.Piavca_base.Piavca_base.AvatarPostureBlend.getMotion
+Piavca.Piavca_base.Piavca_base.ChoiceMotion.getMotion
+Piavca.Piavca_base.Piavca_base.Core.getMotion
+Piavca.Piavca_base.Piavca_base.MotionFilter.getMotion
+Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.getMotion
+Piavca.Piavca_base.Piavca_base.PointAt.getMotion
+Piavca.Piavca_base.Piavca_base.PostureBlend.getMotion
+Piavca.Piavca_base.Piavca_base.SmoothLoop.getMotion" class="py-name" href="#" onclick="return doclink('link-125', 'getMotion', 'link-45');">getMotion</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-126" class="py-name"><a title="Piavca.AudioMotion'.AudioMotion.getMotionLength
+Piavca.ChoiceMotion.getMotionLength
+Piavca.EigenAnalysis'.EigenAnalysis.getMotionLength
+Piavca.EigenMotion'.EigenMotion.getMotionLength
+Piavca.KeyframeMotion.getMotionLength
+Piavca.Motion.getMotionLength
+Piavca.MotionFilter.getMotionLength
+Piavca.Piavca_base.Piavca_base.ChangeMotionLength.getMotionLength
+Piavca.Piavca_base.Piavca_base.ChoiceMotion.getMotionLength
+Piavca.Piavca_base.Piavca_base.KeyframeMotion.getMotionLength
+Piavca.Piavca_base.Piavca_base.LoopMotion.getMotionLength
+Piavca.Piavca_base.Piavca_base.Motion.getMotionLength
+Piavca.Piavca_base.Piavca_base.MotionFilter.getMotionLength
+Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.getMotionLength
+Piavca.Piavca_base.Piavca_base.ScaleMotionSpeed.getMotionLength
+Piavca.Piavca_base.Piavca_base.Sequence.getMotionLength
+Piavca.Piavca_base.Piavca_base.SubMotion.getMotionLength
+Piavca.Piavca_base.Piavca_base.TimeWarp.getMotionLength
+Piavca.Piavca_base.Piavca_base.TwoMotionCombiner.getMotionLength
+Piavca.Piavca_base.Piavca_base.ZeroMotion.getMotionLength" class="py-name" href="#" onclick="return doclink('link-126', 'getMotionLength', 'link-46');">getMotionLength</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">                <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">lastMotionLength</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+</div><a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line">                 </tt>
+<a name="BackEnd.getRange"></a><div id="BackEnd.getRange-def"><a name="L147"></a><tt class="py-lineno">147</tt> <a class="py-toggle" href="#" id="BackEnd.getRange-toggle" onclick="return toggle('BackEnd.getRange');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#getRange">getRange</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BackEnd.getRange-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="BackEnd.getRange-expanded"><a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">range</tt> </tt>
+</div><a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line">                         </tt>
+<a name="BackEnd.getRangeFraction"></a><div id="BackEnd.getRangeFraction-def"><a name="L150"></a><tt class="py-lineno">150</tt> <a class="py-toggle" href="#" id="BackEnd.getRangeFraction-toggle" onclick="return toggle('BackEnd.getRangeFraction');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#getRangeFraction">getRangeFraction</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BackEnd.getRangeFraction-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="BackEnd.getRangeFraction-expanded"><a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-127" class="py-name" targets="Method Piavca.PiavcaDesigner.BackEnd.BackEnd.getTimeFraction()=Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#getTimeFraction"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.getTimeFraction" class="py-name" href="#" onclick="return doclink('link-127', 'getTimeFraction', 'link-127');">getTimeFraction</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">range</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-128" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.getTimeFraction" class="py-name" href="#" onclick="return doclink('link-128', 'getTimeFraction', 'link-127');">getTimeFraction</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">range</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line">         </tt>
+<a name="BackEnd.setRangeFraction"></a><div id="BackEnd.setRangeFraction-def"><a name="L153"></a><tt class="py-lineno">153</tt> <a class="py-toggle" href="#" id="BackEnd.setRangeFraction-toggle" onclick="return toggle('BackEnd.setRangeFraction');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#setRangeFraction">setRangeFraction</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">start</tt><tt class="py-op">,</tt> <tt class="py-param">end</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BackEnd.setRangeFraction-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="BackEnd.setRangeFraction-expanded"><a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-129" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.setRange
+Piavca.PiavcaDesigner.MotionProxy.MotionProxy.setRange" class="py-name" href="#" onclick="return doclink('link-129', 'setRange', 'link-17');">setRange</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-130" class="py-name" targets="Method Piavca.PiavcaDesigner.BackEnd.BackEnd.getTimeFromFraction()=Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#getTimeFromFraction"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.getTimeFromFraction" class="py-name" href="#" onclick="return doclink('link-130', 'getTimeFromFraction', 'link-130');">getTimeFromFraction</a></tt><tt class="py-op">(</tt><tt id="link-131" class="py-name"><a title="Piavca.PiavcaGlut.PiavcaGlut.start" class="py-name" href="#" onclick="return doclink('link-131', 'start', 'link-114');">start</a></tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-132" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.getTimeFromFraction" class="py-name" href="#" onclick="return doclink('link-132', 'getTimeFromFraction', 'link-130');">getTimeFromFraction</a></tt><tt class="py-op">(</tt><tt id="link-133" class="py-name"><a title="Piavca.Motion.end
+Piavca.Piavca_base.Piavca_base.Avatar.end
+Piavca.Piavca_base.Piavca_base.Motion.end
+Piavca.Piavca_base.Piavca_base.vectorI.end
+Piavca.Piavca_base.Piavca_base.vectorS.end" class="py-name" href="#" onclick="return doclink('link-133', 'end', 'link-122');">end</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line">                         </tt>
+<a name="BackEnd.getMotion"></a><div id="BackEnd.getMotion-def"><a name="L156"></a><tt class="py-lineno">156</tt> <a class="py-toggle" href="#" id="BackEnd.getMotion-toggle" onclick="return toggle('BackEnd.getMotion');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#getMotion">getMotion</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">name</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BackEnd.getMotion-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="BackEnd.getMotion-expanded"><a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line">                <tt class="py-keyword">print</tt> <tt class="py-string">"backend, getMotion, name = "</tt><tt class="py-op">,</tt> <tt id="link-134" class="py-name" targets="Variable Piavca.FreeCameraCanvas.name=Piavca.FreeCameraCanvas-module.html#name,Variable Piavca.PiavcaWXCanvas.name=Piavca.PiavcaWXCanvas-module.html#name,Variable Piavca.ViewerCanvas.name=Piavca.ViewerCanvas-module.html#name,Variable Piavca.gltb.name=Piavca.gltb-module.html#name,Variable Piavca.wxVirtualTracker'.name=Piavca.wxVirtualTracker%27-module.html#name"><a title="Piavca.FreeCameraCanvas.name
+Piavca.PiavcaWXCanvas.name
+Piavca.ViewerCanvas.name
+Piavca.gltb.name
+Piavca.wxVirtualTracker'.name" class="py-name" href="#" onclick="return doclink('link-134', 'name', 'link-134');">name</a></tt> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt id="link-135" class="py-name"><a title="Piavca.FreeCameraCanvas.name
+Piavca.PiavcaWXCanvas.name
+Piavca.ViewerCanvas.name
+Piavca.gltb.name
+Piavca.wxVirtualTracker'.name" class="py-name" href="#" onclick="return doclink('link-135', 'name', 'link-134');">name</a></tt> <tt class="py-op">==</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line">                        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-136" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-136', 'motion', 'link-6');">motion</a></tt><tt class="py-op">.</tt><tt id="link-137" class="py-name"><a title="Piavca.ChoiceMotion.getMotion
+Piavca.CoreProxy.getMotion
+Piavca.MotionFilter.getMotion
+Piavca.PiavcaDesigner.AutoCreators.ExpMapBlend'.ExpMapBlend.getMotion
+Piavca.PiavcaDesigner.AutoCreators.InterruptableSequence'.InterruptableSequence.getMotion
+Piavca.PiavcaDesigner.AutoCreators.MotionGraph'.MotionGraph.getMotion
+Piavca.PiavcaDesigner.AutoCreators.PCAMot'.PCAMot.getMotion
+Piavca.PiavcaDesigner.AutoCreatorsWindow.AutoCreatorsWindow.getMotion
+Piavca.PiavcaDesigner.BackEnd.BackEnd.getMotion
+Piavca.PiavcaDesigner.MotionProxy.MotionProxy.getMotion
+Piavca.Piavca_base.Piavca_base.Avatar.getMotion
+Piavca.Piavca_base.Piavca_base.AvatarMotionQueue.getMotion
+Piavca.Piavca_base.Piavca_base.AvatarPostureBlend.getMotion
+Piavca.Piavca_base.Piavca_base.ChoiceMotion.getMotion
+Piavca.Piavca_base.Piavca_base.Core.getMotion
+Piavca.Piavca_base.Piavca_base.MotionFilter.getMotion
+Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.getMotion
+Piavca.Piavca_base.Piavca_base.PointAt.getMotion
+Piavca.Piavca_base.Piavca_base.PostureBlend.getMotion
+Piavca.Piavca_base.Piavca_base.SmoothLoop.getMotion" class="py-name" href="#" onclick="return doclink('link-137', 'getMotion', 'link-45');">getMotion</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt>           </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line">                <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line">                        <tt class="py-keyword">return</tt>  <tt id="link-138" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-138', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-139" class="py-name"><a title="Piavca.ChoiceMotion.getMotion
+Piavca.CoreProxy.getMotion
+Piavca.MotionFilter.getMotion
+Piavca.PiavcaDesigner.AutoCreators.ExpMapBlend'.ExpMapBlend.getMotion
+Piavca.PiavcaDesigner.AutoCreators.InterruptableSequence'.InterruptableSequence.getMotion
+Piavca.PiavcaDesigner.AutoCreators.MotionGraph'.MotionGraph.getMotion
+Piavca.PiavcaDesigner.AutoCreators.PCAMot'.PCAMot.getMotion
+Piavca.PiavcaDesigner.AutoCreatorsWindow.AutoCreatorsWindow.getMotion
+Piavca.PiavcaDesigner.BackEnd.BackEnd.getMotion
+Piavca.PiavcaDesigner.MotionProxy.MotionProxy.getMotion
+Piavca.Piavca_base.Piavca_base.Avatar.getMotion
+Piavca.Piavca_base.Piavca_base.AvatarMotionQueue.getMotion
+Piavca.Piavca_base.Piavca_base.AvatarPostureBlend.getMotion
+Piavca.Piavca_base.Piavca_base.ChoiceMotion.getMotion
+Piavca.Piavca_base.Piavca_base.Core.getMotion
+Piavca.Piavca_base.Piavca_base.MotionFilter.getMotion
+Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.getMotion
+Piavca.Piavca_base.Piavca_base.PointAt.getMotion
+Piavca.Piavca_base.Piavca_base.PostureBlend.getMotion
+Piavca.Piavca_base.Piavca_base.SmoothLoop.getMotion" class="py-name" href="#" onclick="return doclink('link-139', 'getMotion', 'link-45');">getMotion</a></tt><tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt id="link-140" class="py-name"><a title="Piavca.FreeCameraCanvas.name
+Piavca.PiavcaWXCanvas.name
+Piavca.ViewerCanvas.name
+Piavca.gltb.name
+Piavca.wxVirtualTracker'.name" class="py-name" href="#" onclick="return doclink('link-140', 'name', 'link-134');">name</a></tt><tt class="py-op">.</tt><tt class="py-name">encode</tt><tt class="py-op">(</tt><tt class="py-string">"latin-1"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line">         </tt>
+<a name="BackEnd.getMotionByName"></a><div id="BackEnd.getMotionByName-def"><a name="L163"></a><tt class="py-lineno">163</tt> <a class="py-toggle" href="#" id="BackEnd.getMotionByName-toggle" onclick="return toggle('BackEnd.getMotionByName');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#getMotionByName">getMotionByName</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">name</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BackEnd.getMotionByName-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="BackEnd.getMotionByName-expanded"><a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt id="link-141" class="py-name"><a title="Piavca.FreeCameraCanvas.name
+Piavca.PiavcaWXCanvas.name
+Piavca.ViewerCanvas.name
+Piavca.gltb.name
+Piavca.wxVirtualTracker'.name" class="py-name" href="#" onclick="return doclink('link-141', 'name', 'link-134');">name</a></tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-number">10</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-string">"__Type__::"</tt><tt class="py-op">:</tt> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line">                        <tt class="py-name">typename</tt> <tt class="py-op">=</tt> <tt id="link-142" class="py-name"><a title="Piavca.FreeCameraCanvas.name
+Piavca.PiavcaWXCanvas.name
+Piavca.ViewerCanvas.name
+Piavca.gltb.name
+Piavca.wxVirtualTracker'.name" class="py-name" href="#" onclick="return doclink('link-142', 'name', 'link-134');">name</a></tt><tt class="py-op">[</tt><tt class="py-number">10</tt><tt class="py-op">:</tt><tt class="py-op">]</tt> </tt>
+<a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line">                        <tt class="py-name">cl</tt> <tt class="py-op">=</tt> <tt class="py-name">getattr</tt><tt class="py-op">(</tt><tt id="link-143" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-143', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">,</tt> <tt class="py-name">typename</tt><tt class="py-op">)</tt> </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line">                        <tt class="py-keyword">if</tt> <tt class="py-name">type</tt><tt class="py-op">(</tt><tt class="py-name">cl</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-name">types</tt><tt class="py-op">.</tt><tt class="py-name">TypeType</tt> <tt class="py-keyword">and</tt> <tt class="py-name">issubclass</tt><tt class="py-op">(</tt><tt class="py-name">cl</tt><tt class="py-op">,</tt> <tt id="link-144" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-144', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-145" class="py-name" targets="Class Piavca.Motion=Piavca.Motion-class.html,Class Piavca.Piavca_base.Piavca_base.Motion=Piavca.Piavca_base.Piavca_base.Motion-class.html"><a title="Piavca.Motion
+Piavca.Piavca_base.Piavca_base.Motion" class="py-name" href="#" onclick="return doclink('link-145', 'Motion', 'link-145');">Motion</a></tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line">                                <tt id="link-146" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-146', 'motion', 'link-6');">motion</a></tt> <tt class="py-op">=</tt>  <tt class="py-name">cl</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line">                                <tt id="link-147" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-147', 'motion', 'link-6');">motion</a></tt><tt class="py-op">.</tt><tt class="py-name">thisown</tt> <tt class="py-op">=</tt> <tt class="py-name">False</tt> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line">                                <tt id="link-148" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-148', 'motion', 'link-6');">motion</a></tt><tt class="py-op">.</tt><tt id="link-149" class="py-name" targets="Method Piavca.Motion.Reference()=Piavca.Motion-class.html#Reference,Method Piavca.Piavca_base.Piavca_base.Motion.Reference()=Piavca.Piavca_base.Piavca_base.Motion-class.html#Reference"><a title="Piavca.Motion.Reference
+Piavca.Piavca_base.Piavca_base.Motion.Reference" class="py-name" href="#" onclick="return doclink('link-149', 'Reference', 'link-149');">Reference</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line">                                <tt class="py-keyword">return</tt> <tt id="link-150" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-150', 'motion', 'link-6');">motion</a></tt> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line">                        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line">                                <tt class="py-name">ValueError</tt><tt class="py-op">(</tt><tt class="py-name">typename</tt><tt class="py-op">+</tt><tt class="py-string">" is not a motion class"</tt><tt class="py-op">)</tt> </tt>
+<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line">                <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line">                        <tt class="py-keyword">print</tt> <tt class="py-string">"motion name"</tt><tt class="py-op">,</tt> <tt id="link-151" class="py-name"><a title="Piavca.FreeCameraCanvas.name
+Piavca.PiavcaWXCanvas.name
+Piavca.ViewerCanvas.name
+Piavca.gltb.name
+Piavca.wxVirtualTracker'.name" class="py-name" href="#" onclick="return doclink('link-151', 'name', 'link-134');">name</a></tt><tt class="py-op">,</tt> <tt class="py-name">type</tt><tt class="py-op">(</tt><tt id="link-152" class="py-name"><a title="Piavca.FreeCameraCanvas.name
+Piavca.PiavcaWXCanvas.name
+Piavca.ViewerCanvas.name
+Piavca.gltb.name
+Piavca.wxVirtualTracker'.name" class="py-name" href="#" onclick="return doclink('link-152', 'name', 'link-134');">name</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line">                        <tt id="link-153" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-153', 'motion', 'link-6');">motion</a></tt> <tt class="py-op">=</tt> <tt id="link-154" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-154', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-155" class="py-name"><a title="Piavca.ChoiceMotion.getMotion
+Piavca.CoreProxy.getMotion
+Piavca.MotionFilter.getMotion
+Piavca.PiavcaDesigner.AutoCreators.ExpMapBlend'.ExpMapBlend.getMotion
+Piavca.PiavcaDesigner.AutoCreators.InterruptableSequence'.InterruptableSequence.getMotion
+Piavca.PiavcaDesigner.AutoCreators.MotionGraph'.MotionGraph.getMotion
+Piavca.PiavcaDesigner.AutoCreators.PCAMot'.PCAMot.getMotion
+Piavca.PiavcaDesigner.AutoCreatorsWindow.AutoCreatorsWindow.getMotion
+Piavca.PiavcaDesigner.BackEnd.BackEnd.getMotion
+Piavca.PiavcaDesigner.MotionProxy.MotionProxy.getMotion
+Piavca.Piavca_base.Piavca_base.Avatar.getMotion
+Piavca.Piavca_base.Piavca_base.AvatarMotionQueue.getMotion
+Piavca.Piavca_base.Piavca_base.AvatarPostureBlend.getMotion
+Piavca.Piavca_base.Piavca_base.ChoiceMotion.getMotion
+Piavca.Piavca_base.Piavca_base.Core.getMotion
+Piavca.Piavca_base.Piavca_base.MotionFilter.getMotion
+Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.getMotion
+Piavca.Piavca_base.Piavca_base.PointAt.getMotion
+Piavca.Piavca_base.Piavca_base.PostureBlend.getMotion
+Piavca.Piavca_base.Piavca_base.SmoothLoop.getMotion" class="py-name" href="#" onclick="return doclink('link-155', 'getMotion', 'link-45');">getMotion</a></tt><tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt id="link-156" class="py-name"><a title="Piavca.FreeCameraCanvas.name
+Piavca.PiavcaWXCanvas.name
+Piavca.ViewerCanvas.name
+Piavca.gltb.name
+Piavca.wxVirtualTracker'.name" class="py-name" href="#" onclick="return doclink('link-156', 'name', 'link-134');">name</a></tt><tt class="py-op">.</tt><tt class="py-name">encode</tt><tt class="py-op">(</tt><tt class="py-string">"latin-1"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line">                        <tt class="py-keyword">if</tt> <tt id="link-157" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-157', 'motion', 'link-6');">motion</a></tt> <tt class="py-op">==</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line">                                <tt class="py-keyword">raise</tt> <tt class="py-name">ValueError</tt><tt class="py-op">(</tt><tt class="py-string">"no motion named"</tt> <tt class="py-op">+</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt id="link-158" class="py-name"><a title="Piavca.FreeCameraCanvas.name
+Piavca.PiavcaWXCanvas.name
+Piavca.ViewerCanvas.name
+Piavca.gltb.name
+Piavca.wxVirtualTracker'.name" class="py-name" href="#" onclick="return doclink('link-158', 'name', 'link-134');">name</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L179"></a><tt class="py-lineno">179</tt>  <tt class="py-line">                        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line">                                <tt class="py-keyword">return</tt> <tt id="link-159" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-159', 'motion', 'link-6');">motion</a></tt> </tt>
+</div><a name="L181"></a><tt class="py-lineno">181</tt>  <tt class="py-line">         </tt>
+<a name="BackEnd.getMotionProxy"></a><div id="BackEnd.getMotionProxy-def"><a name="L182"></a><tt class="py-lineno">182</tt> <a class="py-toggle" href="#" id="BackEnd.getMotionProxy-toggle" onclick="return toggle('BackEnd.getMotionProxy');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#getMotionProxy">getMotionProxy</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">motion</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BackEnd.getMotionProxy-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="BackEnd.getMotionProxy-expanded"><a name="L183"></a><tt class="py-lineno">183</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">type</tt><tt class="py-op">(</tt><tt id="link-160" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-160', 'motion', 'link-6');">motion</a></tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-string">""</tt><tt class="py-op">:</tt> </tt>
+<a name="L184"></a><tt class="py-lineno">184</tt>  <tt class="py-line">                        <tt id="link-161" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-161', 'motion', 'link-6');">motion</a></tt> <tt class="py-op">=</tt> <tt id="link-162" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-162', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-163" class="py-name"><a title="Piavca.ChoiceMotion.getMotion
+Piavca.CoreProxy.getMotion
+Piavca.MotionFilter.getMotion
+Piavca.PiavcaDesigner.AutoCreators.ExpMapBlend'.ExpMapBlend.getMotion
+Piavca.PiavcaDesigner.AutoCreators.InterruptableSequence'.InterruptableSequence.getMotion
+Piavca.PiavcaDesigner.AutoCreators.MotionGraph'.MotionGraph.getMotion
+Piavca.PiavcaDesigner.AutoCreators.PCAMot'.PCAMot.getMotion
+Piavca.PiavcaDesigner.AutoCreatorsWindow.AutoCreatorsWindow.getMotion
+Piavca.PiavcaDesigner.BackEnd.BackEnd.getMotion
+Piavca.PiavcaDesigner.MotionProxy.MotionProxy.getMotion
+Piavca.Piavca_base.Piavca_base.Avatar.getMotion
+Piavca.Piavca_base.Piavca_base.AvatarMotionQueue.getMotion
+Piavca.Piavca_base.Piavca_base.AvatarPostureBlend.getMotion
+Piavca.Piavca_base.Piavca_base.ChoiceMotion.getMotion
+Piavca.Piavca_base.Piavca_base.Core.getMotion
+Piavca.Piavca_base.Piavca_base.MotionFilter.getMotion
+Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.getMotion
+Piavca.Piavca_base.Piavca_base.PointAt.getMotion
+Piavca.Piavca_base.Piavca_base.PostureBlend.getMotion
+Piavca.Piavca_base.Piavca_base.SmoothLoop.getMotion" class="py-name" href="#" onclick="return doclink('link-163', 'getMotion', 'link-45');">getMotion</a></tt><tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt id="link-164" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-164', 'motion', 'link-6');">motion</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L185"></a><tt class="py-lineno">185</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt id="link-165" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-165', 'motion', 'link-6');">motion</a></tt> <tt class="py-op">==</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L186"></a><tt class="py-lineno">186</tt>  <tt class="py-line">                        <tt class="py-keyword">return</tt> <tt class="py-name">None</tt> </tt>
+<a name="L187"></a><tt class="py-lineno">187</tt>  <tt class="py-line">                <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L188"></a><tt class="py-lineno">188</tt>  <tt class="py-line">                        <tt class="py-keyword">return</tt> <tt id="link-166" class="py-name"><a title="Piavca.PiavcaDesigner.MotionProxy
+Piavca.PiavcaDesigner.MotionProxy.MotionProxy" class="py-name" href="#" onclick="return doclink('link-166', 'MotionProxy', 'link-3');">MotionProxy</a></tt><tt class="py-op">(</tt><tt id="link-167" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-167', 'motion', 'link-6');">motion</a></tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L189"></a><tt class="py-lineno">189</tt>  <tt class="py-line"> </tt>
+<a name="BackEnd.getCurrentMotionProxy"></a><div id="BackEnd.getCurrentMotionProxy-def"><a name="L190"></a><tt class="py-lineno">190</tt> <a class="py-toggle" href="#" id="BackEnd.getCurrentMotionProxy-toggle" onclick="return toggle('BackEnd.getCurrentMotionProxy');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#getCurrentMotionProxy">getCurrentMotionProxy</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BackEnd.getCurrentMotionProxy-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="BackEnd.getCurrentMotionProxy-expanded"><a name="L191"></a><tt class="py-lineno">191</tt>  <tt class="py-line">                <tt class="py-keyword">print</tt> <tt class="py-string">"getting proxy for"</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-168" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-168', 'motion', 'link-6');">motion</a></tt> </tt>
+<a name="L192"></a><tt class="py-lineno">192</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-169" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-169', 'motion', 'link-6');">motion</a></tt> </tt>
+</div><a name="L193"></a><tt class="py-lineno">193</tt>  <tt class="py-line"> </tt>
+<a name="BackEnd.getCurrentSubMotionProxy"></a><div id="BackEnd.getCurrentSubMotionProxy-def"><a name="L194"></a><tt class="py-lineno">194</tt> <a class="py-toggle" href="#" id="BackEnd.getCurrentSubMotionProxy-toggle" onclick="return toggle('BackEnd.getCurrentSubMotionProxy');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#getCurrentSubMotionProxy">getCurrentSubMotionProxy</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BackEnd.getCurrentSubMotionProxy-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="BackEnd.getCurrentSubMotionProxy-expanded"><a name="L195"></a><tt class="py-lineno">195</tt>  <tt class="py-line">                <tt class="py-keyword">print</tt> <tt class="py-string">"getting proxy for"</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-170" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.submotion" class="py-name" href="#" onclick="return doclink('link-170', 'submotion', 'link-7');">submotion</a></tt> </tt>
+<a name="L196"></a><tt class="py-lineno">196</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-171" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.submotion" class="py-name" href="#" onclick="return doclink('link-171', 'submotion', 'link-7');">submotion</a></tt> </tt>
+</div><a name="L197"></a><tt class="py-lineno">197</tt>  <tt class="py-line">                         </tt>
+<a name="BackEnd.getMotionNames"></a><div id="BackEnd.getMotionNames-def"><a name="L198"></a><tt class="py-lineno">198</tt> <a class="py-toggle" href="#" id="BackEnd.getMotionNames-toggle" onclick="return toggle('BackEnd.getMotionNames');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#getMotionNames">getMotionNames</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BackEnd.getMotionNames-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="BackEnd.getMotionNames-expanded"><a name="L199"></a><tt class="py-lineno">199</tt>  <tt class="py-line">                <tt class="py-name">core</tt> <tt class="py-op">=</tt> <tt id="link-172" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-172', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-173" class="py-name"><a title="Piavca.Piavca_base.Piavca_base.Core" class="py-name" href="#" onclick="return doclink('link-173', 'Core', 'link-13');">Core</a></tt><tt class="py-op">.</tt><tt id="link-174" class="py-name"><a title="Piavca.Piavca_base.Piavca_base.Core.getCore" class="py-name" href="#" onclick="return doclink('link-174', 'getCore', 'link-14');">getCore</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L200"></a><tt class="py-lineno">200</tt>  <tt class="py-line">                <tt class="py-name">motionnames</tt> <tt class="py-op">=</tt> <tt class="py-name">core</tt><tt class="py-op">.</tt><tt id="link-175" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.getMotionNames
+Piavca.Piavca_base.Piavca_base.Core.getMotionNames" class="py-name" href="#" onclick="return doclink('link-175', 'getMotionNames', 'link-26');">getMotionNames</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L201"></a><tt class="py-lineno">201</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt>  <tt class="py-name">motionnames</tt> </tt>
+</div><a name="L202"></a><tt class="py-lineno">202</tt>  <tt class="py-line">         </tt>
+<a name="BackEnd.getMotionTypeNames"></a><div id="BackEnd.getMotionTypeNames-def"><a name="L203"></a><tt class="py-lineno">203</tt> <a class="py-toggle" href="#" id="BackEnd.getMotionTypeNames-toggle" onclick="return toggle('BackEnd.getMotionTypeNames');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#getMotionTypeNames">getMotionTypeNames</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BackEnd.getMotionTypeNames-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="BackEnd.getMotionTypeNames-expanded"><a name="L204"></a><tt class="py-lineno">204</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt id="link-176" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-176', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-177" class="py-name"><a title="Piavca.XMLMotionFile" class="py-name" href="#" onclick="return doclink('link-177', 'XMLMotionFile', 'link-2');">XMLMotionFile</a></tt><tt class="py-op">.</tt><tt id="link-178" class="py-name" targets="Method Piavca.PiavcaDesigner.BackEnd.BackEnd.getMotionTypeNames()=Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#getMotionTypeNames,Function Piavca.XMLMotionFile.getMotionTypeNames()=Piavca.XMLMotionFile-module.html#getMotionTypeNames"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.getMotionTypeNames
+Piavca.XMLMotionFile.getMotionTypeNames" class="py-name" href="#" onclick="return doclink('link-178', 'getMotionTypeNames', 'link-178');">getMotionTypeNames</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L205"></a><tt class="py-lineno">205</tt>  <tt class="py-line">         </tt>
+<a name="BackEnd.addSubMotion"></a><div id="BackEnd.addSubMotion-def"><a name="L206"></a><tt class="py-lineno">206</tt> <a class="py-toggle" href="#" id="BackEnd.addSubMotion-toggle" onclick="return toggle('BackEnd.addSubMotion');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#addSubMotion">addSubMotion</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">motiontype</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BackEnd.addSubMotion-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="BackEnd.addSubMotion-expanded"><a name="L207"></a><tt class="py-lineno">207</tt>  <tt class="py-line">                <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L208"></a><tt class="py-lineno">208</tt>  <tt class="py-line">         </tt>
+<a name="BackEnd.addSubMotionByType"></a><div id="BackEnd.addSubMotionByType-def"><a name="L209"></a><tt class="py-lineno">209</tt> <a class="py-toggle" href="#" id="BackEnd.addSubMotionByType-toggle" onclick="return toggle('BackEnd.addSubMotionByType');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#addSubMotionByType">addSubMotionByType</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">motiontypename</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BackEnd.addSubMotionByType-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="BackEnd.addSubMotionByType-expanded"><a name="L210"></a><tt class="py-lineno">210</tt>  <tt class="py-line">                <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L211"></a><tt class="py-lineno">211</tt>  <tt class="py-line"> </tt>
+<a name="BackEnd.Delete"></a><div id="BackEnd.Delete-def"><a name="L212"></a><tt class="py-lineno">212</tt> <a class="py-toggle" href="#" id="BackEnd.Delete-toggle" onclick="return toggle('BackEnd.Delete');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#Delete">Delete</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">evt</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BackEnd.Delete-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="BackEnd.Delete-expanded"><a name="L213"></a><tt class="py-lineno">213</tt>  <tt class="py-line">                 </tt>
+<a name="L214"></a><tt class="py-lineno">214</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-179" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.getCurrentSubMotionProxy" class="py-name" href="#" onclick="return doclink('link-179', 'getCurrentSubMotionProxy', 'link-71');">getCurrentSubMotionProxy</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L215"></a><tt class="py-lineno">215</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-180" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.getCurrentSubMotionProxy" class="py-name" href="#" onclick="return doclink('link-180', 'getCurrentSubMotionProxy', 'link-71');">getCurrentSubMotionProxy</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-181" class="py-name" targets="Method Piavca.PiavcaDesigner.MotionProxy.MotionProxy.delete()=Piavca.PiavcaDesigner.MotionProxy.MotionProxy-class.html#delete"><a title="Piavca.PiavcaDesigner.MotionProxy.MotionProxy.delete" class="py-name" href="#" onclick="return doclink('link-181', 'delete', 'link-181');">delete</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L216"></a><tt class="py-lineno">216</tt>  <tt class="py-line">         </tt>
+<a name="BackEnd.playpause"></a><div id="BackEnd.playpause-def"><a name="L217"></a><tt class="py-lineno">217</tt> <a class="py-toggle" href="#" id="BackEnd.playpause-toggle" onclick="return toggle('BackEnd.playpause');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#playpause">playpause</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BackEnd.playpause-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="BackEnd.playpause-expanded"><a name="L218"></a><tt class="py-lineno">218</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-182" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.playing" class="py-name" href="#" onclick="return doclink('link-182', 'playing', 'link-9');">playing</a></tt> <tt class="py-op">=</tt> <tt class="py-keyword">not</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-183" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.playing" class="py-name" href="#" onclick="return doclink('link-183', 'playing', 'link-9');">playing</a></tt> </tt>
+<a name="L219"></a><tt class="py-lineno">219</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">lastTime</tt> <tt class="py-op">=</tt> <tt id="link-184" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-184', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-185" class="py-name"><a title="Piavca.Piavca_base.Piavca_base.Core" class="py-name" href="#" onclick="return doclink('link-185', 'Core', 'link-13');">Core</a></tt><tt class="py-op">.</tt><tt id="link-186" class="py-name"><a title="Piavca.Piavca_base.Piavca_base.Core.getCore" class="py-name" href="#" onclick="return doclink('link-186', 'getCore', 'link-14');">getCore</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-187" class="py-name" targets="Method Piavca.Piavca_base.Piavca_base.Core.getSystemTime()=Piavca.Piavca_base.Piavca_base.Core-class.html#getSystemTime"><a title="Piavca.Piavca_base.Piavca_base.Core.getSystemTime" class="py-name" href="#" onclick="return doclink('link-187', 'getSystemTime', 'link-187');">getSystemTime</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L220"></a><tt class="py-lineno">220</tt>  <tt class="py-line">                 </tt>
+<a name="BackEnd.getPlaying"></a><div id="BackEnd.getPlaying-def"><a name="L221"></a><tt class="py-lineno">221</tt> <a class="py-toggle" href="#" id="BackEnd.getPlaying-toggle" onclick="return toggle('BackEnd.getPlaying');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#getPlaying">getPlaying</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BackEnd.getPlaying-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="BackEnd.getPlaying-expanded"><a name="L222"></a><tt class="py-lineno">222</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-188" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.playing" class="py-name" href="#" onclick="return doclink('link-188', 'playing', 'link-9');">playing</a></tt> </tt>
+</div><a name="L223"></a><tt class="py-lineno">223</tt>  <tt class="py-line">                 </tt>
+<a name="BackEnd.setTime"></a><div id="BackEnd.setTime-def"><a name="L224"></a><tt class="py-lineno">224</tt> <a class="py-toggle" href="#" id="BackEnd.setTime-toggle" onclick="return toggle('BackEnd.setTime');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#setTime">setTime</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">t</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BackEnd.setTime-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="BackEnd.setTime-expanded"><a name="L225"></a><tt class="py-lineno">225</tt>  <tt class="py-line">                <tt id="link-189" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-189', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-190" class="py-name"><a title="Piavca.Piavca_base.Piavca_base.Core" class="py-name" href="#" onclick="return doclink('link-190', 'Core', 'link-13');">Core</a></tt><tt class="py-op">.</tt><tt id="link-191" class="py-name"><a title="Piavca.Piavca_base.Piavca_base.Core.getCore" class="py-name" href="#" onclick="return doclink('link-191', 'getCore', 'link-14');">getCore</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-192" class="py-name" targets="Method Piavca.Piavca_base.Piavca_base.Core.setCurrentTime()=Piavca.Piavca_base.Piavca_base.Core-class.html#setCurrentTime"><a title="Piavca.Piavca_base.Piavca_base.Core.setCurrentTime" class="py-name" href="#" onclick="return doclink('link-192', 'setCurrentTime', 'link-192');">setCurrentTime</a></tt><tt class="py-op">(</tt><tt class="py-name">t</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L226"></a><tt class="py-lineno">226</tt>  <tt class="py-line">                 </tt>
+<a name="BackEnd.setTimeFraction"></a><div id="BackEnd.setTimeFraction-def"><a name="L227"></a><tt class="py-lineno">227</tt> <a class="py-toggle" href="#" id="BackEnd.setTimeFraction-toggle" onclick="return toggle('BackEnd.setTimeFraction');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#setTimeFraction">setTimeFraction</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">t</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BackEnd.setTimeFraction-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="BackEnd.setTimeFraction-expanded"><a name="L228"></a><tt class="py-lineno">228</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-193" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-193', 'motion', 'link-6');">motion</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L229"></a><tt class="py-lineno">229</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-194" class="py-name"><a title="Piavca.DataStream.IntSequenceDisplay.setTime
+Piavca.DataStream.SequenceDisplay.setTime
+Piavca.PiavcaDesigner.BackEnd.BackEnd.setTime
+Piavca.PiavcaDesigner.PlayControls.PlayControls.setTime" class="py-name" href="#" onclick="return doclink('link-194', 'setTime', 'link-16');">setTime</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-195" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.getTimeFromFraction" class="py-name" href="#" onclick="return doclink('link-195', 'getTimeFromFraction', 'link-130');">getTimeFromFraction</a></tt><tt class="py-op">(</tt><tt class="py-name">t</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L230"></a><tt class="py-lineno">230</tt>  <tt class="py-line">                 </tt>
+<a name="BackEnd.getTime"></a><div id="BackEnd.getTime-def"><a name="L231"></a><tt class="py-lineno">231</tt> <a class="py-toggle" href="#" id="BackEnd.getTime-toggle" onclick="return toggle('BackEnd.getTime');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#getTime">getTime</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BackEnd.getTime-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="BackEnd.getTime-expanded"><a name="L232"></a><tt class="py-lineno">232</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt id="link-196" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-196', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-197" class="py-name" targets="Function Piavca.CoreProxy.getTime()=Piavca.CoreProxy-module.html#getTime,Method Piavca.PiavcaDesigner.BackEnd.BackEnd.getTime()=Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#getTime,Method Piavca.Piavca_base.Piavca_base.Core.getTime()=Piavca.Piavca_base.Piavca_base.Core-class.html#getTime,Method Piavca.ScriptEngine'.scriptCallback.getTime()=Piavca.ScriptEngine%27.scriptCallback-class.html#getTime"><a title="Piavca.CoreProxy.getTime
+Piavca.PiavcaDesigner.BackEnd.BackEnd.getTime
+Piavca.Piavca_base.Piavca_base.Core.getTime
+Piavca.ScriptEngine'.scriptCallback.getTime" class="py-name" href="#" onclick="return doclink('link-197', 'getTime', 'link-197');">getTime</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L233"></a><tt class="py-lineno">233</tt>  <tt class="py-line">                 </tt>
+<a name="BackEnd.getTimeFraction"></a><div id="BackEnd.getTimeFraction-def"><a name="L234"></a><tt class="py-lineno">234</tt> <a class="py-toggle" href="#" id="BackEnd.getTimeFraction-toggle" onclick="return toggle('BackEnd.getTimeFraction');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#getTimeFraction">getTimeFraction</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">t</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BackEnd.getTimeFraction-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="BackEnd.getTimeFraction-expanded"><a name="L235"></a><tt class="py-lineno">235</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-198" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-198', 'motion', 'link-6');">motion</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L236"></a><tt class="py-lineno">236</tt>  <tt class="py-line">                        <tt class="py-keyword">if</tt> <tt class="py-name">t</tt> <tt class="py-op">==</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L237"></a><tt class="py-lineno">237</tt>  <tt class="py-line">                                <tt class="py-name">t</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-199" class="py-name"><a title="Piavca.CoreProxy.getTime
+Piavca.PiavcaDesigner.BackEnd.BackEnd.getTime
+Piavca.Piavca_base.Piavca_base.Core.getTime
+Piavca.ScriptEngine'.scriptCallback.getTime" class="py-name" href="#" onclick="return doclink('link-199', 'getTime', 'link-197');">getTime</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L238"></a><tt class="py-lineno">238</tt>  <tt class="py-line">                        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-200" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-200', 'motion', 'link-6');">motion</a></tt><tt class="py-op">.</tt><tt id="link-201" class="py-name"><a title="Piavca.ChoiceMotion.getMotion
+Piavca.CoreProxy.getMotion
+Piavca.MotionFilter.getMotion
+Piavca.PiavcaDesigner.AutoCreators.ExpMapBlend'.ExpMapBlend.getMotion
+Piavca.PiavcaDesigner.AutoCreators.InterruptableSequence'.InterruptableSequence.getMotion
+Piavca.PiavcaDesigner.AutoCreators.MotionGraph'.MotionGraph.getMotion
+Piavca.PiavcaDesigner.AutoCreators.PCAMot'.PCAMot.getMotion
+Piavca.PiavcaDesigner.AutoCreatorsWindow.AutoCreatorsWindow.getMotion
+Piavca.PiavcaDesigner.BackEnd.BackEnd.getMotion
+Piavca.PiavcaDesigner.MotionProxy.MotionProxy.getMotion
+Piavca.Piavca_base.Piavca_base.Avatar.getMotion
+Piavca.Piavca_base.Piavca_base.AvatarMotionQueue.getMotion
+Piavca.Piavca_base.Piavca_base.AvatarPostureBlend.getMotion
+Piavca.Piavca_base.Piavca_base.ChoiceMotion.getMotion
+Piavca.Piavca_base.Piavca_base.Core.getMotion
+Piavca.Piavca_base.Piavca_base.MotionFilter.getMotion
+Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.getMotion
+Piavca.Piavca_base.Piavca_base.PointAt.getMotion
+Piavca.Piavca_base.Piavca_base.PostureBlend.getMotion
+Piavca.Piavca_base.Piavca_base.SmoothLoop.getMotion" class="py-name" href="#" onclick="return doclink('link-201', 'getMotion', 'link-45');">getMotion</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-202" class="py-name"><a title="Piavca.AudioMotion'.AudioMotion.getMotionLength
+Piavca.ChoiceMotion.getMotionLength
+Piavca.EigenAnalysis'.EigenAnalysis.getMotionLength
+Piavca.EigenMotion'.EigenMotion.getMotionLength
+Piavca.KeyframeMotion.getMotionLength
+Piavca.Motion.getMotionLength
+Piavca.MotionFilter.getMotionLength
+Piavca.Piavca_base.Piavca_base.ChangeMotionLength.getMotionLength
+Piavca.Piavca_base.Piavca_base.ChoiceMotion.getMotionLength
+Piavca.Piavca_base.Piavca_base.KeyframeMotion.getMotionLength
+Piavca.Piavca_base.Piavca_base.LoopMotion.getMotionLength
+Piavca.Piavca_base.Piavca_base.Motion.getMotionLength
+Piavca.Piavca_base.Piavca_base.MotionFilter.getMotionLength
+Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.getMotionLength
+Piavca.Piavca_base.Piavca_base.ScaleMotionSpeed.getMotionLength
+Piavca.Piavca_base.Piavca_base.Sequence.getMotionLength
+Piavca.Piavca_base.Piavca_base.SubMotion.getMotionLength
+Piavca.Piavca_base.Piavca_base.TimeWarp.getMotionLength
+Piavca.Piavca_base.Piavca_base.TwoMotionCombiner.getMotionLength
+Piavca.Piavca_base.Piavca_base.ZeroMotion.getMotionLength" class="py-name" href="#" onclick="return doclink('link-202', 'getMotionLength', 'link-46');">getMotionLength</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">&gt;</tt> <tt class="py-number">0.00001</tt><tt class="py-op">:</tt> </tt>
+<a name="L239"></a><tt class="py-lineno">239</tt>  <tt class="py-line">                                <tt class="py-name">t</tt> <tt class="py-op">=</tt> <tt class="py-name">t</tt><tt class="py-op">/</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-203" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-203', 'motion', 'link-6');">motion</a></tt><tt class="py-op">.</tt><tt id="link-204" class="py-name"><a title="Piavca.ChoiceMotion.getMotion
+Piavca.CoreProxy.getMotion
+Piavca.MotionFilter.getMotion
+Piavca.PiavcaDesigner.AutoCreators.ExpMapBlend'.ExpMapBlend.getMotion
+Piavca.PiavcaDesigner.AutoCreators.InterruptableSequence'.InterruptableSequence.getMotion
+Piavca.PiavcaDesigner.AutoCreators.MotionGraph'.MotionGraph.getMotion
+Piavca.PiavcaDesigner.AutoCreators.PCAMot'.PCAMot.getMotion
+Piavca.PiavcaDesigner.AutoCreatorsWindow.AutoCreatorsWindow.getMotion
+Piavca.PiavcaDesigner.BackEnd.BackEnd.getMotion
+Piavca.PiavcaDesigner.MotionProxy.MotionProxy.getMotion
+Piavca.Piavca_base.Piavca_base.Avatar.getMotion
+Piavca.Piavca_base.Piavca_base.AvatarMotionQueue.getMotion
+Piavca.Piavca_base.Piavca_base.AvatarPostureBlend.getMotion
+Piavca.Piavca_base.Piavca_base.ChoiceMotion.getMotion
+Piavca.Piavca_base.Piavca_base.Core.getMotion
+Piavca.Piavca_base.Piavca_base.MotionFilter.getMotion
+Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.getMotion
+Piavca.Piavca_base.Piavca_base.PointAt.getMotion
+Piavca.Piavca_base.Piavca_base.PostureBlend.getMotion
+Piavca.Piavca_base.Piavca_base.SmoothLoop.getMotion" class="py-name" href="#" onclick="return doclink('link-204', 'getMotion', 'link-45');">getMotion</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-205" class="py-name"><a title="Piavca.AudioMotion'.AudioMotion.getMotionLength
+Piavca.ChoiceMotion.getMotionLength
+Piavca.EigenAnalysis'.EigenAnalysis.getMotionLength
+Piavca.EigenMotion'.EigenMotion.getMotionLength
+Piavca.KeyframeMotion.getMotionLength
+Piavca.Motion.getMotionLength
+Piavca.MotionFilter.getMotionLength
+Piavca.Piavca_base.Piavca_base.ChangeMotionLength.getMotionLength
+Piavca.Piavca_base.Piavca_base.ChoiceMotion.getMotionLength
+Piavca.Piavca_base.Piavca_base.KeyframeMotion.getMotionLength
+Piavca.Piavca_base.Piavca_base.LoopMotion.getMotionLength
+Piavca.Piavca_base.Piavca_base.Motion.getMotionLength
+Piavca.Piavca_base.Piavca_base.MotionFilter.getMotionLength
+Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.getMotionLength
+Piavca.Piavca_base.Piavca_base.ScaleMotionSpeed.getMotionLength
+Piavca.Piavca_base.Piavca_base.Sequence.getMotionLength
+Piavca.Piavca_base.Piavca_base.SubMotion.getMotionLength
+Piavca.Piavca_base.Piavca_base.TimeWarp.getMotionLength
+Piavca.Piavca_base.Piavca_base.TwoMotionCombiner.getMotionLength
+Piavca.Piavca_base.Piavca_base.ZeroMotion.getMotionLength" class="py-name" href="#" onclick="return doclink('link-205', 'getMotionLength', 'link-46');">getMotionLength</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L240"></a><tt class="py-lineno">240</tt>  <tt class="py-line">                        <tt class="py-keyword">elif</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-206" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-206', 'motion', 'link-6');">motion</a></tt><tt class="py-op">.</tt><tt id="link-207" class="py-name"><a title="Piavca.ChoiceMotion.getMotion
+Piavca.CoreProxy.getMotion
+Piavca.MotionFilter.getMotion
+Piavca.PiavcaDesigner.AutoCreators.ExpMapBlend'.ExpMapBlend.getMotion
+Piavca.PiavcaDesigner.AutoCreators.InterruptableSequence'.InterruptableSequence.getMotion
+Piavca.PiavcaDesigner.AutoCreators.MotionGraph'.MotionGraph.getMotion
+Piavca.PiavcaDesigner.AutoCreators.PCAMot'.PCAMot.getMotion
+Piavca.PiavcaDesigner.AutoCreatorsWindow.AutoCreatorsWindow.getMotion
+Piavca.PiavcaDesigner.BackEnd.BackEnd.getMotion
+Piavca.PiavcaDesigner.MotionProxy.MotionProxy.getMotion
+Piavca.Piavca_base.Piavca_base.Avatar.getMotion
+Piavca.Piavca_base.Piavca_base.AvatarMotionQueue.getMotion
+Piavca.Piavca_base.Piavca_base.AvatarPostureBlend.getMotion
+Piavca.Piavca_base.Piavca_base.ChoiceMotion.getMotion
+Piavca.Piavca_base.Piavca_base.Core.getMotion
+Piavca.Piavca_base.Piavca_base.MotionFilter.getMotion
+Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.getMotion
+Piavca.Piavca_base.Piavca_base.PointAt.getMotion
+Piavca.Piavca_base.Piavca_base.PostureBlend.getMotion
+Piavca.Piavca_base.Piavca_base.SmoothLoop.getMotion" class="py-name" href="#" onclick="return doclink('link-207', 'getMotion', 'link-45');">getMotion</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-208" class="py-name"><a title="Piavca.AudioMotion'.AudioMotion.getMotionLength
+Piavca.ChoiceMotion.getMotionLength
+Piavca.EigenAnalysis'.EigenAnalysis.getMotionLength
+Piavca.EigenMotion'.EigenMotion.getMotionLength
+Piavca.KeyframeMotion.getMotionLength
+Piavca.Motion.getMotionLength
+Piavca.MotionFilter.getMotionLength
+Piavca.Piavca_base.Piavca_base.ChangeMotionLength.getMotionLength
+Piavca.Piavca_base.Piavca_base.ChoiceMotion.getMotionLength
+Piavca.Piavca_base.Piavca_base.KeyframeMotion.getMotionLength
+Piavca.Piavca_base.Piavca_base.LoopMotion.getMotionLength
+Piavca.Piavca_base.Piavca_base.Motion.getMotionLength
+Piavca.Piavca_base.Piavca_base.MotionFilter.getMotionLength
+Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.getMotionLength
+Piavca.Piavca_base.Piavca_base.ScaleMotionSpeed.getMotionLength
+Piavca.Piavca_base.Piavca_base.Sequence.getMotionLength
+Piavca.Piavca_base.Piavca_base.SubMotion.getMotionLength
+Piavca.Piavca_base.Piavca_base.TimeWarp.getMotionLength
+Piavca.Piavca_base.Piavca_base.TwoMotionCombiner.getMotionLength
+Piavca.Piavca_base.Piavca_base.ZeroMotion.getMotionLength" class="py-name" href="#" onclick="return doclink('link-208', 'getMotionLength', 'link-46');">getMotionLength</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">&lt;</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L241"></a><tt class="py-lineno">241</tt>  <tt class="py-line">                                <tt class="py-name">t</tt> <tt class="py-op">=</tt> <tt class="py-name">t</tt><tt class="py-op">/</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-209" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.defaultLength" class="py-name" href="#" onclick="return doclink('link-209', 'defaultLength', 'link-10');">defaultLength</a></tt> </tt>
+<a name="L242"></a><tt class="py-lineno">242</tt>  <tt class="py-line">                        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L243"></a><tt class="py-lineno">243</tt>  <tt class="py-line">                                <tt class="py-name">t</tt> <tt class="py-op">=</tt> <tt class="py-number">0.0</tt> </tt>
+<a name="L244"></a><tt class="py-lineno">244</tt>  <tt class="py-line">                        <tt class="py-keyword">return</tt> <tt class="py-name">t</tt> </tt>
+<a name="L245"></a><tt class="py-lineno">245</tt>  <tt class="py-line">                <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L246"></a><tt class="py-lineno">246</tt>  <tt class="py-line">                        <tt class="py-keyword">return</tt> <tt class="py-number">0</tt> </tt>
+</div><a name="L247"></a><tt class="py-lineno">247</tt>  <tt class="py-line">                 </tt>
+<a name="BackEnd.getTimeFromFraction"></a><div id="BackEnd.getTimeFromFraction-def"><a name="L248"></a><tt class="py-lineno">248</tt> <a class="py-toggle" href="#" id="BackEnd.getTimeFromFraction-toggle" onclick="return toggle('BackEnd.getTimeFromFraction');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#getTimeFromFraction">getTimeFromFraction</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">t</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BackEnd.getTimeFromFraction-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="BackEnd.getTimeFromFraction-expanded"><a name="L249"></a><tt class="py-lineno">249</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-210" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-210', 'motion', 'link-6');">motion</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L250"></a><tt class="py-lineno">250</tt>  <tt class="py-line">                        <tt class="py-name">length</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-211" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-211', 'motion', 'link-6');">motion</a></tt><tt class="py-op">.</tt><tt id="link-212" class="py-name"><a title="Piavca.ChoiceMotion.getMotion
+Piavca.CoreProxy.getMotion
+Piavca.MotionFilter.getMotion
+Piavca.PiavcaDesigner.AutoCreators.ExpMapBlend'.ExpMapBlend.getMotion
+Piavca.PiavcaDesigner.AutoCreators.InterruptableSequence'.InterruptableSequence.getMotion
+Piavca.PiavcaDesigner.AutoCreators.MotionGraph'.MotionGraph.getMotion
+Piavca.PiavcaDesigner.AutoCreators.PCAMot'.PCAMot.getMotion
+Piavca.PiavcaDesigner.AutoCreatorsWindow.AutoCreatorsWindow.getMotion
+Piavca.PiavcaDesigner.BackEnd.BackEnd.getMotion
+Piavca.PiavcaDesigner.MotionProxy.MotionProxy.getMotion
+Piavca.Piavca_base.Piavca_base.Avatar.getMotion
+Piavca.Piavca_base.Piavca_base.AvatarMotionQueue.getMotion
+Piavca.Piavca_base.Piavca_base.AvatarPostureBlend.getMotion
+Piavca.Piavca_base.Piavca_base.ChoiceMotion.getMotion
+Piavca.Piavca_base.Piavca_base.Core.getMotion
+Piavca.Piavca_base.Piavca_base.MotionFilter.getMotion
+Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.getMotion
+Piavca.Piavca_base.Piavca_base.PointAt.getMotion
+Piavca.Piavca_base.Piavca_base.PostureBlend.getMotion
+Piavca.Piavca_base.Piavca_base.SmoothLoop.getMotion" class="py-name" href="#" onclick="return doclink('link-212', 'getMotion', 'link-45');">getMotion</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-213" class="py-name"><a title="Piavca.AudioMotion'.AudioMotion.getMotionLength
+Piavca.ChoiceMotion.getMotionLength
+Piavca.EigenAnalysis'.EigenAnalysis.getMotionLength
+Piavca.EigenMotion'.EigenMotion.getMotionLength
+Piavca.KeyframeMotion.getMotionLength
+Piavca.Motion.getMotionLength
+Piavca.MotionFilter.getMotionLength
+Piavca.Piavca_base.Piavca_base.ChangeMotionLength.getMotionLength
+Piavca.Piavca_base.Piavca_base.ChoiceMotion.getMotionLength
+Piavca.Piavca_base.Piavca_base.KeyframeMotion.getMotionLength
+Piavca.Piavca_base.Piavca_base.LoopMotion.getMotionLength
+Piavca.Piavca_base.Piavca_base.Motion.getMotionLength
+Piavca.Piavca_base.Piavca_base.MotionFilter.getMotionLength
+Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.getMotionLength
+Piavca.Piavca_base.Piavca_base.ScaleMotionSpeed.getMotionLength
+Piavca.Piavca_base.Piavca_base.Sequence.getMotionLength
+Piavca.Piavca_base.Piavca_base.SubMotion.getMotionLength
+Piavca.Piavca_base.Piavca_base.TimeWarp.getMotionLength
+Piavca.Piavca_base.Piavca_base.TwoMotionCombiner.getMotionLength
+Piavca.Piavca_base.Piavca_base.ZeroMotion.getMotionLength" class="py-name" href="#" onclick="return doclink('link-213', 'getMotionLength', 'link-46');">getMotionLength</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L251"></a><tt class="py-lineno">251</tt>  <tt class="py-line">                        <tt class="py-keyword">if</tt> <tt class="py-name">length</tt> <tt class="py-op">&lt;</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L252"></a><tt class="py-lineno">252</tt>  <tt class="py-line">                                <tt class="py-name">length</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-214" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.defaultLength" class="py-name" href="#" onclick="return doclink('link-214', 'defaultLength', 'link-10');">defaultLength</a></tt> </tt>
+<a name="L253"></a><tt class="py-lineno">253</tt>  <tt class="py-line">                        <tt class="py-keyword">return</tt> <tt class="py-name">t</tt><tt class="py-op">*</tt><tt class="py-name">length</tt> </tt>
+<a name="L254"></a><tt class="py-lineno">254</tt>  <tt class="py-line">                <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L255"></a><tt class="py-lineno">255</tt>  <tt class="py-line">                        <tt class="py-keyword">return</tt> <tt class="py-name">t</tt> </tt>
+</div><a name="L256"></a><tt class="py-lineno">256</tt>  <tt class="py-line">                 </tt>
+<a name="L257"></a><tt class="py-lineno">257</tt>  <tt class="py-line">                 </tt>
+<a name="BackEnd.timeStep"></a><div id="BackEnd.timeStep-def"><a name="L258"></a><tt class="py-lineno">258</tt> <a class="py-toggle" href="#" id="BackEnd.timeStep-toggle" onclick="return toggle('BackEnd.timeStep');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#timeStep">timeStep</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BackEnd.timeStep-collapsed" style="display:none;" pad="+++" indent="++++++++++++"></div><div id="BackEnd.timeStep-expanded"><a name="L259"></a><tt class="py-lineno">259</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-215" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.updateflag" class="py-name" href="#" onclick="return doclink('link-215', 'updateflag', 'link-11');">updateflag</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L260"></a><tt class="py-lineno">260</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-216" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.updateflag" class="py-name" href="#" onclick="return doclink('link-216', 'updateflag', 'link-11');">updateflag</a></tt> <tt class="py-op">=</tt> <tt class="py-name">False</tt> </tt>
+<a name="L261"></a><tt class="py-lineno">261</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-217" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.resetRange
+Piavca.PiavcaDesigner.MotionProxy.MotionProxy.resetRange" class="py-name" href="#" onclick="return doclink('link-217', 'resetRange', 'link-47');">resetRange</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L262"></a><tt class="py-lineno">262</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">frontend</tt><tt class="py-op">.</tt><tt id="link-218" class="py-name"><a title="Piavca.PiavcaDesigner.AutoCreatorsWindow.AutoCreatorsWindow.update
+Piavca.PiavcaDesigner.BackEnd.BackEnd.update
+Piavca.PiavcaDesigner.GenericList.GenericList.update
+Piavca.PiavcaDesigner.HeirarchyView.HeirarchyView.update
+Piavca.PiavcaDesigner.ListBoxController.ListBoxController.update
+Piavca.PiavcaDesigner.ParameterControls.ParamEntry.update
+Piavca.PiavcaDesigner.ParameterWindow.ParameterWindow.update
+Piavca.PiavcaDesigner.PiavcaDesigner'.PiavcaDesigner.update
+Piavca.PiavcaDesigner.PlayControls.PlayControls.update" class="py-name" href="#" onclick="return doclink('link-218', 'update', 'link-30');">update</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L263"></a><tt class="py-lineno">263</tt>  <tt class="py-line">                         </tt>
+<a name="L264"></a><tt class="py-lineno">264</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-219" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.playing" class="py-name" href="#" onclick="return doclink('link-219', 'playing', 'link-9');">playing</a></tt>  <tt class="py-keyword">and</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-220" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.motion" class="py-name" href="#" onclick="return doclink('link-220', 'motion', 'link-6');">motion</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L265"></a><tt class="py-lineno">265</tt>  <tt class="py-line">                        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">range</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> <tt class="py-op">-</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">range</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> <tt class="py-op">&lt;=</tt> <tt class="py-number">0.0</tt><tt class="py-op">:</tt> </tt>
+<a name="L266"></a><tt class="py-lineno">266</tt>  <tt class="py-line">                                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-221" class="py-name"><a title="Piavca.DataStream.IntSequenceDisplay.setTime
+Piavca.DataStream.SequenceDisplay.setTime
+Piavca.PiavcaDesigner.BackEnd.BackEnd.setTime
+Piavca.PiavcaDesigner.PlayControls.PlayControls.setTime" class="py-name" href="#" onclick="return doclink('link-221', 'setTime', 'link-16');">setTime</a></tt><tt class="py-op">(</tt><tt class="py-number">0.0</tt><tt class="py-op">+</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">range</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L267"></a><tt class="py-lineno">267</tt>  <tt class="py-line">                        <tt class="py-name">newtime</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-222" class="py-name"><a title="Piavca.CoreProxy.getTime
+Piavca.PiavcaDesigner.BackEnd.BackEnd.getTime
+Piavca.Piavca_base.Piavca_base.Core.getTime
+Piavca.ScriptEngine'.scriptCallback.getTime" class="py-name" href="#" onclick="return doclink('link-222', 'getTime', 'link-197');">getTime</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L268"></a><tt class="py-lineno">268</tt>  <tt class="py-line">                        <tt class="py-name">newtime</tt> <tt class="py-op">+=</tt> <tt id="link-223" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-223', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-224" class="py-name"><a title="Piavca.Piavca_base.Piavca_base.Core" class="py-name" href="#" onclick="return doclink('link-224', 'Core', 'link-13');">Core</a></tt><tt class="py-op">.</tt><tt id="link-225" class="py-name"><a title="Piavca.Piavca_base.Piavca_base.Core.getCore" class="py-name" href="#" onclick="return doclink('link-225', 'getCore', 'link-14');">getCore</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-226" class="py-name"><a title="Piavca.Piavca_base.Piavca_base.Core.getSystemTime" class="py-name" href="#" onclick="return doclink('link-226', 'getSystemTime', 'link-187');">getSystemTime</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">-</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">lastTime</tt> </tt>
+<a name="L269"></a><tt class="py-lineno">269</tt>  <tt class="py-line">                        <tt class="py-comment">#print "time step", newtime</tt> </tt>
+<a name="L270"></a><tt class="py-lineno">270</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">lastTime</tt> <tt class="py-op">=</tt> <tt id="link-227" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-227', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-228" class="py-name"><a title="Piavca.Piavca_base.Piavca_base.Core" class="py-name" href="#" onclick="return doclink('link-228', 'Core', 'link-13');">Core</a></tt><tt class="py-op">.</tt><tt id="link-229" class="py-name"><a title="Piavca.Piavca_base.Piavca_base.Core.getCore" class="py-name" href="#" onclick="return doclink('link-229', 'getCore', 'link-14');">getCore</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-230" class="py-name"><a title="Piavca.Piavca_base.Piavca_base.Core.getSystemTime" class="py-name" href="#" onclick="return doclink('link-230', 'getSystemTime', 'link-187');">getSystemTime</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L271"></a><tt class="py-lineno">271</tt>  <tt class="py-line">                        <tt class="py-comment">#while newtime &gt; self.motion.getMotionLength() :</tt> </tt>
+<a name="L272"></a><tt class="py-lineno">272</tt>  <tt class="py-line">                        <tt class="py-comment">#       newtime -= self.motion.getMotionLength()</tt> </tt>
+<a name="L273"></a><tt class="py-lineno">273</tt>  <tt class="py-line">                        <tt class="py-keyword">if</tt> <tt class="py-name">newtime</tt> <tt class="py-op">&gt;</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">range</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">:</tt> </tt>
+<a name="L274"></a><tt class="py-lineno">274</tt>  <tt class="py-line">                        <tt class="py-comment">#while newtime &gt; self.range[1] :</tt> </tt>
+<a name="L275"></a><tt class="py-lineno">275</tt>  <tt class="py-line">                                <tt class="py-comment">#newtime -= self.range[1]</tt> </tt>
+<a name="L276"></a><tt class="py-lineno">276</tt>  <tt class="py-line">                                <tt class="py-comment">#newtime += self.range[0]</tt> </tt>
+<a name="L277"></a><tt class="py-lineno">277</tt>  <tt class="py-line">                                <tt class="py-name">newtime</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">range</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> </tt>
+<a name="L278"></a><tt class="py-lineno">278</tt>  <tt class="py-line">                                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-231" class="py-name"><a title="Piavca.PiavcaDesigner.BackEnd.BackEnd.playing" class="py-name" href="#" onclick="return doclink('link-231', 'playing', 'link-9');">playing</a></tt> <tt class="py-op">=</tt> <tt class="py-name">False</tt> </tt>
+<a name="L279"></a><tt class="py-lineno">279</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-232" class="py-name"><a title="Piavca.DataStream.IntSequenceDisplay.setTime
+Piavca.DataStream.SequenceDisplay.setTime
+Piavca.PiavcaDesigner.BackEnd.BackEnd.setTime
+Piavca.PiavcaDesigner.PlayControls.PlayControls.setTime" class="py-name" href="#" onclick="return doclink('link-232', 'setTime', 'link-16');">setTime</a></tt><tt class="py-op">(</tt><tt class="py-name">newtime</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L280"></a><tt class="py-lineno">280</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="Piavca-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Oct 15 20:02:41 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

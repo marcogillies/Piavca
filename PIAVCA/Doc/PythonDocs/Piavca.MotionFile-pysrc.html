@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Piavca.MotionFile</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="Piavca-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="Piavca-module.html">Package&nbsp;Piavca</a> ::
+        Module&nbsp;MotionFile
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="Piavca.MotionFile-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="Piavca.MotionFile-module.html">Module Piavca.MotionFile</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment"># ***** BEGIN LICENSE BLOCK *****</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-comment"># Version: MPL 1.1/GPL 2.0/LGPL 2.1</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-comment"># The contents of this file are subject to the Mozilla Public License Version</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-comment"># 1.1 (the "License"); you may not use this file except in compliance with</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-comment"># the License. You may obtain a copy of the License at</tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-comment"># http://www.mozilla.org/MPL/</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-comment"># Software distributed under the License is distributed on an "AS IS" basis,</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-comment"># WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt class="py-comment"># for the specific language governing rights and limitations under the</tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt class="py-comment"># License.</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"><tt class="py-comment"># The Original Code is __________________________________________.</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"><tt class="py-comment"># The Initial Developer of the Original Code is</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"><tt class="py-comment"># ____________________________________________.</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"><tt class="py-comment"># Portions created by the Initial Developer are Copyright (C) 2___</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"><tt class="py-comment"># the Initial Developer. All Rights Reserved.</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"><tt class="py-comment"># Contributor(s):</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"><tt class="py-comment"># Alternatively, the contents of this file may be used under the terms of</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"><tt class="py-comment"># either the GNU General Public License Version 2 or later (the "GPL"), or</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line"><tt class="py-comment"># the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line"><tt class="py-comment"># in which case the provisions of the GPL or the LGPL are applicable instead</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line"><tt class="py-comment"># of those above. If you wish to allow use of your version of this file only</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line"><tt class="py-comment"># under the terms of either the GPL or the LGPL, and not to allow others to</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"><tt class="py-comment"># use your version of this file under the terms of the MPL, indicate your</tt> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line"><tt class="py-comment"># decision by deleting the provisions above and replace them with the notice</tt> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line"><tt class="py-comment"># and other provisions required by the GPL or the LGPL. If you do not delete</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line"><tt class="py-comment"># the provisions above, a recipient may use your version of this file under</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line"><tt class="py-comment"># the terms of any one of the MPL, the GPL or the LGPL.</tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line"><tt class="py-comment"># ***** END LICENSE BLOCK *****</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line"> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-0" class="py-name" targets="Package Piavca=Piavca-module.html"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-0', 'Piavca', 'link-0');">Piavca</a></tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-1" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-1', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Module Piavca.XMLMotionFile=Piavca.XMLMotionFile-module.html"><a title="Piavca.XMLMotionFile" class="py-name" href="#" onclick="return doclink('link-2', 'XMLMotionFile', 'link-2');">XMLMotionFile</a></tt> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line"> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line"><tt class="py-comment">#Piavca.MotionParser.setUpMotionCommands()</tt> </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line"> </tt>
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line"><tt id="link-3" class="py-name" targets="Variable Piavca.MotionFile.flaglookup=Piavca.MotionFile-module.html#flaglookup"><a title="Piavca.MotionFile.flaglookup" class="py-name" href="#" onclick="return doclink('link-3', 'flaglookup', 'link-3');">flaglookup</a></tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line"> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line"><tt id="link-4" class="py-name"><a title="Piavca.MotionFile.flaglookup" class="py-name" href="#" onclick="return doclink('link-4', 'flaglookup', 'link-3');">flaglookup</a></tt><tt class="py-op">[</tt><tt class="py-string">"none"</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt id="link-5" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-5', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-6" class="py-name" targets="Variable Piavca.Piavca_base.Piavca_base.TRANS_NONE=Piavca.Piavca_base.Piavca_base-module.html#TRANS_NONE,Variable Piavca.Piavca_base'.TRANS_NONE=Piavca.Piavca_base%27-module.html#TRANS_NONE"><a title="Piavca.Piavca_base.Piavca_base.TRANS_NONE
+Piavca.Piavca_base'.TRANS_NONE" class="py-name" href="#" onclick="return doclink('link-6', 'TRANS_NONE', 'link-6');">TRANS_NONE</a></tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line"><tt id="link-7" class="py-name"><a title="Piavca.MotionFile.flaglookup" class="py-name" href="#" onclick="return doclink('link-7', 'flaglookup', 'link-3');">flaglookup</a></tt><tt class="py-op">[</tt><tt class="py-string">"-swap_xz"</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt id="link-8" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-8', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-9" class="py-name" targets="Variable Piavca.Piavca_base.Piavca_base.TRANS_SWAP_XZ=Piavca.Piavca_base.Piavca_base-module.html#TRANS_SWAP_XZ,Variable Piavca.Piavca_base'.TRANS_SWAP_XZ=Piavca.Piavca_base%27-module.html#TRANS_SWAP_XZ"><a title="Piavca.Piavca_base.Piavca_base.TRANS_SWAP_XZ
+Piavca.Piavca_base'.TRANS_SWAP_XZ" class="py-name" href="#" onclick="return doclink('link-9', 'TRANS_SWAP_XZ', 'link-9');">TRANS_SWAP_XZ</a></tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line"><tt id="link-10" class="py-name"><a title="Piavca.MotionFile.flaglookup" class="py-name" href="#" onclick="return doclink('link-10', 'flaglookup', 'link-3');">flaglookup</a></tt><tt class="py-op">[</tt><tt class="py-string">"-swap_zx"</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt id="link-11" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-11', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-12" class="py-name"><a title="Piavca.Piavca_base.Piavca_base.TRANS_SWAP_XZ
+Piavca.Piavca_base'.TRANS_SWAP_XZ" class="py-name" href="#" onclick="return doclink('link-12', 'TRANS_SWAP_XZ', 'link-9');">TRANS_SWAP_XZ</a></tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line"><tt id="link-13" class="py-name"><a title="Piavca.MotionFile.flaglookup" class="py-name" href="#" onclick="return doclink('link-13', 'flaglookup', 'link-3');">flaglookup</a></tt><tt class="py-op">[</tt><tt class="py-string">"-swap_xy"</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt id="link-14" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-14', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-15" class="py-name" targets="Variable Piavca.Piavca_base.Piavca_base.TRANS_SWAP_XY=Piavca.Piavca_base.Piavca_base-module.html#TRANS_SWAP_XY,Variable Piavca.Piavca_base'.TRANS_SWAP_XY=Piavca.Piavca_base%27-module.html#TRANS_SWAP_XY"><a title="Piavca.Piavca_base.Piavca_base.TRANS_SWAP_XY
+Piavca.Piavca_base'.TRANS_SWAP_XY" class="py-name" href="#" onclick="return doclink('link-15', 'TRANS_SWAP_XY', 'link-15');">TRANS_SWAP_XY</a></tt> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line"><tt id="link-16" class="py-name"><a title="Piavca.MotionFile.flaglookup" class="py-name" href="#" onclick="return doclink('link-16', 'flaglookup', 'link-3');">flaglookup</a></tt><tt class="py-op">[</tt><tt class="py-string">"-swap_yx"</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt id="link-17" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-17', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-18" class="py-name"><a title="Piavca.Piavca_base.Piavca_base.TRANS_SWAP_XY
+Piavca.Piavca_base'.TRANS_SWAP_XY" class="py-name" href="#" onclick="return doclink('link-18', 'TRANS_SWAP_XY', 'link-15');">TRANS_SWAP_XY</a></tt> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line"><tt id="link-19" class="py-name"><a title="Piavca.MotionFile.flaglookup" class="py-name" href="#" onclick="return doclink('link-19', 'flaglookup', 'link-3');">flaglookup</a></tt><tt class="py-op">[</tt><tt class="py-string">"-swap_yz"</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt id="link-20" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-20', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-21" class="py-name" targets="Variable Piavca.Piavca_base.Piavca_base.TRANS_SWAP_YZ=Piavca.Piavca_base.Piavca_base-module.html#TRANS_SWAP_YZ,Variable Piavca.Piavca_base'.TRANS_SWAP_YZ=Piavca.Piavca_base%27-module.html#TRANS_SWAP_YZ"><a title="Piavca.Piavca_base.Piavca_base.TRANS_SWAP_YZ
+Piavca.Piavca_base'.TRANS_SWAP_YZ" class="py-name" href="#" onclick="return doclink('link-21', 'TRANS_SWAP_YZ', 'link-21');">TRANS_SWAP_YZ</a></tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line"><tt id="link-22" class="py-name"><a title="Piavca.MotionFile.flaglookup" class="py-name" href="#" onclick="return doclink('link-22', 'flaglookup', 'link-3');">flaglookup</a></tt><tt class="py-op">[</tt><tt class="py-string">"-swap_zy"</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt id="link-23" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-23', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-24" class="py-name"><a title="Piavca.Piavca_base.Piavca_base.TRANS_SWAP_YZ
+Piavca.Piavca_base'.TRANS_SWAP_YZ" class="py-name" href="#" onclick="return doclink('link-24', 'TRANS_SWAP_YZ', 'link-21');">TRANS_SWAP_YZ</a></tt> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line"><tt id="link-25" class="py-name"><a title="Piavca.MotionFile.flaglookup" class="py-name" href="#" onclick="return doclink('link-25', 'flaglookup', 'link-3');">flaglookup</a></tt><tt class="py-op">[</tt><tt class="py-string">"-cycle_yzx"</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt id="link-26" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-26', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-27" class="py-name" targets="Variable Piavca.Piavca_base.Piavca_base.TRANS_CYCLE_YZX=Piavca.Piavca_base.Piavca_base-module.html#TRANS_CYCLE_YZX,Variable Piavca.Piavca_base'.TRANS_CYCLE_YZX=Piavca.Piavca_base%27-module.html#TRANS_CYCLE_YZX"><a title="Piavca.Piavca_base.Piavca_base.TRANS_CYCLE_YZX
+Piavca.Piavca_base'.TRANS_CYCLE_YZX" class="py-name" href="#" onclick="return doclink('link-27', 'TRANS_CYCLE_YZX', 'link-27');">TRANS_CYCLE_YZX</a></tt> </tt>
+<a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line"><tt id="link-28" class="py-name"><a title="Piavca.MotionFile.flaglookup" class="py-name" href="#" onclick="return doclink('link-28', 'flaglookup', 'link-3');">flaglookup</a></tt><tt class="py-op">[</tt><tt class="py-string">"-cycle_zxy"</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt id="link-29" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-29', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-30" class="py-name" targets="Variable Piavca.Piavca_base.Piavca_base.TRANS_CYCLE_ZXY=Piavca.Piavca_base.Piavca_base-module.html#TRANS_CYCLE_ZXY,Variable Piavca.Piavca_base'.TRANS_CYCLE_ZXY=Piavca.Piavca_base%27-module.html#TRANS_CYCLE_ZXY"><a title="Piavca.Piavca_base.Piavca_base.TRANS_CYCLE_ZXY
+Piavca.Piavca_base'.TRANS_CYCLE_ZXY" class="py-name" href="#" onclick="return doclink('link-30', 'TRANS_CYCLE_ZXY', 'link-30');">TRANS_CYCLE_ZXY</a></tt> </tt>
+<a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line"><tt id="link-31" class="py-name"><a title="Piavca.MotionFile.flaglookup" class="py-name" href="#" onclick="return doclink('link-31', 'flaglookup', 'link-3');">flaglookup</a></tt><tt class="py-op">[</tt><tt class="py-string">"-negate_x"</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt id="link-32" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-32', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-33" class="py-name" targets="Variable Piavca.Piavca_base.Piavca_base.TRANS_NEG_X=Piavca.Piavca_base.Piavca_base-module.html#TRANS_NEG_X,Variable Piavca.Piavca_base'.TRANS_NEG_X=Piavca.Piavca_base%27-module.html#TRANS_NEG_X"><a title="Piavca.Piavca_base.Piavca_base.TRANS_NEG_X
+Piavca.Piavca_base'.TRANS_NEG_X" class="py-name" href="#" onclick="return doclink('link-33', 'TRANS_NEG_X', 'link-33');">TRANS_NEG_X</a></tt> </tt>
+<a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line"><tt id="link-34" class="py-name"><a title="Piavca.MotionFile.flaglookup" class="py-name" href="#" onclick="return doclink('link-34', 'flaglookup', 'link-3');">flaglookup</a></tt><tt class="py-op">[</tt><tt class="py-string">"-negate_y"</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt id="link-35" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-35', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-36" class="py-name" targets="Variable Piavca.Piavca_base.Piavca_base.TRANS_NEG_Y=Piavca.Piavca_base.Piavca_base-module.html#TRANS_NEG_Y,Variable Piavca.Piavca_base'.TRANS_NEG_Y=Piavca.Piavca_base%27-module.html#TRANS_NEG_Y"><a title="Piavca.Piavca_base.Piavca_base.TRANS_NEG_Y
+Piavca.Piavca_base'.TRANS_NEG_Y" class="py-name" href="#" onclick="return doclink('link-36', 'TRANS_NEG_Y', 'link-36');">TRANS_NEG_Y</a></tt> </tt>
+<a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line"><tt id="link-37" class="py-name"><a title="Piavca.MotionFile.flaglookup" class="py-name" href="#" onclick="return doclink('link-37', 'flaglookup', 'link-3');">flaglookup</a></tt><tt class="py-op">[</tt><tt class="py-string">"-negate_z"</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt id="link-38" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-38', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-39" class="py-name" targets="Variable Piavca.Piavca_base.Piavca_base.TRANS_NEG_Z=Piavca.Piavca_base.Piavca_base-module.html#TRANS_NEG_Z,Variable Piavca.Piavca_base'.TRANS_NEG_Z=Piavca.Piavca_base%27-module.html#TRANS_NEG_Z"><a title="Piavca.Piavca_base.Piavca_base.TRANS_NEG_Z
+Piavca.Piavca_base'.TRANS_NEG_Z" class="py-name" href="#" onclick="return doclink('link-39', 'TRANS_NEG_Z', 'link-39');">TRANS_NEG_Z</a></tt> </tt>
+<a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line"><tt id="link-40" class="py-name"><a title="Piavca.MotionFile.flaglookup" class="py-name" href="#" onclick="return doclink('link-40', 'flaglookup', 'link-3');">flaglookup</a></tt><tt class="py-op">[</tt><tt class="py-string">"-arm_up"</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt id="link-41" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-41', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-42" class="py-name" targets="Variable Piavca.Piavca_base.Piavca_base.TRANS_ARM_UP=Piavca.Piavca_base.Piavca_base-module.html#TRANS_ARM_UP,Variable Piavca.Piavca_base'.TRANS_ARM_UP=Piavca.Piavca_base%27-module.html#TRANS_ARM_UP"><a title="Piavca.Piavca_base.Piavca_base.TRANS_ARM_UP
+Piavca.Piavca_base'.TRANS_ARM_UP" class="py-name" href="#" onclick="return doclink('link-42', 'TRANS_ARM_UP', 'link-42');">TRANS_ARM_UP</a></tt> </tt>
+<a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line"><tt id="link-43" class="py-name"><a title="Piavca.MotionFile.flaglookup" class="py-name" href="#" onclick="return doclink('link-43', 'flaglookup', 'link-3');">flaglookup</a></tt><tt class="py-op">[</tt><tt class="py-string">"-arm_down"</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt id="link-44" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-44', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-45" class="py-name" targets="Variable Piavca.Piavca_base.Piavca_base.TRANS_ARM_DOWN=Piavca.Piavca_base.Piavca_base-module.html#TRANS_ARM_DOWN,Variable Piavca.Piavca_base'.TRANS_ARM_DOWN=Piavca.Piavca_base%27-module.html#TRANS_ARM_DOWN"><a title="Piavca.Piavca_base.Piavca_base.TRANS_ARM_DOWN
+Piavca.Piavca_base'.TRANS_ARM_DOWN" class="py-name" href="#" onclick="return doclink('link-45', 'TRANS_ARM_DOWN', 'link-45');">TRANS_ARM_DOWN</a></tt> </tt>
+<a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line"><tt id="link-46" class="py-name"><a title="Piavca.MotionFile.flaglookup" class="py-name" href="#" onclick="return doclink('link-46', 'flaglookup', 'link-3');">flaglookup</a></tt><tt class="py-op">[</tt><tt class="py-string">"-reverse_order"</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt id="link-47" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-47', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-48" class="py-name" targets="Variable Piavca.Piavca_base.Piavca_base.TRANS_REVERSE_ORDER=Piavca.Piavca_base.Piavca_base-module.html#TRANS_REVERSE_ORDER,Variable Piavca.Piavca_base'.TRANS_REVERSE_ORDER=Piavca.Piavca_base%27-module.html#TRANS_REVERSE_ORDER"><a title="Piavca.Piavca_base.Piavca_base.TRANS_REVERSE_ORDER
+Piavca.Piavca_base'.TRANS_REVERSE_ORDER" class="py-name" href="#" onclick="return doclink('link-48', 'TRANS_REVERSE_ORDER', 'link-48');">TRANS_REVERSE_ORDER</a></tt> </tt>
+<a name="L60"></a><tt class="py-lineno">60</tt>  <tt class="py-line"><tt id="link-49" class="py-name"><a title="Piavca.MotionFile.flaglookup" class="py-name" href="#" onclick="return doclink('link-49', 'flaglookup', 'link-3');">flaglookup</a></tt><tt class="py-op">[</tt><tt class="py-string">"-skip_first_frame"</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt id="link-50" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-50', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-51" class="py-name" targets="Variable Piavca.Piavca_base.Piavca_base.TRANS_SKIP_FIRST_FRAME=Piavca.Piavca_base.Piavca_base-module.html#TRANS_SKIP_FIRST_FRAME,Variable Piavca.Piavca_base'.TRANS_SKIP_FIRST_FRAME=Piavca.Piavca_base%27-module.html#TRANS_SKIP_FIRST_FRAME"><a title="Piavca.Piavca_base.Piavca_base.TRANS_SKIP_FIRST_FRAME
+Piavca.Piavca_base'.TRANS_SKIP_FIRST_FRAME" class="py-name" href="#" onclick="return doclink('link-51', 'TRANS_SKIP_FIRST_FRAME', 'link-51');">TRANS_SKIP_FIRST_FRAME</a></tt> </tt>
+<a name="L61"></a><tt class="py-lineno">61</tt>  <tt class="py-line"> </tt>
+<a name="getMotionFlags"></a><div id="getMotionFlags-def"><a name="L62"></a><tt class="py-lineno">62</tt> <a class="py-toggle" href="#" id="getMotionFlags-toggle" onclick="return toggle('getMotionFlags');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.MotionFile-module.html#getMotionFlags">getMotionFlags</a><tt class="py-op">(</tt><tt class="py-param">flagspecs</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="getMotionFlags-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="getMotionFlags-expanded"><a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line">        <tt class="py-name">flags</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">spec</tt> <tt class="py-keyword">in</tt> <tt class="py-name">flagspecs</tt><tt class="py-op">:</tt> </tt>
+<a name="L65"></a><tt class="py-lineno">65</tt>  <tt class="py-line">                <tt class="py-name">flags</tt> <tt class="py-op">|=</tt> <tt id="link-52" class="py-name"><a title="Piavca.MotionFile.flaglookup" class="py-name" href="#" onclick="return doclink('link-52', 'flaglookup', 'link-3');">flaglookup</a></tt><tt class="py-op">[</tt><tt class="py-name">spec</tt><tt class="py-op">]</tt> </tt>
+<a name="L66"></a><tt class="py-lineno">66</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">flags</tt> </tt>
+</div><a name="L67"></a><tt class="py-lineno">67</tt>  <tt class="py-line"> </tt>
+<a name="readMotionFile"></a><div id="readMotionFile-def"><a name="L68"></a><tt class="py-lineno">68</tt> <a class="py-toggle" href="#" id="readMotionFile-toggle" onclick="return toggle('readMotionFile');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.MotionFile-module.html#readMotionFile">readMotionFile</a> <tt class="py-op">(</tt><tt class="py-param">filename</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="readMotionFile-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="readMotionFile-expanded"><a name="L69"></a><tt class="py-lineno">69</tt>  <tt class="py-line">        <tt class="py-name">filestart</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L70"></a><tt class="py-lineno">70</tt>  <tt class="py-line">        <tt class="py-name">pathpos</tt> <tt class="py-op">=</tt> <tt class="py-name">filename</tt><tt class="py-op">.</tt><tt class="py-name">rfind</tt><tt class="py-op">(</tt><tt class="py-string">"/"</tt><tt class="py-op">)</tt> </tt>
+<a name="L71"></a><tt class="py-lineno">71</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">pathpos</tt> <tt class="py-op">&lt;</tt> <tt class="py-number">0</tt> <tt class="py-op">:</tt> </tt>
+<a name="L72"></a><tt class="py-lineno">72</tt>  <tt class="py-line">                <tt class="py-name">pathpos</tt> <tt class="py-op">=</tt> <tt class="py-name">filename</tt><tt class="py-op">.</tt><tt class="py-name">rfind</tt><tt class="py-op">(</tt><tt class="py-string">"\\"</tt><tt class="py-op">)</tt> </tt>
+<a name="L73"></a><tt class="py-lineno">73</tt>  <tt class="py-line">        <tt class="py-name">prev_dir</tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">getcwd</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L74"></a><tt class="py-lineno">74</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">pathpos</tt> <tt class="py-op">&gt;=</tt> <tt class="py-number">0</tt> <tt class="py-op">:</tt> </tt>
+<a name="L75"></a><tt class="py-lineno">75</tt>  <tt class="py-line">                <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">chdir</tt><tt class="py-op">(</tt><tt class="py-name">filename</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">:</tt><tt class="py-name">pathpos</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L76"></a><tt class="py-lineno">76</tt>  <tt class="py-line">                <tt class="py-name">filestart</tt> <tt class="py-op">=</tt> <tt class="py-name">pathpos</tt><tt class="py-op">+</tt><tt class="py-number">1</tt> </tt>
+<a name="L77"></a><tt class="py-lineno">77</tt>  <tt class="py-line">        <tt class="py-comment">#print os.getcwd()</tt> </tt>
+<a name="L78"></a><tt class="py-lineno">78</tt>  <tt class="py-line">        <tt class="py-name">filename</tt> <tt class="py-op">=</tt> <tt class="py-name">filename</tt><tt class="py-op">[</tt><tt class="py-name">filestart</tt><tt class="py-op">:</tt><tt class="py-op">]</tt> </tt>
+<a name="L79"></a><tt class="py-lineno">79</tt>  <tt class="py-line">        <tt class="py-name">dotpos</tt> <tt class="py-op">=</tt> <tt class="py-name">filename</tt><tt class="py-op">.</tt><tt class="py-name">rfind</tt><tt class="py-op">(</tt><tt class="py-string">"."</tt><tt class="py-op">)</tt> </tt>
+<a name="L80"></a><tt class="py-lineno">80</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">filename</tt><tt class="py-op">[</tt><tt class="py-name">dotpos</tt><tt class="py-op">+</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-string">"x"</tt><tt class="py-op">:</tt> </tt>
+<a name="L81"></a><tt class="py-lineno">81</tt>  <tt class="py-line">                <tt id="link-53" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-53', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-54" class="py-name"><a title="Piavca.XMLMotionFile" class="py-name" href="#" onclick="return doclink('link-54', 'XMLMotionFile', 'link-2');">XMLMotionFile</a></tt><tt class="py-op">.</tt><tt id="link-55" class="py-name" targets="Function Piavca.XMLMotionFile.parse()=Piavca.XMLMotionFile-module.html#parse"><a title="Piavca.XMLMotionFile.parse" class="py-name" href="#" onclick="return doclink('link-55', 'parse', 'link-55');">parse</a></tt><tt class="py-op">(</tt><tt class="py-name">filename</tt><tt class="py-op">)</tt> </tt>
+<a name="L82"></a><tt class="py-lineno">82</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> </tt>
+<a name="L83"></a><tt class="py-lineno">83</tt>  <tt class="py-line">        <tt class="py-name">in_file</tt> <tt class="py-op">=</tt> <tt class="py-name">open</tt><tt class="py-op">(</tt><tt class="py-name">filename</tt><tt class="py-op">,</tt><tt class="py-string">"r"</tt><tt class="py-op">)</tt> </tt>
+<a name="L84"></a><tt class="py-lineno">84</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">line</tt> <tt class="py-keyword">in</tt> <tt class="py-name">in_file</tt><tt class="py-op">.</tt><tt class="py-name">readlines</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L85"></a><tt class="py-lineno">85</tt>  <tt class="py-line">                <tt class="py-keyword">print</tt> <tt class="py-name">line</tt> </tt>
+<a name="L86"></a><tt class="py-lineno">86</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">line</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-string">'#'</tt> <tt class="py-op">:</tt> </tt>
+<a name="L87"></a><tt class="py-lineno">87</tt>  <tt class="py-line">                        <tt class="py-keyword">continue</tt> </tt>
+<a name="L88"></a><tt class="py-lineno">88</tt>  <tt class="py-line">                <tt class="py-name">items</tt> <tt class="py-op">=</tt> <tt class="py-name">line</tt><tt class="py-op">.</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L89"></a><tt class="py-lineno">89</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">items</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt>  </tt>
+<a name="L90"></a><tt class="py-lineno">90</tt>  <tt class="py-line">                        <tt class="py-keyword">continue</tt> </tt>
+<a name="L91"></a><tt class="py-lineno">91</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt><tt class="py-op">(</tt><tt class="py-name">items</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-string">"file"</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L92"></a><tt class="py-lineno">92</tt>  <tt class="py-line">                        <tt id="link-56" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-56', 'Piavca', 'link-0');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-57" class="py-name" targets="Class Piavca.Piavca_base.Piavca_base.Core=Piavca.Piavca_base.Piavca_base.Core-class.html"><a title="Piavca.Piavca_base.Piavca_base.Core" class="py-name" href="#" onclick="return doclink('link-57', 'Core', 'link-57');">Core</a></tt><tt class="py-op">.</tt><tt id="link-58" class="py-name" targets="Method Piavca.Piavca_base.Piavca_base.Core.getCore()=Piavca.Piavca_base.Piavca_base.Core-class.html#getCore"><a title="Piavca.Piavca_base.Piavca_base.Core.getCore" class="py-name" href="#" onclick="return doclink('link-58', 'getCore', 'link-58');">getCore</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-59" class="py-name" targets="Function Piavca.CoreProxy.loadMotion()=Piavca.CoreProxy-module.html#loadMotion,Method Piavca.Piavca_base.Piavca_base.Avatar.loadMotion()=Piavca.Piavca_base.Piavca_base.Avatar-class.html#loadMotion,Method Piavca.Piavca_base.Piavca_base.Core.loadMotion()=Piavca.Piavca_base.Piavca_base.Core-class.html#loadMotion"><a title="Piavca.CoreProxy.loadMotion
+Piavca.Piavca_base.Piavca_base.Avatar.loadMotion
+Piavca.Piavca_base.Piavca_base.Core.loadMotion" class="py-name" href="#" onclick="return doclink('link-59', 'loadMotion', 'link-59');">loadMotion</a></tt><tt class="py-op">(</tt><tt class="py-name">items</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-name">items</tt><tt class="py-op">[</tt><tt class="py-number">2</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt id="link-60" class="py-name" targets="Function Piavca.MotionFile.getMotionFlags()=Piavca.MotionFile-module.html#getMotionFlags"><a title="Piavca.MotionFile.getMotionFlags" class="py-name" href="#" onclick="return doclink('link-60', 'getMotionFlags', 'link-60');">getMotionFlags</a></tt><tt class="py-op">(</tt><tt class="py-name">items</tt><tt class="py-op">[</tt><tt class="py-number">3</tt><tt class="py-op">:</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L93"></a><tt class="py-lineno">93</tt>  <tt class="py-line">                <tt class="py-comment">#else:</tt> </tt>
+<a name="L94"></a><tt class="py-lineno">94</tt>  <tt class="py-line">                        <tt class="py-comment">#mot = Piavca.MotionParser.parseMotion(' '.join(items[1:]), 1.0)</tt> </tt>
+<a name="L95"></a><tt class="py-lineno">95</tt>  <tt class="py-line">                        <tt class="py-comment">#Piavca.Core.getCore().loadMotion(items[0], mot)</tt> </tt>
+<a name="L96"></a><tt class="py-lineno">96</tt>  <tt class="py-line">        <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">chdir</tt><tt class="py-op">(</tt><tt class="py-name">prev_dir</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L97"></a><tt class="py-lineno">97</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="Piavca-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Oct 15 20:02:40 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Piavca.redirect</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="Piavca-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="Piavca-module.html">Package&nbsp;Piavca</a> ::
+        Module&nbsp;redirect
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="Piavca.redirect-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="Piavca.redirect-module.html">Module Piavca.redirect</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">sys</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line">        <tt class="py-keyword">import</tt> <tt class="py-name">wx</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line">        <tt id="link-0" class="py-name" targets="Variable Piavca.redirect.wxpresent=Piavca.redirect-module.html#wxpresent"><a title="Piavca.redirect.wxpresent" class="py-name" href="#" onclick="return doclink('link-0', 'wxpresent', 'link-0');">wxpresent</a></tt> <tt class="py-op">=</tt> <tt class="py-number">1</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line">         </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-keyword">except</tt> <tt class="py-name">ImportError</tt><tt class="py-op">:</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line">        <tt id="link-1" class="py-name"><a title="Piavca.redirect.wxpresent" class="py-name" href="#" onclick="return doclink('link-1', 'wxpresent', 'link-0');">wxpresent</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">thread</tt><tt class="py-op">,</tt> <tt class="py-name">time</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"> </tt>
+<a name="outputRedirection"></a><div id="outputRedirection-def"><a name="L12"></a><tt class="py-lineno">12</tt> <a class="py-toggle" href="#" id="outputRedirection-toggle" onclick="return toggle('outputRedirection');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="Piavca.redirect.outputRedirection-class.html">outputRedirection</a><tt class="py-op">:</tt> </tt>
+</div><div id="outputRedirection-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="outputRedirection-expanded"><a name="outputRedirection.__init__"></a><div id="outputRedirection.__init__-def"><a name="L13"></a><tt class="py-lineno">13</tt> <a class="py-toggle" href="#" id="outputRedirection.__init__-toggle" onclick="return toggle('outputRedirection.__init__');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.redirect.outputRedirection-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">filename</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="outputRedirection.__init__-collapsed" style="display:none;" pad="++" indent="++++++++++++"></div><div id="outputRedirection.__init__-expanded"><a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">frame</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">outputFunc</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt id="link-2" class="py-name"><a title="Piavca.redirect.wxpresent" class="py-name" href="#" onclick="return doclink('link-2', 'wxpresent', 'link-0');">wxpresent</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">frame</tt> <tt class="py-op">=</tt> <tt class="py-name">wx</tt><tt class="py-op">.</tt><tt class="py-name">Frame</tt><tt class="py-op">(</tt><tt class="py-name">None</tt><tt class="py-op">)</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">                        <tt class="py-name">bs</tt> <tt class="py-op">=</tt> <tt class="py-name">wx</tt><tt class="py-op">.</tt><tt class="py-name">BoxSizer</tt><tt class="py-op">(</tt><tt class="py-name">wx</tt><tt class="py-op">.</tt><tt class="py-name">VERTICAL</tt><tt class="py-op">)</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">txt</tt> <tt class="py-op">=</tt> <tt class="py-name">wx</tt><tt class="py-op">.</tt><tt class="py-name">TextCtrl</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">frame</tt><tt class="py-op">,</tt> <tt class="py-name">style</tt><tt class="py-op">=</tt><tt class="py-name">wx</tt><tt class="py-op">.</tt><tt class="py-name">TE_MULTILINE</tt><tt class="py-op">)</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line">                        <tt class="py-name">bs</tt><tt class="py-op">.</tt><tt class="py-name">Add</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">txt</tt><tt class="py-op">,</tt><tt class="py-number">1</tt><tt class="py-op">,</tt><tt class="py-name">wx</tt><tt class="py-op">.</tt><tt class="py-name">EXPAND</tt><tt class="py-op">|</tt><tt class="py-name">wx</tt><tt class="py-op">.</tt><tt class="py-name">LEFT</tt><tt class="py-op">|</tt><tt class="py-name">wx</tt><tt class="py-op">.</tt><tt class="py-name">RIGHT</tt><tt class="py-op">,</tt><tt class="py-number">30</tt><tt class="py-op">)</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">txt</tt><tt class="py-op">.</tt><tt class="py-name">SetValue</tt><tt class="py-op">(</tt><tt class="py-string">"yaya\n"</tt><tt class="py-op">)</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">txt</tt><tt class="py-op">.</tt><tt class="py-name">SetValue</tt><tt class="py-op">(</tt><tt class="py-name">filename</tt><tt class="py-op">+</tt><tt class="py-string">"\n"</tt><tt class="py-op">)</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">filename</tt> <tt class="py-op">=</tt> <tt class="py-name">filename</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">filename</tt> <tt class="py-op">!=</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">                        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">                                <tt class="py-name">outputfile</tt> <tt class="py-op">=</tt> <tt class="py-name">open</tt><tt class="py-op">(</tt><tt class="py-name">filename</tt><tt class="py-op">,</tt> <tt class="py-string">"w"</tt><tt class="py-op">)</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line">                                <tt class="py-name">outputfile</tt><tt class="py-op">.</tt><tt id="link-3" class="py-name" targets="Method Piavca.redirect.outputRedirection.write()=Piavca.redirect.outputRedirection-class.html#write"><a title="Piavca.redirect.outputRedirection.write" class="py-name" href="#" onclick="return doclink('link-3', 'write', 'link-3');">write</a></tt><tt class="py-op">(</tt><tt class="py-string">""</tt><tt class="py-op">)</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">                                <tt class="py-name">outputfile</tt><tt class="py-op">.</tt><tt class="py-name">close</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line">                        <tt class="py-keyword">except</tt><tt class="py-op">:</tt> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line">                                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">txt</tt><tt class="py-op">.</tt><tt class="py-name">SetValue</tt><tt class="py-op">(</tt><tt class="py-string">"could not open output file "</tt><tt class="py-op">+</tt><tt class="py-name">filename</tt><tt class="py-op">+</tt><tt class="py-string">"\n"</tt><tt class="py-op">)</tt> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt id="link-4" class="py-name"><a title="Piavca.redirect.wxpresent" class="py-name" href="#" onclick="return doclink('link-4', 'wxpresent', 'link-0');">wxpresent</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-5" class="py-name"><a title="Piavca.redirect.outputRedirection.write" class="py-name" href="#" onclick="return doclink('link-5', 'write', 'link-3');">write</a></tt><tt class="py-op">(</tt><tt class="py-string">"WX Python was not found so graphical output is not available"</tt><tt class="py-op">)</tt> </tt>
+</div><a name="outputRedirection.Show"></a><div id="outputRedirection.Show-def"><a name="L33"></a><tt class="py-lineno">33</tt> <a class="py-toggle" href="#" id="outputRedirection.Show-toggle" onclick="return toggle('outputRedirection.Show');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.redirect.outputRedirection-class.html#Show">Show</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="outputRedirection.Show-collapsed" style="display:none;" pad="++" indent="++++++++++++"></div><div id="outputRedirection.Show-expanded"><a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt id="link-6" class="py-name"><a title="Piavca.redirect.wxpresent" class="py-name" href="#" onclick="return doclink('link-6', 'wxpresent', 'link-0');">wxpresent</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">frame</tt><tt class="py-op">.</tt><tt id="link-7" class="py-name" targets="Method Piavca.redirect.outputRedirection.Show()=Piavca.redirect.outputRedirection-class.html#Show"><a title="Piavca.redirect.outputRedirection.Show" class="py-name" href="#" onclick="return doclink('link-7', 'Show', 'link-7');">Show</a></tt><tt class="py-op">(</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">frame</tt><tt class="py-op">.</tt><tt class="py-name">Layout</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="outputRedirection.setOutputFunc"></a><div id="outputRedirection.setOutputFunc-def"><a name="L37"></a><tt class="py-lineno">37</tt> <a class="py-toggle" href="#" id="outputRedirection.setOutputFunc-toggle" onclick="return toggle('outputRedirection.setOutputFunc');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.redirect.outputRedirection-class.html#setOutputFunc">setOutputFunc</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">func</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="outputRedirection.setOutputFunc-collapsed" style="display:none;" pad="++" indent="++++++++++++"></div><div id="outputRedirection.setOutputFunc-expanded"><a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">outputFunc</tt> <tt class="py-op">=</tt> <tt class="py-name">func</tt> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt id="link-8" class="py-name"><a title="Piavca.redirect.wxpresent" class="py-name" href="#" onclick="return doclink('link-8', 'wxpresent', 'link-0');">wxpresent</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-9" class="py-name"><a title="Piavca.redirect.outputRedirection.write" class="py-name" href="#" onclick="return doclink('link-9', 'write', 'link-3');">write</a></tt><tt class="py-op">(</tt><tt class="py-string">"WX Python was not found so graphical output is not available"</tt><tt class="py-op">)</tt> </tt>
+</div><a name="outputRedirection.write"></a><div id="outputRedirection.write-def"><a name="L41"></a><tt class="py-lineno">41</tt> <a class="py-toggle" href="#" id="outputRedirection.write-toggle" onclick="return toggle('outputRedirection.write');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.redirect.outputRedirection-class.html#write">write</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">s</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="outputRedirection.write-collapsed" style="display:none;" pad="++" indent="++++++++++++"></div><div id="outputRedirection.write-expanded"><a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt id="link-10" class="py-name"><a title="Piavca.redirect.wxpresent" class="py-name" href="#" onclick="return doclink('link-10', 'wxpresent', 'link-0');">wxpresent</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">txt</tt><tt class="py-op">.</tt><tt class="py-name">AppendText</tt><tt class="py-op">(</tt><tt class="py-name">s</tt><tt class="py-op">)</tt> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">filename</tt> <tt class="py-op">!=</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line">                        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line">                                <tt class="py-name">outputfile</tt> <tt class="py-op">=</tt> <tt class="py-name">open</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">filename</tt><tt class="py-op">,</tt> <tt class="py-string">"a"</tt><tt class="py-op">)</tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line">                                <tt class="py-name">outputfile</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name"><a title="Piavca.redirect.outputRedirection.write" class="py-name" href="#" onclick="return doclink('link-11', 'write', 'link-3');">write</a></tt><tt class="py-op">(</tt><tt class="py-name">s</tt><tt class="py-op">)</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line">                                <tt class="py-name">outputfile</tt><tt class="py-op">.</tt><tt class="py-name">close</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line">                        <tt class="py-keyword">except</tt><tt class="py-op">:</tt> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line">                                <tt class="py-keyword">pass</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">outputFunc</tt> <tt class="py-op">!=</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">outputFunc</tt><tt class="py-op">(</tt><tt class="py-name">s</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line">                <tt class="py-comment">#if self.outputfile:</tt> </tt>
+<a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line">                        <tt class="py-comment">#self.outputfile.write(s)</tt> </tt>
+<a name="outputRedirection.writeline"></a><div id="outputRedirection.writeline-def"><a name="L55"></a><tt class="py-lineno">55</tt> <a class="py-toggle" href="#" id="outputRedirection.writeline-toggle" onclick="return toggle('outputRedirection.writeline');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.redirect.outputRedirection-class.html#writeline">writeline</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">s</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="outputRedirection.writeline-collapsed" style="display:none;" pad="++" indent="++++++++++++"></div><div id="outputRedirection.writeline-expanded"><a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-12" class="py-name"><a title="Piavca.redirect.outputRedirection.write" class="py-name" href="#" onclick="return doclink('link-12', 'write', 'link-3');">write</a></tt><tt class="py-op">(</tt><tt class="py-name">s</tt><tt class="py-op">)</tt> </tt>
+<a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name"><a title="Piavca.redirect.outputRedirection.write" class="py-name" href="#" onclick="return doclink('link-13', 'write', 'link-3');">write</a></tt><tt class="py-op">(</tt><tt class="py-string">"\n"</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line">                 </tt>
+<a name="redirect"></a><div id="redirect-def"><a name="L59"></a><tt class="py-lineno">59</tt> <a class="py-toggle" href="#" id="redirect-toggle" onclick="return toggle('redirect');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.redirect-module.html#redirect">redirect</a><tt class="py-op">(</tt><tt class="py-param">filename</tt><tt class="py-op">=</tt><tt class="py-string">"python_output.txt"</tt><tt class="py-op">,</tt> <tt class="py-param">app</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="redirect-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="redirect-expanded"><a name="L60"></a><tt class="py-lineno">60</tt>  <tt class="py-line">        <tt class="py-keyword">import</tt> <tt id="link-14" class="py-name" targets="Package Piavca=Piavca-module.html"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-14', 'Piavca', 'link-14');">Piavca</a></tt> </tt>
+<a name="L61"></a><tt class="py-lineno">61</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-15" class="py-name"><a title="Piavca.redirect.wxpresent" class="py-name" href="#" onclick="return doclink('link-15', 'wxpresent', 'link-0');">wxpresent</a></tt> <tt class="py-keyword">and</tt> <tt class="py-name">app</tt> <tt class="py-op">==</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L62"></a><tt class="py-lineno">62</tt>  <tt class="py-line">                <tt class="py-keyword">print</tt> <tt class="py-string">"creating app"</tt> </tt>
+<a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line">                <tt class="py-name">app</tt> <tt class="py-op">=</tt> <tt id="link-16" class="py-name"><a title="Piavca" class="py-name" href="#" onclick="return doclink('link-16', 'Piavca', 'link-14');">Piavca</a></tt><tt class="py-op">.</tt><tt id="link-17" class="py-name" targets="Function Piavca.PiavcaWXApp.getWXApp()=Piavca.PiavcaWXApp-module.html#getWXApp"><a title="Piavca.PiavcaWXApp.getWXApp" class="py-name" href="#" onclick="return doclink('link-17', 'getWXApp', 'link-17');">getWXApp</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-comment">#wx.PySimpleApp()</tt> </tt>
+<a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line">        <tt class="py-name">outputer</tt> <tt class="py-op">=</tt> <tt id="link-18" class="py-name" targets="Class Piavca.redirect.outputRedirection=Piavca.redirect.outputRedirection-class.html"><a title="Piavca.redirect.outputRedirection" class="py-name" href="#" onclick="return doclink('link-18', 'outputRedirection', 'link-18');">outputRedirection</a></tt><tt class="py-op">(</tt><tt class="py-name">filename</tt><tt class="py-op">)</tt> </tt>
+<a name="L65"></a><tt class="py-lineno">65</tt>  <tt class="py-line">        <tt class="py-name">outputer</tt><tt class="py-op">.</tt><tt id="link-19" class="py-name"><a title="Piavca.redirect.outputRedirection.Show" class="py-name" href="#" onclick="return doclink('link-19', 'Show', 'link-7');">Show</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L66"></a><tt class="py-lineno">66</tt>  <tt class="py-line"> </tt>
+<a name="L67"></a><tt class="py-lineno">67</tt>  <tt class="py-line">        <tt class="py-name">outputer</tt><tt class="py-op">.</tt><tt id="link-20" class="py-name"><a title="Piavca.redirect.outputRedirection.write" class="py-name" href="#" onclick="return doclink('link-20', 'write', 'link-3');">write</a></tt><tt class="py-op">(</tt><tt class="py-string">"Piavca\n"</tt><tt class="py-op">)</tt> </tt>
+<a name="L68"></a><tt class="py-lineno">68</tt>  <tt class="py-line"> </tt>
+<a name="L69"></a><tt class="py-lineno">69</tt>  <tt class="py-line">                 </tt>
+<a name="L70"></a><tt class="py-lineno">70</tt>  <tt class="py-line">        <tt class="py-comment">#outputer.setOutputFunc(Piavca.PiavcaGlut.outputMessage)</tt> </tt>
+<a name="L71"></a><tt class="py-lineno">71</tt>  <tt class="py-line"> </tt>
+<a name="L72"></a><tt class="py-lineno">72</tt>  <tt class="py-line">        <tt class="py-name">outputer</tt><tt class="py-op">.</tt><tt id="link-21" class="py-name"><a title="Piavca.redirect.outputRedirection.write" class="py-name" href="#" onclick="return doclink('link-21', 'write', 'link-3');">write</a></tt><tt class="py-op">(</tt><tt class="py-string">"output redirection\n"</tt><tt class="py-op">)</tt> </tt>
+<a name="L73"></a><tt class="py-lineno">73</tt>  <tt class="py-line"> </tt>
+<a name="L74"></a><tt class="py-lineno">74</tt>  <tt class="py-line">        <tt class="py-name">sys</tt><tt class="py-op">.</tt><tt class="py-name">stderr</tt> <tt class="py-op">=</tt> <tt class="py-name">outputer</tt> </tt>
+<a name="L75"></a><tt class="py-lineno">75</tt>  <tt class="py-line">        <tt class="py-name">sys</tt><tt class="py-op">.</tt><tt class="py-name">stdout</tt> <tt class="py-op">=</tt> <tt class="py-name">outputer</tt> </tt>
+<a name="L76"></a><tt class="py-lineno">76</tt>  <tt class="py-line"> </tt>
+<a name="L77"></a><tt class="py-lineno">77</tt>  <tt class="py-line">        <tt class="py-comment">#print "hello"</tt> </tt>
+<a name="L78"></a><tt class="py-lineno">78</tt>  <tt class="py-line"> </tt>
+<a name="L79"></a><tt class="py-lineno">79</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">"output redirection successful"</tt> </tt>
+<a name="L80"></a><tt class="py-lineno">80</tt>  <tt class="py-line">         </tt>
+<a name="L81"></a><tt class="py-lineno">81</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-22" class="py-name"><a title="Piavca.redirect.wxpresent" class="py-name" href="#" onclick="return doclink('link-22', 'wxpresent', 'link-0');">wxpresent</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L82"></a><tt class="py-lineno">82</tt>  <tt class="py-line">                <tt class="py-name">thread</tt><tt class="py-op">.</tt><tt class="py-name">start_new_thread</tt><tt class="py-op">(</tt><tt class="py-name">app</tt><tt class="py-op">.</tt><tt class="py-name">MainLoop</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L83"></a><tt class="py-lineno">83</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="Piavca-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Oct 15 20:02:36 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

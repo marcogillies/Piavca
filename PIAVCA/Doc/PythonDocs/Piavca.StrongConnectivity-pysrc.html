@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Piavca.StrongConnectivity</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="Piavca-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="Piavca-module.html">Package&nbsp;Piavca</a> ::
+        Module&nbsp;StrongConnectivity
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="Piavca.StrongConnectivity-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="Piavca.StrongConnectivity-module.html">Module Piavca.StrongConnectivity</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-docstring">"""StrongConnectivity.py</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-docstring">DFS-based algorithm for computing strongly connected components.</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-docstring">D. Eppstein, July 2005.</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">unittest</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-0" class="py-name" targets="Module Piavca.GraphSearch=Piavca.GraphSearch-module.html"><a title="Piavca.GraphSearch" class="py-name" href="#" onclick="return doclink('link-0', 'GraphSearch', 'link-0');">GraphSearch</a></tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line">    <tt class="py-name">set</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-keyword">except</tt> <tt class="py-name">NameError</tt><tt class="py-op">:</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line">    <tt class="py-keyword">from</tt> <tt class="py-name">sets</tt> <tt class="py-keyword">import</tt> <tt class="py-name">Set</tt> <tt class="py-keyword">as</tt> <tt class="py-name">set</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"> </tt>
+<a name="StronglyConnectedComponents"></a><div id="StronglyConnectedComponents-def"><a name="L16"></a><tt class="py-lineno"> 16</tt> <a class="py-toggle" href="#" id="StronglyConnectedComponents-toggle" onclick="return toggle('StronglyConnectedComponents');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="Piavca.StrongConnectivity.StronglyConnectedComponents-class.html">StronglyConnectedComponents</a><tt class="py-op">(</tt><tt class="py-base-class">GraphSearch</tt><tt class="py-op">.</tt><tt class="py-base-class">Searcher</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="StronglyConnectedComponents-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="StronglyConnectedComponents-expanded"><a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-docstring">    Generate the strongly connected components of G.  G should be</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-docstring">    represented in such a way that "for v in G" loops through the</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-docstring">    vertices, and "G[v]" produces a list of the neighbors of v;</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-docstring">    for instance, G may be a dictionary mapping each vertex to its</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-docstring">    neighbor set.  The result of StronglyConnectedComponents(G) is</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt class="py-docstring">    a sequence of subgraphs of G.</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"> </tt>
+<a name="StronglyConnectedComponents.__init__"></a><div id="StronglyConnectedComponents.__init__-def"><a name="L26"></a><tt class="py-lineno"> 26</tt> <a class="py-toggle" href="#" id="StronglyConnectedComponents.__init__-toggle" onclick="return toggle('StronglyConnectedComponents.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.StrongConnectivity.StronglyConnectedComponents-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">G</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="StronglyConnectedComponents.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="StronglyConnectedComponents.__init__-expanded"><a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">        <tt class="py-docstring">"""Search for strongly connected components of graph G."""</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">        <tt class="py-comment"># set up data structures for DFS</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_components</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_dfsnumber</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_activelen</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_active</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_low</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_biglow</tt> <tt class="py-op">=</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">G</tt><tt class="py-op">)</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_graph</tt> <tt class="py-op">=</tt> <tt class="py-name">G</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">        <tt class="py-comment"># perform the Depth First Search</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">        <tt id="link-1" class="py-name"><a title="Piavca.GraphSearch" class="py-name" href="#" onclick="return doclink('link-1', 'GraphSearch', 'link-0');">GraphSearch</a></tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Class Piavca.GraphSearch.Searcher=Piavca.GraphSearch.Searcher-class.html"><a title="Piavca.GraphSearch.Searcher" class="py-name" href="#" onclick="return doclink('link-2', 'Searcher', 'link-2');">Searcher</a></tt><tt class="py-op">.</tt><tt id="link-3" class="py-name" targets="Method Piavca.AnimationTrack.AnimationInterface.__init__()=Piavca.AnimationTrack.AnimationInterface-class.html#__init__,Method Piavca.AnimationTrack.AnimationInterfaceCallback.__init__()=Piavca.AnimationTrack.AnimationInterfaceCallback-class.html#__init__,Method Piavca.AudioMotion'.AudioMotion.__init__()=Piavca.AudioMotion%27.AudioMotion-class.html#__init__,Method Piavca.ChoiceMotion.__init__()=Piavca.ChoiceMotion-class.html#__init__,Method Piavca.ClusterMotionGraph'.ClusterMotionGraph.__init__()=Piavca.ClusterMotionGraph%27.ClusterMotionGraph-class.html#__init__,Method Piavca.ConversationInterface.ConversationInterface.__init__()=Piavca.ConversationInterface.ConversationInterface-class.html#__init__,Method Piavca.DataStream.DataSequence.__init__()=Piavca.DataStream.DataSequence-class.html#__init__,Method Piavca.DataStream.IntSequenceDisplay.__init__()=Piavca.DataStream.IntSequenceDisplay-class.html#__init__,Method Piavca.DataStream.IntegerDataSequence.__init__()=Piavca.DataStream.IntegerDataSequence-class.html#__init__,Method Piavca.DataStream.SequenceDisplay.__init__()=Piavca.DataStream.SequenceDisplay-class.html#__init__,Method Piavca.EigenAnalysis'.EigenAnalysis.__init__()=Piavca.EigenAnalysis%27.EigenAnalysis-class.html#__init__,Method Piavca.EigenMotion'.EigenMotion.__init__()=Piavca.EigenMotion%27.EigenMotion-class.html#__init__,Method Piavca.EigenMotion'.PCAMotion.__init__()=Piavca.EigenMotion%27.PCAMotion-class.html#__init__,Method Piavca.ExpMap.ExpMapMotion.__init__()=Piavca.ExpMap.ExpMapMotion-class.html#__init__,Method Piavca.ExpMap.LogMapMotion.__init__()=Piavca.ExpMap.LogMapMotion-class.html#__init__,Method Piavca.ExpMap.TangentSpace.__init__()=Piavca.ExpMap.TangentSpace-class.html#__init__,Method Piavca.ExpMap.TangentSpaceMotion.__init__()=Piavca.ExpMap.TangentSpaceMotion-class.html#__init__,Method Piavca.FSM'.FSM.__init__()=Piavca.FSM%27.FSM-class.html#__init__,Method Piavca.FSM'.FSMLoop.__init__()=Piavca.FSM%27.FSMLoop-class.html#__init__,Method Piavca.FootPlantOnSpot'.FootPlantOnSpot.__init__()=Piavca.FootPlantOnSpot%27.FootPlantOnSpot-class.html#__init__,Method Piavca.FreeCameraCanvas.FreeCameraCanvas.__init__()=Piavca.FreeCameraCanvas.FreeCameraCanvas-class.html#__init__,Method Piavca.GraphSearch.SearchStrategy.__init__()=Piavca.GraphSearch.SearchStrategy-class.html#__init__,Method Piavca.GraphSearch.Searcher.__init__()=Piavca.GraphSearch.Searcher-class.html#__init__,Method Piavca.GraphSearch.bfs.__init__()=Piavca.GraphSearch.bfs-class.html#__init__,Method Piavca.GraphSearch.dfs.__init__()=Piavca.GraphSearch.dfs-class.html#__init__,Method Piavca.ImportException.PiavcaImportException.__init__()=Piavca.ImportException.PiavcaImportException-class.html#__init__,Method Piavca.KeyframeMotion.__init__()=Piavca.KeyframeMotion-class.html#__init__,Method Piavca.MaxXAFReader.MaxXAFMotion.__init__()=Piavca.MaxXAFReader.MaxXAFMotion-class.html#__init__,Method Piavca.Motion.__init__()=Piavca.Motion-class.html#__init__,Method Piavca.MotionFilter.__init__()=Piavca.MotionFilter-class.html#__init__,Method Piavca.MotionTracks.MotionTracks.__init__()=Piavca.MotionTracks.MotionTracks-class.html#__init__,Method Piavca.PCA'.PCA.__init__()=Piavca.PCA%27.PCA-class.html#__init__,Method Piavca.ParameterMotion'.ParameterMotion.__init__()=Piavca.ParameterMotion%27.ParameterMotion-class.html#__init__,Method Piavca.PiavcaDesigner.AutoCreatorsWindow.AutoCreatorsWindow.__init__()=Piavca.PiavcaDesigner.AutoCreatorsWindow.AutoCreatorsWindow-class.html#__init__,Method Piavca.PiavcaDesigner.AvatarList.AvatarList.__init__()=Piavca.PiavcaDesigner.AvatarList.AvatarList-class.html#__init__,Method Piavca.PiavcaDesigner.BackEnd.BackEnd.__init__()=Piavca.PiavcaDesigner.BackEnd.BackEnd-class.html#__init__,Method Piavca.PiavcaDesigner.EventList.EventList.__init__()=Piavca.PiavcaDesigner.EventList.EventList-class.html#__init__,Method Piavca.PiavcaDesigner.GenericList.GenericList.__init__()=Piavca.PiavcaDesigner.GenericList.GenericList-class.html#__init__,Method Piavca.PiavcaDesigner.HeirarchyView.HeirarchyView.__init__()=Piavca.PiavcaDesigner.HeirarchyView.HeirarchyView-class.html#__init__,Method Piavca.PiavcaDesigner.ListBoxController.ListBoxController.__init__()=Piavca.PiavcaDesigner.ListBoxController.ListBoxController-class.html#__init__,Method Piavca.PiavcaDesigner.MotionGroup.MotionGroup.__init__()=Piavca.PiavcaDesigner.MotionGroup.MotionGroup-class.html#__init__,Method Piavca.PiavcaDesigner.MotionGroup.TreeLines.__init__()=Piavca.PiavcaDesigner.MotionGroup.TreeLines-class.html#__init__,Method Piavca.PiavcaDesigner.MotionProxy.MotionProxy.__init__()=Piavca.PiavcaDesigner.MotionProxy.MotionProxy-class.html#__init__,Method Piavca.PiavcaDesigner.MotionView.MotionDropTarget.__init__()=Piavca.PiavcaDesigner.MotionView.MotionDropTarget-class.html#__init__,Method Piavca.PiavcaDesigner.MotionView.MotionView.__init__()=Piavca.PiavcaDesigner.MotionView.MotionView-class.html#__init__,Method Piavca.PiavcaDesigner.MotionsList.MotionList.__init__()=Piavca.PiavcaDesigner.MotionsList.MotionList-class.html#__init__,Method Piavca.PiavcaDesigner.ParameterControls.ParamEntry.__init__()=Piavca.PiavcaDesigner.ParameterControls.ParamEntry-class.html#__init__,Method Piavca.PiavcaDesigner.ParameterWindow.ParameterWindow.__init__()=Piavca.PiavcaDesigner.ParameterWindow.ParameterWindow-class.html#__init__,Method Piavca.PiavcaDesigner.PiavcaDesigner'.PiavcaDesigner.__init__()=Piavca.PiavcaDesigner.PiavcaDesigner%27.PiavcaDesigner-class.html#__init__,Method Piavca.PiavcaDesigner.PlayControls.PlayControls.__init__()=Piavca.PiavcaDesigner.PlayControls.PlayControls-class.html#__init__,Method Piavca.PiavcaDesigner.TimeLine.TimeLine.__init__()=Piavca.PiavcaDesigner.TimeLine.TimeLine-class.html#__init__,Method Piavca.PiavcaWXApp.PiavcaWXApp.__init__()=Piavca.PiavcaWXApp.PiavcaWXApp-class.html#__init__,Method Piavca.PiavcaWXApp.PiavcaWXFrame.__init__()=Piavca.PiavcaWXApp.PiavcaWXFrame-class.html#__init__,Method Piavca.PiavcaWXCanvas.PiavcaWXCanvasBase.__init__()=Piavca.PiavcaWXCanvas.PiavcaWXCanvasBase-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.Avatar.__init__()=Piavca.Piavca_base.Piavca_base.Avatar-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.AvatarMotion.__init__()=Piavca.Piavca_base.Piavca_base.AvatarMotion-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.AvatarMotionQueue.__init__()=Piavca.Piavca_base.Piavca_base.AvatarMotionQueue-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.AvatarPosture.__init__()=Piavca.Piavca_base.Piavca_base.AvatarPosture-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.AvatarPostureBlend.__init__()=Piavca.Piavca_base.Piavca_base.AvatarPostureBlend-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.AvatarTimeCallback.__init__()=Piavca.Piavca_base.Piavca_base.AvatarTimeCallback-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.BlendBetween.__init__()=Piavca.Piavca_base.Piavca_base.BlendBetween-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.Bound.__init__()=Piavca.Piavca_base.Piavca_base.Bound-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.ChangeMotionLength.__init__()=Piavca.Piavca_base.Piavca_base.ChangeMotionLength-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.ChoiceMotion.__init__()=Piavca.Piavca_base.Piavca_base.ChoiceMotion-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.ChoiceMotionWithDefault.__init__()=Piavca.Piavca_base.Piavca_base.ChoiceMotionWithDefault-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.Core.__init__()=Piavca.Piavca_base.Piavca_base.Core-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.CurrentValueMotion.__init__()=Piavca.Piavca_base.Piavca_base.CurrentValueMotion-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.EventMapChoice.__init__()=Piavca.Piavca_base.Piavca_base.EventMapChoice-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.ExpMapMotion.__init__()=Piavca.Piavca_base.Piavca_base.ExpMapMotion-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.KeyframeMotion.__init__()=Piavca.Piavca_base.Piavca_base.KeyframeMotion-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.LinearTransition.__init__()=Piavca.Piavca_base.Piavca_base.LinearTransition-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.LogMapMotion.__init__()=Piavca.Piavca_base.Piavca_base.LogMapMotion-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.LoopMotion.__init__()=Piavca.Piavca_base.Piavca_base.LoopMotion-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.MaskedMotion.__init__()=Piavca.Piavca_base.Piavca_base.MaskedMotion-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.Motion.__init__()=Piavca.Piavca_base.Piavca_base.Motion-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.MotionAdder.__init__()=Piavca.Piavca_base.Piavca_base.MotionAdder-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.MotionFilter.__init__()=Piavca.Piavca_base.Piavca_base.MotionFilter-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.MotionGraph.__init__()=Piavca.Piavca_base.Piavca_base.MotionGraph-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.MotionMask.__init__()=Piavca.Piavca_base.Piavca_base.MotionMask-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.MotionPosture.__init__()=Piavca.Piavca_base.Piavca_base.MotionPosture-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.MotionTransition.__init__()=Piavca.Piavca_base.Piavca_base.MotionTransition-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.MultiBlend.__init__()=Piavca.Piavca_base.Piavca_base.MultiBlend-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.__init__()=Piavca.Piavca_base.Piavca_base.MultiMotionCombiner-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.Object.__init__()=Piavca.Piavca_base.Piavca_base.Object-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.OverrideMotion.__init__()=Piavca.Piavca_base.Piavca_base.OverrideMotion-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.PointAt.__init__()=Piavca.Piavca_base.Piavca_base.PointAt-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.PostureBlend.__init__()=Piavca.Piavca_base.Piavca_base.PostureBlend-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.Proxemics.__init__()=Piavca.Piavca_base.Piavca_base.Proxemics-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.PySwigIterator.__init__()=Piavca.Piavca_base.Piavca_base.PySwigIterator-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.Quat.__init__()=Piavca.Piavca_base.Piavca_base.Quat-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.RandomChoiceMotion.__init__()=Piavca.Piavca_base.Piavca_base.RandomChoiceMotion-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.RandomTimingsMotion.__init__()=Piavca.Piavca_base.Piavca_base.RandomTimingsMotion-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.Reposition.__init__()=Piavca.Piavca_base.Piavca_base.Reposition-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.ScaleMotion.__init__()=Piavca.Piavca_base.Piavca_base.ScaleMotion-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.ScaleMotionRoot.__init__()=Piavca.Piavca_base.Piavca_base.ScaleMotionRoot-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.ScaleMotionSpeed.__init__()=Piavca.Piavca_base.Piavca_base.ScaleMotionSpeed-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.Sequence.__init__()=Piavca.Piavca_base.Piavca_base.Sequence-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.SequentialChoiceMotion.__init__()=Piavca.Piavca_base.Piavca_base.SequentialChoiceMotion-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.SmoothLoop.__init__()=Piavca.Piavca_base.Piavca_base.SmoothLoop-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.SmoothSequence.__init__()=Piavca.Piavca_base.Piavca_base.SmoothSequence-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.SmoothTransition.__init__()=Piavca.Piavca_base.Piavca_base.SmoothTransition-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.SubMotion.__init__()=Piavca.Piavca_base.Piavca_base.SubMotion-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.Subtract.__init__()=Piavca.Piavca_base.Piavca_base.Subtract-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.TangentSpace.__init__()=Piavca.Piavca_base.Piavca_base.TangentSpace-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.TimeCallback.__init__()=Piavca.Piavca_base.Piavca_base.TimeCallback-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.TimeOffset.__init__()=Piavca.Piavca_base.Piavca_base.TimeOffset-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.TimeRangeMotion.__init__()=Piavca.Piavca_base.Piavca_base.TimeRangeMotion-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.TimeWarp.__init__()=Piavca.Piavca_base.Piavca_base.TimeWarp-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.TransitionFunction.__init__()=Piavca.Piavca_base.Piavca_base.TransitionFunction-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.TwoMotionCombiner.__init__()=Piavca.Piavca_base.Piavca_base.TwoMotionCombiner-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.Vec.__init__()=Piavca.Piavca_base.Piavca_base.Vec-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.ZeroMotion.__init__()=Piavca.Piavca_base.Piavca_base.ZeroMotion-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.queueElement.__init__()=Piavca.Piavca_base.Piavca_base.queueElement-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.vectorI.__init__()=Piavca.Piavca_base.Piavca_base.vectorI-class.html#__init__,Method Piavca.Piavca_base.Piavca_base.vectorS.__init__()=Piavca.Piavca_base.Piavca_base.vectorS-class.html#__init__,Method Piavca.PositionHandler.PositionHandler.__init__()=Piavca.PositionHandler.PositionHandler-class.html#__init__,Method Piavca.PositionHandler.PositionResponse.__init__()=Piavca.PositionHandler.PositionResponse-class.html#__init__,Method Piavca.PositionHandler.PositionShiftResponse.__init__()=Piavca.PositionHandler.PositionShiftResponse-class.html#__init__,Method Piavca.ScriptEngine'.ScriptEngine.__init__()=Piavca.ScriptEngine%27.ScriptEngine-class.html#__init__,Method Piavca.ScriptEngine'.backgroundMotionCallback.__init__()=Piavca.ScriptEngine%27.backgroundMotionCallback-class.html#__init__,Method Piavca.ScriptEngine'.eventCallback.__init__()=Piavca.ScriptEngine%27.eventCallback-class.html#__init__,Method Piavca.ScriptEngine'.motionCallback.__init__()=Piavca.ScriptEngine%27.motionCallback-class.html#__init__,Method Piavca.ScriptEngine'.sayCallback.__init__()=Piavca.ScriptEngine%27.sayCallback-class.html#__init__,Method Piavca.ScriptEngine'.scriptCallback.__init__()=Piavca.ScriptEngine%27.scriptCallback-class.html#__init__,Method Piavca.ScriptEngine'.soundCallback.__init__()=Piavca.ScriptEngine%27.soundCallback-class.html#__init__,Method Piavca.ScriptEngine'.stopMotionCallback.__init__()=Piavca.ScriptEngine%27.stopMotionCallback-class.html#__init__,Method Piavca.SoundEngine.SoundEngine.__init__()=Piavca.SoundEngine.SoundEngine-class.html#__init__,Method Piavca.SpeechToText'.SpeechToText.__init__()=Piavca.SpeechToText%27.SpeechToText-class.html#__init__,Method Piavca.Split.Split.__init__()=Piavca.Split.Split-class.html#__init__,Method Piavca.StrongConnectivity.StronglyConnectedComponents.__init__()=Piavca.StrongConnectivity.StronglyConnectedComponents-class.html#__init__,Method Piavca.Track.Track.__init__()=Piavca.Track.Track-class.html#__init__,Method Piavca.ViewerCanvas.ViewerCanvas.__init__()=Piavca.ViewerCanvas.ViewerCanvas-class.html#__init__,Method Piavca.redirect.outputRedirection.__init__()=Piavca.redirect.outputRedirection-class.html#__init__,Method Piavca.runScriptEngine.PauseCallback.__init__()=Piavca.runScriptEngine.PauseCallback-class.html#__init__,Method Piavca.wxVirtualTracker'.wxVirtualTracker.__init__()=Piavca.wxVirtualTracker%27.wxVirtualTracker-class.html#__init__"><a title="Piavca.AnimationTrack.AnimationInterface.__init__
+Piavca.AnimationTrack.AnimationInterfaceCallback.__init__
+Piavca.AudioMotion'.AudioMotion.__init__
+Piavca.ChoiceMotion.__init__
+Piavca.ClusterMotionGraph'.ClusterMotionGraph.__init__
+Piavca.ConversationInterface.ConversationInterface.__init__
+Piavca.DataStream.DataSequence.__init__
+Piavca.DataStream.IntSequenceDisplay.__init__
+Piavca.DataStream.IntegerDataSequence.__init__
+Piavca.DataStream.SequenceDisplay.__init__
+Piavca.EigenAnalysis'.EigenAnalysis.__init__
+Piavca.EigenMotion'.EigenMotion.__init__
+Piavca.EigenMotion'.PCAMotion.__init__
+Piavca.ExpMap.ExpMapMotion.__init__
+Piavca.ExpMap.LogMapMotion.__init__
+Piavca.ExpMap.TangentSpace.__init__
+Piavca.ExpMap.TangentSpaceMotion.__init__
+Piavca.FSM'.FSM.__init__
+Piavca.FSM'.FSMLoop.__init__
+Piavca.FootPlantOnSpot'.FootPlantOnSpot.__init__
+Piavca.FreeCameraCanvas.FreeCameraCanvas.__init__
+Piavca.GraphSearch.SearchStrategy.__init__
+Piavca.GraphSearch.Searcher.__init__
+Piavca.GraphSearch.bfs.__init__
+Piavca.GraphSearch.dfs.__init__
+Piavca.ImportException.PiavcaImportException.__init__
+Piavca.KeyframeMotion.__init__
+Piavca.MaxXAFReader.MaxXAFMotion.__init__
+Piavca.Motion.__init__
+Piavca.MotionFilter.__init__
+Piavca.MotionTracks.MotionTracks.__init__
+Piavca.PCA'.PCA.__init__
+Piavca.ParameterMotion'.ParameterMotion.__init__
+Piavca.PiavcaDesigner.AutoCreatorsWindow.AutoCreatorsWindow.__init__
+Piavca.PiavcaDesigner.AvatarList.AvatarList.__init__
+Piavca.PiavcaDesigner.BackEnd.BackEnd.__init__
+Piavca.PiavcaDesigner.EventList.EventList.__init__
+Piavca.PiavcaDesigner.GenericList.GenericList.__init__
+Piavca.PiavcaDesigner.HeirarchyView.HeirarchyView.__init__
+Piavca.PiavcaDesigner.ListBoxController.ListBoxController.__init__
+Piavca.PiavcaDesigner.MotionGroup.MotionGroup.__init__
+Piavca.PiavcaDesigner.MotionGroup.TreeLines.__init__
+Piavca.PiavcaDesigner.MotionProxy.MotionProxy.__init__
+Piavca.PiavcaDesigner.MotionView.MotionDropTarget.__init__
+Piavca.PiavcaDesigner.MotionView.MotionView.__init__
+Piavca.PiavcaDesigner.MotionsList.MotionList.__init__
+Piavca.PiavcaDesigner.ParameterControls.ParamEntry.__init__
+Piavca.PiavcaDesigner.ParameterWindow.ParameterWindow.__init__
+Piavca.PiavcaDesigner.PiavcaDesigner'.PiavcaDesigner.__init__
+Piavca.PiavcaDesigner.PlayControls.PlayControls.__init__
+Piavca.PiavcaDesigner.TimeLine.TimeLine.__init__
+Piavca.PiavcaWXApp.PiavcaWXApp.__init__
+Piavca.PiavcaWXApp.PiavcaWXFrame.__init__
+Piavca.PiavcaWXCanvas.PiavcaWXCanvasBase.__init__
+Piavca.Piavca_base.Piavca_base.Avatar.__init__
+Piavca.Piavca_base.Piavca_base.AvatarMotion.__init__
+Piavca.Piavca_base.Piavca_base.AvatarMotionQueue.__init__
+Piavca.Piavca_base.Piavca_base.AvatarPosture.__init__
+Piavca.Piavca_base.Piavca_base.AvatarPostureBlend.__init__
+Piavca.Piavca_base.Piavca_base.AvatarTimeCallback.__init__
+Piavca.Piavca_base.Piavca_base.BlendBetween.__init__
+Piavca.Piavca_base.Piavca_base.Bound.__init__
+Piavca.Piavca_base.Piavca_base.ChangeMotionLength.__init__
+Piavca.Piavca_base.Piavca_base.ChoiceMotion.__init__
+Piavca.Piavca_base.Piavca_base.ChoiceMotionWithDefault.__init__
+Piavca.Piavca_base.Piavca_base.Core.__init__
+Piavca.Piavca_base.Piavca_base.CurrentValueMotion.__init__
+Piavca.Piavca_base.Piavca_base.EventMapChoice.__init__
+Piavca.Piavca_base.Piavca_base.ExpMapMotion.__init__
+Piavca.Piavca_base.Piavca_base.KeyframeMotion.__init__
+Piavca.Piavca_base.Piavca_base.LinearTransition.__init__
+Piavca.Piavca_base.Piavca_base.LogMapMotion.__init__
+Piavca.Piavca_base.Piavca_base.LoopMotion.__init__
+Piavca.Piavca_base.Piavca_base.MaskedMotion.__init__
+Piavca.Piavca_base.Piavca_base.Motion.__init__
+Piavca.Piavca_base.Piavca_base.MotionAdder.__init__
+Piavca.Piavca_base.Piavca_base.MotionFilter.__init__
+Piavca.Piavca_base.Piavca_base.MotionGraph.__init__
+Piavca.Piavca_base.Piavca_base.MotionMask.__init__
+Piavca.Piavca_base.Piavca_base.MotionPosture.__init__
+Piavca.Piavca_base.Piavca_base.MotionTransition.__init__
+Piavca.Piavca_base.Piavca_base.MultiBlend.__init__
+Piavca.Piavca_base.Piavca_base.MultiMotionCombiner.__init__
+Piavca.Piavca_base.Piavca_base.Object.__init__
+Piavca.Piavca_base.Piavca_base.OverrideMotion.__init__
+Piavca.Piavca_base.Piavca_base.PointAt.__init__
+Piavca.Piavca_base.Piavca_base.PostureBlend.__init__
+Piavca.Piavca_base.Piavca_base.Proxemics.__init__
+Piavca.Piavca_base.Piavca_base.PySwigIterator.__init__
+Piavca.Piavca_base.Piavca_base.Quat.__init__
+Piavca.Piavca_base.Piavca_base.RandomChoiceMotion.__init__
+Piavca.Piavca_base.Piavca_base.RandomTimingsMotion.__init__
+Piavca.Piavca_base.Piavca_base.Reposition.__init__
+Piavca.Piavca_base.Piavca_base.ScaleMotion.__init__
+Piavca.Piavca_base.Piavca_base.ScaleMotionRoot.__init__
+Piavca.Piavca_base.Piavca_base.ScaleMotionSpeed.__init__
+Piavca.Piavca_base.Piavca_base.Sequence.__init__
+Piavca.Piavca_base.Piavca_base.SequentialChoiceMotion.__init__
+Piavca.Piavca_base.Piavca_base.SmoothLoop.__init__
+Piavca.Piavca_base.Piavca_base.SmoothSequence.__init__
+Piavca.Piavca_base.Piavca_base.SmoothTransition.__init__
+Piavca.Piavca_base.Piavca_base.SubMotion.__init__
+Piavca.Piavca_base.Piavca_base.Subtract.__init__
+Piavca.Piavca_base.Piavca_base.TangentSpace.__init__
+Piavca.Piavca_base.Piavca_base.TimeCallback.__init__
+Piavca.Piavca_base.Piavca_base.TimeOffset.__init__
+Piavca.Piavca_base.Piavca_base.TimeRangeMotion.__init__
+Piavca.Piavca_base.Piavca_base.TimeWarp.__init__
+Piavca.Piavca_base.Piavca_base.TransitionFunction.__init__
+Piavca.Piavca_base.Piavca_base.TwoMotionCombiner.__init__
+Piavca.Piavca_base.Piavca_base.Vec.__init__
+Piavca.Piavca_base.Piavca_base.ZeroMotion.__init__
+Piavca.Piavca_base.Piavca_base.queueElement.__init__
+Piavca.Piavca_base.Piavca_base.vectorI.__init__
+Piavca.Piavca_base.Piavca_base.vectorS.__init__
+Piavca.PositionHandler.PositionHandler.__init__
+Piavca.PositionHandler.PositionResponse.__init__
+Piavca.PositionHandler.PositionShiftResponse.__init__
+Piavca.ScriptEngine'.ScriptEngine.__init__
+Piavca.ScriptEngine'.backgroundMotionCallback.__init__
+Piavca.ScriptEngine'.eventCallback.__init__
+Piavca.ScriptEngine'.motionCallback.__init__
+Piavca.ScriptEngine'.sayCallback.__init__
+Piavca.ScriptEngine'.scriptCallback.__init__
+Piavca.ScriptEngine'.soundCallback.__init__
+Piavca.ScriptEngine'.stopMotionCallback.__init__
+Piavca.SoundEngine.SoundEngine.__init__
+Piavca.SpeechToText'.SpeechToText.__init__
+Piavca.Split.Split.__init__
+Piavca.StrongConnectivity.StronglyConnectedComponents.__init__
+Piavca.Track.Track.__init__
+Piavca.ViewerCanvas.ViewerCanvas.__init__
+Piavca.redirect.outputRedirection.__init__
+Piavca.runScriptEngine.PauseCallback.__init__
+Piavca.wxVirtualTracker'.wxVirtualTracker.__init__" class="py-name" href="#" onclick="return doclink('link-3', '__init__', 'link-3');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt><tt class="py-name">G</tt><tt class="py-op">,</tt><tt id="link-4" class="py-name"><a title="Piavca.GraphSearch" class="py-name" href="#" onclick="return doclink('link-4', 'GraphSearch', 'link-0');">GraphSearch</a></tt><tt class="py-op">.</tt><tt id="link-5" class="py-name" targets="Class Piavca.GraphSearch.dfs=Piavca.GraphSearch.dfs-class.html"><a title="Piavca.GraphSearch.dfs" class="py-name" href="#" onclick="return doclink('link-5', 'dfs', 'link-5');">dfs</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">        <tt class="py-comment"># clean up now-useless data structures</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">        <tt class="py-keyword">del</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_dfsnumber</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_activelen</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_active</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_low</tt> </tt>
+</div><a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line"> </tt>
+<a name="StronglyConnectedComponents.__iter__"></a><div id="StronglyConnectedComponents.__iter__-def"><a name="L44"></a><tt class="py-lineno"> 44</tt> <a class="py-toggle" href="#" id="StronglyConnectedComponents.__iter__-toggle" onclick="return toggle('StronglyConnectedComponents.__iter__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.StrongConnectivity.StronglyConnectedComponents-class.html#__iter__">__iter__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="StronglyConnectedComponents.__iter__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="StronglyConnectedComponents.__iter__-expanded"><a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">        <tt class="py-docstring">"""Return iterator for sequence of strongly connected components."""</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">iter</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_components</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line"> </tt>
+<a name="StronglyConnectedComponents._component"></a><div id="StronglyConnectedComponents._component-def"><a name="L48"></a><tt class="py-lineno"> 48</tt> <a class="py-toggle" href="#" id="StronglyConnectedComponents._component-toggle" onclick="return toggle('StronglyConnectedComponents._component');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.StrongConnectivity.StronglyConnectedComponents-class.html#_component">_component</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">vertices</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="StronglyConnectedComponents._component-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="StronglyConnectedComponents._component-expanded"><a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">        <tt class="py-docstring">"""Make a new SCC."""</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">        <tt class="py-name">vertices</tt> <tt class="py-op">=</tt> <tt class="py-name">set</tt><tt class="py-op">(</tt><tt class="py-name">vertices</tt><tt class="py-op">)</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">        <tt class="py-name">induced</tt> <tt class="py-op">=</tt> <tt class="py-name">dict</tt><tt class="py-op">(</tt><tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-name">v</tt><tt class="py-op">,</tt><tt class="py-name">set</tt><tt class="py-op">(</tt><tt class="py-op">[</tt><tt class="py-name">w</tt> <tt class="py-keyword">for</tt> <tt class="py-name">w</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_graph</tt><tt class="py-op">[</tt><tt class="py-name">v</tt><tt class="py-op">]</tt> <tt class="py-keyword">if</tt> <tt class="py-name">w</tt> <tt class="py-keyword">in</tt> <tt class="py-name">vertices</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">                        <tt class="py-keyword">for</tt> <tt class="py-name">v</tt> <tt class="py-keyword">in</tt> <tt class="py-name">vertices</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_components</tt><tt class="py-op">.</tt><tt id="link-6" class="py-name" targets="Method Piavca.Piavca_base.Piavca_base.vectorI.append()=Piavca.Piavca_base.Piavca_base.vectorI-class.html#append,Method Piavca.Piavca_base.Piavca_base.vectorS.append()=Piavca.Piavca_base.Piavca_base.vectorS-class.html#append"><a title="Piavca.Piavca_base.Piavca_base.vectorI.append
+Piavca.Piavca_base.Piavca_base.vectorS.append" class="py-name" href="#" onclick="return doclink('link-6', 'append', 'link-6');">append</a></tt><tt class="py-op">(</tt><tt class="py-name">induced</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"> </tt>
+<a name="StronglyConnectedComponents.preorder"></a><div id="StronglyConnectedComponents.preorder-def"><a name="L55"></a><tt class="py-lineno"> 55</tt> <a class="py-toggle" href="#" id="StronglyConnectedComponents.preorder-toggle" onclick="return toggle('StronglyConnectedComponents.preorder');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.StrongConnectivity.StronglyConnectedComponents-class.html#preorder">preorder</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">parent</tt><tt class="py-op">,</tt><tt class="py-param">child</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="StronglyConnectedComponents.preorder-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="StronglyConnectedComponents.preorder-expanded"><a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">        <tt class="py-docstring">"""Handle first visit to vertex in DFS search for components."""</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">parent</tt> <tt class="py-op">==</tt> <tt class="py-name">child</tt><tt class="py-op">:</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_active</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_activelen</tt><tt class="py-op">[</tt><tt class="py-name">child</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_active</tt><tt class="py-op">)</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_active</tt><tt class="py-op">.</tt><tt id="link-7" class="py-name"><a title="Piavca.Piavca_base.Piavca_base.vectorI.append
+Piavca.Piavca_base.Piavca_base.vectorS.append" class="py-name" href="#" onclick="return doclink('link-7', 'append', 'link-6');">append</a></tt><tt class="py-op">(</tt><tt class="py-name">child</tt><tt class="py-op">)</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_low</tt><tt class="py-op">[</tt><tt class="py-name">child</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_dfsnumber</tt><tt class="py-op">[</tt><tt class="py-name">child</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_dfsnumber</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line"> </tt>
+<a name="StronglyConnectedComponents.backedge"></a><div id="StronglyConnectedComponents.backedge-def"><a name="L63"></a><tt class="py-lineno"> 63</tt> <a class="py-toggle" href="#" id="StronglyConnectedComponents.backedge-toggle" onclick="return toggle('StronglyConnectedComponents.backedge');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.StrongConnectivity.StronglyConnectedComponents-class.html#backedge">backedge</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">source</tt><tt class="py-op">,</tt><tt class="py-param">destination</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="StronglyConnectedComponents.backedge-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="StronglyConnectedComponents.backedge-expanded"><a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">        <tt class="py-docstring">"""Handle non-tree edge in DFS search for components."""</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_low</tt><tt class="py-op">[</tt><tt class="py-name">source</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">min</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_low</tt><tt class="py-op">[</tt><tt class="py-name">source</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_low</tt><tt class="py-op">[</tt><tt class="py-name">destination</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line"> </tt>
+<a name="StronglyConnectedComponents.postorder"></a><div id="StronglyConnectedComponents.postorder-def"><a name="L67"></a><tt class="py-lineno"> 67</tt> <a class="py-toggle" href="#" id="StronglyConnectedComponents.postorder-toggle" onclick="return toggle('StronglyConnectedComponents.postorder');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.StrongConnectivity.StronglyConnectedComponents-class.html#postorder">postorder</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">parent</tt><tt class="py-op">,</tt><tt class="py-param">child</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="StronglyConnectedComponents.postorder-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="StronglyConnectedComponents.postorder-expanded"><a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">        <tt class="py-docstring">"""Handle last visit to vertex in DFS search for components."""</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_low</tt><tt class="py-op">[</tt><tt class="py-name">child</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_dfsnumber</tt><tt class="py-op">[</tt><tt class="py-name">child</tt><tt class="py-op">]</tt><tt class="py-op">:</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-8" class="py-name" targets="Method Piavca.StrongConnectivity.StronglyConnectedComponents._component()=Piavca.StrongConnectivity.StronglyConnectedComponents-class.html#_component"><a title="Piavca.StrongConnectivity.StronglyConnectedComponents._component" class="py-name" href="#" onclick="return doclink('link-8', '_component', 'link-8');">_component</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_active</tt><tt class="py-op">[</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_activelen</tt><tt class="py-op">[</tt><tt class="py-name">child</tt><tt class="py-op">]</tt><tt class="py-op">:</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">v</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_components</tt><tt class="py-op">[</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">:</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_low</tt><tt class="py-op">[</tt><tt class="py-name">v</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_biglow</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">            <tt class="py-keyword">del</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_active</tt><tt class="py-op">[</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_activelen</tt><tt class="py-op">[</tt><tt class="py-name">child</tt><tt class="py-op">]</tt><tt class="py-op">:</tt><tt class="py-op">]</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_low</tt><tt class="py-op">[</tt><tt class="py-name">parent</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">min</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_low</tt><tt class="py-op">[</tt><tt class="py-name">parent</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_low</tt><tt class="py-op">[</tt><tt class="py-name">child</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line"> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line"><tt class="py-comment"># If run as "python StrongConnectivity.py", run tests on various small graphs</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line"><tt class="py-comment"># and check that the correct results are obtained.</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line"> </tt>
+<a name="StrongConnectivityTest"></a><div id="StrongConnectivityTest-def"><a name="L80"></a><tt class="py-lineno"> 80</tt> <a class="py-toggle" href="#" id="StrongConnectivityTest-toggle" onclick="return toggle('StrongConnectivityTest');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="Piavca.StrongConnectivity.StrongConnectivityTest-class.html">StrongConnectivityTest</a><tt class="py-op">(</tt><tt class="py-base-class">unittest</tt><tt class="py-op">.</tt><tt class="py-base-class">TestCase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="StrongConnectivityTest-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="StrongConnectivityTest-expanded"><a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">    <tt id="link-9" class="py-name" targets="Variable Piavca.StrongConnectivity.StrongConnectivityTest.G1=Piavca.StrongConnectivity.StrongConnectivityTest-class.html#G1"><a title="Piavca.StrongConnectivity.StrongConnectivityTest.G1" class="py-name" href="#" onclick="return doclink('link-9', 'G1', 'link-9');">G1</a></tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-number">1</tt><tt class="py-op">:</tt><tt class="py-op">[</tt><tt class="py-number">2</tt><tt class="py-op">,</tt><tt class="py-number">3</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-number">2</tt><tt class="py-op">:</tt><tt class="py-op">[</tt><tt class="py-number">4</tt><tt class="py-op">,</tt><tt class="py-number">5</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-number">3</tt><tt class="py-op">:</tt><tt class="py-op">[</tt><tt class="py-number">4</tt><tt class="py-op">,</tt><tt class="py-number">5</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-number">4</tt><tt class="py-op">:</tt><tt class="py-op">[</tt><tt class="py-number">6</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-number">5</tt><tt class="py-op">:</tt><tt class="py-op">[</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-number">6</tt><tt class="py-op">:</tt><tt class="py-op">[</tt><tt class="py-op">]</tt> <tt class="py-op">}</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">    <tt id="link-10" class="py-name" targets="Variable Piavca.StrongConnectivity.StrongConnectivityTest.C1=Piavca.StrongConnectivity.StrongConnectivityTest-class.html#C1"><a title="Piavca.StrongConnectivity.StrongConnectivityTest.C1" class="py-name" href="#" onclick="return doclink('link-10', 'C1', 'link-10');">C1</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt class="py-op">[</tt><tt class="py-number">2</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt class="py-op">[</tt><tt class="py-number">3</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt class="py-op">[</tt><tt class="py-number">4</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt class="py-op">[</tt><tt class="py-number">5</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt class="py-op">[</tt><tt class="py-number">6</tt><tt class="py-op">]</tt><tt class="py-op">]</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">     </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">    <tt id="link-11" class="py-name" targets="Variable Piavca.StrongConnectivity.StrongConnectivityTest.G2=Piavca.StrongConnectivity.StrongConnectivityTest-class.html#G2"><a title="Piavca.StrongConnectivity.StrongConnectivityTest.G2" class="py-name" href="#" onclick="return doclink('link-11', 'G2', 'link-11');">G2</a></tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-number">1</tt><tt class="py-op">:</tt><tt class="py-op">[</tt><tt class="py-number">2</tt><tt class="py-op">,</tt><tt class="py-number">3</tt><tt class="py-op">,</tt><tt class="py-number">4</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-number">2</tt><tt class="py-op">:</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">3</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-number">3</tt><tt class="py-op">:</tt><tt class="py-op">[</tt><tt class="py-number">4</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-number">4</tt><tt class="py-op">:</tt><tt class="py-op">[</tt><tt class="py-number">3</tt><tt class="py-op">]</tt> <tt class="py-op">}</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">    <tt id="link-12" class="py-name" targets="Variable Piavca.StrongConnectivity.StrongConnectivityTest.C2=Piavca.StrongConnectivity.StrongConnectivityTest-class.html#C2"><a title="Piavca.StrongConnectivity.StrongConnectivityTest.C2" class="py-name" href="#" onclick="return doclink('link-12', 'C2', 'link-12');">C2</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">1</tt><tt class="py-op">,</tt><tt class="py-number">2</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt class="py-op">[</tt><tt class="py-number">3</tt><tt class="py-op">,</tt><tt class="py-number">4</tt><tt class="py-op">]</tt><tt class="py-op">]</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">     </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">    <tt id="link-13" class="py-name" targets="Variable Piavca.StrongConnectivity.StrongConnectivityTest.knownpairs=Piavca.StrongConnectivity.StrongConnectivityTest-class.html#knownpairs"><a title="Piavca.StrongConnectivity.StrongConnectivityTest.knownpairs" class="py-name" href="#" onclick="return doclink('link-13', 'knownpairs', 'link-13');">knownpairs</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">(</tt><tt id="link-14" class="py-name"><a title="Piavca.StrongConnectivity.StrongConnectivityTest.G1" class="py-name" href="#" onclick="return doclink('link-14', 'G1', 'link-9');">G1</a></tt><tt class="py-op">,</tt><tt id="link-15" class="py-name"><a title="Piavca.StrongConnectivity.StrongConnectivityTest.C1" class="py-name" href="#" onclick="return doclink('link-15', 'C1', 'link-10');">C1</a></tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-op">(</tt><tt id="link-16" class="py-name"><a title="Piavca.StrongConnectivity.StrongConnectivityTest.G2" class="py-name" href="#" onclick="return doclink('link-16', 'G2', 'link-11');">G2</a></tt><tt class="py-op">,</tt><tt id="link-17" class="py-name"><a title="Piavca.StrongConnectivity.StrongConnectivityTest.C2" class="py-name" href="#" onclick="return doclink('link-17', 'C2', 'link-12');">C2</a></tt><tt class="py-op">)</tt><tt class="py-op">]</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"> </tt>
+<a name="StrongConnectivityTest.testStronglyConnectedComponents"></a><div id="StrongConnectivityTest.testStronglyConnectedComponents-def"><a name="L89"></a><tt class="py-lineno"> 89</tt> <a class="py-toggle" href="#" id="StrongConnectivityTest.testStronglyConnectedComponents-toggle" onclick="return toggle('StrongConnectivityTest.testStronglyConnectedComponents');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.StrongConnectivity.StrongConnectivityTest-class.html#testStronglyConnectedComponents">testStronglyConnectedComponents</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="StrongConnectivityTest.testStronglyConnectedComponents-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="StrongConnectivityTest.testStronglyConnectedComponents-expanded"><a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">        <tt class="py-docstring">"""Check known graph/component pairs."""</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-op">(</tt><tt class="py-name">graph</tt><tt class="py-op">,</tt><tt class="py-name">expectedoutput</tt><tt class="py-op">)</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name"><a title="Piavca.StrongConnectivity.StrongConnectivityTest.knownpairs" class="py-name" href="#" onclick="return doclink('link-18', 'knownpairs', 'link-13');">knownpairs</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">            <tt id="link-19" class="py-name" targets="Method Piavca.Piavca_base.Piavca_base.Core.output()=Piavca.Piavca_base.Piavca_base.Core-class.html#output"><a title="Piavca.Piavca_base.Piavca_base.Core.output" class="py-name" href="#" onclick="return doclink('link-19', 'output', 'link-19');">output</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-name">list</tt><tt class="py-op">(</tt><tt class="py-name">C</tt><tt class="py-op">)</tt> <tt class="py-keyword">for</tt> <tt class="py-name">C</tt> <tt class="py-keyword">in</tt> <tt id="link-20" class="py-name" targets="Class Piavca.StrongConnectivity.StronglyConnectedComponents=Piavca.StrongConnectivity.StronglyConnectedComponents-class.html"><a title="Piavca.StrongConnectivity.StronglyConnectedComponents" class="py-name" href="#" onclick="return doclink('link-20', 'StronglyConnectedComponents', 'link-20');">StronglyConnectedComponents</a></tt><tt class="py-op">(</tt><tt class="py-name">graph</tt><tt class="py-op">)</tt><tt class="py-op">]</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">component</tt> <tt class="py-keyword">in</tt> <tt id="link-21" class="py-name"><a title="Piavca.Piavca_base.Piavca_base.Core.output" class="py-name" href="#" onclick="return doclink('link-21', 'output', 'link-19');">output</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">                <tt class="py-name">component</tt><tt class="py-op">.</tt><tt class="py-name">sort</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">            <tt id="link-22" class="py-name"><a title="Piavca.Piavca_base.Piavca_base.Core.output" class="py-name" href="#" onclick="return doclink('link-22', 'output', 'link-19');">output</a></tt><tt class="py-op">.</tt><tt class="py-name">sort</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">assertEqual</tt><tt class="py-op">(</tt><tt id="link-23" class="py-name"><a title="Piavca.Piavca_base.Piavca_base.Core.output" class="py-name" href="#" onclick="return doclink('link-23', 'output', 'link-19');">output</a></tt><tt class="py-op">,</tt><tt class="py-name">expectedoutput</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"> </tt>
+<a name="StrongConnectivityTest.testSubgraph"></a><div id="StrongConnectivityTest.testSubgraph-def"><a name="L98"></a><tt class="py-lineno"> 98</tt> <a class="py-toggle" href="#" id="StrongConnectivityTest.testSubgraph-toggle" onclick="return toggle('StrongConnectivityTest.testSubgraph');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Piavca.StrongConnectivity.StrongConnectivityTest-class.html#testSubgraph">testSubgraph</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="StrongConnectivityTest.testSubgraph-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="StrongConnectivityTest.testSubgraph-expanded"><a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">        <tt class="py-docstring">"""Check that each SCC is an induced subgraph."""</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-op">(</tt><tt class="py-name">graph</tt><tt class="py-op">,</tt><tt class="py-name">expectedoutput</tt><tt class="py-op">)</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-24" class="py-name"><a title="Piavca.StrongConnectivity.StrongConnectivityTest.knownpairs" class="py-name" href="#" onclick="return doclink('link-24', 'knownpairs', 'link-13');">knownpairs</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">            <tt class="py-name">components</tt> <tt class="py-op">=</tt> <tt id="link-25" class="py-name"><a title="Piavca.StrongConnectivity.StronglyConnectedComponents" class="py-name" href="#" onclick="return doclink('link-25', 'StronglyConnectedComponents', 'link-20');">StronglyConnectedComponents</a></tt><tt class="py-op">(</tt><tt class="py-name">graph</tt><tt class="py-op">)</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">C</tt> <tt class="py-keyword">in</tt> <tt class="py-name">components</tt><tt class="py-op">:</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">                <tt class="py-keyword">for</tt> <tt class="py-name">v</tt> <tt class="py-keyword">in</tt> <tt class="py-name">C</tt><tt class="py-op">:</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">                    <tt class="py-keyword">for</tt> <tt class="py-name">w</tt> <tt class="py-keyword">in</tt> <tt class="py-name">graph</tt><tt class="py-op">:</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">assertEqual</tt><tt class="py-op">(</tt><tt class="py-name">w</tt> <tt class="py-keyword">in</tt> <tt class="py-name">graph</tt><tt class="py-op">[</tt><tt class="py-name">v</tt><tt class="py-op">]</tt> <tt class="py-keyword">and</tt> <tt class="py-name">w</tt> <tt class="py-keyword">in</tt> <tt class="py-name">C</tt><tt class="py-op">,</tt> <tt class="py-name">w</tt> <tt class="py-keyword">in</tt> <tt class="py-name">C</tt><tt class="py-op">[</tt><tt class="py-name">v</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line"> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt class="py-name">__name__</tt> <tt class="py-op">==</tt> <tt class="py-string">"__main__"</tt><tt class="py-op">:</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">    <tt class="py-name">unittest</tt><tt class="py-op">.</tt><tt class="py-name">main</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="Piavca-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Oct 15 20:02:37 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

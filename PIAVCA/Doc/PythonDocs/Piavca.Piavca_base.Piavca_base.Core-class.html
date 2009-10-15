@@ -1,0 +1,2344 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Piavca.Piavca_base.Piavca_base.Core</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="Piavca-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="Piavca-module.html">Package&nbsp;Piavca</a> ::
+        Package&nbsp;Piavca_base ::
+        <a href="Piavca.Piavca_base.Piavca_base-module.html">Module&nbsp;Piavca_base</a> ::
+        Class&nbsp;Core
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="Piavca.Piavca_base.Piavca_base.Core-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class Core</h1><p class="nomargin-top"><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+<a href="Piavca.Piavca_base.Piavca_base._object-class.html" onclick="show_private();">_object</a> --+
+          |
+         <strong class="uidshort">Core</strong>
+</pre>
+
+<hr />
+<p>The core object is the central controller of the Piavca system.</p>
+  <p>It maintains a list of avatars, and some motions. It has a list of 
+  global callbacks that are called every frame. It handles allocation of 
+  Joint IDs. It deals with initialisation and shut down and per frame 
+  events. It also manages creation of avatar and motions. There is only 
+  ever one core object (held as the core static member of the class).      
+  see also: PiavcaCore.h</p>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__init__"></a><span class="summary-sig-name">__init__</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__repr__"></a><span class="summary-sig-name">__repr__</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#_swig_repr">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="reset"></a><span class="summary-sig-name">reset</span>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Core::reset()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.reset">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#getCore" class="summary-sig-name">getCore</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      static Core* Piavca::Core::getCore()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getCore">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#registerCallback" class="summary-sig-name">registerCallback</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Core::registerCallback(TimeCallback *cb)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.registerCallback">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#timeStep" class="summary-sig-name">timeStep</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Core::timeStep(float time)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.timeStep">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#prerender" class="summary-sig-name">prerender</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Core::prerender()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.prerender">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#render" class="summary-sig-name">render</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Core::render()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.render">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="setHardware"></a><span class="summary-sig-name">setHardware</span>(<span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.setHardware">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getHardware"></a><span class="summary-sig-name">getHardware</span>(<span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getHardware">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#getJointId" class="summary-sig-name">getJointId</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      int Core::getJointId(tstring name)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getJointId">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#getMaxJointId" class="summary-sig-name">getMaxJointId</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      int Piavca::Core::getMaxJointId()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getMaxJointId">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#addJointNameSet" class="summary-sig-name">addJointNameSet</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Core::addJointNameSet(StringVector names)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.addJointNameSet">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#getJointName" class="summary-sig-name">getJointName</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      tstring Core::getJointName(int jointId)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getJointName">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#getJointNameAssociations" class="summary-sig-name">getJointNameAssociations</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      std::vector&lt; std::pair&lt; tstring, int &gt; &gt; 
+      Core::getJointNameAssociations()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getJointNameAssociations">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#getExpressionId" class="summary-sig-name">getExpressionId</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      int Core::getExpressionId(tstring name)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getExpressionId">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#getMaxExpressionId" class="summary-sig-name">getMaxExpressionId</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      int Piavca::Core::getMaxExpressionId()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getMaxExpressionId">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#addExpressionNameSet" class="summary-sig-name">addExpressionNameSet</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Core::addExpressionNameSet(StringVector names)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.addExpressionNameSet">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#getExpressionName" class="summary-sig-name">getExpressionName</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      tstring Core::getExpressionName(int expressionId)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getExpressionName">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#getExpressionNameAssociations" class="summary-sig-name">getExpressionNameAssociations</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      std::vector&lt; std::pair&lt; tstring, int &gt; &gt; 
+      Core::getExpressionNameAssociations()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getExpressionNameAssociations">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getTrackId"></a><span class="summary-sig-name">getTrackId</span>(<span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getTrackId">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getMaxTrackId"></a><span class="summary-sig-name">getMaxTrackId</span>(<span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getMaxTrackId">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getMinTrackId"></a><span class="summary-sig-name">getMinTrackId</span>(<span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getMinTrackId">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getTrackName"></a><span class="summary-sig-name">getTrackName</span>(<span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getTrackName">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getTrackNameAssociations"></a><span class="summary-sig-name">getTrackNameAssociations</span>(<span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getTrackNameAssociations">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#loadMotion" class="summary-sig-name">loadMotion</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Core::loadMotion(tstring motionName, Motion *mot, bool 
+      temp=false, Motion *basePosture=NULL)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.loadMotion">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#renameMotion" class="summary-sig-name">renameMotion</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Core::renameMotion(tstring oldName, tstring newName)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.renameMotion">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#unloadMotion" class="summary-sig-name">unloadMotion</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Core::unloadMotion(tstring name)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.unloadMotion">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#getMotionNames" class="summary-sig-name">getMotionNames</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      PIAVCA_EXPORT std::vector&lt; std::string &gt; 
+      Core::getMotionNames(int number=0)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getMotionNames">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#getNumberOfMotions" class="summary-sig-name">getNumberOfMotions</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      int Piavca::Core::getNumberOfMotions()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getNumberOfMotions">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#getAllmotions" class="summary-sig-name">getAllmotions</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      PIAVCA_EXPORT std::list&lt; tstring &gt; Core::getAllmotions()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getAllmotions">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#getMotion" class="summary-sig-name">getMotion</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      Motion* Piavca::Core::getMotion(int i)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getMotion">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="loadAvatar"></a><span class="summary-sig-name">loadAvatar</span>(<span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.loadAvatar">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getAvatarNames"></a><span class="summary-sig-name">getAvatarNames</span>(<span class="summary-sig-arg">*args</span>)</span><br />
+      std::vector&lt; tstring &gt; Core::getAvatarNames()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getAvatarNames">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#numAvatars" class="summary-sig-name">numAvatars</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      int Piavca::Core::numAvatars()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.numAvatars">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#getAvatar" class="summary-sig-name">getAvatar</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      Avatar * Core::getAvatar(int i)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getAvatar">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#renameAvatar" class="summary-sig-name">renameAvatar</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Core::renameAvatar(tstring oldName, tstring newName)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.renameAvatar">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#removeAvatar" class="summary-sig-name">removeAvatar</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Core::removeAvatar(Avatar *avatar)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.removeAvatar">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#initAvatar" class="summary-sig-name">initAvatar</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Core::initAvatar(Avatar *avatar, tstring avatarId, bool 
+      bailOnMissedJoints=false, const Vec &amp;Position=Vec(0.0, 0.0, 0.0),
+      const Quat &amp;Orientation=Quat(1.0, 0.0, 0.0, 0.0))</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.initAvatar">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#numObjects" class="summary-sig-name">numObjects</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      int Piavca::Core::numObjects()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.numObjects">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#getObject" class="summary-sig-name">getObject</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      Object * Core::getObject(int i)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getObject">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#renameObject" class="summary-sig-name">renameObject</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Core::renameObject(tstring oldName, tstring newName)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.renameObject">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#removeObject" class="summary-sig-name">removeObject</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Core::removeObject(Object *object)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.removeObject">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#initObject" class="summary-sig-name">initObject</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Core::initObject(Object *object, tstring objectId, const Vec 
+      &amp;Position=Vec(0.0, 0.0, 0.0), const Quat 
+      &amp;Orientation=Quat(1.0, 0.0, 0.0, 0.0))</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.initObject">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#initMotion" class="summary-sig-name">initMotion</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Core::initMotion(TrackMotion *mot, tstring 
+      filename=_PSTR(&quot;&quot;), bool facial=false, int flags=0, Motion 
+      *basePosture=NULL)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.initMotion">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#setDir" class="summary-sig-name">setDir</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Piavca::Core::setDir(tstring _dir)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.setDir">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#getTime" class="summary-sig-name">getTime</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      float Piavca::Core::getTime()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getTime">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#getSystemTime" class="summary-sig-name">getSystemTime</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      virtual float Piavca::Core::getSystemTime()=0</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getSystemTime">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#setAutoTimeOff" class="summary-sig-name">setAutoTimeOff</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Piavca::Core::setAutoTimeOff()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.setAutoTimeOff">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#setAutoTimeOn" class="summary-sig-name">setAutoTimeOn</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Piavca::Core::setAutoTimeOn()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.setAutoTimeOn">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#setCurrentTime" class="summary-sig-name">setCurrentTime</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Piavca::Core::setCurrentTime(float t)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.setCurrentTime">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="addError"></a><span class="summary-sig-name">addError</span>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Core::addError(tstring details)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.addError">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="error"></a><span class="summary-sig-name">error</span>(<span class="summary-sig-arg">*args</span>)</span><br />
+      tostringstream&amp; Piavca::Core::error()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.error">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="clearErrors"></a><span class="summary-sig-name">clearErrors</span>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Core::clearErrors()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.clearErrors">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getErrors"></a><span class="summary-sig-name">getErrors</span>(<span class="summary-sig-arg">*args</span>)</span><br />
+      tstring Piavca::Core::getErrors()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getErrors">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="errorsPresent"></a><span class="summary-sig-name">errorsPresent</span>(<span class="summary-sig-arg">*args</span>)</span><br />
+      bool Piavca::Core::errorsPresent()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.errorsPresent">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="addWarning"></a><span class="summary-sig-name">addWarning</span>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Core::addWarning(tstring details)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.addWarning">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="Warning"></a><span class="summary-sig-name">Warning</span>(<span class="summary-sig-arg">*args</span>)</span><br />
+      tostringstream&amp; Piavca::Core::Warning()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.Warning">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="clearWarnings"></a><span class="summary-sig-name">clearWarnings</span>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Core::clearWarnings()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.clearWarnings">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getWarnings"></a><span class="summary-sig-name">getWarnings</span>(<span class="summary-sig-arg">*args</span>)</span><br />
+      tstring Piavca::Core::getWarnings()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getWarnings">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="warningsPresent"></a><span class="summary-sig-name">warningsPresent</span>(<span class="summary-sig-arg">*args</span>)</span><br />
+      bool Piavca::Core::warningsPresent()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.warningsPresent">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="exceptionsOn"></a><span class="summary-sig-name">exceptionsOn</span>(<span class="summary-sig-arg">*args</span>)</span><br />
+      bool Piavca::Core::exceptionsOn()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.exceptionsOn">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="setExceptionsOn"></a><span class="summary-sig-name">setExceptionsOn</span>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Piavca::Core::setExceptionsOn()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.setExceptionsOn">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="setExceptionsOff"></a><span class="summary-sig-name">setExceptionsOff</span>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Piavca::Core::setExceptionsOff()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.setExceptionsOff">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="log"></a><span class="summary-sig-name">log</span>(<span class="summary-sig-arg">*args</span>)</span><br />
+      std::ostream&amp; Piavca::Core::log()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.log">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#addProfilePoint" class="summary-sig-name">addProfilePoint</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      int Piavca::Core::addProfilePoint(tstring name)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.addProfilePoint">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#profilePointStart" class="summary-sig-name">profilePointStart</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Piavca::Core::profilePointStart(int i)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.profilePointStart">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#profilePointEnd" class="summary-sig-name">profilePointEnd</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Piavca::Core::profilePointEnd(int i)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.profilePointEnd">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Piavca.Piavca_base.Piavca_base.Core-class.html#printProfileData" class="summary-sig-name">printProfileData</a>(<span class="summary-sig-arg">*args</span>)</span><br />
+      void Core::printProfileData()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.printProfileData">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="output"></a><span class="summary-sig-name">output</span>(<span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.output">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="message"></a><span class="summary-sig-name">message</span>(<span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.message">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getMessages"></a><span class="summary-sig-name">getMessages</span>(<span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getMessages">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__swig_setmethods__"></a><span class="summary-name">__swig_setmethods__</span> = <code title="{}">{}</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__setattr__"></a><span class="summary-name">__setattr__</span> = <code title="lambda self, name, value:">lambda self, name, value:</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__swig_getmethods__"></a><span class="summary-name">__swig_getmethods__</span> = <code title="{}">{}</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__getattr__"></a><span class="summary-name">__getattr__</span> = <code title="lambda self, name:">lambda self, name:</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__swig_destroy__"></a><span class="summary-name">__swig_destroy__</span> = <code title="_Piavca_base.delete_Core">_Piavca_base.delete_Core</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__del__"></a><span class="summary-name">__del__</span> = <code title="lambda self:">lambda self:</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="nullId"></a><span class="summary-name">nullId</span> = <code title="_Piavca_base.cvar.Core_nullId">_Piavca_base.cvar.Core_nullId</code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="getCore"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getCore</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getCore">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>static Core* Piavca::Core::getCore()</p>
+  <p>a static function to get the core instances (there is only one)</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="registerCallback"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">registerCallback</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.registerCallback">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Core::registerCallback(TimeCallback *cb)</p>
+  <p>registers a callback to be called every frame</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="timeStep"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">timeStep</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.timeStep">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Core::timeStep(float time)</p>
+  <p>Performs all per frame actions Can be run in parallel with the 
+  renderer.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="prerender"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">prerender</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.prerender">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Core::prerender()</p>
+  <p>called before rendering (this cannot be called in parallel with the 
+  render)</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="render"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">render</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.render">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Core::render()</p>
+  <p>On certain platforms this needs to be called to render the 
+  avatars.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getJointId"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getJointId</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getJointId">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>int Core::getJointId(tstring name)</p>
+  <p>methods dealing with joint ids get an id corresponding to a joint 
+  name</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getMaxJointId"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getMaxJointId</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getMaxJointId">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>int Piavca::Core::getMaxJointId()</p>
+  <p>gets the maximum joint id</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="addJointNameSet"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">addJointNameSet</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.addJointNameSet">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Core::addJointNameSet(StringVector names)</p>
+  <p>Adds in a set of joints all of which should have the same id.</p>
+  <p>i.e. all the names correspond to the same joint e.g. (left_foot, 
+  LFoot, LeftFoot, PiedGauche)</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getJointName"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getJointName</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getJointName">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>tstring Core::getJointName(int jointId)</p>
+  <p>returns a name corresponding to a track id (out of many possible)</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getJointNameAssociations"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getJointNameAssociations</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getJointNameAssociations">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>std::vector&lt; std::pair&lt; tstring, int &gt; &gt; 
+  Core::getJointNameAssociations()</p>
+  <p>get all the joint name associations</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getExpressionId"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getExpressionId</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getExpressionId">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>int Core::getExpressionId(tstring name)</p>
+  <p>methods dealing with expression ids get an id corresponding to an 
+  expression name</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getMaxExpressionId"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getMaxExpressionId</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getMaxExpressionId">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>int Piavca::Core::getMaxExpressionId()</p>
+  <p>gets the maximum joint id</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="addExpressionNameSet"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">addExpressionNameSet</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.addExpressionNameSet">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Core::addExpressionNameSet(StringVector names)</p>
+  <p>Adds in a set of joints all of which should have the same id.</p>
+  <p>i.e. all the names correspond to the same joint e.g. (left_foot, 
+  LFoot, LeftFoot, PiedGauche)</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getExpressionName"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getExpressionName</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getExpressionName">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>tstring Core::getExpressionName(int expressionId)</p>
+  <p>returns a name corresponding to a track id (out of many possible)</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getExpressionNameAssociations"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getExpressionNameAssociations</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getExpressionNameAssociations">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>std::vector&lt; std::pair&lt; tstring, int &gt; &gt; 
+  Core::getExpressionNameAssociations()</p>
+  <p>get all the expression name associations</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="loadMotion"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">loadMotion</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.loadMotion">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Core::loadMotion(tstring motionName, Motion *mot, bool 
+  temp=false, Motion *basePosture=NULL)</p>
+  <p>adds a motion to its list of motions</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="renameMotion"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">renameMotion</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.renameMotion">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Core::renameMotion(tstring oldName, tstring newName)</p>
+  <p>changes the name of a motion</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="unloadMotion"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">unloadMotion</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.unloadMotion">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Core::unloadMotion(tstring name)</p>
+  <p>removes the motion from the core and deletes it (NB difference to 
+  disposeMotion)</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getMotionNames"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getMotionNames</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getMotionNames">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>PIAVCA_EXPORT std::vector&lt; std::string &gt; 
+  Core::getMotionNames(int number=0)</p>
+  <p>get motion names</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getNumberOfMotions"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getNumberOfMotions</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getNumberOfMotions">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>int Piavca::Core::getNumberOfMotions()</p>
+  <p>get number of motions</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getAllmotions"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getAllmotions</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getAllmotions">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>PIAVCA_EXPORT std::list&lt; tstring &gt; Core::getAllmotions()</p>
+  <p>get all motion names</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getMotion"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getMotion</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getMotion">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Motion* Piavca::Core::getMotion(int i)</p>
+  <p>get a motion by its (arbitrary) index</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="numAvatars"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">numAvatars</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.numAvatars">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>int Piavca::Core::numAvatars()</p>
+  <p>get the number of avatars</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getAvatar"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getAvatar</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getAvatar">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Avatar * Core::getAvatar(int i)</p>
+  <p>get the ith avatar in the list (used for interating over all 
+  avatars)</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="renameAvatar"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">renameAvatar</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.renameAvatar">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Core::renameAvatar(tstring oldName, tstring newName)</p>
+  <p>changes the name of an avatar</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="removeAvatar"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">removeAvatar</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.removeAvatar">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Core::removeAvatar(Avatar *avatar)</p>
+  <p>removes and avatar</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="initAvatar"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">initAvatar</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.initAvatar">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Core::initAvatar(Avatar *avatar, tstring avatarId, bool 
+  bailOnMissedJoints=false, const Vec &amp;Position=Vec(0.0, 0.0, 0.0), 
+  const Quat &amp;Orientation=Quat(1.0, 0.0, 0.0, 0.0))</p>
+  <p>Initialises an avatar.</p>
+  <p>You pass in a pointer to the avatar and an id with which to initialise
+  it. It creates an implementation object which will actually be a platform
+  dependant sub type of AvatarImp. It then sets some stuff up and stores a 
+  pointer to the avatar.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="numObjects"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">numObjects</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.numObjects">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>int Piavca::Core::numObjects()</p>
+  <p>get the number of avatars</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getObject"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getObject</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getObject">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Object * Core::getObject(int i)</p>
+  <p>get the ith avatar in the list (used for interating over all 
+  avatars)</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="renameObject"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">renameObject</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.renameObject">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Core::renameObject(tstring oldName, tstring newName)</p>
+  <p>changes the name of an avatar</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="removeObject"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">removeObject</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.removeObject">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Core::removeObject(Object *object)</p>
+  <p>removes and avatar</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="initObject"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">initObject</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.initObject">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Core::initObject(Object *object, tstring objectId, const Vec 
+  &amp;Position=Vec(0.0, 0.0, 0.0), const Quat &amp;Orientation=Quat(1.0, 
+  0.0, 0.0, 0.0))</p>
+  <p>Initialises an object.</p>
+  <p>You pass in a pointer to the object and an id with which to initialise
+  it. It creates an implementation object which will actually be a platform
+  dependant sub type of ObjectImp. It then sets some stuff up and stores a 
+  pointer to the object.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="initMotion"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">initMotion</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.initMotion">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Core::initMotion(TrackMotion *mot, tstring 
+  filename=_PSTR(&quot;&quot;), bool facial=false, int flags=0, Motion 
+  *basePosture=NULL)</p>
+  <p>Initialises a TrackMotion object.</p>
+  <p>You pass in a pointer to the TrackMotion and a filename with which to 
+  initialise it. It creates an implementation object which will actually be
+  a platform dependant sub type of MotionImp.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="setDir"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">setDir</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.setDir">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Piavca::Core::setDir(tstring _dir)</p>
+  <p>set the search directory</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getTime"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getTime</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getTime">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>float Piavca::Core::getTime()</p>
+  <p>get the current time in seconds</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getSystemTime"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getSystemTime</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.getSystemTime">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>virtual float Piavca::Core::getSystemTime()=0</p>
+  <p>get the current time in seconds</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="setAutoTimeOff"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">setAutoTimeOff</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.setAutoTimeOff">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Piavca::Core::setAutoTimeOff()</p>
+  <p>turns off the automatic updating of the current time from the system 
+  clock</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="setAutoTimeOn"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">setAutoTimeOn</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.setAutoTimeOn">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Piavca::Core::setAutoTimeOn()</p>
+  <p>turns on the automatic updating of the current time from the system 
+  clock</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="setCurrentTime"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">setCurrentTime</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.setCurrentTime">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Piavca::Core::setCurrentTime(float t)</p>
+  <p>sets the current time (if its not linked to the system clock</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="addProfilePoint"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">addProfilePoint</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.addProfilePoint">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>int Piavca::Core::addProfilePoint(tstring name)</p>
+  <p>creates a new profile point for logging profile data. Returns and id 
+  which can be used to access the profile point. You would normally create 
+  the point id as a static variable within the function you are 
+  profiling.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="profilePointStart"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">profilePointStart</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.profilePointStart">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Piavca::Core::profilePointStart(int i)</p>
+  <p>marks the start of a profile point</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="profilePointEnd"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">profilePointEnd</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.profilePointEnd">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Piavca::Core::profilePointEnd(int i)</p>
+  <p>marks the end of the profile point</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="printProfileData"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">printProfileData</span>(<span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Piavca.Piavca_base.Piavca_base-pysrc.html#Core.printProfileData">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>void Core::printProfileData()</p>
+  <p>prints out the profiling data that has been collected.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="Piavca-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Oct 15 20:02:34 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
