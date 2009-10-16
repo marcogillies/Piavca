@@ -20,12 +20,6 @@ class testApp : public ofBaseApp{
 		void mouseReleased(int x, int y, int button);
 		void windowResized(int w, int h);
 		
-		float 	counter;
-		float	spin;
-		float	spinPct;
-		int		prevMX;
-		int		prevMY;
-		bool 	bFirstMouseMove;
 };
 
 #endif	

@@ -7,6 +7,100 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A94029E1108842F300565676 /* animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028A1108842F300565676 /* animation.cpp */; };
+		A94029E2108842F300565676 /* animation_action.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028A3108842F300565676 /* animation_action.cpp */; };
+		A94029E3108842F300565676 /* animation_cycle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028A5108842F300565676 /* animation_cycle.cpp */; };
+		A94029E4108842F300565676 /* bone.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028A8108842F300565676 /* bone.cpp */; };
+		A94029E5108842F300565676 /* buffersource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028AA108842F300565676 /* buffersource.cpp */; };
+		A94029E9108842F300565676 /* coreanimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028B1108842F300565676 /* coreanimation.cpp */; };
+		A94029EA108842F300565676 /* corebone.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028B3108842F300565676 /* corebone.cpp */; };
+		A94029EB108842F300565676 /* corekeyframe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028B5108842F300565676 /* corekeyframe.cpp */; };
+		A94029EC108842F300565676 /* corematerial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028B7108842F300565676 /* corematerial.cpp */; };
+		A94029ED108842F300565676 /* coremesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028B9108842F300565676 /* coremesh.cpp */; };
+		A94029EE108842F300565676 /* coremodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028BB108842F300565676 /* coremodel.cpp */; };
+		A94029EF108842F300565676 /* coremorphanimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028BD108842F300565676 /* coremorphanimation.cpp */; };
+		A94029F0108842F300565676 /* coreskeleton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028BF108842F300565676 /* coreskeleton.cpp */; };
+		A94029F1108842F300565676 /* coresubmesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028C1108842F300565676 /* coresubmesh.cpp */; };
+		A94029F2108842F300565676 /* coresubmorphtarget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028C3108842F300565676 /* coresubmorphtarget.cpp */; };
+		A94029F3108842F300565676 /* coretrack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028C5108842F300565676 /* coretrack.cpp */; };
+		A94029F4108842F300565676 /* error.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028C8108842F300565676 /* error.cpp */; };
+		A94029F5108842F300565676 /* global.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028CA108842F300565676 /* global.cpp */; };
+		A94029F6108842F300565676 /* hardwaremodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028CC108842F300565676 /* hardwaremodel.cpp */; };
+		A94029F7108842F300565676 /* loader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028CE108842F300565676 /* loader.cpp */; };
+		A94029FA108842F300565676 /* matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028D2108842F300565676 /* matrix.cpp */; };
+		A94029FB108842F300565676 /* mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028D4108842F300565676 /* mesh.cpp */; };
+		A94029FC108842F300565676 /* mixer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028D6108842F300565676 /* mixer.cpp */; };
+		A94029FD108842F300565676 /* model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028D8108842F300565676 /* model.cpp */; };
+		A94029FE108842F300565676 /* morphtargetmixer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028DA108842F300565676 /* morphtargetmixer.cpp */; };
+		A94029FF108842F300565676 /* physique.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028DC108842F300565676 /* physique.cpp */; };
+		A9402A00108842F300565676 /* platform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028DE108842F300565676 /* platform.cpp */; };
+		A9402A01108842F300565676 /* quaternion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028E0108842F300565676 /* quaternion.cpp */; };
+		A9402A02108842F300565676 /* renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028E4108842F300565676 /* renderer.cpp */; };
+		A9402A03108842F300565676 /* saver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028E7108842F300565676 /* saver.cpp */; };
+		A9402A05108842F300565676 /* skeleton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028EA108842F300565676 /* skeleton.cpp */; };
+		A9402A06108842F300565676 /* springsystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028EC108842F300565676 /* springsystem.cpp */; };
+		A9402A07108842F300565676 /* streamsource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028EE108842F300565676 /* streamsource.cpp */; };
+		A9402A08108842F300565676 /* submesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028F0108842F300565676 /* submesh.cpp */; };
+		A9402A09108842F300565676 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028F2108842F300565676 /* tinyxml.cpp */; };
+		A9402A0A108842F300565676 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028F4108842F300565676 /* tinyxmlerror.cpp */; };
+		A9402A0B108842F300565676 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028F5108842F300565676 /* tinyxmlparser.cpp */; };
+		A9402A0C108842F300565676 /* vector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028F7108842F300565676 /* vector.cpp */; };
+		A9402A0F108842F300565676 /* Avatar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028FC108842F300565676 /* Avatar.cpp */; };
+		A9402A10108842F300565676 /* AvatarImp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028FE108842F300565676 /* AvatarImp.cpp */; };
+		A9402A11108842F300565676 /* AvatarMotion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9402900108842F300565676 /* AvatarMotion.cpp */; };
+		A9402A12108842F300565676 /* AvatarMotionQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9402902108842F300565676 /* AvatarMotionQueue.cpp */; };
+		A9402A13108842F300565676 /* AvatarPosture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9402904108842F300565676 /* AvatarPosture.cpp */; };
+		A9402A14108842F300565676 /* AvatarPostureBlend.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9402906108842F300565676 /* AvatarPostureBlend.cpp */; };
+		A9402A15108842F300565676 /* BlendBetween.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9402908108842F300565676 /* BlendBetween.cpp */; };
+		A9402A16108842F300565676 /* Bound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A940290A108842F300565676 /* Bound.cpp */; };
+		A9402A17108842F300565676 /* ChoiceMotion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A940290E108842F300565676 /* ChoiceMotion.cpp */; };
+		A9402A18108842F300565676 /* ChoiceMotionWithDefault.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9402910108842F300565676 /* ChoiceMotionWithDefault.cpp */; };
+		A9402A19108842F300565676 /* EventMapChoice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9402913108842F300565676 /* EventMapChoice.cpp */; };
+		A9402A1A108842F300565676 /* ExpMapMotion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9402915108842F300565676 /* ExpMapMotion.cpp */; };
+		A9402A1B108842F300565676 /* Hermite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9402917108842F300565676 /* Hermite.cpp */; };
+		A9402A1C108842F300565676 /* KeyframeMotion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9402919108842F300565676 /* KeyframeMotion.cpp */; };
+		A9402A1D108842F300565676 /* LogMapMotion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A940291B108842F300565676 /* LogMapMotion.cpp */; };
+		A9402A20108842F300565676 /* MaskedMotion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9402920108842F300565676 /* MaskedMotion.cpp */; };
+		A9402A21108842F300565676 /* MoGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9402923108842F300565676 /* MoGraph.cpp */; };
+		A9402A22108842F300565676 /* Motion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9402925108842F300565676 /* Motion.cpp */; };
+		A9402A23108842F300565676 /* MotionAdder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9402927108842F300565676 /* MotionAdder.cpp */; };
+		A9402A24108842F300565676 /* MotionPosture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A940292B108842F300565676 /* MotionPosture.cpp */; };
+		A9402A25108842F300565676 /* MotionTransition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A940292D108842F300565676 /* MotionTransition.cpp */; };
+		A9402A26108842F300565676 /* MultiBlend.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A940292F108842F300565676 /* MultiBlend.cpp */; };
+		A9402A27108842F300565676 /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9402932108842F300565676 /* Object.cpp */; };
+		A9402A28108842F300565676 /* OverrideMotion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9402936108842F300565676 /* OverrideMotion.cpp */; };
+		A9402A2D108842F300565676 /* PiavcaCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A940293D108842F300565676 /* PiavcaCore.cpp */; };
+		A9402A2E108842F300565676 /* PiavcaError.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9402940108842F300565676 /* PiavcaError.cpp */; };
+		A9402A2F108842F300565676 /* PointAt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9402943108842F300565676 /* PointAt.cpp */; };
+		A9402A30108842F300565676 /* PostureBlend.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9402945108842F300565676 /* PostureBlend.cpp */; };
+		A9402A31108842F300565676 /* Proxemics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9402947108842F300565676 /* Proxemics.cpp */; };
+		A9402A32108842F300565676 /* Quat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A940294A108842F300565676 /* Quat.cpp */; };
+		A9402A33108842F300565676 /* RandomChoiceMotion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A940294C108842F300565676 /* RandomChoiceMotion.cpp */; };
+		A9402A34108842F300565676 /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = A940294F108842F300565676 /* ReadMe.txt */; };
+		A9402A35108842F300565676 /* Reposition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9402950108842F300565676 /* Reposition.cpp */; };
+		A9402A36108842F300565676 /* SavedFramesTransition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9402952108842F300565676 /* SavedFramesTransition.cpp */; };
+		A9402A37108842F300565676 /* Sequence.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9402957108842F300565676 /* Sequence.cpp */; };
+		A9402A38108842F300565676 /* SequentialBlend.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9402959108842F300565676 /* SequentialBlend.cpp */; };
+		A9402A39108842F300565676 /* SequentialChoiceMotion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A940295B108842F300565676 /* SequentialChoiceMotion.cpp */; };
+		A9402A3A108842F300565676 /* SmoothSequence.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A940295E108842F300565676 /* SmoothSequence.cpp */; };
+		A9402A3B108842F300565676 /* SubMotion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9402960108842F300565676 /* SubMotion.cpp */; };
+		A9402A3C108842F300565676 /* Subtract.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9402962108842F300565676 /* Subtract.cpp */; };
+		A9402A3D108842F300565676 /* TangentSpace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9402964108842F300565676 /* TangentSpace.cpp */; };
+		A9402A3E108842F300565676 /* TimeRangeMotion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9402968108842F300565676 /* TimeRangeMotion.cpp */; };
+		A9402A3F108842F300565676 /* TwoMotionCombiner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A940296C108842F300565676 /* TwoMotionCombiner.cpp */; };
+		A9402A40108842F300565676 /* Vec.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A940296E108842F300565676 /* Vec.cpp */; };
+		A9402A49108842F300565676 /* AvatarCal3dImp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A940297C108842F300565676 /* AvatarCal3dImp.cpp */; };
+		A9402A4A108842F300565676 /* glew.c in Sources */ = {isa = PBXBuildFile; fileRef = A940297F108842F300565676 /* glew.c */; };
+		A9402A4B108842F300565676 /* hardwaremodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9402982108842F300565676 /* hardwaremodel.cpp */; };
+		A9402A4E108842F300565676 /* MotionCal3dImp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9402986108842F300565676 /* MotionCal3dImp.cpp */; };
+		A9402A4F108842F300565676 /* PiavcaCal3dCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9402988108842F300565676 /* PiavcaCal3dCore.cpp */; };
+		A9402A53108842F300565676 /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = A940298D108842F300565676 /* ReadMe.txt */; };
+		A9402A54108842F300565676 /* TextureHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A940298F108842F300565676 /* TextureHandler.cpp */; };
+		A9402A55108842F300565676 /* tga.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9402991108842F300565676 /* tga.cpp */; };
+		A9402A71108842F300565676 /* bvhLexer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94029BE108842F300565676 /* bvhLexer.cpp */; };
+		A9402A73108842F300565676 /* bvhParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94029C1108842F300565676 /* bvhParser.cpp */; };
+		A9402A78108842F300565676 /* StdMotionCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94029CA108842F300565676 /* StdMotionCore.cpp */; };
+		A9402A79108842F300565676 /* StdMotionImp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94029CC108842F300565676 /* StdMotionImp.cpp */; };
 		E446644B0F5B1CFD005D0BF0 /* ofAppGlutWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E446641A0F5B1CFD005D0BF0 /* ofAppGlutWindow.cpp */; };
 		E446644C0F5B1CFD005D0BF0 /* ofAppRunner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E446641C0F5B1CFD005D0BF0 /* ofAppRunner.cpp */; };
 		E446644D0F5B1CFD005D0BF0 /* ofArduino.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E44664200F5B1CFD005D0BF0 /* ofArduino.cpp */; };
@@ -51,6 +145,226 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A94028A1108842F300565676 /* animation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = animation.cpp; sourceTree = "<group>"; };
+		A94028A2108842F300565676 /* animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = animation.h; sourceTree = "<group>"; };
+		A94028A3108842F300565676 /* animation_action.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = animation_action.cpp; sourceTree = "<group>"; };
+		A94028A4108842F300565676 /* animation_action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = animation_action.h; sourceTree = "<group>"; };
+		A94028A5108842F300565676 /* animation_cycle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = animation_cycle.cpp; sourceTree = "<group>"; };
+		A94028A6108842F300565676 /* animation_cycle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = animation_cycle.h; sourceTree = "<group>"; };
+		A94028A7108842F300565676 /* animcallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = animcallback.h; sourceTree = "<group>"; };
+		A94028A8108842F300565676 /* bone.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = bone.cpp; sourceTree = "<group>"; };
+		A94028A9108842F300565676 /* bone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bone.h; sourceTree = "<group>"; };
+		A94028AA108842F300565676 /* buffersource.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = buffersource.cpp; sourceTree = "<group>"; };
+		A94028AB108842F300565676 /* buffersource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buffersource.h; sourceTree = "<group>"; };
+		A94028AD108842F300565676 /* cal3d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cal3d.h; sourceTree = "<group>"; };
+		A94028B1108842F300565676 /* coreanimation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = coreanimation.cpp; sourceTree = "<group>"; };
+		A94028B2108842F300565676 /* coreanimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = coreanimation.h; sourceTree = "<group>"; };
+		A94028B3108842F300565676 /* corebone.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = corebone.cpp; sourceTree = "<group>"; };
+		A94028B4108842F300565676 /* corebone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = corebone.h; sourceTree = "<group>"; };
+		A94028B5108842F300565676 /* corekeyframe.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = corekeyframe.cpp; sourceTree = "<group>"; };
+		A94028B6108842F300565676 /* corekeyframe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = corekeyframe.h; sourceTree = "<group>"; };
+		A94028B7108842F300565676 /* corematerial.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = corematerial.cpp; sourceTree = "<group>"; };
+		A94028B8108842F300565676 /* corematerial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = corematerial.h; sourceTree = "<group>"; };
+		A94028B9108842F300565676 /* coremesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = coremesh.cpp; sourceTree = "<group>"; };
+		A94028BA108842F300565676 /* coremesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = coremesh.h; sourceTree = "<group>"; };
+		A94028BB108842F300565676 /* coremodel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = coremodel.cpp; sourceTree = "<group>"; };
+		A94028BC108842F300565676 /* coremodel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = coremodel.h; sourceTree = "<group>"; };
+		A94028BD108842F300565676 /* coremorphanimation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = coremorphanimation.cpp; sourceTree = "<group>"; };
+		A94028BE108842F300565676 /* coremorphanimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = coremorphanimation.h; sourceTree = "<group>"; };
+		A94028BF108842F300565676 /* coreskeleton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = coreskeleton.cpp; sourceTree = "<group>"; };
+		A94028C0108842F300565676 /* coreskeleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = coreskeleton.h; sourceTree = "<group>"; };
+		A94028C1108842F300565676 /* coresubmesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = coresubmesh.cpp; sourceTree = "<group>"; };
+		A94028C2108842F300565676 /* coresubmesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = coresubmesh.h; sourceTree = "<group>"; };
+		A94028C3108842F300565676 /* coresubmorphtarget.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = coresubmorphtarget.cpp; sourceTree = "<group>"; };
+		A94028C4108842F300565676 /* coresubmorphtarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = coresubmorphtarget.h; sourceTree = "<group>"; };
+		A94028C5108842F300565676 /* coretrack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = coretrack.cpp; sourceTree = "<group>"; };
+		A94028C6108842F300565676 /* coretrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = coretrack.h; sourceTree = "<group>"; };
+		A94028C7108842F300565676 /* datasource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = datasource.h; sourceTree = "<group>"; };
+		A94028C8108842F300565676 /* error.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = error.cpp; sourceTree = "<group>"; };
+		A94028C9108842F300565676 /* error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = error.h; sourceTree = "<group>"; };
+		A94028CA108842F300565676 /* global.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = global.cpp; sourceTree = "<group>"; };
+		A94028CB108842F300565676 /* global.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = global.h; sourceTree = "<group>"; };
+		A94028CC108842F300565676 /* hardwaremodel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hardwaremodel.cpp; sourceTree = "<group>"; };
+		A94028CD108842F300565676 /* hardwaremodel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hardwaremodel.h; sourceTree = "<group>"; };
+		A94028CE108842F300565676 /* loader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = loader.cpp; sourceTree = "<group>"; };
+		A94028CF108842F300565676 /* loader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = loader.h; sourceTree = "<group>"; };
+		A94028D2108842F300565676 /* matrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = matrix.cpp; sourceTree = "<group>"; };
+		A94028D3108842F300565676 /* matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = matrix.h; sourceTree = "<group>"; };
+		A94028D4108842F300565676 /* mesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mesh.cpp; sourceTree = "<group>"; };
+		A94028D5108842F300565676 /* mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mesh.h; sourceTree = "<group>"; };
+		A94028D6108842F300565676 /* mixer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mixer.cpp; sourceTree = "<group>"; };
+		A94028D7108842F300565676 /* mixer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mixer.h; sourceTree = "<group>"; };
+		A94028D8108842F300565676 /* model.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = model.cpp; sourceTree = "<group>"; };
+		A94028D9108842F300565676 /* model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = model.h; sourceTree = "<group>"; };
+		A94028DA108842F300565676 /* morphtargetmixer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = morphtargetmixer.cpp; sourceTree = "<group>"; };
+		A94028DB108842F300565676 /* morphtargetmixer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = morphtargetmixer.h; sourceTree = "<group>"; };
+		A94028DC108842F300565676 /* physique.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = physique.cpp; sourceTree = "<group>"; };
+		A94028DD108842F300565676 /* physique.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = physique.h; sourceTree = "<group>"; };
+		A94028DE108842F300565676 /* platform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = platform.cpp; sourceTree = "<group>"; };
+		A94028DF108842F300565676 /* platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = platform.h; sourceTree = "<group>"; };
+		A94028E0108842F300565676 /* quaternion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = quaternion.cpp; sourceTree = "<group>"; };
+		A94028E1108842F300565676 /* quaternion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = quaternion.h; sourceTree = "<group>"; };
+		A94028E2108842F300565676 /* refcounted.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = refcounted.h; sourceTree = "<group>"; };
+		A94028E3108842F300565676 /* refptr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = refptr.h; sourceTree = "<group>"; };
+		A94028E4108842F300565676 /* renderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = renderer.cpp; sourceTree = "<group>"; };
+		A94028E5108842F300565676 /* renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = renderer.h; sourceTree = "<group>"; };
+		A94028E6108842F300565676 /* resource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = resource.h; sourceTree = "<group>"; };
+		A94028E7108842F300565676 /* saver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = saver.cpp; sourceTree = "<group>"; };
+		A94028E8108842F300565676 /* saver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = saver.h; sourceTree = "<group>"; };
+		A94028EA108842F300565676 /* skeleton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = skeleton.cpp; sourceTree = "<group>"; };
+		A94028EB108842F300565676 /* skeleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = skeleton.h; sourceTree = "<group>"; };
+		A94028EC108842F300565676 /* springsystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = springsystem.cpp; sourceTree = "<group>"; };
+		A94028ED108842F300565676 /* springsystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = springsystem.h; sourceTree = "<group>"; };
+		A94028EE108842F300565676 /* streamsource.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = streamsource.cpp; sourceTree = "<group>"; };
+		A94028EF108842F300565676 /* streamsource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = streamsource.h; sourceTree = "<group>"; };
+		A94028F0108842F300565676 /* submesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = submesh.cpp; sourceTree = "<group>"; };
+		A94028F1108842F300565676 /* submesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = submesh.h; sourceTree = "<group>"; };
+		A94028F2108842F300565676 /* tinyxml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml.cpp; sourceTree = "<group>"; };
+		A94028F3108842F300565676 /* tinyxml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyxml.h; sourceTree = "<group>"; };
+		A94028F4108842F300565676 /* tinyxmlerror.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlerror.cpp; sourceTree = "<group>"; };
+		A94028F5108842F300565676 /* tinyxmlparser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
+		A94028F6108842F300565676 /* transform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = transform.h; sourceTree = "<group>"; };
+		A94028F7108842F300565676 /* vector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = vector.cpp; sourceTree = "<group>"; };
+		A94028F8108842F300565676 /* vector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vector.h; sourceTree = "<group>"; };
+		A94028FC108842F300565676 /* Avatar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Avatar.cpp; sourceTree = "<group>"; };
+		A94028FD108842F300565676 /* Avatar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Avatar.h; sourceTree = "<group>"; };
+		A94028FE108842F300565676 /* AvatarImp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AvatarImp.cpp; sourceTree = "<group>"; };
+		A94028FF108842F300565676 /* AvatarImp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvatarImp.h; sourceTree = "<group>"; };
+		A9402900108842F300565676 /* AvatarMotion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AvatarMotion.cpp; sourceTree = "<group>"; };
+		A9402901108842F300565676 /* AvatarMotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvatarMotion.h; sourceTree = "<group>"; };
+		A9402902108842F300565676 /* AvatarMotionQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AvatarMotionQueue.cpp; sourceTree = "<group>"; };
+		A9402903108842F300565676 /* AvatarMotionQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvatarMotionQueue.h; sourceTree = "<group>"; };
+		A9402904108842F300565676 /* AvatarPosture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AvatarPosture.cpp; sourceTree = "<group>"; };
+		A9402905108842F300565676 /* AvatarPosture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvatarPosture.h; sourceTree = "<group>"; };
+		A9402906108842F300565676 /* AvatarPostureBlend.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AvatarPostureBlend.cpp; sourceTree = "<group>"; };
+		A9402907108842F300565676 /* AvatarPostureBlend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvatarPostureBlend.h; sourceTree = "<group>"; };
+		A9402908108842F300565676 /* BlendBetween.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BlendBetween.cpp; sourceTree = "<group>"; };
+		A9402909108842F300565676 /* BlendBetween.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlendBetween.h; sourceTree = "<group>"; };
+		A940290A108842F300565676 /* Bound.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bound.cpp; sourceTree = "<group>"; };
+		A940290B108842F300565676 /* Bound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bound.h; sourceTree = "<group>"; };
+		A940290C108842F300565676 /* ChangeMotionLength.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeMotionLength.h; sourceTree = "<group>"; };
+		A940290D108842F300565676 /* ChoiceLoopMotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoiceLoopMotion.h; sourceTree = "<group>"; };
+		A940290E108842F300565676 /* ChoiceMotion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChoiceMotion.cpp; sourceTree = "<group>"; };
+		A940290F108842F300565676 /* ChoiceMotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoiceMotion.h; sourceTree = "<group>"; };
+		A9402910108842F300565676 /* ChoiceMotionWithDefault.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChoiceMotionWithDefault.cpp; sourceTree = "<group>"; };
+		A9402911108842F300565676 /* ChoiceMotionWithDefault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoiceMotionWithDefault.h; sourceTree = "<group>"; };
+		A9402912108842F300565676 /* CurrentValueMotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentValueMotion.h; sourceTree = "<group>"; };
+		A9402913108842F300565676 /* EventMapChoice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EventMapChoice.cpp; sourceTree = "<group>"; };
+		A9402914108842F300565676 /* EventMapChoice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventMapChoice.h; sourceTree = "<group>"; };
+		A9402915108842F300565676 /* ExpMapMotion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ExpMapMotion.cpp; sourceTree = "<group>"; };
+		A9402916108842F300565676 /* ExpMapMotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpMapMotion.h; sourceTree = "<group>"; };
+		A9402917108842F300565676 /* Hermite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Hermite.cpp; sourceTree = "<group>"; };
+		A9402918108842F300565676 /* Hermite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hermite.h; sourceTree = "<group>"; };
+		A9402919108842F300565676 /* KeyframeMotion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KeyframeMotion.cpp; sourceTree = "<group>"; };
+		A940291A108842F300565676 /* KeyframeMotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyframeMotion.h; sourceTree = "<group>"; };
+		A940291B108842F300565676 /* LogMapMotion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LogMapMotion.cpp; sourceTree = "<group>"; };
+		A940291C108842F300565676 /* LogMapMotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogMapMotion.h; sourceTree = "<group>"; };
+		A940291D108842F300565676 /* LoopMotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoopMotion.h; sourceTree = "<group>"; };
+		A9402920108842F300565676 /* MaskedMotion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MaskedMotion.cpp; sourceTree = "<group>"; };
+		A9402921108842F300565676 /* MaskedMotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaskedMotion.h; sourceTree = "<group>"; };
+		A9402922108842F300565676 /* MathsUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathsUtils.h; sourceTree = "<group>"; };
+		A9402923108842F300565676 /* MoGraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MoGraph.cpp; sourceTree = "<group>"; };
+		A9402924108842F300565676 /* MoGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoGraph.h; sourceTree = "<group>"; };
+		A9402925108842F300565676 /* Motion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Motion.cpp; sourceTree = "<group>"; };
+		A9402926108842F300565676 /* Motion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Motion.h; sourceTree = "<group>"; };
+		A9402927108842F300565676 /* MotionAdder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MotionAdder.cpp; sourceTree = "<group>"; };
+		A9402928108842F300565676 /* MotionAdder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MotionAdder.h; sourceTree = "<group>"; };
+		A9402929108842F300565676 /* MotionFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MotionFilter.h; sourceTree = "<group>"; };
+		A940292A108842F300565676 /* MotionImp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MotionImp.h; sourceTree = "<group>"; };
+		A940292B108842F300565676 /* MotionPosture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MotionPosture.cpp; sourceTree = "<group>"; };
+		A940292C108842F300565676 /* MotionPosture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MotionPosture.h; sourceTree = "<group>"; };
+		A940292D108842F300565676 /* MotionTransition.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MotionTransition.cpp; sourceTree = "<group>"; };
+		A940292E108842F300565676 /* MotionTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MotionTransition.h; sourceTree = "<group>"; };
+		A940292F108842F300565676 /* MultiBlend.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MultiBlend.cpp; sourceTree = "<group>"; };
+		A9402930108842F300565676 /* MultiBlend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiBlend.h; sourceTree = "<group>"; };
+		A9402931108842F300565676 /* MultiMotionCombiner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiMotionCombiner.h; sourceTree = "<group>"; };
+		A9402932108842F300565676 /* Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Object.cpp; sourceTree = "<group>"; };
+		A9402933108842F300565676 /* Object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Object.h; sourceTree = "<group>"; };
+		A9402934108842F300565676 /* ObjectImp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectImp.h; sourceTree = "<group>"; };
+		A9402935108842F300565676 /* OnTheSpot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnTheSpot.h; sourceTree = "<group>"; };
+		A9402936108842F300565676 /* OverrideMotion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OverrideMotion.cpp; sourceTree = "<group>"; };
+		A9402937108842F300565676 /* OverrideMotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverrideMotion.h; sourceTree = "<group>"; };
+		A9402938108842F300565676 /* Piavca.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Piavca.h; sourceTree = "<group>"; };
+		A940293D108842F300565676 /* PiavcaCore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PiavcaCore.cpp; sourceTree = "<group>"; };
+		A940293E108842F300565676 /* PiavcaCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiavcaCore.h; sourceTree = "<group>"; };
+		A940293F108842F300565676 /* PiavcaDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiavcaDefs.h; sourceTree = "<group>"; };
+		A9402940108842F300565676 /* PiavcaError.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PiavcaError.cpp; sourceTree = "<group>"; };
+		A9402941108842F300565676 /* PiavcaError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiavcaError.h; sourceTree = "<group>"; };
+		A9402942108842F300565676 /* PiavcaException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiavcaException.h; sourceTree = "<group>"; };
+		A9402943108842F300565676 /* PointAt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PointAt.cpp; sourceTree = "<group>"; };
+		A9402944108842F300565676 /* PointAt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointAt.h; sourceTree = "<group>"; };
+		A9402945108842F300565676 /* PostureBlend.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PostureBlend.cpp; sourceTree = "<group>"; };
+		A9402946108842F300565676 /* PostureBlend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostureBlend.h; sourceTree = "<group>"; };
+		A9402947108842F300565676 /* Proxemics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Proxemics.cpp; sourceTree = "<group>"; };
+		A9402948108842F300565676 /* Proxemics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Proxemics.h; sourceTree = "<group>"; };
+		A9402949108842F300565676 /* ProxemicsLoop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProxemicsLoop.h; sourceTree = "<group>"; };
+		A940294A108842F300565676 /* Quat.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Quat.cpp; sourceTree = "<group>"; };
+		A940294B108842F300565676 /* Quat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quat.h; sourceTree = "<group>"; };
+		A940294C108842F300565676 /* RandomChoiceMotion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RandomChoiceMotion.cpp; sourceTree = "<group>"; };
+		A940294D108842F300565676 /* RandomChoiceMotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomChoiceMotion.h; sourceTree = "<group>"; };
+		A940294E108842F300565676 /* RandomTimingsMotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomTimingsMotion.h; sourceTree = "<group>"; };
+		A940294F108842F300565676 /* ReadMe.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
+		A9402950108842F300565676 /* Reposition.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Reposition.cpp; sourceTree = "<group>"; };
+		A9402951108842F300565676 /* Reposition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reposition.h; sourceTree = "<group>"; };
+		A9402952108842F300565676 /* SavedFramesTransition.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SavedFramesTransition.cpp; sourceTree = "<group>"; };
+		A9402953108842F300565676 /* SavedFramesTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavedFramesTransition.h; sourceTree = "<group>"; };
+		A9402954108842F300565676 /* ScaleMotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScaleMotion.h; sourceTree = "<group>"; };
+		A9402955108842F300565676 /* ScaleMotionRoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScaleMotionRoot.h; sourceTree = "<group>"; };
+		A9402956108842F300565676 /* ScaleMotionSpeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScaleMotionSpeed.h; sourceTree = "<group>"; };
+		A9402957108842F300565676 /* Sequence.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sequence.cpp; sourceTree = "<group>"; };
+		A9402958108842F300565676 /* Sequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sequence.h; sourceTree = "<group>"; };
+		A9402959108842F300565676 /* SequentialBlend.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SequentialBlend.cpp; sourceTree = "<group>"; };
+		A940295A108842F300565676 /* SequentialBlend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SequentialBlend.h; sourceTree = "<group>"; };
+		A940295B108842F300565676 /* SequentialChoiceMotion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SequentialChoiceMotion.cpp; sourceTree = "<group>"; };
+		A940295C108842F300565676 /* SequentialChoiceMotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SequentialChoiceMotion.h; sourceTree = "<group>"; };
+		A940295D108842F300565676 /* SmoothLoop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmoothLoop.h; sourceTree = "<group>"; };
+		A940295E108842F300565676 /* SmoothSequence.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SmoothSequence.cpp; sourceTree = "<group>"; };
+		A940295F108842F300565676 /* SmoothSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmoothSequence.h; sourceTree = "<group>"; };
+		A9402960108842F300565676 /* SubMotion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SubMotion.cpp; sourceTree = "<group>"; };
+		A9402961108842F300565676 /* SubMotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubMotion.h; sourceTree = "<group>"; };
+		A9402962108842F300565676 /* Subtract.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Subtract.cpp; sourceTree = "<group>"; };
+		A9402963108842F300565676 /* Subtract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Subtract.h; sourceTree = "<group>"; };
+		A9402964108842F300565676 /* TangentSpace.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TangentSpace.cpp; sourceTree = "<group>"; };
+		A9402965108842F300565676 /* TangentSpace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TangentSpace.h; sourceTree = "<group>"; };
+		A9402966108842F300565676 /* TimeCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeCallback.h; sourceTree = "<group>"; };
+		A9402967108842F300565676 /* TimeOffset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeOffset.h; sourceTree = "<group>"; };
+		A9402968108842F300565676 /* TimeRangeMotion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TimeRangeMotion.cpp; sourceTree = "<group>"; };
+		A9402969108842F300565676 /* TimeRangeMotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeRangeMotion.h; sourceTree = "<group>"; };
+		A940296A108842F300565676 /* TimeWarp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeWarp.h; sourceTree = "<group>"; };
+		A940296B108842F300565676 /* TurnMotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TurnMotion.h; sourceTree = "<group>"; };
+		A940296C108842F300565676 /* TwoMotionCombiner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TwoMotionCombiner.cpp; sourceTree = "<group>"; };
+		A940296D108842F300565676 /* TwoMotionCombiner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoMotionCombiner.h; sourceTree = "<group>"; };
+		A940296E108842F300565676 /* Vec.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vec.cpp; sourceTree = "<group>"; };
+		A940296F108842F300565676 /* Vec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vec.h; sourceTree = "<group>"; };
+		A9402970108842F300565676 /* ZeroMotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZeroMotion.h; sourceTree = "<group>"; };
+		A940297C108842F300565676 /* AvatarCal3dImp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AvatarCal3dImp.cpp; sourceTree = "<group>"; };
+		A940297D108842F300565676 /* AvatarCal3dImp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvatarCal3dImp.h; sourceTree = "<group>"; };
+		A940297E108842F300565676 /* Cal3dMathsConversion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cal3dMathsConversion.h; sourceTree = "<group>"; };
+		A940297F108842F300565676 /* glew.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = glew.c; sourceTree = "<group>"; };
+		A9402980108842F300565676 /* glew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glew.h; sourceTree = "<group>"; };
+		A9402981108842F300565676 /* glxew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glxew.h; sourceTree = "<group>"; };
+		A9402982108842F300565676 /* hardwaremodel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hardwaremodel.cpp; sourceTree = "<group>"; };
+		A9402983108842F300565676 /* hardwaremodel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hardwaremodel.h; sourceTree = "<group>"; };
+		A9402986108842F300565676 /* MotionCal3dImp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MotionCal3dImp.cpp; sourceTree = "<group>"; };
+		A9402987108842F300565676 /* MotionCal3dImp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MotionCal3dImp.h; sourceTree = "<group>"; };
+		A9402988108842F300565676 /* PiavcaCal3dCore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PiavcaCal3dCore.cpp; sourceTree = "<group>"; };
+		A9402989108842F300565676 /* PiavcaCal3dCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiavcaCal3dCore.h; sourceTree = "<group>"; };
+		A940298D108842F300565676 /* ReadMe.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
+		A940298E108842F300565676 /* Resource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Resource.h; sourceTree = "<group>"; };
+		A940298F108842F300565676 /* TextureHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextureHandler.cpp; sourceTree = "<group>"; };
+		A9402990108842F300565676 /* TextureHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureHandler.h; sourceTree = "<group>"; };
+		A9402991108842F300565676 /* tga.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tga.cpp; sourceTree = "<group>"; };
+		A9402992108842F300565676 /* tga.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tga.h; sourceTree = "<group>"; };
+		A9402993108842F300565676 /* wglew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wglew.h; sourceTree = "<group>"; };
+		A94029BE108842F300565676 /* bvhLexer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = bvhLexer.cpp; sourceTree = "<group>"; };
+		A94029C0108842F300565676 /* bvhMotionParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bvhMotionParser.h; sourceTree = "<group>"; };
+		A94029C1108842F300565676 /* bvhParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = bvhParser.cpp; sourceTree = "<group>"; };
+		A94029C2108842F300565676 /* bvhParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bvhParser.h; sourceTree = "<group>"; };
+		A94029C8108842F300565676 /* MotionTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MotionTrack.h; sourceTree = "<group>"; };
+		A94029CA108842F300565676 /* StdMotionCore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StdMotionCore.cpp; sourceTree = "<group>"; };
+		A94029CB108842F300565676 /* StdMotionCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StdMotionCore.h; sourceTree = "<group>"; };
+		A94029CC108842F300565676 /* StdMotionImp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StdMotionImp.cpp; sourceTree = "<group>"; };
+		A94029CD108842F300565676 /* StdMotionImp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StdMotionImp.h; sourceTree = "<group>"; };
 		E44664190F5B1CFD005D0BF0 /* ofAppBaseWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofAppBaseWindow.h; path = ../../../libs/openFrameworks/app/ofAppBaseWindow.h; sourceTree = SOURCE_ROOT; };
 		E446641A0F5B1CFD005D0BF0 /* ofAppGlutWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofAppGlutWindow.cpp; path = ../../../libs/openFrameworks/app/ofAppGlutWindow.cpp; sourceTree = SOURCE_ROOT; };
 		E446641B0F5B1CFD005D0BF0 /* ofAppGlutWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofAppGlutWindow.h; path = ../../../libs/openFrameworks/app/ofAppGlutWindow.h; sourceTree = SOURCE_ROOT; };
@@ -253,6 +567,274 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A940289E108842BA00565676 /* addons */ = {
+			isa = PBXGroup;
+			children = (
+				A940289F108842F300565676 /* src */,
+			);
+			name = addons;
+			sourceTree = "<group>";
+		};
+		A940289F108842F300565676 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				A94028A0108842F300565676 /* cal3d */,
+				A94028FB108842F300565676 /* PiavcaAPI */,
+				A940297B108842F300565676 /* PiavcaCal3dImp */,
+				A94029BD108842F300565676 /* StdMotionImp */,
+			);
+			name = src;
+			path = ../../../addons/ofxPiavca/src;
+			sourceTree = SOURCE_ROOT;
+		};
+		A94028A0108842F300565676 /* cal3d */ = {
+			isa = PBXGroup;
+			children = (
+				A94028A1108842F300565676 /* animation.cpp */,
+				A94028A2108842F300565676 /* animation.h */,
+				A94028A3108842F300565676 /* animation_action.cpp */,
+				A94028A4108842F300565676 /* animation_action.h */,
+				A94028A5108842F300565676 /* animation_cycle.cpp */,
+				A94028A6108842F300565676 /* animation_cycle.h */,
+				A94028A7108842F300565676 /* animcallback.h */,
+				A94028A8108842F300565676 /* bone.cpp */,
+				A94028A9108842F300565676 /* bone.h */,
+				A94028AA108842F300565676 /* buffersource.cpp */,
+				A94028AB108842F300565676 /* buffersource.h */,
+				A94028AD108842F300565676 /* cal3d.h */,
+				A94028B1108842F300565676 /* coreanimation.cpp */,
+				A94028B2108842F300565676 /* coreanimation.h */,
+				A94028B3108842F300565676 /* corebone.cpp */,
+				A94028B4108842F300565676 /* corebone.h */,
+				A94028B5108842F300565676 /* corekeyframe.cpp */,
+				A94028B6108842F300565676 /* corekeyframe.h */,
+				A94028B7108842F300565676 /* corematerial.cpp */,
+				A94028B8108842F300565676 /* corematerial.h */,
+				A94028B9108842F300565676 /* coremesh.cpp */,
+				A94028BA108842F300565676 /* coremesh.h */,
+				A94028BB108842F300565676 /* coremodel.cpp */,
+				A94028BC108842F300565676 /* coremodel.h */,
+				A94028BD108842F300565676 /* coremorphanimation.cpp */,
+				A94028BE108842F300565676 /* coremorphanimation.h */,
+				A94028BF108842F300565676 /* coreskeleton.cpp */,
+				A94028C0108842F300565676 /* coreskeleton.h */,
+				A94028C1108842F300565676 /* coresubmesh.cpp */,
+				A94028C2108842F300565676 /* coresubmesh.h */,
+				A94028C3108842F300565676 /* coresubmorphtarget.cpp */,
+				A94028C4108842F300565676 /* coresubmorphtarget.h */,
+				A94028C5108842F300565676 /* coretrack.cpp */,
+				A94028C6108842F300565676 /* coretrack.h */,
+				A94028C7108842F300565676 /* datasource.h */,
+				A94028C8108842F300565676 /* error.cpp */,
+				A94028C9108842F300565676 /* error.h */,
+				A94028CA108842F300565676 /* global.cpp */,
+				A94028CB108842F300565676 /* global.h */,
+				A94028CC108842F300565676 /* hardwaremodel.cpp */,
+				A94028CD108842F300565676 /* hardwaremodel.h */,
+				A94028CE108842F300565676 /* loader.cpp */,
+				A94028CF108842F300565676 /* loader.h */,
+				A94028D2108842F300565676 /* matrix.cpp */,
+				A94028D3108842F300565676 /* matrix.h */,
+				A94028D4108842F300565676 /* mesh.cpp */,
+				A94028D5108842F300565676 /* mesh.h */,
+				A94028D6108842F300565676 /* mixer.cpp */,
+				A94028D7108842F300565676 /* mixer.h */,
+				A94028D8108842F300565676 /* model.cpp */,
+				A94028D9108842F300565676 /* model.h */,
+				A94028DA108842F300565676 /* morphtargetmixer.cpp */,
+				A94028DB108842F300565676 /* morphtargetmixer.h */,
+				A94028DC108842F300565676 /* physique.cpp */,
+				A94028DD108842F300565676 /* physique.h */,
+				A94028DE108842F300565676 /* platform.cpp */,
+				A94028DF108842F300565676 /* platform.h */,
+				A94028E0108842F300565676 /* quaternion.cpp */,
+				A94028E1108842F300565676 /* quaternion.h */,
+				A94028E2108842F300565676 /* refcounted.h */,
+				A94028E3108842F300565676 /* refptr.h */,
+				A94028E4108842F300565676 /* renderer.cpp */,
+				A94028E5108842F300565676 /* renderer.h */,
+				A94028E6108842F300565676 /* resource.h */,
+				A94028E7108842F300565676 /* saver.cpp */,
+				A94028E8108842F300565676 /* saver.h */,
+				A94028EA108842F300565676 /* skeleton.cpp */,
+				A94028EB108842F300565676 /* skeleton.h */,
+				A94028EC108842F300565676 /* springsystem.cpp */,
+				A94028ED108842F300565676 /* springsystem.h */,
+				A94028EE108842F300565676 /* streamsource.cpp */,
+				A94028EF108842F300565676 /* streamsource.h */,
+				A94028F0108842F300565676 /* submesh.cpp */,
+				A94028F1108842F300565676 /* submesh.h */,
+				A94028F2108842F300565676 /* tinyxml.cpp */,
+				A94028F3108842F300565676 /* tinyxml.h */,
+				A94028F4108842F300565676 /* tinyxmlerror.cpp */,
+				A94028F5108842F300565676 /* tinyxmlparser.cpp */,
+				A94028F6108842F300565676 /* transform.h */,
+				A94028F7108842F300565676 /* vector.cpp */,
+				A94028F8108842F300565676 /* vector.h */,
+			);
+			path = cal3d;
+			sourceTree = "<group>";
+		};
+		A94028FB108842F300565676 /* PiavcaAPI */ = {
+			isa = PBXGroup;
+			children = (
+				A94028FC108842F300565676 /* Avatar.cpp */,
+				A94028FD108842F300565676 /* Avatar.h */,
+				A94028FE108842F300565676 /* AvatarImp.cpp */,
+				A94028FF108842F300565676 /* AvatarImp.h */,
+				A9402900108842F300565676 /* AvatarMotion.cpp */,
+				A9402901108842F300565676 /* AvatarMotion.h */,
+				A9402902108842F300565676 /* AvatarMotionQueue.cpp */,
+				A9402903108842F300565676 /* AvatarMotionQueue.h */,
+				A9402904108842F300565676 /* AvatarPosture.cpp */,
+				A9402905108842F300565676 /* AvatarPosture.h */,
+				A9402906108842F300565676 /* AvatarPostureBlend.cpp */,
+				A9402907108842F300565676 /* AvatarPostureBlend.h */,
+				A9402908108842F300565676 /* BlendBetween.cpp */,
+				A9402909108842F300565676 /* BlendBetween.h */,
+				A940290A108842F300565676 /* Bound.cpp */,
+				A940290B108842F300565676 /* Bound.h */,
+				A940290C108842F300565676 /* ChangeMotionLength.h */,
+				A940290D108842F300565676 /* ChoiceLoopMotion.h */,
+				A940290E108842F300565676 /* ChoiceMotion.cpp */,
+				A940290F108842F300565676 /* ChoiceMotion.h */,
+				A9402910108842F300565676 /* ChoiceMotionWithDefault.cpp */,
+				A9402911108842F300565676 /* ChoiceMotionWithDefault.h */,
+				A9402912108842F300565676 /* CurrentValueMotion.h */,
+				A9402913108842F300565676 /* EventMapChoice.cpp */,
+				A9402914108842F300565676 /* EventMapChoice.h */,
+				A9402915108842F300565676 /* ExpMapMotion.cpp */,
+				A9402916108842F300565676 /* ExpMapMotion.h */,
+				A9402917108842F300565676 /* Hermite.cpp */,
+				A9402918108842F300565676 /* Hermite.h */,
+				A9402919108842F300565676 /* KeyframeMotion.cpp */,
+				A940291A108842F300565676 /* KeyframeMotion.h */,
+				A940291B108842F300565676 /* LogMapMotion.cpp */,
+				A940291C108842F300565676 /* LogMapMotion.h */,
+				A940291D108842F300565676 /* LoopMotion.h */,
+				A9402920108842F300565676 /* MaskedMotion.cpp */,
+				A9402921108842F300565676 /* MaskedMotion.h */,
+				A9402922108842F300565676 /* MathsUtils.h */,
+				A9402923108842F300565676 /* MoGraph.cpp */,
+				A9402924108842F300565676 /* MoGraph.h */,
+				A9402925108842F300565676 /* Motion.cpp */,
+				A9402926108842F300565676 /* Motion.h */,
+				A9402927108842F300565676 /* MotionAdder.cpp */,
+				A9402928108842F300565676 /* MotionAdder.h */,
+				A9402929108842F300565676 /* MotionFilter.h */,
+				A940292A108842F300565676 /* MotionImp.h */,
+				A940292B108842F300565676 /* MotionPosture.cpp */,
+				A940292C108842F300565676 /* MotionPosture.h */,
+				A940292D108842F300565676 /* MotionTransition.cpp */,
+				A940292E108842F300565676 /* MotionTransition.h */,
+				A940292F108842F300565676 /* MultiBlend.cpp */,
+				A9402930108842F300565676 /* MultiBlend.h */,
+				A9402931108842F300565676 /* MultiMotionCombiner.h */,
+				A9402932108842F300565676 /* Object.cpp */,
+				A9402933108842F300565676 /* Object.h */,
+				A9402934108842F300565676 /* ObjectImp.h */,
+				A9402935108842F300565676 /* OnTheSpot.h */,
+				A9402936108842F300565676 /* OverrideMotion.cpp */,
+				A9402937108842F300565676 /* OverrideMotion.h */,
+				A9402938108842F300565676 /* Piavca.h */,
+				A940293D108842F300565676 /* PiavcaCore.cpp */,
+				A940293E108842F300565676 /* PiavcaCore.h */,
+				A940293F108842F300565676 /* PiavcaDefs.h */,
+				A9402940108842F300565676 /* PiavcaError.cpp */,
+				A9402941108842F300565676 /* PiavcaError.h */,
+				A9402942108842F300565676 /* PiavcaException.h */,
+				A9402943108842F300565676 /* PointAt.cpp */,
+				A9402944108842F300565676 /* PointAt.h */,
+				A9402945108842F300565676 /* PostureBlend.cpp */,
+				A9402946108842F300565676 /* PostureBlend.h */,
+				A9402947108842F300565676 /* Proxemics.cpp */,
+				A9402948108842F300565676 /* Proxemics.h */,
+				A9402949108842F300565676 /* ProxemicsLoop.h */,
+				A940294A108842F300565676 /* Quat.cpp */,
+				A940294B108842F300565676 /* Quat.h */,
+				A940294C108842F300565676 /* RandomChoiceMotion.cpp */,
+				A940294D108842F300565676 /* RandomChoiceMotion.h */,
+				A940294E108842F300565676 /* RandomTimingsMotion.h */,
+				A940294F108842F300565676 /* ReadMe.txt */,
+				A9402950108842F300565676 /* Reposition.cpp */,
+				A9402951108842F300565676 /* Reposition.h */,
+				A9402952108842F300565676 /* SavedFramesTransition.cpp */,
+				A9402953108842F300565676 /* SavedFramesTransition.h */,
+				A9402954108842F300565676 /* ScaleMotion.h */,
+				A9402955108842F300565676 /* ScaleMotionRoot.h */,
+				A9402956108842F300565676 /* ScaleMotionSpeed.h */,
+				A9402957108842F300565676 /* Sequence.cpp */,
+				A9402958108842F300565676 /* Sequence.h */,
+				A9402959108842F300565676 /* SequentialBlend.cpp */,
+				A940295A108842F300565676 /* SequentialBlend.h */,
+				A940295B108842F300565676 /* SequentialChoiceMotion.cpp */,
+				A940295C108842F300565676 /* SequentialChoiceMotion.h */,
+				A940295D108842F300565676 /* SmoothLoop.h */,
+				A940295E108842F300565676 /* SmoothSequence.cpp */,
+				A940295F108842F300565676 /* SmoothSequence.h */,
+				A9402960108842F300565676 /* SubMotion.cpp */,
+				A9402961108842F300565676 /* SubMotion.h */,
+				A9402962108842F300565676 /* Subtract.cpp */,
+				A9402963108842F300565676 /* Subtract.h */,
+				A9402964108842F300565676 /* TangentSpace.cpp */,
+				A9402965108842F300565676 /* TangentSpace.h */,
+				A9402966108842F300565676 /* TimeCallback.h */,
+				A9402967108842F300565676 /* TimeOffset.h */,
+				A9402968108842F300565676 /* TimeRangeMotion.cpp */,
+				A9402969108842F300565676 /* TimeRangeMotion.h */,
+				A940296A108842F300565676 /* TimeWarp.h */,
+				A940296B108842F300565676 /* TurnMotion.h */,
+				A940296C108842F300565676 /* TwoMotionCombiner.cpp */,
+				A940296D108842F300565676 /* TwoMotionCombiner.h */,
+				A940296E108842F300565676 /* Vec.cpp */,
+				A940296F108842F300565676 /* Vec.h */,
+				A9402970108842F300565676 /* ZeroMotion.h */,
+			);
+			path = PiavcaAPI;
+			sourceTree = "<group>";
+		};
+		A940297B108842F300565676 /* PiavcaCal3dImp */ = {
+			isa = PBXGroup;
+			children = (
+				A940297C108842F300565676 /* AvatarCal3dImp.cpp */,
+				A940297D108842F300565676 /* AvatarCal3dImp.h */,
+				A940297E108842F300565676 /* Cal3dMathsConversion.h */,
+				A940297F108842F300565676 /* glew.c */,
+				A9402980108842F300565676 /* glew.h */,
+				A9402981108842F300565676 /* glxew.h */,
+				A9402982108842F300565676 /* hardwaremodel.cpp */,
+				A9402983108842F300565676 /* hardwaremodel.h */,
+				A9402986108842F300565676 /* MotionCal3dImp.cpp */,
+				A9402987108842F300565676 /* MotionCal3dImp.h */,
+				A9402988108842F300565676 /* PiavcaCal3dCore.cpp */,
+				A9402989108842F300565676 /* PiavcaCal3dCore.h */,
+				A940298D108842F300565676 /* ReadMe.txt */,
+				A940298E108842F300565676 /* Resource.h */,
+				A940298F108842F300565676 /* TextureHandler.cpp */,
+				A9402990108842F300565676 /* TextureHandler.h */,
+				A9402991108842F300565676 /* tga.cpp */,
+				A9402992108842F300565676 /* tga.h */,
+				A9402993108842F300565676 /* wglew.h */,
+			);
+			path = PiavcaCal3dImp;
+			sourceTree = "<group>";
+		};
+		A94029BD108842F300565676 /* StdMotionImp */ = {
+			isa = PBXGroup;
+			children = (
+				A94029BE108842F300565676 /* bvhLexer.cpp */,
+				A94029C0108842F300565676 /* bvhMotionParser.h */,
+				A94029C1108842F300565676 /* bvhParser.cpp */,
+				A94029C2108842F300565676 /* bvhParser.h */,
+				A94029C8108842F300565676 /* MotionTrack.h */,
+				A94029CA108842F300565676 /* StdMotionCore.cpp */,
+				A94029CB108842F300565676 /* StdMotionCore.h */,
+				A94029CC108842F300565676 /* StdMotionImp.cpp */,
+				A94029CD108842F300565676 /* StdMotionImp.h */,
+			);
+			path = StdMotionImp;
+			sourceTree = "<group>";
+		};
 		E44664170F5B1CFD005D0BF0 /* openFrameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -734,6 +1316,7 @@
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
 				E44664170F5B1CFD005D0BF0 /* openFrameworks */,
 				E45BE0360E8CC5DE009D7055 /* libs */,
+				A940289E108842BA00565676 /* addons */,
 			);
 			sourceTree = "<group>";
 		};
@@ -792,6 +1375,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4B6FCAE0C3E899E008CF71C /* openFrameworks-Info.plist in Resources */,
+				A9402A34108842F300565676 /* ReadMe.txt in Resources */,
+				A9402A53108842F300565676 /* ReadMe.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -838,6 +1423,98 @@
 				E446645A0F5B1CFD005D0BF0 /* ofUCUtils.cpp in Sources */,
 				E446645B0F5B1CFD005D0BF0 /* ofVideoGrabber.cpp in Sources */,
 				E446645C0F5B1CFD005D0BF0 /* ofVideoPlayer.cpp in Sources */,
+				A94029E1108842F300565676 /* animation.cpp in Sources */,
+				A94029E2108842F300565676 /* animation_action.cpp in Sources */,
+				A94029E3108842F300565676 /* animation_cycle.cpp in Sources */,
+				A94029E4108842F300565676 /* bone.cpp in Sources */,
+				A94029E5108842F300565676 /* buffersource.cpp in Sources */,
+				A94029E9108842F300565676 /* coreanimation.cpp in Sources */,
+				A94029EA108842F300565676 /* corebone.cpp in Sources */,
+				A94029EB108842F300565676 /* corekeyframe.cpp in Sources */,
+				A94029EC108842F300565676 /* corematerial.cpp in Sources */,
+				A94029ED108842F300565676 /* coremesh.cpp in Sources */,
+				A94029EE108842F300565676 /* coremodel.cpp in Sources */,
+				A94029EF108842F300565676 /* coremorphanimation.cpp in Sources */,
+				A94029F0108842F300565676 /* coreskeleton.cpp in Sources */,
+				A94029F1108842F300565676 /* coresubmesh.cpp in Sources */,
+				A94029F2108842F300565676 /* coresubmorphtarget.cpp in Sources */,
+				A94029F3108842F300565676 /* coretrack.cpp in Sources */,
+				A94029F4108842F300565676 /* error.cpp in Sources */,
+				A94029F5108842F300565676 /* global.cpp in Sources */,
+				A94029F6108842F300565676 /* hardwaremodel.cpp in Sources */,
+				A94029F7108842F300565676 /* loader.cpp in Sources */,
+				A94029FA108842F300565676 /* matrix.cpp in Sources */,
+				A94029FB108842F300565676 /* mesh.cpp in Sources */,
+				A94029FC108842F300565676 /* mixer.cpp in Sources */,
+				A94029FD108842F300565676 /* model.cpp in Sources */,
+				A94029FE108842F300565676 /* morphtargetmixer.cpp in Sources */,
+				A94029FF108842F300565676 /* physique.cpp in Sources */,
+				A9402A00108842F300565676 /* platform.cpp in Sources */,
+				A9402A01108842F300565676 /* quaternion.cpp in Sources */,
+				A9402A02108842F300565676 /* renderer.cpp in Sources */,
+				A9402A03108842F300565676 /* saver.cpp in Sources */,
+				A9402A05108842F300565676 /* skeleton.cpp in Sources */,
+				A9402A06108842F300565676 /* springsystem.cpp in Sources */,
+				A9402A07108842F300565676 /* streamsource.cpp in Sources */,
+				A9402A08108842F300565676 /* submesh.cpp in Sources */,
+				A9402A09108842F300565676 /* tinyxml.cpp in Sources */,
+				A9402A0A108842F300565676 /* tinyxmlerror.cpp in Sources */,
+				A9402A0B108842F300565676 /* tinyxmlparser.cpp in Sources */,
+				A9402A0C108842F300565676 /* vector.cpp in Sources */,
+				A9402A0F108842F300565676 /* Avatar.cpp in Sources */,
+				A9402A10108842F300565676 /* AvatarImp.cpp in Sources */,
+				A9402A11108842F300565676 /* AvatarMotion.cpp in Sources */,
+				A9402A12108842F300565676 /* AvatarMotionQueue.cpp in Sources */,
+				A9402A13108842F300565676 /* AvatarPosture.cpp in Sources */,
+				A9402A14108842F300565676 /* AvatarPostureBlend.cpp in Sources */,
+				A9402A15108842F300565676 /* BlendBetween.cpp in Sources */,
+				A9402A16108842F300565676 /* Bound.cpp in Sources */,
+				A9402A17108842F300565676 /* ChoiceMotion.cpp in Sources */,
+				A9402A18108842F300565676 /* ChoiceMotionWithDefault.cpp in Sources */,
+				A9402A19108842F300565676 /* EventMapChoice.cpp in Sources */,
+				A9402A1A108842F300565676 /* ExpMapMotion.cpp in Sources */,
+				A9402A1B108842F300565676 /* Hermite.cpp in Sources */,
+				A9402A1C108842F300565676 /* KeyframeMotion.cpp in Sources */,
+				A9402A1D108842F300565676 /* LogMapMotion.cpp in Sources */,
+				A9402A20108842F300565676 /* MaskedMotion.cpp in Sources */,
+				A9402A21108842F300565676 /* MoGraph.cpp in Sources */,
+				A9402A22108842F300565676 /* Motion.cpp in Sources */,
+				A9402A23108842F300565676 /* MotionAdder.cpp in Sources */,
+				A9402A24108842F300565676 /* MotionPosture.cpp in Sources */,
+				A9402A25108842F300565676 /* MotionTransition.cpp in Sources */,
+				A9402A26108842F300565676 /* MultiBlend.cpp in Sources */,
+				A9402A27108842F300565676 /* Object.cpp in Sources */,
+				A9402A28108842F300565676 /* OverrideMotion.cpp in Sources */,
+				A9402A2D108842F300565676 /* PiavcaCore.cpp in Sources */,
+				A9402A2E108842F300565676 /* PiavcaError.cpp in Sources */,
+				A9402A2F108842F300565676 /* PointAt.cpp in Sources */,
+				A9402A30108842F300565676 /* PostureBlend.cpp in Sources */,
+				A9402A31108842F300565676 /* Proxemics.cpp in Sources */,
+				A9402A32108842F300565676 /* Quat.cpp in Sources */,
+				A9402A33108842F300565676 /* RandomChoiceMotion.cpp in Sources */,
+				A9402A35108842F300565676 /* Reposition.cpp in Sources */,
+				A9402A36108842F300565676 /* SavedFramesTransition.cpp in Sources */,
+				A9402A37108842F300565676 /* Sequence.cpp in Sources */,
+				A9402A38108842F300565676 /* SequentialBlend.cpp in Sources */,
+				A9402A39108842F300565676 /* SequentialChoiceMotion.cpp in Sources */,
+				A9402A3A108842F300565676 /* SmoothSequence.cpp in Sources */,
+				A9402A3B108842F300565676 /* SubMotion.cpp in Sources */,
+				A9402A3C108842F300565676 /* Subtract.cpp in Sources */,
+				A9402A3D108842F300565676 /* TangentSpace.cpp in Sources */,
+				A9402A3E108842F300565676 /* TimeRangeMotion.cpp in Sources */,
+				A9402A3F108842F300565676 /* TwoMotionCombiner.cpp in Sources */,
+				A9402A40108842F300565676 /* Vec.cpp in Sources */,
+				A9402A49108842F300565676 /* AvatarCal3dImp.cpp in Sources */,
+				A9402A4A108842F300565676 /* glew.c in Sources */,
+				A9402A4B108842F300565676 /* hardwaremodel.cpp in Sources */,
+				A9402A4E108842F300565676 /* MotionCal3dImp.cpp in Sources */,
+				A9402A4F108842F300565676 /* PiavcaCal3dCore.cpp in Sources */,
+				A9402A54108842F300565676 /* TextureHandler.cpp in Sources */,
+				A9402A55108842F300565676 /* tga.cpp in Sources */,
+				A9402A71108842F300565676 /* bvhLexer.cpp in Sources */,
+				A9402A73108842F300565676 /* bvhParser.cpp in Sources */,
+				A9402A78108842F300565676 /* StdMotionCore.cpp in Sources */,
+				A9402A79108842F300565676 /* StdMotionImp.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -859,7 +1536,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
 				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
-				HEADER_SEARCH_PATHS = ../../../libs/poco/include;
+				HEADER_SEARCH_PATHS = (
+					../../../libs/poco/include,
+					../../../addons/ofxPiavca/src,
+				);
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-lpthread",
