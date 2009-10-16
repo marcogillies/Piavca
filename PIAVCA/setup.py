@@ -72,7 +72,7 @@ if sys.platform != "win32":
 defines = [('GLEW_STATIC', '1')]
 
 if sys.platform == "win32":
-	defines = defines + [('WIN32', 1)]
+	defines = defines + [('WIN32', 1), ('CAL3D_EXPORTS', 1)]
 
 swig_opts = ['-modern', '-c++', '-I./src']
 
