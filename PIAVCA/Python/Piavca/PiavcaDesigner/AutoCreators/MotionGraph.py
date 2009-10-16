@@ -1,5 +1,9 @@
 import Piavca
-import Piavca.CreationScripts.MotionGraph 
+try:
+	import Piavca.CreationScripts.MotionGraph 
+	importSuccessful = True
+except ImportError:
+	importSuccessful = False
 from Piavca.PiavcaDesigner.ParameterControls import *
 
 class MotionGraph:
@@ -25,6 +29,8 @@ class MotionGraph:
 		return controls
 		
 	def getMotion(self):
+		if not importSuccessful:
+			return None
 		motions = self.Motions.getValue()
 		fps = self.fps.getValue()
 		numNodes = self.numNodes.getValue()

@@ -45,7 +45,7 @@ from glob import glob
 
 
 swig_sources = [os.path.join('Python','Piavca','Piavca_base','Piavca_wrap.cpp')]
-cal3d_sources = glob(os.path.join(os.curdir,'cal3d','*.cpp'))
+cal3d_sources = glob(os.path.join(os.curdir,'src','cal3d','*.cpp'))
 PiavcaAPI_sources = glob(os.path.join(os.curdir,'src','PiavcaAPI','*.cpp'))
 #print PiavcaAPI_sources
 StdMotionImp_sources = glob(os.path.join(os.curdir,'src','StdMotionImp','*.cpp'))
@@ -57,17 +57,17 @@ sources = swig_sources + PiavcaAPI_sources + StdMotionImp_sources + PiavcaCal3dI
 external_libs = []#["cal3d"]
 
 
-includes = [ os.path.join(os.curdir,'src'),os.path.join(os.curdir,'cal3d')]
+includes = [ os.path.join(os.curdir,'src')]
 
 if sys.platform != "win32":
 	includes = includes + ["/usr/local/include"]
 
-if sys.platform == "win32":
-	try:
-		cal3ddir = os.environ["CAL3DDIR"]
-		includes = includes + [os.path.join(cal3ddir,'src')]
-	except KeyError:
-		includes = includes + ['../cal3d-0.11.0/src/', '../cal3d/src/', '../cal3d/cal3d/src/' '../cal3d-0.10.0/src/']
+#if sys.platform == "win32":
+#	try:
+#		cal3ddir = os.environ["CAL3DDIR"]
+#		includes = includes + [os.path.join(cal3ddir,'src')]
+#	except KeyError:
+#		includes = includes + ['../cal3d-0.11.0/src/', '../cal3d/src/', '../cal3d/cal3d/src/' '../cal3d-0.10.0/src/']
 
 defines = [('GLEW_STATIC', '1')]
 
@@ -79,12 +79,12 @@ swig_opts = ['-modern', '-c++', '-I./src']
 extra_link_args = []
 library_dirs = []
 
-if sys.platform == "win32":
-	try:
-		cal3ddir = os.environ["CAL3DDIR"]
-		library_dirs = library_dirs + [os.path.join(cal3ddir,'bin','Release')]
-	except KeyError:
-		library_dirs = library_dirs + ['..\\cal3d-0.11.0\\bin\\Release', '..\\cal3d\\bin\\Release', '..\\cal3d\cal3d\\bin\\Release' '..\\cal3d-0.10.0\\bin\\Release']
+#if sys.platform == "win32":
+#	try:
+#		cal3ddir = os.environ["CAL3DDIR"]
+#		library_dirs = library_dirs + [os.path.join(cal3ddir,'bin','Release')]
+#	except KeyError:
+#		library_dirs = library_dirs + ['..\\cal3d-0.11.0\\bin\\Release', '..\\cal3d\\bin\\Release', '..\\cal3d\cal3d\\bin\\Release' '..\\cal3d-0.10.0\\bin\\Release']
 
 if sys.platform == "darwin":
 	extra_link_args = extra_link_args + ['-framework', 'OpenGL']

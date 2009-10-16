@@ -1,0 +1,87 @@
+<html>
+
+<head>
+
+<title>Piavca Installation Instruction</title>
+
+</head>
+
+<body>
+
+Piavca can be downloaded from sourceforge.
+
+<a href="http://sourceforge.net/projects/piavca/">
+http://sourceforge.net/projects/piavca/</a>
+
+<h3>Installation</h3>
+
+<h4>Python Version</h4>
+
+You will need to install all prerequisites first (see below)<p>
+
+If you are running windows and Python 2.6 there is a binary installer, just run that. <p>
+
+For Mac and linux you need to use the standard python setup. <p>
+
+You will need to use a terminal<p>
+
+If you have root access (generally this means that you own the machine), type the following:<p>
+
+<pre>
+python setup.py build
+python setup.py install
+</pre>
+
+If it complains that you don't have permissions try:
+
+<pre>
+python setup.py build
+sudo python setup.py install
+</pre>
+
+You will need to type in your password. If you still haven't got permissions try installing somewhere else:<p>
+
+<pre>
+python setup.py build
+python setup.py install -prefix <your chosen directory>
+</pre>
+
+It might also fail because you haven't got a compiler (gcc) installed or the appropriate libraries, make sure you get the prerequisites<p>
+
+<h3>Prerequisites</h3>
+
+Unless you are using a windows binary installer, you will need a compiler. <p>
+
+For linux make sure you have the gcc package installed and the standard header files. <p>
+
+For a mac install the development tools (xcode)<p>
+
+<a href="http://developer.apple.com/mac/">http://developer.apple.com/mac/</a><p>
+
+For windows you can install various compilers, Microsoft Visual C++ is an obvious free (beer) version:<p>
+
+<a href="http://www.microsoft.com/exPress/">http://www.microsoft.com/exPress/</a><p>
+
+<h4>Python Version</h4>
+
+To run the python version you will need:<p>
+
+Python:<p>
+
+<a href="http://www.python.org/">http://www.python.org/</a><p>
+
+wxPython (a gui toolkit)<p>
+
+<a href="http://www.wxpython.org/">http://www.wxpython.org/</a><p>
+
+PyOpenGL (access to the OpenGL 3D library)<p>
+
+<a href="http://pyopengl.sourceforge.net/">http://pyopengl.sourceforge.net/</a><p>
+
+For some functions you might need scipy maths libraries (but unlikely)<p>
+
+<a href="http://www.scipy.org/">http://www.scipy.org/</a><p>
+
+</body>
+
+</html>
