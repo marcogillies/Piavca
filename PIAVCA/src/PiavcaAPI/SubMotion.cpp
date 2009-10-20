@@ -35,6 +35,7 @@
 
 #include "SubMotion.h"
 #include "PiavcaAPI/PiavcaError.h"
+#include "TypeConvert.h"
 
 using namespace Piavca;
 
@@ -109,6 +110,21 @@ void SubMotion::setEnd(float e)
 {
 	end = e;
 };
+
+bool SubMotion::setParameter(tstring paramName, tstring value)
+{
+	if(paramName == _T("Start") || paramName == _T("start"))
+	{
+		setStart(convert<float>(value));
+		return true;
+	}
+	if(paramName == _T("End") || paramName == _T("end"))
+	{
+		setEnd(convert<float>(value));
+		return true;
+	}
+	return MotionFilter::setParameter(paramName, value);
+}
 
 //! calculates the values of a keyframe
 PIAVCA_EXPORT float  SubMotion::getFloatValueAtTimeInternal (int trackId, float time)

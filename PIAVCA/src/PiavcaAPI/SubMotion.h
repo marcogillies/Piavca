@@ -61,6 +61,9 @@ namespace Piavca
 
 		//! gets the length of the motion in seconds
 		virtual float getMotionLength() const;
+		
+		//! a generic function for setting parameters
+		virtual bool setParameter(tstring paramName, tstring value);		
 
 		//! Sets the start of the range to be played
 		void setStart(float s);
