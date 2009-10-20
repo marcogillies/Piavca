@@ -57,8 +57,8 @@ using namespace Piavca;
 
 Core *Core::init()
 {
-	if (Core::getCore())
-		return Core::getCore();
+	if (core)
+		return core;
 	else
 		return new PiavcaCal3DCore();
 };

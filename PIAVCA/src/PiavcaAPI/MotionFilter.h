@@ -188,6 +188,13 @@ namespace Piavca
 			Motion::cleanRecursionState();
 			if(filterMot)filterMot->cleanRecursionState();
 		};
+		
+		
+		//! adds a new child motion
+		virtual void addMotion(Motion *mot)
+		{
+			setMotion(mot);
+		}
 	    
 		virtual void setMotion(Motion *mot)
 		{

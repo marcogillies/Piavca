@@ -96,6 +96,20 @@ int Motion::next(int trackId)const
 	return trackId;
 };
 
+void Motion::setParameter(tstring paramName, tstring value)
+{
+	if(paramName == _T("Name") || paramName == _T("name"))
+		setName(value);
+}
+
+void Motion::setMotionParameter(int motIndex, tstring paramName, tstring value)
+{
+}
+
+void Motion::addMotion(Motion *mot)
+{
+}
+
 void Motion::Dispose()
 {	
 	//Core::getCore()->disposeMotion(mot);

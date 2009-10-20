@@ -39,6 +39,7 @@
 //#endif
 
 #include "PiavcaCore.h"
+#include "Piavca.h"
 #include "PiavcaError.h"
 #include <algorithm>
 #include <map>
@@ -319,6 +320,80 @@ std::vector<std::pair<tstring, int> > Core::getTrackNameAssociations()
 	return v;
 }
 
+Motion *createMotion(tstring motionType)
+{
+	if(motionType == _T("ScaleMotion"))
+		return new ScaleMotion();
+	if(motionType == _T("ScaleMotionSpeed"))
+		return new ScaleMotionSpeed();
+	if(motionType == _T("ScaleMotionRoot"))
+		return new ScaleMotionRoot();
+	if(motionType == _T("ChangeMotionLength"))
+		return new ChangeMotionLength();
+	if(motionType == _T("TimeOffset"))
+		return new TimeOffset();
+	if(motionType == _T("Sequence"))
+		return new Sequence();
+	if(motionType == _T("SmoothSequence"))
+		return new SmoothSequence();
+	if(motionType == _T("MotionPosture"))
+		return new MotionPosture();
+	if(motionType == _T("AvatarPosture"))
+		return new AvatarPosture();
+	if(motionType == _T("PostureBlend"))
+		return new PostureBlend();
+	if(motionType == _T("Reposition"))
+		return new Reposition();
+	if(motionType == _T("LoopMotion"))
+		return new LoopMotion();
+	if(motionType == _T("SmoothLoop"))
+		return new SmoothLoop();
+	if(motionType == _T("RandomTimingsMotion"))
+		return new RandomTimingsMotion();
+	if(motionType == _T("AvatarPostureBlend"))
+		return new AvatarPostureBlend();
+	if(motionType == _T("BlendBetween"))
+		return new BlendBetween();
+	if(motionType == _T("MotionAdder"))
+		return new MotionAdder();
+	if(motionType == _T("MultiBlend"))
+		return new MultiBlend();
+	if(motionType == _T("Subtract"))
+		return new Subtract();
+	if(motionType == _T("MotionTransition"))
+		return new MotionTransition();
+	if(motionType == _T("ChoiceMotion"))
+		return new ChoiceMotion();
+	if(motionType == _T("ChoiceMotionWithDefault"))
+		return new ChoiceMotionWithDefault();
+	if(motionType == _T("EventMapChoice"))
+		return new EventMapChoice();
+	if(motionType == _T("SequentialChoiceMotion"))
+		return new SequentialChoiceMotion();
+	if(motionType == _T("RandomChoiceMotion"))
+		return new RandomChoiceMotion();	
+	if(motionType == _T("PointAt"))
+		return new PointAt();		
+	if(motionType == _T("Proxemics"))
+		return new Proxemics();		
+	if(motionType == _T("ZeroMotion"))
+		return new ZeroMotion();	
+	if(motionType == _T("SubMotion"))
+		return new SubMotion();	
+	if(motionType == _T("TimeRangeMotion"))
+		return new TimeRangeMotion();	
+	if(motionType == _T("TimeWarp"))
+		return new TimeWarp();	
+	if(motionType == _T("OverrideMotion"))
+		return new OverrideMotion();	
+	if(motionType == _T("ExpMapMotion"))
+		return new ExpMapMotion();	
+	if(motionType == _T("LogMapMotion"))
+		return new LogMapMotion();	
+	if(motionType == _T("AvatarMotion"))
+		return new AvatarMotion();	
+	return NULL;
+}
 
 void Core::loadMotion(tstring motionName, Motion *mot, bool temp, Motion *basePosture)
 {

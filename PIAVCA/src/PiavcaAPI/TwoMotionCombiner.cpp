@@ -266,6 +266,16 @@ void TwoMotionCombiner::setMotion2(Motion *mot)
 	setStartTime(startTime);
 };
 
+
+void TwoMotionCombiner::addMotion(Motion *mot)
+{
+	if(mot1)
+		setMotion2(mot);
+	else
+		setMotion1(mot);
+}
+
+
 float TwoMotionCombiner::getCombinedFloatValue (int trackId, float time) 
 {
 	return 0.0f;	

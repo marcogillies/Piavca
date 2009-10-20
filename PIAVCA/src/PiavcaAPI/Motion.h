@@ -242,6 +242,15 @@ public:
 		passEvent(ev);
 		cleanRecursionState();
 	}
+	
+	//! a generic function for setting parameters
+	virtual void setParameter(tstring paramName, tstring value);
+	
+	//! a generic function for setting parameters relating to specific submotions
+	virtual void setMotionParameter(int motIndex, tstring paramName, tstring value);
+	
+	//! adds a new child motion
+	virtual void addMotion(Motion *mot);
 
 	//! registers an owner for a motion, the motion will not be deleted until disposed is called.
 	/*!

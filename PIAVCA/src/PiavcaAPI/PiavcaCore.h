@@ -172,6 +172,8 @@ namespace Piavca
 
 		static Core *getCore() 
 		{
+			if (!core)
+				init();
 			return core;
 		};
 
@@ -266,6 +268,9 @@ namespace Piavca
 		std::vector<std::pair<tstring, int> > getTrackNameAssociations();
 		//!@}
 
+		//! creates a new motion of a specific type
+		Motion *createMotion(tstring motionType);
+		
 		//! loads in a motion from file and adds it to the list of motions
 		void loadMotion(tstring motionName, tstring motionFileName, int flags = 0, bool temp=false, Motion *basePosture = NULL);
 		

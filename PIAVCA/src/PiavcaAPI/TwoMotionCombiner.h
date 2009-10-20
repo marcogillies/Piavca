@@ -114,6 +114,10 @@ namespace Piavca
 		//! get the type of the track corresponding to an iterator
 		int getTrackType(int trackId)const ;
 
+		
+		//! adds a new child motion
+		virtual void addMotion(Motion *mot);
+		
 		void setMotion1(Motion *mot);
 		void setMotion2(Motion *mot);
 
