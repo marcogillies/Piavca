@@ -1,6 +1,6 @@
 #include "testApp.h"
 
-#include "PiavcaAPI/Piavca.h"
+#include "ofxPiavca.h"
 
 GLfloat lightOnePosition[] = {40.0, 40, 100.0, 0.0};
 GLfloat lightOneColor[] = {0.99, 0.99, 0.99, 1.0};
@@ -30,21 +30,25 @@ void testApp::setup(){
     glColorMaterial (GL_FRONT_AND_BACK, GL_DIFFUSE);
     glEnable (GL_COLOR_MATERIAL);
 	
-#ifndef _MSC_VER 
-	chdir(ofToDataPath("Bill").c_str());
-#else
-	_chdir(ofToDataPath("Bill").c_str());
-#endif
-	Piavca::Core::init();
-	Piavca::Core::getCore()->setHardware(false);
+//#ifndef _MSC_VER 
+//	chdir(ofToDataPath("Bill").c_str());
+//#else
+//	_chdir(ofToDataPath("Bill").c_str());
+//#endif
+	//Piavca::Core::init();
+	//Piavca::Core::getCore()->setHardware(false);
 	
-	char *cwd = new char[1024];
-	getcwd(cwd, 1024);
-	std::cout << cwd << std::endl;
+	//char *cwd = new char[1024];
+	//getcwd(cwd, 1024);
+	//std::cout << cwd << std::endl;
 	
-	Piavca::Avatar *av = new Piavca::Avatar("bill");
-	Piavca::Motion *mot = Piavca::Core::getCore()->getMotion("actions");
-	av->playMotion(new Piavca::LoopMotion(new Piavca::Reposition(mot)));
+	//Piavca::Avatar *av = new Piavca::Avatar("bill");
+	//Piavca::Motion *mot = Piavca::Core::getCore()->getMotion("actions");
+	//av->playMotion(new Piavca::LoopMotion(new Piavca::Reposition(mot)));
+	//ofxPiavca::loadFile("Bill/bill.cfg");
+	ofxPiavca::loadFile("Bill/tutorial2.xml");
+
+	ofxPiavca::playMotion("bill", "loop1");
 }
 
 //--------------------------------------------------------------
@@ -67,11 +71,13 @@ void testApp::draw(){
 	
 	ofSetColor(255, 255, 255, 255);
 	
-	Piavca::Core::getCore()->timeStep();
+	//Piavca::Core::getCore()->timeStep();
 	
-	Piavca::Core::getCore()->prerender();
+	//Piavca::Core::getCore()->prerender();
 	
-	Piavca::Core::getCore()->render();
+	//Piavca::Core::getCore()->render();
+	
+	ofxPiavca::draw();
 	
     glPopMatrix();
 	
@@ -82,7 +88,10 @@ void testApp::draw(){
 
 //--------------------------------------------------------------
 void testApp::keyPressed  (int key){
-
+	if (key == 'n')
+		ofxPiavca::event("bill", "nod");
+	if (key == 'c')
+		ofxPiavca::event("bill", "chinstroke");
 }
 
 //--------------------------------------------------------------

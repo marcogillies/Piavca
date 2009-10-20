@@ -101,6 +101,8 @@
 		A9402A73108842F300565676 /* bvhParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94029C1108842F300565676 /* bvhParser.cpp */; };
 		A9402A78108842F300565676 /* StdMotionCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94029CA108842F300565676 /* StdMotionCore.cpp */; };
 		A9402A79108842F300565676 /* StdMotionImp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94029CC108842F300565676 /* StdMotionImp.cpp */; };
+		A9A3389B108C4EBD00B85E1C /* ofxPiavca.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9A3389A108C4EBD00B85E1C /* ofxPiavca.cpp */; };
+		A9A3392C108D8A8B00B85E1C /* xmlLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9A3392B108D8A8B00B85E1C /* xmlLoader.cpp */; };
 		E446644B0F5B1CFD005D0BF0 /* ofAppGlutWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E446641A0F5B1CFD005D0BF0 /* ofAppGlutWindow.cpp */; };
 		E446644C0F5B1CFD005D0BF0 /* ofAppRunner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E446641C0F5B1CFD005D0BF0 /* ofAppRunner.cpp */; };
 		E446644D0F5B1CFD005D0BF0 /* ofArduino.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E44664200F5B1CFD005D0BF0 /* ofArduino.cpp */; };
@@ -365,6 +367,11 @@
 		A94029CB108842F300565676 /* StdMotionCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StdMotionCore.h; sourceTree = "<group>"; };
 		A94029CC108842F300565676 /* StdMotionImp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StdMotionImp.cpp; sourceTree = "<group>"; };
 		A94029CD108842F300565676 /* StdMotionImp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StdMotionImp.h; sourceTree = "<group>"; };
+		A9A33899108C4EBD00B85E1C /* ofxPiavca.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPiavca.h; sourceTree = "<group>"; };
+		A9A3389A108C4EBD00B85E1C /* ofxPiavca.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxPiavca.cpp; sourceTree = "<group>"; };
+		A9A3392A108D8A8B00B85E1C /* xmlLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xmlLoader.h; sourceTree = "<group>"; };
+		A9A3392B108D8A8B00B85E1C /* xmlLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = xmlLoader.cpp; sourceTree = "<group>"; };
+		A9A33A2F108DA69100B85E1C /* TypeConvert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypeConvert.h; sourceTree = "<group>"; };
 		E44664190F5B1CFD005D0BF0 /* ofAppBaseWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofAppBaseWindow.h; path = ../../../libs/openFrameworks/app/ofAppBaseWindow.h; sourceTree = SOURCE_ROOT; };
 		E446641A0F5B1CFD005D0BF0 /* ofAppGlutWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofAppGlutWindow.cpp; path = ../../../libs/openFrameworks/app/ofAppGlutWindow.cpp; sourceTree = SOURCE_ROOT; };
 		E446641B0F5B1CFD005D0BF0 /* ofAppGlutWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofAppGlutWindow.h; path = ../../../libs/openFrameworks/app/ofAppGlutWindow.h; sourceTree = SOURCE_ROOT; };
@@ -582,6 +589,8 @@
 				A94028FB108842F300565676 /* PiavcaAPI */,
 				A940297B108842F300565676 /* PiavcaCal3dImp */,
 				A94029BD108842F300565676 /* StdMotionImp */,
+				A9A33899108C4EBD00B85E1C /* ofxPiavca.h */,
+				A9A3389A108C4EBD00B85E1C /* ofxPiavca.cpp */,
 			);
 			name = src;
 			path = ../../../addons/ofxPiavca/src;
@@ -789,6 +798,9 @@
 				A940296E108842F300565676 /* Vec.cpp */,
 				A940296F108842F300565676 /* Vec.h */,
 				A9402970108842F300565676 /* ZeroMotion.h */,
+				A9A3392A108D8A8B00B85E1C /* xmlLoader.h */,
+				A9A3392B108D8A8B00B85E1C /* xmlLoader.cpp */,
+				A9A33A2F108DA69100B85E1C /* TypeConvert.h */,
 			);
 			path = PiavcaAPI;
 			sourceTree = "<group>";
@@ -1515,6 +1527,8 @@
 				A9402A73108842F300565676 /* bvhParser.cpp in Sources */,
 				A9402A78108842F300565676 /* StdMotionCore.cpp in Sources */,
 				A9402A79108842F300565676 /* StdMotionImp.cpp in Sources */,
+				A9A3389B108C4EBD00B85E1C /* ofxPiavca.cpp in Sources */,
+				A9A3392C108D8A8B00B85E1C /* xmlLoader.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
