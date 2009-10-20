@@ -44,12 +44,15 @@
 #include <algorithm>
 #include <map>
 
-using namespace Piavca;
 
 #include "Avatar.h"
 #include "Object.h"
 #include "KeyframeMotion.h"
 #include "TimeCallback.h"
+#include "xmlLoader.h"
+
+
+using namespace Piavca;
 
 Piavca::Core *Piavca::Core::core = NULL;
 
@@ -320,7 +323,13 @@ std::vector<std::pair<tstring, int> > Core::getTrackNameAssociations()
 	return v;
 }
 
-Motion *createMotion(tstring motionType)
+
+void Core::loadXMLFile(tstring filename)
+{
+	loadFile(filename);
+}
+
+Motion *Core::createMotion(tstring motionType)
 {
 	if(motionType == _T("ScaleMotion"))
 		return new ScaleMotion();

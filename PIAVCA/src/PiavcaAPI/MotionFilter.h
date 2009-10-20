@@ -190,6 +190,14 @@ namespace Piavca
 		};
 		
 		
+		int getLastMotion()
+		{
+			if(getMotion())
+				return 1;
+			else
+				return 0;
+		}
+		
 		//! adds a new child motion
 		virtual void addMotion(Motion *mot)
 		{

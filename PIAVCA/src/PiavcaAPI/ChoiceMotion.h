@@ -199,6 +199,8 @@ public:
 	//! gets the length of the motion in seconds
 	virtual float getMotionLength() const;
 
+	
+	int getLastMotion();
 
 	//! adds a new child motion
 	virtual void addMotion(Motion *mot);

@@ -271,6 +271,8 @@ namespace Piavca
 		//! creates a new motion of a specific type
 		Motion *createMotion(tstring motionType);
 		
+		void loadXMLFile(tstring filename);
+		
 		//! loads in a motion from file and adds it to the list of motions
 		void loadMotion(tstring motionName, tstring motionFileName, int flags = 0, bool temp=false, Motion *basePosture = NULL);
 		

@@ -96,19 +96,32 @@ int Motion::next(int trackId)const
 	return trackId;
 };
 
-void Motion::setParameter(tstring paramName, tstring value)
+bool Motion::setParameter(tstring paramName, tstring value)
 {
+	std::cout << "setting parameter " << TStringToString(paramName) << " " << TStringToString(value) << std::endl;
 	if(paramName == _T("Name") || paramName == _T("name"))
+	{
 		setName(value);
+		return true;
+	}
+	return false;
 }
 
-void Motion::setMotionParameter(int motIndex, tstring paramName, tstring value)
+bool Motion::setMotionParameter(int motIndex, tstring paramName, tstring value)
 {
+	std::cout << "setting child motion parameter " << TStringToString(paramName) << " " << TStringToString(value) << std::endl;
+	return false;
+}
+
+int Motion::getLastMotion()
+{
+	return 0;
 }
 
 void Motion::addMotion(Motion *mot)
 {
 }
+
 
 void Motion::Dispose()
 {	

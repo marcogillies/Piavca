@@ -115,6 +115,8 @@ namespace Piavca
 		int getTrackType(int trackId)const ;
 
 		
+		int getLastMotion();
+		
 		//! adds a new child motion
 		virtual void addMotion(Motion *mot);
 		

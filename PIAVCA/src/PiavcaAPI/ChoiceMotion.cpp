@@ -119,6 +119,11 @@ Motion *ChoiceMotion::getListener(int index)
 }
 
 
+int ChoiceMotion::getLastMotion()
+{
+	return getNumMotions()-1;
+}
+
 //adds a new child motion
 void ChoiceMotion::addMotion(Motion *mot)
 {

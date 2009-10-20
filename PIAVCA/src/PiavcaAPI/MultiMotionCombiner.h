@@ -102,6 +102,11 @@ public:
 			mots[i]->printInfo();
 		debug_prefix--;
 	};
+	
+	int getLastMotion()
+	{
+		return getNumMotions()-1;
+	}
 
 	//adds a new motion
 	virtual void addMotion(Motion *mot)

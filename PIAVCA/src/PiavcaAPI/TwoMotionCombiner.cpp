@@ -267,6 +267,16 @@ void TwoMotionCombiner::setMotion2(Motion *mot)
 };
 
 
+int TwoMotionCombiner::getLastMotion()
+{
+	if(getMotion2())
+		return 2;
+	if(getMotion1())
+		return 1;
+	else
+		return 0;
+}
+
 void TwoMotionCombiner::addMotion(Motion *mot)
 {
 	if(mot1)

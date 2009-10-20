@@ -25,10 +25,19 @@ void ofxPiavca::loadFile(string filename)
 #endif
 	
 	int dotpos = filename.find_last_of(".");
-	string avatarname = filename.substr(pathpos+1, dotpos-pathpos-1);
-	std::cout << avatarname << std::endl;
-	
-	Piavca::Avatar *av = new Piavca::Avatar(StringToTString(avatarname));
+	string suffix = filename.substr(dotpos+1);
+	if (suffix == "cfg")
+	{
+		string avatarname = filename.substr(pathpos+1, dotpos-pathpos-1);
+		std::cout << avatarname << std::endl;
+		
+		Piavca::Avatar *av = new Piavca::Avatar(StringToTString(avatarname));
+	}
+	else
+	{
+		std::cout << "file to load " << filename.substr(pathpos+1) << std::endl;
+		Piavca::Core::getCore()->loadXMLFile(StringToTString(filename.substr(pathpos+1)));
+	}
 }
 
 void ofxPiavca::playMotion(string avatarName, string motionName)

@@ -244,13 +244,23 @@ public:
 	}
 	
 	//! a generic function for setting parameters
-	virtual void setParameter(tstring paramName, tstring value);
+	virtual bool setParameter(tstring paramName, tstring value);
 	
 	//! a generic function for setting parameters relating to specific submotions
-	virtual void setMotionParameter(int motIndex, tstring paramName, tstring value);
+	virtual bool setMotionParameter(int motIndex, tstring paramName, tstring value);
 	
 	//! adds a new child motion
 	virtual void addMotion(Motion *mot);
+	
+	virtual int getLastMotion();
+	
+	//! adds a new child motion, with some extra parameters
+	virtual void addMotion(Motion *mot, std::vector < std::pair<tstring, tstring> > params)
+	{
+		addMotion(mot);
+		for (int i = 0; i < params.size(); i++)
+			setMotionParameter(getLastMotion(), params[i].first, params[i].second);
+	}
 
 	//! registers an owner for a motion, the motion will not be deleted until disposed is called.
 	/*!
