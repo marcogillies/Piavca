@@ -124,6 +124,9 @@ namespace Piavca
 		{
 			return start_orientation;
 		};
+		
+		//! a generic function for setting parameters
+		virtual bool setParameter(tstring paramName, tstring value);
 
 		void setStartFromMotion(Motion *m, float time);
 

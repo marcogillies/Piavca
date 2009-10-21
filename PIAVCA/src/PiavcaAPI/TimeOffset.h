@@ -38,6 +38,7 @@
 #define TIME_OFFSET_H
 
 #include "PiavcaAPI/MotionFilter.h"
+#include "TypeConvert.h"
 
 namespace Piavca
 {
@@ -105,6 +106,16 @@ namespace Piavca
 		{
 			return offset;
 		};
+		
+		//! a generic function for setting parameters
+		virtual bool setParameter(tstring paramName, tstring value)
+		{
+			if(paramName == _T("Offset") || paramName == _T("offset"))
+			{
+				setOffset(convert<float>(value));
+				return true;
+			}			return MotionFilter::setParameter(paramName, value);
+		}
 	};
 }
 #endif //TIME_OFFSET_H

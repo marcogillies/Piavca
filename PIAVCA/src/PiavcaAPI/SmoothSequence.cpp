@@ -43,8 +43,24 @@
 #include "Reposition.h"
 #include "SubMotion.h"
 #include "PiavcaError.h"
+#include "TypeConvert.h"
 
 using namespace Piavca;
+
+bool SmoothSequence::setParameter(tstring paramName, tstring value)
+{
+	if(paramName == _T("BlendInterval") || paramName == _T("blendInterval") || paramName == _T("blendinterval"))
+	{
+		setBlendInterval(convert<float>(value));
+		return true;
+	}
+	if(paramName == _T("BlendStart") || paramName == _T("blendStart") || paramName == _T("blendstart"))
+	{
+		setBlendStart(convert<float>(value));
+		return true;
+	}
+	return Sequence::setParameter(paramName, value);
+}
 
 void SmoothSequence::create()
 {

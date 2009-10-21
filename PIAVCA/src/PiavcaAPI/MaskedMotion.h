@@ -110,6 +110,9 @@ public:
 		return mask;
 	};
 	
+	//! a generic function for setting parameters
+	virtual bool setParameter(tstring paramName, tstring value);
+	
 
 	void addToMask(int trackId){mask.setMask(trackId, true);};
 	void removeFromMask(int trackId){mask.setMask(trackId, false);};

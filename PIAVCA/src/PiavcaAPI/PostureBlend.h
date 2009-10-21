@@ -94,6 +94,9 @@ namespace Piavca
 		{
 			return accumulateRoot;
 		};
+		
+		//! a generic function for setting parameters
+		virtual bool setParameter(tstring paramName, tstring value);
 	    
 		virtual bool reset();
 

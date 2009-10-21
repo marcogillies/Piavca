@@ -33,6 +33,7 @@
 
 #include "BlendBetween.h"
 #include "PiavcaError.h"
+#include "TypeConvert.h"
 
 using namespace Piavca;
 
@@ -45,6 +46,16 @@ BlendBetween::BlendBetween(const BlendBetween &b)
 	:TwoMotionCombiner(b), blend(b.blend)
 {
 };
+
+bool BlendBetween::setParameter(tstring paramName, tstring value)
+{
+	if(paramName == _T("BlendFactor") || paramName == _T("blendFactor") || paramName == _T("blendfactor"))
+	{
+		setBlendFactor(convert<float>(value));
+		return true;
+	}
+	return TwoMotionCombiner::setParameter(paramName, value);
+}
 
 float BlendBetween::getCombinedFloatValue (int trackId, float time) 
 {

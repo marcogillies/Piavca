@@ -40,10 +40,37 @@
 
 #include "SequentialBlend.h"
 #include "PiavcaError.h"
+#include "TypeConvert.h"
 
 using namespace Piavca;
 
 
+
+//! a generic function for setting parameters
+bool SequentialBlend::setParameter(tstring paramName, tstring value)
+{
+	if(paramName == _T("BlendInterval") || paramName == _T("blendInterval") || paramName == _T("blendinterval"))
+	{
+		setBlendInterval(convert<float>(value));
+		return true;
+	}
+	if(paramName == _T("BlendStart") || paramName == _T("blendStart") || paramName == _T("blendstart"))
+	{
+		setBlendStart(convert<float>(value));
+		return true;
+	}
+	if(paramName == _T("MaintainY") || paramName == _T("maintainY") || paramName == _T("maintainy"))
+	{
+		setMaintainY(convert<bool>(value));
+		return true;
+	}
+	if(paramName == _T("AccumulateRoot") || paramName == _T("accumulateRoot") || paramName == _T("accumulateroot"))
+	{
+		setAccumulateRoot(convert<bool>(value));
+		return true;
+	}
+	return TwoMotionCombiner::setParameter(paramName, value);
+}
 void SequentialBlend::calculateRootOffsets()
 {
 	//if(isFacial())

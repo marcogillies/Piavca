@@ -37,6 +37,7 @@
 #include "SequentialChoiceMotion.h"
 
 #include <iostream>
+#include "TypeConvert.h"
 
 using namespace Piavca;
 
@@ -48,6 +49,17 @@ void  SequentialChoiceMotion::setStartTime(float t)
 		//setChoice(0);
 	}
 	ChoiceMotion::setStartTime(t);
+}
+
+//! a generic function for setting parameters
+bool SequentialChoiceMotion::setParameter(tstring paramName, tstring value)
+{
+	if(paramName == _T("PassEventsToChildren") || paramName == _T("passEventsToChildren") || paramName == _T("passeventstochildren"))
+	{
+		setPassEventsToChildren(convert<bool>(value));
+		return true;
+	}
+	return ChoiceMotion::setParameter(paramName, value);
 }
 
 //! handles an event (plays the motion with the same name as the event)

@@ -36,6 +36,7 @@
 
 #include "MotionFilter.h"
 #include "PiavcaCore.h"
+#include "TypeConvert.h"
 
 namespace Piavca
 {
@@ -77,6 +78,18 @@ namespace Piavca
 		//! sets an end time after which the motion stops looping
 		void setEndTime(float t){endTime = t;};
 		float getEndTime(){return endTime;};
+		
+		//! a generic function for setting parameters
+		virtual bool setParameter(tstring paramName, tstring value)
+		{
+			if(paramName == _T("EndTime") || paramName == _T("endTime") || paramName == _T("endtime"))
+			{
+				setEndTime(convert<float>(value));
+				return true;
+			}
+			return MotionFilter::setParameter(paramName, value);
+		}
+		
 				
 		virtual void preFrame(float time)
 		{

@@ -40,8 +40,47 @@
 
 #include "Reposition.h"
 #include "PiavcaError.h"
+#include "TypeConvert.h"
 
 using namespace Piavca;
+
+
+
+//! a generic function for setting parameters
+bool Reposition::setParameter(tstring paramName, tstring value)
+{
+	if(paramName == _T("StartPosition") || paramName == _T("startPosition") || paramName == _T("startposition"))
+	{
+		setStartPosition(convert<Vec>(value));
+		return true;
+	}
+	if(paramName == _T("StartOrientation") || paramName == _T("startOrientation") || paramName == _T("startorientation"))
+	{
+		setStartOrientation(convert<Quat>(value));
+		return true;
+	}
+	if(paramName == _T("PosOffset") || paramName == _T("posOffset") || paramName == _T("posoffset"))
+	{
+		setPosOffset(convert<Vec>(value));
+		return true;
+	}
+	if(paramName == _T("MaintainUp") || paramName == _T("maintainUp") || paramName == _T("maintainup"))
+	{
+		setMaintainUp(convert<bool>(value));
+		return true;
+	}
+	if(paramName == _T("RotateAboutUp") || paramName == _T("rotateAboutUp") || paramName == _T("rotateaboutup"))
+	{
+		setRotateAboutUp(convert<bool>(value));
+		return true;
+	}
+	if(paramName == _T("UpDirection") || paramName == _T("upDirection") || paramName == _T("updirection"))
+	{
+		setUpDirection(convert<Vec>(value));
+		return true;
+	}
+	return MotionFilter::setParameter(paramName, value);
+}
 
 
 void Reposition::calculateRootOffsets()

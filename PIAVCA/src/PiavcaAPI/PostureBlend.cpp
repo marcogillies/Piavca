@@ -49,6 +49,7 @@
 #include "SubMotion.h"
 #include "PiavcaError.h"
 #include "PiavcaCore.h"
+#include "TypeConvert.h"
 
 using namespace Piavca;
 
@@ -57,6 +58,21 @@ PostureBlend::PostureBlend(Motion *mot, float _interval)
 	originalMotion(mot), repositioner(NULL), accumulateRoot(true)
 {
 };
+
+bool PostureBlend::setParameter(tstring paramName, tstring value)
+{
+	if(paramName == _T("BlendInterval") || paramName == _T("blendInterval") || paramName == _T("blendinterval"))
+	{
+		setBlendInterval(convert<float>(value));
+		return true;
+	}
+	if(paramName == _T("AccumulateRoot") || paramName == _T("accumulateRoot") || paramName == _T("accumulateroot"))
+	{
+		setAccumulateRoot(convert<bool>(value));
+		return true;
+	}
+	return Sequence::setParameter(paramName, value);
+}
 
 
 Motion *PostureBlend::getMotion()

@@ -45,6 +45,7 @@
 #include "PiavcaError.h"
 #include "PiavcaCore.h"
 #include "KeyframeMotion.h"
+#include "TypeConvert.h"
 
 using namespace Piavca;
 
@@ -75,6 +76,17 @@ bool AvatarPostureBlend::isNull(int trackId) const
 	else
 		return (!mot2 || mot2->isNull(trackId));
 };
+
+
+
+bool AvatarPostureBlend::setParameter(tstring paramName, tstring value)
+{
+	if(paramName == _T("BlendInterval") || paramName == _T("blendInterval") || paramName == _T("blendinterval"))
+	{
+		setBlendInterval(convert<float>(value));
+		return true;
+	}	return Sequence::setParameter(paramName, value);
+}
 
 void AvatarPostureBlend::setMotion(Motion *mot)
 {

@@ -108,6 +108,9 @@ namespace Piavca
 		void setWindow(float w){window = w;};
 		float getWindow(){return window;};
 		
+		//! a generic function for setting parameters
+		virtual bool setParameter(tstring paramName, tstring value);
+		
 		
 		void setMotion1(Motion *mot)
 		{

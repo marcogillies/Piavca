@@ -215,6 +215,9 @@ public:
 		return Target_name;
 	}
 	//!@}
+	
+	//! a generic function for setting parameters
+	virtual bool setParameter(tstring paramName, tstring value);
 
 	//! sets the position of the other person (if its not accessed as an avatar pointer)
 	void setTarget(const Vec &target);

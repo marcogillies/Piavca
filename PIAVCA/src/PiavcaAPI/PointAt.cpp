@@ -36,6 +36,7 @@
 
 #include "PiavcaAPI/PiavcaDefs.h"
 #include "PiavcaAPI/Avatar.h"
+#include "TypeConvert.h"
 
 
 #include "PointAt.h"
@@ -43,6 +44,44 @@
 #include <algorithm>
 
 using namespace Piavca;
+
+//! a generic function for setting parameters
+bool PointAt::setParameter(tstring paramName, tstring value)
+{
+	if(paramName == _T("Local") || paramName == _T("Local"))
+	{
+		setLocal(convert<bool>(value));
+		return true;
+	}
+	if(paramName == _T("TargetJointId") || paramName == _T("targetJointId") || paramName == _T("targetjointid"))
+	{
+		setTargetJointId(convert<int>(value));
+		return true;
+	}
+	if(paramName == _T("JointId") || paramName == _T("jointId") || paramName == _T("jointid"))
+	{
+		setJointId(convert<int>(value));
+		return true;
+	}
+	if(paramName == _T("ForwardDirection") || paramName == _T("forwardDirection") || paramName == _T("forwarddirection"))
+	{
+		setForwardDirection(convert<Vec>(value));
+		return true;
+	}
+	if(paramName == _T("Target") || paramName == _T("target"))
+	{
+		setTarget(convert<Vec>(value));
+		return true;
+	}
+	if(paramName == _T("Offset") || paramName == _T("offset"))
+	{
+		setOffset(convert<Vec>(value));
+		return true;
+	}
+	return MotionFilter::setParameter(paramName, value);
+}
+
+
 
 
 void PointAt::setMotion(Motion *mot)

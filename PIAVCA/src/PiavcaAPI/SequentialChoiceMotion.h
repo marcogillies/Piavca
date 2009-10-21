@@ -73,6 +73,9 @@ public:
 	{	
 		return passEventsToChildren;
 	}
+	
+	//! a generic function for setting parameters
+	virtual bool setParameter(tstring paramName, tstring value);
 
 	//! handles an event (plays the motion with the same name as the event)
 	virtual void handleEvent(tstring ev);

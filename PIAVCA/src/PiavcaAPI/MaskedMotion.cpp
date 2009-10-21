@@ -37,6 +37,7 @@
 #include "MaskedMotion.h"
 #include "PiavcaAPI/PiavcaCore.h"
 #include "PiavcaAPI/PiavcaError.h"
+#include "TypeConvert.h"
 
 using namespace Piavca;
 
@@ -57,6 +58,7 @@ const MotionMask &MotionMask::operator=(const MotionMask &mm)
 	m_facial = mm.m_facial;
 	return *this;
 };
+
 
 void MotionMask::setMask(int track, bool val)
 {
@@ -159,6 +161,19 @@ MaskedMotion::MaskedMotion(const MaskedMotion &mm)
 	:MotionFilter(mm),  mask(mm.mask)
 	{};
 
+
+
+
+//! a generic function for setting parameters
+bool MaskedMotion::setParameter(tstring paramName, tstring value)
+{
+	if(paramName == _T("Mask") || paramName == _T("mask"))
+	{
+		setMask(convert<std::vector <std::string> >(value));
+		return true;
+	}
+	return MotionFilter::setParameter(paramName, value);
+}
 
 void MaskedMotion::addAllToMask()
 {

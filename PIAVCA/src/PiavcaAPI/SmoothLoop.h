@@ -36,6 +36,7 @@
 
 #include "LoopMotion.h"
 #include "ChoiceMotion.h"
+#include "TypeConvert.h"
 
 namespace Piavca
 {
@@ -106,6 +107,22 @@ namespace Piavca
 		{
 			return choiceMot->getWindowLength();
 		};
+		
+		//! a generic function for setting parameters
+		virtual bool setParameter(tstring paramName, tstring value)
+		{
+			if(paramName == _T("BlendInterval") || paramName == _T("blendInterval") || paramName == _T("blendinterval"))
+			{
+				setBlendInterval(convert<float>(value));
+				return true;
+			}
+			if(paramName == _T("AccumulateRoot") || paramName == _T("accumulateRoot") || paramName == _T("accumulateroot"))
+			{
+				setAccumulateRoot(convert<float>(value));
+				return true;
+			}
+			return LoopMotion::setParameter(paramName, value);
+		}
 	};
 };
 

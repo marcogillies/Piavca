@@ -38,6 +38,7 @@
 #define CHANGE_MOTION_LENGTH_H
 
 #include "ScaleMotionSpeed.h"
+#include "TypeConvert.h"
 
 namespace Piavca 
 {
@@ -93,6 +94,18 @@ namespace Piavca
 		{
 			return length;
 		};
+		
+		//! a generic function for setting parameters
+		virtual bool setParameter(tstring paramName, tstring value)
+		{
+			if(paramName == _T("Length") || paramName == _T("length"))
+			{
+				setLength(convert<float>(value));
+				return true;
+			}
+			return ScaleMotionSpeed::setParameter(paramName, value);
+		}
+		
 
 		//! gets the length of the motion in seconds
 		virtual float getMotionLength() const

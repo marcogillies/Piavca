@@ -38,6 +38,7 @@
 #define RANDOM_TIMINGS_MOTION_H
 
 #include "ScaleMotionSpeed.h"
+#include "TypeConvert.h"
 
 namespace Piavca
 {
@@ -105,6 +106,23 @@ public:
 	{
 		return maxScale;
 	}
+	
+	//! a generic function for setting parameters
+	virtual bool setParameter(tstring paramName, tstring value)
+	{
+		if(paramName == _T("MinTimeScale") || paramName == _T("minTimeScale") || paramName == _T("mintimescale"))
+		{
+			setMinTimeScale(convert<float>(value));
+			return true;
+		}
+		if(paramName == _T("MaxTimeScale") || paramName == _T("maxTimeScale") || paramName == _T("maxtimescale"))
+		{
+			setMaxTimeScale(convert<float>(value));
+			return true;
+		}
+		return ScaleMotionSpeed::setParameter(paramName, value);
+	}
+
 
 	//! This is called each time around the loop
 	virtual bool reset()

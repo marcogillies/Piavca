@@ -182,6 +182,9 @@ public:
 		upDirection.normalize();
 	};
 	Vec getUpDirection(){return upDirection;};
+	
+	//! a generic function for setting parameters
+	virtual bool setParameter(tstring paramName, tstring value);
 
 	
 	

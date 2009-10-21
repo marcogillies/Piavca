@@ -38,6 +38,7 @@
 #include "SavedFramesTransition.h"
 #include "SubMotion.h"
 #include "Reposition.h"
+#include "TypeConvert.h"
 
 using namespace Piavca;
 
@@ -74,6 +75,64 @@ ChoiceMotion::~ChoiceMotion()
 		mots[i]->Dispose();
 	mots.clear();
 };
+
+
+//! a generic function for setting parameters
+bool ChoiceMotion::setParameter(tstring paramName, tstring value)
+{
+	if(paramName == _T("WindowLength") || paramName == _T("windowLength") || paramName == _T("windowlength"))
+	{
+		setWindowLength(convert<float>(value));
+		return true;
+	}
+	if(paramName == _T("Smooth") || paramName == _T("smooth"))
+	{
+		setSmooth(convert<bool>(value));
+		return true;
+	}
+	if(paramName == _T("ResetTime") || paramName == _T("resetTime") || paramName == _T("resettime"))
+	{
+		setResetTime(convert<bool>(value));
+		return true;
+	}
+	if(paramName == _T("ResetOnEvent") || paramName == _T("resetOnEvent") || paramName == _T("resetonevent"))
+	{
+		setResetOnEvent(convert<bool>(value));
+		return true;
+	}
+	if(paramName == _T("ResetOnPlay") || paramName == _T("resetOnPlay") || paramName == _T("resetonplay"))
+	{
+		setResetOnPlay(convert<bool>(value));
+		return true;
+	}	
+	if(paramName == _T("EventsToAllChildren") || paramName == _T("eventsToAllChildren") || paramName == _T("eventstoallchildren"))
+	{
+		setEventsToAllChildren(convert<bool>(value));
+		return true;
+	}	
+	if(paramName == _T("MaintainUp") || paramName == _T("maintainUp") || paramName == _T("maintainUp"))
+	{
+		setMaintainUp(convert<bool>(value));
+		return true;
+	}
+	if(paramName == _T("RotateAboutUp") || paramName == _T("rotateAboutUp") || paramName == _T("rotateaboutUp"))
+	{
+		setRotateAboutUp(convert<bool>(value));
+		return true;
+	}
+	if(paramName == _T("AccumulateRoot") || paramName == _T("accumulateRoot") || paramName == _T("accumulateroot"))
+	{
+		setAccumulateRoot(convert<bool>(value));
+		return true;
+	}
+	if(paramName == _T("UpDirection") || paramName == _T("upDirection") || paramName == _T("updirection"))
+	{
+		setUpDirection(convert<Vec>(value));
+		return true;
+	}
+	return MotionFilter::setParameter(paramName, value);
+}
+
 
 void ChoiceMotion::printInfo()
 {

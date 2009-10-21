@@ -33,6 +33,7 @@
 
 #include "MotionTransition.h"
 #include "PiavcaAPI/PiavcaError.h"
+#include "TypeConvert.h"
 
 using namespace Piavca;
 
@@ -71,6 +72,27 @@ MotionTransition::MotionTransition(const MotionTransition &mt)
 {
 };
 
+
+//! a generic function for setting parameters
+bool MotionTransition::setParameter(tstring paramName, tstring value)
+{
+	if(paramName == _T("Window") || paramName == _T("window"))
+	{
+		setWindow(convert<float>(value));
+		return true;
+	}
+	if(paramName == _T("TransitionTime1") || paramName == _T("transitionTime1") || paramName == _T("transitiontime1"))
+	{
+		setTransitionTime1(convert<float>(value));
+		return true;
+	}
+	if(paramName == _T("TransitionTime2") || paramName == _T("transitionTime2") || paramName == _T("transitiontime2"))
+	{
+		setTransitionTime2(convert<float>(value));
+		return true;
+	}
+	return TwoMotionCombiner::setParameter(paramName, value);
+}
 
 void MotionTransition::setStartTime(float time)
 {

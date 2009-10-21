@@ -88,7 +88,10 @@ namespace Piavca
 
 		void setBlendInterval(float i){interval = i;};
 		float getBlendInterval(){return interval;};
-
+		
+		
+		bool setParameter(tstring paramName, tstring value);
+		
 		virtual bool isNull(int trackId)const;
 
 		void setMotion(Motion *mot);

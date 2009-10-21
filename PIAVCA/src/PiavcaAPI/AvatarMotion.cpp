@@ -34,8 +34,25 @@
 
 #include "AvatarMotion.h"
 #include "PiavcaError.h"
+#include "TypeConvert.h"
 
 using namespace Piavca;
+
+
+bool AvatarMotion::setParameter(tstring paramName, tstring value)
+{
+	if(paramName == _T("WrappedAvatar") || paramName == _T("wrappedAvatar") || paramName == _T("wrappedavatar"))
+	{
+		setWrappedAvatar(convert<Avatar *>(value));
+		return true;
+	}
+	if(paramName == _T("Global") || paramName == _T("global"))
+	{
+		setGlobal(convert<bool>(value));
+		return true;
+	}
+	return Motion::setParameter(paramName, value);
+}
 
 //! given a track ID tests whether it actually points to anything or if its null
 bool AvatarMotion::isNull(int trackId) const 

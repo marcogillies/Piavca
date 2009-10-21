@@ -122,6 +122,9 @@ namespace Piavca
 		float getBlendStart(){return blendStart;};
 		//! gets the length of the transition between the two motions.
 		float getBlendInterval(){return blendInterval;};
+		
+		//! a generic function for setting parameters
+		virtual bool setParameter(tstring paramName, tstring value);
 
 	};
 };

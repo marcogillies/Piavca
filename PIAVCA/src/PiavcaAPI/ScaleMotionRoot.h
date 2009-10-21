@@ -38,6 +38,7 @@
 #define SCALE_MOTION_ROOT_H
 
 #include "PiavcaAPI/MotionFilter.h"
+#include "TypeConvert.h"
 //#include "PiavcaCore.h"
 
 namespace Piavca
@@ -108,6 +109,18 @@ namespace Piavca
 
 		//! Gets the scale factor for the postion components of the motion.
 	    float getScaleFactor(){return scaleFactor;};
+		
+		//! a generic function for setting parameters
+		virtual bool setParameter(tstring paramName, tstring value)
+		{
+			if(paramName == _T("ScaleFactor") || paramName == _T("scaleFactor") || paramName == _T("scalefactor"))
+			{
+				setScaleFactor(convert<float>(value));
+				return true;
+			}
+			return MotionFilter::setParameter(paramName, value);
+		}
+		
 	};
 };
 

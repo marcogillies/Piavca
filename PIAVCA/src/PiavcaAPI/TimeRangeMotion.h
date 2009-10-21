@@ -59,9 +59,13 @@ namespace Piavca
 
 		//! Sets the start of the range to be played
 		void setStart(float s);
+		float getStart();
 		//! Sets the end of the range to be played
 		void setEnd(float e);
-	    
+		float getEnd();
+		
+		//! a generic function for setting parameters
+		virtual bool setParameter(tstring paramName, tstring value);	    
 	    //! calculates the values of a keyframe
 	    PIAVCA_EXPORT virtual float  getFloatValueAtTimeInternal (int trackId, float time);
 	    //! calculates the values of a keyframe

@@ -35,6 +35,7 @@
 
 #include "TimeRangeMotion.h"
 #include "PiavcaAPI/PiavcaError.h"
+#include "TypeConvert.h"
 
 using namespace Piavca;
 
@@ -66,11 +67,36 @@ void TimeRangeMotion::setStart(float s)
 {
 	start = s;
 };
+float TimeRangeMotion::getStart()
+{
+	return start;
+};
 //! Sets the end of the range to be played
 void TimeRangeMotion::setEnd(float e)
 {
 	end = e;
 };
+float TimeRangeMotion::getEnd()
+{
+	return end;
+};
+
+//! a generic function for setting parameters
+bool TimeRangeMotion::setParameter(tstring paramName, tstring value)
+{
+	if(paramName == _T("Start") || paramName == _T("start"))
+	{
+		setStart(convert<float>(value));
+		return true;
+	}
+	if(paramName == _T("End") || paramName == _T("end"))
+	{
+		setEnd(convert<float>(value));
+		return true;
+	}
+	return MotionFilter::setParameter(paramName, value);
+}
+
 
 //! calculates the values of a keyframe
 PIAVCA_EXPORT float  TimeRangeMotion::getFloatValueAtTimeInternal (int trackId, float time)

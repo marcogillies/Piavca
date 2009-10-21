@@ -88,6 +88,7 @@ namespace Piavca
 		{
 			return 	m_wrapped_avatar;
 		};
+		
 
 		//void setTargetMotion(Motion *target);
 		//Motion *getTargetMotion();
@@ -103,7 +104,8 @@ namespace Piavca
 			return global;
 		};
 
-
+		
+		bool setParameter(tstring paramName, tstring value);
 		
 		//! given a track ID tests whether it actually points to anything or if its null
 		bool isNull(int trackId) const ;

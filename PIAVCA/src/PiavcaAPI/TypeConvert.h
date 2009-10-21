@@ -42,7 +42,7 @@
 namespace Piavca
 {
 	template <class T>
-	T convert(Piavca::tstring value)
+	inline T convert(Piavca::tstring value)
 	{
 		std::istrstream is(TStringToString(value).c_str());
 		T retval;
@@ -51,16 +51,32 @@ namespace Piavca
 	}
 	
 	template<>
-	Motion *convert<Motion *>(Piavca::tstring value)
+	inline Motion *convert<Motion *>(Piavca::tstring value)
 	{
 		return Piavca::Core::getCore()->getMotion(value);
 	}
 	
 	template<>
-	Avatar *convert<Avatar *>(Piavca::tstring value)
+	inline Avatar *convert<Avatar *>(Piavca::tstring value)
 	{
 		return Piavca::Core::getCore()->getAvatar(value);
 	}
+	
+	template<>
+	inline std::vector<std::string> convert<std::vector<std::string> >(Piavca::tstring value)
+	{
+		std::vector<std::string> retval;
+		std::istrstream is(TStringToString(value).c_str());
+		do
+		{
+			std::string sub;
+			is >> sub;
+			retval.push_back(sub);
+		} while (is);
+		
+		return retval;
+	}
+	
 	
 }
 

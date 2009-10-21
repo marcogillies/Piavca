@@ -46,6 +46,7 @@ using namespace cal3d;
 struct motspec
 {
 	Motion *mot;
+	TiXmlElement *element;
 	std::vector < std::pair<tstring, tstring> > params;
 };
 
@@ -71,6 +72,7 @@ motspec readMotion(TiXmlElement *element)
 	std::string motType = std::string(element->Value() );
 	motspec spec;
 	spec.mot = NULL;
+	spec.element = element;
 	if(motType == "Avatar" || motType == "avatar")
 	{
 		tstring avatarname = getName(element);
@@ -106,13 +108,6 @@ motspec readMotion(TiXmlElement *element)
 		Piavca::Core::getCore()->loadMotion(motionname, spec.mot);
 	}
 	
-	
-	std::vector<motspec> childmots = readMotions(element);
-	for (int i = 0; i < childmots.size(); i++)
-	{
-		spec.mot->addMotion(childmots[i].mot, childmots[i].params);
-	}
-	
 	return spec;
 }
 
@@ -123,7 +118,20 @@ std::vector<motspec> readMotions(TiXmlElement *parent)
 	{
 		motspec mot = readMotion(element);
 		if (mot.mot)
+		{
+			std::cout << "loaded Motion " << mot.mot->getName() << std::endl;
 			mots.push_back(mot);
+		}
+	}
+	for (int i =0; i < mots.size(); i++)
+	{
+		std::cout << "loading childredn for motion "  << mots[i].mot->getName() << std::endl;
+		std::vector<motspec> childmots = readMotions(mots[i].element);
+		for (int j = 0; j < childmots.size(); j++)
+		{
+			mots[i].mot->addMotion(childmots[j].mot, childmots[j].params);
+		}
+		mots[i].mot->create();
 	}
 	return mots;
 }

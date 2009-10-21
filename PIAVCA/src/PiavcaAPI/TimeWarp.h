@@ -38,6 +38,7 @@
 #define TIME_WARP_H
 #include "PiavcaAPI/MotionFilter.h"
 //#include "PiavcaCore.h"
+#include "TypeConvert.h"
 
 namespace Piavca
 {
@@ -117,6 +118,17 @@ namespace Piavca
 		//! Sets the scale factor for the postion components of the motion.
 	    void setWarp(Motion *warp){warpFunc = warp;};
 		Motion *getWarp(){return warpFunc;};
+		
+		//! a generic function for setting parameters
+		virtual bool setParameter(tstring paramName, tstring value)
+		{
+			if(paramName == _T("Warp") || paramName == _T("warp"))
+			{
+				setWarp(convert<Motion *>(value));
+				return true;
+			}
+			return MotionFilter::setParameter(paramName, value);
+		}
 	};
 };
 

@@ -79,6 +79,9 @@ namespace Piavca
 
 		void setBlendFactor(float _blend){blend = _blend;};
 		float getBlendFactor(){return blend;};
+		
+		//! a generic function for setting parameters
+		virtual bool setParameter(tstring paramName, tstring value);
 };
 
 };

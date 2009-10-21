@@ -37,8 +37,77 @@
 #include "PiavcaCore.h"
 #include "Avatar.h"
 #include "BlendBetween.h"
+#include "TypeConvert.h"
 
 using namespace Piavca;
+
+
+
+//! a generic function for setting parameters
+bool Proxemics::setParameter(tstring paramName, tstring value)
+{
+	if(paramName == _T("Distance") || paramName == _T("distance"))
+	{
+		setDistance(convert<float>(value));
+		return true;
+	}
+	if(paramName == _T("Threshold") || paramName == _T("threshold"))
+	{
+		setThreshold(convert<float>(value));
+		return true;
+	}
+	if(paramName == _T("AngleThreshold") || paramName == _T("angleThreshold") || paramName == _T("anglethreshold"))
+	{
+		setAngleThreshold(convert<float>(value));
+		return true;
+	}
+	if(paramName == _T("DistanceOff") || paramName == _T("distanceOff") || paramName == _T("distanceoff"))
+	{
+		setDistanceOff(convert<bool>(value));
+		return true;
+	}
+	if(paramName == _T("ForwardDirection") || paramName == _T("forwardDirection") || paramName == _T("forwarddirection"))
+	{
+		setForwardDirection(convert<Vec>(value));
+		return true;
+	}
+	if(paramName == _T("Target") || paramName == _T("target"))
+	{
+		setTarget(convert<Vec>(value));
+		return true;
+	}
+	if(paramName == _T("ForwardMotionName") || paramName == _T("forwardMotionName") || paramName == _T("forwardmotionname"))
+	{
+		setForwardMotionName(value);
+		return true;
+	}
+	if(paramName == _T("BackwardMotionName") || paramName == _T("backwardMotionName") || paramName == _T("backwardmotionname"))
+	{
+		setBackwardMotionName(value);
+		return true;
+	}
+	if(paramName == _T("LeftMotionName") || paramName == _T("leftMotionName") || paramName == _T("leftmotionname"))
+	{
+		setLeftMotionName(value);
+		return true;
+	}
+	if(paramName == _T("RightMotionName") || paramName == _T("rightMotionName") || paramName == _T("rightmotionname"))
+	{
+		setRightMotionName(value);
+		return true;
+	}
+	if(paramName == _T("RestMotionName") || paramName == _T("restMotionName") || paramName == _T("restmotionname"))
+	{
+		setRestMotionName(value);
+		return true;
+	}
+	if(paramName == _T("TargetMotionName") || paramName == _T("targettMotionName") || paramName == _T("targetmotionname"))
+	{
+		setTargetMotionName(value);
+		return true;
+	}
+	return ChoiceMotion::setParameter(paramName, value);
+}
 
 void Proxemics::addMotion(Motion *mot)
 {
