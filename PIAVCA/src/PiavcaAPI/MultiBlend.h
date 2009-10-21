@@ -62,6 +62,12 @@ namespace Piavca
 
 		//! casts a motion to this type
 		static MultiBlend *castToThisType(Motion *m){return dynamic_cast<MultiBlend *>(m);};
+		
+		//! a generic function for setting parameters
+		virtual bool setParameter(tstring paramName, tstring value);
+		
+		//! a generic function for setting parameters relating to specific submotions
+		virtual bool setMotionParameter(int motIndex, tstring paramName, tstring value);
 
 		void setWeightMotionName(tstring name)
 		{
@@ -70,7 +76,7 @@ namespace Piavca
 			std::cout << "proxemics: setting target motion name" << Weight_name << " " << Weight_id << std::endl;
 			setWeightId(Weight_id);
 		}
-		tstring getTargetMotionName()
+		tstring getWeightMotionName()
 		{
 			return Weight_name;
 		}

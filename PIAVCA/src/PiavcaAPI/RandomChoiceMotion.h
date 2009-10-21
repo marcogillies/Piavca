@@ -75,6 +75,9 @@ public:
 	};
 
 	virtual void addMotion(Motion *mot, float prob = 1.0f);
+	
+	//! a generic function for setting parameters relating to specific submotions
+	virtual bool setMotionParameter(int motIndex, tstring paramName, tstring value);
 
 	//! the probability of choosing a particular motion
 	void setProbability(int index, float prob);

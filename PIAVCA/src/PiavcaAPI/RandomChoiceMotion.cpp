@@ -34,6 +34,7 @@
  * ***** END LICENSE BLOCK ***** */
 
 #include "RandomChoiceMotion.h"
+#include "TypeConvert.h"
 
 #include <stdlib.h>
 
@@ -46,6 +47,18 @@ RandomChoiceMotion::RandomChoiceMotion(const MotionVec &mv, std::vector<float> w
 		Piavca::Error(_T("Trying to create a random loop motion with different numbers of motions and weights"));
 	reset();
 };
+
+
+
+bool RandomChoiceMotion::setMotionParameter(int motIndex, tstring paramName, tstring value)
+{
+	if(paramName == _T("Prob") || paramName == _T("prob") || paramName == _T("Probability") || paramName == _T("probability"))
+	{
+		setProbability(motIndex, convert<float>(value));
+		return true;
+	}
+	return ChoiceMotion::setParameter(paramName, value);
+}
 
 void RandomChoiceMotion::normaliseProbs()
 {

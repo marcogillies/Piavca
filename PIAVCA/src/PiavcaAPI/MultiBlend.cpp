@@ -34,6 +34,7 @@
 #include "MultiBlend.h"
 #include "PiavcaError.h"
 #include "PiavcaCore.h"
+#include "TypeConvert.h"
 
 using namespace Piavca;
 
@@ -47,6 +48,28 @@ void MultiBlend::setWeight(int id, float val)
 		weightMot = currentValueWeights;
 	}
 	currentValueWeights->setFloatValue(id, val);
+}
+
+
+bool MultiBlend::setParameter(tstring paramName, tstring value)
+{
+	if(paramName == _T("WeightMotionName") || paramName == _T("weightMotionName") || paramName == _T("weightmotionname"))
+	{
+		setWeightMotionName(value);
+		return true;
+	}
+	return MultiMotionCombiner::setParameter(paramName, value);
+}
+
+
+bool MultiBlend::setMotionParameter(int motIndex, tstring paramName, tstring value)
+{
+	if(paramName == _T("Weight") || paramName == _T("weight"))
+	{
+		setWeight(motIndex, convert<float>(value));
+		return true;
+	}
+	return MultiMotionCombiner::setParameter(paramName, value);
 }
 
 float MultiBlend::getWeight(int id, float time)
