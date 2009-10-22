@@ -33,24 +33,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_0C93B4BC49D24B97AE0D3AE8A8C5BD62"
-        "OwnerKey" = "8:_0EDB427873744218ACBF6199C4916A0F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_0C93B4BC49D24B97AE0D3AE8A8C5BD62"
-        "OwnerKey" = "8:_E9BF3BD172E74BC1ACDE5669C3B94371"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_0C93B4BC49D24B97AE0D3AE8A8C5BD62"
-        "OwnerKey" = "8:_7FFBA5A50D144A49A4D665B523A35DF3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_0D04EF4E31624BFEBD66A2D0B536E6A6"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -165,6 +147,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_3460D5F45DD700285736E64A52BB356B"
+        "OwnerKey" = "8:_0EDB427873744218ACBF6199C4916A0F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3460D5F45DD700285736E64A52BB356B"
+        "OwnerKey" = "8:_7FFBA5A50D144A49A4D665B523A35DF3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_37707E01EDE14682A6997DAA3A253D6F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -179,12 +173,6 @@
         {
         "MsmKey" = "8:_38BE54D26DCC4CCD89F949DF7A287623"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3A10563138554468A35D0B9701A7268C"
-        "OwnerKey" = "8:_0C93B4BC49D24B97AE0D3AE8A8C5BD62"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -435,6 +423,24 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_8299843A4AFF4492BB833B0F38A6683D"
+        "OwnerKey" = "8:_0EDB427873744218ACBF6199C4916A0F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_8299843A4AFF4492BB833B0F38A6683D"
+        "OwnerKey" = "8:_E9BF3BD172E74BC1ACDE5669C3B94371"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_8299843A4AFF4492BB833B0F38A6683D"
+        "OwnerKey" = "8:_7FFBA5A50D144A49A4D665B523A35DF3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_86925653EEBE44E78B472FD20AC3CF66"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -485,6 +491,12 @@
         {
         "MsmKey" = "8:_A26F2FB1B68A492EA7B9AC4084A110BF"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A53C031B725C4FE096B4A9DCE84EF162"
+        "OwnerKey" = "8:_8299843A4AFF4492BB833B0F38A6683D"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -802,6 +814,38 @@
                 }
             }
         }
+        "Debug_Py26"
+        {
+        "DisplayName" = "8:Debug_Py26"
+        "IsDebugOnly" = "11:FALSE"
+        "IsReleaseOnly" = "11:FALSE"
+        "OutputFilename" = "8:Debug_Py26\\PiavcaWindowsSetup.msi"
+        "PackageFilesAs" = "3:2"
+        "PackageFileSize" = "3:-2147483648"
+        "CabType" = "3:1"
+        "Compression" = "3:2"
+        "SignOutput" = "11:FALSE"
+        "CertificateFile" = "8:"
+        "PrivateKeyFile" = "8:"
+        "TimeStampServer" = "8:"
+        "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:c:\\Program Files\\Piavca"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Net.Framework.2.0"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 2.0"
+                    "ProductCode" = "8:Microsoft.Net.Framework.2.0"
+                    }
+                }
+            }
+        }
         "Release"
         {
         "DisplayName" = "8:Release"
@@ -862,6 +906,33 @@
         "IsDebugOnly" = "11:FALSE"
         "IsReleaseOnly" = "11:FALSE"
         "OutputFilename" = "8:Release_Py25\\PiavcaWindowsSetup.msi"
+        "PackageFilesAs" = "3:2"
+        "PackageFileSize" = "3:-2147483648"
+        "CabType" = "3:1"
+        "Compression" = "3:2"
+        "SignOutput" = "11:FALSE"
+        "CertificateFile" = "8:"
+        "PrivateKeyFile" = "8:"
+        "TimeStampServer" = "8:"
+        "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                }
+            }
+        }
+        "Release_Py26"
+        {
+        "DisplayName" = "8:Release_Py26"
+        "IsDebugOnly" = "11:FALSE"
+        "IsReleaseOnly" = "11:FALSE"
+        "OutputFilename" = "8:Release_Py26\\PiavcaWindowsSetup.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -1363,6 +1434,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3460D5F45DD700285736E64A52BB356B"
+            {
+            "SourcePath" = "8:GLU32.dll"
+            "TargetName" = "8:GLU32.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_2C01534358BC499DB5A587789363CFB1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_37707E01EDE14682A6997DAA3A253D6F"
@@ -3819,7 +3910,7 @@
         }
         "MergeModule"
         {
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_0C93B4BC49D24B97AE0D3AE8A8C5BD62"
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_8299843A4AFF4492BB833B0F38A6683D"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:TRUE"
@@ -3833,7 +3924,7 @@
             "Feature" = "8:"
             "IsolateTo" = "8:"
             }
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_3A10563138554468A35D0B9701A7268C"
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_A53C031B725C4FE096B4A9DCE84EF162"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:TRUE"
@@ -3852,7 +3943,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_0EDB427873744218ACBF6199C4916A0F"
             {
-            "SourcePath" = "8:..\\XVR2Piavca\\Release_Py25\\XVR2Piavca.dll"
+            "SourcePath" = "8:..\\xvr2piavca\\release_py26\\XVR2Piavca.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_2C01534358BC499DB5A587789363CFB1"
@@ -3964,7 +4055,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_7FFBA5A50D144A49A4D665B523A35DF3"
             {
-            "SourcePath" = "8:..\\..\\Python\\Piavca\\Piavca_base\\_Piavca_base.pyd"
+            "SourcePath" = "8:..\\..\\python\\piavca\\piavca_base\\release_py26\\_Piavca_base.pyd"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_0C606D47F8BD4B13BFF33C3B7D2B9C27"
@@ -4076,7 +4167,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_E9BF3BD172E74BC1ACDE5669C3B94371"
             {
-            "SourcePath" = "8:..\\..\\Python\\Piavca\\PiavcaGlut\\_PiavcaGlut.pyd"
+            "SourcePath" = "8:..\\..\\python\\piavca\\piavcaglut\\release_py26\\_PiavcaGlut.pyd"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C311C00B4060407F8C51CD66C8EF17E6"
