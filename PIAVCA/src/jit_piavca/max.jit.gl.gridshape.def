@@ -1,0 +1,6 @@
+;jit.gl.gridshape.def
+
+LIBRARY	jit.gl.gridshape
+
+EXPORTS
+	main
