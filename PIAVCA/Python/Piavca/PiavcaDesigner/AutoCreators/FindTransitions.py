@@ -66,9 +66,9 @@ class FindTransitions:
 		
 		framelist = self.FrameLists.getValue()
 		
-		minima = self.backend.getMotionFramesByName(framelist)
+		list = self.backend.getMotionFramesByName(framelist)
 		
-		if minima == None:
+		if list == None:
 			
 			expmaps = {}
 		
@@ -125,9 +125,12 @@ class FindTransitions:
 				d_minus = d
 				d = d_plus
 		
-		print minima
-		self.backend.addMotionFrames(name, minima)
-		self.backend.setMotionFrames(name)
+			print minima
+			self.backend.addMotionFrames(name, minima)
+			self.backend.setMotionFrames(name)
+		else:
+			self.backend.setMotionFrames(framelist)
 		
+				
 		return Piavca.SubMotion(mot, 0, mot.getMotionLength())
 		
