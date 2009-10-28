@@ -185,6 +185,27 @@ class ChoiceParamEntry(ParamEntry):
 		self.choice = wx.Choice(self, -1, choices=choicelist)
 		self.Bind(wx.EVT_CHOICE, self.OnTextEntry, self.choice)
 		self.sizer.Add(self.choice, 1, wx.EXPAND)
+
+		
+class ChoiceListParamEntry(ChoiceParamEntry):
+	choiceList = []
+	
+	def __init__(self, choiceList, param_name, motionproxy,  parent=None, id=-1, pos=wx.DefaultPosition, size=wx.DefaultSize, style=0, name="ParamEntry"):
+		self.choiceList = choiceList
+		ChoiceParamEntry.__init__(self, param_name, motionproxy,  parent, id, pos, size, style, name)
+		
+	def getChoiceList(self):
+		print "choice list", self.choiceList
+		return self.choiceList
+		
+	def setValue(self, val):
+		name = val.getName()
+		self.choice.SetStringSelection(name)
+		
+	def getValue(self):
+		name = self.choice.GetStringSelection()
+		return name
+		
 		
 class AvatarParamEntry(ChoiceParamEntry):
 

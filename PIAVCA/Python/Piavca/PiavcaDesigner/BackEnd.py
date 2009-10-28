@@ -17,6 +17,8 @@ class BackEnd:
 	playing = False
 	defaultLength = 100.0
 	updateflag = False
+	motionFrames = None
+	motionFramesList = {}
 	
 	def __init__(self, frontend):
 		self.frontend = frontend
@@ -152,6 +154,28 @@ class BackEnd:
 	
 	def setRangeFraction(self, start, end):
 		self.setRange(self.getTimeFromFraction(start), self.getTimeFromFraction(end))
+		
+	def getMotionFrames(self):
+		return self.motionFrames
+		
+	def getMotionFramesNames(self):
+		return self.motionFramesList.keys()
+				
+	def addMotionFrames(self, name, mf):
+		self.motionFramesList[name] = mf
+		
+	def getMotionFramesByName(self, name):
+		if (self.motionFramesList.has_key(name)):
+			return self.motionFramesList[name]
+		else:
+			return None
+		
+	def setMotionFrames(self, name):
+		if (self.motionFramesList.has_key(name)):
+			self.motionFrames = self.motionFramesList[name]
+			
+	def clearMotionFrames(self):
+		self.motionFrames = None
 			
 	def getMotion(self, name=None):
 		print "backend, getMotion, name = ", name

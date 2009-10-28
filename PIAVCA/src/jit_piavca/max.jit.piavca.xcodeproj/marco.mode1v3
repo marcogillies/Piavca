@@ -216,7 +216,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>A93A22E11090D4FB003A450D</string>
+						<string>A93A22EA109614CF003A450D</string>
 						<key>history</key>
 						<array>
 							<string>A93A1C4F1090A5E2003A450D</string>
@@ -256,7 +256,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>A93A22E21090D4FB003A450D</string>
+						<string>A93A22EC109614CF003A450D</string>
 						<key>history</key>
 						<array>
 							<string>A93A1C511090A5E2003A450D</string>
@@ -310,6 +310,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -394,8 +396,6 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -413,7 +413,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>A93A22E01090D4FB003A450D</string>
+										<string>A93A22E9109614CF003A450D</string>
 										<key>history</key>
 										<array>
 											<string>A93A1BF410909E53003A450D</string>
@@ -431,7 +431,7 @@
 											<string>A93A22A11090CE9D003A450D</string>
 											<string>A93A22CB1090D4A1003A450D</string>
 											<string>A93A22DE1090D4FB003A450D</string>
-											<string>A93A22DF1090D4FB003A450D</string>
+											<string>A93A22E8109614CF003A450D</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -629,14 +629,13 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>A93A22E31090D4FB003A450D</string>
 		<string>A93A22741090CB96003A450D</string>
 		<string>A93A22751090CB96003A450D</string>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>A992A2C01090985100E8CDC5</string>
 		<string>A93A1C491090A075003A450D</string>
 		<string>A93A1C461090A075003A450D</string>
 		<string>1C78EAAD065D492600B07095</string>
+		<string>1CD10A99069EF8BA00B06720</string>
 		<string>/Users/marco/Documents/workspace/piavca/src/jit_piavca/max.jit.piavca.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -856,7 +855,7 @@
 			<key>WindowToolGUID</key>
 			<string>1CD10A99069EF8BA00B06720</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

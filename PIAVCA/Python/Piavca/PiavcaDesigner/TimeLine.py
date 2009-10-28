@@ -2,6 +2,8 @@
 import wx
 
 class TimeLine(wx.Panel):
+	rangeStart = None
+
 	def __init__(self, backend, parent=None, id=-1, pos=wx.DefaultPosition, size=wx.DefaultSize, style=0, name="TimeLine"):
 		wx.Panel.__init__(self, parent, id, pos, size, style, name)
 		
@@ -27,6 +29,7 @@ class TimeLine(wx.Panel):
 		dc.Clear()
 		
 		self.drawRange(dc)
+		self.drawFrames(dc)
 		self.drawTime(dc)
 		
 	def drawRange(self, dc):
@@ -49,6 +52,18 @@ class TimeLine(wx.Panel):
 		dc.SetPen(wx.Pen("blue", 5, wx.SOLID))
 		dc.DrawLine(pos, 0, pos, size.height)
 		
+	def drawFrames(self, dc):
+		frames = self.backend.getMotionFrames()
+		if frames != None:
+			size = self.GetClientSize()
+
+			#print time, pos
+			dc.SetPen(wx.Pen("green", 5, wx.SOLID))
+			for frame in frames:
+				time = self.backend.getTimeFraction(frame)
+				pos = int(time*size.width)
+				dc.DrawLine(pos, 0, pos, size.height)
+		
 	def OnResize(self, event):
 		self.drawToBuffer()
 		
@@ -61,11 +76,27 @@ class TimeLine(wx.Panel):
 		t = float(pos[0])/float(size.width)
 		self.backend.setTimeFraction(t)
 		
+	# if the time is next to one of the stored frame lists snap it
+	def constrainByFrames(self, t):	
+		frames = self.backend.getMotionFrames()
+		if frames != None:
+			size = self.GetClientSize()
+			pos = int(t*size.width)
+			for frame in frames:
+				frametime = self.backend.getTimeFraction(frame)
+				framepos = int(frametime*size.width)
+				if abs(t-framepos) < 3:
+					t = frametime
+		return t
+
+		
 	def SetRange(self, event):
 		#size = self.GetClientSize()
 		#pos = event.GetPositionTuple()
 		#t = float(pos[0])/float(size.width)
-		self.backend.setRangeFraction(self.rangeStart, self.backend.getTimeFraction())
+		self.backend.setRangeFraction(self.rangeStart, self.constrainByFrames(self.backend.getTimeFraction()))
+		
+	
 		
 	def OnMouseMove(self, event):
 		if event.Dragging() and event.LeftIsDown():
@@ -74,7 +105,7 @@ class TimeLine(wx.Panel):
 			self.UpdateTime(event)
 			if event.ShiftDown():
 				if self.rangeStart == None:
-					self.rangeStart = self.backend.getTimeFraction()
+					self.rangeStart = self.constrainByFrames(self.backend.getTimeFraction())
 				self.SetRange(event)
 				
 		

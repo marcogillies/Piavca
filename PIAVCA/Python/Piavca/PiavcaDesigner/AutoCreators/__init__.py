@@ -3,6 +3,7 @@ import Piavca
 
 from InterruptableSequence import InterruptableSequence
 from MotionGraph import MotionGraph
+from FindTransitions import FindTransitions
 from ExpMapBlend import ExpMapBlend
 try:
 	from PCAMot import PCAMot

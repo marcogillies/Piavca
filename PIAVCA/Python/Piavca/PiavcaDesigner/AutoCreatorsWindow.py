@@ -54,7 +54,8 @@ class AutoCreatorsWindow(wx.Panel):
 		if self.creator:
 			mot = self.creator.getMotion()
 			print "created motion", mot
-			self.backend.addMotion(mot)
+			if mot:
+				self.backend.addMotion(mot)
 		
 	def update(self):
 		# get rid of existing controls
