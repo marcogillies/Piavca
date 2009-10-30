@@ -85,8 +85,10 @@ class TimeLine(wx.Panel):
 			for frame in frames:
 				frametime = self.backend.getTimeFraction(frame)
 				framepos = int(frametime*size.width)
-				if abs(t-framepos) < 3:
+				if abs(pos-framepos) < 3:
+					print "constraining", pos, framepos, t, frametime
 					t = frametime
+					break
 		return t
 
 		
@@ -95,6 +97,8 @@ class TimeLine(wx.Panel):
 		#pos = event.GetPositionTuple()
 		#t = float(pos[0])/float(size.width)
 		self.backend.setRangeFraction(self.rangeStart, self.constrainByFrames(self.backend.getTimeFraction()))
+		range = self.backend.getRangeFraction()
+		print "range", range
 		
 	
 		
