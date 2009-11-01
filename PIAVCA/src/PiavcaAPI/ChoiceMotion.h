@@ -67,6 +67,7 @@ class ChoiceMotion : public MotionFilter
 	bool maintainUp;
 	bool rotateAboutUp;
 	bool resetOnPlay;
+	bool restartOnPlay;
 	Vec upDirection;
 	
 protected:
@@ -77,7 +78,7 @@ protected:
 	virtual void updateListeners();
 public:
 	ChoiceMotion()
-		:currentChoice(0), smooth(true), resetTime(true), resetOnPlay(false), 
+		:currentChoice(0), smooth(true), resetTime(true), resetOnPlay(false),  restartOnPlay(false), 
 		windowLength(0.5f), resetOnEvent(true), accumulateRoot(true), eventsToAllChildren(false),
 		maintainUp(false), rotateAboutUp(true), upDirection(0.0, 0.0, 1.0), eventHappened(false)
 		{};
@@ -135,7 +136,7 @@ public:
 		return resetOnEvent;	
 	};
 
-	//! Whether a child motion is resset each time it is played
+	//! Whether a child motion is reset each time it is played
 	void setResetOnPlay(bool r)
 	{
 		resetOnPlay = r;	
@@ -144,6 +145,17 @@ public:
 	{
 		return resetOnPlay;	
 	};
+	
+	//! Whether a child motion should restart from its initial state each time it is played
+	void setRestartOnPlay(bool r)
+	{
+		restartOnPlay = r;	
+	};
+	bool getRestartOnPlay()
+	{
+		return restartOnPlay;	
+	};
+	
 
 
 	//! whether events are propagated down to all children on just the current one 
@@ -259,7 +271,7 @@ public:
 	/*! chooses the next motion to play
 	 * In the base class it just chooses the current one again but it can be overridden in subclasses.
 	 */
-	virtual int makeChoice();
+	virtual int makeChoice(bool restart = false);
 	
 	//! handles an event (plays the motion with the same name as the event)
 	void handleEvent(tstring ev);
@@ -272,7 +284,7 @@ public:
 	/*!
 	 * It can be called by the client to interrupt the current motion.
 	 */
-	virtual bool reset();
+	virtual bool reset(bool restart=false);
 };
 
 };

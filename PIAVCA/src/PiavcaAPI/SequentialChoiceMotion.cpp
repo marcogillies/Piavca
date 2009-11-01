@@ -85,12 +85,12 @@ void SequentialChoiceMotion::handleEvent(tstring ev)
 	else if(ev == _T("first"))
 	{
 		setChoice(-1);
-		reset();
+		reset(true);
 	}
 	else if (ev == _T("__chosen__"))
 	{
 			setChoice(-1);
-			reset();
+			reset(true);
 	}
 	else
 			MotionFilter::handleEvent(ev);
@@ -120,7 +120,7 @@ std::vector<Piavca::tstring> SequentialChoiceMotion::getEventNames()
 }
 
 
-int SequentialChoiceMotion::makeChoice()
+int SequentialChoiceMotion::makeChoice(bool restart)
 {
 	int current = getCurrentChoice();
 
@@ -131,6 +131,11 @@ int SequentialChoiceMotion::makeChoice()
 	//}
 
 	std::cout << "SequentialChoiceMotion::makeChoice() " << getName() << " "  << current << std::endl;
+	if(restart)
+	{
+		std::cout << "restart " << 0 << std::endl;
+		return 0;
+	}
 	if (current+1 < getNumMotions())
 	{
 		std::cout << "increment " << current+1 << std::endl;

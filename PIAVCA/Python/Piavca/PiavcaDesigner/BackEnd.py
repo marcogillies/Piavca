@@ -107,6 +107,7 @@ class BackEnd:
 				dialog_return = textEntryDialog (message="Please enter a name for this motion")
 				motion_name = dialog_return.text.encode("latin-1")
 				Piavca.loadMotion(motion_name, motion)
+			motion.reset(True)
 			self.motion = MotionProxy(motion, self)#motion
 			self.submotion = self.motion
 			#print "avatar", self.avatar

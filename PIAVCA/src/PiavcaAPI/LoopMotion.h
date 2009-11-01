@@ -130,9 +130,11 @@ namespace Piavca
 		/*!
 		 * It can be called by the client to interrupt the current motion.
 		 */
-		virtual bool reset()
+		virtual bool reset(bool restart=false)
 		{
-			bool retval = MotionFilter::reset();
+			if(restart)
+				finishTime = -1;
+			bool retval = MotionFilter::reset(restart);
 			if (retval)
 				setStartTime(Piavca::Core::getCore()->getTime());	
 			return retval;

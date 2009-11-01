@@ -280,6 +280,10 @@ from wx.lib.dialogs import *
 app = Piavca.getWXApp()
 app.showWindows(canvastype = Piavca.ViewerCanvas.ViewerCanvas)
 
+app.getCanvas().setClearColour(1.0, 1.0, 1.0)
+
+app.getCanvas().tracking = False
+
 if len(sys.argv) > 1:
 	path = sys.argv[1]
 else:
@@ -336,6 +340,10 @@ else:
 
 	app.getCanvas().setAvatar(avatar)
 	app.getCanvas().initCameraPosition()
+
+
+
+app.getCanvas().setClearColour(1.0, 1.0, 1.0)
 
 #app = MyApp()
 

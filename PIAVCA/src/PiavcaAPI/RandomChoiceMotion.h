@@ -86,7 +86,7 @@ public:
 
 	void setMotionProb(tstring motName, float prob);
 	
-	virtual int makeChoice();
+	virtual int makeChoice(bool restart=false);
 
 	//virtual void shift()
 	//{

@@ -64,7 +64,7 @@ bool MotionGraph::canHandleEvent(tstring ev)
 	}
 };
 
-int MotionGraph::makeChoice()
+int MotionGraph::makeChoice(bool restart)
 {
 	Motion *current = getMotionByIndex(getCurrentChoice());
 	if (!current)

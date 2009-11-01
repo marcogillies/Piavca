@@ -45,7 +45,7 @@ RandomChoiceMotion::RandomChoiceMotion(const MotionVec &mv, std::vector<float> w
 {
 	if(mots.size() != probs.size())
 		Piavca::Error(_T("Trying to create a random loop motion with different numbers of motions and weights"));
-	reset();
+	reset(true);
 };
 
 
@@ -113,10 +113,11 @@ void RandomChoiceMotion::setMotionProb(tstring motName, float prob)
 		setProbability(index, prob);
 }
 
-int RandomChoiceMotion::makeChoice()
+int RandomChoiceMotion::makeChoice(bool restart)
 {
+	std::cout << "Random Choice Motion makeChoice\n";
 	if (eventHappened)
-		return ChoiceMotion::makeChoice();
+		return ChoiceMotion::makeChoice(restart);
 	if (probsUnnormalised)
 		normaliseProbs();
 	int r = rand()%1000;

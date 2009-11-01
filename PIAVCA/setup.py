@@ -60,7 +60,7 @@ external_libs = []#["cal3d"]
 includes = [ os.path.join(os.curdir,'src')]
 
 if sys.platform != "win32":
-	includes = includes + ["/usr/local/include"]
+	includes = includes + ["/usr/include", "/usr/local/include"]
 
 #if sys.platform == "win32":
 #	try:

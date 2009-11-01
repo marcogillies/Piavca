@@ -99,7 +99,7 @@ void PostureBlend::setMotion(Motion *mot)
 };
 
 
-bool PostureBlend::reset()
+bool PostureBlend::reset(bool restart)
 {
 	reblend();	
 	return true;

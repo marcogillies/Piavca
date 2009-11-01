@@ -98,7 +98,7 @@ namespace Piavca
 		//! a generic function for setting parameters
 		virtual bool setParameter(tstring paramName, tstring value);
 	    
-		virtual bool reset();
+		virtual bool reset(bool restart=false);
 
 		//! saves the current state of the motion and start blending the motion back into that from the start
 	    void reblend();

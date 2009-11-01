@@ -247,12 +247,12 @@ public:
 	}
 
 	//! does any resetting needed 
-	bool reset()
+	bool reset(bool restart=false)
 	{
 		bool retVal = true;
 		for(MotionVec::size_type i = 0; i < mots.size(); i++)
 		{
-			retVal = retVal & mots[i]->reset();
+			retVal = retVal & mots[i]->reset(restart);
 		}
 		return retVal;
 	};

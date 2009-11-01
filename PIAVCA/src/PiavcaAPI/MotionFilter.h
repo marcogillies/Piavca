@@ -160,10 +160,10 @@ namespace Piavca
 		}
 
 		//! does any resetting needed 
-		bool reset()
+		bool reset(bool restart=false)
 		{
 			if(filterMot)
-				return filterMot->reset();
+				return filterMot->reset(restart);
 			else
 				return true;
 		};

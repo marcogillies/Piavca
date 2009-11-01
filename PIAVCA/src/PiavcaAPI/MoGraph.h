@@ -102,7 +102,7 @@ public:
 	void handleEvent(tstring ev);
 	virtual bool canHandleEvent(tstring ev);
 
-	virtual int makeChoice();
+	virtual int makeChoice(bool restart=false);
 
 };
 

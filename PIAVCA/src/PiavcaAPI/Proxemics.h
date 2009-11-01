@@ -226,7 +226,7 @@ public:
 
 	void refreshMotions();
 
-	virtual int makeChoice();
+	virtual int makeChoice(bool restart=false);
 
 };
 

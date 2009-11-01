@@ -154,7 +154,7 @@ public:
 	
 	int getId() const
 	{
-		return (int) (this);
+		return (int) ((long) this);
 	};
 
 	bool operator==(const Motion *m)const {return m != NULL && (*this) == (*m);};
@@ -200,7 +200,7 @@ public:
 	bool finished();
 
 	//! does any resetting needed 
-	virtual bool reset(){return true;};
+	virtual bool reset(bool restart=false){return true;};
 
 	void passEvent(tstring ev)
 	{

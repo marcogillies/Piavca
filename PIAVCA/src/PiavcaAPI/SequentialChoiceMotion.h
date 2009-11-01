@@ -84,7 +84,7 @@ public:
 	//! gets the names of all events
 	virtual std::vector<Piavca::tstring> getEventNames();
 	
-	virtual int makeChoice();
+	virtual int makeChoice(bool restart=false);
 };
 
 };

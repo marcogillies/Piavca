@@ -184,9 +184,13 @@ void Proxemics::setTargetId(int targetId)
 	}
 }
 
-int Proxemics::makeChoice()
+int Proxemics::makeChoice(bool restart)
 {
 		//std:: cout << "Proxemics makeChoice" << std::endl;
+		if(restart)
+		{
+			return Rest;
+		}
 		if(distanceOff) 
 		{
 			std::cout << "proxemics: distance off\n";

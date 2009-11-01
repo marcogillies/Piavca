@@ -70,6 +70,7 @@ class PiavcaDesigner(wx.Frame):
 		#p1 = wx.Panel(self.splitter2, style=wx.SUNKEN_BORDER)
 		#self.viewer = Piavca.FreeCameraCanvas.FreeCameraCanvas(self.splitter2)
 		self.viewer = Piavca.ViewerCanvas.ViewerCanvas(self.splitter2)
+		self.viewer.setClearColour(0.5, 0.5, 1.0)
 		Piavca.getWXApp().setCanvas(self.viewer)
 		self.viewer.tracking = False
 		self.heirarchy = HeirarchyView.HeirarchyView(self.backend, self.splitter2)#, style=wx.SUNKEN_BORDER)

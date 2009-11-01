@@ -43,7 +43,7 @@
 using namespace Piavca;
 
 ChoiceMotion::ChoiceMotion(const MotionVec &mpv)
-		:MotionFilter(), mots(mpv), currentChoice(0), resetOnPlay(false),
+		:MotionFilter(), mots(mpv), currentChoice(0), resetOnPlay(false), restartOnPlay(false),
 		smooth(true), resetTime(true), windowLength(0.5f), 
 		resetOnEvent(true), accumulateRoot(true), eventsToAllChildren(false),
 		maintainUp(false), rotateAboutUp(true), upDirection(0.0, 1.0, 0.0)
@@ -56,7 +56,7 @@ ChoiceMotion::ChoiceMotion(const MotionVec &mpv)
 	}
 };
 ChoiceMotion::ChoiceMotion(const ChoiceMotion &cl)
-:MotionFilter(cl), mots(cl.mots), currentChoice(cl.currentChoice), resetOnPlay(cl.resetOnPlay),
+:MotionFilter(cl), mots(cl.mots), currentChoice(cl.currentChoice), resetOnPlay(cl.resetOnPlay), restartOnPlay(cl.restartOnPlay),
 	smooth(cl.smooth), resetTime(cl.resetTime), windowLength(cl.windowLength), 
 	resetOnEvent(cl.resetOnEvent), accumulateRoot(cl.accumulateRoot), eventsToAllChildren(cl.eventsToAllChildren),
 	maintainUp(cl.maintainUp), rotateAboutUp(cl.rotateAboutUp), upDirection(cl.upDirection)
@@ -103,6 +103,11 @@ bool ChoiceMotion::setParameter(tstring paramName, tstring value)
 	if(paramName == _T("ResetOnPlay") || paramName == _T("resetOnPlay") || paramName == _T("resetonplay"))
 	{
 		setResetOnPlay(convert<bool>(value));
+		return true;
+	}	
+	if(paramName == _T("RestartOnPlay") || paramName == _T("restartOnPlay") || paramName == _T("restartonplay"))
+	{
+		setRestartOnPlay(convert<bool>(value));
 		return true;
 	}	
 	if(paramName == _T("EventsToAllChildren") || paramName == _T("eventsToAllChildren") || paramName == _T("eventstoallchildren"))
@@ -337,7 +342,7 @@ void ChoiceMotion::updateListeners()
 		listeners[i]->sendEvent(name);
 }
 
-int ChoiceMotion::makeChoice()
+int ChoiceMotion::makeChoice(bool restart)
 {
 
 	//std::cout << "ChoiceMotion makeChoice: " << std::endl;
@@ -393,7 +398,7 @@ std::vector<Piavca::tstring> ChoiceMotion::getEventNames()
 /*!
  * It can be called by the client to interrupt the current motion.
  */
-bool ChoiceMotion::reset()
+bool ChoiceMotion::reset(bool restart)
 {
 	if(mots.size() <= 0)
 		return true;
@@ -413,7 +418,7 @@ bool ChoiceMotion::reset()
 	//std::cout << "set choice\n";
 	Motion *mot = mots[currentChoice];
 	
-	if (resetOnPlay && !mot->reset())
+	if (resetOnPlay && !mot->reset(restart || restartOnPlay))
 		return false;
 	
 	if (smooth)

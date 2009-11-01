@@ -74,7 +74,7 @@ def InterruptableSequence(seq, interruptions, fps = 20, threshold=6.5, window=0.
 	# find local minima of the distance function 
 	# if its lower than a threshold then we add it to the set of
 	# of possible transition points
-	minima = []
+	minima = [seq.getStartTime()]
 	values = []
 	#print "start time", seq.getStartTime(), "end time", seq.getEndTime()
 	for i in range(int(seq.getStartTime()*fps), int(seq.getEndTime()*fps)-1):
@@ -82,14 +82,16 @@ def InterruptableSequence(seq, interruptions, fps = 20, threshold=6.5, window=0.
 		print d, d_plus, threshold
 		if d :
 			if d < d_plus:
-				if d_minus == None or d < d_minus:
-					print d, d_plus, threshold
+				if d_minus != None and d < d_minus:
+					print float(i)/fps, d, d_plus, threshold, 4.0*window
 					if d < threshold:
-						if len(minima) == 0 or float(i)/fps - minima[-1] > 4.0*window:
+						if len(minima) == 0 or (float(i)/fps - minima[-1]) > 4.0*window:
 							values.append(d)
 							minima.append(float(i)/fps)
 		d_minus = d
 		d = d_plus
+	
+	minima.append(seq.getEndTime())
 	
 	values.sort(reverse=False)	
 	print "values", values

@@ -125,7 +125,7 @@ public:
 
 
 	//! This is called each time around the loop
-	virtual bool reset()
+	virtual bool reset(bool restart=false)
 	{
 		ScaleMotionSpeed::reset();
 		float tscale = ((float)(rand()%1000));

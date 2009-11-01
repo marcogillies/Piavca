@@ -77,7 +77,7 @@ namespace Piavca
 				choiceMot->setChoice(0);
 			else
 				choiceMot->setMotion(NULL);
-			choiceMot->reset();
+			choiceMot->reset(true);
 			LoopMotion::setMotion(choiceMot);
 		};
 
