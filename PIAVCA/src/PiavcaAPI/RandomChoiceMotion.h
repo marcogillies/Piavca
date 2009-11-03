@@ -73,8 +73,11 @@ public:
 	{
 		return dynamic_cast<RandomChoiceMotion *>(m);
 	};
+	
+	//! adds a new child motion
+	virtual void addMotion(Motion *mot);
 
-	virtual void addMotion(Motion *mot, float prob = 1.0f);
+	virtual void addMotion(Motion *mot, float prob);
 	
 	//! a generic function for setting parameters relating to specific submotions
 	virtual bool setMotionParameter(int motIndex, tstring paramName, tstring value);

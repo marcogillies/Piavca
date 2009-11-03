@@ -160,7 +160,7 @@ void AvatarMotionQueue::timeStep(Avatar *avatar, float time)
 					//}
 					// we've handed ownership over to the adder so we give up ownership
 					//delete motion;
-					motion->Dispose();
+					Motion::Dispose(motion);//->Dispose();
 				}
 				else
 				{
@@ -174,7 +174,7 @@ void AvatarMotionQueue::timeStep(Avatar *avatar, float time)
 					std::cout << "playing motion " << currentMotion->getName() << std::endl;
 					// we've handed ownership over to the self blend so we give up ownership
 					//delete motion;
-					motion->Dispose();
+					Motion::Dispose(motion);//->Dispose();
 				}
 
 			}
@@ -267,7 +267,7 @@ void AvatarMotionQueue::clearQueue()
 {
 	for(std::list< queueElement >::iterator i = motionQueue.begin();
 		i != motionQueue.end(); i++)
-		(*i).mot->Dispose();
+		Motion::Dispose((*i).mot);//->Dispose();
 	motionQueue.clear();
 	interruptMot = true;
 }
@@ -402,7 +402,7 @@ void AvatarMotionQueue::enqueueRandomMotions(int num)
 	  {
 		  if(it->mot->findSub(name))
 		  {
-			  it->mot->Dispose();
+			  Motion::Dispose(it->mot);//->Dispose();
 			  it = motionQueue.erase(it);
 		  }
 	  };

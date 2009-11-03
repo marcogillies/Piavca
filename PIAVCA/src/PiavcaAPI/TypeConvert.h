@@ -51,6 +51,20 @@ namespace Piavca
 	}
 	
 	template<>
+	inline bool convert<bool>(Piavca::tstring value)
+	{
+		if(value == "True" || value == "true")
+			return true;
+		if(value == "False" || value == "false")
+			return true;
+		std::istrstream is(TStringToString(value).c_str());
+		bool retval;
+		is >> retval;
+		return retval;
+	}
+	
+	
+	template<>
 	inline Motion *convert<Motion *>(Piavca::tstring value)
 	{
 		return Piavca::Core::getCore()->getMotion(value);

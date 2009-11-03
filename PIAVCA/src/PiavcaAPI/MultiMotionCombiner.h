@@ -84,7 +84,7 @@ public:
 	~MultiMotionCombiner()
 	{
 		for(MotionVec::size_type i = 0; i < mots.size(); i++)
-			mots[i]->Dispose();
+			Motion::Dispose(mots[i]);//->Dispose();
 	}
 	virtual Motion *clone(){return new MultiMotionCombiner(*this);};
 
@@ -156,14 +156,14 @@ public:
 	
 	void removeMotionByIndex(int index)
 	{
-		mots[index]->Dispose();
+		Motion::Dispose(mots[index]);//->Dispose();
 		mots.erase(mots.begin() + index);
 	}
 	
 	void clear()
 	{
 		for (int i = 0; i < mots.size(); i++)
-			mots[i]->Dispose();
+			Motion::Dispose(mots[i]);//->Dispose();
 		mots.clear();
 	}
 

@@ -88,7 +88,8 @@ void Core::reset()
 		delete objects[i];
 	objects.clear();
 	for (i = 0; i < motions.size(); i++)
-		motions[i].second->Dispose();
+		Motion::Dispose(motions[i].second);
+		//motions[i].second->Dispose();
 		//delete motions[i].second;
 	motions.clear();
 };
@@ -471,7 +472,7 @@ void Core::unloadMotion(tstring name)
 			if(mot)
 			{
 				mot->ownedByCore = false;
-				mot->Dispose();
+				Motion::Dispose(mot);//->Dispose();
 			}
 			break;
 		}

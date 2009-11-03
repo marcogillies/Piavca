@@ -99,9 +99,9 @@ Avatar::Avatar(tstring _name, AvatarImp *_imp)
 Avatar::~Avatar() 
 {
 	delete imp; 
-	if(mot)mot->Dispose();
+	if(mot)Motion::Dispose(mot);//->Dispose();
 	//if(facialMot)facialMot->Dispose();
-	if(scaleMot)scaleMot->Dispose();
+	if(scaleMot)Motion::Dispose(scaleMot);//->Dispose();
 	//if(motionOwned) delete mot;
 	//if(facialMotionOwned) delete facialMot;
 	//if(scaleMotionOwned) delete scaleMot;
@@ -174,7 +174,7 @@ void Avatar::loadMotion				(Motion *motion)
 	if(mot) 
 	{
 		mot->unload();
-		mot->Dispose();
+		Motion::Dispose(mot);//->Dispose();
 	}
 	mot = motion;
 	if(mot)
@@ -190,7 +190,7 @@ void Avatar::unloadMotion()
 	if(mot) 
 	{
 		mot->unload();
-		mot->Dispose();
+		Motion::Dispose(mot);//->Dispose();
 	}
 	mot = NULL;
 	motionEnabled = false;
@@ -295,7 +295,7 @@ void Avatar::loadScaleMotion (Motion *motion)
 	}
 	if(scaleMot) 
 	{
-		scaleMot->Dispose();
+		Motion::Dispose(scaleMot);//->Dispose();
 		scaleMot->unload();
 	}
 	scaleMot = motion;
@@ -311,7 +311,7 @@ void Avatar::unloadScaleMotion()
 	if(scaleMot) 
 	{
 		scaleMot->unload();
-		scaleMot->Dispose();
+		Motion::Dispose(scaleMot);//->Dispose();
 	}
 	mot = NULL;
 	scaleMotionEnabled = false;

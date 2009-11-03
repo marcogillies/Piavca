@@ -73,7 +73,10 @@ void RandomChoiceMotion::normaliseProbs()
 
 }
 
-
+void RandomChoiceMotion::addMotion(Motion *mot)
+{
+	addMotion(mot, 1.0f);
+}
 
 void RandomChoiceMotion::addMotion(Motion *mot, float prob)
 {

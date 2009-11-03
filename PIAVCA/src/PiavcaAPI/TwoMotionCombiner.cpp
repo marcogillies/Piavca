@@ -68,8 +68,8 @@ TwoMotionCombiner::TwoMotionCombiner(const TwoMotionCombiner &tmc)
 };
 TwoMotionCombiner::~TwoMotionCombiner()
 {
-	if(mot1) mot1->Dispose();
-	if(mot2) mot2->Dispose();
+	if(mot1) Motion::Dispose(mot1);//->Dispose();
+	if(mot2) Motion::Dispose(mot2);//->Dispose();
 }
 
 void TwoMotionCombiner::printInfo()
@@ -242,7 +242,7 @@ int TwoMotionCombiner::getTrackType(int trackId)const
 void TwoMotionCombiner::setMotion1(Motion *mot)
 {
 	if(mot) mot->Reference();
-	if(mot1) mot1->Dispose(); 
+	if(mot1) Motion::Dispose(mot1);//->Dispose(); 
 	//delete mot1;
 	mot1 = mot;
 	if(m_avatar && mot1)mot1->load(m_avatar);
@@ -255,7 +255,7 @@ void TwoMotionCombiner::setMotion1(Motion *mot)
 void TwoMotionCombiner::setMotion2(Motion *mot)
 {
 	if(mot) mot->Reference();
-	if(mot2) mot2->Dispose(); 
+	if(mot2) Motion::Dispose(mot2);//->Dispose(); 
 	//delete mot2;
 	mot2= mot;
 	if(m_avatar && mot2)mot2->load(m_avatar);

@@ -178,7 +178,7 @@ void Proxemics::setTargetId(int targetId)
 		targetMot = mot;
 		if (currentValueTarget)
 		{
-			currentValueTarget->Dispose();
+			Motion::Dispose(currentValueTarget);//->Dispose();
 			currentValueTarget = NULL;
 		}
 	}

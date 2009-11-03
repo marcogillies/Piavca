@@ -270,7 +270,7 @@ public:
 
 
 	//!	decrements the references count and deletes the motion if it reaches zero
-	void Dispose();
+	static void Dispose(Motion *mot);
 	//! makes a motion temporary so that it is removed when all avatars have finished with it
 	void makeTemp(){ownedByCore = false;};
 

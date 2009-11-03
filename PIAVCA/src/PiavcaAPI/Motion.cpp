@@ -123,12 +123,15 @@ void Motion::addMotion(Motion *mot)
 }
 
 
-void Motion::Dispose()
+void Motion::Dispose(Motion *mot)
 {	
 	//Core::getCore()->disposeMotion(mot);
-	refCount--;
-	if(refCount <= 0)
-		Core::getCore()->removeMotion(this);
+	mot->refCount--;
+	if(mot->refCount <= 0)
+	{
+		delete mot;
+		//Core::getCore()->removeMotion(this);
+	}
 };
 
 void Motion::pause()

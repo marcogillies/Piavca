@@ -75,7 +75,7 @@ namespace Piavca
 		};
 		virtual ~MotionFilter()
 		{
-			if(filterMot) filterMot->Dispose();
+			if(filterMot) Motion::Dispose(filterMot);//->Dispose();
 		}
 
 		virtual Motion *clone()
@@ -209,7 +209,7 @@ namespace Piavca
 			if(mot)
 				mot->Reference();
 			if(filterMot)
-				filterMot->Dispose();
+				Motion::Dispose(filterMot);//->Dispose();
 			filterMot = mot;
 			if(m_avatar && filterMot)filterMot->load(m_avatar);
 			// this isn't as stupid as it looks, it makes sure the

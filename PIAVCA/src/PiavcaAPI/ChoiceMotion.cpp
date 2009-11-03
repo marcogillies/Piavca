@@ -72,7 +72,7 @@ ChoiceMotion::~ChoiceMotion()
 {
 	setMotion(NULL);
 	for(MotionVec::size_type i = 0; i < mots.size(); i++)
-		mots[i]->Dispose();
+		Motion::Dispose(mots[i]);//->Dispose();
 	mots.clear();
 };
 
@@ -261,7 +261,7 @@ Motion *ChoiceMotion::getMotion(tstring motionName)
 //! removes the ith child motion
 void ChoiceMotion::removeMotionByIndex(int index)
 {
-	mots[index]->Dispose();
+	Motion::Dispose(mots[index]);//->Dispose();
 	mots.erase(mots.begin() + index);
 }
 
@@ -269,7 +269,7 @@ void ChoiceMotion::removeMotionByIndex(int index)
 void ChoiceMotion::clear()
 {
 	for (int i = 0; i < mots.size(); i++)
-		mots[i]->Dispose();
+		Motion::Dispose(mots[i]);//->Dispose();
 	mots.clear();
 }
 

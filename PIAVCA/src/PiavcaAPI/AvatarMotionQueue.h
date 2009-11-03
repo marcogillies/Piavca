@@ -91,7 +91,7 @@ class PIAVCA_DECL AvatarMotionQueue : public AvatarTimeCallback
   virtual ~AvatarMotionQueue()
   {
 	  //AvatarTimeCallback::~AvatarTimeCallback();
-	  avatarBlend->Dispose();
+	  Motion::Dispose(avatarBlend);//->Dispose();
   };
   
   /*! a static method, given an avatar returns that avatar's queue.
