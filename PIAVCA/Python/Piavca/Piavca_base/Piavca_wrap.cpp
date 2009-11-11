@@ -51043,7 +51043,7 @@ SWIGINTERN PyObject *_wrap_delete_Motion(PyObject *SWIGUNUSEDPARM(self), PyObjec
   arg1 = reinterpret_cast< Piavca::Motion * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -52882,7 +52882,7 @@ SWIGINTERN PyObject *_wrap_Motion_Dispose(PyObject *SWIGUNUSEDPARM(self), PyObje
   arg1 = reinterpret_cast< Piavca::Motion * >(argp1);
   {
     try {
-      (arg1)->Dispose(); 
+      Piavca::Motion::Dispose(arg1); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -59268,7 +59268,7 @@ SWIGINTERN PyObject *_wrap_delete_KeyframeMotion(PyObject *SWIGUNUSEDPARM(self),
   arg1 = reinterpret_cast< Piavca::KeyframeMotion * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -70659,7 +70659,7 @@ SWIGINTERN PyObject *_wrap_delete_CurrentValueMotion(PyObject *SWIGUNUSEDPARM(se
   arg1 = reinterpret_cast< Piavca::CurrentValueMotion * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -70869,7 +70869,7 @@ SWIGINTERN PyObject *_wrap_delete_MotionFilter(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< Piavca::MotionFilter * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -72627,7 +72627,7 @@ SWIGINTERN PyObject *_wrap_delete_TwoMotionCombiner(PyObject *SWIGUNUSEDPARM(sel
   arg1 = reinterpret_cast< Piavca::TwoMotionCombiner * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -74622,7 +74622,7 @@ SWIGINTERN PyObject *_wrap_delete_MultiMotionCombiner(PyObject *SWIGUNUSEDPARM(s
   arg1 = reinterpret_cast< Piavca::MultiMotionCombiner * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -77629,7 +77629,7 @@ SWIGINTERN PyObject *_wrap_delete_MaskedMotion(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< Piavca::MaskedMotion * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -78402,7 +78402,7 @@ SWIGINTERN PyObject *_wrap_delete_ScaleMotion(PyObject *SWIGUNUSEDPARM(self), Py
   arg1 = reinterpret_cast< Piavca::ScaleMotion * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -79221,7 +79221,7 @@ SWIGINTERN PyObject *_wrap_delete_ScaleMotionSpeed(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< Piavca::ScaleMotionSpeed * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -79902,7 +79902,7 @@ SWIGINTERN PyObject *_wrap_delete_ChangeMotionLength(PyObject *SWIGUNUSEDPARM(se
   arg1 = reinterpret_cast< Piavca::ChangeMotionLength * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -80207,7 +80207,7 @@ SWIGINTERN PyObject *_wrap_delete_ScaleMotionRoot(PyObject *SWIGUNUSEDPARM(self)
   arg1 = reinterpret_cast< Piavca::ScaleMotionRoot * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -81502,7 +81502,7 @@ SWIGINTERN PyObject *_wrap_delete_TimeOffset(PyObject *SWIGUNUSEDPARM(self), PyO
   arg1 = reinterpret_cast< Piavca::TimeOffset * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -82242,7 +82242,7 @@ SWIGINTERN PyObject *_wrap_delete_Sequence(PyObject *SWIGUNUSEDPARM(self), PyObj
   arg1 = reinterpret_cast< Piavca::Sequence * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -83170,7 +83170,7 @@ SWIGINTERN PyObject *_wrap_delete_SmoothSequence(PyObject *SWIGUNUSEDPARM(self),
   arg1 = reinterpret_cast< Piavca::SmoothSequence * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -83645,7 +83645,7 @@ SWIGINTERN PyObject *_wrap_delete_MotionPosture(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< Piavca::MotionPosture * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -84121,7 +84121,7 @@ SWIGINTERN PyObject *_wrap_delete_AvatarPosture(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< Piavca::AvatarPosture * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -85157,7 +85157,7 @@ SWIGINTERN PyObject *_wrap_delete_PostureBlend(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< Piavca::PostureBlend * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -86709,7 +86709,7 @@ SWIGINTERN PyObject *_wrap_delete_Reposition(PyObject *SWIGUNUSEDPARM(self), PyO
   arg1 = reinterpret_cast< Piavca::Reposition * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -87582,7 +87582,7 @@ SWIGINTERN PyObject *_wrap_delete_LoopMotion(PyObject *SWIGUNUSEDPARM(self), PyO
   arg1 = reinterpret_cast< Piavca::LoopMotion * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -88306,7 +88306,7 @@ SWIGINTERN PyObject *_wrap_delete_SmoothLoop(PyObject *SWIGUNUSEDPARM(self), PyO
   arg1 = reinterpret_cast< Piavca::SmoothLoop * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -88671,7 +88671,7 @@ SWIGINTERN PyObject *_wrap_delete_RandomTimingsMotion(PyObject *SWIGUNUSEDPARM(s
   arg1 = reinterpret_cast< Piavca::RandomTimingsMotion * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -90167,7 +90167,7 @@ SWIGINTERN PyObject *_wrap_delete_AvatarPostureBlend(PyObject *SWIGUNUSEDPARM(se
   arg1 = reinterpret_cast< Piavca::AvatarPostureBlend * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -90998,7 +90998,7 @@ SWIGINTERN PyObject *_wrap_delete_BlendBetween(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< Piavca::BlendBetween * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -91571,7 +91571,7 @@ SWIGINTERN PyObject *_wrap_delete_MotionAdder(PyObject *SWIGUNUSEDPARM(self), Py
   arg1 = reinterpret_cast< Piavca::MotionAdder * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -92580,7 +92580,7 @@ SWIGINTERN PyObject *_wrap_delete_MultiBlend(PyObject *SWIGUNUSEDPARM(self), PyO
   arg1 = reinterpret_cast< Piavca::MultiBlend * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -93220,7 +93220,7 @@ SWIGINTERN PyObject *_wrap_delete_Subtract(PyObject *SWIGUNUSEDPARM(self), PyObj
   arg1 = reinterpret_cast< Piavca::Subtract * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -94972,7 +94972,7 @@ SWIGINTERN PyObject *_wrap_delete_MotionTransition(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< Piavca::MotionTransition * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -95235,7 +95235,7 @@ SWIGINTERN PyObject *_wrap_delete_ChoiceMotion(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< Piavca::ChoiceMotion * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -98013,7 +98013,7 @@ SWIGINTERN PyObject *_wrap_delete_ChoiceMotionWithDefault(PyObject *SWIGUNUSEDPA
   arg1 = reinterpret_cast< Piavca::ChoiceMotionWithDefault * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -98454,7 +98454,7 @@ SWIGINTERN PyObject *_wrap_delete_EventMapChoice(PyObject *SWIGUNUSEDPARM(self),
   arg1 = reinterpret_cast< Piavca::EventMapChoice * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -99041,7 +99041,7 @@ SWIGINTERN PyObject *_wrap_delete_SequentialChoiceMotion(PyObject *SWIGUNUSEDPAR
   arg1 = reinterpret_cast< Piavca::SequentialChoiceMotion * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -99750,7 +99750,7 @@ SWIGINTERN PyObject *_wrap_delete_RandomChoiceMotion(PyObject *SWIGUNUSEDPARM(se
   arg1 = reinterpret_cast< Piavca::RandomChoiceMotion * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -99917,6 +99917,48 @@ SWIGINTERN PyObject *_wrap_RandomChoiceMotion_addMotion__SWIG_0(PyObject *SWIGUN
   PyObject *resultobj = 0;
   Piavca::RandomChoiceMotion *arg1 = (Piavca::RandomChoiceMotion *) 0 ;
   Piavca::Motion *arg2 = (Piavca::Motion *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:RandomChoiceMotion_addMotion",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__RandomChoiceMotion, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RandomChoiceMotion_addMotion" "', argument " "1"" of type '" "Piavca::RandomChoiceMotion *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::RandomChoiceMotion * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_Piavca__Motion, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RandomChoiceMotion_addMotion" "', argument " "2"" of type '" "Piavca::Motion *""'"); 
+  }
+  arg2 = reinterpret_cast< Piavca::Motion * >(argp2);
+  {
+    try {
+      (arg1)->addMotion(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RandomChoiceMotion_addMotion__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::RandomChoiceMotion *arg1 = (Piavca::RandomChoiceMotion *) 0 ;
+  Piavca::Motion *arg2 = (Piavca::Motion *) 0 ;
   float arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -99964,48 +100006,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_RandomChoiceMotion_addMotion__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  Piavca::RandomChoiceMotion *arg1 = (Piavca::RandomChoiceMotion *) 0 ;
-  Piavca::Motion *arg2 = (Piavca::Motion *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OO:RandomChoiceMotion_addMotion",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__RandomChoiceMotion, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RandomChoiceMotion_addMotion" "', argument " "1"" of type '" "Piavca::RandomChoiceMotion *""'"); 
-  }
-  arg1 = reinterpret_cast< Piavca::RandomChoiceMotion * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_Piavca__Motion, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RandomChoiceMotion_addMotion" "', argument " "2"" of type '" "Piavca::Motion *""'"); 
-  }
-  arg2 = reinterpret_cast< Piavca::Motion * >(argp2);
-  {
-    try {
-      (arg1)->addMotion(arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }
-    catch (Piavca::Exception &e) 
-    {
-      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
-      SWIG_fail; 
-    }
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_RandomChoiceMotion_addMotion(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[4];
@@ -100026,7 +100026,7 @@ SWIGINTERN PyObject *_wrap_RandomChoiceMotion_addMotion(PyObject *self, PyObject
       int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_Piavca__Motion, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_RandomChoiceMotion_addMotion__SWIG_1(self, args);
+        return _wrap_RandomChoiceMotion_addMotion__SWIG_0(self, args);
       }
     }
   }
@@ -100045,14 +100045,14 @@ SWIGINTERN PyObject *_wrap_RandomChoiceMotion_addMotion(PyObject *self, PyObject
           _v = SWIG_CheckState(res);
         }
         if (_v) {
-          return _wrap_RandomChoiceMotion_addMotion__SWIG_0(self, args);
+          return _wrap_RandomChoiceMotion_addMotion__SWIG_1(self, args);
         }
       }
     }
   }
   
 fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'RandomChoiceMotion_addMotion'.\n  Possible C/C++ prototypes are:\n    addMotion(Piavca::Motion *,float)\n    addMotion(Piavca::Motion *)\n");
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'RandomChoiceMotion_addMotion'.\n  Possible C/C++ prototypes are:\n    addMotion(Piavca::Motion *)\n    addMotion(Piavca::Motion *,float)\n");
   return NULL;
 }
 
@@ -100628,7 +100628,7 @@ SWIGINTERN PyObject *_wrap_delete_MotionGraph(PyObject *SWIGUNUSEDPARM(self), Py
   arg1 = reinterpret_cast< Piavca::MotionGraph * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -102743,7 +102743,7 @@ SWIGINTERN PyObject *_wrap_delete_PointAt(PyObject *SWIGUNUSEDPARM(self), PyObje
   arg1 = reinterpret_cast< Piavca::PointAt * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -102945,7 +102945,7 @@ SWIGINTERN PyObject *_wrap_delete_Proxemics(PyObject *SWIGUNUSEDPARM(self), PyOb
   arg1 = reinterpret_cast< Piavca::Proxemics * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -105018,7 +105018,7 @@ SWIGINTERN PyObject *_wrap_delete_ZeroMotion(PyObject *SWIGUNUSEDPARM(self), PyO
   arg1 = reinterpret_cast< Piavca::ZeroMotion * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -105873,7 +105873,7 @@ SWIGINTERN PyObject *_wrap_delete_SubMotion(PyObject *SWIGUNUSEDPARM(self), PyOb
   arg1 = reinterpret_cast< Piavca::SubMotion * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -106682,7 +106682,7 @@ SWIGINTERN PyObject *_wrap_delete_TimeRangeMotion(PyObject *SWIGUNUSEDPARM(self)
   arg1 = reinterpret_cast< Piavca::TimeRangeMotion * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -107507,7 +107507,7 @@ SWIGINTERN PyObject *_wrap_delete_TimeWarp(PyObject *SWIGUNUSEDPARM(self), PyObj
   arg1 = reinterpret_cast< Piavca::TimeWarp * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -108076,7 +108076,7 @@ SWIGINTERN PyObject *_wrap_delete_OverrideMotion(PyObject *SWIGUNUSEDPARM(self),
   arg1 = reinterpret_cast< Piavca::OverrideMotion * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -109164,7 +109164,7 @@ SWIGINTERN PyObject *_wrap_delete_ExpMapMotion(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< Piavca::ExpMapMotion * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -109800,7 +109800,7 @@ SWIGINTERN PyObject *_wrap_delete_LogMapMotion(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< Piavca::LogMapMotion * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -110748,7 +110748,7 @@ SWIGINTERN PyObject *_wrap_delete_AvatarMotion(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< Piavca::AvatarMotion * >(argp1);
   {
     try {
-      arg1->Dispose();
+      Motion::Dispose(arg1);
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 

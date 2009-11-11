@@ -406,13 +406,15 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %ignore Piavca::Avatar::Avatar(const Avatar &av);
 
 %feature("ref")   Piavca::Motion "$this->Reference();"
-%feature("unref") Piavca::Motion "$this->Dispose();"
+//%feature("unref") Piavca::Motion "$this->Dispose();"
+%feature("unref") Piavca::Motion "Motion::Dispose($this);"
 
-%feature("ref")   Piavca::ScaleMotionRoot "$this->Reference();"
-%feature("unref") Piavca::ScaleMotionRoot "$this->Dispose();"
 
-%feature("ref")   Piavca::ScaleMotionSpeed "$this->Reference();"
-%feature("unref") Piavca::ScaleMotionSpeed "$this->Dispose();"
+//%feature("ref")   Piavca::ScaleMotionRoot "$this->Reference();"
+//%feature("unref") Piavca::ScaleMotionRoot "$this->Dispose();"
+
+//%feature("ref")   Piavca::ScaleMotionSpeed "$this->Reference();"
+//%feature("unref") Piavca::ScaleMotionSpeed "$this->Dispose();"
 
 %feature("director") Motion;   
 %feature("director") KeyframeMotion;   

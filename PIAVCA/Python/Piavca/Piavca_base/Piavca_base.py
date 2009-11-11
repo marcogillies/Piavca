@@ -618,6 +618,8 @@ class Motion(_object):
         """
         return _Piavca_base.Motion_Dispose(*args)
 
+    if _newclass:Dispose = staticmethod(Dispose)
+    __swig_getmethods__["Dispose"] = lambda x: Dispose
     def makeTemp(*args):
         """
         void Piavca::Motion::makeTemp()
@@ -826,6 +828,16 @@ class Motion(_object):
 Motion_swigregister = _Piavca_base.Motion_swigregister
 Motion_swigregister(Motion)
 Motion_castToThisType = _Piavca_base.Motion_castToThisType
+
+def Motion_Dispose(*args):
+  """
+    void Motion::Dispose()
+             
+    decrements the references count and deletes the motion if it reaches zero         
+             
+            
+    """
+  return _Piavca_base.Motion_Dispose(*args)
 
 class Core(_object):
     """
