@@ -1,0 +1,151 @@
+
+
+# ***** BEGIN LICENSE BLOCK *****
+# Version: MPL 1.1/GPL 2.0/LGPL 2.1
+#
+# The contents of this file are subject to the Mozilla Public License Version
+# 1.1 (the "License"); you may not use this file except in compliance with
+# the License. You may obtain a copy of the License at
+# http://www.mozilla.org/MPL/
+#
+# Software distributed under the License is distributed on an "AS IS" basis,
+# WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+# for the specific language governing rights and limitations under the
+# License.
+#
+# The Original Code is SConstruct
+#
+# The Initial Developer of the Original Code is
+# Marco (Mark) Gillies.
+# Portions created by the Initial Developer are Copyright (C) 2008
+# the Initial Developer. All Rights Reserved.
+#
+# Contributor(s): Kristopher Blom
+#
+# Alternatively, the contents of this file may be used under the terms of
+# either the GNU General Public License Version 2 or later (the "GPL"), or
+# the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+# in which case the provisions of the GPL or the LGPL are applicable instead
+# of those above. If you wish to allow use of your version of this file only
+# under the terms of either the GPL or the LGPL, and not to allow others to
+# use your version of this file under the terms of the MPL, indicate your
+# decision by deleting the provisions above and replace them with the notice
+# and other provisions required by the GPL or the LGPL. If you do not delete
+# the provisions above, a recipient may use your version of this file under
+# the terms of any one of the MPL, the GPL or the LGPL.
+#
+# ***** END LICENSE BLOCK *****
+
+import distutils.sysconfig, os
+from glob import glob
+
+# build environment needs to work with swig and python
+# also set up the local include paths
+env = Environment(SWIGFLAGS=['-c++', '-package', 'Piavca', '-java', '-I../src/'],
+#env = Environment(SWIGFLAGS=['-package', 'JavaTest', '-java', '-I./src/'],
+				  CPPPATH=["../src/"],
+				  SHLIBPREFIX="lib",
+				  CXXFILESUFFIX=".cpp",
+				  #JARFLAGS = '-m manifest.txt',
+				  )
+
+env.Append(CCFLAGS = "-DGLEW_STATIC")
+#debug = ARGUMENTS.get('debug', 0)
+#if int(debug):
+#	env.Append(CXXFLAGS = '-g')
+
+conf = Configure(env)	
+
+	
+#for key in env.keys():
+#	print key, env[key]
+
+
+
+#if not conf.CheckCHeader('jni.h'):
+#	print 'jni.h must be installed!'
+#	Exit(1)
+
+
+
+
+external_libs = []
+
+if ( 'darwin' == env['PLATFORM'] ): 
+	env.Append(FRAMEWORKS=["OpenGL", "JavaVM"])
+	env.Append(CPPPATH=["./src/", '/System/Library/Frameworks/JavaVM.framework/Headers'])
+	env.Append(CCFLAGS=['-arch', 'i386'])
+	env.Append(LINKFLAGS=['-arch', 'i386'])
+elif ( 'win32' == env['PLATFORM'] ):
+	external_libs = external_libs + ["JavaVM", "opengl32"]
+else:
+	external_libs = external_libs + ["Java", "GL", "GLU"]
+
+
+env = conf.Finish()
+
+
+# c++ libraries
+#PiavcaAPI = env.Library('src/PiavcaAPI/PiavcaAPI', glob('src/PiavcaAPI/*.cpp'))
+#StdMotionImp = env.Library('src/StdMotionImp/StdMotionImp', glob('src/StdMotionImp/*.cpp'))
+#Depends(StdMotionImp, PiavcaAPI)
+#PiavcaCal3dImp = env.Library('src/PiavcaCal3dImp/PiavcaCal3dImp', glob('src/PiavcaCal3dImp/*.cpp')+glob('src/PiavcaCal3dImp/*.c'))
+#Depends(PiavcaCal3dImp, PiavcaAPI)
+#PiavcaPythonInterface = env.Library('src/PiavcaPythonInterface/PiavcaPythonInterface', glob('src/PiavcaPythonInterface/*.cpp'))
+#Program('src/PiavcaCal3dApp/PiavcaCal3dApp', PiavcaAPI + StdMotionImp + PiavcaCal3dImp  + glob('src/PiavcaCal3dApp/*.cpp'), CXXFLAGS="-I./src/")
+
+# base python module
+if env.WhereIs('swig') is None:
+	#Piavca_base = env.SharedLibrary('Python/Piavca/Piavca_base/_Piavca_base.so', ['Python/Piavca/Piavca_base/Piavca_wrap.cpp'], LIBS=PiavcaAPI + StdMotionImp + PiavcaCal3dImp + external_libs)
+	Piavca_base = env.SharedLibrary('PiavcaBase.jnilib', ['src/swigPiavca_wrap.cpp']+glob('../src/PiavcaAPI/*.cpp')+glob('../src/StdMotionImp/*.cpp')+glob('../src/PiavcaCal3dImp/*.cpp')+glob('../src/PiavcaCal3dImp/*.c')+glob('../src/cal3d/*.cpp'), LIBS=external_libs)
+else:
+	#Piavca_base = env.SharedLibrary('Python/Piavca/Piavca_base/_Piavca_base.so', ['Python/Piavca/Piavca_base/Piavca.i'], LIBS=PiavcaAPI + StdMotionImp + PiavcaCal3dImp + external_libs)
+	#Piavca_base = env.SharedLibrary('PiavcaBase.jnilib', ['src/swig/Piavca.i']+glob('../src/PiavcaAPI/*.cpp')+glob('../src/StdMotionImp/*.cpp')+glob('../src/PiavcaCal3dImp/*.cpp')+glob('../src/PiavcaCal3dImp/*.c')+glob('../src/cal3d/*.cpp'))#, LIBS=external_libs)
+	Piavca_base = env.SharedLibrary('PiavcaBase.jnilib', ['src/swig/Piavca.i']+glob('../src/PiavcaAPI/*.cpp')+glob('../src/StdMotionImp/*.cpp')+glob('../src/PiavcaCal3dImp/*.cpp')+glob('../src/PiavcaCal3dImp/*.c')+glob('../src/cal3d/*.cpp'))#, LIBS=external_libs)
+
+#Depends(Piavca_base, PiavcaCal3dImp)
+
+Depends('.', 'libPiavcaBase.jnilib')
+
+Java('.', ['src/swig', 'src/Piavca.java'])
+#print classfiles
+#jarManifest("manifest.txt")
+Depends("Piavca.jar",'Piavca')
+env.Jar(target="Piavca.jar", source="Piavca")
+
+env.Append(JAVACLASSPATH="Piavca.jar")
+
+#conf = Configure(env)
+
+env.Java(".", "Test.java")
+
+# install path for python modules
+#path1 = os.path.join(distutils.sysconfig.get_python_lib(), "Piavca")
+#path2 = os.path.join(path1, "Piavca_base")
+#path3 = os.path.join(path1, "PiavcaDesigner")
+#path4 = os.path.join(path1, "PiavcaDesigner/AutoCreators")
+#path5 = os.path.join(path1, "CreationScripts")
+
+#env.Install(path1, glob("Python/Piavca/*.py"))
+#env.Install(path2, glob("Python/Piavca/Piavca_base/*.py")+Piavca_base)
+#env.Install(path3, glob("Python/Piavca/PiavcaDesigner/*.py"))
+#env.Install(path4, glob("Python/Piavca/PiavcaDesigner/AutoCreators/*.py"))
+#env.Install(path5, glob("Python/Piavca/CreationScripts/*.py"))
+
+env.Install("library", ['Piavca.jar','libPiavcaBase.jnilib'])
+
+
+# install the scripts, renaming them to get rid of the .py suffix
+#binpath = distutils.sysconfig.get_config_vars("BINDIR")[0]
+#scripts = glob("Python/*.py")
+#for script in scripts:
+#	(name, ext) = os.path.splitext(script)
+#	name = os.path.basename(name)
+	#print os.path.join(binpath, name), name, script
+#	env.InstallAs(os.path.join(binpath, name), script)
+#destinations = [os.path.join(binpath, x[:-3]) for x in scripts]
+
+#env.Alias('install', [path1, path2, path3, path4, path5, binpath])	
+
+
+	
