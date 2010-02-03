@@ -115,6 +115,9 @@ class PiavcaDesigner(wx.Frame):
 	def Import(self, event):
 		dialog_return = openFileDialog (wildcard="XML Motion files (*.xml)|*.xml|Cal3d Character files files (*.cfg)|*.cfg")
 		path = dialog_return.paths[0].encode("latin-1")
+		self.ImportFile(path)
+		
+	def ImportFile(self, path):
 	
 		print path
 		pathend = path.rfind("\\")

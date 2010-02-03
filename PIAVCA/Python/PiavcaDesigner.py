@@ -27,16 +27,23 @@ except IOError:
 #Piavca.Core.getCore().setHardware(False)
 	
 extra_panel = None
+importfile = None
 if len(sys.argv) > 1:
-	sys.path.append(".")
-	print sys.argv[1]
-	module = __import__(sys.argv[1])
-	print module
-	print module.__file__
-	extra_panel = [getattr(module, "create_panel")]
+	if (sys.argv[1] == "-m"):
+		sys.path.append(".")
+		print sys.argv[2]
+		module = __import__(sys.argv[2])
+		print module
+		print module.__file__
+		extra_panel = [getattr(module, "create_panel")]
+	else:
+		importfile = sys.argv[1]
 
 #print 'file', Piavca.PiavcaDesigner.__file__	
 	
 pd = PiavcaDesigner(extra_panels=extra_panel)
+
+if importfile != None:
+	pd.ImportFile(importfile)
 	
 app.MainLoop()

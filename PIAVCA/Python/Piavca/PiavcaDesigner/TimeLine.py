@@ -57,7 +57,6 @@ class TimeLine(wx.Panel):
 		if frames != None:
 			size = self.GetClientSize()
 
-			#print time, pos
 			dc.SetPen(wx.Pen("green", 5, wx.SOLID))
 			for frame in frames:
 				time = self.backend.getTimeFraction(frame)

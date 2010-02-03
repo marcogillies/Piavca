@@ -219,6 +219,16 @@ public:
 	 */
 	static float spherical_distance(const Quat &q1, const Quat &q2);
 	
+	static float dist(const Quat &q1, const Quat &q2)
+	{
+		spherical_distance(q1, q2);
+	}
+	
+	float dist(const Quat &q)
+	{
+		spherical_distance(*this, q);
+	}
+	
 	/*! perform the logorithmic map to convert a quaternion into a vector in linear space
 	 *
 	 */

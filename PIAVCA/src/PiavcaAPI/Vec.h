@@ -158,6 +158,14 @@ public:
 	//! normalizes the Vec in place
 	void normalize()						{(*this) /= mag();};
 	//!@}
+	
+	//! distance measure between two vectors
+	float dist(const Vec &v)
+	{
+		Vec temp = *this;
+		temp -= v;
+		return temp.mag();
+	}
 };
 
 
