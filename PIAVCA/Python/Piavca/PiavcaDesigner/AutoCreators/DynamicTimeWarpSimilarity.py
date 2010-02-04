@@ -58,7 +58,6 @@ class DynamicTimeWarpSimilarity:
 		frameslist = findMinima(mot, compMotion, 0.0, threshold, fps)
 		print frameslist
 		
-		
 		framepairs = itertools.chain(zip(frameslist[:-1], frameslist[1:]),zip(frameslist[:-2], frameslist[2:]),zip(frameslist[:-3], frameslist[3:])) 
 		submots = ((MotionList(Piavca.SubMotion(mot, f1, f2), fps),f1,f2) for f1, f2 in framepairs)
 		
@@ -67,12 +66,12 @@ class DynamicTimeWarpSimilarity:
 		
 		#print "about to call dynamic timewarp"
 		
-		results = [(DynamicTimewarpCost(compMotSeq, submot, poseDifference), f1, f2) for submot, f1, f2 in submots]
-		results.sort()
+		self.results = [(DynamicTimewarpCost(compMotSeq, submot, poseDifference), f1, f2) for submot, f1, f2 in submots]
+		self.results.sort()
 		
-		print "results", results
+		print "results", self.results
 		
-		for i, result in enumerate(results):
+		for i, result in enumerate(self.results):
 			self.list.InsertStringItem(i, str(result[0]) + " " + str(result[1]) + " " + str(result[2]))
 		
 	def showResult(self, e):
@@ -81,4 +80,9 @@ class DynamicTimeWarpSimilarity:
 	def getMotion(self):
 		motion = self.motion.getValue()
 		
-		return None
+		i = self.list.GetNextSelected(-1)
+		print i
+		if i >= 0:
+			return Piavca.SubMotion(motion, self.results[i][1], self.results[i][2])
+		else:
+			return None
