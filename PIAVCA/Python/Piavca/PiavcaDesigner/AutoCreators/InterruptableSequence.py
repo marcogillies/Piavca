@@ -22,7 +22,7 @@ class InterruptableSequence:
 		self.window.setValue(0.5)
 		controls.append(("window", self.window))
 		
-		return controls
+		return controls, []
 		
 	def getMotion(self):
 		mot = self.motion.getValue()

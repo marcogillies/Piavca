@@ -111,7 +111,7 @@ class FindTransitions:
 		self.FrameLists = ChoiceListParamEntry(list, "FrameLists", None, frame)
 		controls.append(("FrameLists", self.FrameLists))
 		
-		return controls
+		return controls, []
 		
 	def getMotion(self):
 		mot = self.motion.getValue()

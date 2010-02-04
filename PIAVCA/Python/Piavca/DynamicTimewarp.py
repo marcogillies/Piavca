@@ -8,13 +8,21 @@
 #
 
 import operator
+from itertools import izip
 
 def poseDifference(p1, p2):
-	jointdifferences = (j1.dist(j2) for j1, j2 in zip(p1[1:], p2[1:]))
+	#p1 = [p for p in p1]
+	#print p1
+	#p2 = [p for p in p2]
+	#print p2
+	jointdifferences = (j1.dist(j2) for j1, j2 in izip(p1[1:], p2[1:]))
+	jointdifferences = [j for j in jointdifferences]
+	print jointdifferences
 	return reduce(operator.add, jointdifferences, 0.0)
 	
 
 def DynamicTimewarpWithCost(seq1, seq2, dist):
+	print "in dynamic timewarp"
 	DTW = [[[0, (0, 0)] for s2 in seq2] for s1 in seq1]
 	for i in range(len(seq1)):
 		DTW[i][0][0] = 10000000000.0
@@ -22,13 +30,22 @@ def DynamicTimewarpWithCost(seq1, seq2, dist):
 		DTW[0][j][0] = 10000000000.0
 	DTW[0][0][0] = 0	
 	
+	#print "initialized DT"
 	
-	for i in range(len(seq1)):
-		for j in range(len(seq2)):
+	for i in range(1,len(seq1)):
+		for j in range(1,len(seq2)):
 			cost = dist (seq1[i], seq2[j])
+			#print cost
 			pval, pi, pj = min([(DTW[i-1][j][0], i-1, j), (DTW[i][j-1][0], i, j-1), (DTW[i-1][j-1][0], i-1, j-1)])
 			DTW[i][j][0] = cost + pval
 			DTW[i][j][1] = (pi,pj)
+			
+	#for a in DTW:
+	#	for b in a:
+	#		print b[1],
+	#	print ""
+	
+	#print "finished main DT loop"
 	
 	i = len(seq1)-1
 	j = len(seq2)-1
@@ -36,9 +53,10 @@ def DynamicTimewarpWithCost(seq1, seq2, dist):
 	warp = range(len(seq2))
 	while i != 0 or j != 0:
 		i,j = DTW[i][j][1]
+		#print i,j
 		warp[j] =i
 		
-	print cost	
+	print "finished DT", cost	
 	return cost, warp
 	
 def DynamicTimewarpCost(seq1, seq2, dist):

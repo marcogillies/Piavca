@@ -47271,6 +47271,52 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Vec_dist(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Vec *arg1 = (Piavca::Vec *) 0 ;
+  Piavca::Vec *arg2 = 0 ;
+  float result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Vec_dist",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Vec, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Vec_dist" "', argument " "1"" of type '" "Piavca::Vec *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Vec * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_Piavca__Vec,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Vec_dist" "', argument " "2"" of type '" "Piavca::Vec const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Vec_dist" "', argument " "2"" of type '" "Piavca::Vec const &""'"); 
+  }
+  arg2 = reinterpret_cast< Piavca::Vec * >(argp2);
+  {
+    try {
+      result = (float)(arg1)->dist((Piavca::Vec const &)*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Vec___getitem__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Piavca::Vec *arg1 = (Piavca::Vec *) 0 ;
@@ -49395,6 +49441,143 @@ SWIGINTERN PyObject *_wrap_Quat_spherical_distance(PyObject *SWIGUNUSEDPARM(self
   resultobj = SWIG_From_float(static_cast< float >(result));
   return resultobj;
 fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Quat_dist__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Quat *arg1 = 0 ;
+  Piavca::Quat *arg2 = 0 ;
+  float result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Quat_dist",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_Piavca__Quat,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Quat_dist" "', argument " "1"" of type '" "Piavca::Quat const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Quat_dist" "', argument " "1"" of type '" "Piavca::Quat const &""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Quat * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_Piavca__Quat,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Quat_dist" "', argument " "2"" of type '" "Piavca::Quat const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Quat_dist" "', argument " "2"" of type '" "Piavca::Quat const &""'"); 
+  }
+  arg2 = reinterpret_cast< Piavca::Quat * >(argp2);
+  {
+    try {
+      result = (float)Piavca::Quat::dist((Piavca::Quat const &)*arg1,(Piavca::Quat const &)*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Quat_dist__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Piavca::Quat *arg1 = (Piavca::Quat *) 0 ;
+  Piavca::Quat *arg2 = 0 ;
+  float result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Quat_dist",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Piavca__Quat, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Quat_dist" "', argument " "1"" of type '" "Piavca::Quat *""'"); 
+  }
+  arg1 = reinterpret_cast< Piavca::Quat * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_Piavca__Quat,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Quat_dist" "', argument " "2"" of type '" "Piavca::Quat const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Quat_dist" "', argument " "2"" of type '" "Piavca::Quat const &""'"); 
+  }
+  arg2 = reinterpret_cast< Piavca::Quat * >(argp2);
+  {
+    try {
+      result = (float)(arg1)->dist((Piavca::Quat const &)*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+    catch (Piavca::Exception &e) 
+    {
+      std::cout << "Piavca Exception: " << e.getDetails() << std::endl; 
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Quat_dist(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = PyObject_Length(args);
+  for (ii = 0; (ii < argc) && (ii < 2); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 2) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_Piavca__Quat, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_Piavca__Quat, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_Quat_dist__SWIG_0(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Piavca__Quat, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_Piavca__Quat, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_Quat_dist__SWIG_1(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'Quat_dist'.\n  Possible C/C++ prototypes are:\n    dist(Piavca::Quat const &,Piavca::Quat const &)\n    dist(Piavca::Quat const &)\n");
   return NULL;
 }
 
@@ -110911,6 +111094,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Vec_crossinplace", _wrap_Vec_crossinplace, METH_VARARGS, NULL},
 	 { (char *)"Vec_normalized", _wrap_Vec_normalized, METH_VARARGS, NULL},
 	 { (char *)"Vec_normalize", _wrap_Vec_normalize, METH_VARARGS, NULL},
+	 { (char *)"Vec_dist", _wrap_Vec_dist, METH_VARARGS, NULL},
 	 { (char *)"Vec___getitem__", _wrap_Vec___getitem__, METH_VARARGS, NULL},
 	 { (char *)"Vec___setitem__", _wrap_Vec___setitem__, METH_VARARGS, NULL},
 	 { (char *)"Vec___repr__", _wrap_Vec___repr__, METH_VARARGS, NULL},
@@ -110945,6 +111129,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Quat_transform", _wrap_Quat_transform, METH_VARARGS, NULL},
 	 { (char *)"Quat_transformInPlace", _wrap_Quat_transformInPlace, METH_VARARGS, NULL},
 	 { (char *)"Quat_spherical_distance", _wrap_Quat_spherical_distance, METH_VARARGS, NULL},
+	 { (char *)"Quat_dist", _wrap_Quat_dist, METH_VARARGS, NULL},
 	 { (char *)"Quat_logMap", _wrap_Quat_logMap, METH_VARARGS, NULL},
 	 { (char *)"Quat_expMap", _wrap_Quat_expMap, METH_VARARGS, NULL},
 	 { (char *)"Quat___getitem__", _wrap_Quat___getitem__, METH_VARARGS, NULL},

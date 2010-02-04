@@ -26,7 +26,7 @@ class MotionGraph:
 		self.threshold.setValue(1.0)
 		controls.append(("Threshold", self.threshold))
 		
-		return controls
+		return controls, []
 		
 	def getMotion(self):
 		if not importSuccessful:

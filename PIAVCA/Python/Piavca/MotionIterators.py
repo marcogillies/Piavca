@@ -9,8 +9,10 @@
 import Piavca
 
 def quatPose(mot, t):
-	return [mot.getQuatValueAtTime(j,t) for j in  Piavca.joints(mot) if mot.getTrackType(j) == Piavca.QUAT_TYPE]
-	
+	print [j for j in Piavca.joints(mot)]
+	pose = [mot.getQuatValueAtTime(j,t) for j in  Piavca.joints(mot) if mot.getTrackType(j) & Piavca.QUAT_TYPE]
+	print pose
+	return pose
 
 def MotionIterator(mot, fps = 20, posefunc = quatPose):
 	return (posefunc(mot, float(t)/fps) for t in range(0, int(mot.getMotionLength()*fps)))

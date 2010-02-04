@@ -41,9 +41,9 @@ class DynamicTimeWarpSimilarity:
 		self.list = wx.ListCtrl(frame,-1,style=wx.LC_LIST)
 		frame.Bind(wx.EVT_LIST_ITEM_ACTIVATED, self.showResult)
 		#self.mainSizer.Add(self.list, 1, wx.EXPAND)
-		controls.append(("motions", self.list))
+		#controls.append(("motions", self.list))
 		
-		return controls
+		return controls, [self.list]
 
 	def query(self, e):
 		mot = self.motion.getValue()
@@ -62,7 +62,12 @@ class DynamicTimeWarpSimilarity:
 		framepairs = itertools.chain(zip(frameslist[:-1], frameslist[1:]),zip(frameslist[:-2], frameslist[2:]),zip(frameslist[:-3], frameslist[3:])) 
 		submots = ((MotionList(Piavca.SubMotion(mot, f1, f2), fps),f1,f2) for f1, f2 in framepairs)
 		
-		results = [(DynamicTimewarpCost(compMotSeq, submot, poseDifference), f1, f1) for submot, f1, f1 in submots]
+		#submots = [a for a in submots]
+		#print submots
+		
+		#print "about to call dynamic timewarp"
+		
+		results = [(DynamicTimewarpCost(compMotSeq, submot, poseDifference), f1, f2) for submot, f1, f2 in submots]
 		results.sort()
 		
 		print "results", results

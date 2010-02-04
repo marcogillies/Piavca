@@ -14,6 +14,7 @@ class AutoCreatorsWindow(wx.Panel):
 		
 		self.creator = None
 		self.children = []
+		self.outSizedChildren = []
 		
 		self.mainSizer = wx.BoxSizer(wx.VERTICAL)
 		
@@ -60,21 +61,30 @@ class AutoCreatorsWindow(wx.Panel):
 	def update(self):
 		# get rid of existing controls
 		for label, ctrl in self.children:
-			print label, ctrl
+			#print label, ctrl
 			self.parametersSizer.Detach(label)
 			self.parametersSizer.Detach(ctrl)
 			label.Destroy()
 			ctrl.Destroy()
+			
+		for ctrl in self.outSizedChildren:
+			self.parametersSizer.Detach(ctrl)
+			ctrl.Destroy()
 		
 		self.children = []
+		self.outSizedChildren = []
 		
 		if self.creator :
 			
-			controls = self.creator.createControls(self)
+			controls, outSizedControls = self.creator.createControls(self)
 			for name, ctrl in controls:	
 				self.children.append((wx.StaticText(self, -1, name), ctrl))
 				self.parametersSizer.Add(self.children[-1][0], 0, wx.ALIGN_LEFT)
 				self.parametersSizer.Add(self.children[-1][1], 1, wx.EXPAND)
+				
+			for ctrl in outSizedControls:	
+				self.outSizedChildren.append(ctrl)
+				self.mainSizer.Add(self.outSizedChildren[-1], 1, wx.EXPAND)
 						
 				
 		self.parametersSizer.Layout()

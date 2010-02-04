@@ -11,7 +11,7 @@ class ExpMapBlend:
 		self.Motions = MotionSetParamEntry("Motions", None, frame)
 		controls.append(("Motions", self.Motions))
 		
-		return controls
+		return controls, []
 		
 	def getMotion(self):
 		motions = self.Motions.getValue()

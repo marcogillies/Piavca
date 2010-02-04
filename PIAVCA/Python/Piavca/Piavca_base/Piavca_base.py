@@ -216,6 +216,7 @@ class Vec(_object):
     def crossinplace(*args): return _Piavca_base.Vec_crossinplace(*args)
     def normalized(*args): return _Piavca_base.Vec_normalized(*args)
     def normalize(*args): return _Piavca_base.Vec_normalize(*args)
+    def dist(*args): return _Piavca_base.Vec_dist(*args)
     def __getitem__(*args): return _Piavca_base.Vec___getitem__(*args)
     def __setitem__(*args): return _Piavca_base.Vec___setitem__(*args)
     def __repr__(*args): return _Piavca_base.Vec___repr__(*args)
@@ -265,6 +266,7 @@ class Quat(_object):
     def transformInPlace(*args): return _Piavca_base.Quat_transformInPlace(*args)
     __swig_getmethods__["spherical_distance"] = lambda x: _Piavca_base.Quat_spherical_distance
     if _newclass:spherical_distance = staticmethod(_Piavca_base.Quat_spherical_distance)
+    def dist(*args): return _Piavca_base.Quat_dist(*args)
     def logMap(*args): return _Piavca_base.Quat_logMap(*args)
     __swig_getmethods__["expMap"] = lambda x: _Piavca_base.Quat_expMap
     if _newclass:expMap = staticmethod(_Piavca_base.Quat_expMap)
