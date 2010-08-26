@@ -973,6 +973,52 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 			s >> scale;
 			std::cout << "scaleFactor " << scale << std::endl;
 		}
+		else if(strKey == "vertexshader")
+		{
+			std::string strFilename = strPath + strData;
+			std::cout << "vertex shader " << strFilename << std::endl;
+			std::ifstream file;
+			file.open(strFilename.c_str(), std::ios::in | std::ios::binary);
+			if(!file)
+			{
+				Piavca::Error("Failed to open vertex shader file '" + strFilename + "'." );
+			}
+			vertexShader = "";
+			while (true)
+			{
+				// read the next model configuration line
+				std::string strBuffer;
+				std::getline(file, strBuffer);
+				
+				// stop if we reached the end of file
+				if(file.eof()) break;
+				vertexShader.append(strBuffer + "\n");
+			}
+			std::cout << vertexShader << std::endl;
+		}
+		else if(strKey == "fragmentshader")
+		{
+			std::string strFilename = strPath + strData;
+			std::cout << "fragment shader " << strFilename << std::endl;
+			std::ifstream file;
+			file.open(strFilename.c_str(), std::ios::in | std::ios::binary);
+			if(!file)
+			{
+				Piavca::Error("Failed to open fragment shader file '" + strFilename + "'." );
+			}
+			fragmentShader = "";
+			while (true)
+			{
+				// read the next model configuration line
+				std::string strBuffer;
+				std::getline(file, strBuffer);
+				
+				// stop if we reached the end of file
+				if(file.eof()) break;
+				fragmentShader.append(strBuffer + "\n");
+			}
+			std::cout << fragmentShader << std::endl;
+		}
 		else
 		{
 			std::ostringstream os;
@@ -1502,6 +1548,20 @@ bool AvatarCal3DImp::loadBufferObject()
 	  }
 
   }
+	
+  // normalize the weights in the weight buffer
+  for (i = 0; i < numVerts*4; i += 4)
+	{
+		float sum = pWeightBuffer[i]+pWeightBuffer[i+1]+pWeightBuffer[i+2]+pWeightBuffer[i+3];
+		if (fabs(sum) < 0.00001)
+			pWeightBuffer[i]=1.0f;
+		else{
+			pWeightBuffer[i  ] /= sum;
+			pWeightBuffer[i+1] /= sum;
+			pWeightBuffer[i+2] /= sum;
+			pWeightBuffer[i+3] /= sum;
+		}
+	}
 
   // We use ARB_vertex_buffer_object extension,
   // it provide better performance
@@ -1592,9 +1652,16 @@ bool AvatarCal3DImp::loadVertexProgram()
 	glBindProgramARB( GL_VERTEX_PROGRAM_ARB, 0 );
 	*/
 
+	m_vertexProgramId = glCreateProgram();
+	
 	// load the program without morphs
 	GLuint shaderId = glCreateShader(GL_VERTEX_SHADER);
-	glShaderSource(shaderId, 1, &vertexProgramStr, NULL);
+	if (vertexShader == "")
+		glShaderSource(shaderId, 1, &vertexProgramStr, NULL);
+	else {
+		const char *shaderString = vertexShader.c_str();
+		glShaderSource(shaderId, 1, &shaderString, NULL);
+	}
 
 	glCompileShader(shaderId);
 	printOglError();
@@ -1604,12 +1671,32 @@ bool AvatarCal3DImp::loadVertexProgram()
 
 	if (!compile_status)
 		Piavca::Error(_T("could not compile the shader"));
-
-	m_vertexProgramId = glCreateProgram();
+	
 	glAttachShader(m_vertexProgramId, shaderId);
-
+	
+	
 	glBindAttribLocation(m_vertexProgramId, 1, "Weights");
 	glBindAttribLocation(m_vertexProgramId, 3, "MatrixIndices");
+
+	if (fragmentShader != "")
+	{
+		GLuint shaderId = glCreateShader(GL_FRAGMENT_SHADER);
+		const char *shaderString = fragmentShader.c_str();
+		glShaderSource(shaderId, 1, &shaderString, NULL);
+		
+		glCompileShader(shaderId);
+		printOglError();
+		GLint compile_status = 0;
+		glGetShaderiv(shaderId, GL_COMPILE_STATUS, &compile_status);
+		printShaderInfoLog(shaderId);
+		
+		if (!compile_status)
+			Piavca::Error(_T("could not compile the shader"));
+		
+		glAttachShader(m_vertexProgramId, shaderId);
+		
+		
+	}
 
 	glLinkProgram(m_vertexProgramId);
 	
@@ -2421,6 +2508,8 @@ void	AvatarCal3DImp::render_hardware ()
 			glUniformMatrix4fv(transformArrayId, 1, GL_TRUE, &transformation[0]);
 			printOglError();
 			
+			
+			
 			//glProgramLocalParameter4fvARB(GL_VERTEX_PROGRAM_ARB,boneId*3,&transformation[0]);
 			//glProgramLocalParameter4fvARB(GL_VERTEX_PROGRAM_ARB,boneId*3+1,&transformation[4]);
 			//glProgramLocalParameter4fvARB(GL_VERTEX_PROGRAM_ARB,boneId*3+2,&transformation[8]);			
@@ -2438,7 +2527,27 @@ void	AvatarCal3DImp::render_hardware ()
 		//std::cout << "getting texture" << std::endl;
 		
         // set the texture id we stored in the map user data
-        glBindTexture(GL_TEXTURE_2D, (GLuint)m_calHardwareModel->getMapUserData(0));
+		
+		
+		//std::cout << "texture id " << m_calHardwareModel->getMapUserData(0) <<std::endl;
+        GLuint textureId = (GLuint)m_calHardwareModel->getMapUserData(0);
+		if (textureId > 0)
+		{
+			glActiveTexture(GL_TEXTURE0);
+			glBindTexture(GL_TEXTURE_2D, (GLuint)textureId);
+			GLint texSamplerId = glGetUniformLocation(m_vertexProgramId, "tex");
+			if(texSamplerId)
+				glUniform1i(texSamplerId, 0);
+			GLint textureAvailableId = glGetUniformLocation(m_vertexProgramId, "textureAvailable");
+			if(textureAvailableId)
+				glUniform1i(textureAvailableId, 1);
+		}
+		else {
+			GLint textureAvailableId = glGetUniformLocation(m_vertexProgramId, "textureAvailable");
+			if(textureAvailableId)
+				glUniform1i(textureAvailableId, 0);
+		}
+
 		printOglError();
 
 

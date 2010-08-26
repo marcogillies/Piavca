@@ -143,6 +143,10 @@ public:
 
 	// whether you do skinning in hardware or software
 	bool hardware; 
+	
+	// a shader program file
+	std::string vertexShader;
+	std::string fragmentShader;
 	// vertex program id
 	GLuint m_vertexProgramId;
 	GLuint m_vertexProgramMorphsId;

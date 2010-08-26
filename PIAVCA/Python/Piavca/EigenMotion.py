@@ -100,7 +100,7 @@ class EigenMotion(Piavca.MotionFilter):
 		
 	# set the value of a PC weight 
 	def setWeight (self, pc, w):
-		print "setting weight", pc, w
+		#print "setting weight", pc, w
 		self.analysis.setWeight(pc, w)
 				
 	# set the value of a PC weight 

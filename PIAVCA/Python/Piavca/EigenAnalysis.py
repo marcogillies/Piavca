@@ -130,7 +130,7 @@ class EigenAnalysis :
 			#print i, vals[i], len(vals), accumulate/sum
 			if accumulate/sum > self.precentageToKeep: 
 				break
-		print "number of pcs ", len(pcs)
+		#print "number of pcs ", len(pcs)
 		#print pcs
 		return scipy.matrix(pcs)
 		
@@ -160,7 +160,7 @@ class EigenAnalysis :
 		# this bit assumes that all motions have the same number of valid joints
 		for joint in range(motions[0].begin(), 0) + range(1, Piavca.Core.getCore().getMaxJointId()) :
 			if( not motions[0].isNull(joint)):
-				print "joint ", joint, " type ", motions[0].getTrackType(joint)
+				#print "joint ", joint, " type ", motions[0].getTrackType(joint)
 				self.joint_types.append(motions[0].getTrackType(joint))
 				# if there are no splits we are acting directly on the postures
 				if self.joint_types[-1] & Piavca.QUAT_TYPE:
@@ -225,7 +225,7 @@ class EigenAnalysis :
 		
 		#print length, no_vals
 		#print "size of input ", len(mappedvals)
-		print "generating matrix*************"
+		#print "generating matrix*************"
 		# fill out a blank matrix
 		self.length = length
 		data = scipy.zeros((length, self.no_vals),'d')
@@ -255,7 +255,7 @@ class EigenAnalysis :
 		return data
 	
 	def do_analysis (self, motions, fps):
-		print "start Component Analysis"
+		#print "start Component Analysis"
 		data = self.preprocessData(motions, fps)
 		
 		mat = self.get_matrix(data)
@@ -376,34 +376,34 @@ class EigenAnalysis :
 		for line in lines :
 			if not data_portion :
 				contents = string.split(line, ":")
-				print contents
+				#print contents
 				if contents[0] == "Num Pcs":
 					self.num_pcs = int(contents[1])
-					print self.num_pcs
+					#print self.num_pcs
 				if contents[0] == "Use Vels":
 					self.use_vels = bool(contents[1])
-					print self.use_vels
+					#print self.use_vels
 				#if contents[0] == "Using Splits":
 				#	self.using_splits = int(contents[1])
 				#	print self.using_splits
 				if contents[0] == "Exp Maps":
-					print "expmaps"
+					#print "expmaps"
 					self.expmaps = []
-					print "expmaps"
+					#print "expmaps"
 					number_pattern = re.compile("-?((([0-9]+)|([0-9]*\.[0-9]+))([eE][-+]?[0-9]+)?)")
-					print "expmaps"
+					#print "expmaps"
 					quat_pattern = re.compile("\[[^\]]*\]")
-					print "created regexp"
+					#print "created regexp"
 					matches = quat_pattern.findall(contents[1])
-					print "got matches"
+					#print "got matches"
 					for match in matches :
-						print "match"
+						#print "match"
 						numbers = string.split(match[1:-1])
-						print numbers
+						#print numbers
 						q = Piavca.Quat(float(numbers[0]), float(numbers[1]), float(numbers[2]), float(numbers[3]))
-						print q
+						#print q
 						self.expmaps.append(Piavca.ExpMap.TangentSpace(q))
-					print matches
+					#print matches
 				if contents[0] == "Joint Types":
 					self.joint_types = []
 					numbers = string.split(contents[1])

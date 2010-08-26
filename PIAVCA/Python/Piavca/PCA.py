@@ -42,7 +42,7 @@ class PCA(EigenAnalysis):
 		EigenAnalysis.__init__(self)
 	
 	def get_matrix (self, data):
-		print "PCA: getting covariance matrix"
+		#print "PCA: getting covariance matrix"
 		rows, cols = scipy.shape(data)
 		#print rows, cols
 		N = rows
