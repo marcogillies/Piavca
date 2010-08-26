@@ -2481,7 +2481,7 @@ void	AvatarCal3DImp::render_hardware ()
 		glMaterialfv(GL_FRONT, GL_SHININESS, &shininess);
 
 
-		//std::cout << "loading bone transforms" << std::endl;
+		//std::cout << "loading bone transforms. Num Transforms: " << m_calHardwareModel->getBoneCount() << std::endl;
 		
 		int boneId;
 		//float *transformation = new float[16*m_calHardwareModel->getBoneCount()];
@@ -2503,6 +2503,8 @@ void	AvatarCal3DImp::render_hardware ()
 			is << "Transforms[" << boneId << "]";
 			//std::cout << is.str();
 			GLint transformArrayId = glGetUniformLocation(m_vertexProgramId, is.str().c_str());	
+			if (transformArrayId < 0)
+				std::cout << "failed to load transform " << is.str() << std::endl;
 			//std::cout  << " " << transformArrayId << std::endl;
 
 			glUniformMatrix4fv(transformArrayId, 1, GL_TRUE, &transformation[0]);
@@ -2536,15 +2538,15 @@ void	AvatarCal3DImp::render_hardware ()
 			glActiveTexture(GL_TEXTURE0);
 			glBindTexture(GL_TEXTURE_2D, (GLuint)textureId);
 			GLint texSamplerId = glGetUniformLocation(m_vertexProgramId, "tex");
-			if(texSamplerId)
+			if(texSamplerId >= 0)
 				glUniform1i(texSamplerId, 0);
 			GLint textureAvailableId = glGetUniformLocation(m_vertexProgramId, "textureAvailable");
-			if(textureAvailableId)
+			if(textureAvailableId >= 0)
 				glUniform1i(textureAvailableId, 1);
 		}
 		else {
 			GLint textureAvailableId = glGetUniformLocation(m_vertexProgramId, "textureAvailable");
-			if(textureAvailableId)
+			if(textureAvailableId >= 0)
 				glUniform1i(textureAvailableId, 0);
 		}
 
@@ -2610,7 +2612,7 @@ void	AvatarCal3DImp::render_hardware ()
 			prevHadMorphs = false;
 			continue;
 		}
-
+		std::cout << "using morph target shader" << std::endl;
 		if (!prevHadMorphs)
 		{
 			prevHadMorphs = true;
