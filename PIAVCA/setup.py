@@ -44,8 +44,8 @@ from glob import glob
 
 
 
-#swig_sources = [os.path.join('Python','Piavca','Piavca_base','Piavca.i')]
-swig_sources = [os.path.join('Python','Piavca','Piavca_base','Piavca_wrap.cpp')]
+swig_sources = [os.path.join('Python','Piavca','Piavca_base','Piavca.i')]
+#swig_sources = [os.path.join('Python','Piavca','Piavca_base','Piavca_wrap.cpp')]
 cal3d_sources = glob(os.path.join(os.curdir,'src','cal3d','*.cpp'))
 PiavcaAPI_sources = glob(os.path.join(os.curdir,'src','PiavcaAPI','*.cpp'))
 #print PiavcaAPI_sources

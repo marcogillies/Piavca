@@ -43,11 +43,11 @@ import math
 
 
 from ImportException import PiavcaImportException
-try:
-	import scipy
-	import scipy.linalg, scipy.cluster
-except ImportError:
-	raise PiavcaImportException("scipy text missing")
+#try:
+import scipy
+import scipy.linalg, scipy.cluster
+#except ImportError:
+#	raise PiavcaImportException("scipy text missing")
 
 
 import sys

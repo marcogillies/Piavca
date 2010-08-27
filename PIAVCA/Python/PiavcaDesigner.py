@@ -4,6 +4,8 @@ print "PiavcaDesigner"
 
 import sys
 
+print sys.version
+
 import Piavca
 import Piavca.JointNames
 Piavca.JointNames.loadDefaults()

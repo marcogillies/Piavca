@@ -960,6 +960,83 @@ private:
 };
 
 
+class SwigDirector_TurnMotion : public Piavca::TurnMotion, public Swig::Director {
+
+public:
+    SwigDirector_TurnMotion(PyObject *self, Piavca::Motion *m = NULL, Piavca::Quat rot = Piavca::Quat());
+    SwigDirector_TurnMotion(PyObject *self, Piavca::TurnMotion const &tm);
+    virtual ~SwigDirector_TurnMotion();
+    virtual Piavca::Motion *clone();
+    virtual Piavca::tstring getClassName();
+    virtual void create();
+    virtual void printInfo();
+    virtual void load(Piavca::Avatar *av);
+    virtual void unload();
+    virtual bool loaded();
+    virtual Piavca::Avatar *getAvatar();
+    virtual void setStartTime(float time);
+    virtual bool finished(float time);
+    virtual bool reset(bool restart = false);
+    virtual void handleEvent(Piavca::tstring ev);
+    virtual bool canHandleEvent(Piavca::tstring ev);
+    virtual std::vector<Piavca::tstring,std::allocator<Piavca::tstring > > getEventNames();
+    virtual void cleanRecursionState();
+    virtual bool setParameter(Piavca::tstring paramName, Piavca::tstring value);
+    virtual bool setMotionParameter(int motIndex, Piavca::tstring paramName, Piavca::tstring value);
+    virtual void addMotion(Piavca::Motion *mot);
+    virtual int getLastMotion();
+    virtual void addMotion(Piavca::Motion *mot, std::vector<std::pair<Piavca::tstring,Piavca::tstring >,std::allocator<std::pair<Piavca::tstring,Piavca::tstring > > > params);
+    virtual Piavca::Motion *findSub(Piavca::tstring nm);
+    virtual Piavca::Motion *findSubByType(type_info const &ty);
+    virtual float getMotionLength() const;
+    virtual bool isRandomAccess();
+    virtual bool isNull(int trackId) const;
+    virtual int getTrackType(int trackId) const;
+    virtual void preFrame(float time);
+    virtual float getFloatValueAtTimeInternal(int trackId, float time);
+    virtual Piavca::Vec getVecValueAtTimeInternal(int trackId, float time);
+    virtual Piavca::Quat getQuatValueAtTimeInternal(int trackId, float time);
+    virtual void setMotion(Piavca::Motion *mot);
+    virtual Piavca::Motion *getMotion();
+
+
+/* Internal Director utilities */
+public:
+    bool swig_get_inner(const char* name) const {
+      std::map<std::string, bool>::const_iterator iv = inner.find(name);
+      return (iv != inner.end() ? iv->second : false);
+    }
+
+    void swig_set_inner(const char* name, bool val) const
+    { inner[name] = val;}
+
+private:
+    mutable std::map<std::string, bool> inner;
+
+
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+/* VTable implementation */
+    PyObject *swig_get_method(size_t method_index, const char *method_name) const {
+      PyObject *method = vtable[method_index];
+      if (!method) {
+        swig::PyObject_var name = PyString_FromString(method_name);
+        method = PyObject_GetAttr(swig_get_self(), name);
+        if (method == NULL) {
+          std::string msg = "Method in class TurnMotion doesn't exist, undefined ";
+          msg += method_name;
+          Swig::DirectorMethodException::raise(msg.c_str());
+        }
+        vtable[method_index] = method;
+      };
+      return method;
+    }
+private:
+    mutable swig::PyObject_var vtable[33];
+#endif
+
+};
+
+
 class SwigDirector_Sequence : public Piavca::Sequence, public Swig::Director {
 
 public:

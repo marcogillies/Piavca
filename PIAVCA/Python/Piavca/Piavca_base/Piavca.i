@@ -502,7 +502,7 @@ Piavca::Core *GetPiavcaCorePointer(long l);
 %include "PiavcaAPI/ChangeMotionLength.h"
 %include "PiavcaAPI/ScaleMotionRoot.h"
 %include "PiavcaAPI/TimeOffset.h"
-//%include "PiavcaAPI/TurnMotion.h"
+%include "PiavcaAPI/TurnMotion.h"
 //%include "PiavcaAPI/SequentialBlend.h"
 %include "PiavcaAPI/Sequence.h"
 %include "PiavcaAPI/SmoothSequence.h"
