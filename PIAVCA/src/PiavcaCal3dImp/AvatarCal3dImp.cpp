@@ -1374,6 +1374,7 @@ void  AvatarCal3DImp::enableHardware()
 
 	
 	std::cout << "GL version " << glGetString(GL_VERSION) << std::endl;
+	std::cout << "GLSL version " << glGetString(GL_SHADING_LANGUAGE_VERSION) << std::endl;
 	
 	std::string vers = std::string ((const char *)glGetString(GL_VERSION));
 	size_t dotpos = vers.find('.');
@@ -1520,8 +1521,7 @@ bool AvatarCal3DImp::loadBufferObject()
 
   m_calHardwareModel->load( 0, 0, MAXBONESPERMESH);
 
-
-
+	
   // the index index in pIndexBuffer are relative to the begining of the hardware mesh,
   // we make them relative to the begining of the buffer.
 
@@ -1583,6 +1583,7 @@ bool AvatarCal3DImp::loadBufferObject()
   glBufferData(GL_ARRAY_BUFFER, m_calHardwareModel->getTotalVertexCount()*4*sizeof(float),(const void*)pMatrixIndexBuffer, GL_STATIC_DRAW);
 
   glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[4]);
+  //glBufferData(GL_ARRAY_BUFFER, m_calHardwareModel->getTotalVertexCount()*3*sizeof(float),(const void*)pNormalBuffer, GL_STATIC_DRAW);
   glBufferData(GL_ARRAY_BUFFER, m_calHardwareModel->getTotalVertexCount()*2*sizeof(float),(const void*)pTexCoordBuffer, GL_STATIC_DRAW);
 
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_bufferObject[5]);
@@ -1675,8 +1676,8 @@ bool AvatarCal3DImp::loadVertexProgram()
 	glAttachShader(m_vertexProgramId, shaderId);
 	
 	
-	glBindAttribLocation(m_vertexProgramId, 1, "Weights");
-	glBindAttribLocation(m_vertexProgramId, 3, "MatrixIndices");
+	//glBindAttribLocation(m_vertexProgramId, 1, "Weights");
+	//glBindAttribLocation(m_vertexProgramId, 3, "MatrixIndices");
 
 	if (fragmentShader != "")
 	{
@@ -1813,7 +1814,7 @@ bool  AvatarCal3DImp::setFacialExpressionWeight(int id, float weight, float time
        Piavca::Error("setJointOrientation called on avatar with no head mesh");
 	   return false;
    }
-   for (int i = 0; i < mesh->getSubmeshCount(); i++)
+   for (int i = 0; i < mesh->getSubmeshCount(); i++) 
    {
 		CalSubmesh *subMesh = mesh->getSubmesh(i);
 		if(expressions[id].morphtargetId >= subMesh->getMorphTargetWeightCount())
@@ -2393,11 +2394,11 @@ void	AvatarCal3DImp::render_hardware ()
 	glUseProgram(m_vertexProgramId);
 	printOglError();
 
-	glEnableVertexAttribArray(0);
-	glEnableVertexAttribArray(1);
-    glEnableVertexAttribArray(2);
-	glEnableVertexAttribArray(3);
-    glEnableVertexAttribArray(8);
+	//glEnableVertexAttribArray(0);
+	//glEnableVertexAttribArray(1); 
+    //glEnableVertexAttribArray(2);
+	//glEnableVertexAttribArray(3);
+    //glEnableVertexAttribArray(8);
 	
 	glEnable(GL_TEXTURE_2D);
 	// set global OpenGL states
@@ -2410,28 +2411,38 @@ void	AvatarCal3DImp::render_hardware ()
 
 	//glEnable (GL_BLEND); 
 	//glBlendFunc (GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
-	
+	glActiveTexture(GL_TEXTURE0);
 
     glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[0]);
-	glVertexAttribPointer(0, 3 , GL_FLOAT, false, 0, NULL);
+	int vertexLoc = glGetAttribLocation(m_vertexProgramId, "Vertex");
+	glEnableVertexAttribArray(vertexLoc);
+	glVertexAttribPointer(vertexLoc, 3 , GL_FLOAT, false, 0, NULL);
 	printOglError();
 
     glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[1]);
-	glVertexAttribPointer(1, 4 , GL_FLOAT, false, 0, NULL);
+	int weightsLoc = glGetAttribLocation(m_vertexProgramId, "Weights");
+	glEnableVertexAttribArray(weightsLoc);
+	glVertexAttribPointer(weightsLoc, 4 , GL_FLOAT, false, 0, NULL);
 	printOglError();
 
 	glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[2]);
-    glVertexAttribPointer(2, 3 , GL_FLOAT, false, 0, NULL);
+	int normalLoc = glGetAttribLocation(m_vertexProgramId, "Normal");
+	glEnableVertexAttribArray(normalLoc);
+    glVertexAttribPointer(normalLoc, 3 , GL_FLOAT, false, 0, NULL);
 	printOglError();
-
+	
     glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[3]);
-	glVertexAttribPointer(3, 4 , GL_FLOAT, false, 0, NULL);
+	int matrixIndexLoc = glGetAttribLocation(m_vertexProgramId, "MatrixIndices");
+	glEnableVertexAttribArray(matrixIndexLoc);
+	glVertexAttribPointer(matrixIndexLoc, 4 , GL_FLOAT, false, 0, NULL);
 	printOglError();
 
-    glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[4]);
-	glVertexAttribPointer(8, 2 , GL_FLOAT, false, 0, NULL);
+    glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[4]);	
+	int tcLoc = glGetAttribLocation(m_vertexProgramId, "TextureCoordinates");	
+	glEnableVertexAttribArray(tcLoc);
+	glVertexAttribPointer(tcLoc, 2 , GL_FLOAT, false, 0, NULL);
 	printOglError();
-
+	
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_bufferObject[5]);
 	printOglError();
 	
@@ -2459,26 +2470,33 @@ void	AvatarCal3DImp::render_hardware ()
 		// set the material ambient color
 		m_calHardwareModel->getAmbientColor(&meshColor[0]);
 		materialColor[0] = meshColor[0] / 255.0f;  materialColor[1] = meshColor[1] / 255.0f; materialColor[2] = meshColor[2] / 255.0f; materialColor[3] = meshColor[3] / 255.0f;
-		glMaterialfv(GL_FRONT, GL_AMBIENT, materialColor);
+		//glMaterialfv(GL_FRONT, GL_AMBIENT, materialColor);
+		GLint ambientMaterialId = glGetUniformLocation(m_vertexProgramId, "AmbientMaterial");
+		glUniform4fv(ambientMaterialId, 4, materialColor);
 		printOglError();
 		
 		// set the material diffuse color
 		m_calHardwareModel->getDiffuseColor(&meshColor[0]);
 		materialColor[0] = meshColor[0] / 255.0f;  materialColor[1] = meshColor[1] / 255.0f; materialColor[2] = meshColor[2] / 255.0f; materialColor[3] = meshColor[3] / 255.0f;
-		glMaterialfv(GL_FRONT, GL_DIFFUSE, materialColor);
+		//glMaterialfv(GL_FRONT, GL_DIFFUSE, materialColor);
+		GLint diffuseMaterialId = glGetUniformLocation(m_vertexProgramId, "DiffuseMaterial");
+		glUniform4fv(diffuseMaterialId, 4, materialColor);
 		printOglError();
 		
 		// set the material specular color
 		m_calHardwareModel->getSpecularColor(&meshColor[0]);
 		materialColor[0] = meshColor[0] / 255.0f;  materialColor[1] = meshColor[1] / 255.0f; materialColor[2] = meshColor[2] / 255.0f; materialColor[3] = meshColor[3] / 255.0f;
-		glMaterialfv(GL_FRONT, GL_SPECULAR, materialColor);
+		//glMaterialfv(GL_FRONT, GL_SPECULAR, materialColor);
+		GLint specularMaterialId = glGetUniformLocation(m_vertexProgramId, "SpecularMaterial");
+		glUniform4fv(specularMaterialId, 4, materialColor);
 		printOglError();
 		
+		//std::cout << "AmbientMaterial " << ambientMaterialId << " DiffuseMaterial " << diffuseMaterialId << " SpecularMaterial " << specularMaterialId << std::endl;
 		
 		// set the material shininess factor
 		float shininess;
 		shininess = 50.0f; //m_calHardwareModel->getShininess();
-		glMaterialfv(GL_FRONT, GL_SHININESS, &shininess);
+		//glMaterialfv(GL_FRONT, GL_SHININESS, &shininess);
 
 
 		//std::cout << "loading bone transforms. Num Transforms: " << m_calHardwareModel->getBoneCount() << std::endl;
@@ -2499,6 +2517,11 @@ void	AvatarCal3DImp::render_hardware ()
 			transformation[8]=rotationMatrix.dzdx;transformation[9]=rotationMatrix.dzdy;transformation[10]=rotationMatrix.dzdz;transformation[11]=translationBoneSpace.z;
 			transformation[12]=0.0f;transformation[13]=0.0f;transformation[14]=0.0f;transformation[15]=1.0f;
 
+			//std::cout << " " <<  transformation[0 ] << " " <<   transformation[1 ] << " " <<  transformation[2 ] << " " <<  transformation[3 ] << " " << std::endl;
+			//std::cout << " " <<  transformation[4 ] << " " <<   transformation[5 ] << " " <<  transformation[6 ] << " " <<  transformation[7 ] << " " << std::endl;
+			//std::cout << " " <<  transformation[8 ] << " " <<   transformation[9 ] << " " <<  transformation[10] << " " <<  transformation[11] << " " << std::endl;
+			//std::cout << " " <<  transformation[12] << " " <<   transformation[13] << " " <<  transformation[14] << " " <<  transformation[15] << " " << std::endl << std::endl;
+			
 			std::ostringstream is;
 			is << "Transforms[" << boneId << "]";
 			//std::cout << is.str();
@@ -2511,13 +2534,18 @@ void	AvatarCal3DImp::render_hardware ()
 			printOglError();
 			
 			
-			
 			//glProgramLocalParameter4fvARB(GL_VERTEX_PROGRAM_ARB,boneId*3,&transformation[0]);
 			//glProgramLocalParameter4fvARB(GL_VERTEX_PROGRAM_ARB,boneId*3+1,&transformation[4]);
 			//glProgramLocalParameter4fvARB(GL_VERTEX_PROGRAM_ARB,boneId*3+2,&transformation[8]);			
 			
 		}
+		
+		//std::cout << "setting up morphs\n";
 
+		GLint morphWeightId = glGetUniformLocation(m_vertexProgramId, "MorphWeights");
+		
+	    glUniform4f(morphWeightId, 0.0f, 0.0f, 0.0f, 0.0f);
+		printOglError();
 		
 		//GLint transformArrayId = glGetUniformLocation(m_vertexProgramId, "Transforms");
 		//transformArrayId = glGetUniformLocation(m_vertexProgramId, "Transforms[0]");
@@ -2535,6 +2563,7 @@ void	AvatarCal3DImp::render_hardware ()
         GLuint textureId = (GLuint)m_calHardwareModel->getMapUserData(0);
 		if (textureId > 0)
 		{
+			//std::cout << "using texture " << textureId << std::endl;
 			glActiveTexture(GL_TEXTURE0);
 			glBindTexture(GL_TEXTURE_2D, (GLuint)textureId);
 			GLint texSamplerId = glGetUniformLocation(m_vertexProgramId, "tex");
