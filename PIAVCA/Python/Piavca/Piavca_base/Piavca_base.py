@@ -2,6 +2,7 @@
 # Version 1.3.31
 #
 # Don't modify this file, modify the SWIG interface instead.
+# This file is compatible with both classic and new-style classes.
 
 import _Piavca_base
 import new
@@ -47,16 +48,6 @@ except AttributeError:
 del types
 
 
-def _swig_setattr_nondynamic_method(set):
-    def set_attr(self,name,value):
-        if (name == "thisown"): return self.this.own(value)
-        if hasattr(self,name) or (name == "this"):
-            set(self,name,value)
-        else:
-            raise AttributeError("You cannot add attributes to %s" % self)
-    return set_attr
-
-
 try:
     import weakref
     weakref_proxy = weakref.proxy
@@ -64,8 +55,11 @@ except:
     weakref_proxy = lambda x: x
 
 
-class PySwigIterator(object):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+class PySwigIterator(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, PySwigIterator, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, PySwigIterator, name)
     def __init__(self): raise AttributeError, "No constructor defined"
     __repr__ = _swig_repr
     __swig_destroy__ = _Piavca_base.delete_PySwigIterator
@@ -89,8 +83,11 @@ class PySwigIterator(object):
 PySwigIterator_swigregister = _Piavca_base.PySwigIterator_swigregister
 PySwigIterator_swigregister(PySwigIterator)
 
-class vectorS(object):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+class vectorS(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, vectorS, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, vectorS, name)
     __repr__ = _swig_repr
     def iterator(*args): return _Piavca_base.vectorS_iterator(*args)
     def __iter__(self): return self.iterator()
@@ -132,8 +129,11 @@ class vectorS(object):
 vectorS_swigregister = _Piavca_base.vectorS_swigregister
 vectorS_swigregister(vectorS)
 
-class vectorI(object):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+class vectorI(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, vectorI, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, vectorI, name)
     __repr__ = _swig_repr
     def iterator(*args): return _Piavca_base.vectorI_iterator(*args)
     def __iter__(self): return self.iterator()
@@ -177,8 +177,11 @@ vectorI_swigregister(vectorI)
 
 GetAvatarPointer = _Piavca_base.GetAvatarPointer
 GetPiavcaCorePointer = _Piavca_base.GetPiavcaCorePointer
-class Vec(object):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+class Vec(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, Vec, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, Vec, name)
     def __init__(self, *args): 
         this = _Piavca_base.new_Vec(*args)
         try: self.this.append(this)
@@ -188,9 +191,12 @@ class Vec(object):
     def X(*args): return _Piavca_base.Vec_X(*args)
     def Y(*args): return _Piavca_base.Vec_Y(*args)
     def Z(*args): return _Piavca_base.Vec_Z(*args)
-    XAxis = staticmethod(_Piavca_base.Vec_XAxis)
-    YAxis = staticmethod(_Piavca_base.Vec_YAxis)
-    ZAxis = staticmethod(_Piavca_base.Vec_ZAxis)
+    __swig_getmethods__["XAxis"] = lambda x: _Piavca_base.Vec_XAxis
+    if _newclass:XAxis = staticmethod(_Piavca_base.Vec_XAxis)
+    __swig_getmethods__["YAxis"] = lambda x: _Piavca_base.Vec_YAxis
+    if _newclass:YAxis = staticmethod(_Piavca_base.Vec_YAxis)
+    __swig_getmethods__["ZAxis"] = lambda x: _Piavca_base.Vec_ZAxis
+    if _newclass:ZAxis = staticmethod(_Piavca_base.Vec_ZAxis)
     def mag(*args): return _Piavca_base.Vec_mag(*args)
     def __add__(*args): return _Piavca_base.Vec___add__(*args)
     def __iadd__(*args): return _Piavca_base.Vec___iadd__(*args)
@@ -220,8 +226,11 @@ Vec_XAxis = _Piavca_base.Vec_XAxis
 Vec_YAxis = _Piavca_base.Vec_YAxis
 Vec_ZAxis = _Piavca_base.Vec_ZAxis
 
-class Quat(object):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+class Quat(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, Quat, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, Quat, name)
     def __init__(self, *args): 
         this = _Piavca_base.new_Quat(*args)
         try: self.this.append(this)
@@ -255,10 +264,12 @@ class Quat(object):
     def normalise(*args): return _Piavca_base.Quat_normalise(*args)
     def transform(*args): return _Piavca_base.Quat_transform(*args)
     def transformInPlace(*args): return _Piavca_base.Quat_transformInPlace(*args)
-    spherical_distance = staticmethod(_Piavca_base.Quat_spherical_distance)
+    __swig_getmethods__["spherical_distance"] = lambda x: _Piavca_base.Quat_spherical_distance
+    if _newclass:spherical_distance = staticmethod(_Piavca_base.Quat_spherical_distance)
     def dist(*args): return _Piavca_base.Quat_dist(*args)
     def logMap(*args): return _Piavca_base.Quat_logMap(*args)
-    expMap = staticmethod(_Piavca_base.Quat_expMap)
+    __swig_getmethods__["expMap"] = lambda x: _Piavca_base.Quat_expMap
+    if _newclass:expMap = staticmethod(_Piavca_base.Quat_expMap)
     def __getitem__(*args): return _Piavca_base.Quat___getitem__(*args)
     def __setitem__(*args): return _Piavca_base.Quat___setitem__(*args)
     def __repr__(*args): return _Piavca_base.Quat___repr__(*args)
@@ -268,11 +279,18 @@ Quat_spherical_distance = _Piavca_base.Quat_spherical_distance
 Quat_expMap = _Piavca_base.Quat_expMap
 
 slerp = _Piavca_base.slerp
-class Bound(object):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+class Bound(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, Bound, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, Bound, name)
     __repr__ = _swig_repr
-    min = _swig_property(_Piavca_base.Bound_min_get, _Piavca_base.Bound_min_set)
-    max = _swig_property(_Piavca_base.Bound_max_get, _Piavca_base.Bound_max_set)
+    __swig_setmethods__["min"] = _Piavca_base.Bound_min_set
+    __swig_getmethods__["min"] = _Piavca_base.Bound_min_get
+    if _newclass:min = _swig_property(_Piavca_base.Bound_min_get, _Piavca_base.Bound_min_set)
+    __swig_setmethods__["max"] = _Piavca_base.Bound_max_set
+    __swig_getmethods__["max"] = _Piavca_base.Bound_max_get
+    if _newclass:max = _swig_property(_Piavca_base.Bound_max_get, _Piavca_base.Bound_max_set)
     def __init__(self, *args): 
         this = _Piavca_base.new_Bound(*args)
         try: self.this.append(this)
@@ -295,13 +313,16 @@ INCLUDINGBASE_COORD = _Piavca_base.INCLUDINGBASE_COORD
 WORLD_COORD = _Piavca_base.WORLD_COORD
 root_position_id = _Piavca_base.root_position_id
 root_orientation_id = _Piavca_base.root_orientation_id
-class TimeCallback(object):
+class TimeCallback(_object):
     """
     A callback that is called by the API every frame, the user writes code by creating a subclass of the callback.     
            
     The user can add data and implement the changeTime method (which is the one that is called everyframe). The callback system is currently under developement      see also: TimeCallback.h
     """
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, TimeCallback, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, TimeCallback, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         """
@@ -358,13 +379,16 @@ TimeCallback_swigregister = _Piavca_base.TimeCallback_swigregister
 TimeCallback_swigregister(TimeCallback)
 checkNaN = _Piavca_base.checkNaN
 
-class AvatarTimeCallback(object):
+class AvatarTimeCallback(_object):
     """
     A callback that is called by the API every frame on an avatar.     
            
     It is very similar to the TimeCallback class but the changeTime method takes an avatar which can be updated.      see also: TimeCallback.h
     """
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, AvatarTimeCallback, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, AvatarTimeCallback, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         """
@@ -438,13 +462,16 @@ TRANS_ARM_DOWN = _Piavca_base.TRANS_ARM_DOWN
 TRANS_REVERSE_ORDER = _Piavca_base.TRANS_REVERSE_ORDER
 TRANS_SKIP_FIRST_FRAME = _Piavca_base.TRANS_SKIP_FIRST_FRAME
 TRANS_NO_ROOT_POS_CORRECTION = _Piavca_base.TRANS_NO_ROOT_POS_CORRECTION
-class Motion(object):
+class Motion(_object):
     """
     An abstract interface to represent motion.     
            
     This is an abstract interface that represents all types of animation in a way that is independent of individual Avatars. It can be used to represent keyframe animation, motion combination, procedural animatio or real time animation streams. The key abstraction is that motion consists of a number of tracks, each normally corresponding to a joint of the avatar. The track is a continuous, time varying stream of data value (either of float, Vec or Quat type). The fundamental operation on a track is to query it for its value at a given time. Like joints tracks are represented by integer IDs, the IDs of a corresponding track and joint are the same so testing for equivelence is easy. Tracks are accessed by passing the appropriate ID to a method of the motion object.      see also: Motion.h
     """
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, Motion, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, Motion, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         """
@@ -474,7 +501,8 @@ class Motion(object):
         return _Piavca_base.Motion_clone(*args)
 
     def getClassName(*args): return _Piavca_base.Motion_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.Motion_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.Motion_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.Motion_castToThisType)
     def create(*args): return _Piavca_base.Motion_create(*args)
     def printInfo(*args):
         """
@@ -592,7 +620,8 @@ class Motion(object):
         """
         return _Piavca_base.Motion_Dispose(*args)
 
-    Dispose = staticmethod(Dispose)
+    if _newclass:Dispose = staticmethod(Dispose)
+    __swig_getmethods__["Dispose"] = lambda x: Dispose
     def makeTemp(*args):
         """
         void Piavca::Motion::makeTemp()
@@ -812,16 +841,21 @@ def Motion_Dispose(*args):
     """
   return _Piavca_base.Motion_Dispose(*args)
 
-class Core(object):
+class Core(_object):
     """
     The core object is the central controller of the Piavca system.     
            
     It maintains a list of avatars, and some motions. It has a list of global callbacks that are called every frame. It handles allocation of Joint IDs. It deals with initialisation and shut down and per frame events. It also manages creation of avatar and motions. There is only ever one core object (held as the core static member of the class).      see also: PiavcaCore.h
     """
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, Core, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, Core, name)
     def __init__(self): raise AttributeError, "No constructor defined"
     __repr__ = _swig_repr
-    dir = _swig_property(_Piavca_base.Core_dir_get, _Piavca_base.Core_dir_set)
+    __swig_setmethods__["dir"] = _Piavca_base.Core_dir_set
+    __swig_getmethods__["dir"] = _Piavca_base.Core_dir_get
+    if _newclass:dir = _swig_property(_Piavca_base.Core_dir_get, _Piavca_base.Core_dir_set)
     __swig_destroy__ = _Piavca_base.delete_Core
     __del__ = lambda self : None;
     def reset(*args):
@@ -834,8 +868,10 @@ class Core(object):
         """
         return _Piavca_base.Core_reset(*args)
 
-    init = staticmethod(_Piavca_base.Core_init)
-    setCore = staticmethod(_Piavca_base.Core_setCore)
+    __swig_getmethods__["init"] = lambda x: _Piavca_base.Core_init
+    if _newclass:init = staticmethod(_Piavca_base.Core_init)
+    __swig_getmethods__["setCore"] = lambda x: _Piavca_base.Core_setCore
+    if _newclass:setCore = staticmethod(_Piavca_base.Core_setCore)
     def getCore(*args):
         """
         static Core* Piavca::Core::getCore()
@@ -846,8 +882,10 @@ class Core(object):
         """
         return _Piavca_base.Core_getCore(*args)
 
-    getCore = staticmethod(getCore)
-    getCorePointerAsLong = staticmethod(_Piavca_base.Core_getCorePointerAsLong)
+    if _newclass:getCore = staticmethod(getCore)
+    __swig_getmethods__["getCore"] = lambda x: getCore
+    __swig_getmethods__["getCorePointerAsLong"] = lambda x: _Piavca_base.Core_getCorePointerAsLong
+    if _newclass:getCorePointerAsLong = staticmethod(_Piavca_base.Core_getCorePointerAsLong)
     def registerCallback(*args):
         """
         void Core::registerCallback(TimeCallback *cb)
@@ -1450,7 +1488,12 @@ cvar = _Piavca_base.cvar
 Core.nullId = _Piavca_base.cvar.Core_nullId
 
 class KeyframeMotion(Motion):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [Motion]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, KeyframeMotion, name, value)
+    __swig_getmethods__ = {}
+    for _s in [Motion]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, KeyframeMotion, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         if self.__class__ == KeyframeMotion:
@@ -1473,7 +1516,8 @@ class KeyframeMotion(Motion):
         return _Piavca_base.KeyframeMotion_clone(*args)
 
     def getClassName(*args): return _Piavca_base.KeyframeMotion_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.KeyframeMotion_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.KeyframeMotion_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.KeyframeMotion_castToThisType)
     def getMotionLength(*args):
         """
         virtual float Piavca::Motion::getMotionLength() const =0
@@ -1574,13 +1618,16 @@ def copyMotionPosture(*args):
             
     """
   return _Piavca_base.copyMotionPosture(*args)
-class Avatar(object):
+class Avatar(_object):
     """
     The actual avatar class.     
            
     This class is the main component of the Piavca API and represents a character for skeletal animation. It has fairly basic simple functionality, just altering root position and orientation, loading and playing motion and directly altering joint orientations It is an interfaces class that forwards all its method calls to an implementation class which is an platform specific class that does all the work. The class is structured as a bridge pattern from Design Patterns. An interface class contains a pointer to an implementation object and forwards all method calls to it. The implementation object is in fact of a platform specific sub-type of the implementation class. The joints themselves are not exposed to the client and are accessed via integer IDs. These IDs are unique for a given joint across all avatars and motions. any actions on joints area achieved by passing the ID to an appropriate method      see also: Avatar.h
     """
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, Avatar, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, Avatar, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         """
@@ -2190,13 +2237,24 @@ class Avatar(object):
 Avatar_swigregister = _Piavca_base.Avatar_swigregister
 Avatar_swigregister(Avatar)
 
-class queueElement(object):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+class queueElement(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, queueElement, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, queueElement, name)
     __repr__ = _swig_repr
-    mot = _swig_property(_Piavca_base.queueElement_mot_get, _Piavca_base.queueElement_mot_set)
-    name = _swig_property(_Piavca_base.queueElement_name_get, _Piavca_base.queueElement_name_set)
-    atTime = _swig_property(_Piavca_base.queueElement_atTime_get, _Piavca_base.queueElement_atTime_set)
-    background = _swig_property(_Piavca_base.queueElement_background_get, _Piavca_base.queueElement_background_set)
+    __swig_setmethods__["mot"] = _Piavca_base.queueElement_mot_set
+    __swig_getmethods__["mot"] = _Piavca_base.queueElement_mot_get
+    if _newclass:mot = _swig_property(_Piavca_base.queueElement_mot_get, _Piavca_base.queueElement_mot_set)
+    __swig_setmethods__["name"] = _Piavca_base.queueElement_name_set
+    __swig_getmethods__["name"] = _Piavca_base.queueElement_name_get
+    if _newclass:name = _swig_property(_Piavca_base.queueElement_name_get, _Piavca_base.queueElement_name_set)
+    __swig_setmethods__["atTime"] = _Piavca_base.queueElement_atTime_set
+    __swig_getmethods__["atTime"] = _Piavca_base.queueElement_atTime_get
+    if _newclass:atTime = _swig_property(_Piavca_base.queueElement_atTime_get, _Piavca_base.queueElement_atTime_set)
+    __swig_setmethods__["background"] = _Piavca_base.queueElement_background_set
+    __swig_getmethods__["background"] = _Piavca_base.queueElement_background_get
+    if _newclass:background = _swig_property(_Piavca_base.queueElement_background_get, _Piavca_base.queueElement_background_set)
     def __init__(self, *args): 
         this = _Piavca_base.new_queueElement(*args)
         try: self.this.append(this)
@@ -2212,7 +2270,12 @@ class AvatarMotionQueue(AvatarTimeCallback):
            
     You can put motions on the queue and they will be played in sequence each waiting for the previous to finish. You can also add background motions that continuing playing at the same time as the motions on the queue.      see also: AvatarMotionQueue.h
     """
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [AvatarTimeCallback]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, AvatarMotionQueue, name, value)
+    __swig_getmethods__ = {}
+    for _s in [AvatarTimeCallback]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, AvatarMotionQueue, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         """
@@ -2227,8 +2290,10 @@ class AvatarMotionQueue(AvatarTimeCallback):
         except: self.this = this
     __swig_destroy__ = _Piavca_base.delete_AvatarMotionQueue
     __del__ = lambda self : None;
-    getQueue = staticmethod(_Piavca_base.AvatarMotionQueue_getQueue)
-    hasQueue = staticmethod(_Piavca_base.AvatarMotionQueue_hasQueue)
+    __swig_getmethods__["getQueue"] = lambda x: _Piavca_base.AvatarMotionQueue_getQueue
+    if _newclass:getQueue = staticmethod(_Piavca_base.AvatarMotionQueue_getQueue)
+    __swig_getmethods__["hasQueue"] = lambda x: _Piavca_base.AvatarMotionQueue_hasQueue
+    if _newclass:hasQueue = staticmethod(_Piavca_base.AvatarMotionQueue_hasQueue)
     def init(*args):
         """
         void AvatarMotionQueue::init(Piavca::Avatar *avatar)
@@ -2496,13 +2561,16 @@ AvatarMotionQueue_swigregister(AvatarMotionQueue)
 AvatarMotionQueue_getQueue = _Piavca_base.AvatarMotionQueue_getQueue
 AvatarMotionQueue_hasQueue = _Piavca_base.AvatarMotionQueue_hasQueue
 
-class Object(object):
+class Object(_object):
     """
     A class for representing inanimate objects in PIAVCA.     
            
     This works much like an avatar, except its only got a root and not joints/facial exprssions.      see also: Object.h
     """
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, Object, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, Object, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         """
@@ -2629,7 +2697,12 @@ def radToDeg(*args):
     """
   return _Piavca_base.radToDeg(*args)
 class CurrentValueMotion(KeyframeMotion):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [KeyframeMotion]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, CurrentValueMotion, name, value)
+    __swig_getmethods__ = {}
+    for _s in [KeyframeMotion]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, CurrentValueMotion, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         this = _Piavca_base.new_CurrentValueMotion(*args)
@@ -2646,7 +2719,8 @@ class CurrentValueMotion(KeyframeMotion):
         return _Piavca_base.CurrentValueMotion_clone(*args)
 
     def getClassName(*args): return _Piavca_base.CurrentValueMotion_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.CurrentValueMotion_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.CurrentValueMotion_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.CurrentValueMotion_castToThisType)
     def setFloatValue(*args): return _Piavca_base.CurrentValueMotion_setFloatValue(*args)
     def setVecValue(*args): return _Piavca_base.CurrentValueMotion_setVecValue(*args)
     def setQuatValue(*args): return _Piavca_base.CurrentValueMotion_setQuatValue(*args)
@@ -2663,7 +2737,12 @@ class MotionFilter(Motion):
            
     This class is an abstract base class that just provides some common features between motion filters. To actaully do anything you have to override the get[Float/Quat/Vec]ValueAtTime methods to perform whatever opertation you want on the other motion.      see also: MotionFilter.h
     """
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [Motion]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MotionFilter, name, value)
+    __swig_getmethods__ = {}
+    for _s in [Motion]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MotionFilter, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         """
@@ -2693,7 +2772,8 @@ class MotionFilter(Motion):
         return _Piavca_base.MotionFilter_clone(*args)
 
     def getClassName(*args): return _Piavca_base.MotionFilter_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.MotionFilter_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.MotionFilter_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.MotionFilter_castToThisType)
     def printInfo(*args):
         """
         void Piavca::MotionFilter::printInfo()
@@ -2876,7 +2956,12 @@ class TwoMotionCombiner(Motion):
            
     This class is an abstract base class that just provides some common features between motion filters. To actaully do anything you have to override the get[Float/Quat/Vec]ValueAtTime methods to perform whatever opertation you want on the two motion.      see also: TwoMotionCombiner.h
     """
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [Motion]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, TwoMotionCombiner, name, value)
+    __swig_getmethods__ = {}
+    for _s in [Motion]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, TwoMotionCombiner, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         """
@@ -2906,7 +2991,8 @@ class TwoMotionCombiner(Motion):
         return _Piavca_base.TwoMotionCombiner_clone(*args)
 
     def getClassName(*args): return _Piavca_base.TwoMotionCombiner_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.TwoMotionCombiner_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.TwoMotionCombiner_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.TwoMotionCombiner_castToThisType)
     def printInfo(*args):
         """
         void TwoMotionCombiner::printInfo()
@@ -3116,7 +3202,12 @@ TwoMotionCombiner_swigregister(TwoMotionCombiner)
 TwoMotionCombiner_castToThisType = _Piavca_base.TwoMotionCombiner_castToThisType
 
 class MultiMotionCombiner(MotionFilter):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [MotionFilter]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MultiMotionCombiner, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MotionFilter]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MultiMotionCombiner, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         if self.__class__ == MultiMotionCombiner:
@@ -3139,7 +3230,8 @@ class MultiMotionCombiner(MotionFilter):
         return _Piavca_base.MultiMotionCombiner_clone(*args)
 
     def getClassName(*args): return _Piavca_base.MultiMotionCombiner_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.MultiMotionCombiner_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.MultiMotionCombiner_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.MultiMotionCombiner_castToThisType)
     def printInfo(*args):
         """
         void Piavca::MotionFilter::printInfo()
@@ -3271,13 +3363,16 @@ MultiMotionCombiner_swigregister = _Piavca_base.MultiMotionCombiner_swigregister
 MultiMotionCombiner_swigregister(MultiMotionCombiner)
 MultiMotionCombiner_castToThisType = _Piavca_base.MultiMotionCombiner_castToThisType
 
-class MotionMask(object):
+class MotionMask(_object):
     """
     a set of masks specifying which joints should be played in a masked motion     
            
          see also: MaskedMotion.h
     """
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MotionMask, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, MotionMask, name)
     def __init__(self, *args): 
         """
         MotionMask::MotionMask(const MotionMask &mm)
@@ -3323,7 +3418,12 @@ class MaskedMotion(MotionFilter):
            
     It uses a mask to tell which motion to play on which joint.      see also: MaskedMotion.h
     """
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [MotionFilter]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MaskedMotion, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MotionFilter]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MaskedMotion, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         """
@@ -3371,7 +3471,8 @@ class MaskedMotion(MotionFilter):
         return _Piavca_base.MaskedMotion_clone(*args)
 
     def getClassName(*args): return _Piavca_base.MaskedMotion_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.MaskedMotion_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.MaskedMotion_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.MaskedMotion_castToThisType)
     def setMask(*args): return _Piavca_base.MaskedMotion_setMask(*args)
     def getMask(*args): return _Piavca_base.MaskedMotion_getMask(*args)
     def setParameter(*args): return _Piavca_base.MaskedMotion_setParameter(*args)
@@ -3425,7 +3526,12 @@ class ScaleMotion(MotionFilter):
            
          see also: ScaleMotion.h
     """
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [MotionFilter]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, ScaleMotion, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MotionFilter]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, ScaleMotion, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         """
@@ -3453,7 +3559,8 @@ class ScaleMotion(MotionFilter):
         return _Piavca_base.ScaleMotion_clone(*args)
 
     def getClassName(*args): return _Piavca_base.ScaleMotion_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.ScaleMotion_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.ScaleMotion_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.ScaleMotion_castToThisType)
     def getFloatValueAtTimeInternal(*args):
         """
         virtual PIAVCA_EXPORT float Piavca::ScaleMotion::getFloatValueAtTimeInternal(int trackId, float time)
@@ -3512,7 +3619,12 @@ class ScaleMotionSpeed(MotionFilter):
            
          see also: ScaleMotionSpeed.h
     """
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [MotionFilter]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, ScaleMotionSpeed, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MotionFilter]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, ScaleMotionSpeed, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         """
@@ -3540,7 +3652,8 @@ class ScaleMotionSpeed(MotionFilter):
         return _Piavca_base.ScaleMotionSpeed_clone(*args)
 
     def getClassName(*args): return _Piavca_base.ScaleMotionSpeed_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.ScaleMotionSpeed_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.ScaleMotionSpeed_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.ScaleMotionSpeed_castToThisType)
     def getMotionLength(*args):
         """
         virtual float Piavca::ScaleMotionSpeed::getMotionLength() const 
@@ -3607,7 +3720,12 @@ class ChangeMotionLength(ScaleMotionSpeed):
     """
     see also: ChangeMotionLength.h
     """
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [ScaleMotionSpeed]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, ChangeMotionLength, name, value)
+    __swig_getmethods__ = {}
+    for _s in [ScaleMotionSpeed]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, ChangeMotionLength, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         """
@@ -3635,7 +3753,8 @@ class ChangeMotionLength(ScaleMotionSpeed):
         return _Piavca_base.ChangeMotionLength_clone(*args)
 
     def getClassName(*args): return _Piavca_base.ChangeMotionLength_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.ChangeMotionLength_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.ChangeMotionLength_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.ChangeMotionLength_castToThisType)
     def setLength(*args): return _Piavca_base.ChangeMotionLength_setLength(*args)
     def getLength(*args): return _Piavca_base.ChangeMotionLength_getLength(*args)
     def setParameter(*args): return _Piavca_base.ChangeMotionLength_setParameter(*args)
@@ -3675,7 +3794,12 @@ class ScaleMotionRoot(MotionFilter):
            
     This is basically useful for converting bvh files that are expressed in feet and inches to metres but might also be useful for motion retargeting.      see also: ScaleMotionRoot.h
     """
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [MotionFilter]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, ScaleMotionRoot, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MotionFilter]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, ScaleMotionRoot, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         """
@@ -3705,7 +3829,8 @@ class ScaleMotionRoot(MotionFilter):
         return _Piavca_base.ScaleMotionRoot_clone(*args)
 
     def getClassName(*args): return _Piavca_base.ScaleMotionRoot_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.ScaleMotionRoot_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.ScaleMotionRoot_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.ScaleMotionRoot_castToThisType)
     def getFloatValueAtTimeInternal(*args):
         """
         virtual PIAVCA_EXPORT float Piavca::ScaleMotionRoot::getFloatValueAtTimeInternal(int trackId, float time)
@@ -3762,7 +3887,12 @@ class TimeOffset(MotionFilter):
            
          see also: TimeOffset.h
     """
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [MotionFilter]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, TimeOffset, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MotionFilter]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, TimeOffset, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         """
@@ -3790,7 +3920,8 @@ class TimeOffset(MotionFilter):
         return _Piavca_base.TimeOffset_clone(*args)
 
     def getClassName(*args): return _Piavca_base.TimeOffset_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.TimeOffset_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.TimeOffset_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.TimeOffset_castToThisType)
     def setStartTime(*args):
         """
         virtual void Piavca::TimeOffset::setStartTime(float time)
@@ -3859,7 +3990,12 @@ class TurnMotion(MotionFilter):
            
     For now the turning method is pretty rubbish, just turning the root position and orientation.      see also: TurnMotion.h
     """
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [MotionFilter]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, TurnMotion, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MotionFilter]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, TurnMotion, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         """
@@ -3887,7 +4023,8 @@ class TurnMotion(MotionFilter):
         return _Piavca_base.TurnMotion_clone(*args)
 
     def getClassName(*args): return _Piavca_base.TurnMotion_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.TurnMotion_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.TurnMotion_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.TurnMotion_castToThisType)
     def getFloatValueAtTimeInternal(*args):
         """
         virtual PIAVCA_EXPORT float Piavca::TurnMotion::getFloatValueAtTimeInternal(int trackId, float time)
@@ -3939,7 +4076,12 @@ TurnMotion_swigregister(TurnMotion)
 TurnMotion_castToThisType = _Piavca_base.TurnMotion_castToThisType
 
 class Sequence(TwoMotionCombiner):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [TwoMotionCombiner]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, Sequence, name, value)
+    __swig_getmethods__ = {}
+    for _s in [TwoMotionCombiner]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, Sequence, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         if self.__class__ == Sequence:
@@ -3960,7 +4102,8 @@ class Sequence(TwoMotionCombiner):
         return _Piavca_base.Sequence_clone(*args)
 
     def getClassName(*args): return _Piavca_base.Sequence_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.Sequence_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.Sequence_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.Sequence_castToThisType)
     def setStartTime(*args):
         """
         void TwoMotionCombiner::setStartTime(float time)
@@ -3995,7 +4138,12 @@ Sequence_swigregister(Sequence)
 Sequence_castToThisType = _Piavca_base.Sequence_castToThisType
 
 class SmoothSequence(Sequence):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [Sequence]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, SmoothSequence, name, value)
+    __swig_getmethods__ = {}
+    for _s in [Sequence]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, SmoothSequence, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         this = _Piavca_base.new_SmoothSequence(*args)
@@ -4012,7 +4160,8 @@ class SmoothSequence(Sequence):
         return _Piavca_base.SmoothSequence_clone(*args)
 
     def getClassName(*args): return _Piavca_base.SmoothSequence_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.SmoothSequence_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.SmoothSequence_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.SmoothSequence_castToThisType)
     def create(*args): return _Piavca_base.SmoothSequence_create(*args)
     def setMaintainY(*args): return _Piavca_base.SmoothSequence_setMaintainY(*args)
     def setAccumulateRoot(*args): return _Piavca_base.SmoothSequence_setAccumulateRoot(*args)
@@ -4048,7 +4197,12 @@ SmoothSequence_swigregister(SmoothSequence)
 SmoothSequence_castToThisType = _Piavca_base.SmoothSequence_castToThisType
 
 class MotionPosture(KeyframeMotion):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [KeyframeMotion]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MotionPosture, name, value)
+    __swig_getmethods__ = {}
+    for _s in [KeyframeMotion]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MotionPosture, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         if self.__class__ == MotionPosture:
@@ -4069,7 +4223,8 @@ class MotionPosture(KeyframeMotion):
         return _Piavca_base.MotionPosture_clone(*args)
 
     def getClassName(*args): return _Piavca_base.MotionPosture_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.MotionPosture_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.MotionPosture_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.MotionPosture_castToThisType)
     def getPostureFromMotion(*args): return _Piavca_base.MotionPosture_getPostureFromMotion(*args)
     __swig_destroy__ = _Piavca_base.delete_MotionPosture
     __del__ = lambda self : None;
@@ -4082,7 +4237,12 @@ MotionPosture_swigregister(MotionPosture)
 MotionPosture_castToThisType = _Piavca_base.MotionPosture_castToThisType
 
 class AvatarPosture(KeyframeMotion):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [KeyframeMotion]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, AvatarPosture, name, value)
+    __swig_getmethods__ = {}
+    for _s in [KeyframeMotion]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, AvatarPosture, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         if self.__class__ == AvatarPosture:
@@ -4103,7 +4263,8 @@ class AvatarPosture(KeyframeMotion):
         return _Piavca_base.AvatarPosture_clone(*args)
 
     def getClassName(*args): return _Piavca_base.AvatarPosture_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.AvatarPosture_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.AvatarPosture_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.AvatarPosture_castToThisType)
     def load(*args):
         """
         virtual void Piavca::Motion::load(Avatar *av)
@@ -4126,7 +4287,12 @@ AvatarPosture_swigregister(AvatarPosture)
 AvatarPosture_castToThisType = _Piavca_base.AvatarPosture_castToThisType
 
 class PostureBlend(Sequence):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [Sequence]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, PostureBlend, name, value)
+    __swig_getmethods__ = {}
+    for _s in [Sequence]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, PostureBlend, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         if self.__class__ == PostureBlend:
@@ -4147,7 +4313,8 @@ class PostureBlend(Sequence):
         return _Piavca_base.PostureBlend_clone(*args)
 
     def getClassName(*args): return _Piavca_base.PostureBlend_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.PostureBlend_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.PostureBlend_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.PostureBlend_castToThisType)
     def setBlendInterval(*args): return _Piavca_base.PostureBlend_setBlendInterval(*args)
     def getBlendInterval(*args): return _Piavca_base.PostureBlend_getBlendInterval(*args)
     def setAccumulateRoot(*args): return _Piavca_base.PostureBlend_setAccumulateRoot(*args)
@@ -4177,7 +4344,12 @@ PostureBlend_swigregister(PostureBlend)
 PostureBlend_castToThisType = _Piavca_base.PostureBlend_castToThisType
 
 class Reposition(MotionFilter):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [MotionFilter]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, Reposition, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MotionFilter]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, Reposition, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         if self.__class__ == Reposition:
@@ -4198,7 +4370,8 @@ class Reposition(MotionFilter):
         return _Piavca_base.Reposition_clone(*args)
 
     def getClassName(*args): return _Piavca_base.Reposition_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.Reposition_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.Reposition_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.Reposition_castToThisType)
     def setStartPosition(*args): return _Piavca_base.Reposition_setStartPosition(*args)
     def setStartOrientation(*args): return _Piavca_base.Reposition_setStartOrientation(*args)
     def setPosOffset(*args): return _Piavca_base.Reposition_setPosOffset(*args)
@@ -4290,7 +4463,12 @@ class LoopMotion(MotionFilter):
            
          see also: LoopMotion.h
     """
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [MotionFilter]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, LoopMotion, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MotionFilter]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, LoopMotion, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         """
@@ -4318,7 +4496,8 @@ class LoopMotion(MotionFilter):
         return _Piavca_base.LoopMotion_clone(*args)
 
     def getClassName(*args): return _Piavca_base.LoopMotion_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.LoopMotion_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.LoopMotion_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.LoopMotion_castToThisType)
     def getMotionLength(*args):
         """
         virtual float Piavca::LoopMotion::getMotionLength() const 
@@ -4373,7 +4552,12 @@ LoopMotion_swigregister(LoopMotion)
 LoopMotion_castToThisType = _Piavca_base.LoopMotion_castToThisType
 
 class SmoothLoop(LoopMotion):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [LoopMotion]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, SmoothLoop, name, value)
+    __swig_getmethods__ = {}
+    for _s in [LoopMotion]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, SmoothLoop, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         this = _Piavca_base.new_SmoothLoop(*args)
@@ -4390,7 +4574,8 @@ class SmoothLoop(LoopMotion):
         return _Piavca_base.SmoothLoop_clone(*args)
 
     def getClassName(*args): return _Piavca_base.SmoothLoop_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.SmoothLoop_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.SmoothLoop_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.SmoothLoop_castToThisType)
     def setMotion(*args):
         """
         void Piavca::MotionFilter::setMotion(Motion *mot)
@@ -4414,7 +4599,12 @@ SmoothLoop_swigregister(SmoothLoop)
 SmoothLoop_castToThisType = _Piavca_base.SmoothLoop_castToThisType
 
 class RandomTimingsMotion(ScaleMotionSpeed):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [ScaleMotionSpeed]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, RandomTimingsMotion, name, value)
+    __swig_getmethods__ = {}
+    for _s in [ScaleMotionSpeed]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, RandomTimingsMotion, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         if self.__class__ == RandomTimingsMotion:
@@ -4437,7 +4627,8 @@ class RandomTimingsMotion(ScaleMotionSpeed):
         return _Piavca_base.RandomTimingsMotion_clone(*args)
 
     def getClassName(*args): return _Piavca_base.RandomTimingsMotion_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.RandomTimingsMotion_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.RandomTimingsMotion_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.RandomTimingsMotion_castToThisType)
     def setTimingParams(*args): return _Piavca_base.RandomTimingsMotion_setTimingParams(*args)
     def setMinTimeScale(*args): return _Piavca_base.RandomTimingsMotion_setMinTimeScale(*args)
     def getMinTimeScale(*args): return _Piavca_base.RandomTimingsMotion_getMinTimeScale(*args)
@@ -4468,7 +4659,12 @@ class AvatarPostureBlend(Sequence):
            
     This class will blend smoothly from the current postion of an avatar to the motion and will have the motion start at the current position and orientation of the avatar rather than its own start point (see SequentialBlend docs for some details)      see also: AvatarPostureBlend.h
     """
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [Sequence]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, AvatarPostureBlend, name, value)
+    __swig_getmethods__ = {}
+    for _s in [Sequence]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, AvatarPostureBlend, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         """
@@ -4492,7 +4688,8 @@ class AvatarPostureBlend(Sequence):
         return _Piavca_base.AvatarPostureBlend_clone(*args)
 
     def getClassName(*args): return _Piavca_base.AvatarPostureBlend_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.AvatarPostureBlend_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.AvatarPostureBlend_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.AvatarPostureBlend_castToThisType)
     def load(*args):
         """
         void AvatarPostureBlend::load(Avatar *av)
@@ -4551,7 +4748,12 @@ class BlendBetween(TwoMotionCombiner):
            
     The resulting motion is an interpolation between the two motion using slerp for quaternions with a parameter value blend. This class blends the two motions concurrently rather blending from one to another as sequential blend does.      see also: BlendBetween.h
     """
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [TwoMotionCombiner]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, BlendBetween, name, value)
+    __swig_getmethods__ = {}
+    for _s in [TwoMotionCombiner]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, BlendBetween, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         """
@@ -4579,7 +4781,8 @@ class BlendBetween(TwoMotionCombiner):
         return _Piavca_base.BlendBetween_clone(*args)
 
     def getClassName(*args): return _Piavca_base.BlendBetween_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.BlendBetween_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.BlendBetween_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.BlendBetween_castToThisType)
     def getCombinedFloatValue(*args): return _Piavca_base.BlendBetween_getCombinedFloatValue(*args)
     def getCombinedVecValue(*args): return _Piavca_base.BlendBetween_getCombinedVecValue(*args)
     def getCombinedQuatValue(*args): return _Piavca_base.BlendBetween_getCombinedQuatValue(*args)
@@ -4611,7 +4814,12 @@ class MotionAdder(MultiMotionCombiner):
            
     The results is the sum of the effects of both motions (in fact with rotations this is achieved with quaternion multiplication but the effect is similar to vector addition. An optional parameter can scale the effect of the second motion.      see also: MotionAdder.h
     """
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [MultiMotionCombiner]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MotionAdder, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MultiMotionCombiner]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MotionAdder, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         """
@@ -4639,7 +4847,8 @@ class MotionAdder(MultiMotionCombiner):
         return _Piavca_base.MotionAdder_clone(*args)
 
     def getClassName(*args): return _Piavca_base.MotionAdder_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.MotionAdder_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.MotionAdder_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.MotionAdder_castToThisType)
     def getFloatValueAtTimeInternal(*args):
         """
         float MotionAdder::getFloatValueAtTimeInternal(int trackId, float time)
@@ -4681,7 +4890,12 @@ MotionAdder_swigregister(MotionAdder)
 MotionAdder_castToThisType = _Piavca_base.MotionAdder_castToThisType
 
 class MultiBlend(MultiMotionCombiner):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [MultiMotionCombiner]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MultiBlend, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MultiMotionCombiner]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MultiBlend, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         if self.__class__ == MultiBlend:
@@ -4702,7 +4916,8 @@ class MultiBlend(MultiMotionCombiner):
         return _Piavca_base.MultiBlend_clone(*args)
 
     def getClassName(*args): return _Piavca_base.MultiBlend_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.MultiBlend_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.MultiBlend_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.MultiBlend_castToThisType)
     def setParameter(*args): return _Piavca_base.MultiBlend_setParameter(*args)
     def setMotionParameter(*args): return _Piavca_base.MultiBlend_setMotionParameter(*args)
     def setWeightMotionName(*args): return _Piavca_base.MultiBlend_setWeightMotionName(*args)
@@ -4751,7 +4966,12 @@ MultiBlend_swigregister(MultiBlend)
 MultiBlend_castToThisType = _Piavca_base.MultiBlend_castToThisType
 
 class Subtract(TwoMotionCombiner):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [TwoMotionCombiner]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, Subtract, name, value)
+    __swig_getmethods__ = {}
+    for _s in [TwoMotionCombiner]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, Subtract, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         if self.__class__ == Subtract:
@@ -4772,7 +4992,8 @@ class Subtract(TwoMotionCombiner):
         return _Piavca_base.Subtract_clone(*args)
 
     def getClassName(*args): return _Piavca_base.Subtract_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.Subtract_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.Subtract_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.Subtract_castToThisType)
     def getFloatValueAtTimeInternal(*args):
         """
         virtual float Piavca::Motion::getFloatValueAtTimeInternal(int trackId, float time)=0
@@ -4813,8 +5034,11 @@ Subtract_swigregister = _Piavca_base.Subtract_swigregister
 Subtract_swigregister(Subtract)
 Subtract_castToThisType = _Piavca_base.Subtract_castToThisType
 
-class TransitionFunction(object):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+class TransitionFunction(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, TransitionFunction, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, TransitionFunction, name)
     def __init__(self): raise AttributeError, "No constructor defined"
     __repr__ = _swig_repr
     def eval(*args): return _Piavca_base.TransitionFunction_eval(*args)
@@ -4824,7 +5048,12 @@ TransitionFunction_swigregister = _Piavca_base.TransitionFunction_swigregister
 TransitionFunction_swigregister(TransitionFunction)
 
 class LinearTransition(TransitionFunction):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [TransitionFunction]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, LinearTransition, name, value)
+    __swig_getmethods__ = {}
+    for _s in [TransitionFunction]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, LinearTransition, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         this = _Piavca_base.new_LinearTransition(*args)
@@ -4837,7 +5066,12 @@ LinearTransition_swigregister = _Piavca_base.LinearTransition_swigregister
 LinearTransition_swigregister(LinearTransition)
 
 class SmoothTransition(TransitionFunction):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [TransitionFunction]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, SmoothTransition, name, value)
+    __swig_getmethods__ = {}
+    for _s in [TransitionFunction]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, SmoothTransition, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         this = _Piavca_base.new_SmoothTransition(*args)
@@ -4850,7 +5084,12 @@ SmoothTransition_swigregister = _Piavca_base.SmoothTransition_swigregister
 SmoothTransition_swigregister(SmoothTransition)
 
 class MotionTransition(TwoMotionCombiner):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [TwoMotionCombiner]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MotionTransition, name, value)
+    __swig_getmethods__ = {}
+    for _s in [TwoMotionCombiner]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MotionTransition, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         this = _Piavca_base.new_MotionTransition(*args)
@@ -4867,7 +5106,8 @@ class MotionTransition(TwoMotionCombiner):
         return _Piavca_base.MotionTransition_clone(*args)
 
     def getClassName(*args): return _Piavca_base.MotionTransition_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.MotionTransition_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.MotionTransition_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.MotionTransition_castToThisType)
     MotionStart = _Piavca_base.MotionTransition_MotionStart
     MotionEnd = _Piavca_base.MotionTransition_MotionEnd
     def setTransitionFunction(*args): return _Piavca_base.MotionTransition_setTransitionFunction(*args)
@@ -4908,7 +5148,12 @@ MotionTransition_swigregister(MotionTransition)
 MotionTransition_castToThisType = _Piavca_base.MotionTransition_castToThisType
 
 class ChoiceMotion(MotionFilter):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [MotionFilter]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, ChoiceMotion, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MotionFilter]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, ChoiceMotion, name)
     __repr__ = _swig_repr
     def updateListeners(*args): return _Piavca_base.ChoiceMotion_updateListeners(*args)
     def __init__(self, *args): 
@@ -4932,7 +5177,8 @@ class ChoiceMotion(MotionFilter):
         return _Piavca_base.ChoiceMotion_clone(*args)
 
     def getClassName(*args): return _Piavca_base.ChoiceMotion_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.ChoiceMotion_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.ChoiceMotion_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.ChoiceMotion_castToThisType)
     def setSmooth(*args): return _Piavca_base.ChoiceMotion_setSmooth(*args)
     def getSmooth(*args): return _Piavca_base.ChoiceMotion_getSmooth(*args)
     def setResetTime(*args): return _Piavca_base.ChoiceMotion_setResetTime(*args)
@@ -5034,7 +5280,12 @@ ChoiceMotion_swigregister(ChoiceMotion)
 ChoiceMotion_castToThisType = _Piavca_base.ChoiceMotion_castToThisType
 
 class ChoiceMotionWithDefault(ChoiceMotion):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [ChoiceMotion]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, ChoiceMotionWithDefault, name, value)
+    __swig_getmethods__ = {}
+    for _s in [ChoiceMotion]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, ChoiceMotionWithDefault, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         this = _Piavca_base.new_ChoiceMotionWithDefault(*args)
@@ -5053,7 +5304,8 @@ class ChoiceMotionWithDefault(ChoiceMotion):
         return _Piavca_base.ChoiceMotionWithDefault_clone(*args)
 
     def getClassName(*args): return _Piavca_base.ChoiceMotionWithDefault_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.ChoiceMotionWithDefault_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.ChoiceMotionWithDefault_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.ChoiceMotionWithDefault_castToThisType)
     def reset(*args):
         """
         void Piavca::MotionFilter::reset()
@@ -5069,7 +5321,12 @@ ChoiceMotionWithDefault_swigregister(ChoiceMotionWithDefault)
 ChoiceMotionWithDefault_castToThisType = _Piavca_base.ChoiceMotionWithDefault_castToThisType
 
 class EventMapChoice(ChoiceMotion):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [ChoiceMotion]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, EventMapChoice, name, value)
+    __swig_getmethods__ = {}
+    for _s in [ChoiceMotion]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, EventMapChoice, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         if self.__class__ == EventMapChoice:
@@ -5092,8 +5349,10 @@ class EventMapChoice(ChoiceMotion):
         return _Piavca_base.EventMapChoice_clone(*args)
 
     def getClassName(*args): return _Piavca_base.EventMapChoice_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.EventMapChoice_castToThisType)
-    convertTo = staticmethod(_Piavca_base.EventMapChoice_convertTo)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.EventMapChoice_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.EventMapChoice_castToThisType)
+    __swig_getmethods__["convertTo"] = lambda x: _Piavca_base.EventMapChoice_convertTo
+    if _newclass:convertTo = staticmethod(_Piavca_base.EventMapChoice_convertTo)
     def addMapItem(*args): return _Piavca_base.EventMapChoice_addMapItem(*args)
     def handleEvent(*args): return _Piavca_base.EventMapChoice_handleEvent(*args)
     def canHandleEvent(*args): return _Piavca_base.EventMapChoice_canHandleEvent(*args)
@@ -5108,7 +5367,12 @@ EventMapChoice_castToThisType = _Piavca_base.EventMapChoice_castToThisType
 EventMapChoice_convertTo = _Piavca_base.EventMapChoice_convertTo
 
 class SequentialChoiceMotion(ChoiceMotion):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [ChoiceMotion]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, SequentialChoiceMotion, name, value)
+    __swig_getmethods__ = {}
+    for _s in [ChoiceMotion]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, SequentialChoiceMotion, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         this = _Piavca_base.new_SequentialChoiceMotion(*args)
@@ -5127,7 +5391,8 @@ class SequentialChoiceMotion(ChoiceMotion):
         return _Piavca_base.SequentialChoiceMotion_clone(*args)
 
     def getClassName(*args): return _Piavca_base.SequentialChoiceMotion_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.SequentialChoiceMotion_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.SequentialChoiceMotion_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.SequentialChoiceMotion_castToThisType)
     def setStartTime(*args):
         """
         virtual void Piavca::MotionFilter::setStartTime(float time)
@@ -5150,7 +5415,12 @@ SequentialChoiceMotion_swigregister(SequentialChoiceMotion)
 SequentialChoiceMotion_castToThisType = _Piavca_base.SequentialChoiceMotion_castToThisType
 
 class RandomChoiceMotion(ChoiceMotion):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [ChoiceMotion]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, RandomChoiceMotion, name, value)
+    __swig_getmethods__ = {}
+    for _s in [ChoiceMotion]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, RandomChoiceMotion, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         this = _Piavca_base.new_RandomChoiceMotion(*args)
@@ -5169,8 +5439,10 @@ class RandomChoiceMotion(ChoiceMotion):
         return _Piavca_base.RandomChoiceMotion_clone(*args)
 
     def getClassName(*args): return _Piavca_base.RandomChoiceMotion_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.RandomChoiceMotion_castToThisType)
-    convertTo = staticmethod(_Piavca_base.RandomChoiceMotion_convertTo)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.RandomChoiceMotion_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.RandomChoiceMotion_castToThisType)
+    __swig_getmethods__["convertTo"] = lambda x: _Piavca_base.RandomChoiceMotion_convertTo
+    if _newclass:convertTo = staticmethod(_Piavca_base.RandomChoiceMotion_convertTo)
     def addMotion(*args): return _Piavca_base.RandomChoiceMotion_addMotion(*args)
     def setMotionParameter(*args): return _Piavca_base.RandomChoiceMotion_setMotionParameter(*args)
     def setProbability(*args): return _Piavca_base.RandomChoiceMotion_setProbability(*args)
@@ -5182,7 +5454,12 @@ RandomChoiceMotion_castToThisType = _Piavca_base.RandomChoiceMotion_castToThisTy
 RandomChoiceMotion_convertTo = _Piavca_base.RandomChoiceMotion_convertTo
 
 class MotionGraph(ChoiceMotion):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [ChoiceMotion]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MotionGraph, name, value)
+    __swig_getmethods__ = {}
+    for _s in [ChoiceMotion]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MotionGraph, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         if self.__class__ == MotionGraph:
@@ -5205,8 +5482,10 @@ class MotionGraph(ChoiceMotion):
         return _Piavca_base.MotionGraph_clone(*args)
 
     def getClassName(*args): return _Piavca_base.MotionGraph_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.MotionGraph_castToThisType)
-    convertTo = staticmethod(_Piavca_base.MotionGraph_convertTo)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.MotionGraph_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.MotionGraph_castToThisType)
+    __swig_getmethods__["convertTo"] = lambda x: _Piavca_base.MotionGraph_convertTo
+    if _newclass:convertTo = staticmethod(_Piavca_base.MotionGraph_convertTo)
     def addEvent(*args): return _Piavca_base.MotionGraph_addEvent(*args)
     def addNextNode(*args): return _Piavca_base.MotionGraph_addNextNode(*args)
     def handleEvent(*args): return _Piavca_base.MotionGraph_handleEvent(*args)
@@ -5223,7 +5502,12 @@ MotionGraph_castToThisType = _Piavca_base.MotionGraph_castToThisType
 MotionGraph_convertTo = _Piavca_base.MotionGraph_convertTo
 
 class PointAt(MotionFilter):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [MotionFilter]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, PointAt, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MotionFilter]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, PointAt, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         if self.__class__ == PointAt:
@@ -5244,7 +5528,8 @@ class PointAt(MotionFilter):
         return _Piavca_base.PointAt_clone(*args)
 
     def getClassName(*args): return _Piavca_base.PointAt_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.PointAt_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.PointAt_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.PointAt_castToThisType)
     def isRandomAccess(*args):
         """
         virtual bool Piavca::MotionFilter::isRandomAccess()
@@ -5340,7 +5625,12 @@ PointAt_swigregister(PointAt)
 PointAt_castToThisType = _Piavca_base.PointAt_castToThisType
 
 class Proxemics(ChoiceMotion):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [ChoiceMotion]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, Proxemics, name, value)
+    __swig_getmethods__ = {}
+    for _s in [ChoiceMotion]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, Proxemics, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         this = _Piavca_base.new_Proxemics(*args)
@@ -5359,7 +5649,8 @@ class Proxemics(ChoiceMotion):
         return _Piavca_base.Proxemics_clone(*args)
 
     def getClassName(*args): return _Piavca_base.Proxemics_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.Proxemics_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.Proxemics_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.Proxemics_castToThisType)
     def load(*args):
         """
         virtual void Piavca::MotionFilter::load(Avatar *av)
@@ -5408,7 +5699,12 @@ class ZeroMotion(Motion):
     """
     A motion class that makes the avatar look at a target. The avatar will turn to look at the given target with eyes, head, and body. The target can either be an avatar, an object or a vector location.      see also: ZeroMotion.h
     """
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [Motion]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, ZeroMotion, name, value)
+    __swig_getmethods__ = {}
+    for _s in [Motion]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, ZeroMotion, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         """
@@ -5436,7 +5732,8 @@ class ZeroMotion(Motion):
         return _Piavca_base.ZeroMotion_clone(*args)
 
     def getClassName(*args): return _Piavca_base.ZeroMotion_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.ZeroMotion_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.ZeroMotion_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.ZeroMotion_castToThisType)
     def isRandomAccess(*args):
         """
         virtual bool Piavca::ZeroMotion::isRandomAccess()
@@ -5521,7 +5818,12 @@ class SubMotion(MotionFilter):
     """
     see also: SubMotion.h
     """
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [MotionFilter]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, SubMotion, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MotionFilter]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, SubMotion, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         """
@@ -5549,7 +5851,8 @@ class SubMotion(MotionFilter):
         return _Piavca_base.SubMotion_clone(*args)
 
     def getClassName(*args): return _Piavca_base.SubMotion_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.SubMotion_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.SubMotion_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.SubMotion_castToThisType)
     def getMotionLength(*args):
         """
         float SubMotion::getMotionLength() const 
@@ -5627,7 +5930,12 @@ class TimeRangeMotion(MotionFilter):
     """
     see also: TimeRangeMotion.h
     """
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [MotionFilter]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, TimeRangeMotion, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MotionFilter]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, TimeRangeMotion, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         """
@@ -5655,7 +5963,8 @@ class TimeRangeMotion(MotionFilter):
         return _Piavca_base.TimeRangeMotion_clone(*args)
 
     def getClassName(*args): return _Piavca_base.TimeRangeMotion_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.TimeRangeMotion_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.TimeRangeMotion_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.TimeRangeMotion_castToThisType)
     def setStart(*args):
         """
         void TimeRangeMotion::setStart(float s)
@@ -5725,7 +6034,12 @@ class TimeWarp(MotionFilter):
            
          see also: TimeWarp.h
     """
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [MotionFilter]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, TimeWarp, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MotionFilter]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, TimeWarp, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         """
@@ -5753,7 +6067,8 @@ class TimeWarp(MotionFilter):
         return _Piavca_base.TimeWarp_clone(*args)
 
     def getClassName(*args): return _Piavca_base.TimeWarp_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.TimeWarp_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.TimeWarp_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.TimeWarp_castToThisType)
     def getMotionLength(*args):
         """
         virtual float Piavca::TimeWarp::getMotionLength() const 
@@ -5817,7 +6132,12 @@ TimeWarp_swigregister(TimeWarp)
 TimeWarp_castToThisType = _Piavca_base.TimeWarp_castToThisType
 
 class OverrideMotion(TwoMotionCombiner):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [TwoMotionCombiner]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, OverrideMotion, name, value)
+    __swig_getmethods__ = {}
+    for _s in [TwoMotionCombiner]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, OverrideMotion, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         this = _Piavca_base.new_OverrideMotion(*args)
@@ -5834,7 +6154,8 @@ class OverrideMotion(TwoMotionCombiner):
         return _Piavca_base.OverrideMotion_clone(*args)
 
     def getClassName(*args): return _Piavca_base.OverrideMotion_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.OverrideMotion_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.OverrideMotion_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.OverrideMotion_castToThisType)
     def getTrackType(*args):
         """
         trackType TwoMotionCombiner::getTrackType(int trackId) const 
@@ -5881,8 +6202,11 @@ OverrideMotion_swigregister = _Piavca_base.OverrideMotion_swigregister
 OverrideMotion_swigregister(OverrideMotion)
 OverrideMotion_castToThisType = _Piavca_base.OverrideMotion_castToThisType
 
-class TangentSpace(object):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+class TangentSpace(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, TangentSpace, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, TangentSpace, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         this = _Piavca_base.new_TangentSpace(*args)
@@ -5891,7 +6215,8 @@ class TangentSpace(object):
     def expMap(*args): return _Piavca_base.TangentSpace_expMap(*args)
     def logMap(*args): return _Piavca_base.TangentSpace_logMap(*args)
     def mean(*args): return _Piavca_base.TangentSpace_mean(*args)
-    calculateTangentSpacesFromMotionAverages = staticmethod(_Piavca_base.TangentSpace_calculateTangentSpacesFromMotionAverages)
+    __swig_getmethods__["calculateTangentSpacesFromMotionAverages"] = lambda x: _Piavca_base.TangentSpace_calculateTangentSpacesFromMotionAverages
+    if _newclass:calculateTangentSpacesFromMotionAverages = staticmethod(_Piavca_base.TangentSpace_calculateTangentSpacesFromMotionAverages)
     __swig_destroy__ = _Piavca_base.delete_TangentSpace
     __del__ = lambda self : None;
 TangentSpace_swigregister = _Piavca_base.TangentSpace_swigregister
@@ -5899,7 +6224,12 @@ TangentSpace_swigregister(TangentSpace)
 TangentSpace_calculateTangentSpacesFromMotionAverages = _Piavca_base.TangentSpace_calculateTangentSpacesFromMotionAverages
 
 class ExpMapMotion(MotionFilter):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [MotionFilter]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, ExpMapMotion, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MotionFilter]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, ExpMapMotion, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         if self.__class__ == ExpMapMotion:
@@ -5920,7 +6250,8 @@ class ExpMapMotion(MotionFilter):
         return _Piavca_base.ExpMapMotion_clone(*args)
 
     def getClassName(*args): return _Piavca_base.ExpMapMotion_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.ExpMapMotion_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.ExpMapMotion_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.ExpMapMotion_castToThisType)
     def getTrackType(*args):
         """
         trackType Piavca::MotionFilter::getTrackType(int trackId) const 
@@ -5952,7 +6283,12 @@ ExpMapMotion_swigregister(ExpMapMotion)
 ExpMapMotion_castToThisType = _Piavca_base.ExpMapMotion_castToThisType
 
 class LogMapMotion(MotionFilter):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [MotionFilter]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, LogMapMotion, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MotionFilter]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, LogMapMotion, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         if self.__class__ == LogMapMotion:
@@ -5973,7 +6309,8 @@ class LogMapMotion(MotionFilter):
         return _Piavca_base.LogMapMotion_clone(*args)
 
     def getClassName(*args): return _Piavca_base.LogMapMotion_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.LogMapMotion_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.LogMapMotion_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.LogMapMotion_castToThisType)
     def getTrackType(*args):
         """
         trackType Piavca::MotionFilter::getTrackType(int trackId) const 
@@ -6005,7 +6342,12 @@ LogMapMotion_swigregister(LogMapMotion)
 LogMapMotion_castToThisType = _Piavca_base.LogMapMotion_castToThisType
 
 class AvatarMotion(Motion):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __swig_setmethods__ = {}
+    for _s in [Motion]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, AvatarMotion, name, value)
+    __swig_getmethods__ = {}
+    for _s in [Motion]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, AvatarMotion, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
         if self.__class__ == AvatarMotion:
@@ -6026,7 +6368,8 @@ class AvatarMotion(Motion):
         return _Piavca_base.AvatarMotion_clone(*args)
 
     def getClassName(*args): return _Piavca_base.AvatarMotion_getClassName(*args)
-    castToThisType = staticmethod(_Piavca_base.AvatarMotion_castToThisType)
+    __swig_getmethods__["castToThisType"] = lambda x: _Piavca_base.AvatarMotion_castToThisType
+    if _newclass:castToThisType = staticmethod(_Piavca_base.AvatarMotion_castToThisType)
     def isRandomAccess(*args):
         """
         virtual bool Piavca::Motion::isRandomAccess()

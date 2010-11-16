@@ -56,7 +56,7 @@ conf = Configure(env)
 
 
 
-external_libs = ["cal3d"]
+external_libs = []#"cal3d"]
 
 # sort out special mac framework stuff
 if ( 'darwin' == env['PLATFORM'] ): 
