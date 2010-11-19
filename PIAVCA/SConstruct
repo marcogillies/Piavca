@@ -51,6 +51,11 @@ env = Environment(SWIGFLAGS=['-c++', '-noruntime', '-python', '-I./src/'],
 debug = ARGUMENTS.get('debug', 0)
 if int(debug):
 	env.Append(CXXFLAGS = '-g')
+	
+if  ( 'darwin' == env['PLATFORM'] ): 
+	env.Append(CXXFLAGS = '-arch i386')
+	env.Append(CFLAGS = '-arch i386')
+	env.Append(LINKFLAGS = '-arch i386')
 
 conf = Configure(env)	
 
@@ -104,10 +109,10 @@ env = conf.Finish()
 # base python module
 if env.WhereIs('swig') is None:
 	#Piavca_base = env.SharedLibrary('Python/Piavca/Piavca_base/_Piavca_base.so', ['Python/Piavca/Piavca_base/Piavca_wrap.cpp'], LIBS=PiavcaAPI + StdMotionImp + PiavcaCal3dImp + external_libs)
-	Piavca_base = env.SharedLibrary('Python/Piavca/Piavca_base/_Piavca_base.so', ['Python/Piavca/Piavca_base/Piavca_wrap.cpp']+glob('src/PiavcaAPI/*.cpp')+glob('src/StdMotionImp/*.cpp')+glob('src/PiavcaCal3dImp/*.cpp')+glob('src/PiavcaCal3dImp/*.c'), LIBS=external_libs)
+	Piavca_base = env.SharedLibrary('Python/Piavca/Piavca_base/_Piavca_base.so', ['Python/Piavca/Piavca_base/Piavca_wrap.cpp']+glob('src/cal3d/*.cpp')+glob('src/PiavcaAPI/*.cpp')+glob('src/StdMotionImp/*.cpp')+glob('src/PiavcaCal3dImp/*.cpp')+glob('src/PiavcaCal3dImp/*.c'), LIBS=external_libs)
 else:
 	#Piavca_base = env.SharedLibrary('Python/Piavca/Piavca_base/_Piavca_base.so', ['Python/Piavca/Piavca_base/Piavca.i'], LIBS=PiavcaAPI + StdMotionImp + PiavcaCal3dImp + external_libs)
-	Piavca_base = env.SharedLibrary('Python/Piavca/Piavca_base/_Piavca_base.so', ['Python/Piavca/Piavca_base/Piavca.i']+glob('src/PiavcaAPI/*.cpp')+glob('src/StdMotionImp/*.cpp')+glob('src/PiavcaCal3dImp/*.cpp')+glob('src/PiavcaCal3dImp/*.c'), LIBS=external_libs)
+	Piavca_base = env.SharedLibrary('Python/Piavca/Piavca_base/_Piavca_base.so', ['Python/Piavca/Piavca_base/Piavca.i']+glob('src/cal3d/*.cpp')+glob('src/PiavcaAPI/*.cpp')+glob('src/StdMotionImp/*.cpp')+glob('src/PiavcaCal3dImp/*.cpp')+glob('src/PiavcaCal3dImp/*.c'), LIBS=external_libs)
 #Depends(Piavca_base, PiavcaCal3dImp)
 
 # install path for python modules

@@ -2684,7 +2684,7 @@ void	AvatarCal3DImp::render_hardware ()
 		printOglError("loading texture");
 
 
-		std::cout << "rendering" << std::endl;
+		std::cout << "rendering..." << std::endl;
 		
 		std::cout << "index size " << sizeof(CalIndex) << std::endl;
 		
