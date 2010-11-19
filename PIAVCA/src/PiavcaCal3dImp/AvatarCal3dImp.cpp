@@ -1554,6 +1554,7 @@ bool AvatarCal3DImp::loadBufferObject()
   // the index index in pIndexBuffer are relative to the begining of the hardware mesh,
   // we make them relative to the begining of the buffer.
 
+	/*
   int meshId;
   for(meshId = 0; meshId < m_calHardwareModel->getHardwareMeshCount(); meshId++)
   {
@@ -1577,6 +1578,7 @@ bool AvatarCal3DImp::loadBufferObject()
 	  }
 
   }
+	 */
 	
 	std::cout << "finished changing index buffer offset\n";
 	
@@ -1757,6 +1759,7 @@ bool AvatarCal3DImp::loadVertexProgram()
 	m_vertexProgramMorphsId = glCreateProgram();
 	glAttachShader(m_vertexProgramMorphsId, shaderId);
 
+	/*
 	glBindAttribLocation(m_vertexProgramMorphsId, 1,  "Weights");
 	glBindAttribLocation(m_vertexProgramMorphsId, 3,  "MatrixIndices");
 	glBindAttribLocation(m_vertexProgramMorphsId, 4,  "MorphPosition1");
@@ -1767,7 +1770,7 @@ bool AvatarCal3DImp::loadVertexProgram()
 	glBindAttribLocation(m_vertexProgramMorphsId, 10, "MorphNormal3");
 	glBindAttribLocation(m_vertexProgramMorphsId, 11, "MorphPosition4");
 	glBindAttribLocation(m_vertexProgramMorphsId, 12, "MorphNormal4");
-
+	 */
 	glLinkProgram(m_vertexProgramMorphsId);
 	
 	printOglError("linking morphs shader");
@@ -2454,7 +2457,7 @@ void	AvatarCal3DImp::render_hardware ()
 	printOglError("setting GL state");
 		
 
-	std::cout << "rendering non-morph meshes" << std::endl;
+	//std::cout << "rendering non-morph meshes" << std::endl;
 	
 	int morphBufferOffset = 0;
 	
@@ -2474,7 +2477,7 @@ void	AvatarCal3DImp::render_hardware ()
 		glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[0]);
 		printOglError("binding position buffer");
 		int vertexLoc = glGetAttribLocation(m_vertexProgramId, "Vertex");
-		std::cout << "vertex attribute location " << vertexLoc << std::endl;
+		//std::cout << "vertex attribute location " << vertexLoc << std::endl;
 		printOglError("getting position attribute location");
 		glEnableVertexAttribArray(vertexLoc);
 		printOglError("enabling position attribute");
@@ -2634,11 +2637,14 @@ void	AvatarCal3DImp::render_hardware ()
 			
 		}
 		
-		std::cout << "setting up morphs\n";
+		//std::cout << "setting up morphs\n";
 
 		if (m_calHardwareModel->hasMorphTargets())
 		{
-			GLint morphWeightId = glGetUniformLocation(m_vertexProgramMorphsId, "MorphWeights");
+			//std::cout << "has morphs" << std::endl;
+			
+			GLint morphWeightId = glGetUniformLocation(m_vertexProgramId, "MorphWeights");
+			
 			
 			float morphWeight1 = 0;
 			if (morphWeights.size() > 0)
@@ -2652,11 +2658,13 @@ void	AvatarCal3DImp::render_hardware ()
 			float morphWeight4 = 0;
 			if (morphWeights.size() > 3)
 				morphWeight4 = morphWeights[3].weight;
+			
 			glUniform4f(morphWeightId, morphWeight1, morphWeight2, morphWeight3, morphWeight4);
 			printOglError("loading morph weights");
 		}
 		else 
 		{
+			
 			GLint morphWeightId = glGetUniformLocation(m_vertexProgramId, "MorphWeights");
 		
 			glUniform4f(morphWeightId, 0.0f, 0.0f, 0.0f, 0.0f);
@@ -2670,7 +2678,7 @@ void	AvatarCal3DImp::render_hardware ()
 		
 
 
-		std::cout << "getting texture" << std::endl;
+		//std::cout << "getting texture" << std::endl;
 		
         // set the texture id we stored in the map user data
 		
@@ -2698,9 +2706,11 @@ void	AvatarCal3DImp::render_hardware ()
 		printOglError("loading texture");
 
 
-		std::cout << "rendering..." << std::endl;
+		//std::cout << "rendering..." << std::endl;
 		
-		std::cout << "index size " << sizeof(CalIndex) << std::endl;
+		//std::cout << "index size " << sizeof(CalIndex) << std::endl;
+		
+		//std::cout << "start index " << m_calHardwareModel->getStartIndex() << " face count " << m_calHardwareModel->getFaceCount() << " index count " << 3*m_calHardwareModel->getFaceCount() << std::endl;
 		
 		if(sizeof(CalIndex)==2)
 			glDrawElements(GL_TRIANGLES, m_calHardwareModel->getFaceCount() * 3, GL_UNSIGNED_SHORT, (((CalIndex *)NULL)+ m_calHardwareModel->getStartIndex()));
@@ -2708,7 +2718,7 @@ void	AvatarCal3DImp::render_hardware ()
 			glDrawElements(GL_TRIANGLES, m_calHardwareModel->getFaceCount() * 3, GL_UNSIGNED_INT, (((CalIndex *)NULL)+ m_calHardwareModel->getStartIndex()));
 		
 		printOglError("drawing elements");
-		std::cout << "finished mesh\n";
+		//std::cout << "finished mesh\n";
 	}
 	/*
 	// then render the meshes with morph targets
@@ -2941,7 +2951,7 @@ void	AvatarCal3DImp::render_hardware ()
 	glPopAttrib();
 	
 
-	std::cout << "finished rendering" << std::endl;
+	//std::cout << "finished rendering" << std::endl;
 
 }
 

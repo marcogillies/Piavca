@@ -756,6 +756,7 @@ bool PiavcaHardwareModel::load(int baseVertexIndex, int startIndex,int maxBonesP
       hardwareMesh.startIndex=faceIndexCount;
       hardwareMesh.m_vectorBonesIndices.clear();  
 
+		
 	  if(pCoreSubmesh->getCoreSubMorphTargetCount() > 0)
 	  {
 		hardwareMesh.hasMorphs = true;
