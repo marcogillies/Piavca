@@ -633,7 +633,7 @@ const char *vertexProgramMorphsStr=
 "}\n";
 
 
-int printOglError()
+int printOglError(std::string location)
 {
         GLenum  glErr;
         int     retCode = 0;
@@ -644,7 +644,7 @@ int printOglError()
   glErr = glGetError();
   while (glErr != GL_NO_ERROR) {
     err = (char*)gluErrorString(glErr);
-	std::cout << "glError: " << err << std::endl;
+	std::cout << "glError: " << err << " at " << location << std::endl;
     retCode = 1;
     glErr = glGetError();
   }
@@ -657,12 +657,12 @@ void printShaderInfoLog(GLuint shader)
         GLint   charsWritten = 0;
         GLchar  *infoLog;
 
-  printOglError();
+  printOglError("starting printing shader log");
 
   glGetShaderiv(shader,GL_SHADER_TYPE,&shaderType);
   glGetShaderiv(shader,GL_INFO_LOG_LENGTH,&infologLength);
 
-  printOglError();
+  printOglError("getting shader type and info");
 
   if(infologLength > 0) {
     if((infoLog = (GLchar *)malloc(infologLength)) == NULL) {
@@ -680,7 +680,7 @@ void printShaderInfoLog(GLuint shader)
     }
     free(infoLog);
   }
-  printOglError();
+  printOglError("getting shader info");
 }
 
 void printProgramInfoLog(GLuint obj)
@@ -691,7 +691,7 @@ void printProgramInfoLog(GLuint obj)
 
   glGetProgramiv(obj,GL_INFO_LOG_LENGTH,&infologLength);
 
-  printOglError();
+  printOglError("starting printing program info");
 
   if(infologLength > 0) {
     if((infoLog = (GLchar *)malloc(infologLength)) == NULL) {
@@ -702,7 +702,7 @@ void printProgramInfoLog(GLuint obj)
 	if(charsWritten) std::cerr << "Progarm InfoLog:\n" << infoLog << std::endl;
     free(infoLog);
   }
-  printOglError();
+  printOglError("printing program info");
 }
 
 
@@ -1411,6 +1411,7 @@ void  AvatarCal3DImp::enableHardware()
 	glGetIntegerv(GL_MAX_VERTEX_UNIFORM_COMPONENTS, &maxVertUni);
 	std::cout << "Max number of vertex uniform components " << maxVertUni << std::endl;
 	
+	std::cout << "loading buffer objects\n";
 	
 	if(!loadBufferObject())
 	{
@@ -1418,6 +1419,8 @@ void  AvatarCal3DImp::enableHardware()
 	  return ;
 	}
 
+	
+	std::cout << "loading vertex program\n";
 
 	if(!loadVertexProgram())
 	{
@@ -1435,13 +1438,19 @@ void  AvatarCal3DImp::enableHardware()
 
 	hardware = true;
 	cal_model->disableInternalData();
-  
+	
+	std::cout << "finished setting up GPU skinning\n";
 }
 
 bool AvatarCal3DImp::loadBufferObject()
 {
+	std::cout << "creating calrenderer\n";
+	
     CalRenderer* renderer = new CalRenderer(cal_model->getRenderer());
 
+	std::cout << "scanning meshes\n";
+	std::cout.flush();
+	
 	int meshCount = renderer->getMeshCount();
 
 	int i,j;
@@ -1479,7 +1488,8 @@ bool AvatarCal3DImp::loadBufferObject()
 			numFaces = numFaces_;
 
 	}
-	//std::cout << "Verts " << numVerts << " faces " << numFaces << std::endl;
+	std::cout << "Verts " << numVerts << " faces " << numFaces << std::endl;
+	std::cout << "Morph Verts " << numMorphVerts << " morphs " << numMorphs << std::endl;
 
 
   float *pVertexBuffer = (float*)malloc(numVerts*3*sizeof(float));
@@ -1506,6 +1516,7 @@ bool AvatarCal3DImp::loadBufferObject()
 	  return false;
   }	  
 
+	std::cout << "finished creating buffers\n";
 
   m_calHardwareModel = new PiavcaHardwareModel(cal_model->getCoreModel());
   m_calHardwareModel->setVertexBuffer((char*)pVertexBuffer,3*sizeof(float));
@@ -1523,6 +1534,8 @@ bool AvatarCal3DImp::loadBufferObject()
 
   m_calHardwareModel->load( 0, 0, MAXBONESPERMESH);
 
+	
+	std::cout << "finished loading data to buffers\n";	
 	
   // the index index in pIndexBuffer are relative to the begining of the hardware mesh,
   // we make them relative to the begining of the buffer.
@@ -1551,6 +1564,8 @@ bool AvatarCal3DImp::loadBufferObject()
 
   }
 	
+	std::cout << "finished changing index buffer offset\n";
+	
   // normalize the weights in the weight buffer
   for (i = 0; i < numVerts*4; i += 4)
 	{
@@ -1565,6 +1580,8 @@ bool AvatarCal3DImp::loadBufferObject()
 		}
 	}
 
+	std::cout << "finished normalizing weights\n";
+	
   // We use ARB_vertex_buffer_object extension,
   // it provide better performance
 
@@ -1592,7 +1609,7 @@ bool AvatarCal3DImp::loadBufferObject()
 
   glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_calHardwareModel->getTotalFaceCount()*3*sizeof(CalIndex),(const void*)pIndexBuffer, GL_STATIC_DRAW);
 
-  
+	std::cout << "about to load morphs to vertex buffers\n";
   
   //for (int j = 0; j < numMorphVerts*3; j++)
 	//  std::cout << MorphVertexBuffers[0][j] << " ";
@@ -1607,7 +1624,7 @@ bool AvatarCal3DImp::loadBufferObject()
 	  glBufferData(GL_ARRAY_BUFFER, numMorphVerts*3*sizeof(float),(const void*)(MorphNormalBuffers[i]), GL_STATIC_DRAW);
   }
   
-  
+	std::cout << "finished loading vertex buffers\n";
 
   
   free(pVertexBuffer);
@@ -1622,6 +1639,8 @@ bool AvatarCal3DImp::loadBufferObject()
 	  free (MorphNormalBuffers[i]);
   }	
 
+	std::cout << "freed buffers\n";	
+	
   return true;
 
 }
@@ -1667,7 +1686,7 @@ bool AvatarCal3DImp::loadVertexProgram()
 	}
 
 	glCompileShader(shaderId);
-	printOglError();
+	printOglError("compiling vertex shader");
 	GLint compile_status = 0;
 	glGetShaderiv(shaderId, GL_COMPILE_STATUS, &compile_status);
 	printShaderInfoLog(shaderId);
@@ -1688,7 +1707,7 @@ bool AvatarCal3DImp::loadVertexProgram()
 		glShaderSource(shaderId, 1, &shaderString, NULL);
 		
 		glCompileShader(shaderId);
-		printOglError();
+		printOglError("compiling fragment shader");
 		GLint compile_status = 0;
 		glGetShaderiv(shaderId, GL_COMPILE_STATUS, &compile_status);
 		printShaderInfoLog(shaderId);
@@ -1703,7 +1722,7 @@ bool AvatarCal3DImp::loadVertexProgram()
 
 	glLinkProgram(m_vertexProgramId);
 	
-	printOglError();
+	printOglError("linking shader program");
 	glGetProgramiv(m_vertexProgramId, GL_LINK_STATUS, &compile_status);
 	printProgramInfoLog(m_vertexProgramId);
 	
@@ -1713,7 +1732,7 @@ bool AvatarCal3DImp::loadVertexProgram()
 	glShaderSource(shaderId, 1, &vertexProgramMorphsStr, NULL);
 
 	glCompileShader(shaderId);
-	printOglError();
+	printOglError("compiling morphs vertex shader");
 	compile_status = 0;
 	glGetShaderiv(shaderId, GL_COMPILE_STATUS, &compile_status);
 	printShaderInfoLog(shaderId);
@@ -1737,7 +1756,7 @@ bool AvatarCal3DImp::loadVertexProgram()
 
 	glLinkProgram(m_vertexProgramMorphsId);
 	
-	printOglError();
+	printOglError("linking morphs shader");
 	glGetProgramiv(m_vertexProgramMorphsId, GL_LINK_STATUS, &compile_status);
 	printProgramInfoLog(m_vertexProgramMorphsId);
 
@@ -2394,7 +2413,7 @@ void	AvatarCal3DImp::render_hardware ()
 
 	//glBindProgramARB( GL_VERTEX_PROGRAM_ARB, m_vertexProgramId );
 	glUseProgram(m_vertexProgramId);
-	printOglError();
+	printOglError("using shader");
 
 	//glEnableVertexAttribArray(0);
 	//glEnableVertexAttribArray(1); 
@@ -2415,45 +2434,17 @@ void	AvatarCal3DImp::render_hardware ()
 	//glBlendFunc (GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
 	glActiveTexture(GL_TEXTURE0);
 
-    glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[0]);
-	int vertexLoc = glGetAttribLocation(m_vertexProgramId, "Vertex");
-	glEnableVertexAttribArray(vertexLoc);
-	glVertexAttribPointer(vertexLoc, 3 , GL_FLOAT, false, 0, NULL);
-	printOglError();
-
-    glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[1]);
-	int weightsLoc = glGetAttribLocation(m_vertexProgramId, "Weights");
-	glEnableVertexAttribArray(weightsLoc);
-	glVertexAttribPointer(weightsLoc, 4 , GL_FLOAT, false, 0, NULL);
-	printOglError();
-
-	glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[2]);
-	int normalLoc = glGetAttribLocation(m_vertexProgramId, "Normal");
-	glEnableVertexAttribArray(normalLoc);
-    glVertexAttribPointer(normalLoc, 3 , GL_FLOAT, false, 0, NULL);
-	printOglError();
-	
-    glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[3]);
-	int matrixIndexLoc = glGetAttribLocation(m_vertexProgramId, "MatrixIndices");
-	glEnableVertexAttribArray(matrixIndexLoc);
-	glVertexAttribPointer(matrixIndexLoc, 4 , GL_FLOAT, false, 0, NULL);
-	printOglError();
-
-    glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[4]);	
-	int tcLoc = glGetAttribLocation(m_vertexProgramId, "TextureCoordinates");	
-	glEnableVertexAttribArray(tcLoc);
-	glVertexAttribPointer(tcLoc, 2 , GL_FLOAT, false, 0, NULL);
-	printOglError();
-	
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_bufferObject[5]);
-	printOglError();
-	
+    
 	
 	glScalef(scaleFactor, scaleFactor, scaleFactor);
-	printOglError();
+	printOglError("setting GL state");
 		
 
 	std::cout << "rendering non-morph meshes" << std::endl;
+	
+	int morphBufferOffset = 0;
+	
+	std::vector <morphItem> morphWeights = getMorphWeights();
 	
 	int hardwareMeshId;
 	
@@ -2464,7 +2455,94 @@ void	AvatarCal3DImp::render_hardware ()
 		//if (m_calHardwareModel->hasMorphTargets())
 		//	continue;
 		
+				
 
+		glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[0]);
+		printOglError("binding position buffer");
+		int vertexLoc = glGetAttribLocation(m_vertexProgramId, "Vertex");
+		std::cout << "vertex attribute location " << vertexLoc << std::endl;
+		printOglError("getting position attribute location");
+		glEnableVertexAttribArray(vertexLoc);
+		printOglError("enabling position attribute");
+		glVertexAttribPointer(vertexLoc, 3 , GL_FLOAT, false, 0, (const void *)(3*sizeof(float)*m_calHardwareModel->getBaseVertexIndex()));
+		printOglError("loading position buffer");
+		
+		glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[1]);
+		int weightsLoc = glGetAttribLocation(m_vertexProgramId, "Weights");
+		glEnableVertexAttribArray(weightsLoc);
+		glVertexAttribPointer(weightsLoc, 4 , GL_FLOAT, false, 0, (const void *)(4*sizeof(float)*m_calHardwareModel->getBaseVertexIndex()));
+		printOglError("loading weights buffer");
+		
+		glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[2]);
+		int normalLoc = glGetAttribLocation(m_vertexProgramId, "Normal");
+		glEnableVertexAttribArray(normalLoc);
+		glVertexAttribPointer(normalLoc, 3 , GL_FLOAT, false, 0, (const void *)(3*sizeof(float)*m_calHardwareModel->getBaseVertexIndex()));
+		printOglError("loading normal buffer");
+		
+		glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[3]);
+		int matrixIndexLoc = glGetAttribLocation(m_vertexProgramId, "MatrixIndices");
+		glEnableVertexAttribArray(matrixIndexLoc);
+		glVertexAttribPointer(matrixIndexLoc, 4 , GL_FLOAT, false, 0, (const void *)(4*sizeof(float)*m_calHardwareModel->getBaseVertexIndex()));
+		printOglError("loading matrix index buffer");
+		
+		glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[4]);	
+		int tcLoc = glGetAttribLocation(m_vertexProgramId, "TextureCoordinates");	
+		glEnableVertexAttribArray(tcLoc);
+		glVertexAttribPointer(tcLoc, 2 , GL_FLOAT, false, 0, (const void *)(2*sizeof(float)*m_calHardwareModel->getBaseVertexIndex()));
+		printOglError("loading texcoord buffer");
+		
+		// load morphs
+		for (int i = 0; i < 4; i++)
+		{
+			if(m_calHardwareModel->hasMorphTargets() && i < morphWeights.size())
+			{
+				int index = morphWeights[i].index;
+				glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[6+2*index]);
+				//std::ostringstream is1;
+				
+				std::ostringstream is;
+				is << "MorphPosition" << i+1 ;
+				int mploc = glGetAttribLocation(m_vertexProgramId, is.str().c_str());
+				glEnableVertexAttribArray(mploc);
+				glVertexAttribPointer(mploc, 3 , GL_FLOAT, false, 0, (const void *)(3*sizeof(float)*morphBufferOffset));
+				printOglError("loading morph position buffer");
+				is.str("");
+				
+				glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[6+2*index+1]);
+				is << "MorphNormal" << i+1 ;
+				int mnloc = glGetAttribLocation(m_vertexProgramId, is.str().c_str());
+				glEnableVertexAttribArray(mnloc);
+				glVertexAttribPointer(mnloc, 3 , GL_FLOAT, false, 0, (const void *)(3*sizeof(float)*morphBufferOffset));
+				printOglError("loading morph normal buffer");
+			}
+			else 
+			{
+				glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[0]);
+				std::ostringstream is;
+				is << "MorphPosition" << i+1 ;
+				int mploc = glGetAttribLocation(m_vertexProgramId, is.str().c_str());
+				glEnableVertexAttribArray(mploc);
+				glVertexAttribPointer(mploc, 3 , GL_FLOAT, false, 0, (const void *)(3*sizeof(float)*m_calHardwareModel->getBaseVertexIndex()));
+				printOglError("loading position buffer as morph");
+				is.str("");
+				
+				glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[2]);
+				is << "MorphNormal" << i+1 ;
+				int mnloc = glGetAttribLocation(m_vertexProgramId, is.str().c_str());
+				glEnableVertexAttribArray(mnloc);
+				glVertexAttribPointer(mnloc, 3 , GL_FLOAT, false, 0, (const void *)(3*sizeof(float)*m_calHardwareModel->getBaseVertexIndex()));
+				printOglError("loading normal buffer as morph");				
+			}
+
+			
+		}
+		
+		morphBufferOffset += m_calHardwareModel->getVertexCount();
+		
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_bufferObject[5]);
+		printOglError("loading element buffer");
+		
+		
 		//std::cout << "setting materials" << std::endl;
 
 		unsigned char meshColor[4];	
@@ -2475,7 +2553,7 @@ void	AvatarCal3DImp::render_hardware ()
 		//glMaterialfv(GL_FRONT, GL_AMBIENT, materialColor);
 		GLint ambientMaterialId = glGetUniformLocation(m_vertexProgramId, "AmbientMaterial");
 		glUniform4fv(ambientMaterialId, 4, materialColor);
-		printOglError();
+		printOglError("loading ambient material");
 		
 		// set the material diffuse color
 		m_calHardwareModel->getDiffuseColor(&meshColor[0]);
@@ -2483,7 +2561,7 @@ void	AvatarCal3DImp::render_hardware ()
 		//glMaterialfv(GL_FRONT, GL_DIFFUSE, materialColor);
 		GLint diffuseMaterialId = glGetUniformLocation(m_vertexProgramId, "DiffuseMaterial");
 		glUniform4fv(diffuseMaterialId, 4, materialColor);
-		printOglError();
+		printOglError("loading diffuse material");
 		
 		// set the material specular color
 		m_calHardwareModel->getSpecularColor(&meshColor[0]);
@@ -2491,7 +2569,7 @@ void	AvatarCal3DImp::render_hardware ()
 		//glMaterialfv(GL_FRONT, GL_SPECULAR, materialColor);
 		GLint specularMaterialId = glGetUniformLocation(m_vertexProgramId, "SpecularMaterial");
 		glUniform4fv(specularMaterialId, 4, materialColor);
-		printOglError();
+		printOglError("loading specular material");
 		
 		//std::cout << "AmbientMaterial " << ambientMaterialId << " DiffuseMaterial " << diffuseMaterialId << " SpecularMaterial " << specularMaterialId << std::endl;
 		
@@ -2533,7 +2611,7 @@ void	AvatarCal3DImp::render_hardware ()
 			//std::cout  << " " << transformArrayId << std::endl;
 
 			glUniformMatrix4fv(transformArrayId, 1, GL_TRUE, &transformation[0]);
-			printOglError();
+			printOglError("loading bones matrices");
 			
 			
 			//glProgramLocalParameter4fvARB(GL_VERTEX_PROGRAM_ARB,boneId*3,&transformation[0]);
@@ -2561,14 +2639,14 @@ void	AvatarCal3DImp::render_hardware ()
 			if (morphWeights.size() > 3)
 				morphWeight4 = morphWeights[3].weight;
 			glUniform4f(morphWeightId, morphWeight1, morphWeight2, morphWeight3, morphWeight4);
-			printOglError();
+			printOglError("loading morph weights");
 		}
 		else 
 		{
 			GLint morphWeightId = glGetUniformLocation(m_vertexProgramId, "MorphWeights");
 		
 			glUniform4f(morphWeightId, 0.0f, 0.0f, 0.0f, 0.0f);
-			printOglError();
+			printOglError("empty loading morph weights");
 		}
 			
 		//GLint transformArrayId = glGetUniformLocation(m_vertexProgramId, "Transforms");
@@ -2603,7 +2681,7 @@ void	AvatarCal3DImp::render_hardware ()
 				glUniform1i(textureAvailableId, 0);
 		}
 
-		printOglError();
+		printOglError("loading texture");
 
 
 		std::cout << "rendering" << std::endl;
@@ -2615,10 +2693,10 @@ void	AvatarCal3DImp::render_hardware ()
 		else
 			glDrawElements(GL_TRIANGLES, m_calHardwareModel->getFaceCount() * 3, GL_UNSIGNED_INT, (((CalIndex *)NULL)+ m_calHardwareModel->getStartIndex()));
 		
-		printOglError();
-
+		printOglError("drawing elements");
+		std::cout << "finished mesh\n";
 	}
-	
+	/*
 	// then render the meshes with morph targets
 
 	std::cout << "rendering morph meshes" << std::endl;
@@ -2823,7 +2901,7 @@ void	AvatarCal3DImp::render_hardware ()
 		printOglError();
 
 	}
-	
+	*/
 
     // clear vertex array state    
 
