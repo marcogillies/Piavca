@@ -792,6 +792,8 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 	// parse all lines from the model configuration file
 	int line;
 	
+	bool shadersLoaded = false;
+	
 	float scale = 1.0f;
 	for(line = 1; ; line++)
 	{
@@ -995,7 +997,8 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 				vertexShader.append(strBuffer + "\n");
 			}
 			std::cout << vertexShader << std::endl;
-			enableHardware();
+			//enableHardware();
+			shadersLoaded = true;
 		}
 		else if(strKey == "fragmentshader")
 		{
@@ -1019,7 +1022,8 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 				fragmentShader.append(strBuffer + "\n");
 			}
 			std::cout << fragmentShader << std::endl;
-			enableHardware();
+			//enableHardware();
+			shadersLoaded = true;
 		}
 		else
 		{
@@ -1220,6 +1224,10 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 
    platformSpecific_timeStep (Piavca::Core::getCore()->getTime());
    base_bb = getBoundBox();
+
+   if(shadersLoaded)
+	   enableHardware();
+	
    std::cout << "at end of Cal3dAvatar constructor\n";
 };
 
@@ -1444,6 +1452,12 @@ void  AvatarCal3DImp::enableHardware()
 
 bool AvatarCal3DImp::loadBufferObject()
 {
+	std::cout << "getting renderer\n";
+	
+	std::cout << (int) cal_model << std::endl;
+	
+	cal_model->getRenderer();
+	
 	std::cout << "creating calrenderer\n";
 	
     CalRenderer* renderer = new CalRenderer(cal_model->getRenderer());
