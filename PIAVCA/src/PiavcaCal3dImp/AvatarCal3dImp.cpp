@@ -2486,18 +2486,22 @@ void	AvatarCal3DImp::render_hardware ()
 		
 		glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[1]);
 		int weightsLoc = glGetAttribLocation(m_vertexProgramId, "Weights");
+		//std::cout << "weights location " << weightsLoc << std::endl;
 		glEnableVertexAttribArray(weightsLoc);
 		glVertexAttribPointer(weightsLoc, 4 , GL_FLOAT, false, 0, (const void *)(4*sizeof(float)*m_calHardwareModel->getBaseVertexIndex()));
 		printOglError("loading weights buffer");
 		
 		glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[2]);
+		printOglError("binding normal buffer");
 		int normalLoc = glGetAttribLocation(m_vertexProgramId, "Normal");
+		//std::cout << "normal location " << normalLoc << std::endl;
 		glEnableVertexAttribArray(normalLoc);
 		glVertexAttribPointer(normalLoc, 3 , GL_FLOAT, false, 0, (const void *)(3*sizeof(float)*m_calHardwareModel->getBaseVertexIndex()));
 		printOglError("loading normal buffer");
 		
 		glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[3]);
 		int matrixIndexLoc = glGetAttribLocation(m_vertexProgramId, "MatrixIndices");
+		//std::cout << "matrixIndex location " << matrixIndexLoc << std::endl;
 		glEnableVertexAttribArray(matrixIndexLoc);
 		glVertexAttribPointer(matrixIndexLoc, 4 , GL_FLOAT, false, 0, (const void *)(4*sizeof(float)*m_calHardwareModel->getBaseVertexIndex()));
 		printOglError("loading matrix index buffer");
@@ -2509,6 +2513,7 @@ void	AvatarCal3DImp::render_hardware ()
 		printOglError("loading texcoord buffer");
 		
 		// load morphs
+		
 		for (int i = 0; i < 4; i++)
 		{
 			if(m_calHardwareModel->hasMorphTargets() && i < morphWeights.size())
@@ -2522,7 +2527,7 @@ void	AvatarCal3DImp::render_hardware ()
 				int mploc = glGetAttribLocation(m_vertexProgramId, is.str().c_str());
 				glEnableVertexAttribArray(mploc);
 				glVertexAttribPointer(mploc, 3 , GL_FLOAT, false, 0, (const void *)(3*sizeof(float)*morphBufferOffset));
-				printOglError("loading morph position buffer");
+				printOglError("loading morph position buffer ");
 				is.str("");
 				
 				glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject[6+2*index+1]);
@@ -2569,7 +2574,9 @@ void	AvatarCal3DImp::render_hardware ()
 		materialColor[0] = meshColor[0] / 255.0f;  materialColor[1] = meshColor[1] / 255.0f; materialColor[2] = meshColor[2] / 255.0f; materialColor[3] = meshColor[3] / 255.0f;
 		//glMaterialfv(GL_FRONT, GL_AMBIENT, materialColor);
 		GLint ambientMaterialId = glGetUniformLocation(m_vertexProgramId, "AmbientMaterial");
-		glUniform4fv(ambientMaterialId, 4, materialColor);
+		printOglError("getting ambient material id");
+		//std::cout << "ambientMaterialId " << ambientMaterialId << std::endl;
+		glUniform4fv(ambientMaterialId, 1, materialColor);
 		printOglError("loading ambient material");
 		
 		// set the material diffuse color
@@ -2577,7 +2584,8 @@ void	AvatarCal3DImp::render_hardware ()
 		materialColor[0] = meshColor[0] / 255.0f;  materialColor[1] = meshColor[1] / 255.0f; materialColor[2] = meshColor[2] / 255.0f; materialColor[3] = meshColor[3] / 255.0f;
 		//glMaterialfv(GL_FRONT, GL_DIFFUSE, materialColor);
 		GLint diffuseMaterialId = glGetUniformLocation(m_vertexProgramId, "DiffuseMaterial");
-		glUniform4fv(diffuseMaterialId, 4, materialColor);
+		//std::cout << "diffuseMaterialId " << diffuseMaterialId << std::endl;
+		glUniform4fv(diffuseMaterialId, 1, materialColor);
 		printOglError("loading diffuse material");
 		
 		// set the material specular color
@@ -2585,7 +2593,8 @@ void	AvatarCal3DImp::render_hardware ()
 		materialColor[0] = meshColor[0] / 255.0f;  materialColor[1] = meshColor[1] / 255.0f; materialColor[2] = meshColor[2] / 255.0f; materialColor[3] = meshColor[3] / 255.0f;
 		//glMaterialfv(GL_FRONT, GL_SPECULAR, materialColor);
 		GLint specularMaterialId = glGetUniformLocation(m_vertexProgramId, "SpecularMaterial");
-		glUniform4fv(specularMaterialId, 4, materialColor);
+		//std::cout << "specularMaterialId " << specularMaterialId << std::endl;
+		glUniform4fv(specularMaterialId, 1, materialColor);
 		printOglError("loading specular material");
 		
 		//std::cout << "AmbientMaterial " << ambientMaterialId << " DiffuseMaterial " << diffuseMaterialId << " SpecularMaterial " << specularMaterialId << std::endl;
@@ -2644,6 +2653,7 @@ void	AvatarCal3DImp::render_hardware ()
 			//std::cout << "has morphs" << std::endl;
 			
 			GLint morphWeightId = glGetUniformLocation(m_vertexProgramId, "MorphWeights");
+			//std::cout << "morphWeightId " << morphWeightId << std::endl;
 			
 			
 			float morphWeight1 = 0;
@@ -2694,11 +2704,13 @@ void	AvatarCal3DImp::render_hardware ()
 			if(texSamplerId >= 0)
 				glUniform1i(texSamplerId, 0);
 			GLint textureAvailableId = glGetUniformLocation(m_vertexProgramId, "textureAvailable");
+			//std::cout << "textureAvailableId " << textureAvailableId << std::endl;
 			if(textureAvailableId >= 0)
 				glUniform1i(textureAvailableId, 1);
 		}
 		else {
 			GLint textureAvailableId = glGetUniformLocation(m_vertexProgramId, "textureAvailable");
+			//std::cout << "textureAvailableId " << textureAvailableId << std::endl;
 			if(textureAvailableId >= 0)
 				glUniform1i(textureAvailableId, 0);
 		}
