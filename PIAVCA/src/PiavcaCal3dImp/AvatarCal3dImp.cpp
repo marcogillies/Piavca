@@ -129,6 +129,7 @@ char vertexProgramStr[]=
 */
 
 // GLSL shader
+/*
 const char *vertexProgramStr= 
 "#version 110\n"\
 "uniform mat4 Transforms[24];\n"\
@@ -631,7 +632,7 @@ const char *vertexProgramMorphsStr=
 "	gl_TexCoord[0] = gl_MultiTexCoord0;\n"\
 "	gl_Position = gl_ModelViewProjectionMatrix * gl_Position;\n"\
 "}\n";
-
+*/
 
 int printOglError(std::string location)
 {
@@ -769,6 +770,9 @@ AvatarCal3DImp::AvatarCal3DImp(tstring avatarId, TextureHandler *_textureHandler
 		renderBuffer = 0;
 		updateBuffer = 1;
 	}
+	
+	vertexShader = Piavca::Core::getCore()->getVertexShaderText();
+	fragmentShader = Piavca::Core::getCore()->getFragmentShaderText();
 
 	expressions.assign((-Piavca::Core::getCore()->getMaxExpressionId())+1, FacialExpressionHolder());
   
@@ -1695,7 +1699,8 @@ bool AvatarCal3DImp::loadVertexProgram()
 	// load the program without morphs
 	GLuint shaderId = glCreateShader(GL_VERTEX_SHADER);
 	if (vertexShader == "")
-		glShaderSource(shaderId, 1, &vertexProgramStr, NULL);
+		//glShaderSource(shaderId, 1, &vertexProgramStr, NULL);
+		return false;
 	else {
 		const char *shaderString = vertexShader.c_str();
 		glShaderSource(shaderId, 1, &shaderString, NULL);
@@ -1744,6 +1749,7 @@ bool AvatarCal3DImp::loadVertexProgram()
 	
 	
 	// load the one with morphs
+	/*
 	shaderId = glCreateShader(GL_VERTEX_SHADER);
 	glShaderSource(shaderId, 1, &vertexProgramMorphsStr, NULL);
 
@@ -1758,7 +1764,7 @@ bool AvatarCal3DImp::loadVertexProgram()
 
 	m_vertexProgramMorphsId = glCreateProgram();
 	glAttachShader(m_vertexProgramMorphsId, shaderId);
-
+	 */
 	/*
 	glBindAttribLocation(m_vertexProgramMorphsId, 1,  "Weights");
 	glBindAttribLocation(m_vertexProgramMorphsId, 3,  "MatrixIndices");
@@ -1771,6 +1777,8 @@ bool AvatarCal3DImp::loadVertexProgram()
 	glBindAttribLocation(m_vertexProgramMorphsId, 11, "MorphPosition4");
 	glBindAttribLocation(m_vertexProgramMorphsId, 12, "MorphNormal4");
 	 */
+	
+	/*
 	glLinkProgram(m_vertexProgramMorphsId);
 	
 	printOglError("linking morphs shader");
@@ -1779,6 +1787,7 @@ bool AvatarCal3DImp::loadVertexProgram()
 
 	if (!compile_status)
 		Piavca::Error(_T("could not link the shader"));
+	*/
 
 
   return true;

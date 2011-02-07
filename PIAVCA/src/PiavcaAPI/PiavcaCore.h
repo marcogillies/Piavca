@@ -101,6 +101,9 @@ namespace Piavca
 		bool autoTimeOff;
 		//! the current time (if it isn't linked to the real time clock)
 		float currentTime;
+		
+		tstring vertexShaderText;
+		tstring fragmentShaderText;
 
 		//! creates an avatar implementation 
 		/*!
@@ -210,6 +213,26 @@ namespace Piavca
 		{
 			return false;
 		}
+		
+		void setVertexShaderText(tstring text)
+		{
+			vertexShaderText = text;
+		};
+		
+		tstring getVertexShaderText()
+		{
+			return vertexShaderText;
+		};
+		
+		void setFragmentShaderText(tstring text)
+		{
+			fragmentShaderText = text;
+		};
+		
+		tstring getFragmentShaderText()
+		{
+			return fragmentShaderText;
+		};
 
 		/*! methods dealing with joint ids
 		 *

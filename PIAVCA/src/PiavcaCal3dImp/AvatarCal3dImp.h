@@ -149,7 +149,7 @@ public:
 	std::string fragmentShader;
 	// vertex program id
 	GLuint m_vertexProgramId;
-	GLuint m_vertexProgramMorphsId;
+	//GLuint m_vertexProgramMorphsId;
 	GLuint *m_bufferObject;
 
 	//! initialization for hardware skinning

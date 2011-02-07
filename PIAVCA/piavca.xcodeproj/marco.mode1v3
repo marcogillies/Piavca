@@ -216,10 +216,10 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>A9A81CCF129329EA00C2E8F9</string>
+						<string>A9AEDEC713004E1500BDCE38</string>
 						<key>history</key>
 						<array>
-							<string>A9A81C191292F0B300C2E8F9</string>
+							<string>A9A81CCF129329EA00C2E8F9</string>
 						</array>
 					</dict>
 					<key>SplitCount</key>
@@ -231,11 +231,11 @@
 			<key>Geometry</key>
 			<dict>
 				<key>Frame</key>
-				<string>{{0, 20}, {1280, 619}}</string>
+				<string>{{0, 20}, {1280, 481}}</string>
 				<key>PBXModuleWindowStatusBarHidden2</key>
 				<false/>
 				<key>RubberWindowFrame</key>
-				<string>0 118 1280 660 0 0 1280 778 </string>
+				<string>0 256 1280 522 0 0 1280 778 </string>
 			</dict>
 		</dict>
 	</array>
@@ -305,7 +305,10 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateExpansionKey</key>
 							<array>
 								<string>A993EDAC100BA1FF007339F9</string>
+								<string>A993EFD4100BA430007339F9</string>
+								<string>A993F067100BA431007339F9</string>
 								<string>A993EE6B100BA346007339F9</string>
+								<string>A993EE6F100BA346007339F9</string>
 								<string>A993EF37100BA347007339F9</string>
 								<string>1C37FBAC04509CD000000102</string>
 								<string>1C37FAAC04509CD000000102</string>
@@ -313,14 +316,12 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>13</integer>
-									<integer>10</integer>
-									<integer>7</integer>
+									<integer>4</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 338}, {269, 597}}</string>
+							<string>{{0, 0}, {269, 464}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -332,14 +333,14 @@
 					<key>GeometryConfiguration</key>
 					<dict>
 						<key>Frame</key>
-						<string>{{0, 0}, {286, 615}}</string>
+						<string>{{0, 0}, {286, 482}}</string>
 						<key>GroupTreeTableConfiguration</key>
 						<array>
 							<string>MainColumn</string>
 							<real>269</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>0 122 1280 656 0 0 1280 778 </string>
+						<string>0 255 1280 523 0 0 1280 778 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -357,7 +358,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>AvatarCal3dImp.cpp</string>
+								<string>CoreProxy.py</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -365,16 +366,20 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>AvatarCal3dImp.cpp</string>
+										<string>CoreProxy.py</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>A9A81CCE129329EA00C2E8F9</string>
+										<string>A9AEDEC613004E1500BDCE38</string>
 										<key>history</key>
 										<array>
 											<string>A9A81C1A1292F27800C2E8F9</string>
-											<string>A9A81C1B1292F27800C2E8F9</string>
-											<string>A9A81C1C1292F27800C2E8F9</string>
+											<string>A9AEDEBB12FFF2F500BDCE38</string>
+											<string>A9AEDEBF12FFF36400BDCE38</string>
+											<string>A9AEDEC313004E1500BDCE38</string>
+											<string>A9AEDEC413004E1500BDCE38</string>
+											<string>A9AEDEC513004E1500BDCE38</string>
+											<string>A9AEDEBA12FFF2F500BDCE38</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -386,14 +391,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {989, 577}}</string>
+								<string>{{0, 0}, {989, 443}}</string>
 								<key>RubberWindowFrame</key>
-								<string>0 122 1280 656 0 0 1280 778 </string>
+								<string>0 255 1280 523 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>577pt</string>
+							<string>443pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -406,14 +411,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 582}, {989, 33}}</string>
+								<string>{{0, 448}, {989, 34}}</string>
 								<key>RubberWindowFrame</key>
-								<string>0 122 1280 656 0 0 1280 778 </string>
+								<string>0 255 1280 523 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>33pt</string>
+							<string>34pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -432,9 +437,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>A9A81C071292DEBD00C2E8F9</string>
+				<string>A9AEDEAE12FFD61F00BDCE38</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>A9A81C081292DEBD00C2E8F9</string>
+				<string>A9AEDEAF12FFD61F00BDCE38</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -570,14 +575,12 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>A993F11D100BA59E007339F9</string>
-		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>A9A81C1E1292F27800C2E8F9</string>
 		<string>/Users/marco/Documents/workspace/piavca/piavca.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>0 122 1280 656 0 0 1280 778 </string>
+	<string>0 255 1280 523 0 0 1280 778 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -654,7 +657,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>A993F11D100BA59E007339F9</string>
-				<string>A9A81C091292DEBD00C2E8F9</string>
+				<string>A9AEDEB412FFD61F00BDCE38</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>

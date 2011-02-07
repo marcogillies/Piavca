@@ -206,10 +206,40 @@ if glPresent:
 			glEnable(GL_LIGHT0)
 			glEnable(GL_NORMALIZE)
 			
-			glLightfv(GL_LIGHT0, GL_AMBIENT, [0.5, 0.5, 0.5, 1])
-			glLightfv(GL_LIGHT0, GL_POSITION, [0, -1, 0, 0])
+			glEnable(GL_COLOR_MATERIAL)
+			glEnable(GL_BLEND)
+			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
+
+			glShadeModel(GL_SMOOTH)
+			glHint(GL_LINE_SMOOTH_HINT, GL_NICEST)
+			glEnable(GL_LINE_SMOOTH)
 			
-			self.initCameraPosition()
+			#glLightfv(GL_LIGHT0, GL_AMBIENT, [0.5, 0.5, 0.5, 1])
+			#glLightfv(GL_LIGHT0, GL_POSITION, [0, -1, 0, 0])
+			#glLightfv(GL_LIGHT0, GL_POSITION, [-4, 2.0, 10.0, 1.0 ])
+		
+			self.setLight(0.8)
+
+			
+			self.initCameraPosition()					
+			
+		def setLight(self, brightness=1.0):
+			 
+			# Create light components
+			al = brightness
+			dl = max(0, brightness-0.2)
+			sl = max(0, brightness-0.8)
+			ambientLight = [ al, al, al, 1.0 ]
+			diffuseLight = [ dl, dl, dl, 1.0 ]
+			specularLight = [ sl, sl, sl, 1.0 ]
+			 
+			# Assign created components to GL_LIGHT0
+			glLightfv(GL_LIGHT0, GL_AMBIENT, ambientLight)
+			glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuseLight)
+			glLightfv(GL_LIGHT0, GL_SPECULAR, specularLight)
+			
+			glLightfv(GL_LIGHT0, GL_POSITION, [1, -1, -1, 0])
+			
 			
 		def custom_init(self):
 			pass

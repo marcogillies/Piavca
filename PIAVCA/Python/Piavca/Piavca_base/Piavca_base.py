@@ -928,6 +928,10 @@ class Core(_object):
 
     def setHardware(*args): return _Piavca_base.Core_setHardware(*args)
     def getHardware(*args): return _Piavca_base.Core_getHardware(*args)
+    def setVertexShaderText(*args): return _Piavca_base.Core_setVertexShaderText(*args)
+    def getVertexShaderText(*args): return _Piavca_base.Core_getVertexShaderText(*args)
+    def setFragmentShaderText(*args): return _Piavca_base.Core_setFragmentShaderText(*args)
+    def getFragmentShaderText(*args): return _Piavca_base.Core_getFragmentShaderText(*args)
     def getJointId(*args):
         """
         int Core::getJointId(tstring name)
